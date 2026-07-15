@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intel Tiles | The Future 24/7</title>
+    <meta
+      name="description"
+      content="Intel Tiles | The Future 24/7 — fact-checked world intelligence cards published as photo tiles, each linking to its tracked original source."
+    />
+    <meta
+      name="source-note"
+      content="Source: world-data.json fact-checked intelligence stream — every tile links to its original article."
+    />
+    <link rel="stylesheet" href="/website/root-extracted.css?v=20260629a" />
+    <style>
+      body {
+        margin: 0;
+        background: #060b18;
+        color: #dce8f8;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      .section-page-top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(2, 6, 23, 0.92);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        padding: 12px 18px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .section-page-top a {
+        color: #67e8f9;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        font-size: 12px;
+      }
+    </style>
+    <link rel="stylesheet" href="/website/unified-theme.css?v=20260629a" />
+    <link
+      rel="stylesheet"
+      href="/website/widgets/command-console.css?v=20260707c"
+    />
+    <link rel="stylesheet" href="/website/site-shell.css?v=20260707a" />
+    <link
+      rel="stylesheet"
+      href="/website/sections/section-theme.css?v=20260704c"
+    />
+  </head>
+  <body>
+    <!-- Domain Directory strip (injected 2026-07-15) -->
+    <div id="domainDirStrip"></div>
+    <div class="section-page-top">
+      <div class="section-page-label">Section Page: Intel Tiles</div>
+      <a href="/index.html">Back To Main</a>
+    </div>
+    <div class="section-audit-hero">
+      <img
+        src="/photos in/site template.jpg"
+        alt="Intel Tiles section hero"
+        loading="lazy"
+      />
+    </div>
+    <h1 class="section-audit-h1">Intel Tiles</h1>
+    <section class="domain-sec" id="domain-intel-tiles">
+      <div class="domain-hd">
+        <div class="d-num domain-num-nrg">📡</div>
+        <div>
+          <h2 class="domain-title-nrg">World Intel — Fact-Checked Photo Tiles</h2>
+          <p>
+            The platform's fact-checked intelligence cards, auto-published as
+            photo tiles by the tile-publisher. Each tile carries its domain,
+            novelty level and summary — and links straight to the original
+            tracked source article.
+          </p>
+        </div>
+      </div>
+      <div class="dtags">
+        <span class="dtag dtag-nrg">Fact-checked</span>
+        <span class="dtag dtag-nrg">Tracked sources</span>
+        <span class="dtag dtag-nrg">Auto-published</span>
+      </div>
+
+      <div class="sub-hed">Latest Intelligence — by Novelty</div>
+      <div class="stage-legend">
+        <span class="lg-label">Novelty</span>
+        <span class="pbadge leading">LEADING</span>
+        <span class="pbadge rising">RISING</span>
+        <span class="pbadge far">FAR</span>
+      </div>
+      <div
+        id="intelGrid"
+        class="tech-grid"
+        data-tech-src="/website/sections/intel-tiles/intel-tiles.json?v=20260709a"
+        data-tech-domain="intel"
+      ></div>
+    </section>
+    <script src="/website/widgets/command-console.js?v=20260707c" defer></script>
+    <script src="/website/site-shell.js?v=20260715a" defer></script>
+    <script src="/website/sections/section-theme.js?v=20260704b" defer></script>
+    <script src="/website/sections/tech-tiles.js?v=20260715b" defer></script>
+    <script>
+      // Intel tiles link OUT to their fact-checked source article (the point of
+      // the card), not to the internal tech-detail page. tech-tiles.js renders
+      // async, so rewrite hrefs once the grid is populated.
+      (function () {
+        var tries = 0;
+        var timer = setInterval(function () {
+          var grid = document.getElementById("intelGrid");
+          var tiles = grid ? grid.querySelectorAll("a.tech-tile") : [];
+          if (!tiles.length && ++tries < 50) return;
+          clearInterval(timer);
+          fetch("/website/sections/intel-tiles/intel-tiles.json?v=20260709a")
+            .then(function (r) { return r.json(); })
+            .then(function (items) {
+              var byId = {};
+              items.forEach(function (t) { byId[t.id] = t; });
+              tiles.forEach(function (a) {
+                var m = /id=([^&]+)/.exec(a.getAttribute("href") || "");
+                var t = m && byId[decodeURIComponent(m[1])];
+                if (t && t.link) {
+                  a.href = t.link;
+                  a.target = "_blank";
+                  a.rel = "noopener";
+                  var arrow = a.querySelector(".tech-tile-arrow");
+                  if (arrow) arrow.textContent = "Read source →";
+                }
+              });
+            })
+            .catch(function () { /* keep default links */ });
+        }, 200);
+      })();
+    </script>
+      <script src="/website/domain-directory-strip.js?v=20260716a" defer></script>
+  </body>
+</html>

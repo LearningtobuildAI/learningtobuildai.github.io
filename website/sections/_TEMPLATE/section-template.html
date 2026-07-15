@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+  THE FUTURE 24/7 — STANDARD SECTION TEMPLATE
+  ===========================================
+  The reusable shell for every new section/domain/topic page. Copy this file to
+  website/sections/<slug>/index.html and fill the {{PLACEHOLDERS}}.
+
+  Rulebook-compliant (future-24-7 v1.3.0):
+    • civilian only — no forbidden topics
+    • every entry carries the 6 summary fields (whatItIs / whatItDoes /
+      howItWorks / materialsRequired / processToMake / energyNeeded)
+    • uses the shared theme (root-extracted.css + section-theme) so it matches
+    • no fabricated stats — leave a value blank or "—" rather than inventing it
+
+  Placeholders: {{TITLE}} {{SLUG}} {{DOMAIN_ID}} {{DESCRIPTION}} {{PAGE_ID}}
+                {{KICKER}} {{H1}} and the summary/detail body.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}} | The Future 24/7</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <meta name="source-note" content="Source: curated intelligence stream and tracked references." />
+    <link rel="stylesheet" href="/website/root-extracted.css?v=20260629a" />
+    <link rel="stylesheet" href="/website/sections/section-theme.css?v=20260704c" />
+  </head>
+  <body>
+    <div class="section-page-top">
+      <div class="section-page-label">Section Page: {{TITLE}}</div>
+      <a href="/">← Back to The Future 24/7</a>
+    </div>
+
+    <nav class="section-audit-nav" aria-label="{{TITLE}} quick links">
+      <a href="#{{DOMAIN_ID}}">Overview</a>
+      <a href="#summary">Summary</a>
+      <a href="#details">Full details</a>
+      <a href="#sources">Sources</a>
+    </nav>
+
+    <div class="section-audit-hero">
+      <span class="section-kicker">{{KICKER}}</span>
+    </div>
+    <h1 class="section-audit-h1">{{H1}}</h1>
+
+    <section class="domain-sec alt" id="{{DOMAIN_ID}}">
+      <!-- ===== SUMMARY CARD — the 6 mandatory rulebook fields ===== -->
+      <div class="entry-summary" id="summary">
+        <div class="sum-field"><h3>What it is</h3><p>{{whatItIs}}</p></div>
+        <div class="sum-field"><h3>What it does</h3><p>{{whatItDoes}}</p></div>
+        <div class="sum-field"><h3>How it works</h3><p>{{howItWorks}}</p></div>
+        <div class="sum-field"><h3>Materials required</h3><p>{{materialsRequired}}</p></div>
+        <div class="sum-field"><h3>Process to make</h3><p>{{processToMake}}</p></div>
+        <div class="sum-field"><h3>Energy needed</h3><p>{{energyNeeded}}</p></div>
+      </div>
+
+      <!-- ===== FULL DETAILS ===== -->
+      <div class="entry-details" id="details">
+        <!-- Repeatable detail block: copy per sub-topic -->
+        <div class="detail-block">
+          <h2>{{DETAIL_HEADING}}</h2>
+          <p>{{DETAIL_BODY}}</p>
+        </div>
+      </div>
+
+      <!-- ===== KEY LEADERS / ORGS (optional) ===== -->
+      <div class="leaders-bar">
+        <span class="l-label">Key Leaders</span>
+        <!-- <span class="ltag">Org Name</span> -->
+      </div>
+
+      <!-- ===== SOURCES (traceable — no fabricated claims) ===== -->
+      <div class="entry-sources" id="sources">
+        <h3>Sources</h3>
+        <ul><!-- <li><a href="URL">Source title</a></li> --></ul>
+      </div>
+    </section>
+
+    <div class="coming-soon" data-page-id="{{PAGE_ID}}"></div>
+
+    <script src="/website/widgets/command-console.js?v=20260707c" defer></script>
+    <script src="/website/site-shell.js?v=20260715a" defer></script>
+    <script src="/website/sections/section-theme.js?v=20260704b" defer></script>
+    <script src="/website/sections/coming-soon.js?v=20260708a" defer></script>
+  </body>
+</html>

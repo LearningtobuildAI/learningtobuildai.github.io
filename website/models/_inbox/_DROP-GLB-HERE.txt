@@ -1,0 +1,34 @@
+AI TEAM — TEXT-TO-3D MODEL INBOX
+================================
+
+Drop a GLB here named after its slot id, then it auto-installs to the matrix map.
+
+Accepted names (slot id OR domain key), extension .glb:
+  ai        -> ai.glb        (AI)
+  med       -> med.glb       (Medicine)   alias: medicine.glb
+  nrg       -> nrg.glb       (Energy)     alias: energy.glb
+  mat       -> mat.glb       (Materials)  alias: materials.glb
+  neu       -> neu.glb       (Neuro)      alias: neuro.glb
+  spc       -> spc.glb       (Space)      alias: space.glb
+  sec       -> sec.glb       (Security)   alias: security.glb
+  gov       -> gov.glb       (Governance) alias: govern.glb
+  bld       -> bld.glb       (Construction) alias: build.glb
+  cos       -> cos.glb       (Cosmetics)  alias: cosm.glb
+  smt       -> smt.glb       (Smart Systems) alias: smart-systems.glb
+  rob       -> rob.glb       (Robotics)   alias: robotics.glb
+  tdp       -> tdp.glb       (3D Printing) alias: 3d-printing.glb
+  wi        -> wi.glb        (World Intel) alias: intel.glb
+
+How it flows:
+  1. Export a GLB from Meshy / Tripo / Luma using the matching prompt in
+     ../../../tools/domain-model-prompts.json
+  2. Save it in this folder as <id>.glb
+  3. Install it:
+       npm run pipeline:models:ingest      (one-off)
+       npm run pipeline:models:watch       (continuous auto-install)
+  4. Valid GLBs move to _ingested/, rejected ones to _rejected/ with a reason
+     logged in ../pipeline-log.json. The manifest slot is flipped to present:true
+     and matrix-3d.js swaps the model in on the next page load.
+
+Fully automated generation: set MESHY_API_KEY and run
+  npm run pipeline:models:generate -- --id missing

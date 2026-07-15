@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrix | The Future 24/7</title>
+    <meta name="description" content="Matrix | The Future 24/7 page for matrix with unified theme, persistent Algron chat, and source-traceable intelligence content." />
+    <meta name="source-note" content="Source: curated intelligence stream and tracked references." />
+  <link rel="stylesheet" href="/website/root-extracted.css?v=20260629a" />
+  <style>
+    body { margin: 0; background: #060b18; color: #dce8f8; font-family: Inter, "Segoe UI", Arial, sans-serif; }
+    .section-page-top { position: sticky; top: 0; z-index: 20; background: rgba(2,6,23,.92); border-bottom: 1px solid rgba(56,189,248,.2); padding: 12px 18px; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+    .section-page-top a { color: #67e8f9; text-decoration: none; font-weight: 700; letter-spacing: .05em; font-size: 12px; }
+    .matrix-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+    .matrix-card { position: relative; display: block; overflow: hidden; border: 1px solid rgba(56,189,248,.22); border-radius: 14px; min-height: 150px; text-decoration: none; color: #e2e8f0; background: #04070f; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+    .matrix-card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.55); box-shadow: 0 10px 30px rgba(2,6,23,.6); }
+    .matrix-card:hover .matrix-card-img { opacity: 1; transform: scale(1.04); }
+    .matrix-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .92; transition: opacity .2s ease, transform .3s ease; }
+    .matrix-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,8,18,.12) 0%, rgba(4,8,18,.5) 52%, rgba(4,8,18,.9) 100%); }
+    .matrix-card-body { position: relative; z-index: 2; padding: 14px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    .matrix-card-top { display: flex; align-items: center; gap: 8px; }
+    .matrix-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e; flex: 0 0 auto; }
+    .matrix-card-name { font-size: 15px; font-weight: 800; letter-spacing: -.01em; text-shadow: 0 1px 6px rgba(2,6,23,.85); }
+    .matrix-card-meta { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 22px; }
+    .matrix-card-count { font-size: 26px; font-weight: 900; color: #38bdf8; line-height: 1; text-shadow: 0 2px 10px rgba(2,6,23,.9); }
+    .matrix-card-count small { font-size: 9px; font-weight: 700; color: #8aa2bf; display: block; letter-spacing: .12em; text-transform: uppercase; margin-top: 4px; }
+    .matrix-card-arrow { font-size: 11px; color: #7dd3fc; font-weight: 800; letter-spacing: .1em; }
+
+    /* Cross-domain knowledge graph */
+    .mx-graph-wrap { margin-top: 26px; display: grid; grid-template-columns: 1fr 340px; gap: 18px; align-items: stretch; }
+    .mx-stage { position: relative; border: 1px solid rgba(56,189,248,.22); border-radius: 18px; background: radial-gradient(1200px 600px at 50% 0%, rgba(56,189,248,.08), rgba(2,6,23,0)), linear-gradient(180deg, rgba(8,16,34,.75), rgba(2,6,23,.9)); overflow: hidden; }
+    .mx-stage-title { position: absolute; top: 14px; left: 18px; z-index: 2; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #67e8f9; font-weight: 800; }
+    .mx-svg { display: block; width: 100%; height: auto; }
+    .mx-edge { fill: none; stroke: rgba(120,160,210,.22); stroke-width: 1.4; transition: stroke .2s ease, stroke-width .2s ease, opacity .2s ease; }
+    .mx-edge.on { stroke: rgba(125,211,252,.85); stroke-width: 2.2; }
+    .mx-edge.dim { opacity: .12; }
+    .mx-node { cursor: pointer; transition: opacity .2s ease; }
+    .mx-node:focus { outline: none; }
+    .mx-node.dim { opacity: .32; }
+    .mx-halo { opacity: .16; transition: opacity .2s ease, r .2s ease; }
+    .mx-node.active .mx-halo, .mx-node:hover .mx-halo { opacity: .5; }
+    .mx-dot { stroke-width: 2.4; transition: stroke-width .2s ease; }
+    .mx-node.active .mx-dot { stroke-width: 4; }
+    .mx-abbr { font-size: 12px; font-weight: 900; letter-spacing: .06em; }
+    .mx-label { font-size: 11px; font-weight: 700; fill: #c7d6ea; }
+    .mx-node.dim .mx-label { fill: #64748b; }
+    .mx-panel { border: 1px solid rgba(56,189,248,.22); border-radius: 18px; background: linear-gradient(180deg, rgba(8,16,34,.9), rgba(2,6,23,.94)); padding: 18px; box-sizing: border-box; }
+    .mx-panel-head { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid rgba(56,189,248,.3); }
+    .mx-panel-badge { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: #06111f; flex: 0 0 auto; }
+    .mx-panel-name { font-size: 18px; font-weight: 900; color: #eaf2ff; }
+    .mx-panel-sub { font-size: 11px; color: #8aa2bf; letter-spacing: .04em; }
+    .mx-insight { font-size: 12.5px; line-height: 1.6; color: #cdddf0; border-left: 3px solid rgba(56,189,248,.5); padding-left: 12px; margin-bottom: 16px; }
+    .mx-chain-title { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #67e8f9; font-weight: 800; margin: 14px 0 8px; }
+    .mx-chain-step { background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); border-radius: 10px; padding: 8px 12px; font-size: 12px; color: #dbe7f6; }
+    .mx-chain-step span { display: block; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #7dd3fc; font-weight: 800; margin-bottom: 2px; }
+    .mx-chain-step.out { border-color: rgba(34,197,94,.4); }
+    .mx-chain-step.out span { color: #4ade80; }
+    .mx-chain-arrow { text-align: center; color: #475569; font-size: 12px; line-height: 1.2; }
+    .mx-conns { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mx-conn { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #dbe7f6; text-decoration: none; background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); border-radius: 999px; padding: 4px 10px; transition: border-color .15s ease; }
+    .mx-conn:hover { border-color: rgba(56,189,248,.6); }
+    .mx-conn em { font-style: normal; color: #8aa2bf; font-size: 10px; }
+    .mx-conn-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+    .mx-open { display: block; text-align: center; margin-top: 16px; padding: 10px; border-radius: 10px; border: 1px solid rgba(56,189,248,.4); color: #7dd3fc; text-decoration: none; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; transition: background .15s ease; }
+    .mx-open:hover { background: rgba(56,189,248,.14); }
+    /* 3D navigable knowledge map */
+    .mx3d-beta { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; background: rgba(56,189,248,.18); color: #7dd3fc; border: 1px solid rgba(56,189,248,.4); padding: 2px 8px; border-radius: 999px; vertical-align: middle; margin-left: 8px; font-weight: 800; }
+    .mx3d-stage { position: relative; margin-top: 14px; border: 1px solid rgba(56,189,248,.22); border-radius: 18px; overflow: hidden; background: radial-gradient(1200px 500px at 50% -10%, rgba(56,189,248,.10), rgba(2,6,23,0)), #04070f; min-height: 560px; }
+    #matrix3d { width: 100%; height: 560px; display: block; cursor: grab; }
+    #matrix3d:active { cursor: grabbing; }
+    .mx3d-hint { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; z-index: 3; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #5c7292; pointer-events: none; }
+    .mx3d-tag { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 3; font-size: 14px; font-weight: 800; letter-spacing: .04em; color: #eaf2ff; background: rgba(2,6,23,.72); border: 1px solid rgba(56,189,248,.35); padding: 6px 16px; border-radius: 999px; opacity: 0; transition: opacity .2s ease; pointer-events: none; }
+    .mx3d-fallback { padding: 60px 20px; text-align: center; color: #8aa2bf; font-size: 13px; }
+    .mx3d-legend { position: absolute; top: 12px; left: 12px; z-index: 3; display: flex; flex-direction: column; gap: 4px; max-height: calc(100% - 24px); overflow: auto; padding-right: 2px; }
+    .mx3d-chip { display: flex; align-items: center; gap: 7px; background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); color: #c7d6ea; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 999px; cursor: pointer; text-align: left; transition: border-color .15s ease, background .15s ease; }
+    .mx3d-chip:hover { border-color: rgba(56,189,248,.5); background: rgba(8,16,34,.8); }
+    .mx3d-chip.active { border-color: rgba(125,211,252,.9); background: rgba(56,189,248,.16); color: #eaf2ff; }
+    .mx3d-chip-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; box-shadow: 0 0 8px currentColor; }
+    .mx3d-card { position: absolute; right: 14px; bottom: 14px; z-index: 4; width: 262px; display: flex; gap: 12px; padding: 14px; border: 1px solid rgba(56,189,248,.4); border-radius: 14px; background: linear-gradient(180deg, rgba(8,16,34,.94), rgba(2,6,23,.96)); box-shadow: 0 12px 40px rgba(2,6,23,.7); opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .22s ease, transform .22s ease; }
+    .mx3d-card.show { opacity: 1; transform: none; pointer-events: auto; }
+    .mx3d-card-img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(56,189,248,.3); flex: 0 0 auto; background: #04070f; }
+    .mx3d-card-body { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-width: 0; }
+    .mx3d-card-name { font-size: 16px; font-weight: 800; color: #eaf2ff; }
+    .mx3d-card-open { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #7dd3fc; text-decoration: none; }
+    .mx3d-card-open:hover { color: #bae6fd; }
+    .mx3d-card-x { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #7891ad; font-size: 18px; line-height: 1; cursor: pointer; padding: 2px 4px; }
+    .mx3d-card-x:hover { color: #eaf2ff; }
+    .mx3d-reset { position: absolute; top: 12px; right: 12px; z-index: 3; background: rgba(2,6,23,.6); border: 1px solid rgba(56,189,248,.3); color: #9fc7e8; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer; transition: border-color .15s ease, color .15s ease; }
+    .mx3d-reset:hover { border-color: rgba(56,189,248,.7); color: #eaf2ff; }
+    @media (max-width: 900px) { .mx-graph-wrap { grid-template-columns: 1fr; } #matrix3d, .mx3d-stage { height: 440px; min-height: 440px; } .mx3d-legend { display: none; } .mx3d-card { left: 14px; right: 14px; width: auto; } }
+  </style>
+  <link rel="stylesheet" href="/website/unified-theme.css?v=20260629a" />
+  <link rel="stylesheet" href="/website/site-shell.css?v=20260707a" />
+  <link rel="stylesheet" href="/website/widgets/command-console.css?v=20260707c" />
+  <link rel="stylesheet" href="/website/sections/section-theme.css?v=20260704c" />
+</head>
+<body>
+    <!-- Domain Directory strip (injected 2026-07-15) -->
+    <div id="domainDirStrip"></div>
+  <div class="section-page-top">
+    <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#93c5fd;">Section Page: Matrix</div>
+    <a href="/index.html">Back To Main</a>
+  </div>
+    <nav class="section-audit-nav" aria-label="Matrix quick links">
+    <a href="/index.html#home3dmap">3D Map</a>
+    <a href="/website/sections/summary/index.html">Domain Console</a>
+    <a href="/reference.html">Reference</a>
+    <a href="/CORE-SYSTEM.md">Core</a>
+  </nav>
+  <div class="section-audit-hero"><img src="/photos in/UI of sections.png" alt="Matrix section hero" loading="lazy" /></div>
+  <h1 class="section-audit-h1">Matrix Intelligence Section</h1>  <section id="matrix" style="padding:80px 60px 60px; background:var(--surface); border-bottom:1px solid var(--border);">
+    <div class="section-label" style="color:#0ea5e9;">Global Technology Matrix</div>
+    <h2 class="section-title" style="margin-top:8px;">The Central Operating Map<br>of Human Progress</h2>
+    <p class="section-sub">A full-stack intelligence system mapping every domain of current and future technology — from AI to cosmetics — with real company data, clinical stages, locations, and a live global progress feed. Tracking <span class="cite-tip" title="Source: Crunchbase, PitchBook, company disclosures 2024">200+ active companies</span> across <span class="cite-tip" id="matrixDomainInline" title="Source: Internal taxonomy and domain classification">14/14 domains</span>.</p>
+    <div class="matrix-layout-banner">
+      <div class="matrix-layout-inner">
+        <div>
+          <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#67e8f9;font-weight:800;">Live Domain Banner</div>
+          <div style="margin-top:8px;font-size:30px;font-weight:900;line-height:1.1;color:#e2e8f0;">Global Intelligence Coverage <span id="matrixDomainCount" style="color:#38bdf8;">14/14</span></div>
+          <div class="matrix-layout-kpis">
+            <div class="matrix-layout-kpi"><div class="matrix-layout-kpi-val">220+</div><div class="matrix-layout-kpi-label">World Intel Cards</div></div>
+            <div class="matrix-layout-kpi"><div class="matrix-layout-kpi-val">10</div><div class="matrix-layout-kpi-label">AI Agents Active</div></div>
+            <div class="matrix-layout-kpi"><div class="matrix-layout-kpi-val">384</div><div class="matrix-layout-kpi-label">Image Slots</div></div>
+          </div>
+        </div>
+        <div class="matrix-layout-right">
+          <div style="font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7dd3fc;font-weight:800;">Realtime State</div>
+          <div id="summaryDomainStatus" style="font-size:12px;font-weight:800;color:#dbeafe;letter-spacing:.08em;">14/14 DOMAINS ACTIVE</div>
+          <div class="matrix-layout-note">This banner is now the primary matrix status surface and updates with live domain counts and agent activity.</div>
+        </div>
+      </div>
+    </div>
+    <div class="section-label" style="color:#0ea5e9;margin-top:34px;">Cross-Domain Knowledge Graph</div>
+    <h2 class="section-title" style="margin-top:6px;font-size:26px;">How Every Domain Connects</h2>
+    <p class="section-sub" style="margin-bottom:6px;">An interactive map of cross-domain relationships and technology dependencies. Select a node to trace its material → process → energy → output chain, its connected domains, and its role across the system.</p>
+    <div class="mx-graph-wrap">
+      <div class="mx-stage">
+        <div class="mx-stage-title">Select a domain node</div>
+        <div id="matrixGraph"></div>
+      </div>
+      <aside class="mx-panel" id="matrixPanel" aria-live="polite"></aside>
+    </div>
+    <div class="section-label" style="color:#0ea5e9;margin-top:34px;">3D Navigable Map<span class="mx3d-beta">Beta</span></div>
+    <h2 class="section-title" style="margin-top:6px;font-size:26px;">Explore the Ecosystem in 3D</h2>
+    <p class="section-sub" style="margin-bottom:6px;">Drag to orbit the map, scroll the mouse wheel to spin the ring, and click any domain platform to travel to its intelligence page. Each platform carries a live 3D model and an AI-generated 4K icon.</p>
+    <div class="mx3d-stage">
+      <div class="mx3d-tag" id="matrix3dTag"></div>
+      <div id="matrix3d"></div>
+      <div class="mx3d-hint">Drag to orbit · Scroll to spin the ring · Click a domain to open</div>
+    </div>
+    <div class="section-label" style="color:#0ea5e9;margin-top:34px;">Domain Directory</div>
+    <div class="matrix-grid" id="matrixGrid" aria-label="Domain intelligence matrix"></div>
+  </section>
+  <script src="/website/sections/matrix/matrix-grid.js?v=20260709b"></script>
+    <script src="/website/sections/matrix/matrix-graph.js?v=20260703a" defer></script>
+  <script type="importmap">
+    { "imports": { "three": "/website/vendor/three.module.js" } }
+  </script>
+  <script type="module" src="/website/sections/matrix/matrix-3d.js?v=20260703w"></script>
+  <script src="/website/site-shell.js?v=20260715a" defer></script>
+  <script src="/website/sections/section-theme.js?v=20260704b" defer></script>
+  <script src="/website/widgets/command-console.js?v=20260707c" defer></script>
+    <script src="/website/domain-directory-strip.js?v=20260716a" defer></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+

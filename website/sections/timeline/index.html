@@ -1,0 +1,1257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timeline | The Future 24/7</title>
+    <meta
+      name="description"
+      content="Timeline | The Future 24/7 page for timeline with unified theme, persistent Algron chat, and source-traceable intelligence content."
+    />
+    <meta
+      name="source-note"
+      content="Source: curated intelligence stream and tracked references."
+    />
+    <link rel="stylesheet" href="/website/root-extracted.css?v=20260629a" />
+    <style>
+      body {
+        margin: 0;
+        background: #060b18;
+        color: #dce8f8;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      .section-page-top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(2, 6, 23, 0.92);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        padding: 12px 18px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .section-page-top a {
+        color: #67e8f9;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        font-size: 12px;
+      }
+
+      /* ── Horizontal history timeline (left → right) ─────────────────── */
+      #timeline {
+        padding: 6px 0 46px;
+      }
+      .tl-intro {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 18px 22px 4px;
+      }
+      .tl-intro .section-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .tl-intro .section-title {
+        margin: 8px 0 6px;
+        font-size: clamp(20px, 3.2vw, 30px);
+        color: #eaf2ff;
+      }
+      .tl-intro .section-sub {
+        margin: 0;
+        color: #9db4d0;
+        font-size: 13px;
+      }
+
+      .tl-scroll-wrap {
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 26px 0 30px;
+        margin-top: 12px;
+        scroll-behavior: smooth;
+        border-top: 1px solid rgba(56, 189, 248, 0.16);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.16);
+        background:
+          radial-gradient(
+            1100px 320px at 18% 38%,
+            rgba(56, 189, 248, 0.07),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 280px at 72% 62%,
+            rgba(168, 85, 247, 0.07),
+            transparent 60%
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0 2px,
+            rgba(255, 255, 255, 0.008) 2px 3px
+          );
+      }
+      .tl-scroll-wrap::-webkit-scrollbar {
+        height: 12px;
+      }
+      .tl-scroll-wrap::-webkit-scrollbar-track {
+        background: rgba(2, 6, 23, 0.6);
+      }
+      .tl-scroll-wrap::-webkit-scrollbar-thumb {
+        background: rgba(56, 189, 248, 0.42);
+        border-radius: 8px;
+      }
+      .tl-scroll-wrap::-webkit-scrollbar-thumb:hover {
+        background: rgba(56, 189, 248, 0.6);
+      }
+
+      .tl-track {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        height: 470px;
+        min-width: max-content;
+        padding: 0 70px;
+      }
+      .tl-axis {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 2px;
+        transform: translateY(-50%);
+        background: linear-gradient(
+          90deg,
+          rgba(245, 158, 11, 0.25),
+          rgba(56, 189, 248, 0.85) 28%,
+          rgba(168, 85, 247, 0.85) 62%,
+          rgba(236, 72, 153, 0.85) 88%,
+          rgba(236, 72, 153, 0.2)
+        );
+        box-shadow: 0 0 18px rgba(56, 189, 248, 0.45);
+      }
+
+      .tl-item {
+        position: relative;
+        flex: 0 0 auto;
+        width: 172px;
+      }
+      .tl-dot-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+      }
+      .tl-dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0 0 0 4px rgba(2, 6, 23, 0.8),
+          0 0 16px 2px currentColor;
+      }
+
+      .tl-content-above,
+      .tl-content-below {
+        position: absolute;
+        left: 50%;
+        width: 154px;
+        transform: translateX(-50%);
+        text-align: center;
+      }
+      .tl-content-above {
+        bottom: calc(50% + 26px);
+      }
+      .tl-content-below {
+        top: calc(50% + 26px);
+      }
+      .tl-content-above::after,
+      .tl-content-below::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        width: 1px;
+        transform: translateX(-50%);
+      }
+      .tl-content-above::after {
+        bottom: -24px;
+        height: 24px;
+        background: linear-gradient(
+          rgba(56, 189, 248, 0.55),
+          rgba(56, 189, 248, 0)
+        );
+      }
+      .tl-content-below::after {
+        top: -24px;
+        height: 24px;
+        background: linear-gradient(
+          rgba(56, 189, 248, 0),
+          rgba(56, 189, 248, 0.55)
+        );
+      }
+
+      .tl-year {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.03em;
+      }
+      .tl-evt {
+        margin: 3px 4px 2px;
+        font-size: 12.5px;
+        font-weight: 650;
+        line-height: 1.28;
+        color: #eaf2ff;
+      }
+      .tl-where {
+        font-size: 10px;
+        color: #8aa2bf;
+        line-height: 1.3;
+      }
+
+      .tl-era-label {
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        z-index: 4;
+        font-size: 9.5px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        padding: 4px 11px;
+        border: 1px solid rgba(56, 189, 248, 0.32);
+        border-radius: 999px;
+        background: rgba(2, 6, 23, 0.72);
+      }
+
+      .era-pre {
+        color: #f59e0b;
+      }
+      .era-anc {
+        color: #22c55e;
+      }
+      .era-ind {
+        color: #38bdf8;
+      }
+      .era-mod {
+        color: #a855f7;
+      }
+      .era-dig {
+        color: #14b8a6;
+      }
+      .era-ai {
+        color: #ec4899;
+      }
+
+      .tl-scroll-hint {
+        text-align: center;
+        margin: 16px 0 0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #7dd3fc;
+      }
+
+      .tl-content-above,
+      .tl-content-below {
+        cursor: pointer;
+      }
+      .tl-evt {
+        transition: color 0.15s ease;
+      }
+      .tl-item:hover .tl-evt {
+        color: #7dd3fc;
+      }
+      .tl-item.tl-active .tl-dot {
+        box-shadow:
+          0 0 0 4px rgba(2, 6, 23, 0.85),
+          0 0 0 8px rgba(56, 189, 248, 0.35),
+          0 0 20px 4px currentColor;
+      }
+      .tl-detail {
+        max-width: 920px;
+        margin: 22px auto 0;
+        padding: 0 22px;
+      }
+      .tl-detail-card {
+        display: grid;
+        grid-template-columns: 210px 1fr;
+        gap: 0;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        border-radius: 16px;
+        background: linear-gradient(
+          180deg,
+          rgba(8, 16, 34, 0.92),
+          rgba(2, 6, 23, 0.94)
+        );
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(8px);
+        transition:
+          opacity 0.2s ease,
+          transform 0.2s ease;
+      }
+      .tl-detail.show .tl-detail-card {
+        opacity: 1;
+        transform: none;
+      }
+      .tl-detail-img {
+        min-height: 158px;
+        background-size: cover;
+        background-position: center;
+        border-right: 1px solid rgba(56, 189, 248, 0.18);
+      }
+      .tl-detail-body {
+        padding: 16px 20px 18px;
+      }
+      .tl-detail-year {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        color: #7dd3fc;
+      }
+      .tl-detail-title {
+        margin: 4px 0 2px;
+        font-size: 20px;
+        font-weight: 800;
+        color: #eaf2ff;
+      }
+      .tl-detail-where {
+        font-size: 11px;
+        color: #8aa2bf;
+        margin-bottom: 10px;
+      }
+      .tl-detail-summary {
+        font-size: 13.5px;
+        line-height: 1.6;
+        color: #cdddf0;
+        margin: 0 0 14px;
+      }
+      .tl-learn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 15px;
+        border-radius: 999px;
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        color: #7dd3fc;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition:
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .tl-learn:hover {
+        background: rgba(56, 189, 248, 0.14);
+        border-color: rgba(56, 189, 248, 0.7);
+      }
+
+      @keyframes livepulse {
+        0%,
+        100% {
+          box-shadow:
+            0 0 0 4px rgba(2, 6, 23, 0.8),
+            0 0 0 0 rgba(236, 72, 153, 0.55);
+        }
+        50% {
+          box-shadow:
+            0 0 0 4px rgba(2, 6, 23, 0.8),
+            0 0 0 10px rgba(236, 72, 153, 0);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .tl-track {
+          height: 430px;
+          padding: 0 40px;
+        }
+        .tl-item {
+          width: 150px;
+        }
+        .tl-content-above,
+        .tl-content-below {
+          width: 138px;
+        }
+        .tl-detail-card {
+          grid-template-columns: 1fr;
+        }
+        .tl-detail-img {
+          min-height: 130px;
+        }
+      }
+    </style>
+
+    <link rel="stylesheet" href="/website/unified-theme.css?v=20260629a" />
+    <link
+      rel="stylesheet"
+      href="/website/widgets/command-console.css?v=20260707c"
+    />
+    <link rel="stylesheet" href="/website/site-shell.css?v=20260707a" />
+    <link
+      rel="stylesheet"
+      href="/website/sections/section-theme.css?v=20260704c"
+    />
+      <link rel="stylesheet" href="./timeline-inline.css" />
+  </head>
+  <body>
+    <!-- Domain Directory strip (injected 2026-07-15) -->
+    <div id="domainDirStrip"></div>
+    <div class="section-page-top">
+      <div
+       
+       class="ts-1">
+        Section Page: Timeline
+      </div>
+      <a href="/index.html">Back To Main</a>
+    </div>
+    <nav class="section-audit-nav" aria-label="Timeline quick links">
+      <a href="/index.html#home3dmap">3D Map</a>
+      <a href="/website/sections/summary/index.html">Domain Console</a>
+      <a href="/reference.html">Reference</a>
+      <a href="/CORE-SYSTEM.md">Core</a>
+    </nav>
+    <div class="section-audit-hero">
+      <img
+        src="/images/generated/world-intel-hero-1782732519795.jpg"
+        alt="Timeline section hero"
+        loading="lazy"
+      />
+    </div>
+    <h1 class="section-audit-h1">Timeline Technology History Console</h1>
+    <section id="timeline">
+      <div class="tl-intro">
+        <div class="section-label ts-2">From Fire to AGI</div>
+        <h2 class="section-title ts-3">
+          The Complete History of Human Technology
+        </h2>
+        <p class="section-sub">
+          ~1,000,000 BC to today — every transformative invention that made
+          civilisation possible. Scroll right.
+        </p>
+      </div>
+      <div class="tl-scroll-wrap">
+        <div class="tl-track">
+          <div class="tl-axis"></div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-pre">Prehistoric</div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-pre">~1,000,000 BC</div>
+              <div class="tl-evt">Fire Controlled</div>
+              <div class="tl-where">East Africa</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-pre">~300,000 BC</div>
+              <div class="tl-evt">Hafted Stone Tools</div>
+              <div class="tl-where">Africa / Eurasia</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-pre">~70,000 BC</div>
+              <div class="tl-evt">Symbolic Ochre Art</div>
+              <div class="tl-where">Blombos Cave, S. Africa</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-pre">~40,000 BC</div>
+              <div class="tl-evt">Cave Paintings</div>
+              <div class="tl-where">Chauvet, France</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-pre">~10,000 BC</div>
+              <div class="tl-evt">Agriculture Begins</div>
+              <div class="tl-where">Fertile Crescent, Iraq</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-pre">~3,500 BC</div>
+              <div class="tl-evt">The Wheel</div>
+              <div class="tl-where">Mesopotamia (modern Iraq)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-pre">~3,200 BC</div>
+              <div class="tl-evt">Writing — Cuneiform</div>
+              <div class="tl-where">Sumer (modern Iraq)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-4"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-pre">~3,000 BC</div>
+              <div class="tl-evt">Bronze Metallurgy</div>
+              <div class="tl-where">Near East / Aegean</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-anc">Ancient</div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-anc">~2,500 BC</div>
+              <div class="tl-evt">Pyramids of Giza</div>
+              <div class="tl-where">Giza, Egypt</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-anc">~1,200 BC</div>
+              <div class="tl-evt">Iron Age Smelting</div>
+              <div class="tl-where">Anatolia (modern Turkey)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-anc">~400 BC</div>
+              <div class="tl-evt">Antikythera Mechanism</div>
+              <div class="tl-where">Ancient Greece</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-anc">~250 BC</div>
+              <div class="tl-evt">Archimedes — Lever, Screw, Pi</div>
+              <div class="tl-where">Syracuse, Sicily</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-anc">105 AD</div>
+              <div class="tl-evt">Paper Invented</div>
+              <div class="tl-where">China (Cai Lun, Han Dynasty)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-anc">~850 AD</div>
+              <div class="tl-evt">Gunpowder</div>
+              <div class="tl-where">China (Tang Dynasty)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-5"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-anc">1000 AD</div>
+              <div class="tl-evt">Moveable Type Printing</div>
+              <div class="tl-where">China (Bi Sheng, Song Dynasty)</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-ind ts-6">
+              Renaissance
+            </div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-7"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year ts-6">1440</div>
+              <div class="tl-evt">Gutenberg Press</div>
+              <div class="tl-where">Mainz, Germany</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-7"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year ts-6">1543</div>
+              <div class="tl-evt">Copernican Heliocentrism</div>
+              <div class="tl-where">Frombork, Poland</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-7"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year ts-6">1590</div>
+              <div class="tl-evt">Microscope Invented</div>
+              <div class="tl-where">Middelburg, Netherlands</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-7"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year ts-6">1609</div>
+              <div class="tl-evt">Galileo's Telescope</div>
+              <div class="tl-where">Venice, Italy</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-7"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year ts-6">1687</div>
+              <div class="tl-evt">Newton — Laws of Motion</div>
+              <div class="tl-where">Cambridge, England</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-ind">Industrial</div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ind">1765</div>
+              <div class="tl-evt">Watt Steam Engine</div>
+              <div class="tl-where">Glasgow, Scotland</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ind">1796</div>
+              <div class="tl-evt">Smallpox Vaccine</div>
+              <div class="tl-where">Berkeley, Gloucestershire, UK</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ind">1826</div>
+              <div class="tl-evt">First Photograph</div>
+              <div class="tl-where">Burgundy, France (Niépce)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ind">1837</div>
+              <div class="tl-evt">Electric Telegraph</div>
+              <div class="tl-where">Washington DC / Baltimore, USA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ind">1876</div>
+              <div class="tl-evt">Telephone</div>
+              <div class="tl-where">Boston, MA, USA (Bell)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ind">1879</div>
+              <div class="tl-evt">Incandescent Light Bulb</div>
+              <div class="tl-where">Menlo Park, NJ, USA (Edison)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ind">1885</div>
+              <div class="tl-evt">Internal Combustion Car</div>
+              <div class="tl-where">Mannheim, Germany (Benz)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ind">1895</div>
+              <div class="tl-evt">Radio Transmission</div>
+              <div class="tl-where">Bologna, Italy (Marconi)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-8"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ind">1895</div>
+              <div class="tl-evt">X-Rays Discovered</div>
+              <div class="tl-where">Würzburg, Germany (Röntgen)</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-mod">Modern</div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-mod">1903</div>
+              <div class="tl-evt">Powered Flight</div>
+              <div class="tl-where">Kitty Hawk, NC, USA (Wright Bros)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-mod">1905</div>
+              <div class="tl-evt">Special Relativity</div>
+              <div class="tl-where">Bern, Switzerland (Einstein)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-mod">1928</div>
+              <div class="tl-evt">Penicillin Discovered</div>
+              <div class="tl-where">London, UK (Fleming)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-mod">1945</div>
+              <div class="tl-evt">Nuclear Fission Weapon</div>
+              <div class="tl-where">Trinity, New Mexico, USA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-mod">1947</div>
+              <div class="tl-evt">Transistor Invented</div>
+              <div class="tl-where">Murray Hill, NJ, USA (Bell Labs)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-mod">1953</div>
+              <div class="tl-evt">DNA Double Helix</div>
+              <div class="tl-where">Cambridge, UK (Watson &amp; Crick)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-mod">1957</div>
+              <div class="tl-evt">Sputnik — First Satellite</div>
+              <div class="tl-where">Baikonur, Kazakhstan (USSR)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-mod">1961</div>
+              <div class="tl-evt">First Human in Space</div>
+              <div class="tl-where">Baikonur → orbit (Gagarin)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-mod">1969</div>
+              <div class="tl-evt">Moon Landing</div>
+              <div class="tl-where">Sea of Tranquillity (Apollo 11)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-9"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-mod">1969</div>
+              <div class="tl-evt">ARPANET — Internet Precursor</div>
+              <div class="tl-where">UCLA → Stanford, USA</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-dig">Digital</div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-dig">1971</div>
+              <div class="tl-evt">First Microprocessor — Intel 4004</div>
+              <div class="tl-where">Santa Clara, CA, USA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-dig">1973</div>
+              <div class="tl-evt">First Mobile Phone Call</div>
+              <div class="tl-where">New York City, USA (Motorola)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-dig">1976</div>
+              <div class="tl-evt">Apple Computer Founded</div>
+              <div class="tl-where">Cupertino, CA, USA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-dig">1983</div>
+              <div class="tl-evt">TCP/IP — Modern Internet</div>
+              <div class="tl-where">USA (DARPA)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-dig">1989</div>
+              <div class="tl-evt">World Wide Web</div>
+              <div class="tl-where">CERN, Geneva (Berners-Lee)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-dig">1991</div>
+              <div class="tl-evt">Linux Kernel Released</div>
+              <div class="tl-where">Helsinki, Finland (Torvalds)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-dig">1997</div>
+              <div class="tl-evt">Deep Blue Beats Kasparov</div>
+              <div class="tl-where">New York City, USA (IBM)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-dig">1998</div>
+              <div class="tl-evt">Google Founded</div>
+              <div class="tl-where">Menlo Park, CA, USA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-dig">2003</div>
+              <div class="tl-evt">Human Genome Sequenced</div>
+              <div class="tl-where">International Consortium (13 nations)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-10"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-dig">2007</div>
+              <div class="tl-evt">iPhone Launched</div>
+              <div class="tl-where">Macworld, San Francisco (Apple)</div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-era-label era-ai">AI Era</div>
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ai">2012</div>
+              <div class="tl-evt">AlexNet — Deep Learning Breakthrough</div>
+              <div class="tl-where">University of Toronto (Hinton)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ai">2016</div>
+              <div class="tl-evt">AlphaGo Beats Lee Sedol</div>
+              <div class="tl-where">Seoul, South Korea (DeepMind)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ai">2017</div>
+              <div class="tl-evt">
+                "Attention Is All You Need" — Transformers
+              </div>
+              <div class="tl-where">Google Brain, Mountain View, CA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ai">2020</div>
+              <div class="tl-evt">mRNA COVID Vaccines</div>
+              <div class="tl-where">Mainz, Germany + Cambridge, MA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ai">2021</div>
+              <div class="tl-evt">AlphaFold 2 — Protein Folding Solved</div>
+              <div class="tl-where">London, UK (DeepMind)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ai">2022</div>
+              <div class="tl-evt">ChatGPT — 100M users in 60 days</div>
+              <div class="tl-where">San Francisco, CA (OpenAI)</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ai">2023</div>
+              <div class="tl-evt">First CRISPR Medicine — Casgevy</div>
+              <div class="tl-where">Zug, Switzerland + Boston, MA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-11"
+               
+              ></div>
+            </div>
+            <div class="tl-content-above">
+              <div class="tl-year era-ai">2024</div>
+              <div class="tl-evt">Humanoid Robots Enter Factories</div>
+              <div class="tl-where">Sunnyvale &amp; Austin, TX, USA</div>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot-wrap">
+              <div
+                class="tl-dot ts-12"
+               
+              ></div>
+            </div>
+            <div class="tl-content-below">
+              <div class="tl-year era-ai">2025 →</div>
+              <div class="tl-evt">
+                AI Runs Scientific Experiments Autonomously
+              </div>
+              <div class="tl-where">Global — multiple labs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="tl-scroll-hint">
+        ← Scroll left &amp; right to travel through time →
+      </p>
+      <div class="tl-detail" id="tlDetail" aria-live="polite"></div>
+
+      <div
+       
+       class="ts-13">
+        <span
+           class="ts-14"><span class="ts-2">■</span> PREHISTORIC</span
+        >
+        <span
+           class="ts-14"><span class="ts-15">■</span> ANCIENT</span
+        >
+        <span
+           class="ts-14"><span class="ts-6">■</span> RENAISSANCE</span
+        >
+        <span
+           class="ts-14"><span class="ts-16">■</span> INDUSTRIAL</span
+        >
+        <span
+           class="ts-14"><span class="ts-17">■</span> MODERN</span
+        >
+        <span
+           class="ts-14"><span class="ts-18">■</span> DIGITAL</span
+        >
+        <span
+           class="ts-14"><span class="ts-19">■</span> AI ERA</span
+        >
+      </div>
+    </section>
+    <script src="./timeline-1.js"></script>
+    <script src="/website/widgets/command-console.js?v=20260707c" defer></script>
+    <script src="/website/site-shell.js?v=20260715a" defer></script>
+    <script src="/website/sections/section-theme.js?v=20260704b" defer></script>
+      <script src="/website/domain-directory-strip.js?v=20260716a" defer></script>
+  </body>
+</html>

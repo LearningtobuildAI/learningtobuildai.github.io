@@ -1,0 +1,93 @@
+/* home-matrix.css — 3D Navigable Map + Domain Directory styles,
+   moved from the matrix section page to the home page (2026-07-04). */
+    .matrix-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+    .matrix-card { position: relative; display: block; overflow: hidden; border: 1px solid rgba(56,189,248,.22); border-radius: 14px; min-height: 150px; text-decoration: none; color: #e2e8f0; background: #04070f; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+    .matrix-card:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.55); box-shadow: 0 10px 30px rgba(2,6,23,.6); }
+    .matrix-card:hover .matrix-card-img { opacity: 1; transform: scale(1.04); }
+    .matrix-card-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .92; transition: opacity .2s ease, transform .3s ease; }
+    .matrix-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,8,18,.12) 0%, rgba(4,8,18,.5) 52%, rgba(4,8,18,.9) 100%); }
+    .matrix-card-body { position: relative; z-index: 2; padding: 14px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; }
+    .matrix-card-top { display: flex; align-items: center; gap: 8px; }
+    .matrix-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 10px #22c55e; flex: 0 0 auto; }
+    .matrix-card-name { font-size: 15px; font-weight: 800; letter-spacing: -.01em; text-shadow: 0 1px 6px rgba(2,6,23,.85); }
+    .matrix-card-meta { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 22px; }
+    .matrix-card-count { font-size: 26px; font-weight: 900; color: #38bdf8; line-height: 1; text-shadow: 0 2px 10px rgba(2,6,23,.9); }
+    .matrix-card-count small { font-size: 9px; font-weight: 700; color: #8aa2bf; display: block; letter-spacing: .12em; text-transform: uppercase; margin-top: 4px; }
+    .matrix-card-arrow { font-size: 11px; color: #7dd3fc; font-weight: 800; letter-spacing: .1em; }
+    .mx-graph-wrap { margin-top: 26px; display: grid; grid-template-columns: 1fr 340px; gap: 18px; align-items: stretch; }
+    .mx-stage { position: relative; border: 1px solid rgba(56,189,248,.22); border-radius: 18px; background: radial-gradient(1200px 600px at 50% 0%, rgba(56,189,248,.08), rgba(2,6,23,0)), linear-gradient(180deg, rgba(8,16,34,.75), rgba(2,6,23,.9)); overflow: hidden; }
+    .mx-stage-title { position: absolute; top: 14px; left: 18px; z-index: 2; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: #67e8f9; font-weight: 800; }
+    .mx-svg { display: block; width: 100%; height: auto; }
+    .mx-edge { fill: none; stroke: rgba(120,160,210,.22); stroke-width: 1.4; transition: stroke .2s ease, stroke-width .2s ease, opacity .2s ease; }
+    .mx-edge.on { stroke: rgba(125,211,252,.85); stroke-width: 2.2; }
+    .mx-edge.dim { opacity: .12; }
+    .mx-node { cursor: pointer; transition: opacity .2s ease; }
+    .mx-node:focus { outline: none; }
+    .mx-node.dim { opacity: .32; }
+    .mx-halo { opacity: .16; transition: opacity .2s ease, r .2s ease; }
+    .mx-node.active .mx-halo, .mx-node:hover .mx-halo { opacity: .5; }
+    .mx-dot { stroke-width: 2.4; transition: stroke-width .2s ease; }
+    .mx-node.active .mx-dot { stroke-width: 4; }
+    .mx-abbr { font-size: 12px; font-weight: 900; letter-spacing: .06em; }
+    .mx-label { font-size: 11px; font-weight: 700; fill: #c7d6ea; }
+    .mx-node.dim .mx-label { fill: #64748b; }
+    .mx-panel { border: 1px solid rgba(56,189,248,.22); border-radius: 18px; background: linear-gradient(180deg, rgba(8,16,34,.9), rgba(2,6,23,.94)); padding: 18px; box-sizing: border-box; }
+    .mx-panel-head { display: flex; align-items: center; gap: 12px; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid rgba(56,189,248,.3); }
+    .mx-panel-badge { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: #06111f; flex: 0 0 auto; }
+    .mx-panel-name { font-size: 18px; font-weight: 900; color: #eaf2ff; }
+    .mx-panel-sub { font-size: 11px; color: #8aa2bf; letter-spacing: .04em; }
+    .mx-insight { font-size: 12.5px; line-height: 1.6; color: #cdddf0; border-left: 3px solid rgba(56,189,248,.5); padding-left: 12px; margin-bottom: 16px; }
+    .mx-chain-title { font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #67e8f9; font-weight: 800; margin: 14px 0 8px; }
+    .mx-chain-step { background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); border-radius: 10px; padding: 8px 12px; font-size: 12px; color: #dbe7f6; }
+    .mx-chain-step span { display: block; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #7dd3fc; font-weight: 800; margin-bottom: 2px; }
+    .mx-chain-step.out { border-color: rgba(34,197,94,.4); }
+    .mx-chain-step.out span { color: #4ade80; }
+    .mx-chain-arrow { text-align: center; color: #475569; font-size: 12px; line-height: 1.2; }
+    .mx-conns { display: flex; flex-wrap: wrap; gap: 6px; }
+    .mx-conn { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; color: #dbe7f6; text-decoration: none; background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); border-radius: 999px; padding: 4px 10px; transition: border-color .15s ease; }
+    .mx-conn:hover { border-color: rgba(56,189,248,.6); }
+    .mx-conn em { font-style: normal; color: #8aa2bf; font-size: 10px; }
+    .mx-conn-dot { width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+    .mx-open { display: block; text-align: center; margin-top: 16px; padding: 10px; border-radius: 10px; border: 1px solid rgba(56,189,248,.4); color: #7dd3fc; text-decoration: none; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; transition: background .15s ease; }
+    .mx-open:hover { background: rgba(56,189,248,.14); }
+    .mx3d-beta { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; background: rgba(56,189,248,.18); color: #7dd3fc; border: 1px solid rgba(56,189,248,.4); padding: 2px 8px; border-radius: 999px; vertical-align: middle; margin-left: 8px; font-weight: 800; }
+    .mx3d-stage { position: relative; margin-top: 14px; border: 1px solid rgba(56,189,248,.22); border-radius: 18px; overflow: hidden; background: radial-gradient(1200px 500px at 50% -10%, rgba(56,189,248,.10), rgba(2,6,23,0)), #04070f; min-height: 560px; }
+    #matrix3d { width: 100%; height: 560px; display: block; cursor: grab; }
+    #matrix3d:active { cursor: grabbing; }
+    .mx3d-hint { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; z-index: 3; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #5c7292; pointer-events: none; }
+    .mx3d-tag { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 3; font-size: 14px; font-weight: 800; letter-spacing: .04em; color: #eaf2ff; background: rgba(2,6,23,.72); border: 1px solid rgba(56,189,248,.35); padding: 6px 16px; border-radius: 999px; opacity: 0; transition: opacity .2s ease; pointer-events: none; }
+    .mx3d-fallback { padding: 60px 20px; text-align: center; color: #8aa2bf; font-size: 13px; }
+    /* 2026-07-15: pushed below the "GLOBAL TECHNOLOGY CO-EVOLUTION MAP" title
+       overlay (map-panels.js, ~183px tall top-left) so the domain colour key no
+       longer overlaps the heading. Home page only (matrix section has its own copy). */
+    .mx3d-legend { position: absolute; top: 190px; left: 12px; z-index: 3; display: flex; flex-direction: column; gap: 4px; max-height: calc(100% - 202px); overflow: auto; padding-right: 2px; }
+
+    /* 2026-07-15: cycle-injected Domain Console cards sometimes stack several
+       photos — an empty/failed image wrapper, a real top photo, AND nested .pc
+       cards that each carry their own image. Show only the card's own top photo:
+       hide failed/empty wrappers, any 2nd+ sibling top-image, and every image
+       that lives inside a nested card. Stops the overlapping-photo glitch. */
+    .pc-imgwrap.failed, .dg-card-photo.failed { display: none !important; }
+    .pc > .card-img-top ~ .card-img-top,
+    .dg-card .card-img-top ~ .card-img-top,
+    .dg-card .dg-card-photo ~ .dg-card-photo { display: none !important; }
+    .pc .pc .card-img-top,
+    .pc .pc .pc-imgwrap,
+    .pc .pc .dg-card-photo,
+    .dg-card .pc .pc [class*="img-top"] { display: none !important; }
+    .mx3d-chip { display: flex; align-items: center; gap: 7px; background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); color: #c7d6ea; font-size: 11px; font-weight: 700; padding: 4px 9px; border-radius: 999px; cursor: pointer; text-align: left; transition: border-color .15s ease, background .15s ease; }
+    .mx3d-chip:hover { border-color: rgba(56,189,248,.5); background: rgba(8,16,34,.8); }
+    .mx3d-chip.active { border-color: rgba(125,211,252,.9); background: rgba(56,189,248,.16); color: #eaf2ff; }
+    .mx3d-chip-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; box-shadow: 0 0 8px currentColor; }
+    .mx3d-card { position: absolute; right: 14px; bottom: 14px; z-index: 4; width: 262px; display: flex; gap: 12px; padding: 14px; border: 1px solid rgba(56,189,248,.4); border-radius: 14px; background: linear-gradient(180deg, rgba(8,16,34,.94), rgba(2,6,23,.96)); box-shadow: 0 12px 40px rgba(2,6,23,.7); opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .22s ease, transform .22s ease; }
+    .mx3d-card.show { opacity: 1; transform: none; pointer-events: auto; }
+    .mx3d-card-img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; border: 1px solid rgba(56,189,248,.3); flex: 0 0 auto; background: #04070f; }
+    .mx3d-card-body { display: flex; flex-direction: column; justify-content: center; gap: 8px; min-width: 0; }
+    .mx3d-card-name { font-size: 16px; font-weight: 800; color: #eaf2ff; }
+    .mx3d-card-open { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #7dd3fc; text-decoration: none; }
+    .mx3d-card-open:hover { color: #bae6fd; }
+    .mx3d-card-x { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #7891ad; font-size: 18px; line-height: 1; cursor: pointer; padding: 2px 4px; }
+    .mx3d-card-x:hover { color: #eaf2ff; }
+    .mx3d-reset { position: absolute; top: 12px; right: 12px; z-index: 3; background: rgba(2,6,23,.6); border: 1px solid rgba(56,189,248,.3); color: #9fc7e8; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; cursor: pointer; transition: border-color .15s ease, color .15s ease; }
+    .mx3d-reset:hover { border-color: rgba(56,189,248,.7); color: #eaf2ff; }
+    @media (max-width: 900px) { .mx-graph-wrap { grid-template-columns: 1fr; } #matrix3d, .mx3d-stage { height: 440px; min-height: 440px; } .mx3d-legend { display: none; } .mx3d-card { left: 14px; right: 14px; width: auto; } }

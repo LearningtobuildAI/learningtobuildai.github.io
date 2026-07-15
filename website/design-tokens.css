@@ -1,0 +1,41 @@
+/* ============================================================
+   THE FUTURE 24/7 — Design Tokens (z-index scale + a11y)
+   Derived from design-system.json (UI UX Pro Max guidance).
+   Additive & non-destructive: sets a single source-of-truth
+   stacking scale and hardens overlap/motion behavior.
+   ============================================================ */
+
+:root {
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky-header: 100;
+  --z-shell-banner: 110;
+  --z-shell-dropdown: 200;
+  --z-floating-orb: 900;
+  --z-floating-chat: 1000;
+  --z-admin-panel: 1100;
+  --z-modal-backdrop: 2000;
+  --z-modal-dialog: 2010;
+  --z-toast: 3000;
+  --z-critical: 4000;
+}
+
+/* Map the legacy ad-hoc float stacking onto the token scale.
+   Previously .float-wrap used z-index:9990 (arbitrary). */
+.float-wrap { z-index: var(--z-floating-chat) !important; }
+#floatPanel { z-index: var(--z-floating-chat); }
+#siteMovableChat { z-index: var(--z-floating-chat); }
+.global-site-shell { z-index: var(--z-shell-banner); }
+.global-site-shell .gss-dropdown { z-index: var(--z-shell-dropdown); }
+
+/* Respect user motion preference across the site. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chat Mockup B — Intel Companion</title>
+<style>
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:radial-gradient(1000px 600px at 70% -10%,rgba(14,165,233,.12),transparent),#060b18; font-family:Inter,"Segoe UI",Arial,sans-serif; color:#dce8f8; }
+  .page-hint { padding:26px 30px; color:#64748b; font-size:13px; max-width:640px; line-height:1.6; }
+  .page-hint b { color:#67e8f9; }
+  /* floating glass panel */
+  .panel { position:fixed; right:26px; bottom:26px; width:390px; max-height:78vh; display:flex; flex-direction:column; border-radius:20px; border:1px solid rgba(103,232,249,.28); background:linear-gradient(160deg,rgba(13,22,42,.88),rgba(6,11,24,.94)); backdrop-filter:blur(18px); box-shadow:0 30px 80px rgba(0,0,0,.6), 0 0 50px rgba(56,189,248,.12); overflow:hidden; }
+  .p-head { display:flex; align-items:center; gap:11px; padding:15px 17px; background:linear-gradient(90deg,rgba(14,165,233,.14),transparent); }
+  .orb { width:40px; height:40px; border-radius:50%; background:radial-gradient(circle at 32% 28%,#a5f3fc,#0ea5e9 55%,#4338ca); box-shadow:0 0 22px rgba(56,189,248,.75); position:relative; }
+  .orb::after { content:""; position:absolute; inset:-4px; border-radius:50%; border:1px solid rgba(103,232,249,.4); animation:pulse 2.4s infinite; }
+  @keyframes pulse { 0%{transform:scale(.9);opacity:.9} 100%{transform:scale(1.25);opacity:0} }
+  .p-name { font-weight:800; font-size:14.5px; letter-spacing:.04em; }
+  .p-tag { font-size:10px; color:#34d399; letter-spacing:.1em; text-transform:uppercase; }
+  .p-min { margin-left:auto; color:#64748b; cursor:pointer; font-size:16px; }
+  .p-body { padding:6px 15px 12px; overflow-y:auto; display:flex; flex-direction:column; gap:11px; }
+  .hello { font-size:12.5px; line-height:1.55; color:#c9d9f2; padding:4px 2px; }
+  /* intel answer card */
+  .icard { border:1px solid rgba(56,189,248,.28); border-radius:14px; overflow:hidden; background:rgba(8,15,30,.85); }
+  .icard .ic-img { height:88px; background:linear-gradient(120deg,#0c4a6e,#312e81); display:flex; align-items:flex-end; padding:10px 12px; }
+  .ic-badge { font-size:9px; font-weight:800; letter-spacing:.14em; background:#34d399; color:#03170e; border-radius:999px; padding:3px 9px; }
+  .icard .ic-body { padding:11px 13px 12px; }
+  .ic-title { font-size:13px; font-weight:800; color:#eaf4ff; }
+  .ic-text { font-size:12px; line-height:1.5; color:#b9cbe6; margin:6px 0 8px; }
+  .ic-foot { display:flex; gap:6px; flex-wrap:wrap; }
+  .ic-src { font-size:9.5px; font-weight:700; color:#67e8f9; border:1px solid rgba(103,232,249,.3); border-radius:999px; padding:2.5px 9px; text-decoration:none; }
+  .ic-open { margin-left:auto; font-size:10.5px; font-weight:800; color:#34d399; text-decoration:none; }
+  .me { align-self:flex-end; max-width:82%; background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.28); border-radius:13px 13px 4px 13px; padding:9px 13px; font-size:12.5px; }
+  .suggests { display:flex; flex-direction:column; gap:6px; }
+  .sg-label { font-size:9.5px; font-weight:800; letter-spacing:.16em; color:#7d93b5; text-transform:uppercase; margin-top:2px; }
+  .sg { text-align:left; font-size:12px; color:#cfe0f6; background:rgba(15,23,42,.75); border:1px solid rgba(148,163,184,.22); border-radius:10px; padding:9px 12px; cursor:pointer; font-family:inherit; }
+  .sg:hover { border-color:#67e8f9; }
+  .p-input { display:flex; align-items:center; gap:8px; margin:4px 14px 14px; border-radius:14px; border:1px solid rgba(103,232,249,.35); background:rgba(10,18,36,.95); padding:11px 13px; }
+  .p-input input { flex:1; background:none; border:none; outline:none; color:#eaf4ff; font-size:13px; font-family:inherit; }
+  .mic { color:#7d93b5; cursor:pointer; }
+  .go { width:34px; height:34px; border-radius:50%; border:none; background:radial-gradient(circle at 30% 30%,#67e8f9,#0ea5e9); color:#04101f; font-weight:900; cursor:pointer; box-shadow:0 0 16px rgba(56,189,248,.5); }
+  .fab-hint { position:fixed; right:36px; bottom:118px; display:none; }
+</style>
+</head>
+<body>
+  <div class="page-hint"><b>MOCKUP B — “Intel Companion”</b><br/><br/>The floating orb stays, but opens a glassy companion panel. Its signature move: answers arrive as <b>intel cards</b> — photo header, stage badge, source chips and an “Open section →” link — the same visual language as the rest of the site. Suggested questions adapt to the page you're viewing. Level-ups become a subtle orb glow, not chat messages.</div>
+  <div class="panel">
+    <div class="p-head">
+      <div class="orb"></div>
+      <div><div class="p-name">Algalon Companion</div><div class="p-tag">● live · knows this page</div></div>
+      <div class="p-min">—</div>
+    </div>
+    <div class="p-body">
+      <div class="hello">Hi 👋 — you're on the <b>Energy</b> page. Ask me anything, or tap a suggestion.</div>
+      <div class="me">What's the newest battery breakthrough?</div>
+      <div class="icard">
+        <div class="ic-img"><span class="ic-badge">NOW · ENERGY</span></div>
+        <div class="ic-body">
+          <div class="ic-title">Iron-Air Grid Storage Hits Commercial Scale</div>
+          <div class="ic-text">Form Energy's 100-hour iron-air batteries are now live at two US grid sites — rust-cycle chemistry at ~1/10th the cost of lithium for multi-day storage.</div>
+          <div class="ic-foot"><a class="ic-src" href="#">Form Energy</a><a class="ic-src" href="#">Intel #2981</a><a class="ic-open" href="#">Open Energy section →</a></div>
+        </div>
+      </div>
+      <div class="suggests">
+        <div class="sg-label">Try next</div>
+        <button class="sg">⚡ Compare iron-air vs solid-state batteries</button>
+        <button class="sg">🔮 What's coming in fusion in the next 5 years?</button>
+      </div>
+    </div>
+    <div class="p-input"><input placeholder="Ask about energy, or anything…" /><span class="mic">🎙</span><button class="go">➤</button></div>
+  </div>
+</body>
+</html>

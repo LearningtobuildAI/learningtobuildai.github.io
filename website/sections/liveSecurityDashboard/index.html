@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiveSecurityDashboard | The Future 24/7</title>
+    <meta
+      name="description"
+      content="LiveSecurityDashboard | The Future 24/7 page for liveSecurityDashboard with unified theme, persistent Algron chat, and source-traceable intelligence content."
+    />
+    <meta
+      name="source-note"
+      content="Source: curated intelligence stream and tracked references."
+    />
+    <link rel="stylesheet" href="/website/root-extracted.css?v=20260629a" />
+    <style>
+      body {
+        margin: 0;
+        background: #060b18;
+        color: #dce8f8;
+        font-family: Inter, "Segoe UI", Arial, sans-serif;
+      }
+      .section-page-top {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(2, 6, 23, 0.92);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        padding: 12px 18px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .section-page-top a {
+        color: #67e8f9;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        font-size: 12px;
+      }
+    </style>
+    <link rel="stylesheet" href="/website/unified-theme.css?v=20260629a" />
+    <link
+      rel="stylesheet"
+      href="/website/widgets/command-console.css?v=20260707c"
+    />
+    <link rel="stylesheet" href="/website/site-shell.css?v=20260707a" />
+    <link
+      rel="stylesheet"
+      href="/website/sections/section-theme.css?v=20260704c"
+    />
+  </head>
+  <body>
+    <!-- Domain Directory strip (injected 2026-07-15) -->
+    <div id="domainDirStrip"></div>
+    <div class="section-page-top">
+      <div
+        style="
+          font-size: 11px;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: #93c5fd;
+        "
+      >
+        Section Page: LiveSecurityDashboard
+      </div>
+      <a href="/index.html">Back To Main</a>
+    </div>
+    <nav
+      class="section-audit-nav"
+      aria-label="Live security dashboard quick links"
+    >
+      <a href="/website/security/index.html">Security Domain</a>
+      <a href="/website/sections/intelligence/index.html">Intelligence</a>
+      <a href="/admin-reference.html">Admin Reference</a>
+      <a href="/CORE-SYSTEM.md">Core</a>
+    </nav>
+    <div class="section-audit-hero">
+      <img
+        src="/images/generated/world-intel-hero-1782732519795.jpg"
+        alt="Live security dashboard hero"
+        loading="lazy"
+      />
+    </div>
+    <h1 class="section-audit-h1">Live Security Operations Dashboard</h1>
+    <section
+      id="liveSecurityDashboard"
+      style="
+        padding: 24px 60px 28px;
+        background: linear-gradient(
+          180deg,
+          rgba(7, 16, 30, 0.98),
+          rgba(8, 20, 38, 0.9)
+        );
+        border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          flex-wrap: wrap;
+        "
+      >
+        <div>
+          <div
+            style="
+              font-size: 10px;
+              letter-spacing: 0.2em;
+              text-transform: uppercase;
+              color: #67e8f9;
+              font-weight: 800;
+            "
+          >
+            Live Security Dashboard
+          </div>
+          <h2
+            style="
+              margin: 6px 0 0;
+              color: #e2e8f0;
+              font-size: 28px;
+              line-height: 1.15;
+            "
+          >
+            🛡️ FULL SECURITY CHECKLIST (ALL SYSTEMS)
+          </h2>
+        </div>
+        <button
+          onclick="refreshMonitoringDashboard()"
+          style="
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(34, 211, 238, 0.35);
+            background: rgba(34, 211, 238, 0.12);
+            color: #67e8f9;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+          "
+        >
+          REFRESH SECURITY
+        </button>
+      </div>
+
+      <div
+        style="
+          margin-top: 14px;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 10px;
+        "
+      >
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          Firewall: <b id="secTopFirewall" style="color: #86efac">ON</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          Internet: <b id="secTopInternet" style="color: #fca5a5">OFF</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          WiFi: <b id="secTopWifi" style="color: #fca5a5">OFF</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          Bluetooth: <b id="secTopBluetooth" style="color: #fca5a5">OFF</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          Signal Blocker: <b id="secTopSignal" style="color: #86efac">ON</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          AI Containment:
+          <b id="secTopContainment" style="color: #86efac">LOCAL-ONLY</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          Autonomous Cycle: <b id="secTopCycle" style="color: #fef08a">IDLE</b>
+        </div>
+        <div
+          style="
+            padding: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 10px;
+            background: rgba(2, 6, 23, 0.5);
+            font-size: 11px;
+            color: #cbd5e1;
+          "
+        >
+          Active Users: <b id="secTopUsers" style="color: #7dd3fc">0</b>
+        </div>
+      </div>
+
+      <div
+        style="
+          margin-top: 16px;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 12px;
+        "
+      >
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(248, 113, 113, 0.25);
+            border-radius: 12px;
+            background: rgba(127, 29, 29, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #fca5a5;
+              text-transform: uppercase;
+            "
+          >
+            1. Network & Perimeter Security
+          </div>
+          <ul
+            style="
+              margin: 8px 0 0 18px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            <li>Firewall status</li>
+            <li>Allowed ports</li>
+            <li>Blocked ports</li>
+            <li>Inbound traffic scan</li>
+            <li>Outbound traffic scan</li>
+            <li>Suspicious IP detection</li>
+            <li>Rate limiting status</li>
+          </ul>
+        </div>
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 12px;
+            background: rgba(20, 83, 45, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #86efac;
+              text-transform: uppercase;
+            "
+          >
+            2. Wireless & Signal Security
+          </div>
+          <ul
+            style="
+              margin: 8px 0 0 18px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            <li>WiFi status</li>
+            <li>WiFi scan attempts</li>
+            <li>Bluetooth status</li>
+            <li>Bluetooth scan attempts</li>
+            <li>NFC status</li>
+            <li>Signal blocker status</li>
+            <li>Blocked signals log</li>
+          </ul>
+        </div>
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            border-radius: 12px;
+            background: rgba(30, 64, 175, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #93c5fd;
+              text-transform: uppercase;
+            "
+          >
+            3. Internet & External Access Security
+          </div>
+          <ul
+            style="
+              margin: 8px 0 0 18px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            <li>Internet ON/OFF</li>
+            <li>External API calls</li>
+            <li>Domain allowlist</li>
+            <li>Blocked outbound calls</li>
+            <li>AI internet attempts</li>
+          </ul>
+        </div>
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 12px;
+            background: rgba(88, 28, 135, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #d8b4fe;
+              text-transform: uppercase;
+            "
+          >
+            4. AI Containment & Safety
+          </div>
+          <ul
+            style="
+              margin: 8px 0 0 18px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            <li>Local-only mode</li>
+            <li>AI denied actions</li>
+            <li>AI approved actions</li>
+            <li>Autonomous cycle status</li>
+            <li>AI self-repair events</li>
+            <li>AI self-upgrade events</li>
+          </ul>
+        </div>
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(14, 165, 233, 0.25);
+            border-radius: 12px;
+            background: rgba(8, 47, 73, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #7dd3fc;
+              text-transform: uppercase;
+            "
+          >
+            5. Code Integrity & Site Health
+          </div>
+          <ul
+            style="
+              margin: 8px 0 0 18px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            <li>Hourly code scan</li>
+            <li>Broken HTML detection</li>
+            <li>Broken JS/CSS detection</li>
+            <li>Broken images</li>
+            <li>Broken charts</li>
+            <li>Broken 3D models</li>
+            <li>Missing summaries</li>
+            <li>Missing pictures</li>
+            <li>Auto-repair</li>
+            <li>Rollback if repair fails</li>
+          </ul>
+        </div>
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(244, 114, 182, 0.25);
+            border-radius: 12px;
+            background: rgba(131, 24, 67, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #f9a8d4;
+              text-transform: uppercase;
+            "
+          >
+            6. Domain-Specific Security
+          </div>
+          <div
+            style="
+              margin-top: 8px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            AI, Medicine, Energy, Materials, Neuro, Space, Security, Govern,
+            Build, Cosm, Intel, Robotics, 3D Printing, Automation Jobs.
+          </div>
+          <div style="margin-top: 6px; color: #94a3b8; font-size: 10px">
+            Each panel shows: domain health, errors, broken components, last
+            scan, logs.
+          </div>
+        </div>
+        <div
+          style="
+            padding: 12px;
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            border-radius: 12px;
+            background: rgba(120, 53, 15, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 11px;
+              letter-spacing: 0.08em;
+              font-weight: 800;
+              color: #fcd34d;
+              text-transform: uppercase;
+            "
+          >
+            7. User & Viewer Security
+          </div>
+          <ul
+            style="
+              margin: 8px 0 0 18px;
+              color: #cbd5e1;
+              font-size: 11px;
+              line-height: 1.6;
+            "
+          >
+            <li>Active users</li>
+            <li>Page views</li>
+            <li>Viewer counter</li>
+            <li>Suspicious user behavior</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        style="
+          margin-top: 18px;
+          padding: 14px;
+          border-radius: 12px;
+          border: 1px solid rgba(56, 189, 248, 0.24);
+          background: rgba(2, 6, 23, 0.55);
+        "
+      >
+        <div
+          style="
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #67e8f9;
+            font-weight: 800;
+          "
+        >
+          📊 LIVE SECURITY DASHBOARD (Blueprint)
+        </div>
+
+        <div
+          style="
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            background: rgba(15, 23, 42, 0.45);
+          "
+        >
+          <div
+            style="
+              font-size: 10px;
+              letter-spacing: 0.12em;
+              color: #93c5fd;
+              font-weight: 800;
+              text-transform: uppercase;
+            "
+          >
+            🔵 Top Bar — Global Status
+          </div>
+          <div
+            style="
+              margin-top: 8px;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+              gap: 8px;
+              font-size: 10px;
+              color: #cbd5e1;
+            "
+          >
+            <div>Firewall: <b id="secBarFirewall">ON</b></div>
+            <div>Internet: <b id="secBarInternet">OFF</b></div>
+            <div>WiFi: <b id="secBarWifi">OFF</b></div>
+            <div>Bluetooth: <b id="secBarBluetooth">OFF</b></div>
+            <div>Signal Blocker: <b id="secBarSignal">ON</b></div>
+            <div>AI Containment: <b id="secBarContainment">LOCAL-ONLY</b></div>
+            <div>Autonomous Cycle: <b id="secBarCycle">IDLE</b></div>
+            <div>Active Users: <b id="secBarUsers">0</b></div>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+          "
+        >
+          <div
+            style="
+              padding: 10px;
+              border: 1px solid rgba(248, 113, 113, 0.22);
+              border-radius: 10px;
+              background: rgba(127, 29, 29, 0.07);
+            "
+          >
+            <div
+              style="
+                font-size: 10px;
+                color: #fca5a5;
+                font-weight: 800;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+              "
+            >
+              🟥 Left Panel — Security Checks
+            </div>
+            <div
+              style="
+                margin-top: 8px;
+                font-size: 10px;
+                color: #cbd5e1;
+                line-height: 1.65;
+              "
+            >
+              Network:
+              <span id="secNetworkState"
+                >Inbound traffic • Outbound traffic • Suspicious IPs •
+                Rate limiting</span
+              ><br />Wireless:
+              <span id="secWirelessState"
+                >WiFi • Bluetooth • NFC • Signal blocker</span
+              ><br />Internet:
+              <span id="secInternetState"
+                >External API calls • Blocked calls • AI internet
+                attempts</span
+              >
+            </div>
+          </div>
+          <div
+            style="
+              padding: 10px;
+              border: 1px solid rgba(34, 197, 94, 0.22);
+              border-radius: 10px;
+              background: rgba(20, 83, 45, 0.07);
+            "
+          >
+            <div
+              style="
+                font-size: 10px;
+                color: #86efac;
+                font-weight: 800;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+              "
+            >
+              🟩 Center Panel — AI Security
+            </div>
+            <div
+              style="
+                margin-top: 8px;
+                font-size: 10px;
+                color: #cbd5e1;
+                line-height: 1.65;
+              "
+            >
+              AI containment: <b id="secAiContainment">LOCAL-ONLY</b><br />AI
+              denied actions: <b id="secAiDenied">0</b><br />AI approved
+              actions: <b id="secAiApproved">0</b><br />Self-repair events:
+              <b id="secAiRepair">0</b><br />Self-upgrade events:
+              <b id="secAiUpgrade">0</b><br />Autonomous cycle logs:
+              <b id="secAiCycleLogs">idle</b>
+            </div>
+          </div>
+          <div
+            style="
+              padding: 10px;
+              border: 1px solid rgba(59, 130, 246, 0.22);
+              border-radius: 10px;
+              background: rgba(30, 64, 175, 0.07);
+            "
+          >
+            <div
+              style="
+                font-size: 10px;
+                color: #93c5fd;
+                font-weight: 800;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+              "
+            >
+              🟦 Right Panel — Site Health
+            </div>
+            <div
+              style="
+                margin-top: 8px;
+                font-size: 10px;
+                color: #cbd5e1;
+                line-height: 1.65;
+              "
+            >
+              Code integrity: <b id="secCodeIntegrity">monitoring</b
+              ><br />Broken images/charts/3D: <b id="secBrokenAssets">0</b
+              ><br />Missing summaries/pictures: <b id="secMissing">0</b
+              ><br />Last scan: <b id="secLastScan">--</b><br />Last repair:
+              <b id="secLastRepair">--</b>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(168, 85, 247, 0.24);
+            background: rgba(76, 29, 149, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 10px;
+              color: #d8b4fe;
+              font-weight: 800;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+            "
+          >
+            🟪 Bottom Panel — Domain Security
+          </div>
+          <div
+            id="securityDomainGrid"
+            style="
+              margin-top: 8px;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+              gap: 8px;
+              font-size: 10px;
+              color: #cbd5e1;
+            "
+          >
+            <div
+              style="
+                padding: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 8px;
+                background: rgba(2, 6, 23, 0.45);
+              "
+            >
+              AI • status: -- • errors: -- • broken: -- • last scan: --
+              • logs: --
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid rgba(249, 115, 22, 0.24);
+            background: rgba(124, 45, 18, 0.08);
+          "
+        >
+          <div
+            style="
+              font-size: 10px;
+              color: #fdba74;
+              font-weight: 800;
+              letter-spacing: 0.1em;
+              text-transform: uppercase;
+            "
+          >
+            🟧 Footer — Log Viewer
+          </div>
+          <div
+            style="
+              margin-top: 8px;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              font-size: 10px;
+            "
+          >
+            <span
+              style="
+                padding: 5px 8px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(2, 6, 23, 0.45);
+                color: #cbd5e1;
+              "
+              >system.log</span
+            >
+            <span
+              style="
+                padding: 5px 8px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(2, 6, 23, 0.45);
+                color: #cbd5e1;
+              "
+              >ai.log</span
+            >
+            <span
+              style="
+                padding: 5px 8px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(2, 6, 23, 0.45);
+                color: #cbd5e1;
+              "
+              >security.log</span
+            >
+            <span
+              style="
+                padding: 5px 8px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(2, 6, 23, 0.45);
+                color: #cbd5e1;
+              "
+              >domains.log</span
+            >
+            <span
+              style="
+                padding: 5px 8px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(2, 6, 23, 0.45);
+                color: #cbd5e1;
+              "
+              >repair.log</span
+            >
+            <span
+              style="
+                padding: 5px 8px;
+                border-radius: 999px;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+                background: rgba(2, 6, 23, 0.45);
+                color: #cbd5e1;
+              "
+              >users.log</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="/website/widgets/command-console.js?v=20260707c" defer></script>
+    <script src="/website/site-shell.js?v=20260715a" defer></script>
+    <script src="/website/sections/section-theme.js?v=20260704b" defer></script>
+      <script src="/website/domain-directory-strip.js?v=20260716a" defer></script>
+  </body>
+</html>

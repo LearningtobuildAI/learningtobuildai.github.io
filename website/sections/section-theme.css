@@ -1,0 +1,1044 @@
+.section-theme-hero {
+  position: relative;
+  max-width: none;
+  margin: 0 0 18px;
+  padding: 0;
+}
+
+/* Legacy per-page top bars are replaced by the global site shell. */
+.section-page-top {
+  display: none !important;
+}
+
+/* Keep only the global traveling header on section pages. */
+.section-audit-nav {
+  display: none !important;
+}
+
+/* Remove duplicated legacy header blocks; theme hero replaces these. */
+.section-audit-hero,
+.section-audit-h1 {
+  display: none !important;
+}
+
+body.gss-enabled .section-theme-hero {
+  margin-top: 0;
+}
+
+.section-theme-photo {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+  overflow: hidden;
+  background: rgba(2, 6, 23, 0.72);
+}
+
+.section-theme-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 0.12) 0%,
+    rgba(2, 6, 23, 0.5) 55%,
+    rgba(2, 6, 23, 0.94) 100%
+  );
+  pointer-events: none;
+}
+
+.section-theme-photo img {
+  width: 100%;
+  height: clamp(240px, 40vw, 480px);
+  object-fit: cover;
+  display: block;
+}
+
+.section-theme-summary {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  max-width: 1180px;
+  margin: 0 auto;
+  border: 0;
+  background: transparent;
+  padding: 0 22px 22px;
+}
+
+.section-theme-kicker {
+  margin: 0 0 8px;
+  color: #7dd3fc;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-theme-title {
+  margin: 0;
+  color: #f1f6fd;
+  font-size: clamp(24px, 4vw, 36px);
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 18px rgba(2, 6, 23, 0.95);
+}
+
+.section-theme-sub {
+  margin: 8px 0 0;
+  color: #cdddf0;
+  line-height: 1.55;
+  max-width: 780px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 12px rgba(2, 6, 23, 0.9);
+}
+
+.section-world-panels {
+  max-width: 1240px;
+  margin: 10px auto 14px;
+  padding: 0 12px;
+}
+
+.section-world-panels-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.section-world-panels-head strong {
+  color: #dbeafe;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.section-world-panels-head span {
+  color: #7dd3fc;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-world-panels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+  gap: 8px;
+}
+
+.section-world-panel {
+  position: relative;
+  min-height: 92px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.24);
+  text-decoration: none;
+  background: linear-gradient(140deg, #0f172a, #1e293b);
+}
+
+.section-world-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.7;
+}
+
+.section-world-panel-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8px;
+  background: linear-gradient(
+    to top,
+    rgba(2, 6, 23, 0.86),
+    rgba(2, 6, 23, 0.2)
+  );
+}
+
+.section-world-panel-kicker {
+  color: #93c5fd;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.section-world-panel-title {
+  color: #e2e8f0;
+  font-size: 11px;
+  margin-top: 3px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.section-world-panel.active {
+  border-color: rgba(167, 139, 250, 0.7);
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.42) inset;
+}
+
+.section-page-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+
+.section-audit-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  max-width: 1240px;
+  margin: 10px auto 0;
+  padding: 0 12px;
+}
+
+.section-audit-nav a {
+  text-decoration: none;
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-audit-hero {
+  width: min(1120px, calc(100% - 24px));
+  margin: 14px auto 0;
+  border-radius: 12px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  overflow: hidden;
+  background: rgba(2, 6, 23, 0.72);
+}
+
+.section-audit-hero img {
+  width: 100%;
+  height: clamp(150px, 24vw, 240px);
+  object-fit: cover;
+  display: block;
+}
+
+.section-audit-h1 {
+  width: min(1120px, calc(100% - 24px));
+  margin: 10px auto 0;
+  color: #e2e8f0;
+  font-size: clamp(22px, 2.8vw, 36px);
+  letter-spacing: -0.02em;
+}
+
+.domain-num-med {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.domain-num-nrg {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.domain-title-med {
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.domain-title-nrg {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dtag-med {
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.dtag-nrg {
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.med-cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.med-cluster-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.med-cluster-card-oncology {
+  border: 1px solid rgba(239, 68, 68, 0.24);
+}
+
+.med-cluster-card-neuro {
+  border: 1px solid rgba(99, 102, 241, 0.24);
+}
+
+.med-cluster-card-metabolic {
+  border: 1px solid rgba(34, 197, 94, 0.24);
+}
+
+.med-cluster-photo {
+  height: 92px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.med-cluster-photo-oncology {
+  background: linear-gradient(145deg, #1f2937, #ef4444);
+}
+
+.med-cluster-photo-neuro {
+  background: linear-gradient(145deg, #1f2937, #6366f1);
+}
+
+.med-cluster-photo-metabolic {
+  background: linear-gradient(145deg, #1f2937, #22c55e);
+}
+
+.med-cluster-title {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.med-cluster-title-oncology {
+  color: #fca5a5;
+}
+
+.med-cluster-title-neuro {
+  color: #c7d2fe;
+}
+
+.med-cluster-title-metabolic {
+  color: #bbf7d0;
+}
+
+.med-cluster-meta {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.med-cluster-foot {
+  font-size: 10px;
+  color: #cbd5e1;
+  margin-top: 7px;
+}
+
+.med-cluster-ai {
+  font-size: 10px;
+  color: #22c55e;
+  margin-top: 3px;
+}
+
+.bat-grid-normalized {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.pbadge-mini {
+  font-size: 9px;
+}
+
+.nrg-photo-slot {
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.nrg-bat-photo-1 {
+  height: 110px;
+  background: linear-gradient(140deg, #1e293b, #64748b);
+}
+
+.nrg-bat-photo-2 {
+  height: 110px;
+  background: linear-gradient(140deg, #0f172a, #22c55e);
+}
+
+.nrg-bat-photo-3 {
+  height: 110px;
+  background: linear-gradient(140deg, #111827, #a855f7);
+}
+
+.nrg-bat-photo-4 {
+  height: 110px;
+  background: linear-gradient(140deg, #0b1220, #06b6d4);
+}
+
+.nrg-bat-photo-5 {
+  height: 110px;
+  background: linear-gradient(140deg, #1f2937, #f59e0b);
+}
+
+.nrg-bat-photo-6 {
+  height: 110px;
+  background: linear-gradient(140deg, #111827, #ef4444);
+}
+
+.nrg-use-photo-1 {
+  height: 120px;
+  background: linear-gradient(145deg, #0f172a, #0ea5e9);
+}
+
+.nrg-use-photo-2 {
+  height: 120px;
+  background: linear-gradient(145deg, #111827, #22c55e);
+}
+
+.nrg-use-photo-3 {
+  height: 120px;
+  background: linear-gradient(145deg, #111827, #f59e0b);
+}
+
+.nrg-use-photo-4 {
+  height: 120px;
+  background: linear-gradient(145deg, #111827, #a855f7);
+}
+
+.nrg-use-photo-5 {
+  height: 120px;
+  background: linear-gradient(145deg, #111827, #06b6d4);
+}
+
+.nrg-use-photo-6 {
+  height: 120px;
+  background: linear-gradient(145deg, #111827, #ef4444);
+}
+
+.med-progress-track {
+  height: 6px;
+  border-radius: 999px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.med-progress-track-red {
+  background: rgba(239, 68, 68, 0.18);
+}
+
+.med-progress-track-blue {
+  background: rgba(99, 102, 241, 0.18);
+}
+
+.med-progress-track-green {
+  background: rgba(34, 197, 94, 0.18);
+}
+
+.med-progress-fill {
+  height: 100%;
+}
+
+.pbf-w10 {
+  width: 10%;
+}
+
+.pbf-w15 {
+  width: 15%;
+}
+
+.pbf-w20 {
+  width: 20%;
+}
+
+.pbf-w30 {
+  width: 30%;
+}
+
+.pbf-w35 {
+  width: 35%;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   PHASE / PROJECT CARD LAYOUT (canonical, ported from index.html)
+   Section pages inject .pc-imgwrap via section-theme.js but had no
+   matching CSS, so cards rendered unstyled with full-bleed images
+   and run-together title/badge/company text. This restores the
+   proper card grid across every domain-* section page.
+   ────────────────────────────────────────────────────────────── */
+.domain-hd {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+.d-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.domain-hd h2 {
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 900;
+  color: var(--white, #fff);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.domain-hd p {
+  font-size: 14px;
+  color: var(--muted, #6b83a6);
+  line-height: 1.65;
+  max-width: 560px;
+}
+.dtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.dtag {
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid;
+  background: transparent;
+}
+
+.phase-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 18px;
+}
+.phase-row:first-of-type {
+  margin-top: 0;
+}
+.phase-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.phase-pill.now {
+  background: rgba(14, 165, 233, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(14, 165, 233, 0.3);
+}
+.phase-pill.near {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.phase-pill.far {
+  background: rgba(168, 85, 247, 0.12);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+.phase-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border, #162035);
+}
+
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  gap: 13px;
+}
+.pc {
+  position: relative;
+  background: var(--card, #0b1422);
+  border: 1px solid var(--border, #162035);
+  border-left: 3px solid transparent;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: all 0.22s;
+}
+.pc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+}
+.pc[data-s="now"] {
+  border-left-color: #0ea5e9;
+}
+.pc[data-s="near"] {
+  border-left-color: #f59e0b;
+}
+.pc[data-s="far"] {
+  border-left-color: #a855f7;
+}
+
+.pc-imgwrap {
+  position: relative;
+  margin: -20px -20px 4px -20px;
+  height: 132px;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  background: #0a1120;
+}
+.pc-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.pc-img.loaded {
+  opacity: 1;
+}
+.pc-imgwrap.failed {
+  background: linear-gradient(135deg, #0ea5e9 0%, #818cf8 100%);
+}
+
+.pc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pc-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white, #fff);
+  line-height: 1.3;
+}
+.pbadge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pbadge.now {
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
+}
+.pbadge.near {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+.pbadge.far {
+  background: rgba(168, 85, 247, 0.2);
+  color: #c084fc;
+}
+.pc-desc {
+  font-size: 13px;
+  color: var(--muted, #6b83a6);
+  line-height: 1.6;
+}
+.pc-org {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+}
+
+.leaders-bar {
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border, #162035);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.l-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted, #6b83a6);
+  margin-right: 4px;
+}
+.ltag {
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border, #162035);
+  color: var(--text, #dce8f8);
+}
+
+/* Constrain the section content so cards don't touch the viewport edge */
+.domain-sec,
+[class^="domain-"][id^="domain-"] {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 28px 22px 60px;
+  box-sizing: border-box;
+}
+
+.pbf-w40 {
+  width: 40%;
+}
+
+.pbf-w45 {
+  width: 45%;
+}
+
+.pbf-w50 {
+  width: 50%;
+}
+
+.pbf-w55 {
+  width: 55%;
+}
+
+.pbf-w60 {
+  width: 60%;
+}
+
+.pbf-w64 {
+  width: 64%;
+}
+
+.pbf-w72 {
+  width: 72%;
+}
+
+.pbf-w65 {
+  width: 65%;
+}
+
+.pbf-w70 {
+  width: 70%;
+}
+
+.pbf-w78 {
+  width: 78%;
+}
+
+.pbf-w82 {
+  width: 82%;
+}
+
+.pbf-w85 {
+  width: 85%;
+}
+
+.pbf-w88 {
+  width: 88%;
+}
+
+.pbf-w90 {
+  width: 90%;
+}
+
+.pbf-w97 {
+  width: 97%;
+}
+
+.pbf-w100 {
+  width: 100%;
+}
+
+.pbf-c-green {
+  background: #4ade80;
+}
+
+.pbf-c-lime {
+  background: #22c55e;
+}
+
+.pbf-c-red {
+  background: #ef4444;
+}
+
+.pbf-c-amber {
+  background: #fbbf24;
+}
+
+.pbf-c-orange {
+  background: #f97316;
+}
+
+.pbf-c-indigo {
+  background: #818cf8;
+}
+
+.pbf-c-violet {
+  background: #6366f1;
+}
+
+.pbf-c-cyan {
+  background: #00c4ff;
+}
+
+.pbf-c-purple {
+  background: #7c3aed;
+}
+
+/* --- Section grid + photo-slot repair (2026-07-04) ------------------------
+   .bat-grid / .uc-grid / .co-grid were used by domain pages but never
+   defined in any stylesheet, so cards stacked full-width. The data-img-key
+   photo slots had no resolver implemented anywhere — filled statically
+   below with local generated images (offline-safe); the original gradients
+   remain as the fallback layer. */
+.bat-grid,
+.uc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.co-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.med-cluster-photo {
+  height: 120px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.nrg-bat-photo-1 { background-image: url("/images/generated/bi-energy-storage-1782287770231.jpg"), linear-gradient(140deg, #1e293b, #64748b); background-size: cover; background-position: center; }
+.nrg-bat-photo-2 { background-image: url("/images/generated/bi-energy-storage-1782616481633.jpg"), linear-gradient(140deg, #0f172a, #22c55e); background-size: cover; background-position: center; }
+.nrg-bat-photo-3 { background-image: url("/images/generated/bi-energy-storage-1782616489298.jpg"), linear-gradient(140deg, #111827, #a855f7); background-size: cover; background-position: center; }
+.nrg-bat-photo-4 { background-image: url("/images/generated/bi-energy-storage-1782617115761.jpg"), linear-gradient(140deg, #0f172a, #f59e0b); background-size: cover; background-position: center; }
+.nrg-bat-photo-5 { background-image: url("/images/generated/energy-tech-green-hydrogen-electrolysis-1782356720661.jpg"), linear-gradient(140deg, #052e16, #22d3ee); background-size: cover; background-position: center; }
+.nrg-bat-photo-6 { background-image: url("/images/generated/bi-energy-storage-1782617153459.jpg"), linear-gradient(140deg, #1e1b4b, #ec4899); background-size: cover; background-position: center; }
+.nrg-use-photo-1 { background-image: url("/images/generated/bi-solar-wind-1782275931966.jpg"), linear-gradient(140deg, #14532d, #4ade80); background-size: cover; background-position: center; }
+.nrg-use-photo-2 { background-image: url("/images/generated/pc-global-transcontinental-smart-grid-1782374316564.jpg"), linear-gradient(140deg, #713f12, #facc15); background-size: cover; background-position: center; }
+.nrg-use-photo-3 { background-image: url("/images/generated/energy-tech-green-hydrogen-electrolysis-1782621176466.jpg"), linear-gradient(140deg, #4c1d95, #c084fc); background-size: cover; background-position: center; }
+.nrg-use-photo-4 { background-image: url("/images/generated/bi-energy-storage-1782686075550.jpg"), linear-gradient(140deg, #164e63, #38bdf8); background-size: cover; background-position: center; }
+.nrg-use-photo-5 { background-image: url("/images/generated/bi-smart-city-platforms-1782372560705.jpg"), linear-gradient(140deg, #1e293b, #94a3b8); background-size: cover; background-position: center; }
+.nrg-use-photo-6 { background-image: url("/images/generated/bi-solar-wind-1782615130674.jpg"), linear-gradient(140deg, #431407, #fb923c); background-size: cover; background-position: center; }
+.med-cluster-photo-oncology { background-image: url("/images/generated/pc-precision-oncology-liquid-biopsies-1783046165555.jpg"), linear-gradient(140deg, #450a0a, #f87171); background-size: cover; background-position: center; }
+.med-cluster-photo-neuro { background-image: url("/images/generated/bi-neuromodulation-1782287591124.jpg"), linear-gradient(140deg, #1e1b4b, #818cf8); background-size: cover; background-position: center; }
+.med-cluster-photo-metabolic { background-image: url("/images/generated/bi-longevity-aging-1782287364812.jpg"), linear-gradient(140deg, #052e16, #4ade80); background-size: cover; background-position: center; }
+
+/* --- Medicine disease-index table repair (2026-07-04) ----------------------
+   .ctbl/.drow/.dn/.dc/.cst/.pbar/.stg/.co-card were used by the page but
+   never defined, and toggleMed() was never implemented — so all 30 expansion
+   rows rendered permanently open and unstyled. Styled here; rows now start
+   collapsed and toggle via section-theme.js. */
+.tbl-wrap { overflow-x: auto; margin-top: 18px; border: 1px solid rgba(56,189,248,.18); border-radius: 12px; background: rgba(4,10,22,.6); }
+.ctbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.ctbl thead th { text-align: left; padding: 11px 12px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #7dd3fc; background: rgba(8,16,34,.95); border-bottom: 1px solid rgba(56,189,248,.3); }
+.ctbl td { padding: 10px 12px; border-bottom: 1px solid rgba(56,189,248,.08); vertical-align: top; color: #c7d6ea; }
+.drow { cursor: pointer; }
+.drow:hover td { background: rgba(56,189,248,.06); }
+.dn { font-weight: 800; color: #eaf2ff; white-space: nowrap; }
+.drow-arr { color: #38bdf8; font-size: 10px; margin-left: 4px; display: inline-block; transition: transform .15s ease; }
+.drow.open .drow-arr { transform: rotate(180deg); }
+.dc { font-size: 10.5px; color: #8aa2bf; }
+.cst { font-size: 10px; font-weight: 800; letter-spacing: .06em; padding: 3px 8px; border-radius: 999px; white-space: nowrap; }
+.cst.cured { color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.35); }
+.cst.near { color: #facc15; background: rgba(250,204,21,.10); border: 1px solid rgba(250,204,21,.30); }
+.cst.trial { color: #38bdf8; background: rgba(56,189,248,.10); border: 1px solid rgba(56,189,248,.30); }
+.cst.rsrch { color: #c084fc; background: rgba(168,85,247,.12); border: 1px solid rgba(168,85,247,.30); }
+.cst.none { color: #f87171; background: rgba(248,113,113,.10); border: 1px solid rgba(248,113,113,.30); }
+.pbar { width: 110px; height: 7px; border-radius: 999px; background: rgba(148,163,184,.15); overflow: hidden; }
+.med-expand { display: none; }
+.med-expand.open { display: table-row; }
+.med-expand > td { background: rgba(2,8,20,.75); }
+.co-card { border: 1px solid rgba(56,189,248,.16); border-radius: 10px; padding: 12px; background: rgba(8,16,34,.6); }
+.co-name { font-weight: 800; color: #eaf2ff; font-size: 12.5px; }
+.co-loc { font-size: 10.5px; color: #7dd3fc; margin: 3px 0 6px; }
+.co-what { font-size: 11.5px; line-height: 1.55; color: #b6c6dc; }
+.stg { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; margin-top: 8px; }
+.stg-ap { color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.30); }
+.stg-p3 { color: #38bdf8; background: rgba(56,189,248,.10); border: 1px solid rgba(56,189,248,.30); }
+.stg-p2 { color: #818cf8; background: rgba(129,140,248,.10); border: 1px solid rgba(129,140,248,.30); }
+.stg-p1 { color: #c084fc; background: rgba(192,132,252,.10); border: 1px solid rgba(192,132,252,.30); }
+.stg-pc { color: #94a3b8; background: rgba(148,163,184,.10); border: 1px solid rgba(148,163,184,.30); }
+
+/* --- Maturity stage badges + energy category chips (2026-07-04) ------------
+   Extends the pbadge vocabulary (now/near/far already exist) with the finer
+   research-stage ladder theory→lab→trial→proto→pilot so pages can show the
+   whole pipeline from idea to shelf. Same pill style as .pbadge; colours run
+   dim/speculative → bright/built. Also defines .etype category chips for the
+   energy comparison table (previously undefined → rendered as plain text). */
+.pbadge.theory { background: rgba(148,163,184,.16); color: #cbd5e1; }
+.pbadge.lab    { background: rgba(167,139,250,.18); color: #c4b5fd; }
+.pbadge.trial  { background: rgba(129,140,248,.18); color: #a5b4fc; }
+.pbadge.proto  { background: rgba(34,211,238,.16);  color: #67e8f9; }
+.pbadge.pilot  { background: rgba(45,212,191,.16);  color: #5eead4; }
+
+.etype { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 800; letter-spacing: .05em; white-space: nowrap; }
+.etype.re { color: #4ade80; background: rgba(34,197,94,.12);  border: 1px solid rgba(34,197,94,.30); }
+.etype.nu { color: #38bdf8; background: rgba(56,189,248,.12); border: 1px solid rgba(56,189,248,.30); }
+.etype.fo { color: #94a3b8; background: rgba(148,163,184,.12);border: 1px solid rgba(148,163,184,.28); }
+.etype.st { color: #fbbf24; background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.30); }
+.etype.fu { color: #c084fc; background: rgba(168,85,247,.14); border: 1px solid rgba(168,85,247,.32); }
+
+/* Stage legend strip (optional, above comparison tables) */
+.stage-legend { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 14px; align-items: center; }
+.stage-legend .lg-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #5c7292; font-weight: 700; margin-right: 4px; }
+
+/* --- Technology tile grid + detail page (2026-07-04) -----------------------
+   Replaces the flat comparison table with the site's photo-tile template:
+   photo → summary → stage badge, each tile links to a detail page. Reused
+   across domains via <domain>-tech.json + tech-tiles.js + tech-detail.html. */
+.tech-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.tech-tile { display: flex; flex-direction: column; text-decoration: none; color: #dce8f8; background: #04070f; border: 1px solid rgba(56,189,248,.18); border-radius: 14px; overflow: hidden; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
+.tech-tile:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.55); box-shadow: 0 12px 30px rgba(2,6,23,.55); }
+.tech-tile-photo { height: 130px; background-size: cover; background-position: center; position: relative; }
+.tech-tile-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,7,15,0) 40%, rgba(4,7,15,.85) 100%); }
+.tech-tile-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 7px; flex: 1; }
+.tech-tile-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.tech-tile-name { font-size: 14px; font-weight: 800; color: #eaf2ff; line-height: 1.25; }
+.tech-tile-sum { font-size: 12px; line-height: 1.5; color: #9fb2ca; flex: 1; }
+.tech-tile-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.tech-tile-type { font-size: 10px; font-weight: 700; letter-spacing: .04em; color: #7dd3fc; }
+.tech-tile-arrow { font-size: 10px; font-weight: 800; letter-spacing: .1em; color: #38bdf8; text-transform: uppercase; }
+
+/* Detail page */
+.td-wrap { max-width: 900px; margin: 0 auto; padding: 0 18px 60px; }
+.td-back { display: inline-block; margin: 18px 0 10px; font-size: 12px; font-weight: 700; color: #67e8f9; text-decoration: none; letter-spacing: .05em; }
+.td-hero { height: 260px; border-radius: 18px; background-size: cover; background-position: center; position: relative; border: 1px solid rgba(56,189,248,.2); }
+.td-hero::after { content: ""; position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(180deg, rgba(4,7,15,.1) 30%, rgba(4,7,15,.92) 100%); }
+.td-hero-cap { position: absolute; left: 22px; bottom: 18px; right: 22px; z-index: 2; }
+.td-title { font-size: 30px; font-weight: 900; color: #f2f7ff; margin: 0 0 8px; line-height: 1.1; }
+.td-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+.td-sec-title { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #67e8f9; font-weight: 800; margin: 26px 0 8px; }
+.td-text { font-size: 14.5px; line-height: 1.7; color: #c7d6ea; }
+.td-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 8px; }
+.td-spec { border: 1px solid rgba(56,189,248,.16); border-radius: 12px; padding: 12px 14px; background: rgba(8,16,34,.5); }
+.td-spec-k { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: #7dd3fc; font-weight: 700; }
+.td-spec-v { font-size: 14px; color: #eaf2ff; margin-top: 4px; font-weight: 700; }
+.td-companies { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.td-company { font-size: 12px; color: #dbe7f6; background: rgba(2,6,23,.55); border: 1px solid rgba(56,189,248,.16); border-radius: 999px; padding: 5px 12px; }
+
+/* --- Power-type group sections + bio/concept chips (2026-07-04) ------------- */
+.etype.bio { color: #34d399; background: rgba(16,185,129,.14); border: 1px solid rgba(16,185,129,.32); }
+.etype.con { color: #f0abfc; background: rgba(217,70,239,.12); border: 1px solid rgba(217,70,239,.30); }
+.pbadge.con, .pbadge.concept { background: rgba(217,70,239,.16); color: #f0abfc; }
+.tech-group { margin-top: 26px; }
+.tech-group-hed { display: flex; align-items: baseline; gap: 10px; margin: 0 0 4px; font-size: 17px; font-weight: 800; color: #eaf2ff; letter-spacing: -.01em; }
+.tech-group-hed .tg-count { font-size: 11px; font-weight: 700; color: #5c7292; letter-spacing: .06em; }
+.tech-group-sub { font-size: 12px; color: #7f96b4; margin: 0 0 10px; }
+
+/* --- AI Theory card (energy page) ------------------------------------------ */
+.ai-theory { margin-top: 12px; border: 1px solid rgba(217,70,239,.28); border-radius: 16px; padding: 20px 22px; background: radial-gradient(900px 300px at 0% 0%, rgba(217,70,239,.10), rgba(2,6,23,0)), linear-gradient(180deg, rgba(12,16,34,.7), rgba(2,6,23,.85)); }
+.ai-theory-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.ai-theory-badge { font-size: 10px; font-weight: 800; letter-spacing: .14em; color: #f0abfc; background: rgba(217,70,239,.16); border: 1px solid rgba(217,70,239,.4); padding: 3px 9px; border-radius: 999px; }
+.ai-theory-title { font-size: 19px; font-weight: 900; color: #f6ecff; }
+.ai-theory-body { font-size: 14px; line-height: 1.7; color: #cdd8ea; margin: 0 0 16px; }
+.ai-theory-body strong { color: #f0abfc; }
+.ai-theory-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.ai-theory-btn { font-size: 13px; font-weight: 800; color: #0a0416; background: linear-gradient(90deg, #e879f9, #a855f7); border: none; border-radius: 10px; padding: 9px 16px; cursor: pointer; transition: filter .15s ease, transform .15s ease; }
+.ai-theory-btn:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
+.ai-theory-btn:disabled { opacity: .6; cursor: default; }
+.ai-theory-note { font-size: 11px; color: #8aa2bf; }
+
+/* --- Accurate battery-pack photos (2026-07-04, Pollinations flux) --------- */
+.nrg-bat-lfp { background-image: url("/images/generated/nrg-bat-lfp-1783139970572.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-sodium-ion { background-image: url("/images/generated/nrg-bat-sodium-ion-1783140015509.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-solid-state { background-image: url("/images/generated/nrg-bat-solid-state-1783140060302.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-vanadium-flow { background-image: url("/images/generated/nrg-bat-vanadium-flow-1783140106223.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-hydrogen { background-image: url("/images/generated/nrg-bat-hydrogen-1783140150646.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-metal-air { background-image: url("/images/generated/nrg-bat-metal-air-1783140195309.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-iron-air { background-image: url("/images/generated/nrg-bat-iron-air-1783140240695.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-lithium-sulfur { background-image: url("/images/generated/nrg-bat-lithium-sulfur-1783140285238.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-diamond { background-image: url("/images/generated/nrg-bat-diamond-1783140330282.jpg"); background-size: cover; background-position: center; }
+.nrg-bat-sodium-sulfur { background-image: url("/images/generated/nrg-bat-sodium-sulfur-1783140376596.jpg"); background-size: cover; background-position: center; }
+
+/* --- Health page: disclaimer + body map (2026-07-04) ----------------------- */
+.med-disclaimer { margin: 14px 0 4px; padding: 11px 16px; border: 1px solid rgba(248,113,113,.4); background: rgba(248,113,113,.08); border-radius: 12px; font-size: 12.5px; color: #fca5a5; }
+.med-disclaimer strong { color: #fecaca; }
+.bodymap-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 20px; align-items: center; margin: 18px 0 6px; }
+.bodymap { background: radial-gradient(300px 400px at 50% 30%, rgba(56,189,248,.10), rgba(2,6,23,0)); border: 1px solid rgba(56,189,248,.18); border-radius: 18px; padding: 10px; }
+.bm-organ { cursor: pointer; }
+.bm-organ:hover .bm-dot, .bm-organ.on .bm-dot { r: 9; }
+.bm-dot { transition: r .15s ease; }
+.bm-label { font-size: 10px; fill: #c7d6ea; font-weight: 700; }
+.bm-legend { }
+.bm-legend h3 { font-size: 15px; color: #eaf2ff; margin: 0 0 8px; }
+.bm-legend p { font-size: 13px; color: #9fb2ca; line-height: 1.6; margin: 0 0 10px; }
+.bm-systems { display: flex; flex-wrap: wrap; gap: 7px; }
+.bm-sys-chip { font-size: 11px; color: #7dd3fc; background: rgba(56,189,248,.10); border: 1px solid rgba(56,189,248,.28); border-radius: 999px; padding: 4px 11px; cursor: pointer; text-decoration: none; }
+.bm-sys-chip:hover { background: rgba(56,189,248,.2); }
+@media (max-width: 640px) { .bodymap-wrap { grid-template-columns: 1fr; } }
+
+/* --- Saved/pinned AI theories (energy page) -------------------------------- */
+.ai-theory-saved-hd { margin-top: 22px; font-size: 15px; font-weight: 800; color: #f0abfc; }
+.ai-theory-saved { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; margin-top: 10px; }
+.ai-theory-saved-card { border: 1px solid rgba(217,70,239,.2); border-radius: 12px; padding: 12px 14px; background: rgba(12,16,34,.55); }
+.ai-theory-saved-card.pinned { border-color: rgba(217,70,239,.55); background: rgba(217,70,239,.08); }
+.ai-theory-saved-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.ai-theory-ver { font-size: 10px; font-weight: 800; color: #0a0416; background: #e879f9; border-radius: 6px; padding: 2px 6px; }
+.ai-theory-saved-title { font-size: 13px; font-weight: 800; color: #f6ecff; flex: 1; }
+.ai-theory-pin { font-size: 10px; font-weight: 700; color: #f0abfc; background: rgba(217,70,239,.12); border: 1px solid rgba(217,70,239,.35); border-radius: 999px; padding: 3px 9px; cursor: pointer; white-space: nowrap; }
+.ai-theory-pin:hover { background: rgba(217,70,239,.25); }
+.ai-theory-saved-body { font-size: 12px; line-height: 1.6; color: #cdd8ea; margin: 0; }
+
+/* --- Jobs tab: automation-timeline badges + replacement workflow (2026-07-05) */
+.pbadge.soon  { background: rgba(248,113,113,.18); color: #fca5a5; }
+.pbadge.mid   { background: rgba(245,158,11,.18);  color: #fbbf24; }
+.pbadge.later { background: rgba(168,85,247,.18);  color: #c084fc; }
+.pbadge.safe  { background: rgba(34,197,94,.18);   color: #4ade80; }
+.job-flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; margin: 14px 0 6px; }
+.job-step { flex: 1 1 150px; min-width: 140px; border: 1px solid rgba(56,189,248,.2); border-radius: 12px; padding: 12px 14px; background: rgba(8,16,34,.55); position: relative; }
+.job-step-n { font-size: 10px; font-weight: 800; letter-spacing: .12em; color: #38bdf8; }
+.job-step-t { font-size: 13px; font-weight: 800; color: #eaf2ff; margin-top: 4px; }
+.job-step-d { font-size: 11.5px; color: #9fb2ca; margin-top: 4px; line-height: 1.5; }
+.job-flow-note { font-size: 12px; color: #7f96b4; margin: 4px 0 0; }
+
+/* --- PC Parts tab: tier badges (2026-07-05) -------------------------------- */
+.pbadge.essential { background: rgba(34,197,94,.18); color: #4ade80; }
+.pbadge.optional  { background: rgba(148,163,184,.16); color: #cbd5e1; }
+
+/* --- AI Systems tab: adoption badges (2026-07-05) -------------------------- */
+.pbadge.leading { background: rgba(34,197,94,.18); color: #4ade80; }
+.pbadge.rising  { background: rgba(56,189,248,.18); color: #7dd3fc; }
+
+/* ===== Phase-1 "Coming Soon" tiles (coming-soon.js, added 2026-07-08) ===== */
+.coming-soon { margin: 42px auto 8px; max-width: 1200px; padding: 0 16px; }
+.cs-inner {
+  border: 1px solid rgba(120,190,255,0.18);
+  border-radius: 14px;
+  padding: 20px 22px;
+  background:
+    linear-gradient(180deg, rgba(14,20,34,0.72), rgba(9,13,22,0.72)),
+    repeating-linear-gradient(0deg, rgba(120,190,255,0.05) 0 1px, transparent 1px 22px),
+    repeating-linear-gradient(90deg, rgba(120,190,255,0.05) 0 1px, transparent 1px 22px);
+}
+.cs-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.cs-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+  padding: 3px 9px; border-radius: 999px; color: #05f2ff;
+  background: rgba(5,242,255,0.10); border: 1px solid rgba(5,242,255,0.35);
+}
+.cs-title { margin: 0; font-size: 18px; font-weight: 700; color: #eaf3ff; }
+.cs-count { margin-left: auto; font-size: 12px; color: #7f93b3; }
+.cs-list { display: flex; flex-wrap: wrap; gap: 9px; }
+.cs-chip {
+  font-size: 13px; color: #cfe2ff; padding: 6px 13px; border-radius: 999px;
+  background: rgba(120,190,255,0.06); border: 1px solid rgba(120,190,255,0.20);
+  transition: border-color .15s, color .15s, box-shadow .15s;
+}
+.cs-chip:hover {
+  color: #fff; border-color: rgba(157,120,255,0.7);
+  box-shadow: 0 0 14px rgba(157,120,255,0.28);
+}
