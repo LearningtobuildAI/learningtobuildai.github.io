@@ -30,7 +30,26 @@
   // Ordered power-type groups (containers with data-tech-grouped).
   var GROUP_ORDER = ["solar","wind","water","geo","bio","fossil","hydrogen","nuclear","fusion","storage","concept",
     // Jobs-by-industry (2026-07-15) — order matches the Industry Sectors list.
-    "construction","manufacturing","logistics","agriculture","retail","healthcare","pharma","finance","mining","transport","business","government","media","callcentre","hospitality","education"];
+    "construction","manufacturing","logistics","agriculture","retail","healthcare","pharma","finance","mining","transport","business","government","media","callcentre","hospitality","education",
+    // Domain-page groups (2026-07-22) — every domain tracker renders grouped,
+    // so each domain's slugs get an explicit order here (absent groups skip).
+    "models","agents","infra",                                  // AI
+    "computing","energy","robotics","materials",                // Current tech
+    "nano","composites","meta",                                 // Materials
+    "emerging","frontier",                                      // Future
+    "therapeutics","diagnostics","genomics","devices",          // Medicine
+    "bci","stimulation","imaging",                              // Neuro
+    "launch","satellites","exploration","propulsion",           // Space
+    "engineering","biomanufacturing",                           // Synthetic bio
+    "methods","automation",                                     // Construction
+    "skincare","biotech",                                       // Cosmetics
+    "policy","regtech",                                         // Governance
+    "cyber","crypto","identity",                                // Security
+    "iot","cities",                                             // Smart systems
+    "industrial","service","humanoid",                          // Robotics
+    "medical",                                                  // 3D printing
+    "crops","protein","supply",                                 // Agriculture
+    "rpa"];                                                     // Job automation
   var GROUP_LABEL = {
     solar: "☀️ Solar", wind: "🌬️ Wind", water: "🌊 Water & Marine",
     geo: "🌋 Geothermal", bio: "🌱 Bioenergy", fossil: "🛢️ Fossil (legacy)",
@@ -56,7 +75,7 @@
     // AI Systems domain
     "assistant": "💬 AI Assistants", "coding": "💻 AI Coding",
     "image": "🎨 AI Image", "video": "🎬 AI Video", "voice": "🔊 AI Voice & Audio",
-    "productivity": "📈 AI Productivity", "automation": "⚙️ Business Automation",
+    "productivity": "📈 AI Productivity", "automation": "⚙️ Automation",
     // Jobs-by-industry sector headers (2026-07-15)
     "construction": "🏗️ Construction & Infrastructure", "manufacturing": "🏭 Manufacturing & Industrial Production",
     "logistics": "📦 Logistics, Warehousing & Supply Chain", "agriculture": "🌾 Agriculture & Food Production",
@@ -66,6 +85,27 @@
     "business": "💼 Business Operations & Corporate Workflows", "government": "🏛️ Government & Public Sector",
     "media": "🎬 Media, Entertainment & Creative Work", "callcentre": "📞 Call Centres & Customer Support",
     "hospitality": "🧹 Cleaning, Maintenance & Hospitality", "education": "🎓 Education",
+    // Domain-page group headers (2026-07-22) — previously these slugs had no
+    // label, so grouped trackers showed the bare slug (e.g. "models").
+    "models": "🧠 AI Models", "agents": "🤖 AI Agents", "infra": "🖥️ Compute & Infrastructure",
+    "computing": "💻 Computing", "energy": "⚡ Energy", "robotics": "🦾 Robotics", "materials": "🧱 Materials",
+    "nano": "🔬 Nanomaterials", "composites": "🧵 Composites", "meta": "🧲 Metamaterials",
+    "emerging": "🚀 Emerging Tech", "frontier": "🔮 Frontier Concepts",
+    "therapeutics": "💊 Therapeutics", "diagnostics": "🩺 Diagnostics",
+    "genomics": "🧬 Genomics", "devices": "🩻 Medical Devices",
+    "bci": "🧠 Brain–Computer Interfaces", "stimulation": "⚡ Neurostimulation", "imaging": "🧲 Neuroimaging",
+    "launch": "🚀 Launch Systems", "satellites": "🛰️ Satellites & Orbit",
+    "exploration": "🌌 Exploration & Science", "propulsion": "🔥 Advanced Propulsion",
+    "engineering": "🧬 Bio-Engineering", "biomanufacturing": "🏭 Biomanufacturing",
+    "methods": "🏗️ Build Methods",
+    "skincare": "🧴 Skincare Science", "biotech": "🧫 Beauty Biotech",
+    "policy": "🏛️ Policy & Governance", "regtech": "📋 RegTech & Compliance",
+    "cyber": "🛡️ Cybersecurity", "crypto": "🔐 Cryptography & PQC", "identity": "🪪 Identity & Trust",
+    "iot": "📡 IoT & Connected Devices", "cities": "🏙️ Smart Cities",
+    "industrial": "🏭 Industrial", "service": "🛎️ Service Robots", "humanoid": "🦿 Humanoid Robots",
+    "medical": "🩺 Medical",
+    "crops": "🌾 Crops & Growing", "protein": "🥩 Alternative Protein", "supply": "🚚 Supply Chain",
+    "rpa": "⚙️ RPA & Workflow",
   };
   var GROUP_SUB = {
     concept: "Frontier and biological energy — including how living things power themselves.",

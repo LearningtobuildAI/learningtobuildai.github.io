@@ -563,7 +563,7 @@ body.gss-enabled .section-theme-hero {
 
 .pgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: 13px;
 }
 .pc {
@@ -690,13 +690,18 @@ body.gss-enabled .section-theme-hero {
   color: var(--text, #dce8f8);
 }
 
-/* Constrain the section content so cards don't touch the viewport edge */
+/* Constrain the section content so cards don't touch the viewport edge.
+   Widened 2026-07-22 so card grids fit 8 across on large screens. */
 .domain-sec,
 [class^="domain-"][id^="domain-"] {
-  max-width: 1180px;
+  max-width: 1840px;
   margin: 0 auto;
   padding: 28px 22px 60px;
   box-sizing: border-box;
+}
+/* !important because pages carry an inline max-width:1200px on this section. */
+.tech-tiles-section {
+  max-width: 1840px !important;
 }
 
 .pbf-w40 {
@@ -900,7 +905,15 @@ body.gss-enabled .section-theme-hero {
    Replaces the flat comparison table with the site's photo-tile template:
    photo → summary → stage badge, each tile links to a detail page. Reused
    across domains via <domain>-tech.json + tech-tiles.js + tech-detail.html. */
-.tech-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+.tech-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 16px; }
+/* A grouped container holds .tech-group sections (each with its own inner
+   .tech-grid), not tiles — it must stack, never grid its groups into columns. */
+.tech-grid[data-tech-grouped="true"] { display: block; }
+/* 8-across card grids (2026-07-22) — step down as the viewport narrows. */
+@media (max-width: 1700px) { .pgrid, .tech-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (max-width: 1280px) { .pgrid, .tech-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 900px)  { .pgrid, .tech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px)  { .pgrid, .tech-grid { grid-template-columns: 1fr; } }
 .tech-tile { display: flex; flex-direction: column; text-decoration: none; color: #dce8f8; background: #04070f; border: 1px solid rgba(56,189,248,.18); border-radius: 14px; overflow: hidden; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease; }
 .tech-tile:hover { transform: translateY(-3px); border-color: rgba(56,189,248,.55); box-shadow: 0 12px 30px rgba(2,6,23,.55); }
 .tech-tile-photo { height: 130px; background-size: cover; background-position: center; position: relative; }

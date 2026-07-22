@@ -9,19 +9,26 @@
       .trim();
   }
 
+  /*
+   * Exact-first matching. The old fuzzy pass (label.includes(wanted) ||
+   * wanted.includes(label)) let a card with a SHORT title ("AI") match almost
+   * every slot, and Array.find always returned that same first card — 46 dg slot
+   * images were painted onto 4 distinct cards while the other 42 stayed empty.
+   * Substring matching is now used only when it is unambiguous (exactly one
+   * candidate), otherwise we return null and let targetIndex decide.
+   */
   function findElementByName(elements, getName, targetName) {
     const wanted = normalizeSlotText(targetName);
     if (!wanted) return null;
-    return (
-      elements.find((el) => {
-        const label = normalizeSlotText(getName(el));
-        return (
-          label === wanted ||
-          label.includes(wanted) ||
-          wanted.includes(label)
-        );
-      }) || null
+    const exact = elements.find(
+      (el) => normalizeSlotText(getName(el)) === wanted,
     );
+    if (exact) return exact;
+    const subs = elements.filter((el) => {
+      const label = normalizeSlotText(getName(el));
+      return label && (label.includes(wanted) || wanted.includes(label));
+    });
+    return subs.length === 1 ? subs[0] : null;
   }
 
   async function loadAndApplyImages() {
@@ -641,6 +648,18 @@
     });
   }
 
+  /*
+   * Auto-load and apply images on page load.
+   *
+   * This used to be a bare call at script-parse time, which raced the cards into
+   * existence: applyImagesToSite() queries "#summary .dg-card", but those cards
+   * aren't in the DOM yet when this script runs, so only the handful already
+   * present got an image (4 of 50) and the other 42 were silently skipped for
+   * good — the assigned image existed and served fine, it was just never applied.
+   *
+   * So: apply once the DOM is parsed, then re-apply on window load from the
+   * cached slots (no second 667KB fetch) to catch anything rendered late.
+   */
   // Auto-load and apply images on page load
   loadAndApplyImages();
 

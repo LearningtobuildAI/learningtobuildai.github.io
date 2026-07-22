@@ -59,7 +59,8 @@
       ".domain-dir-strip::-webkit-scrollbar{height:6px;}" +
       ".domain-dir-strip::-webkit-scrollbar-thumb{background:rgba(56,189,248,.4);border-radius:3px;}" +
       ".ddir-lbl{flex:0 0 auto;align-self:center;font-size:9px;font-weight:800;letter-spacing:.14em;" +
-      "color:#93c5fd;padding-right:4px;text-transform:uppercase;}" +
+      "color:#93c5fd;padding-right:4px;text-transform:uppercase;text-decoration:none;}" +
+      ".ddir-lbl:hover{color:#67e8f9;}" +
       // Tile = the homepage Domain Directory look: photo card, green live dot +
       // name up top, big count + INTEL CARDS + OPEN → along the bottom.
       ".ddir-tile{flex:0 0 auto;display:flex;flex-direction:column;justify-content:space-between;" +
@@ -86,7 +87,9 @@
   function render(counts) {
     mount.className = "domain-dir-strip";
     mount.innerHTML =
-      '<span class="ddir-lbl">Domains</span>' +
+      // The strip is the only site-wide nav since the banner removal
+      // (2026-07-21), so the label chip doubles as the way back home.
+      '<a class="ddir-lbl" href="/index.html">&#8962; Home</a>' +
       DOMAINS.map(function (d, i) {
         var c = counts ? counts[i] : "";
         var here = /\/sections\/(.+?)\//.exec(location.pathname);
