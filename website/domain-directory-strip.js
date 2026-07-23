@@ -101,8 +101,11 @@
     { name: "Jobs & Automation", href: "/website/sections/jobs/index.html" },
     { name: "AI Systems", href: "/website/sections/ai-systems/index.html" },
     { name: "PC Parts", href: "/website/sections/pc-parts/index.html" },
+    { name: "Domains", href: "/website/sections/domains/index.html" },
+    { name: "Intel", href: "/website/sections/intel-tiles/index.html" },
     { name: "News", href: "/website/sections/feed/index.html" },
     { name: "Reference", href: "/reference.html" },
+    { name: "Contact", href: "/contact.html" },
   ];
 
   function render(counts) {
