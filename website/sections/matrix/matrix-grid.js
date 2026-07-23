@@ -22,6 +22,17 @@
         { name: "Civilisation-Scale Engineering", path: "domain-civeng", photo: "bi-civilisation-scale-engineering-1783220944944", keys: ["Civilisation-Scale Engineering"], kw: ["megastructure", "civilisation"] },
         { name: "Xenoscience", path: "domain-xeno", photo: "bi-xenoscience-1783297869035", keys: ["Xenoscience"], kw: ["astrobiology", "exoplanet", "xeno"] },
       ];
+      // Non-domain sections shown as tiles alongside the domains (2026-07-23).
+      // Counts are the section's current tile-JSON length (refresh if they grow).
+      const EXTRA = [
+        { name: "Gadgets", path: "gadgets", photo: "gadget-ai-smart-glasses", count: 18 },
+        { name: "Jobs & Automation", path: "jobs", photo: "domain-auto-jobs", count: 26 },
+        { name: "AI Systems", path: "ai-systems", photo: "ai-tech-anthropic-ai-model-1784336702799", count: 23 },
+        { name: "PC Parts", path: "pc-parts", photo: "curtech-neuromorphic-processors-1784767416536", count: 14 },
+        { name: "Domains", path: "domains", photo: "ai-tech-quantum-neural-networks-1784333535973", count: 18 },
+        { name: "Intel", path: "intel-tiles", photo: "bi-economic-intelligence-1782288449292", count: 48 },
+        { name: "News", path: "feed", photo: "world-intel-hero-1782347313360", count: 60 },
+      ];
       const grid = document.getElementById("matrixGrid");
       if (!grid) return;
       const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -89,7 +100,14 @@
               '<div class="matrix-card-meta"><div class="matrix-card-count">' + c + '<small>Intel Cards</small></div><div class="matrix-card-arrow">OPEN \u2192</div></div>' +
               '</div></a>'
             );
-          }).join("");
+          }).join("") + EXTRA.map((d) => (
+            '<a class="matrix-card" href="/website/sections/' + d.path + '/index.html">' +
+            '<div class="matrix-card-img" style="background-image:url(\'/images/generated/' + d.photo + '.jpg\')"></div>' +
+            '<div class="matrix-card-body">' +
+            '<div class="matrix-card-top"><span class="matrix-status-dot"></span><span class="matrix-card-name">' + esc(d.name) + '</span></div>' +
+            '<div class="matrix-card-meta"><div class="matrix-card-count">' + d.count + '<small>Intel Cards</small></div><div class="matrix-card-arrow">OPEN →</div></div>' +
+            '</div></a>'
+          )).join("");
           // NOTE: the site-wide domain counters (matrixDomainCount /
           // summaryDomainStatus / matrixDomainInline) are owned by
           // syncDomainCounters in index-inline-1.js, which counts ALL tracked

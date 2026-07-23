@@ -31,6 +31,18 @@
     { name: "Xenoscience", path: "domain-xeno", photo: "bi-xenoscience-1783297869035" },
   ];
 
+  // Non-domain sections shown as tiles in the strip too (2026-07-23), matching
+  // the homepage directory. Static counts = current section tile-JSON length.
+  var EXTRA = [
+    { name: "Gadgets", path: "gadgets", photo: "gadget-ai-smart-glasses", count: 18 },
+    { name: "Jobs & Automation", path: "jobs", photo: "domain-auto-jobs", count: 26 },
+    { name: "AI Systems", path: "ai-systems", photo: "ai-tech-anthropic-ai-model-1784336702799", count: 23 },
+    { name: "PC Parts", path: "pc-parts", photo: "curtech-neuromorphic-processors-1784767416536", count: 14 },
+    { name: "Domains", path: "domains", photo: "ai-tech-quantum-neural-networks-1784333535973", count: 18 },
+    { name: "Intel", path: "intel-tiles", photo: "bi-economic-intelligence-1782288449292", count: 48 },
+    { name: "News", path: "feed", photo: "world-intel-hero-1782347313360", count: 60 },
+  ];
+
   // ALIASES → server canonical per-domain counts (fallback when a slug has no
   // live count). Kept parallel to matrix-grid.js.
   var ALIASES = {
@@ -94,16 +106,9 @@
     document.head.appendChild(st);
   }
 
-  // Non-domain sections users otherwise can't reach from a domain page.
+  // Sections not shown as tiles above — kept as slim text links only.
   var MORE_LINKS = [
-    { name: "Gadgets", href: "/website/sections/gadgets/index.html" },
     { name: "Health", href: "/website/sections/health/index.html" },
-    { name: "Jobs & Automation", href: "/website/sections/jobs/index.html" },
-    { name: "AI Systems", href: "/website/sections/ai-systems/index.html" },
-    { name: "PC Parts", href: "/website/sections/pc-parts/index.html" },
-    { name: "Domains", href: "/website/sections/domains/index.html" },
-    { name: "Intel", href: "/website/sections/intel-tiles/index.html" },
-    { name: "News", href: "/website/sections/feed/index.html" },
     { name: "Reference", href: "/reference.html" },
     { name: "Contact", href: "/contact.html" },
   ];
@@ -129,6 +134,18 @@
           '<span class="ddir-name">' + esc(d.name) + '</span>' +
           '<span class="ddir-foot"><span class="ddir-count"><b>' +
           (c === "" ? "&nbsp;" : c) + '</b><i>Intel Cards</i></span>' +
+          '<span class="ddir-open">Open &rarr;</span></span>' +
+          '</a>'
+        );
+      }).join("") +
+      EXTRA.map(function (d) {
+        return (
+          '<a class="ddir-tile" href="/website/sections/' + d.path + '/index.html"' +
+          ' style="--bg:url(\'/images/generated/' + d.photo + '.jpg\')"' +
+          ' title="' + esc(d.name) + '">' +
+          '<span class="ddir-name">' + esc(d.name) + '</span>' +
+          '<span class="ddir-foot"><span class="ddir-count"><b>' + d.count +
+          '</b><i>Intel Cards</i></span>' +
           '<span class="ddir-open">Open &rarr;</span></span>' +
           '</a>'
         );
