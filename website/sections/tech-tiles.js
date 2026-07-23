@@ -14,6 +14,8 @@
     essential: "ESSENTIAL", optional: "OPTIONAL",
     // AI systems: adoption
     leading: "LEADING", rising: "RISING",
+    // Legacy/stray pipeline slugs — label cleanly instead of raw uppercase.
+    spec: "SPECULATIVE", speculative: "SPECULATIVE", future: "FUTURE", civ: "CIV-SCALE", concept: "CONCEPT",
   };
   var TYPE_GRAD = {
     re: "linear-gradient(140deg,#14532d,#4ade80)",
@@ -120,11 +122,12 @@
     var bg = t.photo
       ? "background-image:url('" + esc(t.photo) + "')"
       : "background-image:" + (TYPE_GRAD[t.etype] || TYPE_GRAD.st);
-    var href = "/website/sections/tech-detail.html?d=" +
-      encodeURIComponent(domain) + "&id=" + encodeURIComponent(t.id);
+    // Pre-rendered static detail page (crawlable). Falls back to the client
+    // renderer only for ids without a generated page.
+    var href = "/website/sections/detail/" + domain + "/" + t.id + ".html";
     return (
       '<a class="tech-tile" href="' + href + '">' +
-      '<div class="tech-tile-photo" style="' + bg + '"></div>' +
+      '<div class="tech-tile-photo" role="img" aria-label="' + esc(t.name) + '" style="' + bg + '"></div>' +
       '<div class="tech-tile-body">' +
       '<div class="tech-tile-top">' +
       '<span class="tech-tile-name">' + esc(t.name) + "</span>" +

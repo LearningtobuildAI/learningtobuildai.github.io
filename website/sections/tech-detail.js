@@ -20,6 +20,25 @@
     pcparts: { src: "/website/sections/pc-parts/pc-parts.json", back: "/website/sections/pc-parts/index.html", label: "PC Parts" },
     aisystems: { src: "/website/sections/ai-systems/ai-systems.json", back: "/website/sections/ai-systems/index.html", label: "Best AI Systems" },
     med: { src: "/website/sections/domain-med/medtech.json", back: "/website/sections/domain-med/index.html", label: "Medicine & Biotech" },
+    // 2026-07-22 — every domain tracker links here, so every page's
+    // data-tech-domain code needs a mapping or the detail falls back to nrg.
+    ai: { src: "/website/sections/domain-ai/ai-tech.json", back: "/website/sections/domain-ai/index.html", label: "AI — The Core Engine" },
+    cur: { src: "/website/sections/domain-cur/curtech.json", back: "/website/sections/domain-cur/index.html", label: "Current Technology" },
+    materials: { src: "/website/sections/domain-mat/materials-tech.json", back: "/website/sections/domain-mat/index.html", label: "Materials Science" },
+    neu: { src: "/website/sections/domain-neu/neurotech.json", back: "/website/sections/domain-neu/index.html", label: "Neurotech & BCI" },
+    spc: { src: "/website/sections/domain-spc/spacetech.json", back: "/website/sections/domain-spc/index.html", label: "Space & Physical Automation" },
+    synbio: { src: "/website/sections/domain-syn/synbio-tech.json", back: "/website/sections/domain-syn/index.html", label: "Synthetic Biology" },
+    future: { src: "/website/sections/domain-fut/future-tech.json", back: "/website/sections/domain-fut/index.html", label: "Future Technology" },
+    build: { src: "/website/sections/domain-bld/build-tech.json", back: "/website/sections/domain-bld/index.html", label: "Construction OS" },
+    cosmetics: { src: "/website/sections/domain-cos/cosmetics-tech.json", back: "/website/sections/domain-cos/index.html", label: "Cosmetics & Beauty Tech" },
+    govern: { src: "/website/sections/domain-gov/govern-tech.json", back: "/website/sections/domain-gov/index.html", label: "Governance & Policy" },
+    security: { src: "/website/sections/domain-sec/security-tech.json", back: "/website/sections/domain-sec/index.html", label: "Security & Cryptography" },
+    smart: { src: "/website/sections/domain-smt/smart-tech.json", back: "/website/sections/domain-smt/index.html", label: "Smart Systems" },
+    robotics: { src: "/website/sections/domain-robotics/robotics-tech.json", back: "/website/sections/domain-robotics/index.html", label: "Robotics" },
+    printing: { src: "/website/sections/domain-3dp/printing-tech.json", back: "/website/sections/domain-3dp/index.html", label: "3D Printing" },
+    agri: { src: "/website/sections/domain-agri/agri-tech.json", back: "/website/sections/domain-agri/index.html", label: "Agriculture Tech" },
+    automation: { src: "/website/sections/domain-auto-jobs/automation-tech.json", back: "/website/sections/domain-auto-jobs/index.html", label: "Job Automation" },
+    intel: { src: "/website/sections/intel-tiles/intel-tiles.json", back: "/website/sections/intel-tiles/index.html", label: "Intel Tiles" },
   };
   var STAGE = {
     now: "NOW", near: "NEAR", far: "FAR", theory: "THEORY",

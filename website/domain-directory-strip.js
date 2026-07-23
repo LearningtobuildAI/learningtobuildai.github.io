@@ -80,9 +80,30 @@
       ".ddir-count b{font-size:19px;font-weight:800;color:#38bdf8;}" +
       ".ddir-count i{font-style:normal;font-size:7.5px;font-weight:700;letter-spacing:.12em;color:#94a3b8;" +
       "text-transform:uppercase;}" +
-      ".ddir-open{font-size:8.5px;font-weight:800;letter-spacing:.1em;color:#e2e8f0;text-transform:uppercase;}";
+      ".ddir-open{font-size:8.5px;font-weight:800;letter-spacing:.1em;color:#e2e8f0;text-transform:uppercase;}" +
+      // Active domain: brighter border + cyan glow + a top accent bar.
+      ".ddir-tile.is-cur{border-color:rgba(56,189,248,.85)!important;box-shadow:0 0 0 1px rgba(56,189,248,.5),0 6px 18px rgba(2,6,23,.5);}" +
+      ".ddir-tile.is-cur::after{background:linear-gradient(180deg,rgba(56,189,248,.28) 0%,rgba(2,6,23,.72) 100%);}" +
+      // Secondary row: quick links to the non-domain sections.
+      ".ddir-more{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding:7px 16px;" +
+      "background:rgba(2,6,23,.9);border-bottom:1px solid rgba(56,189,248,.14);}" +
+      ".ddir-more a{font-size:10.5px;font-weight:700;letter-spacing:.03em;color:#93c5fd;text-decoration:none;" +
+      "white-space:nowrap;}" +
+      ".ddir-more a:hover{color:#67e8f9;}" +
+      ".ddir-more b{font-size:9px;font-weight:800;letter-spacing:.14em;color:#5c7292;text-transform:uppercase;}";
     document.head.appendChild(st);
   }
+
+  // Non-domain sections users otherwise can't reach from a domain page.
+  var MORE_LINKS = [
+    { name: "Gadgets", href: "/website/sections/gadgets/index.html" },
+    { name: "Health", href: "/website/sections/health/index.html" },
+    { name: "Jobs & Automation", href: "/website/sections/jobs/index.html" },
+    { name: "AI Systems", href: "/website/sections/ai-systems/index.html" },
+    { name: "PC Parts", href: "/website/sections/pc-parts/index.html" },
+    { name: "News", href: "/website/sections/feed/index.html" },
+    { name: "Reference", href: "/reference.html" },
+  ];
 
   function render(counts) {
     mount.className = "domain-dir-strip";
@@ -98,9 +119,9 @@
         // tree, so a value set on a child span is invisible to ::before here —
         // that bug is why the strip's photos never rendered before 07-16.
         return (
-          '<a class="ddir-tile" href="/website/sections/' + d.path + '/index.html"' +
-          ' style="--bg:url(\'/images/generated/' + d.photo + '.jpg\')' +
-          (isCur ? ";border-color:rgba(56,189,248,.7)" : "") + '"' +
+          '<a class="ddir-tile' + (isCur ? " is-cur" : "") + '" href="/website/sections/' + d.path + '/index.html"' +
+          ' style="--bg:url(\'/images/generated/' + d.photo + '.jpg\')"' +
+          (isCur ? ' aria-current="page"' : "") +
           ' title="' + esc(d.name) + '">' +
           '<span class="ddir-name">' + esc(d.name) + '</span>' +
           '<span class="ddir-foot"><span class="ddir-count"><b>' +
@@ -109,6 +130,18 @@
           '</a>'
         );
       }).join("");
+  }
+
+  // Secondary quick-links row for the non-domain sections (once).
+  if (!document.getElementById("ddirMoreRow")) {
+    var more = document.createElement("nav");
+    more.id = "ddirMoreRow";
+    more.className = "ddir-more";
+    more.setAttribute("aria-label", "More sections");
+    more.innerHTML = "<b>More</b>" + MORE_LINKS.map(function (l) {
+      return '<a href="' + l.href + '">' + esc(l.name) + "</a>";
+    }).join("");
+    mount.insertAdjacentElement("afterend", more);
   }
 
   // Immediate paint (no counts), then live counts.
