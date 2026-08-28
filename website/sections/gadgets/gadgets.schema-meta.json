@@ -1,25 +1,42 @@
 {
-  "schemaUpdated": "2026-08-25",
-  "updatedFor": "canonical rulebook v1.4.0 summary fields + PROMPT 1 §3.2/§4.1/§4.2",
+  "schemaUpdated": "2026-08-28",
+  "updatedFor": "gadgets wired into the 24/7 cycle; 13 tiles added; the earlier 'open gaps' re-diagnosed",
+
+  "_readThisFirst": "Three of the five gaps recorded on 2026-08-25 were aimed at fields NOTHING RENDERS. Grep before filling: materialsRequired, processToMake, energyNeeded, verifiedPrice, commissionRate and shortVideoExplainer appear in this file and in gadgets.json and in NO renderer anywhere on the site. The detail page reads a SEPARATE file, sections/gadgets/details/<id>.json, in the shape {model, generatedAt, ai:{...}} — see tools/fill-detail-pages.js.",
+
   "fieldProvenance": {
     "whatItIs": "the tile's existing `what` text, re-labelled — not rewritten",
     "whatItDoes": "the tile's existing `use` text, re-labelled — not rewritten",
     "howItWorks": "the tile's existing `how` text, re-labelled — not rewritten",
-    "materialsRequired": "never recorded for these tiles — set to \"Data not available / not verified.\" per rulebook, NOT guessed",
-    "processToMake": "never recorded for these tiles — set to \"Data not available / not verified.\" per rulebook, NOT guessed",
-    "energyNeeded": "never recorded for these tiles — set to \"Data not available / not verified.\" per rulebook, NOT guessed",
-    "monthAdded": "derived from this file's last-write time (2026-08-05) — these tiles carry no creation date",
-    "verifiedPrice": "null — no price was ever recorded, and PROMPT 1 forbids fabricating one",
-    "commissionRate": "null — no affiliate account or associate tag is configured anywhere in this repo",
-    "affiliateLinks": "amazon-au links only; kickstarter/crowdsupply earn nothing per the page disclosure",
-    "commissionLinks": "same set as affiliateLinks (PROMPT 1 §4.2 naming)",
-    "shortVideoExplainer": "null placeholder — PROMPT 1 §4.1 says add the field and routing only, generate no videos"
+    "materialsRequired": "DEAD FIELD — nothing reads it. The rendered equivalent is section 5 'Materials Used', fed by ai.materials in details/<id>.json.",
+    "processToMake": "DEAD FIELD — nothing reads it. Rendered equivalent is section 6, fed by ai.manufacturing in details/<id>.json.",
+    "energyNeeded": "DEAD FIELD — nothing reads it. Rendered equivalent is section 8, fed by ai.energyRequirements in details/<id>.json.",
+    "monthAdded": "on the original 18 only, derived from this file's 2026-08-05 write time",
+    "addedAt": "set by /api/section-tiles/add on every tile added from 2026-08-28 onward",
+    "verifiedPrice": "null, and DELIBERATELY SO. The detail template's section 10 states 'no verified dollar figures are shown — check live sources for prices' and links out instead. A hand-typed price would contradict the page's own stated policy and would rot; the Amazon search link already shows the live price.",
+    "commissionRate": "null — no affiliate account exists yet. See affiliateStatus below.",
+    "links": "programme + search term only; website/affiliate.json turns them into URLs. On tiles added by the cycle these are derived by deriveTileLinks() in tools/tile-taxonomy.mjs from the programmes the file already uses.",
+    "shortVideoExplainer": "null placeholder — nothing renders it either"
   },
+
+  "affiliateStatus": {
+    "verified": "2026-08-28, in a browser, against the live renderer — both branches.",
+    "withNoId": "all 18 Amazon links rendered CLEAN (no tag param); rel='noopener sponsored nofollow'; the 'ad' badge appeared only on commission programmes.",
+    "withTestId": "setting programs['amazon-au'].id tagged all 18 Amazon links and left Kickstarter/Crowd Supply untouched, because those programmes have param:null.",
+    "blocker": "an Amazon Associates AU account. That is an account signup and is the owner's to do, not automatable.",
+    "toActivate": "paste the tracking ID into programs['amazon-au'].id in website/affiliate.json, then publish. The live site serves that file with Cache-Control: max-age=0, must-revalidate, so it takes effect for every visitor on the next request — no cache-bust bump needed. (localhost serves max-age=3600, so a local check can show a stale copy for up to an hour.)"
+  },
+
   "openGaps": [
-    "materialsRequired / processToMake / energyNeeded are unfilled on all 18 tiles — they need real sourcing, not generation",
-    "verifiedPrice unfilled on all 18 — needs a real price feed",
-    "commissionRate unfilled — needs an affiliate account first",
-    "PROMPT 1 §3.1 asks for NEW tiles (AI PCs, GPUs, wearables, smart home, Kickstarter) — none added; real specs and prices must be sourced",
-    "legacy `cost` and `eff` fields still hold the \"—\" placeholder on all 18 tiles"
-  ]
+    "details/<id>.json missing for most gadget tiles — this is the REAL version of the old materials/process/energy gap, and it is what leaves 9 of the detail page's 17 sections unrendered. Resumable and idempotent: node tools/fill-detail-pages.js --domain gadgets --batch N",
+    "legacy `cost` and `eff` fields still hold the '—' placeholder on the original 18 tiles",
+    "the 13 tiles added 2026-08-28 have no photo yet; the AutoLoop photo filler generates them as gadget-<id>.jpg over subsequent passes"
+  ],
+
+  "resolved": {
+    "2026-08-28": [
+      "'PROMPT 1 §3.1 asks for NEW tiles — none added' — 13 added (18 -> 31): home battery, learning thermostat, bidirectional EV charger, AI mini PC, AI note-taking recorder, AI robot vacuum, Matter hub, self-fitting hearing aids, sleep-apnoea wearable, cuffless BP monitor, indoor air-quality monitor, neural input wristband, open-hardware handheld.",
+      "gadgets/gadgets.json was absent from ENGINE_TILE_FILES, so the 24/7 cycle had no path to this section at all — it sat at 18 tiles from creation while neighbouring domains passed 90. Now registered, with a photo source and its group list in the engine prompt."
+    ]
+  }
 }
