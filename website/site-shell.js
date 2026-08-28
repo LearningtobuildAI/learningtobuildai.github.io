@@ -18,10 +18,25 @@
     }
     if (!document.querySelector('script[src*="domain-directory-strip"]')) {
       const s = document.createElement("script");
-      s.src = "/website/domain-directory-strip.js?v=20260721a";
+      s.src = "/website/domain-directory-strip.js?v=20260805b";
       document.body.appendChild(s);
     }
   }
-  if (document.body) ensureStrip();
-  else document.addEventListener("DOMContentLoaded", ensureStrip);
+  // Site-wide footer credit (2026-08-05, owner request).
+  function ensureFooter() {
+    if (document.getElementById("siteCreditFooter")) return;
+    const f = document.createElement("footer");
+    f.id = "siteCreditFooter";
+    f.style.cssText =
+      "padding:26px 18px 30px;text-align:center;font-size:11px;letter-spacing:.08em;" +
+      "color:#64809f;background:rgba(2,6,23,.94);border-top:1px solid rgba(56,189,248,.15);";
+    f.innerHTML =
+      'Designed &amp; directed by <span style="color:#93c5fd;font-weight:700;">Robert Weeks</span>' +
+      ' &nbsp;·&nbsp; <span style="color:#67e8f9;font-weight:700;">Robert Weeks AI Systems</span>' +
+      ' &nbsp;·&nbsp; The Future 24/7';
+    document.body.appendChild(f);
+  }
+  function boot() { ensureStrip(); ensureFooter(); }
+  if (document.body) boot();
+  else document.addEventListener("DOMContentLoaded", boot);
 })();

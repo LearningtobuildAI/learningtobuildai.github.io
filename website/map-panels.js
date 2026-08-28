@@ -91,7 +91,29 @@
       var liveCards = Object.values(d.liveTileCounts || {}).reduce(function (a, b) {
         return a + (Number(b) || 0);
       }, 0);
-      overview.querySelector(".map-ov-cards").textContent = (liveCards || d.total || 0).toLocaleString();
+      // Manifest-first (2026-08-05): the hero reads tile-counts.json, so the
+      // overview must agree with it on the same screen — the live rendered-card
+      // sum (includes legacy static cards) showed 1,844 next to the hero's
+      // 1,591+. Live sum stays as the fallback when the manifest is missing.
+      fetch("/website/tile-counts.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (tc) {
+          var n = tc && tc.total > 0 ? tc.total : liveCards || d.total || 0;
+          overview.querySelector(".map-ov-cards").textContent = n.toLocaleString();
+        })
+        .catch(function () {
+          overview.querySelector(".map-ov-cards").textContent = (liveCards || d.total || 0).toLocaleString();
+        });
     })
-    .catch(function () {});
+    .catch(function () {
+      // Static host (/api absent): the canonical manifest keeps the number
+      // real instead of leaving the "…" placeholder forever.
+      fetch("/website/tile-counts.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (tc) {
+          if (tc && tc.total > 0)
+            overview.querySelector(".map-ov-cards").textContent = tc.total.toLocaleString();
+        })
+        .catch(function () {});
+    });
 })();

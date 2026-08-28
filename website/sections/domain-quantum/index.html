@@ -99,14 +99,33 @@
       <div
         id="intelGrid"
         class="tech-grid"
-        data-tech-src="/website/sections/domain-quantum/tiles.json?v=20260709a"
+        data-tech-src="/website/sections/domain-quantum/tiles.json?v=20260805a"
         data-tech-domain="intel"
       ></div>
     </section>
+    <!-- Curated quantum tracker (2026-08-05). The feed above is the live news
+         stream; this is the standing map of the field — hardware families,
+         fault tolerance, algorithms, sensing, networking and post-quantum
+         security — which the feed alone never provided. -->
+    <section class="domain-sec" id="quantum-tracker" style="margin-top:26px;">
+      <div class="sub-hed">The Quantum Field — Standing Tracker</div>
+      <p style="color:#93a7c4;font-size:13px;margin:0 0 16px;max-width:820px;">
+        Every major quantum technology by category and timeline. Note the honest
+        unit of progress is <b style="color:#93c5fd;">logical</b> qubits, not physical ones —
+        error correction is the gap between today's machines and useful ones.
+      </p>
+      <div
+        id="quantumTrackerGrid"
+        class="tech-grid"
+        data-tech-src="/website/sections/domain-quantum/quantum-tech.json?v=20260805a"
+        data-tech-domain="quantum"
+        data-tech-grouped="true"
+      ></div>
+    </section>
     <script src="/website/widgets/command-console.js?v=20260707c" defer></script>
-    <script src="/website/site-shell.js?v=20260721a" defer></script>
+    <script src="/website/site-shell.js?v=20260805b" defer></script>
     <script src="/website/sections/section-theme.js?v=20260704b" defer></script>
-    <script src="/website/sections/tech-tiles.js?v=20260722c" defer></script>
+    <script src="/website/sections/tech-tiles.js?v=20260805d" defer></script>
     <script>
       // Intel tiles link OUT to their fact-checked source article (the point of
       // the card), not to the internal tech-detail page. tech-tiles.js renders
@@ -118,7 +137,7 @@
           var tiles = grid ? grid.querySelectorAll("a.tech-tile") : [];
           if (!tiles.length && ++tries < 50) return;
           clearInterval(timer);
-          fetch("/website/sections/domain-quantum/tiles.json?v=20260709a")
+          fetch("/website/sections/domain-quantum/tiles.json?v=20260805a")
             .then(function (r) { return r.json(); })
             .then(function (items) {
               var byId = {};
@@ -139,7 +158,7 @@
         }, 200);
       })();
     </script>
-      <script src="/website/domain-directory-strip.js?v=20260723b" defer></script>
+      <script src="/website/domain-directory-strip.js?v=20260805b" defer></script>
     <script src="/website/digest-cta.js?v=20260722a" defer></script>
   </body>
 </html>

@@ -101,7 +101,15 @@
     }
     function sq(extra) { return encodeURIComponent(t.name + (extra ? " " + extra : "")); }
 
+    // 4-part page grouping (2026-07-29): Executive Overview / Technical &
+    // Manufacturing / Market & Industry / Academic References.
+    function grp(n, title) {
+      return '<div class="td-group"><span class="td-group-num">PART ' + n + '</span><span class="td-group-title">' + title + "</span></div>";
+    }
+
     var scholar = "https://scholar.google.com/scholar?q=" + sq();
+    var gpatents = "https://patents.google.com/?q=" + sq();
+    var espacenet = "https://worldwide.espacenet.com/patent/search?q=" + sq();
     var semantic = "https://www.semanticscholar.org/search?q=" + sq() + "&sort=relevance";
     var crossref = "https://search.crossref.org/?q=" + sq();
     var pubmed = "https://pubmed.ncbi.nlm.nih.gov/?term=" + sq();
@@ -140,36 +148,31 @@
         "links — we do not fabricate citations, prices or company lists." +
       "</div>" +
 
+      grp(1, "Executive Overview") +
       num(1, "Definition") + aiBody("definition", t.what) +
       '<div class="td-specs">' + spec("Category", t.type) + spec("Best use", t.use) + spec("Stage", stage) + "</div>" +
+      num(2, "Problem It Solves") + aiBody("problemSolved") +
+      num(3, "Lifecycle / Journey Stage") +
+        (lifeStage ? '<div class="td-life"><span class="td-lifebadge">' + esc(lifeStage) + "</span></div>" : "") +
+        aiBody("lifecycleOutlook") +
 
-      num(2, "How It Works") + aiBody("howItWorks", t.how) +
-      num(3, "Problem It Solves") + aiBody("problemSolved") +
-      num(4, "Manufacturing / Creation Process") + aiBody("manufacturing") +
+      grp(2, "Technical & Manufacturing") +
+      num(4, "How It Works") + aiBody("howItWorks", t.how) +
       num(5, "Materials Used") + (ai.materials && ai.materials.length ? list(ai.materials) : aiBody("materials")) +
-      num(6, "Build Process") + aiBody("buildProcess") +
+      num(6, "Manufacturing / Creation Process") + aiBody("manufacturing") +
+      num(7, "Build Process") + aiBody("buildProcess") +
+      num(8, "Energy Requirements") + aiBody("energyRequirements") +
+        note("Ranges and qualitative terms only — verify power figures against vendor datasheets.") +
 
-      num(7, "Companies Involved") +
+      grp(3, "Market & Industry") +
+      num(9, "Companies Involved") +
         (companies ? '<div class="td-companies">' + companies + "</div>" : '<p class="td-text td-pending">No companies curated for this tile yet.</p>') +
         note("Curated names only — none are invented. Use the link to find more.") +
         linkrow([{ label: "Find suppliers & makers", url: suppliers }]) +
 
-      num(8, "Estimated Costs") + aiBody("costDrivers") +
+      num(10, "Estimated Costs") + aiBody("costDrivers") +
         note("Cost drivers only — no verified dollar figures are shown. Check live sources for prices.") +
         linkrow([{ label: "Search current prices", url: prices }]) +
-
-      num(9, "Lifecycle / Journey Stage") +
-        (lifeStage ? '<div class="td-life"><span class="td-lifebadge">' + esc(lifeStage) + "</span></div>" : "") +
-        aiBody("lifecycleOutlook") +
-
-      num(10, "Scientific Papers / White Papers") +
-        note("Live searches — we don't list papers we can't verify.") +
-        linkrow([
-          { label: "Google Scholar", url: scholar },
-          { label: "Semantic Scholar", url: semantic },
-          { label: "PubMed", url: pubmed },
-          { label: "Crossref", url: crossref },
-        ]) +
 
       num(11, "Regulation & Compliance") + aiBody("regulation") +
       num(12, "Risks") + aiBody("risks") +
@@ -181,14 +184,31 @@
 
       num(15, "Future Development") + aiBody("futureDevelopment") +
 
-      num(16, "Glossary") +
+      grp(4, "Academic References") +
+      num(16, "Scientific Papers / White Papers") +
+        note("Live searches — we don't list papers we can't verify.") +
+        linkrow([
+          { label: "Google Scholar", url: scholar },
+          { label: "Semantic Scholar", url: semantic },
+          { label: "PubMed", url: pubmed },
+          { label: "Crossref", url: crossref },
+        ]) +
+
+      num(17, "Patents") +
+        note("Live patent searches — filings are never listed from memory.") +
+        linkrow([
+          { label: "Google Patents", url: gpatents },
+          { label: "Espacenet", url: espacenet },
+        ]) +
+
+      num(18, "Glossary") +
         (ai.glossary && ai.glossary.length
           ? '<dl class="td-glossary">' + ai.glossary.map(function (g) {
               return "<dt>" + esc(g.term) + "</dt><dd>" + esc(g.def) + "</dd>";
             }).join("") + "</dl>"
           : '<p class="td-text td-pending">Glossary is being generated.</p>') +
 
-      num(17, "References") +
+      num(19, "References") +
         note("Verify against primary sources only.") +
         linkrow([
           { label: "Google Scholar", url: scholar },

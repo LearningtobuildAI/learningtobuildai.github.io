@@ -16,6 +16,19 @@
   var co = document.getElementById("heroCompanyCount");
   if (co && companies > 0) co.textContent = companies + "+";
 
+  // Card count from the canonical manifest tile-publisher regenerates nightly —
+  // the static "1,000+" here and the overview's live number used to disagree on
+  // the same screen (1,000+ vs 1,841). Works on the static host too.
+  var cards = document.getElementById("heroCardCount");
+  if (cards) {
+    fetch("/website/tile-counts.json?v=" + new Date().toISOString().slice(0, 10))
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (tc) {
+        if (tc && tc.total > 0) cards.textContent = tc.total.toLocaleString() + "+";
+      })
+      .catch(function () {});
+  }
+
   // Version badge under the logo (2026-07-15) — live from /api/version so it
   // shows the deployed semver + build time (index.html mtime). Lets us confirm
   // we're looking at the same build. Falls back to the static HTML text.
