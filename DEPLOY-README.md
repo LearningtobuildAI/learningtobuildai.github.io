@@ -1,6 +1,6 @@
 # Deploy bundle — The Future 24/7 (static export)
 
-Built by tools/export-static-site.js on 2026-08-28T08:02:42.334Z.
+Built by tools/export-static-site.js on 2026-09-06T22:51:47.767Z.
 
 ## What this is
 The full public site as static files, plus baked JSON at /api/* for the

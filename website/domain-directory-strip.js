@@ -73,6 +73,20 @@
     );
   }
 
+  // Alphabetical order (2026-09-06): Home stays pinned top-left as the nav
+  // anchor; every other tile — domains, extra sections and the utility pages
+  // — sorts A→Z by name so the grid is scannable. We sort a combined list of
+  // {kind,index} refs rather than the source arrays because the count lookups
+  // are positional (counts[i] / extraCounts[i]) and must keep pointing at
+  // their own tile.
+  var ORDER = []
+    .concat(DOMAINS.map(function (d, i) { return { kind: "domain", d: d, i: i }; }))
+    .concat(EXTRA.map(function (d, i) { return { kind: "extra", d: d, i: i }; }))
+    .concat(NAV_TAIL.map(function (d) { return { kind: "nav", d: d, i: -1 }; }))
+    .sort(function (a, b) {
+      return a.d.name.localeCompare(b.d.name, "en", { numeric: true, sensitivity: "base" });
+    });
+
   // ALIASES → server canonical per-domain counts (fallback when a slug has no
   // live count). Kept parallel to matrix-grid.js.
   var ALIASES = {
@@ -157,12 +171,10 @@
 
   function render(counts, extraCounts) {
     mount.className = "domain-dir-strip";
-    mount.innerHTML =
-      // Home is always the first tile, top-left.
-      navTile(NAV_HOME) +
-      DOMAINS.map(function (d, i) {
+    var here = /\/sections\/(.+?)\//.exec(location.pathname);
+
+    function domainTile(d, i) {
         var c = counts ? counts[i] : "";
-        var here = /\/sections\/(.+?)\//.exec(location.pathname);
         var isCur = here && here[1] === d.path;
         // --bg must live on the tile itself: custom properties inherit DOWN the
         // tree, so a value set on a child span is invisible to ::before here —
@@ -178,8 +190,9 @@
           '<span class="ddir-open">Open &rarr;</span></span>' +
           '</a>'
         );
-      }).join("") +
-      EXTRA.map(function (d, i) {
+    }
+
+    function extraTile(d, i) {
         var c = extraCounts && extraCounts[i] != null ? extraCounts[i] : d.count;
         return (
           '<a class="ddir-tile" href="/website/sections/' + d.path + '/index.html"' +
@@ -191,8 +204,16 @@
           '<span class="ddir-open">Open &rarr;</span></span>' +
           '</a>'
         );
-      }).join("") +
-      NAV_TAIL.map(navTile).join("");
+    }
+
+    mount.innerHTML =
+      // Home is always the first tile, top-left; the rest follow A-Z.
+      navTile(NAV_HOME) +
+      ORDER.map(function (t) {
+        return t.kind === "domain" ? domainTile(t.d, t.i)
+          : t.kind === "extra" ? extraTile(t.d, t.i)
+          : navTile(t.d);
+      }).join("");
   }
 
   // Section tile-JSON per strip tile. Counting the JSONs directly keeps the
