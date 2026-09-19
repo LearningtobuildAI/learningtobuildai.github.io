@@ -860,6 +860,20 @@ body.gss-enabled .section-theme-hero {
 .ctbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
 .ctbl thead th { text-align: left; padding: 11px 12px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #7dd3fc; background: rgba(8,16,34,.95); border-bottom: 1px solid rgba(56,189,248,.3); }
 .ctbl td { padding: 10px 12px; border-bottom: 1px solid rgba(56,189,248,.08); vertical-align: top; color: #c7d6ea; }
+
+/* --- .etbl company tables (2026-09-07) -------------------------------------
+   The same omission as .ctbl above. domain-3dp, domain-auto-jobs and
+   domain-robotics each ship a .etbl inside .tbl-wrap, but .etbl itself was
+   never defined, so the table fell back to browser defaults: <th> centres and
+   <td> left-aligns. That mismatch is what made every header label drift off
+   its own column. Mirrors .ctbl so all four tables read the same. */
+.etbl { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.etbl thead th { text-align: left; padding: 11px 12px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #7dd3fc; background: rgba(8,16,34,.95); border-bottom: 1px solid rgba(56,189,248,.3); white-space: nowrap; }
+.etbl td { padding: 10px 12px; border-bottom: 1px solid rgba(56,189,248,.08); vertical-align: top; color: #c7d6ea; }
+.etbl tbody tr:last-child td { border-bottom: 0; }
+.etbl tbody tr:hover td { background: rgba(56,189,248,.06); }
+.etbl td:first-child { font-weight: 800; color: #eaf2ff; white-space: nowrap; }
+
 .drow { cursor: pointer; }
 .drow:hover td { background: rgba(56,189,248,.06); }
 .dn { font-weight: 800; color: #eaf2ff; white-space: nowrap; }

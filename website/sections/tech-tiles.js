@@ -55,6 +55,24 @@
     if (d) return d;
     return String(a.name || "").localeCompare(String(b.name || ""));
   }
+  // Stage runs inside a category (2026-09-07). byStage already sorted the
+  // tiles into timeline order, but nothing marked where one horizon ended and
+  // the next began. Consecutive tiles sharing a stage LABEL become one titled
+  // run — grouping on the label rather than the raw slug matters, because
+  // spec/speculative and civ/civilisation-scale are aliases that render the
+  // same badge and would otherwise split into two identical headers.
+  function stageRuns(tiles) {
+    var runs = [];
+    tiles.forEach(function (t) {
+      var slug = String(t.stage || "").toLowerCase();
+      var label = STAGE_LABEL[slug] || slug.toUpperCase() || "UNSTAGED";
+      var last = runs[runs.length - 1];
+      if (last && last.label === label) last.items.push(t);
+      else runs.push({ label: label, slug: slug, items: [t] });
+    });
+    return runs;
+  }
+
   // Dated feeds (worldIntel tiles: no category, only a pubDate) read newest first.
   function byPubDateDesc(a, b) {
     var ta = Date.parse(a.pubDate || ""), tb = Date.parse(b.pubDate || "");
@@ -269,7 +287,16 @@
             esc((LABEL_OVERRIDE[domain] && LABEL_OVERRIDE[domain][g]) || GROUP_LABEL[g] || g) +
             '<span class="tg-count">' + inGroup.length + " listed</span></div>" +
             sub +
-            '<div class="tech-grid">' + inGroup.map(function (t) { return tileHtml(t, domain); }).join("") + "</div>" +
+            stageRuns(inGroup).map(function (r) {
+              return (
+                '<div class="tech-stage-hed"><span class="pbadge ' + esc(r.slug) + '">' +
+                esc(r.label) + '</span><span class="tech-stage-count">' +
+                r.items.length + '</span></div>' +
+                '<div class="tech-grid">' +
+                r.items.map(function (t) { return tileHtml(t, domain); }).join("") +
+                "</div>"
+              );
+            }).join("") +
             "</div>"
           );
         }).join("");
@@ -291,6 +318,14 @@
         "font-size:7.5px;font-weight:800;letter-spacing:.1em;color:#fbbf24;padding:3px 10px 6px;}" +
         // Buy / back-this rows. Affiliate links are visually distinct from
         // crowdfunding ones so a reader can tell which pays us.
+        // Stage sub-headers inside a category. Reuses .pbadge so the header
+        // carries the same per-stage colour as the tiles beneath it.
+        ".tech-stage-hed{display:flex;align-items:center;gap:9px;margin:20px 0 9px;}" +
+        ".tech-stage-hed::after{content:'';flex:1 1 auto;height:1px;" +
+        "background:linear-gradient(90deg,rgba(56,189,248,.3),transparent);}" +
+        ".tech-group > .tech-stage-hed:first-of-type{margin-top:10px;}" +
+        ".tech-stage-count{font-size:9px;font-weight:800;letter-spacing:.12em;" +
+        "color:#7b8ea8;text-transform:uppercase;}" +
         ".tech-tile-wrap{display:flex;flex-direction:column;}" +
         ".tt-buy-row{display:flex;flex-wrap:wrap;gap:6px;padding:8px 2px 0;}" +
         ".tt-buy{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;" +

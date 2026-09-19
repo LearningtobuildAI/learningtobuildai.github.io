@@ -63,23 +63,41 @@
     /* ════════════════════════════════════
    FIRST-VISIT ONBOARDING TOUR
 ════════════════════════════════════ */
+    // Rewritten 2026-09-07. The previous three steps pointed at #home,
+    // #worldIntel and #contact — none of which exist on the page any more, so
+    // every step fell through to the "no target" branch and highlighted
+    // nothing, while the copy still described main-page news cards that were
+    // removed. The main page is now the Domain Directory grid, so the tour
+    // teaches that: the tiles ARE the navigation.
     const TOUR_STEPS = [
       {
         title: "Welcome to The Future 24/7",
-        text: "The most integrated technology intelligence platform — tracking 14 domains, 200+ companies, and live breakthroughs from around the world.",
-        target: "#home",
+        text: "Technology intelligence across 29 live trackers — from what shipped this morning to what is still theory. Here is how to get around.",
+        target: "#domainDirStrip",
         pos: "bottom",
       },
       {
-        title: "Live World Intel",
-        text: "New tech news is scanned every hour and classified by AI across all 14 domains. Click any card to see the full intelligence report.",
-        target: "#worldIntel",
+        title: "Every tile is a doorway",
+        text: "This grid is the navigation — there is no menu to hunt for. Each tile is one subject area, the big number is how many intel cards are inside, and the tiles run A to Z after Home. Click any tile to open that tracker.",
+        target: "#domainDirStrip",
+        pos: "bottom",
+      },
+      {
+        title: "Inside a tracker",
+        text: "Each tracker is split by category, then by how far off the technology is — NOW and TRIAL at the top, THEORY and SPECULATIVE further down. Click any card for the full detail page.",
+        target: "#domainDirStrip",
+        pos: "bottom",
+      },
+      {
+        title: "Search everything at once",
+        text: "Type two or more letters to search across every tracker at the same time — technologies, jobs and stories.",
+        target: ".ddir-search",
         pos: "bottom",
       },
       {
         title: "Ask the AI",
-        text: "Use the 💬 chat icon to ask any technology question. Our AI cross-references all 14 domains for deep analysis and trend forecasts.",
-        target: "#contact",
+        text: "Use the chat button for any technology question. It cross-references every domain on the site.",
+        target: "#cmdFab",
         pos: "top",
       },
     ];
@@ -106,10 +124,15 @@
         el.scrollIntoView({ behavior: "smooth", block: "center" });
         setTimeout(() => {
           const r = el.getBoundingClientRect();
-          box.style.top =
-            (s.pos === "bottom"
+          // Clamp into the viewport. The Domain Directory strip is ~675px
+          // tall, so a "bottom" step put the box below the fold and the
+          // whole step was invisible on a laptop screen.
+          const rawTop =
+            s.pos === "bottom"
               ? r.bottom + 12
-              : r.top - box.offsetHeight - 12) + "px";
+              : r.top - box.offsetHeight - 12;
+          const maxTop = window.innerHeight - box.offsetHeight - 12;
+          box.style.top = Math.max(12, Math.min(rawTop, maxTop)) + "px";
           box.style.left =
             Math.max(12, Math.min(r.left, window.innerWidth - 330)) + "px";
         }, 400);
@@ -126,11 +149,11 @@
     }
     function tourSkip() {
       document.getElementById("tourOverlay").style.display = "none";
-      localStorage.setItem("tf247_tour", "done");
+      localStorage.setItem("tf247_tour_v2", "done");
     }
     // Auto-start tour on first visit (after cookie decision or 2s)
     setTimeout(() => {
-      if (!localStorage.getItem("tf247_tour")) startTour();
+      if (!localStorage.getItem("tf247_tour_v2")) startTour();
     }, 2500);
 
     /* ════════════════════════════════════
