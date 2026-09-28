@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Bare printed circuit board",
+        "role": "the physical substrate and the entire wiring network between components.",
+        "parts": [
+          "FR-4 glass-epoxy laminate layers",
+          "copper traces and ground/power planes",
+          "plated vias between layers",
+          "gold or tin surface finish on the pads"
+        ]
+      },
+      {
+        "name": "CPU socket and power delivery",
+        "role": "seats the processor and feeds it a tightly regulated, high-current voltage.",
+        "parts": [
+          "land-grid or pin-grid socket",
+          "voltage regulator module (MOSFETs, inductors, capacitors)",
+          "12 V power connectors",
+          "CPU fan headers"
+        ]
+      },
+      {
+        "name": "Memory and expansion slots",
+        "role": "connect RAM and add-in cards at very high signalling rates.",
+        "parts": [
+          "DIMM slots",
+          "PCIe slots (x16, x4)",
+          "M.2 sockets",
+          "retention latches"
+        ]
+      },
+      {
+        "name": "Chipset and I/O controllers",
+        "role": "handles peripherals that are not wired directly to the CPU.",
+        "parts": [
+          "chipset (platform controller hub)",
+          "USB, SATA and Ethernet controllers",
+          "audio codec",
+          "rear I/O panel"
+        ]
+      },
+      {
+        "name": "Firmware and clocking",
+        "role": "boots the board and keeps every bus in time.",
+        "parts": [
+          "SPI flash chip holding UEFI firmware",
+          "clock generator and crystal",
+          "CMOS battery",
+          "debug header"
+        ]
+      },
+      {
+        "name": "Cooling and mechanical support",
+        "role": "spreads heat from hot spots and keeps the board rigid under heavy coolers and cards.",
+        "parts": [
+          "voltage-regulator heatsinks",
+          "thermal pads",
+          "steel mounting backplate",
+          "standoff holes",
+          "I/O shield"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the layout",
+        "detail": "Engineers capture the circuit, choose a layer stack-up, and place every component. Thousands of traces are then routed with controlled impedance — differential pairs a few hundred micrometres wide must match in length so that signals arrive together."
+      },
+      {
+        "title": "Simulate before committing",
+        "detail": "Signal-integrity and power-integrity software models whether fast buses such as PCIe and DDR will work, and whether the copper planes can deliver hundreds of amps without excessive voltage droop."
+      },
+      {
+        "title": "Generate the fabrication data",
+        "detail": "The finished layout becomes artwork — one image per copper layer, plus drill files, solder-mask and silkscreen data."
+      },
+      {
+        "title": "Fabricate the bare board",
+        "detail": "Inner copper layers are patterned and etched, then stacked with insulating prepreg and laminated under heat and pressure. Holes are drilled, plated with copper to join layers, outer layers etched, and solder mask, silkscreen and a surface finish applied."
+      },
+      {
+        "title": "Solder the small components",
+        "detail": "Solder paste is stencilled onto the pads; pick-and-place machines deposit up to a few thousand surface-mount parts per board; a reflow oven melts the paste in one pass."
+      },
+      {
+        "title": "Fit connectors and the socket",
+        "detail": "Large through-hole and press-fit parts — CPU socket, DIMM and PCIe slots, rear I/O — are inserted and soldered or press-fitted, since they must survive repeated mechanical force."
+      },
+      {
+        "title": "Flash firmware and serialise",
+        "detail": "UEFI firmware is written to the flash chip, and the board receives its serial number and hardware identifiers."
+      },
+      {
+        "title": "Test and inspect",
+        "detail": "Automated optical inspection, X-ray of hidden solder joints under chips, in-circuit electrical tests, then a functional test with a real CPU, memory and graphics card."
+      },
+      {
+        "title": "Package",
+        "detail": "The board is fitted with heatsinks, backplate and accessories, then boxed with documentation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Multilayer PCB fabrication",
+        "status": "exists",
+        "why": "boards need 4–16 copper layers to route dense, high-speed wiring without interference."
+      },
+      {
+        "tech": "Surface-mount assembly and reflow",
+        "status": "exists",
+        "why": "components smaller than a grain of rice cannot be hand-soldered at production volume."
+      },
+      {
+        "tech": "High-speed serial interface standards",
+        "status": "exists",
+        "why": "PCIe and DDR define the signalling that the traces must carry reliably."
+      },
+      {
+        "tech": "Silicon platform (CPU and chipset)",
+        "status": "exists",
+        "why": "the socket, wiring and firmware must match one specific processor family."
+      },
+      {
+        "tech": "Electronic design automation and simulation tools",
+        "status": "exists",
+        "why": "no human can route or verify this complexity by hand."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mainstream boards with PCIe 5.0 and DDR5 support",
+        "unlocks": "high-bandwidth storage, memory and graphics on a commodity platform."
+      },
+      {
+        "stage": "Next",
+        "milestone": "PCIe 6.0 (64 GT/s per lane) and faster memory",
+        "unlocks": "lower signal voltages and shorter trace lengths, pushing boards to more layers and better materials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "more power delivery and thermal management built into the board",
+        "unlocks": "processors that draw hundreds of watts without separate add-in cards."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical links and co-packaged components",
+        "unlocks": "far higher bandwidth between chips, at the cost of a very different board architecture."
+      }
+    ]
+  }
+}

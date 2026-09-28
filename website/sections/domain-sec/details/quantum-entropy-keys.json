@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Quantum entropy source",
+        "role": "produces a physical process whose outcome is fundamentally unpredictable.",
+        "parts": [
+          "laser or LED",
+          "variable optical attenuator",
+          "beam splitter",
+          "vacuum or photon-statistics source"
+        ]
+      },
+      {
+        "name": "Detection and timing",
+        "role": "measures the quantum event and converts it to an electronic signal.",
+        "parts": [
+          "single-photon avalanche diodes (SPADs)",
+          "time-to-digital converter",
+          "amplifier and discriminator"
+        ]
+      },
+      {
+        "name": "Raw bit generation",
+        "role": "turns each measurement into one or more bits.",
+        "parts": [
+          "field-programmable gate array (FPGA)",
+          "firmware for event logging"
+        ]
+      },
+      {
+        "name": "Randomness extraction",
+        "role": "removes bias and correlations so the output is close to perfectly uniform.",
+        "parts": [
+          "cryptographic hash function",
+          "Toeplitz matrix or other strong extractor",
+          "seed from a second source"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "delivers the random bits as keys to encryption systems.",
+        "parts": [
+          "hardware security module (HSM) interface",
+          "key derivation functions",
+          "API for applications"
+        ]
+      },
+      {
+        "name": "Health and certification",
+        "role": "continuously tests the source and output so failures are detected.",
+        "parts": [
+          "statistical test suite (e.g., NIST SP 800-22)",
+          "on-line entropy estimators",
+          "tamper detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the quantum process",
+        "detail": "Decide whether to measure photon arrival times, vacuum fluctuations or a split single photon; each gives different bit rates and robustness."
+      },
+      {
+        "title": "Build the optical path",
+        "detail": "Align a laser, attenuate it to the single-photon level, and direct it to detectors on a temperature-stabilised bench."
+      },
+      {
+        "title": "Design the detection electronics",
+        "detail": "Use SPADs or superconducting nanowire detectors with fast amplifiers and a time-to-digital converter to timestamp each event to picoseconds."
+      },
+      {
+        "title": "Generate raw bits",
+        "detail": "Convert timestamps or detector outcomes into a raw binary stream; this stream is biased and must be processed."
+      },
+      {
+        "title": "Apply randomness extraction",
+        "detail": "Run the raw bits through a strong extractor (e.g., a cryptographic hash or Toeplitz matrix) with a seed to produce near-uniform output."
+      },
+      {
+        "title": "Test and monitor",
+        "detail": "Continuously run statistical tests on the output and monitor the source for tampering or drift."
+      },
+      {
+        "title": "Integrate with cryptography",
+        "detail": "Feed the extracted bits into a hardware security module or software key store, where they become keys for encryption or authentication."
+      },
+      {
+        "title": "Package and certify",
+        "detail": "Enclose the optics and electronics in a rugged, tamper-evident case for data-centre racks, or shrink to a chip for embedded use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "they register individual photons, which is essential for many quantum entropy sources."
+      },
+      {
+        "tech": "Randomness extractors",
+        "status": "exists",
+        "why": "well-studied algorithms remove bias from raw quantum measurements."
+      },
+      {
+        "tech": "Quantum optics components",
+        "status": "exists",
+        "why": "lasers, attenuators and beam splitters are off-the-shelf laboratory items."
+      },
+      {
+        "tech": "Integration with cryptographic hardware",
+        "status": "partial",
+        "why": "HSMs and key stores can accept external entropy, but standardised interfaces are still maturing."
+      },
+      {
+        "tech": "Chip-scale quantum entropy sources",
+        "status": "partial",
+        "why": "photonic integrated circuits have demonstrated QRNG, but widespread low-cost production is not yet routine."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rack-mounted quantum random number generators supply entropy to servers and HSMs",
+        "unlocks": "high-quality keys for today's encryption, resistant to flaws in software pseudo-randomness."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QRNG integrated into CPUs, smart cards and mobile systems-on-chip",
+        "unlocks": "strong randomness everywhere, from phones to IoT devices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combined QRNG and quantum key distribution (QKD) for long-distance links",
+        "unlocks": "keys whose secrecy rests on quantum physics rather than computational hardness."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum entropy as a standard building block alongside post-quantum cryptography",
+        "unlocks": "end-to-end security that resists both classical and quantum attacks, if QKD and PQC mature."
+      }
+    ]
+  }
+}

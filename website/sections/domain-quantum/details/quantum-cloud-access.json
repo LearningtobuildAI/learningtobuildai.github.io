@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit (QPU)",
+        "role": "the chip that performs the quantum computation.",
+        "parts": [
+          "qubit chip (superconducting circuits, trapped ions, photonic circuits or neutral atoms)",
+          "packaging and signal routing",
+          "interconnects between qubits"
+        ]
+      },
+      {
+        "name": "Physical environment",
+        "role": "maintains the extreme conditions each qubit modality needs to stay coherent.",
+        "parts": [
+          "dilution refrigerator (superconducting qubits)",
+          "vacuum chamber and ion trap (trapped ions)",
+          "laser systems (trapped ions, neutral atoms)",
+          "magnetic and radiation shielding"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "generates the microwave, radio-frequency or optical pulses that manipulate qubits, and reads back their state.",
+        "parts": [
+          "arbitrary waveform generators",
+          "microwave and RF signal chains",
+          "FPGAs and digitizers",
+          "low-noise amplifiers and circulators"
+        ]
+      },
+      {
+        "name": "Classical orchestration layer",
+        "role": "translates user circuits into hardware instructions, schedules jobs and tracks device calibration.",
+        "parts": [
+          "transpiler and compiler",
+          "job queue and resource manager",
+          "calibration database",
+          "error-mitigation routines"
+        ]
+      },
+      {
+        "name": "Cloud API and SDK",
+        "role": "the user-facing interface that lets remote users submit jobs without owning hardware.",
+        "parts": [
+          "REST or gRPC endpoints",
+          "Python SDKs such as Qiskit, Cirq and the Braket SDK",
+          "authentication and quotas",
+          "hosted notebooks and documentation"
+        ]
+      },
+      {
+        "name": "Networking and security",
+        "role": "moves circuits and results securely between user and provider.",
+        "parts": [
+          "TLS-encrypted channels",
+          "API keys and identity management",
+          "data-residency rules",
+          "usage logging"
+        ]
+      },
+      {
+        "name": "Hybrid runtime",
+        "role": "couples quantum hardware to classical high-performance computing for algorithms that alternate between the two.",
+        "parts": [
+          "classical compute nodes",
+          "low-latency links to the QPU",
+          "runtime environment for variational and iterative algorithms"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the processor",
+        "detail": "Qubits are made in cleanroom processes: superconducting aluminium or niobium circuits on silicon, microfabricated ion traps, or photonic integrated circuits."
+      },
+      {
+        "title": "Package and cool the chip",
+        "detail": "The chip is mounted, wire-bonded or coupled to signal lines, and installed in a dilution refrigerator or ultra-high-vacuum chamber with lasers, depending on the modality."
+      },
+      {
+        "title": "Bring up the control stack",
+        "detail": "Room-temperature electronics are connected and calibrated so that digital commands produce the correct pulses at the qubit."
+      },
+      {
+        "title": "Calibrate the qubits",
+        "detail": "Engineers tune qubit frequencies, gate durations, pulse amplitudes and readout thresholds, then repeat this regularly because devices drift."
+      },
+      {
+        "title": "Build the orchestration service",
+        "detail": "A compiler and transpiler map user circuits onto the physical qubit layout; a scheduler queues jobs and routes them to available devices."
+      },
+      {
+        "title": "Expose it through cloud APIs and SDKs",
+        "detail": "The provider wraps access in a documented SDK, adds authentication, quotas, simulators and notebooks, and connects it to a cloud region."
+      },
+      {
+        "title": "Operate, monitor and price access",
+        "detail": "The service tracks calibration, error rates and uptime, runs classical simulators for testing, and bills users per job, shot or time block."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Working quantum processors",
+        "status": "exists",
+        "why": "cloud access needs real hardware on the other end, even if today's devices are small and noisy."
+      },
+      {
+        "tech": "Cryogenic and control electronics",
+        "status": "exists",
+        "why": "qubits only behave quantum-mechanically under carefully controlled conditions and signal chains."
+      },
+      {
+        "tech": "Cloud computing infrastructure and APIs",
+        "status": "exists",
+        "why": "queueing, authentication and remote job submission rely on mature data-centre and web-service technology."
+      },
+      {
+        "tech": "Error mitigation and transpilation software",
+        "status": "partial",
+        "why": "without it, results from noisy hardware are hard to trust, so the software is as important as the chip."
+      },
+      {
+        "tech": "Error-corrected logical qubits",
+        "status": "missing",
+        "why": "reliable, large-scale quantum computation requires many physical qubits working together to correct errors."
+      },
+      {
+        "tech": "Standardised benchmarks and interfaces",
+        "status": "partial",
+        "why": "porting a job between vendors is still difficult; common metrics would make cloud access more useful."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cloud access to noisy intermediate-scale quantum processors from several vendors, including IBM Quantum, Amazon Braket, Microsoft Azure Quantum and Rigetti",
+        "unlocks": "researchers and students run small circuits remotely without owning a lab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better error mitigation, larger qubit counts and tighter integration with classical high-performance computing",
+        "unlocks": "practical hybrid algorithms and more credible benchmarking of quantum advantage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant quantum computers offered through cloud services",
+        "unlocks": "niche problems in chemistry, materials and optimisation that classical machines cannot handle."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum processors embedded in mainstream cloud and supercomputing environments",
+        "unlocks": "routine hybrid classical-quantum workflows and broad access to fault-tolerant machines."
+      }
+    ]
+  }
+}

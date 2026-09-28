@@ -31,5 +31,153 @@
         "def": "Building Information Modeling, a process for creating and managing digital representations of physical and functional characteristics of buildings."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mobile base",
+        "role": "carries the machine around an uneven, unfinished floor and holds it steady while working.",
+        "parts": [
+          "tracked or wheeled chassis",
+          "outriggers and self-levelling jacks",
+          "battery pack or cable reel",
+          "dynamic stabilisation (on some bricklaying arms)"
+        ]
+      },
+      {
+        "name": "Localisation and perception",
+        "role": "works out where the robot is on site, to centimetres, without a clean factory floor.",
+        "parts": [
+          "robotic total station tracking a prism",
+          "lidar or stereo cameras for SLAM",
+          "safety scanners",
+          "inertial measurement unit"
+        ]
+      },
+      {
+        "name": "Manipulator and end effector",
+        "role": "reaches the work face and performs the task.",
+        "parts": [
+          "multi-axis robotic arm or gantry",
+          "brick or block gripper",
+          "mortar or adhesive dispenser",
+          "print head for layout marking"
+        ]
+      },
+      {
+        "name": "Material supply",
+        "role": "keeps the end effector fed without stopping the cycle.",
+        "parts": [
+          "brick magazine or pallet feeder",
+          "mortar pump and silo",
+          "hoses and dust extraction"
+        ]
+      },
+      {
+        "name": "Control and digital model",
+        "role": "turns the building design into machine instructions and adapts them to as-found conditions.",
+        "parts": [
+          "BIM model and coordinate bake-out",
+          "task planner and toolpath generator",
+          "controller software and telemetry link"
+        ]
+      },
+      {
+        "name": "Supervision and safety",
+        "role": "keeps people safe around a heavy moving machine on a live site.",
+        "parts": [
+          "remote operator console",
+          "geofenced work envelope",
+          "emergency stop chain",
+          "cameras and site interlock"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the work",
+        "detail": "Architectural and structural BIM is detailed to the millimetre and converted into task coordinates for the machine."
+      },
+      {
+        "title": "Survey and calibrate the site",
+        "detail": "Reference points are set with a total station, and existing slabs or walls are scanned so the robot knows the real geometry, not the designed geometry."
+      },
+      {
+        "title": "Position and level the robot",
+        "detail": "The machine is driven to its work zone, outriggers are deployed, the base is levelled and it locks onto the site reference network."
+      },
+      {
+        "title": "Plan the task",
+        "detail": "Software breaks the wall or floor area into passes: mortar beads and brick placements, or printed layout lines, checked for collisions and reach."
+      },
+      {
+        "title": "Stage materials",
+        "detail": "Bricks or blocks are delivered on pallets within reach, mortar is mixed in a silo and pumped to the machine."
+      },
+      {
+        "title": "Execute the repetitive work",
+        "detail": "The robot lays courses or prints lines within its envelope while a human handles reinforcement, ties, cut pieces and quality checks."
+      },
+      {
+        "title": "Verify as-built",
+        "detail": "A scan of the completed section is compared with the model, and tolerances outside specification are flagged for rework."
+      },
+      {
+        "title": "Move and repeat",
+        "detail": "The robot is re-levelled in the next zone, or handed over to the following trade, until the floor or building is finished."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "SLAM and localisation in cluttered, changing environments",
+        "status": "partial",
+        "why": "factories are mapped once; construction sites change every day and are full of dust, glare and people."
+      },
+      {
+        "tech": "BIM with construction-grade accuracy",
+        "status": "exists",
+        "why": "the robot needs a trustworthy digital model, including tolerances, to plan from."
+      },
+      {
+        "tech": "Rugged, high-payload robotic arms and bases",
+        "status": "exists",
+        "why": "industrial arms exist, but outdoor versions must tolerate dust, vibration and wide temperature swings."
+      },
+      {
+        "tech": "Robotic total stations and laser scanning",
+        "status": "exists",
+        "why": "they give the centimetre-level site reference that makes autonomous placement possible."
+      },
+      {
+        "tech": "Standards, insurance and liability for autonomous plant",
+        "status": "missing",
+        "why": "nobody has settled who is responsible when a robot damages work or injures a worker."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial machines doing single, well-bounded tasks — layout printing and semi-automated masonry with a human mason alongside",
+        "unlocks": "proven productivity on repetitive, measurable work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "task-level autonomy inside a prepared zone, from scan to finished wall section",
+        "unlocks": "fewer operators per machine and night-shift working."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-robot coordination with site logistics, where machines and material deliveries are scheduled together",
+        "unlocks": "robots as a managed trade rather than a novelty."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "machines that cope with unprepared, unpredictable sites and adapt their plans from live scans",
+        "unlocks": "use beyond flagship projects onto ordinary residential and commercial builds."
+      }
+    ]
   }
 }

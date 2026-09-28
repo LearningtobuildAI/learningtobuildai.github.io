@@ -1,0 +1,140 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Diamond sensor element",
+        "role": "the sensing volume — a diamond containing nitrogen-vacancy centres whose spin state responds to magnetic field.",
+        "parts": [
+          "engineered diamond chip or nanopillar",
+          "NV centres",
+          "surface functionalisation for close-proximity sensing"
+        ]
+      },
+      {
+        "name": "Optical excitation",
+        "role": "green light pumps the NV centres into a known spin state.",
+        "parts": [
+          "532 nm laser or LED",
+          "dichroic mirror",
+          "objective or solid immersion lens"
+        ]
+      },
+      {
+        "name": "Microwave drive",
+        "role": "an applied microwave tone at about 2.87 GHz flips the electron spin; where it resonates reveals the local field.",
+        "parts": [
+          "microwave source and amplifier",
+          "antenna loop or stripline on the diamond surface"
+        ]
+      },
+      {
+        "name": "Fluorescence detection",
+        "role": "reads out the spin state through the brightness of red fluorescence.",
+        "parts": [
+          "long-pass filter rejecting green light",
+          "photodiode or avalanche photodetector",
+          "confocal pinhole for single centres"
+        ]
+      },
+      {
+        "name": "Bias field and shielding",
+        "role": "a small permanent magnet splits the spin levels so the response is linear and directional.",
+        "parts": [
+          "bias magnets or coils",
+          "magnetic shielding where ambient noise is severe"
+        ]
+      },
+      {
+        "name": "Control and signal processing",
+        "role": "sweeps the microwaves, extracts the tiny dip in fluorescence and converts it to field values.",
+        "parts": [
+          "pulse generator and lock-in detection",
+          "field-programmable gate array or microcontroller",
+          "calibration and imaging software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the diamond",
+        "detail": "Chemical vapour deposition builds diamond layer by layer from a methane-hydrogen plasma on a diamond seed. Nitrogen is added in controlled trace amounts, or the carbon is isotopically purified (carbon-12) to lengthen spin coherence."
+      },
+      {
+        "title": "Create the vacancies",
+        "detail": "Electron irradiation or ion implantation knocks carbon atoms out of the lattice; a high-temperature anneal lets those vacancies migrate until they pair with nitrogen atoms, forming NV centres."
+      },
+      {
+        "title": "Shape the sensor",
+        "detail": "The diamond is cut and polished, or etched into nanopillars and solid immersion lenses, so more of the fluorescence reaches the detector."
+      },
+      {
+        "title": "Add the microwave antenna",
+        "detail": "A thin wire, loop or stripline is patterned onto or beside the diamond to deliver microwaves evenly across the sensing volume."
+      },
+      {
+        "title": "Build the optical head",
+        "detail": "Laser, dichroic mirror, objective, filter and photodetector are aligned so green light enters and only red fluorescence is counted."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Known magnetic fields are applied and the microwave resonance splitting is measured, setting the sensitivity, linearity and axis alignment."
+      },
+      {
+        "title": "Package and deploy",
+        "detail": "The head, bias magnet and electronics are integrated into an instrument, and software turns the fluorescence dip into a field reading or an image."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CVD diamond growth with controlled nitrogen and isotopic purity",
+        "status": "exists",
+        "why": "sensor performance depends on how many NV centres there are and how long their spin stays coherent."
+      },
+      {
+        "tech": "Microwave electronics around 2.87 GHz",
+        "status": "exists",
+        "why": "that resonance is the readout mechanism, and it must be stable and quiet."
+      },
+      {
+        "tech": "Low-noise photon detection",
+        "status": "exists",
+        "why": "the signal is a small percentage change in fluorescence, so stray light and detector noise set the floor."
+      },
+      {
+        "tech": "Spin-control techniques (ODMR, spin echo, dynamical decoupling)",
+        "status": "exists",
+        "why": "they extend coherence and let the sensor reject low-frequency noise."
+      },
+      {
+        "tech": "Sensor arrays and gradiometry",
+        "status": "partial",
+        "why": "a single sensor is easily swamped by the Earth's field and nearby equipment; several sensors working differentially are needed for real environments."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory instruments doing nanoscale magnetic imaging and nanoscale nuclear magnetic resonance",
+        "unlocks": "seeing magnetic structure in materials and single molecules at room temperature."
+      },
+      {
+        "stage": "Next",
+        "milestone": "portable and wearable magnetocardiography arrays",
+        "unlocks": "heart-activity mapping without cryogenic cooling or shielded rooms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "industrial magnetic imaging for batteries, power electronics and corrosion",
+        "unlocks": "non-destructive inspection able to see current flow inside packaged parts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "chip-scale sensors with on-board lasers and detectors",
+        "unlocks": "positioning and navigation where satellite signals are unavailable."
+      }
+    ]
+  }
+}

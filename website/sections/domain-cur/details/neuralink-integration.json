@@ -37,5 +37,137 @@
         "def": "The ability of a material to interact safely and effectively with biological systems without causing adverse effects."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "records the electrical spikes of individual neurons.",
+        "parts": [
+          "flexible polymer threads with thin-film metal microelectrodes",
+          "or rigid silicon microelectrode arrays",
+          "connector to the implant electronics"
+        ]
+      },
+      {
+        "name": "Implant electronics",
+        "role": "amplifies, digitises and streams neural signals without wires through the skin.",
+        "parts": [
+          "custom low-power amplifier chip",
+          "hermetic titanium enclosure",
+          "wireless data link",
+          "inductive charging coil"
+        ]
+      },
+      {
+        "name": "Surgical delivery system",
+        "role": "places electrodes in the cortex without hitting surface blood vessels.",
+        "parts": [
+          "stereotactic frame or surgical robot",
+          "computer-vision blood-vessel mapping",
+          "needle that inserts each thread to a set depth"
+        ]
+      },
+      {
+        "name": "Decoding software",
+        "role": "turns firing patterns into intent — cursor movement, clicks, or attempted speech.",
+        "parts": [
+          "spike sorting and feature extraction",
+          "neural network decoder",
+          "calibration routine",
+          "on-implant or off-implant compute"
+        ]
+      },
+      {
+        "name": "External device interface",
+        "role": "connects the decoded intent to a computer, robotic arm or stimulator.",
+        "parts": [
+          "wireless receiver",
+          "application software",
+          "safety limits and abort controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrodes",
+        "detail": "Each thread is a polymer film a few micrometres thick — thinner than a human hair — carrying metal traces patterned photolithographically, with electrode sites left exposed along its length."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "A custom application-specific integrated circuit is made to amplify microvolt-scale signals, filter noise and digitise them at low power, because heat near brain tissue is tightly limited."
+      },
+      {
+        "title": "Package the implant",
+        "detail": "The chip and radio are sealed in a hermetic titanium case with feedthroughs, so body fluid never reaches the electronics; the case sits flush in the skull."
+      },
+      {
+        "title": "Build the insertion robot",
+        "detail": "A robot with a fine needle and optical imaging moves fast enough to pierce the brain's surface membrane and inserts each thread at a chosen depth while steering around blood vessels."
+      },
+      {
+        "title": "Test in animals",
+        "detail": "Years of primate and rodent work establish safety, signal quality and how long electrodes keep working."
+      },
+      {
+        "title": "Implant in humans",
+        "detail": "After regulatory clearance, a surgeon opens a small section of skull, the robot inserts the threads into the motor cortex, and the case is fixed in place."
+      },
+      {
+        "title": "Calibrate the decoder",
+        "detail": "The participant imagines or attempts movements while software learns which firing patterns correspond to which intention; accuracy improves over weeks."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "The implant charges inductively, receives software updates wirelessly, and its signal quality is tracked over months and years — the hardest unsolved part."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Electrodes that survive years in brain tissue",
+        "status": "partial",
+        "why": "the immune response slowly builds scar tissue around electrodes; signal loss over time is the field's core problem."
+      },
+      {
+        "tech": "Hermetic packaging and wireless power for implanted electronics",
+        "status": "exists",
+        "why": "proven by cochlear implants and deep-brain stimulators, but those carry far fewer channels."
+      },
+      {
+        "tech": "Real-time, low-power neural decoding",
+        "status": "partial",
+        "why": "decoding works well in the lab, but doing it on an implant within a strict heat budget is much harder."
+      },
+      {
+        "tech": "Implant neurosurgery and regulation",
+        "status": "partial",
+        "why": "cranial implantation is routine, but regulators are still writing rules for software-updatable brain implants."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "a few dozen participants worldwide in early human trials use implants to move a cursor, type and control robotic limbs, and to decode attempted speech",
+        "unlocks": "proof that the surgery is tolerable and the signals are usable day to day."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger trials with thousands of electrodes and years of follow-up",
+        "unlocks": "evidence on electrode longevity, which decides whether this becomes a product."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first clinical approvals for severe paralysis, plus sensory feedback and early cortical visual prostheses",
+        "unlocks": "a real medical market and the manufacturing base that comes with it."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "healthy-person use such as cognitive enhancement — currently speculation with no supporting trial evidence",
+        "unlocks": "nothing yet; it should not be sold as a near-term benefit. Two claims in the tile are wrong today: these devices use micrometre-scale electrodes, not nanotechnology, and no implant merges seamlessly with AI — decoding is approximate and reversible."
+      }
+    ]
   }
 }

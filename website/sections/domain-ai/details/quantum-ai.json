@@ -33,5 +33,153 @@
         "def": "Artificial intelligence models designed to simulate the structure and function of biological neural networks."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Qubit processor",
+        "role": "the quantum chip that stores and manipulates quantum states; built from superconducting circuits, trapped ions, photons or neutral atoms.",
+        "parts": [
+          "qubit array",
+          "couplers",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Cryogenics and control",
+        "role": "keeps qubits cold and coherent and delivers precise control signals.",
+        "parts": [
+          "dilution refrigerator",
+          "microwave or laser control electronics",
+          "shielding and wiring"
+        ]
+      },
+      {
+        "name": "Quantum circuit compiler",
+        "role": "turns a machine-learning model into a sequence of quantum gates.",
+        "parts": [
+          "gate decomposition",
+          "routing and scheduling",
+          "pulse-level calibration"
+        ]
+      },
+      {
+        "name": "Data encoding",
+        "role": "loads classical data into quantum states — a step with no cheap general solution.",
+        "parts": [
+          "amplitude encoding",
+          "angle encoding",
+          "feature maps"
+        ]
+      },
+      {
+        "name": "Hybrid optimiser",
+        "role": "a classical loop that tunes the quantum circuit parameters, as in variational algorithms.",
+        "parts": [
+          "parameter update rule",
+          "gradient estimation",
+          "noise-aware training"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "counteracts noise so results are meaningful; full correction needs many physical qubits per logical qubit.",
+        "parts": [
+          "zero-noise extrapolation",
+          "probabilistic error cancellation",
+          "surface-code decoders"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a qubit modality",
+        "detail": "Choose superconducting circuits, trapped ions, photonics or neutral atoms based on gate speed, connectivity and coherence."
+      },
+      {
+        "title": "Fabricate the processor",
+        "detail": "For superconducting qubits, pattern Josephson junctions and resonators on a silicon or sapphire chip in a cleanroom."
+      },
+      {
+        "title": "Cool and calibrate",
+        "detail": "Mount the chip in a dilution refrigerator at a few millikelvin and tune every qubit and gate to high fidelity."
+      },
+      {
+        "title": "Encode the data",
+        "detail": "Map a classical dataset into quantum states using a chosen feature map or amplitude encoding."
+      },
+      {
+        "title": "Build a parametrised circuit",
+        "detail": "Design an ansatz — a repeated pattern of gates with tunable angles — that can express the target model."
+      },
+      {
+        "title": "Run and measure",
+        "detail": "Execute the circuit many times and read out expectation values from the qubits."
+      },
+      {
+        "title": "Train classically",
+        "detail": "A classical optimiser updates the gate angles to reduce a loss function, repeating the quantum run each step."
+      },
+      {
+        "title": "Mitigate errors",
+        "detail": "Apply error mitigation, or later error correction, because current hardware is noisy and circuit depth is limited."
+      },
+      {
+        "title": "Benchmark honestly",
+        "detail": "Compare against strong classical machine-learning baselines on the same task and data, since a quantum advantage is not yet established for learning."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-fidelity qubits and gates",
+        "status": "partial",
+        "why": "current error rates cap circuit depth, so most useful models cannot run reliably."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "missing",
+        "why": "thousands of physical qubits are estimated per logical qubit, far beyond today's machines."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "partial",
+        "why": "loading classical data into a quantum state can erase any speed-up unless the data has special structure."
+      },
+      {
+        "tech": "Algorithms with proven advantage for learning",
+        "status": "missing",
+        "why": "only a few narrow problems have proven quantum speed-ups; general machine learning does not."
+      },
+      {
+        "tech": "Classical machine-learning infrastructure",
+        "status": "exists",
+        "why": "it supplies baselines and the outer optimisation loop in hybrid quantum-classical schemes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "noisy intermediate-scale quantum processors running small proof-of-principle quantum machine-learning experiments",
+        "unlocks": "understanding which tasks might benefit and where noise destroys any advantage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better qubits plus error mitigation for shallow circuits; quantum kernel methods on small datasets",
+        "unlocks": "credible comparisons against classical machine learning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant machines with logical qubits",
+        "unlocks": "deeper circuits for chemistry, materials and optimisation — the areas where quantum simulation is a natural fit."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant quantum computers integrated with classical AI pipelines",
+        "unlocks": "possible speed-ups for specific learning and simulation tasks, if algorithms and data loading are solved."
+      }
+    ]
   }
 }

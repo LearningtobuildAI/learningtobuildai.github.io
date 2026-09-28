@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor array",
+        "role": "picks up the tiny signals the brain produces during inner speech.",
+        "parts": [
+          "dry EEG electrodes",
+          "fNIRS light emitters and detectors",
+          "elastic headband with fixed montage"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies microvolt-scale signals without drowning them in noise.",
+        "parts": [
+          "low-noise amplifiers",
+          "filters",
+          "shielded wiring",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Artifact handling",
+        "role": "removes blinks, jaw clenching, swallowing and movement, which are far larger than the signal of interest.",
+        "parts": [
+          "accelerometer/IMU",
+          "reference channels",
+          "regression or blind-source-separation software"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns patterns of brain activity into words.",
+        "parts": [
+          "feature extractor (spectral and spatial features)",
+          "neural network classifier",
+          "language model to correct and predict"
+        ]
+      },
+      {
+        "name": "Compute and output",
+        "role": "runs inference and delivers text on the device.",
+        "parts": [
+          "low-power processor or paired phone",
+          "text interface",
+          "on-device storage"
+        ]
+      },
+      {
+        "name": "Calibration and personalisation",
+        "role": "every head and every brain is different, so the model must be tuned per user.",
+        "parts": [
+          "guided training session",
+          "per-user model weights"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the modality and montage",
+        "detail": "EEG is fast but spatially blurry; fNIRS is slower but better localised. Combining them trades speed against information."
+      },
+      {
+        "title": "Build the sensors",
+        "detail": "Dry or semi-dry electrodes avoid conductive gel but need spring-loaded contact through hair; fNIRS needs emitters and detectors placed close enough to reach cortex."
+      },
+      {
+        "title": "Design the front end",
+        "detail": "Amplifiers must resolve signals of a few microvolts next to mains hum and muscle noise, so shielding and active electrodes matter."
+      },
+      {
+        "title": "Collect training data",
+        "detail": "A user performs prompted inner speech for hundreds of trials per word or phoneme while their signals are recorded."
+      },
+      {
+        "title": "Clean the data",
+        "detail": "Eye blinks, jaw tension and motion are regressed out or rejected before the classifier sees anything."
+      },
+      {
+        "title": "Train the decoder",
+        "detail": "A model learns to map features to words or characters; a language model then turns noisy output into fluent text."
+      },
+      {
+        "title": "Close the loop with the user",
+        "detail": "The user sees predictions and corrects them, feeding back into per-user fine-tuning."
+      },
+      {
+        "title": "Harden and miniaturise",
+        "detail": "The lab rig is shrunk into a wearable that survives daily wear, sweat and hair, and keeps raw neural data private on the device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry high-density EEG electrodes",
+        "status": "exists",
+        "why": "gel-free contact through hair is what makes a headband usable outside a lab."
+      },
+      {
+        "tech": "Portable fNIRS",
+        "status": "exists",
+        "why": "adds blood-oxygen information that EEG alone cannot provide."
+      },
+      {
+        "tech": "Low-power on-device machine learning",
+        "status": "exists",
+        "why": "a headband cannot stream raw neural data to the cloud for every keystroke."
+      },
+      {
+        "tech": "Large labelled inner-speech datasets",
+        "status": "missing",
+        "why": "imagined speech varies hugely between people, and there is no large shared corpus to train on."
+      },
+      {
+        "tech": "Clinically validated speech neuroprostheses",
+        "status": "partial",
+        "why": "invasive implants in trials have restored speech at near-conversational rates, setting the accuracy bar non-invasive devices must approach."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab systems decoding small sets of imagined words or syllables with subject-specific training",
+        "unlocks": "proof that inner speech leaves a readable trace on the scalp."
+      },
+      {
+        "stage": "Next",
+        "milestone": "headbands that need only minutes of calibration for a few dozen commands",
+        "unlocks": "hands-free control for users with severe motor impairment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "generalised decoders that transfer between users with little retraining",
+        "unlocks": "a product that works out of the box rather than per subject."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous free-text inner speech at conversational speed",
+        "unlocks": "silent text entry for anyone — and a serious privacy problem needing on-device processing and consent design."
+      }
+    ]
+  }
+}

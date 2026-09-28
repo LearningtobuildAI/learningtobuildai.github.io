@@ -30,5 +30,155 @@
         "def": "A small robot designed to operate at a microscopic scale, capable of performing specific tasks such as material manipulation or environmental sensing during construction."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Builder units",
+        "role": "the robots themselves — many small, identical, simple machines that each do one small operation.",
+        "parts": [
+          "locomotion (wheels, legs or climbing mechanism)",
+          "gripper or placement tool",
+          "onboard processor and radio",
+          "battery or power tether"
+        ]
+      },
+      {
+        "name": "Material and feedstock",
+        "role": "supplies the parts the swarm assembles, in a form simple enough for a robot to handle.",
+        "parts": [
+          "standard blocks or panels, with interlocking joints",
+          "depot and delivery track",
+          "local shaping or curing (e.g. printing or bonding)"
+        ]
+      },
+      {
+        "name": "Localisation and sensing",
+        "role": "each robot must know where it is and what it is next to, without a central controller telling it.",
+        "parts": [
+          "inertial and wheel odometry",
+          "range-finding or camera for local geometry",
+          "fixed reference markers or beacons"
+        ]
+      },
+      {
+        "name": "Coordination layer",
+        "role": "replaces a foreman with rules: robots read the state of the site, act, and leave a mark that guides others.",
+        "parts": [
+          "stigmergic markers (physical tags or printed guides)",
+          "shared digital map of placed parts",
+          "conflict and congestion rules"
+        ]
+      },
+      {
+        "name": "Power and upkeep",
+        "role": "keeps thousands of units working for weeks, not minutes.",
+        "parts": [
+          "charging or battery-swap stations",
+          "self-diagnostics",
+          "retrieval of failed units"
+        ]
+      },
+      {
+        "name": "Human supervision",
+        "role": "a few people set the goal and check the result, at low bandwidth.",
+        "parts": [
+          "task specification and building plan",
+          "inspection and abort controls",
+          "safety exclusion zones"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the building grammar",
+        "detail": "Decide a small set of standard parts and joints so a robot only ever needs one simple motion — this is the 'digital materials' idea, where structures are assembled from reversible discrete pieces rather than poured concrete."
+      },
+      {
+        "title": "Design the unit",
+        "detail": "Make each robot cheap, identical and slightly dumb: short-range sensing, a grip, a radio, a battery. Cost and reliability matter far more than individual skill, because the swarm tolerates losing units."
+      },
+      {
+        "title": "Build the arena",
+        "detail": "Erect a test site with a material depot, a position-tracking system accurate to a few millimetres, and a target structure small enough to finish in days."
+      },
+      {
+        "title": "Write the rules",
+        "detail": "Instead of a central scheduler, encode local rules — move to the nearest needed position, place a part if the site state allows, tag the result. This copies termite mound logic, where insects build without a plan by responding to what earlier insects left behind. Researchers demonstrated the principle in 2014 with termite-inspired construction robots building simple structures cooperatively."
+      },
+      {
+        "title": "Scale the population",
+        "detail": "Run tens, then hundreds, then thousands of units. The hard part is not building, it is avoiding deadlock and radio congestion when many robots want the same square metre."
+      },
+      {
+        "title": "Add inspection and repair",
+        "detail": "Give a fraction of the swarm the job of measuring finished work and correcting defects, since buildings have tolerances and swarms make local errors."
+      },
+      {
+        "title": "Grow structures layer by layer",
+        "detail": "The partly finished building becomes its own access route and scaffold, so the swarm climbs as it builds. Plan material flow so the depot stays reachable."
+      },
+      {
+        "title": "Reach atomic precision (theoretical)",
+        "detail": "Replacing block placement with atom-by-atom assembly means mechanosynthesis: positioning individual molecules with a probe tip under vacuum, one at a time. This has been studied computationally but never demonstrated as a working assembler, and it is many orders of magnitude slower than block assembly."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Swarm coordination without a central controller",
+        "status": "partial",
+        "why": "works in lab demos with small groups of robots; scaling to thousands on a noisy site is unproven."
+      },
+      {
+        "tech": "Centimetre-scale robots with hours of endurance",
+        "status": "missing",
+        "why": "small robots carry tiny batteries, so their working time is minutes; power is the binding constraint on a mega-scale swarm."
+      },
+      {
+        "tech": "Millimetre-accurate positioning on an open site",
+        "status": "partial",
+        "why": "accurate indoors with beacons; outdoors, without installed infrastructure, accuracy degrades."
+      },
+      {
+        "tech": "Standard interlocking building parts",
+        "status": "partial",
+        "why": "discrete, reversible assembly has been demonstrated in research; no construction industry standard exists."
+      },
+      {
+        "tech": "Atomically precise manufacturing",
+        "status": "missing",
+        "why": "molecular assemblers exist only as proposals and simulations; there is no experimental route to bulk atom-by-atom city building."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory swarms of tens of robots building small structures by stigmergic rules",
+        "unlocks": "proof that cooperation, not cleverness, can build."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hundreds of robots on a real site assembling a modular wall or shelter under human supervision",
+        "unlocks": "first practical niches: hazardous sites, disaster relief, remote bases."
+      },
+      {
+        "stage": "Next",
+        "milestone": "swarms used for specific construction tasks — inspection, repair, laying modular units",
+        "unlocks": "partial automation of existing construction rather than whole buildings."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands of units building and self-repairing a large structure",
+        "unlocks": "construction in places people cannot easily work: seabed, desert, off-world."
+      },
+      {
+        "stage": "Theoretical",
+        "milestone": "atom-by-atom assembly of bulk materials",
+        "unlocks": "only if mechanosynthesis becomes real — a separate, far more speculative frontier than swarm building."
+      }
+    ]
   }
 }

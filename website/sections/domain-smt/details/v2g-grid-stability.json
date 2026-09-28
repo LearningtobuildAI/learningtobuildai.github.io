@@ -30,5 +30,149 @@
         "def": "A device that manages the flow of electricity between the grid and EV batteries in a V2G system, ensuring safe and efficient energy exchange."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional onboard converter",
+        "role": "lets the car's battery push power back out, not just take it in.",
+        "parts": [
+          "bidirectional AC/DC or DC/DC stage",
+          "onboard charger electronics",
+          "contactor and isolation"
+        ]
+      },
+      {
+        "name": "Bidirectional charge point",
+        "role": "the wallbox or depot charger that manages power flow in both directions.",
+        "parts": [
+          "power conversion stage (often DC)",
+          "connector and cable",
+          "metering and safety interlocks"
+        ]
+      },
+      {
+        "name": "Communication layer",
+        "role": "negotiates how much power moves, when, and who is allowed to command it.",
+        "parts": [
+          "vehicle-to-charger protocol (CHAdeMO, or CCS with ISO 15118-20)",
+          "charger-to-cloud link",
+          "grid signal protocol such as OpenADR"
+        ]
+      },
+      {
+        "name": "Aggregator platform",
+        "role": "pools hundreds or thousands of parked cars into one controllable block of capacity.",
+        "parts": [
+          "fleet telemetry and forecasting",
+          "bidding and dispatch engine",
+          "virtual power plant controller"
+        ]
+      },
+      {
+        "name": "Battery and warranty management",
+        "role": "protects the asset by limiting depth of discharge, cycles and temperatures.",
+        "parts": [
+          "state-of-charge and state-of-health model",
+          "user-set minimum charge and departure time",
+          "degradation accounting"
+        ]
+      },
+      {
+        "name": "Grid interface",
+        "role": "makes the export safe and measurable on the local network.",
+        "parts": [
+          "revenue meter",
+          "protection and anti-islanding",
+          "distribution transformer and feeder monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Confirm the vehicle can export",
+        "detail": "Only some models ship with bidirectional-capable hardware; the rest would need retrofit, which is rarely economic."
+      },
+      {
+        "title": "Install the bidirectional charger",
+        "detail": "A DC-capable unit goes at the home or depot, sometimes requiring a service upgrade to the site's electrical connection."
+      },
+      {
+        "title": "Prove the protocol link",
+        "detail": "The charger and car must complete a certified handshake — CHAdeMO, or CCS with ISO 15118-20 — before any export is allowed."
+      },
+      {
+        "title": "Set the owner's constraints",
+        "detail": "The driver fixes a minimum state of charge and a departure time so the car is always ready when needed."
+      },
+      {
+        "title": "Connect to an aggregator",
+        "detail": "Telemetry from each charger is pooled into a virtual power plant with a forecast of how many cars will be plugged in at each hour."
+      },
+      {
+        "title": "Enrol in a grid market",
+        "detail": "The pool is prequalified and bids capacity into frequency response, peak-capacity or local-flexibility markets."
+      },
+      {
+        "title": "Dispatch and discharge",
+        "detail": "On a grid signal, the aggregator tells chargers to export for a defined window, staying inside each car's battery limits."
+      },
+      {
+        "title": "Settle and monitor",
+        "detail": "Metered energy is reconciled, owners and aggregators are paid, and long-term battery degradation is tracked against the revenue earned."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional-capable EV hardware",
+        "status": "partial",
+        "why": "export capability is standard in some models and absent from most others, so the fleet available to V2G is still small."
+      },
+      {
+        "tech": "Certified bidirectional charging standards",
+        "status": "exists",
+        "why": "CHAdeMO and the CCS route through ISO 15118-20 define how a car and charger negotiate reverse power flow."
+      },
+      {
+        "tech": "Sub-second grid signal and settlement systems",
+        "status": "partial",
+        "why": "frequency response needs fast telemetry and trustworthy metering of many small, dispersed resources."
+      },
+      {
+        "tech": "Market access for aggregated small resources",
+        "status": "partial",
+        "why": "in many regions rules still bar a pool of parked cars from bidding the way a power station does."
+      },
+      {
+        "tech": "Battery degradation modelling",
+        "status": "partial",
+        "why": "if extra cycling costs more in battery life than the revenue it earns, the business case collapses."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "depot and fleet pilots with dozens of vehicles — school buses, delivery vans and municipal fleets",
+        "unlocks": "proves the hardware, protocols and settlement under real duty cycles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mainstream passenger cars shipping with bidirectional hardware as standard",
+        "unlocks": "millions of home chargers becoming potential grid assets overnight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "aggregators routinely bidding vehicle fleets into frequency and capacity markets",
+        "unlocks": "a revenue stream that offsets part of the cost of owning an EV."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "very large managed pools of parked vehicles counted in grid planning",
+        "unlocks": "less need for dedicated grid batteries and gas peaking plants, and more headroom for variable renewables."
+      }
+    ]
   }
 }

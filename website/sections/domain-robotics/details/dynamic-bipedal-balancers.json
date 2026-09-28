@@ -34,5 +34,155 @@
         "def": "An algorithm that uses real-time data from sensors to predict and correct system behavior, ensuring stability and performance under varying conditions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Leg actuators",
+        "role": "deliver the joint torques needed to catch and correct a fall.",
+        "parts": [
+          "brushless electric motors",
+          "high-ratio gears (harmonic or planetary)",
+          "joint torque sensors",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Sensing suite",
+        "role": "measures the body's state hundreds of times a second.",
+        "parts": [
+          "inertial measurement unit",
+          "joint encoders",
+          "foot force/torque sensors",
+          "depth cameras or lidar for terrain"
+        ]
+      },
+      {
+        "name": "Whole-body controller",
+        "role": "decides where to put the centre of mass and where each foot lands.",
+        "parts": [
+          "model-predictive control layer (~50–200 Hz)",
+          "joint-level torque controller (~1 kHz)",
+          "state estimator"
+        ]
+      },
+      {
+        "name": "Feet and contact",
+        "role": "the only interface with the ground; must sense and absorb impact.",
+        "parts": [
+          "compliant sole",
+          "force-sensing pads",
+          "ankle joint"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "supplies the kilowatts of burst power that balancing demands.",
+        "parts": [
+          "lithium-ion battery pack",
+          "power electronics",
+          "liquid or air cooling"
+        ]
+      },
+      {
+        "name": "Torso and arms",
+        "role": "move mass to shift the centre of mass, and carry the payload.",
+        "parts": [
+          "lightweight frame",
+          "arm joints",
+          "hand or gripper"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the kinematics",
+        "detail": "Leg length, joint count and mass distribution are chosen so the robot can step over obstacles while keeping torque demands within actuator limits."
+      },
+      {
+        "title": "Build the actuators",
+        "detail": "Motor, gearbox, torque sensor and driver are assembled into compact joint modules; high torque density in a small package is the hardest engineering problem."
+      },
+      {
+        "title": "Fabricate the frame",
+        "detail": "A lightweight metal or composite structure ties the joints, battery and electronics together while keeping the centre of mass low."
+      },
+      {
+        "title": "Wire sensing and compute",
+        "detail": "An IMU is mounted near the centre of mass, strain gauges go into the feet and joints, and a real-time computer is connected to every driver."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Joint offsets, sensor biases and actuator models are identified so the controller's model matches the real machine."
+      },
+      {
+        "title": "Develop the controller",
+        "detail": "Balance is learned in simulation first: a simplified dynamics model predicts where the centre of mass will travel, and the controller plans footfalls and joint torques."
+      },
+      {
+        "title": "Tune for contact",
+        "detail": "Compliant soles and impedance control absorb the impact of each step so the robot does not bounce or slip."
+      },
+      {
+        "title": "Test progressively",
+        "detail": "Standing, then flat-ground walking, then pushes and uneven ground, then stairs and ramps, with a harness and safety tether throughout."
+      },
+      {
+        "title": "Integrate the payload task",
+        "detail": "Only after walking is robust is the robot given a real job — carrying totes, for example — since a load shifts the centre of mass."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density electric actuators",
+        "status": "exists",
+        "why": "electric joints small enough for a leg but strong enough to catch a fall are what made modern humanoids possible."
+      },
+      {
+        "tech": "Affordable inertial and force sensing",
+        "status": "exists",
+        "why": "balance is a feedback problem; without fast, accurate state estimation there is nothing to control."
+      },
+      {
+        "tech": "Real-time model-predictive control",
+        "status": "partial",
+        "why": "the optimisation that plans footfalls and forces is computationally heavy and still an active research area."
+      },
+      {
+        "tech": "Batteries with high power density",
+        "status": "partial",
+        "why": "balancing draws large bursts of current, so runtime in real work is short."
+      },
+      {
+        "tech": "Simulation and reinforcement-learning pipelines",
+        "status": "partial",
+        "why": "learning to walk in simulation cuts the risk and cost of teaching a physical robot to fall over."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research and pilot humanoids walking, climbing and carrying loads in warehouses",
+        "unlocks": "real-world data on reliability and failure modes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robust walking on cluttered, uneven industrial floors without a safety tether",
+        "unlocks": "useful work in logistics and inspection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-day operation with fast battery swap and remote supervision",
+        "unlocks": "economic comparison with existing automation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose legged workers alongside fixed automation",
+        "unlocks": "handling of unstructured tasks that wheeled robots and fixed arms cannot reach."
+      }
+    ]
   }
 }

@@ -1,0 +1,140 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Carrier liquid",
+        "role": "the transparent base fluid whose molecules set the baseline refractive index and viscosity.",
+        "parts": [
+          "silicone oil, hydrocarbon oil or water",
+          "index-matching additives"
+        ]
+      },
+      {
+        "name": "Nanoparticle phase",
+        "role": "suspended particles that respond to a field and shift the mixture's optical and flow properties.",
+        "parts": [
+          "dielectric or magnetic nanoparticles (typically 5–50 nm)",
+          "surfactant coating",
+          "optional liquid-crystal or polymer shells"
+        ]
+      },
+      {
+        "name": "Field electrodes or coils",
+        "role": "apply the electric or magnetic stimulus that reorients the particles.",
+        "parts": [
+          "transparent conductive electrodes (e.g. indium tin oxide)",
+          "coil or permanent-magnet array for magnetic variants",
+          "insulating spacer"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "sets field strength and switching rate, from millisecond pulses to steady bias.",
+        "parts": [
+          "power driver",
+          "waveform generator",
+          "sensors for temperature and index feedback"
+        ]
+      },
+      {
+        "name": "Containment cell",
+        "role": "seals the fluid in a thin, optically flat gap and keeps particles from settling.",
+        "parts": [
+          "glass or sapphire windows",
+          "anti-settling seal",
+          "thermal management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the response",
+        "detail": "Choose particle size, shape, material and loading so that particle alignment changes refractive index, viscosity, or both under a realistic field."
+      },
+      {
+        "title": "Synthesise the nanoparticles",
+        "detail": "Make the particles by chemical precipitation or flame synthesis, with the size distribution kept narrow so the fluid stays transparent rather than scattering light."
+      },
+      {
+        "title": "Coat and stabilise",
+        "detail": "Apply a surfactant or polymer shell so particles repel each other instead of clumping; clumps scatter light and ruin the effect."
+      },
+      {
+        "title": "Disperse into the carrier",
+        "detail": "Mix and mill the particles into the oil or water until the suspension is uniform, then check it stays uniform over days and temperature swings."
+      },
+      {
+        "title": "Fill and seal the cell",
+        "detail": "Inject the fluid into a thin gap between transparent electrodes or inside a coil former, removing bubbles and sealing against evaporation."
+      },
+      {
+        "title": "Wire up the drive",
+        "detail": "Connect the electrodes or coils to control electronics that can modulate the field fast enough for the intended switching speed."
+      },
+      {
+        "title": "Characterise the tuning",
+        "detail": "Measure refractive index and viscosity against field strength, temperature and switching frequency to build a calibration curve."
+      },
+      {
+        "title": "Evaluate in a device",
+        "detail": "Test in the target role — a beam-steering aperture, an adaptive lens, or a surface coating — and measure optical quality and power draw."
+      },
+      {
+        "title": "Test ageing and settling",
+        "detail": "Run long cycles to check for particle aggregation, electrode fouling and drift, the usual failure modes of these fluids."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Stable nanoparticle colloids",
+        "status": "partial",
+        "why": "keeping nanoscale particles dispersed without clumping for years is the hardest practical problem; clumping destroys transparency."
+      },
+      {
+        "tech": "Magnetorheological fluids",
+        "status": "exists",
+        "why": "field-driven viscosity change is already used in commercial dampers, so the flow-control half is well understood."
+      },
+      {
+        "tech": "Electrorheological fluids",
+        "status": "partial",
+        "why": "electric-field viscosity control works but tends to need high voltages and delivers modest force."
+      },
+      {
+        "tech": "Tunable-index optics",
+        "status": "exists",
+        "why": "liquid-crystal and liquid-lens devices already steer and focus light, showing demand for a fluid-based tunable element."
+      },
+      {
+        "tech": "Metamaterial design",
+        "status": "partial",
+        "why": "computing which particle arrangements give a desired optical response relies on simulation tools that are still maturing for dynamic, disordered media."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tunable liquid lenses and electro-optic shutters in niche products",
+        "unlocks": "a proven market for fluids whose optical properties can be switched electrically."
+      },
+      {
+        "stage": "Next",
+        "milestone": "single fluid demonstrated that changes both refractive index and viscosity on command",
+        "unlocks": "beam steering and variable-damping elements combined in one thin layer."
+      },
+      {
+        "stage": "Next",
+        "milestone": "long-life colloidal formulations with consistent switching over millions of cycles",
+        "unlocks": "deployment outside laboratories, in cameras, LiDAR and adaptive optics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-area, low-power dynamic coatings",
+        "unlocks": "continuously variable surfaces for signature and thermal management — still speculative, and optical camouflage remains unproven."
+      }
+    ]
+  }
+}

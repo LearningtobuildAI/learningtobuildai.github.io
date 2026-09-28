@@ -28,5 +28,157 @@
         "def": "An experimental method in which a variable is manipulated to observe its effect on another variable, often used to understand cause-and-effect relationships within models."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Behavioural testbeds",
+        "role": "create narrow, verifiable behaviours that can actually be explained.",
+        "parts": [
+          "prompt datasets with one controlled variable",
+          "model organisms (deliberately backdoored or deceptive small models)",
+          "toy models of superposition"
+        ]
+      },
+      {
+        "name": "Activation readout",
+        "role": "measure what information is linearly present at each layer and token position.",
+        "parts": [
+          "linear probes",
+          "logit lens and tuned lens",
+          "hooks into the residual stream"
+        ]
+      },
+      {
+        "name": "Sparse feature extraction",
+        "role": "break dense activations into a larger set of sparsely active, human-readable directions.",
+        "parts": [
+          "sparse autoencoders",
+          "transcoders",
+          "dictionary-learning training loop",
+          "feature dashboards"
+        ]
+      },
+      {
+        "name": "Causal intervention",
+        "role": "test whether a component actually causes the behaviour, not just correlates with it.",
+        "parts": [
+          "activation patching / causal tracing",
+          "head and neuron ablation",
+          "path patching",
+          "steering vectors"
+        ]
+      },
+      {
+        "name": "Circuit assembly and verification",
+        "role": "join components and features into a graph that predicts behaviour.",
+        "parts": [
+          "attribution and direct-path analysis",
+          "circuit diagrams",
+          "held-out behavioural tests",
+          "sufficiency and necessity checks"
+        ]
+      },
+      {
+        "name": "Safety application",
+        "role": "turn explanations into oversight of real models.",
+        "parts": [
+          "honesty and deception probes",
+          "latent-space monitoring",
+          "anomaly detection",
+          "audit write-ups"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a behaviour and an open model",
+        "detail": "Pick something narrow and checkable — which token is predicted, or whether an answer is truthful — on a model whose weights and activations can be inspected."
+      },
+      {
+        "title": "Build a controlled dataset",
+        "detail": "Write prompt pairs that differ in exactly one factor, so the effect of that factor on the output can be measured cleanly."
+      },
+      {
+        "title": "Sweep for where the behaviour lives",
+        "detail": "Patch activations from one run into another, layer by layer and position by position, to find the places that change the answer."
+      },
+      {
+        "title": "Zoom into components",
+        "detail": "Inspect the attention heads and MLP blocks flagged by the sweep, using logit lens and attribution to see what each writes to the residual stream."
+      },
+      {
+        "title": "Decompose into features",
+        "detail": "Train sparse autoencoders on activations at the interesting layers, so a dense vector is replaced by a short list of active directions."
+      },
+      {
+        "title": "Label the features",
+        "detail": "Find the inputs that fire each feature most strongly, describe it in words, and have a language model draft explanations for review."
+      },
+      {
+        "title": "Verify causally",
+        "detail": "Clamp or steer each candidate feature up and down and check the behaviour moves as predicted — a feature must be both sufficient and necessary."
+      },
+      {
+        "title": "Assemble and test a circuit",
+        "detail": "Connect the verified features and components into one explanation, then check it predicts answers on prompts never used during the analysis."
+      },
+      {
+        "title": "Stress-test and scale",
+        "detail": "Repeat on other prompts, larger or retrained models, and realistic deception or backdoor settings to see whether the explanation survives."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Open models with weight and activation access",
+        "status": "exists",
+        "why": "the analysis needs the internal tensors, not just the text a model outputs."
+      },
+      {
+        "tech": "Large-scale compute for interventions and SAE training",
+        "status": "exists",
+        "why": "training a sparse autoencoder on a frontier model's activations is a substantial training run in its own right."
+      },
+      {
+        "tech": "Sparse dictionary learning methods",
+        "status": "partial",
+        "why": "sparse autoencoders recover interpretable features at frontier scale, but coverage is incomplete and reconstruction is imperfect."
+      },
+      {
+        "tech": "Ground-truth testbeds",
+        "status": "exists",
+        "why": "toy models and deliberately misaligned model organisms let methods be checked against a known answer before use on unknown models."
+      },
+      {
+        "tech": "Standards for validating an explanation",
+        "status": "missing",
+        "why": "there is no agreed test for whether a circuit explanation is complete or faithful rather than merely plausible."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "reproducible circuits in small models and millions of extracted features in large ones",
+        "unlocks": "a working vocabulary of features for describing model internals."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable automated labelling and shared benchmarks for interpretability",
+        "unlocks": "methods that can be compared and scaled beyond a few well-studied models."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interpretability used as a live safety check during training and deployment",
+        "unlocks": "a warning system that does not depend on catching bad behaviour in outputs."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "near-complete explanations usable to audit a model before release",
+        "unlocks": "safety claims about frontier systems that can be checked rather than asserted."
+      }
+    ]
   }
 }

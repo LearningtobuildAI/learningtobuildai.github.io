@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Multimodal perception encoder",
+        "role": "turns camera images, depth, proprioception and touch into a shared representation the policy can reason over.",
+        "parts": [
+          "vision transformer or similar image encoder",
+          "language tokeniser for instructions",
+          "proprioception and tactile encoders"
+        ]
+      },
+      {
+        "name": "Policy backbone",
+        "role": "the large pretrained network that links what the robot sees and is told to what it should do.",
+        "parts": [
+          "vision-language model weights",
+          "action-conditioned layers",
+          "attention over past observations"
+        ]
+      },
+      {
+        "name": "Action head",
+        "role": "emits the next movement — often a short chunk of future actions rather than a single step.",
+        "parts": [
+          "tokenised action decoder, or a flow-matching / diffusion head for continuous actions",
+          "action-chunk horizon"
+        ]
+      },
+      {
+        "name": "Robot body and low-level controller",
+        "role": "executes the commanded motion; the model never commands torque directly on real hardware.",
+        "parts": [
+          "arms and dexterous hands",
+          "joint-level impedance or torque controller",
+          "whole-body balancing controller for mobile platforms"
+        ]
+      },
+      {
+        "name": "Data engine",
+        "role": "supplies the demonstrations the model imitates.",
+        "parts": [
+          "teleoperation rigs (leader-follower arms, VR controllers)",
+          "kinesthetic teaching setup",
+          "simulation environments",
+          "data logging and annotation pipeline"
+        ]
+      },
+      {
+        "name": "Inference and safety layer",
+        "role": "runs the model fast enough to control the robot and stops it when unsure.",
+        "parts": [
+          "onboard or networked accelerator",
+          "runtime monitor",
+          "emergency stop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the embodiment",
+        "detail": "Decide the arm, hand and sensor set, since the action space the model learns is defined by the hardware it will drive."
+      },
+      {
+        "title": "Collect demonstrations",
+        "detail": "Humans teleoperate or physically guide the robot through hundreds to millions of task attempts, recording video, joint states and instructions together."
+      },
+      {
+        "title": "Standardise the data",
+        "detail": "Convert recordings from many different robots and cameras into one common schema with consistent action, frame-rate and state conventions, so data can be pooled."
+      },
+      {
+        "title": "Pretrain the backbone",
+        "detail": "Train or adapt a vision-language model on large image-text corpora plus internet video and robot footage, so it already recognises objects, words and spatial relations."
+      },
+      {
+        "title": "Attach and train the action head",
+        "detail": "Add the action decoder and train it, usually by imitation learning, so the network outputs movement chunks that reproduce the demonstrated behaviour; some recipes co-train on web data to keep language understanding intact."
+      },
+      {
+        "title": "Fine-tune per task or robot",
+        "detail": "Adapt the general model to a specific kitchen, warehouse or home with a smaller set of new demonstrations, sometimes refined by reinforcement learning in simulation."
+      },
+      {
+        "title": "Evaluate in simulation, then reality",
+        "detail": "Score success rates across many randomised scenes, then test on hardware, measuring how often the robot completes the task without help."
+      },
+      {
+        "title": "Deploy with limits",
+        "detail": "Run inference at control rate, cap speed and force, and keep a monitor that halts the robot when the model is uncertain or the scene is unsafe."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large vision-language models",
+        "status": "exists",
+        "why": "they give robots pretrained grounding in objects, words and scenes, which is what makes generalisation possible."
+      },
+      {
+        "tech": "Cheap parallel compute for training and onboard inference",
+        "status": "exists",
+        "why": "these models are far too large to run without accelerators, and training needs thousands of GPU-days."
+      },
+      {
+        "tech": "Affordable dexterous hands and compliant actuators",
+        "status": "partial",
+        "why": "a general policy is only as capable as the body it commands."
+      },
+      {
+        "tech": "Large, standardised cross-robot demonstration datasets",
+        "status": "partial",
+        "why": "pooled data from many labs and robots is what lets one model transfer between embodiments."
+      },
+      {
+        "tech": "Sim-to-real transfer",
+        "status": "partial",
+        "why": "simulation provides scale, but contact-rich manipulation still differs enough that real data remains necessary."
+      },
+      {
+        "tech": "Safety and certification standards for learned robot control",
+        "status": "missing",
+        "why": "no accepted framework yet exists for certifying a neural network that decides its own motions around people."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research VLA models that follow spoken instructions and perform simple tabletop tasks across several robot types",
+        "unlocks": "proof that one model can drive more than one body."
+      },
+      {
+        "stage": "Next",
+        "milestone": "models that handle longer, multi-step household tasks with acceptable reliability and low-latency onboard inference",
+        "unlocks": "useful home and warehouse assistants for constrained, supervised settings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-robot learning from its own failures, so new skills need little or no human teleoperation",
+        "unlocks": "deployment in unpredictable real environments without constant re-collection of data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "certified runtime safety and shared skill libraries across robot fleets",
+        "unlocks": "general-purpose robots working alongside people in homes and public spaces."
+      }
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Generative backbone model",
+        "role": "invents the 3D shape of a protein that could perform the wanted job — for example, gripping a specific patch on a target.",
+        "parts": [
+          "diffusion network (noise-to-structure generation)",
+          "conditional constraints such as a target binding site",
+          "hallucination or inpainting routines for scaffolds"
+        ]
+      },
+      {
+        "name": "Sequence design model",
+        "role": "picks the amino acid string that will fold into that shape.",
+        "parts": [
+          "graph neural networks over residues",
+          "ligand or target context channels",
+          "sampling and re-ranking"
+        ]
+      },
+      {
+        "name": "Structure prediction and filters",
+        "role": "checks whether the designed sequence really folds as intended before any wet-lab work.",
+        "parts": [
+          "predictors such as AlphaFold2 and AlphaFold3",
+          "physics-based energy functions",
+          "aggregation, immunogenicity and solubility screens"
+        ]
+      },
+      {
+        "name": "Training and compute",
+        "role": "the data and hardware that make the models work.",
+        "parts": [
+          "Protein Data Bank structures",
+          "multiple-sequence-alignment databases",
+          "GPU clusters"
+        ]
+      },
+      {
+        "name": "Synthesis and expression",
+        "role": "turns a designed sequence into physical protein.",
+        "parts": [
+          "gene synthesis",
+          "E. coli, yeast or cell-free expression",
+          "affinity and size-exclusion purification"
+        ]
+      },
+      {
+        "name": "Characterisation and assay",
+        "role": "measures whether the protein made actually works.",
+        "parts": [
+          "binding assays such as surface plasmon resonance",
+          "yeast or phage display libraries",
+          "cryo-electron microscopy or X-ray crystallography",
+          "thermal stability tests"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write the functional specification",
+        "detail": "Define what the protein must do: which target surface to bind, the desired affinity (often nanomolar or tighter), the working temperature and pH, and the size limit for manufacture."
+      },
+      {
+        "title": "Generate candidate backbones",
+        "detail": "A diffusion model is given the target structure and the binding site, and produces many possible protein folds — typically 50–100 amino acids for a binder — that present the right shape to that surface."
+      },
+      {
+        "title": "Design sequences for each backbone",
+        "detail": "A sequence-design model such as ProteinMPNN proposes several amino acid sequences per backbone, choosing residues that stabilise the fold and pack well at the binding interface."
+      },
+      {
+        "title": "Filter in silico",
+        "detail": "Each sequence is re-folded by a structure predictor and compared with the intended design; candidates with poor confidence, bad packing, exposed sticky patches or unstable regions are discarded."
+      },
+      {
+        "title": "Synthesise the genes",
+        "detail": "Hundreds of surviving designs are ordered as synthetic DNA, codon-optimised for the chosen expression host."
+      },
+      {
+        "title": "Express and purify",
+        "detail": "The genes are put into E. coli, yeast or a cell-free system, grown at small scale, and the proteins purified by affinity tags followed by size-exclusion chromatography."
+      },
+      {
+        "title": "Measure",
+        "detail": "Binding affinity and kinetics are measured, often first in pooled high-throughput display assays and then individually; successful designs are checked structurally by cryo-EM or crystallography and for melting temperature."
+      },
+      {
+        "title": "Iterate",
+        "detail": "Experimental results — which designs bound, how tightly, how stably — go back into the next round of design, or feed directed-evolution or affinity-maturation libraries."
+      },
+      {
+        "title": "Develop the winner",
+        "detail": "The best candidate is engineered for manufacturing yield, shelf life and low immune reactivity, then tested in cells and animals before any human trial."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Protein structure databases",
+        "status": "exists",
+        "why": "the Protein Data Bank supplies the experimental structures the models learn from."
+      },
+      {
+        "tech": "Structure prediction at near-experimental accuracy",
+        "status": "exists",
+        "why": "AlphaFold2 in 2020 first made it possible to tell whether a designed sequence folds as intended, and the AlphaFold database holds predicted structures for over 200 million proteins."
+      },
+      {
+        "tech": "Diffusion and other generative deep learning",
+        "status": "exists",
+        "why": "the same mathematics that generates images can generate physically plausible protein backbones."
+      },
+      {
+        "tech": "Cheap gene synthesis and high-throughput expression",
+        "status": "exists",
+        "why": "design is useless without the ability to make and test hundreds of variants quickly."
+      },
+      {
+        "tech": "Reliable design of catalysis, not just binding",
+        "status": "partial",
+        "why": "designing an enzyme that catalyses a chosen reaction with good rate and specificity remains much harder than designing a binder."
+      },
+      {
+        "tech": "Predicting immunogenicity and developability in humans",
+        "status": "partial",
+        "why": "a protein that works in a test tube can still be cleared quickly or provoke an immune response in a patient."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "generative design tools in routine laboratory and industry use; designed protein nanoparticle vaccines in clinical trials and a designed cytokine mimetic in early human testing",
+        "unlocks": "much faster discovery of binders, vaccines and research reagents without waiting for nature to supply them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a de novo designed protein approved as a medicine",
+        "unlocks": "proof that computational design can survive manufacturing, regulation and human biology, not just the assay plate."
+      },
+      {
+        "stage": "Next",
+        "milestone": "designed enzymes used in industrial chemistry and designed sensors and switches inside cells",
+        "unlocks": "cleaner chemical routes and programmable biology beyond medicine."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop autonomous labs that design, make and test proteins without human intervention, including multi-domain machines and new materials",
+        "unlocks": "design cycles measured in days, widening the search far beyond what any single team could test."
+      }
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Bottle body",
+        "role": "holds the water and provides insulation; often stainless steel or Tritan plastic.",
+        "parts": [
+          "double-wall vacuum insulation",
+          "lid with seal",
+          "mouthpiece"
+        ]
+      },
+      {
+        "name": "Sensing module",
+        "role": "measures how much water leaves the bottle.",
+        "parts": [
+          "load cell or weight sensor",
+          "accelerometer for sip detection",
+          "capacitive touch or button"
+        ]
+      },
+      {
+        "name": "Electronics and power",
+        "role": "runs the sensor, Bluetooth and reminders.",
+        "parts": [
+          "microcontroller with Bluetooth Low Energy",
+          "rechargeable lithium-polymer battery",
+          "USB charging port or wireless charging coil",
+          "LED indicator ring"
+        ]
+      },
+      {
+        "name": "Firmware",
+        "role": "converts sensor data into volume drunk and time-stamps it.",
+        "parts": [
+          "calibration algorithms",
+          "power management",
+          "reminder logic"
+        ]
+      },
+      {
+        "name": "Mobile app",
+        "role": "shows intake, sets goals and sends reminders.",
+        "parts": [
+          "Bluetooth sync",
+          "hydration goal settings",
+          "notifications and history"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the bottle",
+        "detail": "CAD the body, lid, and electronics compartment, keeping it dishwasher-safe where possible."
+      },
+      {
+        "title": "Choose and place the sensor",
+        "detail": "A load cell under the base or a flow meter in the lid; calibrate to measure volume by weight (1 g ≈ 1 mL)."
+      },
+      {
+        "title": "Build the PCB",
+        "detail": "Surface-mount the microcontroller, Bluetooth radio, sensor amplifier and charging circuit."
+      },
+      {
+        "title": "Write firmware",
+        "detail": "Convert raw sensor readings to millilitres, detect drinking events, manage sleep modes to save battery."
+      },
+      {
+        "title": "Develop the app",
+        "detail": "Create iOS and Android apps that pair over Bluetooth, store logs, and schedule reminders."
+      },
+      {
+        "title": "Assemble and calibrate",
+        "detail": "Fit the electronics into the base or lid, seal against water, and calibrate each unit."
+      },
+      {
+        "title": "Test",
+        "detail": "Verify accuracy across temperatures and fill levels, and measure battery life."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bluetooth Low Energy",
+        "status": "exists",
+        "why": "allows low-power sync with phones."
+      },
+      {
+        "tech": "Miniature load cells and MEMS sensors",
+        "status": "exists",
+        "why": "enable weight-based volume tracking in a small package."
+      },
+      {
+        "tech": "Rechargeable lithium batteries",
+        "status": "exists",
+        "why": "power the electronics for days or weeks between charges."
+      },
+      {
+        "tech": "Mobile app platforms",
+        "status": "exists",
+        "why": "provide the user interface for goals and reminders."
+      },
+      {
+        "tech": "Hydration-level sensing (e.g., sweat sensors)",
+        "status": "partial",
+        "why": "would measure actual body hydration rather than just water consumed, but is not yet integrated into bottles."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "bottles that log volume drunk and remind users",
+        "unlocks": "basic awareness of daily water intake."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with smartwatches and fitness platforms",
+        "unlocks": "automatic logging and contextual reminders based on activity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sweat or saliva sensors that estimate electrolyte loss",
+        "unlocks": "personalised hydration advice beyond volume."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop hydration management with drink dispensing",
+        "unlocks": "automatic fluid and electrolyte replacement for athletes or patients."
+      }
+    ]
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Compute module",
+        "role": "runs the tutor locally so it works without a network and keeps student data on the device.",
+        "parts": [
+          "system-on-chip with a neural processing unit (NPU)",
+          "8–16 GB of low-power memory",
+          "shared memory bus between CPU, GPU and NPU"
+        ]
+      },
+      {
+        "name": "Model runtime",
+        "role": "executes a compressed language model fast enough for spoken conversation.",
+        "parts": [
+          "quantised model weights (typically 4-bit)",
+          "inference engine with NPU kernels",
+          "key-value cache manager",
+          "thermal and power governor"
+        ]
+      },
+      {
+        "name": "Curriculum and knowledge layer",
+        "role": "grounds every answer in the syllabus rather than the model's general memory.",
+        "parts": [
+          "curriculum knowledge graph mapped to standards",
+          "vector index of chunked lesson content",
+          "retrieval-augmented generation pipeline",
+          "source citations"
+        ]
+      },
+      {
+        "name": "Learner model",
+        "role": "tracks what the student actually knows and decides what to ask next.",
+        "parts": [
+          "knowledge-tracing estimator per skill",
+          "spaced-repetition scheduler",
+          "difficulty calibrator",
+          "mastery record stored on device"
+        ]
+      },
+      {
+        "name": "Tutor dialogue layer",
+        "role": "turns the learner model into Socratic conversation instead of answer-giving.",
+        "parts": [
+          "agent loop with tool calls",
+          "pedagogy-tuned prompt and policy",
+          "age-appropriate safety filters",
+          "speech recognition and synthesis"
+        ]
+      },
+      {
+        "name": "Input and work surface",
+        "role": "lets the device see handwritten and spoken work.",
+        "parts": [
+          "stylus digitiser",
+          "handwriting and maths-notation recognition",
+          "microphone array",
+          "camera for paper worksheets"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the curriculum",
+        "detail": "Subjects are broken into a graph of fine-grained skills, each with prerequisites, mapped to published standards so progress transfers between schools."
+      },
+      {
+        "title": "Curate and index content",
+        "detail": "Licensed lessons, worked examples and question banks are chunked, embedded and stored in an on-device vector index, with each item tagged to its skill node."
+      },
+      {
+        "title": "Train the tutor behaviour",
+        "detail": "A base language model is fine-tuned on tutoring transcripts so that it asks leading questions, diagnoses errors and withholds final answers until the student gets there."
+      },
+      {
+        "title": "Compress the model",
+        "detail": "Weights are quantised, pruned and distilled until the model fits the tablet's memory budget and runs at conversational latency, with quality measured against the uncompressed version."
+      },
+      {
+        "title": "Optimise for the NPU",
+        "detail": "Operators are rewritten for the chip's accelerators, memory traffic is reduced, and the runtime throttles gracefully rather than overheating the fanless case."
+      },
+      {
+        "title": "Build the learner model",
+        "detail": "Each answer updates a per-skill mastery estimate; a scheduler brings back weak skills at expanding intervals instead of repeating what is already known."
+      },
+      {
+        "title": "Wire the agent loop",
+        "detail": "Retrieval, mastery estimation, question selection and dialogue are joined into one loop that can plan a session, react to confusion and stop when the student is tired."
+      },
+      {
+        "title": "Harden privacy and safety",
+        "detail": "Speech and handwriting are processed on device, cloud calls are opt-in, and filters block age-inappropriate content; the design targets child-data rules such as COPPA, FERPA and GDPR."
+      },
+      {
+        "title": "Validate learning gains",
+        "detail": "Randomised classroom trials compare progress against ordinary homework and against a teacher-only control, and the curriculum graph is corrected where the model misleads."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Small language models that fit in a tablet",
+        "status": "exists",
+        "why": "models in the low billions of parameters now give useful reasoning at 4-bit precision."
+      },
+      {
+        "tech": "Edge NPUs with enough memory bandwidth",
+        "status": "partial",
+        "why": "accelerators make inference fast, but bandwidth and thermal limits cap model size in a fanless device."
+      },
+      {
+        "tech": "Quantisation and efficient inference",
+        "status": "exists",
+        "why": "post-training quantisation and distillation cut memory roughly fourfold with modest quality loss."
+      },
+      {
+        "tech": "Knowledge tracing and mastery estimation",
+        "status": "partial",
+        "why": "long-studied statistically and now neural, but predictions are still noisy across subjects."
+      },
+      {
+        "tech": "Curriculum-aligned, licensed digital content",
+        "status": "partial",
+        "why": "retrieval is only as good as the mapped content behind it, and rights vary by country."
+      },
+      {
+        "tech": "Evidence that AI tutoring improves learning",
+        "status": "partial",
+        "why": "early trials show gains in narrow settings; results vary with subject, age and how the tool is used."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cloud-based AI tutors in pilot classrooms and consumer study apps, plus on-device assistants for narrow tasks such as vocabulary drill",
+        "unlocks": "large volumes of interaction data and the first controlled studies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid devices that run a small tutor locally and call the cloud only for hard questions",
+        "unlocks": "offline use, low latency and stronger student privacy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a persistent learner model that follows a student across subjects and years with teacher-visible reporting",
+        "unlocks": "genuinely continuous personalisation rather than per-session chat."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multimodal tutoring that reads handwritten working, spots the exact step where reasoning fails, and links to formal assessment",
+        "unlocks": "credible replacement for one-to-one human tutoring in well-structured subjects."
+      }
+    ]
+  }
+}

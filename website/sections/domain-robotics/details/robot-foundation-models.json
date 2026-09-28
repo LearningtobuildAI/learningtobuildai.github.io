@@ -29,5 +29,164 @@
         "def": "A machine learning technique where a model pretrained on one task is adapted for another related task with minimal additional training."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Perception and sensing",
+        "role": "turns what the robot sees and feels into a form the model can use.",
+        "parts": [
+          "RGB cameras",
+          "depth sensors",
+          "proprioception (joint positions)",
+          "tactile sensors (research)"
+        ]
+      },
+      {
+        "name": "Instruction encoder",
+        "role": "converts a human command or goal into a representation the policy can condition on.",
+        "parts": [
+          "text tokeniser",
+          "language model backbone"
+        ]
+      },
+      {
+        "name": "Vision-language-action policy",
+        "role": "the core model: maps observations plus instructions to a sequence of actions.",
+        "parts": [
+          "vision transformer",
+          "transformer decoder",
+          "action head"
+        ]
+      },
+      {
+        "name": "Action interface",
+        "role": "translates model outputs into signals the robot's controllers understand.",
+        "parts": [
+          "inverse kinematics",
+          "joint trajectory generator",
+          "low-level controller"
+        ]
+      },
+      {
+        "name": "Robot body",
+        "role": "the physical hardware that executes the actions.",
+        "parts": [
+          "manipulator arm",
+          "gripper or hand",
+          "mobile base (optional)",
+          "actuators"
+        ]
+      },
+      {
+        "name": "Data and training pipeline",
+        "role": "collects, standardises and stores demonstrations from many robots.",
+        "parts": [
+          "teleoperation rigs",
+          "data format converters",
+          "training cluster"
+        ]
+      },
+      {
+        "name": "Safety and runtime",
+        "role": "runs the model in a loop and stops unsafe behaviour.",
+        "parts": [
+          "inference runtime",
+          "watchdog",
+          "emergency stop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect demonstrations",
+        "detail": "Humans teleoperate robots to perform many tasks, or scripted policies generate successful episodes; each episode records camera views, joint states and actions."
+      },
+      {
+        "title": "Standardise across robots",
+        "detail": "Engineers map different robots' observation and action spaces into a common format, so one model can learn from many bodies."
+      },
+      {
+        "title": "Train the base model",
+        "detail": "A large transformer is trained to predict actions from observations and language instructions, using a mix of datasets."
+      },
+      {
+        "title": "Fine-tune for a target robot",
+        "detail": "The model is adapted to a specific arm, gripper and sensor set with a smaller set of demonstrations."
+      },
+      {
+        "title": "Compile for real-time control",
+        "detail": "The model is optimised to run within the robot's control loop, often on an onboard or nearby GPU."
+      },
+      {
+        "title": "Deploy and evaluate",
+        "detail": "The robot attempts tasks; success rates and failure modes are logged."
+      },
+      {
+        "title": "Iterate with new data",
+        "detail": "Failures are turned into new demonstrations and added to training, improving robustness."
+      },
+      {
+        "title": "Add safety layers",
+        "detail": "Limits, watchdogs and emergency stops ensure the robot cannot harm people or itself."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Vision-language models",
+        "status": "exists",
+        "why": "they provide the recipe for combining images and text at scale."
+      },
+      {
+        "tech": "Large robot demonstration datasets",
+        "status": "partial",
+        "why": "hundreds of thousands of episodes exist, but they are far smaller and less diverse than text or image datasets."
+      },
+      {
+        "tech": "Standardised action spaces across robots",
+        "status": "partial",
+        "why": "different arms and hands use incompatible command formats, limiting transfer."
+      },
+      {
+        "tech": "Cheap, reliable robot hardware",
+        "status": "partial",
+        "why": "research arms work, but robust dexterous hands and tactile skins are not yet mass-produced."
+      },
+      {
+        "tech": "Real-time inference hardware",
+        "status": "exists",
+        "why": "GPUs can run large models fast enough for many manipulation tasks, though latency remains a challenge."
+      },
+      {
+        "tech": "Simulation-to-reality transfer",
+        "status": "partial",
+        "why": "simulators help generate data but contact-rich tasks still struggle to cross the reality gap."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab prototypes follow simple language instructions for tabletop manipulation",
+        "unlocks": "proof that one model can handle many short tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "models that transfer across different robot arms and grippers with little fine-tuning",
+        "unlocks": "shared data and skills across the robotics industry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dexterous, contact-rich tasks such as assembly and cloth folding",
+        "unlocks": "useful work in warehouses, labs and factories."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "long-horizon autonomy in unstructured spaces like homes",
+        "unlocks": "general-purpose robots that learn new tasks from a few demonstrations."
+      }
+    ]
   }
 }

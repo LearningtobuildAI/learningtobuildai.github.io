@@ -33,5 +33,153 @@
         "def": "Modified viruses used as delivery systems to transport gene editing components into target cells. They can be engineered to integrate or transiently express genetic material."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Editing machinery",
+        "role": "finds and changes one precise spot in the genome.",
+        "parts": [
+          "guide RNA (about 20 bases matching the target)",
+          "Cas9 nuclease, or a base or prime editor that rewrites without cutting both strands"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into the right cells and nowhere else.",
+        "parts": [
+          "lipid nanoparticles",
+          "engineered AAV vectors",
+          "electroporation (for cells edited outside the body)"
+        ]
+      },
+      {
+        "name": "Target cell population",
+        "role": "the cells whose genome must change — and which must survive, divide and persist.",
+        "parts": [
+          "blood-forming stem cells from bone marrow",
+          "liver cells (hepatocytes)",
+          "retina, muscle or other tissue-specific cells"
+        ]
+      },
+      {
+        "name": "Cell processing and manufacturing",
+        "role": "for cells edited outside the body: collect, edit, test, freeze, return.",
+        "parts": [
+          "apheresis collection",
+          "cell culture and electroporation",
+          "release testing",
+          "cryopreservation"
+        ]
+      },
+      {
+        "name": "Safety and quality control",
+        "role": "proves the edit landed where intended and nowhere else.",
+        "parts": [
+          "off-target sequencing assays",
+          "karyotype and genotoxicity screens",
+          "potency and sterility tests"
+        ]
+      },
+      {
+        "name": "Clinical delivery",
+        "role": "prepares the patient and puts the edited material back.",
+        "parts": [
+          "chemotherapy conditioning of bone marrow",
+          "intravenous infusion or local injection",
+          "long-term follow-up"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Identify the gene and the exact error",
+        "detail": "Sequencing a patient's DNA pinpoints the mutation to be corrected or suppressed — for example the switch that turns off fetal haemoglobin in sickle cell disease."
+      },
+      {
+        "title": "Design the edit",
+        "detail": "A guide RNA is chosen for the target site, and the tool is picked: a nuclease that disables a sequence, or a base editor that changes a single letter without cutting."
+      },
+      {
+        "title": "Screen for off-target edits",
+        "detail": "Computational prediction plus laboratory assays in human cells search the whole genome for near-matches, and the guide is redesigned if needed."
+      },
+      {
+        "title": "Test in disease models",
+        "detail": "Cells from patients and animal models check whether the edit fixes the biology and how long the effect lasts."
+      },
+      {
+        "title": "Produce the editor",
+        "detail": "Guide RNA is synthesised chemically; the protein is made in bacteria or the mRNA is transcribed in vitro; each is purified and packaged into lipid nanoparticles or an AAV vector."
+      },
+      {
+        "title": "Edit the cells (outside the body)",
+        "detail": "For blood diseases, stem cells are collected by apheresis, edited by electroporation in a clean facility, tested and cryopreserved."
+      },
+      {
+        "title": "Edit inside the body (for other organs)",
+        "detail": "Alternatively the editor is infused and taken up by the target organ — so far most reliably the liver, which filters nanoparticles from the blood."
+      },
+      {
+        "title": "Condition and treat the patient",
+        "detail": "Chemotherapy clears space in the bone marrow, the edited cells are infused, and the patient is monitored for engraftment and immune reactions."
+      },
+      {
+        "title": "Follow up for years",
+        "detail": "Regular sequencing of blood or tissue confirms the edit persists without harmful changes — the reason regulators require long-term registries."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Programmable nucleases (CRISPR-Cas, base and prime editors)",
+        "status": "exists",
+        "why": "they make a targeted change practical; earlier zinc-finger and TALEN tools were slower to redesign."
+      },
+      {
+        "tech": "Cell-type-specific delivery",
+        "status": "partial",
+        "why": "lipid nanoparticles reach the liver well but most other organs poorly; AAV vectors have size limits and can trigger immunity."
+      },
+      {
+        "tech": "Bone marrow stem cell transplantation",
+        "status": "exists",
+        "why": "the first approved cures are edits to blood stem cells, and they only work if the transplanted cells engraft."
+      },
+      {
+        "tech": "Accurate off-target detection",
+        "status": "partial",
+        "why": "a missed edit could disable a tumour-suppressor gene decades later, so regulators need confidence in the assays."
+      },
+      {
+        "tech": "Understanding of DNA repair in human cells",
+        "status": "partial",
+        "why": "precise rewriting depends on the cell's own repair pathways, which behave differently in dividing and non-dividing cells."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "a CRISPR therapy for sickle cell disease and beta-thalassaemia approved in late 2023",
+        "unlocks": "proof that editing a patient's own cells can cure a genetic disease, though at very high cost and with chemotherapy conditioning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in-vivo editing aimed at the liver for conditions such as inherited high cholesterol",
+        "unlocks": "a one-off infusion instead of cell collection, lab processing and transplant."
+      },
+      {
+        "stage": "Next",
+        "milestone": "delivery to organs beyond the liver, and edits made without cutting both DNA strands",
+        "unlocks": "treatment of blood, muscle, eye and eventually brain disorders with fewer unintended changes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "editing before symptoms begin, or before birth",
+        "unlocks": "prevention rather than rescue — but only once long-term safety and fair access are settled."
+      }
+    ]
   }
 }

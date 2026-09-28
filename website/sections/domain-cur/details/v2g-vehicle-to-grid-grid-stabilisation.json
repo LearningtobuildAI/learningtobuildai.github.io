@@ -34,5 +34,149 @@
         "def": "A modernized electricity network that uses digital communication technology to control power flow, enhance reliability, and support renewable energy sources."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional power electronics",
+        "role": "converts DC battery power to grid-compatible AC and back again — the core difference from ordinary charging.",
+        "parts": [
+          "onboard inverter or off-board DC charger",
+          "grid-tied converter",
+          "filters"
+        ]
+      },
+      {
+        "name": "Battery management system",
+        "role": "keeps the pack safe and tracks how much energy and power it can give at any moment.",
+        "parts": [
+          "cell monitoring",
+          "state-of-charge and state-of-health estimation",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Charging connector and protocol",
+        "role": "carries power in both directions and negotiates when it is allowed.",
+        "parts": [
+          "CHAdeMO or CCS connector",
+          "ISO 15118-20 communication",
+          "safety interlocks"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "keeps the vehicle from energising a dead grid and meets the local connection rules.",
+        "parts": [
+          "anti-islanding protection",
+          "isolation transformer",
+          "revenue metering"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "bundles hundreds of parked cars into one controllable block that grid operators can call on.",
+        "parts": [
+          "telemetry and scheduling software",
+          "market bidding engine",
+          "driver app"
+        ]
+      },
+      {
+        "name": "Site wiring and infrastructure",
+        "role": "the chargers, cables and switchgear at homes, depots and car parks.",
+        "parts": [
+          "bidirectional chargers",
+          "switchboards",
+          "fleet depot wiring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Specify the power path",
+        "detail": "Decide whether inversion happens on the vehicle (AC V2G) or in a heavier off-board DC charger; this fixes the cost, weight and connector."
+      },
+      {
+        "title": "Build the bidirectional converter",
+        "detail": "Design silicon-carbide switching stages that work efficiently in both directions, and add isolation and filtering."
+      },
+      {
+        "title": "Protect the battery",
+        "detail": "Write control software that limits depth of discharge, current and temperature to avoid voiding the warranty or ageing the pack."
+      },
+      {
+        "title": "Meet the standards",
+        "detail": "Integrate ISO 15118-20 and a charger protocol such as OCPP so the car, charger and grid software can agree on power flows."
+      },
+      {
+        "title": "Install and certify chargers",
+        "detail": "Wire the chargers, set protection relays and anti-islanding settings, and satisfy the local network operator's connection requirements."
+      },
+      {
+        "title": "Aggregate the fleet",
+        "detail": "Connect many vehicles to a control platform that forecasts when each will be parked and how much energy it can spare."
+      },
+      {
+        "title": "Offer services to the grid",
+        "detail": "Bid the aggregated block into frequency response, peak-shaving or balancing markets and dispatch it in real time."
+      },
+      {
+        "title": "Verify against real packs",
+        "detail": "Run instrumented fleets for years, measuring battery wear and metering accuracy before scaling up."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging hardware",
+        "status": "partial",
+        "why": "available on some models and DC chargers, but rare in the mass market; CHAdeMO supported it early, CCS bidirectional capability is newer."
+      },
+      {
+        "tech": "Communication standards for bidirectional power",
+        "status": "partial",
+        "why": "ISO 15118-20 and OCPP support it on paper, but real-world interoperability between brands is still being proven."
+      },
+      {
+        "tech": "Battery degradation data",
+        "status": "partial",
+        "why": "owners and manufacturers need confidence that extra cycles will not shorten pack life before they allow it."
+      },
+      {
+        "tech": "Aggregation and market-access software",
+        "status": "partial",
+        "why": "a single car is too small to trade; a virtual power plant must control thousands at once and be trusted by grid operators."
+      },
+      {
+        "tech": "Grid connection rules for small distributed sources",
+        "status": "partial",
+        "why": "protection, metering and tariffs must be settled before millions of vehicles can export power."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot fleets and trials in Europe, Japan and North America using bidirectional chargers",
+        "unlocks": "evidence on battery wear, standards and driver acceptance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bidirectional capability standard on new EVs and chargers",
+        "unlocks": "V2G without buying special hardware, so fleets can be enrolled cheaply."
+      },
+      {
+        "stage": "Next",
+        "milestone": "aggregators routinely selling parked-fleet capacity into frequency and balancing markets",
+        "unlocks": "a revenue stream that offsets charging costs and rewards owners."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale smart charging and V2G across many millions of vehicles",
+        "unlocks": "cheap, fast grid flexibility that lowers the need for peaking plants and storage."
+      }
+    ]
   }
 }

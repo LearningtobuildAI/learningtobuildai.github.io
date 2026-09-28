@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Personal context store",
+        "role": "the record of how this person has decided before — the raw material for any surrogate.",
+        "parts": [
+          "indexed email, chat and document history",
+          "past meeting transcripts",
+          "retrieval layer",
+          "access controls and retention rules"
+        ]
+      },
+      {
+        "name": "Perception layer",
+        "role": "lets the agent follow what is happening in a live meeting.",
+        "parts": [
+          "speech recognition with speaker separation",
+          "live transcript and agenda tracker",
+          "screen-share and attachment capture",
+          "calendar and participant context"
+        ]
+      },
+      {
+        "name": "Decision model",
+        "role": "proposes the choice the person would most likely make, with reasoning.",
+        "parts": [
+          "large language model with tool use",
+          "retrieved personal examples",
+          "style and preference tuning",
+          "policy rules for what may be decided alone"
+        ]
+      },
+      {
+        "name": "Action layer",
+        "role": "carries out agreed decisions in the outside world.",
+        "parts": [
+          "calendar, email and task-tracker connectors",
+          "validated action schemas",
+          "commitment and follow-up tracking"
+        ]
+      },
+      {
+        "name": "Boundary and escalation logic",
+        "role": "decides when the agent must stop and ask.",
+        "parts": [
+          "confidence thresholds",
+          "spend and scope limits",
+          "escalation triggers",
+          "human approval interface"
+        ]
+      },
+      {
+        "name": "Identity and audit layer",
+        "role": "makes clear who decided what, and proves it later.",
+        "parts": [
+          "authentication and delegation credentials",
+          "immutable decision log",
+          "disclosure to other meeting participants"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Agree the delegation charter",
+        "detail": "With the individual, write down which decisions may be made alone, what spend or commitment limits apply, and which topics always escalate."
+      },
+      {
+        "title": "Collect the decision record",
+        "detail": "Gather the person's emails, chat, documents and past meeting transcripts with explicit consent, then classify what is sensitive and what is off-limits."
+      },
+      {
+        "title": "Label past decisions",
+        "detail": "For each historical case, record the situation, the choice made, the reasoning and the outcome, so the model has worked examples rather than raw text."
+      },
+      {
+        "title": "Tune the model",
+        "detail": "Fine-tune or prompt-tune a language model on those examples so its proposals match the person's tone, risk appetite and typical trade-offs."
+      },
+      {
+        "title": "Ground it at meeting time",
+        "detail": "During a meeting the agent retrieves the most relevant past cases, the current agenda and any live documents, so its proposal is based on this specific context rather than averages."
+      },
+      {
+        "title": "Constrain the outputs",
+        "detail": "The model may only emit validated action calls — book, accept, decline, send, promise — each checked against the charter before anything executes."
+      },
+      {
+        "title": "Add escalation",
+        "detail": "Anything below a confidence threshold, outside scope or involving an unusual counterparty is packaged into a short summary for one-tap human approval."
+      },
+      {
+        "title": "Run in shadow mode",
+        "detail": "For weeks or months the agent proposes and the human confirms, while agreement rate and near-misses are measured to find where the model is wrong."
+      },
+      {
+        "title": "Widen authority gradually",
+        "detail": "Only after measurable reliability does the agent act alone on narrow, reversible, low-stakes decisions, with every action logged and periodically reviewed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable tool use",
+        "status": "exists",
+        "why": "the agent has to turn intent into concrete, correctly formatted actions in other software."
+      },
+      {
+        "tech": "Real-time speech recognition with speaker separation",
+        "status": "exists",
+        "why": "meetings are the main arena, and attributing statements to the right person matters for accuracy."
+      },
+      {
+        "tech": "Retrieval over private, long-lived corpora",
+        "status": "exists",
+        "why": "the surrogate is only as good as the personal history it can search."
+      },
+      {
+        "tech": "Personal data access and interoperability",
+        "status": "partial",
+        "why": "calendar and email connectors are common, but deep, portable access across workplace tools is not."
+      },
+      {
+        "tech": "Evaluation methods for delegated judgement",
+        "status": "missing",
+        "why": "there is no accepted way to measure whether an agent makes the right call for a person across months of decisions."
+      },
+      {
+        "tech": "Identity, consent and disclosure rules",
+        "status": "partial",
+        "why": "counterparties need to know an AI is participating, and liability for a bad decision is unsettled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "meeting transcription, summarisation and action-item capture are standard workplace tools",
+        "unlocks": "reliable raw material for anything that follows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "voice agents that negotiate appointments and bookings by phone, demonstrated as early as 2018 and still limited to narrow tasks",
+        "unlocks": "proof that automated conversation can complete real transactions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shadow-mode surrogates that attend meetings, draft positions and act only with one-tap approval",
+        "unlocks": "the data needed to trust wider delegation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "bounded autonomous authority over recurring, reversible decisions, with audit logs and disclosure norms",
+        "unlocks": "genuine time savings and a market for agents that negotiate with each other."
+      }
+    ]
+  }
+}

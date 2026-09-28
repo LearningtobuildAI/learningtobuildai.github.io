@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensor array",
+        "role": "picks up the brain's tiny electric fields from outside the head.",
+        "parts": [
+          "dry or gel scalp electrodes",
+          "8–256 channels",
+          "fixed headset geometry for repeatable placement"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "lifts microvolt-scale signals above background noise.",
+        "parts": [
+          "low-noise amplifiers",
+          "shielding and driven-ground circuit",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Feature extractor",
+        "role": "turns the raw waveform into a small set of numbers that are stable for one person and differ between people.",
+        "parts": [
+          "band-power ratios (delta to gamma)",
+          "alpha peak frequency",
+          "cross-channel coherence",
+          "event-related responses to a stimulus"
+        ]
+      },
+      {
+        "name": "Template store",
+        "role": "holds each enrolled person's reference pattern.",
+        "parts": [
+          "encrypted biometric template",
+          "key management"
+        ]
+      },
+      {
+        "name": "Matcher",
+        "role": "compares a live recording with the stored template and accepts or rejects.",
+        "parts": [
+          "classifier",
+          "decision threshold tuned for false accept and false reject rates"
+        ]
+      },
+      {
+        "name": "Liveness check",
+        "role": "blocks replay of a recorded or synthesised signal.",
+        "parts": [
+          "challenge-response stimuli",
+          "timing and artefact checks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the recording modality",
+        "detail": "Scalp EEG is the only practical non-invasive option; it is weak (tens of microvolts) and smeared by skull and scalp, so some work adds fNIRS or MEG-like sensing for robustness."
+      },
+      {
+        "title": "Design the headset",
+        "detail": "Electrodes are fixed in a repeatable layout so the same positions are used every session, using dry contacts to avoid conductive gel."
+      },
+      {
+        "title": "Collect enrolment data",
+        "detail": "A person is recorded across several sessions and days, at rest and while performing simple tasks, to capture natural variation rather than one lucky recording."
+      },
+      {
+        "title": "Select stable features",
+        "detail": "Candidate features are ranked by high variance between people and low variance within one person over time; unstable ones are discarded."
+      },
+      {
+        "title": "Train the matcher",
+        "detail": "A statistical or machine-learning model is fitted, and its threshold is set to meet a target error rate rather than to maximise headline accuracy."
+      },
+      {
+        "title": "Add liveness",
+        "detail": "Challenge-response tasks and signal-timing checks are added so a stored recording cannot be replayed into the sensor."
+      },
+      {
+        "title": "Protect the template",
+        "detail": "The stored pattern is encrypted and, where possible, kept on a secure element in the reader instead of a central database."
+      },
+      {
+        "title": "Validate in the field",
+        "detail": "Tests span hair types, sweat, caffeine, sleep loss, ageing and electrode drift, because these are what break brain-signal biometrics in practice."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Comfortable dry EEG electrodes",
+        "status": "partial",
+        "why": "gel electrodes give better signal but are unusable for daily access control."
+      },
+      {
+        "tech": "Stable individual neural signatures",
+        "status": "partial",
+        "why": "resting-state brain activity does differ between people, but within-person variability across days is large, which is the core obstacle."
+      },
+      {
+        "tech": "Anti-spoofing for neural signals",
+        "status": "missing",
+        "why": "unlike a fingerprint, an electrical signal can be recorded and replayed, so liveness must be designed in from the start."
+      },
+      {
+        "tech": "Low-power on-device signal processing",
+        "status": "exists",
+        "why": "feature extraction and matching must run in the reader, not in the cloud, for privacy and latency."
+      },
+      {
+        "tech": "Biometric template protection",
+        "status": "partial",
+        "why": "revocable, encrypted templates are needed because a leaked neural pattern cannot be reissued."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory studies using research-grade EEG headsets, mostly short single sessions",
+        "unlocks": "proof that some brain-activity features are individual enough to classify."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-session trials with standard datasets and published liveness tests",
+        "unlocks": "a realistic picture of how much accuracy survives weeks and months."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deployment as a secondary factor where a slow, deliberate check is acceptable, such as high-security entry",
+        "unlocks": "real-world data on usability and spoof resistance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "unobtrusive sensing built into a headset or chair",
+        "unlocks": "possible everyday use, though it is more likely to remain a complement to face or fingerprint than a replacement."
+      }
+    ]
+  }
+}

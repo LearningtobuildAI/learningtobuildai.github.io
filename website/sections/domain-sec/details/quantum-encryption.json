@@ -30,5 +30,153 @@
         "def": "A method for securely distributing encryption keys using principles from quantum mechanics to ensure security against eavesdropping."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "emits the faint light pulses or entangled pairs that carry the key.",
+        "parts": [
+          "laser diode",
+          "intensity modulator (for decoy states)",
+          "polarisation or phase encoder",
+          "entangled-pair source (parametric down-conversion)"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons from sender to receiver.",
+        "parts": [
+          "dedicated dark optical fibre",
+          "free-space or satellite optical link",
+          "telescope and pointing system (free-space)"
+        ]
+      },
+      {
+        "name": "Detector module",
+        "role": "counts individual photons at the far end.",
+        "parts": [
+          "single-photon avalanche diodes or superconducting nanowire detectors",
+          "cryocooler",
+          "timing electronics"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "a normal authenticated link for protocol messages — never for the key itself.",
+        "parts": [
+          "authenticated public channel",
+          "message authentication code"
+        ]
+      },
+      {
+        "name": "Post-processing and key management",
+        "role": "turns noisy raw detections into a short, provably secret key and stores it.",
+        "parts": [
+          "sifting and error correction",
+          "privacy amplification",
+          "key store and encryptor interface"
+        ]
+      },
+      {
+        "name": "Range extension",
+        "role": "bridges links beyond the reach of a single fibre span.",
+        "parts": [
+          "trusted relay nodes",
+          "entanglement-swapping repeater (experimental)",
+          "satellite ground stations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Secure the physical path",
+        "detail": "Lay or lease dedicated dark fibre with low loss and stable temperature, or build a line-of-sight ground station for a satellite pass."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "A laser is attenuated to roughly one photon per pulse, then encoded in polarisation or phase; decoy pulses of varying intensity are interleaved to defeat photon-number-splitting attacks."
+      },
+      {
+        "title": "Build the receiver",
+        "detail": "Detectors are cooled and aligned to the incoming photons, with random basis choice applied per pulse."
+      },
+      {
+        "title": "Calibrate the link",
+        "detail": "Characterise loss and measure the quantum bit error rate; if it is too high, no key can be distilled."
+      },
+      {
+        "title": "Run the protocol",
+        "detail": "Sender and receiver exchange quantum states, then compare which measurement bases they used over the classical channel. Only pulses where the bases matched are kept."
+      },
+      {
+        "title": "Authenticate and correct",
+        "detail": "The classical messages are authenticated so an eavesdropper cannot impersonate either side; error correction removes mismatches from detector noise."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "Hashing compresses the corrected string, shrinking any information an eavesdropper might hold to a negligible amount and yielding the final key."
+      },
+      {
+        "title": "Deliver keys to the encryptor",
+        "detail": "The key feeds a one-time pad or refreshes AES keys continuously, so traffic is re-keyed far faster than any attacker can respond."
+      },
+      {
+        "title": "Extend the network",
+        "detail": "Untrusted-range links are chained through trusted nodes, or satellites distribute keys between distant ground stations; quantum repeaters remain a research goal."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-noise single-photon detectors",
+        "status": "exists",
+        "why": "keys only form if false clicks are rare; detector dark counts set the practical distance limit."
+      },
+      {
+        "tech": "Low-loss dark fibre or clear optical line of sight",
+        "status": "exists",
+        "why": "fibre loss and free-space turbulence directly throttle the key rate and range."
+      },
+      {
+        "tech": "Information-theoretic authentication",
+        "status": "exists",
+        "why": "without it, the classical channel can be spoofed and the quantum channel becomes pointless."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "missing",
+        "why": "without them, key distribution over hundreds of kilometres needs trusted relays, which are not end-to-end secure."
+      },
+      {
+        "tech": "Standardised certification and interfaces",
+        "status": "partial",
+        "why": "interoperability across vendors and countries is still being defined, limiting network scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro and intercity fibre QKD links running alongside conventional encryption",
+        "unlocks": "key distribution whose interception is detectable in principle, used by banks, utilities and government networks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite QKD between ground stations, following the Micius demonstrations from 2016 onward",
+        "unlocks": "intercontinental key exchange without trusting every intermediate node."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale, mass-produced QKD modules integrated with data-centre encryptors",
+        "unlocks": "drop in cost, so quantum keys become routine rather than bespoke."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and memory nodes forming an entanglement-based network",
+        "unlocks": "device-independent security and a path to distributed quantum computing — while post-quantum cryptography covers most ordinary needs far more cheaply."
+      }
+    ]
   }
 }

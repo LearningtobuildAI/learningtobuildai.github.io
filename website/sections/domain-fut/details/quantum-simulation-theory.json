@@ -29,5 +29,138 @@
         "def": "An algorithm used to find the ground state energy and wavefunction of molecules or other quantum systems on a quantum computer."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "holds the quantum state of the simulated system in a controllable set of qubits.",
+        "parts": [
+          "superconducting, trapped-ion, neutral-atom or photonic qubits",
+          "coupling elements",
+          "calibration hardware"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "manipulates qubits with precise pulses and reads out their final state.",
+        "parts": [
+          "microwave or laser sources",
+          "signal generators",
+          "amplifiers",
+          "detectors"
+        ]
+      },
+      {
+        "name": "Environment",
+        "role": "keeps qubits isolated from noise long enough to run a simulation.",
+        "parts": [
+          "dilution refrigerator or ultra-high vacuum chamber",
+          "magnetic shielding",
+          "vibration isolation"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "reduces the effect of noise so results are meaningful.",
+        "parts": [
+          "error-correcting codes",
+          "syndrome measurement",
+          "zero-noise extrapolation",
+          "post-processing"
+        ]
+      },
+      {
+        "name": "Classical software stack",
+        "role": "maps a physics problem onto qubit operations and validates the output.",
+        "parts": [
+          "Hamiltonian encoding (e.g., Jordan-Wigner)",
+          "circuit compiler",
+          "classical simulators for small cases",
+          "analysis tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target system",
+        "detail": "Pick a molecule, material or field theory whose behaviour is too complex for classical computers to handle exactly."
+      },
+      {
+        "title": "Encode it into qubits",
+        "detail": "Map the system's Hamiltonian onto qubit operators using a fermion-to-qubit transformation or a lattice discretisation."
+      },
+      {
+        "title": "Select a simulation strategy",
+        "detail": "Decide between an analog approach — building a controllable quantum system that mimics the target — or a digital one that runs gate sequences."
+      },
+      {
+        "title": "Build or access hardware",
+        "detail": "Use a quantum processor with enough qubits, low error rates and the right connectivity for the problem."
+      },
+      {
+        "title": "Calibrate and control",
+        "detail": "Tune control pulses so every gate operates at the required fidelity, then compile the algorithm into those gates."
+      },
+      {
+        "title": "Run and measure",
+        "detail": "Execute the sequence many times, sampling the final state to estimate energies, correlation functions or other observables."
+      },
+      {
+        "title": "Mitigate and correct errors",
+        "detail": "Apply error-mitigation techniques now, and error correction as it matures, to extract a trustworthy result from noisy hardware."
+      },
+      {
+        "title": "Validate and scale",
+        "detail": "Compare small cases against classical calculations, then increase qubit count and circuit depth toward problems with no classical answer."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-fidelity qubits with long coherence times",
+        "status": "partial",
+        "why": "today's devices lose coherence too quickly for deep circuits needed in useful simulations."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "small logical qubits have been demonstrated, but thousands are needed for practical simulations."
+      },
+      {
+        "tech": "Quantum simulation algorithms",
+        "status": "partial",
+        "why": "methods like Trotterisation and variational eigensolvers exist, but their resource costs remain high."
+      },
+      {
+        "tech": "Classical validation and hybrid workflows",
+        "status": "exists",
+        "why": "classical computers are essential for encoding, compiling and cross-checking results on small systems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale simulations on tens to a few hundred physical qubits, reproducing known results",
+        "unlocks": "proof that quantum hardware can model quantum systems, though without practical advantage yet."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant processors with tens of logical qubits",
+        "unlocks": "simulation of small molecules and model materials beyond exact classical reach."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-corrected machines with hundreds of logical qubits and deep circuits",
+        "unlocks": "design of catalysts, battery materials and pharmaceuticals by direct quantum simulation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale, fully error-corrected quantum simulators",
+        "unlocks": "tackling fundamental physics problems such as high-temperature superconductivity and nuclear structure."
+      }
+    ]
   }
 }

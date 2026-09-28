@@ -33,5 +33,140 @@
         "def": "Devices designed to maintain and amplify the entanglement between qubits over long distances, crucial for extending the reach of a quantum network."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum nodes",
+        "role": "store and process quantum information at each end of a link.",
+        "parts": [
+          "quantum processors (trapped ions, neutral atoms, superconducting circuits)",
+          "quantum memories with long coherence times",
+          "interfaces between stationary qubits and photons"
+        ]
+      },
+      {
+        "name": "Entangled photon sources",
+        "role": "create pairs of photons whose quantum states are linked.",
+        "parts": [
+          "pump lasers",
+          "nonlinear crystals for spontaneous parametric down-conversion",
+          "filters and coupling optics"
+        ]
+      },
+      {
+        "name": "Transmission medium",
+        "role": "carry photons over hundreds to thousands of kilometres without losing their quantum state.",
+        "parts": [
+          "low-loss optical fibre",
+          "free-space telescopes for ground-to-satellite links",
+          "satellites carrying entangled-photon sources or detectors"
+        ]
+      },
+      {
+        "name": "Quantum repeaters",
+        "role": "extend entanglement beyond the range of direct fibre transmission by swapping and purifying entanglement at intermediate stations.",
+        "parts": [
+          "quantum memories",
+          "Bell-state measurement devices",
+          "entanglement purification and error-correction stages"
+        ]
+      },
+      {
+        "name": "Classical control plane",
+        "role": "synchronise clocks, route photons, and coordinate error correction across the network.",
+        "parts": [
+          "classical optical channels",
+          "precision timing (e.g. atomic clocks or GPS)",
+          "network management software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate quantum nodes",
+        "detail": "Build trapped-ion, neutral-atom or superconducting qubit processors and pair them with quantum memories that can hold a state for milliseconds to seconds."
+      },
+      {
+        "title": "Generate entanglement",
+        "detail": "Fire a laser through a nonlinear crystal to produce pairs of entangled photons, then separate them while preserving their quantum link."
+      },
+      {
+        "title": "Transmit photons",
+        "detail": "Send one photon of each pair through optical fibre or a free-space telescope link to a distant node, using low-loss fibre or satellite passes."
+      },
+      {
+        "title": "Detect and verify entanglement",
+        "detail": "Use single-photon detectors and precise timing to confirm that the two photons remain entangled after transmission."
+      },
+      {
+        "title": "Insert quantum repeaters",
+        "detail": "At intermediate stations, store photons in quantum memories, perform Bell-state measurements to swap entanglement, and purify the result to extend range."
+      },
+      {
+        "title": "Run quantum key distribution",
+        "detail": "As a first application, use the link to generate a secret key, either from entangled photons or from prepare-and-measure protocols, and test it against eavesdropping."
+      },
+      {
+        "title": "Integrate classical control",
+        "detail": "Add classical channels and software to synchronise node clocks, route entanglement requests, and manage error correction across the network."
+      },
+      {
+        "title": "Scale to a multi-node network",
+        "detail": "Connect many nodes into a mesh, then link distant regions via satellite to move toward a global quantum internet."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum memories with long coherence times",
+        "status": "partial",
+        "why": "repeaters need to store entanglement long enough to synchronise with other nodes; laboratory demonstrations exist but are not yet practical at scale."
+      },
+      {
+        "tech": "High-fidelity single-photon sources and detectors",
+        "status": "partial",
+        "why": "entanglement distribution demands near-perfect photons and detectors, and current systems still have too many losses and false counts for long chains."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "no complete repeater has been built that can extend entanglement over hundreds of kilometres with the required fidelity and rate."
+      },
+      {
+        "tech": "Satellite-based quantum links",
+        "status": "partial",
+        "why": "the Micius satellite demonstrated satellite quantum key distribution in 2016, but global entanglement distribution from orbit is not yet operational."
+      },
+      {
+        "tech": "Error correction and fault tolerance",
+        "status": "missing",
+        "why": "a scalable quantum network must correct errors without collapsing quantum states, and practical fault-tolerant protocols are still being researched."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point-to-point quantum key distribution over fibre (up to a few hundred kilometres) and trusted-node networks spanning thousands of kilometres, for example in China and Europe",
+        "unlocks": "secure communication for governments and financial institutions, but only with trusted relay stations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters that extend entanglement over 500 km or more without trusted nodes",
+        "unlocks": "long-distance secure links that rely on physics rather than trust in intermediate stations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-node entanglement networks linking quantum processors in different cities",
+        "unlocks": "distributed quantum computing and enhanced quantum sensing across a network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "satellite-based entanglement distribution and interoperable global standards",
+        "unlocks": "a true quantum internet connecting devices worldwide with unbreakable security and shared quantum processing."
+      }
+    ]
   }
 }

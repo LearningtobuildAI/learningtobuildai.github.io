@@ -34,5 +34,160 @@
         "def": "Natural Language Processing, a field of artificial intelligence concerned with making computers understand and generate human language."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "UI automation layer",
+        "role": "drives real applications — browsers, desktop apps, terminals — the way a person would.",
+        "parts": [
+          "browser and desktop drivers",
+          "element selectors",
+          "screen and DOM parsing"
+        ]
+      },
+      {
+        "name": "Perception layer",
+        "role": "turns messy inputs into text and structure a model can reason over.",
+        "parts": [
+          "optical character recognition",
+          "document layout and table parsing",
+          "vision-language screen understanding"
+        ]
+      },
+      {
+        "name": "Reasoning and planning",
+        "role": "decides what to do next: decompose the task, pick a tool, check the result.",
+        "parts": [
+          "large language model",
+          "planning loop",
+          "function/tool calling"
+        ]
+      },
+      {
+        "name": "Knowledge retrieval",
+        "role": "grounds decisions in the company's own documents and records.",
+        "parts": [
+          "embedding model",
+          "vector index",
+          "permission-scoped enterprise connectors",
+          "reranker"
+        ]
+      },
+      {
+        "name": "Action library",
+        "role": "the deterministic skills the agent can invoke instead of guessing.",
+        "parts": [
+          "typed API connectors",
+          "reusable sub-flows",
+          "validation and schema checks"
+        ]
+      },
+      {
+        "name": "Control plane",
+        "role": "keeps the agent inside policy and leaves an audit trail.",
+        "parts": [
+          "credential vault",
+          "guardrails and allow-lists",
+          "human-approval queues",
+          "logging and evaluation harness"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process",
+        "detail": "Observe how people actually do the work today — systems touched, decision points, exception rates and volumes — so you know which parts are worth automating."
+      },
+      {
+        "title": "Build the deterministic skeleton",
+        "detail": "Wire up the ordinary API calls and screen actions first. Automation that can be coded reliably should never be handed to a model."
+      },
+      {
+        "title": "Ground the model",
+        "detail": "Connect the relevant document stores and systems of record, chunk and embed them, and index them so retrieval respects each user's permissions."
+      },
+      {
+        "title": "Add perception",
+        "detail": "Plug in document and screen understanding so invoices, emails, PDFs and legacy interfaces become structured fields with confidence scores."
+      },
+      {
+        "title": "Define tools and guardrails",
+        "detail": "Give the agent a small set of typed actions with strict schemas, spend and access limits, and mandatory validation before anything is written."
+      },
+      {
+        "title": "Orchestrate the agent loop",
+        "detail": "The agent plans, acts, observes the result, retries or re-plans, and escalates when confidence is low or a rule is hit."
+      },
+      {
+        "title": "Insert human checkpoints",
+        "detail": "Route high-value or low-confidence steps to a person for approval, and record their decision as training and audit data."
+      },
+      {
+        "title": "Evaluate on a golden set",
+        "detail": "Replay hundreds of real historical cases and measure task success, wrong actions and cost per case before going live."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Run under orchestration with per-tenant isolation, watch for drift and selector breakage, and keep full traces of every action taken."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable function calling and structured output from LLMs",
+        "status": "partial",
+        "why": "agents can only act safely if the model emits well-formed, validated commands."
+      },
+      {
+        "tech": "Retrieval-augmented generation tooling",
+        "status": "exists",
+        "why": "retrieval is what stops the agent inventing policy, prices or account details."
+      },
+      {
+        "tech": "Mature RPA/UI automation runtimes",
+        "status": "exists",
+        "why": "they already handle logins, screen driving and scheduling, so the model can sit on top."
+      },
+      {
+        "tech": "APIs for systems of record",
+        "status": "partial",
+        "why": "where only a legacy screen exists, the agent must act through fragile UI rather than a clean interface."
+      },
+      {
+        "tech": "Long-horizon agent evaluation",
+        "status": "partial",
+        "why": "benchmarks for multi-step enterprise tasks with real consequences are still immature."
+      },
+      {
+        "tech": "Enterprise identity and permissioning",
+        "status": "exists",
+        "why": "the agent inherits a person's rights, so access control must be enforced end to end."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "LLM steps embedded in classical bots — document extraction, email triage, exception summarising",
+        "unlocks": "unstructured inputs entering workflows that previously needed a human to read them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic orchestration of whole sub-processes with approval queues",
+        "unlocks": "automation of judgement-heavy work such as claims or onboarding, under supervision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-healing automations and process-mining-driven discovery",
+        "unlocks": "less maintenance when interfaces change, and automation aimed at the steps with the best return."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "verifiable autonomy for regulated back-office work",
+        "unlocks": "agents trusted to act without sign-off, provided every decision can be reconstructed and audited."
+      }
+    ]
   }
 }

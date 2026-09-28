@@ -33,5 +33,153 @@
         "def": "Specific computational procedures designed to run on a quantum computer, often providing exponential speedups over classical counterparts for certain problems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "executes quantum circuits on qubits to perform the core computation.",
+        "parts": [
+          "qubits (superconducting transmons, trapped ions, photonics)",
+          "control lines",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Cryogenic and control infrastructure",
+        "role": "keeps qubits at operating temperature and delivers precise control signals.",
+        "parts": [
+          "dilution refrigerator",
+          "microwave or laser sources",
+          "signal generators and amplifiers"
+        ]
+      },
+      {
+        "name": "Classical-quantum interface",
+        "role": "translates classical data into quantum circuits and reads out measurement results.",
+        "parts": [
+          "classical CPUs and GPUs",
+          "FPGA-based controllers",
+          "high-speed data links"
+        ]
+      },
+      {
+        "name": "Quantum software stack",
+        "role": "compiles, optimises and runs quantum algorithms on specific hardware.",
+        "parts": [
+          "quantum programming languages and frameworks",
+          "circuit compilers and transpilers",
+          "quantum simulators"
+        ]
+      },
+      {
+        "name": "Data encoding and algorithm layer",
+        "role": "maps classical data into quantum states and implements machine-learning routines.",
+        "parts": [
+          "encoding circuits (amplitude, angle, basis)",
+          "variational ansätze",
+          "quantum kernels and quantum neural networks"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "reduces the effect of noise and decoherence so results are meaningful.",
+        "parts": [
+          "error mitigation techniques (e.g. zero-noise extrapolation)",
+          "quantum error-correcting codes",
+          "logical qubits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a problem with suspected quantum advantage",
+        "detail": "Identify a machine-learning task, such as classification or sampling, where a quantum algorithm is theoretically faster or more accurate than classical methods."
+      },
+      {
+        "title": "Design the quantum algorithm",
+        "detail": "Devise a quantum circuit that solves or assists the task, often a hybrid variational circuit whose parameters are tuned by a classical optimiser."
+      },
+      {
+        "title": "Select hardware",
+        "detail": "Pick a qubit technology (superconducting, trapped ion, photonic) based on connectivity, gate fidelity and coherence time needed for the circuit."
+      },
+      {
+        "title": "Encode classical data",
+        "detail": "Develop a method to embed classical data into quantum states, such as amplitude or angle encoding, while keeping circuit depth manageable."
+      },
+      {
+        "title": "Implement the hybrid loop",
+        "detail": "Run the quantum circuit many times, measure the output, and use a classical optimiser to update circuit parameters until the task is learned."
+      },
+      {
+        "title": "Apply error mitigation",
+        "detail": "Use techniques like zero-noise extrapolation to reduce the impact of noise on results from today's noisy intermediate-scale quantum processors."
+      },
+      {
+        "title": "Scale to error-corrected qubits",
+        "detail": "For larger problems, implement quantum error correction to create logical qubits that can run deeper circuits reliably."
+      },
+      {
+        "title": "Integrate with classical pipelines",
+        "detail": "Combine the quantum subroutine with classical pre-processing and post-processing so it fits into existing machine-learning workflows."
+      },
+      {
+        "title": "Validate practical advantage",
+        "detail": "Demonstrate on a real problem that the quantum approach outperforms the best classical method, accounting for all overheads."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "Most QML algorithms assume deep circuits that only error-corrected qubits can run; today's devices are too noisy and small."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "Small codes have been demonstrated, but thousands of physical qubits per logical qubit are needed for practical algorithms."
+      },
+      {
+        "tech": "Quantum algorithms with provable advantage",
+        "status": "partial",
+        "why": "Some theoretical speedups exist for specific tasks, but few are proven to work on real data without unrealistic assumptions."
+      },
+      {
+        "tech": "High-performance classical computing",
+        "status": "exists",
+        "why": "Hybrid algorithms rely on classical CPUs and GPUs for optimisation, data handling and comparison with classical baselines."
+      },
+      {
+        "tech": "Quantum programming and simulation tools",
+        "status": "exists",
+        "why": "Open-source frameworks allow developers to write, simulate and test quantum circuits before running them on hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale QML demonstrations on noisy intermediate-scale quantum processors",
+        "unlocks": "proof-of-concept results and a clearer picture of which tasks might benefit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved error mitigation and larger devices (hundreds of physical qubits)",
+        "unlocks": "quantum advantage in narrow, carefully chosen machine-learning tasks, such as certain kernel methods."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant quantum computers with tens of logical qubits",
+        "unlocks": "reliable execution of shallow QML circuits for small real-world problems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "full-scale fault-tolerant quantum computers with hundreds to thousands of logical qubits",
+        "unlocks": "practical QML for drug discovery, financial modelling and other complex data tasks, if a genuine advantage is proven."
+      }
+    ]
   }
 }

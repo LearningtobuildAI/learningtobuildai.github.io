@@ -32,5 +32,155 @@
         "def": "A facility on the ground used for receiving and transmitting data between satellites and users."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Spacecraft bus",
+        "role": "the body that holds everything together and keeps it pointing.",
+        "parts": [
+          "structural frame",
+          "avionics and flight computer",
+          "star trackers and reaction wheels",
+          "thermal blankets and radiators"
+        ]
+      },
+      {
+        "name": "Communications payload",
+        "role": "forms and steers radio beams to and from the ground.",
+        "parts": [
+          "phased-array antennas",
+          "digital beamforming processor",
+          "Ku/Ka-band radios",
+          "inter-satellite laser terminals (on some designs)"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "generates and stores electricity through sun and eclipse.",
+        "parts": [
+          "solar arrays",
+          "lithium-ion battery",
+          "power conditioning"
+        ]
+      },
+      {
+        "name": "Propulsion",
+        "role": "raises the satellite into its working orbit and keeps the constellation spaced.",
+        "parts": [
+          "Hall-effect or gridded ion thrusters",
+          "krypton or argon propellant tank",
+          "attitude thrusters"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "connects the constellation to the internet.",
+        "parts": [
+          "gateway earth stations",
+          "fibre backhaul and peering",
+          "telemetry, tracking and control centre"
+        ]
+      },
+      {
+        "name": "User terminal",
+        "role": "the flat antenna and modem on a roof, ship or aircraft.",
+        "parts": [
+          "electronically steered flat panel",
+          "modem and router",
+          "mount"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for mass production",
+        "detail": "Instead of one-off spacecraft, satellites are redesigned as flat, stackable units that fit many per rocket fairing."
+      },
+      {
+        "title": "Build the bus on a line",
+        "detail": "Structure, avionics, batteries and solar arrays are assembled at stations like a vehicle factory, with automated testing between steps."
+      },
+      {
+        "title": "Integrate the payload",
+        "detail": "Phased-array panels and the digital processor are fitted, then the satellite is characterised in an anechoic chamber to map its beams."
+      },
+      {
+        "title": "Environmental test",
+        "detail": "Each unit is shaken on a vibration table and cycled in a thermal-vacuum chamber to survive launch and the space environment."
+      },
+      {
+        "title": "Launch and deploy",
+        "detail": "Satellites ride a dispenser on a rocket; once in a low parking orbit they separate and unfurl their solar arrays."
+      },
+      {
+        "title": "Raise orbit and phase",
+        "detail": "Electric thrusters slowly lift each satellite to its working altitude and slot it into the correct orbital plane."
+      },
+      {
+        "title": "Build the ground network",
+        "detail": "Gateway stations are installed in countries with landing rights, connected by fibre to internet exchange points."
+      },
+      {
+        "title": "Produce terminals and activate users",
+        "detail": "Terminals are manufactured at scale, shipped, self-aligned by the customer's app, and provisioned on the network."
+      },
+      {
+        "title": "Operate and deorbit",
+        "detail": "The operator tracks conjunction warnings, manoeuvres to avoid collisions, and retires satellites into a controlled atmospheric burn-up."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost reusable orbital launch",
+        "status": "exists",
+        "why": "constellations need hundreds to thousands of satellites launched at a price per kilogram that only reuse has delivered."
+      },
+      {
+        "tech": "Phased-array and flat-panel antenna electronics",
+        "status": "exists",
+        "why": "mechanically moving dishes cannot track fast-moving LEO satellites or be mass-produced cheaply."
+      },
+      {
+        "tech": "Inter-satellite laser links",
+        "status": "partial",
+        "why": "optical crosslinks let satellites route traffic in space, cutting the number of ground stations needed."
+      },
+      {
+        "tech": "Radio spectrum and orbital-slot coordination",
+        "status": "partial",
+        "why": "operators must obtain national licences and coordinate frequencies internationally before serving customers."
+      },
+      {
+        "tech": "High-volume satellite manufacturing",
+        "status": "partial",
+        "why": "building several satellites per day, rather than per year, is what makes the economics work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "thousands of LEO satellites delivering broadband to homes, ships and aircraft, with latency of tens of milliseconds",
+        "unlocks": "connectivity in remote and rural areas beyond the reach of fibre."
+      },
+      {
+        "stage": "Next",
+        "milestone": "direct-to-phone service, where an ordinary mobile handset connects to a satellite with no extra dish",
+        "unlocks": "coverage in dead zones and during disasters."
+      },
+      {
+        "stage": "Next",
+        "milestone": "laser-meshed constellations that route traffic between satellites instead of via ground gateways",
+        "unlocks": "service over oceans and in countries that grant no landing rights."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine end-of-life deorbit and active debris management built into every constellation",
+        "unlocks": "a sustainable low-Earth orbit environment for the next generation of operators."
+      }
+    ]
   }
 }

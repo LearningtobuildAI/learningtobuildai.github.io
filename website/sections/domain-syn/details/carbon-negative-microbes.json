@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Carbon-fixation core",
+        "role": "the enzyme set that turns CO₂ into organic carbon.",
+        "parts": [
+          "RuBisCO and its assembly chaperones",
+          "Calvin-cycle enzymes",
+          "regeneration of the acceptor molecule",
+          "redox and ATP supply"
+        ]
+      },
+      {
+        "name": "Carbon-concentrating mechanism",
+        "role": "raises CO₂ around RuBisCO, because the enzyme is slow and is inhibited by oxygen.",
+        "parts": [
+          "bicarbonate transporters",
+          "carbonic anhydrase",
+          "protein microcompartments (carboxysomes)",
+          "shell proteins and targeting peptides"
+        ]
+      },
+      {
+        "name": "Mineralisation module",
+        "role": "converts the captured carbon into solid carbonate so it cannot easily return to the air.",
+        "parts": [
+          "extracellular carbonic anhydrase",
+          "calcium and magnesium supply",
+          "nucleation sites",
+          "calcite or dolomite crystals"
+        ]
+      },
+      {
+        "name": "Energy and electron supply",
+        "role": "pays the large energy bill for fixing a dilute gas.",
+        "parts": [
+          "photosynthetic apparatus (light-driven)",
+          "or hydrogen, sulfur or iron oxidation (chemolithotrophic)",
+          "or sugar feedstock in a heterotrophic chassis"
+        ]
+      },
+      {
+        "name": "Containment and control",
+        "role": "keeps the organism in the reactor and out of the environment.",
+        "parts": [
+          "kill switches",
+          "nutrient auxotrophy",
+          "non-transferable genetic constructs"
+        ]
+      },
+      {
+        "name": "Reactor or subsurface delivery",
+        "role": "where the microbes actually meet the CO₂.",
+        "parts": [
+          "photobioreactors or open ponds",
+          "subsurface injection wells into mafic rock",
+          "soil or aggregate beds"
+        ]
+      },
+      {
+        "name": "Measurement and verification",
+        "role": "proves that carbon was really removed and stored.",
+        "parts": [
+          "¹³C and ¹⁴C isotopic tracing",
+          "mineral quantification",
+          "life-cycle carbon accounting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a chassis",
+        "detail": "Cyanobacteria are the natural choice because they already run photosynthesis and carbon concentrating mechanisms; fast-growing heterotrophs such as E. coli are easier to engineer but must be fed organic carbon, which can cancel the benefit."
+      },
+      {
+        "title": "Tune carbon fixation",
+        "detail": "Overexpress RuBisCO and its chaperones, then rebalance the rest of the Calvin cycle so no intermediate becomes a bottleneck. Some work replaces RuBisCO altogether with faster synthetic fixation cycles built in the test tube."
+      },
+      {
+        "title": "Add or improve the carboxysome",
+        "detail": "Encapsulate RuBisCO with carbonic anhydrase inside a protein shell, and add bicarbonate transporters at the cell membrane, so CO₂ is concentrated at the enzyme rather than escaping."
+      },
+      {
+        "title": "Attach a mineralisation step",
+        "detail": "Display carbonic anhydrase on the cell surface or export it, and supply calcium or magnesium so that bicarbonate precipitates as carbonate. Urea-driven precipitation is avoided where possible because it releases its own CO₂ and ammonia."
+      },
+      {
+        "title": "Balance the energy budget",
+        "detail": "Engineer the cell to divert enough ATP and reducing power into fixation without stalling growth. Growth-coupled selection and adaptive laboratory evolution are used to let faster mutants win."
+      },
+      {
+        "title": "Scale the culture",
+        "detail": "Grow the strain in closed photobioreactors or open ponds, or inject it into crushed basalt and peridotite underground where the rock itself supplies the cations."
+      },
+      {
+        "title": "Engineer containment",
+        "detail": "Build in dependence on a nutrient that does not exist in the wild, so the organism cannot survive if it escapes."
+      },
+      {
+        "title": "Prove the carbon is locked up",
+        "detail": "Trace the captured carbon isotopically into the mineral, measure how much of it dissolves back, and account for the energy and materials used along the way."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Synthetic biology toolkits for cyanobacteria and lithoautotrophs",
+        "status": "partial",
+        "why": "E. coli is easy to engineer; the photosynthetic and rock-dwelling chassis that matter here are far less tractable."
+      },
+      {
+        "tech": "Carboxysome and carbon-concentrating engineering",
+        "status": "partial",
+        "why": "functional carboxysomes have been rebuilt in non-native hosts, but not yet tuned for high flux at industrial scale."
+      },
+      {
+        "tech": "Carbonic anhydrase and biomineralisation",
+        "status": "exists",
+        "why": "the enzymes are well characterised and microbially induced carbonate precipitation is already used commercially for soil and concrete."
+      },
+      {
+        "tech": "Cheap low-carbon energy and cation supply",
+        "status": "partial",
+        "why": "pumping, mixing and supplying calcium or magnesium can emit more CO₂ than the microbes remove if the power and minerals are not clean."
+      },
+      {
+        "tech": "Durable carbon accounting for biological storage",
+        "status": "partial",
+        "why": "without standard verification, mineralised carbon cannot be counted or sold."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab strains that fix CO₂ into biomass and carbonate, and commercial microbial carbonate precipitation for soils and concrete",
+        "unlocks": "proof that the biochemistry works and early revenue from construction materials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot bioreactors producing carbonate aggregate at tonne scale",
+        "unlocks": "a real cost and energy figure per tonne of CO₂ stored."
+      },
+      {
+        "stage": "Next",
+        "milestone": "microbially accelerated mineralisation in subsurface basalt and peridotite",
+        "unlocks": "storage that does not depend on a reactor at the surface."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standard verification and life-cycle rules for microbial carbon removal",
+        "unlocks": "deployment at climate scale — but only if the energy, cations and land use all come out ahead."
+      }
+    ]
+  }
+}

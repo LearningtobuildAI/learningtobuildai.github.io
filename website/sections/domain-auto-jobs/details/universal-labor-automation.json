@@ -1,0 +1,165 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Body and limbs",
+        "role": "a human-shaped structure so it can use tools and spaces built for people.",
+        "parts": [
+          "torso frame",
+          "arms and legs",
+          "joints with harmonic or cycloidal drives"
+        ]
+      },
+      {
+        "name": "Actuators",
+        "role": "convert electricity into the high torque needed to lift, walk and grip.",
+        "parts": [
+          "quasi-direct-drive or geared electric motors",
+          "motor drivers",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Hands",
+        "role": "the hardest part — manipulation rather than locomotion.",
+        "parts": [
+          "multi-finger tendon-driven fingers",
+          "tactile skin",
+          "wrist force sensing"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "sees and feels the world well enough to act in it.",
+        "parts": [
+          "head and wrist cameras",
+          "depth sensing",
+          "inertial and joint sensors",
+          "tactile arrays"
+        ]
+      },
+      {
+        "name": "Control and balance",
+        "role": "keeps a two-legged machine upright while it works.",
+        "parts": [
+          "whole-body controller",
+          "reinforcement-learned locomotion policy",
+          "safety limits"
+        ]
+      },
+      {
+        "name": "Policy model and compute",
+        "role": "the 'brain' that turns what it sees and is told into motor commands.",
+        "parts": [
+          "onboard edge GPU",
+          "vision-language-action model",
+          "task planner"
+        ]
+      },
+      {
+        "name": "Fleet learning loop",
+        "role": "every robot's experience improves every other robot.",
+        "parts": [
+          "teleoperation rigs",
+          "simulation and synthetic data",
+          "data pipeline and retraining"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for human spaces",
+        "detail": "Set reach, height and payload from the tools and doorways it must handle, then size joint torques backwards from that."
+      },
+      {
+        "title": "Build actuators",
+        "detail": "Motor, gearbox and encoder are assembled into sealed joint modules, tested for torque, backlash and heat."
+      },
+      {
+        "title": "Assemble the body",
+        "detail": "Limbs and torso are built from lightweight metal or composite, with cabling routed to survive continuous flexing."
+      },
+      {
+        "title": "Fit hands and sensing",
+        "detail": "Fingers, tactile pads, cameras and force sensors are installed and calibrated."
+      },
+      {
+        "title": "Wire compute and power",
+        "detail": "An onboard computer runs perception and control; a battery pack sets runtime — usually a few hours."
+      },
+      {
+        "title": "Learn to move in simulation",
+        "detail": "Physics simulation trains locomotion and balance policies, which are then transferred to hardware."
+      },
+      {
+        "title": "Collect real demonstrations",
+        "detail": "Human operators teleoperate the robot through tasks so the exact motion and outcome are recorded."
+      },
+      {
+        "title": "Train the policy",
+        "detail": "Vision-language-action models are trained to map camera images plus a spoken or written instruction to actions, then fine-tuned on the robot."
+      },
+      {
+        "title": "Deploy and iterate",
+        "detail": "Robots run a narrow job under supervision; failures and corrections feed back into the next model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High torque-density electric actuators",
+        "status": "partial",
+        "why": "small, light, strong joints decide whether a robot can lift real loads without overheating."
+      },
+      {
+        "tech": "Dexterous hands with tactile sensing",
+        "status": "partial",
+        "why": "general manipulation needs the sense of touch, which remains far behind vision."
+      },
+      {
+        "tech": "Robot foundation models (vision-language-action)",
+        "status": "partial",
+        "why": "demonstrations show instructions plus images driving actions, but reliability is still low."
+      },
+      {
+        "tech": "Simulation-to-real transfer",
+        "status": "partial",
+        "why": "training in simulation is cheap, but the gap to messy reality is still large."
+      },
+      {
+        "tech": "Robot safety standards for shared workplaces",
+        "status": "partial",
+        "why": "rules mostly assume caged industrial arms, not free-roaming machines next to people."
+      },
+      {
+        "tech": "Edge compute and energy storage",
+        "status": "exists",
+        "why": "sufficient onboard computing and batteries exist, though runtime is a limit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "humanoids from several companies walk in labs and pilot factories; Atlas, Optimus, Figure and 1X machines are all real programs",
+        "unlocks": "proof that the mechanics and control can work at human scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "single-task reliability in structured settings such as warehouses and assembly lines",
+        "unlocks": "commercial deployment where the environment is known and variants are few."
+      },
+      {
+        "stage": "Next",
+        "milestone": "general-purpose robots handling varied manual tasks with supervision",
+        "unlocks": "work across construction, agriculture, care and logistics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "unsupervised, certified operation at scale",
+        "unlocks": "broad substitution of manual labour — which raises questions of cost, safety and economic disruption as much as engineering ones."
+      }
+    ]
+  }
+}

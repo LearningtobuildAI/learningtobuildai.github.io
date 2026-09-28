@@ -1,0 +1,133 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Tensor compute array",
+        "role": "does the arithmetic — mostly multiply-accumulate operations — for neural network layers.",
+        "parts": [
+          "systolic or SIMD multiply-accumulate (MAC) units",
+          "INT8/INT4 integer datapaths",
+          "FP16/BF16 floating-point units"
+        ]
+      },
+      {
+        "name": "On-chip memory hierarchy",
+        "role": "feeds data to the compute array fast enough to keep it busy.",
+        "parts": [
+          "large SRAM scratchpads",
+          "register files",
+          "high-bandwidth internal interconnect"
+        ]
+      },
+      {
+        "name": "Data movement and control",
+        "role": "moves tensors between memory, the array and the rest of the system.",
+        "parts": [
+          "DMA engines",
+          "tensor tiling and scheduling logic",
+          "shared memory interface to CPU/GPU"
+        ]
+      },
+      {
+        "name": "Compiler and runtime",
+        "role": "turns a trained model into an efficient sequence of hardware operations.",
+        "parts": [
+          "graph compiler and operator fusion",
+          "quantisation tools",
+          "runtime drivers and APIs"
+        ]
+      },
+      {
+        "name": "Power and thermal management",
+        "role": "keeps the engine within a phone's or laptop's heat and battery budget.",
+        "parts": [
+          "clock and voltage scaling",
+          "power gating",
+          "thermal sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the workload",
+        "detail": "Study which neural-network operations dominate real apps — convolutions, matrix multiplies, attention — and set targets for throughput, latency and power."
+      },
+      {
+        "title": "Design the architecture",
+        "detail": "Choose the MAC array size, dataflow (weight-stationary or output-stationary), memory hierarchy and supported number formats such as INT8 and FP16."
+      },
+      {
+        "title": "Write and verify the RTL",
+        "detail": "Describe the design in a hardware description language and simulate it against reference models until every operator matches bit-for-bit or within tolerance."
+      },
+      {
+        "title": "Physical design and tape-out",
+        "detail": "Synthesise the logic, place and route it, check timing and power, and send the final layout to a foundry as a mask set."
+      },
+      {
+        "title": "Fabricate and package",
+        "detail": "The chip is made on an advanced logic process and packaged, often as part of a larger system-on-chip alongside CPU, GPU and memory."
+      },
+      {
+        "title": "Build the software stack",
+        "detail": "Write drivers, a graph compiler and quantisation tools so frameworks like ONNX or TensorFlow Lite can map models onto the hardware efficiently."
+      },
+      {
+        "title": "Validate and tune",
+        "detail": "Run real models, measure accuracy, speed and power, then iterate on scheduling, clocking and memory use to meet product targets."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced semiconductor logic processes",
+        "status": "exists",
+        "why": "fitting billions of transistors into a phone-sized power budget needs the latest process nodes."
+      },
+      {
+        "tech": "Systolic-array and tensor compute architectures",
+        "status": "exists",
+        "why": "these dataflows reuse data on-chip, cutting the memory traffic that dominates energy use."
+      },
+      {
+        "tech": "Low-precision quantisation",
+        "status": "exists",
+        "why": "running models in INT8 or INT4 instead of FP32 makes them several times faster and cooler."
+      },
+      {
+        "tech": "High-bandwidth on-chip SRAM",
+        "status": "exists",
+        "why": "the compute array starves without memory close enough to feed it every cycle."
+      },
+      {
+        "tech": "On-device ML compilers",
+        "status": "exists",
+        "why": "without automatic mapping of models to the NPU, developers would have to hand-tune every layer."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NPUs shipping in flagship phones, tablets and PCs from several vendors",
+        "unlocks": "fast, private features such as photo processing, speech recognition and live translation running locally."
+      },
+      {
+        "stage": "Next",
+        "milestone": "NPUs in cars, cameras, wearables and industrial devices",
+        "unlocks": "always-on sensing and control that does not depend on a network connection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device generative AI models running entirely on the NPU",
+        "unlocks": "personal assistants and image tools that keep user data on the device."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "tightly coupled CPU–GPU–NPU designs with unified memory",
+        "unlocks": "larger local models and continuous, low-power ambient intelligence."
+      }
+    ]
+  }
+}

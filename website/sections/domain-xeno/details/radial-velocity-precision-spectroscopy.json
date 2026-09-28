@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Fiber feed and scrambling",
+        "role": "Brings starlight from the telescope focus to the spectrograph while smoothing spatial and angular variations.",
+        "parts": [
+          "optical fibers",
+          "scrambling section",
+          "mode filter",
+          "telescope interface"
+        ]
+      },
+      {
+        "name": "Echelle spectrograph optics",
+        "role": "Disperses the light into thousands of narrow spectral lines across many orders.",
+        "parts": [
+          "echelle grating",
+          "cross-disperser prism or grating",
+          "collimator and camera optics",
+          "order-sorting filter"
+        ]
+      },
+      {
+        "name": "Calibration unit",
+        "role": "Provides a reference spectrum simultaneously or before/after the stellar exposure to track instrumental drift.",
+        "parts": [
+          "thorium-argon hollow-cathode lamp",
+          "laser frequency comb",
+          "fiber switch",
+          "neutral-density filters"
+        ]
+      },
+      {
+        "name": "Vacuum and thermal enclosure",
+        "role": "Keeps the spectrograph at constant temperature and pressure so the optics do not drift.",
+        "parts": [
+          "vacuum vessel",
+          "active thermal control",
+          "insulation",
+          "vibration isolation"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "Records the dispersed spectrum with high stability and low noise.",
+        "parts": [
+          "large-format CCD or CMOS",
+          "dewars and cryogenics",
+          "readout electronics"
+        ]
+      },
+      {
+        "name": "Data reduction pipeline",
+        "role": "Converts raw frames into a wavelength-calibrated spectrum and a precise Doppler shift.",
+        "parts": [
+          "bias and flat-field correction",
+          "order extraction",
+          "wavelength solution",
+          "radial-velocity fitting",
+          "stellar activity indicators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define science requirements",
+        "detail": "Set the target precision (e.g., 1 m/s), wavelength range, and resolution needed to measure stellar reflex motion."
+      },
+      {
+        "title": "Design the optical layout",
+        "detail": "Choose echelle grating, cross-disperser, camera optics, and fiber feed to balance resolution, throughput, and stability."
+      },
+      {
+        "title": "Fabricate and mount optics",
+        "detail": "Machine a rigid optical bench from low-expansion material, polish and coat optics, and mount them with minimal play."
+      },
+      {
+        "title": "Build the vacuum and thermal enclosure",
+        "detail": "Seal the spectrograph in a vacuum vessel and add active thermal control to hold temperature to a few thousandths of a degree."
+      },
+      {
+        "title": "Integrate the calibration system",
+        "detail": "Install thorium-argon lamps and, where available, a laser frequency comb, with fiber routing to inject reference light."
+      },
+      {
+        "title": "Align and test in the laboratory",
+        "detail": "Measure resolution, instrument profile, and short-term stability; iterate until the spectrograph meets specifications."
+      },
+      {
+        "title": "Install at the telescope",
+        "detail": "Couple the fiber feed to the telescope, commission the instrument, and verify that it reaches the required precision on bright stars."
+      },
+      {
+        "title": "Operate with nightly calibration",
+        "detail": "Take calibration frames each night, monitor long-term drift, and run the data pipeline to produce radial velocities and activity diagnostics."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-resolution echelle gratings",
+        "status": "exists",
+        "why": "They spread starlight into many lines, which is what makes tiny Doppler shifts measurable."
+      },
+      {
+        "tech": "Laser frequency combs",
+        "status": "partial",
+        "why": "They provide an ideal wavelength ruler, but only some instruments have one; most still rely on thorium-argon lamps."
+      },
+      {
+        "tech": "Ultra-stable thermal and vacuum control",
+        "status": "exists",
+        "why": "Without it, the spectrograph itself would drift more than the stellar signal being measured."
+      },
+      {
+        "tech": "Large-aperture telescopes",
+        "status": "exists",
+        "why": "They collect enough photons from faint stars to reach high precision in reasonable exposure times."
+      },
+      {
+        "tech": "Stellar activity modeling",
+        "status": "partial",
+        "why": "Starspots and pulsations can mimic a planet, so they must be identified and corrected."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "1 m/s precision on bright stars with instruments like HARPS and ESPRESSO",
+        "unlocks": "Masses for many transiting planets, especially Neptune-mass and larger."
+      },
+      {
+        "stage": "Next",
+        "milestone": "10 cm/s precision using laser frequency combs and extreme stabilization",
+        "unlocks": "Detection of Earth-mass planets around Sun-like stars."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Dedicated extreme-precision spectrographs on large and future extremely large telescopes",
+        "unlocks": "Masses for small planets found by transit surveys, and better target selection for biosignature searches."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Routine combination of radial velocity with astrometry and direct imaging",
+        "unlocks": "Full orbital and atmospheric characterization of habitable-zone planets."
+      }
+    ]
+  }
+}

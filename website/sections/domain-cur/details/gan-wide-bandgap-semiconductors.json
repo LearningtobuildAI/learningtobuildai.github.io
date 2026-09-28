@@ -28,5 +28,142 @@
         "def": "The ability of electrons to move through a material under the influence of an electric field. Higher electron mobility results in faster switching speeds and lower losses in power devices."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Epitaxial stack",
+        "role": "the layered crystal that creates the conducting channel.",
+        "parts": [
+          "silicon substrate wafer (150–200 mm)",
+          "AlN nucleation layer",
+          "AlGaN buffer",
+          "GaN channel",
+          "AlGaN barrier"
+        ]
+      },
+      {
+        "name": "Device cell",
+        "role": "the transistor structure itself — a high-electron-mobility transistor (HEMT).",
+        "parts": [
+          "two-dimensional electron gas channel",
+          "ohmic source and drain contacts",
+          "p-GaN or recessed gate for normally-off operation",
+          "field plates"
+        ]
+      },
+      {
+        "name": "Passivation and isolation",
+        "role": "protects the surface and stops leakage between devices.",
+        "parts": [
+          "silicon nitride dielectric",
+          "implant or mesa isolation"
+        ]
+      },
+      {
+        "name": "Interconnect and packaging",
+        "role": "gets current in and heat out with minimal inductance.",
+        "parts": [
+          "thick copper metallisation",
+          "QFN or laminate package",
+          "thermal pad or substrate"
+        ]
+      },
+      {
+        "name": "Gate driver and control",
+        "role": "GaN switches so fast that the driver and layout set the real performance limit.",
+        "parts": [
+          "matched gate driver IC",
+          "dead-time and overcurrent protection",
+          "low-inductance power loop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the epitaxy",
+        "detail": "Metal-organic chemical vapour deposition grows a few micrometres of AlN, AlGaN and GaN on a silicon wafer; the strain between crystal layers must be engineered or the wafer cracks."
+      },
+      {
+        "title": "Form the 2DEG",
+        "detail": "At the AlGaN/GaN interface, polarisation pulls electrons into a thin sheet that conducts without any doping."
+      },
+      {
+        "title": "Isolate devices",
+        "detail": "Mesa etching or ion implantation cuts each transistor off from its neighbours."
+      },
+      {
+        "title": "Make ohmic contacts",
+        "detail": "Titanium and aluminium are deposited and annealed so they form low-resistance source and drain contacts."
+      },
+      {
+        "title": "Build the gate",
+        "detail": "A p-type GaN layer or a recessed gate is added so the device is normally off — it stays off until a positive voltage is applied."
+      },
+      {
+        "title": "Passivate and add field plates",
+        "detail": "Silicon nitride and metal field plates spread the electric field so the device survives high voltage."
+      },
+      {
+        "title": "Metallise and package",
+        "detail": "Thick copper carries current; the wafer is thinned, diced and placed in a low-inductance package."
+      },
+      {
+        "title": "Qualify and integrate",
+        "detail": "Parts are stressed and tested for dynamic on-resistance, then designed into a converter with a matched driver."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "MOCVD epitaxy of GaN on large silicon wafers",
+        "status": "exists",
+        "why": "it makes GaN devices cheap enough to compete with silicon."
+      },
+      {
+        "tech": "Existing silicon fabs",
+        "status": "exists",
+        "why": "GaN-on-silicon can run on depreciated CMOS lines, avoiding new plants."
+      },
+      {
+        "tech": "Low-inductance packaging and drivers",
+        "status": "exists",
+        "why": "fast switching is wasted if the package inductance and gate loop are too slow."
+      },
+      {
+        "tech": "Reliability and qualification standards",
+        "status": "partial",
+        "why": "dynamic on-resistance and lifetime under real stress are still being pinned down, especially above 650 V."
+      },
+      {
+        "tech": "High-voltage (1200 V class) GaN",
+        "status": "partial",
+        "why": "traction inverters and grid converters need far higher blocking voltages than today's shipping parts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "65–650 V GaN devices in phone chargers, laptop adapters, data-centre power supplies and solar inverters",
+        "unlocks": "small, efficient chargers and denser power conversion."
+      },
+      {
+        "stage": "Next",
+        "milestone": "GaN in on-board chargers and 400 V EV power electronics, alongside silicon carbide in traction inverters",
+        "unlocks": "lighter, more efficient electric vehicles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "1200 V and higher vertical GaN devices on bulk GaN substrates",
+        "unlocks": "GaN moving into traction and industrial drives where silicon carbide leads today."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "monolithically integrated GaN power stages with on-chip drive and protection",
+        "unlocks": "power conversion at hundreds of kilohertz and beyond, shrinking magnetics and capacitors dramatically."
+      }
+    ]
   }
 }

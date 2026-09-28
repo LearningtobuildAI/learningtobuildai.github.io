@@ -33,5 +33,152 @@
         "def": "A field of artificial intelligence focused on the interaction between computers and human (natural) languages, enabling machines to understand, interpret, and generate human-like text."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "collects and cleans the massive text and code corpora the model learns from.",
+        "parts": [
+          "web crawl",
+          "books and articles",
+          "code repositories",
+          "deduplication and filtering"
+        ]
+      },
+      {
+        "name": "Tokenizer",
+        "role": "splits text into tokens the model can process.",
+        "parts": [
+          "byte-pair encoding",
+          "vocabulary"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "the neural network that learns language patterns; AI21 Labs has used both pure Transformer and hybrid state-space/Transformer designs.",
+        "parts": [
+          "transformer layers",
+          "attention mechanism",
+          "feed-forward networks",
+          "state-space layers (in hybrid models like Jamba)"
+        ]
+      },
+      {
+        "name": "Training infrastructure",
+        "role": "runs pre-training across thousands of accelerators for weeks or months.",
+        "parts": [
+          "GPU or TPU cluster",
+          "high-speed interconnect",
+          "distributed training framework",
+          "checkpointing and fault tolerance"
+        ]
+      },
+      {
+        "name": "Fine-tuning and alignment",
+        "role": "adapts the base model to follow instructions and reduce harmful outputs.",
+        "parts": [
+          "supervised fine-tuning",
+          "reinforcement learning from human feedback",
+          "safety filters"
+        ]
+      },
+      {
+        "name": "Inference serving",
+        "role": "delivers fast, cost-effective responses to users via API.",
+        "parts": [
+          "optimised kernels",
+          "dynamic batching",
+          "key-value cache",
+          "autoscaling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect data",
+        "detail": "Gather text from web crawls, books, articles and code repositories, aiming for broad coverage of language and knowledge."
+      },
+      {
+        "title": "Clean and filter",
+        "detail": "Remove duplicates, boilerplate, toxic content and personal data, and apply quality filters to keep useful text."
+      },
+      {
+        "title": "Train tokenizer",
+        "detail": "Build a vocabulary from the cleaned corpus using byte-pair encoding so common words and subwords become single tokens."
+      },
+      {
+        "title": "Design architecture",
+        "detail": "Choose layer count, attention pattern and, for hybrid models, how to mix Transformer and state-space layers for efficiency and long context."
+      },
+      {
+        "title": "Pre-train",
+        "detail": "Train the model to predict the next token on the massive corpus, using distributed training across many accelerators for weeks or months."
+      },
+      {
+        "title": "Fine-tune and align",
+        "detail": "Apply supervised instruction tuning and reinforcement learning from human feedback to make the model helpful and safe."
+      },
+      {
+        "title": "Evaluate",
+        "detail": "Benchmark on language understanding, reasoning and code tasks, and run safety and bias tests before release."
+      },
+      {
+        "title": "Deploy and serve",
+        "detail": "Serve the model through an API with optimised inference, monitoring, and regular updates as new versions are trained."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale accelerator clusters",
+        "status": "exists",
+        "why": "pre-training a large language model requires thousands of GPUs or TPUs running for weeks."
+      },
+      {
+        "tech": "Transformer and state-space architectures",
+        "status": "exists",
+        "why": "these are the neural network designs that make large-scale language modelling possible."
+      },
+      {
+        "tech": "Massive text and code datasets",
+        "status": "exists",
+        "why": "the model learns from billions of words of diverse text."
+      },
+      {
+        "tech": "Distributed training software",
+        "status": "exists",
+        "why": "splits the model and data across many chips and keeps them synchronised."
+      },
+      {
+        "tech": "Alignment techniques",
+        "status": "exists",
+        "why": "methods like RLHF turn a raw text predictor into a useful assistant."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial models like Jurassic and Jamba available via API",
+        "unlocks": "developers can add text generation, summarisation and code help to apps without training their own model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longer context windows and efficient hybrid architectures",
+        "unlocks": "processing entire documents or codebases in one go at lower cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal capabilities and stronger tool use",
+        "unlocks": "models that can see images and call external tools to complete complex tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "more reliable reasoning and agentic workflows",
+        "unlocks": "autonomous assistants that can plan and execute multi-step tasks with less supervision."
+      }
+    ]
   }
 }

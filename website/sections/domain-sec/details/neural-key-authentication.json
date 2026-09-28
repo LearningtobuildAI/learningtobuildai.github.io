@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Stimulus delivery",
+        "role": "presents a specific visual or auditory prompt at a precisely known time.",
+        "parts": [
+          "display or speaker",
+          "timing controller",
+          "stimulus protocol software"
+        ]
+      },
+      {
+        "name": "EEG sensing",
+        "role": "picks up the tiny voltage changes on the scalp that reflect neural activity.",
+        "parts": [
+          "dry or gel electrodes",
+          "low-noise amplifier",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Signal conditioning",
+        "role": "removes noise and artefacts so the neural response can be isolated.",
+        "parts": [
+          "band-pass and notch filters",
+          "artefact rejection (eye blinks, muscle activity)",
+          "epoch extraction"
+        ]
+      },
+      {
+        "name": "Feature extraction",
+        "role": "turns the cleaned signal into numbers that differ between people.",
+        "parts": [
+          "event-related potential (ERP) components",
+          "spectral power features",
+          "time-frequency analysis"
+        ]
+      },
+      {
+        "name": "Classification model",
+        "role": "decides whether the response matches the enrolled user.",
+        "parts": [
+          "trained machine-learning classifier",
+          "template database",
+          "confidence threshold"
+        ]
+      },
+      {
+        "name": "Security integration",
+        "role": "connects the neural check to an access-control system without leaking biometric data.",
+        "parts": [
+          "encrypted template storage",
+          "liveness detection",
+          "multi-factor fallback"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect reference data",
+        "detail": "Record EEG responses from many volunteers to the same stimulus to learn how much individuals differ and how stable each person is over time."
+      },
+      {
+        "title": "Design the stimulus",
+        "detail": "Choose a prompt (for example a flickering image or a tone) that reliably evokes a measurable, person-specific neural response."
+      },
+      {
+        "title": "Build the recording rig",
+        "detail": "Assemble a comfortable headset with dry electrodes and a low-noise amplifier, aiming for a setup a non-expert can put on in under a minute."
+      },
+      {
+        "title": "Clean the signal",
+        "detail": "Develop filters and algorithms that remove eye blinks, muscle movement and mains interference without erasing the neural response."
+      },
+      {
+        "title": "Extract features",
+        "detail": "Compute compact numerical descriptors from the response, such as ERP amplitudes and latencies or spectral power in chosen bands."
+      },
+      {
+        "title": "Train the classifier",
+        "detail": "Use the features to train a model that separates the enrolled user from impostors, validating with data recorded on different days."
+      },
+      {
+        "title": "Test robustness",
+        "detail": "Measure how accuracy changes with electrode position, hair type, fatigue, caffeine and background noise."
+      },
+      {
+        "title": "Probe for spoofing",
+        "detail": "Try to defeat the system with recorded signals or synthetic EEG to see whether liveness checks are needed."
+      },
+      {
+        "title": "Integrate and pilot",
+        "detail": "Connect the prototype to a door or workstation and run it in a controlled high-security setting."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry, wearable EEG electrodes",
+        "status": "partial",
+        "why": "research-grade caps are bulky and need gel; comfortable dry sensors are improving but still less stable."
+      },
+      {
+        "tech": "Real-time artefact rejection",
+        "status": "partial",
+        "why": "everyday movement and eye blinks easily swamp the tiny neural signal."
+      },
+      {
+        "tech": "Machine learning for biometric classification",
+        "status": "exists",
+        "why": "standard classifiers can learn individual patterns once clean features are available."
+      },
+      {
+        "tech": "Secure biometric template protection",
+        "status": "partial",
+        "why": "neural templates must be stored and compared without being stolen or replayed."
+      },
+      {
+        "tech": "User acceptance and standards",
+        "status": "missing",
+        "why": "people may resist wearing a headset for routine access, and no common protocol exists."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research studies showing that EEG responses to a stimulus can distinguish individuals with high accuracy in the lab",
+        "unlocks": "proof that the concept is physically possible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "comfortable headset prototypes tested outside the lab, over weeks, with many users",
+        "unlocks": "evidence that the signal is stable enough for real use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilots in high-security access control alongside fingerprints or tokens",
+        "unlocks": "real-world data on reliability, spoofing and user experience."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration into consumer or workplace devices with dedicated low-power EEG sensors",
+        "unlocks": "neural response as one factor in a multi-factor authentication scheme."
+      }
+    ]
+  }
+}

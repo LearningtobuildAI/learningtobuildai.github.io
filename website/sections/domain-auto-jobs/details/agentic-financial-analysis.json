@@ -35,5 +35,163 @@
         "def": "Cycles of analysis where AI agents refine their understanding through iterative processing of data, improving accuracy over time."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data ingestion and normalization",
+        "role": "pull and standardize financial documents and market feeds into a consistent format.",
+        "parts": [
+          "SEC EDGAR connectors",
+          "market data APIs",
+          "news feeds",
+          "OCR and PDF parsing"
+        ]
+      },
+      {
+        "name": "Knowledge base and retrieval",
+        "role": "index documents and retrieve relevant passages for the agents to reason over.",
+        "parts": [
+          "vector database",
+          "embedding model",
+          "chunking pipeline",
+          "metadata filters"
+        ]
+      },
+      {
+        "name": "Agent orchestration",
+        "role": "coordinate specialized agents to break down and execute analysis tasks.",
+        "parts": [
+          "planner agent",
+          "task decomposition",
+          "tool-calling interface",
+          "shared memory"
+        ]
+      },
+      {
+        "name": "Reasoning and analysis engine",
+        "role": "generate insights, cross-reference filings with market data, and assess risk.",
+        "parts": [
+          "large language model",
+          "financial ratio calculators",
+          "risk models",
+          "cross-reference logic"
+        ]
+      },
+      {
+        "name": "Verification and compliance",
+        "role": "ensure outputs are accurate, sourced, and auditable.",
+        "parts": [
+          "fact-checking module",
+          "source attribution",
+          "audit log",
+          "regulatory rule engine"
+        ]
+      },
+      {
+        "name": "Reporting and interface",
+        "role": "present findings to human analysts and decision-makers.",
+        "parts": [
+          "dashboard",
+          "natural-language report generator",
+          "alerting system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and data sources",
+        "detail": "Identify which filings, market data, and risk models the agents must handle, and the regulatory constraints."
+      },
+      {
+        "title": "Ingest and preprocess data",
+        "detail": "Fetch SEC filings via EDGAR, parse XBRL, pull real-time market data, clean and chunk text."
+      },
+      {
+        "title": "Build vector index and knowledge base",
+        "detail": "Embed documents and store them in a vector database with metadata for filtered retrieval."
+      },
+      {
+        "title": "Design agent roles and orchestration",
+        "detail": "Create specialized agents (e.g., filing analyst, market analyst, risk assessor) and a planner to coordinate them."
+      },
+      {
+        "title": "Implement reasoning loops and tool use",
+        "detail": "Connect the language model to calculators, databases, and retrieval so it can iteratively query and refine answers."
+      },
+      {
+        "title": "Integrate validation and compliance",
+        "detail": "Add fact-checking, source citation, and audit trails, and align workflows with financial regulations."
+      },
+      {
+        "title": "Test and backtest",
+        "detail": "Run the system on historical cases and compare its outputs against human analyst reports to measure accuracy."
+      },
+      {
+        "title": "Deploy with human-in-the-loop",
+        "detail": "Start in an assisted mode where humans review and sign off, then gradually increase autonomy."
+      },
+      {
+        "title": "Monitor and update",
+        "detail": "Continuously improve models, data sources, and compliance rules as markets and regulations change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with multi-step reasoning",
+        "status": "exists",
+        "why": "they provide the language understanding and reasoning needed to interpret filings and generate analysis."
+      },
+      {
+        "tech": "Retrieval-augmented generation (RAG)",
+        "status": "exists",
+        "why": "grounds answers in specific documents, reducing hallucination and enabling source citation."
+      },
+      {
+        "tech": "Vector databases and embeddings",
+        "status": "exists",
+        "why": "allow fast semantic search over large volumes of financial text."
+      },
+      {
+        "tech": "Agent frameworks and tool use",
+        "status": "partial",
+        "why": "multi-agent coordination and reliable tool calling are still maturing for high-stakes finance."
+      },
+      {
+        "tech": "Structured financial data access (e.g., SEC EDGAR, XBRL)",
+        "status": "exists",
+        "why": "provides the raw filings and machine-readable financial statements the agents analyze."
+      },
+      {
+        "tech": "Audit and compliance tooling",
+        "status": "partial",
+        "why": "regulated industries require traceable, repeatable processes that current AI systems do not fully provide."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI copilots that summarize filings and extract key metrics under human supervision",
+        "unlocks": "efficiency gains in routine document review and data extraction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems for specific workflows such as earnings analysis or credit screening, with human review",
+        "unlocks": "faster, deeper analysis on narrow, well-defined tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "semi-autonomous due diligence where agents draft reports and flag risks, subject to human sign-off",
+        "unlocks": "broader coverage and continuous monitoring of portfolios."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous agents for real-time risk assessment and portfolio monitoring with regulatory acceptance",
+        "unlocks": "24/7 oversight and faster reaction to market events, if audit and compliance challenges are solved."
+      }
+    ]
   }
 }

@@ -1,0 +1,171 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Body and actuation",
+        "role": "limbs that move like a person's, with enough strength and speed for real work.",
+        "parts": [
+          "electric joint motors",
+          "high-ratio reduction gears",
+          "series-elastic or torque-sensing joints",
+          "structural limbs in aluminium or carbon fibre"
+        ]
+      },
+      {
+        "name": "Hands and end effectors",
+        "role": "grasping and manipulating objects of unknown shape and weight.",
+        "parts": [
+          "multi-finger hands",
+          "tendon or linkage drives",
+          "tactile and force sensors",
+          "interchangeable tools"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "keeping a mobile machine running for a full shift.",
+        "parts": [
+          "lithium-ion battery pack",
+          "cooling loop",
+          "regenerative braking in joints",
+          "docking and fast-charge interface"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "building a usable model of the surroundings in real time.",
+        "parts": [
+          "stereo and depth cameras",
+          "inertial measurement unit",
+          "force-torque sensing in limbs",
+          "skin-like contact sensors"
+        ]
+      },
+      {
+        "name": "Control and learning",
+        "role": "deciding what to do and how to move, without hand-coding every action.",
+        "parts": [
+          "vision-language-action model",
+          "whole-body controller",
+          "simulation environment for training",
+          "on-board compute"
+        ]
+      },
+      {
+        "name": "Fleet infrastructure",
+        "role": "running thousands of machines as one managed system.",
+        "parts": [
+          "over-the-air software updates",
+          "remote teleoperation for stuck tasks",
+          "charging and service depots",
+          "fleet scheduling software"
+        ]
+      },
+      {
+        "name": "Volume manufacturing",
+        "role": "producing actuators, gears and sensors at automotive-like cost and quality.",
+        "parts": [
+          "automated assembly lines",
+          "precision gear and motor production",
+          "end-of-line calibration and test"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the task envelope",
+        "detail": "Decide payload, reach, speed and environment, because every later choice — joint torque, battery size, hand complexity — follows from it."
+      },
+      {
+        "title": "Design the actuators",
+        "detail": "Each joint is a motor, gearbox, encoder and controller sized together so the machine can lift its own weight plus a useful load."
+      },
+      {
+        "title": "Make the hands",
+        "detail": "Fingers are built with tendon or linkage drives and fitted with tactile arrays, since hands are the hardest and most failure-prone part."
+      },
+      {
+        "title": "Assemble the body",
+        "detail": "Limbs, torso, wiring harness, cooling channels and battery are integrated, keeping mass low and centre of gravity stable."
+      },
+      {
+        "title": "Train the control policy",
+        "detail": "Policies are first learned in simulation with randomised physics, then fine-tuned on real hardware and on data recorded from human teleoperation."
+      },
+      {
+        "title": "Prove safety",
+        "detail": "Force, speed and pinch limits are set, emergency stops and geofencing added, and the machine certified for working near people."
+      },
+      {
+        "title": "Scale up production",
+        "detail": "Actuator and sensor lines are automated so unit cost falls toward the price of a car rather than a laboratory instrument."
+      },
+      {
+        "title": "Deploy and maintain fleets",
+        "detail": "Robots are shipped to sites with charging, servicing and software-update logistics, and their failures feed back into the next design."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "General-purpose robot learning",
+        "status": "partial",
+        "why": "models that transfer one skill across objects and settings are early; most deployed robots still repeat a fixed motion."
+      },
+      {
+        "tech": "Dexterous manipulation",
+        "status": "partial",
+        "why": "human-level hand control in clutter is unsolved; hands are fragile and easy to jam."
+      },
+      {
+        "tech": "Cheap high-torque-density actuators",
+        "status": "partial",
+        "why": "precision motors and reduction gears are costly at the volumes a global fleet would need."
+      },
+      {
+        "tech": "Mobile power at shift length",
+        "status": "partial",
+        "why": "battery energy per kilogram limits how long a strong, fast machine can work."
+      },
+      {
+        "tech": "Safety standards for machines among people",
+        "status": "missing",
+        "why": "rules for a learning, general-purpose robot sharing space with untrained people do not yet exist."
+      },
+      {
+        "tech": "Mass electromechanical manufacturing",
+        "status": "exists",
+        "why": "the car and appliance industries already make motors, gears and batteries in the tens of millions per year."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-purpose robots in warehouses, farms and factories",
+        "unlocks": "reliable narrow automation and the supply chain it depends on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "humanoid and mobile manipulator pilots in logistics and manufacturing, often with remote human help",
+        "unlocks": "real operating data from unstructured tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "foundation models that let one robot learn a new task from demonstration in hours",
+        "unlocks": "economical deployment in small batches rather than only huge factories."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-robot crews doing construction, care and agriculture work",
+        "unlocks": "labour where workers are scarce, plus pressure to redesign workplaces around machines."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "civilisation-scale fleets",
+        "unlocks": "a large share of physical work done by machines — bounded by battery materials, rare-earth magnets, electricity supply and public acceptance, not by software alone."
+      }
+    ]
+  }
+}

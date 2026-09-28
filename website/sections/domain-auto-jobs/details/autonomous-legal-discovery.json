@@ -30,5 +30,167 @@
         "def": "Specialized machine learning techniques that enable AI to understand and interpret legal language by mapping textual data into a vector space where similar documents are closer together."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Document ingestion",
+        "role": "collects and converts documents into machine-readable text.",
+        "parts": [
+          "connectors to email, file shares, case systems",
+          "OCR for scanned pages",
+          "metadata extraction"
+        ]
+      },
+      {
+        "name": "Preprocessing and indexing",
+        "role": "cleans, deduplicates and organises documents for search.",
+        "parts": [
+          "text extraction",
+          "language detection",
+          "deduplication",
+          "indexing engine"
+        ]
+      },
+      {
+        "name": "Legal embeddings and vector search",
+        "role": "finds semantically similar documents even when wording differs.",
+        "parts": [
+          "legal-domain embedding model",
+          "vector database",
+          "similarity search"
+        ]
+      },
+      {
+        "name": "Retrieval and ranking",
+        "role": "combines keyword and semantic search to surface the most relevant evidence.",
+        "parts": [
+          "hybrid search (keyword + vector)",
+          "re-ranker",
+          "query expansion"
+        ]
+      },
+      {
+        "name": "LLM reasoning and generation",
+        "role": "summarises, answers questions and labels relevance with citations.",
+        "parts": [
+          "large language model",
+          "RAG pipeline",
+          "prompt templates",
+          "citation grounding"
+        ]
+      },
+      {
+        "name": "Review and workflow",
+        "role": "lets lawyers validate, tag privilege and produce documents.",
+        "parts": [
+          "review interface",
+          "privilege logging",
+          "redaction tools",
+          "production export"
+        ]
+      },
+      {
+        "name": "Security and audit",
+        "role": "protects confidentiality and keeps a defensible record.",
+        "parts": [
+          "access controls",
+          "encryption",
+          "audit logs",
+          "chain of custody"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Ingest the document set",
+        "detail": "Connect to data sources, run optical character recognition on scans, and extract text and metadata into a common format."
+      },
+      {
+        "title": "Build a legal reference corpus",
+        "detail": "Assemble statutes, case law and prior contracts to train or evaluate legal embeddings and prompt templates."
+      },
+      {
+        "title": "Create embeddings and index",
+        "detail": "Use a legal-specific embedding model to convert every document into vectors, then load them into a vector database."
+      },
+      {
+        "title": "Implement hybrid retrieval",
+        "detail": "Combine keyword search with vector similarity, then apply a re-ranker to order results by likely relevance."
+      },
+      {
+        "title": "Integrate the LLM",
+        "detail": "Wire a large language model to the retriever so it can answer questions and summarise documents with citations."
+      },
+      {
+        "title": "Add human review tools",
+        "detail": "Build an interface where lawyers can confirm relevance, mark documents as privileged and redact sensitive text."
+      },
+      {
+        "title": "Validate and monitor",
+        "detail": "Test against known answers, measure precision and recall, and monitor for drift and bias over time."
+      },
+      {
+        "title": "Deploy securely",
+        "detail": "Run in an isolated environment with encryption, access controls and audit logging to meet confidentiality obligations."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they generate summaries and answers, but need grounding to avoid errors."
+      },
+      {
+        "tech": "Vector databases",
+        "status": "exists",
+        "why": "efficient similarity search over millions of documents requires specialised indexing."
+      },
+      {
+        "tech": "Legal-specific embeddings",
+        "status": "partial",
+        "why": "general models miss legal nuance; domain-adapted models are emerging but not universal."
+      },
+      {
+        "tech": "OCR and document parsing",
+        "status": "exists",
+        "why": "much legal evidence is scanned or in varied formats."
+      },
+      {
+        "tech": "Secure infrastructure",
+        "status": "exists",
+        "why": "client confidentiality demands strict controls and often data residency."
+      },
+      {
+        "tech": "Human legal expertise",
+        "status": "exists",
+        "why": "courts require a defensible process and privilege review by qualified lawyers."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted review (predictive coding) is accepted in some courts for large document sets",
+        "unlocks": "faster, cheaper first-pass review under human supervision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Agentic systems that autonomously run first-pass review, flag inconsistencies and draft privilege logs",
+        "unlocks": "lawyers focus on strategy and final judgment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integration with matter management so discovery feeds directly into case timelines and brief drafting",
+        "unlocks": "end-to-end litigation support."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Courts and regulators develop standards for validating AI discovery, enabling routine use in smaller cases",
+        "unlocks": "wider access to justice for lower-value disputes."
+      }
+    ]
   }
 }

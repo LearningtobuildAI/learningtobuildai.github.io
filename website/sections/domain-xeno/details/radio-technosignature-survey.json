@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Antenna and receiver",
+        "role": "collects faint radio emission from selected stars or sky regions.",
+        "parts": [
+          "large dish antennas (e.g. Green Bank Telescope, FAST, Parkes)",
+          "wide-band feed horns",
+          "cryogenically cooled low-noise amplifiers"
+        ]
+      },
+      {
+        "name": "Digital backend",
+        "role": "turns analogue voltages into high-resolution frequency channels and time samples.",
+        "parts": [
+          "high-speed analogue-to-digital converters",
+          "FPGA or GPU-based polyphase filter banks",
+          "beamformers for multi-beam receivers"
+        ]
+      },
+      {
+        "name": "Signal search pipeline",
+        "role": "searches for narrowband carriers that drift in frequency due to Doppler shifts.",
+        "parts": [
+          "Doppler drift search algorithms",
+          "threshold and clustering code",
+          "candidate ranking and rejection logic"
+        ]
+      },
+      {
+        "name": "Interference mitigation",
+        "role": "rejects signals from terrestrial transmitters, satellites and electronic equipment.",
+        "parts": [
+          "dedicated RFI monitoring antennas",
+          "flagging algorithms and known-interferer databases",
+          "on/off source observation strategies"
+        ]
+      },
+      {
+        "name": "Verification system",
+        "role": "confirms candidate signals by re-observing them with an independent telescope.",
+        "parts": [
+          "scheduling and coordination software",
+          "access to a second telescope at a different site",
+          "cross-matching and coincidence checks"
+        ]
+      },
+      {
+        "name": "Data management",
+        "role": "stores raw and processed data for analysis and later re-examination.",
+        "parts": [
+          "high-capacity storage arrays",
+          "computing clusters for batch processing",
+          "archival databases and metadata"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select targets",
+        "detail": "Choose nearby stars, known exoplanet systems, the Galactic plane and other regions where a transmitter might be expected."
+      },
+      {
+        "title": "Observe with a radio telescope",
+        "detail": "Point the dish and record raw voltages or channelised data, often while nodding on and off the target to separate local interference."
+      },
+      {
+        "title": "Digitise and channelise",
+        "detail": "Convert the analogue signal into thousands or millions of narrow frequency channels, each sampled many times per second."
+      },
+      {
+        "title": "Search for drifting narrowband signals",
+        "detail": "Apply algorithms that look for narrow peaks shifting in frequency over time, as a transmitter on a moving planet would appear."
+      },
+      {
+        "title": "Filter interference",
+        "detail": "Compare with RFI databases, monitor reference antennas and reject signals that appear in all directions or match known transmitters."
+      },
+      {
+        "title": "Identify candidates",
+        "detail": "Cluster and rank surviving signals by strength, drift rate and persistence, producing a short list for follow-up."
+      },
+      {
+        "title": "Re-observe with an independent telescope",
+        "detail": "Point a different dish at the same target at the same time; a real extraterrestrial signal should appear in both, while interference usually does not."
+      },
+      {
+        "title": "Follow up and analyse",
+        "detail": "If confirmed, study the signal for repetition, modulation, polarisation and any other properties that distinguish technology from nature."
+      },
+      {
+        "title": "Archive the data",
+        "detail": "Store raw and processed data so that future, more powerful search algorithms can re-examine past observations."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large single-dish and array radio telescopes",
+        "status": "exists",
+        "why": "sensitivity is limited by collecting area, so big dishes are essential to detect weak or distant transmitters."
+      },
+      {
+        "tech": "Wide-band digital spectrometers",
+        "status": "exists",
+        "why": "covering many frequencies at once increases the chance of catching a signal at an unknown frequency."
+      },
+      {
+        "tech": "High-performance computing",
+        "status": "exists",
+        "why": "surveys generate terabytes per hour and require real-time or near-real-time processing."
+      },
+      {
+        "tech": "Radio frequency interference mitigation",
+        "status": "partial",
+        "why": "terrestrial interference is the dominant source of false positives and is increasingly hard to avoid."
+      },
+      {
+        "tech": "Algorithms for artificial signal detection",
+        "status": "exists",
+        "why": "narrowband drifting carrier searches are well developed, but they only cover one class of possible transmission."
+      },
+      {
+        "tech": "Independent verification telescopes",
+        "status": "exists",
+        "why": "a candidate must be confirmed by a second instrument to rule out local interference."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ongoing surveys such as those by the SETI Institute and Breakthrough Listen on telescopes like the Green Bank Telescope, Parkes and FAST",
+        "unlocks": "coverage of thousands of nearby stars and wide swathes of the Galactic plane."
+      },
+      {
+        "stage": "Next",
+        "milestone": "next-generation facilities such as the Square Kilometre Array and the next-generation Very Large Array begin operations",
+        "unlocks": "orders of magnitude more sensitivity and survey speed, reaching much fainter or more distant signals."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commensal and real-time surveys that piggyback on other observations",
+        "unlocks": "continuous sky monitoring with rapid follow-up of any candidate."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "coordinated radio, optical and infrared technosignature searches",
+        "unlocks": "more robust confirmation and characterisation if a signal is found."
+      },
+      {
+        "stage": "Long term",
+        "milestone": "a detected and independently verified signal triggers international protocols for confirmation and announcement",
+        "unlocks": "a scientific and societal response to the first evidence of an extraterrestrial technology."
+      }
+    ]
+  }
+}

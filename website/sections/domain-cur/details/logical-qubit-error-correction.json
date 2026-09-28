@@ -32,5 +32,142 @@
         "def": "A specific type of quantum error correction code used in lattice-based systems to detect and correct errors without collapsing the encoded information."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Physical qubit array",
+        "role": "a two-dimensional lattice of noisy physical qubits that stores the encoded information.",
+        "parts": [
+          "data qubits (superconducting circuits, trapped ions or neutral atoms)",
+          "nearest-neighbour couplers"
+        ]
+      },
+      {
+        "name": "Ancilla and readout qubits",
+        "role": "measure the parity checks that reveal errors without disturbing the encoded data.",
+        "parts": [
+          "measurement qubits",
+          "readout resonators or photodetectors",
+          "reset circuitry"
+        ]
+      },
+      {
+        "name": "Control and cryogenic hardware",
+        "role": "keeps the qubits cold and delivers precise pulses to every site.",
+        "parts": [
+          "dilution refrigerator (around 10–20 mK)",
+          "microwave or laser control lines",
+          "room-temperature electronics"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "turns a stream of measured syndromes into a correction fast enough to keep up with the quantum machine.",
+        "parts": [
+          "low-latency decoding hardware",
+          "matching or neural-network decoder software"
+        ]
+      },
+      {
+        "name": "Logical operation layer",
+        "role": "performs gates between logical qubits and supplies the non-Clifford operations a full algorithm needs.",
+        "parts": [
+          "lattice-surgery routines",
+          "magic-state distillation",
+          "logical Pauli-frame tracking"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a physical qubit",
+        "detail": "Choose a platform — superconducting circuits, trapped ions or neutral atoms — whose two-qubit gate errors sit below the code's threshold, roughly 1% for the surface code."
+      },
+      {
+        "title": "Fabricate the lattice",
+        "detail": "Build a chip or tweezer array with data and measurement qubits on a square grid, each coupled only to its neighbours."
+      },
+      {
+        "title": "Calibrate to below threshold",
+        "detail": "Tune every qubit frequency and every gate until single-qubit and two-qubit errors are low enough that adding qubits helps rather than hurts."
+      },
+      {
+        "title": "Encode one logical qubit",
+        "detail": "Prepare the code state with a sequence of entangling gates, spreading one logical qubit across many physical ones (for example 49 for a distance-5 patch)."
+      },
+      {
+        "title": "Measure syndromes repeatedly",
+        "detail": "In each round, ancilla qubits are entangled with their neighbours, measured, and reset — mid-circuit — producing a syndrome without reading the data qubits."
+      },
+      {
+        "title": "Decode in real time",
+        "detail": "A classical decoder compares consecutive syndrome rounds and infers the most likely chain of errors, which must complete within the measurement cycle."
+      },
+      {
+        "title": "Correct and track",
+        "detail": "Corrections are applied by Pauli-frame updates rather than physical pulses, so the logical state survives without extra noise."
+      },
+      {
+        "title": "Grow the distance",
+        "detail": "Extending the patch from distance 3 to 5 to 7 should halve the logical error rate each time — the definitive evidence that the code is working."
+      },
+      {
+        "title": "Scale out and add non-Clifford gates",
+        "detail": "Stitch many patches together with lattice surgery and distil magic states to run algorithms beyond what Clifford gates allow."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Physical qubit fidelities above the error-correction threshold",
+        "status": "partial",
+        "why": "gate errors under about 1% have been reached on small devices, but not yet uniformly across a large chip."
+      },
+      {
+        "tech": "Mid-circuit measurement and qubit reset",
+        "status": "exists",
+        "why": "syndrome extraction requires measuring ancillas repeatedly while the data qubits stay coherent."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "the decoder must answer within microseconds, which is hard as the code and the machine grow."
+      },
+      {
+        "tech": "Cryogenic wiring and control at scale",
+        "status": "partial",
+        "why": "each physical qubit needs control and readout lines that must not heat the refrigerator or add noise."
+      },
+      {
+        "tech": "Fault-tolerant non-Clifford gates",
+        "status": "partial",
+        "why": "magic-state distillation or equivalent is needed for most useful algorithms and has only been shown in small demonstrations."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "below-threshold surface code demonstrated on roughly a hundred physical qubits in 2024",
+        "unlocks": "proof that making the code bigger genuinely suppresses errors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a single logical qubit that reliably beats the best physical qubit over long runs",
+        "unlocks": "a trustworthy building block for small fault-tolerant circuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tens to hundreds of logical qubits with real-time decoding and magic states",
+        "unlocks": "early fault-tolerant uses in chemistry and materials simulation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands of logical qubits supported by millions of physical qubits",
+        "unlocks": "cryptographically relevant factoring and large-scale quantum simulation — the point where error correction, not physics, stops being the limit."
+      }
+    ]
   }
 }

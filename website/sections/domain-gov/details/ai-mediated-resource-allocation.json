@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what is where, and how much of it exists.",
+        "parts": [
+          "smart meters and grid sensors",
+          "GPS and RFID tags on freight",
+          "point-of-sale and inventory feeds",
+          "weather and satellite data"
+        ]
+      },
+      {
+        "name": "Data integration and digital twin",
+        "role": "turns messy, multi-company data into one consistent live model of the network.",
+        "parts": [
+          "interoperable data standards",
+          "entity resolution for items and suppliers",
+          "graph or relational model of the supply network"
+        ]
+      },
+      {
+        "name": "Forecasting models",
+        "role": "predict demand, lead times and supply disruptions.",
+        "parts": [
+          "time-series and machine-learning demand models",
+          "weather and crop-yield models",
+          "anomaly detection"
+        ]
+      },
+      {
+        "name": "Optimization engine",
+        "role": "chooses the allocation that best meets the stated objective under constraints.",
+        "parts": [
+          "linear and mixed-integer solvers",
+          "model-predictive control for fast loops",
+          "reinforcement learning for sequential decisions",
+          "auction and market-clearing rules"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "converts the plan into real actions.",
+        "parts": [
+          "order and routing systems",
+          "dynamic pricing or dispatch signals",
+          "grid setpoints and battery charge commands"
+        ]
+      },
+      {
+        "name": "Oversight and constraints",
+        "role": "keeps the system inside legal, safety, environmental and fairness limits.",
+        "parts": [
+          "hard-coded constraint sets",
+          "audit logs",
+          "human override and escalation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the system",
+        "detail": "Install meters, sensors and tags across production, transport and consumption so the state of the network is observable in near-real time."
+      },
+      {
+        "title": "Connect and standardise the data",
+        "detail": "Agree common formats and identifiers so parties that do not trust each other can still exchange usable data."
+      },
+      {
+        "title": "Build the digital twin",
+        "detail": "Assemble a live model of stocks, flows, capacities, lead times and prices as a single computable network."
+      },
+      {
+        "title": "Forecast the future state",
+        "detail": "Run demand, yield and disruption models over horizons from minutes (grid) to seasons (agriculture)."
+      },
+      {
+        "title": "Define the objective and constraints",
+        "detail": "Write down what is being maximised — cost, emissions, delivery time, welfare — and the hard limits that must not be broken."
+      },
+      {
+        "title": "Solve the allocation problem",
+        "detail": "Use solvers or learned policies to compute a dispatch, routing or pricing plan for the next time window."
+      },
+      {
+        "title": "Actuate the plan",
+        "detail": "Send the plan into ordering, logistics, pricing and grid-control systems, or present it to human operators."
+      },
+      {
+        "title": "Measure and close the loop",
+        "detail": "Compare outcomes with predictions, retrain models and adjust constraints, then repeat at each control interval."
+      },
+      {
+        "title": "Audit and bound",
+        "detail": "Keep logs, test for systematic bias or concentration of harm, and retain human authority over high-impact decisions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ubiquitous cheap sensing and connectivity",
+        "status": "exists",
+        "why": "allocation can only be as good as the data feeding it; remote assets must report their state regularly."
+      },
+      {
+        "tech": "Large-scale optimization and ML compute",
+        "status": "exists",
+        "why": "planning across millions of items or nodes within minutes needs substantial parallel computing."
+      },
+      {
+        "tech": "Interoperable data standards and digital twins",
+        "status": "partial",
+        "why": "firms and agencies hold incompatible data, so cross-sector models are still assembled by hand."
+      },
+      {
+        "tech": "Incentive-compatible market mechanisms",
+        "status": "partial",
+        "why": "if participants gain by misreporting, the optimiser allocates on false data — a problem auction theory addresses but does not fully solve."
+      },
+      {
+        "tech": "Verification and safety of learned controllers",
+        "status": "missing",
+        "why": "no reliable method exists to certify that a learned policy will never cause cascading failures across a critical network."
+      },
+      {
+        "tech": "Artificial general intelligence",
+        "status": "missing",
+        "why": "the tile's premise assumes general reasoning agents; today's systems are narrow and require a specified objective."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "domain-specific optimisation in warehouses, freight, cloud capacity and electricity balancing",
+        "unlocks": "measurable savings and emissions cuts inside single companies or single grids."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regional coordination across grids, ports and rail using shared standards",
+        "unlocks": "shifting load and freight between operators to cut peaks and waste."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop automated markets for several commodities at once",
+        "unlocks": "faster reallocation during shortages, but with new systemic risk if several systems share one model."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a planetary-scale allocation engine",
+        "unlocks": "the theoretical post-scarcity distribution goal — only if general intelligence, incentive design and verification are all solved, and only as a hybrid with human and market control, since central planning has well-documented information and incentive limits."
+      }
+    ]
+  }
+}

@@ -37,5 +37,149 @@
         "def": "Methods used to detect and correct errors in quantum computations due to decoherence and other issues."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "holds and manipulates the qubits — the physical two-level systems that store the computation.",
+        "parts": [
+          "qubit elements (superconducting circuits, trapped ions, neutral atoms, or photonic modes)",
+          "couplers and resonators",
+          "chip substrate and wiring"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "applies the precise pulses that execute gates and reads out the result.",
+        "parts": [
+          "microwave sources or stabilised lasers",
+          "cryogenic amplifiers and circulators",
+          "single-photon or state detectors"
+        ]
+      },
+      {
+        "name": "Cryogenics and vacuum",
+        "role": "keeps most qubit types cold enough to stay quantum for long enough.",
+        "parts": [
+          "dilution refrigerator",
+          "radiation shielding",
+          "vacuum chamber and ion/atom traps"
+        ]
+      },
+      {
+        "name": "Error correction layer",
+        "role": "combines many imperfect physical qubits into a smaller number of reliable logical qubits.",
+        "parts": [
+          "error-correcting codes such as the surface code",
+          "real-time decoders",
+          "syndrome measurement circuits"
+        ]
+      },
+      {
+        "name": "Classical orchestration",
+        "role": "compiles algorithms into pulse sequences and calibrates the machine between runs.",
+        "parts": [
+          "compiler and transpiler",
+          "FPGA and room-temperature control racks",
+          "calibration and characterisation software"
+        ]
+      },
+      {
+        "name": "Networking and interconnects",
+        "role": "links separate modules so machines can grow beyond one chip or trap.",
+        "parts": [
+          "microwave or optical links",
+          "photonic interconnects",
+          "entanglement-distribution hardware"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a modality and design the chip",
+        "detail": "Decide whether qubits will be superconducting circuits, trapped ions, neutral atoms or photonic modes, then lay out the circuit or trap geometry and error-correction scheme."
+      },
+      {
+        "title": "Fabricate the quantum hardware",
+        "detail": "For superconducting chips, superconducting metal films are deposited on a silicon wafer and Josephson junctions are patterned by lithography; photonic chips use waveguides, splitters and squeezers instead."
+      },
+      {
+        "title": "Package and cool",
+        "detail": "The chip is mounted in a shielded enclosure and wired with hundreds of coaxial or optical lines down through a dilution refrigerator to millikelvin temperatures, or held in an ultra-high-vacuum ion or atom trap."
+      },
+      {
+        "title": "Calibrate the qubits",
+        "detail": "Each qubit's frequency, gate timing and readout threshold are measured and tuned, since fabrication tolerances leave every device slightly different."
+      },
+      {
+        "title": "Run and benchmark gates and algorithms",
+        "detail": "Single- and two-qubit gates are verified, then small circuits are run to measure fidelity, coherence time and cross-entropy or volume benchmarks."
+      },
+      {
+        "title": "Demonstrate error correction",
+        "detail": "Many physical qubits are grouped into a logical qubit via repeated syndrome measurements; the milestone is showing that adding more physical qubits lowers the logical error rate."
+      },
+      {
+        "title": "Scale and interconnect",
+        "detail": "Qubit counts grow on a chip, and modules are linked with microwave or optical interconnects to reach the thousands of logical qubits real applications need."
+      },
+      {
+        "title": "Deploy through the cloud",
+        "detail": "Users submit circuits over the internet to a hosted machine, with classical pre- and post-processing alongside the quantum run."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dilution refrigeration and ultra-high vacuum",
+        "status": "exists",
+        "why": "most qubits lose their quantum state if they are not held near absolute zero or in vacuum."
+      },
+      {
+        "tech": "Precision microwave and laser control",
+        "status": "exists",
+        "why": "gate fidelities depend on controlling pulses to nanosecond precision and low phase noise."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "gates and readout are still imperfect, so useful machines need many physical qubits per logical one — below-threshold correction has only recently been shown."
+      },
+      {
+        "tech": "Fabrication of quantum chips at scale",
+        "status": "partial",
+        "why": "thousands of near-identical qubits with low defect rates need semiconductor-grade process control."
+      },
+      {
+        "tech": "Post-quantum cryptography standards",
+        "status": "exists",
+        "why": "a machine able to run Shor's algorithm would break RSA and elliptic-curve encryption, so migration should happen before such a machine exists."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cloud-accessible processors with tens to hundreds of noisy physical qubits, and early demonstrations that error rates fall as qubit arrays grow",
+        "unlocks": "hands-on experimentation and a real testbed for error-correction codes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hundreds of well-behaved logical qubits",
+        "unlocks": "simulating molecules and materials beyond the reach of classical computers, where the first clear advantage is expected."
+      },
+      {
+        "stage": "Middle",
+        "milestone": "thousands of logical qubits with networked modules",
+        "unlocks": "Fault-tolerant operation and useful chemistry, optimisation and machine-learning tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "millions of logical qubits",
+        "unlocks": "Running Shor's algorithm against current public-key cryptography — the scenario the NIST post-quantum standards published in 2024 are meant to pre-empt."
+      }
+    ]
   }
 }

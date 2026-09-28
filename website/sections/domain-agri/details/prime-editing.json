@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cas9 nickase",
+        "role": "finds the target DNA sequence and nicks just one strand instead of cutting both.",
+        "parts": [
+          "Cas9 protein with a disabled cutting domain (H840A)",
+          "guide-RNA binding region"
+        ]
+      },
+      {
+        "name": "Reverse transcriptase",
+        "role": "a DNA-writing enzyme fused to the nickase; copies an RNA template into new DNA at the nick.",
+        "parts": [
+          "engineered reverse transcriptase domain",
+          "flexible protein linker"
+        ]
+      },
+      {
+        "name": "Prime editing guide RNA (pegRNA)",
+        "role": "both points the machinery at the target and carries the new sequence to write.",
+        "parts": [
+          "spacer that matches the target DNA",
+          "Cas9 scaffold",
+          "3' extension with primer-binding site and the desired edit"
+        ]
+      },
+      {
+        "name": "Delivery system",
+        "role": "gets the editing machinery into plant cells.",
+        "parts": [
+          "Agrobacterium or plasmid vectors",
+          "biolistic particles or protoplast transfection",
+          "selectable markers"
+        ]
+      },
+      {
+        "name": "Regeneration and selection",
+        "role": "turns a single edited cell back into a whole plant.",
+        "parts": [
+          "tissue-culture media and hormones",
+          "immature embryos or callus",
+          "screening by sequencing"
+        ]
+      },
+      {
+        "name": "Validation and breeding",
+        "role": "confirms the exact edit and moves it into commercial varieties.",
+        "parts": [
+          "amplicon and whole-genome sequencing",
+          "off-target checks",
+          "crossing to remove the editing machinery",
+          "field trials"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a gene and an exact change",
+        "detail": "Choose a trait gene and the precise DNA edit that would confer it — for example a small change in a disease-susceptibility gene that disables it without harming yield, rather than a blunt knockout."
+      },
+      {
+        "title": "Design the pegRNA",
+        "detail": "Software picks a spacer next to the target site and writes a 3' extension encoding the new sequence plus a primer-binding site, so the reverse transcriptase knows where to start and what to copy."
+      },
+      {
+        "title": "Assemble the construct",
+        "detail": "DNA encoding the nickase–reverse-transcriptase fusion and the pegRNA (or several pegRNAs, for multiple edits) is built into a plant expression cassette."
+      },
+      {
+        "title": "Deliver into plant cells",
+        "detail": "Agrobacterium infects immature embryos, or DNA is shot into cells or introduced into protoplasts; the machinery reaches the nucleus and performs the search-and-replace."
+      },
+      {
+        "title": "Regenerate whole plants",
+        "detail": "Edited cells are grown on hormone media into callus and then shoots and roots — the step where most crop species are hardest."
+      },
+      {
+        "title": "Screen for precise edits",
+        "detail": "Sequencing of the target site distinguishes the intended edit from unwanted insertions, deletions or untouched cells."
+      },
+      {
+        "title": "Strip out the editing machinery",
+        "detail": "Plants are selfed or crossed so the Cas9 and guide DNA segregate away, leaving a plant whose genome contains only the edit — often the key to favourable regulation."
+      },
+      {
+        "title": "Breed and field-test",
+        "detail": "The edited line is crossed into elite varieties, multiplied, and trialled for yield and disease resistance across seasons and locations before regulatory review."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR-Cas9 programmable targeting",
+        "status": "exists",
+        "why": "prime editing reuses the same targeting rules; without them there is nothing to aim at a specific gene."
+      },
+      {
+        "tech": "Reverse transcriptase engineering",
+        "status": "exists",
+        "why": "the writing enzyme comes from well-studied retroviral and engineered variants."
+      },
+      {
+        "tech": "Plant transformation and regeneration",
+        "status": "partial",
+        "why": "many elite crop varieties are still hard or impossible to transform and regrow, which caps what can be edited."
+      },
+      {
+        "tech": "Predictable pegRNA design rules",
+        "status": "partial",
+        "why": "editing efficiency varies widely between sites, so many targets need trial-and-error."
+      },
+      {
+        "tech": "Regulatory and market pathways for gene-edited crops",
+        "status": "partial",
+        "why": "rules differ by country and determine whether an edited line can actually reach farmers."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prime editing demonstrated in rice, wheat, maize and tomato, usually at lower efficiency than in human cells",
+        "unlocks": "proof that precise, template-free edits are possible in crop genomes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved enzymes and pegRNA designs, plus multiplexed editing, raise efficiency and allow several traits at once",
+        "unlocks": "stacked traits such as combined disease resistance and quality improvements."
+      },
+      {
+        "stage": "Next",
+        "milestone": "transgene-free edited elite lines enter field trials and regulatory review",
+        "unlocks": "farm-scale deployment of traits that conventional breeding could not easily produce."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine precision breeding, including domesticating wild relatives by editing a handful of genes",
+        "unlocks": "faster adaptation of crops to new climates, soils and pests."
+      }
+    ]
+  }
+}

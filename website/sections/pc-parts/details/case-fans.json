@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Impeller and hub",
+        "role": "the rotating blade set that moves the air.",
+        "parts": [
+          "7–11 curved blades",
+          "hub",
+          "sometimes a ring joining the blade tips"
+        ]
+      },
+      {
+        "name": "Motor",
+        "role": "a brushless DC motor spins the impeller at a controlled speed.",
+        "parts": [
+          "stator with copper windings",
+          "rotor with permanent magnets",
+          "Hall-effect sensor",
+          "drive electronics"
+        ]
+      },
+      {
+        "name": "Bearings",
+        "role": "let the shaft spin quietly for years.",
+        "parts": [
+          "sleeve, ball or fluid-dynamic bearing",
+          "shaft",
+          "lubricant reservoir"
+        ]
+      },
+      {
+        "name": "Frame and mounting",
+        "role": "holds the motor and seals against the case or radiator.",
+        "parts": [
+          "square plastic frame",
+          "mounting holes",
+          "anti-vibration corner pads"
+        ]
+      },
+      {
+        "name": "Control and connection",
+        "role": "sets speed and reports it back.",
+        "parts": [
+          "4-pin connector",
+          "PWM input (fourth wire)",
+          "tachometer output (third wire)",
+          "optional addressable LEDs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the blade",
+        "detail": "Curvature, blade count and tip clearance are tuned in fluid simulation and wind-tunnel tests for either high airflow or high static pressure."
+      },
+      {
+        "title": "Mould the impeller and frame",
+        "detail": "Glass-fibre-reinforced thermoplastic is injected into polished steel moulds; blades and hub come out as one balanced piece."
+      },
+      {
+        "title": "Wind the stator",
+        "detail": "Copper wire is wound around laminated steel poles, then the assembly is potted and fitted with the control circuit board."
+      },
+      {
+        "title": "Build the rotor",
+        "detail": "Permanent magnet segments are bonded into a steel cup that presses onto the shaft."
+      },
+      {
+        "title": "Fit the bearings",
+        "detail": "The bearing (sleeve, ball or fluid-dynamic) is pressed into the hub so the shaft turns with minimal play."
+      },
+      {
+        "title": "Assemble and balance",
+        "detail": "Rotor, stator, frame and cable come together, then each unit is spun and balanced to cut vibration and noise."
+      },
+      {
+        "title": "Test and rate",
+        "detail": "Fans are run to measure speed in rpm, airflow in cubic metres per hour, static pressure in millimetres of water and sound level in dB(A)."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Brushless DC motor control",
+        "status": "exists",
+        "why": "small, cheap and long-lived, with electronic speed control instead of brushes to wear out."
+      },
+      {
+        "tech": "Permanent magnets and magnetic materials",
+        "status": "exists",
+        "why": "they set the torque and efficiency of the motor."
+      },
+      {
+        "tech": "Injection-moulded engineering plastics",
+        "status": "exists",
+        "why": "blades need to be thin, stiff and accurately shaped at low cost."
+      },
+      {
+        "tech": "Precision bearings and lubrication",
+        "status": "exists",
+        "why": "bearing quality decides noise and service life."
+      },
+      {
+        "tech": "Motherboard PWM fan headers and control software",
+        "status": "exists",
+        "why": "they let the system vary fan speed with temperature instead of running flat out."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "standard 120 mm and 140 mm PWM fans on cases, coolers and radiators",
+        "unlocks": "quiet, automatic airflow control tuned to component temperatures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher static-pressure designs and daisy-chained fans sharing one cable",
+        "unlocks": "more airflow through dense radiators and filters with less wiring clutter."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better bearings and blade shapes with sound under 20 dB(A) at moderate speed",
+        "unlocks": "near-silent desktops and home servers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "case-level airflow sensing and control integrated with system software",
+        "unlocks": "fans that spin only as fast as the installed components actually need."
+      }
+    ]
+  }
+}

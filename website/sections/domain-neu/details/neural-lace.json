@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "the part in contact with neurons — a flexible mesh or stent-mounted film that records and stimulates.",
+        "parts": [
+          "conductive polymer or thin-film metal traces",
+          "flexible substrate (polymer)",
+          "electrode sites, tens to thousands"
+        ]
+      },
+      {
+        "name": "Delivery system",
+        "role": "gets the array into the brain without open surgery on the cortex.",
+        "parts": [
+          "fine needle or syringe for tissue injection",
+          "catheter and guidewire for endovascular routes",
+          "deployment mechanism that unfurls the mesh or expands the stent"
+        ]
+      },
+      {
+        "name": "On-implant electronics",
+        "role": "amplifies and digitises faint neural signals next to the source.",
+        "parts": [
+          "low-power application-specific chip",
+          "multiplexing",
+          "stimulation driver"
+        ]
+      },
+      {
+        "name": "Wireless link and power",
+        "role": "carries data and power through skin and bone with no wires crossing the body.",
+        "parts": [
+          "inductive coil or radio/ultrasonic transceiver",
+          "power management",
+          "antenna"
+        ]
+      },
+      {
+        "name": "External unit and decoding",
+        "role": "turns spike trains into commands and streams feedback back.",
+        "parts": [
+          "headpiece transceiver",
+          "real-time decoding software",
+          "calibration interface"
+        ]
+      },
+      {
+        "name": "Biocompatibility barrier",
+        "role": "keeps the immune system from walling off the electrodes.",
+        "parts": [
+          "soft, tissue-matched mechanical properties",
+          "antifouling coatings"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode map",
+        "detail": "Decide how many channels are needed, how densely they must sit, and which brain regions they must reach."
+      },
+      {
+        "title": "Fabricate the mesh",
+        "detail": "Thin polymer and metal layers are patterned on a sacrificial wafer by the same lithography used for computer chips, then released as a free-standing, flexible mesh with conducting pathways and recording sites."
+      },
+      {
+        "title": "Mount or compress it",
+        "detail": "For an endovascular device, electrodes are fixed onto a self-expanding metal stent. For an injectable mesh, the whole structure is folded and drawn into the bore of a needle of roughly 100 micrometres."
+      },
+      {
+        "title": "Add the chip",
+        "detail": "A low-power amplifier and multiplexer is bonded to the array's tail so raw signals leave the body already digitised."
+      },
+      {
+        "title": "Coat for the body",
+        "detail": "Antifouling and anti-inflammatory coatings are applied to reduce the scar tissue that otherwise insulates electrodes."
+      },
+      {
+        "title": "Deliver it",
+        "detail": "Either inject through a small opening in the skull into the cortex, letting the mesh unfurl among neurons, or thread a catheter through a neck vein into a large blood vessel lying against the brain surface, where the stent opens against the vessel wall."
+      },
+      {
+        "title": "Link and calibrate",
+        "detail": "The external unit pairs with the implant, checks electrode impedance and records baseline activity."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Decoding software learns the person's neural patterns, and stimulation channels return information — the step that would make this a two-way interface."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Flexible thin-film neural probes",
+        "status": "exists",
+        "why": "mesh and polymer arrays have been made and implanted in animals, proving the fabrication route works."
+      },
+      {
+        "tech": "Endovascular access to the brain",
+        "status": "partial",
+        "why": "stent-mounted electrode arrays have been implanted in human clinical trials, but channel counts and longevity are limited."
+      },
+      {
+        "tech": "Low-power implantable chips and wireless links",
+        "status": "exists",
+        "why": "hearing implants and deep-brain stimulators already run for years inside the body."
+      },
+      {
+        "tech": "Long-term electrode stability",
+        "status": "missing",
+        "why": "scar tissue and corrosion degrade recordings within months to a few years; a lifelong interface needs far longer."
+      },
+      {
+        "tech": "High-bandwidth neural decoding",
+        "status": "partial",
+        "why": "current systems read a few hundred channels for cursor or speech control; 'seamless, high-speed' links need orders of magnitude more."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "endovascular electrode arrays in human trials restoring typing and communication for people with paralysis; injectable mesh electrodes shown in animals",
+        "unlocks": "proof that a brain interface can be installed without opening the skull."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wireless mesh implants with several hundred to a few thousand stable channels",
+        "unlocks": "richer signals for speech and prosthetic control, without a cable through the skin."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bidirectional implants that write as well as read, with decade-scale stability",
+        "unlocks": "sensory feedback and closed-loop therapy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a distributed, body-wide mesh linking brain to digital systems at high bandwidth",
+        "unlocks": "the 'neural lace' idea proper — still speculative, and gated by biology more than by electronics."
+      }
+    ]
+  }
+}

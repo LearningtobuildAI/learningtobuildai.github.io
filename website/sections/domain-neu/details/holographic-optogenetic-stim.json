@@ -33,5 +33,154 @@
         "def": "A fluorescence microscopy technique that uses two photons to excite a fluorescent molecule, allowing deep tissue imaging with reduced photodamage compared to single-photon techniques."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Opsins (light-gated ion channels)",
+        "role": "turn a pulse of light into a flow of ions that makes the cell fire.",
+        "parts": [
+          "channelrhodopsins and red-shifted variants",
+          "soma-targeted variants that keep the protein on the cell body",
+          "promoter and enhancer elements for cell-type specificity"
+        ]
+      },
+      {
+        "name": "Gene delivery and targeting",
+        "role": "puts the opsin into chosen cells only.",
+        "parts": [
+          "viral vectors (e.g. adeno-associated)",
+          "transgenic and Cre-driver animal lines",
+          "injection and surgery"
+        ]
+      },
+      {
+        "name": "Excitation laser",
+        "role": "delivers near-infrared pulses energetic enough for two-photon excitation of the opsin.",
+        "parts": [
+          "pulsed laser (titanium–sapphire or amplified fibre, roughly 920–1030 nm)",
+          "power and pulse control"
+        ]
+      },
+      {
+        "name": "Holographic beam shaper",
+        "role": "splits one beam into many independently aimed focal spots.",
+        "parts": [
+          "phase-only liquid-crystal spatial light modulator",
+          "relay optics and scanning galvanometer mirrors",
+          "high-numerical-aperture objective"
+        ]
+      },
+      {
+        "name": "Readout imaging path",
+        "role": "watches what the stimulated cells do.",
+        "parts": [
+          "two-photon scanning microscope",
+          "genetically encoded calcium or voltage indicator",
+          "dichroics and filters to separate stimulation from imaging light",
+          "photodetectors"
+        ]
+      },
+      {
+        "name": "Control software",
+        "role": "computes the hologram and times stimulation against imaging.",
+        "parts": [
+          "3D target selection from a scan image",
+          "phase-retrieval algorithm (e.g. Gerchberg–Saxton type)",
+          "real-time closed-loop control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose an opsin and express it",
+        "detail": "A viral vector or transgenic line delivers a fast, red-shifted channelrhodopsin to a genetically defined cell type. Soma-targeting motifs keep it off the axons, so light excites the intended cells and not their neighbours' fibres."
+      },
+      {
+        "title": "Build the optical path",
+        "detail": "The pulsed laser is routed through the spatial light modulator, relay lenses and scanning mirrors into a microscope objective. Stimulation and imaging beams are combined so both reach the same patch of tissue."
+      },
+      {
+        "title": "Register the target cells",
+        "detail": "A two-photon scan of the indicator shows which cells are active; the user or software picks a set of cells and records their 3D coordinates."
+      },
+      {
+        "title": "Compute the hologram",
+        "detail": "An iterative phase-retrieval algorithm works out the phase pattern that turns the single beam into one focused spot per chosen cell. In a fast implementation (a non-iterative 3D method) this runs quickly enough for closed-loop use."
+      },
+      {
+        "title": "Calibrate the dose",
+        "detail": "Each spot's power and duration are tuned so the cell fires reliably without heating tissue or exciting its neighbours — verified by imaging the response."
+      },
+      {
+        "title": "Stimulate and read out",
+        "detail": "The hologram is displayed on the modulator for a few milliseconds while the scanning path records calcium or voltage signals. Stimulation and imaging are interleaved in time or separated by wavelength to avoid artefacts."
+      },
+      {
+        "title": "Prove causality with controls",
+        "detail": "Sham patterns, opsin-free animals and single-cell stimulations confirm that the observed circuit effect came from the targeted neurons. This is the step that turns a light show into a causal experiment."
+      },
+      {
+        "title": "Scale and close the loop",
+        "detail": "Software reads the ongoing activity and updates the next hologram, so hundreds of cells can be driven in patterns that depend on what the circuit is doing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Microbial opsins that work with two-photon light",
+        "status": "partial",
+        "why": "two-photon absorption is weak, so the best-performing variants are still being engineered for efficiency and speed."
+      },
+      {
+        "tech": "Cell-type-specific genetic targeting in mammals",
+        "status": "exists",
+        "why": "viral vectors and transgenic driver lines can restrict the opsin to one class of neuron."
+      },
+      {
+        "tech": "Phase-only spatial light modulators",
+        "status": "exists",
+        "why": "liquid-crystal devices shape the beam into many spots, but their refresh rate limits how fast patterns can change."
+      },
+      {
+        "tech": "Two-photon microscopy with genetically encoded indicators",
+        "status": "exists",
+        "why": "calcium and voltage indicators provide the readout of what the stimulated cells did."
+      },
+      {
+        "tech": "Fast 3D hologram computation",
+        "status": "partial",
+        "why": "iterative algorithms are slow; faster methods exist but must stay accurate as spot counts grow."
+      },
+      {
+        "tech": "Transparent brain access",
+        "status": "partial",
+        "why": "the technique only reaches tissue a few hundred micrometres deep, so it needs a cranial window or thin preparations."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "holographic two-photon stimulation of tens of cells while imaging the same field, mostly in anaesthetised or head-fixed rodents",
+        "unlocks": "causal maps of how small groups of neurons drive behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hundreds of cells stimulated in awake, behaving animals with closed-loop patterns",
+        "unlocks": "writing activity patterns into circuits, not just reading them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deeper, larger-volume access using three-photon excitation and faster modulators",
+        "unlocks": "circuits across several cortical layers or deeper brain regions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical interfaces that both record and stimulate without a cranial window",
+        "unlocks": "clinical and freely moving applications — still speculative and far off."
+      }
+    ]
   }
 }

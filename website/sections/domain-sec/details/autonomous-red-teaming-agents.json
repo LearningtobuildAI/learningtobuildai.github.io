@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reconnaissance and attack-surface mapping",
+        "role": "builds a picture of what is exposed before anything is attacked.",
+        "parts": [
+          "network and port scanners",
+          "service and version fingerprinting",
+          "web crawlers and API discovery",
+          "cloud and identity enumeration",
+          "open-source intelligence collection"
+        ]
+      },
+      {
+        "name": "Planner and orchestrator",
+        "role": "the reasoning loop that decides what to try next and keeps track of what has been learned.",
+        "parts": [
+          "large language model planner with tool calling",
+          "tool registry",
+          "memory store of findings and failed attempts",
+          "budget and step limits"
+        ]
+      },
+      {
+        "name": "Exploit engine",
+        "role": "turns a suspected weakness into a working, repeatable attack.",
+        "parts": [
+          "automated payload generation",
+          "fuzzers",
+          "debuggers and dynamic analysis",
+          "exploit chaining across hosts and accounts"
+        ]
+      },
+      {
+        "name": "Sandbox and target replica",
+        "role": "a disposable copy of the target where attacks can be run without harming anything real.",
+        "parts": [
+          "isolated virtual machines or containers",
+          "blocked outbound network access",
+          "snapshot and rollback",
+          "cloned credentials and configuration"
+        ]
+      },
+      {
+        "name": "Verification and reporting",
+        "role": "separates genuine exploitable flaws from plausible-looking noise.",
+        "parts": [
+          "clean-snapshot replay",
+          "false-positive filtering and de-duplication",
+          "severity scoring",
+          "fix recommendations and evidence logs"
+        ]
+      },
+      {
+        "name": "Guardrails and authorisation",
+        "role": "keeps an autonomous attacker inside the agreed scope.",
+        "parts": [
+          "scope allow-lists",
+          "rate limiting",
+          "full action logging",
+          "kill switch and human approval gates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Agree scope and authorisation",
+        "detail": "Write rules of engagement naming exactly which hosts, accounts and time windows may be touched, and which techniques are forbidden — without this, none of the rest is legal."
+      },
+      {
+        "title": "Clone the target environment",
+        "detail": "Stand up an isolated replica: the same services, versions and configurations, with no route to production or the public internet, and snapshotting so any state can be rewound in seconds."
+      },
+      {
+        "title": "Expose tools as callable actions",
+        "detail": "Install scanners, fuzzers, debuggers and exploitation frameworks inside the sandbox and wrap each one in a structured interface with typed arguments and parsed output."
+      },
+      {
+        "title": "Wire the agent loop",
+        "detail": "Connect an LLM to that tool interface with a plan–act–observe cycle: propose an action, run it, read the result, update the findings graph, decide again."
+      },
+      {
+        "title": "Ground it in vulnerability knowledge",
+        "detail": "Add retrieval over vulnerability databases, patch notes and public write-ups so generated payloads match real product versions instead of being invented."
+      },
+      {
+        "title": "Map the attack surface",
+        "detail": "Let the agent enumerate hosts, services, endpoints and exposed credentials, and assemble them into a graph of reachable paths."
+      },
+      {
+        "title": "Attempt and chain exploits",
+        "detail": "The agent generates candidate payloads, tests them in the replica, keeps what works and combines single weaknesses into multi-step chains leading to a high-value target."
+      },
+      {
+        "title": "Verify on a clean snapshot",
+        "detail": "Replay every claimed exploit from a fresh copy. Anything that cannot be reproduced is discarded, which removes most hallucinated findings."
+      },
+      {
+        "title": "Report and hand back to humans",
+        "detail": "Produce findings with reproduction steps, evidence, severity and remediation advice, and route anything touching live systems to a human for approval before it is attempted."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable tool use",
+        "status": "exists",
+        "why": "the agent must choose tools, parse messy output and hold a long multi-step plan without losing the thread."
+      },
+      {
+        "tech": "Cheap, disposable sandboxing",
+        "status": "exists",
+        "why": "running unknown exploits safely requires isolation and instant rollback, which virtual machines and containers already provide."
+      },
+      {
+        "tech": "Mature scanning and exploitation tooling",
+        "status": "exists",
+        "why": "established scanners, fuzzers and exploitation frameworks do the mechanical work the agent orchestrates."
+      },
+      {
+        "tech": "Evaluation benchmarks for offensive agents",
+        "status": "partial",
+        "why": "without standard scored challenges it is hard to tell a capable agent from one that writes convincing but false reports."
+      },
+      {
+        "tech": "Reliable scope enforcement",
+        "status": "partial",
+        "why": "an agent that misreads its scope can cause real damage; allow-lists and kill switches are improving but not foolproof."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "LLM assistants that speed up human penetration testers and automate reconnaissance plus known-vulnerability checks",
+        "unlocks": "cheaper, more frequent security audits for organisations that could never afford constant manual testing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that autonomously chain multi-stage exploits inside sandboxed replicas and prove each one by replay, as pushed by DARPA's AI Cyber Challenge",
+        "unlocks": "verified, reproducible findings at machine speed with humans reviewing rather than hunting."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous red-teaming wired into software delivery pipelines, running under strict scope against staging environments",
+        "unlocks": "vulnerabilities found and fixed before release instead of after a breach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "paired attack-and-defence agents that find and patch in the same loop, under audited guardrails and clear liability rules",
+        "unlocks": "a security posture that improves faster than attackers can exploit it — provided the same capability is not turned loose without oversight."
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cryo-CMOS control ASIC",
+        "role": "generates qubit control pulses and reads return signals from inside the refrigerator instead of from a rack at room temperature.",
+        "parts": [
+          "digital-to-analog and analog-to-digital converters",
+          "microwave mixers and oscillators",
+          "on-chip memory for pulse sequences",
+          "serialiser link to room temperature"
+        ]
+      },
+      {
+        "name": "Multiplexing network",
+        "role": "lets one cable serve many qubits, which is the whole point of the exercise.",
+        "parts": [
+          "radio-frequency switches and multiplexers",
+          "superconducting filters",
+          "flux-bias current sources",
+          "attenuators"
+        ]
+      },
+      {
+        "name": "Cryogenic interconnect",
+        "role": "carries signals and heat between the refrigerator's temperature stages.",
+        "parts": [
+          "low-loss coaxial and flexible ribbon cables",
+          "infrared-blocking filters",
+          "thermal anchors and copper straps"
+        ]
+      },
+      {
+        "name": "Thermal budget",
+        "role": "keeps the added electronics inside the very small cooling power available at each stage.",
+        "parts": [
+          "pulse-tube and dilution stages",
+          "heat-load modelling",
+          "shielding and packaging"
+        ]
+      },
+      {
+        "name": "Room-temperature interface",
+        "role": "the only remaining wide link to the outside world.",
+        "parts": [
+          "FPGA sequencer",
+          "high-speed serialiser/deserialiser",
+          "power and clock delivery"
+        ]
+      },
+      {
+        "name": "Calibration software",
+        "role": "maps desired quantum operations onto the reduced pulse set the cryo chip can produce.",
+        "parts": [
+          "pulse compiler",
+          "gate calibration routines",
+          "cryo-CMOS device models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the process",
+        "detail": "A mature CMOS node is picked for low leakage and reliable behaviour when cooled, rather than for maximum speed."
+      },
+      {
+        "title": "Measure transistors cold",
+        "detail": "Devices are characterised at liquid-helium and millikelvin temperatures, because foundry models only describe room-temperature behaviour."
+      },
+      {
+        "title": "Design the ASIC",
+        "detail": "Converters, mixers and control logic are laid out so that the chip's own power dissipation — perhaps a few milliwatts — fits the refrigerator's budget."
+      },
+      {
+        "title": "Fabricate and package",
+        "detail": "The chip is made at a commercial foundry, thinned, and mounted on a package that survives repeated thermal cycling."
+      },
+      {
+        "title": "Characterise in a dilution refrigerator",
+        "detail": "The packaged chip is cooled and tested for noise, timing jitter and crosstalk at its operating temperature."
+      },
+      {
+        "title": "Wire into the fridge",
+        "detail": "Cables, filters and attenuators are threaded through the stages with thermal anchoring so heat does not reach the coldest plate."
+      },
+      {
+        "title": "Validate with real qubits",
+        "detail": "The chip drives superconducting qubits and its gate fidelities are compared against conventional room-temperature electronics."
+      },
+      {
+        "title": "Scale the tile",
+        "detail": "Several identical chips are daisy-chained on one refrigeration stage so that hundreds of qubits share a small number of cables."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dilution refrigerators with known heat budgets",
+        "status": "exists",
+        "why": "cooling power at the coldest stage is well under a milliwatt, so every milliwatt of control electronics must be placed higher up or removed."
+      },
+      {
+        "tech": "Superconducting qubit hardware",
+        "status": "partial",
+        "why": "cryo control only matters once qubit counts outgrow the number of coaxial lines a fridge can carry."
+      },
+      {
+        "tech": "Cryogenic transistor models and design kits",
+        "status": "partial",
+        "why": "without accurate cold models, chips must be designed conservatively and re-spun after measurement."
+      },
+      {
+        "tech": "Cryogenic multiplexing and readout schemes",
+        "status": "partial",
+        "why": "sharing lines between qubits depends on frequency-multiplexed readout that preserves fidelity."
+      },
+      {
+        "tech": "Mature CMOS foundry access",
+        "status": "exists",
+        "why": "the chips ride on ordinary silicon manufacturing, which keeps them cheap once designed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cryo-CMOS chips running a handful of qubits from the few-kelvin stage (chipmakers such as Intel have demonstrated this with Horse Ridge)",
+        "unlocks": "proof that control electronics can survive and work inside the fridge."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multiplexed control of tens to low hundreds of qubits per chip, with cold device models shared by foundries",
+        "unlocks": "fridges that host arrays big enough for early error correction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "control functions pushed to the millikelvin stage and combined with cryogenic readout amplifiers",
+        "unlocks": "a single cable or optical fibre carrying the whole control and readout load."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "wafer-scale or chiplet cryo controllers matched to thousands of physical qubits per refrigerator",
+        "unlocks": "fault-tolerant quantum computers that are not limited by wiring."
+      }
+    ]
+  }
+}

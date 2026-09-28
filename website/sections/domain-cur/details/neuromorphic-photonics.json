@@ -1,0 +1,130 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Optical neuron",
+        "role": "emits or modulates light in response to input, mimicking a neuron's firing.",
+        "parts": [
+          "laser or modulator with nonlinear response",
+          "feedback loop for spiking behaviour"
+        ]
+      },
+      {
+        "name": "Optical synapse",
+        "role": "weights connections between neurons by attenuating or phase-shifting light.",
+        "parts": [
+          "phase-change or thermo-optic material",
+          "tunable microring or Mach-Zehnder interferometer"
+        ]
+      },
+      {
+        "name": "Photonic interconnect",
+        "role": "routes and combines light signals across the chip.",
+        "parts": [
+          "waveguides",
+          "splitters and combiners",
+          "wavelength multiplexers"
+        ]
+      },
+      {
+        "name": "Photodetector array",
+        "role": "converts optical signals to electrical for readout and hybrid electronic control.",
+        "parts": [
+          "germanium or III-V photodiodes",
+          "transimpedance amplifiers"
+        ]
+      },
+      {
+        "name": "Electronic control layer",
+        "role": "configures weights, supplies power, and handles I/O and calibration.",
+        "parts": [
+          "CMOS driver circuits",
+          "memory for weight storage",
+          "control logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the network",
+        "detail": "Map a neural network onto a photonic circuit: neurons, synapses, and interconnects, choosing wavelengths and layout."
+      },
+      {
+        "title": "Fabricate the photonic chip",
+        "detail": "Use silicon photonics or similar foundry processes to etch waveguides, modulators, and detectors on a wafer."
+      },
+      {
+        "title": "Integrate light sources",
+        "detail": "Bond or grow lasers on-chip, or couple external lasers, to supply the light that carries signals."
+      },
+      {
+        "title": "Add weight-setting elements",
+        "detail": "Deposit phase-change or other tunable materials on each synapse, then pattern them for individual control."
+      },
+      {
+        "title": "Co-package with electronics",
+        "detail": "Flip-chip or monolithically integrate CMOS control circuits for driving, readout, and weight updates."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Measure each neuron and synapse, compensating for fabrication variations, and train the network using in-situ or external feedback."
+      },
+      {
+        "title": "Scale and validate",
+        "detail": "Build larger arrays and test them on real tasks such as image recognition, comparing accuracy and power against electronic accelerators."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics fabrication",
+        "status": "exists",
+        "why": "mature foundries can make low-loss waveguides and modulators at scale."
+      },
+      {
+        "tech": "On-chip lasers",
+        "status": "partial",
+        "why": "heterogeneous integration of III-V lasers on silicon is demonstrated but not yet standard in commercial photonic chips."
+      },
+      {
+        "tech": "Optical nonlinear activation",
+        "status": "partial",
+        "why": "all-optical neurons are demonstrated but often need high power or special materials; many designs use electro-optic conversion instead."
+      },
+      {
+        "tech": "Non-volatile optical memory",
+        "status": "partial",
+        "why": "phase-change materials can store weights optically, but endurance and stability are still being improved."
+      },
+      {
+        "tech": "Electronic-photonic co-integration",
+        "status": "partial",
+        "why": "combining CMOS and photonics on one chip is possible but complex and costly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Lab demonstrations",
+        "milestone": "small-scale photonic neural networks that perform simple classification tasks",
+        "unlocks": "proof that optical neurons and synapses can learn."
+      },
+      {
+        "stage": "Hybrid accelerators",
+        "milestone": "electronic-photonic chips that accelerate matrix multiplication for AI inference",
+        "unlocks": "lower power in data centres for specific workloads."
+      },
+      {
+        "stage": "Monolithic integration",
+        "milestone": "on-chip lasers, modulators, and non-volatile weights in a single process",
+        "unlocks": "compact, scalable photonic processors."
+      },
+      {
+        "stage": "Commercial edge inference",
+        "milestone": "mass-produced chips for always-on AI in cameras and sensors",
+        "unlocks": "ultra-low-power inference at the edge."
+      }
+    ]
+  }
+}

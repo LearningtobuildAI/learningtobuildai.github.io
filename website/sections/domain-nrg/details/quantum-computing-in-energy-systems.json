@@ -29,5 +29,148 @@
         "def": "The duration for which qubits can maintain their quantum state before decohering and losing their quantum properties."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the qubits that hold and evolve a superposition representing a grid problem.",
+        "parts": [
+          "superconducting transmons or trapped ions or neutral atoms",
+          "coupling network between qubits",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Cryogenic and control hardware",
+        "role": "keeps qubits cold and coherent, and delivers precise microwave or laser pulses.",
+        "parts": [
+          "dilution refrigerator (for superconducting qubits)",
+          "signal generators and amplifiers",
+          "wiring and shielding"
+        ]
+      },
+      {
+        "name": "Error-correction layer",
+        "role": "combines many noisy physical qubits into a few reliable logical ones.",
+        "parts": [
+          "error-correcting code",
+          "syndrome measurement",
+          "decoder running on classical hardware"
+        ]
+      },
+      {
+        "name": "Problem encoding and compiler",
+        "role": "translates a grid or storage problem into a qubit Hamiltonian or circuit.",
+        "parts": [
+          "mathematical formulation (e.g. QUBO or Ising form)",
+          "circuit transpiler",
+          "embedding onto the hardware's connectivity"
+        ]
+      },
+      {
+        "name": "Hybrid classical–quantum layer",
+        "role": "runs the outer optimisation loop, because near-term devices only do part of the job.",
+        "parts": [
+          "classical optimiser",
+          "quantum co-processor calls",
+          "result validation against classical solvers"
+        ]
+      },
+      {
+        "name": "Grid model and data pipeline",
+        "role": "supplies the demand, generation and network data that define the problem.",
+        "parts": [
+          "power-flow and unit-commitment models",
+          "sensor and market data feeds"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a problem class",
+        "detail": "Choose tasks with a natural combinatorial structure — switching which generators run, routing power, or scheduling storage charge and discharge."
+      },
+      {
+        "title": "Formulate it mathematically",
+        "detail": "Write the objective and constraints as a cost function over binary or integer variables, in a form a quantum device can accept."
+      },
+      {
+        "title": "Map onto qubits",
+        "detail": "Encode variables into qubits and constraints into couplings, checking that the embedding fits the hardware's limited connectivity."
+      },
+      {
+        "title": "Prepare the quantum state",
+        "detail": "Initialise the qubits and apply the algorithm's circuit — an annealing schedule, or a variational circuit whose parameters are tuned."
+      },
+      {
+        "title": "Sample and measure",
+        "detail": "Run the circuit many times to build up a distribution of candidate solutions."
+      },
+      {
+        "title": "Post-process classically",
+        "detail": "Repair and refine samples on a classical computer, discarding infeasible or poor answers."
+      },
+      {
+        "title": "Benchmark against classical solvers",
+        "detail": "Compare time-to-solution and quality with mature classical optimisers on the same instances — the essential honesty check."
+      },
+      {
+        "title": "Deploy as a hybrid service",
+        "detail": "If and only if an advantage holds, wrap the device in operational software that a grid operator can call."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant logical qubits",
+        "status": "missing",
+        "why": "useful grid problems need far more reliable qubits than any machine has demonstrated."
+      },
+      {
+        "tech": "Quantum error correction below threshold",
+        "status": "partial",
+        "why": "small codes have shown improvement, but not the scale needed for a full application."
+      },
+      {
+        "tech": "Provable quantum advantage on optimisation",
+        "status": "missing",
+        "why": "no quantum algorithm is yet known to beat the best classical methods on realistic grid-sized instances."
+      },
+      {
+        "tech": "High-quality grid and market data",
+        "status": "exists",
+        "why": "a quantum solver is only as good as the model and inputs it is given."
+      },
+      {
+        "tech": "Fast classical solvers and HPC",
+        "status": "exists",
+        "why": "classical optimisation is strong and improving, so quantum must clear a high bar."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research groups encode small unit-commitment and power-flow problems for noisy near-term devices",
+        "unlocks": "experience with formulations and embeddings, but no operational use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-corrected processors with thousands of logical qubits",
+        "unlocks": "credible tests on nationally sized grid problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a demonstrated, reproducible advantage over classical solvers",
+        "unlocks": "the first operational hybrid pilots with system operators."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid quantum–classical control rooms for real-time dispatch and storage scheduling",
+        "unlocks": "faster, more flexible operation — if the advantage survives contact with real grids."
+      }
+    ]
   }
 }

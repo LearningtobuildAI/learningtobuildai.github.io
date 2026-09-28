@@ -33,5 +33,137 @@
         "def": "The process of converting floating-point numbers into lower-precision fixed-point representations to reduce computational load and memory usage."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute accelerators",
+        "role": "run the arithmetic of a neural network quickly and within a phone's power budget.",
+        "parts": [
+          "neural processing unit (NPU)",
+          "GPU shader cores",
+          "digital signal processor (DSP)",
+          "CPU fallback"
+        ]
+      },
+      {
+        "name": "Model and inference runtime",
+        "role": "the trained network plus the software that executes it on the device.",
+        "parts": [
+          "quantized or pruned model graph",
+          "operators and kernels",
+          "runtime libraries such as TensorFlow Lite, Core ML or ONNX Runtime"
+        ]
+      },
+      {
+        "name": "Memory and storage",
+        "role": "hold model weights, intermediate activations and input data.",
+        "parts": [
+          "on-chip SRAM",
+          "DRAM",
+          "flash storage"
+        ]
+      },
+      {
+        "name": "Power and thermal management",
+        "role": "keep inference from draining the battery or overheating the device.",
+        "parts": [
+          "dynamic voltage and frequency scaling",
+          "thermal sensors",
+          "power gating"
+        ]
+      },
+      {
+        "name": "Input and sensor pipeline",
+        "role": "capture and preprocess real‑world signals for the model.",
+        "parts": [
+          "image signal processor",
+          "audio front‑end",
+          "sensor fusion hub"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Train a model",
+        "detail": "A large dataset is used to train a neural network, usually on cloud servers with many GPUs."
+      },
+      {
+        "title": "Compress the model",
+        "detail": "Weights are quantized to 8‑bit integers or lower, and unimportant connections are pruned to shrink the model and cut computation."
+      },
+      {
+        "title": "Convert to a device format",
+        "detail": "The compressed model is translated into a runtime format that the target hardware can load and execute."
+      },
+      {
+        "title": "Optimize for the hardware",
+        "detail": "Operators are mapped to the NPU, GPU or DSP, and memory use is planned to fit within the device's limits."
+      },
+      {
+        "title": "Integrate into the app",
+        "detail": "The runtime and model are bundled with the application that uses them, with fallbacks for devices lacking accelerators."
+      },
+      {
+        "title": "Test on real devices",
+        "detail": "Latency, accuracy, power draw and heat are measured across a range of chips and memory sizes."
+      },
+      {
+        "title": "Deploy and update",
+        "detail": "The app ships through normal app stores; models can later be swapped or fine‑tuned on the device itself."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Efficient neural network architectures",
+        "status": "exists",
+        "why": "models like MobileNet and compact transformers are designed for low compute and memory."
+      },
+      {
+        "tech": "Model quantization and pruning",
+        "status": "exists",
+        "why": "these techniques reduce size and speed up inference with minimal accuracy loss."
+      },
+      {
+        "tech": "Dedicated AI accelerators",
+        "status": "exists",
+        "why": "NPUs deliver far more operations per watt than a general‑purpose CPU."
+      },
+      {
+        "tech": "Lightweight inference runtimes",
+        "status": "exists",
+        "why": "frameworks such as TensorFlow Lite, Core ML and ONNX Runtime manage device‑specific execution."
+      },
+      {
+        "tech": "On‑device or federated learning",
+        "status": "partial",
+        "why": "lets models personalise without sending raw data to the cloud, but is not yet common in production apps."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "voice assistants, photo organisation and keyboard prediction run locally on many phones",
+        "unlocks": "privacy and instant response without a network round trip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi‑billion‑parameter language models on flagship phones using aggressive quantization",
+        "unlocks": "useful on‑device chatbots, summarisers and translators."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous personalisation through federated learning and on‑device fine‑tuning",
+        "unlocks": "models that adapt to one user without exposing their data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multimodal on‑device agents that see, hear and speak in real time",
+        "unlocks": "assistants that work offline and keep all sensor data local."
+      }
+    ]
   }
 }

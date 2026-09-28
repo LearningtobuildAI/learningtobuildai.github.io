@@ -30,5 +30,149 @@
         "def": "The remote control of a robot by an operator who can see the robot's surroundings through a camera or other sensor."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor suite",
+        "role": "gives the policy its picture of the world and of its own body.",
+        "parts": [
+          "head and wrist cameras",
+          "joint encoders",
+          "force/torque sensors",
+          "tactile skin on fingertips"
+        ]
+      },
+      {
+        "name": "Vision-language backbone",
+        "role": "turns pixels plus a spoken or written instruction into a shared representation.",
+        "parts": [
+          "image encoder (often a vision transformer)",
+          "language model",
+          "cross-attention layers"
+        ]
+      },
+      {
+        "name": "Action head",
+        "role": "converts that representation into motor commands.",
+        "parts": [
+          "action-token decoder or diffusion head",
+          "action-chunking buffer"
+        ]
+      },
+      {
+        "name": "Training data pipeline",
+        "role": "supplies the millions of demonstrations the model learns from.",
+        "parts": [
+          "teleoperation rigs (VR controllers, exoskeletons)",
+          "human video datasets",
+          "simulation with domain randomisation",
+          "data curation and language labelling"
+        ]
+      },
+      {
+        "name": "Whole-body controller",
+        "role": "turns a desired hand or foot pose into safe joint torques.",
+        "parts": [
+          "inverse kinematics",
+          "balance and gait controller",
+          "impedance control"
+        ]
+      },
+      {
+        "name": "Onboard compute",
+        "role": "runs inference inside the robot at control rate.",
+        "parts": [
+          "embedded GPU",
+          "real-time scheduler"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the teleoperation rig",
+        "detail": "A human operator drives the robot through tasks using VR controllers or a leader-follower arm pair, while cameras and joint angles are logged."
+      },
+      {
+        "title": "Collect demonstrations",
+        "detail": "The same household or warehouse tasks are repeated hundreds of times, with variation in object position, lighting and phrasing of the instruction."
+      },
+      {
+        "title": "Curate and label",
+        "detail": "Recordings are filtered for failures, aligned in time, and annotated with language describing what the robot is doing."
+      },
+      {
+        "title": "Pretrain the backbone",
+        "detail": "A vision-language model is first trained on ordinary internet images and text so it already recognises objects and understands instructions."
+      },
+      {
+        "title": "Fine-tune for actions",
+        "detail": "Robot episodes are used to teach the model to emit actions — either as discrete tokens in the same way it emits words, or as continuous trajectories from a diffusion head."
+      },
+      {
+        "title": "Add simulated experience",
+        "detail": "Physics simulation generates extra episodes of rare situations, with randomised textures and lighting so the model does not overfit to the lab."
+      },
+      {
+        "title": "Deploy and close the loop",
+        "detail": "The policy runs onboard, predicting short chunks of motion that the whole-body controller executes; the robot acts, watches the result and re-plans several times a second."
+      },
+      {
+        "title": "Feed failures back",
+        "detail": "Every stumble is recorded and folded into the next training round, so capability grows with fleet size."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Vision-language models",
+        "status": "exists",
+        "why": "they supply the general scene and instruction understanding that makes one policy work across many tasks."
+      },
+      {
+        "tech": "Large-scale robot demonstration datasets",
+        "status": "partial",
+        "why": "cross-lab pooling efforts have gathered millions of episodes, but they are far smaller and messier than text corpora."
+      },
+      {
+        "tech": "Cheap, robust tactile and force sensing",
+        "status": "partial",
+        "why": "grasping deformable or slippery objects needs contact feedback the robot rarely has."
+      },
+      {
+        "tech": "Compact onboard inference compute",
+        "status": "partial",
+        "why": "large policies must run within the power and latency budget of a moving machine."
+      },
+      {
+        "tech": "Reliable, compliant actuators and hands",
+        "status": "partial",
+        "why": "hardware that breaks weekly cannot gather the data a general policy needs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single policies that follow language instructions across dozens of tasks in a lab or pilot warehouse",
+        "unlocks": "evidence that one network can replace hand-written task code."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared open datasets and cross-robot training so a policy transfers to a new body",
+        "unlocks": "each new robot starts from a strong prior instead of from scratch."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fleet-scale data flywheel, where thousands of deployed robots continuously improve the model",
+        "unlocks": "fast gains in dexterity and reliability that no single lab can match alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "robust enough for unstructured homes and small businesses, with certified safety",
+        "unlocks": "general-purpose robots as a mainstream labour and service tool."
+      }
+    ]
   }
 }

@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Helicon plasma source",
+        "role": "turns neutral gas into a dense, cold plasma without electrodes.",
+        "parts": [
+          "ceramic or quartz discharge tube",
+          "helical radio-frequency antenna",
+          "gas feed (argon or xenon)"
+        ]
+      },
+      {
+        "name": "Ion-cyclotron heating stage",
+        "role": "adds energy to the plasma with radio waves tuned to the ion motion, raising its temperature enormously.",
+        "parts": [
+          "second radio-frequency antenna",
+          "tuning and matching network"
+        ]
+      },
+      {
+        "name": "Magnetic nozzle",
+        "role": "a shaped magnetic field that opens out and converts the plasma's random thermal energy into a directed exhaust — no physical nozzle to erode.",
+        "parts": [
+          "diverging coil set",
+          "field-shaping control"
+        ]
+      },
+      {
+        "name": "Superconducting magnet stack",
+        "role": "generates the steady kilotesla-scale field that contains and guides the plasma.",
+        "parts": [
+          "solenoid coils",
+          "cryostat",
+          "cryocoolers"
+        ]
+      },
+      {
+        "name": "Radio-frequency power and control",
+        "role": "supplies tens of kilowatts to megawatts of radio-frequency power and splits it between the two stages.",
+        "parts": [
+          "solid-state amplifiers",
+          "matching networks",
+          "throttle controller"
+        ]
+      },
+      {
+        "name": "Spacecraft power and thermal system",
+        "role": "supplies the large electrical input and rejects the waste heat.",
+        "parts": [
+          "solar arrays or fission reactor",
+          "pumped coolant loop",
+          "large radiators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the magnetic field shape",
+        "detail": "Coil positions and currents are designed so the field is strongest in the source, rises through the heating section and then diverges steadily to form the nozzle."
+      },
+      {
+        "title": "Wind and test the magnets",
+        "detail": "Solenoids are wound from superconducting cable and cooled to a few tens of kelvin by cryocoolers, then tested for field strength and quench behaviour."
+      },
+      {
+        "title": "Build the source and antennas",
+        "detail": "A ceramic tube carries the helical first-stage antenna; a second antenna sits in the stronger field downstream. Both are vacuum-compatible and matched to their amplifiers."
+      },
+      {
+        "title": "Assemble the core on one axis",
+        "detail": "Source, heating section and nozzle are stacked and aligned so the plasma stays centred and never touches a wall."
+      },
+      {
+        "title": "Add radio-frequency power and control",
+        "detail": "Power amplifiers feed the two antennas; control software shifts power between stages to trade thrust against exhaust velocity at constant electrical input."
+      },
+      {
+        "title": "Wire in power and radiators",
+        "detail": "Hundreds of kilowatts to megawatts of electrical power arrive from arrays or a reactor, and a coolant loop carries waste heat to radiators sized for the duty cycle."
+      },
+      {
+        "title": "Ground-test in a vacuum chamber",
+        "detail": "The engine is fired for hundreds of hours at rising power while a thrust stand measures force in newtons and probes map the exhaust plume and magnetic field."
+      },
+      {
+        "title": "Qualify for flight",
+        "detail": "A flight-representative unit goes through vibration, thermal-vacuum and long-duration life testing, including repeated thermal cycling of the cryogenic magnets."
+      },
+      {
+        "title": "Fly a demonstrator",
+        "detail": "A spacecraft flies the engine for months, measuring thrust, hours of operation, plume interaction with solar arrays and any long-term drift in performance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Megawatt-class electrical power in space",
+        "status": "missing",
+        "why": "a useful high-thrust version needs far more power than any spacecraft has generated; the largest orbital arrays are around a hundred kilowatts and space fission reactors have flown only at kilowatt scale."
+      },
+      {
+        "tech": "Superconducting magnets with space cryocoolers",
+        "status": "partial",
+        "why": "cryocoolers fly routinely on telescopes, but a large superconducting solenoid has not operated on a spacecraft for years at a time."
+      },
+      {
+        "tech": "High-power radio-frequency amplifiers and matching",
+        "status": "partial",
+        "why": "the tens-of-megahertz drive electronics exist on the ground but need space qualification at the hundreds-of-kilowatts level."
+      },
+      {
+        "tech": "Electric propulsion flight heritage and thrust measurement",
+        "status": "exists",
+        "why": "gridded ion and Hall thrusters already fly commercially, giving mission planners experience with low-thrust trajectories and power budgets."
+      },
+      {
+        "tech": "Large heat-rejection radiators",
+        "status": "exists",
+        "why": "steady high-power operation produces waste heat that must be radiated away, constraining the whole spacecraft design."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ground testing of a ~200 kW prototype, producing a few newtons of thrust in a vacuum chamber",
+        "unlocks": "demonstration that the electrodeless two-stage concept works at power levels useful for space."
+      },
+      {
+        "stage": "Next",
+        "milestone": "an in-orbit demonstrator running for hundreds of hours",
+        "unlocks": "lifetime data on magnets, antennas and thermal control in the real space environment; a proposed test on the International Space Station was not carried out."
+      },
+      {
+        "stage": "Next",
+        "milestone": "100 kW-class solar-electric space tugs for orbit raising and cargo transport",
+        "unlocks": "cheaper movement of payloads to high orbits and to the Moon, where chemical stages are very mass-hungry."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "megawatt nuclear-electric engines for crewed interplanetary trips",
+        "unlocks": "transit times of a few months to Mars, because high exhaust velocity plus high power means much less propellant."
+      }
+    ]
+  }
+}

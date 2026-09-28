@@ -1,0 +1,136 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Air mover",
+        "role": "pulls ambient air in and pushes cleaned air toward the nose and mouth.",
+        "parts": [
+          "brushless micro-fans",
+          "ducts and nozzles",
+          "vibration damping"
+        ]
+      },
+      {
+        "name": "Filter media",
+        "role": "removes particles from the airstream.",
+        "parts": [
+          "pleated HEPA-grade electret polypropylene",
+          "pre-filter screen",
+          "activated carbon layer for gases and odours"
+        ]
+      },
+      {
+        "name": "Electrostatic stage",
+        "role": "gives particles a charge so they stick to plates instead of passing through.",
+        "parts": [
+          "corona wire or needle electrodes",
+          "collection plates",
+          "high-voltage supply (a few kilovolts)"
+        ]
+      },
+      {
+        "name": "Power and control",
+        "role": "runs the fans, electrodes and sensors from a battery.",
+        "parts": [
+          "lithium-ion cell",
+          "charging port",
+          "fan-speed and ion-output controller"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "measures how dirty the surrounding air is and adjusts output.",
+        "parts": [
+          "optical particle counter",
+          "humidity and temperature sensor"
+        ]
+      },
+      {
+        "name": "Delivery interface",
+        "role": "the part that decides how much cleaned air actually reaches the user's airway.",
+        "parts": [
+          "visor or air-curtain nozzle",
+          "neck or ear mounting",
+          "soft seals"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set a performance target",
+        "detail": "Decide how much particle reduction is needed in the breathing zone and the airflow to achieve it, in litres per minute."
+      },
+      {
+        "title": "Make the filter media",
+        "detail": "Polypropylene fibres are melt-blown to sub-micrometre diameters, given an electrostatic charge so they capture particles by attraction as well as by sieving, then pleated to add area."
+      },
+      {
+        "title": "Build the electrostatic stage",
+        "detail": "Electrodes and collection plates are stamped and assembled, and a small high-voltage circuit is added; ozone production must be held near zero."
+      },
+      {
+        "title": "Assemble the air path",
+        "detail": "Fans, filter, electrodes and ducts are fitted into a housing designed to keep airflow smooth and noise low."
+      },
+      {
+        "title": "Add electronics",
+        "detail": "Battery, charging circuit, particle sensor and control firmware are installed and calibrated against reference aerosols."
+      },
+      {
+        "title": "Shape the wearable",
+        "detail": "The shell is moulded in lightweight plastic to sit comfortably on the neck or head, with the outlet aimed at the nose and mouth."
+      },
+      {
+        "title": "Test in a chamber",
+        "detail": "A person or breathing mannequin sits in a chamber filled with a known aerosol while particle counters compare inhaled air with room air; leakage and comfort are also measured."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Melt-blown electret filter media",
+        "status": "exists",
+        "why": "the same material class used in respirators and HVAC filters, but at a small, low-power scale."
+      },
+      {
+        "tech": "Miniature brushless fans and lithium batteries",
+        "status": "exists",
+        "why": "quiet fans and small cells make a wearable air path possible at all."
+      },
+      {
+        "tech": "Low-power optical particle sensors",
+        "status": "exists",
+        "why": "they let the device react to real pollution instead of running at fixed output."
+      },
+      {
+        "tech": "A test standard for personal clean-air delivery",
+        "status": "missing",
+        "why": "there is no agreed method to certify how much a wearable actually reduces what a person inhales."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "neck- and head-worn purifiers sold mainly in Asian markets, some with a visor feeding filtered air to the face",
+        "unlocks": "a personal option where outdoor air is heavily polluted."
+      },
+      {
+        "stage": "Next",
+        "milestone": "independent chamber testing and a comparable performance rating",
+        "unlocks": "buyers can tell a real reduction in inhaled particles from a marketing claim."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quieter, lighter designs integrated with headphones or a light mask",
+        "unlocks": "devices people actually wear all day."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "adaptive systems that sense the wearer's breathing and the local pollution and deliver air only when needed",
+        "unlocks": "longer battery life and better protection during commutes and wildfire smoke."
+      }
+    ]
+  }
+}

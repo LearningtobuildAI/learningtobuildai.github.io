@@ -35,5 +35,151 @@
         "def": "A principle stating it is impossible to create an identical copy of an arbitrary unknown quantum state."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon transmitter",
+        "role": "encodes each key bit on a single photon's phase or polarisation, so any attempt to read it disturbs it.",
+        "parts": [
+          "attenuated laser or entangled-photon source",
+          "electro-optic modulator",
+          "quantum random number generator for basis choice"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries the photons without letting them be copied — the no-cloning theorem forbids amplification, so range is limited.",
+        "parts": [
+          "dark optical fibre (about 0.2 dB loss per km at telecom wavelengths)",
+          "or free-space/satellite optical link"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "register individual photons at the far end.",
+        "parts": [
+          "avalanche photodiodes",
+          "superconducting nanowire detectors",
+          "cryocooler"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "an ordinary network link used to compare bases, correct errors and compress the key.",
+        "parts": [
+          "authenticated encryption",
+          "error-correction and privacy-amplification software"
+        ]
+      },
+      {
+        "name": "Key management layer",
+        "role": "stores finished keys and feeds them to the equipment that actually encrypts traffic.",
+        "parts": [
+          "key store",
+          "API",
+          "encryptor or optical-transport integration"
+        ]
+      },
+      {
+        "name": "Trusted-node chain",
+        "role": "extends range by decrypting and re-encrypting keys at intermediate sites — a security compromise, not a quantum one.",
+        "parts": [
+          "secure node hardware",
+          "key relays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the protocol",
+        "detail": "Most systems use prepare-and-measure BB84, where the sender picks a random bit and basis; entanglement-based variants are used where a source can be shared."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "A laser is attenuated to well below one photon per pulse on average, with randomised decoy pulses so an eavesdropper cannot hide behind multi-photon emissions."
+      },
+      {
+        "title": "Build the receiver",
+        "detail": "The receiver randomly picks a measurement basis and detects arriving photons; detectors are cooled and shielded to keep dark counts low."
+      },
+      {
+        "title": "Establish the quantum channel",
+        "detail": "Lease dark fibre or install a free-space path; loss, not distance, is what kills the link, so splices and connector quality matter enormously."
+      },
+      {
+        "title": "Run the classical side in parallel",
+        "detail": "The two ends publicly compare bases, discard mismatches, correct remaining errors and apply privacy amplification, which shrinks the raw key to a shorter, provably secret one."
+      },
+      {
+        "title": "Integrate with encryption",
+        "detail": "Keys are pushed into optical transport or IPsec encryptors so ordinary data traffic uses them fresh, rather than storing them."
+      },
+      {
+        "title": "Extend the distance",
+        "detail": "Beyond roughly a few hundred kilometres of fibre, trusted nodes or, eventually, quantum repeaters are needed to bridge the gap."
+      },
+      {
+        "title": "Validate and audit",
+        "detail": "Independent testing of detectors and sources is essential, because several real attacks have exploited hardware that behaved differently from the ideal model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detection",
+        "status": "exists",
+        "why": "without detectors that register individual photons, no quantum key can be read out."
+      },
+      {
+        "tech": "Low-loss optical fibre or free-space optics",
+        "status": "exists",
+        "why": "every decibel of loss directly cuts the achievable key rate."
+      },
+      {
+        "tech": "Quantum random number generation",
+        "status": "exists",
+        "why": "keys and basis choices must be unpredictable, not merely pseudo-random."
+      },
+      {
+        "tech": "Information-theoretically secure authentication",
+        "status": "exists",
+        "why": "the public channel must be authenticated or a man-in-the-middle can impersonate both ends."
+      },
+      {
+        "tech": "Quantum repeaters and quantum memories",
+        "status": "missing",
+        "why": "they are the only way to carry entanglement past the loss limit without trusted nodes."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "exists",
+        "why": "not strictly required, but the practical near-term defence against quantum code-breaking, and usually deployed alongside QKD."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro and backbone quantum key distribution links, plus the first post-quantum encryption standards published by NIST in 2024",
+        "unlocks": "quantum-resistant protection for the highest-value links, without waiting for quantum hardware to mature."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QKD modules and satellite key distribution, alongside hybrid QKD-plus-post-quantum systems",
+        "unlocks": "cheaper deployment and intercontinental key exchange over free space."
+      },
+      {
+        "stage": "Next",
+        "milestone": "measurement-device-independent and device-independent protocols",
+        "unlocks": "security that no longer depends on trusting the detector hardware."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and entanglement distribution between cities",
+        "unlocks": "a quantum internet that distributes entanglement itself, not just keys."
+      }
+    ]
   }
 }

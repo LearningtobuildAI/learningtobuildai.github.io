@@ -34,5 +34,174 @@
         "def": "Fragments of DNA released by dying cancer cells into the bloodstream, which can be sequenced to identify genetic mutations associated with cancer."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Tumour profiling pipeline",
+        "role": "finds the specific mutations that make one person's cancer vulnerable.",
+        "parts": [
+          "tumour biopsy or blood draw",
+          "DNA and RNA sequencing",
+          "bioinformatics pipeline",
+          "pathologist review"
+        ]
+      },
+      {
+        "name": "Gene-editing toolkit",
+        "role": "cuts or rewrites DNA at a chosen site in a cell.",
+        "parts": [
+          "Cas9 nuclease, base editor or prime editor protein",
+          "guide RNA",
+          "repair template"
+        ]
+      },
+      {
+        "name": "Delivery system",
+        "role": "gets the editing machinery into the right cells and nowhere else.",
+        "parts": [
+          "electroporation",
+          "lipid nanoparticles",
+          "viral vectors"
+        ]
+      },
+      {
+        "name": "Engineered cell therapy",
+        "role": "turns the patient's own immune cells into cancer killers.",
+        "parts": [
+          "T cells collected by apheresis",
+          "chimeric antigen receptor or T-cell receptor construct",
+          "culture and expansion"
+        ]
+      },
+      {
+        "name": "Targeted drugs",
+        "role": "block the protein a mutation drives, or deliver a toxin to cells carrying a marker.",
+        "parts": [
+          "kinase inhibitors",
+          "monoclonal antibodies",
+          "antibody–drug conjugates"
+        ]
+      },
+      {
+        "name": "Manufacturing and quality control",
+        "role": "produces a safe, patient-specific dose.",
+        "parts": [
+          "cleanroom suite",
+          "sterility and identity testing",
+          "potency assay",
+          "chain of custody"
+        ]
+      },
+      {
+        "name": "Clinical decision and monitoring layer",
+        "role": "decides which therapy fits and tracks whether it is working.",
+        "parts": [
+          "molecular tumour board",
+          "circulating tumour DNA monitoring",
+          "imaging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Sample the tumour",
+        "detail": "A needle biopsy of a few millimetres, or a blood draw of a few millilitres for circulating tumour DNA when a biopsy is risky."
+      },
+      {
+        "title": "Sequence and interpret",
+        "detail": "Hundreds of cancer genes, or the whole exome, are read and compared with the patient's normal DNA to separate driver mutations from harmless variation."
+      },
+      {
+        "title": "Choose the target and the edit",
+        "detail": "The team picks either a mutated protein to drug, or an immune gene to edit out — for example a checkpoint gene that would otherwise switch the engineered cell off."
+      },
+      {
+        "title": "Design and build the payload",
+        "detail": "Guide RNA sequences are chosen by software, the editing protein is synthesised as mRNA, and off-target sites are predicted and then measured in donor cells."
+      },
+      {
+        "title": "Manufacture the therapy",
+        "detail": "For a cell product, T cells are collected by apheresis, edited outside the body by electroporation, grown to billions of cells over roughly one to two weeks, then frozen."
+      },
+      {
+        "title": "Run quality control",
+        "detail": "Each batch is checked for sterility, correct edit, unwanted edits, and the ability to actually kill target cells before it is released."
+      },
+      {
+        "title": "Treat the patient",
+        "detail": "Short chemotherapy clears space in the immune system, then the edited cells are infused — or, for an in-body approach, the editing particles are dosed directly."
+      },
+      {
+        "title": "Monitor response and toxicity",
+        "detail": "Falling circulating tumour DNA and shrinking scans mean it is working; cytokine release and immune attack on normal tissue are watched for closely."
+      },
+      {
+        "title": "Re-profile on relapse",
+        "detail": "Tumours evolve, so a new sample is sequenced and the next therapy chosen against the resistance mutation that appeared."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Affordable, accurate genome sequencing",
+        "status": "exists",
+        "why": "profiling a tumour costs a fraction of what it did a decade ago and is routine in many hospitals."
+      },
+      {
+        "tech": "CRISPR-Cas9 and newer editors",
+        "status": "exists",
+        "why": "first used to edit human cells in 2012; base and prime editors now allow single-letter changes without a double-strand break. Clinical use is still early."
+      },
+      {
+        "tech": "Safe, targeted delivery in the body",
+        "status": "partial",
+        "why": "lipid nanoparticles reach the liver well but other organs poorly, which limits which cancers can be edited directly rather than in a lab dish."
+      },
+      {
+        "tech": "Cell manufacturing capacity",
+        "status": "partial",
+        "why": "patient-specific cell therapies need cleanroom time and specialist staff that most hospitals do not have."
+      },
+      {
+        "tech": "Knowledge of which mutations are actionable",
+        "status": "partial",
+        "why": "only a minority of mutations found have a drug or edit that changes the outcome; the rest are unresolved."
+      },
+      {
+        "tech": "Long-term safety data on editing",
+        "status": "missing",
+        "why": "decades of follow-up are needed to rule out edits landing in the wrong place and causing a new cancer."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sequencing panels and biomarker-matched drugs are standard care in major cancer centres; engineered cell therapies are approved for some blood cancers and melanoma",
+        "unlocks": "real, if narrow, survival gains for patients whose tumour carries the right marker."
+      },
+      {
+        "stage": "Next",
+        "milestone": "CRISPR-edited cell therapies move from small trials to approved products",
+        "unlocks": "treatments for patients who relapse after current cell therapies, because edited cells resist exhaustion."
+      },
+      {
+        "stage": "Next",
+        "milestone": "editing delivered directly in the body by lipid nanoparticles",
+        "unlocks": "avoids the cost and delay of extracting, editing and re-infusing a patient's own cells."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "off-the-shelf donor cells with multiple edits to evade rejection",
+        "unlocks": "treatment that can start within days rather than weeks, and at far lower cost."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "editing used alongside standard therapy and against resistance mutations",
+        "unlocks": "durable remissions rather than a few months of extra disease control."
+      }
+    ]
   }
 }

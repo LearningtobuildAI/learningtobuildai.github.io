@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Opacity tables",
+        "role": "what starlight actually interacts with: millions of spectral lines smeared into usable absorption coefficients.",
+        "parts": [
+          "line lists (experimental and computed, e.g. HITRAN, HITEMP, ExoMol)",
+          "collision-induced absorption for H2–H2 and H2–He",
+          "k-distribution tables across temperature and pressure grids"
+        ]
+      },
+      {
+        "name": "Radiative transfer forward model",
+        "role": "given a guess atmosphere, predicts the spectrum.",
+        "parts": [
+          "layer structure and hydrostatic equilibrium",
+          "transmission geometry (the limb) and emission geometry",
+          "scattering, clouds and hazes",
+          "instrument broadening to the observed resolving power"
+        ]
+      },
+      {
+        "name": "Atmosphere parameterisation",
+        "role": "turns an atmosphere into a handful of numbers the sampler can explore.",
+        "parts": [
+          "temperature–pressure profile (isothermal, polynomial, or physically motivated)",
+          "volume mixing ratios per molecule",
+          "cloud deck pressure, opacity and particle size",
+          "limb darkening and centre-to-limb variation"
+        ]
+      },
+      {
+        "name": "Nuisance and systematics model",
+        "role": "stops instrument artefacts being mistaken for molecules.",
+        "parts": [
+          "noise scaling and jitter terms",
+          "instrument offsets and calibration uncertainties",
+          "stellar contamination and unocculted spots"
+        ]
+      },
+      {
+        "name": "Sampler",
+        "role": "maps the posterior probability over all parameters.",
+        "parts": [
+          "nested sampling (e.g. MultiNest, dynesty)",
+          "MCMC for large-parameter models",
+          "neural simulation-based inference for expensive models"
+        ]
+      },
+      {
+        "name": "Post-processing and model selection",
+        "role": "decides whether a detection is real.",
+        "parts": [
+          "Bayesian evidence and Bayes factors",
+          "upper limits for non-detections",
+          "injection–retrieval tests on synthetic planets"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble opacity data",
+        "detail": "Collect experimental and quantum-computed line lists for water, methane, carbon dioxide, carbon monoxide, sodium, potassium and others, plus collision-induced absorption for the hydrogen-dominated background."
+      },
+      {
+        "title": "Build k-tables",
+        "detail": "Sort lines into wavelength bins, compute absorption across a grid of temperatures and pressures, and store pre-tabulated coefficients so a forward model is a fast lookup rather than a line-by-line calculation."
+      },
+      {
+        "title": "Write the forward model",
+        "detail": "Lay the atmosphere out in pressure layers, set abundances and cloud properties, solve radiative transfer, and integrate across the stellar disk to produce a transit depth or planet-to-star flux ratio versus wavelength."
+      },
+      {
+        "title": "Parameterise the unknowns",
+        "detail": "Reduce the atmosphere to free parameters — abundances, a temperature profile, cloud properties — plus nuisance parameters for the instrument and star, with physically sensible prior ranges."
+      },
+      {
+        "title": "Build the likelihood",
+        "detail": "Compare the modelled spectrum to binned, calibrated data using Gaussian errors plus a jitter term that absorbs underestimated noise."
+      },
+      {
+        "title": "Sample the posterior",
+        "detail": "Run nested sampling or MCMC over the full parameter space, checking convergence of the evidence and of individual parameters."
+      },
+      {
+        "title": "Compare models",
+        "detail": "Recompute the evidence for nested models with and without each molecule or cloud, and use Bayes factors to decide what the data actually support."
+      },
+      {
+        "title": "Calibrate false positives",
+        "detail": "Inject synthetic planets with known atmospheres into the real noise and re-retrieve them, to measure how often the pipeline claims a detection that is not there."
+      },
+      {
+        "title": "Publish posteriors",
+        "detail": "Report parameter distributions, abundance detections with uncertainties, upper limits for everything else, and the assumptions that could change them."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Molecular line lists and opacity databases",
+        "status": "exists",
+        "why": "without accurate absorption data, a retrieval fits the wrong molecules at the wrong abundances."
+      },
+      {
+        "tech": "Radiative transfer solvers",
+        "status": "exists",
+        "why": "the forward model must be accurate enough that its errors are smaller than the measurement errors."
+      },
+      {
+        "tech": "Nested sampling and MCMC libraries",
+        "status": "exists",
+        "why": "these produce the full posterior and the evidence needed for model comparison."
+      },
+      {
+        "tech": "Space telescopes with stable, wide-wavelength spectroscopy",
+        "status": "exists",
+        "why": "retrievals depend on low, well-characterised noise across many wavelengths, as JWST provides."
+      },
+      {
+        "tech": "Simulation-based inference with neural networks",
+        "status": "partial",
+        "why": "amortises the cost of very slow forward models, but calibration on real noise is still being established."
+      },
+      {
+        "tech": "Photochemical and disequilibrium models",
+        "status": "partial",
+        "why": "retrieved abundances are only interpretable when chemistry and mixing are modelled alongside the retrieval."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine retrieval of JWST transmission and emission spectra for gas giants and small planets",
+        "unlocks": "molecular inventories, cloud characterisation and, for some planets, tentative biosignature-related claims that then get tested."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hierarchical population retrievals across hundreds of planets",
+        "unlocks": "statements about what planetary systems are like as a class, not just one planet at a time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "retrievals of reflected-light spectra from coronagraphic imaging",
+        "unlocks": "atmospheres of planets far enough from their star to be temperate, though with far less signal."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "end-to-end inference linking spectra to chemistry, formation history and habitability",
+        "unlocks": "a defensible answer to whether a detected gas is biology — or just geology and photochemistry."
+      }
+    ]
+  }
+}

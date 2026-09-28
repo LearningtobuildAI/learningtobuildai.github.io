@@ -30,5 +30,162 @@
         "def": "Cycles in which AI agents use tools or software applications to perform tasks, then analyze the outcomes to improve future performance."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Agent runtime",
+        "role": "executes individual agents, manages their state, and dispatches actions.",
+        "parts": [
+          "agent state machine",
+          "action executor",
+          "message queue"
+        ]
+      },
+      {
+        "name": "Planning and reasoning engine",
+        "role": "decomposes high-level goals into steps and decides the next action.",
+        "parts": [
+          "task decomposer",
+          "large language model",
+          "reflection and critique module"
+        ]
+      },
+      {
+        "name": "Tool integration layer",
+        "role": "connects agents to external software, APIs, and databases.",
+        "parts": [
+          "API connectors",
+          "function calling interface",
+          "authentication and rate limiting"
+        ]
+      },
+      {
+        "name": "Memory and context store",
+        "role": "maintains task history, intermediate results, and long-term knowledge.",
+        "parts": [
+          "short-term conversation buffer",
+          "vector database",
+          "retrieval engine"
+        ]
+      },
+      {
+        "name": "Orchestration controller",
+        "role": "coordinates multiple agents, manages handoffs, and resolves conflicts.",
+        "parts": [
+          "workflow graph",
+          "scheduler",
+          "conflict resolution logic"
+        ]
+      },
+      {
+        "name": "Monitoring and audit",
+        "role": "logs actions, traces decisions, and enforces compliance.",
+        "parts": [
+          "logging and tracing",
+          "audit trail",
+          "compliance and safety checks"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop interface",
+        "role": "lets people review, approve, or intervene in agent workflows.",
+        "parts": [
+          "approval dashboard",
+          "feedback capture"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the workflow",
+        "detail": "Break down the business process into tasks, decision points, and desired outcomes."
+      },
+      {
+        "title": "Define agent roles",
+        "detail": "Decide which agents are needed, their goals, capabilities, and how they interact."
+      },
+      {
+        "title": "Implement agent capabilities",
+        "detail": "Equip each agent with reasoning, tool use, and memory through prompting and fine-tuning."
+      },
+      {
+        "title": "Connect tools and data",
+        "detail": "Integrate APIs, databases, and enterprise systems with secure access controls."
+      },
+      {
+        "title": "Build orchestration logic",
+        "detail": "Define how agents communicate, delegate, and synchronize via a workflow graph or message bus."
+      },
+      {
+        "title": "Add guardrails and monitoring",
+        "detail": "Implement logging, error handling, safety checks, and human approval gates."
+      },
+      {
+        "title": "Test and evaluate",
+        "detail": "Simulate workflows, measure success rates, and refine prompts and orchestration rules."
+      },
+      {
+        "title": "Deploy and iterate",
+        "detail": "Roll out in a controlled environment, monitor performance, and update based on feedback."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable reasoning and tool use",
+        "status": "partial",
+        "why": "they exist but can be unreliable for complex multi-step tasks."
+      },
+      {
+        "tech": "Standardized tool-calling interfaces",
+        "status": "exists",
+        "why": "function calling in commercial LLM APIs allows agents to invoke external tools."
+      },
+      {
+        "tech": "Agent frameworks and orchestration libraries",
+        "status": "partial",
+        "why": "open-source and commercial options are emerging but still immature for production."
+      },
+      {
+        "tech": "Long-context memory and retrieval",
+        "status": "partial",
+        "why": "vector databases and retrieval-augmented generation exist, but scaling to long workflows is challenging."
+      },
+      {
+        "tech": "Evaluation benchmarks for multi-step agent tasks",
+        "status": "partial",
+        "why": "some benchmarks exist, but they do not yet cover complex business workflows comprehensively."
+      },
+      {
+        "tech": "Security and access control for autonomous agents",
+        "status": "partial",
+        "why": "methods exist but are not robust enough for high-stakes enterprise use."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-agent assistants with tool use",
+        "unlocks": "automation of simple, bounded tasks such as coding help and customer support triage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent pilots for specific workflows",
+        "unlocks": "reduced manual coordination for repetitive processes in IT operations and finance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "orchestration layers that handle cross-functional workflows with human oversight",
+        "unlocks": "significant productivity gains in operations and parts of project management."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous orchestration of end-to-end business processes",
+        "unlocks": "self-managing workflows that could replace some management roles, if reliability and safety are proven."
+      }
+    ]
   }
 }

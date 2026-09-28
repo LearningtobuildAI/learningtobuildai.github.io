@@ -29,5 +29,141 @@
         "def": "A method where a user can choose which parts of their identity information are shared with third parties, maintaining privacy while providing necessary verification."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Wallet app",
+        "role": "runs on the user's phone, stores credentials securely and presents them when requested.",
+        "parts": [
+          "mobile application",
+          "hardware-backed keystore",
+          "biometric unlock",
+          "user interface"
+        ]
+      },
+      {
+        "name": "Issuer systems",
+        "role": "government agencies and trusted organisations create and sign digital credentials.",
+        "parts": [
+          "identity proofing",
+          "credential signing service",
+          "issuance API"
+        ]
+      },
+      {
+        "name": "Verifiable credential standards",
+        "role": "define how credentials are structured, signed, and presented with selective disclosure.",
+        "parts": [
+          "W3C Verifiable Credentials data model",
+          "selective-disclosure formats (SD-JWT, BBS+)",
+          "presentation protocols (OpenID for Verifiable Presentations)"
+        ]
+      },
+      {
+        "name": "Trust and revocation infrastructure",
+        "role": "lets verifiers confirm that an issuer is authorised and that a credential is still valid.",
+        "parts": [
+          "trust registry",
+          "status list or revocation list",
+          "certificate authorities"
+        ]
+      },
+      {
+        "name": "Verifier software",
+        "role": "requests credentials from wallets and checks them against policy.",
+        "parts": [
+          "verifier app or service",
+          "policy engine",
+          "audit logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Establish legal and technical framework",
+        "detail": "Governments pass laws recognising digital identity and adopt open standards for wallets, credentials and trust."
+      },
+      {
+        "title": "Build issuer infrastructure",
+        "detail": "Agencies and trusted bodies integrate identity proofing, credential signing and issuance APIs."
+      },
+      {
+        "title": "Develop the wallet app",
+        "detail": "A mobile app is built with secure storage, a clear consent interface and support for multiple credentials."
+      },
+      {
+        "title": "Implement selective disclosure",
+        "detail": "Cryptographic schemes such as SD-JWT or BBS+ are integrated so a holder can reveal single attributes without exposing the whole credential."
+      },
+      {
+        "title": "Set up trust registries",
+        "detail": "Lists of authorised issuers and verifiers are published, along with status lists for revocation."
+      },
+      {
+        "title": "Pilot with real users",
+        "detail": "Large-scale pilots test usability, security and interoperability across public and private services."
+      },
+      {
+        "title": "Roll out nationally",
+        "detail": "Wallets are offered to all citizens and accepted for government services, age checks and financial onboarding."
+      },
+      {
+        "title": "Enable cross-border recognition",
+        "detail": "Standards and trust frameworks are aligned so wallets are accepted in other countries."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Smartphones with secure hardware",
+        "status": "exists",
+        "why": "wallet keys and credentials need a hardware-backed keystore to resist extraction."
+      },
+      {
+        "tech": "Cryptographic selective disclosure",
+        "status": "partial",
+        "why": "schemes like SD-JWT and BBS+ are standardised but not yet widely deployed at scale."
+      },
+      {
+        "tech": "Interoperable credential protocols",
+        "status": "partial",
+        "why": "OpenID for Verifiable Credentials and W3C standards exist, but adoption across vendors is still maturing."
+      },
+      {
+        "tech": "Legal recognition of digital identity",
+        "status": "partial",
+        "why": "regulations such as the EU's eIDAS 2.0 require wallets, but many countries lack equivalent frameworks."
+      },
+      {
+        "tech": "Trust and revocation infrastructure",
+        "status": "partial",
+        "why": "trust registries and status lists are being piloted but are not yet universal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "national and EU large-scale pilots test wallets for e-government and age verification",
+        "unlocks": "real-world evidence on usability, security and privacy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first production rollouts under regulations like eIDAS 2.0",
+        "unlocks": "citizens can use a government-backed wallet for public services."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-border acceptance and private-sector adoption",
+        "unlocks": "a wallet works for banks, airlines and online platforms across borders."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ubiquitous adoption with advanced privacy features such as zero-knowledge proofs",
+        "unlocks": "minimal disclosure becomes the default for proving identity online and offline."
+      }
+    ]
   }
 }

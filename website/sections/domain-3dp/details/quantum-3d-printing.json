@@ -35,5 +35,148 @@
         "def": "Structures with dimensions on the order of nanometers, typically ranging from 1 to 100 nanometers."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Ultrafast laser source",
+        "role": "delivers femtosecond pulses intense enough that only the focal point triggers the chemistry.",
+        "parts": [
+          "mode-locked oscillator",
+          "amplifier",
+          "beam conditioning optics"
+        ]
+      },
+      {
+        "name": "Focus and scan optics",
+        "role": "concentrates the beam to a sub-micron spot and moves it through the resist.",
+        "parts": [
+          "high-numerical-aperture objective",
+          "galvanometer scanners",
+          "piezo nanopositioning stage"
+        ]
+      },
+      {
+        "name": "Precursor chemistry",
+        "role": "the material that solidifies where the beam has been — this is where the 'quantum' part actually lives.",
+        "parts": [
+          "two-photon photoinitiator",
+          "multifunctional monomer or sol-gel resin",
+          "metal-salt or nanoparticle precursors for functional parts"
+        ]
+      },
+      {
+        "name": "Parallelisation optics",
+        "role": "writing one voxel at a time is far too slow, so the beam is split into many.",
+        "parts": [
+          "spatial light modulator or diffractive element",
+          "multi-beam array"
+        ]
+      },
+      {
+        "name": "Development and post-processing",
+        "role": "turns the written green body into a usable part.",
+        "parts": [
+          "solvent washing",
+          "pyrolysis furnace for glass and ceramic",
+          "metallisation or coating"
+        ]
+      },
+      {
+        "name": "Metrology",
+        "role": "verifies features far smaller than the wavelength of visible light.",
+        "parts": [
+          "scanning electron microscope",
+          "optical profilometer",
+          "in-situ imaging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the voxel model",
+        "detail": "The part is described as a 3D grid of voxels rather than surfaces, because writing is a point-by-point process."
+      },
+      {
+        "title": "Formulate the resist",
+        "detail": "A photoinitiator is chosen whose two-photon absorption cross-section is large, mixed into a resin that cures on radical or acid release."
+      },
+      {
+        "title": "Drop and level the resist",
+        "detail": "The liquid is spread to a controlled thickness on a substrate, or written directly inside a droplet."
+      },
+      {
+        "title": "Write with focused femtosecond pulses",
+        "detail": "The beam is focused through the objective; intensity is high only at the focus, so two photons are absorbed together and only that voxel cures — the surrounding liquid stays liquid."
+      },
+      {
+        "title": "Scan the focus in three dimensions",
+        "detail": "Scanners sweep the spot laterally while the stage moves vertically, building overhanging and enclosed geometry that no layer-based printer can make."
+      },
+      {
+        "title": "Develop the part",
+        "detail": "Uncured resin is dissolved away, leaving the written structure."
+      },
+      {
+        "title": "Convert and finish",
+        "detail": "Heating burns out the polymer to leave fused silica or ceramic; alternatively the surface is coated with metal or seeded with quantum dots."
+      },
+      {
+        "title": "Measure and iterate",
+        "detail": "Electron microscopy and profilometry check shrinkage and feature size, feeding corrections back into the model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Femtosecond lasers",
+        "status": "exists",
+        "why": "two-photon absorption needs peak intensities only ultrashort pulses provide at practical average power."
+      },
+      {
+        "tech": "Two-photon photoinitiators",
+        "status": "exists",
+        "why": "without molecules that absorb two low-energy photons at once, the resin cures along the whole beam path instead of only at the focus."
+      },
+      {
+        "tech": "Sub-micron positioning and optics",
+        "status": "exists",
+        "why": "voxels are smaller than the diffraction limit, so the stage and focus must be controlled to tens of nanometres."
+      },
+      {
+        "tech": "Parallel multi-beam writing",
+        "status": "partial",
+        "why": "single-beam throughput is measured in cubic millimetres per hour, which rules out most manufactured goods."
+      },
+      {
+        "tech": "Atomic-precision placement and in-situ metrology",
+        "status": "missing",
+        "why": "true atom-by-atom construction would need to place and verify single atoms at useful speed — today only probe-based lab methods approach this."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "two-photon lithography used commercially for micro-optics, microneedles, scaffolds and masters for replication",
+        "unlocks": "nanoscale 3D geometry that is otherwise impossible to make."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-beam and projection writing that lifts throughput by orders of magnitude",
+        "unlocks": "small-batch production of optical and microfluidic components rather than one-off prototypes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "printing functional materials directly — glass, ceramics, metals and quantum dots",
+        "unlocks": "sensors, photonic chips and printed quantum-dot devices in one process step."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "probe-based or self-assembling atomically precise manufacturing",
+        "unlocks": "structures defined to the atom, if speed and verification problems are solved — this part remains speculative."
+      }
+    ]
   }
 }

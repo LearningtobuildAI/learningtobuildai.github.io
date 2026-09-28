@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Locomotion",
+        "role": "walks, balances and recovers from pushes on uneven ground.",
+        "parts": [
+          "hip, knee and ankle joint modules",
+          "high-torque-density brushless motors with low-ratio gearing",
+          "force/torque sensors",
+          "compliant feet"
+        ]
+      },
+      {
+        "name": "Arms and hands",
+        "role": "reaches and manipulates objects with human-like dexterity.",
+        "parts": [
+          "7-degree-of-freedom arms",
+          "tendon- or linkage-driven fingers",
+          "tactile fingertips",
+          "wrist force sensing"
+        ]
+      },
+      {
+        "name": "Perception head",
+        "role": "sees, hears and orients the body.",
+        "parts": [
+          "stereo and depth cameras",
+          "inertial measurement unit",
+          "microphone array",
+          "sometimes a spinning LiDAR"
+        ]
+      },
+      {
+        "name": "Compute and power",
+        "role": "runs the control policies and supplies energy.",
+        "parts": [
+          "onboard GPU/accelerator",
+          "lithium-ion battery pack (currently a few hours of operation)",
+          "thermal management",
+          "wireless link"
+        ]
+      },
+      {
+        "name": "Cognition and control software",
+        "role": "turns a spoken instruction into safe whole-body motion.",
+        "parts": [
+          "vision-language-action policy",
+          "whole-body controller",
+          "task planner",
+          "simulation training pipeline"
+        ]
+      },
+      {
+        "name": "Safety layer",
+        "role": "limits force and speed so the machine cannot injure people nearby.",
+        "parts": [
+          "force and current limits",
+          "emergency stop",
+          "compliance control",
+          "certification documentation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the kinematics",
+        "detail": "Engineers choose the degrees of freedom, limb lengths and mass distribution so the robot can reach shelves, stairs and door handles, and calculate the joint torques needed."
+      },
+      {
+        "title": "Build joint actuators",
+        "detail": "Each joint is a module: a brushless motor, a low-ratio or harmonic gearbox, an encoder and a torque sensor, tuned to be backdrivable so the limb gives way when pushed."
+      },
+      {
+        "title": "Fabricate hands",
+        "detail": "Finger mechanisms are machined or moulded, tendons and return springs are threaded, and tactile pads are bonded onto the fingertips."
+      },
+      {
+        "title": "Assemble the body",
+        "detail": "Frame, limbs and torso are bolted together, then hundreds of power and sensor cables are routed through the joints without failing as the joints rotate."
+      },
+      {
+        "title": "Integrate sensing and compute",
+        "detail": "Cameras, IMU and tactile arrays are calibrated against each other; the onboard computer is mounted with cooling and connected to every actuator."
+      },
+      {
+        "title": "Train the control policy",
+        "detail": "Most behaviour is learned first in physics simulation with randomised lighting, friction and payloads, then fine-tuned on real demonstrations, including teleoperated ones."
+      },
+      {
+        "title": "Test dexterity and endurance",
+        "detail": "The robot runs repeated pick-place, stair and recovery trials while battery runtime and motor temperatures are logged."
+      },
+      {
+        "title": "Prove safety",
+        "detail": "Force, pinch and collision tests are documented against human-robot safety standards before any deployment near untrained people."
+      },
+      {
+        "title": "Deploy and keep learning",
+        "detail": "Fleets in pilot sites return data that improves the shared policy — this data loop, not any single breakthrough, is what would make the robot general."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Multimodal foundation models",
+        "status": "partial",
+        "why": "vision-language-action models can map instructions and images to actions, but reliability on long, novel tasks is far below human level."
+      },
+      {
+        "tech": "Compact high-torque actuators",
+        "status": "exists",
+        "why": "without high torque density in a light joint, a human-shaped limb cannot both move and lift."
+      },
+      {
+        "tech": "Battery energy density",
+        "status": "partial",
+        "why": "lithium-ion packs give only a few hours of walking, so endurance limits useful work."
+      },
+      {
+        "tech": "Tactile sensing",
+        "status": "partial",
+        "why": "grasping unknown objects needs touch; vision-based and capacitive skin sensors exist but are not yet robust or cheap enough."
+      },
+      {
+        "tech": "Sim-to-real training infrastructure",
+        "status": "partial",
+        "why": "physics engines and domain randomisation make learning feasible, but contact-rich manipulation still transfers poorly."
+      },
+      {
+        "tech": "Human-robot safety standards",
+        "status": "missing",
+        "why": "existing rules cover fixed industrial and collaborative arms, not free-walking general-purpose androids working among people."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "humanoids performing narrow, scripted tasks in warehouses and labs, often teleoperated",
+        "unlocks": "real-world hours of operating data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-task manipulation in structured settings without a human on the joystick",
+        "unlocks": "commercially useful shifts in logistics and manufacturing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "language-directed general tasks plus certification for working beside people",
+        "unlocks": "deployment in homes, hospitals and small businesses."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cheap mass-produced units with human-equivalent dexterity and reliability",
+        "unlocks": "the labour-substitution and companionship uses people imagine today — the hardest part is reliability, not appearance."
+      }
+    ]
+  }
+}

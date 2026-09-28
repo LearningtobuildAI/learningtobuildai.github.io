@@ -1,0 +1,128 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Entangled photon source",
+        "role": "produces pairs of correlated photons whose properties are linked.",
+        "parts": [
+          "pump laser",
+          "nonlinear crystal for spontaneous parametric down-conversion",
+          "optical filters and beam splitters"
+        ]
+      },
+      {
+        "name": "Signal arm",
+        "role": "sends one photon of each pair to illuminate the scene and collects the returning light without spatial resolution.",
+        "parts": [
+          "beam-steering optics",
+          "bucket detector (single-pixel)",
+          "collection optics"
+        ]
+      },
+      {
+        "name": "Idler arm",
+        "role": "detects the partner photon that never interacts with the scene, recording its position.",
+        "parts": [
+          "spatially resolving single-photon detector (e.g. EMCCD or SPAD array)",
+          "delay line",
+          "interference filters"
+        ]
+      },
+      {
+        "name": "Correlation and reconstruction unit",
+        "role": "combines the two detection streams to form an image of the scene.",
+        "parts": [
+          "coincidence counter or time-tagger",
+          "computational ghost-imaging algorithm",
+          "image-processing hardware"
+        ]
+      },
+      {
+        "name": "Security analysis layer",
+        "role": "interprets the reconstructed image or correlation changes to detect an intruder.",
+        "parts": [
+          "anomaly-detection software",
+          "alerting interface",
+          "encryption or authentication of the photon stream"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate entangled photons",
+        "detail": "A pump laser is directed into a nonlinear crystal, where spontaneous parametric down-conversion creates pairs of photons with correlated momentum and position."
+      },
+      {
+        "title": "Separate signal and idler paths",
+        "detail": "Beam splitters and filters route one photon of each pair along the signal arm (towards the scene) and the other along the idler arm (to a spatial detector)."
+      },
+      {
+        "title": "Illuminate the scene with signal photons",
+        "detail": "The signal photons are directed at the area to be monitored; any object present scatters or reflects some of them."
+      },
+      {
+        "title": "Collect returning signal photons",
+        "detail": "A bucket detector gathers the reflected signal photons but does not resolve where they came from."
+      },
+      {
+        "title": "Detect idler photons spatially",
+        "detail": "The idler photons, which have not touched the scene, are measured by a spatially resolving single-photon detector that records their positions."
+      },
+      {
+        "title": "Reconstruct the image",
+        "detail": "Coincidence counting or computational correlation between the two detectors builds an image of the scene, even though the detected idler photons never interacted with it."
+      },
+      {
+        "title": "Apply security logic",
+        "detail": "Algorithms compare successive reconstructed images or correlation statistics to flag changes caused by an intruder or an attempt to intercept the photon stream."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Entangled photon sources",
+        "status": "exists",
+        "why": "spontaneous parametric down-conversion is routinely used in labs, but sources are not yet ruggedised or compact for field security systems."
+      },
+      {
+        "tech": "Single-photon detector arrays",
+        "status": "partial",
+        "why": "SPAD arrays and EMCCDs exist, but large-format, high-efficiency, low-noise arrays suitable for real-time ghost imaging are still developing."
+      },
+      {
+        "tech": "Computational ghost imaging algorithms",
+        "status": "partial",
+        "why": "demonstrated in laboratory settings, but real-time reconstruction under daylight or in cluttered environments remains difficult."
+      },
+      {
+        "tech": "Low-light security integration",
+        "status": "missing",
+        "why": "no fielded system combines quantum ghost imaging with practical perimeter or intrusion detection."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Laboratory demonstrations of ghost imaging with entangled photons and basic change detection",
+        "unlocks": "proof that non-interacting photons can reveal a scene."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Field trials in controlled, dark or shielded environments for perimeter monitoring",
+        "unlocks": "data on reliability, false alarms and operating conditions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integration with classical security cameras and alarm systems to cover gaps where conventional imaging struggles",
+        "unlocks": "practical hybrid security architectures."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Ruggedised, turnkey quantum ghost imaging sensors if cost and complexity fall",
+        "unlocks": "deployment in niche high-security settings where stealth and low-light operation matter."
+      }
+    ]
+  }
+}

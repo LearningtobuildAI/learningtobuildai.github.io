@@ -34,5 +34,151 @@
         "def": "A decentralized, digital ledger that records transactions securely and transparently, often used for implementing secure identity verification and vote transfer protocols."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Identity and eligibility",
+        "role": "ensures each participant is a real, unique, eligible voter.",
+        "parts": [
+          "enrolment and registration",
+          "strong authentication",
+          "one-account-per-person binding"
+        ]
+      },
+      {
+        "name": "Topic and proposal layer",
+        "role": "splits decisions into separate subjects, because delegation only makes sense per topic.",
+        "parts": [
+          "topic taxonomy",
+          "proposal drafting and amendment",
+          "deadlines and quorum rules"
+        ]
+      },
+      {
+        "name": "Delegation engine",
+        "role": "records who has lent their vote to whom, for which topic, and withdraws it on demand.",
+        "parts": [
+          "delegation graph store",
+          "transitive-chain resolution",
+          "cycle detection",
+          "instant revocation handling"
+        ]
+      },
+      {
+        "name": "Tally engine",
+        "role": "folds direct votes and delegated votes into a single outcome.",
+        "parts": [
+          "weight calculation",
+          "quorum and threshold checks",
+          "result reporting"
+        ]
+      },
+      {
+        "name": "Verifiability layer",
+        "role": "lets voters and independent auditors check the count without revealing how anyone voted.",
+        "parts": [
+          "append-only bulletin board (a blockchain is one option)",
+          "per-voter receipts",
+          "cryptographic proofs of correct tallying",
+          "open audit tools"
+        ]
+      },
+      {
+        "name": "Client applications",
+        "role": "the interface through which people vote, delegate, deliberate and revoke.",
+        "parts": [
+          "web and mobile clients",
+          "notifications",
+          "public delegation directory"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the decision scope",
+        "detail": "Decide what is voted on and at what granularity. Too coarse and per-topic delegation is meaningless; too fine and nobody engages."
+      },
+      {
+        "title": "Build identity and enrolment",
+        "detail": "Verify eligibility and issue each participant a credential that is hard to duplicate or sell."
+      },
+      {
+        "title": "Model delegation as a directed graph",
+        "detail": "Each edge means 'A lends their vote on topic T to B'. Chains are allowed, so B's weight may itself flow onward to C."
+      },
+      {
+        "title": "Resolve the graph at tally time",
+        "detail": "Walk each chain to its end, detect and break cycles, and apply any revocations made since the last count."
+      },
+      {
+        "title": "Make the count verifiable",
+        "detail": "Publish an append-only record of ballots and delegations, give every voter a receipt, and let independent auditors recompute the result."
+      },
+      {
+        "title": "Build the client",
+        "detail": "Ship interfaces for delegating, revoking in one tap, browsing who holds which delegations, and reading the arguments of both sides."
+      },
+      {
+        "title": "Pilot in a bounded group",
+        "detail": "Run it inside a party, union, cooperative, standards body or company where the stakes and the electorate are controlled."
+      },
+      {
+        "title": "Audit for gaming and coercion",
+        "detail": "Study whether weight concentrates in a few hands, whether delegates can be pressured, and whether privacy leaks through the delegation graph."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Digital identity and authentication",
+        "status": "partial",
+        "why": "online one-person-one-vote needs credentials that cannot be cheaply multiplied or rented out."
+      },
+      {
+        "tech": "End-to-end verifiable voting cryptography",
+        "status": "partial",
+        "why": "it lets voters confirm their ballot was counted while keeping it secret; so far it is used in small pilots, not national elections."
+      },
+      {
+        "tech": "Delegation-graph and social-choice theory",
+        "status": "exists",
+        "why": "cycle resolution, weight propagation and fairness of outcomes are well-studied problems with published algorithms."
+      },
+      {
+        "tech": "Sybil-resistant enrolment",
+        "status": "partial",
+        "why": "without it, delegated voting weight can be manufactured by creating false participants."
+      },
+      {
+        "tech": "Legal recognition of online balloting",
+        "status": "missing",
+        "why": "most binding public elections require procedures — paper trails, supervised polling, recounts — that software alone does not satisfy."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "delegative voting inside parties, unions, cooperatives and online communities",
+        "unlocks": "real data on how delegations accumulate, shift and get revoked over time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "binding participatory budgeting and municipal consultations",
+        "unlocks": "public-scale testing under independent audit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "certified end-to-end verifiable systems accepted for statutory elections",
+        "unlocks": "online voting that losing candidates and courts will accept."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid bodies where representatives hold revocable, per-topic mandates",
+        "unlocks": "a practical blend of representative and direct democracy rather than a replacement for either."
+      }
+    ]
   }
 }

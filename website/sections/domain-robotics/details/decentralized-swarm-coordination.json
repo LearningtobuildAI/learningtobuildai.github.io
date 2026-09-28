@@ -30,5 +30,145 @@
         "def": "Complex behaviors or patterns that arise from simple rules and interactions among individual entities within a system, often leading to self-organization without centralized control."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Local perception and communication",
+        "role": "each robot senses nearby robots and obstacles, and exchanges short messages over a short-range radio or infrared link.",
+        "parts": [
+          "proximity sensors",
+          "short-range radio",
+          "onboard processor"
+        ]
+      },
+      {
+        "name": "Decentralized control algorithms",
+        "role": "turn local information into actions so that global patterns emerge without a central scheduler.",
+        "parts": [
+          "rule-based controllers",
+          "consensus or flocking algorithms",
+          "adaptive parameters"
+        ]
+      },
+      {
+        "name": "Stigmergic coordination",
+        "role": "indirect communication by leaving marks in a shared medium — physical or digital — that other robots read and modify.",
+        "parts": [
+          "virtual pheromone maps",
+          "shared blackboard",
+          "environment modification"
+        ]
+      },
+      {
+        "name": "Task allocation and role assignment",
+        "role": "robots choose what to do based on local cues and thresholds, not orders from a leader.",
+        "parts": [
+          "response-threshold rules",
+          "auction or market-based bidding",
+          "division-of-labour logic"
+        ]
+      },
+      {
+        "name": "Scalability and fault tolerance",
+        "role": "keeps the swarm working when robots fail, messages drop or the group grows large.",
+        "parts": [
+          "redundant communication",
+          "self-healing topology",
+          "degraded-mode behaviour"
+        ]
+      },
+      {
+        "name": "Simulation and validation tools",
+        "role": "tests swarm behaviour before physical deployment, because real swarms are expensive and hard to reset.",
+        "parts": [
+          "physics-based simulator",
+          "communication model",
+          "swarm visualisation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the swarm mission",
+        "detail": "Specify the task — area coverage, transport, monitoring — and the constraints on robot size, power and cost."
+      },
+      {
+        "title": "Design local interaction rules",
+        "detail": "Write simple rules for separation, alignment and cohesion so that desired group behaviour emerges from many robots following them."
+      },
+      {
+        "title": "Add stigmergic mechanisms",
+        "detail": "Implement a shared medium — a virtual pheromone grid or a digital blackboard — that robots can read and write to coordinate indirectly."
+      },
+      {
+        "title": "Build a simulation model",
+        "detail": "Model the robots, their sensors, their radio range and message delays in software to explore thousands of scenarios quickly."
+      },
+      {
+        "title": "Test with a small physical swarm",
+        "detail": "Run tens of robots in a controlled arena to check that the simulated behaviour survives real sensors and motors."
+      },
+      {
+        "title": "Scale up and stress-test",
+        "detail": "Increase to hundreds or thousands, deliberately dropping messages and disabling robots to see if the swarm still works."
+      },
+      {
+        "title": "Deploy in the target environment",
+        "detail": "Move to the real setting — a field, a factory floor, a disaster zone — with monitoring and a fallback plan."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, robust robot platforms",
+        "status": "exists",
+        "why": "small ground robots and drones with sensors, actuators and onboard computing are widely available."
+      },
+      {
+        "tech": "Reliable short-range wireless networking",
+        "status": "partial",
+        "why": "mesh and ad-hoc networks work, but maintaining low-latency links among thousands of moving robots is hard."
+      },
+      {
+        "tech": "Distributed coordination algorithms",
+        "status": "partial",
+        "why": "many algorithms exist in theory, but proving they scale and stay robust in noisy real-world conditions is ongoing."
+      },
+      {
+        "tech": "Swarm simulation and digital-twin tools",
+        "status": "exists",
+        "why": "simulators can model physics and communication, though highly accurate large-swarm models remain computationally heavy."
+      },
+      {
+        "tech": "Energy management for large swarms",
+        "status": "partial",
+        "why": "battery life and recharging or swapping strategies limit how long a swarm can operate without human intervention."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research platforms demonstrate coordinated behaviour with tens to hundreds of robots in labs and arenas",
+        "unlocks": "confidence that local rules can produce useful global patterns."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial deployments in structured settings such as farms, warehouses and inspection yards, where the environment helps constrain the problem",
+        "unlocks": "real-world data on reliability, maintenance and cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "thousands of robots coordinating in unstructured outdoor environments for environmental monitoring, search and rescue, or precision agriculture",
+        "unlocks": "swarms that can cover large areas without fixed infrastructure."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-organising swarms for construction, mining or space exploration, where robots build and repair with minimal human oversight",
+        "unlocks": "scalable autonomy in places humans cannot easily go."
+      }
+    ]
   }
 }

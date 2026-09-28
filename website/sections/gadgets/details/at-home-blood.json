@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sample collection",
+        "role": "draws a consistent drop of capillary blood from a fingertip.",
+        "parts": [
+          "lancet",
+          "capillary tube or direct-transfer port",
+          "skin-cleaning wipe"
+        ]
+      },
+      {
+        "name": "Microfluidic cartridge",
+        "role": "meters, dilutes and mixes the blood with reagents without a lab technician.",
+        "parts": [
+          "channels and valves",
+          "reagent chambers",
+          "waste reservoir"
+        ]
+      },
+      {
+        "name": "Detection unit",
+        "role": "converts a biomarker's concentration into a measurable signal.",
+        "parts": [
+          "electrochemical sensor (e.g. glucose)",
+          "optical sensor for colorimetric or fluorescence assays",
+          "immunoassay surface for proteins"
+        ]
+      },
+      {
+        "name": "Reader electronics",
+        "role": "runs the assay and digitises the result.",
+        "parts": [
+          "potentiostat or light source and detector",
+          "microcontroller",
+          "battery",
+          "Bluetooth or Wi-Fi"
+        ]
+      },
+      {
+        "name": "Software and algorithms",
+        "role": "turns raw signals into results, trends and alerts.",
+        "parts": [
+          "mobile app",
+          "cloud storage",
+          "trend and flagging algorithms"
+        ]
+      },
+      {
+        "name": "Quality control",
+        "role": "keeps results comparable across cartridges, temperatures and users.",
+        "parts": [
+          "on-cartridge control spots",
+          "calibration codes",
+          "temperature sensor",
+          "error detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the biomarker panel",
+        "detail": "Decide which analytes the cartridge will measure and in what range, because this determines the chemistry and sample volume."
+      },
+      {
+        "title": "Develop the assay chemistry",
+        "detail": "Select enzymes, antibodies or chemical reactions that produce an electrical or optical signal proportional to each biomarker."
+      },
+      {
+        "title": "Design the microfluidic cartridge",
+        "detail": "Lay out channels, valves and reagent chambers so a single drop is split, diluted and delivered to each sensor reliably."
+      },
+      {
+        "title": "Stabilise the reagents",
+        "detail": "Dry or freeze-dry the reagents so the cartridge can be stored at room temperature and still work months later."
+      },
+      {
+        "title": "Fabricate the cartridge",
+        "detail": "Mould or laminate plastic layers, deposit electrodes and reagent spots, and seal the fluidic paths."
+      },
+      {
+        "title": "Build the reader",
+        "detail": "Assemble the electronics and optics, write firmware to run the assay sequence, and pair it with a phone app."
+      },
+      {
+        "title": "Validate against laboratory methods",
+        "detail": "Compare results with venous blood analysed on standard lab instruments across many users and conditions."
+      },
+      {
+        "title": "Manufacture under medical-device rules",
+        "detail": "Set up clean-room production, batch testing and regulatory approval for home use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Microfluidic sample preparation",
+        "status": "partial",
+        "why": "separating plasma from a tiny fingerprick sample and avoiding bubbles or clots is difficult outside a lab."
+      },
+      {
+        "tech": "Sensitive electrochemical and optical sensors",
+        "status": "exists",
+        "why": "they underpin today's home glucose and pregnancy tests and can be adapted to more analytes."
+      },
+      {
+        "tech": "Stable dried reagents",
+        "status": "partial",
+        "why": "many proteins and enzymes degrade unless carefully preserved for room-temperature storage."
+      },
+      {
+        "tech": "Capillary blood sampling",
+        "status": "exists",
+        "why": "fingerprick collection is routine, though capillary blood can differ from venous blood."
+      },
+      {
+        "tech": "Clinical validation and regulation",
+        "status": "partial",
+        "why": "home results must be accurate enough to guide care, which requires large trials and device approval."
+      },
+      {
+        "tech": "Data interpretation tools",
+        "status": "partial",
+        "why": "trends over time are more useful than single readings, but algorithms must avoid false reassurance."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-analyte home tests such as glucose meters and coagulation monitors",
+        "unlocks": "routine self-monitoring for a few specific conditions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-biomarker cartridges for cholesterol, HbA1c, kidney and liver markers",
+        "unlocks": "regular screening and chronic-disease tracking without clinic visits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with telehealth and electronic health records",
+        "unlocks": "clinicians can act on home results remotely."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "frequent or continuous multi-marker monitoring",
+        "unlocks": "early detection of deterioration and tighter management of long-term conditions."
+      }
+    ]
+  }
+}

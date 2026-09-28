@@ -1,0 +1,133 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Polynomial arithmetic core",
+        "role": "Performs the number-theoretic transform (NTT) and modular multiplication that dominate lattice-based cryptography.",
+        "parts": [
+          "butterfly units",
+          "modular reduction units",
+          "twiddle factor memory"
+        ]
+      },
+      {
+        "name": "Sampler and random number generator",
+        "role": "Generates the random noise and secret polynomials that give lattice schemes their security.",
+        "parts": [
+          "true random number generator (TRNG)",
+          "deterministic random bit generator (DRBG)",
+          "sampling logic (e.g., centered binomial, rejection sampling)"
+        ]
+      },
+      {
+        "name": "Memory and key storage",
+        "role": "Holds keys, polynomials, and intermediate results during computation.",
+        "parts": [
+          "SRAM",
+          "key store with access control",
+          "DMA engine"
+        ]
+      },
+      {
+        "name": "Control and interface",
+        "role": "Sequences operations and connects the accelerator to the host system.",
+        "parts": [
+          "instruction sequencer",
+          "bus interface (e.g., AXI, PCIe)",
+          "registers"
+        ]
+      },
+      {
+        "name": "Side-channel protection",
+        "role": "Makes the hardware resistant to timing, power, and electromagnetic attacks.",
+        "parts": [
+          "masking logic",
+          "constant-time control",
+          "shielding and isolation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select algorithms and parameters",
+        "detail": "Choose the standardized schemes to support — for example the NIST lattice-based key encapsulation and signature algorithms — and fix the parameter sets (e.g., security levels)."
+      },
+      {
+        "title": "Design microarchitecture",
+        "detail": "Decide how to split work between hardware and software: dedicated NTT cores, samplers, and memory buffers, and how they pipeline."
+      },
+      {
+        "title": "Write and verify RTL",
+        "detail": "Implement the design in a hardware description language (Verilog or VHDL) and verify it against reference software models using simulation and formal methods."
+      },
+      {
+        "title": "Synthesize and place-and-route",
+        "detail": "Use EDA tools to map the RTL to a target process node (e.g., 7 nm or 28 nm), optimizing for area, power, and speed."
+      },
+      {
+        "title": "Tape-out and fabricate",
+        "detail": "Send the final layout to a semiconductor foundry for fabrication. This is a major cost and only justified for high-volume or high-performance applications."
+      },
+      {
+        "title": "Package and test",
+        "detail": "Assemble the die into a package, then test for functionality, performance, and side-channel leakage."
+      },
+      {
+        "title": "Develop drivers and integration",
+        "detail": "Write software drivers, cryptographic libraries, and APIs so the accelerator works with TLS, VPNs, and other protocols."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardized PQC algorithms",
+        "status": "exists",
+        "why": "NIST finalized the first lattice-based standards in 2024, giving hardware designers a stable target."
+      },
+      {
+        "tech": "Efficient polynomial multiplication (NTT)",
+        "status": "exists",
+        "why": "The number-theoretic transform is well understood and widely used in software and hardware."
+      },
+      {
+        "tech": "Hardware description languages and EDA tools",
+        "status": "exists",
+        "why": "Standard tools for designing and verifying digital logic."
+      },
+      {
+        "tech": "Side-channel resistant design techniques",
+        "status": "partial",
+        "why": "Masking and constant-time methods are known but costly and not fully standardized for PQC."
+      },
+      {
+        "tech": "Secure key storage and TRNG",
+        "status": "exists",
+        "why": "Needed to protect keys and generate randomness; available in commercial secure elements."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "FPGA and academic ASIC prototypes demonstrate lattice-based accelerators.",
+        "unlocks": "Proof that PQC can run at line speed with acceptable area and power."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Commercial ASIC accelerators appear in network interface cards, hardware security modules, and smart cards.",
+        "unlocks": "Offload of PQC from general-purpose CPUs, enabling high-throughput secure communications."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integration into mainstream TLS libraries and network protocols (e.g., TLS 1.3, IPsec).",
+        "unlocks": "Widespread adoption without replacing existing infrastructure."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Accelerators become standard in cloud servers, IoT devices, and consumer electronics. Isogeny-based schemes remain at research stage due to broken candidates.",
+        "unlocks": "Quantum-resistant security everywhere, from data centres to embedded sensors."
+      }
+    ]
+  }
+}

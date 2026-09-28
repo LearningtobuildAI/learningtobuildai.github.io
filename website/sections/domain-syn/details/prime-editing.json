@@ -29,5 +29,138 @@
         "def": "An enzyme that synthesizes complementary DNA (cDNA) from an RNA template, enabling precise genetic modifications during prime editing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cas9 nickase",
+        "role": "binds the target DNA and nicks one strand, creating a starting point for writing without cutting both strands.",
+        "parts": [
+          "Cas9 H840A mutant",
+          "nuclear localization signals"
+        ]
+      },
+      {
+        "name": "Reverse transcriptase",
+        "role": "copies the RNA template into new DNA at the nick site.",
+        "parts": [
+          "engineered MMLV reverse transcriptase",
+          "linker to Cas9"
+        ]
+      },
+      {
+        "name": "Prime editing guide RNA (pegRNA)",
+        "role": "both targets the complex to the right DNA sequence and carries the template for the desired edit.",
+        "parts": [
+          "spacer",
+          "scaffold",
+          "primer binding site",
+          "reverse transcriptase template"
+        ]
+      },
+      {
+        "name": "Delivery system",
+        "role": "gets the editor and guide RNA into the right cells.",
+        "parts": [
+          "lipid nanoparticles",
+          "viral vectors such as AAV",
+          "electroporation for ex vivo editing"
+        ]
+      },
+      {
+        "name": "Cellular repair machinery",
+        "role": "resolves the edited DNA flap and seals the nick to make the edit permanent.",
+        "parts": [
+          "flap endonucleases",
+          "DNA ligases"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the edit",
+        "detail": "Identify the disease-causing mutation and decide the exact DNA sequence change to make."
+      },
+      {
+        "title": "Design the pegRNA",
+        "detail": "Use software to design the guide sequence, primer binding site and reverse transcriptase template that encode the new sequence."
+      },
+      {
+        "title": "Engineer the editor protein",
+        "detail": "Fuse a Cas9 nickase to a reverse transcriptase, often with optimised linkers and nuclear localization signals, and produce it in cells."
+      },
+      {
+        "title": "Synthesise the components",
+        "detail": "Manufacture the editor protein or its mRNA and the pegRNA to clinical-grade purity."
+      },
+      {
+        "title": "Package for delivery",
+        "detail": "Formulate into lipid nanoparticles or package into viral vectors, depending on the target tissue."
+      },
+      {
+        "title": "Test and optimise",
+        "detail": "Deliver to patient-derived cells or animal models, measure editing efficiency, and check for unintended edits."
+      },
+      {
+        "title": "Preclinical safety",
+        "detail": "Assess off-target effects, immune response and toxicity in animals before human use."
+      },
+      {
+        "title": "Clinical trial",
+        "detail": "Administer to patients in a controlled trial, monitor safety and measure whether the target cells are corrected."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR-Cas9 nickase",
+        "status": "exists",
+        "why": "provides the targeting and nicking function without making a double-strand break."
+      },
+      {
+        "tech": "Reverse transcriptase enzymes",
+        "status": "exists",
+        "why": "copy RNA into DNA and are the writing engine of prime editing."
+      },
+      {
+        "tech": "RNA design and synthesis",
+        "status": "exists",
+        "why": "long guide RNAs with custom templates must be made accurately and at scale."
+      },
+      {
+        "tech": "Targeted delivery to specific tissues",
+        "status": "partial",
+        "why": "getting the editor into the right cells in a living body remains a major challenge."
+      },
+      {
+        "tech": "Understanding of DNA repair pathways",
+        "status": "partial",
+        "why": "the cell's own repair machinery must resolve the edit correctly rather than reject it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prime editing demonstrated in human cells and animals; first clinical trials begin",
+        "unlocks": "proof that the approach is safe enough to test in people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ex vivo therapies for blood disorders, where cells are edited outside the body",
+        "unlocks": "a clearer path to regulatory approval for a first cure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in vivo editing of liver and other tissues via lipid nanoparticles",
+        "unlocks": "treatment of diseases that cannot be addressed by cell extraction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine precision editing for many genetic diseases",
+        "unlocks": "correcting mutations at their source rather than managing symptoms."
+      }
+    ]
   }
 }

@@ -33,5 +33,153 @@
         "def": "The process of decomposing something into its component parts and analyzing each part in detail, often used here to describe the AI's ability to reverse engineer protein degradation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Protein representation",
+        "role": "encodes a protein as something a model can generate — backbone coordinates, residue identities and side-chain geometry.",
+        "parts": [
+          "backbone atom coordinates (N, Cα, C, O)",
+          "amino-acid sequence",
+          "side-chain torsion angles"
+        ]
+      },
+      {
+        "name": "Diffusion network",
+        "role": "the learned denoiser that turns random noise into a plausible protein structure step by step.",
+        "parts": [
+          "equivariant graph neural network",
+          "attention layers",
+          "residue and atom embeddings"
+        ]
+      },
+      {
+        "name": "Noise schedule",
+        "role": "defines how structure is destroyed and how the model reverses that process.",
+        "parts": [
+          "forward noising steps",
+          "reverse denoising steps",
+          "variance schedule"
+        ]
+      },
+      {
+        "name": "Conditioning and guidance",
+        "role": "steers generation toward a desired shape, sequence or function.",
+        "parts": [
+          "motif scaffolding",
+          "target-binding constraints",
+          "classifier-free guidance"
+        ]
+      },
+      {
+        "name": "Validation pipeline",
+        "role": "checks whether generated proteins are physically and biologically plausible before any lab work.",
+        "parts": [
+          "folding prediction (e.g. AlphaFold)",
+          "energy and stereochemistry checks",
+          "molecular dynamics"
+        ]
+      },
+      {
+        "name": "Wet-lab loop",
+        "role": "turns designs into real proteins and measures whether they work.",
+        "parts": [
+          "gene synthesis",
+          "expression and purification",
+          "binding or activity assays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Curate structural data",
+        "detail": "Collect known protein structures from the Protein Data Bank and pair them with sequences, filtering for quality and redundancy."
+      },
+      {
+        "title": "Featurise proteins",
+        "detail": "Represent each structure as coordinates and residue types, with rotations and translations handled so the model is orientation-independent."
+      },
+      {
+        "title": "Design the network",
+        "detail": "Build an equivariant neural network that predicts how to remove noise from a partly destroyed structure."
+      },
+      {
+        "title": "Train at scale",
+        "detail": "Feed millions of noised examples through the network on GPU clusters until it learns to recover protein-like folds."
+      },
+      {
+        "title": "Condition the model",
+        "detail": "Fine-tune or guide sampling with constraints such as a target binding site or a desired fold, so designs serve a purpose."
+      },
+      {
+        "title": "Generate candidates",
+        "detail": "Sample many structures from noise, producing diverse backbones and sequences that did not exist before."
+      },
+      {
+        "title": "Filter computationally",
+        "detail": "Use folding predictors, energy scores and simulations to discard designs that are unlikely to fold or bind."
+      },
+      {
+        "title": "Synthesise and test",
+        "detail": "Order synthetic genes, express the proteins in cells, and measure binding, stability or enzymatic activity in the lab."
+      },
+      {
+        "title": "Iterate",
+        "detail": "Feed experimental results back into the model or the guidance to improve the next round of designs."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large protein structure databases",
+        "status": "exists",
+        "why": "models learn the rules of protein folds from tens of thousands of solved structures such as those in the Protein Data Bank."
+      },
+      {
+        "tech": "Equivariant deep learning",
+        "status": "exists",
+        "why": "protein geometry must be respected under rotation and translation, which standard image-style networks do not do."
+      },
+      {
+        "tech": "High-performance GPU compute",
+        "status": "exists",
+        "why": "training diffusion models on structural data takes many GPU-months."
+      },
+      {
+        "tech": "Structure prediction tools",
+        "status": "exists",
+        "why": "models such as AlphaFold give a fast, independent check on whether a generated sequence actually folds as intended."
+      },
+      {
+        "tech": "High-throughput protein synthesis and assays",
+        "status": "partial",
+        "why": "testing hundreds of designs still costs time and money, limiting how fast the design–build–test loop can turn."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "open-source diffusion models generate novel protein folds and binders in silico",
+        "unlocks": "a cheap, fast way to propose proteins that nature has never made."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lab-validated functional designs — enzymes, binding proteins and vaccines — become routine",
+        "unlocks": "new drug and diagnostic candidates for targets that are hard to drug with small molecules."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop automated labs that design, build and test proteins without human intervention",
+        "unlocks": "rapid iteration, turning protein engineering into a data-driven manufacturing process."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "de novo proteins used as approved therapeutics and industrial catalysts",
+        "unlocks": "treatments and materials designed from scratch rather than discovered."
+      }
+    ]
   }
 }

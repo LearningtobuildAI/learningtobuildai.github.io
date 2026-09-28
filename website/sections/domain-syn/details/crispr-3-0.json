@@ -30,5 +30,141 @@
         "def": "Unintended changes made by CRISPR systems at genomic locations other than the intended target, which can lead to potential health risks."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Targeting module",
+        "role": "finds one exact sequence in a genome of billions of bases.",
+        "parts": [
+          "guide RNA (often chemically modified)",
+          "Cas protein's protospacer-adjacent-motif recognition"
+        ]
+      },
+      {
+        "name": "Effector module",
+        "role": "the engine that actually changes the DNA — a nuclease, or a protein engineered to edit without cutting.",
+        "parts": [
+          "Cas nickase",
+          "deaminase enzyme (base editing)",
+          "reverse transcriptase (prime editing)",
+          "pegRNA extension"
+        ]
+      },
+      {
+        "name": "Delivery system",
+        "role": "gets the editor into the right cells and no others.",
+        "parts": [
+          "lipid nanoparticles",
+          "engineered AAV vectors",
+          "ex vivo electroporation of cells",
+          "tissue-targeting ligands"
+        ]
+      },
+      {
+        "name": "Control and safety layer",
+        "role": "limits how long the editor is active and proves it hit nothing else.",
+        "parts": [
+          "anti-CRISPR proteins",
+          "self-cleaving or inducible switches",
+          "off-target assays (whole-genome sequencing, GUIDE-seq)"
+        ]
+      },
+      {
+        "name": "Manufacturing and analytics",
+        "role": "makes guide RNA, mRNA and protein at clinical grade and releases each batch.",
+        "parts": [
+          "enzymatic RNA synthesis",
+          "sterile fill",
+          "potency and impurity assays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the edit",
+        "detail": "Identify the precise DNA change that would fix a disease — most often a single wrong base."
+      },
+      {
+        "title": "Design the guide",
+        "detail": "Choose a ~20-base guide RNA matching the target, then computationally screen the whole genome for near-matches."
+      },
+      {
+        "title": "Engineer the effector",
+        "detail": "Fuse a deaminase or reverse transcriptase to a Cas nickase, then evolve the protein in bacteria and yeast to raise efficiency and lower stray edits."
+      },
+      {
+        "title": "Build and test the construct",
+        "detail": "Assemble the editor and guide as DNA, mRNA or protein, and introduce them into cultured cells."
+      },
+      {
+        "title": "Measure off-targets",
+        "detail": "Sequence the whole genome of edited cells to find unintended changes; refine guides and enzyme until the background is acceptable."
+      },
+      {
+        "title": "Choose a delivery route",
+        "detail": "Ex vivo: remove a patient's cells, edit them in a machine, and return them. In vivo: package into lipid nanoparticles or AAV for injection."
+      },
+      {
+        "title": "Preclinical testing",
+        "detail": "Confirm the edit in animal models, check where the editor ends up, and watch for immune reactions."
+      },
+      {
+        "title": "Clinical trial and scale-up",
+        "detail": "Run phased human trials, then build validated manufacturing that can release consistent batches."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Programmable nucleases (Cas9, Cas12) and guide RNA",
+        "status": "exists",
+        "why": "the targeting chemistry that the newer editors are built on."
+      },
+      {
+        "tech": "Cheap DNA sequencing and synthesis",
+        "status": "exists",
+        "why": "you cannot design guides or hunt off-target edits without reading and writing DNA at scale."
+      },
+      {
+        "tech": "Precise, cutting-free editing proteins",
+        "status": "partial",
+        "why": "base and prime editors work in cells and animals, but efficiency varies by cell type and sequence."
+      },
+      {
+        "tech": "Targeted in vivo delivery",
+        "status": "partial",
+        "why": "lipid nanoparticles reach the liver well; lung, muscle, brain and heart are much harder."
+      },
+      {
+        "tech": "Long-term safety data in humans",
+        "status": "missing",
+        "why": "edits are permanent, so decades of follow-up are needed to rule out cancer and immune risks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "The first CRISPR medicine, an ex vivo Cas9 therapy for sickle-cell disease, was approved in 2023",
+        "unlocks": "proof that editing a patient's own cells can treat disease."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in vivo base editing infused into the blood to switch off a disease-causing liver gene",
+        "unlocks": "one-shot treatments that need no cell extraction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "prime and epigenome editors in human trials",
+        "unlocks": "inserting or rewriting sequences, and tuning genes without changing DNA at all."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "delivery to many organs plus durable safety records",
+        "unlocks": "treating common, polygenic disease rather than rare single-gene disorders."
+      }
+    ]
   }
 }

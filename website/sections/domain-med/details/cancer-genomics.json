@@ -34,5 +34,142 @@
         "def": "The use of computational tools to analyze biological data, including genomic sequences, for research and clinical applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sample and sequencing lab",
+        "role": "gets usable tumour DNA and RNA from a patient.",
+        "parts": [
+          "tumour biopsy or surgical specimen",
+          "blood draw for circulating tumour DNA (liquid biopsy)",
+          "DNA/RNA extraction",
+          "quality control"
+        ]
+      },
+      {
+        "name": "Sequencing platforms",
+        "role": "reads the sequence of the cancer genome.",
+        "parts": [
+          "targeted gene panels (tens to hundreds of genes)",
+          "whole-exome or whole-genome sequencer",
+          "RNA sequencing for gene fusions"
+        ]
+      },
+      {
+        "name": "Bioinformatics pipeline",
+        "role": "turns raw reads into a list of real variants.",
+        "parts": [
+          "read alignment to the reference genome",
+          "variant calling and filtering",
+          "tumour purity and ploidy estimation",
+          "signatures such as tumour mutational burden and microsatellite instability"
+        ]
+      },
+      {
+        "name": "Interpretation and knowledge bases",
+        "role": "decides which findings matter.",
+        "parts": [
+          "population and cancer variant databases",
+          "drug–variant actionability rules",
+          "tumour board review"
+        ]
+      },
+      {
+        "name": "Clinical reporting and records",
+        "role": "delivers a decision to the treating oncologist.",
+        "parts": [
+          "structured molecular report",
+          "electronic health record integration",
+          "re-sequencing and monitoring over time"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Take a sample",
+        "detail": "A pathologist confirms tumour tissue in a biopsy, or a blood sample is drawn to capture DNA shed by tumours."
+      },
+      {
+        "title": "Extract nucleic acids",
+        "detail": "DNA and RNA are purified; in formalin-fixed tissue the DNA is often degraded, which limits what can be detected."
+      },
+      {
+        "title": "Prepare a sequencing library",
+        "detail": "DNA is fragmented, tagged with patient-specific barcodes, and target regions are captured with probes if a panel is being used."
+      },
+      {
+        "title": "Sequence",
+        "detail": "A high-throughput sequencer reads each fragment many times so that low-level mutations in a mixed sample can be seen."
+      },
+      {
+        "title": "Call and filter variants",
+        "detail": "Software aligns reads to the reference genome and separates true cancer mutations from sequencing errors and inherited variation."
+      },
+      {
+        "title": "Annotate and interpret",
+        "detail": "Each variant is matched against databases and drug evidence, and a molecular tumour board weighs it with the patient's clinical picture."
+      },
+      {
+        "title": "Select therapy",
+        "detail": "The oncologist uses actionable findings to choose a targeted drug, immunotherapy or clinical trial, sometimes with the original diagnosis set aside."
+      },
+      {
+        "title": "Monitor",
+        "detail": "Repeat blood tests can track whether mutations are shrinking or a resistant clone is emerging."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-throughput DNA sequencing",
+        "status": "exists",
+        "why": "cost per genome has fallen by orders of magnitude since the early 2000s, making tumour sequencing practical."
+      },
+      {
+        "tech": "A finished human reference genome and variant databases",
+        "status": "exists",
+        "why": "interpreting a cancer genome requires knowing what normal human variation looks like."
+      },
+      {
+        "tech": "Drugs that target specific mutations",
+        "status": "partial",
+        "why": "only a minority of detected variants currently has a matching approved therapy."
+      },
+      {
+        "tech": "Clinical-grade bioinformatics and regulation",
+        "status": "partial",
+        "why": "assays must be validated and accredited before results can guide treatment."
+      },
+      {
+        "tech": "Large-scale computing and privacy safeguards",
+        "status": "exists",
+        "why": "each genome is tens to hundreds of gigabytes and must be stored and shared under consent rules."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "targeted panels are routine for several cancers, and some drugs are approved by mutation rather than by organ",
+        "unlocks": "better outcomes in lung cancer, melanoma and some colorectal and ovarian cancers, and access to tissue-agnostic therapies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-genome and RNA sequencing become affordable enough for routine care",
+        "unlocks": "detection of structural rearrangements, fusions and non-coding drivers that panels miss."
+      },
+      {
+        "stage": "Next",
+        "milestone": "liquid biopsies used to monitor treatment response and relapse",
+        "unlocks": "repeated, non-invasive testing and earlier detection of resistance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "blood-based multi-cancer early detection and functional testing of variants in the lab",
+        "unlocks": "screening before symptoms and better prediction of which drug will actually work."
+      }
+    ]
   }
 }

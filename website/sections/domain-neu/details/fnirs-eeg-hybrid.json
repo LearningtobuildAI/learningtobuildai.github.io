@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "EEG electrodes and amplifier",
+        "role": "records the brain's electrical activity with millisecond timing.",
+        "parts": [
+          "scalp electrodes (gel, dry or saline)",
+          "reference and ground electrodes",
+          "low-noise, high-impedance amplifier",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "NIRS optodes",
+        "role": "shine near-infrared light through the scalp and detect how much scatters back, tracking blood oxygenation.",
+        "parts": [
+          "light sources (LEDs or laser diodes near 760 and 850 nm)",
+          "photodiode detectors",
+          "source–detector pairs forming channels",
+          "optical fibres or on-head emitters"
+        ]
+      },
+      {
+        "name": "Hybrid headgear",
+        "role": "holds electrodes and optodes at the same scalp locations without blocking each other.",
+        "parts": [
+          "flexible cap or 3D-printed holders",
+          "spacers and light shields",
+          "cabling and strain relief"
+        ]
+      },
+      {
+        "name": "Synchronisation electronics",
+        "role": "keeps the fast electrical and slow optical streams on one clock.",
+        "parts": [
+          "shared trigger line",
+          "time-multiplexed or frequency-encoded source driver",
+          "event markers"
+        ]
+      },
+      {
+        "name": "Signal-conditioning and acquisition",
+        "role": "cleans and digitises both modalities.",
+        "parts": [
+          "EEG filters and notch stages",
+          "NIRS lock-in or time-gated detection",
+          "real-time data stream"
+        ]
+      },
+      {
+        "name": "Processing and fusion software",
+        "role": "separates brain signal from artefact and combines the two views.",
+        "parts": [
+          "short-separation-channel regression",
+          "motion-artefact correction",
+          "haemodynamic-response modelling",
+          "classifier or decoder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose scalp positions",
+        "detail": "EEG sites follow the standard 10–20 system; optical channels are then fitted into the gaps between electrodes so light and electrical contact don't compete for the same patch of skin."
+      },
+      {
+        "title": "Design the headgear",
+        "detail": "A flexible cap or custom-printed frame is made to hold each sensor at its assigned position, with light-tight spacing so one source does not leak into a neighbouring detector."
+      },
+      {
+        "title": "Build the optical channels",
+        "detail": "Emitters at two near-infrared wavelengths are paired with detectors roughly 3 cm away — far enough to reach cortical tissue, close enough for the light to return. Short extra channels at about 1 cm are added to record scalp blood flow for later subtraction."
+      },
+      {
+        "title": "Assemble the electronics",
+        "detail": "A high-impedance, low-noise EEG amplifier is built alongside the NIR source driver and detection chain, with separate sampling rates (electrical activity in the hundreds of hertz, optical signals at tens of hertz)."
+      },
+      {
+        "title": "Synchronise everything",
+        "detail": "A single clock and trigger line stamp both data streams so an electrical spike and the blood-oxygen change it causes can be aligned later."
+      },
+      {
+        "title": "Fit and calibrate on a person",
+        "detail": "Electrode impedances are checked, optical coupling is adjusted, and the raw signal is inspected for a clean heartbeat trace — the standard sign that NIRS is seeing through to blood vessels."
+      },
+      {
+        "title": "Co-register positions",
+        "detail": "Sensor locations are digitised or scanned so results can be mapped onto a head model."
+      },
+      {
+        "title": "Acquire and clean data",
+        "detail": "The recording is corrected for head motion, scalp blood flow is regressed out of the optical channels, and electrical artefacts such as muscle and eye activity are removed."
+      },
+      {
+        "title": "Fuse and decode",
+        "detail": "Features from both modalities are combined — for example using the fast electrical signal to time-lock the slow vascular one — to produce a brain-state estimate or a control signal."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Near-infrared light sources and sensitive photodetectors",
+        "status": "exists",
+        "why": "cheap LEDs and silicon detectors make wearable optical recording possible."
+      },
+      {
+        "tech": "Low-noise biopotential amplifiers",
+        "status": "exists",
+        "why": "EEG signals are tiny (microvolts) and are easily buried under noise from the optical emitters."
+      },
+      {
+        "tech": "Dry or comfortable electrode and optode materials",
+        "status": "partial",
+        "why": "gel electrodes give the best signal but are impractical for long or repeated everyday use."
+      },
+      {
+        "tech": "Understanding of neurovascular coupling",
+        "status": "partial",
+        "why": "the link between neural firing and the blood-oxygen response is variable across people and brain regions, which limits how confidently the two signals can be combined."
+      },
+      {
+        "tech": "Real-time multimodal signal processing and machine learning",
+        "status": "partial",
+        "why": "fusing two noisy streams fast enough for closed-loop use is done in labs but not yet routine in small devices."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research-grade hybrid caps used in cognitive-workload studies, brain–computer interfaces and neurorehabilitation",
+        "unlocks": "better localisation than EEG alone and better timing than NIRS alone."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wireless, dry-sensor headsets with on-board fusion",
+        "unlocks": "monitoring outside the lab — cockpits, classrooms, factories and clinics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop applications such as attention-aware interfaces and adaptive neurofeedback",
+        "unlocks": "systems that respond to a measured brain state in real time."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "clinical-grade wearable brain monitoring for stroke recovery, epilepsy and sleep",
+        "unlocks": "continuous assessment without a hospital bed."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "validated consumer cognitive monitoring",
+        "unlocks": "everyday use — contingent on accuracy standards, consent and privacy rules."
+      }
+    ]
+  }
+}

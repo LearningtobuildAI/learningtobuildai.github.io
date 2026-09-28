@@ -36,5 +36,155 @@
         "def": "A type of attack where an entity gains control over more than 50% of the network’s computing power to manipulate the blockchain."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Identity registry (ledger)",
+        "role": "anchors DIDs and revocation data on a tamper-evident, decentralized network.",
+        "parts": [
+          "distributed ledger nodes",
+          "smart contracts or transaction types",
+          "consensus mechanism"
+        ]
+      },
+      {
+        "name": "DID resolver",
+        "role": "maps a DID to its DID document, which contains public keys and service endpoints.",
+        "parts": [
+          "resolver software",
+          "DID method drivers",
+          "caching layer"
+        ]
+      },
+      {
+        "name": "Wallet",
+        "role": "lets a person hold their private keys and verifiable credentials securely.",
+        "parts": [
+          "key management",
+          "secure hardware storage",
+          "credential store",
+          "user interface"
+        ]
+      },
+      {
+        "name": "Issuer platform",
+        "role": "allows organisations to issue verifiable credentials to holders.",
+        "parts": [
+          "issuance API",
+          "schema management",
+          "signing keys",
+          "revocation service"
+        ]
+      },
+      {
+        "name": "Verifier platform",
+        "role": "checks that presented credentials are authentic, unrevoked and from a trusted issuer.",
+        "parts": [
+          "verification library",
+          "trust registry",
+          "revocation checker"
+        ]
+      },
+      {
+        "name": "Governance framework",
+        "role": "defines who may issue which credentials and how trust is established.",
+        "parts": [
+          "trust framework",
+          "schema registry",
+          "accreditation rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose or define a DID method",
+        "detail": "Specify exactly how identifiers are created, written to a ledger, resolved and deactivated — for example a method built on Ethereum or Hyperledger Indy."
+      },
+      {
+        "title": "Deploy the ledger components",
+        "detail": "Set up nodes and smart contracts or transaction types that record DIDs and revocation lists without exposing personal data."
+      },
+      {
+        "title": "Implement the resolver",
+        "detail": "Write software that reads the ledger and returns the correct DID document for any supported DID method."
+      },
+      {
+        "title": "Build the wallet",
+        "detail": "Create an app that generates and stores private keys in secure hardware, and holds verifiable credentials the user receives."
+      },
+      {
+        "title": "Create issuer tools",
+        "detail": "Build services that let an organisation define credential schemas, sign credentials with its keys and publish revocation information."
+      },
+      {
+        "title": "Create verifier tools",
+        "detail": "Build libraries that request credentials, verify signatures against the issuer’s DID, check revocation status and apply trust rules."
+      },
+      {
+        "title": "Establish revocation and status",
+        "detail": "Implement a privacy-preserving way to revoke or suspend credentials, such as status lists or cryptographic accumulators."
+      },
+      {
+        "title": "Agree governance",
+        "detail": "Write the legal and technical rules: who can issue which claims, which schemas are valid, and how disputes are handled."
+      },
+      {
+        "title": "Pilot and iterate",
+        "detail": "Run limited deployments with real users, measure usability and security, then widen participation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Public-key cryptography and digital signatures",
+        "status": "exists",
+        "why": "credentials and DID documents rely on keys to prove control and authenticity."
+      },
+      {
+        "tech": "Distributed ledger technology",
+        "status": "exists",
+        "why": "provides the decentralized, tamper-evident registry for DIDs and revocation data."
+      },
+      {
+        "tech": "W3C Decentralized Identifiers (DIDs) and Verifiable Credentials standards",
+        "status": "partial",
+        "why": "the core specifications exist but tooling, profiles and interoperability are still maturing."
+      },
+      {
+        "tech": "Secure hardware in devices",
+        "status": "exists",
+        "why": "wallets need tamper-resistant storage for private keys to prevent theft."
+      },
+      {
+        "tech": "Zero-knowledge proofs for selective disclosure",
+        "status": "partial",
+        "why": "lets users prove a claim without revealing extra personal data, but performance and standardisation are still improving."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "government and enterprise pilots, such as the European Union’s eIDAS 2.0 digital identity wallet effort",
+        "unlocks": "real-world testing of wallets, issuers and verifiers with citizens and customers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-ledger and cross-wallet interoperability profiles",
+        "unlocks": "credentials that work no matter which blockchain or app a person uses."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with existing web identity protocols like OpenID Connect",
+        "unlocks": "easier adoption by services that already support conventional login."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mainstream user-controlled identity at scale",
+        "unlocks": "reduced reliance on centralised identity providers and fewer large-scale identity theft risks."
+      }
+    ]
   }
 }

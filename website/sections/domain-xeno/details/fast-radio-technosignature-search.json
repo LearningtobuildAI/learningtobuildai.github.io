@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Reflector and active surface",
+        "role": "a 500 m dish that reshapes itself to keep a parabola focused as it tracks.",
+        "parts": [
+          "4,450 triangular aluminium panels",
+          "steel cable net",
+          "motorised actuators at the net nodes",
+          "karst depression floor and drainage"
+        ]
+      },
+      {
+        "name": "Feed cabin and positioning",
+        "role": "suspends the receiver at the focus and steers it around the sky.",
+        "parts": [
+          "cables and six winches",
+          "Stewart platform for fine aiming",
+          "focus cabin with receivers and amplifiers"
+        ]
+      },
+      {
+        "name": "Receivers",
+        "role": "convert radio waves to electrical signals with the lowest possible noise.",
+        "parts": [
+          "19-beam L-band receiver (roughly 1.05–1.45 GHz)",
+          "ultra-wideband receiver covering a few hundred MHz to about 1.6 GHz",
+          "cryogenically cooled low-noise amplifiers"
+        ]
+      },
+      {
+        "name": "Timing and signal chain",
+        "role": "digitises wide bands while keeping absolute time, which is what reveals a drifting signal.",
+        "parts": [
+          "atomic-clock reference",
+          "wideband digitisers",
+          "optical fibre links to the control room"
+        ]
+      },
+      {
+        "name": "Search computing",
+        "role": "sifts terabytes for the rare narrow channel that behaves like a transmitter.",
+        "parts": [
+          "GPU clusters for coherent dedispersion",
+          "narrowband drift-search software",
+          "data storage and archive"
+        ]
+      },
+      {
+        "name": "RFI monitoring and protection",
+        "role": "keeps Earth-made signals from drowning the search.",
+        "parts": [
+          "monitoring antennas",
+          "spectrum monitoring",
+          "radio-quiet zone coordination"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the site",
+        "detail": "A natural karst bowl in Guizhou, deep enough to hold the dish and shielded from much of the surrounding radio traffic."
+      },
+      {
+        "title": "Design the cable net",
+        "detail": "Structural modelling works out a net whose nodes can be pulled to form a small parabola inside the large sphere."
+      },
+      {
+        "title": "Fabricate the panels",
+        "detail": "Thousands of aluminium triangles are made and mounted on the net, each tied to actuators below."
+      },
+      {
+        "title": "Rig the feed cabin",
+        "detail": "Winches and cables are installed so the focus cabin can be held and moved above the dish."
+      },
+      {
+        "title": "Install receivers and backends",
+        "detail": "Multibeam feeds, cryogenic amplifiers, digitisers and fibre links are fitted and calibrated."
+      },
+      {
+        "title": "Calibrate the surface",
+        "detail": "The dish shape is measured and corrected until the focused beam is good enough for faint-signal work."
+      },
+      {
+        "title": "Observe",
+        "detail": "Targets are tracked, or the sky drifts past, while the whole band is recorded for later search."
+      },
+      {
+        "title": "Search and veto",
+        "detail": "Coherent dedispersion and drift searches pull out narrowband candidates, which are tested against interference by re-observing and by changing pointing."
+      },
+      {
+        "title": "Confirm",
+        "detail": "Only a signal that repeats, moves with the sky and survives every interference test becomes a serious candidate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Active reflector shape control",
+        "status": "exists",
+        "why": "a fixed sphere cannot focus; the surface must deform continuously to track a source."
+      },
+      {
+        "tech": "Cryogenic multibeam receivers",
+        "status": "exists",
+        "why": "system noise sets how faint a transmitter can be seen, and beams set how much sky each pointing covers."
+      },
+      {
+        "tech": "Real-time GPU signal processing",
+        "status": "exists",
+        "why": "gigabits per second of raw voltage have to be dedispersed and searched faster than they arrive."
+      },
+      {
+        "tech": "A radio-quiet site with interference mitigation",
+        "status": "partial",
+        "why": "even in a protected valley, satellites, aircraft and ground transmitters produce narrowband signals that mimic the target."
+      },
+      {
+        "tech": "Independent verification network",
+        "status": "partial",
+        "why": "a single dish cannot prove a signal is not local; other telescopes in other countries must see it too."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "targeted searches of nearby stars and their exoplanets, plus commensal searching of data recorded for pulsar and fast-radio-burst surveys",
+        "unlocks": "the deepest narrowband limits available on any single dish, over the sky it can see"
+      },
+      {
+        "stage": "Next",
+        "milestone": "better interference rejection and automatic follow-up, so candidates can be checked within minutes",
+        "unlocks": "far fewer false alarms from satellites and phones"
+      },
+      {
+        "stage": "Next",
+        "milestone": "coordinated observing with interferometer arrays in the southern hemisphere",
+        "unlocks": "sky coverage and direction-finding that a single dish cannot provide"
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "wide-field arrays with dish-class sensitivity",
+        "unlocks": "the ability to scan large areas of sky, not just point at chosen stars"
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an agreed international verification and announcement procedure if a signal survives every test",
+        "unlocks": "a credible, checkable claim rather than a headline"
+      }
+    ]
+  }
+}

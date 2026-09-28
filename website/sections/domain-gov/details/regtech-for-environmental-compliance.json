@@ -34,5 +34,154 @@
         "def": "A subset of artificial intelligence that involves training algorithms to make predictions or decisions based on input data without being explicitly programmed."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Measurement layer",
+        "role": "turns physical emissions into numbers.",
+        "parts": [
+          "stack gas analysers (NOx, SO₂, CO, CO₂, O₂)",
+          "flow and temperature monitors",
+          "fuel and feedstock meters",
+          "opacity or dust monitors"
+        ]
+      },
+      {
+        "name": "Data acquisition",
+        "role": "collects readings from instruments and the plant control system without gaps.",
+        "parts": [
+          "edge gateways",
+          "OPC UA / Modbus interfaces to plant SCADA",
+          "time-series database",
+          "calibration and status flags"
+        ]
+      },
+      {
+        "name": "Calculation engine",
+        "role": "converts raw readings into tonnes of CO₂-equivalent using the regulator's own formulas.",
+        "parts": [
+          "emissions factor and fuel-composition tables",
+          "unit conversion",
+          "missing-data substitution rules",
+          "uncertainty calculation"
+        ]
+      },
+      {
+        "name": "Reporting engine",
+        "role": "assembles the figures into the exact template each scheme demands.",
+        "parts": [
+          "per-scheme report templates",
+          "regulator portal connectors",
+          "electronic tagging formats",
+          "reconciliation with production data"
+        ]
+      },
+      {
+        "name": "Evidence and audit trail",
+        "role": "lets an external verifier retrace every number.",
+        "parts": [
+          "immutable event log",
+          "version-controlled calculation methods",
+          "calibration certificates",
+          "signature and access records"
+        ]
+      },
+      {
+        "name": "Remote sensing and analytics",
+        "role": "catches what point sensors miss and flags anomalies.",
+        "parts": [
+          "satellite and drone plume detection",
+          "leak-detection algorithms",
+          "trend and drift analytics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the obligations",
+        "detail": "List every site, which schemes it falls under, exactly what must be measured, by which method, and how often it must be reported."
+      },
+      {
+        "title": "Instrument the sources",
+        "detail": "Fit analysers, flow monitors and fuel meters to each stack and pipeline, and certify them against a reference method."
+      },
+      {
+        "title": "Wire the data to a historian",
+        "detail": "Stream timestamped readings from instruments and the plant control system into a time-series store, with buffering so outages do not create gaps."
+      },
+      {
+        "title": "Encode the method",
+        "detail": "Implement the regulator's calculation formulas, emissions factors, unit conversions and rules for substituting missing data as versioned, testable code."
+      },
+      {
+        "title": "Automate quality assurance",
+        "detail": "Add plausibility checks, zero and span drift tests, and scheduled auditing against the relevant CEMS quality-assurance standard."
+      },
+      {
+        "title": "Generate and file reports",
+        "detail": "Populate per-scheme templates, reconcile against production and finance records, submit through the regulator's portal, and archive the signed submission."
+      },
+      {
+        "title": "Support verification",
+        "detail": "Give external verifiers controlled access to the underlying readings, methods and certificates so the annual audit becomes a data review rather than a spreadsheet hunt."
+      },
+      {
+        "title": "Update as rules change",
+        "detail": "Track amendments to reporting regulations and redeploy updated methods while keeping the old version available for historical years."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Certified continuous emissions monitoring systems",
+        "status": "exists",
+        "why": "regulated schemes only accept measurements from instruments that pass regular quality assurance."
+      },
+      {
+        "tech": "Industrial data connectivity (OPC UA, historians)",
+        "status": "exists",
+        "why": "the software can only be as complete as the plant data feeding it."
+      },
+      {
+        "tech": "Digital regulatory reporting formats",
+        "status": "partial",
+        "why": "electronic tagging and structured submission exist in some schemes but not uniformly across borders."
+      },
+      {
+        "tech": "Satellite and airborne emissions sensing",
+        "status": "partial",
+        "why": "useful for fugitive methane and for cross-checking self-reported figures, but resolution and revisit times still limit routine compliance use."
+      },
+      {
+        "tech": "Independent verification regimes",
+        "status": "exists",
+        "why": "numbers only carry weight if a third party can test them."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated annual and quarterly reporting for large emitters under mandatory schemes",
+        "unlocks": "lower compliance cost and fewer reporting errors for heavy industry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous, near-real-time monitoring replacing periodic spot checks at major sites",
+        "unlocks": "early detection of leaks and excursions, and shorter correction times."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interoperable emissions data across borders and along supply chains",
+        "unlocks": "product-level carbon accounting and border-adjustment schemes that can be trusted."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous assurance of the whole data pipeline rather than annual audits",
+        "unlocks": "regulators and investors acting on live emissions data, with compliance built into plant operations."
+      }
+    ]
   }
 }

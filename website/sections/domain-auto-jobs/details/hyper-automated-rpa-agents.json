@@ -34,5 +34,155 @@
         "def": "Computer Vision, the field of AI concerned with enabling machines to interpret and understand visual information from the world."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception layer",
+        "role": "works out what is on screen and which element means what.",
+        "parts": [
+          "screen capture",
+          "OCR and layout detection",
+          "accessibility/UI automation tree reader",
+          "vision-language model for element grounding"
+        ]
+      },
+      {
+        "name": "Planning layer",
+        "role": "turns a goal such as 'process this invoice' into an ordered set of actions.",
+        "parts": [
+          "large language model planner",
+          "retrieved standard-procedure documents",
+          "skill/tool registry",
+          "state tracker across steps"
+        ]
+      },
+      {
+        "name": "Action layer",
+        "role": "performs the clicks, keystrokes and calls the plan requires.",
+        "parts": [
+          "synthetic mouse and keyboard events",
+          "browser automation driver",
+          "API and database connectors",
+          "file and email handlers"
+        ]
+      },
+      {
+        "name": "Orchestration",
+        "role": "runs many jobs reliably in the background.",
+        "parts": [
+          "queue and scheduler",
+          "retry and idempotency logic",
+          "virtual-machine or container workers",
+          "credential vault"
+        ]
+      },
+      {
+        "name": "Knowledge and memory",
+        "role": "keeps the business context the agent needs between steps and runs.",
+        "parts": [
+          "document store",
+          "vector index of past cases",
+          "process taxonomy",
+          "correction history"
+        ]
+      },
+      {
+        "name": "Governance and oversight",
+        "role": "keeps the automation auditable, safe and correctable.",
+        "parts": [
+          "audit log of every action",
+          "confidence thresholds and human-in-the-loop handoff",
+          "PII redaction and access control",
+          "regression test suite"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Find and rank candidate processes",
+        "detail": "Analyse system event logs and recordings of real staff work to find repetitive, high-volume, rule-bound tasks. Score each on volume, variability and the cost of an error."
+      },
+      {
+        "title": "Record and model the process",
+        "detail": "Capture the full path through the applications involved, including branches such as 'field missing'. Write it as a state machine with a defined success condition and a defined set of exceptions."
+      },
+      {
+        "title": "Build the perception layer",
+        "detail": "Ground each UI element using a combination of the accessibility tree, OCR text and image matching. Store several fallback locators per element, because layouts change and single selectors break."
+      },
+      {
+        "title": "Define the agent's action space",
+        "detail": "Give the model a narrow, typed list of tools — click, type, read table, call API, send for approval — rather than free control of the desktop. This is what makes behaviour testable and reviewable."
+      },
+      {
+        "title": "Ground and evaluate the model",
+        "detail": "Supply the procedure, screenshots and worked examples. Replay dozens of recorded sessions and measure step-level accuracy, not just end-to-end pass rate, so failures can be localised."
+      },
+      {
+        "title": "Run it in a locked-down worker",
+        "detail": "Execute inside a container or virtual machine with injected credentials, no broad network access, and all input and output logged."
+      },
+      {
+        "title": "Design the failure path first",
+        "detail": "Set confidence thresholds below which the agent pauses, screenshots the state and asks a human to finish. Feed those corrections back as training and test cases."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Roll out behind a queue with concurrency limits, then watch for drift: when an application updates its interface, detection rates drop and locators must be re-grounded."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Robotic process automation runtimes",
+        "status": "exists",
+        "why": "decades of screen-scraping and input-synthesis code already handle the mechanical execution."
+      },
+      {
+        "tech": "Multimodal models that read screens",
+        "status": "exists",
+        "why": "they allow an agent to identify buttons, forms and tables without a bespoke selector for every one."
+      },
+      {
+        "tech": "Operating-system UI automation interfaces",
+        "status": "exists",
+        "why": "they expose element roles and names, far more stable than pixel coordinates."
+      },
+      {
+        "tech": "Long-horizon planning with reliable recovery",
+        "status": "partial",
+        "why": "agents still lose track over dozens of steps and cannot always tell that they have gone wrong."
+      },
+      {
+        "tech": "Enterprise identity, secrets and audit controls",
+        "status": "exists",
+        "why": "an agent holding staff credentials needs scoped access and a complete action trail to be acceptable to auditors."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "unattended bots handling structured, high-volume tasks such as invoice entry and record matching, with vision-based locators as backup",
+        "unlocks": "measurable labour savings on narrow, stable processes and a base of logged process data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "LLM-planned agents that complete whole back-office workflows across several applications, pausing for human approval at defined checkpoints",
+        "unlocks": "automation of tasks that were too variable to script, plus a much shorter build time per process."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-healing automations that re-ground themselves after an application interface changes",
+        "unlocks": "lower maintenance cost, which is currently the dominant cost of running an RPA estate."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agents that discover and propose their own automations from observed work, and hand tasks to each other across departments",
+        "unlocks": "process improvement as a continuous background function rather than a project."
+      }
+    ]
   }
 }

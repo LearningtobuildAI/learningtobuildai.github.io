@@ -154,6 +154,14 @@
   // can't silently clobber another page's label again.
   var LABEL_OVERRIDE = {
     pcparts: { storage: "💾 Storage" },
+    civeng: {
+      energy: "☀️ Orbital Energy", infrastructure: "🏗️ Off-World Construction",
+      launch: "🚀 Launch Infrastructure", frontier: "🪐 Planetary & Stellar Engineering",
+    },
+    xeno: {
+      exploration: "🔭 Missions & Observatories", sensing: "🧪 Life-Detection Methods",
+      bio: "🦠 Life at the Extremes", frontier: "📡 Technosignatures & SETI",
+    },
   };
   var GROUP_SUB = {
     concept: "Frontier and biological energy — including how living things power themselves.",

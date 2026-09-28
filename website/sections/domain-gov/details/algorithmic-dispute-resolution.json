@@ -30,5 +30,168 @@
         "def": "A type of AI model designed to understand and generate human-like text across a wide range of topics and contexts."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Case intake and structuring",
+        "role": "turns a plain-language complaint into a structured set of claims, facts and evidence.",
+        "parts": [
+          "guided questionnaire",
+          "document upload and OCR",
+          "claim-element checklist"
+        ]
+      },
+      {
+        "name": "Legal knowledge base",
+        "role": "the grounding corpus the system reasons over, rather than inventing law.",
+        "parts": [
+          "statutes and regulations",
+          "anonymised case law and tribunal decisions",
+          "plain-language guidance"
+        ]
+      },
+      {
+        "name": "Retrieval layer",
+        "role": "finds the passages of law and comparable past cases relevant to the submission.",
+        "parts": [
+          "vector search index",
+          "keyword and citation filters",
+          "jurisdiction and date filters"
+        ]
+      },
+      {
+        "name": "Analysis and outcome model",
+        "role": "extracts the disputed facts and estimates a defensible range of outcomes.",
+        "parts": [
+          "large language model",
+          "evidence-to-element matching",
+          "rule engine for fixed thresholds"
+        ]
+      },
+      {
+        "name": "Negotiation and settlement engine",
+        "role": "lets both sides move toward agreement without revealing their limits too early.",
+        "parts": [
+          "structured offer exchange",
+          "blind-bid or deadline rules",
+          "settlement drafting"
+        ]
+      },
+      {
+        "name": "Explanation and decision layer",
+        "role": "produces a written, cited outcome a human can check and a party can appeal.",
+        "parts": [
+          "citation generator",
+          "confidence and uncertainty reporting",
+          "templates for the decision record"
+        ]
+      },
+      {
+        "name": "Oversight, audit and integrity",
+        "role": "keeps the process lawful, logged and fair.",
+        "parts": [
+          "human reviewer queue",
+          "appeal path",
+          "identity and e-signature service",
+          "bias and drift monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a narrow claim type",
+        "detail": "Start where the law is codified and disputes are high-volume and low-value — for example small unpaid invoices or undelivered goods."
+      },
+      {
+        "title": "Assemble a licensed, anonymised corpus",
+        "detail": "Collect statutes, rules and past decisions for that claim type, strip personal data, and record the source and date of every document."
+      },
+      {
+        "title": "Define the decision taxonomy",
+        "detail": "Set out the elements a claimant must prove, the evidence that satisfies each, the defences available, and the remedies and amounts allowed."
+      },
+      {
+        "title": "Build structured intake",
+        "detail": "A guided form converts free text and uploaded documents into those elements, flagging what is missing before the case proceeds."
+      },
+      {
+        "title": "Ground the model in retrieval",
+        "detail": "The language model is constrained to retrieved sources, with citations required and automatic rejection of any output not traceable to the corpus."
+      },
+      {
+        "title": "Back-test against past outcomes",
+        "detail": "Run the system over closed historical cases and compare its predicted range and reasoning against what the tribunal or court actually decided."
+      },
+      {
+        "title": "Build the negotiation protocol",
+        "detail": "Implement offer-and-counteroffer rules, time limits and settlement drafting, with both parties able to opt out into ordinary adjudication."
+      },
+      {
+        "title": "Add human review and appeal",
+        "detail": "A registrar or adjudicator signs off decisions, and either party can escalate to a human decision-maker within a set period."
+      },
+      {
+        "title": "Log, monitor and pilot",
+        "detail": "Run it as a pilot in one jurisdiction with full audit logging, then measure error rates, bias across claimant groups and user comprehension of the reasons given."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Digitised, machine-readable case law and statutes",
+        "status": "partial",
+        "why": "reasoning can only be grounded where decisions are published openly and consistently; many jurisdictions are not there yet."
+      },
+      {
+        "tech": "Retrieval-augmented language models",
+        "status": "exists",
+        "why": "plain generation is unreliable for law; retrieval plus citation is what makes answers checkable."
+      },
+      {
+        "tech": "Online dispute resolution platforms",
+        "status": "partial",
+        "why": "filing, evidence upload and video hearings must already work before AI can sit on top."
+      },
+      {
+        "tech": "Electronic identity and tamper-evident evidence",
+        "status": "exists",
+        "why": "signatures, timestamps and document provenance decide whether a submission can be trusted."
+      },
+      {
+        "tech": "Legal rules on AI-assisted adjudication",
+        "status": "missing",
+        "why": "questions of due process, unauthorised practice of law and enforceable automated decisions are largely unresolved."
+      },
+      {
+        "tech": "Auditability and explainability of model outputs",
+        "status": "partial",
+        "why": "a decision that cannot be explained and reproduced cannot be appealed or reviewed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "online tribunals and e-commerce platforms handle millions of small disputes with rules-based and partly automated processes",
+        "unlocks": "a working template for structured, evidence-based online resolution."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI assistants that draft settlements and predict outcome ranges for a human adjudicator to approve",
+        "unlocks": "faster case handling in small claims while a person remains accountable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "binding automated decisions for narrow, codified claim types with published reasoning",
+        "unlocks": "affordable justice for amounts too small to justify conventional litigation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cross-border recognition of automated outcomes and tiered human appeal",
+        "unlocks": "portable resolution for online commerce, but only if enforceability and fairness rules converge."
+      }
+    ]
   }
 }

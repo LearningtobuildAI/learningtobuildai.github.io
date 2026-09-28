@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Low-frequency aperture array",
+        "role": "collects radio waves from a wide field of view with no moving parts.",
+        "parts": [
+          "log-periodic dipole antennas",
+          "ground plane",
+          "station layout"
+        ]
+      },
+      {
+        "name": "Signal transport and digitisation",
+        "role": "turns analogue voltages from every antenna into digital data.",
+        "parts": [
+          "analogue-to-digital converters",
+          "fibre-optic links",
+          "station-level processing"
+        ]
+      },
+      {
+        "name": "Digital beamformer",
+        "role": "combines signals from many antennas to form multiple simultaneous beams on the sky.",
+        "parts": [
+          "beamforming firmware and software",
+          "beam control",
+          "calibration"
+        ]
+      },
+      {
+        "name": "Primary science correlator",
+        "role": "performs the standard interferometry for astronomy.",
+        "parts": [
+          "correlator cluster",
+          "data network",
+          "science data processor"
+        ]
+      },
+      {
+        "name": "Technosignature search backend",
+        "role": "runs commensally on beamformed data to detect artificial narrowband signals.",
+        "parts": [
+          "GPU and CPU compute cluster",
+          "signal detection algorithms",
+          "data storage",
+          "candidate filtering"
+        ]
+      },
+      {
+        "name": "Timing and control system",
+        "role": "keeps all stations synchronised and manages observations.",
+        "parts": [
+          "atomic clocks",
+          "timing distribution",
+          "monitoring and control software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a radio-quiet site",
+        "detail": "Select a location far from transmitters, such as the Murchison Radio-astronomy Observatory in Western Australia for SKA-Low."
+      },
+      {
+        "title": "Deploy antenna stations",
+        "detail": "Install hundreds of stations, each with hundreds of dipole antennas, spread over a wide area."
+      },
+      {
+        "title": "Connect stations with fibre",
+        "detail": "Lay fibre-optic cables and power to carry digitised signals to a central processing facility."
+      },
+      {
+        "title": "Build the beamformer and correlator",
+        "detail": "Install computing hardware and software that forms beams and correlates signals for astronomy."
+      },
+      {
+        "title": "Develop the technosignature backend",
+        "detail": "Write and test software that taps the beamformed data stream, searches for narrowband drifting signals, and filters out interference."
+      },
+      {
+        "title": "Integrate commensally",
+        "detail": "Engineer the system so the search runs alongside primary observations without degrading them."
+      },
+      {
+        "title": "Commission and validate",
+        "detail": "Inject known test signals and use satellites to verify detection and rejection pipelines."
+      },
+      {
+        "title": "Operate and survey",
+        "detail": "Run continuously as the telescope surveys the sky, storing and analysing candidate signals."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wide-field low-frequency radio arrays",
+        "status": "exists",
+        "why": "pathfinders such as the Murchison Widefield Array and LOFAR have proven the aperture-array approach."
+      },
+      {
+        "tech": "Digital beamforming at scale",
+        "status": "exists",
+        "why": "needed to form many simultaneous beams from thousands of antennas."
+      },
+      {
+        "tech": "Commensal observing software",
+        "status": "partial",
+        "why": "demonstrated on other telescopes but not yet at SKA scale."
+      },
+      {
+        "tech": "Radio frequency interference mitigation",
+        "status": "partial",
+        "why": "artificial signals from satellites and ground transmitters must be separated from candidates."
+      },
+      {
+        "tech": "High-performance computing and storage",
+        "status": "exists",
+        "why": "searching wide-band data in real time requires large compute clusters."
+      },
+      {
+        "tech": "Technosignature detection algorithms",
+        "status": "partial",
+        "why": "narrowband drift-search methods exist but need scaling to SKA data rates."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Commensal SETI on existing telescopes, such as COSMIC on the VLA and Breakthrough Listen observations",
+        "unlocks": "proven search methods and software."
+      },
+      {
+        "stage": "Next",
+        "milestone": "SKA-Low completes construction and begins science operations",
+        "unlocks": "first commensal technosignature search on a large aperture array."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Full SKA survey operations with an integrated technosignature backend",
+        "unlocks": "all-sky coverage and high sensitivity."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Networked searches across radio and optical facilities",
+        "unlocks": "cross-checks and real-time follow-up of candidate signals."
+      }
+    ]
+  }
+}

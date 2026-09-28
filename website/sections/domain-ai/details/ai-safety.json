@@ -29,5 +29,159 @@
         "def": "The process of incorporating ethical principles into the design and development of AI systems to ensure they operate in a manner consistent with societal values."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Alignment training",
+        "role": "shapes a model's behaviour to match human intent and values.",
+        "parts": [
+          "human preference data",
+          "reward model",
+          "reinforcement learning loop",
+          "constitution or rule set"
+        ]
+      },
+      {
+        "name": "Interpretability",
+        "role": "opens the model's internal representations so failures can be understood, not just observed.",
+        "parts": [
+          "probing tools",
+          "feature visualisation",
+          "circuit analysis",
+          "sparse autoencoders"
+        ]
+      },
+      {
+        "name": "Evaluation and red-teaming",
+        "role": "finds dangerous or unwanted behaviour before release.",
+        "parts": [
+          "benchmark suites",
+          "adversarial prompts",
+          "human red teams",
+          "automated red-teaming"
+        ]
+      },
+      {
+        "name": "Robustness and security",
+        "role": "resists attacks, jailbreaks and misuse.",
+        "parts": [
+          "adversarial training",
+          "input and output filtering",
+          "access controls",
+          "watermarking"
+        ]
+      },
+      {
+        "name": "Deployment governance",
+        "role": "decides when and how a system may be released.",
+        "parts": [
+          "risk assessments",
+          "staged rollout",
+          "usage policies",
+          "independent audits"
+        ]
+      },
+      {
+        "name": "Incident response",
+        "role": "detects and contains harmful behaviour after deployment.",
+        "parts": [
+          "logging and telemetry",
+          "anomaly detection",
+          "kill switches",
+          "rollback procedures"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the threat model",
+        "detail": "Enumerate misuse, accidents and systemic risks the system could create across its intended uses."
+      },
+      {
+        "title": "Collect human feedback",
+        "detail": "Gather preference data from diverse groups on which outputs are helpful, honest and harmless."
+      },
+      {
+        "title": "Train a reward model",
+        "detail": "Learn a proxy for human judgment that can score model outputs automatically."
+      },
+      {
+        "title": "Fine-tune the model",
+        "detail": "Use reinforcement learning from human feedback, or rule-guided methods, to steer behaviour toward the reward model's preferences."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Stress-test the model with adversarial prompts, edge cases and automated attacks to find failures."
+      },
+      {
+        "title": "Apply robustness measures",
+        "detail": "Add adversarial training, input and output filters, and access controls to reduce successful attacks."
+      },
+      {
+        "title": "Stage deployment",
+        "detail": "Release first to limited users under monitoring, expanding only as evidence of safety accumulates."
+      },
+      {
+        "title": "Monitor and respond",
+        "detail": "Log interactions, detect anomalies, and be ready to roll back or shut down if harm appears."
+      },
+      {
+        "title": "Iterate",
+        "detail": "Feed incidents and new red-team findings back into training and evaluation, repeating the cycle."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale machine learning models",
+        "status": "exists",
+        "why": "safety techniques act on trained models, so capable models must exist first."
+      },
+      {
+        "tech": "Human feedback pipelines",
+        "status": "exists",
+        "why": "alignment requires reliable, representative preference data from people."
+      },
+      {
+        "tech": "Interpretability tools",
+        "status": "partial",
+        "why": "we can read some internal features, but not yet reliably explain or predict large-model behaviour."
+      },
+      {
+        "tech": "Formal verification for neural networks",
+        "status": "missing",
+        "why": "there is no practical way to prove safety properties of billion-parameter models."
+      },
+      {
+        "tech": "Evaluation benchmarks for dangerous capabilities",
+        "status": "partial",
+        "why": "some tests exist, but coverage of deception, persuasion and self-replication is incomplete."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "reinforcement learning from human feedback and red-teaming deployed in commercial models",
+        "unlocks": "safer, more useful chat and assistant systems at scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "scalable oversight and mechanistic interpretability mature",
+        "unlocks": "the ability to align systems whose outputs humans cannot easily check."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised audits, licences and incident reporting",
+        "unlocks": "accountability and public trust across developers and jurisdictions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "alignment techniques for systems beyond human-level capability",
+        "unlocks": "a credible path to safe deployment of advanced or general AI, if achieved."
+      }
+    ]
   }
 }

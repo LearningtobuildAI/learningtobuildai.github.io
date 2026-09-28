@@ -29,5 +29,159 @@
         "def": "A subset of AI that involves algorithms that can learn from and make predictions on data without being explicitly programmed."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception",
+        "role": "senses the workspace and identifies objects, poses and people.",
+        "parts": [
+          "RGB-D cameras and LiDAR",
+          "tactile and force sensors",
+          "object detection and 6D pose estimation algorithms"
+        ]
+      },
+      {
+        "name": "Planning and control",
+        "role": "turns goals into safe, precise motion.",
+        "parts": [
+          "sampling-based motion planners",
+          "model predictive control",
+          "reinforcement-learned policies"
+        ]
+      },
+      {
+        "name": "Manipulation",
+        "role": "physically interacts with objects.",
+        "parts": [
+          "robotic arms with 6–7 degrees of freedom",
+          "grippers (parallel-jaw, vacuum, soft)",
+          "impedance and force control"
+        ]
+      },
+      {
+        "name": "Learning pipeline",
+        "role": "trains and continuously improves behaviours.",
+        "parts": [
+          "physics simulators with domain randomisation",
+          "human demonstration data",
+          "GPU training clusters",
+          "sim-to-real transfer methods"
+        ]
+      },
+      {
+        "name": "Compute and middleware",
+        "role": "runs AI models in real time on the robot.",
+        "parts": [
+          "onboard GPUs or edge accelerators",
+          "ROS 2 middleware",
+          "real-time operating system"
+        ]
+      },
+      {
+        "name": "Safety and human interaction",
+        "role": "allows operation alongside people.",
+        "parts": [
+          "safety-rated scanners and light curtains",
+          "speed and force limiting (e.g. below 140 N contact force)",
+          "emergency stop circuits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Analyse the task",
+        "detail": "Define the exact manipulation or navigation job, its variability, cycle time and required accuracy."
+      },
+      {
+        "title": "Collect data",
+        "detail": "Record human teleoperation demonstrations and generate synthetic scenes in simulation, covering many object poses and lighting conditions."
+      },
+      {
+        "title": "Train models",
+        "detail": "Use GPUs to train neural networks for perception, grasping and control policies, often starting from a pretrained vision backbone."
+      },
+      {
+        "title": "Validate in simulation",
+        "detail": "Test policies in a physics simulator with randomised friction, mass and sensor noise to expose weaknesses before touching hardware."
+      },
+      {
+        "title": "Transfer to the real robot",
+        "detail": "Fine-tune with a small amount of real-world data and adjust for the sim-to-real gap, especially for contact-rich tasks."
+      },
+      {
+        "title": "Integrate the stack",
+        "detail": "Connect perception, planning, control and safety systems on the robot's onboard compute, ensuring real-time performance."
+      },
+      {
+        "title": "Certify safety",
+        "detail": "Verify force limits, stopping distances and human detection against collaborative robot standards before deployment."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Run in production, log failures and edge cases, and retrain models periodically to improve reliability."
+      },
+      {
+        "title": "Share fleet learning",
+        "detail": "Aggregate data across many robots so that improvements on one machine benefit the whole fleet."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep learning",
+        "status": "exists",
+        "why": "provides the vision, grasping and policy models that make robots adaptive."
+      },
+      {
+        "tech": "Physics simulation platforms",
+        "status": "exists",
+        "why": "allow fast, safe training and testing without wearing out real hardware."
+      },
+      {
+        "tech": "GPU compute",
+        "status": "exists",
+        "why": "needed both to train large models and to run them in real time on the robot."
+      },
+      {
+        "tech": "Collaborative robot hardware",
+        "status": "exists",
+        "why": "supplies precise, force-limited arms and sensors that can work near people."
+      },
+      {
+        "tech": "Sim-to-real transfer methods",
+        "status": "partial",
+        "why": "still unreliable for contact-rich tasks like inserting a cable or folding cloth."
+      },
+      {
+        "tech": "General-purpose robot foundation models",
+        "status": "partial",
+        "why": "emerging but not yet dependable enough for unsupervised commercial operation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI in structured tasks such as bin picking, welding and inspection",
+        "unlocks": "higher throughput and less reprogramming in factories and warehouses."
+      },
+      {
+        "stage": "Next",
+        "milestone": "manipulation skills learned from large demonstration datasets",
+        "unlocks": "robots that can handle new objects with minimal retraining."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mobile manipulators operating in unstructured spaces like hospitals and farms",
+        "unlocks": "automation outside fixed cells, moving between tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous humanoid robots with fleet-wide learning",
+        "unlocks": "general-purpose assistance for many manual tasks, if safety and reliability are proven."
+      }
+    ]
   }
 }

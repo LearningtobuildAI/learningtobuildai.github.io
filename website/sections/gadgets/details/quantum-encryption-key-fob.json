@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum entropy source",
+        "role": "generates raw random bits from inherently unpredictable quantum events.",
+        "parts": [
+          "attenuated laser or spontaneous parametric down-conversion source",
+          "optical waveguide and beam splitter",
+          "phase or polarization modulator"
+        ]
+      },
+      {
+        "name": "Single-photon detection",
+        "role": "measures photon states to extract randomness and detect eavesdropping.",
+        "parts": [
+          "single-photon avalanche diodes (SPADs)",
+          "superconducting nanowire detectors for higher performance",
+          "time-to-digital converter"
+        ]
+      },
+      {
+        "name": "Key processing unit",
+        "role": "runs the key-exchange protocol and turns raw bits into secure keys.",
+        "parts": [
+          "low-power microcontroller or FPGA",
+          "cryptographic accelerator",
+          "firmware implementing BB84 or similar"
+        ]
+      },
+      {
+        "name": "Secure key storage",
+        "role": "holds generated keys where they cannot be read or copied.",
+        "parts": [
+          "tamper-resistant memory",
+          "hardware security module (HSM) logic",
+          "battery-backed RAM"
+        ]
+      },
+      {
+        "name": "Quantum and classical interfaces",
+        "role": "connects to a peer for quantum transmission and classical reconciliation.",
+        "parts": [
+          "optical port (fiber or free-space)",
+          "USB or Bluetooth for classical channel",
+          "protocol stack"
+        ]
+      },
+      {
+        "name": "Tamper protection",
+        "role": "detects physical intrusion and erases keys instantly.",
+        "parts": [
+          "mesh sensors",
+          "epoxy encapsulation",
+          "zeroization circuit"
+        ]
+      },
+      {
+        "name": "Power and enclosure",
+        "role": "makes the device portable and usable.",
+        "parts": [
+          "rechargeable battery",
+          "buttons and small display",
+          "rugged casing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the photonic chip",
+        "detail": "Lay out waveguides, splitters and modulators on a silicon photonics platform to route single photons with minimal loss."
+      },
+      {
+        "title": "Fabricate source and detectors",
+        "detail": "Integrate a compact photon source and single-photon detectors on or beside the chip, using SPADs for a handheld form factor."
+      },
+      {
+        "title": "Assemble the quantum random number generator",
+        "detail": "Measure quantum noise such as photon arrival time or vacuum fluctuations, digitize it, and produce raw random bits."
+      },
+      {
+        "title": "Implement the key-exchange protocol",
+        "detail": "Program the processor to run BB84: choose bases, sift, correct errors, and apply privacy amplification to distill a secret key."
+      },
+      {
+        "title": "Build secure storage and tamper layer",
+        "detail": "Embed the processor and memory in a tamper-responsive enclosure that zeroizes keys on intrusion."
+      },
+      {
+        "title": "Integrate interfaces and power",
+        "detail": "Add an optical port for the quantum channel, a USB or Bluetooth link for classical messages, and a battery with a simple user interface."
+      },
+      {
+        "title": "Test and certify",
+        "detail": "Verify randomness with statistical test suites, measure key rate and quantum bit error rate, and validate resistance to side-channel attacks."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon sources and detectors",
+        "status": "partial",
+        "why": "commercial detectors exist, but chip-scale versions efficient enough for a key-fob are still maturing."
+      },
+      {
+        "tech": "Quantum random number generation",
+        "status": "exists",
+        "why": "commercial QRNG chips already produce certified randomness from quantum processes."
+      },
+      {
+        "tech": "Quantum key distribution",
+        "status": "partial",
+        "why": "deployed in metro networks and dedicated links, but not yet at mass scale or in consumer devices."
+      },
+      {
+        "tech": "Integrated quantum photonics",
+        "status": "partial",
+        "why": "silicon photonics can guide and manipulate photons, but loss and detector integration remain challenges."
+      },
+      {
+        "tech": "Tamper-resistant hardware",
+        "status": "exists",
+        "why": "hardware security modules already protect keys in payment and government systems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "QRNG chips in servers and QKD links between data centers",
+        "unlocks": "quantum-safe key exchange for high-value fixed links."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QKD endpoints integrated into network equipment",
+        "unlocks": "lower cost and smaller footprint for metro and campus networks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid devices combining QKD with post-quantum cryptography",
+        "unlocks": "defense in depth if either method is later compromised."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "portable quantum-safe communication devices for field use",
+        "unlocks": "secure links for mobile users and remote infrastructure."
+      }
+    ]
+  }
+}

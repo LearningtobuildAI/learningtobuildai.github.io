@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "produces the quantum states that carry the key.",
+        "parts": [
+          "attenuated laser (weak coherent pulses, the common case)",
+          "entangled photon-pair source or chip-based source",
+          "polarisation, phase or time-bin encoder"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons without letting anyone copy them unnoticed.",
+        "parts": [
+          "dark optical fibre at telecom wavelengths",
+          "wavelength-division multiplexing gear",
+          "free-space or satellite optical link"
+        ]
+      },
+      {
+        "name": "Single-photon detection",
+        "role": "registers individual photons with precise timing.",
+        "parts": [
+          "superconducting nanowire detectors or avalanche photodiodes",
+          "time-tagging electronics",
+          "cryogenics for superconducting detectors"
+        ]
+      },
+      {
+        "name": "Classical post-processing",
+        "role": "turns raw detections into a short, secret key.",
+        "parts": [
+          "basis sifting software",
+          "error-correction (Cascade or LDPC)",
+          "privacy amplification by universal hashing",
+          "authenticated classical channel"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "stores keys and feeds them to encryption equipment.",
+        "parts": [
+          "key store",
+          "interfaces to AES or one-time-pad encryptors",
+          "monitoring and audit logs"
+        ]
+      },
+      {
+        "name": "Trusted relay nodes",
+        "role": "extend range beyond what one fibre span allows, at the cost of trusting each node.",
+        "parts": [
+          "back-to-back receivers and transmitters",
+          "key store at each site",
+          "physically secured equipment room"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the protocol",
+        "detail": "Most deployments use BB84 prepare-and-measure with decoy pulses; entanglement-based variants (E91, BBM92) are used where a source can be shared."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "A laser is attenuated to well below one photon per pulse on average, or a nonlinear crystal generates entangled pairs; the state is encoded in polarisation, phase or time bin."
+      },
+      {
+        "title": "Lay the quantum channel",
+        "detail": "Dedicated dark fibre at 1550 nm is installed and kept free of strong classical traffic where possible, with polarisation or phase drift compensated actively."
+      },
+      {
+        "title": "Install detectors",
+        "detail": "Single-photon detectors are mounted at the far end, shielded and cooled, with timing electronics tuned to reject noise."
+      },
+      {
+        "title": "Implement post-processing",
+        "detail": "Software sifts matching bases, corrects errors and compresses the remaining bits by hashing so an eavesdropper's partial knowledge is squeezed out."
+      },
+      {
+        "title": "Authenticate the classical channel",
+        "detail": "Each link needs an initial pre-shared secret or certificate, because without it a man-in-the-middle can impersonate the receiver."
+      },
+      {
+        "title": "Integrate with encryption",
+        "detail": "The distilled keys are delivered to AES or one-time-pad encryptors carrying real traffic, with key refresh rates matched to demand."
+      },
+      {
+        "title": "Extend with relays or repeaters",
+        "detail": "Beyond roughly a few hundred kilometres of fibre, signals are either regenerated at trusted nodes or, in research, held in quantum memories."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-noise single-photon detectors",
+        "status": "exists",
+        "why": "without them the raw key rate collapses and errors swamp the link."
+      },
+      {
+        "tech": "Low-loss telecom fibre and stable optics",
+        "status": "exists",
+        "why": "fibre loss caps the distance a photon can travel before it is simply gone."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "QKD only secures the key; the reconciliation channel must already be trustworthy."
+      },
+      {
+        "tech": "Quantum repeaters and memories",
+        "status": "missing",
+        "why": "they are the only way to beat fibre loss without trusting intermediate nodes."
+      },
+      {
+        "tech": "Standardised interfaces and certification",
+        "status": "partial",
+        "why": "buyers need proven interoperability and security claims before large-scale rollout."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro QKD links and trusted-node backbones, plus satellite distribution demonstrated (Micius, 2016; the Beijing–Shanghai trunk line, 2017)",
+        "unlocks": "key distribution between fixed sites where fibre exists and relays can be secured."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QKD modules and published standards from bodies such as ETSI",
+        "unlocks": "cheaper links that can plug into ordinary network equipment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "device-independent and measurement-device-independent protocols in the field",
+        "unlocks": "security that no longer rests on trusting the hardware's calibration."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters linking many nodes into an entanglement network",
+        "unlocks": "long-distance key distribution without trusted relays — though post-quantum cryptography, standardised in 2024, will likely cover most near-term needs first."
+      }
+    ]
+  }
+}

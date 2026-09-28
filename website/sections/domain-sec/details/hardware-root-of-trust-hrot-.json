@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Immutable boot ROM",
+        "role": "the first code that runs; it verifies the next stage before handing over control.",
+        "parts": [
+          "mask-programmed read-only memory",
+          "hash of the trusted public key",
+          "signature verification logic"
+        ]
+      },
+      {
+        "name": "Key store",
+        "role": "holds device-unique private keys and secrets that never leave the chip.",
+        "parts": [
+          "one-time-programmable fuses",
+          "protected non-volatile memory",
+          "key-derivation logic"
+        ]
+      },
+      {
+        "name": "Cryptographic engine",
+        "role": "performs encryption, signing, hashing and random-number generation.",
+        "parts": [
+          "AES and SHA accelerators",
+          "elliptic-curve and RSA engines",
+          "true random-number generator"
+        ]
+      },
+      {
+        "name": "Secure processor or state machine",
+        "role": "runs the trusted functions in isolation from the main CPU.",
+        "parts": [
+          "dedicated core or control logic",
+          "memory protection",
+          "secure bus"
+        ]
+      },
+      {
+        "name": "Tamper detection and response",
+        "role": "senses physical attacks and wipes secrets if the chip is opened or probed.",
+        "parts": [
+          "metal shield mesh",
+          "voltage and light sensors",
+          "zeroisation circuit"
+        ]
+      },
+      {
+        "name": "Host interface",
+        "role": "lets the main system talk to the root of trust.",
+        "parts": [
+          "SPI, I²C or PCIe interface",
+          "command parser"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the threat model",
+        "detail": "Decide which attacks the chip must resist — firmware tampering, key extraction, rollback — and write the security requirements."
+      },
+      {
+        "title": "Design the digital logic",
+        "detail": "Engineers write the register-transfer level code for the cryptographic engines, boot ROM and secure state machine."
+      },
+      {
+        "title": "Verify formally and by simulation",
+        "detail": "Mathematical proofs and millions of simulated cycles check that the boot sequence and crypto operations cannot be bypassed."
+      },
+      {
+        "title": "Fabricate the silicon",
+        "detail": "The design is taped out to a CMOS foundry, where transistors and metal layers are built on a silicon wafer."
+      },
+      {
+        "title": "Provision secrets",
+        "detail": "In a secure facility, unique keys and certificates are generated and written into one-time-programmable fuses; the chips are then locked."
+      },
+      {
+        "title": "Package with anti-tamper features",
+        "detail": "The die is covered by a shield mesh and sensors, then sealed so that opening the package erases the keys."
+      },
+      {
+        "title": "Certify",
+        "detail": "Independent labs test the chip against standards such as FIPS 140 or Common Criteria before it can be sold for secure use."
+      },
+      {
+        "title": "Integrate into the system",
+        "detail": "Firmware and operating-system boot code are written to ask the root of trust to verify each stage and to sign device identities."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mature CMOS semiconductor manufacturing",
+        "status": "exists",
+        "why": "the root of trust must be a physical chip that is hard to clone or modify."
+      },
+      {
+        "tech": "Standard cryptographic algorithms",
+        "status": "exists",
+        "why": "AES, SHA and elliptic-curve cryptography are the building blocks the chip implements."
+      },
+      {
+        "tech": "Secure key provisioning and supply chain",
+        "status": "exists",
+        "why": "unique keys must be injected without being copied or stolen during manufacturing."
+      },
+      {
+        "tech": "Tamper-resistant packaging",
+        "status": "exists",
+        "why": "physical access to the chip must not reveal its secrets."
+      },
+      {
+        "tech": "Hardware random-number generation",
+        "status": "exists",
+        "why": "strong keys require unpredictable numbers from a physical source, not software."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "partial",
+        "why": "future quantum computers could break today's public-key algorithms, so new ones must be built into hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "TPM 2.0 and secure elements embedded in servers, PCs and phones",
+        "unlocks": "verified boot, disk encryption and device identity at scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum algorithms implemented in hardware roots of trust",
+        "unlocks": "long-lived devices that stay secure against future quantum attacks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "confidential computing with hardware attestation",
+        "unlocks": "cloud workloads that can prove to a remote party exactly what code is running."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ubiquitous per-device identity across industrial and consumer systems",
+        "unlocks": "automatic, verifiable trust between machines without central brokers."
+      }
+    ]
+  }
+}

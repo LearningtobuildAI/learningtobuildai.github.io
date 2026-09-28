@@ -31,5 +31,160 @@
         "def": "The point at which all mass of an object can be considered to be concentrated for the purpose of understanding its motion or balance."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "State estimation",
+        "role": "works out where the body is, how it is tilted and where the feet are touching.",
+        "parts": [
+          "inertial measurement unit (1 kHz)",
+          "joint encoders",
+          "foot force/torque sensors",
+          "depth camera or LiDAR",
+          "sensor-fusion filter"
+        ]
+      },
+      {
+        "name": "Terrain and contact model",
+        "role": "predicts where the next foot can land and how much it will grip.",
+        "parts": [
+          "local height map",
+          "footstep planner",
+          "slip and friction estimate",
+          "obstacle grid"
+        ]
+      },
+      {
+        "name": "Centroidal planner (MPC)",
+        "role": "re-plans the centre of mass and foot forces over a short horizon, hundreds of times a second.",
+        "parts": [
+          "single-rigid-body dynamics model",
+          "quadratic program solver",
+          "friction-cone and zero-moment-point constraints",
+          "contact schedule"
+        ]
+      },
+      {
+        "name": "Whole-body controller",
+        "role": "converts the plan into torque commands at every joint.",
+        "parts": [
+          "inverse dynamics or task-priority QP",
+          "swing-leg trajectory generator",
+          "joint torque limits",
+          "actuator command bus"
+        ]
+      },
+      {
+        "name": "Actuators and limbs",
+        "role": "deliver large, fast, back-drivable torque at the ankle, knee and hip.",
+        "parts": [
+          "quasi-direct-drive motors",
+          "low-ratio planetary or harmonic gears",
+          "torque sensors",
+          "lightweight carbon-fibre or aluminium links"
+        ]
+      },
+      {
+        "name": "Reflex and safety layer",
+        "role": "catches the pushes and trips that the slow planner cannot.",
+        "parts": [
+          "capture-point step recovery",
+          "swing-leg retraction",
+          "fall-safe crouch",
+          "emergency stop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the body",
+        "detail": "Measure every link's mass and inertia and write the equations of motion, including contact with the ground, into a physics simulator such as MuJoCo."
+      },
+      {
+        "title": "Instrument the machine",
+        "detail": "Fit an inertial measurement unit on the pelvis, encoders at each joint and force sensors in the feet, then calibrate them against each other."
+      },
+      {
+        "title": "Build the state estimator",
+        "detail": "Fuse inertial data with leg kinematics so the robot knows its pelvis velocity and foot positions; handle the sharp impact spikes when a foot lands."
+      },
+      {
+        "title": "Write the balance planner",
+        "detail": "Approximate the robot as a point mass on an extendable leg, predict its motion 0.5–1 s ahead, and solve a constrained optimisation each control tick for the centre-of-mass acceleration and foot forces."
+      },
+      {
+        "title": "Add the whole-body controller",
+        "detail": "Turn the plan into joint torques by inverse dynamics or a task-priority quadratic program, respecting torque, joint-limit and self-collision constraints."
+      },
+      {
+        "title": "Grow the reflex layer",
+        "detail": "Add fast heuristics — capture-point stepping, swing-leg retraction — that act within one or two ticks when the robot is pushed."
+      },
+      {
+        "title": "Train and validate in simulation",
+        "detail": "Run millions of simulated steps, randomising mass, friction, latency and sensor noise, so the controller survives conditions it was not tuned for."
+      },
+      {
+        "title": "Test in escalating stages",
+        "detail": "Standing, then push recovery on a harness, then flat-floor walking, then ramps, rubble and stairs, always with an overhead gantry or soft floor as a fallback."
+      },
+      {
+        "title": "Deploy with limits",
+        "detail": "Derate torque and speed in the field, log every contact event, and keep a remote operator able to halt the robot."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density, force-controllable actuators",
+        "status": "exists",
+        "why": "balance needs joints that can be commanded in torque and back-driven, not just positioned."
+      },
+      {
+        "tech": "Real-time compute",
+        "status": "exists",
+        "why": "the optimisation and controller must finish in well under one control tick, a few hundred to a few thousand times per second."
+      },
+      {
+        "tech": "Cheap inertial and force sensing",
+        "status": "exists",
+        "why": "without reliable tilt and foot-load data the estimator drifts and the robot falls."
+      },
+      {
+        "tech": "Fast physics simulation and sim-to-real transfer",
+        "status": "partial",
+        "why": "most control policies are learned or tuned in simulation and still suffer from the reality gap."
+      },
+      {
+        "tech": "Energy storage light enough to carry",
+        "status": "partial",
+        "why": "untethered operation for a full shift is still limited by battery mass."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "humanoids in warehouses doing structured tote and kitting tasks on flat floors",
+        "unlocks": "early commercial value where the ground is predictable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable balance on gravel, slopes, stairs and after being pushed by a person",
+        "unlocks": "construction sites, plant rooms and last-metre delivery."
+      },
+      {
+        "stage": "Next",
+        "milestone": "learned policies combined with model-based MPC",
+        "unlocks": "recovery from slips and unseen terrain without hand-written rules."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fleet-scale reliability and lower unit cost",
+        "unlocks": "many robots per site, maintained like other industrial machinery."
+      }
+    ]
   }
 }

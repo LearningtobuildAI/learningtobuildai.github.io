@@ -30,5 +30,156 @@
         "def": "Frameworks that enable the breakdown of complex tasks into simpler sub-tasks for easier management and execution by AI agents."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reasoning core",
+        "role": "the model that actually reasons; everything else routes work to it.",
+        "parts": [
+          "large language model backbone",
+          "planning and reflection prompts",
+          "context window budget"
+        ]
+      },
+      {
+        "name": "Planner / decomposer",
+        "role": "turns one goal into an ordered set of tasks with dependencies, and re-plans when a task fails.",
+        "parts": [
+          "goal graph",
+          "dependency resolver",
+          "re-planning loop",
+          "criteria for 'done'"
+        ]
+      },
+      {
+        "name": "Worker agents and tools",
+        "role": "execute narrow tasks — searching, querying databases, writing or running code, browsing.",
+        "parts": [
+          "sub-agents with scoped roles",
+          "tool or function definitions",
+          "sandboxed execution environment",
+          "scoped credentials"
+        ]
+      },
+      {
+        "name": "Shared memory",
+        "role": "lets agents exchange results without every agent carrying the whole transcript.",
+        "parts": [
+          "scratchpad or blackboard",
+          "vector store",
+          "summarisation / compaction"
+        ]
+      },
+      {
+        "name": "Verification layer",
+        "role": "catches errors before they propagate up the hierarchy.",
+        "parts": [
+          "deterministic tests and assertions",
+          "critic agents",
+          "retry and escalation rules"
+        ]
+      },
+      {
+        "name": "Governance and observability",
+        "role": "keeps cost, permissions and accountability under control.",
+        "parts": [
+          "token and cost budgets",
+          "audit logs and traces",
+          "human approval gates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a bounded workflow",
+        "detail": "Start where output quality is checkable — literature synthesis, a class of code changes, ticket triage — and write down what 'done' means and how it is scored."
+      },
+      {
+        "title": "Define typed handoffs",
+        "detail": "Every task passed between agents carries a schema: inputs, expected outputs, budget, deadline. Free-text handoffs are where these systems quietly fail."
+      },
+      {
+        "title": "Build the planner",
+        "detail": "A strong model decomposes the goal into a dependency graph, assigns each node to a worker role, and re-plans rather than blindly continuing when a node fails."
+      },
+      {
+        "title": "Wrap tools and sandboxes",
+        "detail": "Each worker gets a narrow toolset — search, database read, code interpreter, browser — with credentials limited to its role and no access to production secrets."
+      },
+      {
+        "title": "Add a shared workspace",
+        "detail": "A blackboard or vector store holds intermediate results, with summarisation so long task chains do not exhaust the context window."
+      },
+      {
+        "title": "Insert critics and checks",
+        "detail": "Use deterministic tests wherever the output can be tested, model-based critics where it cannot; disagreements trigger a retry, a different approach, or escalation."
+      },
+      {
+        "title": "Cap and log everything",
+        "detail": "Set token, cost and step limits per task, record full traces of every message and tool call, and keep a human escalation path for anything irreversible."
+      },
+      {
+        "title": "Evaluate before widening scope",
+        "detail": "Measure end-to-end success rate and cost per completed task on held-out work, and watch how errors compound as chains get longer; expand only while those hold."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable long-horizon reasoning",
+        "status": "partial",
+        "why": "current models drift and compound small errors over many steps; orchestration is mostly a way of containing that."
+      },
+      {
+        "tech": "Tool use and sandboxed code execution",
+        "status": "exists",
+        "why": "agents need to act on systems, not just produce text."
+      },
+      {
+        "tech": "Retrieval and long-context memory",
+        "status": "exists",
+        "why": "state and intermediate results must survive across dozens of agents and steps."
+      },
+      {
+        "tech": "Standard agent-to-tool protocols",
+        "status": "partial",
+        "why": "emerging conventions for connecting models to tools reduce bespoke integration work for each deployment."
+      },
+      {
+        "tech": "Benchmarks for multi-step agent tasks",
+        "status": "partial",
+        "why": "existing agent benchmarks cover single workflows; almost nothing measures coordinated work at department scale."
+      },
+      {
+        "tech": "Cheap, fast inference",
+        "status": "exists",
+        "why": "a hierarchy multiplies token use several-fold against a single assistant."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single assistants with tools handling bounded tasks",
+        "unlocks": "organisations learn which work can be delegated and how to check it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervisor-plus-workers systems in production for narrow workflows",
+        "unlocks": "research briefs, scoped code changes and ticket routing handled with one human reviewer."
+      },
+      {
+        "stage": "Next",
+        "milestone": "open protocols and agent registries let components from different vendors interoperate",
+        "unlocks": "specialised agents can be bought and swapped instead of built in-house."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "humans set objectives and constraints while agents own execution and reporting",
+        "unlocks": "middle-management work shifts from doing tasks to specifying, auditing and intervening."
+      }
+    ]
   }
 }

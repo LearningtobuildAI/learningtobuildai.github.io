@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Radiation-hardened electronics and sensors",
+        "role": "keep working inside intense gamma and neutron fields.",
+        "parts": [
+          "shielded camera and lighting modules",
+          "hardened motor drives and controllers",
+          "dosimeters and temperature sensors"
+        ]
+      },
+      {
+        "name": "Mobility platform",
+        "role": "move over uneven floors, steps and debris without getting stuck.",
+        "parts": [
+          "tracked or wheeled chassis",
+          "sealed motors and gearboxes",
+          "tether or battery power"
+        ]
+      },
+      {
+        "name": "Manipulators and tooling",
+        "role": "grasp, cut, drill and sort radioactive components.",
+        "parts": [
+          "hydraulic or electric arms",
+          "quick-change tool heads",
+          "grippers, shears and saws"
+        ]
+      },
+      {
+        "name": "Teleoperation and control",
+        "role": "let a human operator work from a safe distance with enough feedback to be precise.",
+        "parts": [
+          "master arms with force feedback",
+          "control console and displays",
+          "low-latency communication link"
+        ]
+      },
+      {
+        "name": "Shielding and contamination control",
+        "role": "protect the robot's own electronics and stop radioactive dust spreading.",
+        "parts": [
+          "lead or tungsten shielding",
+          "sealed enclosures and bellows",
+          "filtered ventilation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Survey and dose-map the cell",
+        "detail": "Use existing cameras, LiDAR and dosimeters to build a 3D model and radiation map of the space the robot will enter."
+      },
+      {
+        "title": "Choose radiation-tolerant components",
+        "detail": "Select motors, cameras and chips rated for the expected total dose, or plan to shield them; standard electronics fail within hours in high fields."
+      },
+      {
+        "title": "Build the chassis",
+        "detail": "Fabricate a tracked or legged base from steel and aluminium, with sealed bearings and cable routing that can be decontaminated."
+      },
+      {
+        "title": "Integrate arms and tools",
+        "detail": "Fit manipulators with quick-change couplings so the robot can switch between grippers, cutting tools and vacuum heads."
+      },
+      {
+        "title": "Install electronics and shielding",
+        "detail": "Place control electronics inside lead or tungsten boxes, run cables through shielded conduits, and add cameras behind lead glass."
+      },
+      {
+        "title": "Write the control software",
+        "detail": "Implement teleoperation with force feedback, plus collision avoidance and simple autonomy for repetitive cuts."
+      },
+      {
+        "title": "Test in a mock-up",
+        "detail": "Rehearse every task in a full-size non-radioactive replica of the cell, then dose-test critical parts in a gamma facility."
+      },
+      {
+        "title": "Deploy and operate",
+        "detail": "Lower or drive the robot into the cell, work remotely in shifts, and monitor its dose and health."
+      },
+      {
+        "title": "Recover and decontaminate",
+        "detail": "Retrieve the robot, wash or bag it, and either reuse it after decontamination or dispose of it as radioactive waste."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Radiation-hardened electronics",
+        "status": "partial",
+        "why": "semiconductor devices degrade and fail under gamma and neutron dose; hardening adds cost and reduces performance."
+      },
+      {
+        "tech": "Low-latency teleoperation",
+        "status": "exists",
+        "why": "haptic feedback and precise control need round-trip delays under about 50 milliseconds; fibre or shielded cable works."
+      },
+      {
+        "tech": "Radiation-tolerant vision",
+        "status": "partial",
+        "why": "camera sensors darken and lenses brown; shielded cameras and lighting are bulky and still degrade."
+      },
+      {
+        "tech": "Remote cutting and handling tools",
+        "status": "exists",
+        "why": "hydraulic shears, saws and lasers have been used in nuclear plants for decades."
+      },
+      {
+        "tech": "Simulation and digital twins",
+        "status": "exists",
+        "why": "operators need to plan and train without entering the cell; physics engines model debris and collisions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "teleoperated robots perform specific tasks inside damaged or highly radioactive cells, often custom-built for one job",
+        "unlocks": "lower radiation dose to human workers and access to spaces people cannot enter."
+      },
+      {
+        "stage": "Next",
+        "milestone": "semi-autonomous robots that perform repetitive cutting and sorting with one operator supervising several machines",
+        "unlocks": "faster dismantling and lower cost per tonne."
+      },
+      {
+        "stage": "Next",
+        "milestone": "modular robot systems that can be airlifted or lowered through narrow openings and decontaminate themselves",
+        "unlocks": "reuse of robots across sites instead of one-off builds."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous decommissioning for standard reactor types",
+        "unlocks": "routine, safer and cheaper removal of old reactors."
+      }
+    ]
+  }
+}

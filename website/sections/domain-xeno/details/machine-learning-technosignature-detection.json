@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Receiver and spectrometer",
+        "role": "turns the telescope's voltage stream into high-resolution time–frequency power spectra.",
+        "parts": [
+          "wideband feed and low-noise amplifier",
+          "digitizer",
+          "polyphase filterbank or FFT channelizer",
+          "filterbank-format data files"
+        ]
+      },
+      {
+        "name": "Interference excision",
+        "role": "removes obvious terrestrial transmitters before any search begins.",
+        "parts": [
+          "bandpass and gain calibration",
+          "masks for known satellite, radar and GPS bands",
+          "flagging of saturated channels"
+        ]
+      },
+      {
+        "name": "Candidate search",
+        "role": "classical narrowband drift search that finds peaks with a near-constant drift rate.",
+        "parts": [
+          "dedoppler / drift-rate search (turboSETI-style)",
+          "signal-to-noise threshold, often around 10",
+          "candidate table with frequency, drift rate and time"
+        ]
+      },
+      {
+        "name": "Training-set generator",
+        "role": "creates labelled examples, since no confirmed technosignature exists to learn from.",
+        "parts": [
+          "synthetic drifting-carrier injector",
+          "grid of signal-to-noise ratios and drift rates",
+          "labels for real interference",
+          "augmentation of spectrogram patches"
+        ]
+      },
+      {
+        "name": "Classifier",
+        "role": "ranks spectrogram patches as signal-like or interference-like.",
+        "parts": [
+          "spectrogram encoder",
+          "convolutional or transformer layers",
+          "classification head",
+          "GPU training and inference cluster"
+        ]
+      },
+      {
+        "name": "Cadence and RFI validator",
+        "role": "tests whether a candidate behaves like something on the sky rather than something local.",
+        "parts": [
+          "ON-source / OFF-source comparison",
+          "repeat-visit persistence checks",
+          "per-beam coincidence tests",
+          "RFI database cross-match"
+        ]
+      },
+      {
+        "name": "Human review and follow-up",
+        "role": "astronomers inspect the top-ranked candidates and re-observe the best ones.",
+        "parts": [
+          "candidate ranking interface",
+          "scheduling of confirming observations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Record the sky",
+        "detail": "Observe target stars in a cadence that alternates ON-source and OFF-source pointings over hundreds of megahertz to a few gigahertz, saving channelized voltages or spectra at high time and frequency resolution."
+      },
+      {
+        "title": "Form dynamic spectra",
+        "detail": "Convert the raw data into calibrated dynamic spectra — frequency on one axis, time on the other — correcting the bandpass and flagging saturated or transmitter-dominated channels."
+      },
+      {
+        "title": "Run a classical search first",
+        "detail": "A dedoppler drift search finds narrowband peaks, allowing for drift rates of a few hertz per second caused by the Doppler shift of a moving transmitter. This produces a candidate list that can run into the millions per observation."
+      },
+      {
+        "title": "Inject synthetic signals",
+        "detail": "Add artificial drifting carriers of known strength and drift rate into real recordings, and label them alongside patches of genuine terrestrial interference. This builds the balanced training set that a real technosignature would otherwise provide."
+      },
+      {
+        "title": "Train and validate the network",
+        "detail": "Train a convolutional or transformer model on spectrogram patches, holding out data for validation and always scoring the classical algorithm on the same set as a control, so any gain from machine learning is measurable."
+      },
+      {
+        "title": "Score live candidates",
+        "detail": "Apply the trained model to new observations, re-ranking the candidate list so that signal-like patches rise to the top and interference-like ones drop away, cutting the volume a human must inspect."
+      },
+      {
+        "title": "Check the observing cadence",
+        "detail": "A genuine sky signal should appear when the telescope points at the target and vanish when it points away, and should recur at the same drift rate on later visits. Interference usually does neither. Failing this test eliminates most remaining candidates."
+      },
+      {
+        "title": "Review and re-observe",
+        "detail": "Astronomers examine the surviving candidates and, for the most promising, request confirming observations with other telescopes or interferometers to localise the source and rule out local interference."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wideband receivers and high-resolution spectrometers",
+        "status": "exists",
+        "why": "narrowband searches need fine frequency channels over wide bands, which is what modern radio telescope backends provide."
+      },
+      {
+        "tech": "Petabyte-scale storage and GPU compute",
+        "status": "exists",
+        "why": "spectrogram data from long surveys is too large to review manually and is what makes learned classifiers worthwhile."
+      },
+      {
+        "tech": "Classical narrowband drift-search software",
+        "status": "exists",
+        "why": "it supplies the candidate list the model re-ranks and the baseline against which any improvement is judged."
+      },
+      {
+        "tech": "Labelled training data",
+        "status": "partial",
+        "why": "positively labelled examples must be synthesised or borrowed from interference, because no extraterrestrial technosignature has ever been confirmed."
+      },
+      {
+        "tech": "Multi-telescope and interferometric confirmation",
+        "status": "exists",
+        "why": "only a second instrument, or an interferometer that gives a sky position, can show a candidate is not local interference."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "learned classifiers re-ranking candidates from surveys of thousands of nearby stars, as published from Green Bank Telescope and FAST data",
+        "unlocks": "human review effort focused on a small fraction of candidates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time inference at the telescope, so low-value data is discarded before it is stored",
+        "unlocks": "surveys of the galactic centre and nearby galaxies at volumes today's pipelines cannot handle."
+      },
+      {
+        "stage": "Next",
+        "milestone": "common candidate formats and automated alerts that trigger follow-up on other telescopes within hours",
+        "unlocks": "confirming or eliminating a candidate before interference conditions or the source's position change."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commensal machine-learning searches running continuously on next-generation arrays and cross-matched with optical and infrared surveys",
+        "unlocks": "a search that covers the sky rather than a list of targets, with multi-wavelength evidence for anything found."
+      }
+    ]
+  }
+}

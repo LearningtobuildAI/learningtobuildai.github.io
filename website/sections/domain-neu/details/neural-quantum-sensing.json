@@ -34,5 +34,162 @@
         "def": "A training technique in which individuals learn to control their brain activity through real-time feedback, often used for therapeutic purposes or enhancing cognitive performance."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Vapour-cell sensor",
+        "role": "the sensing element: a small glass cell of alkali-metal vapour whose atomic spins tilt and precess in the faint magnetic field produced by neural currents.",
+        "parts": [
+          "glass cell",
+          "rubidium or caesium",
+          "anti-relaxation wall coating",
+          "buffer gas"
+        ]
+      },
+      {
+        "name": "Laser optics",
+        "role": "circularly polarised laser light aligns the atomic spins and reads out their precession.",
+        "parts": [
+          "diode laser",
+          "polariser",
+          "beam splitters",
+          "photodetectors"
+        ]
+      },
+      {
+        "name": "Magnetic shielding and noise cancellation",
+        "role": "the brain's fields are around a billionth of Earth's field, so background magnetism must be suppressed.",
+        "parts": [
+          "magnetically shielded room",
+          "degaussing coils",
+          "reference magnetometers",
+          "active field cancellation"
+        ]
+      },
+      {
+        "name": "Sensor array and helmet",
+        "role": "tens to hundreds of sensors are arranged close to the scalp, which is what makes the signal large enough to use.",
+        "parts": [
+          "flexible sensor mounts",
+          "low-noise readout electronics",
+          "3-D printed or adjustable helmet shell"
+        ]
+      },
+      {
+        "name": "Cryogenic alternative",
+        "role": "the older route: superconducting quantum interference devices, which need liquid-helium cooling.",
+        "parts": [
+          "SQUID sensors",
+          "helium cryostat",
+          "fixed helmet"
+        ]
+      },
+      {
+        "name": "Source reconstruction",
+        "role": "turns the measured field pattern into an estimate of where in the brain the activity came from.",
+        "parts": [
+          "head-model software",
+          "forward and inverse solvers",
+          "co-registration with MRI"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the vapour cells",
+        "detail": "Glass cells are blown to shape, an alkali metal is distilled in under vacuum, the inner walls are coated to stop atoms losing their spin, and the cell is sealed with buffer gas."
+      },
+      {
+        "title": "Assemble the optical head",
+        "detail": "Each sensor gets a laser beam path, polarising optics and a photodetector, all miniaturised so a whole array fits around a head."
+      },
+      {
+        "title": "Bench-test sensitivity",
+        "detail": "Cells are tested in a shielded testbed against known magnetic fields to confirm they can resolve femtotesla-scale signals."
+      },
+      {
+        "title": "Build the shielded environment",
+        "detail": "A high-permeability metal room plus coil systems cancels Earth's field and local interference."
+      },
+      {
+        "title": "Fit the helmet",
+        "detail": "Sensors are positioned to suit the individual head, far closer to the scalp than a cryogenic dewar allows, and their positions are digitised."
+      },
+      {
+        "title": "Calibrate the array",
+        "detail": "Known field patterns are applied to measure each sensor's gain, orientation and cross-talk."
+      },
+      {
+        "title": "Record and reconstruct",
+        "detail": "Brain fields are recorded while the person performs a task, then software maps them back onto an anatomical MRI."
+      },
+      {
+        "title": "Close the loop (not yet achieved)",
+        "detail": "To influence neural activity rather than only observe it, the recording would have to drive a stimulator in real time — an adaptive neuromodulation loop that does not yet exist."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Optically pumped magnetometers",
+        "status": "exists",
+        "why": "room-temperature atomic sensors now reach the sensitivity that magnetoencephalography needs."
+      },
+      {
+        "tech": "Magnetic shielding and active cancellation",
+        "status": "exists",
+        "why": "without it, ambient magnetic noise swamps the brain's femtotesla fields."
+      },
+      {
+        "tech": "SQUID magnetometry",
+        "status": "exists",
+        "why": "it established brain-field recording from the 1970s onward, proving the signals are measurable."
+      },
+      {
+        "tech": "Magnetoencephalography source reconstruction",
+        "status": "partial",
+        "why": "localising deep or distributed sources from scalp fields remains an ill-posed problem."
+      },
+      {
+        "tech": "Causal models of neural circuits",
+        "status": "missing",
+        "why": "predicting how a given intervention changes brain activity is not solved, so 'control' remains speculative."
+      },
+      {
+        "tech": "Molecular-scale quantum sensors",
+        "status": "partial",
+        "why": "nitrogen-vacancy centres in diamond can sense fields and temperature at nanoscale in the lab, but not yet inside living human tissue."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wearable whole-head magnetometers in research and presurgical epilepsy mapping",
+        "unlocks": "brain recordings from moving subjects, including children, that fixed cryogenic helmets cannot manage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "denser, quieter arrays and longer recordings",
+        "unlocks": "better localisation, and routine clinical use beyond a handful of specialist centres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time readout paired with transcranial magnetic or ultrasound stimulation",
+        "unlocks": "adaptive neuromodulation triggered by the brain's own state — piloted, not proven."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "nanoscale quantum sensors delivered into tissue",
+        "unlocks": "recording from individual cells rather than brain regions, if biocompatibility and readout are solved."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "precision detection and control of neural activity in humans",
+        "unlocks": "medical and interface applications — the current manufacturing route produces sensitive detectors, not controllers, so this depends on neuroscience that does not yet exist."
+      }
+    ]
   }
 }

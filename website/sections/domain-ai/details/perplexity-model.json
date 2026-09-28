@@ -33,5 +33,164 @@
         "def": "The extent to which generated text is relevant to the context in which it appears."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Tokenizer and embedding",
+        "role": "turns raw text into the integer tokens and vectors the network actually computes on.",
+        "parts": [
+          "subword vocabulary (byte-pair or similar)",
+          "embedding matrix",
+          "positional encoding"
+        ]
+      },
+      {
+        "name": "Transformer stack",
+        "role": "the core network: billions of parameters that predict the next token.",
+        "parts": [
+          "multi-head self-attention layers",
+          "feed-forward or mixture-of-experts layers",
+          "normalisation and residual connections",
+          "output projection to vocabulary"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "assembles the training corpus and keeps it clean and legally usable.",
+        "parts": [
+          "web and licensed-text crawlers",
+          "deduplication and quality filters",
+          "toxic and private-data filters",
+          "tokenised, shuffled data shards"
+        ]
+      },
+      {
+        "name": "Training infrastructure",
+        "role": "the accelerator cluster that makes months-long training runs possible.",
+        "parts": [
+          "thousands of GPUs or TPUs",
+          "high-bandwidth interconnect",
+          "parallelism software (data, tensor and pipeline sharding)",
+          "checkpointing and failure recovery"
+        ]
+      },
+      {
+        "name": "Post-training stack",
+        "role": "shapes a raw next-token predictor into a helpful, instruction-following assistant.",
+        "parts": [
+          "supervised fine-tuning on curated examples",
+          "preference optimisation (RLHF or direct preference methods)",
+          "tool and retrieval interfaces",
+          "safety classifiers and refusal behaviour"
+        ]
+      },
+      {
+        "name": "Serving layer",
+        "role": "runs the trained model cheaply enough to answer real queries.",
+        "parts": [
+          "continuous batching",
+          "key-value cache",
+          "quantised weights",
+          "speculative decoding",
+          "load-balanced inference fleet"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the target and the tests",
+        "detail": "Decide what the model must do — reasoning, coding, retrieval-grounded answers — and build an evaluation harness before training starts, so progress can be measured."
+      },
+      {
+        "title": "Assemble and clean the corpus",
+        "detail": "Crawl and license text, strip boilerplate, deduplicate near-identical pages, filter low-quality and private material, and tokenise into shards; a modern run consumes hundreds of billions to trillions of tokens."
+      },
+      {
+        "title": "Train the tokenizer",
+        "detail": "Fit a subword vocabulary of roughly 10^5 entries on a representative sample, balancing short sequences against rare-word coverage."
+      },
+      {
+        "title": "Choose architecture and size",
+        "detail": "Fix parameter count, context window, and whether to use a sparse mixture of experts so only part of the network runs per token."
+      },
+      {
+        "title": "Pretrain",
+        "detail": "Run the next-token prediction objective across thousands of accelerators for weeks to months, sharding the model and data across the cluster and checkpointing constantly; compute cost is often measured in the 10^24–10^25 floating-point operations range."
+      },
+      {
+        "title": "Fine-tune on instructions",
+        "detail": "Train on curated prompt-and-answer demonstrations so the model follows directions rather than merely continuing text."
+      },
+      {
+        "title": "Optimise against preferences",
+        "detail": "Collect human (and increasingly model-assisted) judgements of which replies are better, and tune the model to prefer them while penalising drift from the base model."
+      },
+      {
+        "title": "Add retrieval, tools and guardrails",
+        "detail": "Wire in search, document retrieval and calculators so answers can be grounded in sources, and train classifiers that catch unsafe or unsupported output."
+      },
+      {
+        "title": "Evaluate, quantise and serve",
+        "detail": "Measure intrinsic scores such as perplexity (exponentiated cross-entropy per token) alongside task benchmarks, red-team for harmful behaviour, then compress the weights and deploy behind a batched inference service."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture with attention",
+        "status": "exists",
+        "why": "the 2017 design that made training on web-scale text practical, and still the basis of every large model."
+      },
+      {
+        "tech": "Accelerators and fast interconnect",
+        "status": "exists",
+        "why": "training needs tens of thousands of chips and the networking to keep them fed with data."
+      },
+      {
+        "tech": "Web-scale text corpora and filtering",
+        "status": "exists",
+        "why": "capability scales with the quantity and quality of training text, not just parameter count."
+      },
+      {
+        "tech": "Human preference data and tuning methods",
+        "status": "exists",
+        "why": "this is what turns a text completer into an assistant that answers usefully and safely."
+      },
+      {
+        "tech": "Efficient long-context attention",
+        "status": "partial",
+        "why": "context windows are growing quickly, but attention cost still rises with length and limits very long inputs."
+      },
+      {
+        "tech": "Reliable factuality and attribution",
+        "status": "partial",
+        "why": "retrieval reduces errors but does not eliminate confident wrong answers, so grounding and citation remain active engineering work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hundreds-of-billions-parameter models served as chat assistants and answer engines, some grounded in live search results",
+        "unlocks": "general text, code and summarisation work at low cost per query."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sparse mixture-of-experts and long-context models that give frontier quality at lower inference cost",
+        "unlocks": "long documents, codebases and multi-document reasoning handled in one pass."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic tool use, where the model plans, calls tools and checks its own output",
+        "unlocks": "multi-step tasks completed end to end rather than single answers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "smaller distilled models running on-device with private, always-available assistance",
+        "unlocks": "low latency, offline use and lower data-centre energy demand."
+      }
+    ]
   }
 }

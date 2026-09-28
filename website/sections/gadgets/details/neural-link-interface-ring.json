@@ -1,0 +1,136 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "EMG electrode array",
+        "role": "detects electrical signals from the small muscles that control finger movement.",
+        "parts": [
+          "dry or hydrogel electrodes",
+          "flexible substrate",
+          "shielding"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies and filters the tiny muscle signals.",
+        "parts": [
+          "instrumentation amplifier",
+          "band-pass filter",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Embedded processor",
+        "role": "runs machine-learning models to classify gestures in real time.",
+        "parts": [
+          "low-power microcontroller",
+          "neural network accelerator",
+          "memory"
+        ]
+      },
+      {
+        "name": "Wireless radio",
+        "role": "sends commands to phones, computers or headsets.",
+        "parts": [
+          "Bluetooth Low Energy chip",
+          "antenna"
+        ]
+      },
+      {
+        "name": "Power and housing",
+        "role": "provides energy and keeps electrodes in stable contact with the skin.",
+        "parts": [
+          "rechargeable battery",
+          "charging contacts",
+          "biocompatible ring shell"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode layout",
+        "detail": "Simulate and test where on the finger or hand to place electrodes to best capture signals from the small muscles that move fingers."
+      },
+      {
+        "title": "Fabricate the flexible circuit",
+        "detail": "Print conductive traces and mount electrodes on a flexible printed circuit board that can bend around the finger."
+      },
+      {
+        "title": "Integrate electronics",
+        "detail": "Attach the analog front end, processor, radio and battery to the flexible circuit."
+      },
+      {
+        "title": "Collect training data",
+        "detail": "Record EMG signals from many people performing a set of finger micro-gestures, such as tapping or pinching."
+      },
+      {
+        "title": "Train the machine-learning model",
+        "detail": "Use the data to train a classifier that maps signal patterns to specific commands, optimizing for low power."
+      },
+      {
+        "title": "Assemble the ring",
+        "detail": "Encapsulate the electronics in a biocompatible shell, ensuring electrodes protrude slightly to contact the skin."
+      },
+      {
+        "title": "Calibrate per user",
+        "detail": "A short guided session adapts the model to the individual's unique muscle signals."
+      },
+      {
+        "title": "Validate performance",
+        "detail": "Test gesture recognition accuracy, battery life, comfort and wireless reliability across users."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry electrodes for EMG",
+        "status": "partial",
+        "why": "Existing dry electrodes can pick up signals, but maintaining good contact on a moving finger without gel is still a challenge."
+      },
+      {
+        "tech": "Low-power machine learning",
+        "status": "exists",
+        "why": "Modern microcontrollers and accelerators can run small neural networks within a milliwatt budget."
+      },
+      {
+        "tech": "Bluetooth Low Energy",
+        "status": "exists",
+        "why": "Provides a standard, low-energy way to send commands to devices."
+      },
+      {
+        "tech": "Gesture recognition algorithms",
+        "status": "partial",
+        "why": "Lab systems can classify a handful of gestures, but generalizing across people and sessions remains difficult."
+      },
+      {
+        "tech": "Miniature batteries",
+        "status": "exists",
+        "why": "Small lithium-polymer cells fit inside a ring, though battery life is limited."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Wrist-worn EMG research prototypes (e.g., Meta's neural wristband) demonstrate gesture control.",
+        "unlocks": "Proof that non-invasive muscle signals can drive simple digital actions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Ring-form EMG devices with reliable finger micro-gesture detection.",
+        "unlocks": "Discreet, always-available input for phones, AR glasses and computers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integration with productivity and accessibility software.",
+        "unlocks": "Hands-free control for people with motor impairments and seamless multitasking."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Decoding intended actions without visible movement.",
+        "unlocks": "A true neural interface that feels like reading thoughts, though this remains speculative."
+      }
+    ]
+  }
+}

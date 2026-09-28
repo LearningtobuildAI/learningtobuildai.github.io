@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "holds the encoded problem state in a controllable quantum system.",
+        "parts": [
+          "qubits (superconducting transmons, trapped ions, neutral atoms, photonics, or flux qubits in annealers)",
+          "couplers and wiring",
+          "dilution refrigerator or vacuum and laser system"
+        ]
+      },
+      {
+        "name": "Problem encoding",
+        "role": "turns a business or engineering problem into a form the hardware can hold.",
+        "parts": [
+          "binary variable mapping",
+          "Ising or QUBO cost function",
+          "penalty terms that enforce constraints"
+        ]
+      },
+      {
+        "name": "Algorithm layer",
+        "role": "the quantum routine that searches the solution space.",
+        "parts": [
+          "variational circuit ansatz (QAOA-style layers)",
+          "annealing schedule",
+          "amplitude amplification and quantum-walk routines"
+        ]
+      },
+      {
+        "name": "Classical control loop",
+        "role": "measures results and steers the quantum run.",
+        "parts": [
+          "microwave or laser pulse generators",
+          "fast digitisers and readout electronics",
+          "outer-loop optimiser tuning the circuit parameters"
+        ]
+      },
+      {
+        "name": "Readout and error mitigation",
+        "role": "extracts a usable answer from a noisy device.",
+        "parts": [
+          "repeated measurement (shots)",
+          "zero-noise extrapolation and symmetry checks",
+          "decoding and sampling of candidate solutions"
+        ]
+      },
+      {
+        "name": "Benchmarking",
+        "role": "decides whether the quantum run was actually better.",
+        "parts": [
+          "best-in-class classical solvers for the same instance",
+          "instances chosen to be hard for classical heuristics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formulate the problem",
+        "detail": "State it in binary decision variables — routes chosen, jobs assigned, assets held — and write down the objective and constraints."
+      },
+      {
+        "title": "Map to a cost function",
+        "detail": "Convert it into an Ising or QUBO energy function, adding penalty weights so that invalid answers cost more energy than valid ones."
+      },
+      {
+        "title": "Choose the hardware",
+        "detail": "Annealing suits dense QUBO problems; gate-based machines need the search expressed as a short circuit of tens to thousands of gates."
+      },
+      {
+        "title": "Compile onto the device",
+        "detail": "For annealers, map the problem graph onto the chip's sparse coupler graph (minor embedding). For gate machines, transpile the ansatz into native single- and two-qubit gates and respect the qubit connectivity."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Measure single- and two-qubit gate fidelities, coherence times (tens to hundreds of microseconds for superconducting qubits) and readout error; recalibrate between runs."
+      },
+      {
+        "title": "Run the hybrid loop",
+        "detail": "Execute the circuit or annealing schedule, sample many shots, and feed the measured energies back to a classical optimiser that adjusts the parameters — hundreds of iterations per problem."
+      },
+      {
+        "title": "Decode and repair",
+        "detail": "Translate bitstrings back into problem variables and fix constraint violations, often with a small classical routine."
+      },
+      {
+        "title": "Refine classically",
+        "detail": "Feed the best quantum sample into a classical local search — the quantum device acts as a sampler, not the whole solver."
+      },
+      {
+        "title": "Benchmark honestly",
+        "detail": "Compare against tuned classical heuristics on the same instances, at the same time budget, and report whether any real gap survives."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Qubits with high two-qubit gate fidelity",
+        "status": "partial",
+        "why": "gates near 99.9 % fidelity exist on leading platforms, but error accumulates as circuits lengthen."
+      },
+      {
+        "tech": "Programmable qubit connectivity",
+        "status": "partial",
+        "why": "problems rarely match a chip's coupler graph, so embedding costs extra qubits and can swamp small devices."
+      },
+      {
+        "tech": "Low-latency classical control",
+        "status": "partial",
+        "why": "variational loops and error correction need feedback in microseconds; orchestration overhead often dominates run time."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "logical qubits have been demonstrated but not at the thousands needed for reliably deep optimisation circuits."
+      },
+      {
+        "tech": "Strong classical baselines",
+        "status": "exists",
+        "why": "mixed-integer and heuristic solvers are fast and improving, so any quantum advantage must beat a moving target."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NISQ-era experiments on small Max-Cut, scheduling and portfolio instances",
+        "unlocks": "tooling, embeddings and benchmarking practice, but no demonstrated advantage at useful sizes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "application-specific benchmarks where quantum samplers match but do not beat the best classical methods",
+        "unlocks": "clear picture of which problem structures might eventually favour quantum hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-mitigated runs on tens to hundreds of high-fidelity qubits with real-world constraint handling",
+        "unlocks": "credible pilot use in logistics or finance alongside classical solvers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant machines running quantum-walk or phase-estimation algorithms for structured search problems",
+        "unlocks": "possible asymptotic speedups on specific optimisation families, still limited by input and output costs."
+      }
+    ]
+  }
+}

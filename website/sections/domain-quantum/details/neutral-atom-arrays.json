@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Vacuum and atom source",
+        "role": "provides an ultra-high-vacuum environment and a supply of cold atoms.",
+        "parts": [
+          "glass vacuum cell",
+          "rubidium or strontium atom source",
+          "vacuum pumps"
+        ]
+      },
+      {
+        "name": "Optical tweezer array",
+        "role": "creates hundreds of tightly focused laser spots, each trapping one atom.",
+        "parts": [
+          "high-numerical-aperture objective",
+          "spatial light modulator or acousto-optic deflectors",
+          "trapping laser"
+        ]
+      },
+      {
+        "name": "Laser cooling system",
+        "role": "slows atoms to microkelvin temperatures so they can be captured.",
+        "parts": [
+          "magneto-optical trap coils and beams",
+          "cooling and repump lasers",
+          "clock and Raman lasers"
+        ]
+      },
+      {
+        "name": "Rydberg excitation",
+        "role": "promotes atoms to giant Rydberg states so neighbouring atoms interact strongly and switchably.",
+        "parts": [
+          "two-photon excitation lasers",
+          "frequency stabilisation"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "reports which sites hold an atom and what state it is in.",
+        "parts": [
+          "fluorescence imaging",
+          "low-noise camera",
+          "push-out beam"
+        ]
+      },
+      {
+        "name": "Classical control",
+        "role": "sequences laser pulses in time and analyses the results.",
+        "parts": [
+          "FPGAs",
+          "optical modulators",
+          "control software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the vacuum cell",
+        "detail": "A glass cell and chamber are assembled and baked to ultra-high vacuum, so atoms travel far without colliding with background gas."
+      },
+      {
+        "title": "Load and cool atoms",
+        "detail": "A magneto-optical trap collects a cloud of atoms and laser light cools it to a few microkelvin above absolute zero."
+      },
+      {
+        "title": "Form the tweezer array",
+        "detail": "One laser beam is split by a spatial light modulator into a grid of foci, each less than a micrometre wide, focused through a high-numerical-aperture objective."
+      },
+      {
+        "title": "Trap single atoms",
+        "detail": "The cold cloud is overlapped with the array so one atom settles in each focus; light-assisted collisions eject atoms from doubly occupied sites, leaving one per tweezer."
+      },
+      {
+        "title": "Rearrange into a perfect pattern",
+        "detail": "Tweezers are moved to shuffle atoms along, filling gaps so the array is defect-free before computation begins."
+      },
+      {
+        "title": "Encode and manipulate qubits",
+        "detail": "Atoms are prepared in chosen internal states; laser pulses entangle neighbours, and Rydberg blockade makes that interaction switchable site by site."
+      },
+      {
+        "title": "Read out",
+        "detail": "A laser drives fluorescence from occupied sites, and a camera records which atoms survived and in which state."
+      },
+      {
+        "title": "Scale and connect",
+        "detail": "Arrays are extended to more sites with better optics and vacuum, and photonic links are added to entangle separate arrays."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Laser cooling and trapping",
+        "status": "exists",
+        "why": "only microkelvin atoms can be held in a tweezer for long enough to compute."
+      },
+      {
+        "tech": "Optical tweezers and high-numerical-aperture optics",
+        "status": "exists",
+        "why": "they confine a single atom in a spot smaller than a micrometre."
+      },
+      {
+        "tech": "Rydberg excitation and blockade",
+        "status": "exists",
+        "why": "it supplies strong, switchable interactions between neighbouring atoms."
+      },
+      {
+        "tech": "Spatial light modulators and fast control electronics",
+        "status": "exists",
+        "why": "hundreds of beams must be shaped and steered within microseconds."
+      },
+      {
+        "tech": "High-fidelity mid-circuit measurement and correction",
+        "status": "partial",
+        "why": "logical qubits require errors to be detected and fixed while the computation continues."
+      },
+      {
+        "tech": "Photonic interconnects between arrays",
+        "status": "partial",
+        "why": "one optical system is finite in size; linking modules is the route to much larger machines."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "arrays of a few hundred atoms used as analog simulators and small digital processors",
+        "unlocks": "research on quantum many-body physics and first error-correction experiments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "thousands of atoms with real-time measurement and correction",
+        "unlocks": "logical qubits that outlive the physical atoms making them up."
+      },
+      {
+        "stage": "Next",
+        "milestone": "modular machines linked by photonic entanglement",
+        "unlocks": "scaling past the limit of a single array and objective."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant processors running useful algorithms",
+        "unlocks": "applications in chemistry, materials and optimisation."
+      }
+    ]
+  }
+}

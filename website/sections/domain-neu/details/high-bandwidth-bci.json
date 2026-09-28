@@ -33,5 +33,166 @@
         "def": "The process of fabricating microscale devices using photolithography and other precision techniques."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "the sensor that sits in or on the cortex and records the firing of individual neurons.",
+        "parts": [
+          "penetrating microelectrodes (silicon shanks or thin polymer threads)",
+          "conductive coatings such as platinum or iridium oxide",
+          "flexible ribbon cables"
+        ]
+      },
+      {
+        "name": "Implant electronics",
+        "role": "amplifies very weak neural signals, digitises them and sends them out of the skull.",
+        "parts": [
+          "low-power analogue front-end ASIC",
+          "multiplexer and spike detector",
+          "wireless telemetry or transcutaneous pedestal",
+          "inductive charging coil"
+        ]
+      },
+      {
+        "name": "Hermetic packaging",
+        "role": "keeps salty body fluid away from electronics for years.",
+        "parts": [
+          "titanium or ceramic case",
+          "feedthroughs",
+          "biocompatible encapsulation"
+        ]
+      },
+      {
+        "name": "Surgical delivery",
+        "role": "places electrodes precisely into the target area of cortex.",
+        "parts": [
+          "neurosurgical navigation and MRI planning",
+          "pneumatic or robotic inserter (for thin flexible threads)",
+          "craniotomy hardware"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns a stream of spike counts into a control signal in real time.",
+        "parts": [
+          "spike sorting and feature extraction",
+          "machine-learning decoder (e.g. velocity or phoneme models)",
+          "calibration routine",
+          "closed-loop feedback"
+        ]
+      },
+      {
+        "name": "Effector",
+        "role": "the output the user actually drives.",
+        "parts": [
+          "computer cursor or tablet",
+          "robotic arm and hand",
+          "speech synthesiser",
+          "functional electrical stimulation of the user's own muscles"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target and channel count",
+        "detail": "Choose between penetrating arrays for single-neuron resolution and surface or blood-vessel arrays that are safer but coarser; set how many channels the design needs."
+      },
+      {
+        "title": "Microfabricate the array",
+        "detail": "In a cleanroom, photolithography, etching and metal deposition pattern dozens to thousands of electrodes on a silicon or polymer substrate, then coat the tips for low impedance."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "Design a low-power chip that amplifies microvolt signals, detects spikes and radio-transmits data, keeping heat output low enough not to damage tissue."
+      },
+      {
+        "title": "Package and test",
+        "detail": "Seal the electronics in a hermetic case and soak the assembly in saline at body temperature for months to check that signals survive and the seal holds."
+      },
+      {
+        "title": "Validate in animals",
+        "detail": "Test chronic recording stability and tissue response over months in non-human primates or other models before any human use."
+      },
+      {
+        "title": "Plan and approve the surgery",
+        "detail": "Map the target cortex by MRI, get ethics and regulatory clearance, and choose between a craniotomy for penetrating arrays and a minimally invasive route such as a stent-mounted electrode inserted through a blood vessel."
+      },
+      {
+        "title": "Implant",
+        "detail": "Insert the array into the motor or speech cortex and connect or wirelessly pair it to the implanted unit resting in the skull."
+      },
+      {
+        "title": "Calibrate the decoder",
+        "detail": "Ask the participant to imagine or attempt movements and record the matching neural activity; train the model until cursor or arm control is smooth, then recalibrate regularly as signals drift."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Run daily sessions, monitor electrode health, and plan for degradation of the oldest channels over years."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chronic electrode stability",
+        "status": "partial",
+        "why": "signal quality from penetrating electrodes tends to fade over months to years as scar tissue forms."
+      },
+      {
+        "tech": "Low-power implantable ASICs and wireless telemetry",
+        "status": "exists",
+        "why": "hundreds of channels must stream out of the body without cooking the tissue."
+      },
+      {
+        "tech": "Real-time neural decoding",
+        "status": "partial",
+        "why": "decoders work well in controlled settings but still need frequent recalibration and generalise poorly across sessions."
+      },
+      {
+        "tech": "Biocompatible hermetic packaging",
+        "status": "partial",
+        "why": "devices must survive years of warm salt water without leaking or triggering rejection."
+      },
+      {
+        "tech": "Neurosurgical targeting and imaging",
+        "status": "exists",
+        "why": "electrodes have to land in the right few millimetres of cortex."
+      },
+      {
+        "tech": "Regulatory and ethical framework",
+        "status": "partial",
+        "why": "long-term implants in healthy tissue raise consent, privacy and device-removal questions that rules are still catching up with."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small research trials in which people with paralysis type, move a cursor or robotic arm, or speak through a synthesiser",
+        "unlocks": "proof that useful, high-bandwidth control is possible in daily life."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully implanted, wireless systems with several hundred to a thousand stable channels",
+        "unlocks": "use outside the lab, without a cable through the skin."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger speech and prosthetic trials and first regulatory approvals as medical devices",
+        "unlocks": "reimbursed clinical use for severe paralysis and locked-in syndrome."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "bidirectional interfaces with sensory feedback, and years-long electrode lifetimes",
+        "unlocks": "natural-feeling control of limbs and, eventually, wider communication and sensory applications."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "minimally invasive arrays delivered without open brain surgery",
+        "unlocks": "much broader use, which also sharpens the ethical debate."
+      }
+    ]
   }
 }

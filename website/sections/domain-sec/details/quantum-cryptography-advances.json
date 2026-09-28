@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the quantum states (qubits) that carry the key.",
+        "parts": [
+          "attenuated laser (weak coherent pulses) or single-photon source",
+          "encoding optics (polarisation, phase, time-bin)",
+          "random number generator"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "transmits qubits from sender to receiver.",
+        "parts": [
+          "optical fibre at telecom wavelengths",
+          "free-space or satellite link",
+          "trusted nodes or repeaters for long distance"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "measure the incoming qubits.",
+        "parts": [
+          "avalanche photodiodes",
+          "superconducting nanowire single-photon detectors",
+          "cooling and timing electronics"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "carries basis reconciliation, error correction and authentication messages.",
+        "parts": [
+          "authenticated classical link (e.g., over the internet)",
+          "key management software"
+        ]
+      },
+      {
+        "name": "Post-processing unit",
+        "role": "turns raw detections into a secure key.",
+        "parts": [
+          "sifting",
+          "error correction (e.g., Cascade, LDPC)",
+          "privacy amplification (hashing)"
+        ]
+      },
+      {
+        "name": "Key management system",
+        "role": "stores and delivers keys to encrypting devices.",
+        "parts": [
+          "key store",
+          "API to encryption hardware",
+          "network integration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the quantum states",
+        "detail": "A laser and modulators encode random bits into photon polarisation, phase or time-bin, then attenuate the light to single-photon level."
+      },
+      {
+        "title": "Transmit over the quantum channel",
+        "detail": "Photons travel through optical fibre or free space; losses and noise limit the distance over which keys can be exchanged."
+      },
+      {
+        "title": "Detect and measure",
+        "detail": "The receiver randomly chooses a measurement basis and records detections, noting the basis and arrival time."
+      },
+      {
+        "title": "Sift the raw key",
+        "detail": "Over the classical channel, sender and receiver compare bases and keep only the events where they matched."
+      },
+      {
+        "title": "Correct errors",
+        "detail": "An error-correction protocol reconciles remaining differences, at the cost of leaking some information."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "A hash function compresses the key to remove any information an eavesdropper might have gathered."
+      },
+      {
+        "title": "Authenticate the classical channel",
+        "detail": "Pre-shared keys or post-quantum signatures prevent a man-in-the-middle attack on the public discussion."
+      },
+      {
+        "title": "Integrate with encryption",
+        "detail": "The resulting key is fed to a one-time pad or symmetric cipher for secure communication."
+      },
+      {
+        "title": "Scale the network",
+        "detail": "Trusted nodes or satellites extend range today; quantum repeaters would remove the need for trusted relays."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "partial",
+        "why": "high-efficiency, low-noise detectors exist but are specialised and costly, limiting key rates and distance."
+      },
+      {
+        "tech": "Low-loss optical fibre or free-space links",
+        "status": "exists",
+        "why": "telecom fibre is widespread, but signal loss still limits practical key exchange to hundreds of kilometres without relays."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "they would extend range without trusted nodes by entangling distant qubits, but remain laboratory research."
+      },
+      {
+        "tech": "Quantum-safe authentication",
+        "status": "partial",
+        "why": "the classical channel must be authenticated; post-quantum signatures can do this but are not yet widely deployed."
+      },
+      {
+        "tech": "Standardised key management",
+        "status": "partial",
+        "why": "interfaces between QKD hardware and encryption systems are emerging but not yet universal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro and inter-city QKD links, often using trusted nodes, in finance, government and critical infrastructure",
+        "unlocks": "quantum-safe key distribution for high-value fixed links."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with post-quantum cryptography for authentication and hybrid key exchange; satellite QKD for intercontinental links",
+        "unlocks": "wider deployment and resistance to both quantum and classical attacks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters demonstrated in the lab and early field trials",
+        "unlocks": "longer distances without trusted nodes, and the basis of a quantum internet."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "device-independent QKD and end nodes that are quantum processors",
+        "unlocks": "provably secure communication and distributed quantum computing."
+      }
+    ]
+  }
+}

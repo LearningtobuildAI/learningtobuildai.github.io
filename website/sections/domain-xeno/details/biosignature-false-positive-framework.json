@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Abiotic pathway catalogue",
+        "role": "lists every known non-biological way to make a candidate gas, so a detection is never interpreted in isolation.",
+        "parts": [
+          "stellar and photochemical sources",
+          "geological and volcanic sources",
+          "impact and escape processes"
+        ]
+      },
+      {
+        "name": "Photochemical and climate models",
+        "role": "simulate the candidate planet's atmosphere to see whether the observed gases can coexist without life.",
+        "parts": [
+          "photochemical kinetics",
+          "radiative transfer",
+          "atmospheric escape and climate codes"
+        ]
+      },
+      {
+        "name": "Retrieval and instrument model",
+        "role": "turns a measured spectrum into gas abundances with honest error bars.",
+        "parts": [
+          "atmospheric retrieval code",
+          "spectral line databases",
+          "telescope noise and systematics model"
+        ]
+      },
+      {
+        "name": "Planetary context dataset",
+        "role": "supplies the star, orbit and environment that determine which explanations are plausible.",
+        "parts": [
+          "stellar ultraviolet and X-ray flux",
+          "planet mass and radius",
+          "orbital and irradiation history"
+        ]
+      },
+      {
+        "name": "Assessment logic",
+        "role": "the decision rules that convert model comparisons into a stated confidence level.",
+        "parts": [
+          "hypothesis comparison or scoring scheme",
+          "explicit uncertainty reporting",
+          "falsification criteria"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise star and planet",
+        "detail": "Measure the host star's brightness and ultraviolet output and the planet's mass, radius and orbit; these set which chemistry is possible."
+      },
+      {
+        "title": "Retrieve the spectrum",
+        "detail": "Fit the observed transmission or emission spectrum to derive abundances of gases such as oxygen, methane, carbon dioxide and water, with uncertainties."
+      },
+      {
+        "title": "Enumerate abiotic sources",
+        "detail": "Working through the catalogue, list every non-biological route to each detected gas — for example oxygen from water vapour broken apart by ultraviolet light followed by hydrogen escape."
+      },
+      {
+        "title": "Run the models",
+        "detail": "Feed each plausible scenario into photochemical and climate models and check whether it reproduces the observation within the error bars."
+      },
+      {
+        "title": "Compare hypotheses",
+        "detail": "Score or rank the biological and abiotic explanations against the same data rather than testing life alone."
+      },
+      {
+        "title": "Report the surviving gap",
+        "detail": "State what remains unexplained after abiotic options are exhausted, with uncertainty, instead of presenting the raw detection as a life claim."
+      },
+      {
+        "title": "Set falsification tests",
+        "detail": "Specify which follow-up observation — another gas, a different wavelength band, a time-variation — would break the preferred explanation."
+      },
+      {
+        "title": "Reassess as data improve",
+        "detail": "Re-run the framework whenever better spectra, stellar data or new abiotic pathways appear, and revise the confidence accordingly."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Exoplanet atmospheric spectroscopy",
+        "status": "partial",
+        "why": "water and carbon dioxide have been measured in hot giant planets since 2022, but thin atmospheres around small rocky worlds remain at the edge of capability."
+      },
+      {
+        "tech": "Validated photochemical and climate models",
+        "status": "exists",
+        "why": "codes tested against Venus, Earth and Titan underpin the abiotic baselines; extending them to unfamiliar planets is the weak point."
+      },
+      {
+        "tech": "Laboratory spectral line data",
+        "status": "exists",
+        "why": "measured absorption line lists are needed to identify gases in a spectrum at all."
+      },
+      {
+        "tech": "Knowledge of abiotic gas production",
+        "status": "partial",
+        "why": "new non-biological pathways keep being identified, so any catalogue is provisional."
+      },
+      {
+        "tech": "Telescopes able to see several gases at once",
+        "status": "partial",
+        "why": "a single gas means little; a confident assessment needs simultaneous detection of a combination that ordinary chemistry cannot sustain."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "framework applied to solar-system planets, Archean Earth analogues and simulated exoplanet spectra, and used to interpret current telescope data",
+        "unlocks": "discipline of publishing explanatory gaps rather than bare detections."
+      },
+      {
+        "stage": "Next",
+        "milestone": "application to the first rocky-planet atmospheres resolved with current and under-construction telescopes",
+        "unlocks": "real test cases, and pressure to standardise the scoring and uncertainty conventions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reflected-light spectra of temperate Earth-sized planets from a dedicated direct-imaging space telescope",
+        "unlocks": "multiple gases measured together, where the framework's hypothesis comparison becomes decisive."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "observational networks that track seasonal and long-term variability, plus agnostic signatures for unfamiliar biochemistry",
+        "unlocks": "biosignature claims that rest on repeated, independent lines of evidence rather than one spectrum."
+      }
+    ]
+  }
+}

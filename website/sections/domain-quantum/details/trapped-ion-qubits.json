@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ion trap",
+        "role": "holds a string of ions in place using electric fields, with no physical contact.",
+        "parts": [
+          "microfabricated surface trap (gold or aluminium electrodes on silicon)",
+          "radio-frequency electrodes that create the confining pseudopotential",
+          "segmented DC electrodes for fine positioning",
+          "shuttling zones in a QCCD layout"
+        ]
+      },
+      {
+        "name": "Ion source and loading",
+        "role": "supplies fresh ions of a chosen isotope.",
+        "parts": [
+          "heated metal oven or laser-ablation target",
+          "photoionisation lasers",
+          "neutral-atom flux control"
+        ]
+      },
+      {
+        "name": "Laser and optical system",
+        "role": "cools the ions and drives every logic gate and readout step.",
+        "parts": [
+          "narrow-linewidth stabilised lasers (Doppler and sideband cooling, gates, repump)",
+          "acousto-optic and electro-optic modulators",
+          "beam-shaping and delivery optics"
+        ]
+      },
+      {
+        "name": "Vacuum and cryogenic enclosure",
+        "role": "keeps ions isolated from background gas for hours.",
+        "parts": [
+          "ultra-high-vacuum chamber (around 10⁻¹¹ mbar)",
+          "cryostat cooling the trap to a few kelvin",
+          "getters and pumps"
+        ]
+      },
+      {
+        "name": "Readout optics",
+        "role": "detects each ion's state by the light it scatters.",
+        "parts": [
+          "high-numerical-aperture objective",
+          "single-photon-counting camera or photomultiplier array",
+          "state-dependent fluorescence scheme"
+        ]
+      },
+      {
+        "name": "Classical control stack",
+        "role": "sequences thousands of precisely timed pulses and corrects drift.",
+        "parts": [
+          "arbitrary-waveform generators and RF drivers",
+          "field-programmable gate arrays",
+          "calibration and benchmarking software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the trap geometry",
+        "detail": "Electrode widths and RF frequencies are modelled so the potential well is deep enough to hold a stable ion chain with the desired spacing."
+      },
+      {
+        "title": "Fabricate the trap chip",
+        "detail": "Gold electrodes are patterned on a silicon substrate by photolithography and metal deposition, then diced and wire-bonded to a carrier. The centre-to-centre electrode pitch is typically 100–250 µm."
+      },
+      {
+        "title": "Assemble the vacuum system",
+        "detail": "The chip is mounted in a vacuum chamber, often on a cold finger, and the whole assembly is baked to remove water and hydrocarbons until the pressure falls to ultra-high vacuum."
+      },
+      {
+        "title": "Load and cool ions",
+        "detail": "A small oven or ablation target releases neutral atoms, lasers photoionise them, and the resulting ions are Doppler-cooled until they form a stationary chain."
+      },
+      {
+        "title": "Ground-state cooling and characterisation",
+        "detail": "Sideband cooling brings the shared motional modes near their quantum ground state, and the trap frequencies and stray fields are measured and compensated."
+      },
+      {
+        "title": "Build the optical and electronic drive",
+        "detail": "Lasers are locked to atomic or cavity references, routed through modulators, and aligned so each ion sees the correct beam; RF and DC lines are calibrated for low phase noise."
+      },
+      {
+        "title": "Calibrate the gates",
+        "detail": "Pulse phases, durations and detunings are tuned, then gate quality is measured with randomised benchmarking and tomography."
+      },
+      {
+        "title": "Scale out",
+        "detail": "For larger machines, ions are shuttled between trap zones or entangled across modules via photonic links, with each module built and tested as above."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Microfabricated ion traps",
+        "status": "exists",
+        "why": "surface-electrode chips give reproducible, scalable electrode geometries rather than hand-assembled wire traps."
+      },
+      {
+        "tech": "Narrow-linewidth frequency-stabilised lasers",
+        "status": "exists",
+        "why": "gate and cooling transitions need linewidths far below the qubit splitting, held stable for hours."
+      },
+      {
+        "tech": "Ultra-high vacuum and cryogenics",
+        "status": "exists",
+        "why": "collisions with background gas and thermally driven electrode noise both destroy coherence."
+      },
+      {
+        "tech": "Low-phase-noise RF and DC electronics",
+        "status": "exists",
+        "why": "noise on the trapping fields heats the motional modes that gates depend on."
+      },
+      {
+        "tech": "Photonic interconnects between modules",
+        "status": "partial",
+        "why": "linking separate traps by entanglement is needed to grow beyond what one ion chain can hold."
+      },
+      {
+        "tech": "Quantum error correction at useful scale",
+        "status": "partial",
+        "why": "logical qubits have been demonstrated but not enough of them to run long algorithms."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial trapped-ion systems with all-to-all connectivity inside one chain and two-qubit fidelities above 99.9%",
+        "unlocks": "high-fidelity circuits and early error-corrected logical qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "many-zone QCCD machines that shuttle ions between memory, gate and readout regions",
+        "unlocks": "hundreds of physical qubits with low crosstalk."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entanglement between separate modules through photonic links",
+        "unlocks": "modular scaling beyond a single trap chip."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands of logical qubits with real-time decoding",
+        "unlocks": "fault-tolerant computation for chemistry and materials simulation."
+      }
+    ]
+  }
+}

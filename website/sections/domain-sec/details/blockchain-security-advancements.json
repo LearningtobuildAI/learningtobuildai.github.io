@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Zero-knowledge proof engine",
+        "role": "proves that a transaction or computation is valid without revealing the private inputs behind it.",
+        "parts": [
+          "arithmetic circuit compiler",
+          "prover",
+          "verifier",
+          "setup parameters (for some proof systems)"
+        ]
+      },
+      {
+        "name": "Homomorphic encryption module",
+        "role": "lets smart contracts compute directly on encrypted data, so sensitive values never need to be decrypted on-chain.",
+        "parts": [
+          "encryption scheme (e.g. BFV or CKKS)",
+          "evaluation keys",
+          "ciphertext arithmetic library"
+        ]
+      },
+      {
+        "name": "Blockchain execution layer",
+        "role": "runs transactions and smart contracts, verifies zero-knowledge proofs, and stores encrypted state.",
+        "parts": [
+          "consensus mechanism",
+          "virtual machine",
+          "state database"
+        ]
+      },
+      {
+        "name": "Key management and secure storage",
+        "role": "protects private keys and homomorphic secret keys from theft or misuse.",
+        "parts": [
+          "hardware security modules",
+          "multi-party computation for key generation",
+          "secure enclaves"
+        ]
+      },
+      {
+        "name": "Privacy-preserving transaction protocol",
+        "role": "combines zero-knowledge proofs and homomorphic encryption to shield sender, receiver, amount, and contract inputs.",
+        "parts": [
+          "shielded transaction format",
+          "proof verification logic",
+          "encrypted state transition rules"
+        ]
+      },
+      {
+        "name": "Auditing and formal verification tooling",
+        "role": "ensures the cryptographic protocols and smart contracts behave correctly and have no exploitable bugs.",
+        "parts": [
+          "formal verification tools",
+          "fuzzing frameworks",
+          "security audit procedures"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select cryptographic primitives",
+        "detail": "Choose a zero-knowledge proof system (for example zk-SNARKs for tiny proofs or zk-STARKs for transparent setup) and a homomorphic encryption scheme (such as BFV for exact arithmetic or CKKS for approximate arithmetic). Base the choice on security level, proof size, verification cost, and the operations the smart contracts must support."
+      },
+      {
+        "title": "Design the protocol",
+        "detail": "Specify how users generate proofs and ciphertexts, how nodes verify them, and how smart contracts operate on encrypted data without decrypting it. Define the transaction format, state model, and rules for combining proofs and encrypted values."
+      },
+      {
+        "title": "Implement cryptographic libraries",
+        "detail": "Write or integrate optimised libraries for proof generation, proof verification, and homomorphic operations. Target the blockchain's virtual machine and tune for low on-chain verification gas costs."
+      },
+      {
+        "title": "Build smart contracts and on-chain verifiers",
+        "detail": "Create contracts that verify zero-knowledge proofs and perform homomorphic operations. Manage gas limits, state growth, and the cost of storing ciphertexts."
+      },
+      {
+        "title": "Integrate with blockchain nodes",
+        "detail": "Modify node software or build a dedicated layer to support the new transaction types, consensus rules, and encrypted state storage. Ensure the network can validate proofs and ciphertexts consistently."
+      },
+      {
+        "title": "Test and formally verify",
+        "detail": "Run extensive functional and adversarial tests. Use formal methods to prove contract correctness, and commission independent security audits of the cryptographic code."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Launch on a public testnet, then on mainnet. Continuously monitor for vulnerabilities, performance bottlenecks, and new cryptographic attacks, and be ready to upgrade the protocol."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Efficient zero-knowledge proof systems",
+        "status": "exists",
+        "why": "Already used in privacy-focused cryptocurrencies and layer-2 scaling solutions to prove transaction validity without revealing details."
+      },
+      {
+        "tech": "Homomorphic encryption",
+        "status": "partial",
+        "why": "Demonstrated in research and limited pilots, but still far slower than plaintext computation for complex operations, making on-chain use difficult."
+      },
+      {
+        "tech": "Secure key management",
+        "status": "exists",
+        "why": "Hardware security modules and multi-party computation are commercially available to protect private keys and secret keys."
+      },
+      {
+        "tech": "Scalable on-chain verification",
+        "status": "partial",
+        "why": "Verifying zero-knowledge proofs on-chain is possible but costly; verifying homomorphic operations on-chain is not yet practical at scale."
+      },
+      {
+        "tech": "Post-quantum cryptographic schemes",
+        "status": "partial",
+        "why": "Some quantum-resistant algorithms exist, but blockchains relying on current elliptic-curve or pairing-based proofs may need migration to remain secure long term."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Zero-knowledge proofs secure private transactions and scale layer-2 networks.",
+        "unlocks": "Confidential payments and cheaper, faster transactions on public blockchains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid systems combine zero-knowledge proofs with homomorphic encryption for private smart contracts.",
+        "unlocks": "Confidential decentralised finance, private voting, and encrypted on-chain data processing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Standardised, audited cryptographic libraries and formal verification become routine for blockchain developers.",
+        "unlocks": "Enterprise adoption for sensitive data and regulated industries."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fully homomorphic blockchains where all state is encrypted and computations happen without decryption.",
+        "unlocks": "Complete privacy and security for all on-chain activity, though performance remains a major research challenge."
+      }
+    ]
+  }
+}

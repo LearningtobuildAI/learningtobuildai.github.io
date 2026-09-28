@@ -34,5 +34,152 @@
         "def": "Artificial Intelligence technologies used for decision-making, predictive analytics, and optimizing resource allocation in automated construction sites."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Survey and digital twin",
+        "role": "maps the site in three dimensions so machines and people work from the same model.",
+        "parts": [
+          "survey drones",
+          "terrestrial LiDAR scanners",
+          "GNSS base station",
+          "BIM/digital-twin software"
+        ]
+      },
+      {
+        "name": "Machine positioning",
+        "role": "tells every machine exactly where its bucket or blade is, to a few centimetres.",
+        "parts": [
+          "RTK GNSS receivers",
+          "total stations",
+          "inertial measurement units",
+          "tilt and slew sensors"
+        ]
+      },
+      {
+        "name": "Autonomous earthmoving plant",
+        "role": "excavators, dozers and loaders that grade, dig and haul without an operator in the cab.",
+        "parts": [
+          "retrofit control kit (hydraulic actuators, computer)",
+          "onboard perception sensors",
+          "remote supervisory station"
+        ]
+      },
+      {
+        "name": "Robotic assembly and fabrication",
+        "role": "repetitive tasks such as bricklaying, drilling, rebar tying and concrete printing.",
+        "parts": [
+          "bricklaying or drilling robot",
+          "gantry or mobile base",
+          "mortar/adhesive delivery"
+        ]
+      },
+      {
+        "name": "Safety and supervision layer",
+        "role": "keeps people and machines apart and gives a human the ability to stop everything.",
+        "parts": [
+          "site cameras",
+          "geofencing",
+          "collision-avoidance radar",
+          "emergency stop system"
+        ]
+      },
+      {
+        "name": "Connectivity and power",
+        "role": "carries the data and keeps machines running unattended.",
+        "parts": [
+          "site mesh radio or private cellular network",
+          "edge computers",
+          "diesel, battery or tethered power"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the site",
+        "detail": "Fly drones and walk LiDAR over the ground before work starts, and register the scans against survey markers to build a 3D model."
+      },
+      {
+        "title": "Convert the design into machine tasks",
+        "detail": "Civil engineers turn the design into cut-and-fill volumes and a sequence of operations, then simulate it to check reach, turning circles and cycle times."
+      },
+      {
+        "title": "Retrofit machine control",
+        "detail": "Fit excavators and dozers with GNSS receivers, angle sensors and hydraulic actuators so the computer can move the arm itself."
+      },
+      {
+        "title": "Set up the network and geofence",
+        "detail": "Install the radio or private cellular network, then define virtual boundaries and exclusion zones around people, trenches and overhead lines."
+      },
+      {
+        "title": "Run bulk earthworks autonomously",
+        "detail": "The machines grade to the model in repeated passes under remote supervision, with one operator watching several."
+      },
+      {
+        "title": "Add task robots",
+        "detail": "Bring in robots for one narrow job — laying blocks, drilling ceilings, tying rebar or printing walls — each with its own supervisors."
+      },
+      {
+        "title": "Keep people on the exceptions",
+        "detail": "Crews handle connections, services, weather damage and anything the robots cannot do, working around the autonomous machines."
+      },
+      {
+        "title": "Verify and hand over",
+        "detail": "Final scans are compared with the model, deviations are corrected, and the as-built digital twin is handed to the owner."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Centimetre-accurate satellite positioning (RTK GNSS)",
+        "status": "exists",
+        "why": "machine control cannot grade to a model without reliable absolute position, and it degrades under tree cover and near tall buildings."
+      },
+      {
+        "tech": "Robust perception in dust, mud and rain",
+        "status": "partial",
+        "why": "cameras and LiDAR struggle in the conditions that are normal on a construction site, so machines still need a human nearby."
+      },
+      {
+        "tech": "Site-wide wireless connectivity",
+        "status": "partial",
+        "why": "remote supervision and fleet coordination need coverage, latency and bandwidth that many sites do not have."
+      },
+      {
+        "tech": "Digital design and BIM discipline",
+        "status": "exists",
+        "why": "if the model is wrong or out of date, autonomous machines reliably build the wrong thing."
+      },
+      {
+        "tech": "Safety standards for autonomous plant",
+        "status": "partial",
+        "why": "rules for who is liable when a self-driving excavator injures someone are still being written."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single machines doing one job semi-autonomously, and drones doing survey and progress capture",
+        "unlocks": "measurable productivity on earthworks and surveying."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one supervisor running several autonomous machines on the same site",
+        "unlocks": "labour savings on large earthmoving and repetitive fit-out tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full task orchestration on standardised projects such as warehouses",
+        "unlocks": "shorter schedules and fewer people in hazardous zones."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "highly automated sites with humans only for exceptions and inspection",
+        "unlocks": "around-the-clock work on repetitive building types — where the design and the site are predictable enough."
+      }
+    ]
   }
 }

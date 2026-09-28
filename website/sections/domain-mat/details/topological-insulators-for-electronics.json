@@ -33,5 +33,145 @@
         "def": "A property that ensures the stability of certain states (such as surface states) against local perturbations due to their topological nature."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Topological material film",
+        "role": "the topological insulator itself — insulating in the bulk but conducting on its surface or edges.",
+        "parts": [
+          "crystalline substrate (e.g. sapphire, silicon carbide, or cadmium telluride)",
+          "topological insulator layer (e.g. bismuth selenide, bismuth telluride, or a mercury telluride quantum well)",
+          "buffer and capping layers to protect the surface"
+        ]
+      },
+      {
+        "name": "Heterostructure stack",
+        "role": "combines the topological material with magnetic or superconducting layers to make a usable device.",
+        "parts": [
+          "ferromagnetic insulator or thin magnetic film",
+          "superconductor (e.g. aluminium or niobium)",
+          "tunnel barrier or spacer layer"
+        ]
+      },
+      {
+        "name": "Contacts and gates",
+        "role": "inject and detect charge or spin, and tune the surface state's energy.",
+        "parts": [
+          "metal electrodes (e.g. titanium/gold)",
+          "gate dielectric (e.g. aluminium oxide or hafnium oxide)",
+          "top gate and back gate"
+        ]
+      },
+      {
+        "name": "Nanofabrication toolchain",
+        "role": "patterns the material into wires, Hall bars or junctions at the nanometre scale.",
+        "parts": [
+          "electron-beam or optical lithography",
+          "reactive ion etching",
+          "physical vapour deposition and atomic layer deposition"
+        ]
+      },
+      {
+        "name": "Characterisation and metrology",
+        "role": "confirms that the surface states exist and that the device behaves as intended.",
+        "parts": [
+          "angle-resolved photoemission spectroscopy",
+          "low-temperature electrical transport measurement",
+          "scanning tunnelling microscopy"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the topological material",
+        "detail": "Use molecular beam epitaxy or chemical vapour deposition to grow a high-quality thin film on a lattice-matched substrate. For a 3D topological insulator such as bismuth selenide, this means controlling the ratio of bismuth to selenium and the layer thickness. For a 2D topological insulator, grow a mercury telluride quantum well between cadmium telluride barriers."
+      },
+      {
+        "title": "Cap and protect",
+        "detail": "Topological insulator surfaces oxidise quickly in air. Grow a protective capping layer in the same vacuum chamber immediately after the active layer, so the surface stays clean for later processing."
+      },
+      {
+        "title": "Pattern the device",
+        "detail": "Spin a resist, expose a Hall bar, nanowire or junction shape with electron-beam lithography, and etch away the unwanted material. This defines where current will flow and where the surface states will be probed."
+      },
+      {
+        "title": "Deposit contacts",
+        "detail": "Evaporate or sputter metal electrodes onto the patterned material, then anneal to form low-resistance ohmic contacts. The contact resistance must be low enough not to swamp the surface-state signal."
+      },
+      {
+        "title": "Add the gate stack",
+        "detail": "Deposit a thin dielectric by atomic layer deposition and pattern a gate electrode on top. Applying a voltage to the gate shifts the Fermi level toward the bulk gap, where the surface states dominate."
+      },
+      {
+        "title": "Integrate with a superconductor or magnet",
+        "detail": "For quantum devices, place the topological material in contact with a superconductor to create a topological Josephson junction, or with a ferromagnet to break time-reversal symmetry. This can be done by direct deposition or by van der Waals assembly of exfoliated flakes."
+      },
+      {
+        "title": "Cool and tune",
+        "detail": "Mount the device in a dilution refrigerator and cool it to millikelvin temperatures. Sweep the gate voltage while measuring conductance to reach the regime where only the protected surface or edge states conduct."
+      },
+      {
+        "title": "Test the target function",
+        "detail": "For a low-power electronic device, measure spin-orbit torque or switch a magnetic layer. For a quantum device, look for quantised conductance, Majorana signatures or the interference patterns that would signal a topological qubit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Epitaxial growth of high-quality topological insulators",
+        "status": "exists",
+        "why": "molecular beam epitaxy can already produce thin films with the required crystal structure and surface states, as confirmed by photoemission experiments."
+      },
+      {
+        "tech": "Suppression of bulk conductivity",
+        "status": "partial",
+        "why": "real materials contain defects that dope the bulk and short out the surface states; compensation and gating reduce this but do not yet eliminate it at room temperature."
+      },
+      {
+        "tech": "Interface engineering with superconductors and magnets",
+        "status": "partial",
+        "why": "proximity effects and spin-orbit torques have been demonstrated in the lab, but making them reliable and reproducible across a wafer is not yet routine."
+      },
+      {
+        "tech": "Majorana detection and control",
+        "status": "missing",
+        "why": "topological quantum computing relies on creating and braiding Majorana modes, which has not been unambiguously achieved in a scalable device."
+      },
+      {
+        "tech": "Cryogenic operation",
+        "status": "exists",
+        "why": "many topological phenomena appear only at liquid-helium temperatures or below, so dilution refrigerators are available but expensive and power-hungry."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory confirmation of topological surface states in materials such as bismuth selenide and mercury telluride quantum wells",
+        "unlocks": "a materials library and measurement techniques for the next stage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "low-power spintronic memory and logic elements that use topological surface states to switch magnets",
+        "unlocks": "devices that could reduce energy per operation compared with conventional spin-transfer torque."
+      },
+      {
+        "stage": "Next",
+        "milestone": "topological Josephson junctions and reproducible Majorana signatures",
+        "unlocks": "a building block for topological qubits that are less sensitive to noise."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a scalable topological qubit architecture with error correction",
+        "unlocks": "fault-tolerant quantum computing if the physics can be controlled at scale."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration of topological materials into standard semiconductor manufacturing",
+        "unlocks": "room-temperature, low-power electronic devices if bulk conduction and material stability are solved."
+      }
+    ]
   }
 }

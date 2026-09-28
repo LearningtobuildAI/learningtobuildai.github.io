@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Constraint and parameter model",
+        "role": "defines the design space, site conditions, budget and building-code limits.",
+        "parts": [
+          "site and geometry parameters",
+          "regulatory constraints",
+          "performance targets"
+        ]
+      },
+      {
+        "name": "Generative engine",
+        "role": "produces many candidate building designs automatically.",
+        "parts": [
+          "parametric modelling kernel",
+          "evolutionary algorithms (e.g., genetic algorithms)",
+          "generative adversarial networks (GANs) or diffusion models"
+        ]
+      },
+      {
+        "name": "Structural analysis module",
+        "role": "checks that each candidate can actually stand up under loads.",
+        "parts": [
+          "finite element analysis (FEA) solver",
+          "load cases (wind, seismic, gravity)",
+          "material and section libraries"
+        ]
+      },
+      {
+        "name": "Performance simulation",
+        "role": "scores designs on energy, daylight, cost and carbon.",
+        "parts": [
+          "energy simulation",
+          "daylight and airflow simulation",
+          "cost and carbon estimators"
+        ]
+      },
+      {
+        "name": "Multi-objective optimiser",
+        "role": "ranks thousands of designs against competing goals.",
+        "parts": [
+          "objective functions",
+          "Pareto front search",
+          "sensitivity analysis"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop interface",
+        "role": "lets architects set intent, inspect options and refine choices.",
+        "parts": [
+          "3D visualisation",
+          "interactive editing",
+          "explanation of trade-offs"
+        ]
+      },
+      {
+        "name": "BIM and documentation exporter",
+        "role": "turns a selected design into construction documents.",
+        "parts": [
+          "BIM authoring integration",
+          "drawing generation",
+          "clash detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the design brief and constraints",
+        "detail": "Capture site boundaries, floor area targets, budget, and the relevant building codes as machine-readable rules."
+      },
+      {
+        "title": "Build a parametric model of the building",
+        "detail": "Create a geometry model where dimensions and shapes are driven by adjustable parameters, so the generative engine can vary them."
+      },
+      {
+        "title": "Integrate simulation tools",
+        "detail": "Connect structural (FEA), energy, daylight and cost simulators so each generated design can be evaluated automatically."
+      },
+      {
+        "title": "Configure or train the generative algorithms",
+        "detail": "Set up evolutionary search for optimisation, and train generative models on existing building plans if a data-driven approach is used."
+      },
+      {
+        "title": "Run the generative loop",
+        "detail": "The engine produces thousands of variants, each automatically simulated for structural soundness, energy use and cost."
+      },
+      {
+        "title": "Filter variants",
+        "detail": "Discard designs that fail structural checks or violate building codes, keeping only feasible candidates."
+      },
+      {
+        "title": "Optimise and rank",
+        "detail": "Use multi-objective optimisation to sort the surviving designs into a trade-off front between cost, carbon, daylight and other goals."
+      },
+      {
+        "title": "Present options to architects",
+        "detail": "Show the ranked designs in an interactive 3D interface so humans can select, combine or refine promising options."
+      },
+      {
+        "title": "Export to BIM for construction",
+        "detail": "The chosen design is converted into a BIM model, detailed drawings and schedules ready for permitting and construction."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Parametric design and BIM software",
+        "status": "exists",
+        "why": "needed to represent building geometry in a way that algorithms can manipulate and later document."
+      },
+      {
+        "tech": "Structural analysis (finite element analysis)",
+        "status": "exists",
+        "why": "to verify that generated designs can carry gravity, wind and seismic loads."
+      },
+      {
+        "tech": "Machine learning (generative models)",
+        "status": "partial",
+        "why": "GANs and diffusion models are used in research, but reliability for full building design is not yet proven."
+      },
+      {
+        "tech": "Cloud computing",
+        "status": "exists",
+        "why": "generating and simulating thousands of designs needs large-scale, parallel compute."
+      },
+      {
+        "tech": "Digitised building codes and regulations",
+        "status": "partial",
+        "why": "many rules exist as text and drawings rather than structured data, limiting full automation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "generative design tools assist architects by exploring options under human guidance",
+        "unlocks": "faster early-stage design and better-informed trade-off decisions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI agents autonomously generate, simulate and rank designs, with human oversight",
+        "unlocks": "designs that are structurally sound and code-compliant from the outset, cutting rework."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tight integration with robotic construction and digital twins",
+        "unlocks": "designs optimised for automated fabrication and real-time performance monitoring."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "end-to-end autonomous design-to-construction pipelines for standard building types",
+        "unlocks": "rapid, low-cost delivery of housing and infrastructure where demand outstrips design capacity."
+      }
+    ]
+  }
+}

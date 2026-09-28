@@ -38,5 +38,151 @@
         "def": "A phenomenon in quantum physics where pairs or groups of particles interact in such a way that the state of one particle cannot be described independently of the state of the others, even when the particles are separated by large distances."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "emits single photons, or very weak laser pulses, each encoding one bit of the key.",
+        "parts": [
+          "laser or entangled-photon source",
+          "phase or polarisation modulator"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries the photons; any attempt to read them disturbs them and leaves a trace.",
+        "parts": [
+          "dark optical fibre (often dedicated)",
+          "or free-space/satellite path",
+          "low-loss connectors and splices"
+        ]
+      },
+      {
+        "name": "Detector station",
+        "role": "measures each arriving photon in a randomly chosen basis.",
+        "parts": [
+          "single-photon detectors (superconducting nanowire or InGaAs)",
+          "timing electronics",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "public but tamper-proof channel used to compare bases, estimate eavesdropping and confirm the key.",
+        "parts": [
+          "ordinary network link",
+          "message authentication (hashing)"
+        ]
+      },
+      {
+        "name": "Key management layer",
+        "role": "stores keys, decides when enough entropy exists, and feeds them to encrypting equipment.",
+        "parts": [
+          "key store",
+          "interfaces to VPN or encryptors",
+          "audit logging"
+        ]
+      },
+      {
+        "name": "Relay or repeater",
+        "role": "extends reach beyond the range of a single link.",
+        "parts": [
+          "trusted nodes (today)",
+          "quantum repeaters and memories (research)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the route",
+        "detail": "Two sites are linked by dedicated fibre or a clear line of sight; losses are measured because every decibel cuts the key rate."
+      },
+      {
+        "title": "Send single photons",
+        "detail": "A laser is attenuated or a source is engineered so that pulses contain on average far less than one photon, encoding bits in phase or polarisation."
+      },
+      {
+        "title": "Measure on the other side",
+        "detail": "The receiver randomly picks a measurement basis for each photon, recording a click or no-click."
+      },
+      {
+        "title": "Sift the key",
+        "detail": "Over the authenticated public channel the two sides reveal only which bases they used, keeping the bits where the bases matched."
+      },
+      {
+        "title": "Estimate eavesdropping",
+        "detail": "They sample some bits to measure the error rate; above a threshold the key is thrown away."
+      },
+      {
+        "title": "Distil a secret key",
+        "detail": "Error correction fixes remaining mismatches, then privacy amplification hashes the string so an eavesdropper's partial knowledge is squeezed out."
+      },
+      {
+        "title": "Authenticate and use",
+        "detail": "The key is used with a one-time pad or to refresh a symmetric cipher such as AES — the quantum part distributes keys, it does not encrypt data itself."
+      },
+      {
+        "title": "Extend the network",
+        "detail": "Trusted nodes or, in future, quantum repeaters chain links together into a metro or national network."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors and sources",
+        "status": "exists",
+        "why": "without counting individual photons there is no way to detect an eavesdropper."
+      },
+      {
+        "tech": "Dedicated dark fibre or free-space links",
+        "status": "exists",
+        "why": "QKD needs low-loss, low-noise paths; sharing fibre with strong classical traffic degrades it."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "the public discussion between the two ends must itself be unforgeable or the protocol is defeated."
+      },
+      {
+        "tech": "Quantum repeaters and quantum memories",
+        "status": "missing",
+        "why": "losses limit fibre links to roughly a few hundred kilometres; repeaters would remove that limit."
+      },
+      {
+        "tech": "Agreed standards and certification",
+        "status": "partial",
+        "why": "interoperability between vendors and formal security evaluation are still maturing."
+      },
+      {
+        "tech": "Quantum computers running Shor's algorithm at scale",
+        "status": "missing",
+        "why": "this is the threat that motivates the whole field — harvest-now-decrypt-later attacks on today's public-key encryption."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro QKD links and short backbones in operation, plus entanglement links between cities and to satellites",
+        "unlocks": "proof that quantum key distribution works outside the laboratory."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QKD modules and national trusted-node networks alongside NIST's post-quantum cryptography standards",
+        "unlocks": "cheaper, standardised deployment — with post-quantum software protecting most traffic first, since it needs no new hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entanglement-based satellite links and intercontinental key exchange",
+        "unlocks": "key distribution between continents without trusting every intermediate node."
+      },
+      {
+        "stage": "2030s",
+        "milestone": "quantum repeaters and early quantum networks connecting processors as well as keys",
+        "unlocks": "genuinely long-distance quantum communication, and eventually a quantum internet."
+      }
+    ]
   }
 }

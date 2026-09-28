@@ -33,5 +33,162 @@
         "def": "A maintenance strategy that uses condition monitoring and historical data analysis to predict when equipment is likely to fail so preventive measures can be taken before a failure occurs."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "collects real-time data on the city's physical state.",
+        "parts": [
+          "environmental sensors (air quality, noise)",
+          "traffic cameras and loop detectors",
+          "smart meters for water and energy",
+          "GPS trackers on vehicles"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "moves data from sensors to computing platforms.",
+        "parts": [
+          "fibre and 5G networks",
+          "low-power wide-area networks (LoRaWAN, NB-IoT)",
+          "edge gateways"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "stores, cleans and streams the data.",
+        "parts": [
+          "cloud or edge servers",
+          "time-series databases",
+          "streaming pipelines",
+          "APIs"
+        ]
+      },
+      {
+        "name": "City model",
+        "role": "a 3D geometric and semantic representation of buildings, roads and terrain.",
+        "parts": [
+          "GIS and BIM data",
+          "LiDAR point clouds",
+          "photogrammetry",
+          "semantic metadata"
+        ]
+      },
+      {
+        "name": "Simulation and analytics",
+        "role": "predicts how the city behaves under different conditions.",
+        "parts": [
+          "traffic microsimulation",
+          "energy and water network models",
+          "AI/ML forecasting",
+          "optimisation algorithms"
+        ]
+      },
+      {
+        "name": "Visualisation and control",
+        "role": "lets operators see the twin and act on it.",
+        "parts": [
+          "dashboards and VR/AR interfaces",
+          "control systems for traffic lights, pumps, etc.",
+          "alerting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and use cases",
+        "detail": "Decide which city systems to twin (e.g., traffic, energy, water) and what decisions the twin should support."
+      },
+      {
+        "title": "Instrument the city",
+        "detail": "Install sensors, cameras and meters across the chosen area, following privacy rules."
+      },
+      {
+        "title": "Set up connectivity",
+        "detail": "Deploy or lease networks to carry the data reliably."
+      },
+      {
+        "title": "Build the data platform",
+        "detail": "Create cloud or edge infrastructure to ingest, store and process streams."
+      },
+      {
+        "title": "Create the 3D city model",
+        "detail": "Combine satellite imagery, LiDAR scans, GIS maps and building information models into a digital representation."
+      },
+      {
+        "title": "Integrate real-time data",
+        "detail": "Connect sensor feeds to the model so it updates live."
+      },
+      {
+        "title": "Develop simulations and analytics",
+        "detail": "Calibrate models against historical data and implement forecasting and optimisation."
+      },
+      {
+        "title": "Validate and calibrate",
+        "detail": "Compare twin predictions with actual observations and adjust."
+      },
+      {
+        "title": "Deploy and iterate",
+        "detail": "Use the twin for daily operations and planning, updating it as the city changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "IoT sensors and networks",
+        "status": "exists",
+        "why": "without real-time data, the twin cannot reflect the city."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "exists",
+        "why": "handles the large volumes of data and simulation workloads."
+      },
+      {
+        "tech": "3D city modelling (GIS/BIM)",
+        "status": "exists",
+        "why": "provides the spatial framework for the twin."
+      },
+      {
+        "tech": "AI and machine learning",
+        "status": "exists",
+        "why": "enables prediction and optimisation from complex data."
+      },
+      {
+        "tech": "Interoperability standards",
+        "status": "partial",
+        "why": "different city systems use different formats, making integration hard."
+      },
+      {
+        "tech": "Digital twin platforms",
+        "status": "partial",
+        "why": "commercial platforms exist but are still maturing for whole-city scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "district-level twins for single domains (e.g., traffic or energy)",
+        "unlocks": "proven value in isolated use cases."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-wide twins integrating multiple domains",
+        "unlocks": "cross-sector optimisation, such as linking transport and energy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time automated control of city infrastructure",
+        "unlocks": "responsive, self-adjusting systems like adaptive traffic signals."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "federated twins across regions and scenario planning for climate resilience",
+        "unlocks": "coordinated planning for shocks and long-term change."
+      }
+    ]
   }
 }

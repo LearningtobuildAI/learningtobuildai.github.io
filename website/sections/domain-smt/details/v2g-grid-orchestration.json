@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "converts DC battery energy into grid-compatible AC and back, and isolates the vehicle from the grid.",
+        "parts": [
+          "power electronics (inverter/rectifier)",
+          "isolation transformer",
+          "cooling",
+          "safety interlocks"
+        ]
+      },
+      {
+        "name": "Vehicle battery and management system",
+        "role": "stores energy and enforces limits on discharge to protect battery life and warranty.",
+        "parts": [
+          "lithium-ion pack",
+          "battery management system (BMS)",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Communication and control link",
+        "role": "carries commands and data between vehicle, charger, aggregator and grid operator.",
+        "parts": [
+          "power line communication (ISO 15118)",
+          "OCPP backend link",
+          "cellular or Wi-Fi",
+          "cybersecurity"
+        ]
+      },
+      {
+        "name": "Aggregation and dispatch platform",
+        "role": "groups thousands of vehicles into a controllable virtual battery and trades its capacity.",
+        "parts": [
+          "forecasting algorithms",
+          "bidding engine",
+          "dispatch scheduler",
+          "settlement and billing"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "connects the aggregated resource safely to the distribution network and meets grid codes.",
+        "parts": [
+          "protection relays",
+          "anti-islanding",
+          "smart meter",
+          "distribution transformer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the charger bidirectional",
+        "detail": "Design power electronics that can both rectify grid AC to DC for charging and invert DC to AC for export, with efficiency above 95% and galvanic isolation."
+      },
+      {
+        "title": "Enable the vehicle",
+        "detail": "Update battery management firmware to allow controlled discharge, and add hardware in models not originally built for it."
+      },
+      {
+        "title": "Standardise the connection",
+        "detail": "Adopt connectors and protocols — CCS with ISO 15118, or CHAdeMO — so any compatible car and charger can negotiate power flow."
+      },
+      {
+        "title": "Install charging points",
+        "detail": "Deploy bidirectional wallboxes at homes, depots and workplaces, wired for higher export currents than one-way chargers."
+      },
+      {
+        "title": "Build the aggregation software",
+        "detail": "Write algorithms that predict when cars will be plugged in and how much energy they can safely spare, then bid that capacity into grid markets."
+      },
+      {
+        "title": "Qualify with the grid",
+        "detail": "Meet the local distribution and transmission operator's requirements for protection, metering and response time."
+      },
+      {
+        "title": "Run pilots and scale",
+        "detail": "Start with fleet vehicles that have predictable schedules, then extend to homes and public chargers as confidence grows."
+      },
+      {
+        "title": "Operate and settle",
+        "detail": "Continuously monitor availability, dispatch, and pay owners for energy and services delivered."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional-capable vehicles",
+        "status": "partial",
+        "why": "only some EV models today can export power; many lack the hardware or firmware."
+      },
+      {
+        "tech": "Standard communication protocols",
+        "status": "exists",
+        "why": "ISO 15118 and CHAdeMO already define vehicle-to-grid messaging, and OCPP links chargers to backends."
+      },
+      {
+        "tech": "Grid codes and market rules for aggregated resources",
+        "status": "partial",
+        "why": "some regions allow small resources to provide frequency response, but rules vary and often require minimum capacities."
+      },
+      {
+        "tech": "Smart metering and telemetry",
+        "status": "exists",
+        "why": "accurate measurement is needed to bill and settle, and smart meters are widely deployed."
+      },
+      {
+        "tech": "Cybersecurity",
+        "status": "partial",
+        "why": "thousands of internet-connected chargers widen the attack surface, and defences are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Fleet and pilot projects such as electric buses and delivery vans demonstrate V2G for frequency regulation and peak shaving.",
+        "unlocks": "proven hardware and market rules for larger rollouts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Home V2G offered with specific car and charger combinations, enabling households to earn from parked cars.",
+        "unlocks": "a mass-market distributed battery."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Aggregators combine thousands of vehicles into virtual power plants that bid into wholesale and ancillary markets.",
+        "unlocks": "grid flexibility at scale, deferring network upgrades."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "V2G as a standard feature of EVs and chargers, integrated with renewable forecasting and dynamic pricing.",
+        "unlocks": "a resilient, low-carbon grid where transport and power sectors share storage."
+      }
+    ]
+  }
+}

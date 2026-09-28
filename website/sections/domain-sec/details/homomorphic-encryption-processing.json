@@ -38,5 +38,160 @@
         "def": "The process of generating, storing, distributing, revoking, and destroying cryptographic keys used for encryption and decryption."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Encoder",
+        "role": "packs ordinary numbers into the algebraic slots a ciphertext can hold.",
+        "parts": [
+          "SIMD batching into polynomial slots",
+          "fixed-point scaling (approximate arithmetic)",
+          "integer or bit-level encoding"
+        ]
+      },
+      {
+        "name": "Ciphertext ring arithmetic",
+        "role": "the core object: polynomials in a ring, each carrying deliberate 'noise' that hides the message.",
+        "parts": [
+          "RLWE/LWE ciphertext pairs",
+          "modulus chain",
+          "number-theoretic transform for fast multiplication"
+        ]
+      },
+      {
+        "name": "Evaluation engine",
+        "role": "performs addition, multiplication and rotation directly on ciphertexts.",
+        "parts": [
+          "homomorphic adder",
+          "homomorphic multiplier",
+          "relinearisation",
+          "ciphertext rotation (Galois keys)"
+        ]
+      },
+      {
+        "name": "Noise manager",
+        "role": "keeps the accumulated noise low enough that decryption still works.",
+        "parts": [
+          "modulus switching",
+          "bootstrapping",
+          "noise estimation"
+        ]
+      },
+      {
+        "name": "Key material",
+        "role": "everything the client generates and shares so a server can compute without decrypting.",
+        "parts": [
+          "secret key (stays with the data owner)",
+          "public key",
+          "evaluation keys, which can run to hundreds of megabytes"
+        ]
+      },
+      {
+        "name": "Accelerator layer",
+        "role": "makes the huge polynomial arithmetic affordable.",
+        "parts": [
+          "FPGA or ASIC NTT units",
+          "GPU kernels",
+          "memory-bandwidth optimisation"
+        ]
+      },
+      {
+        "name": "Compiler and parameter chooser",
+        "role": "turns a normal program into a depth-limited arithmetic circuit with valid security parameters.",
+        "parts": [
+          "circuit translator",
+          "multiplicative-depth minimiser",
+          "polynomial approximations of functions like sigmoid or square root",
+          "security-parameter selection per the HomomorphicEncryption.org standard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the scheme",
+        "detail": "Exact-integer schemes suit counting and database lookups; approximate schemes suit statistics and machine learning; bit-level schemes suit comparisons and control logic. The choice fixes what the rest of the system can express."
+      },
+      {
+        "title": "Choose security parameters",
+        "detail": "Select the polynomial ring dimension and modulus chain so the noise problem stays hard for an attacker, using the community security standard rather than guesswork."
+      },
+      {
+        "title": "Generate keys on the client",
+        "detail": "Create a secret key, a public key and the evaluation keys a server will need for multiplication and rotation. Large key sizes are the price of letting someone else compute on your data."
+      },
+      {
+        "title": "Encode and encrypt",
+        "detail": "Pack many values into one ciphertext at once. This batching is what turns an impossibly slow idea into something sometimes workable."
+      },
+      {
+        "title": "Express the computation as a circuit",
+        "detail": "Rewrite the algorithm using only additions and multiplications, and approximate any other mathematical function with a polynomial. Every multiplication consumes 'depth', so the circuit must be shallow."
+      },
+      {
+        "title": "Evaluate on the server",
+        "detail": "The server multiplies, adds and rotates ciphertexts it cannot read, periodically relinearising and switching moduli down the chain to control noise. It sees only meaningless polynomials."
+      },
+      {
+        "title": "Refresh with bootstrapping",
+        "detail": "When noise gets too close to the decryption threshold, the server runs the client's own decryption routine homomorphically to produce a fresh, low-noise ciphertext of the same value. This is the most expensive step."
+      },
+      {
+        "title": "Return and decrypt",
+        "detail": "The encrypted result goes back to the data owner, who alone can decrypt it. The server never held a key that could read the input or the output."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice cryptography (LWE and ring-LWE)",
+        "status": "exists",
+        "why": "the security of the whole scheme rests on the hardness of recovering a secret from noisy linear equations."
+      },
+      {
+        "tech": "Fast polynomial arithmetic (number-theoretic transform)",
+        "status": "exists",
+        "why": "multiplying thousand-term polynomials is the dominant cost; without a fast transform it is hopeless."
+      },
+      {
+        "tech": "Bootstrapping",
+        "status": "partial",
+        "why": "discovered in 2009, it turned a theoretical curiosity into a general technique, but it still dominates runtime."
+      },
+      {
+        "tech": "Programmable hardware accelerators",
+        "status": "partial",
+        "why": "FPGAs, GPUs and experimental ASICs cut the overhead by large factors, but none is yet a commodity product."
+      },
+      {
+        "tech": "Standardised parameters and libraries",
+        "status": "partial",
+        "why": "shared security parameters and open libraries are needed before auditors and regulators will accept results."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "narrow high-value uses: private database lookup, private information retrieval, encrypted similarity search and pilot analytics in cloud and health settings",
+        "unlocks": "proof that the technique can ship inside real products when the computation is small."
+      },
+      {
+        "stage": "Next",
+        "milestone": "purpose-built accelerators plus better compilers bring realistic workloads within reach",
+        "unlocks": "encrypted machine-learning inference and query processing at practical cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "threshold and multi-key variants, where several parties share the decryption key",
+        "unlocks": "joint computation across organisations that trust neither each other nor the cloud."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid designs pairing encrypted computation with hardware enclaves and secure multi-party computation",
+        "unlocks": "routine processing of regulated data — medical, financial, governmental — without ever exposing it in the clear."
+      }
+    ]
   }
 }

@@ -30,5 +30,168 @@
         "def": "Approaches that enable AI agents to use external tools and continuously adapt based on feedback from the environment or human users."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Reasoning engine",
+        "role": "the language model that produces plans, thoughts and tool calls.",
+        "parts": [
+          "base model",
+          "system prompt",
+          "decoding settings"
+        ]
+      },
+      {
+        "name": "Planner",
+        "role": "breaks an open-ended goal into ordered, checkable steps.",
+        "parts": [
+          "task decomposer",
+          "subgoal scheduler",
+          "dependency tracker"
+        ]
+      },
+      {
+        "name": "Tool interface",
+        "role": "lets the agent act on the outside world.",
+        "parts": [
+          "function-calling schema",
+          "API connectors",
+          "code interpreter",
+          "sandbox"
+        ]
+      },
+      {
+        "name": "Memory and retrieval",
+        "role": "keeps context and past experience available across steps.",
+        "parts": [
+          "running transcript",
+          "vector store",
+          "summariser"
+        ]
+      },
+      {
+        "name": "Reflection and critic",
+        "role": "checks intermediate and final results, then triggers corrections.",
+        "parts": [
+          "self-critique prompt",
+          "verifier model",
+          "test runner"
+        ]
+      },
+      {
+        "name": "Orchestration loop",
+        "role": "runs the plan-act-observe-reflect cycle and manages retries.",
+        "parts": [
+          "state machine",
+          "retry and backoff",
+          "step and cost budgets"
+        ]
+      },
+      {
+        "name": "Guardrails and oversight",
+        "role": "keeps actions bounded, auditable and safe.",
+        "parts": [
+          "permission scopes",
+          "human approval gates",
+          "audit log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and success metric",
+        "detail": "Pick a bounded open-ended task, such as fixing a bug or answering a multi-source question, and write down what a correct result looks like."
+      },
+      {
+        "title": "Select and prompt the base model",
+        "detail": "Choose a model with strong reasoning and tool-use ability, then write a system prompt that explains the loop and the available tools."
+      },
+      {
+        "title": "Expose tools with strict schemas",
+        "detail": "Wrap search, APIs and code execution as functions with typed arguments and clear descriptions so the model can call them reliably."
+      },
+      {
+        "title": "Implement the control loop",
+        "detail": "Code the cycle: the model proposes a thought and an action, the action runs, the observation is fed back, and the loop repeats until a stop condition is met."
+      },
+      {
+        "title": "Add memory and retrieval",
+        "detail": "Store the running transcript, summarise old steps to save context, and retrieve relevant documents or past successes when needed."
+      },
+      {
+        "title": "Insert reflection and verification",
+        "detail": "After key steps, ask the model or a separate critic to check the result, and run tests or validators wherever the task allows."
+      },
+      {
+        "title": "Set budgets and guardrails",
+        "detail": "Cap steps, tokens, time and cost; run code in a sandbox; require human approval before irreversible or high-impact actions."
+      },
+      {
+        "title": "Build an evaluation harness",
+        "detail": "Run the agent on a held-out set of tasks, measure success, and inspect traces to find where planning or tool use failed."
+      },
+      {
+        "title": "Deploy with monitoring",
+        "detail": "Log every action, watch for drift or repeated failures, and keep an operator able to intervene or roll back."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reasoning ability",
+        "status": "exists",
+        "why": "they generate plans, code and critiques, though reliability varies with task complexity."
+      },
+      {
+        "tech": "Tool-use and function-calling interfaces",
+        "status": "exists",
+        "why": "they let a model invoke external functions in a structured, repeatable way."
+      },
+      {
+        "tech": "Vector databases and retrieval",
+        "status": "exists",
+        "why": "they supply relevant context beyond what the model learned in training."
+      },
+      {
+        "tech": "Long-context memory",
+        "status": "partial",
+        "why": "context windows have grown, but agents still lose coherence over many steps."
+      },
+      {
+        "tech": "Formal verification of agent behaviour",
+        "status": "missing",
+        "why": "there is no general method to prove an agent will obey safety constraints in all situations."
+      },
+      {
+        "tech": "Standard evaluation benchmarks for open-ended tasks",
+        "status": "partial",
+        "why": "existing tests cover narrow skills, not the messy multi-step work agents are meant to do."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-agent workflows that plan, call tools and reflect under human supervision",
+        "unlocks": "automation of coding, research and data tasks with a person checking key outputs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems with specialised roles and shared memory",
+        "unlocks": "larger projects handled by decomposition and parallel work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised tool and identity protocols across services",
+        "unlocks": "agents that can safely use many external systems without custom integration each time."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reliable long-horizon autonomy with formal guardrails",
+        "unlocks": "delegation of end-to-end business processes and scientific workflows."
+      }
+    ]
   }
 }

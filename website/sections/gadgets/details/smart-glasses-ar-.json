@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Display engine",
+        "role": "creates the tiny, very bright image that gets projected into the eye.",
+        "parts": [
+          "micro-LED or LCoS microdisplay panel",
+          "illumination optics",
+          "combiner prisms"
+        ]
+      },
+      {
+        "name": "Waveguide combiner",
+        "role": "carries the image across the lens and releases it toward the pupil while still letting real light through.",
+        "parts": [
+          "glass or plastic waveguide slab",
+          "in-coupling and out-coupling diffractive gratings",
+          "pupil-expansion structures"
+        ]
+      },
+      {
+        "name": "Sensing and tracking",
+        "role": "works out where the head, hands and surroundings are so overlays stay anchored.",
+        "parts": [
+          "wide-angle cameras",
+          "inertial measurement unit",
+          "depth or time-of-flight sensors",
+          "eye-tracking cameras and infrared LEDs"
+        ]
+      },
+      {
+        "name": "Compute, wireless and power",
+        "role": "runs the software and links to a phone or cloud when the onboard chip is not enough.",
+        "parts": [
+          "low-power system-on-chip",
+          "battery in the temples",
+          "Bluetooth and Wi-Fi radios",
+          "optional tethered compute puck"
+        ]
+      },
+      {
+        "name": "Frame and ergonomics",
+        "role": "keeps the whole stack light enough and cool enough to wear all day.",
+        "parts": [
+          "moulded frame",
+          "thermal spreaders",
+          "prescription lens inserts",
+          "nose pads and hinges"
+        ]
+      },
+      {
+        "name": "Audio and interaction",
+        "role": "lets the wearer control the device without a screen or keyboard.",
+        "parts": [
+          "open-ear speakers",
+          "microphone array",
+          "touch surface",
+          "voice assistant"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optical stack",
+        "detail": "Modelling sets the field of view, the size of the eye box and the colour performance before any glass is cut."
+      },
+      {
+        "title": "Fabricate the waveguide",
+        "detail": "Micro- or nano-scale gratings are patterned onto a glass or polymer wafer by etching or nanoimprint, then the wafer is diced and polished into individual lenses."
+      },
+      {
+        "title": "Make the microdisplay",
+        "detail": "Micro-LED arrays are grown and transferred onto a silicon backplane, or an LCoS panel is built, giving a panel only a few millimetres across."
+      },
+      {
+        "title": "Assemble the light engine",
+        "detail": "The panel, illumination and relay optics are aligned to sub-micron tolerance and bonded into a module."
+      },
+      {
+        "title": "Couple display to waveguide",
+        "detail": "The projector is positioned against the in-coupling grating and fixed so the pupil lands where the eye will be."
+      },
+      {
+        "title": "Integrate electronics",
+        "detail": "Cameras, IMU, chip, radios and battery are fitted into the temples and connected to the light engine."
+      },
+      {
+        "title": "Calibrate each unit",
+        "detail": "Every pair is individually calibrated: display alignment and colour, camera intrinsics, eye-tracking maps and vergence."
+      },
+      {
+        "title": "Test and ship",
+        "detail": "Units are drop-, sweat- and heat-tested, then run through spatial-mapping and overlay accuracy checks before packing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-brightness microdisplays",
+        "status": "partial",
+        "why": "micro-LED panels are bright and efficient enough outdoors, but full-colour versions at consumer yield are still maturing; LCoS is the current fallback."
+      },
+      {
+        "tech": "Diffractive waveguide optics",
+        "status": "exists",
+        "why": "surface-relief gratings on glass can now be mass-produced and give a thin, see-through combiner."
+      },
+      {
+        "tech": "Real-time spatial mapping (SLAM) on low power",
+        "status": "exists",
+        "why": "phones and headsets already track position and build 3D maps of a room in real time."
+      },
+      {
+        "tech": "Tiny batteries and efficient chips",
+        "status": "partial",
+        "why": "all-day wear needs power and heat budgets that current glasses barely meet, so heavy work is often offloaded to a phone."
+      },
+      {
+        "tech": "Eye and hand tracking at wearable size",
+        "status": "partial",
+        "why": "reliable input without a controller is needed before overlays feel useful rather than gimmicky."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "display glasses that show notifications, navigation and translations in a monocular or small overlay",
+        "unlocks": "hands-free information for cyclists, travellers and warehouse or field workers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "binocular full-colour waveguides with hand and eye tracking in a glasses-like frame",
+        "unlocks": "3D overlays that stay fixed in the world, enabling guided repair, training and gaming."
+      },
+      {
+        "stage": "Next",
+        "milestone": "all-day glasses with onboard mapping and a multimodal AI assistant",
+        "unlocks": "a device that can answer questions about whatever the wearer is looking at."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "prescription-ready AR glasses light enough to replace the phone for many tasks",
+        "unlocks": "mass adoption and a shift of everyday interfaces from screens to the visual field."
+      }
+    ]
+  }
+}

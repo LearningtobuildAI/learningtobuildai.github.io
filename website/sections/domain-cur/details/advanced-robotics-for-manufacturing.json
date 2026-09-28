@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Manipulator arm",
+        "role": "moves the tool through space with repeatable accuracy.",
+        "parts": [
+          "articulated joints with servo motors",
+          "gearboxes (harmonic or cycloidal)",
+          "position encoders",
+          "cast or machined arm links"
+        ]
+      },
+      {
+        "name": "End effector",
+        "role": "the hand or tool that actually touches the workpiece.",
+        "parts": [
+          "parallel or adaptive grippers",
+          "vacuum cups and magnetic pads",
+          "welding torches, dispensers, screwdrivers",
+          "quick-change tool coupling"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "lets the robot find parts that are not in exactly the same place every time.",
+        "parts": [
+          "3D cameras and laser profilers",
+          "force–torque sensor at the wrist",
+          "tactile or slip sensors in the gripper",
+          "machine-vision software"
+        ]
+      },
+      {
+        "name": "Motion control",
+        "role": "turns a target position into coordinated joint motion.",
+        "parts": [
+          "robot controller",
+          "servo drives",
+          "trajectory planner",
+          "collision-avoidance software"
+        ]
+      },
+      {
+        "name": "Safety system",
+        "role": "keeps people and equipment safe while allowing close cooperation.",
+        "parts": [
+          "safety-rated controller and relays",
+          "light curtains and area scanners",
+          "power-and-force limiting for collaborative arms",
+          "emergency stops"
+        ]
+      },
+      {
+        "name": "Cell integration",
+        "role": "links the robot to the rest of the factory.",
+        "parts": [
+          "fixtures, part feeders, conveyors",
+          "fieldbus and PLC links",
+          "fleet manager for mobile robots",
+          "line-side sensors and barcode reading"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Study the task",
+        "detail": "Measure the cycle time, part weight, reach needed and how much variation the process will tolerate."
+      },
+      {
+        "title": "Choose the machine",
+        "detail": "Pick arm payload, reach and repeatability (often fractions of a millimetre) and a gripper that can hold the part without marking it."
+      },
+      {
+        "title": "Design the cell",
+        "detail": "Lay out fixtures, part feeding, service access and safety zones, usually in simulation first so the arm can be checked for reach and collisions."
+      },
+      {
+        "title": "Install and wire",
+        "detail": "Bolt the robot to a rigid base, dress the cables, and connect drives, sensors and the cell controller over a fieldbus."
+      },
+      {
+        "title": "Program the motion",
+        "detail": "Teach key positions by hand-guiding, or generate paths offline from CAD; add vision and force feedback so the robot can correct for misalignment."
+      },
+      {
+        "title": "Train the perception",
+        "detail": "Capture images of real parts under real lighting, label them, train a model to recognise and locate them, and test it against edge cases."
+      },
+      {
+        "title": "Validate safety",
+        "detail": "Measure stopping distances and clamping forces, set speed and force limits, and verify every guard and interlock against the relevant standards."
+      },
+      {
+        "title": "Ramp up",
+        "detail": "Run the cell at partial rate, watch rejects and takt time, tune, then hand it to production staff with documentation and training."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Precision servo drives and reducers",
+        "status": "exists",
+        "why": "accurate, repeatable motion is the foundation of any automated task."
+      },
+      {
+        "tech": "3D machine vision",
+        "status": "exists",
+        "why": "bin-picking and inspection need to locate parts that are not perfectly placed."
+      },
+      {
+        "tech": "Force and tactile sensing",
+        "status": "partial",
+        "why": "many assembly and finishing tasks require feeling contact, not just seeing it."
+      },
+      {
+        "tech": "Learning-based manipulation",
+        "status": "partial",
+        "why": "the flexible, general grasping that unstructured work demands is still mostly in research and pilots."
+      },
+      {
+        "tech": "Machine-safety standards and certification",
+        "status": "exists",
+        "why": "collaborative and high-speed robots can only share space with people under agreed rules."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "fenced high-speed cells plus collaborative arms and mobile robots in logistics",
+        "unlocks": "high-volume, repetitive work and warehouse transport."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robots that learn tasks from demonstration and adapt to part variation",
+        "unlocks": "small-batch and mixed-model production that today is done by hand."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mobile manipulators that move between machines and load them unsupervised",
+        "unlocks": "lights-out running of machining and inspection cells."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-configuring cells that reprogram themselves from CAD and line data",
+        "unlocks": "rapid changeover, so automation pays off even at low volumes."
+      }
+    ]
+  }
+}

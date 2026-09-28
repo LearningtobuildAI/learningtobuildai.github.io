@@ -30,5 +30,140 @@
         "def": "Materials that are insulating in their bulk but conductive on their surface, potentially useful for spintronics applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Growth substrate",
+        "role": "provides the template that forces silicon atoms into a honeycomb rather than a diamond lattice.",
+        "parts": [
+          "single-crystal silver (111) surface",
+          "or zirconium diboride / iridium surfaces",
+          "ultra-high-vacuum chamber"
+        ]
+      },
+      {
+        "name": "Silicon source",
+        "role": "delivers silicon atoms at a controlled, very slow rate.",
+        "parts": [
+          "electron-beam evaporator or Knudsen cell",
+          "flux monitor",
+          "heated sample stage"
+        ]
+      },
+      {
+        "name": "Characterisation",
+        "role": "confirms that a honeycomb has actually formed, and probes its electronic structure.",
+        "parts": [
+          "scanning tunnelling microscope",
+          "low-energy electron diffraction",
+          "angle-resolved photoemission"
+        ]
+      },
+      {
+        "name": "Encapsulation and transfer",
+        "role": "protects a material that oxidises within minutes in air.",
+        "parts": [
+          "protective capping layer (e.g. alumina or graphene)",
+          "wet or polymer-assisted transfer",
+          "glovebox"
+        ]
+      },
+      {
+        "name": "Device stack",
+        "role": "turns a sheet on metal into a measurable electronic device.",
+        "parts": [
+          "gate dielectric",
+          "source/drain contacts",
+          "field-effect transistor geometry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare a clean metal surface",
+        "detail": "A silver (111) single crystal is repeatedly sputtered and annealed in ultra-high vacuum until atomically flat and free of contamination."
+      },
+      {
+        "title": "Deposit silicon slowly",
+        "detail": "Silicon is evaporated onto the surface at sub-monolayer rates while the substrate is held at a chosen temperature."
+      },
+      {
+        "title": "Let the honeycomb self-assemble",
+        "detail": "On the right surface the silicon atoms settle into a buckled hexagonal sheet — buckled rather than flat, unlike graphene, which is what gives it a field-tunable band gap."
+      },
+      {
+        "title": "Verify the structure",
+        "detail": "Scanning tunnelling microscopy and electron diffraction confirm the honeycomb; photoemission looks for the Dirac cone in the band structure."
+      },
+      {
+        "title": "Cap before exposure",
+        "detail": "Because the sheet oxidises quickly in air, a protective layer must be grown on top before the sample ever leaves vacuum."
+      },
+      {
+        "title": "Transfer or process in place",
+        "detail": "Either the capped sheet is lifted onto an insulating wafer, or devices are patterned directly on the growth substrate."
+      },
+      {
+        "title": "Fabricate devices",
+        "detail": "Dielectric, gate and contacts are deposited to make transistors or Hall-bar structures for transport measurements."
+      },
+      {
+        "title": "Measure at cryogenic temperatures",
+        "detail": "Transport experiments look for the predicted topological edge states and superconductivity in doped samples."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultra-high-vacuum epitaxy",
+        "status": "exists",
+        "why": "silicene only forms cleanly on pristine surfaces with almost no residual gas."
+      },
+      {
+        "tech": "Atomic-scale imaging and spectroscopy",
+        "status": "exists",
+        "why": "the evidence for the honeycomb comes from scanning tunnelling microscopy and photoemission, not bulk measurement."
+      },
+      {
+        "tech": "Growth on insulating or transferable substrates",
+        "status": "missing",
+        "why": "today the sheet only forms on metals, which would short-circuit any device built on it."
+      },
+      {
+        "tech": "Air-stable encapsulation of 2D materials",
+        "status": "partial",
+        "why": "demonstrated for other 2D materials such as graphene and phosphorene; not yet routine for silicene."
+      },
+      {
+        "tech": "Silicon-compatible integration",
+        "status": "missing",
+        "why": "the promise is that a 2D silicon sheet could slot into existing chip manufacturing, but no such process exists."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "silicene grown and imaged on metal surfaces in ultra-high vacuum",
+        "unlocks": "confirmation that silicon can form a stable 2D honeycomb at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable transfer onto insulating wafers with encapsulation",
+        "unlocks": "the first true silicene transistors measured outside the growth chamber."
+      },
+      {
+        "stage": "Next",
+        "milestone": "observation of the predicted topological edge conduction and doped superconductivity",
+        "unlocks": "candidate building blocks for topological quantum devices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "wafer-scale growth compatible with chip fabrication",
+        "unlocks": "a possible post-silicon or beyond-silicon electronics platform — speculative, and competing with many other 2D materials."
+      }
+    ]
   }
 }

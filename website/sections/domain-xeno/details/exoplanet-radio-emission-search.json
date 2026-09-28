@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Low-frequency antenna array",
+        "role": "collects the faint metre-wave signal; the whole technique only works below roughly 200 MHz, where the emission is bright enough and the sky is quiet.",
+        "parts": [
+          "dipole or tile elements",
+          "station of tens to hundreds of elements",
+          "ground plane and low-noise amplifiers"
+        ]
+      },
+      {
+        "name": "Receiver and digitiser",
+        "role": "turns each antenna's analogue signal into sampled digital data across tens of megahertz of bandwidth.",
+        "parts": [
+          "analogue bandpass filters",
+          "high-speed ADCs"
+        ]
+      },
+      {
+        "name": "Beamformer and correlator",
+        "role": "combines the elements into one or more pointed beams: one on the target star, others pointed nearby to measure the background.",
+        "parts": [
+          "per-station beamformers",
+          "central correlator"
+        ]
+      },
+      {
+        "name": "RFI monitoring and excision",
+        "role": "removes human-made interference, which at these frequencies is far stronger than any astrophysical signal.",
+        "parts": [
+          "reference antennas",
+          "flagging software",
+          "ionospheric calibration"
+        ]
+      },
+      {
+        "name": "Spectrometer and polarimeter",
+        "role": "resolves the narrow emission band and measures its circular polarisation.",
+        "parts": [
+          "high spectral-resolution channeliser",
+          "long coherent integration"
+        ]
+      },
+      {
+        "name": "Detection and vetting pipeline",
+        "role": "searches stacked spectra for drifting, polarised narrowband features and filters out false positives.",
+        "parts": [
+          "drift-rate search",
+          "multi-epoch cross-checks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select target systems",
+        "detail": "Theory predicts the strongest signals from close-in giant planets orbiting stars with strong magnetic fields and dense stellar winds."
+      },
+      {
+        "title": "Build or schedule the array",
+        "detail": "At least a few hundred dipoles spread over hundreds of metres to a kilometre, on a radio-quiet site, tuned for roughly 10–200 MHz."
+      },
+      {
+        "title": "Observe for hours",
+        "detail": "Several hours of integration per system, repeated over multiple nights and epochs to beat down noise and to distinguish a persistent source from a transient."
+      },
+      {
+        "title": "Form simultaneous beams",
+        "detail": "One beam tracks the star while reference beams track sky positions a few degrees away and an empty patch, all at the same frequency; this measures the local confusion limit."
+      },
+      {
+        "title": "Excise interference",
+        "detail": "Flag channels contaminated by FM, digital audio, aircraft and lightning, then re-derive the bandpass and correct for the ionosphere."
+      },
+      {
+        "title": "Search for narrowband drifting features",
+        "detail": "Emission is expected at a cyclotron frequency set by the planet's magnetic field, strongly circularly polarised and drifting slowly in frequency as the field sweeps past the observer."
+      },
+      {
+        "title": "Vet candidates",
+        "detail": "Require the signal to track the star's sidereal position, to persist across epochs, to be absent in the reference beams, and to have a polarisation signature no known interference source produces."
+      },
+      {
+        "title": "Interpret magnetism",
+        "detail": "Convert the detected frequency to a magnetic field strength at the emission site and compare with models of the star–planet interaction and of atmospheric escape."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Metre-wave radio arrays",
+        "status": "exists",
+        "why": "LOFAR, NenuFAR, the upgraded GMRT and the Murchison Widefield Array already cover 10–300 MHz; SKA-Low extends this with far greater sensitivity."
+      },
+      {
+        "tech": "Cyclotron maser emission theory",
+        "status": "exists",
+        "why": "the same mechanism is measured from Jupiter's interaction with its moon Io, giving the template for what to look for."
+      },
+      {
+        "tech": "Radio-quiet sites and interference excision",
+        "status": "partial",
+        "why": "at these frequencies interference can outshine the target by orders of magnitude, so sensitivity is limited by flagging quality as much as by dish area."
+      },
+      {
+        "tech": "Coherent long integrations and beamforming",
+        "status": "partial",
+        "why": "signals are weak and may drift, so hours of phase-coherent averaging and precise ionospheric calibration are needed."
+      },
+      {
+        "tech": "Stellar wind and magnetosphere models",
+        "status": "partial",
+        "why": "predictions of how much power a star–planet interaction radiates span several orders of magnitude, which sets how long a search must be."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "surveys of nearby systems with existing metre-wave arrays, yielding mostly non-detections plus a handful of contested candidates including a red-dwarf system",
+        "unlocks": "first observational limits on exoplanet magnetic fields and a growing catalogue of the best targets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "SKA-Low and upgraded low-frequency arrays reaching microjansky sensitivity over wide fields",
+        "unlocks": "faint enough to test the full range of predicted emission strengths for hundreds of nearby stars, not just the most optimistic few."
+      },
+      {
+        "stage": "Next",
+        "milestone": "confirmed detections cross-matched with other magnetospheric tracers such as ultraviolet aurorae and star–planet interaction in stellar chromospheric lines",
+        "unlocks": "a calibrated method for measuring exoplanet magnetic fields from the ground."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine magnetic-field measurements for planets in habitable zones, feeding atmospheric-escape and habitability models",
+        "unlocks": "knowledge of which planets keep their atmospheres and water over billions of years."
+      }
+    ]
+  }
+}

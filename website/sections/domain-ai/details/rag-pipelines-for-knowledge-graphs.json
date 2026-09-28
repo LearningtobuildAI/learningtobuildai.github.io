@@ -29,5 +29,157 @@
         "def": "A structured representation of entities, their attributes, and relationships between them, used for storing and querying complex knowledge."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Graph construction",
+        "role": "turns documents into entities and relationships.",
+        "parts": [
+          "text chunking",
+          "entity and relation extraction by LLM",
+          "coreference resolution",
+          "entity resolution and deduplication"
+        ]
+      },
+      {
+        "name": "Knowledge graph store",
+        "role": "holds the nodes, edges and their provenance.",
+        "parts": [
+          "triple or property-graph database",
+          "ontology and schema",
+          "source-document links"
+        ]
+      },
+      {
+        "name": "Index layer",
+        "role": "makes the graph searchable by both meaning and structure.",
+        "parts": [
+          "node and edge text embeddings",
+          "vector index of summaries",
+          "community or cluster summaries",
+          "keyword index"
+        ]
+      },
+      {
+        "name": "Retrieval engine",
+        "role": "finds the right subgraph for a question.",
+        "parts": [
+          "query understanding and entity linking",
+          "seed-node lookup",
+          "multi-hop traversal",
+          "reranker"
+        ]
+      },
+      {
+        "name": "Generation and grounding",
+        "role": "answers using the retrieved subgraph and cites it.",
+        "parts": [
+          "large language model",
+          "prompt assembly with triples and summaries",
+          "citations back to source text"
+        ]
+      },
+      {
+        "name": "Evaluation and maintenance",
+        "role": "keeps the graph correct and the answers faithful.",
+        "parts": [
+          "groundedness and citation checks",
+          "staleness detection",
+          "incremental graph updates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the schema",
+        "detail": "Decide which entity and relationship types matter for the domain; an open schema invites noise, a rigid one misses facts."
+      },
+      {
+        "title": "Extract the graph",
+        "detail": "Chunk source documents, then have a language model extract entities and relations from each chunk, with the passage recorded as evidence."
+      },
+      {
+        "title": "Resolve and link",
+        "detail": "Merge duplicate entities (the same organisation written five ways) into canonical nodes, and attach each to its source spans."
+      },
+      {
+        "title": "Build the index",
+        "detail": "Embed nodes and edges, cluster related nodes, and write summaries for each cluster so broad questions can be answered without full traversal."
+      },
+      {
+        "title": "Index queries, not just documents",
+        "detail": "At question time, identify entities in the query, find matching graph nodes, then expand outward a few hops or to the relevant cluster."
+      },
+      {
+        "title": "Assemble context",
+        "detail": "Package the retrieved triples, their source text and cluster summaries into the model prompt, ordered by relevance."
+      },
+      {
+        "title": "Generate with citations",
+        "detail": "The model writes the answer, and each claim is tied back to a node, edge or document — unverifiable claims are flagged."
+      },
+      {
+        "title": "Operate and refresh",
+        "detail": "Monitor grounding quality, re-extract from changed documents, and merge new nodes into the existing graph."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they do the extraction, query interpretation and final writing."
+      },
+      {
+        "tech": "Vector databases and approximate nearest-neighbour search",
+        "status": "exists",
+        "why": "they retrieve semantically similar nodes and passages at speed."
+      },
+      {
+        "tech": "Graph databases and query engines",
+        "status": "exists",
+        "why": "they store triples and run multi-hop traversals."
+      },
+      {
+        "tech": "Entity resolution at scale",
+        "status": "partial",
+        "why": "merging duplicates well is slow and error-prone, and errors propagate into every answer."
+      },
+      {
+        "tech": "Robust relation extraction",
+        "status": "partial",
+        "why": "models still miss implicit relationships and hallucinate edges unless every triple is grounded in text."
+      },
+      {
+        "tech": "Groundedness evaluation",
+        "status": "partial",
+        "why": "without a way to measure whether answers follow the graph, improvements are guesswork."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "graph-augmented RAG demonstrated on narrow domains such as biomedical or enterprise document sets",
+        "unlocks": "answers that require joining facts across several documents."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised, incremental graph building with provenance on every edge",
+        "unlocks": "corpora that change daily can be trusted, not rebuilt from scratch."
+      },
+      {
+        "stage": "Next",
+        "milestone": "structured queries over text and tabular data in one pipeline",
+        "unlocks": "analyst-style questions mixing documents, spreadsheets and databases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-maintaining knowledge graphs that correct and merge themselves",
+        "unlocks": "long-lived assistants whose knowledge stays accurate without manual curation."
+      }
+    ]
   }
 }

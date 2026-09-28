@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Silicon neurons",
+        "role": "generate electrical spikes when their internal state crosses a threshold, mimicking biological neurons.",
+        "parts": [
+          "membrane capacitor",
+          "threshold comparator",
+          "refractory circuit"
+        ]
+      },
+      {
+        "name": "Synapse array",
+        "role": "stores the connection strengths (weights) and applies them to incoming spikes.",
+        "parts": [
+          "non-volatile memory cells (e.g., resistive RAM)",
+          "weight registers",
+          "multiply-accumulate circuits"
+        ]
+      },
+      {
+        "name": "Spike routing network",
+        "role": "delivers each spike only to the neurons it connects to, without a global clock.",
+        "parts": [
+          "address-event representation (AER) buses",
+          "network-on-chip routers",
+          "arbiters"
+        ]
+      },
+      {
+        "name": "Learning engine",
+        "role": "updates weights locally using rules such as spike-timing-dependent plasticity.",
+        "parts": [
+          "plasticity controllers",
+          "weight update circuits"
+        ]
+      },
+      {
+        "name": "I/O and sensor interface",
+        "role": "connects to event-based sensors and host systems.",
+        "parts": [
+          "AER interfaces",
+          "serial links",
+          "sensor drivers"
+        ]
+      },
+      {
+        "name": "Power and clock management",
+        "role": "keeps energy per spike extremely low, often by avoiding a global clock.",
+        "parts": [
+          "asynchronous handshake circuits",
+          "power gating",
+          "dynamic voltage scaling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design neuron and synapse circuits",
+        "detail": "Engineers choose analog or digital designs and simulate them to ensure reliable spiking at low energy."
+      },
+      {
+        "title": "Lay out the chip",
+        "detail": "Custom analog blocks and digital routers are placed and routed, often mixing custom and synthesized logic."
+      },
+      {
+        "title": "Fabricate at a foundry",
+        "detail": "The design is taped out on a CMOS process, sometimes with embedded non-volatile memory for weights."
+      },
+      {
+        "title": "Test and characterise",
+        "detail": "Wafer probing measures spike timing, energy per spike and variability across the chip."
+      },
+      {
+        "title": "Package and integrate",
+        "detail": "The die is packaged and connected to event-based sensors, memory and host interfaces."
+      },
+      {
+        "title": "Build the software stack",
+        "detail": "Compilers map trained SNNs onto the hardware, and frameworks run the network and monitor learning."
+      },
+      {
+        "title": "Deploy at the edge",
+        "detail": "The chip runs always-on tasks such as keyword spotting or gesture recognition in battery-powered devices."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Event-based sensors",
+        "status": "partial",
+        "why": "cameras and microphones that output spikes natively feed neuromorphic chips efficiently, but they are not yet mainstream."
+      },
+      {
+        "tech": "Sparse, event-driven neural network training",
+        "status": "partial",
+        "why": "training SNNs with backpropagation is difficult; most methods are still research-grade."
+      },
+      {
+        "tech": "On-chip non-volatile memory",
+        "status": "partial",
+        "why": "analog weights need dense, low-energy storage, and resistive RAM or flash are not yet ideal."
+      },
+      {
+        "tech": "Advanced CMOS fabrication",
+        "status": "exists",
+        "why": "neuromorphic chips are built on standard silicon processes, so this is available."
+      },
+      {
+        "tech": "Software toolchains and standards",
+        "status": "partial",
+        "why": "compilers and frameworks exist but are immature and fragmented, slowing adoption."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial and research chips for niche always-on sensing",
+        "unlocks": "ultra-low-power keyword spotting and gesture recognition in small devices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised toolchains and larger SNN models",
+        "unlocks": "easier integration into mainstream AI pipelines and hybrid systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tight integration with event-based sensors for autonomous systems",
+        "unlocks": "low-latency, low-power perception for robots and wearables."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-chip learning and adaptation at scale",
+        "unlocks": "edge devices that learn continuously without cloud connection."
+      }
+    ]
+  }
+}

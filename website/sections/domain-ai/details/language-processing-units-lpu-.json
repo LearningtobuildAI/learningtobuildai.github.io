@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute array",
+        "role": "performs the matrix-vector multiplies that generate each token",
+        "parts": [
+          "multiply-accumulate units",
+          "vector registers",
+          "control logic"
+        ]
+      },
+      {
+        "name": "On-chip memory",
+        "role": "holds model weights and activations close to compute to avoid external memory bottlenecks",
+        "parts": [
+          "SRAM banks",
+          "memory controllers",
+          "interconnect fabric"
+        ]
+      },
+      {
+        "name": "Interconnect",
+        "role": "moves data between compute cores and memory at very high bandwidth",
+        "parts": [
+          "network-on-chip",
+          "high-bandwidth buses"
+        ]
+      },
+      {
+        "name": "Host interface",
+        "role": "connects the accelerator to a server CPU",
+        "parts": [
+          "PCIe controller",
+          "DMA engines"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "compiles and schedules models for the deterministic architecture",
+        "parts": [
+          "compiler",
+          "runtime",
+          "quantization tools"
+        ]
+      },
+      {
+        "name": "Thermal and power delivery",
+        "role": "keeps the chip within temperature and power limits",
+        "parts": [
+          "heat sink or liquid cooling",
+          "voltage regulators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the architecture",
+        "detail": "Designers choose how many compute units, how much SRAM, and how data flows, targeting the memory bandwidth needed for token-by-token generation."
+      },
+      {
+        "title": "Write and verify RTL",
+        "detail": "The design is described in a hardware description language and simulated to check correctness."
+      },
+      {
+        "title": "Physical design",
+        "detail": "The netlist is placed and routed on a chosen process node, with timing and power closure."
+      },
+      {
+        "title": "Tape-out and fabrication",
+        "detail": "Masks are made and wafers are fabricated in a semiconductor foundry, typically at 14 nm or 7 nm."
+      },
+      {
+        "title": "Packaging and test",
+        "detail": "Dies are packaged, tested for speed and defects, and binned."
+      },
+      {
+        "title": "Board integration",
+        "detail": "The chip is mounted on a card with power delivery, host interface and cooling."
+      },
+      {
+        "title": "Compiler and runtime development",
+        "detail": "Software maps neural network graphs onto the chip's fixed dataflow, quantizing weights to fit on-chip memory."
+      },
+      {
+        "title": "Deployment in data centres",
+        "detail": "Cards are installed in servers and exposed as inference endpoints, often via a cloud API."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced semiconductor manufacturing",
+        "status": "exists",
+        "why": "chips with large on-chip SRAM require a suitable process node with high yield."
+      },
+      {
+        "tech": "High-bandwidth on-chip SRAM",
+        "status": "exists",
+        "why": "storing model weights on-chip demands many megabytes of fast SRAM."
+      },
+      {
+        "tech": "Model quantization and compression",
+        "status": "exists",
+        "why": "reducing weight precision lets larger models fit in limited on-chip memory."
+      },
+      {
+        "tech": "AI compilers and graph optimizers",
+        "status": "exists",
+        "why": "mapping models to a fixed dataflow requires sophisticated scheduling."
+      },
+      {
+        "tech": "High-speed host interfaces",
+        "status": "exists",
+        "why": "PCIe or similar links move prompts and results between CPU and accelerator."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial LPU-based inference clouds",
+        "unlocks": "very low latency token generation for chatbots and real-time applications."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chips with larger on-chip memory to run bigger models without splitting across multiple chips",
+        "unlocks": "higher quality models at low latency."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous systems mixing LPUs with GPUs",
+        "unlocks": "efficient handling of both prefill (parallel) and decode (sequential) phases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device LPUs for edge inference",
+        "unlocks": "private, offline LLM assistants in phones and laptops."
+      }
+    ]
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Orbit and navigation",
+        "role": "holds the station on a halo orbit that is dynamically unstable and drifts without correction.",
+        "parts": [
+          "orbit determination and ranging",
+          "small stationkeeping thrusters",
+          "navigation and trajectory software"
+        ]
+      },
+      {
+        "name": "Spacecraft or station bus",
+        "role": "supplies power, thermal control, propulsion and communications to whatever sits at the point.",
+        "parts": [
+          "solar arrays",
+          "radiators and multilayer insulation",
+          "chemical or electric thrusters",
+          "high-gain antenna"
+        ]
+      },
+      {
+        "name": "Payload platform",
+        "role": "the reason for being there — an infrared telescope, a communications relay, or docking ports.",
+        "parts": [
+          "instrument or antenna bay",
+          "fine pointing system",
+          "sunshade (for infrared telescopes)"
+        ]
+      },
+      {
+        "name": "Propellant depot",
+        "role": "stores and transfers cryogenic propellant to vehicles passing through, so they need not carry it from Earth.",
+        "parts": [
+          "insulated cryogenic tanks",
+          "zero-boil-off cryocoolers",
+          "transfer lines and couplings",
+          "docking ports"
+        ]
+      },
+      {
+        "name": "Assembly and servicing yard",
+        "role": "berths modules and vehicles for refuelling, repair and in-space construction.",
+        "parts": [
+          "robotic arms",
+          "berthing mechanisms",
+          "tools and fixtures",
+          "pressurised habitat and airlock (crewed version)"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "tracks, commands and receives data from the station.",
+        "parts": [
+          "deep-space tracking antennas",
+          "mission operations centre",
+          "data relay network"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the point and orbit",
+        "detail": "Sun–Earth L1 and L2 sit about 1.5 million km from Earth and are unstable, so a spacecraft flies a small halo orbit around them. L4 and L5 are stable and need almost no stationkeeping, but are far more expensive to reach. Earth–Moon L1 and L2 are roughly 60,000 km from the Moon and are the natural staging points for lunar work."
+      },
+      {
+        "title": "Design the transfer",
+        "detail": "A direct transfer from low Earth orbit costs roughly 3 km/s of velocity change and takes days to weeks. Low-energy transfers can cut the fuel needed at the cost of months of travel time."
+      },
+      {
+        "title": "Launch and cruise",
+        "detail": "The platform is launched on a heavy-lift rocket, then coasts, with course corrections along the way."
+      },
+      {
+        "title": "Insert into the halo orbit",
+        "detail": "A small burn puts the craft onto its orbit. Because the point is unstable, it then needs periodic thruster firings — for a Sun–Earth L2 telescope, a few metres per second of velocity change per year, applied in small burns every few weeks."
+      },
+      {
+        "title": "Commission the platform",
+        "detail": "Solar arrays, antennas and sunshades are deployed and checked, and instruments or relay transponders are switched on. Sun–Earth L2 telescopes must warm up or cool down carefully depending on their design."
+      },
+      {
+        "title": "Add depot capability",
+        "detail": "This does not exist today. It would mean launching prefilled cryogenic tanks, docking them together, and demonstrating transfer of liquid hydrogen, oxygen or methane between two spacecraft in microgravity — the step that turns any Lagrange point into a refuelling stop."
+      },
+      {
+        "title": "Build up assembly and servicing",
+        "detail": "Robotic arms and berthing ports would let modules, telescopes and upper stages be joined and repaired on site rather than built entirely on the ground."
+      },
+      {
+        "title": "Establish the logistics loop",
+        "detail": "Regular cargo flights from Earth resupply the site; later, propellant made from lunar water could be delivered from the Moon to Earth–Moon L1 or L2 far more cheaply than lifting it from Earth."
+      },
+      {
+        "title": "Operate as a hub",
+        "detail": "The site then serves its users: continuous solar observation at Sun–Earth L1, steady infrared astronomy at Sun–Earth L2, far-side lunar communications relays at Earth–Moon L2, and staging for deep-space missions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep-space tracking and precision navigation",
+        "status": "exists",
+        "why": "halo orbits are unstable, so a station must know exactly where it is and correct course regularly."
+      },
+      {
+        "tech": "Autonomous rendezvous and docking",
+        "status": "exists",
+        "why": "depots and assembly yards only work if vehicles can find and attach to each other without a crew aboard."
+      },
+      {
+        "tech": "Cryogenic propellant storage and transfer in microgravity",
+        "status": "partial",
+        "why": "liquids float and boil off in space; long-term storage and clean transfer between craft have been demonstrated only in small experiments."
+      },
+      {
+        "tech": "Robotic servicing and in-space assembly",
+        "status": "partial",
+        "why": "refuelling and module berthing have been shown in low Earth orbit but not yet at a Lagrange point."
+      },
+      {
+        "tech": "Crew radiation shielding beyond Earth's magnetosphere",
+        "status": "partial",
+        "why": "a crewed station at a Lagrange point sits outside the protective magnetic field, exposed to solar and galactic radiation."
+      },
+      {
+        "tech": "Affordable heavy-lift resupply",
+        "status": "exists",
+        "why": "building and sustaining anything there depends on regular, reasonably priced launches."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "individual science and relay spacecraft on halo orbits — solar observatories and space-weather monitors at Sun–Earth L1, infrared telescopes at Sun–Earth L2, and a lunar far-side relay at Earth–Moon L2",
+        "unlocks": "continuous solar monitoring, deep infrared astronomy and communications with the lunar far side."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a crewed station in a large halo-family orbit near Earth–Moon L2, assembled from modules launched separately",
+        "unlocks": "a reusable staging post for lunar surface missions and a testbed for long-duration operations far from Earth."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a robotic cryogenic propellant depot at Earth–Moon L1 or L2",
+        "unlocks": "reusable landers and tugs that refuel in space instead of carrying all their fuel from the ground."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "servicing yards and lunar-derived propellant delivered to the same points",
+        "unlocks": "ongoing repair and upgrading of telescopes and vehicles, and much cheaper deep-space transport."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "station-keeping-free settlements or large facilities at the stable L4 and L5 points",
+        "unlocks": "permanent infrastructure with no orbit-maintenance fuel cost, though at today's launch prices it remains speculative."
+      }
+    ]
+  }
+}

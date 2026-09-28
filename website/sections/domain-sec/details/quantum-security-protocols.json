@@ -34,5 +34,150 @@
         "def": "A computing device that utilizes quantum mechanics to perform operations on data, potentially much faster than classical computers."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Key-encapsulation mechanism",
+        "role": "establishes a shared secret between two parties, replacing the role of Diffie–Hellman or RSA key transport.",
+        "parts": [
+          "lattice arithmetic in a polynomial ring",
+          "number-theoretic transform",
+          "error and secret sampling",
+          "hashing (SHA-3/SHAKE)",
+          "Fujisaki–Okamoto-style transform"
+        ]
+      },
+      {
+        "name": "Digital signature scheme",
+        "role": "authenticates data, software and website certificates.",
+        "parts": [
+          "lattice signatures for speed and small keys",
+          "hash-based signatures for very conservative security",
+          "key and signature encoding formats"
+        ]
+      },
+      {
+        "name": "Symmetric primitives",
+        "role": "the bulk-encryption and hashing layer that quantum search algorithms only weaken, not break.",
+        "parts": [
+          "AES with 256-bit keys",
+          "SHA-2 and SHA-3 families",
+          "message authentication"
+        ]
+      },
+      {
+        "name": "Protocol integration",
+        "role": "carries the new algorithms through the standards real systems use.",
+        "parts": [
+          "TLS 1.3 hybrid handshake",
+          "SSH and IPsec key exchange",
+          "X.509 certificate and key formats",
+          "larger public keys and signatures (roughly 1–3 kB, tens of kB for some hash-based signatures)"
+        ]
+      },
+      {
+        "name": "Implementation layer",
+        "role": "runs the maths safely on real hardware, including small embedded devices.",
+        "parts": [
+          "constant-time code",
+          "side-channel countermeasures",
+          "randomness generation",
+          "hardware security modules and accelerators"
+        ]
+      },
+      {
+        "name": "Migration and agility tooling",
+        "role": "finds where old cryptography is used and swaps it out without breaking systems.",
+        "parts": [
+          "cryptographic inventory and discovery",
+          "cryptographic bill of materials",
+          "policy and rotation orchestration",
+          "interoperability test suites"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the hard problem",
+        "detail": "Designers choose a mathematical problem believed to resist both classical and quantum attack — most standards use the hardness of finding short vectors in high-dimensional lattices, while others use error-correcting codes or hash functions."
+      },
+      {
+        "title": "Choose parameters",
+        "detail": "Key sizes, ring dimensions and error distributions are tuned so that the best known attacks need impractical effort, while keys and ciphertexts stay small enough for real networks."
+      },
+      {
+        "title": "Implement in constant time",
+        "detail": "The algorithm is coded so that its running time and memory access pattern never depend on secret values; otherwise timing and cache attacks leak the key regardless of the maths."
+      },
+      {
+        "title": "Test and verify",
+        "detail": "Implementations are checked against known-answer test vectors, fuzzed, formally verified where possible, and probed with side-channel measurement to confirm no secret-dependent leakage."
+      },
+      {
+        "title": "Standardise",
+        "detail": "National standards bodies and the IETF turn the design into fixed specifications — NIST published its first post-quantum standards (covering key encapsulation and two signature schemes) in August 2024, with a code-based backup selected later."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "Libraries such as OpenSSL, BoringSSL and others add the primitives, and protocol drafts define hybrid handshakes that combine a classical and a post-quantum exchange so the connection stays safe if either one falls."
+      },
+      {
+        "title": "Deploy and migrate",
+        "detail": "Operators roll out hybrid key exchange first because it needs no new certificates, then move to post-quantum signatures, dual certificates and longer-term deprecation of RSA and elliptic-curve cryptography."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum computers running Shor's algorithm at cryptographically relevant scale",
+        "status": "missing",
+        "why": "no such machine exists; the threat today is 'harvest now, decrypt later', where encrypted traffic is stored for future decryption."
+      },
+      {
+        "tech": "Lattice and coding problems that resist attack",
+        "status": "partial",
+        "why": "they are the security assumption, and while decades of cryptanalysis have not broken them, confidence rests on the absence of an attack rather than a proof."
+      },
+      {
+        "tech": "Constant-time implementation and side-channel resistance",
+        "status": "partial",
+        "why": "new maths means new leakage paths; immature code can be broken by measurement rather than by mathematics."
+      },
+      {
+        "tech": "Updated protocol and certificate standards",
+        "status": "partial",
+        "why": "key exchange is standardised and shipping, but post-quantum certificate chains, code signing and firmware signing standards are still settling."
+      },
+      {
+        "tech": "Capacity for much larger keys and signatures",
+        "status": "partial",
+        "why": "post-quantum artefacts do not fit some constrained network protocols, smart cards and firmware images without redesign or fragmentation handling."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid post-quantum key exchange in mainstream browsers, cloud providers and messaging apps",
+        "unlocks": "protection against store-now-decrypt-later for ordinary web and chat traffic, with classical security retained as a fallback."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum signatures in TLS certificates, code signing and firmware updates",
+        "unlocks": "end-to-end quantum-resistant authentication, and removal of the last RSA and elliptic-curve dependencies in many stacks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cryptographic inventory, agility and automated rotation across enterprise and industrial systems",
+        "unlocks": "the ability to replace an algorithm once, quickly, if a weakness is found — the main lesson of the migration."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "deprecation of RSA and elliptic-curve cryptography, alongside niche quantum key distribution for high-value links",
+        "unlocks": "a cryptographic base that survives the arrival of large-scale quantum computers, rather than being rebuilt after it."
+      }
+    ]
   }
 }

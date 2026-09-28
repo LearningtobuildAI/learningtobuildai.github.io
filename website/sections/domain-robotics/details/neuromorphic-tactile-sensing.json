@@ -30,5 +30,140 @@
         "def": "Describing systems designed to mimic the structure and function of biological neural networks, often used in computational models and hardware designs."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Tactile sensor array",
+        "role": "converts pressure, vibration and texture into electrical signals across a flexible skin.",
+        "parts": [
+          "flexible substrate (polyimide, PDMS)",
+          "sensing elements (piezoelectric, piezoresistive, capacitive or triboelectric)",
+          "electrodes and wiring"
+        ]
+      },
+      {
+        "name": "Event encoding front end",
+        "role": "turns continuous analog touch into sparse spikes close to the sensor, cutting data volume and latency.",
+        "parts": [
+          "analog front end (amplifiers, filters)",
+          "threshold or integrate-and-fire circuits",
+          "address-event representation (AER) encoder"
+        ]
+      },
+      {
+        "name": "Neuromorphic processor",
+        "role": "processes spikes with spiking neural networks for real-time texture and contact classification.",
+        "parts": [
+          "spiking neural network core",
+          "synaptic memory (e.g. memristive or CMOS)",
+          "on-chip learning or inference engine"
+        ]
+      },
+      {
+        "name": "Mechanical and packaging layer",
+        "role": "protects the electronics while remaining soft and conformal.",
+        "parts": [
+          "stretchable interconnects",
+          "elastomer encapsulation",
+          "adhesive or mounting interface to a robot finger or limb"
+        ]
+      },
+      {
+        "name": "Power and communication",
+        "role": "supplies low-power operation and sends results to the robot controller.",
+        "parts": [
+          "battery or energy harvesting",
+          "low-power radio or wired link",
+          "power management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the sensor layout",
+        "detail": "Choose sensing modality (piezoelectric for dynamic touch, capacitive for static) and arrange taxels at a density matched to the task."
+      },
+      {
+        "title": "Fabricate the flexible substrate",
+        "detail": "Pattern metal electrodes and interconnects on a polymer film using photolithography or printing."
+      },
+      {
+        "title": "Deposit the sensing material",
+        "detail": "Apply piezoelectric polymer, piezoresistive composite or triboelectric layers over the electrodes."
+      },
+      {
+        "title": "Integrate the event encoder",
+        "detail": "Bond or print analog front-end and spiking circuits next to the sensors so raw data never leaves the skin."
+      },
+      {
+        "title": "Encapsulate and shape",
+        "detail": "Coat with a soft elastomer and form the skin into a fingertip or pad shape."
+      },
+      {
+        "title": "Calibrate and characterise",
+        "detail": "Apply known forces and vibrations to map sensor output to physical units and tune spike thresholds."
+      },
+      {
+        "title": "Train the spiking network",
+        "detail": "Present labelled touch sequences (textures, slip, pressure) and adjust synaptic weights, often offline then deployed."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Connect the skin output to a robot hand controller for real-time grip adjustment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Flexible and stretchable electronics",
+        "status": "partial",
+        "why": "needed for a skin that bends with a finger without cracking."
+      },
+      {
+        "tech": "Event-based tactile sensors",
+        "status": "partial",
+        "why": "demonstrated in labs but not yet a standard commercial component."
+      },
+      {
+        "tech": "Spiking neural network hardware",
+        "status": "partial",
+        "why": "low-power chips exist, but on-skin learning and robustness are still research topics."
+      },
+      {
+        "tech": "High-density tactile arrays",
+        "status": "partial",
+        "why": "dense skins require many wires; event encoding helps but integration is hard."
+      },
+      {
+        "tech": "Low-power edge processing",
+        "status": "exists",
+        "why": "microcontrollers and neuromorphic chips can run inference at milliwatt levels."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Lab demonstrations of event-based tactile sensors and spiking networks for texture recognition",
+        "unlocks": "proof that touch can be processed as sparse spikes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integrated electronic skins on robot grippers with on-skin event encoding",
+        "unlocks": "faster slip detection and gentler handling of fragile objects."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Closed-loop dexterous manipulation and prosthetic feedback",
+        "unlocks": "robots and prostheses that adjust grip without a central computer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Large-area, self-calibrating skins for whole-body robots",
+        "unlocks": "safe human-robot collaboration and richer physical interaction."
+      }
+    ]
   }
 }

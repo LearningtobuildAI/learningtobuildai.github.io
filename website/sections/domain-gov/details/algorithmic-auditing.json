@@ -29,5 +29,163 @@
         "def": "A process where AI models are tested against simulated attacks to identify potential biases or vulnerabilities."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Access and data layer",
+        "role": "connects securely to the AI system under audit and gathers the inputs, outputs and metadata needed for testing.",
+        "parts": [
+          "API connectors",
+          "data sampling and extraction tools",
+          "privacy-preserving access controls"
+        ]
+      },
+      {
+        "name": "Test and metric engine",
+        "role": "runs quantitative checks for fairness, robustness and accuracy.",
+        "parts": [
+          "fairness metrics (demographic parity, equalised odds)",
+          "performance and calibration tests",
+          "explainability methods"
+        ]
+      },
+      {
+        "name": "Adversarial and counterfactual testing",
+        "role": "probes how the model behaves under manipulated or alternative inputs to expose hidden failures.",
+        "parts": [
+          "input perturbation generators",
+          "counterfactual generators",
+          "stress-test scenarios"
+        ]
+      },
+      {
+        "name": "Formal verification module",
+        "role": "mathematically proves that a model satisfies certain properties, where feasible.",
+        "parts": [
+          "SMT solvers",
+          "neural-network verifiers",
+          "specification language"
+        ]
+      },
+      {
+        "name": "Compliance mapping and reporting",
+        "role": "translates technical findings into regulatory language and evidence.",
+        "parts": [
+          "regulation knowledge base",
+          "report generator",
+          "evidence repository"
+        ]
+      },
+      {
+        "name": "Continuous monitoring",
+        "role": "tracks a deployed model for drift, emerging bias and performance decay.",
+        "parts": [
+          "telemetry collection",
+          "alerting rules",
+          "dashboards"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define audit scope and regulatory context",
+        "detail": "Identify which laws apply (for example the EU AI Act or GDPR), what decisions the model affects, and which groups could be harmed."
+      },
+      {
+        "title": "Secure access to model and data",
+        "detail": "Obtain API keys, model weights and training or representative data under confidentiality agreements."
+      },
+      {
+        "title": "Instrument the model",
+        "detail": "Set up logging, input/output capture, and hooks for internal activations if the model is open to inspection."
+      },
+      {
+        "title": "Develop test suites",
+        "detail": "Implement fairness metrics, robustness checks against input noise, and accuracy benchmarks for relevant subgroups."
+      },
+      {
+        "title": "Run adversarial and counterfactual tests",
+        "detail": "Generate worst-case inputs and alternative scenarios to surface hidden failures or discriminatory patterns."
+      },
+      {
+        "title": "Apply formal verification where possible",
+        "detail": "For critical properties, use solvers to prove bounds or the absence of certain behaviours, acknowledging limits on large models."
+      },
+      {
+        "title": "Analyse and interpret results",
+        "detail": "Statistically validate findings, assess severity, and trace issues to data, training or deployment causes."
+      },
+      {
+        "title": "Map findings to regulations",
+        "detail": "Align each issue with specific legal requirements and assemble the evidence needed for a compliance case."
+      },
+      {
+        "title": "Generate audit report and remediation plan",
+        "detail": "Document findings, recommend fixes, and set up ongoing monitoring to confirm they work."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised fairness metrics and definitions",
+        "status": "partial",
+        "why": "many metrics exist, but there is no universal agreement on which to use for a given context."
+      },
+      {
+        "tech": "Access to model internals or APIs",
+        "status": "exists",
+        "why": "closed models can be probed through APIs, but full access to weights and training data gives deeper audits."
+      },
+      {
+        "tech": "Regulatory frameworks for AI",
+        "status": "partial",
+        "why": "the EU AI Act is adopted and enforcement is phasing in, while technical standards are still developing."
+      },
+      {
+        "tech": "Formal verification for neural networks",
+        "status": "partial",
+        "why": "it works for small networks but does not yet scale to large language models."
+      },
+      {
+        "tech": "Data provenance and documentation",
+        "status": "partial",
+        "why": "many models lack detailed data sheets, though documentation standards are emerging."
+      },
+      {
+        "tech": "Independent audit ecosystem",
+        "status": "missing",
+        "why": "there are few qualified auditors and no widely recognised accreditation scheme."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ad-hoc audits and open-source fairness toolkits",
+        "unlocks": "practical detection of bias and robustness problems in individual models."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised audit protocols and certification schemes",
+        "unlocks": "comparable, repeatable audits that regulators and buyers can trust."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory enforcement drives mandatory audits for high-risk systems",
+        "unlocks": "widespread adoption of auditing as a legal requirement rather than a voluntary check."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous automated auditing built into MLOps pipelines",
+        "unlocks": "real-time assurance as models are retrained and updated."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an accredited third-party audit industry",
+        "unlocks": "independent verification that the public and courts can rely on."
+      }
+    ]
   }
 }

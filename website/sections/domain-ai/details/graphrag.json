@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Document ingestion and chunking",
+        "role": "turns source files into small 'text units' that extraction can cite back to.",
+        "parts": [
+          "format parsers (PDF, HTML, Office)",
+          "chunker with overlap",
+          "text-unit IDs for provenance"
+        ]
+      },
+      {
+        "name": "LLM extraction",
+        "role": "reads each chunk and pulls out entities, relationships and claims, with descriptions.",
+        "parts": [
+          "prompt templates for entity/relationship/claim extraction",
+          "schema or ontology constraints",
+          "validation and de-duplication of mentions"
+        ]
+      },
+      {
+        "name": "Knowledge graph store",
+        "role": "holds the nodes and edges so relationships across documents survive.",
+        "parts": [
+          "graph database (for example Neo4j or an in-memory graph)",
+          "node and edge properties",
+          "vector index on entity and chunk embeddings"
+        ]
+      },
+      {
+        "name": "Community detection and summarisation",
+        "role": "groups densely connected entities into hierarchical communities and writes a summary of each.",
+        "parts": [
+          "Leiden or similar hierarchical clustering",
+          "LLM-generated community reports",
+          "bottom-up summary tree"
+        ]
+      },
+      {
+        "name": "Retrieval layer",
+        "role": "answers a query by choosing between global, local or hybrid search.",
+        "parts": [
+          "global search: map-reduce over community summaries",
+          "local search: entity neighbourhood plus its source text units",
+          "vector search fallback",
+          "reranker"
+        ]
+      },
+      {
+        "name": "Generation and citation",
+        "role": "composes the final answer and links each claim back to source chunks.",
+        "parts": [
+          "answer prompt with retrieved context",
+          "citation/provenance mapping",
+          "groundedness checks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the corpus",
+        "detail": "Collect documents, parse them to plain text and split into overlapping chunks small enough for one LLM call each."
+      },
+      {
+        "title": "Extract a graph",
+        "detail": "Send every chunk through an LLM that returns entities, relationships and claims as structured JSON; merge duplicates such as 'IBM' and 'International Business Machines'."
+      },
+      {
+        "title": "Build and store the graph",
+        "detail": "Load nodes and edges into a graph database, attach the text-unit IDs that produced each one, and compute embeddings for entities and chunks."
+      },
+      {
+        "title": "Find communities",
+        "detail": "Run hierarchical community detection (typically the Leiden algorithm) so the graph is partitioned from coarse top-level groups down to small clusters."
+      },
+      {
+        "title": "Summarise communities",
+        "detail": "Ask the LLM to write a report on each community, from the leaves up, feeding child summaries into parent summaries to build a tree of global context."
+      },
+      {
+        "title": "Index for retrieval",
+        "detail": "Store community reports, entity descriptions and chunk embeddings in indexes that support both graph traversal and vector similarity."
+      },
+      {
+        "title": "Answer a global question",
+        "detail": "For 'what are the main themes?' run map-reduce: each relevant community report produces partial answers, which are reduced into one response."
+      },
+      {
+        "title": "Answer a local question",
+        "detail": "For 'what did X say about Y?' start at the matched entities, walk their neighbourhood, pull the linked text units, and generate with citations."
+      },
+      {
+        "title": "Keep it fresh and evaluate it",
+        "detail": "Add new documents incrementally, re-run extraction and affected summaries, and score answers against a held-out question set for faithfulness and coverage."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models capable of reliable structured extraction",
+        "status": "exists",
+        "why": "the whole graph is built by asking a model to return entities and relationships as JSON."
+      },
+      {
+        "tech": "Graph databases with fast traversal and vector search",
+        "status": "exists",
+        "why": "retrieval needs to hop between connected entities and also do similarity search."
+      },
+      {
+        "tech": "Hierarchical community detection",
+        "status": "exists",
+        "why": "provides the multi-level structure that makes global summarisation tractable."
+      },
+      {
+        "tech": "Cheap, high-throughput inference",
+        "status": "partial",
+        "why": "indexing a corpus can mean one or more LLM calls per chunk, plus one per community, so cost is the main brake on adoption."
+      },
+      {
+        "tech": "Evaluation methods for retrieval systems",
+        "status": "partial",
+        "why": "faithfulness, coverage and 'did it miss a theme?' are hard to measure, so improvements are hard to prove."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "open-source GraphRAG pipelines and graph databases with built-in vector indexes",
+        "unlocks": "teams can prototype global 'summarise this whole corpus' questions that plain vector RAG answers poorly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "incremental, self-updating graphs",
+        "unlocks": "living corpora — news, tickets, code — where re-indexing everything overnight is not acceptable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entity resolution and domain ontologies",
+        "unlocks": "graphs that merge the same entity across sources reliably, cutting duplicate nodes and wrong answers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agentic retrieval that plans multi-hop queries and audits its own sources",
+        "unlocks": "research and compliance work where the answer must come with a verifiable chain of evidence."
+      }
+    ]
+  }
+}

@@ -33,5 +33,155 @@
         "def": "Specialized hardware designed to accelerate the execution of neural network computations, often used in AI applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute engine",
+        "role": "runs the neural network's matrix multiplications locally.",
+        "parts": [
+          "NPU with INT8/INT4 datapaths",
+          "GPU shaders for large batches",
+          "CPU fallback for odd shapes"
+        ]
+      },
+      {
+        "name": "Memory subsystem",
+        "role": "feeds weights to the compute units fast enough to generate tokens.",
+        "parts": [
+          "on-package LPDDR5X",
+          "unified memory controller shared by CPU, GPU and NPU",
+          "large last-level cache"
+        ]
+      },
+      {
+        "name": "Quantized model format",
+        "role": "stores weights in 4-bit so a multi-billion-parameter model fits in device memory.",
+        "parts": [
+          "grouped weight blocks",
+          "per-group scale and zero-point",
+          "embedding and output layers kept at higher precision"
+        ]
+      },
+      {
+        "name": "Runtime and compiler",
+        "role": "maps the model graph onto the available engines.",
+        "parts": [
+          "graph compiler and operator fusion",
+          "kernel library",
+          "KV-cache manager",
+          "weight paging or streaming"
+        ]
+      },
+      {
+        "name": "Power and thermal control",
+        "role": "keeps sustained token rate inside the device's power budget.",
+        "parts": [
+          "DVFS and clock gating",
+          "skin-temperature sensors",
+          "throttling governor"
+        ]
+      },
+      {
+        "name": "Privacy and security layer",
+        "role": "keeps prompts, context and personal data on the device.",
+        "parts": [
+          "secure enclave for keys and model decryption",
+          "sandboxed model storage",
+          "optional local retrieval index"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the system-on-chip",
+        "detail": "The NPU, memory controller and cache hierarchy are laid out together, because moving weights costs far more energy than multiplying them."
+      },
+      {
+        "title": "Attach the memory",
+        "detail": "LPDDR5X dies are packaged close to or stacked with the SoC to raise bandwidth and cut the energy per bit moved."
+      },
+      {
+        "title": "Quantize the model",
+        "detail": "A trained model is converted to 4-bit weights with per-group scaling, calibrated on sample data to limit accuracy loss; activations often stay at 8 or 16 bits."
+      },
+      {
+        "title": "Compile to the accelerator",
+        "detail": "The runtime fuses operators, picks tiling and memory layouts, and decides which layers run on the NPU, GPU or CPU."
+      },
+      {
+        "title": "Plan memory",
+        "detail": "Weight buffers and the KV cache are laid out in the unified pool; long contexts are paged or streamed from flash when they exceed capacity."
+      },
+      {
+        "title": "Tune the scheduler",
+        "detail": "Weight prefetching, compute overlap and speculative decoding are tuned so the memory bus stays busy while power stays under budget."
+      },
+      {
+        "title": "Validate thermally",
+        "detail": "Sustained tokens per second are measured over minutes, not seconds, to set the real clock and throttle profile."
+      },
+      {
+        "title": "Ship signed model packages",
+        "detail": "Models and updates are encrypted, signed and delivered into sandboxed storage that the runtime can load without exposing user data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "LPDDR5X and on-package memory",
+        "status": "exists",
+        "why": "token generation is bandwidth-bound: every generated token reads all the weights once."
+      },
+      {
+        "tech": "INT4/INT8 weight quantization",
+        "status": "exists",
+        "why": "it cuts a 7-billion-parameter model to roughly 3–4 GB so it fits in device memory."
+      },
+      {
+        "tech": "NPUs in consumer silicon",
+        "status": "exists",
+        "why": "they deliver useful matrix throughput at a few watts."
+      },
+      {
+        "tech": "Mature cross-vendor runtime tooling",
+        "status": "partial",
+        "why": "models must still be recompiled for each vendor's accelerator, which slows porting and optimisation."
+      },
+      {
+        "tech": "Large unified memory pools (32 GB and up)",
+        "status": "partial",
+        "why": "bigger models need capacity, not just speed, and that is only now reaching laptops and tablets."
+      },
+      {
+        "tech": "Sustained thermal headroom",
+        "status": "partial",
+        "why": "phones throttle within minutes, so long generations and long contexts degrade."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "7–8-billion-parameter models running at a few to tens of tokens per second on phones and laptops",
+        "unlocks": "private assistants that work offline with no data leaving the device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "30-billion-parameter and mixture-of-experts models on 32–64 GB unified-memory laptops",
+        "unlocks": "near-cloud quality for drafting, coding and summarising without a network."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device multimodal models and agents that call local tools",
+        "unlocks": "voice, camera and document workflows handled entirely locally."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device personalisation and fine-tuning, with only aggregated updates leaving the device",
+        "unlocks": "models adapted to one user's data without that data ever being centralised."
+      }
+    ]
   }
 }

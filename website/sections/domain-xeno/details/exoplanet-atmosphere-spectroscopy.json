@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Telescope and optics",
+        "role": "collects the star's infrared light and keeps the whole observatory cold and stable enough to see a tiny dip.",
+        "parts": [
+          "segmented gold-coated beryllium mirror",
+          "sunshield",
+          "cryocooler",
+          "fine guidance sensor"
+        ]
+      },
+      {
+        "name": "Spectrographs",
+        "role": "split the starlight into wavelengths so that absorption by atmospheric gases becomes visible.",
+        "parts": [
+          "slits and grisms",
+          "infrared detectors",
+          "filters",
+          "coronagraph masks for direct imaging"
+        ]
+      },
+      {
+        "name": "Pointing and sequencing",
+        "role": "holds the star precisely on the detector throughout the transit.",
+        "parts": [
+          "fine guidance sensor",
+          "reaction wheels",
+          "observation planning software"
+        ]
+      },
+      {
+        "name": "Data reduction pipeline",
+        "role": "turns raw detector counts into a calibrated transmission spectrum.",
+        "parts": [
+          "calibration files",
+          "cosmic-ray rejection",
+          "light-curve extraction code"
+        ]
+      },
+      {
+        "name": "Atmospheric retrieval models",
+        "role": "infers which gases are present and in what amounts.",
+        "parts": [
+          "radiative transfer code",
+          "molecular line lists",
+          "Bayesian sampler",
+          "cloud and haze models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select a target",
+        "detail": "Choose a planet known to cross a bright star, with a well-measured orbit from surveys such as Kepler or TESS."
+      },
+      {
+        "title": "Plan the observation",
+        "detail": "Predict the transit time and duration, then pick the instrument mode and wavelength range that cover the molecules of interest."
+      },
+      {
+        "title": "Observe the transit",
+        "detail": "Record spectra continuously before, during and after the planet crosses the star, so the star alone can be subtracted."
+      },
+      {
+        "title": "Calibrate the raw data",
+        "detail": "Correct for detector gain, dark current, cosmic-ray hits and drifts in telescope pointing."
+      },
+      {
+        "title": "Extract the light curve",
+        "detail": "Measure the star's brightness over time in many narrow wavelength bins."
+      },
+      {
+        "title": "Measure the transmission spectrum",
+        "detail": "For each wavelength, fit the small dip in brightness to get the planet's apparent size at that colour."
+      },
+      {
+        "title": "Fit atmospheric models",
+        "detail": "Compare the spectrum with synthetic spectra computed from molecular opacities, varying temperature, composition and cloud cover."
+      },
+      {
+        "title": "Validate the result",
+        "detail": "Repeat with other transits, other instruments or independent pipelines to confirm the signal is real."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-based infrared telescope",
+        "status": "exists",
+        "why": "the atmosphere's absorption features are in the infrared, and the atmosphere itself blocks them from the ground."
+      },
+      {
+        "tech": "Transiting exoplanet catalogues",
+        "status": "exists",
+        "why": "you can only study atmospheres of planets whose orbits are known well enough to predict transits."
+      },
+      {
+        "tech": "Sensitive infrared detectors",
+        "status": "exists",
+        "why": "the signal is a change of a few parts in ten thousand in the star's brightness."
+      },
+      {
+        "tech": "Molecular line lists",
+        "status": "exists",
+        "why": "retrieval models need laboratory and theoretical opacities for water, carbon dioxide, methane and other gases."
+      },
+      {
+        "tech": "Atmospheric retrieval software",
+        "status": "exists",
+        "why": "turning a noisy spectrum into abundances requires radiative transfer and Bayesian inference."
+      },
+      {
+        "tech": "Coronagraphs for direct imaging",
+        "status": "partial",
+        "why": "blocking a star's glare to see the planet itself is demonstrated but not yet routine for Earth-sized worlds."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "JWST characterising gas giants and starting on rocky planets",
+        "unlocks": "the first real inventories of exoplanet atmospheres and evidence of clouds and chemistry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated survey missions such as ESA's ARIEL and NASA's Roman Space Telescope",
+        "unlocks": "statistical samples of hundreds of atmospheres instead of a handful of case studies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ground-based extremely large telescopes with high-resolution spectrographs",
+        "unlocks": "measurements of winds and day-night differences on smaller planets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "direct imaging of temperate, Earth-sized planets",
+        "unlocks": "the search for gases that could only come from life."
+      }
+    ]
+  }
+}

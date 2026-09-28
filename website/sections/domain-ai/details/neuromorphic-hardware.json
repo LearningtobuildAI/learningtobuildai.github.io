@@ -37,5 +37,148 @@
         "def": "The junctions between neurons where neurotransmitters are released to transmit signals from one neuron to another or to other cells such as muscle fibers."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neuron circuit",
+        "role": "emulates the integrate-and-fire behaviour of a biological neuron.",
+        "parts": [
+          "capacitor for membrane potential",
+          "threshold comparator",
+          "spike generator"
+        ]
+      },
+      {
+        "name": "Synapse array",
+        "role": "stores connection weights and delivers current to neurons.",
+        "parts": [
+          "memristor or floating-gate cells",
+          "analog weight storage",
+          "access transistors"
+        ]
+      },
+      {
+        "name": "Interconnect fabric",
+        "role": "routes spikes between neurons as asynchronous events.",
+        "parts": [
+          "address-event representation (AER) bus",
+          "network-on-chip routers",
+          "arbiters"
+        ]
+      },
+      {
+        "name": "Learning engine",
+        "role": "adjusts weights using local plasticity rules.",
+        "parts": [
+          "spike-timing-dependent plasticity (STDP) circuits",
+          "weight update logic"
+        ]
+      },
+      {
+        "name": "I/O and sensors",
+        "role": "converts real-world signals into spikes and reads out results.",
+        "parts": [
+          "event-based vision or audio sensors",
+          "spike encoders",
+          "decoders"
+        ]
+      },
+      {
+        "name": "Software toolchain",
+        "role": "maps spiking neural networks onto the hardware.",
+        "parts": [
+          "compiler",
+          "simulator",
+          "training frameworks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design neuron and synapse cells",
+        "detail": "Analog and mixed-signal circuit techniques are used to create membranes, thresholds and weight storage that behave like biological components."
+      },
+      {
+        "title": "Simulate the circuits",
+        "detail": "Spice-level simulations verify spiking dynamics, timing and power consumption before committing to silicon."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "A CMOS process forms the core, with memristor or floating-gate elements added where non-volatile analog weights are needed."
+      },
+      {
+        "title": "Lay out the interconnect",
+        "detail": "Asynchronous routing is arranged so spikes can travel between neurons without collisions or excessive delay."
+      },
+      {
+        "title": "Add on-chip learning",
+        "detail": "Plasticity circuits are wired to synapses so weights can be updated locally based on spike timing."
+      },
+      {
+        "title": "Package and interface",
+        "detail": "The die is packaged and connected to event-based sensors and standard digital I/O."
+      },
+      {
+        "title": "Develop the compiler",
+        "detail": "Software maps trained spiking networks onto the physical neuron and synapse resources."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Analog components are tuned to compensate for manufacturing variation, then the chip is tested on benchmark tasks."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Analog/mixed-signal VLSI design",
+        "status": "exists",
+        "why": "neuron and synapse circuits rely on precise analog behaviour in standard silicon processes."
+      },
+      {
+        "tech": "Memristor or ReRAM devices",
+        "status": "partial",
+        "why": "they can store synaptic weights in a tiny, non-volatile cell, but yield and variability remain challenges."
+      },
+      {
+        "tech": "Spiking neural network algorithms",
+        "status": "partial",
+        "why": "training methods that work well on conventional hardware do not always translate to spikes."
+      },
+      {
+        "tech": "Event-based sensors",
+        "status": "partial",
+        "why": "they produce the sparse, asynchronous data that neuromorphic hardware is designed to process."
+      },
+      {
+        "tech": "Low-power digital routing",
+        "status": "exists",
+        "why": "event-based communication depends on efficient on-chip networks that can handle bursts of spikes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Research chips such as Intel's Loihi, IBM's TrueNorth and SpiNNaker demonstrate spiking networks in the lab.",
+        "unlocks": "understanding of how to build and program large spiking systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Chips with on-chip learning for always-on edge devices.",
+        "unlocks": "ultra-low-power pattern recognition in sensors and wearables."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integrated systems combining event-based sensors and neuromorphic processors.",
+        "unlocks": "real-time, low-latency perception for robotics and autonomous systems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Commercial neuromorphic processors that compete with conventional AI accelerators on efficiency.",
+        "unlocks": "widespread use in battery-powered and embedded AI where power is the limiting factor."
+      }
+    ]
   }
 }

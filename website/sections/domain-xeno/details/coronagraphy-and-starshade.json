@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Coronagraph optics",
+        "role": "Suppresses the star's light inside the telescope so a faint planet becomes visible.",
+        "parts": [
+          "deformable mirror",
+          "focal-plane mask or shaped pupil",
+          "Lyot stop",
+          "apodizer"
+        ]
+      },
+      {
+        "name": "Wavefront control",
+        "role": "Measures and corrects optical errors to picometre stability, because any ripple leaks starlight.",
+        "parts": [
+          "wavefront sensor",
+          "real-time control computer",
+          "deformable mirror actuators"
+        ]
+      },
+      {
+        "name": "Starshade",
+        "role": "Flies tens of thousands of kilometres ahead and blocks the star before its light enters the telescope.",
+        "parts": [
+          "petal-shaped occulter (tens of metres across)",
+          "deployment structure",
+          "thrusters",
+          "laser metrology"
+        ]
+      },
+      {
+        "name": "Formation flying",
+        "role": "Keeps the starshade aligned with the telescope to within a metre over that distance.",
+        "parts": [
+          "relative navigation sensors",
+          "micro-thrusters",
+          "control algorithms"
+        ]
+      },
+      {
+        "name": "Telescope and platform",
+        "role": "Provides a stable, large aperture and points precisely at the target star.",
+        "parts": [
+          "primary mirror",
+          "pointing control",
+          "thermal control"
+        ]
+      },
+      {
+        "name": "Spectrograph and data pipeline",
+        "role": "Splits the planet's light into a spectrum and separates it from residual starlight.",
+        "parts": [
+          "integral field spectrograph",
+          "post-processing algorithms",
+          "calibration sources"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the diffraction",
+        "detail": "Use computer simulations to design masks and pupils that push starlight away from where the planet appears."
+      },
+      {
+        "title": "Fabricate the deformable mirror",
+        "detail": "Build a mirror with hundreds or thousands of actuators that can bend its surface by fractions of a nanometre."
+      },
+      {
+        "title": "Assemble the coronagraph instrument",
+        "detail": "Integrate the masks, mirrors, wavefront sensor and control electronics into a vacuum-sealed package."
+      },
+      {
+        "title": "Test in a space-like environment",
+        "detail": "Run the instrument in a thermal-vacuum chamber to prove it holds alignment without air or gravity."
+      },
+      {
+        "title": "Build the starshade",
+        "detail": "Manufacture a petal-shaped disc with edges accurate to tens of micrometres, so it blocks light without creating bright diffraction spikes."
+      },
+      {
+        "title": "Launch and deploy",
+        "detail": "Fold the starshade for launch and unfold it in space once on the way to its observing position."
+      },
+      {
+        "title": "Practice formation flying",
+        "detail": "Use thrusters and laser ranging to hold the starshade centred on the line between telescope and star, to within a metre at tens of thousands of kilometres."
+      },
+      {
+        "title": "Observe and analyse",
+        "detail": "Point the telescope, block the star, and collect the planet's spectrum over hours to days."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deformable mirrors with thousands of actuators",
+        "status": "exists",
+        "why": "already used in ground-based adaptive optics to correct atmospheric blur."
+      },
+      {
+        "tech": "Wavefront sensing and control at picometre stability",
+        "status": "partial",
+        "why": "demonstrated in laboratory testbeds, but space-qualified systems are not yet flying."
+      },
+      {
+        "tech": "Starshade deployment and precision formation flying",
+        "status": "missing",
+        "why": "no starshade has flown; it requires autonomous control at tens of thousands of kilometres."
+      },
+      {
+        "tech": "Large, stable space telescopes",
+        "status": "exists",
+        "why": "Hubble and JWST show that large mirrors can hold shape in space."
+      },
+      {
+        "tech": "High-contrast post-processing algorithms",
+        "status": "exists",
+        "why": "used on ground-based and space coronagraphs to dig fainter planets out of residual starlight."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "coronagraphs on Hubble, JWST and ground-based telescopes image young, massive planets",
+        "unlocks": "first direct spectra of a few exoplanets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a dedicated coronagraph on the Roman Space Telescope (planned) demonstrates imaging of Jupiter-like planets",
+        "unlocks": "statistics on giant planets around nearby stars."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a starshade technology demonstration mission flies in formation with a space telescope",
+        "unlocks": "proof that starshades work in space."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a large space telescope with a starshade images Earth-sized planets and looks for biosignatures",
+        "unlocks": "direct study of potentially habitable worlds."
+      }
+    ]
+  }
+}

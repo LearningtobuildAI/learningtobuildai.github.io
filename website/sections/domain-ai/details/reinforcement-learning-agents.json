@@ -35,5 +35,159 @@
         "def": "A mapping from states to actions that dictates how an agent should act in different situations."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Environment interface",
+        "role": "provides the agent with observations, accepts actions, and returns rewards; may be a simulator or a real system.",
+        "parts": [
+          "simulation engine or physical plant",
+          "state and action space definition",
+          "step function"
+        ]
+      },
+      {
+        "name": "Policy",
+        "role": "the agent's decision-making component: maps observed states to actions.",
+        "parts": [
+          "neural network (or other function approximator)",
+          "action selection mechanism (e.g., epsilon-greedy, sampling)"
+        ]
+      },
+      {
+        "name": "Value function / critic",
+        "role": "estimates how good a state or action is, guiding policy updates and reducing variance.",
+        "parts": [
+          "value network",
+          "target network (for stability)"
+        ]
+      },
+      {
+        "name": "Replay memory",
+        "role": "stores past transitions so the agent can learn from them repeatedly, especially in off-policy methods.",
+        "parts": [
+          "experience buffer",
+          "sampling strategy (e.g., prioritized replay)"
+        ]
+      },
+      {
+        "name": "Reward function",
+        "role": "defines the objective by assigning a scalar reward after each action; shapes what the agent learns.",
+        "parts": [
+          "reward calculation logic",
+          "reward shaping or intrinsic motivation"
+        ]
+      },
+      {
+        "name": "Learning algorithm",
+        "role": "updates the policy and value networks using collected experience.",
+        "parts": [
+          "loss function (e.g., temporal-difference error, policy gradient)",
+          "optimizer (e.g., stochastic gradient descent)",
+          "gradient computation and backpropagation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formalise the task",
+        "detail": "Frame the problem as a Markov decision process: define states, actions, transition dynamics, and a reward signal."
+      },
+      {
+        "title": "Build or choose an environment",
+        "detail": "Create a simulator or wrap a real system with an interface that steps through time, returning observations and rewards."
+      },
+      {
+        "title": "Design the reward function",
+        "detail": "Specify rewards that encourage desired behaviour; poorly chosen rewards lead to unintended strategies."
+      },
+      {
+        "title": "Select an algorithm",
+        "detail": "Choose a reinforcement learning method — for example, deep Q-networks, policy gradient, or actor-critic — suited to the action space and data budget."
+      },
+      {
+        "title": "Implement neural networks",
+        "detail": "Build policy and value networks using a deep learning framework, matching input and output dimensions to the environment."
+      },
+      {
+        "title": "Set up training infrastructure",
+        "detail": "Parallelise environment rollouts across many CPU cores or use GPU-accelerated simulators; configure replay buffers and logging."
+      },
+      {
+        "title": "Train the agent",
+        "detail": "Run episodes, collect experience, and update network weights. Monitor reward curves and adjust hyperparameters."
+      },
+      {
+        "title": "Evaluate and tune",
+        "detail": "Test on held-out scenarios, check for overfitting or reward hacking, and refine the reward or network architecture."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Integrate with the real system, add safety constraints and fallback behaviours, and continue learning cautiously if allowed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep neural networks",
+        "status": "exists",
+        "why": "they approximate policies and value functions in high-dimensional state spaces such as images or sensor data."
+      },
+      {
+        "tech": "Simulation platforms",
+        "status": "partial",
+        "why": "physics simulators enable fast, safe training, but the gap between simulation and reality limits transfer."
+      },
+      {
+        "tech": "High-performance compute",
+        "status": "exists",
+        "why": "training requires millions of environment steps, often accelerated by GPUs or TPUs."
+      },
+      {
+        "tech": "Reward specification methods",
+        "status": "missing",
+        "why": "we lack reliable ways to translate complex human goals into reward functions without unintended side effects."
+      },
+      {
+        "tech": "Efficient exploration strategies",
+        "status": "partial",
+        "why": "discovering good behaviour in large or sparse-reward environments remains a core research challenge."
+      },
+      {
+        "tech": "Safety and verification",
+        "status": "missing",
+        "why": "deploying learned policies in critical systems requires guarantees that current methods cannot provide."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "superhuman performance in specific games and simulated control tasks",
+        "unlocks": "proof that trial-and-error learning can solve complex decision problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable sim-to-real transfer for robotics and industrial control",
+        "unlocks": "automation of physical tasks in warehouses, factories, and agriculture."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reinforcement learning from human feedback becomes standard for fine-tuning large language models",
+        "unlocks": "AI assistants that better follow human intent and avoid harmful outputs."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose agents that adapt to new tasks with minimal retraining",
+        "unlocks": "flexible automation and personal assistants that operate across many domains."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reinforcement learning controls complex scientific experiments and systems",
+        "unlocks": "accelerated discovery in materials, medicine, and energy."
+      }
+    ]
   }
 }

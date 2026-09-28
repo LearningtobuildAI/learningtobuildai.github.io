@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "EEG sensor array",
+        "role": "picks up the tiny voltage fluctuations produced by cortical activity.",
+        "parts": [
+          "dry or gel electrodes",
+          "headset or cap",
+          "reference and ground electrodes"
+        ]
+      },
+      {
+        "name": "Stimulus delivery",
+        "role": "presents the same images or sounds to every user so responses can be compared.",
+        "parts": [
+          "screen or headphones",
+          "timing controller",
+          "presentation software"
+        ]
+      },
+      {
+        "name": "Signal acquisition",
+        "role": "amplifies, filters and digitises the microvolt-level signal.",
+        "parts": [
+          "low-noise amplifier",
+          "analog-to-digital converter",
+          "shielding and driven-right-leg circuit"
+        ]
+      },
+      {
+        "name": "Feature extraction",
+        "role": "turns raw voltage traces into numbers that describe an individual's response.",
+        "parts": [
+          "event-related potential (ERP) averaging",
+          "spectral power analysis (e.g. alpha, beta bands)",
+          "connectivity measures between electrodes"
+        ]
+      },
+      {
+        "name": "Classifier and matcher",
+        "role": "decides whether a new recording belongs to an enrolled person.",
+        "parts": [
+          "machine-learning model (e.g. support vector machine or neural network)",
+          "enrolment template database",
+          "similarity scoring and threshold"
+        ]
+      },
+      {
+        "name": "Anti-spoofing and liveness",
+        "role": "checks the signal comes from a live person, not a recording or synthetic replay.",
+        "parts": [
+          "challenge–response stimuli",
+          "artifact and impedance monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design a stimulus protocol",
+        "detail": "Choose a set of visual or auditory prompts that reliably evoke a distinctive brain response, such as the P300 wave, in every subject."
+      },
+      {
+        "title": "Collect enrolment recordings",
+        "detail": "Record EEG from a user over several sessions, at different times of day and in different states, so the template captures natural variation."
+      },
+      {
+        "title": "Preprocess the signals",
+        "detail": "Filter out mains interference, remove eye-blink and muscle artifacts, and cut the continuous data into short epochs aligned to each stimulus."
+      },
+      {
+        "title": "Extract discriminative features",
+        "detail": "Compute averaged event-related potentials, band-power ratios and cross-electrode correlations for each stimulus type."
+      },
+      {
+        "title": "Train a classifier",
+        "detail": "Use the enrolled users' features to train a model that separates one person's patterns from everyone else's, while keeping the model small enough for real-time use."
+      },
+      {
+        "title": "Validate across sessions",
+        "detail": "Test the model on recordings taken weeks or months later to measure false-accept and false-reject rates, not just within-session accuracy."
+      },
+      {
+        "title": "Integrate with access control",
+        "detail": "Embed the matcher in a door or workstation controller, add liveness checks, and store templates in a protected form rather than as raw brain data."
+      },
+      {
+        "title": "Operate and adapt",
+        "detail": "Continuously monitor template drift and re-enrol when a user's signatures change with age, medication or fatigue."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry, comfortable EEG electrodes",
+        "status": "partial",
+        "why": "gel electrodes work well but are impractical for daily access control; dry versions exist but are noisier and less stable."
+      },
+      {
+        "tech": "Real-time artifact rejection",
+        "status": "partial",
+        "why": "eye blinks, jaw clenching and movement easily swamp the weak neural signal and must be removed automatically."
+      },
+      {
+        "tech": "Machine learning for small, noisy datasets",
+        "status": "partial",
+        "why": "enrolment data per person is limited, so classifiers must generalise without overfitting."
+      },
+      {
+        "tech": "Stable neural signatures over time",
+        "status": "missing",
+        "why": "EEG patterns shift with alertness, caffeine, sleep and age, which erodes accuracy between enrolment and later use."
+      },
+      {
+        "tech": "Secure biometric template protection",
+        "status": "exists",
+        "why": "brain-derived templates are sensitive personal data and need the same cryptographic protection as fingerprints."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory studies reach high accuracy on small groups with many repeated trials",
+        "unlocks": "proof that individuals can be distinguished from brief EEG recordings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-session field trials with dry headsets and short enrolment",
+        "unlocks": "realistic false-accept and false-reject figures for access control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fusion with fingerprint or face recognition",
+        "unlocks": "higher security by combining a neural check with an established biometric."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous authentication during computer work",
+        "unlocks": "passive, ongoing identity checks for high-security rooms and systems without interrupting the user."
+      }
+    ]
+  }
+}

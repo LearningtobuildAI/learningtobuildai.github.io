@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Base language model",
+        "role": "provides the reasoning, language understanding and generation that drive the agent.",
+        "parts": [
+          "transformer network",
+          "attention mechanism",
+          "tokenizer",
+          "pre-trained parameters"
+        ]
+      },
+      {
+        "name": "Planner",
+        "role": "breaks a high-level goal into ordered, executable steps.",
+        "parts": [
+          "prompt templates",
+          "chain-of-thought reasoning",
+          "task graph",
+          "goal decomposition"
+        ]
+      },
+      {
+        "name": "Tool interface",
+        "role": "lets the agent act on external systems such as databases, APIs or code runners.",
+        "parts": [
+          "function schemas",
+          "API clients",
+          "authentication",
+          "rate limiting"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "stores context and past interactions so the agent can recall relevant information.",
+        "parts": [
+          "context window",
+          "embedding model",
+          "vector database",
+          "summarisation"
+        ]
+      },
+      {
+        "name": "Execution engine",
+        "role": "runs the loop of plan, act, observe and revise.",
+        "parts": [
+          "orchestrator",
+          "state machine",
+          "retry logic",
+          "error handling"
+        ]
+      },
+      {
+        "name": "Safety and oversight",
+        "role": "keeps actions within bounds and makes behaviour auditable.",
+        "parts": [
+          "input/output filters",
+          "permission scopes",
+          "audit logs",
+          "human-in-the-loop review"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select or train the base model",
+        "detail": "Begin with a pre-trained large language model; optionally fine-tune it on domain data to improve reasoning and tool use."
+      },
+      {
+        "title": "Define scope and tools",
+        "detail": "Decide which tasks the agent may perform and expose the necessary APIs with clear, machine-readable schemas."
+      },
+      {
+        "title": "Design the control loop",
+        "detail": "Implement a loop that generates a plan, chooses a tool, executes it, observes the result, and updates the plan accordingly."
+      },
+      {
+        "title": "Add memory",
+        "detail": "Give the agent a short-term context window and a long-term vector store so it can retrieve relevant facts across sessions."
+      },
+      {
+        "title": "Implement safety guardrails",
+        "detail": "Constrain tool permissions, filter harmful outputs, and set hard limits on actions such as spending or data access."
+      },
+      {
+        "title": "Build an evaluation harness",
+        "detail": "Create test suites of representative tasks to measure success rate, cost and common failure modes."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Run the agent with detailed logging, human review of critical actions, and a gradual rollout to catch problems early."
+      },
+      {
+        "title": "Iterate on prompts and fine-tuning",
+        "detail": "Use observed failures to refine prompts, adjust tool descriptions and retrain the model where needed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with instruction following",
+        "status": "exists",
+        "why": "they supply the core reasoning and language capability the agent relies on."
+      },
+      {
+        "tech": "Function calling / tool-use APIs",
+        "status": "exists",
+        "why": "they let the model invoke external actions in a structured way."
+      },
+      {
+        "tech": "Vector databases for retrieval",
+        "status": "exists",
+        "why": "they provide long-term memory and grounding in domain knowledge."
+      },
+      {
+        "tech": "Reliable evaluation methods for multi-step tasks",
+        "status": "partial",
+        "why": "it is hard to know whether an agent will succeed on open-ended workflows without extensive testing."
+      },
+      {
+        "tech": "Robust safety and alignment techniques",
+        "status": "partial",
+        "why": "agents can take unintended actions, so guardrails and oversight are still active research."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-agent assistants that use a few tools for narrow tasks such as coding or customer support",
+        "unlocks": "automation of routine knowledge work with human oversight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems that collaborate and divide complex goals",
+        "unlocks": "handling longer, cross-domain workflows that need different skills."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that learn from feedback and improve their own behaviour over time",
+        "unlocks": "higher reliability and reduced need for constant human correction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose agents operating across many domains with minimal supervision",
+        "unlocks": "broad economic impact, provided safety and alignment challenges are solved."
+      }
+    ]
+  }
+}

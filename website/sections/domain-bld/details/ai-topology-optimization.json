@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Design space definition",
+        "role": "Defines the volume where material is allowed and the loads and supports it must carry.",
+        "parts": [
+          "CAD geometry of the design domain",
+          "load cases and boundary conditions",
+          "target mass or stiffness goals"
+        ]
+      },
+      {
+        "name": "Simulation engine",
+        "role": "Calculates how a candidate shape responds to loads using finite element analysis (FEA).",
+        "parts": [
+          "mesh generator",
+          "structural or thermal solver",
+          "material models"
+        ]
+      },
+      {
+        "name": "Optimization algorithm",
+        "role": "Iteratively redistributes material to find the lightest shape that meets the requirements.",
+        "parts": [
+          "sensitivity analysis",
+          "density-based method such as SIMP",
+          "level-set method",
+          "genetic or evolutionary algorithm"
+        ]
+      },
+      {
+        "name": "AI / machine-learning module",
+        "role": "Learns from past simulations to propose candidate designs faster or explore complex design spaces.",
+        "parts": [
+          "neural-network surrogate model",
+          "generative adversarial network (GAN) generator",
+          "reinforcement-learning policy"
+        ]
+      },
+      {
+        "name": "Manufacturing constraints",
+        "role": "Ensures the optimized shape can actually be produced by the chosen process.",
+        "parts": [
+          "minimum member size filter",
+          "overhang-angle limit for additive manufacturing",
+          "draft or symmetry constraints for casting and moulding"
+        ]
+      },
+      {
+        "name": "Post-processing and CAD export",
+        "role": "Converts the raw optimization result into a smooth, manufacturable solid model.",
+        "parts": [
+          "surface smoothing",
+          "NURBS or solid model conversion",
+          "STL or STEP export"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the design problem",
+        "detail": "Specify the design domain, the loads it must carry, the fixing points, and the target mass reduction or stiffness."
+      },
+      {
+        "title": "Build the simulation model",
+        "detail": "Mesh the domain, assign material properties, and set up the FEA so each candidate shape can be evaluated."
+      },
+      {
+        "title": "Run a baseline analysis",
+        "detail": "Check the starting solid design to confirm the loads, supports, and material assumptions are correct."
+      },
+      {
+        "title": "Iterate topology optimization",
+        "detail": "Run a density-based or level-set algorithm that removes material from low-stress regions and adds it along load paths, repeating until convergence."
+      },
+      {
+        "title": "Apply AI acceleration (optional)",
+        "detail": "Train a surrogate model or GAN on previous simulation results to generate promising topologies quickly, then validate them with full FEA."
+      },
+      {
+        "title": "Enforce manufacturing constraints",
+        "detail": "Add rules for the intended process — for example, a minimum feature size, an overhang limit for 3D printing, or draft angles for casting."
+      },
+      {
+        "title": "Validate and refine",
+        "detail": "Run high-fidelity FEA on the optimized shape to check stresses, buckling, and fatigue, and adjust the design if needed."
+      },
+      {
+        "title": "Convert to CAD",
+        "detail": "Smooth the voxel or density field into a clean solid model and export it for manufacturing."
+      },
+      {
+        "title": "Manufacture and test",
+        "detail": "Produce a prototype — often by additive manufacturing because of the complex geometry — then test it and feed results back into the next iteration."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Finite element analysis",
+        "status": "exists",
+        "why": "The optimization loop needs fast, reliable structural simulation to evaluate each candidate shape."
+      },
+      {
+        "tech": "Topology optimization algorithms",
+        "status": "exists",
+        "why": "Density-based and level-set methods are the core mathematical engine that redistributes material."
+      },
+      {
+        "tech": "Machine-learning frameworks",
+        "status": "partial",
+        "why": "Surrogate models and GANs can speed up or guide the search, but they are not yet standard in every commercial workflow."
+      },
+      {
+        "tech": "Additive manufacturing",
+        "status": "partial",
+        "why": "Many optimized parts have organic shapes that traditional machining cannot easily produce; 3D printing is often used, but not always available for the required material or size."
+      },
+      {
+        "tech": "High-performance computing",
+        "status": "exists",
+        "why": "Large FEA models and thousands of iterations require substantial compute resources."
+      },
+      {
+        "tech": "CAD/CAM integration",
+        "status": "exists",
+        "why": "The optimized result must be converted into a manufacturable model and linked to production tooling."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Topology optimization is standard in aerospace and automotive for brackets, housings, and structural parts, often paired with additive manufacturing.",
+        "unlocks": "Lighter components that cut fuel use and material costs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI surrogates bring optimization time down from hours to minutes, allowing interactive generative design inside CAD tools.",
+        "unlocks": "Engineers can explore many design variants in a single session."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Multi-physics and multi-material optimization becomes common, simultaneously handling structural, thermal, and fluid loads.",
+        "unlocks": "Optimized parts for electric motors, heat exchangers, and battery enclosures."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "AI models learn from manufacturing and in-service data to optimize parts for the whole lifecycle, including fatigue, repair, and recycling.",
+        "unlocks": "Designs that are not just light but also durable and sustainable."
+      }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cryogenic tanks",
+        "role": "hold liquid oxygen, methane or hydrogen at tens of kelvin for months without venting the propellant away.",
+        "parts": [
+          "aluminium-lithium or composite pressure shells",
+          "internal baffles and slosh control",
+          "vapour-cooled shields"
+        ]
+      },
+      {
+        "name": "Thermal control",
+        "role": "fight the ~300 K environment around the tanks.",
+        "parts": [
+          "multilayer insulation blankets",
+          "sunshade or radiator panels",
+          "active cryocooler (reverse turbo-Brayton type)",
+          "boil-off reliquefaction loop"
+        ]
+      },
+      {
+        "name": "Fluid management in microgravity",
+        "role": "make liquid behave without gravity, so it sits over the outlet and can be measured.",
+        "parts": [
+          "propellant management devices or liquid acquisition screens",
+          "ullage/settling thrusters",
+          "pressure control",
+          "mass gauging sensors"
+        ]
+      },
+      {
+        "name": "Transfer interface",
+        "role": "connects depot to tanker and to the customer vehicle.",
+        "parts": [
+          "cryogenic quick-disconnect couplings",
+          "chill-down and purge lines",
+          "leak detection",
+          "autonomous docking mechanism"
+        ]
+      },
+      {
+        "name": "Avionics and station-keeping",
+        "role": "holds the depot in a stable orbit and runs the transfer autonomously.",
+        "parts": [
+          "guidance and navigation",
+          "reboost thrusters",
+          "thermal and pressure control computer"
+        ]
+      },
+      {
+        "name": "Resupply logistics",
+        "role": "the tankers and ground operations that keep the depot filled.",
+        "parts": [
+          "reusable tanker upper stages",
+          "launch site cryogenic loading",
+          "mission planning"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the tank and thermal shield",
+        "detail": "Engineers size tank volume against the boil-off budget over the mission life, trading extra insulation and cryocooler power against launch mass."
+      },
+      {
+        "title": "Fabricate the tank",
+        "detail": "Shells are spun or welded from lightweight alloy or wound composite, then proof-tested and cleaned for oxygen service."
+      },
+      {
+        "title": "Fit internal fluid management",
+        "detail": "Propellant management devices, baffles and gauging sensors are installed inside the tank before closure."
+      },
+      {
+        "title": "Apply insulation",
+        "detail": "Multilayer insulation blankets and, where needed, sprayed foam and vapour-cooled shields are wrapped around the tank."
+      },
+      {
+        "title": "Integrate cryocoolers and plumbing",
+        "detail": "Cold heads, reliquefaction lines, fill and drain couplings and vent valves are attached and leak-checked."
+      },
+      {
+        "title": "Launch",
+        "detail": "The depot flies to orbit as a payload, typically empty or lightly loaded, inside a launcher fairing or as part of a stage."
+      },
+      {
+        "title": "Check out on orbit",
+        "detail": "Solar arrays and the sunshade deploy, the cryocooler is commissioned and the depot holds station while awaiting a tanker."
+      },
+      {
+        "title": "Transfer propellant",
+        "detail": "A tanker docks, lines are chilled down to prevent flashing, a small thrust settles the liquid over the outlet, and fluid is pumped or pressure-transferred across."
+      },
+      {
+        "title": "Serve a customer",
+        "detail": "A departing spacecraft docks, takes on propellant and departs; the depot is topped up by later tanker flights."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reusable heavy-lift launch",
+        "status": "exists",
+        "why": "filling a depot takes many tanker flights, so cheap reflight is what makes the economics work."
+      },
+      {
+        "tech": "Autonomous rendezvous and docking",
+        "status": "exists",
+        "why": "depots must be met repeatedly without a crew aboard."
+      },
+      {
+        "tech": "Cryogenic fluid management in microgravity",
+        "status": "partial",
+        "why": "settling liquid, gauging mass and transferring without loss has only been shown at small scale."
+      },
+      {
+        "tech": "Long-life space cryocoolers",
+        "status": "partial",
+        "why": "zero-boil-off storage needs coolers that run for years at tens of watts of lift."
+      },
+      {
+        "tech": "Standard refuelling interfaces",
+        "status": "missing",
+        "why": "without agreed couplings and protocols, each spacecraft needs a bespoke depot."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "in-orbit refuelling and fluid-transfer demonstrations",
+        "unlocks": "confidence that docking, chilling and transferring liquids works in microgravity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "large-scale cryogenic transfer between two spacecraft",
+        "unlocks": "the basis for the Artemis lunar-lander architecture, which needs orbital refuelling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a persistently stored depot in low Earth orbit",
+        "unlocks": "routine departure of loaded spacecraft to higher orbits and the Moon."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "depots at cislunar or Lagrange points",
+        "unlocks": "reusable deep-space tugs and lower cost per kilogram to Mars and beyond."
+      }
+    ]
+  }
+}

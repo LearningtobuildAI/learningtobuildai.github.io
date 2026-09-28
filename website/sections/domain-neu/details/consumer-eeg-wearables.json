@@ -38,5 +38,159 @@
         "def": "The capability of a wearable device to process and analyze data locally rather than sending it to a remote server for analysis."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensor array",
+        "role": "picks up electrical brain activity and blood-oxygen changes at the scalp.",
+        "parts": [
+          "dry EEG electrodes (conductive polymer or metal pins)",
+          "near-infrared LEDs (approx. 700–900 nm)",
+          "silicon photodiodes",
+          "flexible printed circuit board"
+        ]
+      },
+      {
+        "name": "Analog front-end",
+        "role": "amplifies and digitises very small signals without adding noise.",
+        "parts": [
+          "low-noise instrumentation amplifiers",
+          "bandpass filters",
+          "analog-to-digital converters",
+          "multiplexer for fNIRS channels"
+        ]
+      },
+      {
+        "name": "On-board processing unit",
+        "role": "removes artefacts and turns raw signals into simple state metrics in real time.",
+        "parts": [
+          "low-power microcontroller or digital signal processor",
+          "firmware",
+          "artefact-rejection algorithms",
+          "machine-learning classifiers"
+        ]
+      },
+      {
+        "name": "Wireless and power",
+        "role": "streams data to a phone and keeps the headband running for hours.",
+        "parts": [
+          "Bluetooth Low Energy module",
+          "rechargeable lithium-polymer battery",
+          "power management integrated circuit",
+          "charging contacts"
+        ]
+      },
+      {
+        "name": "Mechanical headset",
+        "role": "holds sensors against the scalp comfortably and stably.",
+        "parts": [
+          "adjustable headband",
+          "flexible arms",
+          "foam or silicone cushions",
+          "internal cable routing"
+        ]
+      },
+      {
+        "name": "Companion software",
+        "role": "shows the user focus, sleep, or stress estimates and guides sessions.",
+        "parts": [
+          "mobile app",
+          "signal visualisation",
+          "state classification display",
+          "optional cloud processing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the sensor layout",
+        "detail": "Choose EEG electrode positions (often frontal and temporal sites) and fNIRS optode separations of roughly 2–3 cm to target cortical regions; simulate light penetration and signal strength."
+      },
+      {
+        "title": "Fabricate dry electrodes and optodes",
+        "detail": "Mould conductive polymer or machine metal pins for gel-free EEG; package near-infrared LEDs and photodiodes with optical shielding to prevent crosstalk."
+      },
+      {
+        "title": "Build the analog front-end",
+        "detail": "Lay out a low-noise printed circuit board, shield it from interference, and test with known signals — a function generator for EEG and a tissue phantom for fNIRS."
+      },
+      {
+        "title": "Develop signal processing and models",
+        "detail": "Implement artefact removal for eye blinks and motion, extract features such as band power and haemoglobin changes, and train machine-learning classifiers on labelled datasets."
+      },
+      {
+        "title": "Integrate into the headset",
+        "detail": "Fit the electronics into a comfortable form factor, ensure stable skin contact, and manage heat and battery placement for wear over hours."
+      },
+      {
+        "title": "Write firmware",
+        "detail": "Code real-time acquisition, filtering, feature computation, and wireless transmission; optimise for low power so a small battery lasts a full day."
+      },
+      {
+        "title": "Build the companion app",
+        "detail": "Design a user interface that displays focus, sleep, and stress metrics, with onboarding and calibration steps for each user."
+      },
+      {
+        "title": "Validate accuracy",
+        "detail": "Compare outputs against research-grade EEG and fNIRS systems in user studies; refine algorithms and calibration to reduce false readings."
+      },
+      {
+        "title": "Scale manufacturing",
+        "detail": "Set up production and quality control, and meet regulatory requirements for a wellness device rather than a medical one."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry electrode technology",
+        "status": "exists",
+        "why": "enables gel-free, long-term wear without a technician to apply conductive paste."
+      },
+      {
+        "tech": "Near-infrared light sources and detectors",
+        "status": "exists",
+        "why": "fNIRS needs stable, low-power emitters and sensitive photodiodes that work through hair and skin."
+      },
+      {
+        "tech": "Low-power microcontrollers and Bluetooth",
+        "status": "exists",
+        "why": "allow on-device processing and wireless streaming without draining the battery."
+      },
+      {
+        "tech": "Machine learning for physiological signals",
+        "status": "partial",
+        "why": "models for attention and sleep from EEG and fNIRS are still less accurate than lab-grade equipment."
+      },
+      {
+        "tech": "Understanding of neurovascular coupling",
+        "status": "partial",
+        "why": "linking blood-oxygen changes to neural activity is well-studied but varies between people and tasks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-modality EEG headbands for meditation, sleep staging, and basic focus training",
+        "unlocks": "consumer access to simple brain-state feedback at home."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combined EEG and fNIRS headbands that improve state classification and reduce false positives",
+        "unlocks": "more reliable focus and stress tracking, and richer sleep metrics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop neurofeedback and adaptive environments that adjust lighting, audio, or tasks in real time",
+        "unlocks": "personalised wellness interventions that respond to the user's state."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "clinical validation for specific indications such as sleep disorders or attention difficulties",
+        "unlocks": "home-based monitoring and telemedicine support, if regulators approve the claims."
+      }
+    ]
   }
 }

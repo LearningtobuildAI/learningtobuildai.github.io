@@ -34,5 +34,157 @@
         "def": "An advanced form of CRISPR that can insert new sequences into DNA and correct multiple genetic diseases in a single step."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Editor payload",
+        "role": "the molecule that makes the change: a Cas9 variant, a base editor, or a prime editor, plus a guide RNA that finds the target sequence.",
+        "parts": [
+          "guide RNA",
+          "Cas9 nickase or deaminase-based editor",
+          "prime editing reverse transcriptase fusion"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into brain cells — the hardest part, since the blood–brain barrier blocks almost everything.",
+        "parts": [
+          "engineered AAV capsid",
+          "lipid nanoparticle",
+          "ex vivo edited cells for transplant"
+        ]
+      },
+      {
+        "name": "Cell-type targeting",
+        "role": "restricts editing to the intended neurons or glia, not the whole brain.",
+        "parts": [
+          "cell-type-specific promoters",
+          "capsid or surface-ligand selection",
+          "microRNA detargeting elements"
+        ]
+      },
+      {
+        "name": "Immune management",
+        "role": "keeps the vector and the bacterial-protein editor from being attacked or inflaming tissue.",
+        "parts": [
+          "transient immunosuppression",
+          "low-immunogenicity capsids",
+          "dose fractionation"
+        ]
+      },
+      {
+        "name": "Validation and readout",
+        "role": "proves the edit happened only where intended and changed cell behaviour.",
+        "parts": [
+          "single-cell sequencing of edited tissue",
+          "electrophysiology",
+          "brain imaging"
+        ]
+      },
+      {
+        "name": "Safety monitoring",
+        "role": "detects off-target edits and runaway cell changes over years, since neurons do not divide and divide-and-dilute errors away.",
+        "parts": [
+          "whole-genome sequencing",
+          "long-term follow-up imaging and sampling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the edit",
+        "detail": "Pick a causal genetic target — correcting a point mutation, silencing a toxic allele, or installing a protective variant — rather than a vague 'enhancement' goal. This is the step that decides whether the therapy can work at all."
+      },
+      {
+        "title": "Design and screen guides",
+        "detail": "Candidate guide RNAs are tested in cultured human neurons and brain organoids grown from patient cells, scoring on-target efficiency and predicted off-target sites."
+      },
+      {
+        "title": "Choose the editor class",
+        "detail": "Base editors and prime editors are preferred over classic Cas9 because they avoid cutting both DNA strands, which is risky in neurons that never divide and cannot replace damaged cells."
+      },
+      {
+        "title": "Engineer delivery",
+        "detail": "Capsids are evolved or designed to cross the blood–brain barrier and reach the target region after a simple infusion, or lipid nanoparticles carrying RNA are formulated for brain uptake; the alternative is to edit cells outside the body and implant them."
+      },
+      {
+        "title": "Test in animals",
+        "detail": "Mice first, then non-human primates, to measure how much of the brain is edited, at what dose, and for how long the editor stays active."
+      },
+      {
+        "title": "Measure off-targets and mosaicism",
+        "detail": "Edited brain tissue is sequenced to count unintended edits and to see what fraction of cells in a region were actually changed."
+      },
+      {
+        "title": "Tune the immune response",
+        "detail": "Dosing and short courses of immunosuppression are adjusted so the vector is tolerated without leaving the patient vulnerable."
+      },
+      {
+        "title": "Run first-in-human studies",
+        "detail": "Small trials in severe, well-understood childhood brain disorders, with long-term follow-up because any permanent edit stays for the patient's life."
+      },
+      {
+        "title": "Scale and deliver",
+        "detail": "Manufacturing the vector at clinical grade and getting it to the brain reliably in thousands of patients is the final engineering problem."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Precise editors that avoid double-strand breaks",
+        "status": "exists",
+        "why": "base and prime editing have been demonstrated in cells and animals; they reduce, but do not eliminate, off-target risk."
+      },
+      {
+        "tech": "Vectors that reach brain cells",
+        "status": "partial",
+        "why": "some AAV serotypes reach neurons after systemic infusion, as shown by approved gene-replacement therapies, but coverage is uneven and repeated dosing is hard."
+      },
+      {
+        "tech": "Crossing the blood–brain barrier with non-viral carriers",
+        "status": "partial",
+        "why": "lipid nanoparticles have delivered RNA to rodent brain; human-scale dosing and targeting are unproven."
+      },
+      {
+        "tech": "Non-human primate editing data in the brain",
+        "status": "partial",
+        "why": "predicting human efficiency and immune response from rodents is unreliable."
+      },
+      {
+        "tech": "Long-term safety evidence for permanent edits",
+        "status": "missing",
+        "why": "an off-target edit in a non-dividing neuron is irreversible and would only surface years later."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "editing demonstrated in cultured neurons, organoids and rodent brain",
+        "unlocks": "proof that the biology is tractable; crystallises which diseases are worth targeting."
+      },
+      {
+        "stage": "Next",
+        "milestone": "durable, well-tolerated editing in non-human primate brain at clinically plausible doses",
+        "unlocks": "the first in-human trials for severe monogenic brain disorders."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first approved in-brain editing therapy for a narrow genetic condition",
+        "unlocks": "a safety and manufacturing template that broader applications can reuse."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-target or region-specific editing for complex disorders",
+        "unlocks": "therapies for conditions caused by several genes, which single-edit tools cannot address."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "cognitive enhancement in healthy people",
+        "unlocks": "nothing yet — no credible target has been identified, and the risk of permanent harm in a healthy brain is currently unquantified."
+      }
+    ]
   }
 }

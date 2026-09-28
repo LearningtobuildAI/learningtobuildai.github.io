@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Electrode interface",
+        "role": "the tissue-facing array that records from and stimulates neurons at single-cell scale.",
+        "parts": [
+          "penetrating microelectrode shanks or flexible threads",
+          "thin-film polymer substrate",
+          "recording and stimulation sites"
+        ]
+      },
+      {
+        "name": "Encapsulation and delivery",
+        "role": "keeps the body from attacking the device and the device from poisoning the body.",
+        "parts": [
+          "hermetic thin-film coating",
+          "anti-inflammatory surface treatment",
+          "insertion tooling or stent-based delivery"
+        ]
+      },
+      {
+        "name": "Transceiver and power",
+        "role": "moves thousands of neural channels in and out through skin without wires.",
+        "parts": [
+          "multiplexing chip",
+          "wireless power link",
+          "wireless data link",
+          "sealed package"
+        ]
+      },
+      {
+        "name": "Compute core",
+        "role": "the 'expansion' itself — silicon that adds memory and parallel processing to the biological circuit.",
+        "parts": [
+          "neural-network accelerator",
+          "local memory",
+          "real-time signal processor",
+          "security module"
+        ]
+      },
+      {
+        "name": "Coding and decoding stack",
+        "role": "software that turns spikes into usable signals and back into stimulation.",
+        "parts": [
+          "spike sorting",
+          "decoder models",
+          "stimulation encoders",
+          "adaptation and calibration"
+        ]
+      },
+      {
+        "name": "Surgical and maintenance system",
+        "role": "places the array precisely and keeps it working for decades.",
+        "parts": [
+          "robotic insertion",
+          "intraoperative imaging",
+          "calibration software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the array",
+        "detail": "Choose how many electrodes, their spacing and stiffness so they reach neurons without tearing tissue."
+      },
+      {
+        "title": "Fabricate in a cleanroom",
+        "detail": "Deposit and pattern metal and insulator layers on a flexible polymer or silicon wafer using the same lithography used for computer chips."
+      },
+      {
+        "title": "Encapsulate and test",
+        "detail": "Coat every surface except the electrode sites, then soak-test for months to prove nothing leaks or corrodes."
+      },
+      {
+        "title": "Build the transceiver",
+        "detail": "Design an application-specific chip that amplifies, digitises and multiplexes thousands of weak neural signals."
+      },
+      {
+        "title": "Assemble the compute module",
+        "detail": "Pair the transceiver with a low-power accelerator and memory, keeping the total heat and power low enough for living tissue."
+      },
+      {
+        "title": "Implant",
+        "detail": "A surgeon or robot inserts the electrodes into the target cortical area and seats the sealed electronics under the skull or behind the ear."
+      },
+      {
+        "title": "Record and train",
+        "detail": "The system observes neural activity while the user performs tasks, and decoders learn which patterns correspond to which intentions."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Add stimulation so the device can write information back, not just read it — the step that would make it an extension of memory rather than a sensor."
+      },
+      {
+        "title": "Maintain over decades",
+        "detail": "Monitor signal quality, retrain decoders as the tissue shifts, and provide a safe way to remove or replace failed hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chronic high-channel-count neural recording",
+        "status": "partial",
+        "why": "clinical arrays today record from roughly a hundred electrodes and research devices reach a few thousand, but signals fade over months to years."
+      },
+      {
+        "tech": "Long-term biocompatibility",
+        "status": "partial",
+        "why": "the brain forms scar tissue around implanted electrodes, which is the main reason recordings degrade."
+      },
+      {
+        "tech": "Wireless power and data through tissue",
+        "status": "partial",
+        "why": "demonstrated in early human trials, but bandwidth and heat limits are far below what an added compute layer needs."
+      },
+      {
+        "tech": "Decoding of abstract content, not just movement",
+        "status": "missing",
+        "why": "today's decoders reliably read intended movement; reading or writing memory and reasoning is not solved."
+      },
+      {
+        "tech": "Safe, high-resolution neural stimulation",
+        "status": "partial",
+        "why": "stimulation works coarsely but cannot yet address individual neurons without damaging them."
+      },
+      {
+        "tech": "Verification of device and data security",
+        "status": "missing",
+        "why": "a networked implant that influences thought would need guarantees no such system currently provides."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "clinical trials restore communication and cursor control for paralysed people using implanted arrays",
+        "unlocks": "proof that the brain tolerates and can drive a digital interface."
+      },
+      {
+        "stage": "Next",
+        "milestone": "arrays that stay functional for many years and thousands of channels, placed with robotic surgery",
+        "unlocks": "richer signals and practical daily use, not lab sessions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable two-way interfaces with fast wireless links",
+        "unlocks": "the possibility of adding rather than replacing function."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "a silicon layer that the cortex treats as part of itself, adding memory and parallel processing",
+        "unlocks": "the stated goal — but it requires solving tissue integration, decoding of abstract thought and security together, none of which is close."
+      }
+    ]
+  }
+}

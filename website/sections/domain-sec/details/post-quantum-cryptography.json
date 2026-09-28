@@ -33,5 +33,155 @@
         "def": "A quantum algorithm capable of efficiently factoring large integers and solving discrete logarithm problems, which could break traditional public-key cryptography systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mathematical foundations",
+        "role": "provide hard problems that are believed to resist attacks by both classical and quantum computers.",
+        "parts": [
+          "lattice problems (e.g., Learning With Errors)",
+          "coding theory problems",
+          "hash-based structures",
+          "multivariate polynomial systems"
+        ]
+      },
+      {
+        "name": "Algorithm families",
+        "role": "the actual cryptographic primitives used for key exchange and digital signatures.",
+        "parts": [
+          "key encapsulation mechanisms such as ML-KEM (CRYSTALS-Kyber)",
+          "lattice-based signatures such as ML-DSA (CRYSTALS-Dilithium)",
+          "hash-based signatures such as SLH-DSA (SPHINCS+)",
+          "optional hybrid schemes combining classical and post-quantum algorithms"
+        ]
+      },
+      {
+        "name": "Implementation libraries",
+        "role": "run the algorithms efficiently and safely on real hardware.",
+        "parts": [
+          "constant-time software code",
+          "optimised arithmetic for large polynomials and matrices",
+          "hardware accelerators for embedded and server use",
+          "cryptographically secure random number generators"
+        ]
+      },
+      {
+        "name": "Protocol integration",
+        "role": "embed post-quantum primitives into the protocols that carry everyday traffic.",
+        "parts": [
+          "TLS 1.3 handshakes",
+          "SSH and IPsec",
+          "X.509 certificates and certificate authorities",
+          "messaging and VPN protocols"
+        ]
+      },
+      {
+        "name": "Crypto agility and migration tools",
+        "role": "let systems switch algorithms without redesign, and help organisations find what needs changing.",
+        "parts": [
+          "algorithm identifiers and negotiation",
+          "hybrid key exchange modes",
+          "cryptographic inventory and discovery tools",
+          "key management and rotation systems"
+        ]
+      },
+      {
+        "name": "Security analysis and validation",
+        "role": "test the algorithms for weaknesses, side channels and parameter mistakes.",
+        "parts": [
+          "public cryptanalysis",
+          "formal verification and proofs",
+          "standardised test vectors",
+          "certification against profiles such as FIPS 140-3"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a hard problem",
+        "detail": "Researchers select a mathematical problem that is believed hard for quantum computers as well as classical ones — lattices, error-correcting codes, hash functions or multivariate equations."
+      },
+      {
+        "title": "Design a primitive",
+        "detail": "A key encapsulation mechanism or signature scheme is built on that problem, with a security proof and careful parameter choices."
+      },
+      {
+        "title": "Submit for public review",
+        "detail": "The design is published and attacked by the global research community; weaknesses lead to tweaks or rejection."
+      },
+      {
+        "title": "Standardise the algorithm",
+        "detail": "Standards bodies such as NIST select winners after years of analysis. Recent standards include ML-KEM, ML-DSA and SLH-DSA."
+      },
+      {
+        "title": "Write efficient, safe code",
+        "detail": "Implementations must be fast, use little memory, and run in constant time to avoid leaking secrets through timing or power use."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "The algorithms are fitted into TLS, SSH, VPNs and certificate systems, often alongside classical cryptography in hybrid mode so security does not depend on the new scheme alone."
+      },
+      {
+        "title": "Test and certify",
+        "detail": "Developers run standard test vectors, check for side channels, and seek certifications so the code can be trusted in regulated environments."
+      },
+      {
+        "title": "Deploy and migrate",
+        "detail": "Browsers, servers, phones and embedded devices are updated; long-lived secrets and firmware signing keys are replaced first because they must stay safe for decades."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice-based cryptography",
+        "status": "exists",
+        "why": "provides the leading key exchange and signature schemes, with strong security evidence and practical key sizes."
+      },
+      {
+        "tech": "Hash-based signatures",
+        "status": "exists",
+        "why": "offer a conservative fallback whose security rests only on hash functions, though signatures are larger."
+      },
+      {
+        "tech": "Efficient polynomial and matrix arithmetic",
+        "status": "partial",
+        "why": "needed to make lattice schemes fast enough for high-volume servers and low-power devices."
+      },
+      {
+        "tech": "Crypto agility in systems and protocols",
+        "status": "partial",
+        "why": "without the ability to swap algorithms quickly, migration to post-quantum cryptography will be slow and error-prone."
+      },
+      {
+        "tech": "Post-quantum hardware security modules and secure elements",
+        "status": "partial",
+        "why": "many keys are stored in tamper-resistant chips that must support the new algorithms before they can be used in critical infrastructure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NIST post-quantum standards published; early adoption in browsers, libraries and pilot deployments",
+        "unlocks": "a tested set of algorithms that vendors can start implementing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid deployment in TLS, VPNs and code signing, plus cryptographic inventories across organisations",
+        "unlocks": "protection against 'harvest now, decrypt later' attacks on today's traffic."
+      },
+      {
+        "stage": "Next",
+        "milestone": "migration of long-lived secrets, root certificates and firmware signing keys to post-quantum algorithms",
+        "unlocks": "security for data and devices that must remain safe for decades."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "full transition as quantum computers capable of breaking current cryptography approach",
+        "unlocks": "continued trust in digital communications and infrastructure; if weaknesses are found, crypto agility allows another switch."
+      }
+    ]
   }
 }

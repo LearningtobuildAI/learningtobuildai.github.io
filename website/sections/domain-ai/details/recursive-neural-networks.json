@@ -38,5 +38,147 @@
         "def": "The process of extracting information from graph structures, such as social networks or molecular structures."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Tree input representation",
+        "role": "recursive nets need a hierarchy, not a flat sequence, so each input is first cast as a tree.",
+        "parts": [
+          "constituency or dependency parse",
+          "leaf tokens",
+          "per-node labels where available"
+        ]
+      },
+      {
+        "name": "Leaf encoder",
+        "role": "turns the smallest units into vectors the composition function can combine.",
+        "parts": [
+          "pre-trained word or symbol embeddings",
+          "sub-token features where words are rare"
+        ]
+      },
+      {
+        "name": "Composition cell",
+        "role": "the core operator: merges two child vectors into a parent vector, and is reused at every node.",
+        "parts": [
+          "weight matrix (or tensor for multiplicative interaction)",
+          "bias",
+          "nonlinearity such as tanh"
+        ]
+      },
+      {
+        "name": "Gating and stability layer",
+        "role": "controls how much each child contributes so gradients survive deep trees.",
+        "parts": [
+          "forget/input gates (as in a tree-structured LSTM)",
+          "layer normalisation",
+          "dropout"
+        ]
+      },
+      {
+        "name": "Training machinery",
+        "role": "learns shared parameters by walking the tree in both directions.",
+        "parts": [
+          "loss over node or root labels",
+          "backpropagation through structure",
+          "optimiser with gradient clipping"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "turns node vectors into answers — a class, a score or a generated structure.",
+        "parts": [
+          "root-level classifier or regressor",
+          "optional per-node tagging head"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Parse the data into trees",
+        "detail": "Run a statistical or neural parser over text (or a compiler front end over code) to produce a binary or n-ary tree for every example."
+      },
+      {
+        "title": "Vectorise the leaves",
+        "detail": "Replace each token with a pre-trained embedding; keep the tree topology in a stack or adjacency record so the recursion knows which pairs combine."
+      },
+      {
+        "title": "Define the composition function",
+        "detail": "Choose an operator such as a shared weight matrix applied to the concatenated children, or a higher-order tensor if multiplicative interactions between children matter."
+      },
+      {
+        "title": "Forward recursion",
+        "detail": "Walk the tree bottom-up: compose every sibling pair, then their parent, until the root holds one vector for the whole structure."
+      },
+      {
+        "title": "Backward pass through structure",
+        "detail": "Run reverse-mode differentiation over the tree, accumulating gradients into the single shared parameter set at every node."
+      },
+      {
+        "title": "Add supervision at every node",
+        "detail": "Label intermediate phrases, not just the root, so shallow nodes receive gradient and the shared weights learn useful compositions."
+      },
+      {
+        "title": "Stabilise for depth",
+        "detail": "Introduce gates, normalisation and gradient clipping; test on trees deeper than those seen in training to expose vanishing gradients."
+      },
+      {
+        "title": "Evaluate and deploy",
+        "detail": "Measure accuracy against sequence-based baselines, then batch and prune the tree computation for inference cost."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Accurate automatic parsers",
+        "status": "exists",
+        "why": "the architecture has no way to learn a hierarchy from raw text in its classic form — the tree must be supplied."
+      },
+      {
+        "tech": "Pre-trained distributed word embeddings",
+        "status": "exists",
+        "why": "leaves need meaningful vectors before composition can build phrase meaning."
+      },
+      {
+        "tech": "Automatic differentiation over graph structures",
+        "status": "exists",
+        "why": "gradients must flow through a variable-shape recursion, not a fixed sequence of layers."
+      },
+      {
+        "tech": "Tree-annotated labelled datasets",
+        "status": "partial",
+        "why": "phrase-level sentiment treebanks exist for English, but equivalents for most languages, code and scientific text are scarce."
+      },
+      {
+        "tech": "GPU training and inference stacks",
+        "status": "exists",
+        "why": "many small irregular operations per example make naive implementations slow without batched tree kernels."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sequence and attention models dominate text, while recursive cells survive in niche structured tasks",
+        "unlocks": "a cheap inductive bias for source-code ASTs, chemical structures and formula parsing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrids that bolt an explicit recursion onto a pre-trained transformer backbone",
+        "unlocks": "better systematic generalisation — handling novel combinations of known parts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standard benchmarks for compositional generalisation with tree-shaped supervision",
+        "unlocks": "evidence on exactly when hierarchy beats raw sequence order."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "recursive modules inside program-synthesis and planning systems",
+        "unlocks": "models that produce and verify nested structures, such as code or proofs, natively."
+      }
+    ]
   }
 }

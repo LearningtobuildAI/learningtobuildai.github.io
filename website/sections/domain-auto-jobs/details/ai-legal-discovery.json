@@ -30,5 +30,166 @@
         "def": "Semantic search refers to the process of searching for information based on the meaning, context, and intent behind queries rather than just matching keywords. It is crucial in AI Legal Discovery for understanding the nuances of legal documents."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Collection and preservation",
+        "role": "copies data from email, file shares, chat and cloud accounts without altering it, and freezes it so nothing is deleted.",
+        "parts": [
+          "forensic imaging tools",
+          "hashing for integrity",
+          "custodian and source logs"
+        ]
+      },
+      {
+        "name": "Processing and text extraction",
+        "role": "turns a messy pile of files into searchable text plus metadata.",
+        "parts": [
+          "file-type filters",
+          "OCR for scans and images",
+          "thread and attachment handling",
+          "deduplication (exact and near-duplicate)"
+        ]
+      },
+      {
+        "name": "Index and retrieval",
+        "role": "makes the corpus searchable by keyword and by meaning.",
+        "parts": [
+          "inverted keyword index",
+          "embedding model",
+          "vector index",
+          "metadata and date filters"
+        ]
+      },
+      {
+        "name": "Relevance model",
+        "role": "ranks documents by how likely they are to matter to the case.",
+        "parts": [
+          "seed set coded by lawyers",
+          "classifier trained on that seed set",
+          "active-learning loop",
+          "confidence scores"
+        ]
+      },
+      {
+        "name": "Review workflow",
+        "role": "lets people work through the ranking, tag documents and record decisions.",
+        "parts": [
+          "batched queues",
+          "issue tags",
+          "privilege log",
+          "redaction tools"
+        ]
+      },
+      {
+        "name": "Generative synthesis",
+        "role": "answers a question in prose by quoting the documents that support it.",
+        "parts": [
+          "retrieval-augmented generation pipeline",
+          "citation links back to source documents",
+          "refusal when evidence is thin"
+        ]
+      },
+      {
+        "name": "Defensibility and audit",
+        "role": "proves to a court how the system was built and checked.",
+        "parts": [
+          "immutable activity logs",
+          "quality-control sampling",
+          "recall and elusion testing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Issue a legal hold",
+        "detail": "Relevant people are told to stop deleting; IT is told to suspend auto-deletion on mailboxes and drives."
+      },
+      {
+        "title": "Collect the data",
+        "detail": "Copies are taken from each source, hashed so any later change is detectable, and stored in a controlled repository."
+      },
+      {
+        "title": "Process and de-duplicate",
+        "detail": "Text is extracted, scans are run through OCR, metadata such as author and date is captured, and duplicate or near-duplicate files are collapsed to cut volume."
+      },
+      {
+        "title": "Build the index",
+        "detail": "Documents are split into passages; each passage gets a keyword index entry and an embedding vector so it can be found by meaning as well as exact words."
+      },
+      {
+        "title": "Train the relevance model",
+        "detail": "Lawyers code a seed set of documents as relevant or not; a classifier learns from it. The system then ranks the rest, and the highest-ranked unlabelled documents are coded next — an active-learning loop that sharpens the ranking."
+      },
+      {
+        "title": "Rank and review at scale",
+        "detail": "Reviewers work the queue from most to least likely relevant, tagging issues and sending privileged material to a separate track."
+      },
+      {
+        "title": "Test for what was missed",
+        "detail": "A random sample of documents the model rejected is reviewed by hand to estimate how much relevant material slipped through, and the ranking is retrained if the miss rate is too high."
+      },
+      {
+        "title": "Generate cited summaries",
+        "detail": "For specific questions, the RAG pipeline retrieves the best passages and writes an answer that links to each source, which a lawyer verifies before use."
+      },
+      {
+        "title": "Produce and preserve the record",
+        "detail": "Documents are exported in the format the other side requires, and the logs, seed sets and test results are kept in case the method is challenged."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Optical character recognition",
+        "status": "exists",
+        "why": "most case material exists as scanned PDFs and email attachments that must become machine-readable text."
+      },
+      {
+        "tech": "Transformer embedding models and vector search",
+        "status": "exists",
+        "why": "semantic search finds documents that share meaning but not wording, which keyword search alone misses."
+      },
+      {
+        "tech": "Large language models with retrieval grounding",
+        "status": "exists",
+        "why": "they turn retrieved passages into readable synthesis, but only usefully when answers cite and quote their sources."
+      },
+      {
+        "tech": "Distributed storage and compute",
+        "status": "exists",
+        "why": "corpora run to millions of documents and the index must be rebuilt repeatedly as the model retrains."
+      },
+      {
+        "tech": "Data-protection and cross-border transfer controls",
+        "status": "partial",
+        "why": "legal data is highly confidential and often cannot leave a jurisdiction, so processing may have to run in a private or regional environment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "technology-assisted review built on keyword search plus supervised classification, with manual quality-control sampling",
+        "unlocks": "large cases reviewed in weeks rather than years, and courts that accept the method when it is documented."
+      },
+      {
+        "stage": "Next",
+        "milestone": "review platforms that combine this with retrieval-grounded language models producing cited summaries and first-draft chronologies",
+        "unlocks": "lawyers spend their time checking conclusions instead of reading every file."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared evaluation methods for measuring recall and error rates of legal models",
+        "unlocks": "predictable, arguable standards for when a machine-assisted review is good enough."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous, agent-driven discovery that monitors new data as it arrives and flags changes to an earlier conclusion",
+        "unlocks": "due diligence and compliance that run as a background process rather than an end-of-case scramble."
+      }
+    ]
   }
 }

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Population data layer",
+        "role": "represents people, households and firms as individual agents rather than averages.",
+        "parts": [
+          "census and survey microdata",
+          "tax, court and prison administrative records",
+          "privacy-preserving record linkage"
+        ]
+      },
+      {
+        "name": "Behavioural model",
+        "role": "decides how each agent responds to a change in the law.",
+        "parts": [
+          "estimated response elasticities",
+          "rule-based decision rules",
+          "machine-learning or language-model behaviour predictors"
+        ]
+      },
+      {
+        "name": "Legal-institution model",
+        "role": "encodes the law itself as executable rules, including eligibility, penalties and process.",
+        "parts": [
+          "rule engine for statutes and thresholds",
+          "court and policing workflow timings",
+          "agency budget constraints"
+        ]
+      },
+      {
+        "name": "Simulation engine",
+        "role": "runs millions of agents over simulated years and many scenarios.",
+        "parts": [
+          "agent scheduler",
+          "parallel compute cluster",
+          "scenario and parameter sweep manager"
+        ]
+      },
+      {
+        "name": "Calibration and validation layer",
+        "role": "tests whether the model reproduces outcomes that already happened.",
+        "parts": [
+          "backtesting against past reforms",
+          "sensitivity analysis",
+          "uncertainty quantification"
+        ]
+      },
+      {
+        "name": "Audit and interface layer",
+        "role": "makes results inspectable and contestable rather than oracular.",
+        "parts": [
+          "scenario dashboard",
+          "provenance and version logs",
+          "independent expert review"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the question and the outcomes",
+        "detail": "Decide precisely which legal change is being tested and what counts as success — crime rate, prison population, cost, or distributional effect — before any code is written."
+      },
+      {
+        "title": "Assemble microdata",
+        "detail": "Link anonymised census, tax, court and corrections records into a representative synthetic population, using privacy-preserving matching and legal agreements."
+      },
+      {
+        "title": "Estimate behavioural responses",
+        "detail": "Use natural experiments from past law changes — where one jurisdiction changed a rule and a neighbouring one did not — to measure how people actually responded, rather than assuming it."
+      },
+      {
+        "title": "Encode the law as rules",
+        "detail": "Translate statutes, sentencing guidelines and agency procedures into an executable rule set, then run it on the current law to check it matches the present system."
+      },
+      {
+        "title": "Calibrate against history",
+        "detail": "Tune the model until it reproduces observed outcomes for a period it has never seen. A model that cannot retrodict cannot be trusted to predict."
+      },
+      {
+        "title": "Run counterfactual scenarios",
+        "detail": "Simulate the proposed change and several plausible alternatives, reporting ranges and tail risks instead of a single headline number."
+      },
+      {
+        "title": "Adversarially test",
+        "detail": "Have independent teams try to break the model — gaming, feedback loops, missing populations, and the risk that the model encodes past bias."
+      },
+      {
+        "title": "Publish with open assumptions",
+        "detail": "Release the assumptions, code and uncertainty intervals alongside the result, then monitor the real reform to score the prediction."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Linked administrative microdata at population scale",
+        "status": "partial",
+        "why": "a few countries with national registers can do this; most legal systems have fragmented, incompatible records."
+      },
+      {
+        "tech": "Causal inference from natural experiments",
+        "status": "exists",
+        "why": "without measured responses to real past reforms, agent behaviour is guesswork and the simulation is only a spreadsheet."
+      },
+      {
+        "tech": "Large-scale microsimulation of policy",
+        "status": "exists",
+        "why": "static tax-benefit microsimulation is already routine in many finance and social ministries; the missing part is behavioural feedback."
+      },
+      {
+        "tech": "Validated models of social behaviour",
+        "status": "missing",
+        "why": "unlike physics, societies cannot be put in controlled experiments, so behavioural rules remain the weakest link."
+      },
+      {
+        "tech": "Privacy-preserving data linkage and governance",
+        "status": "partial",
+        "why": "simulating individuals requires access to individual-level data, which carries serious legal and ethical constraints."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "microsimulation models score the budget and distributional effects of proposed tax and benefit changes, and risk scores inform some sentencing and parole decisions",
+        "unlocks": "evidence before votes and hearings, on a narrow set of measurable outcomes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agent-based models that add behavioural response and feedback — how enforcement changes reporting, how sentencing changes plea behaviour",
+        "unlocks": "tests of reforms whose main effect runs through people changing what they do."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sandboxed pilots where a legislature simulates a bill before voting and commits to publishing uncertainty estimates",
+        "unlocks": "a formal, auditable role for simulation in lawmaking rather than ad hoc consultancy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a continuously updated digital twin of a justice system, scored against real outcomes every year",
+        "unlocks": "ongoing monitoring of whether a law worked — and the ability to correct it early."
+      }
+    ]
+  }
+}

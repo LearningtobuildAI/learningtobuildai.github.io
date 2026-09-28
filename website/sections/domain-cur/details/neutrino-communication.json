@@ -1,0 +1,133 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neutrino source",
+        "role": "creates a directed, very intense neutrino beam.",
+        "parts": [
+          "megawatt-class proton accelerator",
+          "target and magnetic horns to focus pions",
+          "decay tunnel where pions decay into muons and neutrinos"
+        ]
+      },
+      {
+        "name": "Beam modulation",
+        "role": "imposes a pattern of ones and zeros on the beam.",
+        "parts": [
+          "fast pulsing or steering of the proton beam",
+          "beam-shaping magnets",
+          "timing and clock reference"
+        ]
+      },
+      {
+        "name": "Beam path",
+        "role": "aims the neutrinos through whatever matter is in the way — rock, ocean or a planet.",
+        "parts": [
+          "beam-line shielding",
+          "geometric pointing",
+          "negligible attenuation loss in the rock itself"
+        ]
+      },
+      {
+        "name": "Detector array",
+        "role": "catches the vanishingly rare interactions that carry the message.",
+        "parts": [
+          "thousands of tonnes of liquid argon, water Cherenkov or liquid scintillator",
+          "photodetectors",
+          "deep underground cavity or naturally shielded site"
+        ]
+      },
+      {
+        "name": "Readout and decoding",
+        "role": "turns few detected events into symbols.",
+        "parts": [
+          "precise event timing",
+          "pattern and statistics reconstruction",
+          "error-correction decoding"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the accelerator",
+        "detail": "A high-power proton synchrotron or linac, rated in megawatts, provides the primary beam; this is the single largest cost."
+      },
+      {
+        "title": "Make a neutrino beam",
+        "detail": "Protons strike a target, magnetic horns focus the resulting pions, and a long decay tunnel converts them into a collimated neutrino beam."
+      },
+      {
+        "title": "Add modulation hardware",
+        "detail": "Fast kicker magnets or beam choppers switch the proton beam on and off, or shift its direction slightly, on a controlled clock — this carries the bits."
+      },
+      {
+        "title": "Choose the receiver site",
+        "detail": "A detector large enough to catch a usable event rate is placed hundreds to thousands of kilometres away, with an independent timing link to the transmitter."
+      },
+      {
+        "title": "Build the detector",
+        "detail": "Thousands of tonnes of active medium are instrumented with photodetectors in an underground cavity so cosmic rays do not swamp the signal."
+      },
+      {
+        "title": "Synchronise and calibrate",
+        "detail": "Fine clocks and known beam pulses align transmitter and receiver, and calibration runs establish the background rate."
+      },
+      {
+        "title": "Send and decode",
+        "detail": "Each symbol is repeated over many accelerator pulses so it can be distinguished statistically from background; software integrates the data into reconstructed bits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Megawatt proton accelerators",
+        "status": "exists",
+        "why": "detectable neutrino rates demand beam powers far beyond early experiments."
+      },
+      {
+        "tech": "Kilotonne-scale neutrino detectors",
+        "status": "partial",
+        "why": "experiments such as MINERvA, IceCube and DUNE-class detectors exist or are being built, but a communication receiver needs even more mass and quiet."
+      },
+      {
+        "tech": "Fast, high-fidelity beam modulation",
+        "status": "partial",
+        "why": "switching a megawatt beam at useful data rates is harder than the slow on/off used in demonstrations."
+      },
+      {
+        "tech": "Long-baseline timing synchronisation",
+        "status": "exists",
+        "why": "transmitter and receiver must agree on when each symbol was sent, often across interplanetary distances."
+      },
+      {
+        "tech": "Feasible error-correction coding for event rates of a few counts per second",
+        "status": "missing",
+        "why": "the detected signal is so sparse that conventional coding schemes do not apply."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Theory",
+        "milestone": "1950s–2000s: the idea that a neutrino beam could penetrate the Earth essentially unattenuated and be read by a huge detector",
+        "unlocks": "a communication channel with no line-of-sight requirement."
+      },
+      {
+        "stage": "Demonstrated once",
+        "milestone": "2012: a Fermilab experiment (using the NuMI beam and the MINERvA detector) sent the word for the particle itself through hundreds of metres of rock",
+        "unlocks": "proof that neutrino messaging is physically possible — at a rate of a few bits per second at best and needing many pulses per symbol."
+      },
+      {
+        "stage": "Plausible next step",
+        "milestone": "purpose-built experiments pushing rate and detector mass, such as a dedicated modulation test with a large liquid-argon receiver",
+        "unlocks": "realistic link budgets for long-distance links."
+      },
+      {
+        "stage": "Speculative application",
+        "milestone": "one-way signalling to deep submarines or spacecraft, or a clock-synchronisation beacon",
+        "unlocks": "communication paths no radio or optical link can reach — only if accelerator power and detector cost fall drastically."
+      }
+    ]
+  }
+}

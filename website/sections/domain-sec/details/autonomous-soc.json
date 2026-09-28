@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Telemetry pipeline",
+        "role": "collects and normalises signals from endpoints, network, cloud and identity systems into one searchable stream.",
+        "parts": [
+          "log forwarders on hosts",
+          "streaming ingestion",
+          "normalisation to a common schema",
+          "hot and cold storage"
+        ]
+      },
+      {
+        "name": "Detection layer",
+        "role": "turns raw events into alerts worth investigating.",
+        "parts": [
+          "signature and rule detections",
+          "behavioural baselines and anomaly models",
+          "threat-intelligence matching",
+          "alert scoring and deduplication"
+        ]
+      },
+      {
+        "name": "Context store",
+        "role": "tells the agent what it is looking at, so it can judge severity and blast radius.",
+        "parts": [
+          "asset inventory",
+          "identity and permission graph",
+          "vulnerability and patch state",
+          "business-criticality tags"
+        ]
+      },
+      {
+        "name": "Reasoning agents",
+        "role": "investigate an alert the way a human analyst would, but faster.",
+        "parts": [
+          "language model with tool calling",
+          "retrieval over runbooks, threat reports and past tickets",
+          "query planner",
+          "evidence log with citations"
+        ]
+      },
+      {
+        "name": "Response orchestration",
+        "role": "acts on the environment through scoped, permissioned APIs.",
+        "parts": [
+          "playbook engine",
+          "endpoint isolation and file quarantine",
+          "session and token revocation",
+          "firewall and DNS blocking",
+          "patch and configuration deployment"
+        ]
+      },
+      {
+        "name": "Guardrails and audit",
+        "role": "keeps autonomy bounded and every decision reviewable.",
+        "parts": [
+          "policy engine with allowlists",
+          "dry-run and blast-radius limits",
+          "human approval gates",
+          "immutable action log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Centralise the telemetry",
+        "detail": "Ship endpoint, network, cloud and identity logs into one store and normalise them to a shared schema, so a single query can join a login, a process start and a network connection."
+      },
+      {
+        "title": "Map assets and identities",
+        "detail": "Build an inventory that resolves every IP address and account to a machine, an owner, a criticality rating and its current patch level — an agent cannot judge risk without this."
+      },
+      {
+        "title": "Encode detections",
+        "detail": "Write deterministic rules for known-bad behaviour and train behavioural baselines per user and host, then map everything to a shared adversary-tactics taxonomy such as MITRE ATT&CK."
+      },
+      {
+        "title": "Ground the model",
+        "detail": "Index runbooks, threat-intelligence reports and past incident tickets for retrieval, and require the agent to cite the evidence and the source document behind every conclusion."
+      },
+      {
+        "title": "Give it tools, read-only first",
+        "detail": "Expose APIs to query the endpoint agent, the ticketing system, the identity provider and the vulnerability scanner. Let the agent look and correlate but change nothing yet."
+      },
+      {
+        "title": "Add the policy layer",
+        "detail": "Define which actions are allowed, on which asset classes, under what conditions. Enforce dry-run mode, rate limits and an explicit approval step for anything destructive or wide-reaching."
+      },
+      {
+        "title": "Replay and red-team",
+        "detail": "Run the agent against recorded history and live purple-team exercises, measuring false positives, missed detections and — critically — wrong actions, then tune prompts, retrieval and policy."
+      },
+      {
+        "title": "Grant narrow write actions",
+        "detail": "Allow the reversible, low-blast-radius moves first: open a ticket, isolate one host, block a file hash, force a password reset. Log outcomes and expand the allowlist only as accuracy holds."
+      },
+      {
+        "title": "Close the loop on patching",
+        "detail": "Feed confirmed vulnerabilities into the rollout system, deploy fixes inside maintenance windows with automatic rollback, and let the agent verify the fix rather than assume it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Language models with reliable tool use",
+        "status": "partial",
+        "why": "long-context reasoning over messy logs still drifts, and a hallucinated action in a security tool is worse than no action."
+      },
+      {
+        "tech": "Retrieval-augmented generation over private data",
+        "status": "exists",
+        "why": "keeps the agent anchored to runbooks and real intelligence instead of inventing plausible-sounding explanations."
+      },
+      {
+        "tech": "Endpoint detection and response agents with APIs",
+        "status": "exists",
+        "why": "they are the eyes and hands on each machine — without them there is nothing to investigate or isolate."
+      },
+      {
+        "tech": "Normalised asset, identity and vulnerability data",
+        "status": "partial",
+        "why": "many organisations hold this in incompatible silos, which blocks any reliable risk or blast-radius judgement."
+      },
+      {
+        "tech": "Safe automated change and patch deployment",
+        "status": "partial",
+        "why": "autonomous patching inherits the oldest problem in IT: fixes that break production."
+      },
+      {
+        "tech": "A shared adversary-tactics taxonomy",
+        "status": "exists",
+        "why": "gives detections, agent reasoning and human review a common vocabulary."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI copilots summarise and prioritise alerts while deterministic playbooks handle known cases",
+        "unlocks": "analysts spend less time reading raw logs and more time on genuine investigations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents run full investigations on low-severity alerts and propose containment, with a human approving the action",
+        "unlocks": "round-the-clock triage without expanding the night shift."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous containment and patching inside enforced policy, with automatic rollback and full audit trails",
+        "unlocks": "response times measured in seconds rather than hours."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop defence where humans set policy, hunt novel attacks and audit agent decisions",
+        "unlocks": "a security posture that scales with the volume of attacks rather than with headcount."
+      }
+    ]
+  }
+}

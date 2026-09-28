@@ -28,5 +28,140 @@
         "def": "A neural network component in the MoE architecture responsible for selecting which sub-models should contribute to the final prediction based on input characteristics."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Expert networks",
+        "role": "provide specialized computation; each expert is a separate feed-forward sub-network.",
+        "parts": [
+          "feed-forward layers",
+          "activation functions",
+          "expert parameters"
+        ]
+      },
+      {
+        "name": "Gating network (router)",
+        "role": "scores each token and selects which experts should process it.",
+        "parts": [
+          "linear scoring layer",
+          "softmax or top-k selection",
+          "routing weights"
+        ]
+      },
+      {
+        "name": "Token dispatch and combine",
+        "role": "sends tokens to their chosen experts and merges the results.",
+        "parts": [
+          "token permutation",
+          "all-to-all communication",
+          "weighted sum of expert outputs"
+        ]
+      },
+      {
+        "name": "Load balancing",
+        "role": "keeps experts evenly utilized so no expert dominates or starves.",
+        "parts": [
+          "auxiliary loss",
+          "capacity factor",
+          "expert dropout"
+        ]
+      },
+      {
+        "name": "Distributed execution",
+        "role": "shards experts across many accelerators for training and inference.",
+        "parts": [
+          "expert parallelism",
+          "data parallelism",
+          "communication primitives"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the base model",
+        "detail": "Start with a transformer and replace some feed-forward blocks with mixture-of-experts layers, leaving attention and normalization in place."
+      },
+      {
+        "title": "Choose expert count and routing budget",
+        "detail": "Decide how many experts to create (for example, 8 or 64) and how many each token may use (for example, top-2)."
+      },
+      {
+        "title": "Implement the router",
+        "detail": "Build a small network that computes an affinity score between each token and each expert, then picks the highest-scoring ones."
+      },
+      {
+        "title": "Implement dispatch",
+        "detail": "Group tokens by their chosen experts and send them to the devices holding those experts, then return the outputs."
+      },
+      {
+        "title": "Add load balancing",
+        "detail": "Introduce an auxiliary loss that penalizes uneven expert usage and a capacity factor that caps tokens per expert per batch."
+      },
+      {
+        "title": "Train at scale",
+        "detail": "Train on a large text or multimodal dataset using distributed hardware, with experts spread across accelerators."
+      },
+      {
+        "title": "Evaluate and tune",
+        "detail": "Measure model quality, throughput and expert utilization; adjust routing, capacity and balancing weights."
+      },
+      {
+        "title": "Deploy for inference",
+        "detail": "Run the trained model with expert sharding, dynamic batching and caching so only the selected experts compute for each token."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "mixture-of-experts layers are most often inserted in place of feed-forward blocks."
+      },
+      {
+        "tech": "Large-scale distributed training",
+        "status": "exists",
+        "why": "experts must be split across many accelerators, requiring fast interconnects and parallelism."
+      },
+      {
+        "tech": "Efficient all-to-all communication",
+        "status": "exists",
+        "why": "tokens move between devices during routing, so communication can become the bottleneck."
+      },
+      {
+        "tech": "Load balancing techniques",
+        "status": "partial",
+        "why": "without them, a few experts receive most tokens and the rest are wasted."
+      },
+      {
+        "tech": "Sparse matrix and kernel support",
+        "status": "exists",
+        "why": "fast kernels are needed to execute only the selected experts without dense overhead."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sparse mixture-of-experts layers in large language models, typically routing each token to a small number of experts",
+        "unlocks": "more parameters and knowledge at similar inference cost per token."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better routing and balancing methods that reduce wasted computation and improve stability",
+        "unlocks": "larger expert counts and more reliable training."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mixture-of-experts for multimodal models with modality-specific experts",
+        "unlocks": "one model that handles text, images and audio efficiently."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "adaptive computation where routing varies with token difficulty, and hardware co-designed for expert parallelism",
+        "unlocks": "further gains in efficiency and capability for very large models."
+      }
+    ]
   }
 }

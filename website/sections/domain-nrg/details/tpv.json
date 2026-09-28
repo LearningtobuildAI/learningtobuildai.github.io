@@ -33,5 +33,154 @@
         "def": "A semiconductor device that converts light energy into electrical energy through the photovoltaic effect."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Heat source and thermal store",
+        "role": "stores electricity or heat as high-temperature thermal energy and delivers it to the emitter.",
+        "parts": [
+          "insulated refractory tank",
+          "graphite or silicon blocks",
+          "electric resistance heaters",
+          "molten-salt loop for lower-temperature variants"
+        ]
+      },
+      {
+        "name": "Emitter",
+        "role": "radiates intense infrared light when heated white-hot.",
+        "parts": [
+          "tungsten or refractory-metal emitter",
+          "photonic-crystal or selective coating",
+          "support and alignment structure"
+        ]
+      },
+      {
+        "name": "TPV cells",
+        "role": "convert infrared photons directly into direct-current electricity.",
+        "parts": [
+          "III-V semiconductor layers such as gallium indium arsenide or gallium antimonide",
+          "back-surface reflector",
+          "metal contacts"
+        ]
+      },
+      {
+        "name": "Photon management",
+        "role": "recycles low-energy photons back to the emitter to raise conversion efficiency.",
+        "parts": [
+          "dielectric interference filter",
+          "reflective cavity",
+          "vacuum gap"
+        ]
+      },
+      {
+        "name": "Containment and cooling",
+        "role": "keeps heat in, protects cells from overheating, and holds a controlled atmosphere.",
+        "parts": [
+          "vacuum or inert-gas enclosure",
+          "thermal insulation",
+          "cell heat sinks and coolant loop"
+        ]
+      },
+      {
+        "name": "Power electronics",
+        "role": "conditions cell output for storage or grid connection.",
+        "parts": [
+          "DC-DC converter",
+          "inverter",
+          "controls and protection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the storage temperature and medium",
+        "detail": "Silicon melts at about 1,410 °C and graphite can exceed 2,000 °C; the medium must stay stable through thousands of cycles."
+      },
+      {
+        "title": "Fabricate the emitter",
+        "detail": "Refractory metal is shaped and coated so it emits strongly in the infrared band the cells can absorb."
+      },
+      {
+        "title": "Grow the TPV cells",
+        "detail": "Thin III-V semiconductor layers are grown epitaxially with a bandgap tuned to the emitter spectrum, often around 0.5–0.7 eV."
+      },
+      {
+        "title": "Assemble the cavity",
+        "detail": "Emitter, filter and cells are mounted a small distance apart, then sealed in vacuum or inert gas to prevent oxidation and conduction losses."
+      },
+      {
+        "title": "Integrate thermal charging",
+        "detail": "Electric heaters, or a heat-transfer fluid, charge the store from surplus wind or solar power."
+      },
+      {
+        "title": "Test single modules",
+        "detail": "Measure electrical output, spectral efficiency and degradation as the emitter cycles between charge and discharge temperatures."
+      },
+      {
+        "title": "Scale to a stack",
+        "detail": "Multiple cell arrays and emitters are arranged around the store, with cooling and thermal expansion managed."
+      },
+      {
+        "title": "Connect power electronics",
+        "detail": "Converters and inverters turn cell DC into grid-compatible AC or battery-charging DC."
+      },
+      {
+        "title": "Run a pilot",
+        "detail": "Operate a complete charge–store–discharge system for months to prove round-trip efficiency and lifetime."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-temperature thermal storage",
+        "status": "partial",
+        "why": "molten salts work to about 600 °C, but TPV needs 1,000–2,500 °C, where graphite and silicon are still mainly lab-scale."
+      },
+      {
+        "tech": "Narrow-bandgap TPV cells",
+        "status": "partial",
+        "why": "III-V cells have been demonstrated in labs, but large-area, low-cost cells are not yet manufactured at scale."
+      },
+      {
+        "tech": "Selective emitters and optical filters",
+        "status": "partial",
+        "why": "they must survive intense heat and cycling without losing their spectral properties."
+      },
+      {
+        "tech": "Vacuum or inert-gas containment",
+        "status": "exists",
+        "why": "similar enclosures are used in furnaces and vacuum tubes, but sealing a large hot cavity is challenging."
+      },
+      {
+        "tech": "Cheap surplus electricity",
+        "status": "exists",
+        "why": "the economics depend on charging the store when wind or solar power is abundant and prices are low."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory TPV devices converting infrared at high temperature with efficiencies around 40%",
+        "unlocks": "proof that the core conversion step can be efficient."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated thermal-battery prototypes that charge from electricity and discharge through TPV cells",
+        "unlocks": "measured round-trip efficiency, a key benchmark against batteries and pumped hydro."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot systems for grid storage or industrial heat",
+        "unlocks": "real-world durability data over thousands of cycles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commercial modular thermal batteries with no turbines or moving parts",
+        "unlocks": "low-cost, long-duration storage that can sit almost anywhere."
+      }
+    ]
   }
 }

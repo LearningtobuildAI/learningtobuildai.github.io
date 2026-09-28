@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Embodiment interface",
+        "role": "exposes each robot's joints, grippers and sensors through one uniform command and feedback schema, so the same policy can drive different hardware.",
+        "parts": [
+          "per-manufacturer driver adapters",
+          "joint and end-effector command schema",
+          "sensor streams (cameras, force/torque, proprioception)",
+          "real-time control loop"
+        ]
+      },
+      {
+        "name": "Perception stack",
+        "role": "turns raw sensor data into a representation of objects, poses and contact the policy can act on.",
+        "parts": [
+          "RGB and depth cameras",
+          "object segmentation and pose estimation",
+          "tactile and force sensing",
+          "state estimation"
+        ]
+      },
+      {
+        "name": "Behavior model",
+        "role": "maps a plain-language goal plus current observations directly to low-level motor commands.",
+        "parts": [
+          "vision-language backbone",
+          "action tokenizer or action head",
+          "diffusion or flow-matching action decoder",
+          "instruction encoder"
+        ]
+      },
+      {
+        "name": "Data engine",
+        "role": "supplies the demonstrations and labels that train and keep improving the policy.",
+        "parts": [
+          "teleoperation rigs",
+          "cross-embodiment episode datasets",
+          "physics simulation and domain randomization",
+          "evaluation harness"
+        ]
+      },
+      {
+        "name": "Agent and task layer",
+        "role": "decomposes a goal into steps, calls skills, and recovers when a step fails.",
+        "parts": [
+          "language-model planner",
+          "skill library",
+          "episodic memory",
+          "failure-recovery behaviors"
+        ]
+      },
+      {
+        "name": "Safety and fleet layer",
+        "role": "keeps learned control inside hard limits and coordinates many robots in one space.",
+        "parts": [
+          "safety supervisor",
+          "emergency stop",
+          "collision avoidance",
+          "fleet scheduler"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the robot",
+        "detail": "Every joint, gripper and camera is wrapped in a driver that conforms to the shared schema and logs observations and commands at control rate."
+      },
+      {
+        "title": "Collect demonstrations",
+        "detail": "Humans teleoperate the target tasks repeatedly, recording matched observation-action pairs; this is slow, so thousands of episodes are gathered per skill."
+      },
+      {
+        "title": "Normalise across embodiments",
+        "detail": "Different arm lengths, joint counts and grippers are mapped into a common action space, so one model can learn from data generated on many different robots."
+      },
+      {
+        "title": "Pretrain a vision-language-action model",
+        "detail": "Training starts from a large pretrained vision-language model, adds an action head, and mixes robot episodes with web-scale image-text data so the model inherits general scene understanding."
+      },
+      {
+        "title": "Fine-tune on the deployment robot",
+        "detail": "A smaller dataset from the actual machine adapts the policy to its kinematics, camera placement and gripper."
+      },
+      {
+        "title": "Stress test in simulation",
+        "detail": "Millions of randomised episodes in a physics simulator expose failure modes — slipping, occlusion, unexpected objects — before any hardware is put at risk."
+      },
+      {
+        "title": "Deploy inside a safety envelope",
+        "detail": "The learned policy runs at a modest rate while a fast classical controller underneath enforces joint limits, force caps and emergency stops."
+      },
+      {
+        "title": "Improve from fleet data",
+        "detail": "Failures logged in the field are labelled, retrained into the policy, and shipped as updates — the loop that makes the operator more general over time."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Vision-language-action models",
+        "status": "partial",
+        "why": "research systems now translate instructions into robot actions, but generalisation beyond trained tasks and scenes is still weak."
+      },
+      {
+        "tech": "Interoperable robot middleware",
+        "status": "exists",
+        "why": "standards such as ROS 2 provide drivers and messaging, though no single API yet covers every commercial arm or mobile base."
+      },
+      {
+        "tech": "Large, cheap teleoperation datasets",
+        "status": "partial",
+        "why": "cross-institution efforts have pooled over a million robot episodes across more than twenty robot types, but robot data remains tiny next to text and image corpora."
+      },
+      {
+        "tech": "Fast on-robot inference hardware",
+        "status": "exists",
+        "why": "current accelerators are quick enough to run a large policy at the tens-of-hertz rates closed-loop control needs."
+      },
+      {
+        "tech": "Contact-accurate simulation",
+        "status": "partial",
+        "why": "rigid-body and some soft-contact dynamics are usable for training, but grasping and deformable objects still transfer poorly to reality."
+      },
+      {
+        "tech": "Safety certification for learned controllers",
+        "status": "missing",
+        "why": "regulators have no accepted method for certifying a neural network that shares control of a moving machine."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-arm lab policies that follow spoken instructions for a fixed set of tabletop tasks",
+        "unlocks": "proof that one model can span several skills instead of one program per task."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-embodiment models that transfer a learned skill to a robot they were not trained on",
+        "unlocks": "an operator that can be pointed at a new machine without bespoke integration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial pilots in warehouses and factories with a certified safety supervisor",
+        "unlocks": "real deployment data at a scale no lab can generate."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a common API and safety case that let one agent run mixed fleets from different vendors",
+        "unlocks": "retrofitting existing robots with new competence through software alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "open-ended learning in unstructured settings such as homes and construction",
+        "unlocks": "general-purpose physical labour, the point at which the field stops being a demo."
+      }
+    ]
+  }
+}

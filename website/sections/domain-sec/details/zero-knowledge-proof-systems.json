@@ -36,5 +36,145 @@
         "def": "Another type of zero-knowledge proof system known for its transparency, meaning it does not rely on any trusted setup assumptions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Circuit compiler",
+        "role": "turns a computation or statement into a set of arithmetic constraints that a proof system can reason about.",
+        "parts": [
+          "front-end language (e.g. Circom, Cairo, Noir)",
+          "constraint system (R1CS or AIR)",
+          "witness generator"
+        ]
+      },
+      {
+        "name": "Polynomial commitment scheme",
+        "role": "lets the prover commit to polynomials and later prove evaluations without revealing them.",
+        "parts": [
+          "KZG commitments (pairing-based)",
+          "FRI commitments (hash-based, transparent)",
+          "Merkle trees for vector commitments"
+        ]
+      },
+      {
+        "name": "Prover",
+        "role": "does the heavy computation to produce a short proof that the statement is true.",
+        "parts": [
+          "finite-field arithmetic engine",
+          "FFT and MSM accelerators",
+          "recursive proof composition"
+        ]
+      },
+      {
+        "name": "Verifier",
+        "role": "checks the proof in far less time than it would take to re-run the computation.",
+        "parts": [
+          "pairing or hash-based checks",
+          "public input handling",
+          "on-chain or in-browser verifier"
+        ]
+      },
+      {
+        "name": "Setup and parameters",
+        "role": "provides the public parameters the prover and verifier share.",
+        "parts": [
+          "trusted setup ceremony (for some SNARKs)",
+          "transparent setup (for STARKs and some SNARKs)",
+          "universal and updatable parameters"
+        ]
+      },
+      {
+        "name": "Cryptographic primitives",
+        "role": "the underlying hardness assumptions and building blocks.",
+        "parts": [
+          "elliptic curves and pairings",
+          "cryptographic hash functions",
+          "finite fields"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write the statement as a circuit",
+        "detail": "The computation is expressed as arithmetic gates over a finite field, so that a valid witness satisfies every constraint."
+      },
+      {
+        "title": "Choose a proof system",
+        "detail": "Trade-offs: zk-SNARKs give tiny proofs and fast verification but often need a trusted setup; zk-STARKs are transparent and post-quantum but produce larger proofs."
+      },
+      {
+        "title": "Generate public parameters",
+        "detail": "Either run a multi-party trusted setup ceremony or use a transparent scheme that derives parameters from public randomness."
+      },
+      {
+        "title": "Implement the prover",
+        "detail": "The prover evaluates polynomials, commits to them, and computes the proof. This step dominates cost and is accelerated with FFTs and multi-scalar multiplication."
+      },
+      {
+        "title": "Implement the verifier",
+        "detail": "The verifier checks commitments and a few evaluation proofs; it must be cheap enough to run on-chain or in a browser."
+      },
+      {
+        "title": "Optimize and recurse",
+        "detail": "Proof recursion lets one proof attest to many others, enabling scalable rollups and aggregation."
+      },
+      {
+        "title": "Integrate into an application",
+        "detail": "The verifier is embedded in a smart contract, a login flow, or a verifiable-computation service, with public inputs bound to real-world data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Elliptic curve pairings and finite-field arithmetic",
+        "status": "exists",
+        "why": "pairing-based SNARKs rely on these; they are well understood and widely implemented."
+      },
+      {
+        "tech": "Polynomial commitment schemes",
+        "status": "exists",
+        "why": "KZG and FRI commitments are the core mechanism that makes proofs succinct."
+      },
+      {
+        "tech": "Transparent setup without a trusted ceremony",
+        "status": "partial",
+        "why": "STARKs and some SNARKs avoid trusted setups, but performance and proof size still vary."
+      },
+      {
+        "tech": "Efficient recursive proof composition",
+        "status": "partial",
+        "why": "recursion is demonstrated but still expensive; it is key to aggregating many proofs."
+      },
+      {
+        "tech": "Hardware acceleration for provers",
+        "status": "partial",
+        "why": "GPUs and FPGAs speed up MSM and FFTs, but proving remains far slower than verifying."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "zk-SNARKs in production for private payments and zk-rollups on Ethereum",
+        "unlocks": "practical privacy and cheaper layer-2 transactions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "general-purpose zkEVMs and portable proof systems",
+        "unlocks": "developers can prove arbitrary programs without custom circuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "verifiable computation as a service and private digital identity",
+        "unlocks": "outsourced computation with cryptographic guarantees and selective disclosure of credentials."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ubiquitous proof-carrying data across blockchains and databases",
+        "unlocks": "scalable, privacy-preserving systems where correctness is checked cheaply everywhere."
+      }
+    ]
   }
 }

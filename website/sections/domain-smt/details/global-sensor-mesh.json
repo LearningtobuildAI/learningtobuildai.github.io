@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensor nodes",
+        "role": "measure the local environment — temperature, humidity, pressure, motion, gases, sound or light.",
+        "parts": [
+          "microelectromechanical sensing elements on silicon",
+          "analogue front end",
+          "microcontroller",
+          "antenna"
+        ]
+      },
+      {
+        "name": "Power and harvesting",
+        "role": "let a node run for years without a battery change.",
+        "parts": [
+          "thin-film solar cell or vibration/thermal harvester",
+          "micro-battery or supercapacitor",
+          "power-management circuit"
+        ]
+      },
+      {
+        "name": "Communications and mesh",
+        "role": "move readings hop-by-hop to the nearest gateway.",
+        "parts": [
+          "low-power radio transceiver",
+          "self-organising routing protocol",
+          "time-synchronisation logic"
+        ]
+      },
+      {
+        "name": "Deployment layer",
+        "role": "gets nodes into position and keeps them there.",
+        "parts": [
+          "aircraft, balloons or drones (for dispersal)",
+          "ground or marine placement rigs",
+          "anchor or biodegradable carrier"
+        ]
+      },
+      {
+        "name": "Backhaul and gateways",
+        "role": "collects local mesh traffic and forwards it onward.",
+        "parts": [
+          "fixed gateway stations",
+          "satellite IoT links",
+          "high-altitude relay platforms"
+        ]
+      },
+      {
+        "name": "Data and compute layer",
+        "role": "turns billions of noisy readings into usable information.",
+        "parts": [
+          "edge filtering on the node",
+          "cloud aggregation",
+          "calibration and drift-correction models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the sensing element",
+        "detail": "Each sensor type is patterned on a silicon wafer by photolithography and etching, so that a microscopic beam, membrane or cavity responds to one physical quantity."
+      },
+      {
+        "title": "Fabricate the electronics",
+        "detail": "The radio, processor and analogue circuits are made as a complementary metal-oxide-semiconductor chip, then the sensor die and the circuit die are bonded together, giving a device a few millimetres across."
+      },
+      {
+        "title": "Add power",
+        "detail": "A photovoltaic or vibration harvester and a tiny storage cell are attached, sized so the node can transmit a reading every few minutes indefinitely."
+      },
+      {
+        "title": "Package and harden",
+        "detail": "The node is encapsulated against water, salt, dust and ultraviolet light, ideally in a coating that will break down safely if it is never recovered."
+      },
+      {
+        "title": "Mass-produce",
+        "detail": "Wafers are diced and packaged on highly automated lines, or flexible versions are printed roll-to-roll, to push unit cost low enough that losing nodes is acceptable."
+      },
+      {
+        "title": "Disperse or place",
+        "detail": "Large numbers would be released from aircraft, balloons or drones over the target region, or installed by hand and by marine platforms where recovery is possible."
+      },
+      {
+        "title": "Form the mesh",
+        "detail": "On power-up each node discovers its neighbours, agrees a shared clock and builds routing paths so that data hops toward a gateway without any central controller."
+      },
+      {
+        "title": "Calibrate in place",
+        "detail": "Nodes are cross-checked against reference instruments and against each other, because cheap sensors drift and a whole mesh of biased readings is worse than none."
+      },
+      {
+        "title": "Aggregate and interpret",
+        "detail": "Gateways relay the traffic by satellite or fixed link to data centres, where readings are fused with weather, satellite and model data to produce usable maps and forecasts."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Microelectromechanical sensors",
+        "status": "exists",
+        "why": "the sensing elements themselves are already mass-produced in phones and cars."
+      },
+      {
+        "tech": "Micro-scale energy harvesting and storage",
+        "status": "partial",
+        "why": "harvesters work in bright, vibrating places but fail in darkness, calm or cold."
+      },
+      {
+        "tech": "Low-power mesh and wide-area radio",
+        "status": "exists",
+        "why": "protocols that let thousands of nodes cooperate already exist; millions per network do not."
+      },
+      {
+        "tech": "Cheap satellite or aerial backhaul",
+        "status": "partial",
+        "why": "remote regions have no ground infrastructure, so data must leave by satellite or high-altitude platform."
+      },
+      {
+        "tech": "Self-organising networks at extreme scale",
+        "status": "missing",
+        "why": "routing, addressing and synchronisation are unproven for trillion-node, constantly failing networks."
+      },
+      {
+        "tech": "Ecologically safe disposable nodes",
+        "status": "missing",
+        "why": "scattering hardware across land, ocean and atmosphere is pollution unless the materials biodegrade cleanly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "regional networks of thousands of fixed and drifting sensors — weather stations, air-quality monitors and ocean profiling floats such as the Argo array",
+        "unlocks": "real-time environmental monitoring over well-instrumented regions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "low-power wide-area and satellite IoT connect millions of cheap nodes, mostly in agriculture, logistics and industry",
+        "unlocks": "commodity hardware, cheap radios and battery-life lessons that a planetary mesh would need."
+      },
+      {
+        "stage": "Next",
+        "milestone": "millimetre-scale nodes with on-board harvesting demonstrated in laboratory and small-area trials, in the lineage of the long-running 'smart dust' research idea",
+        "unlocks": "deployments where wires and batteries are impossible."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-organising, largely biodegradable meshes over remote land, ice and ocean, with satellite backhaul",
+        "unlocks": "near-continuous observation of the whole planet's surface and lower atmosphere."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "truly continuous coverage of every square metre, if ever achievable and acceptable",
+        "unlocks": "environmental models constrained by direct measurement everywhere — at a cost in materials, energy and surveillance risk that may not be worth paying."
+      }
+    ]
+  }
+}

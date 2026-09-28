@@ -28,5 +28,153 @@
         "def": "A property where mechanical stress is converted into an electric charge, and vice versa."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Thermal harvester",
+        "role": "converts the temperature difference between skin and air into a small voltage.",
+        "parts": [
+          "thermoelectric module (bismuth telluride legs)",
+          "flexible heat spreader",
+          "thermal insulator",
+          "electrical interconnects"
+        ]
+      },
+      {
+        "name": "Motion harvester",
+        "role": "converts body movement into electricity via piezoelectric or electrostatic effects.",
+        "parts": [
+          "piezoelectric film (e.g., PVDF)",
+          "cantilever beam",
+          "proof mass",
+          "electrodes"
+        ]
+      },
+      {
+        "name": "Power management",
+        "role": "rectifies and boosts the tiny, irregular output to a usable voltage.",
+        "parts": [
+          "rectifier",
+          "DC-DC converter",
+          "voltage regulator",
+          "maximum power point tracker"
+        ]
+      },
+      {
+        "name": "Energy storage",
+        "role": "buffers harvested energy for when the device needs more power than is being generated.",
+        "parts": [
+          "supercapacitor",
+          "thin-film solid-state battery"
+        ]
+      },
+      {
+        "name": "Wearable integration",
+        "role": "packages the harvesters and electronics into a comfortable, skin-safe form.",
+        "parts": [
+          "flexible substrate",
+          "encapsulation",
+          "thermal interface layer",
+          "straps or adhesive"
+        ]
+      },
+      {
+        "name": "Load device",
+        "role": "the wearable or implant that uses the harvested power.",
+        "parts": [
+          "ultra-low-power sensor",
+          "microcontroller",
+          "radio",
+          "display (optional)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the harvester layout",
+        "detail": "Choose body location (wrist, chest) and decide the mix of thermoelectric and motion harvesters based on available temperature gradient and movement."
+      },
+      {
+        "title": "Fabricate thermoelectric modules",
+        "detail": "Dope and cut semiconductor legs (bismuth telluride), solder them between ceramic plates, and wire them in series to boost voltage."
+      },
+      {
+        "title": "Fabricate motion harvesters",
+        "detail": "Deposit piezoelectric thin films on flexible substrates, pattern electrodes, and assemble cantilevers with a proof mass tuned to body-motion frequencies."
+      },
+      {
+        "title": "Assemble power management circuit",
+        "detail": "Connect harvesters to a rectifier and a DC-DC converter that extracts maximum power and charges a storage element."
+      },
+      {
+        "title": "Integrate energy storage",
+        "detail": "Attach a supercapacitor or thin-film battery to buffer energy for peak loads."
+      },
+      {
+        "title": "Encapsulate for wearability",
+        "detail": "Seal the device in flexible, waterproof, skin-safe polymers; ensure good thermal contact for the thermoelectric module."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Measure power output on a thermal manikin or human volunteer under typical conditions, and tune electronics for efficiency."
+      },
+      {
+        "title": "Connect to the load",
+        "detail": "Integrate with the target device (e.g., a health sensor or watch) and verify continuous operation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Thermoelectric materials with high efficiency at small temperature differences",
+        "status": "exists",
+        "why": "bismuth telluride is commercial, but performance is limited; better materials are still lab-stage."
+      },
+      {
+        "tech": "Flexible piezoelectric materials",
+        "status": "exists",
+        "why": "PVDF and similar polymers are available, but generate only microwatts from body motion."
+      },
+      {
+        "tech": "Ultra-low-power electronics",
+        "status": "exists",
+        "why": "sensors and microcontrollers now run on microwatts, making harvested power useful."
+      },
+      {
+        "tech": "Energy-harvesting power management ICs",
+        "status": "exists",
+        "why": "commercial chips can boost millivolt inputs to usable levels."
+      },
+      {
+        "tech": "Thin-film batteries or supercapacitors",
+        "status": "partial",
+        "why": "small storage exists, but cycle life and capacity for wearables need improvement."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "niche self-powered devices like thermoelectric watches and wireless sensors",
+        "unlocks": "basic battery-free operation for very low-power devices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable health monitors powered continuously by body heat and motion",
+        "unlocks": "long-term monitoring without battery changes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid harvesters reaching milliwatt output, enabling communication and displays",
+        "unlocks": "more capable wearables and smart clothing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "implantable medical devices powered by the body itself",
+        "unlocks": "lifelong implants without replacement surgery."
+      }
+    ]
   }
 }

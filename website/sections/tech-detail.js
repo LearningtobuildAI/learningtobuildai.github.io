@@ -129,6 +129,46 @@
 
     var lifeStage = ai.lifecycleStage || "";
 
+    // PART 3 — Engineering & Build Guide (pilot 2026-09-29). Rendered only when
+    // the details JSON carries an "engineering" block; X/G shift the later
+    // section and part numbers so every other page keeps its numbering.
+    // Keep in sync with engPart() in tools/prerender-details.js.
+    var eng = (details && details.engineering) || null;
+    var X = eng ? 4 : 0, G = eng ? 1 : 0;
+    function engPart() {
+      if (!eng) return "";
+      var PREREQ = { exists: ["now", "EXISTS"], partial: ["trial", "PARTIAL"], missing: ["theory", "NOT YET"] };
+      var AVAIL = { available: "Available today", partial: "Partly there", "not-yet": "Not yet possible" };
+      var next = eng.availability === "available" ? "Where It Goes Next"
+        : eng.availability === "partial" ? "Path to Full Scale" : "Theoretical Path to Reality";
+      // Status-chip styles ship with the part itself, so pages without it are
+      // byte-identical (the template style block is copied into every page).
+      return '<style>.td-list .pbadge{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:2px 8px;margin-right:6px;border-radius:999px;vertical-align:1px}.td-list .pbadge.now{background:rgba(74,222,128,.14);color:#bbf7d0;border:1px solid rgba(74,222,128,.4)}.td-list .pbadge.trial{background:rgba(251,191,36,.14);color:#fde68a;border:1px solid rgba(251,191,36,.4)}.td-list .pbadge.theory{background:rgba(148,163,184,.14);color:#cbd5e1;border:1px solid rgba(148,163,184,.4)}</style>' +
+        grp(3, "Engineering & Build Guide") +
+        '<div class="td-life"><span class="td-lifebadge">' + esc(AVAIL[eng.availability] || eng.availability) + "</span></div>" +
+        note("Written by " + (eng.author || "Claude") + (eng.writtenAt ? " on " + eng.writtenAt : "") +
+          ". General engineering knowledge, not a manufacturer's procedure." +
+          (eng.availability === "available" ? "" : " Steps for anything not yet built are a theoretical route, not a plan anyone is executing.")) +
+        num(9, "Engineering Breakdown") +
+        '<ul class="td-list">' + (eng.subsystems || []).map(function (s) {
+          return "<li><strong>" + esc(s.name) + "</strong> — " + esc(s.role) +
+            (s.parts && s.parts.length ? " <em>Key parts:</em> " + esc(s.parts.join(", ")) + "." : "") + "</li>";
+        }).join("") + "</ul>" +
+        num(10, eng.availability === "available" ? "How It's Made — Step by Step" : "How It Would Be Made — Step by Step") +
+        '<ol class="td-list">' + (eng.buildSteps || []).map(function (s) {
+          return "<li><strong>" + esc(s.title) + ".</strong> " + esc(s.detail) + "</li>";
+        }).join("") + "</ol>" +
+        num(11, "Prerequisite Technologies") +
+        '<ul class="td-list">' + (eng.prerequisites || []).map(function (p) {
+          var st = PREREQ[p.status] || ["lab", String(p.status || "").toUpperCase()];
+          return '<li><span class="pbadge ' + st[0] + '">' + st[1] + "</span> <strong>" + esc(p.tech) + "</strong> — " + esc(p.why) + "</li>";
+        }).join("") + "</ul>" +
+        num(12, next) +
+        '<ol class="td-list">' + (eng.pathway || []).map(function (p) {
+          return "<li><strong>" + esc(p.stage) + ": " + esc(p.milestone) + "</strong> — " + esc(p.unlocks) + "</li>";
+        }).join("") + "</ol>";
+    }
+
     var html =
       '<div class="td-hero" style="' + bg + '">' +
         '<div class="td-hero-cap">' +
@@ -164,28 +204,29 @@
       num(8, "Energy Requirements") + aiBody("energyRequirements") +
         note("Ranges and qualitative terms only — verify power figures against vendor datasheets.") +
 
-      grp(3, "Market & Industry") +
-      num(9, "Companies Involved") +
+      engPart() +
+      grp(3 + G, "Market & Industry") +
+      num(9 + X, "Companies Involved") +
         (companies ? '<div class="td-companies">' + companies + "</div>" : '<p class="td-text td-pending">No companies curated for this tile yet.</p>') +
         note("Curated names only — none are invented. Use the link to find more.") +
         linkrow([{ label: "Find suppliers & makers", url: suppliers }]) +
 
-      num(10, "Estimated Costs") + aiBody("costDrivers") +
+      num(10 + X, "Estimated Costs") + aiBody("costDrivers") +
         note("Cost drivers only — no verified dollar figures are shown. Check live sources for prices.") +
         linkrow([{ label: "Search current prices", url: prices }]) +
 
-      num(11, "Regulation & Compliance") + aiBody("regulation") +
-      num(12, "Risks") + aiBody("risks") +
-      num(13, "Profitability Potential") + aiBody("profitability") +
+      num(11 + X, "Regulation & Compliance") + aiBody("regulation") +
+      num(12 + X, "Risks") + aiBody("risks") +
+      num(13 + X, "Profitability Potential") + aiBody("profitability") +
 
-      num(14, "Case Studies") +
+      num(14 + X, "Case Studies") +
         note("Illustrative — search real, dated examples rather than trusting a generated story.") +
         linkrow([{ label: "Search case studies", url: cases }]) +
 
-      num(15, "Future Development") + aiBody("futureDevelopment") +
+      num(15 + X, "Future Development") + aiBody("futureDevelopment") +
 
-      grp(4, "Academic References") +
-      num(16, "Scientific Papers / White Papers") +
+      grp(4 + G, "Academic References") +
+      num(16 + X, "Scientific Papers / White Papers") +
         note("Live searches — we don't list papers we can't verify.") +
         linkrow([
           { label: "Google Scholar", url: scholar },
@@ -194,21 +235,21 @@
           { label: "Crossref", url: crossref },
         ]) +
 
-      num(17, "Patents") +
+      num(17 + X, "Patents") +
         note("Live patent searches — filings are never listed from memory.") +
         linkrow([
           { label: "Google Patents", url: gpatents },
           { label: "Espacenet", url: espacenet },
         ]) +
 
-      num(18, "Glossary") +
+      num(18 + X, "Glossary") +
         (ai.glossary && ai.glossary.length
           ? '<dl class="td-glossary">' + ai.glossary.map(function (g) {
               return "<dt>" + esc(g.term) + "</dt><dd>" + esc(g.def) + "</dd>";
             }).join("") + "</dl>"
           : '<p class="td-text td-pending">Glossary is being generated.</p>') +
 
-      num(19, "References") +
+      num(19 + X, "References") +
         note("Verify against primary sources only.") +
         linkrow([
           { label: "Google Scholar", url: scholar },

@@ -29,5 +29,138 @@
         "def": "A protein used in CRISPR systems to make cuts at specific locations on the genome guided by RNA."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Editing complex",
+        "role": "finds and cuts or rewrites a specific DNA sequence.",
+        "parts": [
+          "Cas9 or Cas12 nuclease, or a base/prime editor",
+          "single guide RNA (~20-nucleotide spacer)",
+          "protospacer-adjacent-motif (PAM) recognition"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into the right cells and nowhere else — the hardest part.",
+        "parts": [
+          "lipid nanoparticle (~100 nm) for liver",
+          "adeno-associated virus (AAV) vector, packaging limit about 4.7 kilobases",
+          "electroporation for cells edited outside the body"
+        ]
+      },
+      {
+        "name": "Target and sequence knowledge",
+        "role": "chooses which site to edit and predicts unwanted edits.",
+        "parts": [
+          "reference human genome",
+          "patient DNA sequencing",
+          "in-silico off-target prediction",
+          "guide-design software"
+        ]
+      },
+      {
+        "name": "Cell manufacturing (cell-based route)",
+        "role": "harvests a patient's cells, edits them and returns them.",
+        "parts": [
+          "apheresis collection",
+          "cell culture and activation",
+          "editing and enrichment",
+          "release testing and cryopreservation"
+        ]
+      },
+      {
+        "name": "Safety monitoring",
+        "role": "detects off-target edits, immune reactions and long-term effects.",
+        "parts": [
+          "amplicon and whole-genome sequencing assays",
+          "immune-response testing",
+          "long-term patient registries"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Identify the causal variant",
+        "detail": "Sequence the patient's DNA, work out exactly which gene and mutation cause the disorder, and decide whether to disable, correct or insert sequence."
+      },
+      {
+        "title": "Design the guide and editor",
+        "detail": "Pick a target site next to a usable PAM, then screen candidate guides in software for near-matches elsewhere in the genome. Specificity is traded against efficiency."
+      },
+      {
+        "title": "Validate in cells and animals",
+        "detail": "Edit human cells in culture and animal models, then measure on-target efficiency and hunt for off-target edits by deep sequencing."
+      },
+      {
+        "title": "Choose the delivery route",
+        "detail": "Ex vivo means collecting the patient's cells and editing them in a lab; in vivo means delivering the editor directly into the body, which so far works mainly for the liver."
+      },
+      {
+        "title": "Manufacture the dose",
+        "detail": "For ex vivo, expand and edit the cells under pharmaceutical conditions and release-test them. For in vivo, produce and purify lipid nanoparticles or viral vectors, then fill and quality-check."
+      },
+      {
+        "title": "Prepare and dose the patient",
+        "detail": "For blood disorders, chemotherapy conditioning clears space in the bone marrow first, then edited cells are infused. For in vivo therapy, the dose is given intravenously and must find the target organ on its own."
+      },
+      {
+        "title": "Monitor and follow up",
+        "detail": "Track how much edited tissue persists, watch liver enzymes and immune reactions, and sequence samples over years to catch edits that were not intended."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fast, low-cost DNA sequencing",
+        "status": "exists",
+        "why": "needed both to find the disease-causing variant and to measure what the editor actually changed."
+      },
+      {
+        "tech": "Cas nucleases and guide-RNA design",
+        "status": "exists",
+        "why": "the core tool, but PAM requirements mean not every disease site can be targeted precisely."
+      },
+      {
+        "tech": "Tissue-specific delivery",
+        "status": "partial",
+        "why": "the liver and blood cells are reachable today; muscle, brain, lung and kidney largely are not."
+      },
+      {
+        "tech": "Cell and gene therapy manufacturing capacity",
+        "status": "partial",
+        "why": "limited factory capacity and high cost restrict how many patients can be treated."
+      },
+      {
+        "tech": "Long-term safety data",
+        "status": "missing",
+        "why": "off-target edits, large chromosomal rearrangements and immune responses have not been tracked over decades."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "the first CRISPR therapy, for sickle cell disease and transfusion-dependent beta-thalassemia, was approved in 2023 and is being rolled out in several countries",
+        "unlocks": "proof that editing a patient's own cells can cure a genetic disease."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in-vivo editing of the liver with lipid nanoparticles in clinical trials, for conditions such as hereditary amyloidosis and inherited high cholesterol",
+        "unlocks": "a one-off infusion instead of cell collection, chemotherapy and transplantation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "base and prime editing, which change DNA letters without cutting both strands, reaching late-stage trials for a few conditions",
+        "unlocks": "fewer unwanted DNA rearrangements and access to mutations a plain cut cannot fix."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "delivery to more organs and editing before symptoms start",
+        "unlocks": "treatment for far more of the several thousand known single-gene disorders, provided costs fall sharply."
+      }
+    ]
   }
 }

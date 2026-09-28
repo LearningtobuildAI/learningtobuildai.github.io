@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Foundation model",
+        "role": "core reasoning engine: understands instructions, generates plans and text.",
+        "parts": [
+          "transformer neural network",
+          "pretrained weights",
+          "context window"
+        ]
+      },
+      {
+        "name": "Planner",
+        "role": "breaks a high-level goal into ordered, actionable steps.",
+        "parts": [
+          "task decomposer",
+          "dependency graph",
+          "replanner for failures"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "retains project state, past actions and learned facts across long tasks.",
+        "parts": [
+          "short-term context buffer",
+          "vector database for long-term recall",
+          "summariser to compress history"
+        ]
+      },
+      {
+        "name": "Tool interface",
+        "role": "lets the agent act beyond text — call APIs, run code, search the web.",
+        "parts": [
+          "function-calling schema",
+          "API connectors",
+          "sandboxed code runtime"
+        ]
+      },
+      {
+        "name": "Verifier",
+        "role": "checks each output against goals or tests and triggers correction.",
+        "parts": [
+          "unit tests and schema validators",
+          "critic model",
+          "human-in-the-loop checkpoints"
+        ]
+      },
+      {
+        "name": "Orchestrator",
+        "role": "runs the plan-act-observe-verify loop and manages state.",
+        "parts": [
+          "control loop",
+          "state machine",
+          "logging and audit trail"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select or train the foundation model",
+        "detail": "Choose a large language model with strong reasoning and instruction-following, or fine-tune one on examples of multi-step tasks."
+      },
+      {
+        "title": "Define the tool set",
+        "detail": "List every external action the agent may take — reading files, calling APIs, running code — with strict input/output schemas."
+      },
+      {
+        "title": "Build the memory system",
+        "detail": "Set up a vector database to store and retrieve past steps and facts; add summarisation to keep the active context within the model's window."
+      },
+      {
+        "title": "Implement planning",
+        "detail": "Prompt the model to decompose goals into steps, or train a separate planner; represent steps as a dependency graph so order can adapt."
+      },
+      {
+        "title": "Create the execution loop",
+        "detail": "Code the cycle: plan, act via tools, observe results, verify, then revise or continue. Add retries and hard limits to prevent runaway loops."
+      },
+      {
+        "title": "Add verification layers",
+        "detail": "For code, run unit tests; for data, validate schemas; for open-ended work, use a second model as critic or require human approval at key checkpoints."
+      },
+      {
+        "title": "Evaluate on multi-step benchmarks",
+        "detail": "Assemble realistic project tasks, measure success rate, cost, and failure modes, then iterate on prompts, memory design and tool reliability."
+      },
+      {
+        "title": "Deploy with guardrails",
+        "detail": "Run tools in sandboxes with least-privilege permissions, rate-limit actions, log every step, and keep rollback and human override available."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with strong reasoning",
+        "status": "exists",
+        "why": "they provide the core ability to understand instructions and generate plausible plans."
+      },
+      {
+        "tech": "Tool and function-calling APIs",
+        "status": "exists",
+        "why": "they let the model invoke external actions in a structured, reliable way."
+      },
+      {
+        "tech": "Vector databases and retrieval",
+        "status": "exists",
+        "why": "they enable memory beyond the model's context window."
+      },
+      {
+        "tech": "Sandboxed execution environments",
+        "status": "exists",
+        "why": "they safely contain generated code and other risky actions."
+      },
+      {
+        "tech": "Automated verification for open-ended tasks",
+        "status": "partial",
+        "why": "unit tests work for code, but checking a legal brief or a marketing plan is much harder."
+      },
+      {
+        "tech": "Reliable long-horizon planning",
+        "status": "partial",
+        "why": "current models still drift, repeat steps or lose the goal over many actions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-task agents (coding assistants, customer-service bots) that handle narrow, well-defined jobs with human oversight",
+        "unlocks": "productivity gains in bounded tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-step agents that complete projects in domains with clear success criteria, such as coding and data analysis, with minimal supervision",
+        "unlocks": "automation of routine professional workflows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that manage ambiguous knowledge work using learned verification and memory, with human review at checkpoints",
+        "unlocks": "assistance on complex, open-ended projects."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "teams of specialised agents that collaborate on large projects with robust verification and safety guarantees",
+        "unlocks": "scalable autonomous knowledge work."
+      }
+    ]
+  }
+}

@@ -33,5 +33,150 @@
         "def": "Custom-designed integrated circuits optimized to perform specific tasks, commonly used in data centers and AI applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photonic integrated circuit (PIC)",
+        "role": "converts electrical signals to light and back on a silicon chip.",
+        "parts": [
+          "silicon waveguides",
+          "modulators (Mach–Zehnder or micro-ring)",
+          "germanium photodetectors",
+          "grating or edge couplers"
+        ]
+      },
+      {
+        "name": "Electronics IC (EIC)",
+        "role": "drives the modulators and amplifies the tiny photocurrents.",
+        "parts": [
+          "modulator drivers",
+          "transimpedance amplifiers",
+          "retiming and equalisation"
+        ]
+      },
+      {
+        "name": "Laser source",
+        "role": "supplies continuous light, kept off the hot package.",
+        "parts": [
+          "external laser modules",
+          "polarisation-maintaining fibre",
+          "optical splitters and amplifiers"
+        ]
+      },
+      {
+        "name": "Package substrate and interposer",
+        "role": "routes high-speed electrical and photonic signals between chips with fine pitch.",
+        "parts": [
+          "organic or silicon interposer",
+          "micro-bumps and copper pillars",
+          "fine-line redistribution layers"
+        ]
+      },
+      {
+        "name": "Fibre attach and connector",
+        "role": "gets hundreds of optical channels in and out of the package reliably.",
+        "parts": [
+          "fibre array units",
+          "passive alignment features",
+          "detachable ferrules"
+        ]
+      },
+      {
+        "name": "Thermal and assembly housing",
+        "role": "keeps the optics cool next to a chip dissipating over a kilowatt.",
+        "parts": [
+          "lid or overmould",
+          "cold plate",
+          "lidar-style hermetic seals"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the photonic and electronic dies together",
+        "detail": "Waveguides, modulators and detectors are laid out in software that also co-simulates the driver and amplifier circuits, since the two must match electrically and optically."
+      },
+      {
+        "title": "Fabricate the PIC",
+        "detail": "Silicon-on-insulator wafers run through a CMOS-compatible foundry: lithography and etching form waveguides, germanium is grown for detectors, and oxide cladding is deposited."
+      },
+      {
+        "title": "Fabricate the EIC",
+        "detail": "Driver and amplifier circuits are made in a fast bipolar-CMOS process, then both wafers are tested at wafer level so only known-good dies go forward."
+      },
+      {
+        "title": "Bond dies to the package",
+        "detail": "PIC and EIC are flip-chip bonded onto the interposer with micro-bumps, underfilled, and often stacked so the electronics sit directly on the photonics."
+      },
+      {
+        "title": "Attach the fibres",
+        "detail": "A fibre array unit is aligned to the chip couplers — usually passively against etched alignment features, then actively fine-tuned — and fixed with adhesive cured under UV."
+      },
+      {
+        "title": "Connect the external lasers",
+        "detail": "Laser modules are mounted away from the hot switch die and their light is routed in by fibre, so heat does not shorten laser life."
+      },
+      {
+        "title": "Assemble around the switch or processor",
+        "detail": "The optical chiplets are placed in a ring on the same substrate as the main ASIC, then a lid and cold plate are fitted."
+      },
+      {
+        "title": "Test at full link speed",
+        "detail": "Every optical lane is exercised end to end, then the package is temperature-cycled and burn-in tested before shipping."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics manufacturing",
+        "status": "exists",
+        "why": "plug-in optical transceivers already use silicon photonic chips in volume, proving the process."
+      },
+      {
+        "tech": "2.5D and 3D advanced packaging",
+        "status": "exists",
+        "why": "bumping, interposers and fine-pitch substrates are needed to place optics beside logic."
+      },
+      {
+        "tech": "Detachable, high-density optical connectors",
+        "status": "partial",
+        "why": "a broken fibre in a sealed package would scrap an expensive board, so serviceable connectors with hundreds of channels are essential."
+      },
+      {
+        "tech": "Thermal control of a combined optical and logic package",
+        "status": "partial",
+        "why": "lasers and modulators drift with temperature while the ASIC runs far hotter, and both share one package."
+      },
+      {
+        "tech": "Interoperability agreements between vendors",
+        "status": "partial",
+        "why": "customers need optics from different suppliers to work with switches from different makers."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pluggable 800G and 1.6T optical transceivers dominate datacentre links",
+        "unlocks": "a proven silicon photonics supply chain and a clear power-per-bit problem to solve."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-packaged optics in first production switches for AI clusters",
+        "unlocks": "lower power per bit and higher port counts at the front panel."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised optical chiplets with field-replaceable fibres",
+        "unlocks": "optical I/O offered as a component, not a bespoke design."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical links between accelerators and inside multi-chip packages",
+        "unlocks": "disaggregated computing, where memory and compute sit metres apart."
+      }
+    ]
   }
 }

@@ -30,5 +30,144 @@
         "def": "A process used to pattern surfaces with features smaller than 1 micrometer. It is used for manufacturing integrated circuits and other microelectronic devices."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Architected unit cell",
+        "role": "the repeating geometry — lattices, auxetic (negative Poisson's ratio) cells or shell-based structures — that gives stiffness and strength for very little mass.",
+        "parts": [
+          "beam-and-node lattice",
+          "auxetic cell",
+          "thin-shell or plate lattice"
+        ]
+      },
+      {
+        "name": "Electromagnetic metamaterial layer",
+        "role": "shapes radio, infrared or optical waves rather than carrying load: flat antennas, filters, absorbers and radiative-cooling surfaces.",
+        "parts": [
+          "sub-wavelength resonators",
+          "periodic metal or dielectric patterns",
+          "frequency-selective surface"
+        ]
+      },
+      {
+        "name": "Manufacturing route",
+        "role": "turns a designed geometry into metal or composite with features smaller than a millimetre.",
+        "parts": [
+          "laser powder-bed fusion",
+          "two-photon or projection lithography for micro-scale cells",
+          "automated fibre placement for composite lattices"
+        ]
+      },
+      {
+        "name": "Multifunction integration",
+        "role": "lets one structure do several jobs so mass is saved twice over.",
+        "parts": [
+          "embedded thermal channels",
+          "radiation shielding fill",
+          "integrated wiring or sensors"
+        ]
+      },
+      {
+        "name": "Qualification and test",
+        "role": "proves the part survives launch and the space environment.",
+        "parts": [
+          "vibration and acoustic test rigs",
+          "thermal-vacuum chamber",
+          "outgassing and atomic-oxygen test"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the load case",
+        "detail": "Launch vibration and acoustic loads, plus on-orbit thermal cycling, set the targets the structure must meet."
+      },
+      {
+        "title": "Design the unit cell",
+        "detail": "Topology optimisation and multi-scale simulation search for a repeating geometry — often counter-intuitive, such as cells that expand sideways when pulled — that meets those loads at minimum mass."
+      },
+      {
+        "title": "Simulate and homogenise",
+        "detail": "Engineers derive effective stiffness, strength and thermal properties of the lattice, then check a full panel or bracket model."
+      },
+      {
+        "title": "Print the structure",
+        "detail": "Metal lattices are built layer by layer by laser powder-bed fusion; micro-scale cells use two-photon lithography; composite lattices use automated fibre placement over a soluble mandrel."
+      },
+      {
+        "title": "Remove supports and finish",
+        "detail": "Unmelted powder is cleared, supports cut away, and surfaces are machined or polished where parts must mate."
+      },
+      {
+        "title": "Add the electromagnetic layer",
+        "detail": "Patterning or thin-film deposition puts the resonator array onto the surface for antenna, shielding or thermal-control functions."
+      },
+      {
+        "title": "Test coupons and sub-elements",
+        "detail": "Small samples are pulled, compressed and cycled to confirm the modelled properties."
+      },
+      {
+        "title": "Qualify the full part",
+        "detail": "Vibration, thermal-vacuum and outgassing tests mimic launch and orbit before flight acceptance."
+      },
+      {
+        "title": "Integrate into the spacecraft",
+        "detail": "The part is bolted or bonded into the bus, instrument or antenna assembly and the design is re-verified as a system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Metal and composite additive manufacturing",
+        "status": "exists",
+        "why": "lattice geometries with sub-millimetre struts cannot be made by conventional machining."
+      },
+      {
+        "tech": "Multi-scale simulation and topology optimisation",
+        "status": "exists",
+        "why": "the effective properties of a lattice must be computed before the part exists."
+      },
+      {
+        "tech": "Sub-micron patterning and thin-film deposition",
+        "status": "exists",
+        "why": "electromagnetic metamaterial cells must be smaller than the wavelength they control."
+      },
+      {
+        "tech": "Space qualification standards for printed lattice parts",
+        "status": "partial",
+        "why": "flight acceptance rules grew up around solid, homogeneous materials."
+      },
+      {
+        "tech": "Nondestructive inspection of internal lattice defects",
+        "status": "partial",
+        "why": "a hidden broken strut inside a printed part can start a failure in orbit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory and ground-test demonstrations of lightweight lattices and wave-shaping surfaces",
+        "unlocks": "design and simulation methods, plus early manufacturing recipes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "metamaterial parts flown as secondary structures and instrument components",
+        "unlocks": "real vibration, thermal-vacuum and radiation data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multifunctional panels combining structure, shielding, thermal control and antennas",
+        "unlocks": "significant mass reduction on small satellites and instrument platforms."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "primary structures and spacecraft buses built from architected materials",
+        "unlocks": "cheaper launches and more capable deep-space missions, once inspection and qualification are trusted."
+      }
+    ]
   }
 }

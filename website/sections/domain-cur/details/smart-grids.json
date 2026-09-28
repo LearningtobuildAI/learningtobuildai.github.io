@@ -33,5 +33,164 @@
         "def": "The ability of different devices or systems to work together effectively without special effort on the part of users."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensing and metering",
+        "role": "measures what is actually happening across the network, from substations to homes.",
+        "parts": [
+          "smart electricity meters",
+          "current and voltage sensors",
+          "phasor measurement units for time-synchronised readings",
+          "transformer and line temperature sensors"
+        ]
+      },
+      {
+        "name": "Communications",
+        "role": "carries those measurements and control commands reliably and fast.",
+        "parts": [
+          "fibre to substations",
+          "cellular or radio mesh for meters and pole-top devices",
+          "protocol gateways (e.g. IEC 61850, DNP3)"
+        ]
+      },
+      {
+        "name": "Control and automation software",
+        "role": "turns data into switching, voltage and dispatch decisions.",
+        "parts": [
+          "SCADA and energy management systems",
+          "distribution management system",
+          "outage management",
+          "state estimation and forecasting"
+        ]
+      },
+      {
+        "name": "Switchgear and power electronics",
+        "role": "the muscles that act on the network.",
+        "parts": [
+          "remote-controlled reclosers and breakers",
+          "voltage regulators and capacitor banks",
+          "static compensators and flexible AC transmission devices"
+        ]
+      },
+      {
+        "name": "Distributed energy resources interface",
+        "role": "lets rooftop solar, batteries and electric vehicles help rather than hinder.",
+        "parts": [
+          "smart inverters",
+          "battery management and aggregator platforms",
+          "electric vehicle charge controllers"
+        ]
+      },
+      {
+        "name": "Demand-side and market platform",
+        "role": "signals when to shift or cut consumption, and settles the payments.",
+        "parts": [
+          "demand response systems",
+          "time-of-use and dynamic tariffs",
+          "settlement and verification tools"
+        ]
+      },
+      {
+        "name": "Cybersecurity and resilience layer",
+        "role": "protects a system that is now remotely controllable.",
+        "parts": [
+          "network segmentation and firewalls",
+          "identity and access management",
+          "intrusion monitoring and secure firmware updates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the network",
+        "detail": "Record every feeder, transformer, switch and customer connection in a digital model, because you cannot control what you have not mapped."
+      },
+      {
+        "title": "Install smart meters",
+        "detail": "Replace mechanical meters at customer premises with units that report consumption and voltage every 15–30 minutes."
+      },
+      {
+        "title": "Instrument the substations",
+        "detail": "Fit current, voltage and temperature sensors, and remote-control relays to breakers and reclosers on poles and in substations."
+      },
+      {
+        "title": "Build the communications backbone",
+        "detail": "Lay fibre to primary substations and use cellular or radio mesh for the many small devices that cannot justify a fibre link."
+      },
+      {
+        "title": "Deploy the control platforms",
+        "detail": "Commission SCADA, distribution management and outage management systems, and link them to the field devices through standard protocols."
+      },
+      {
+        "title": "Automate switching and voltage",
+        "detail": "Configure reclosers and tie switches to isolate faults and restore supply automatically, and coordinate capacitors and regulators to hold voltage in range."
+      },
+      {
+        "title": "Open the platform to flexible resources",
+        "detail": "Apply grid codes (e.g. IEEE 1547) so inverters can ride through disturbances, provide reactive power and be curtailed by the operator when needed."
+      },
+      {
+        "title": "Run demand response and tariffs",
+        "detail": "Recruit flexible loads — industry, heat pumps, chargers, batteries — into programmes that cut or shift demand at peak, with measurement and settlement to pay them."
+      },
+      {
+        "title": "Harden and operate",
+        "detail": "Segment networks, monitor for intrusion, patch firmware, and keep forecasters and operators in the loop as renewable and electric-vehicle shares grow."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Two-way digital communications",
+        "status": "exists",
+        "why": "without a fast, reliable link to each device, monitoring and control are impossible."
+      },
+      {
+        "tech": "Low-cost sensors and power electronics",
+        "status": "exists",
+        "why": "smart meters and smart inverters must be cheap enough to fit by the million."
+      },
+      {
+        "tech": "Grid-scale and behind-the-meter batteries",
+        "status": "partial",
+        "why": "storage is what turns a signal into a physical change in supply and demand."
+      },
+      {
+        "tech": "Forecasting and optimisation software",
+        "status": "exists",
+        "why": "weather, load and price forecasts drive the scheduling decisions the grid acts on."
+      },
+      {
+        "tech": "Cybersecurity for industrial control",
+        "status": "partial",
+        "why": "a remotely controllable grid is a target, and legacy equipment was never designed to be secure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "smart meters, remote switching and demand response at scale in many regions",
+        "unlocks": "faster outage restoration and measurable peak-demand reduction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "active distribution management with high rooftop solar and battery penetration",
+        "unlocks": "hosting far more local generation without rebuilding every feeder."
+      },
+      {
+        "stage": "Next",
+        "milestone": "grid-forming inverters, dynamic line ratings and vehicle-to-grid charging",
+        "unlocks": "using the network closer to its physical limits and using electric vehicles as storage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "wide-area, cross-border control with integrated flexibility markets",
+        "unlocks": "reliable supply from a system dominated by variable renewables."
+      }
+    ]
   }
 }

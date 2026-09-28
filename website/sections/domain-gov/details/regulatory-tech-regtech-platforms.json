@@ -34,5 +34,163 @@
         "def": "A decentralized digital ledger technology that provides a secure, transparent, and immutable record-keeping system for transactions or other activities."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data ingestion and entity resolution",
+        "role": "pulls transaction, trading, client and ownership data out of core systems and stitches it together.",
+        "parts": [
+          "connectors to core banking, trading and payment systems",
+          "ISO 20022 message parsing",
+          "Legal Entity Identifier (LEI) mapping and deduplication",
+          "data quality checks"
+        ]
+      },
+      {
+        "name": "Obligation and rules engine",
+        "role": "turns regulation into machine-checkable logic.",
+        "parts": [
+          "obligation taxonomy",
+          "decision tables and rule sets",
+          "version control and change history",
+          "test cases per rule"
+        ]
+      },
+      {
+        "name": "Regulatory change monitoring",
+        "role": "watches regulators' publications and flags what actually changed.",
+        "parts": [
+          "document crawlers",
+          "natural-language processing and text diffing",
+          "impact mapping to internal controls",
+          "analyst review queue"
+        ]
+      },
+      {
+        "name": "Detection and screening analytics",
+        "role": "finds suspicious patterns rather than just checking boxes.",
+        "parts": [
+          "transaction-monitoring models",
+          "sanctions and watchlist fuzzy matching",
+          "graph analytics over ownership and payment networks",
+          "alert scoring and prioritisation"
+        ]
+      },
+      {
+        "name": "Reporting and submission",
+        "role": "assembles and files the reports regulators require.",
+        "parts": [
+          "report templates",
+          "XBRL and ISO 20022 generators",
+          "validation and reconciliation checks",
+          "secure submission gateways"
+        ]
+      },
+      {
+        "name": "Case management and workflow",
+        "role": "humans review, escalate and sign off on what the machine flags.",
+        "parts": [
+          "alert queues",
+          "evidence attachments",
+          "escalation and filing workflows"
+        ]
+      },
+      {
+        "name": "Audit trail and explainability",
+        "role": "lets an examiner reconstruct exactly why a decision was made.",
+        "parts": [
+          "tamper-evident logs",
+          "model versioning",
+          "reason codes for every automated decision"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the obligations",
+        "detail": "Legal analysts and engineers read the applicable rules and break them into discrete, testable obligations with owners and evidence requirements."
+      },
+      {
+        "title": "Model the data",
+        "detail": "Decide which fields each obligation needs, then build connectors that extract and normalise them — including reference data such as legal entity identifiers."
+      },
+      {
+        "title": "Write the rules as code",
+        "detail": "Obligations become decision tables and rule sets in a versioned repository, each backed by test cases drawn from real scenarios."
+      },
+      {
+        "title": "Train and tune the detection models",
+        "detail": "Anomaly and screening models are fitted on historical data, then thresholds are set to balance missed cases against alert volume, and results are back-tested."
+      },
+      {
+        "title": "Build the reporting pipeline",
+        "detail": "Report templates, validation rules and submission interfaces are implemented against the regulator's published schema and tested end to end."
+      },
+      {
+        "title": "Instrument the audit trail",
+        "detail": "Logging is added so every flag, score and override is recorded with its inputs, model version and reason code."
+      },
+      {
+        "title": "Integrate and harden",
+        "detail": "APIs connect the platform to core systems; access control, encryption and monitoring are applied, since the data is among the most sensitive a firm holds."
+      },
+      {
+        "title": "Validate and gain acceptance",
+        "detail": "Internal audit and, often, the supervisor review the logic and evidence before the platform is relied on for live filings."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Common identifiers and reporting formats",
+        "status": "exists",
+        "why": "the Legal Entity Identifier, ISO 20022 messaging and XBRL tagging give machines something unambiguous to join and file on."
+      },
+      {
+        "tech": "Cloud data platforms and APIs",
+        "status": "exists",
+        "why": "compliance workloads need elastic compute and clean interfaces into legacy core systems."
+      },
+      {
+        "tech": "Natural-language processing of legal text",
+        "status": "partial",
+        "why": "extracting obligations from dense regulatory prose is doable but still needs human confirmation."
+      },
+      {
+        "tech": "Explainable machine learning and model risk management",
+        "status": "partial",
+        "why": "a model that cannot justify its alerts will not survive supervisory scrutiny."
+      },
+      {
+        "tech": "Privacy-enhancing computation",
+        "status": "partial",
+        "why": "sharing risk signals across institutions without pooling raw customer data needs techniques like secure aggregation or zero-knowledge proofs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cloud-based platforms automating reporting, sanctions screening and transaction monitoring",
+        "unlocks": "lower compliance cost per client and faster filing cycles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "machine-readable regulation, with rules published in structured form and adopted directly by firms",
+        "unlocks": "less manual translation between legal text and code, and fewer interpretation gaps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervisory technology using the same data feeds, moving from periodic reports to near-continuous oversight",
+        "unlocks": "problems surfaced earlier and smaller remediation bills."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cross-border data sharing under agreed privacy safeguards, with cryptographic proofs instead of raw record exchange",
+        "unlocks": "detection of flows that cross jurisdictions and currently fall between regulators."
+      }
+    ]
   }
 }

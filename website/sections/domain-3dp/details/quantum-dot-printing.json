@@ -29,5 +29,153 @@
         "def": "A printing technique that uses an electric field to eject droplets of a fluid containing nanoparticles through a nozzle, enabling precise placement on a substrate."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum dot ink",
+        "role": "the light-emitting material itself — semiconductor nanocrystals a few nanometres across whose size sets the colour they emit.",
+        "parts": [
+          "core/shell nanocrystals (e.g. CdSe/ZnS or cadmium-free InP-based)",
+          "surface ligands",
+          "carrier solvent and additives"
+        ]
+      },
+      {
+        "name": "Print head and jet",
+        "role": "ejects picolitre-to-femtolitre droplets so dots land exactly where needed.",
+        "parts": [
+          "charged capillary nozzle",
+          "counter-electrode and high-voltage supply",
+          "meniscus/Taylor-cone control"
+        ]
+      },
+      {
+        "name": "Precision stage and alignment",
+        "role": "moves the nozzle or substrate in x, y and z with sub-micrometre accuracy.",
+        "parts": [
+          "linear stages",
+          "vision alignment camera",
+          "vibration isolation"
+        ]
+      },
+      {
+        "name": "Substrate and surface chemistry",
+        "role": "a glass or polymer slide whose wettability is patterned so droplets do not spread or merge.",
+        "parts": [
+          "plasma-treated or silanised glass",
+          "hydrophilic/hydrophobic patterning",
+          "biomolecule linkers"
+        ]
+      },
+      {
+        "name": "Encapsulation layer",
+        "role": "seals the dots so heavy-metal ions cannot leach into cells and fluorescence stays bright.",
+        "parts": [
+          "silica or polymer shell",
+          "crosslinkable matrix"
+        ]
+      },
+      {
+        "name": "Imaging and tracking system",
+        "role": "excites the array and reads real-time cell movement.",
+        "parts": [
+          "fluorescence microscope",
+          "excitation laser or LED with filters",
+          "sCMOS camera",
+          "cell-tracking software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Synthesise the nanocrystals",
+        "detail": "Precursors are injected into a hot solvent; crystal growth time determines core diameter, which tunes emission wavelength across the visible and near-infrared."
+      },
+      {
+        "title": "Grow a shell and purify",
+        "detail": "A wider-bandgap shell is grown around each core to raise quantum yield, then the particles are precipitated and washed."
+      },
+      {
+        "title": "Exchange the surface ligands",
+        "detail": "Native hydrophobic ligands are replaced with ones that keep the dots stable in the chosen ink and compatible with biological buffers."
+      },
+      {
+        "title": "Formulate the ink",
+        "detail": "Concentration, viscosity, surface tension and conductivity are adjusted so the nozzle forms a stable cone and drops reproducibly; the ink is then filtered."
+      },
+      {
+        "title": "Pattern the substrate",
+        "detail": "The slide is cleaned, plasma-treated and chemically patterned so each printed spot stays isolated."
+      },
+      {
+        "title": "Print the array",
+        "detail": "Voltage at the nozzle pulls the ink into a fine cone and ejects droplets far smaller than the nozzle opening; the stage steps between positions to build a regular array."
+      },
+      {
+        "title": "Immobilise and encapsulate",
+        "detail": "The deposit is dried, the dots are anchored to the surface, and an encapsulating shell is added."
+      },
+      {
+        "title": "Functionalise for cells",
+        "detail": "Antibodies or peptides are attached so the array interacts selectively with particular cell types."
+      },
+      {
+        "title": "Validate",
+        "detail": "Quantum yield, spot uniformity, photostability and cytotoxicity are measured before any live-cell tracking experiment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Colloidal quantum dot synthesis",
+        "status": "exists",
+        "why": "dots with high quantum yield and tuneable emission are routinely made in laboratories."
+      },
+      {
+        "tech": "Electrohydrodynamic jet printing",
+        "status": "partial",
+        "why": "sub-micrometre printed features have been demonstrated, but reliable multi-dot arrays for biology are still research-scale."
+      },
+      {
+        "tech": "Sensitive fluorescence detectors",
+        "status": "exists",
+        "why": "single-molecule and single-particle imaging needs low-noise cameras and good optics."
+      },
+      {
+        "tech": "Cadmium-free, low-toxicity dots",
+        "status": "partial",
+        "why": "cadmium-based dots are bright but toxic, so indium-phosphide alternatives must match their performance."
+      },
+      {
+        "tech": "Anti-blinking, photostable coatings",
+        "status": "missing",
+        "why": "most dots blink and fade, which breaks continuous cellular tracking over hours or days."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quantum dots used as research imaging labels; fine-feature jet printing shown in laboratories",
+        "unlocks": "proof that both halves work separately."
+      },
+      {
+        "stage": "Next",
+        "milestone": "printed quantum dot microarrays for multiplexed in-vitro assays",
+        "unlocks": "many cell markers read at once from one small chip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "microfluidic or implanted arrays that track living cells continuously",
+        "unlocks": "real-time observation of migration, division and drug response."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "clinically validated printed biosensors",
+        "unlocks": "routine diagnostics and long-term monitoring — if toxicity and stability are solved."
+      }
+    ]
   }
 }

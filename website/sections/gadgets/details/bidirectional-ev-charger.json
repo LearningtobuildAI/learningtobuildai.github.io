@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional power stage",
+        "role": "converts the battery's DC into grid-shaped AC and back again, the core difference from a one-way charger.",
+        "parts": [
+          "silicon-carbide MOSFET or IGBT bridge",
+          "isolated DC/DC converter",
+          "filters and magnetics"
+        ]
+      },
+      {
+        "name": "Vehicle interface",
+        "role": "the physical and electronic link to the car's pack, including what the car will allow.",
+        "parts": [
+          "CCS / NACS / CHAdeMO connector",
+          "pilot and control lines",
+          "battery management system limits"
+        ]
+      },
+      {
+        "name": "Communication and control",
+        "role": "negotiates power direction, current limits and safety with car and grid.",
+        "parts": [
+          "controller board",
+          "ISO 15118 / CHAdeMO signalling stack",
+          "energy meter"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "keeps the house and the grid safe when power flows the other way.",
+        "parts": [
+          "transfer switch or contactor",
+          "anti-islanding detection",
+          "residual-current and overcurrent protection"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "removes heat during sustained multi-kilowatt export.",
+        "parts": [
+          "heatsink",
+          "fan or liquid loop",
+          "temperature sensors"
+        ]
+      },
+      {
+        "name": "Energy management",
+        "role": "decides when to charge, when to back up the house and when to sell to the grid.",
+        "parts": [
+          "tariff and solar inputs",
+          "user app",
+          "scheduling logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the topology",
+        "detail": "A bidirectional design needs an active rectifier plus an isolated DC/DC stage; engineers pick a topology that keeps losses and cost low at 7–22 kW."
+      },
+      {
+        "title": "Build the power board",
+        "detail": "Silicon-carbide devices, gate drivers and current sensors are soldered onto a thick-copper board, and transformers and inductors are wound to spec."
+      },
+      {
+        "title": "Write the control firmware",
+        "detail": "Fast loops keep current sinusoidal and synchronised to the grid; slower logic follows commands from the car and the home energy system."
+      },
+      {
+        "title": "Implement the protocol stack",
+        "detail": "The charger must speak the vehicle's digital handshake exactly, and pass the standardised safety and insulation tests it demands."
+      },
+      {
+        "title": "Assemble and seal the unit",
+        "detail": "Power stage, control board and cooling go into an outdoor-rated enclosure with the connector, cabling and a lockable holster."
+      },
+      {
+        "title": "Certify",
+        "detail": "The unit is type-tested for electrical safety, electromagnetic compatibility, anti-islanding and the grid code of each country it will be sold in."
+      },
+      {
+        "title": "Install at the property",
+        "detail": "An electrician fits it on a dedicated circuit, wires the transfer switch or backup panel, and proves it disconnects from the grid before running islanded."
+      },
+      {
+        "title": "Pair with a vehicle",
+        "detail": "Only cars whose firmware and warranty permit reverse power can be used, so commissioning ends with a compatibility check."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Vehicles that allow power out",
+        "status": "partial",
+        "why": "reverse power needs the car's own charger, contactors and warranty to support it; only some models do."
+      },
+      {
+        "tech": "Bidirectional charging standard (ISO 15118-20 and CHAdeMO)",
+        "status": "partial",
+        "why": "a published standard is what lets any charger talk to any car instead of each pairing being bespoke."
+      },
+      {
+        "tech": "Wide-bandgap power semiconductors",
+        "status": "exists",
+        "why": "silicon carbide and gallium nitride make a compact, efficient bidirectional converter practical."
+      },
+      {
+        "tech": "Grid connection rules for export from vehicles",
+        "status": "partial",
+        "why": "utilities and regulators must allow, meter and pay for power pushed back through a household connection."
+      },
+      {
+        "tech": "Home wiring able to island safely",
+        "status": "partial",
+        "why": "backup operation requires a transfer switch or critical-loads panel so the house is never fed while the grid is live."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "vehicle-to-load sockets and first vehicle-to-home systems in a few markets",
+        "unlocks": "running tools or a fridge from a car, and limited whole-home backup during outages."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised bidirectional chargers on sale across major markets",
+        "unlocks": "a car becomes a home battery without proprietary hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tariff and aggregator schemes paying owners for grid export",
+        "unlocks": "fleets of parked cars providing peak capacity and frequency support."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "millions of vehicles coordinated as distributed storage",
+        "unlocks": "cheap firming for wind- and solar-heavy grids, provided owners keep enough charge."
+      }
+    ]
+  }
+}

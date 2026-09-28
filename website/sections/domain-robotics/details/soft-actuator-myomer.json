@@ -29,5 +29,147 @@
         "def": "The ability of a material to perform with an appropriate host response under the conditions of use in a medical device or system."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Active elastomer layer",
+        "role": "the muscle itself — a soft film that squeezes thinner and spreads wider when a voltage is applied across it.",
+        "parts": [
+          "silicone, polyurethane or acrylic film",
+          "ionic polymer or gel (alternative chemistry)",
+          "thickness of tens of micrometres"
+        ]
+      },
+      {
+        "name": "Compliant electrodes",
+        "role": "must stretch with the film without cracking or adding stiffness.",
+        "parts": [
+          "carbon-black or carbon-grease layers",
+          "conductive polymer or hydrogel"
+        ]
+      },
+      {
+        "name": "Pre-strain frame",
+        "role": "holds the film stretched so it contracts usefully rather than just going slack.",
+        "parts": [
+          "rigid or flexure frame",
+          "antagonistic spring or opposing pair"
+        ]
+      },
+      {
+        "name": "Drive electronics",
+        "role": "supplies and recovers the kilovolt-level charge that deforms the film.",
+        "parts": [
+          "high-voltage converter",
+          "charge-recovery circuit",
+          "current limiting for safety"
+        ]
+      },
+      {
+        "name": "Sensing and control",
+        "role": "the film's own capacitance reveals its position, so it can be closed-loop controlled.",
+        "parts": [
+          "capacitance sensing circuit",
+          "controller",
+          "force or position feedback"
+        ]
+      },
+      {
+        "name": "Packaging and stack",
+        "role": "many thin layers laminated together to multiply force, sealed against dust and moisture.",
+        "parts": [
+          "stacked or rolled actuator",
+          "insulating encapsulation",
+          "mechanical end fittings"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formulate the elastomer",
+        "detail": "A two-part silicone or acrylic precursor is mixed with fillers that raise its permittivity, then degassed to remove bubbles."
+      },
+      {
+        "title": "Cast and cure the film",
+        "detail": "The mix is spread to a controlled thickness — often tens of micrometres — and cured into a uniform, defect-free sheet."
+      },
+      {
+        "title": "Pattern the electrodes",
+        "detail": "Compliant electrode material is sprayed, screen-printed or stamped on both faces, leaving insulating margins so the surfaces do not short."
+      },
+      {
+        "title": "Laminate into a stack",
+        "detail": "Many film layers are bonded together electrode-to-electrode, because a single sheet produces too little force for most tasks."
+      },
+      {
+        "title": "Pre-strain and mount",
+        "detail": "The stack is stretched onto a frame or paired with an opposing spring so that activation produces contraction in the desired direction."
+      },
+      {
+        "title": "Encapsulate and wire",
+        "detail": "The unit is sealed against moisture and dust and fitted with high-voltage connections and end fittings."
+      },
+      {
+        "title": "Add drive and sensing",
+        "detail": "A high-voltage converter with charge recovery drives the stack, while capacitance measurement gives feedback for closed-loop control."
+      },
+      {
+        "title": "Cycle and qualify",
+        "detail": "Actuators are run through millions of cycles to measure strain, force, efficiency and the slow drift that limits their life."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Elastomers with high permittivity and high breakdown strength",
+        "status": "partial",
+        "why": "the material must deform a lot at a safe voltage without puncturing; today's best films still trade one property for the other."
+      },
+      {
+        "tech": "Stretchable, fatigue-resistant electrodes",
+        "status": "partial",
+        "why": "metal electrodes crack when stretched; soft conductive layers work in the lab but degrade with cycling."
+      },
+      {
+        "tech": "Compact high-voltage drive electronics",
+        "status": "partial",
+        "why": "kilovolt supplies small and efficient enough to wear or carry are only now emerging."
+      },
+      {
+        "tech": "Energy density and efficiency matching biology",
+        "status": "missing",
+        "why": "real muscle is far denser in force per volume and recovers energy efficiently; artificial muscle does not yet compete."
+      },
+      {
+        "tech": "Lifetime and self-healing",
+        "status": "missing",
+        "why": "a prosthetic or robot needs years of cycling; current films tear, creep and lose performance."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab actuators, soft grippers and haptic films",
+        "unlocks": "proof that a voltage across a soft film can make useful, controllable motion."
+      },
+      {
+        "stage": "Next",
+        "milestone": "stacks producing tens of newtons and multi-layer bundles",
+        "unlocks": "soft robots, prosthetics and wearables that move without rigid motors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lifetime of millions of cycles with integrated drive and self-sensing",
+        "unlocks": "muscle-like joints competitive with small electric motors."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mass-manufactured actuator bundles and self-healing chemistries",
+        "unlocks": "legged and wearable robots whose motion is quiet, compliant and safe around people."
+      }
+    ]
   }
 }

@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ground-based millimetre and submillimetre spectroscopy",
+        "role": "measures trace gases in the cloud deck from Earth through narrow atmospheric windows.",
+        "parts": [
+          "large radio arrays",
+          "single-dish telescopes at high dry sites",
+          "spectral correlators"
+        ]
+      },
+      {
+        "name": "Orbital remote sensing",
+        "role": "maps cloud composition and vertical structure from Venus orbit.",
+        "parts": [
+          "ultraviolet and infrared spectrometers",
+          "imagery for cloud tracking"
+        ]
+      },
+      {
+        "name": "Radiative transfer and retrieval software",
+        "role": "turns raw spectra into gas abundances with honest error bars.",
+        "parts": [
+          "atmospheric model",
+          "line-by-line absorption code",
+          "retrieval and Bayesian fitting"
+        ]
+      },
+      {
+        "name": "Laboratory reference spectroscopy",
+        "role": "supplies the absorption line data the retrievals depend on.",
+        "parts": [
+          "gas cells",
+          "Fourier-transform spectrometers"
+        ]
+      },
+      {
+        "name": "Photochemical modelling",
+        "role": "tests whether known chemistry can explain the observed abundances.",
+        "parts": [
+          "reaction network",
+          "sulfur and phosphorus chemistry",
+          "cloud droplet chemistry",
+          "transport model"
+        ]
+      },
+      {
+        "name": "In-situ verification (planned)",
+        "role": "would settle the question by sampling the clouds directly.",
+        "parts": [
+          "mass spectrometer on a descent probe",
+          "cloud-particle collector"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a spectral window",
+        "detail": "Find a narrow wavelength band where Venus's own atmosphere is transparent enough for a trace gas line to reach a telescope."
+      },
+      {
+        "title": "Observe and calibrate",
+        "detail": "Record the spectrum alongside a reference source, and correct for Earth's atmosphere and the telescope's own response."
+      },
+      {
+        "title": "Retrieve the abundance",
+        "detail": "Fit a radiative transfer model to the line depth to estimate how many molecules per billion are present, and how uncertain that is."
+      },
+      {
+        "title": "Compare with known chemistry",
+        "detail": "Run a photochemical model to see whether volcanoes, lightning, surface minerals or sunlight-driven reactions could make the same amount."
+      },
+      {
+        "title": "Test the claim against other instruments",
+        "detail": "Re-observe with a different telescope, wavelength and calibration path; a real signal must survive all of them."
+      },
+      {
+        "title": "Check for confusion",
+        "detail": "Confirm the line is not a different molecule — sulfur dioxide shares nearby wavelengths — and not an artefact of data processing."
+      },
+      {
+        "title": "Probe habitability separately",
+        "detail": "Model whether cloud droplets of concentrated sulfuric acid could support any biochemistry at all, given that it destroys organic molecules."
+      },
+      {
+        "title": "Send a probe",
+        "detail": "A future descent craft would ingest cloud particles and measure their chemistry directly, ending the remote-sensing argument."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Millimetre-wave radio astronomy",
+        "status": "exists",
+        "why": "the key phosphorus and sulfur lines fall at wavelengths only large radio observatories can resolve."
+      },
+      {
+        "tech": "Trace-gas laboratory spectra",
+        "status": "exists",
+        "why": "abundance estimates are only as good as the reference line strengths used to fit them."
+      },
+      {
+        "tech": "Venus atmospheric photochemistry models",
+        "status": "partial",
+        "why": "the sulfur cycle is reasonably modelled; the phosphorus cycle is far less certain."
+      },
+      {
+        "tech": "Cloud droplet and aerosol chemistry",
+        "status": "partial",
+        "why": "whether concentrated sulfuric acid can host any stable biochemistry is unresolved."
+      },
+      {
+        "tech": "In-situ cloud sampling",
+        "status": "missing",
+        "why": "no mission has yet measured the cloud particles' composition directly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "continued ground-based monitoring with independent instruments and open data",
+        "unlocks": "settling whether the disputed phosphine line is real, sulfur dioxide, or noise."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated Venus orbiters with modern ultraviolet and infrared spectrometers",
+        "unlocks": "global, time-resolved maps of sulfur and phosphorus species."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a descent probe through the cloud deck",
+        "unlocks": "direct measurement of droplet chemistry and any non-equilibrium gases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a cloud-level sampling platform or sample return",
+        "unlocks": "definitive answers on cloud-layer habitability."
+      }
+    ]
+  }
+}

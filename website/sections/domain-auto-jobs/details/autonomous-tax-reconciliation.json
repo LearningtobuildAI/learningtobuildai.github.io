@@ -30,5 +30,150 @@
         "def": "Periodic changes to tax laws and regulations that businesses must adhere to for accurate tax reporting."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data integration layer",
+        "role": "pulls transaction logs and bank feeds into a single normalized stream.",
+        "parts": [
+          "connectors to ERP and accounting systems",
+          "API gateways",
+          "ETL and validation pipelines"
+        ]
+      },
+      {
+        "name": "Tax rule knowledge base",
+        "role": "keeps a structured, versioned store of tax codes and updates.",
+        "parts": [
+          "document repository",
+          "change monitoring",
+          "jurisdiction metadata"
+        ]
+      },
+      {
+        "name": "Retrieval-augmented generation (RAG) engine",
+        "role": "retrieves relevant tax rules and applies them to each transaction.",
+        "parts": [
+          "vector database",
+          "embedding model",
+          "large language model",
+          "retrieval and ranking logic"
+        ]
+      },
+      {
+        "name": "Anomaly detection engine",
+        "role": "flags unusual or non-compliant transactions using pattern recognition.",
+        "parts": [
+          "statistical models",
+          "machine learning classifiers",
+          "rule-based checks"
+        ]
+      },
+      {
+        "name": "Reconciliation and workflow",
+        "role": "matches transactions, suggests adjustments, and routes exceptions to staff.",
+        "parts": [
+          "matching algorithms",
+          "workflow engine",
+          "case management"
+        ]
+      },
+      {
+        "name": "Audit and reporting",
+        "role": "provides an immutable record and compliance reports.",
+        "parts": [
+          "immutable logs",
+          "dashboards",
+          "report generation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process and data sources",
+        "detail": "Identify which tax jurisdictions, transaction types and accounting systems the system must cover, and connect to their APIs or file exports."
+      },
+      {
+        "title": "Build the tax rule knowledge base",
+        "detail": "Collect tax legislation, rulings and updates into a structured repository, tagging each rule by jurisdiction, date and applicability."
+      },
+      {
+        "title": "Set up the RAG pipeline",
+        "detail": "Index tax documents as vector embeddings, so a query about a transaction retrieves the most relevant rules for an LLM to interpret."
+      },
+      {
+        "title": "Train anomaly detection models",
+        "detail": "Use historical reconciled data to train classifiers that recognise patterns of errors, omissions or fraud."
+      },
+      {
+        "title": "Integrate reconciliation logic",
+        "detail": "Combine rule-based matching with model outputs to propose adjustments and confidence scores for each transaction."
+      },
+      {
+        "title": "Design the human-in-the-loop interface",
+        "detail": "Build screens where accountants can review flagged items, accept or override suggestions, and provide feedback that improves the models."
+      },
+      {
+        "title": "Validate against manual audits",
+        "detail": "Run the system in parallel with existing manual processes, compare results, and tune thresholds until accuracy meets audit standards."
+      },
+      {
+        "title": "Deploy and maintain",
+        "detail": "Roll out to production, monitor performance, and set up continuous updates for tax changes and model retraining."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with retrieval (RAG)",
+        "status": "exists",
+        "why": "they can read and apply unstructured tax rules to specific transactions."
+      },
+      {
+        "tech": "Machine learning for anomaly detection",
+        "status": "exists",
+        "why": "they learn normal patterns and flag deviations without explicit rules."
+      },
+      {
+        "tech": "Standardised financial data APIs",
+        "status": "partial",
+        "why": "many accounting systems expose APIs, but coverage and formats vary by country and vendor."
+      },
+      {
+        "tech": "Digital tax code repositories",
+        "status": "partial",
+        "why": "some jurisdictions publish machine-readable updates, but many do not, requiring manual curation."
+      },
+      {
+        "tech": "Cloud computing and secure data storage",
+        "status": "exists",
+        "why": "handling sensitive financial data requires scalable, compliant infrastructure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated reconciliation for routine transactions in major jurisdictions",
+        "unlocks": "reduced manual effort and faster month-end close."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time anomaly detection and automated filing for simple tax returns",
+        "unlocks": "continuous compliance and fewer penalties."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-border tax optimisation with AI that interprets treaties",
+        "unlocks": "multinationals can manage global tax positions dynamically."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous tax departments with minimal human oversight",
+        "unlocks": "accountants shift from data crunching to strategic advice."
+      }
+    ]
   }
 }

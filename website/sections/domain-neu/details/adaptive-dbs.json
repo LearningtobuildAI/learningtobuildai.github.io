@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Depth lead",
+        "role": "delivers current to a deep brain target and, in newer leads, records the tiny voltages the brain generates nearby.",
+        "parts": [
+          "platinum-iridium contacts (4–8, sometimes segmented for directional steering)",
+          "polyurethane or silicone shaft",
+          "internal conductors",
+          "anchoring burr-hole cap"
+        ]
+      },
+      {
+        "name": "Implantable pulse generator",
+        "role": "the chest-implanted unit that paces the brain and now also senses it.",
+        "parts": [
+          "hermetic titanium or ceramic can",
+          "stimulation output stage",
+          "low-noise sensing front end",
+          "rechargeable or primary battery",
+          "feedthroughs and header"
+        ]
+      },
+      {
+        "name": "Biomarker detection",
+        "role": "extracts a usable control signal from background brain noise.",
+        "parts": [
+          "local field potential amplifier",
+          "band-pass filtering (e.g. 13–35 Hz for Parkinson's beta bursts)",
+          "stimulation-artifact blanking and settling",
+          "burst detectors and threshold logic"
+        ]
+      },
+      {
+        "name": "Control algorithm",
+        "role": "decides when and how much to stimulate, rather than stimulating continuously.",
+        "parts": [
+          "state machine or threshold controller",
+          "duty-cycle and ramping rules",
+          "patient-specific tuning parameters",
+          "optional on-device classifier"
+        ]
+      },
+      {
+        "name": "Clinician programmer and data pipeline",
+        "role": "lets a neurologist set sensing bands, thresholds and stimulation limits, and review recorded trends.",
+        "parts": [
+          "wireless telemetry programmer",
+          "sensing-visualisation software",
+          "remote follow-up and firmware update channel"
+        ]
+      },
+      {
+        "name": "Surgical targeting and imaging",
+        "role": "puts the contacts where the signal and the therapy both work.",
+        "parts": [
+          "stereotactic frame or robot",
+          "high-field MRI and CT",
+          "microelectrode recording",
+          "tractography for psychiatric targets"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the target and the patient",
+        "detail": "High-resolution MRI defines the nucleus (subthalamic nucleus or globus pallidus for movement disorders; subcallosal cingulate or other nodes for psychiatric use), and tractography maps the white-matter pathways each contact will engage."
+      },
+      {
+        "title": "Find a control biomarker",
+        "detail": "During the implant, signals are recorded from the target while the patient moves or reports symptoms; a feature that tracks symptom severity — classically beta-band bursting in the subthalamic nucleus in Parkinson's disease — becomes the trigger signal."
+      },
+      {
+        "title": "Make the lead",
+        "detail": "Platinum-iridium rings or segmented contacts are assembled onto a thin polymer shaft over 1.3 mm across, with conductors threaded to a connector at the top and every joint laser-welded and sealed against body fluid."
+      },
+      {
+        "title": "Build the pulse generator",
+        "detail": "A custom microchip carries the stimulation driver and a low-noise amplifier with an analog-to-digital converter; it is sealed in a welded can with filtered feedthroughs and a rechargeable cell, then sterilised."
+      },
+      {
+        "title": "Implant",
+        "detail": "Under local or general anaesthesia a burr hole is drilled, the lead is advanced to the target with imaging and often microelectrode guidance, secured at the skull, and an extension wire tunnelled under the skin to the generator in the chest."
+      },
+      {
+        "title": "Calibrate the loop",
+        "detail": "The clinician records the biomarker, sets the sensing band, detection threshold, stimulation amplitude ceilings and the delay between detection and pulse, then tests on and off states against symptoms."
+      },
+      {
+        "title": "Validate against continuous stimulation",
+        "detail": "Blinded trials compare adaptive with conventional always-on stimulation, measuring motor scores, symptom diaries, side effects and total charge delivered, since the goal is equal or better control with less current."
+      },
+      {
+        "title": "Operate and update",
+        "detail": "The device runs chronically with artifact rejection active, battery recharge or replacement every few years, and occasional firmware or parameter updates through telemetry."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Implantable neurostimulation hardware",
+        "status": "exists",
+        "why": "decades of conventional DBS give a proven lead, generator and surgical route to build on."
+      },
+      {
+        "tech": "Chronic, symptom-linked biomarkers",
+        "status": "partial",
+        "why": "the beta-band signal in Parkinson's disease is well validated; reliable markers for depression, obsessive-compulsive disorder and other psychiatric conditions are not."
+      },
+      {
+        "tech": "Real-time stimulation artifact rejection",
+        "status": "partial",
+        "why": "the stimulating pulse is orders of magnitude larger than the microvolt-scale brain signal, so the amplifier must blank and settle fast enough to hear the brain between pulses."
+      },
+      {
+        "tech": "Low-power on-implant computation",
+        "status": "partial",
+        "why": "battery size and heat limit how much filtering and classification can run inside the patient rather than on an external computer."
+      },
+      {
+        "tech": "Regulation for adaptive algorithms",
+        "status": "partial",
+        "why": "software that changes therapy on its own needs different oversight than a fixed-output stimulator, and few such algorithms have cleared regulators."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sensing-capable deep brain stimulators in routine use, and responsive neurostimulation approved for drug-resistant focal epilepsy",
+        "unlocks": "a clinical installed base that already records brain signals and can host adaptive control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "adaptive stimulation for movement disorders driven by beta-band control reaching routine care",
+        "unlocks": "fewer stimulation side effects and longer battery life at equal symptom control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "validated biomarkers and closed-loop targets for treatment-resistant depression and obsessive-compulsive disorder",
+        "unlocks": "psychiatric use, where conventional fixed DBS results have been mixed and a large sham-controlled depression trial failed its endpoint."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-channel, multi-biomarker implants that decode mood and motor states continuously",
+        "unlocks": "therapy that anticipates symptoms, plus long-term brain recordings for research."
+      }
+    ]
+  }
+}

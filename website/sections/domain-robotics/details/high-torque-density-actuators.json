@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Motor core",
+        "role": "converts electrical current into torque inside the smallest possible envelope.",
+        "parts": [
+          "rare-earth permanent-magnet rotor (NdFeB)",
+          "laminated stator with copper windings",
+          "shaft and rotor bearings"
+        ]
+      },
+      {
+        "name": "Gear reduction",
+        "role": "trades speed for torque so a small, fast motor can move a heavy limb.",
+        "parts": [
+          "planetary gear stages, or a strain-wave (harmonic) cup",
+          "cross-roller output bearing",
+          "lubricant and seals"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "tells the controller exactly where the joint is and how hard it is pushing.",
+        "parts": [
+          "magnetic or optical encoders on motor and output",
+          "torque or current sensing",
+          "temperature sensors"
+        ]
+      },
+      {
+        "name": "Drive electronics",
+        "role": "converts DC bus power into the precise three-phase waveform the motor needs.",
+        "parts": [
+          "MOSFET or SiC inverter stage",
+          "microcontroller running field-oriented control",
+          "DC bus and braking circuit"
+        ]
+      },
+      {
+        "name": "Thermal and mechanical housing",
+        "role": "holds the air gap and gear mesh to tight tolerances while dumping heat.",
+        "parts": [
+          "machined aluminium housing",
+          "thermal potting or oil cooling",
+          "connectors and cable routing"
+        ]
+      },
+      {
+        "name": "Control firmware",
+        "role": "makes the whole assembly behave like a compliant, responsive muscle.",
+        "parts": [
+          "current, velocity and position loops",
+          "impedance or torque control",
+          "fault and thermal protection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the torque and thermal target",
+        "detail": "Engineers choose a torque constant, gear ratio and duty cycle so the joint can hold a person-sized load without overheating. A low ratio keeps the joint backdrivable; a high ratio buys torque at the cost of transparency."
+      },
+      {
+        "title": "Design the magnetic circuit",
+        "detail": "Stator slots, winding turns and magnet grade are laid out to maximise torque per amp while keeping iron losses and cogging low."
+      },
+      {
+        "title": "Wind and assemble the motor",
+        "detail": "Copper wire is wound into the stator slots, magnets are glued into the rotor, and the rotor is balanced and fitted into the stator with a controlled air gap."
+      },
+      {
+        "title": "Cut and assemble the gearset",
+        "detail": "Planetary gears are cut and ground, or a thin flexing strain-wave cup is machined; the reduction stage is then shimmed to near-zero backlash."
+      },
+      {
+        "title": "Fit bearings and output flange",
+        "detail": "A cross-roller bearing carries the bending loads a limb experiences, so the gearbox itself never has to."
+      },
+      {
+        "title": "Integrate electronics and sensors",
+        "detail": "The inverter board, encoders and temperature sensors are mounted inside or beside the housing, and control firmware is flashed and tuned."
+      },
+      {
+        "title": "Test and characterise",
+        "detail": "The actuator is swept through its torque–speed range, its efficiency map is measured, and it is run hot to confirm the thermal limit."
+      },
+      {
+        "title": "Qualify for the robot",
+        "detail": "Units are run through impact, dust and vibration tests before being built into a leg or arm."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-energy-density permanent magnets",
+        "status": "exists",
+        "why": "neodymium-iron-boron magnets give the strongest field per kilogram, which is what makes a small motor powerful."
+      },
+      {
+        "tech": "Precision gear manufacturing",
+        "status": "exists",
+        "why": "low-backlash planetary and strain-wave gearsets are what let a fast motor drive a slow, strong joint accurately."
+      },
+      {
+        "tech": "Fast, cheap power electronics",
+        "status": "partial",
+        "why": "field-oriented control at tens of kilohertz needs capable MOSFETs and microcontrollers at a price a robot can carry dozens of."
+      },
+      {
+        "tech": "Compact high-resolution encoders",
+        "status": "exists",
+        "why": "a joint cannot be controlled smoothly without knowing its angle to a fraction of a degree."
+      },
+      {
+        "tech": "Thermal management materials",
+        "status": "exists",
+        "why": "actuators are sealed inside limb shells, so heat must leave through potting, housings or oil rather than air."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quasi-direct-drive and geared actuator modules used in legged and humanoid robots",
+        "unlocks": "machines that can walk, jump and recover balance with human-like dynamics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "joints that combine motor, gearbox, drive, sensing and cooling in one sealed, mass-produced unit",
+        "unlocks": "cheaper, more reliable limbs and faster robot assembly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher bus voltages with silicon-carbide drives and integrated liquid cooling",
+        "unlocks": "more torque from the same size, and sustained rather than burst performance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "alternative actuation such as electrohydrostatic or artificial-muscle drives",
+        "unlocks": "lighter, softer limbs with torque density that motors and gears alone struggle to reach."
+      }
+    ]
+  }
+}

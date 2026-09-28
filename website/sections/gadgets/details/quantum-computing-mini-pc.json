@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Qubit chip",
+        "role": "the quantum processor itself — a few to a few hundred physical qubits on a chip or in a trap.",
+        "parts": [
+          "superconducting transmons, trapped ions, photonic circuits or nuclear spins",
+          "coupling resonators and wiring"
+        ]
+      },
+      {
+        "name": "Environment",
+        "role": "keeps qubits isolated from heat and noise, which is what makes them fragile.",
+        "parts": [
+          "dilution refrigerator at ~10 millikelvin (superconducting)",
+          "or vacuum and laser trap (ions)",
+          "or permanent magnet at room temperature (NMR)",
+          "magnetic shielding"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "generates the microwave and radio-frequency pulses that manipulate each qubit.",
+        "parts": [
+          "arbitrary waveform generators",
+          "FPGA sequencers",
+          "attenuators and filters"
+        ]
+      },
+      {
+        "name": "Readout chain",
+        "role": "measures qubit states without disturbing them more than necessary.",
+        "parts": [
+          "low-noise amplifiers",
+          "analogue-to-digital converters"
+        ]
+      },
+      {
+        "name": "Classical host",
+        "role": "runs the compiler and error-mitigation software around the quantum core.",
+        "parts": [
+          "CPU or GPU",
+          "pulse scheduler",
+          "language compiler"
+        ]
+      },
+      {
+        "name": "Software stack and error correction",
+        "role": "turns an algorithm into pulses, and combines many noisy qubits into a few reliable ones.",
+        "parts": [
+          "circuit compiler",
+          "error-mitigation routines",
+          "surface-code decoder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a qubit modality",
+        "detail": "Superconducting circuits need deep cryogenics; photonic and NMR designs can work at room temperature but with different limits."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Superconducting qubits are patterned by lithography on silicon or sapphire, with Josephson junctions defined by shadow evaporation or oxidation."
+      },
+      {
+        "title": "Package and cool",
+        "detail": "The chip is mounted in a shielded enclosure and, for superconducting designs, wired into a dilution refrigerator that occupies most of the physical volume."
+      },
+      {
+        "title": "Build the control stack",
+        "detail": "Room-temperature electronics generate shaped microwave pulses on dozens to hundreds of channels, synchronised to nanosecond precision."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Each qubit's frequency, pulse amplitudes and readout thresholds are tuned individually; this is repeated as hardware drifts."
+      },
+      {
+        "title": "Run circuits, mitigate errors",
+        "detail": "Small algorithms run with statistical averaging and error mitigation; useful results need error-corrected logical qubits."
+      },
+      {
+        "title": "Close the loop into a product",
+        "detail": "Shrink the control and cooling hardware, add the classical host and software, and the result is a desktop-sized demonstrator — a few qubits, useful mainly for teaching and experiments."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Qubit coherence and gate fidelity",
+        "status": "partial",
+        "why": "current devices are too noisy for long computations; two-qubit error rates of roughly 0.1–1% limit circuit depth."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "logical qubits that get better as more physical qubits are added have been demonstrated, but only at small scale."
+      },
+      {
+        "tech": "Compact cryogenics or room-temperature qubits",
+        "status": "partial",
+        "why": "a dilution refrigerator is power-hungry and bulky, so a true desktop machine needs a different modality or much better cooling."
+      },
+      {
+        "tech": "Scalable classical control electronics",
+        "status": "partial",
+        "why": "each qubit needs several control lines; wiring thousands of them inside a fridge is a hard engineering problem."
+      },
+      {
+        "tech": "Software that maps real problems to qubits",
+        "status": "partial",
+        "why": "without compilers and error mitigation, the hardware is unusable by non-specialists."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "few-qubit desktop teaching machines and cloud access to larger processors",
+        "unlocks": "hands-on learning and algorithm testing without owning hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "compact control electronics and integrated cryostats",
+        "unlocks": "smaller racks rather than whole rooms — a step toward a miniaturised system."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-corrected logical qubits with practical algorithms",
+        "unlocks": "genuine advantage for chemistry, materials and optimisation problems — but run as an accelerator, not a personal computer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid quantum-classical workstations",
+        "unlocks": "a desktop appliance that accelerates specific scientific workloads while the classical PC does everything else."
+      }
+    ]
+  }
+}

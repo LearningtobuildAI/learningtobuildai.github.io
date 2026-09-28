@@ -37,5 +37,144 @@
         "def": "The study of the large-scale structure, origin, and evolution of the universe."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Discretisation layer",
+        "role": "represents space, time and quantum fields on a finite lattice.",
+        "parts": [
+          "lattice spacing definition",
+          "gauge and fermion field variables",
+          "boundary conditions"
+        ]
+      },
+      {
+        "name": "State store",
+        "role": "holds the amplitudes of the quantum state being evolved.",
+        "parts": [
+          "memory or qubit register",
+          "error-corrected logical units",
+          "checkpointing"
+        ]
+      },
+      {
+        "name": "Processor fabric",
+        "role": "applies the time-evolution operators to the stored state.",
+        "parts": [
+          "logic or gate units",
+          "interconnect",
+          "clocking"
+        ]
+      },
+      {
+        "name": "Energy and heat rejection",
+        "role": "supplies power and dumps waste heat, which sets the cost of every irreversible operation.",
+        "parts": [
+          "power collection",
+          "radiators",
+          "cryogenic cooling"
+        ]
+      },
+      {
+        "name": "Algorithms and validation",
+        "role": "turns the state into measurable predictions and checks them against known physics.",
+        "parts": [
+          "time-evolution algorithms",
+          "observable extraction",
+          "error mitigation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a discretisation",
+        "detail": "Space–time is chopped into a grid with a minimum spacing. Unknown Planck-scale physics means the choice is a guess; the simulation is only as good as the theory fed into it."
+      },
+      {
+        "title": "Bound the information content",
+        "detail": "Use the Bekenstein bound — maximum information in a region scales with its surface area and energy — to estimate the bits needed. A Planck-scale description of the observable universe implies on the order of 10^180–10^185 cells, far more than any ordinary computer can hold."
+      },
+      {
+        "title": "Bound the operations and energy",
+        "detail": "The Margolus–Levitin limit caps operations per second at roughly 2E/πħ for energy E, and Landauer's principle sets a floor of kT ln2 per irreversible bit. Multiplying these out shows the energy required dwarfs the mass-energy of the observable universe, so the scheme fails long before hardware is considered."
+      },
+      {
+        "title": "Pick a substrate",
+        "detail": "A classical machine must carry all amplitudes explicitly — exponentially expensive. A quantum simulator instead maps the simulated system onto controllable quantum degrees of freedom, which is why quantum simulation, not brute-force digital emulation, is the only credible route."
+      },
+      {
+        "title": "Build the hardware",
+        "detail": "Assemble error-corrected quantum processors with many physical qubits per logical qubit, plus the classical control electronics and cryogenics they need."
+      },
+      {
+        "title": "Scale up power and cooling",
+        "detail": "Any star-scale version — sometimes imagined as a Matrioshka brain, nested shells of computing around a star — would need enormous collectors and radiators, and would run near the 2.7 K cosmic background temperature to keep erasure costs low."
+      },
+      {
+        "title": "Write and compile the simulation",
+        "detail": "Encode the field theory onto the hardware, compile the time-evolution circuit and run repeated shots to build statistics."
+      },
+      {
+        "title": "Calibrate against reality",
+        "detail": "Validate against measured particle masses, cross-sections and cosmological observations; if the model misses them, the discretisation or physics is wrong."
+      },
+      {
+        "title": "Run and query",
+        "detail": "Extract observables, compare alternative discretisations, and treat disagreement as the error bar on any conclusion."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computers",
+        "status": "partial",
+        "why": "quantum simulation is exponentially cheaper than classical, but error-corrected machines of the needed size do not exist."
+      },
+      {
+        "tech": "Quantum simulation algorithms",
+        "status": "exists",
+        "why": "theoretical mappings from physical systems to controllable quantum hardware were worked out from the 1980s onward; the missing part is hardware, not theory."
+      },
+      {
+        "tech": "A theory of quantum gravity",
+        "status": "missing",
+        "why": "without it, there is no justified rule for what happens at or below the Planck scale, so a Planck-scale simulation has no correct physics to implement."
+      },
+      {
+        "tech": "Thermodynamic limits of computation",
+        "status": "exists",
+        "why": "Landauer's principle, the Margolus–Levitin limit and the Bekenstein bound let us estimate feasibility — and currently show it fails by an astronomical margin."
+      },
+      {
+        "tech": "Star-scale engineering",
+        "status": "missing",
+        "why": "the energy and heat-rejection infrastructure implied by a Matrioshka-brain concept is speculative and beyond any known manufacturing path."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "classical simulation of lattice field theories and small quantum systems on supercomputers",
+        "unlocks": "predictions for particle and materials physics where exact calculation is impossible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fault-tolerant quantum computers running quantum simulation of systems no classical machine can handle",
+        "unlocks": "chemistry, materials and nuclear physics beyond classical reach."
+      },
+      {
+        "stage": "Next",
+        "milestone": "large analog quantum simulators reproducing condensed-matter and cosmological toy models",
+        "unlocks": "tests of fundamental physics using controllable quantum systems."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "star-scale computing, if it is possible at all",
+        "unlocks": "nothing that current energy accounting supports: the estimated Landauer cost of a Planck-scale universe simulation exceeds the energy content of the observable universe, so this remains a thought experiment rather than an engineering programme."
+      }
+    ]
   }
 }

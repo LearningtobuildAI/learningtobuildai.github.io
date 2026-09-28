@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing elements",
+        "role": "convert a physical quantity — temperature, humidity, pressure, a trace gas, particulates, ground motion — into a signal.",
+        "parts": [
+          "microelectromechanical (MEMS) sensors",
+          "chemical and gas-sensitive films",
+          "accelerometers and geophones",
+          "radiometers and particle detectors"
+        ]
+      },
+      {
+        "name": "Node electronics and power",
+        "role": "let each unit run unattended for years without maintenance.",
+        "parts": [
+          "microcontroller with sleep modes",
+          "thin-film or solid-state battery",
+          "solar, vibration or thermal energy harvester",
+          "capacitor buffer"
+        ]
+      },
+      {
+        "name": "Communication mesh",
+        "role": "relay readings hop by hop from node to gateway without a per-node subscription.",
+        "parts": [
+          "sub-gigahertz low-power radio",
+          "antenna",
+          "self-healing routing protocol",
+          "time-synchronisation scheme"
+        ]
+      },
+      {
+        "name": "Deployment platforms",
+        "role": "put nodes into the atmosphere, ocean, soil and crust.",
+        "parts": [
+          "high-altitude balloons",
+          "fixed-wing and rotary drones",
+          "sounding rockets",
+          "small satellites",
+          "autonomous underwater and surface vehicles"
+        ]
+      },
+      {
+        "name": "Aggregation infrastructure",
+        "role": "collect, timestamp and archive the data stream.",
+        "parts": [
+          "gateway ground stations",
+          "satellite backhaul constellations",
+          "GNSS timing receivers",
+          "data centres and archives"
+        ]
+      },
+      {
+        "name": "Assimilation and modelling",
+        "role": "turn billions of noisy readings into a usable picture of the planet.",
+        "parts": [
+          "numerical weather and climate models",
+          "geophysical inversion models",
+          "machine-learning quality control",
+          "digital-twin software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the measurement targets",
+        "detail": "Decide which variables matter, at what accuracy, and over what volume — for example air temperature to a fraction of a degree, or ground motion to micrometres, per cubic metre of the region of interest."
+      },
+      {
+        "title": "Design a node on a chip",
+        "detail": "Combine a MEMS sensing element, a low-power microcontroller, radio and antenna into a package a few millimetres across, using the same batch semiconductor and thin-film processes that made sensors cheap in phones."
+      },
+      {
+        "title": "Solve the power budget",
+        "detail": "A node that cannot be reached must harvest its own energy — a few square millimetres of solar cell, a vibration or thermal harvester — and sleep almost all the time, waking only to sense and transmit."
+      },
+      {
+        "title": "Build the mesh software",
+        "detail": "Write routing that lets nodes discover neighbours, forward each other's packets and survive failures, with synchronised clocks so readings can be compared across the grid."
+      },
+      {
+        "title": "Manufacture at throwaway cost",
+        "detail": "Scale production so a unit costs a small fraction of the data it produces; flexible printed electronics and roll-to-roll processes would be needed for volume far beyond current sensor markets."
+      },
+      {
+        "title": "Disperse the first region",
+        "detail": "Release nodes from balloons and drones over a chosen area and drop fixed stations, seismic sensors and ocean drifters, then let the mesh self-organise around gateways."
+      },
+      {
+        "title": "Calibrate against references",
+        "detail": "Cross-check every cheap sensor against reference instruments such as radiosondes, seismometers and satellite measurements, and model drift so long-term trends remain trustworthy."
+      },
+      {
+        "title": "Assimilate into models",
+        "detail": "Feed the stream into numerical weather, climate and geophysical models that blend observations with physics, the same way today's sparse networks are used but at far finer resolution."
+      },
+      {
+        "title": "Operate, replenish, retire",
+        "detail": "Continuously replace failed nodes and harvest or recover expended ones, because littering the atmosphere and ocean with persistent devices would create a pollution problem of its own."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost MEMS sensing",
+        "status": "exists",
+        "why": "the smartphone industry already mass-produces accurate accelerometers, pressure and gas sensors."
+      },
+      {
+        "tech": "Energy harvesting and micro-batteries",
+        "status": "partial",
+        "why": "demonstrated in small devices, but years of unattended life in cold, wet or dark conditions is not solved."
+      },
+      {
+        "tech": "Long-range low-power mesh radio",
+        "status": "partial",
+        "why": "standards such as LoRa exist for thousands of nodes per gateway; trillions of nodes and global relay remain untested."
+      },
+      {
+        "tech": "Satellite backhaul for tiny terminals",
+        "status": "partial",
+        "why": "small satellites can collect data from remote ground terminals, but capacity and cost for a planet-wide grid are unproven."
+      },
+      {
+        "tech": "Exascale data assimilation",
+        "status": "partial",
+        "why": "blending billions of observations into real-time models demands computing and algorithms beyond today's operational systems."
+      },
+      {
+        "tech": "Benign or recoverable node materials",
+        "status": "missing",
+        "why": "dispersing huge numbers of devices into air, soil and sea requires materials that degrade or can be retrieved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sparse reference networks: weather balloons, the Argo fleet of ocean-profiling floats, the Global Seismographic Network, and satellite gravity and radar missions",
+        "unlocks": "global climate and hazard monitoring at coarse resolution."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dense regional meshes of cheap sensors in cities, catchments and fault zones, with commercial satellite links for the remotest sites",
+        "unlocks": "street-scale air quality, flood and landslide early warning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "targeted aerial and marine dispersion of miniature disposable sensors over a test region",
+        "unlocks": "direct measurement of the atmosphere's fine structure, where most uncertainty in weather and climate lies."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a continuously refreshed globe-spanning grid feeding digital-twin models in real time",
+        "unlocks": "much sharper prediction of storms, quakes and long-term change — and the evidence base for any deliberate intervention, though sensing alone cannot control climate."
+      }
+    ]
+  }
+}

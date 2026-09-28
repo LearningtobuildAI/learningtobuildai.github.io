@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "System-on-chip",
+        "role": "combines CPU, GPU, and NPU on one die, with a wide memory controller.",
+        "parts": [
+          "CPU cores",
+          "integrated GPU",
+          "neural processing unit",
+          "memory controller"
+        ]
+      },
+      {
+        "name": "Unified memory",
+        "role": "provides a single high-bandwidth pool shared by CPU and GPU so large models stay resident.",
+        "parts": [
+          "LPDDR memory chips",
+          "wide memory bus",
+          "on-package or board-level traces"
+        ]
+      },
+      {
+        "name": "Storage",
+        "role": "holds the operating system and model weights, loading them quickly at startup.",
+        "parts": [
+          "NVMe SSD",
+          "PCIe interface",
+          "M.2 slot"
+        ]
+      },
+      {
+        "name": "Thermal system",
+        "role": "removes heat from the SoC during sustained inference.",
+        "parts": [
+          "heatsink",
+          "fan",
+          "vapor chamber or heat pipes"
+        ]
+      },
+      {
+        "name": "Power delivery",
+        "role": "converts mains power into stable low voltages for the SoC and memory.",
+        "parts": [
+          "external power supply",
+          "voltage regulators",
+          "capacitors"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "runs quantised models efficiently on the available hardware.",
+        "parts": [
+          "operating system",
+          "inference runtime",
+          "quantisation tools",
+          "model files"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the SoC",
+        "detail": "Chip architects choose CPU, GPU, and NPU cores and a memory controller wide enough to feed them from a unified pool."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "The design is manufactured at a foundry on an advanced process node, then tested and binned."
+      },
+      {
+        "title": "Package memory",
+        "detail": "LPDDR chips are soldered onto the same package or board, close to the SoC, to keep traces short and bandwidth high."
+      },
+      {
+        "title": "Assemble the mainboard",
+        "detail": "Surface-mount machines place the SoC, memory, power regulators, and connectors onto a small printed circuit board."
+      },
+      {
+        "title": "Build the cooling",
+        "detail": "A heatsink, heat pipes or vapor chamber, and a fan are fitted to carry heat away from the SoC."
+      },
+      {
+        "title": "Final assembly",
+        "detail": "The mainboard, SSD, and I/O ports are mounted in the enclosure, and cables are connected."
+      },
+      {
+        "title": "Test and image",
+        "detail": "Each unit is stress-tested for thermals and performance, then flashed with firmware and an OS image preloaded with an inference runtime."
+      },
+      {
+        "title": "Ship",
+        "detail": "The finished mini PC is boxed with documentation and power supply."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Unified memory architectures",
+        "status": "exists",
+        "why": "let CPU and GPU share the same large pool, which is what keeps big models resident."
+      },
+      {
+        "tech": "Quantisation",
+        "status": "exists",
+        "why": "shrinks model weights to 4-bit or 8-bit so they fit in available memory and run faster."
+      },
+      {
+        "tech": "Efficient inference runtimes",
+        "status": "exists",
+        "why": "software such as llama.cpp or ONNX Runtime maps model operations onto the available CPU, GPU, and NPU."
+      },
+      {
+        "tech": "High-bandwidth LPDDR memory",
+        "status": "exists",
+        "why": "memory bandwidth, not raw compute, is usually the bottleneck for local inference."
+      },
+      {
+        "tech": "Advanced semiconductor packaging",
+        "status": "exists",
+        "why": "allows memory to be placed very close to the SoC, reducing latency and power."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mini PCs with tens of gigabytes of unified memory run models with up to tens of billions of parameters at usable speeds.",
+        "unlocks": "private, offline AI for individuals and small teams."
+      },
+      {
+        "stage": "Next",
+        "milestone": "unified memory pools grow to hundreds of gigabytes and bandwidth increases with LPDDR6 and wider buses.",
+        "unlocks": "running the largest open models locally without cloud."
+      },
+      {
+        "stage": "Next",
+        "milestone": "NPUs and GPUs become better integrated with standard APIs and compilers.",
+        "unlocks": "faster, more power-efficient inference and easier deployment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device fine-tuning and multi-modal models become practical on a desktop box.",
+        "unlocks": "personalised AI that never leaves the owner's hardware."
+      }
+    ]
+  }
+}

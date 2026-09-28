@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Soft actuators",
+        "role": "produce movement from compliant materials instead of rigid motors and gears.",
+        "parts": [
+          "fibre-reinforced pneumatic chambers (artificial muscles)",
+          "dielectric elastomer films",
+          "shape-memory alloy wires",
+          "tendons and cable drives"
+        ]
+      },
+      {
+        "name": "Compliant body and skin",
+        "role": "the structure itself bends and absorbs impacts.",
+        "parts": [
+          "silicone and polyurethane elastomers",
+          "hydrogel layers",
+          "variable-stiffness layers (jamming granule or low-melting-point polymer)"
+        ]
+      },
+      {
+        "name": "Pressure and drive supply",
+        "role": "supplies air, hydraulic fluid or high voltage to the actuators.",
+        "parts": [
+          "micro compressors or pumps",
+          "miniature solenoid valves",
+          "high-voltage amplifiers",
+          "battery or tether"
+        ]
+      },
+      {
+        "name": "Stretchable sensing",
+        "role": "lets the robot feel its own shape and what it is touching.",
+        "parts": [
+          "conductive elastomer strain gauges",
+          "liquid-metal (gallium–indium) channels",
+          "capacitive tactile arrays"
+        ]
+      },
+      {
+        "name": "Control and power electronics",
+        "role": "translates intent into valve or voltage commands without a rigid joint model to rely on.",
+        "parts": [
+          "embedded microcontroller",
+          "learned inverse models",
+          "safety limits for pressure and voltage"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the actuator geometry",
+        "detail": "Chamber shape, fibre winding angles and wall thickness are modelled with hyperelastic material equations, since soft elastomers (modulus often 0.1–10 MPa; metals are thousands of times stiffer) stretch nonlinearly."
+      },
+      {
+        "title": "Make the moulds",
+        "detail": "Moulds are machined, 3D-printed or lost-wax cast, and the inner core is designed to be dissolved or pulled out after curing."
+      },
+      {
+        "title": "Cast the elastomer",
+        "detail": "Silicone or polyurethane resin is mixed, degassed under vacuum to remove bubbles, poured, and cured; layers with different stiffness are cast in sequence."
+      },
+      {
+        "title": "Add reinforcement and sensing",
+        "detail": "Fibres or fabric sleeves are wrapped around the chambers to set the direction of motion, and stretchable electrodes or liquid-metal channels are embedded before the final layers cure."
+      },
+      {
+        "title": "Assemble the body",
+        "detail": "Cured parts are bonded with the same silicone, pneumatic fittings are sealed, and tendons or cables are threaded where needed."
+      },
+      {
+        "title": "Wire up valves and electronics",
+        "detail": "Miniature valves, pumps or high-voltage drivers are connected to each actuator, and sensor wiring is routed to the controller."
+      },
+      {
+        "title": "Calibrate and train control",
+        "detail": "Each unit is cycled while pressure, voltage, force and shape are logged; a learned model maps command to motion, because a soft body has no single joint angle."
+      },
+      {
+        "title": "Fatigue-test and iterate",
+        "detail": "Units are cycled hundreds of thousands of times to find leaks, cracks and drift before they are trusted in a wearable or surgical device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Soft elastomer and fibre-reinforced composite fabrication",
+        "status": "exists",
+        "why": "silicones and fibre sleeves are mature; the challenge is repeatable casting at small scale."
+      },
+      {
+        "tech": "Pneumatic artificial muscles",
+        "status": "exists",
+        "why": "McKibben-style muscles shortening by roughly 20–30 % of their length have been used for decades, though usually with bulky compressors."
+      },
+      {
+        "tech": "Electroactive polymer actuators",
+        "status": "partial",
+        "why": "dielectric elastomers reach large strains in the laboratory but need kilovolt drive voltages and degrade over millions of cycles."
+      },
+      {
+        "tech": "Stretchable electronics and sensors",
+        "status": "partial",
+        "why": "skin-like strain and touch sensing works in prototypes but is hard to manufacture reliably."
+      },
+      {
+        "tech": "Control methods for compliant bodies",
+        "status": "partial",
+        "why": "soft robots need learned or model-free control; classical rigid-robot control does not transfer."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "soft grippers, wearable assistive gloves and surgical tools in limited commercial use",
+        "unlocks": "handling delicate food, produce and tissue where rigid grippers bruise or tear."
+      },
+      {
+        "stage": "Next",
+        "milestone": "soft actuators with integrated stretchable sensing and on-board power",
+        "unlocks": "untethered soft robots that can be worn all day."
+      },
+      {
+        "stage": "Next",
+        "milestone": "variable-stiffness structures that are soft to touch but can lock rigid to lift loads",
+        "unlocks": "prosthetic limbs and exoskeletons that are both comfortable and strong."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-healing elastomers and printed soft machines with embedded electronics",
+        "unlocks": "long-lived soft devices and cheaper mass production."
+      }
+    ]
+  }
+}

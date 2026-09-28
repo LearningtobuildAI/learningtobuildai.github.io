@@ -38,5 +38,149 @@
         "def": "A subset of artificial intelligence that involves training models on data to make predictions or decisions without being explicitly programmed. It focuses on developing algorithms that can learn from and make predictions based on data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the qubits that carry out the computation.",
+        "parts": [
+          "superconducting transmons or trapped-ion qubits",
+          "microwave or laser control electronics",
+          "dilution refrigerator or vacuum chamber"
+        ]
+      },
+      {
+        "name": "Error-correction layer",
+        "role": "turns many noisy physical qubits into a few reliable logical ones.",
+        "parts": [
+          "surface-code or similar encoding",
+          "syndrome measurement",
+          "real-time decoder"
+        ]
+      },
+      {
+        "name": "Data-encoding stage",
+        "role": "loads ordinary classical data into quantum states — historically the hardest step.",
+        "parts": [
+          "angle or amplitude encoding circuits",
+          "quantum random-access memory (proposed)",
+          "state-preparation routines"
+        ]
+      },
+      {
+        "name": "Quantum algorithm core",
+        "role": "the circuit that is meant to outperform classical methods.",
+        "parts": [
+          "parameterised circuit ansatz",
+          "quantum kernel estimation",
+          "search or linear-algebra subroutines"
+        ]
+      },
+      {
+        "name": "Hybrid training loop",
+        "role": "adjusts circuit parameters using a classical optimiser.",
+        "parts": [
+          "gradient estimation",
+          "classical optimiser",
+          "barren-plateau mitigation"
+        ]
+      },
+      {
+        "name": "Verification stack",
+        "role": "checks whether any advantage is real.",
+        "parts": [
+          "classical simulation of small cases",
+          "error-mitigation routines",
+          "rigorous classical baselines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target problem",
+        "detail": "Pick a task where classical methods genuinely struggle — certain sampling, optimisation or linear-algebra problems — rather than a generic 'AI' label."
+      },
+      {
+        "title": "Encode the data",
+        "detail": "Map classical inputs onto qubit states, a step that can cost more than the speed-up it is meant to deliver."
+      },
+      {
+        "title": "Design the circuit",
+        "detail": "Build a parameterised circuit or quantum kernel whose structure mirrors the problem's symmetry."
+      },
+      {
+        "title": "Train hybridly",
+        "detail": "A classical computer updates the circuit parameters from many repeated measurements, watching for vanishing gradients (barren plateaus)."
+      },
+      {
+        "title": "Mitigate hardware errors",
+        "detail": "Extrapolate or correct for noise so results from today's imperfect qubits are usable."
+      },
+      {
+        "title": "Benchmark honestly",
+        "detail": "Compare against the strongest classical algorithm — some quantum methods have been shown to have efficient classical equivalents."
+      },
+      {
+        "title": "Move to logical qubits",
+        "detail": "Repeat inside a fault-tolerant machine, where dozens or hundreds of physical qubits act as one reliable qubit."
+      },
+      {
+        "title": "Deploy as an accelerator",
+        "detail": "Run the quantum core alongside conventional ML infrastructure, invoked only where it demonstrably wins."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "without error-corrected logical qubits, long algorithms decohere before they finish."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "small codes have been demonstrated, but far too few logical qubits exist for useful workloads."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "reading a large classical dataset into a quantum state can erase any algorithmic speed-up."
+      },
+      {
+        "tech": "High-fidelity qubits and gates",
+        "status": "partial",
+        "why": "error rates must fall by orders of magnitude for deep circuits."
+      },
+      {
+        "tech": "Hybrid quantum-classical software",
+        "status": "partial",
+        "why": "compilers, schedulers and optimisers must mature to run real applications."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small noisy prototypes tackling toy datasets and sampling tasks",
+        "unlocks": "understanding of which problems might benefit, and which will not."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error-corrected logical qubits",
+        "unlocks": "circuits deep enough for narrow algorithmic demonstrations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "provable speed-up on one well-defined learning task",
+        "unlocks": "a credible reason to build quantum ML hardware."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "practical advantage over classical ML on real data",
+        "unlocks": "quantum accelerators in ordinary machine-learning pipelines — the tile's claim, currently unproven."
+      }
+    ]
   }
 }

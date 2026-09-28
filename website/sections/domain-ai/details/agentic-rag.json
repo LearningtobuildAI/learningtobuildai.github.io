@@ -43,5 +43,156 @@
         "def": "The relevant information or data points retrieved and used by the agents for generating accurate and contextually appropriate responses."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Query planner",
+        "role": "turns a user question into a search plan: what to look up, how many queries, and in what order.",
+        "parts": [
+          "LLM prompt for decomposition",
+          "sub-question generator",
+          "routing rules (retrieve at all, or answer directly?)"
+        ]
+      },
+      {
+        "name": "Retriever",
+        "role": "finds candidate passages from a corpus.",
+        "parts": [
+          "chunked document store",
+          "embedding model",
+          "vector index for semantic search",
+          "keyword index (e.g. BM25) for exact terms"
+        ]
+      },
+      {
+        "name": "Reranker and filter",
+        "role": "narrows many candidates to the few passages that actually answer the question.",
+        "parts": [
+          "cross-encoder scoring model",
+          "deduplication",
+          "recency/source filters"
+        ]
+      },
+      {
+        "name": "Generator",
+        "role": "reads the selected passages and writes an answer with citations.",
+        "parts": [
+          "instruction-tuned LLM",
+          "citation-binding template",
+          "output formatter"
+        ]
+      },
+      {
+        "name": "Critic / verifier",
+        "role": "checks whether each claim in the draft is supported by the retrieved text, and estimates confidence.",
+        "parts": [
+          "claim decomposition",
+          "support-checking prompt or model",
+          "confidence score"
+        ]
+      },
+      {
+        "name": "Agent controller",
+        "role": "runs the loop, decides when to re-query, and stops.",
+        "parts": [
+          "tool-calling interface",
+          "loop state and scratchpad",
+          "iteration and cost budget",
+          "logging and trace store"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the corpus",
+        "detail": "Parse documents into passages of a few hundred tokens with overlap, keeping headings, dates and source IDs attached to each chunk."
+      },
+      {
+        "title": "Index it twice",
+        "detail": "Compute a dense embedding for every chunk and store it in a vector index; at the same time build an inverted keyword index so rare names and numbers are not lost."
+      },
+      {
+        "title": "Wrap retrieval as a tool",
+        "detail": "Expose search as a callable function the model can invoke with a query string, and return passages with metadata rather than raw text."
+      },
+      {
+        "title": "Write the agent loop",
+        "detail": "Prompt the model to plan, call the tool, read results, judge sufficiency, and either answer or issue a reformulated query. This plan-act-observe pattern follows the ReAct approach published in 2022."
+      },
+      {
+        "title": "Add self-critique",
+        "detail": "Before returning, have the model break its draft into atomic claims and mark each as supported, unsupported or contradicted by the retrieved passages — the style of self-reflective RAG work such as Self-RAG (2023)."
+      },
+      {
+        "title": "Calibrate the stopping rule",
+        "detail": "Set a maximum number of iterations and a confidence threshold; if the threshold is never met, return an explicit 'insufficient evidence' answer instead of guessing."
+      },
+      {
+        "title": "Build an evaluation set",
+        "detail": "Collect a few hundred real questions with known correct passages and answers, then measure retrieval recall, answer faithfulness and whether citations actually contain the claims."
+      },
+      {
+        "title": "Deploy with guardrails",
+        "detail": "Add caching of repeated queries, latency and token budgets, per-request tracing, and an escalation path to a human when confidence is low."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense text embeddings and vector search",
+        "status": "exists",
+        "why": "semantic retrieval is the base layer; without it there is nothing for the agent to reason over."
+      },
+      {
+        "tech": "Instruction-tuned LLMs with long context and tool calling",
+        "status": "exists",
+        "why": "the loop depends on a model that can emit structured calls and hold many passages at once."
+      },
+      {
+        "tech": "Reranking models",
+        "status": "exists",
+        "why": "cheap first-pass retrieval is noisy; a second scoring pass is what makes re-querying worthwhile."
+      },
+      {
+        "tech": "Calibrated self-evaluation",
+        "status": "partial",
+        "why": "models are poor at knowing when they are wrong, so the confidence threshold this design relies on is unreliable."
+      },
+      {
+        "tech": "Answer-level evaluation harnesses",
+        "status": "partial",
+        "why": "you cannot tune loop depth or thresholds without repeatable faithfulness and retrieval metrics."
+      },
+      {
+        "tech": "Latency and cost control for multi-step inference",
+        "status": "partial",
+        "why": "several model calls per question multiply cost and delay, which limits use in interactive products."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-pass RAG with a reranker is standard in enterprise search assistants",
+        "unlocks": "grounded answers with citations over a private document set."
+      },
+      {
+        "stage": "Next",
+        "milestone": "corrective loops that rewrite the query or fall back to web search when retrieval is weak, as in Corrective RAG (2024)",
+        "unlocks": "robustness to messy or sparse internal corpora."
+      },
+      {
+        "stage": "Next",
+        "milestone": "claim-level verification and abstention become routine",
+        "unlocks": "auditable answers in regulated settings such as medicine, law and finance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "learned controllers that decide retrieval depth from measured answer quality rather than fixed thresholds",
+        "unlocks": "predictable latency and cost alongside reliable factuality."
+      }
+    ]
   }
 }

@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Tensor compute array",
+        "role": "runs the matrix multiplications that dominate neural-network maths.",
+        "parts": [
+          "multiply-accumulate units",
+          "dataflow/systolic interconnect",
+          "local register files",
+          "accumulators"
+        ]
+      },
+      {
+        "name": "On-chip memory hierarchy",
+        "role": "keeps weights and activations as close to the multipliers as possible, because moving data costs far more energy than multiplying it.",
+        "parts": [
+          "weight buffers in SRAM",
+          "activation scratchpad",
+          "direct memory access engines"
+        ]
+      },
+      {
+        "name": "Compression and precision datapath",
+        "role": "shrinks models so they fit in memory and bandwidth budgets.",
+        "parts": [
+          "INT8/INT4 weight handling",
+          "sparsity support",
+          "decompression units",
+          "scaling and requantisation logic"
+        ]
+      },
+      {
+        "name": "System and scheduler",
+        "role": "decides which core — CPU, GPU, NPU — runs each part of a model.",
+        "parts": [
+          "heterogeneous task scheduler",
+          "shared last-level cache",
+          "power and clock domains",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "turns a trained model into kernels the hardware can execute.",
+        "parts": [
+          "graph compiler",
+          "quantisation toolchain",
+          "operator libraries",
+          "OS and app runtime APIs"
+        ]
+      },
+      {
+        "name": "Off-chip memory interface",
+        "role": "streams model weights and the key-value cache from DRAM when they do not fit on chip.",
+        "parts": [
+          "LPDDR memory controller",
+          "memory PHY",
+          "system cache"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Profile the workload",
+        "detail": "Measure the shapes and sizes of the matrices actually used on phones — especially token-by-token text generation, which is limited by memory bandwidth rather than raw arithmetic."
+      },
+      {
+        "title": "Choose precision and memory budget",
+        "detail": "Decide how many bits per weight the hardware must support, and how much SRAM the chip can afford, since these two set both accuracy and unit cost."
+      },
+      {
+        "title": "Design the compute array",
+        "detail": "Size the array of multiply-accumulate units and its dataflow so that each weight fetched is reused many times before being discarded."
+      },
+      {
+        "title": "Write the register-transfer logic",
+        "detail": "Describe the datapath, caches and control in a hardware description language, then simulate it against known neural networks."
+      },
+      {
+        "title": "Verify before silicon",
+        "detail": "Run the design on emulators and field-programmable gate arrays, comparing outputs bit-for-bit with reference software."
+      },
+      {
+        "title": "Synthesise and place-and-route",
+        "detail": "Map the logic onto a leading-edge process node, then lay out transistors and wiring to meet timing within a strict power budget."
+      },
+      {
+        "title": "Fabricate and package",
+        "detail": "The design becomes masks and then wafers in a foundry; the die is packaged alongside CPU, GPU and LPDDR memory in a system-in-package."
+      },
+      {
+        "title": "Bring up driver and runtime",
+        "detail": "Engineers boot the chip, write firmware and drivers, and validate power, thermals and clock behaviour."
+      },
+      {
+        "title": "Build the compiler and libraries",
+        "detail": "A graph compiler plus quantisation and operator libraries let developers convert and deploy models without hand-tuning kernels."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced logic process nodes",
+        "status": "exists",
+        "why": "small geometry is what makes tens of trillions of low-precision operations per second fit in a phone's power and thermal envelope."
+      },
+      {
+        "tech": "Model quantisation (INT8 and INT4)",
+        "status": "exists",
+        "why": "cutting weight precision by 4–8× reduces memory traffic, which is the real bottleneck for large language models."
+      },
+      {
+        "tech": "Efficient compact language models",
+        "status": "partial",
+        "why": "models of a few billion parameters are now small enough to run locally, but with restricted context and quality."
+      },
+      {
+        "tech": "Low-power, high-bandwidth LPDDR memory",
+        "status": "exists",
+        "why": "weights and the key-value cache must be streamed from DRAM without draining the battery."
+      },
+      {
+        "tech": "Portable ML compiler infrastructure",
+        "status": "partial",
+        "why": "without good compilers, each new model must be hand-optimised for each chip family."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NPUs in flagship mobile systems-on-chip, first introduced in 2017 designs such as the Apple A11 Neural Engine and Huawei Kirin 970",
+        "unlocks": "private, low-latency inference for vision, speech and small language models."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wider low-precision support — INT4 weights, sparsity and compressed key-value caches",
+        "unlocks": "larger models running entirely on-device at usable speeds."
+      },
+      {
+        "stage": "Next",
+        "milestone": "unified memory across CPU, GPU, NPU and chiplets in laptops and PCs",
+        "unlocks": "bigger local models without a discrete accelerator's power cost."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "personal models that fine-tune and adapt on the device itself",
+        "unlocks": "assistants that learn from private data without sending it to a data centre, with cloud used only for hard queries."
+      }
+    ]
+  }
+}

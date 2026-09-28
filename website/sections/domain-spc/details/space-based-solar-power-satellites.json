@@ -37,5 +37,154 @@
         "def": "Electromagnetic waves used for wireless power transmission over long distances."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "collects sunlight around the clock, above weather, clouds and night.",
+        "parts": [
+          "lightweight photovoltaic panels",
+          "structural booms",
+          "sun-tracking orientation"
+        ]
+      },
+      {
+        "name": "Power conditioning",
+        "role": "converts the array's direct current to the form the transmitter needs.",
+        "parts": [
+          "DC bus",
+          "solid-state amplifiers",
+          "thermal radiators"
+        ]
+      },
+      {
+        "name": "Transmit antenna",
+        "role": "forms and steers a microwave beam toward a fixed spot on Earth.",
+        "parts": [
+          "phased array of thousands of elements",
+          "phase controllers",
+          "pilot-beam receiver"
+        ]
+      },
+      {
+        "name": "Beam pointing and control",
+        "role": "keeps the beam locked on the receiving site and cuts it off if it drifts.",
+        "parts": [
+          "retrodirective control electronics",
+          "pilot signal from the ground",
+          "safety interlocks"
+        ]
+      },
+      {
+        "name": "Rectenna",
+        "role": "a large field of antenna-and-diode elements on the ground that turns microwaves back into electricity.",
+        "parts": [
+          "rectifying antenna elements",
+          "grid-tie inverters",
+          "land or sea platform"
+        ]
+      },
+      {
+        "name": "In-orbit assembly and servicing",
+        "role": "builds and maintains structures far larger than any rocket fairing.",
+        "parts": [
+          "robotic arms",
+          "modular docking interfaces",
+          "orbital transfer vehicles"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the orbit",
+        "detail": "Most concepts sit in geostationary orbit at about 35,800 km, where a satellite stays fixed over one receiving site and sees the Sun almost continuously; a sun-synchronous low orbit is the cheaper alternative."
+      },
+      {
+        "title": "Launch modular payloads",
+        "detail": "Because a full station would be kilometres across, it is launched as many payloads on heavy-lift rockets and unfolded or assembled in orbit."
+      },
+      {
+        "title": "Assemble the platform",
+        "detail": "Robotic arms or self-deploying structures join the solar wings, transmitter array and radiators into one working station."
+      },
+      {
+        "title": "Generate and condition power",
+        "detail": "Panels convert sunlight at roughly 1,361 W/m² in space into direct current, which solid-state amplifiers turn into microwaves at a chosen frequency, commonly around 2.45 or 5.8 GHz."
+      },
+      {
+        "title": "Form and aim the beam",
+        "detail": "Thousands of array elements are phased so their waves add up in one direction; a pilot signal sent up from the rectenna lets the array aim itself back at the source."
+      },
+      {
+        "title": "Transmit through the atmosphere",
+        "detail": "The beam crosses the atmosphere with modest loss, but must be spread wide enough to stay within safety limits on intensity."
+      },
+      {
+        "title": "Rectify on the ground",
+        "detail": "The rectenna's diodes convert incoming microwaves to direct current; a rectenna can be mostly open mesh, so light and rain pass through."
+      },
+      {
+        "title": "Feed the grid",
+        "detail": "Inverters and transformers deliver the power, and the beam is shut down whenever pointing, signal or safety checks fail."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Very low-cost, high-cadence heavy launch",
+        "status": "partial",
+        "why": "mass to orbit is the dominant cost; a station needs many hundreds of tonnes delivered cheaply."
+      },
+      {
+        "tech": "Efficient microwave power transmission",
+        "status": "partial",
+        "why": "beaming has been demonstrated on the ground and at small scale from orbit, but never at power-plant scale."
+      },
+      {
+        "tech": "Lightweight, high-efficiency solar cells and structures",
+        "status": "exists",
+        "why": "space photovoltaics already work well; the hard part is making megawatt-class arrays light and cheap enough to launch."
+      },
+      {
+        "tech": "Robotic in-orbit assembly",
+        "status": "partial",
+        "why": "kilometre-scale structures cannot be launched folded, so they must be built or deployed automatically."
+      },
+      {
+        "tech": "Beam safety and spectrum regulation",
+        "status": "partial",
+        "why": "a power beam must be provably unable to harm aircraft, people or other satellites, and its frequency must be internationally allocated."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "component demonstrations in orbit, such as a 2023 satellite that beamed a small amount of power to Earth",
+        "unlocks": "proof that lightweight arrays, phased-array transmitters and space-to-ground beaming can work together."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sub-scale in-orbit power beaming to a ground rectenna at kilowatt level",
+        "unlocks": "real efficiency and pointing data, and the start of safety and spectrum rules."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a megawatt-class robotic assembly demonstration in orbit",
+        "unlocks": "confidence that full stations can be built without astronauts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a pilot plant delivering continuous power to a grid, on a par with conventional generation",
+        "unlocks": "a firm, weather-independent renewable source for high latitudes and cloudy regions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commercial fleets serving several receiving sites",
+        "unlocks": "export of power between continents without cables."
+      }
+    ]
   }
 }

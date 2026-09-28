@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Lattice problem core",
+        "role": "the mathematical foundation: finding the shortest vector in a very high-dimensional lattice is believed hard even for quantum computers.",
+        "parts": [
+          "module-lattice structure",
+          "small error and secret distributions",
+          "dimension and modulus parameters"
+        ]
+      },
+      {
+        "name": "Key encapsulation (ML-KEM)",
+        "role": "lets two parties agree on a shared secret over a public channel.",
+        "parts": [
+          "key generation",
+          "encapsulation",
+          "decapsulation",
+          "implicit rejection of bad ciphertexts"
+        ]
+      },
+      {
+        "name": "Digital signatures (ML-DSA, Falcon)",
+        "role": "authenticates messages and certificates.",
+        "parts": [
+          "Fiat–Shamir-style challenge hashing",
+          "rejection sampling",
+          "compact key and signature encoding"
+        ]
+      },
+      {
+        "name": "Arithmetic engine",
+        "role": "makes lattice maths fast and safe enough to run at network speed.",
+        "parts": [
+          "number-theoretic transform for polynomial multiplication",
+          "modular reduction",
+          "constant-time comparison routines"
+        ]
+      },
+      {
+        "name": "Protocol integration layer",
+        "role": "drops the new algorithms into existing secure channels without breaking them.",
+        "parts": [
+          "hybrid key shares alongside classical ones",
+          "TLS 1.3, SSH and VPN negotiation",
+          "certificate and key formats"
+        ]
+      },
+      {
+        "name": "Randomness and key management",
+        "role": "bad randomness destroys any lattice scheme.",
+        "parts": [
+          "cryptographically secure random generator",
+          "hardware security modules",
+          "key storage, rotation and revocation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a hard problem",
+        "detail": "Designers base security on worst-case lattice problems such as Learning With Errors, so that breaking any key implies solving a very hard geometric problem in high dimension."
+      },
+      {
+        "title": "Choose parameters",
+        "detail": "Dimension, modulus and error width are tuned so that known attacks — lattice reduction, sieving — need implausible time, while keys and ciphertexts stay small enough for real networks."
+      },
+      {
+        "title": "Design the scheme",
+        "detail": "A public key is built from noisy linear equations; recovering the secret requires removing the noise. Signatures use a commitment, a hashed challenge and a response that only works if the signer knows a short lattice vector. Rejections throw away outputs that would leak the secret."
+      },
+      {
+        "title": "Standardise",
+        "detail": "Candidates were publicly broken, compared and refined over several years, then frozen in published standards so independent implementations interoperate."
+      },
+      {
+        "title": "Implement in software",
+        "detail": "Engineers write polynomial arithmetic, sampling and encoding in constant time, vectorised with SIMD instructions, avoiding branches or memory access patterns that vary with secret data."
+      },
+      {
+        "title": "Validate and attack",
+        "detail": "Known-answer tests, formal verification, fault-injection and timing attacks are run against implementations before they are trusted with real traffic."
+      },
+      {
+        "title": "Integrate and migrate",
+        "detail": "Libraries are linked into TLS, SSH and VPN stacks, often running the new algorithm alongside a classical one so that a break in either alone does not expose the session."
+      },
+      {
+        "title": "Roll out through updates",
+        "detail": "Because it is software, deployment happens through ordinary patches to browsers, servers, phones and hardware security modules — the hard part is inventorying everything that needs updating."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice hardness assumptions (LWE, SVP)",
+        "status": "exists",
+        "why": "decades of cryptanalysis support the belief that these problems resist quantum attack."
+      },
+      {
+        "tech": "Number-theoretic transform arithmetic",
+        "status": "exists",
+        "why": "turns slow polynomial multiplication into fast, cache-friendly modular arithmetic."
+      },
+      {
+        "tech": "Constant-time and side-channel-resistant coding",
+        "status": "partial",
+        "why": "lattice decoders branch on secret data more than classical schemes do, and timing flaws have been found in real implementations."
+      },
+      {
+        "tech": "Crypto-agile protocol stacks and PKI",
+        "status": "partial",
+        "why": "algorithms must be swappable without breaking certificates, hardware tokens and long-lived embedded devices."
+      },
+      {
+        "tech": "Quantum computers running Shor's algorithm",
+        "status": "missing",
+        "why": "the threat that motivates the migration; today's machines are far from breaking classical public-key crypto."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lattice standards published and hybrid key exchange already shipping in major browsers and messaging apps",
+        "unlocks": "protection against traffic recorded today and decrypted later."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid signatures and certificates across web PKI, VPNs and code signing",
+        "unlocks": "authentication that survives a future quantum break, not just confidentiality."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware security modules, smart cards and embedded devices gain lattice support",
+        "unlocks": "migration of the long-lived, hard-to-update equipment that banks and governments depend on."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "classical-only key exchange retired, with crypto-agility designed in from the start",
+        "unlocks": "systems that can swap algorithms again quickly if lattice schemes are ever weakened."
+      }
+    ]
+  }
+}

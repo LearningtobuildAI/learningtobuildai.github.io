@@ -38,5 +38,145 @@
         "def": "The series of steps involved in the process of acquiring and interpreting medical images. This includes image acquisition, storage, distribution, interpretation by radiologists, and reporting to clinicians for patient care decisions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Image ingestion",
+        "role": "gets every study from the scanner to the model without breaking the hospital's systems.",
+        "parts": [
+          "DICOM receiver and DICOMweb client",
+          "PACS and modality worklist interface",
+          "de-identification and protocol normalisation"
+        ]
+      },
+      {
+        "name": "Model core",
+        "role": "scores a scan for the target finding and outputs a probability plus a localisation.",
+        "parts": [
+          "convolutional or transformer network",
+          "segmentation head for lesion extent",
+          "calibration layer turning scores into usable probabilities"
+        ]
+      },
+      {
+        "name": "Ground truth and annotation",
+        "role": "produces the labels the model learns from and the reference it is judged against.",
+        "parts": [
+          "radiologist reads",
+          "pathology or follow-up outcome linkage",
+          "adjudication of disagreements"
+        ]
+      },
+      {
+        "name": "Inference and integration",
+        "role": "runs the model fast enough to matter and writes the result back into the clinical workflow.",
+        "parts": [
+          "on-premises GPU server or cloud inference",
+          "HL7 FHIR / worklist priority flag",
+          "notification to the stroke or cancer team"
+        ]
+      },
+      {
+        "name": "Quality and governance",
+        "role": "keeps the model honest after deployment.",
+        "parts": [
+          "drift and performance dashboards",
+          "audit logs per study",
+          "radiologist override capture",
+          "version control and change approval"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the clinical claim",
+        "detail": "Decide exactly what the tool detects, in which patients, and what action it should change — for example flagging a suspected large-vessel stroke for immediate review. A vague claim cannot be validated or regulated."
+      },
+      {
+        "title": "Assemble the training set",
+        "detail": "Collect studies with linked reports, and where possible biopsy or follow-up outcomes, then de-identify and normalise them across scanners, doses and protocols."
+      },
+      {
+        "title": "Label and adjudicate",
+        "detail": "Radiologists annotate each study; disagreements are resolved by a panel so the labels are reproducible rather than one person's opinion."
+      },
+      {
+        "title": "Train and tune",
+        "detail": "Train the network, hold out a test set, and tune the operating threshold to the sensitivity the clinical use demands — usually high sensitivity with acceptable false positives."
+      },
+      {
+        "title": "Validate internally, then externally",
+        "detail": "Test on unseen data from the same hospital, then on entirely separate sites with different scanners and populations, reporting performance by age, sex and ethnicity."
+      },
+      {
+        "title": "Run a reader study",
+        "detail": "Compare radiologists alone against radiologists assisted by the model to show the tool actually improves the reading, not just matches it."
+      },
+      {
+        "title": "Clear the regulator",
+        "detail": "Submit for clearance or approval with a locked model version, defined intended use and labelling, and a post-market surveillance plan."
+      },
+      {
+        "title": "Deploy in silent mode",
+        "detail": "Run the model live but hide its output, so real-world performance and integration can be measured without affecting patients."
+      },
+      {
+        "title": "Switch on and monitor",
+        "detail": "Activate priority flags, log every override, and watch for drift as scanners, protocols and patient mix change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large labelled medical imaging datasets",
+        "status": "partial",
+        "why": "labels are expensive, rare for some findings, and often skewed to a few hospitals."
+      },
+      {
+        "tech": "Cheap parallel compute",
+        "status": "exists",
+        "why": "training and low-latency inference both depend on GPUs."
+      },
+      {
+        "tech": "Imaging interoperability standards",
+        "status": "exists",
+        "why": "DICOM and HL7 FHIR let a model plug into existing scanners and worklists instead of new ones."
+      },
+      {
+        "tech": "Regulatory routes for clinical AI",
+        "status": "partial",
+        "why": "clearance pathways exist, but rules for continuously learning models are still maturing."
+      },
+      {
+        "tech": "Radiologist workflow acceptance",
+        "status": "partial",
+        "why": "if the flag arrives in a different screen than the report, it is ignored."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-finding triage for emergencies such as intracranial haemorrhage and suspected large-vessel stroke",
+        "unlocks": "faster treatment times where minutes change outcomes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-finding models and screening programmes, including mammography and chest CT",
+        "unlocks": "use where volume, not urgency, is the bottleneck."
+      },
+      {
+        "stage": "Next",
+        "milestone": "prospective randomised evidence that AI-assisted reading improves patient outcomes",
+        "unlocks": "reimbursement and routine adoption rather than pilot funding."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous reporting for narrow, low-risk tasks under radiologist oversight",
+        "unlocks": "relief for severe workforce shortages, with humans focused on hard cases."
+      }
+    ]
   }
 }

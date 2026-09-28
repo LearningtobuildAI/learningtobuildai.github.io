@@ -34,5 +34,158 @@
         "def": "The solid or liquid material left after organic waste has been broken down in an anaerobic digester, often used as a fertilizer."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Feedstock handling",
+        "role": "collects and prepares the organic material before digestion.",
+        "parts": [
+          "manure or slurry pumps",
+          "food-waste depackaging",
+          "maceration and mixing tank"
+        ]
+      },
+      {
+        "name": "Digester",
+        "role": "the sealed, oxygen-free tank where bacteria break down the material.",
+        "parts": [
+          "insulated concrete or steel tank",
+          "gas-tight roof or membrane",
+          "inlet and outlet"
+        ]
+      },
+      {
+        "name": "Heating and mixing",
+        "role": "keeps the culture near its preferred temperature and stops it stratifying.",
+        "parts": [
+          "heat exchanger or jacket",
+          "submersible or paddle mixers",
+          "temperature probes"
+        ]
+      },
+      {
+        "name": "Gas collection and cleaning",
+        "role": "captures the raw biogas and strips out water, hydrogen sulphide and particulates.",
+        "parts": [
+          "gas dome and pipework",
+          "condensate traps",
+          "desulphurisation (biological or iron-based)",
+          "flare for emergencies"
+        ]
+      },
+      {
+        "name": "Gas utilisation",
+        "role": "converts the methane into useful energy.",
+        "parts": [
+          "combined heat and power engine or turbine",
+          "boiler",
+          "or upgrading unit (water scrubber, membrane or amine) to biomethane"
+        ]
+      },
+      {
+        "name": "Digestate management",
+        "role": "handles the leftover material as fertiliser or soil conditioner.",
+        "parts": [
+          "separator (fibre and liquor)",
+          "storage lagoon or covered store"
+        ]
+      },
+      {
+        "name": "Control and safety",
+        "role": "keeps the biology stable and prevents gas leaks or explosions.",
+        "parts": [
+          "methane and H2S sensors",
+          "foam detection",
+          "SCADA control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect the waste",
+        "detail": "Manure, food waste and sewage sludge are trucked or pumped in; food waste is depackaged and shredded."
+      },
+      {
+        "title": "Pretreat and blend",
+        "detail": "The mix is homogenised and diluted so the bacteria can access it; a seed culture is present from previous batches."
+      },
+      {
+        "title": "Feed the digester",
+        "detail": "Material is loaded into the sealed tank, which is kept free of oxygen."
+      },
+      {
+        "title": "Keep it warm",
+        "detail": "Mesophilic digestion runs near body temperature; thermophilic digestion runs hotter and kills pathogens faster."
+      },
+      {
+        "title": "Hold it for weeks",
+        "detail": "Bacteria convert sugars, fats and proteins into methane and carbon dioxide over roughly 20–60 days, depending on feedstock and temperature."
+      },
+      {
+        "title": "Collect the raw biogas",
+        "detail": "Gas rises to the dome and is piped away, with condensate and hydrogen sulphide removed."
+      },
+      {
+        "title": "Use or upgrade the gas",
+        "detail": "It is burned in a CHP unit for electricity and heat, or cleaned to pipeline-quality biomethane for the grid or vehicles."
+      },
+      {
+        "title": "Store and spread the digestate",
+        "detail": "The nutrient-rich residue is separated and applied to land, displacing synthetic fertiliser."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sealed tank and gas-handling engineering",
+        "status": "exists",
+        "why": "anaerobic bacteria die in air, and methane must be contained for safety."
+      },
+      {
+        "tech": "Established digester microbiology",
+        "status": "exists",
+        "why": "stable communities of hydrolytic, acid-forming and methanogenic bacteria must be kept in balance."
+      },
+      {
+        "tech": "Gas engines and boilers",
+        "status": "exists",
+        "why": "they convert biogas into electricity and heat on site."
+      },
+      {
+        "tech": "Biomethane upgrading",
+        "status": "exists",
+        "why": "water scrubbing, membranes and amine scrubbing reach pipeline quality; the added cost is the main barrier."
+      },
+      {
+        "tech": "Grid injection standards and subsidies",
+        "status": "partial",
+        "why": "what happens to the gas depends heavily on local rules and tariffs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "on-farm digesters, landfill gas capture and sewage-sludge digestion",
+        "unlocks": "methane capture that would otherwise escape as a potent greenhouse gas."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wider biomethane upgrading and injection into gas grids",
+        "unlocks": "a drop-in fossil-gas replacement for heating and heavy transport."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger plants with better feedstock logistics and two-stage digestion",
+        "unlocks": "higher methane yields from harder-to-digest residues."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "capturing the biogenic CO2 separated during upgrading",
+        "unlocks": "net-negative emissions when paired with digestate-based fertiliser."
+      }
+    ]
   }
 }

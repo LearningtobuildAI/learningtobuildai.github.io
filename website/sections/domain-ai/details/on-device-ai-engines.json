@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Neural processing unit",
+        "role": "the accelerator that does the bulk of the arithmetic.",
+        "parts": [
+          "matrix-multiply (MAC) arrays",
+          "local SRAM scratchpad",
+          "direct-memory-access engines"
+        ]
+      },
+      {
+        "name": "Memory subsystem",
+        "role": "feeds weights and activations fast enough without draining the battery.",
+        "parts": [
+          "on-package LPDDR memory",
+          "on-die cache",
+          "compression and sparsity hardware"
+        ]
+      },
+      {
+        "name": "Model representation",
+        "role": "a compressed form of the network small enough to fit and fast enough to stream.",
+        "parts": [
+          "INT8/INT4/block-quantized weights",
+          "pruned or sparsely structured graphs",
+          "runtime container format"
+        ]
+      },
+      {
+        "name": "Runtime and compiler",
+        "role": "turns a trained model into a schedule of hardware kernels.",
+        "parts": [
+          "graph compiler",
+          "operator and kernel libraries",
+          "memory planner",
+          "dispatcher across NPU, GPU and CPU"
+        ]
+      },
+      {
+        "name": "System integration",
+        "role": "connects the accelerator to the operating system and manages power and privacy.",
+        "parts": [
+          "OS ML framework and driver",
+          "thermal and power governor",
+          "secure enclave for personal data"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the arithmetic units",
+        "detail": "Engineers choose which precisions to support in silicon — typically INT8 and INT4, sometimes FP16 — and lay out the multiply-accumulate arrays that dominate die area."
+      },
+      {
+        "title": "Write and verify the logic",
+        "detail": "The design is expressed in a hardware description language, simulated, and formally checked, because a silicon error cannot be patched after fabrication."
+      },
+      {
+        "title": "Fabricate and integrate the system-on-chip",
+        "detail": "The accelerator is built on a leading-edge process node and wired into the chip alongside CPU cores, GPU, cache and LPDDR memory controllers."
+      },
+      {
+        "title": "Build the kernel and compiler stack",
+        "detail": "Each supported operation gets a hand-tuned kernel; a compiler then fuses operations, tiles the work to fit on-chip memory, and schedules it."
+      },
+      {
+        "title": "Quantize a trained model",
+        "detail": "Weights and activations are reduced from 16-bit floats to 8- or 4-bit integers using a small calibration dataset, or by retraining with quantization simulated in the loop."
+      },
+      {
+        "title": "Package and convert",
+        "detail": "The quantized graph is converted into the runtime's format and partitioned: layers the accelerator supports stay on it, unsupported layers fall back to GPU or CPU."
+      },
+      {
+        "title": "Tune for power and heat",
+        "detail": "Developers sweep clock speeds, batch sizes and memory traffic against a thermal budget, since a phone or laptop cannot dissipate what a data-centre card can."
+      },
+      {
+        "title": "Ship and update over the air",
+        "detail": "Model files and drivers are delivered as updates, so a device learns new capabilities without new hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-precision quantization methods",
+        "status": "exists",
+        "why": "4-bit and 8-bit formats cut memory traffic by an order of magnitude, which is what makes local inference feasible."
+      },
+      {
+        "tech": "Efficient matrix-multiply accelerators",
+        "status": "exists",
+        "why": "dense multiply-accumulate arrays deliver the operations per watt that battery-powered devices need."
+      },
+      {
+        "tech": "Low-power high-bandwidth memory",
+        "status": "exists",
+        "why": "large models are memory-bandwidth-bound, so the win comes from moving bytes cheaply, not from raw compute."
+      },
+      {
+        "tech": "Mature ML compilers",
+        "status": "partial",
+        "why": "running one model across many different accelerators still needs per-vendor tuning, so portability is improving but incomplete."
+      },
+      {
+        "tech": "Small, capable model architectures",
+        "status": "partial",
+        "why": "useful quality at a few billion parameters is recent; smaller models still trail large cloud ones on hard tasks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "flagship phones and laptops running several-billion-parameter models locally at tens of tokens per second",
+        "unlocks": "offline assistants, live transcription and translation, and inference that never leaves the device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sub-4-bit weights, mixture-of-experts routing and speculative decoding on-device",
+        "unlocks": "larger effective models within the same memory and power envelope."
+      },
+      {
+        "stage": "Next",
+        "milestone": "local personalization — on-device fine-tuning and retrieval over a user's own data",
+        "unlocks": "assistants that adapt privately without uploading documents."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agentic workflows split between device and cloud, with the device deciding what may leave",
+        "unlocks": "always-available automation where sensitive work stays local and heavy reasoning is offloaded."
+      }
+    ]
+  }
+}

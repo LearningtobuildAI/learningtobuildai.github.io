@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Telescope and optics",
+        "role": "collects starlight with enough precision to track the host star during transit.",
+        "parts": [
+          "primary mirror",
+          "secondary mirror",
+          "pointing and guiding system",
+          "filters"
+        ]
+      },
+      {
+        "name": "Spectrograph",
+        "role": "splits the light into wavelengths so absorption features can be measured.",
+        "parts": [
+          "dispersive element (grating or prism)",
+          "detector arrays (CCD or infrared)",
+          "calibration lamps"
+        ]
+      },
+      {
+        "name": "Data acquisition and control",
+        "role": "records spectra at high cadence and keeps the instrument stable.",
+        "parts": [
+          "readout electronics",
+          "timing system",
+          "thermal control",
+          "data storage"
+        ]
+      },
+      {
+        "name": "Stellar and planetary models",
+        "role": "predicts the star's spectrum and the transit geometry to isolate the planet's signal.",
+        "parts": [
+          "stellar atmosphere models",
+          "limb-darkening models",
+          "transit ephemeris"
+        ]
+      },
+      {
+        "name": "Analysis pipeline",
+        "role": "turns raw spectra into a transmission spectrum and fits atmospheric models.",
+        "parts": [
+          "calibration routines",
+          "light-curve fitting",
+          "atmospheric retrieval codes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select a target",
+        "detail": "Choose a transiting exoplanet with a bright host star and a known orbit, preferably a hot Jupiter or a small planet around a small star."
+      },
+      {
+        "title": "Plan the observation",
+        "detail": "Schedule telescope time to cover the full transit plus out-of-transit baseline, often several hours."
+      },
+      {
+        "title": "Collect spectra",
+        "detail": "Point the telescope at the star and take repeated spectra at a cadence of seconds to minutes before, during, and after transit."
+      },
+      {
+        "title": "Calibrate the data",
+        "detail": "Correct for detector artifacts, cosmic rays, and instrument systematics using calibration frames and reference stars."
+      },
+      {
+        "title": "Extract the transmission spectrum",
+        "detail": "Measure the wavelength-dependent dip in starlight during transit and subtract the out-of-transit spectrum to isolate the planet's absorption."
+      },
+      {
+        "title": "Model the atmosphere",
+        "detail": "Fit the transmission spectrum with atmospheric models to infer molecules, temperature, and clouds."
+      },
+      {
+        "title": "Validate and publish",
+        "detail": "Check for stellar contamination and systematic errors, then report the detection and its significance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-based infrared telescopes",
+        "status": "exists",
+        "why": "Earth's atmosphere absorbs key molecules like water and carbon dioxide, so space is needed for a clean spectrum."
+      },
+      {
+        "tech": "High-precision spectrographs",
+        "status": "exists",
+        "why": "the transit signal is a tiny fraction of the star's light, requiring very stable and sensitive instruments."
+      },
+      {
+        "tech": "Atmospheric retrieval models",
+        "status": "exists",
+        "why": "they translate absorption features into physical properties like composition and temperature."
+      },
+      {
+        "tech": "Stellar activity correction",
+        "status": "partial",
+        "why": "starspots and faculae can mimic or hide planetary signals and are not always well modelled."
+      },
+      {
+        "tech": "Large apertures for small planets",
+        "status": "partial",
+        "why": "rocky planets around Sun-like stars give signals too faint for current telescopes except a few favourable cases."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "JWST and Hubble detect molecules in the atmospheres of hot Jupiters and some smaller planets.",
+        "unlocks": "a first inventory of exoplanet compositions and a check for hydrogen envelopes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Dedicated survey missions such as ESA's Ariel study a large sample of planets.",
+        "unlocks": "statistical understanding of how atmospheres vary with planet type and star."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Ground-based extremely large telescopes use high-resolution spectroscopy to probe biosignatures.",
+        "unlocks": "the ability to search for oxygen, methane, and other potential signs of life."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Direct imaging spectroscopy of Earth-like planets around Sun-like stars.",
+        "unlocks": "characterisation of truly habitable worlds without the need for a transit."
+      }
+    ]
+  }
+}

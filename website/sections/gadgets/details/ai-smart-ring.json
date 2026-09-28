@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensor stack",
+        "role": "Measures blood volume changes, motion and skin temperature from the finger.",
+        "parts": [
+          "green, red and infrared LEDs",
+          "photodiodes",
+          "accelerometer",
+          "thermistor"
+        ]
+      },
+      {
+        "name": "Optical and mechanical housing",
+        "role": "Holds the sensors against the skin and blocks ambient light.",
+        "parts": [
+          "titanium outer shell",
+          "inner optical barrier",
+          "sizing inserts or flexible inner moulding"
+        ]
+      },
+      {
+        "name": "Electronics and power",
+        "role": "Processes raw signals and runs the ring for several days per charge.",
+        "parts": [
+          "low-power microcontroller",
+          "analog front end",
+          "lithium-polymer battery",
+          "charging contacts"
+        ]
+      },
+      {
+        "name": "Embedded firmware",
+        "role": "Samples data, reduces noise and manages power without draining the battery.",
+        "parts": [
+          "signal-processing algorithms",
+          "Bluetooth Low Energy stack",
+          "power-management routines"
+        ]
+      },
+      {
+        "name": "Charging and sync",
+        "role": "Recharges the ring and transfers stored data to a phone.",
+        "parts": [
+          "charging dock or case",
+          "Bluetooth Low Energy radio"
+        ]
+      },
+      {
+        "name": "Companion app and cloud",
+        "role": "Turns raw readings into sleep stages, heart-rate trends and oxygen estimates.",
+        "parts": [
+          "mobile app",
+          "machine-learning models",
+          "cloud storage and processing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and simulate",
+        "detail": "Engineers model the ring in CAD, simulate how light travels through finger tissue, and check that the sensors sit firmly against the skin for different finger sizes."
+      },
+      {
+        "title": "Machine the shell",
+        "detail": "A titanium blank is machined or additively manufactured into a ring shape, then polished and coated so it is skin-safe and durable."
+      },
+      {
+        "title": "Assemble the sensor module",
+        "detail": "LEDs, photodiodes and optical barriers are placed on a small flexible printed circuit board and glued into the inner surface of the ring."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "The microcontroller, Bluetooth chip, analog front end and a tiny lithium-polymer battery are soldered onto the main circuit board."
+      },
+      {
+        "title": "Pot and seal",
+        "detail": "The electronics are encapsulated in resin or epoxy and the ring is sealed to withstand sweat, hand-washing and everyday knocks."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Each unit is tested against reference instruments so that heart rate, oxygen estimates and motion readings are consistent from ring to ring."
+      },
+      {
+        "title": "Flash firmware and pair",
+        "detail": "Production firmware is loaded, and the ring is paired with a test phone to confirm Bluetooth range and data transfer."
+      },
+      {
+        "title": "Final quality control and packaging",
+        "detail": "A last check of battery, seal and sensors is done before the ring, charger and sizing kit are packed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature photoplethysmography (PPG) sensors",
+        "status": "exists",
+        "why": "They shine light into the finger and measure reflected light to detect each pulse."
+      },
+      {
+        "tech": "Bluetooth Low Energy",
+        "status": "exists",
+        "why": "It lets the ring send data to a phone for days on a very small battery."
+      },
+      {
+        "tech": "Tiny lithium-polymer batteries",
+        "status": "exists",
+        "why": "They pack enough energy into a few cubic centimetres to run the sensors and radio."
+      },
+      {
+        "tech": "Machine-learning sleep staging",
+        "status": "partial",
+        "why": "Algorithms can estimate sleep stages from heart rate, motion and temperature, but they are not as accurate as a clinical sleep study."
+      },
+      {
+        "tech": "Regulatory-cleared arrhythmia detection",
+        "status": "partial",
+        "why": "Some wearables have cleared atrial fibrillation detection, but continuous medical-grade monitoring from a ring is not yet routine."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Consumer sleep, recovery and activity tracking from a screenless ring",
+        "unlocks": "Wearable health data that people actually keep on day and night."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Regulatory-cleared atrial fibrillation and blood-oxygen trend alerts",
+        "unlocks": "Early warning for heart-rhythm problems outside a clinic."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Cuffless blood-pressure trending",
+        "unlocks": "Daily cardiovascular monitoring without a bulky arm cuff."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Non-invasive continuous glucose and hydration sensing",
+        "unlocks": "Metabolic and hydration tracking from a finger ring, if the chemistry can be made reliable."
+      }
+    ]
+  }
+}

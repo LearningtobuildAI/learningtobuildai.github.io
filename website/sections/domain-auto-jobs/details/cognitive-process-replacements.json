@@ -1,0 +1,171 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "World model",
+        "role": "an explicit, updatable model of the organisation, its market and its competitors, used to predict what a decision would do.",
+        "parts": [
+          "digital twin of operations",
+          "causal/statistical model",
+          "scenario generator",
+          "market and competitor data feeds"
+        ]
+      },
+      {
+        "name": "Perception and data layer",
+        "role": "turns messy organisational signals into structured state the agent can reason over.",
+        "parts": [
+          "system connectors (ERP, CRM, finance)",
+          "document and email parsing",
+          "retrieval index",
+          "data quality checks"
+        ]
+      },
+      {
+        "name": "Reasoning core",
+        "role": "decomposes a strategic question into sub-problems and proposes candidate actions.",
+        "parts": [
+          "foundation model",
+          "planning/search algorithms",
+          "tool-calling interface",
+          "chain-of-thought and reflection prompts"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "stores past decisions and their outcomes so the agent does not repeat mistakes.",
+        "parts": [
+          "vector store of documents",
+          "knowledge graph of entities and relations",
+          "case history of decisions and results"
+        ]
+      },
+      {
+        "name": "Verification and self-correction loop",
+        "role": "replaces the executive's judgement with simulated consequence-checking and adversarial critique.",
+        "parts": [
+          "critic model",
+          "constraint and feasibility solver",
+          "scenario replay against history",
+          "uncertainty estimates"
+        ]
+      },
+      {
+        "name": "Action and tool layer",
+        "role": "lets proposals actually change systems, under permissions.",
+        "parts": [
+          "API integrations",
+          "workflow/RPA execution",
+          "approval gates",
+          "rollback mechanisms"
+        ]
+      },
+      {
+        "name": "Governance and audit",
+        "role": "keeps decisions traceable, reviewable and accountable to humans and regulators.",
+        "parts": [
+          "policy engine",
+          "immutable decision log",
+          "escalation rules",
+          "explanation output"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the organisation",
+        "detail": "Connect financial, operational and market systems into one consistent schema, so the agent sees the same numbers the executives do."
+      },
+      {
+        "title": "Build a simulatable model of the business",
+        "detail": "Fit a causal or simulation model that can be calibrated against past decisions and asked 'what would have happened if...'."
+      },
+      {
+        "title": "Assemble the reasoning core",
+        "detail": "Take a large foundation model, give it tools (search, calculation, database queries) and fine-tune it on the organisation's own decision records where they exist."
+      },
+      {
+        "title": "Add memory and retrieval",
+        "detail": "Index past memos, board papers and outcomes so proposals are grounded in the organisation's real history rather than generic advice."
+      },
+      {
+        "title": "Wire in self-correction",
+        "detail": "Have the agent generate several candidate plans, run each through the simulator and a critic model, and revise until constraints and forecasts hold."
+      },
+      {
+        "title": "Run in shadow mode",
+        "detail": "For months, let the agent produce recommendations that are never acted on, and compare them against what the humans actually chose and what happened."
+      },
+      {
+        "title": "Grant bounded authority",
+        "detail": "Give the agent write access only to reversible, well-modelled decisions — pricing rules, staffing rosters, inventory — with human approval above a threshold."
+      },
+      {
+        "title": "Monitor and govern",
+        "detail": "Track accuracy, drift in the model's assumptions and every action taken, with an escalation path when confidence is low."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-horizon planning in AI agents",
+        "status": "partial",
+        "why": "current agents handle tasks of minutes to hours; strategy spans quarters and feedback arrives too late for naive reinforcement learning."
+      },
+      {
+        "tech": "Organisational digital twins",
+        "status": "partial",
+        "why": "few firms have a coherent, live model of their own operations to simulate decisions against."
+      },
+      {
+        "tech": "Causal inference and counterfactual modelling",
+        "status": "partial",
+        "why": "correlation is not enough; the agent must estimate what a decision causes, not just what it correlates with."
+      },
+      {
+        "tech": "Evaluation of open-ended judgement",
+        "status": "missing",
+        "why": "unlike a game with a score, strategic quality may only be knowable years later, making it hard to train or verify."
+      },
+      {
+        "tech": "Accountability and liability frameworks",
+        "status": "missing",
+        "why": "someone must answer legally and ethically for a decision, and that attribution is unresolved for autonomous agents."
+      },
+      {
+        "tech": "Compute and data infrastructure",
+        "status": "exists",
+        "why": "training and serving large agentic models at enterprise scale is expensive but technically feasible today."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "copilots that summarise, forecast and draft analysis while a human decides",
+        "unlocks": "time savings and better-prepared human judgement, with no delegation of authority."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents executing bounded, reversible workflows with approval gates",
+        "unlocks": "measurable reliability data on which decisions can safely be delegated."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop optimisation in narrow operational domains such as pricing, scheduling and supply chain",
+        "unlocks": "fast feedback loops where outcomes are measurable within days."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agents advising on genuine strategy, with simulation-checked reasoning and full audit trails",
+        "unlocks": "faster strategy cycles — still with human executives accountable for the call."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "delegated authority for executive functions",
+        "unlocks": "possible only if verification, liability and evaluation problems are solved; otherwise it remains assistance, not replacement."
+      }
+    ]
+  }
+}

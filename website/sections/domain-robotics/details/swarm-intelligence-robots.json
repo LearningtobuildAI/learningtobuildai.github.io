@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Individual robot unit",
+        "role": "a cheap, simple agent that can move, sense and decide on its own.",
+        "parts": [
+          "drive or rotor system",
+          "microcontroller and memory",
+          "battery",
+          "rugged shell"
+        ]
+      },
+      {
+        "name": "Onboard sensing",
+        "role": "lets each robot know where it is and what is nearby, without central control.",
+        "parts": [
+          "camera or LiDAR",
+          "inertial measurement unit",
+          "ultra-wideband or GNSS receivers",
+          "proximity sensors"
+        ]
+      },
+      {
+        "name": "Local communication mesh",
+        "role": "robots exchange positions, task claims and warnings directly with neighbours.",
+        "parts": [
+          "radio transceivers",
+          "ad-hoc mesh protocol",
+          "time-synchronisation"
+        ]
+      },
+      {
+        "name": "Decentralised control layer",
+        "role": "local rules produce useful group behaviour — no robot has the whole picture.",
+        "parts": [
+          "task-allocation algorithm",
+          "consensus and flocking rules",
+          "collision avoidance",
+          "stigmergic markers or shared map"
+        ]
+      },
+      {
+        "name": "Operator interface",
+        "role": "a human sets the goal and monitors, but does not steer each robot.",
+        "parts": [
+          "mission-planning dashboard",
+          "live fleet map",
+          "abort and recall controls"
+        ]
+      },
+      {
+        "name": "Energy and docking infrastructure",
+        "role": "keeps hundreds of small robots running without manual battery swaps.",
+        "parts": [
+          "docking or charging pads",
+          "battery management",
+          "base station"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and its grain",
+        "detail": "Decide what the swarm must achieve and what each individual robot can sense and do, because the group can only be as capable as its simplest member."
+      },
+      {
+        "title": "Design the single robot",
+        "detail": "Build one cheap, robust unit — small motors, basic sensors, a radio and a battery — since swarms buy redundancy by number, not by quality."
+      },
+      {
+        "title": "Write the local rules",
+        "detail": "Specify the handful of neighbour-relative behaviours (move apart, align, move toward a goal, claim a task) that should add up to the desired group result."
+      },
+      {
+        "title": "Simulate at scale",
+        "detail": "Run thousands of virtual agents in a physics simulator to find the parameter settings that avoid deadlock, oscillation and pile-ups before any hardware is built."
+      },
+      {
+        "title": "Test a small fleet indoors",
+        "detail": "Five to twenty real robots on a flat floor with motion-capture or ultra-wideband tracking to check that simulation and reality agree."
+      },
+      {
+        "title": "Add the mesh network",
+        "detail": "Tune radio range, message rate and time synchronisation so the fleet keeps communicating as it spreads out and robots leave and rejoin."
+      },
+      {
+        "title": "Trial outdoors",
+        "detail": "Move to a field or disaster-training site with GNSS-denied zones, wind, uneven ground and a safety operator holding a kill switch."
+      },
+      {
+        "title": "Scale and automate logistics",
+        "detail": "Add docking stations, fleet-health monitoring and spare-robot swapping so the swarm can run for days rather than minutes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost microcontrollers, motors and sensors",
+        "status": "exists",
+        "why": "the economics only work if losing individual robots is cheap."
+      },
+      {
+        "tech": "Wireless mesh networking",
+        "status": "exists",
+        "why": "robots must coordinate without a single base station that can fail or run out of range."
+      },
+      {
+        "tech": "Relative localisation without GNSS",
+        "status": "partial",
+        "why": "indoors, underground and under canopy, robots need ultra-wideband or vision to know where they are."
+      },
+      {
+        "tech": "Distributed task-allocation algorithms",
+        "status": "partial",
+        "why": "auction and consensus methods work in the lab but scale poorly when hundreds of robots and tight deadlines meet."
+      },
+      {
+        "tech": "Battery energy density and safe fast charging",
+        "status": "exists",
+        "why": "small robots carry little energy, so mission length is set by power, not by intelligence."
+      },
+      {
+        "tech": "Rules for flying many autonomous aircraft at once",
+        "status": "partial",
+        "why": "beyond visual line of sight and over people, approvals are still granted case by case."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "warehouse fleets of hundreds of robots moving goods, and synchronised drone light shows",
+        "unlocks": "proven coordination and traffic control at scale on constrained tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cooperative inspection and agricultural swarms working fields and structures",
+        "unlocks": "commercial value in mapping, spraying and monitoring large areas."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous search-and-rescue teams — ground, aerial and water robots sharing a map",
+        "unlocks": "faster coverage of disaster sites too dangerous or too large for people."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-sustaining swarms for environmental monitoring, wildfire response and construction",
+        "unlocks": "persistent coverage of the physical world without a human per robot."
+      }
+    ]
+  }
+}

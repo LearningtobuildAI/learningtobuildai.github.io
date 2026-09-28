@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Airframe and propulsion",
+        "role": "keeps the drone in the air and carries whatever payload it needs.",
+        "parts": [
+          "multirotor or hybrid VTOL frame",
+          "electric motors and propellers",
+          "battery pack or hybrid generator"
+        ]
+      },
+      {
+        "name": "Perception and navigation",
+        "role": "lets the drone know where it is and avoid obstacles.",
+        "parts": [
+          "GNSS/RTK receiver",
+          "IMU and barometer",
+          "stereo cameras and LiDAR",
+          "onboard compute"
+        ]
+      },
+      {
+        "name": "Autonomy software",
+        "role": "plans paths and carries out tasks without a human pilot.",
+        "parts": [
+          "mission planner",
+          "obstacle-avoidance algorithms",
+          "fleet coordination logic"
+        ]
+      },
+      {
+        "name": "Payload and tooling",
+        "role": "what the drone actually does — a camera, a delivery winch, or a robotic arm.",
+        "parts": [
+          "gimbal camera or LiDAR scanner",
+          "delivery winch or grapple",
+          "robotic manipulator (research)"
+        ]
+      },
+      {
+        "name": "Communication and ground control",
+        "role": "links the drone to operators and site systems.",
+        "parts": [
+          "radio datalink",
+          "ground control station",
+          "cloud fleet dashboard"
+        ]
+      },
+      {
+        "name": "Site data and digital twin",
+        "role": "turns drone data into useful construction information.",
+        "parts": [
+          "photogrammetry and point-cloud processing",
+          "BIM integration",
+          "progress-tracking analytics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task",
+        "detail": "Choose whether the drone will survey, inspect, deliver or manipulate. Each task needs a different payload and level of autonomy."
+      },
+      {
+        "title": "Design the airframe",
+        "detail": "Size rotors and battery for the required flight time and payload. Heavy lift needs large propellers and high-capacity batteries, which limits endurance."
+      },
+      {
+        "title": "Integrate perception sensors",
+        "detail": "Mount and calibrate GNSS/RTK, cameras, LiDAR and inertial sensors so the drone can build a picture of its surroundings."
+      },
+      {
+        "title": "Develop the autonomy stack",
+        "detail": "Write and test path planning, obstacle avoidance and task execution in simulation before flying real hardware."
+      },
+      {
+        "title": "Build the ground control and data pipeline",
+        "detail": "Set up radio links, a ground station and software that turns drone imagery into 3D models and progress reports."
+      },
+      {
+        "title": "Test in a controlled site",
+        "detail": "Fly repeated missions in an enclosed area or test site, gradually removing human oversight and measuring reliability."
+      },
+      {
+        "title": "Trial on a live construction site",
+        "detail": "Work alongside workers with safety pilots and geofencing, starting with simple tasks like surveying and inspection."
+      },
+      {
+        "title": "Certify and scale",
+        "detail": "Obtain regulatory approvals for beyond-visual-line-of-sight and autonomous operation, then deploy a fleet with maintenance and recharging logistics."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Precise positioning without GNSS (indoor and under structures)",
+        "status": "partial",
+        "why": "construction sites are cluttered and often lack reliable satellite signals; visual-inertial odometry is improving but not yet robust enough for all tasks."
+      },
+      {
+        "tech": "Heavy-lift electric propulsion",
+        "status": "partial",
+        "why": "current battery-powered drones carry only a few kilograms for 20–40 minutes; most construction materials are far heavier."
+      },
+      {
+        "tech": "Manipulation and grasping in unstructured environments",
+        "status": "missing",
+        "why": "robotic arms on drones are lab demonstrations; they cannot yet perform construction tasks reliably or safely."
+      },
+      {
+        "tech": "Regulatory framework for autonomous BVLOS flights",
+        "status": "partial",
+        "why": "most countries require a human pilot in line of sight; rules for autonomous fleets are still emerging."
+      },
+      {
+        "tech": "Digital site models and BIM",
+        "status": "exists",
+        "why": "drones need a digital model of the site to plan missions and compare as-built progress."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "drones used for aerial surveying, photogrammetry and visual inspections",
+        "unlocks": "faster site mapping and regular progress records."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous inspection flights with machine-learning defect detection",
+        "unlocks": "routine structural checks without a pilot on site."
+      },
+      {
+        "stage": "Next",
+        "milestone": "drone delivery of small tools and materials on site",
+        "unlocks": "reduced walking and waiting for small items."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "drones with manipulators performing simple repetitive tasks such as painting or sealing",
+        "unlocks": "partial automation of finishing work."
+      },
+      {
+        "stage": "Far",
+        "milestone": "fleets of autonomous drones coordinating logistics and construction tasks",
+        "unlocks": "round-the-clock site operations with fewer workers in hazardous areas."
+      }
+    ]
+  }
+}

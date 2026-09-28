@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "DID method",
+        "role": "defines one flavour of DID and the rules for creating, resolving, updating and deactivating it.",
+        "parts": [
+          "method name (e.g. did:web, did:ion)",
+          "lifecycle operations",
+          "method specification"
+        ]
+      },
+      {
+        "name": "DID document",
+        "role": "the machine-readable record a verifier fetches: public keys, verification methods and service endpoints.",
+        "parts": [
+          "verification method entries",
+          "authentication and assertion keys",
+          "service endpoints"
+        ]
+      },
+      {
+        "name": "Verifiable data registry",
+        "role": "the shared source of truth that anchors DIDs, replacing a central authority.",
+        "parts": [
+          "distributed ledger or web domain",
+          "anchor/batch mechanism",
+          "method-specific resolver driver"
+        ]
+      },
+      {
+        "name": "Wallet or agent",
+        "role": "holds the controller's private keys and signs on their behalf.",
+        "parts": [
+          "secure key storage (secure enclave or HSM)",
+          "key rotation and recovery",
+          "credential store"
+        ]
+      },
+      {
+        "name": "Credential layer",
+        "role": "the actual statements being proven — a degree, a licence, an employment claim.",
+        "parts": [
+          "issuer signing",
+          "verifiable credential and presentation",
+          "status/revocation list"
+        ]
+      },
+      {
+        "name": "Resolution layer",
+        "role": "turns any DID string into its current document, whatever method it uses.",
+        "parts": [
+          "universal resolver",
+          "resolver drivers",
+          "caching and validation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick or define a DID method",
+        "detail": "Choose an existing method such as did:web or did:ion, or write a specification naming the registry, the DID syntax and the operations allowed on it."
+      },
+      {
+        "title": "Generate keys in the wallet",
+        "detail": "The controller's device or hardware module creates a key pair; the private half never leaves secure storage."
+      },
+      {
+        "title": "Compose the DID document",
+        "detail": "Public keys, verification methods and service endpoints are assembled into the document the method expects."
+      },
+      {
+        "title": "Anchor it in the registry",
+        "detail": "The document is published — to a ledger, a batch anchor, or a web domain's well-known path — establishing a root of trust."
+      },
+      {
+        "title": "Resolve the DID",
+        "detail": "A resolver reads the DID string, routes to the right method driver, fetches and validates the current document."
+      },
+      {
+        "title": "Issue a verifiable credential",
+        "detail": "An issuer signs a set of claims with its own DID key and hands the credential to the holder's wallet."
+      },
+      {
+        "title": "Present and verify",
+        "detail": "The holder builds a presentation, optionally disclosing only some fields; the verifier resolves the issuer's DID and checks the signature and status."
+      },
+      {
+        "title": "Rotate, recover and revoke",
+        "detail": "Keys are rotated or the DID deactivated, and issued credentials are checked against a revocation list so stale ones fail."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Public-key cryptography",
+        "status": "exists",
+        "why": "every DID is just a key pair plus a way to publish the public half; Edwards-curve and elliptic-curve signatures do the work."
+      },
+      {
+        "tech": "Tamper-evident registries",
+        "status": "partial",
+        "why": "a DID needs somewhere to anchor that no single party can silently rewrite — a ledger, or a domain the controller genuinely controls."
+      },
+      {
+        "tech": "Secure key storage",
+        "status": "exists",
+        "why": "self-sovereignty is worthless if the private key can be copied off the device."
+      },
+      {
+        "tech": "Standardised data models and resolution",
+        "status": "exists",
+        "why": "W3C DID Core 1.0 became a Recommendation in July 2022, alongside the verifiable-credentials data model, so independent systems can interoperate."
+      },
+      {
+        "tech": "Selective disclosure and revocation",
+        "status": "partial",
+        "why": "holders need to prove one attribute without revealing the rest, and verifiers need to know a credential has not been withdrawn."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "W3C-standardised DIDs and verifiable credentials in enterprise and wallet products",
+        "unlocks": "credentials that a verifier can check cryptographically instead of phoning the issuer."
+      },
+      {
+        "stage": "Next",
+        "milestone": "national and regional digital identity wallets built on these standards, such as the EU Digital Identity Wallet programme under eIDAS 2.0",
+        "unlocks": "government-issued identity that citizens hold themselves and reuse across borders."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-method interoperability, so a wallet holding any DID can present to any verifier",
+        "unlocks": "networks where issuers and verifiers never need a shared platform."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "DIDs built into browsers and operating systems as an ordinary login",
+        "unlocks": "sign-in without passwords or per-site accounts, with the user holding the keys."
+      }
+    ]
+  }
+}

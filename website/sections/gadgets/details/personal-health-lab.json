@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Optical sensor",
+        "role": "shines light into the skin and reads the faint Raman-scattered signal that carries chemical fingerprints.",
+        "parts": [
+          "near-infrared laser",
+          "miniature spectrometer",
+          "fibre-optic probe",
+          "optical filters"
+        ]
+      },
+      {
+        "name": "Interstitial fluid access",
+        "role": "brings the fluid between cells — which mirrors blood for many analytes — to the sensor without a needle.",
+        "parts": [
+          "hollow or solid microneedle array",
+          "reverse-iontophoresis electrodes",
+          "microfluidic channels",
+          "suction or pressure elements"
+        ]
+      },
+      {
+        "name": "Signal processing and calibration",
+        "role": "turns overlapping raw spectra into concentration values for each substance.",
+        "parts": [
+          "low-power microcontroller",
+          "machine-learning models",
+          "reference spectra database",
+          "temperature and motion compensation"
+        ]
+      },
+      {
+        "name": "Wearable electronics and power",
+        "role": "runs the sensor, stores results, and sends them to a phone.",
+        "parts": [
+          "rechargeable battery",
+          "wireless chip",
+          "charging contacts",
+          "flexible circuit board"
+        ]
+      },
+      {
+        "name": "User interface",
+        "role": "shows readings, trends and alerts to the wearer.",
+        "parts": [
+          "smartphone app",
+          "small display (optional)",
+          "alert system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optical path",
+        "detail": "Choose laser wavelengths that penetrate skin deeply enough while keeping the Raman signal strong, and design a spectrometer small enough to wear but sensitive enough to detect trace analytes."
+      },
+      {
+        "title": "Create a non-invasive sampling method",
+        "detail": "Develop an array of hollow microneedles that reach interstitial fluid without hitting nerves, or use a gentle electric current to draw glucose and other small molecules to the skin surface."
+      },
+      {
+        "title": "Build calibration models",
+        "detail": "Collect thousands of paired measurements — Raman spectra or fluid samples alongside standard blood tests — to train algorithms that separate the signal of one substance from the background of skin, sweat and fat."
+      },
+      {
+        "title": "Integrate into a wearable",
+        "detail": "Combine the optical sensor, fluidic interface, electronics and battery into a device worn on the wrist or upper arm, keeping it comfortable and stable during movement."
+      },
+      {
+        "title": "Validate in clinical studies",
+        "detail": "Test against laboratory blood draws in large, diverse groups, covering different skin tones, ages and health conditions, to prove accuracy and reliability."
+      },
+      {
+        "title": "Obtain regulatory approval",
+        "detail": "Demonstrate safety and clinical accuracy to medical regulators; this requires showing that the device matches blood tests within acceptable error margins."
+      },
+      {
+        "title": "Scale manufacturing",
+        "detail": "Set up production lines for the microneedle arrays, optical components and sterile assembly, then launch with ongoing post-market monitoring."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniaturised Raman spectroscopy",
+        "status": "partial",
+        "why": "handheld Raman analysers exist for materials and chemicals, but adapting them to sense trace analytes inside living skin is still a research challenge."
+      },
+      {
+        "tech": "Non-invasive glucose monitoring",
+        "status": "missing",
+        "why": "no approved device yet measures blood glucose reliably without piercing the skin; this is the hardest single-analyte case and a gateway to a broader health lab."
+      },
+      {
+        "tech": "Interstitial fluid sampling without a needle",
+        "status": "partial",
+        "why": "current continuous glucose monitors use a filament inserted under the skin; truly non-invasive extraction is still in labs."
+      },
+      {
+        "tech": "Machine learning for spectral analysis",
+        "status": "exists",
+        "why": "advanced algorithms can pull weak chemical signals out of noisy spectra, but they need large, diverse training sets that are still being gathered."
+      },
+      {
+        "tech": "Biocompatible microneedles",
+        "status": "partial",
+        "why": "dissolving and coated microneedle patches are used for vaccination and some diagnostics, but continuous fluid sampling through them is not yet commercial."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory studies measuring a single analyte such as glucose through skin in controlled conditions",
+        "unlocks": "proof that the physics can work outside a test tube."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinical trials of a wearable that tracks one analyte against blood draws",
+        "unlocks": "regulatory clearance for a single-analyte device, likely glucose first."
+      },
+      {
+        "stage": "Next",
+        "milestone": "expansion to multiple analytes — hormones, electrolytes, lactate — on the same platform",
+        "unlocks": "a true personal health lab that can spot trends across several body systems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration with AI health coaching and remote clinical oversight",
+        "unlocks": "early detection and management of metabolic and hormonal conditions from home."
+      }
+    ]
+  }
+}

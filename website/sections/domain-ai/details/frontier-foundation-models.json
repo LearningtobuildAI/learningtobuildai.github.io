@@ -33,5 +33,175 @@
         "def": "The ability of AI models to interact with and utilize various software tools, such as code editors or development platforms."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "turns raw web pages, books, code, images and audio into clean training tokens.",
+        "parts": [
+          "crawlers and licensed sources",
+          "filters for quality, toxicity and duplicates",
+          "tokeniser",
+          "shuffled shards stored for streaming"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "the neural network itself — almost always a decoder-only transformer, sometimes with mixture-of-experts layers so only part of the network runs per token.",
+        "parts": [
+          "attention and feed-forward blocks",
+          "normalisation layers",
+          "expert routing",
+          "embedding and output layers"
+        ]
+      },
+      {
+        "name": "Training cluster",
+        "role": "the physical machine: many thousands of accelerators wired together.",
+        "parts": [
+          "GPU or TPU accelerators with high-bandwidth memory",
+          "high-speed interconnect (InfiniBand-class)",
+          "parallel storage",
+          "power and liquid-cooling plant"
+        ]
+      },
+      {
+        "name": "Distributed training stack",
+        "role": "splits one model across thousands of chips and keeps them in step.",
+        "parts": [
+          "data, tensor and pipeline parallelism",
+          "mixed-precision arithmetic",
+          "gradient checkpointing",
+          "fault-tolerant checkpoint/restart"
+        ]
+      },
+      {
+        "name": "Post-training and alignment",
+        "role": "turns a raw next-token predictor into something that follows instructions and uses tools.",
+        "parts": [
+          "supervised fine-tuning on curated dialogues",
+          "preference optimisation (reinforcement learning from human feedback or direct preference methods)",
+          "tool and code execution environments",
+          "safety training data"
+        ]
+      },
+      {
+        "name": "Inference serving",
+        "role": "runs the finished model cheaply enough to be useful.",
+        "parts": [
+          "quantisation to lower precision",
+          "continuous batching",
+          "KV-cache management",
+          "speculative decoding",
+          "tool-call routing and sandboxing"
+        ]
+      },
+      {
+        "name": "Evaluation and red-teaming",
+        "role": "measures capability and hunts for dangerous behaviour before and after release.",
+        "parts": [
+          "academic and internal benchmarks",
+          "human preference studies",
+          "adversarial safety testing",
+          "monitoring in production"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set capability and safety targets",
+        "detail": "Decide what the model must do — reasoning, coding, multimodality, tool use — and the data mix that could teach it."
+      },
+      {
+        "title": "Curate and tokenise the corpus",
+        "detail": "Trillions of tokens are filtered, deduplicated, deduplicated again against evaluation sets, and converted to token IDs in fixed-length shards."
+      },
+      {
+        "title": "Build or rent the cluster",
+        "detail": "Thousands of accelerators are installed with high-bandwidth interconnect, storage and cooling; this is often the longest lead item."
+      },
+      {
+        "title": "Prototype at small scale",
+        "detail": "Small runs test architecture changes and confirm the scaling laws that predict how loss falls with more compute, parameters and data."
+      },
+      {
+        "title": "Pre-train the base model",
+        "detail": "The large run proceeds for weeks to months across the cluster; checkpoints are written regularly so hardware failures do not lose the run."
+      },
+      {
+        "title": "Post-train for instruction following",
+        "detail": "Supervised fine-tuning on curated examples, then preference optimisation against human or model-generated rankings."
+      },
+      {
+        "title": "Train with tools and verifiers",
+        "detail": "Reinforcement learning inside sandboxes — search, code interpreters, calculators — rewards answers that a checker can confirm."
+      },
+      {
+        "title": "Red-team and evaluate",
+        "detail": "Adversarial testing probes for harmful, deceptive or unsafe behaviour; results feed another round of tuning."
+      },
+      {
+        "title": "Compress and deploy",
+        "detail": "Quantisation, distillation and serving infrastructure cut cost per query; monitoring and guardrails run alongside the released model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture and attention",
+        "status": "exists",
+        "why": "the substrate every frontier model is built on."
+      },
+      {
+        "tech": "Accelerators with high-bandwidth memory",
+        "status": "exists",
+        "why": "training throughput is limited as much by memory bandwidth as by raw arithmetic."
+      },
+      {
+        "tech": "High-speed interconnect and distributed training software",
+        "status": "exists",
+        "why": "one model is split across thousands of chips that must exchange gradients constantly."
+      },
+      {
+        "tech": "Internet-scale curated data",
+        "status": "exists",
+        "why": "quality and diversity of data now matter more than raw quantity; rights and provenance remain contested."
+      },
+      {
+        "tech": "Reinforcement learning and preference optimisation",
+        "status": "partial",
+        "why": "works well, but is sample-hungry and can be gamed by the model."
+      },
+      {
+        "tech": "Reliable evaluation of frontier capabilities",
+        "status": "missing",
+        "why": "no accepted method exists to certify what a model can or will do in deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multimodal models with long context windows and native tool calling",
+        "unlocks": "assistants that read documents, write and run code, and drive other software."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sparse mixture-of-experts and cheaper inference",
+        "unlocks": "frontier-class capability at falling cost per token, pushing it into everyday products."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic systems that run long multi-step tasks with verification",
+        "unlocks": "automation of whole workflows rather than single answers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continual learning and durable memory across sessions",
+        "unlocks": "models that improve from use — bundled with unsolved problems in safety and control."
+      }
+    ]
   }
 }

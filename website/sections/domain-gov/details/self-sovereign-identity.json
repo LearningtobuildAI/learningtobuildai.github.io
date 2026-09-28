@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Decentralized Identifier (DID) layer",
+        "role": "gives each user and organisation a unique, self-owned identifier that resolves to cryptographic public keys.",
+        "parts": [
+          "DID method (e.g., did:key, did:web, did:ion)",
+          "DID document",
+          "DID resolver"
+        ]
+      },
+      {
+        "name": "Verifiable Credential (VC) layer",
+        "role": "digitally signed claims about a subject that can be checked without contacting the issuer.",
+        "parts": [
+          "credential schema",
+          "issuer software",
+          "holder software",
+          "verifier software"
+        ]
+      },
+      {
+        "name": "Wallet",
+        "role": "user-controlled app that stores DIDs, credentials and private keys, and presents proofs.",
+        "parts": [
+          "secure key storage",
+          "credential database",
+          "presentation protocol"
+        ]
+      },
+      {
+        "name": "Trust registry / ledger",
+        "role": "provides a tamper-evident record for DIDs, schemas and revocation lists.",
+        "parts": [
+          "distributed ledger",
+          "smart contracts",
+          "consensus mechanism"
+        ]
+      },
+      {
+        "name": "Governance framework",
+        "role": "defines the rules, schemas and legal recognition that make credentials trustworthy.",
+        "parts": [
+          "governance authority",
+          "schema registry",
+          "revocation registry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define governance and schemas",
+        "detail": "Stakeholders agree on credential types, data fields, privacy rules and who can issue what."
+      },
+      {
+        "title": "Choose DID method and ledger",
+        "detail": "Select how DIDs are created and resolved, and whether a public or private ledger anchors trust."
+      },
+      {
+        "title": "Develop issuer software",
+        "detail": "Build the service that creates and signs verifiable credentials using the issuer’s private key."
+      },
+      {
+        "title": "Develop wallet",
+        "detail": "Create the user app that generates keys, requests credentials and stores them securely on a phone or computer."
+      },
+      {
+        "title": "Develop verifier software",
+        "detail": "Build the component that requests a proof, checks the signature and validates the issuer’s trust status."
+      },
+      {
+        "title": "Issue credentials",
+        "detail": "An issuer signs a credential and sends it to the holder’s wallet, often after an identity check."
+      },
+      {
+        "title": "Verify and present",
+        "detail": "The holder selects which credentials to share; the verifier cryptographically checks them without calling the issuer."
+      },
+      {
+        "title": "Handle revocation and rotation",
+        "detail": "Publish revocation lists or status endpoints so expired or compromised credentials can be rejected."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Public key cryptography and digital signatures",
+        "status": "exists",
+        "why": "credentials are only trustworthy if they are signed and can be verified offline."
+      },
+      {
+        "tech": "Distributed ledger technology",
+        "status": "exists",
+        "why": "provides a decentralised, tamper-evident anchor for DIDs and schemas without a central authority."
+      },
+      {
+        "tech": "W3C standards for DIDs and Verifiable Credentials",
+        "status": "exists",
+        "why": "ensure different wallets and issuers can interoperate."
+      },
+      {
+        "tech": "Zero-knowledge proofs",
+        "status": "partial",
+        "why": "enable selective disclosure (e.g., proving age without revealing birthdate), but are not yet widespread."
+      },
+      {
+        "tech": "Privacy-preserving revocation",
+        "status": "partial",
+        "why": "revoking credentials at scale without tracking users remains a research and engineering challenge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "government and enterprise pilots (e.g., EU Digital Identity Wallet, travel credentials)",
+        "unlocks": "real-world testing of wallets, issuers and verifiers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interoperable wallets across borders and sectors",
+        "unlocks": "credentials issued in one country recognised in another."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with national digital identity schemes",
+        "unlocks": "citizens using SSI alongside or instead of traditional logins for public services."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mainstream adoption for civic services, replacing passwords and physical documents",
+        "unlocks": "user-controlled identity that reduces data breaches and simplifies access to services."
+      }
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Actuation system",
+        "role": "produces the high torque and precise motion needed to stand, walk and lift.",
+        "parts": [
+          "brushless electric motors",
+          "harmonic or cycloidal reduction gears",
+          "joint torque sensors",
+          "motor drivers"
+        ]
+      },
+      {
+        "name": "Proprioceptive sensing",
+        "role": "gives the robot an internal sense of joint angles, forces and body orientation.",
+        "parts": [
+          "joint encoders",
+          "force-torque sensors at wrists and ankles",
+          "inertial measurement units",
+          "strain gauges"
+        ]
+      },
+      {
+        "name": "Tactile skin",
+        "role": "detects contact, pressure and slip on hands, fingers and body surfaces.",
+        "parts": [
+          "capacitive or piezoresistive sensor arrays",
+          "flexible substrates",
+          "signal conditioning electronics"
+        ]
+      },
+      {
+        "name": "Control and compute",
+        "role": "runs balance, gait and manipulation algorithms in a hard real-time loop.",
+        "parts": [
+          "onboard computer",
+          "real-time operating system",
+          "whole-body controller",
+          "safety monitor"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "supplies energy to actuators and electronics for a useful working period.",
+        "parts": [
+          "lithium-ion battery pack",
+          "power management board",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Structure and end-effectors",
+        "role": "provides a lightweight frame and dexterous hands that can grasp varied objects.",
+        "parts": [
+          "carbon-fibre or aluminium links",
+          "multi-fingered hands",
+          "compliant joints"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the kinematic design",
+        "detail": "Choose the number of joints, limb lengths and payload so the robot can reach and lift what the job requires."
+      },
+      {
+        "title": "Build joint modules",
+        "detail": "Integrate motors, gearboxes and torque sensors into compact actuator units that fit inside each limb."
+      },
+      {
+        "title": "Assemble the skeleton",
+        "detail": "Connect the joint modules with lightweight links to form a humanoid torso, arms and legs."
+      },
+      {
+        "title": "Integrate sensors",
+        "detail": "Mount IMUs on the torso and limbs, fit joint encoders, and cover hands and body with tactile skin."
+      },
+      {
+        "title": "Write the control software",
+        "detail": "Develop whole-body control that uses proprioceptive feedback to keep balance, walk and manipulate objects."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Identify sensor offsets, actuator friction and dynamics, then tune controllers so the robot moves smoothly."
+      },
+      {
+        "title": "Test in simulation and on hardware",
+        "detail": "Start with standing and balancing, progress to walking, then to reaching and grasping."
+      },
+      {
+        "title": "Validate in pilot tasks",
+        "detail": "Run the robot in a real workspace, such as moving boxes or tending a machine, and measure reliability."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density electric actuators",
+        "status": "exists",
+        "why": "human-scale strength is needed without making the robot too heavy to balance."
+      },
+      {
+        "tech": "Real-time control computing",
+        "status": "exists",
+        "why": "balance and contact tasks require control loops running at around 1 kHz."
+      },
+      {
+        "tech": "Tactile sensor arrays",
+        "status": "partial",
+        "why": "durable, high-resolution skin that covers curved, moving surfaces is still maturing."
+      },
+      {
+        "tech": "Battery energy density",
+        "status": "partial",
+        "why": "current lithium-ion packs give only a limited runtime under heavy load."
+      },
+      {
+        "tech": "Simulation and reinforcement learning",
+        "status": "partial",
+        "why": "training control policies in simulation speeds up development but transfer to the real world remains imperfect."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "humanoids performing structured tasks in logistics and manufacturing pilots",
+        "unlocks": "evidence that balance and basic manipulation are reliable enough for paid work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dexterous manipulation of varied objects without custom fixtures",
+        "unlocks": "tasks such as kitting, machine tending and simple assembly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robust autonomy in unstructured human spaces",
+        "unlocks": "general labor in factories, construction sites and homes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mass production and cost reduction",
+        "unlocks": "widespread deployment as a general-purpose workforce."
+      }
+    ]
+  }
+}

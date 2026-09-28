@@ -33,5 +33,161 @@
         "def": "A machine learning technique where the model is trained on labeled data, meaning each training example includes both input and output values."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception",
+        "role": "turns raw sensor data into a usable picture of the world.",
+        "parts": [
+          "cameras",
+          "LiDAR",
+          "radar",
+          "IMU",
+          "sensor-fusion software"
+        ]
+      },
+      {
+        "name": "State estimation and world model",
+        "role": "tracks where the agent and everything around it is, and predicts what happens next.",
+        "parts": [
+          "SLAM mapping",
+          "object tracking",
+          "trajectory prediction"
+        ]
+      },
+      {
+        "name": "Planning and decision-making",
+        "role": "chooses a route and a sequence of safe actions.",
+        "parts": [
+          "route planner",
+          "behaviour planner",
+          "motion planner"
+        ]
+      },
+      {
+        "name": "Control",
+        "role": "executes the planned actions through motors, steering or other actuators.",
+        "parts": [
+          "model-predictive controllers",
+          "low-level control loops"
+        ]
+      },
+      {
+        "name": "Learning and training pipeline",
+        "role": "improves the agent from data and simulation.",
+        "parts": [
+          "data collection fleet",
+          "simulation environment",
+          "reinforcement learning",
+          "model training"
+        ]
+      },
+      {
+        "name": "Safety and verification",
+        "role": "keeps the agent within safe limits and detects failures.",
+        "parts": [
+          "runtime monitors",
+          "redundant sensors",
+          "fail-safe fallback",
+          "formal methods"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the operational design domain",
+        "detail": "Specify exactly where and when the agent must work — weather, road types, speed limits, or warehouse layout — because autonomy is only as good as its boundaries."
+      },
+      {
+        "title": "Build a data and simulation pipeline",
+        "detail": "Collect sensor data from test vehicles or robots, and build a high-fidelity simulator that can generate rare and dangerous scenarios on demand."
+      },
+      {
+        "title": "Train perception and prediction models",
+        "detail": "Use labelled real data and simulated data to teach the agent to recognise objects, lane markings or obstacles, and to forecast how other actors will move."
+      },
+      {
+        "title": "Develop the planning and control stack",
+        "detail": "Write software that turns a goal into a safe trajectory, then into steering, throttle, brake or joint commands that hardware can follow."
+      },
+      {
+        "title": "Integrate on a test platform",
+        "detail": "Mount sensors, computers and actuators on a vehicle or robot, and make all subsystems exchange data in real time without delays."
+      },
+      {
+        "title": "Validate in simulation and on a closed course",
+        "detail": "Run millions of simulated kilometres and controlled track tests, hunting for edge cases that could cause a failure."
+      },
+      {
+        "title": "Deploy with safety monitors",
+        "detail": "Start with a human safety driver or remote operator, and add runtime monitors that can override or stop the agent if it leaves safe limits."
+      },
+      {
+        "title": "Field testing and limited operation",
+        "detail": "Operate in geofenced areas, gather data on real-world performance, and gradually reduce human supervision as reliability is proven."
+      },
+      {
+        "title": "Continuous improvement",
+        "detail": "Push over-the-air updates, retrain models on newly collected data, and expand the operating domain step by step."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep learning and reinforcement learning",
+        "status": "exists",
+        "why": "these are the core algorithms for perception, prediction and decision-making."
+      },
+      {
+        "tech": "Robust, affordable sensors (LiDAR, cameras, radar)",
+        "status": "exists",
+        "why": "the agent needs reliable eyes and ears in rain, glare, darkness and dust."
+      },
+      {
+        "tech": "Real-time embedded compute",
+        "status": "exists",
+        "why": "inference must run in milliseconds on board, not in a distant data centre."
+      },
+      {
+        "tech": "High-fidelity simulation",
+        "status": "partial",
+        "why": "simulators speed up training enormously, but still struggle to reproduce the full complexity of the real world."
+      },
+      {
+        "tech": "Formal verification and safety standards",
+        "status": "missing",
+        "why": "we lack proven methods to guarantee that a learned system will never cause harm in untested situations."
+      },
+      {
+        "tech": "Regulatory frameworks for autonomy",
+        "status": "partial",
+        "why": "rules for liability and for when an agent may operate without a human are still being written."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "drivers' assistance and warehouse robots work in structured settings",
+        "unlocks": "safer, more efficient operations under close human oversight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "geofenced robotaxis and delivery robots operate without a safety driver in some cities",
+        "unlocks": "commercial autonomous mobility in selected, well-mapped areas."
+      },
+      {
+        "stage": "Next",
+        "milestone": "general-purpose robots learn new tasks from simulation and a few demonstrations",
+        "unlocks": "flexible automation in warehouses, farms, labs and homes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous agents coordinate safely in open, unpredictable environments",
+        "unlocks": "large-scale safety and productivity gains, provided verification and regulation catch up."
+      }
+    ]
   }
 }

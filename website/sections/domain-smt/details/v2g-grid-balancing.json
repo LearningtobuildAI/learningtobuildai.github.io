@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "converts grid AC to DC to charge the battery, and DC back to AC to export power.",
+        "parts": [
+          "AC/DC converter",
+          "DC/DC converter",
+          "isolation transformer",
+          "cooling",
+          "controller"
+        ]
+      },
+      {
+        "name": "Vehicle battery and management system",
+        "role": "stores energy and must accept controlled discharge without excessive degradation.",
+        "parts": [
+          "lithium-ion pack",
+          "battery management system (BMS)",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Communication and control link",
+        "role": "lets the vehicle, charger, aggregator and grid operator agree on power flows.",
+        "parts": [
+          "ISO 15118-20 (V2G) or CHAdeMO protocol",
+          "OCPP for charger-to-backend",
+          "smart meter",
+          "secure gateway"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "groups many parked EVs into a single controllable resource large enough to matter to the grid.",
+        "parts": [
+          "cloud dispatch software",
+          "forecasting and optimisation",
+          "cybersecurity"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "connects the charger safely to the local distribution network.",
+        "parts": [
+          "switchgear",
+          "protection relays",
+          "islanding detection",
+          "metering"
+        ]
+      },
+      {
+        "name": "Market and utility integration",
+        "role": "turns aggregated capacity into paid grid services.",
+        "parts": [
+          "demand-response signals",
+          "frequency and voltage support contracts",
+          "settlement systems"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Agree on standards",
+        "detail": "Adopt a common V2G communication standard, such as ISO 15118-20, so any compliant car can talk to any compliant charger."
+      },
+      {
+        "title": "Design the bidirectional charger",
+        "detail": "Build a power converter that can both rectify and invert, with isolation and safety interlocks for back-feeding the grid."
+      },
+      {
+        "title": "Integrate with the vehicle",
+        "detail": "Work with automakers so the battery management system permits controlled discharge and warranties cover the extra cycling."
+      },
+      {
+        "title": "Install chargers and connections",
+        "detail": "Fit bidirectional wallboxes or fleet depot chargers, each with its own protection and metering."
+      },
+      {
+        "title": "Deploy the aggregation layer",
+        "detail": "Run software that pools hundreds or thousands of vehicles, forecasts their availability and bids their capacity into grid markets."
+      },
+      {
+        "title": "Register with the grid operator",
+        "detail": "Meet local connection rules, demonstrate anti-islanding and protection, and sign up to frequency-response or demand-response programmes."
+      },
+      {
+        "title": "Pilot and scale",
+        "detail": "Start with fleets and committed drivers, measure battery wear, then widen to homes and workplaces."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging hardware",
+        "status": "partial",
+        "why": "available in some models and chargers, but not yet standard equipment."
+      },
+      {
+        "tech": "V2G communication standards",
+        "status": "partial",
+        "why": "ISO 15118-20 and CHAdeMO exist, but support across cars and chargers is uneven."
+      },
+      {
+        "tech": "Battery and warranty acceptance",
+        "status": "partial",
+        "why": "automakers must allow deep discharge and cover the resulting degradation."
+      },
+      {
+        "tech": "Aggregation and market rules",
+        "status": "partial",
+        "why": "grid operators need rules and payment mechanisms for millions of small storage devices."
+      },
+      {
+        "tech": "Smart metering and grid visibility",
+        "status": "exists",
+        "why": "distribution networks must see and manage power flows at the edge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "fleet and home V2G pilots with a few thousand vehicles",
+        "unlocks": "real data on battery wear, driver behaviour and grid value."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised V2G in mass-market cars and chargers",
+        "unlocks": "any compatible vehicle can earn money while parked."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial aggregation at scale",
+        "unlocks": "EV fleets act as flexible storage that helps balance renewables."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "V2G as a default grid resource",
+        "unlocks": "cheaper grid operation, less peaking plant and stronger renewable integration."
+      }
+    ]
+  }
+}

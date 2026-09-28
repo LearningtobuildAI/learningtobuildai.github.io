@@ -34,5 +34,153 @@
         "def": "Structures designed to support loads without collapsing or failing, including buildings, bridges, and other infrastructure elements."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Design-space model",
+        "role": "defines the envelope a part may occupy and where loads and supports are applied.",
+        "parts": [
+          "CAD or mesh geometry",
+          "load and boundary conditions",
+          "material properties"
+        ]
+      },
+      {
+        "name": "Simulation solver",
+        "role": "calculates stresses and deflections across the structure.",
+        "parts": [
+          "finite element mesh",
+          "linear and nonlinear solvers",
+          "multi-physics coupling for heat or vibration"
+        ]
+      },
+      {
+        "name": "Optimization engine",
+        "role": "iteratively redistributes material to meet the objective while respecting constraints.",
+        "parts": [
+          "density or level-set variables",
+          "sensitivity analysis",
+          "gradient or evolutionary search"
+        ]
+      },
+      {
+        "name": "Manufacturing-constraint module",
+        "role": "keeps results makeable rather than just mathematically optimal.",
+        "parts": [
+          "minimum thickness and draft limits",
+          "overhang and self-support rules",
+          "milling-tool access checks"
+        ]
+      },
+      {
+        "name": "Geometry reconstruction",
+        "role": "turns a fuzzy field of material densities into a clean, editable solid model.",
+        "parts": [
+          "surface extraction and smoothing",
+          "NURBS or B-rep conversion",
+          "lattice and rib generation"
+        ]
+      },
+      {
+        "name": "Verification and data loop",
+        "role": "proves the final part is safe and feeds measured behaviour back to the model.",
+        "parts": [
+          "high-fidelity re-analysis",
+          "physical load testing",
+          "as-built scan comparison"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the design space",
+        "detail": "Engineers define the maximum envelope the part may fill, in metres, and mark the faces that bolt to other components or carry loads."
+      },
+      {
+        "title": "Apply loads and boundary conditions",
+        "detail": "Real service loads — forces in newtons or kilonewtons, moments, thermal gradients, vibration spectra — are applied to the mesh along with fixed supports."
+      },
+      {
+        "title": "Set the objective and constraints",
+        "detail": "Typical goals are minimum mass for a given stiffness, or minimum compliance under a stress limit. Volume fraction, safety factor and allowable deflection are fixed here."
+      },
+      {
+        "title": "Run the optimizer",
+        "detail": "The solver repeatedly analyses the structure and moves material from low-stress regions to high-stress ones, usually by penalising intermediate densities (the SIMP method) or by evolving a boundary, and converges after tens to hundreds of iterations."
+      },
+      {
+        "title": "Add manufacturing rules",
+        "detail": "Constraints are imposed — no features thinner than the printer can make, no unsupported overhangs, or draft angles if the part will be cast — and the optimization is repeated."
+      },
+      {
+        "title": "Reconstruct a usable surface",
+        "detail": "The voxel result is smoothed and converted into solid geometry, and internal lattices or ribs are inserted where the optimizer left sparse regions."
+      },
+      {
+        "title": "Re-analyse the finished shape",
+        "detail": "The reconstructed model is remeshed and run through a full finite element check, because smoothing and lattice insertion change stresses."
+      },
+      {
+        "title": "Manufacture",
+        "detail": "Metal or polymer additive manufacturing is the usual route because the organic shapes are hard to machine; conventional casting or milling is used where constraints allowed simpler results."
+      },
+      {
+        "title": "Test and iterate",
+        "detail": "Prototypes are load-tested to failure, and measured stiffness and failure locations are compared with predictions before the design is released."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Finite element analysis",
+        "status": "exists",
+        "why": "the optimizer needs fast, reliable stress results for thousands of design variants."
+      },
+      {
+        "tech": "Topology optimization algorithms",
+        "status": "exists",
+        "why": "the mathematical core — density-based and level-set methods — has been developed since the late 1980s."
+      },
+      {
+        "tech": "Affordable parallel computing",
+        "status": "exists",
+        "why": "each iteration is a full structural solve; cloud or GPU clusters make hundreds of runs practical."
+      },
+      {
+        "tech": "Additive manufacturing",
+        "status": "exists",
+        "why": "only layer-by-layer building can realise many of the resulting organic geometries, especially in metal."
+      },
+      {
+        "tech": "Certification and qualification pathways",
+        "status": "partial",
+        "why": "regulators still expect conventional design rules and testing evidence for safety-critical parts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single components — brackets, housings, aerospace and medical parts — routinely optimized",
+        "unlocks": "lighter parts and faster design cycles where the load case is well understood."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-physics, multi-material optimization including thermal and vibration behaviour",
+        "unlocks": "parts for engines, heat exchangers and high-cycle-fatigue applications."
+      },
+      {
+        "stage": "Next",
+        "milestone": "generative tools tied to building codes and automated compliance checking",
+        "unlocks": "use in bridges, buildings and infrastructure, not just machine parts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "whole-assembly and whole-structure generation linked to digital twins and measured in-service data",
+        "unlocks": "structures that are optimized over their life, and designs validated by monitoring rather than prototypes alone."
+      }
+    ]
   }
 }

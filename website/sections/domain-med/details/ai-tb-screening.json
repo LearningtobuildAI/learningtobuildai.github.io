@@ -34,5 +34,148 @@
         "def": "Healthcare environments with limited access to medical supplies, equipment, and trained personnel."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Portable X-ray unit",
+        "role": "takes a diagnostic-quality chest image wherever the patient is.",
+        "parts": [
+          "X-ray tube generator",
+          "digital flat-panel detector (~140–200 µm pixel pitch, 12–16 bit)",
+          "battery and stand"
+        ]
+      },
+      {
+        "name": "Image acquisition software",
+        "role": "captures the exposure, checks positioning and writes a DICOM file.",
+        "parts": [
+          "detector driver",
+          "DICOM writer",
+          "quality warnings for rotation or under-exposure"
+        ]
+      },
+      {
+        "name": "Inference model",
+        "role": "outputs a continuous abnormality score for tuberculosis patterns.",
+        "parts": [
+          "convolutional or transformer neural network",
+          "pre-processing and normalisation",
+          "score calibration layer"
+        ]
+      },
+      {
+        "name": "Decision layer",
+        "role": "turns the score into a triage answer using a fixed threshold.",
+        "parts": [
+          "operating threshold set for a target sensitivity",
+          "triage output for the clinic"
+        ]
+      },
+      {
+        "name": "Training data pipeline",
+        "role": "provides the annotated radiographs the model learns from.",
+        "parts": [
+          "multi-site image archive",
+          "labels from a microbiological reference standard",
+          "de-identification and quality control"
+        ]
+      },
+      {
+        "name": "Deployment and monitoring",
+        "role": "runs the software and keeps it performing.",
+        "parts": [
+          "edge device or cloud service",
+          "integration with the clinic's records",
+          "performance and drift monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect labelled images",
+        "detail": "Tens of thousands of chest X-rays are gathered from clinics alongside a reference result — usually a molecular sputum test for TB — so each image has a trustworthy label."
+      },
+      {
+        "title": "Curate and de-identify",
+        "detail": "Names and dates are stripped, duplicates removed, and images that are rotated, cropped or badly exposed are weeded out, since poor images teach poor habits."
+      },
+      {
+        "title": "Train the model",
+        "detail": "The network is trained to map an image to a TB-probability score, with augmentation for differing machines and exposure settings, and extra weight given to the rare positive cases."
+      },
+      {
+        "title": "Validate externally",
+        "detail": "The model is tested on images from sites and X-ray devices it never saw, then compared against panels of human radiologists reading the same films."
+      },
+      {
+        "title": "Calibrate the threshold",
+        "detail": "A cut-off score is chosen to hit a target sensitivity, typically high, so that few cases are missed at the cost of more false positives sent on for testing."
+      },
+      {
+        "title": "Evaluate programmatically",
+        "detail": "Cost, workflow and patient outcomes are studied in real clinics, and the evidence is reviewed by WHO and national programmes."
+      },
+      {
+        "title": "Package and integrate",
+        "detail": "The model ships as software on a laptop or cloud service that talks to the X-ray machine over DICOM and returns a score in seconds."
+      },
+      {
+        "title": "Clear and monitor",
+        "detail": "The product obtains regulatory clearance and then is watched in service for drops in accuracy as equipment, populations or disease patterns change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Portable digital radiography",
+        "status": "exists",
+        "why": "film cannot be read by software; digital detectors made images machine-readable in the field."
+      },
+      {
+        "tech": "Microbiologically confirmed training labels",
+        "status": "partial",
+        "why": "the model can only learn from images tied to a verified TB result, and such paired data are scarce in the very settings that need the tool."
+      },
+      {
+        "tech": "Affordable compute for training and inference",
+        "status": "exists",
+        "why": "graphics processors made large image models practical and cheap enough to run locally."
+      },
+      {
+        "tech": "Deep learning for medical images",
+        "status": "exists",
+        "why": "proved that networks can match or beat expert readers on defined image tasks."
+      },
+      {
+        "tech": "Regulatory route for software as a medical device",
+        "status": "partial",
+        "why": "clearance and post-market surveillance frameworks exist but differ by country and are still catching up with adaptive software."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "WHO guidance recommending computer-aided detection as a triage test for TB in people aged 15 and over",
+        "unlocks": "screening where no radiologist is available, with positives sent for molecular testing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combined portable X-ray plus on-device AI units, and wider use as a replacement for a second human reader",
+        "unlocks": "faster, cheaper screening campaigns in high-burden countries."
+      },
+      {
+        "stage": "Next",
+        "milestone": "prospective trials linking AI screening to treatment outcomes, with managed model updates",
+        "unlocks": "confidence that the tool improves health, not just test accuracy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-finding models reading lungs, heart and bones from one image",
+        "unlocks": "broader value from the same X-ray equipment."
+      }
+    ]
   }
 }

@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Collecting aperture",
+        "role": "a large dish or array that gathers faint radio waves; bigger dishes see weaker transmitters further away.",
+        "parts": [
+          "primary dish or dipole array",
+          "feed horn",
+          "low-noise amplifier",
+          "cryogenic receiver"
+        ]
+      },
+      {
+        "name": "Wideband digitising spectrometer",
+        "role": "splits gigahertz of bandwidth into hundreds of millions of very fine frequency channels.",
+        "parts": [
+          "analogue-to-digital converters",
+          "FPGA or GPU channeliser",
+          "polyphase filterbank"
+        ]
+      },
+      {
+        "name": "Search software",
+        "role": "finds signals that look artificial — extremely narrow in frequency and drifting slowly as the transmitter's planet moves.",
+        "parts": [
+          "Doppler-drift search",
+          "coincidence and on/off-source comparison",
+          "candidate ranking"
+        ]
+      },
+      {
+        "name": "Interference rejection",
+        "role": "Earth's own transmitters are millions of times louder than any plausible beacon, so most effort goes into removing them.",
+        "parts": [
+          "reference antenna or nearby telescope",
+          "RFI database and flagging",
+          "radio-quiet zone siting"
+        ]
+      },
+      {
+        "name": "Optical and near-infrared channel",
+        "role": "looks for brief laser pulses using fast photometers and spectrographs.",
+        "parts": [
+          "high-speed camera or photometer",
+          "spectrograph",
+          "pulse-detection software"
+        ]
+      },
+      {
+        "name": "Archive and compute",
+        "role": "stores raw voltages and reduced spectra so future algorithms can re-examine old observations.",
+        "parts": [
+          "petabyte storage arrays",
+          "GPU clusters",
+          "public data archives"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick targets",
+        "detail": "Surveys choose nearby stars, known exoplanet hosts, the galactic centre and plane, or entire other galaxies, trading depth against sky coverage."
+      },
+      {
+        "title": "Instrument the telescope",
+        "detail": "Wideband receivers and fast digitisers are fitted, often so the search runs alongside conventional astronomy without stealing observing time."
+      },
+      {
+        "title": "Observe and channelise",
+        "detail": "The telescope tracks a target while the spectrometer slices the band into very narrow channels, typically hertz-wide."
+      },
+      {
+        "title": "Excise interference",
+        "detail": "Signals seen when pointing away from the target, or by a second telescope, are flagged as human-made and removed."
+      },
+      {
+        "title": "Search for artificial structure",
+        "detail": "Software looks for narrowband peaks that shift in frequency at a steady rate, as a beacon on a rotating, orbiting planet would."
+      },
+      {
+        "title": "Follow up candidates",
+        "detail": "Any hit is re-observed on the same telescope and then on a different one to check it repeats from the same direction."
+      },
+      {
+        "title": "Verify or reject",
+        "detail": "A signal must appear in independent instruments, survive interference tests and be announced openly; a 2019 candidate toward Proxima Centauri was traced to interference from equipment on Earth."
+      },
+      {
+        "title": "Archive and re-mine",
+        "detail": "Data are kept so improved algorithms can search the same sky again."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Radio astronomy with wideband digital receivers",
+        "status": "exists",
+        "why": "the survey is only as good as the telescopes and spectrometers behind it."
+      },
+      {
+        "tech": "Cheap petabyte-scale storage and GPU compute",
+        "status": "exists",
+        "why": "searches generate data far faster than humans can inspect them."
+      },
+      {
+        "tech": "Radio interference mitigation",
+        "status": "partial",
+        "why": "terrestrial and satellite transmissions increasingly drown weak cosmic signals."
+      },
+      {
+        "tech": "High-speed optical photometry",
+        "status": "exists",
+        "why": "a nanosecond laser pulse needs detectors fast enough to catch it."
+      },
+      {
+        "tech": "Exoplanet atmospheric spectroscopy",
+        "status": "partial",
+        "why": "industrial gases such as nitrogen dioxide or CFCs could reveal technology without any deliberate signal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "large dedicated surveys such as Breakthrough Listen on dishes including Green Bank, MeerKAT, FAST and Parkes, plus optical searches",
+        "unlocks": "orders of magnitude more stars and frequencies examined than early searches."
+      },
+      {
+        "stage": "Next",
+        "milestone": "next-generation arrays such as the Square Kilometre Array",
+        "unlocks": "huge sensitivity and sky coverage, making commensal technosignature search routine."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coordinated multi-wavelength follow-up and atmospheric technosignature spectroscopy",
+        "unlocks": "detection routes that do not depend on anyone deliberately broadcasting at us."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a verified detection confirmed by independent observatories",
+        "unlocks": "the single most consequential result in the history of science — or, at minimum, far tighter limits on how alone we are."
+      }
+    ]
+  }
+}

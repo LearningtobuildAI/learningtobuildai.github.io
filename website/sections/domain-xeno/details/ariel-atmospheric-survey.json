@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Telescope",
+        "role": "collects infrared light from both the planet and its host star with an off-axis design that keeps the star's light out of the science beam.",
+        "parts": [
+          "elliptical primary mirror about 1.1 by 0.7 m",
+          "secondary mirror",
+          "all-aluminium optical structure"
+        ]
+      },
+      {
+        "name": "Spectrometer",
+        "role": "splits the combined starlight-plus-planet light into a spectrum across the mid-infrared.",
+        "parts": [
+          "prism or grating disperser",
+          "slit and optics",
+          "infrared detector array"
+        ]
+      },
+      {
+        "name": "Fine guidance and photometers",
+        "role": "holds the star precisely on the detector and records its visible and near-infrared brightness as a reference.",
+        "parts": [
+          "visible photometer channel",
+          "near-infrared photometer channel",
+          "guide camera"
+        ]
+      },
+      {
+        "name": "Payload module and thermal control",
+        "role": "keeps the optics and detectors cold without consuming cryogen so their own glow does not swamp the signal.",
+        "parts": [
+          "sunshield",
+          "radiating panels and V-groove shields",
+          "structural bench at about 50 K"
+        ]
+      },
+      {
+        "name": "Spacecraft bus",
+        "role": "carries the payload, points it, powers it and sends data home.",
+        "parts": [
+          "solar array",
+          "attitude control thrusters and reaction wheels",
+          "X-band communications"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "turns raw detector counts into atmospheric abundances.",
+        "parts": [
+          "target list and observing scheduler",
+          "data pipeline",
+          "atmospheric retrieval models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the science requirements",
+        "detail": "Engineers fix the wavelength range, spectral resolution and photometric stability needed to detect a planet's atmosphere, since these set every later design choice."
+      },
+      {
+        "title": "Fabricate the mirrors",
+        "detail": "An off-axis mirror is machined, diamond-turned and polished, then coated, because the off-axis shape avoids the central obstruction that would scatter starlight."
+      },
+      {
+        "title": "Build the telescope structure",
+        "detail": "Mirrors and mounts are assembled on a bench made of the same aluminium alloy, so the whole assembly shrinks uniformly when cooled and stays in focus."
+      },
+      {
+        "title": "Integrate the instruments",
+        "detail": "The spectrometer, detectors and photometer channels are mounted on the bench and aligned under cleanroom conditions to micron tolerances."
+      },
+      {
+        "title": "Wrap it in thermal shielding",
+        "detail": "Sunshield and radiating panels are fitted so that the payload can radiate its own heat to deep space and settle near 50 K passively."
+      },
+      {
+        "title": "Mate payload and spacecraft",
+        "detail": "The payload module is bolted onto the bus carrying solar arrays, thrusters, avionics and communications."
+      },
+      {
+        "title": "Test as a whole",
+        "detail": "The assembled observatory goes through vibration, acoustic and thermal-vacuum testing that mimics launch and the cold of space."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "After reaching the Sun–Earth L2 point, the observatory cools down, the optics are focused, and calibration stars are used to verify stability before the survey begins."
+      },
+      {
+        "title": "Run the survey",
+        "detail": "Each target is observed repeatedly through transits, eclipses and full orbits, building up a spectrum from the tiny difference between starlight alone and starlight plus planet."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Passive cryogenic cooling in space",
+        "status": "exists",
+        "why": "infrared telescopes such as Herschel and JWST showed that shielding and radiators alone can hold optics cold enough to observe faint infrared signals."
+      },
+      {
+        "tech": "Megapixel-class infrared detector arrays",
+        "status": "exists",
+        "why": "the spectrometer needs detectors sensitive to single photons across the mid-infrared while staying stable over long exposures."
+      },
+      {
+        "tech": "Transit and eclipse spectroscopy",
+        "status": "partial",
+        "why": "Hubble and JWST have measured individual exoplanet atmospheres, proving the method but not yet at population scale."
+      },
+      {
+        "tech": "A large catalogue of well-characterised exoplanets",
+        "status": "exists",
+        "why": "the mission needs hundreds of planets with known orbits, sizes and host-star properties to schedule and interpret observations."
+      },
+      {
+        "tech": "Precise long-duration pointing at L2",
+        "status": "exists",
+        "why": "the signal is a fraction of a percent of the starlight, so the star must stay on the same detector pixels for hours."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assembling and testing the observatory while the target list is refined",
+        "unlocks": "a defined survey sample and a launch-ready instrument."
+      },
+      {
+        "stage": "Next",
+        "milestone": "launch to L2 and in-orbit commissioning",
+        "unlocks": "confirmation that the passively cooled optics reach their design sensitivity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a survey of roughly a thousand transiting planets over a few years",
+        "unlocks": "comparisons between planet types rather than one-off measurements."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "population results linking atmospheric composition to how planets formed and migrated",
+        "unlocks": "statistical constraints that feed the next generation of missions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "spectroscopy of smaller, cooler, potentially habitable planets",
+        "unlocks": "requires larger apertures, active cooling or starlight suppression beyond current designs."
+      }
+    ]
+  }
+}

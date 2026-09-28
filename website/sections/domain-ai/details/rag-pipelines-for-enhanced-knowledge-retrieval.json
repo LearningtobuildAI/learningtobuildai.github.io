@@ -29,5 +29,163 @@
         "def": "A method where a retrieval model first finds relevant context from a knowledge base, which is then used as input to a generative model to produce coherent responses."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and parsing",
+        "role": "turns source documents into clean text plus metadata.",
+        "parts": [
+          "connectors to file stores, wikis and databases",
+          "format parsers for PDF, HTML and office files",
+          "text extractors for tables and images"
+        ]
+      },
+      {
+        "name": "Chunking",
+        "role": "splits documents into passages small enough to embed and retrieve.",
+        "parts": [
+          "splitter by headings, sentences or token count",
+          "overlap handling",
+          "metadata tags (source, date, section)"
+        ]
+      },
+      {
+        "name": "Embedding model",
+        "role": "converts each chunk into a vector that encodes meaning.",
+        "parts": [
+          "text encoder",
+          "normalisation",
+          "batch inference service"
+        ]
+      },
+      {
+        "name": "Index and retriever",
+        "role": "finds the chunks closest to a query, fast.",
+        "parts": [
+          "vector index using approximate nearest-neighbour search",
+          "keyword index (e.g. BM25) for exact terms",
+          "hybrid score fusion",
+          "metadata filters"
+        ]
+      },
+      {
+        "name": "Reranker",
+        "role": "re-scores the shortlist so the most relevant passages reach the model.",
+        "parts": [
+          "cross-encoder model",
+          "top-k selection"
+        ]
+      },
+      {
+        "name": "Generator and prompt assembly",
+        "role": "writes the answer using only the retrieved context, with citations.",
+        "parts": [
+          "large language model",
+          "prompt template",
+          "context budget manager",
+          "citation linker"
+        ]
+      },
+      {
+        "name": "Evaluation and monitoring",
+        "role": "measures whether retrieval and answers are actually correct, and catches drift.",
+        "parts": [
+          "labelled question-answer sets",
+          "groundedness and relevance scorers",
+          "logging and feedback capture"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect the corpus",
+        "detail": "Decide which documents the system may use, pull them through connectors, and record permissions so users only retrieve what they are allowed to see."
+      },
+      {
+        "title": "Parse and clean",
+        "detail": "Extract text, strip boilerplate such as navigation and headers, and preserve tables and headings as structured metadata."
+      },
+      {
+        "title": "Chunk the text",
+        "detail": "Split into passages of a few hundred tokens along natural boundaries, with slight overlap so no sentence is cut in half."
+      },
+      {
+        "title": "Embed and index",
+        "detail": "Run each chunk through the embedding model and write the vectors, plus the raw text and metadata, into a vector index; build the keyword index alongside."
+      },
+      {
+        "title": "Retrieve",
+        "detail": "At query time, embed the question, run vector and keyword searches in parallel, and merge the two ranked lists."
+      },
+      {
+        "title": "Rerank and filter",
+        "detail": "Score the shortlisted passages with a cross-encoder, drop weak or stale ones, and enforce access rules."
+      },
+      {
+        "title": "Assemble the prompt",
+        "detail": "Fit the best passages into the model's context window, numbered and labelled, with an instruction to answer only from them."
+      },
+      {
+        "title": "Generate with citations",
+        "detail": "The model writes the answer and points each claim back to a passage; if the context is insufficient it should say so instead of guessing."
+      },
+      {
+        "title": "Evaluate and iterate",
+        "detail": "Run a fixed question set after every change, measuring retrieval hit rate and answer faithfulness, and log real queries to find gaps."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Pretrained transformer language models",
+        "status": "exists",
+        "why": "the generator must follow instructions and synthesise fluent text from supplied context."
+      },
+      {
+        "tech": "Text embedding models",
+        "status": "exists",
+        "why": "retrieval depends on mapping questions and passages into the same semantic vector space."
+      },
+      {
+        "tech": "Approximate nearest-neighbour vector indexes",
+        "status": "exists",
+        "why": "exact comparison against millions of vectors would be far too slow."
+      },
+      {
+        "tech": "Long context windows",
+        "status": "partial",
+        "why": "bigger windows let more passages fit, but recall still degrades in the middle of very long inputs."
+      },
+      {
+        "tech": "Groundedness evaluation methods",
+        "status": "partial",
+        "why": "without measurement it is hard to tell a well-sourced answer from a plausible invention."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid vector plus keyword search with a reranker and citation output",
+        "unlocks": "useful question answering over private document sets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic retrieval that rewrites the query, retrieves in several steps and calls tools",
+        "unlocks": "answers to multi-part questions that a single lookup cannot serve."
+      },
+      {
+        "stage": "Next",
+        "milestone": "graph and structure-aware retrieval over linked entities",
+        "unlocks": "reasoning across relationships rather than isolated passages."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuously updated indexes with automatic freshness, permission and quality checks",
+        "unlocks": "knowledge systems that stay correct as the underlying documents change."
+      }
+    ]
   }
 }

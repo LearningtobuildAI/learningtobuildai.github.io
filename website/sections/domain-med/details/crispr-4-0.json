@@ -34,5 +34,148 @@
         "def": "An advanced form of CRISPR 4.0 that combines Cas9 with a reverse transcriptase enzyme to make both insertions and deletions in DNA sequences, providing greater flexibility in genome modification."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Editor protein",
+        "role": "does the chemistry — nicks or rewrites DNA without cutting both strands.",
+        "parts": [
+          "Cas9 nickase or catalytically impaired Cas9",
+          "deaminase domain (cytidine or adenine)",
+          "reverse transcriptase domain for prime editing"
+        ]
+      },
+      {
+        "name": "Guide RNA",
+        "role": "programmes the editor to one address in the genome.",
+        "parts": [
+          "spacer complementary to the target DNA",
+          "scaffold that binds the Cas9 protein",
+          "for prime editing: primer-binding site and reverse-transcriptase template extension"
+        ]
+      },
+      {
+        "name": "Target recognition",
+        "role": "finds the site; the editor must sit next to a short PAM sequence.",
+        "parts": [
+          "PAM binding",
+          "DNA unwinding / R-loop formation"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into the right cells and no others.",
+        "parts": [
+          "lipid nanoparticles for liver and blood-cell precursors",
+          "engineered AAV vectors",
+          "electroporation ex vivo"
+        ]
+      },
+      {
+        "name": "Safety and control",
+        "role": "limits edits to the intended site and stops the editor lingering.",
+        "parts": [
+          "high-fidelity Cas9 variants",
+          "anti-CRISPR proteins",
+          "sequencing-based off-target assays"
+        ]
+      },
+      {
+        "name": "Manufacturing and quality control",
+        "role": "turns a lab construct into a dose.",
+        "parts": [
+          "mRNA or protein synthesis",
+          "guide RNA synthesis and purification",
+          "release assays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Identify the target base",
+        "detail": "Sequence the patient or gene of interest and find the single wrong letter responsible, e.g. a C that should be a T."
+      },
+      {
+        "title": "Choose the editor class",
+        "detail": "Cytosine editors convert C·G to T·A; adenine editors convert A·T to G·C; prime editors can install small insertions, deletions and any substitution."
+      },
+      {
+        "title": "Design the guide",
+        "detail": "Pick a protospacer next to a usable PAM and check it is unique in the genome. For prime editing, add a primer-binding site and a template encoding the corrected sequence."
+      },
+      {
+        "title": "Engineer the protein",
+        "detail": "Directed evolution and rational design tune the deaminase for the wanted reaction and narrow its editing window to a few bases."
+      },
+      {
+        "title": "Test in cells",
+        "detail": "Editing efficiency, unwanted insertions/deletions and off-target edits are measured by deep sequencing in human cell lines and primary cells."
+      },
+      {
+        "title": "Formulate the dose",
+        "detail": "Editor mRNA and guide RNA are packaged in lipid nanoparticles or AAV, or the editor is delivered to cells outside the body before they are returned."
+      },
+      {
+        "title": "Assess safety in animals",
+        "detail": "Animal models check delivery to the target organ, durability of the edit and immune response."
+      },
+      {
+        "title": "Run clinical trials and scale up",
+        "detail": "Manufacturing is locked and validated, then trials escalate dose while monitoring unintended edits over years."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR–Cas9 programmable targeting",
+        "status": "exists",
+        "why": "base and prime editing reuse its ability to find an exact DNA sequence."
+      },
+      {
+        "tech": "Naturally occurring deaminase enzymes",
+        "status": "exists",
+        "why": "cytidine and adenine deaminases supply the base-changing chemistry, borrowed from bacteria and mammals."
+      },
+      {
+        "tech": "Reverse transcriptase and primer design",
+        "status": "exists",
+        "why": "prime editing writes new sequence by copying an RNA template at the nicked site."
+      },
+      {
+        "tech": "In vivo delivery to specific organs",
+        "status": "partial",
+        "why": "lipid nanoparticles reach the liver well, but lung, heart, muscle and brain remain hard."
+      },
+      {
+        "tech": "Long-term off-target detection",
+        "status": "partial",
+        "why": "finding rare unintended edits genome-wide still needs better sequencing and standards."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "first base-editing therapies in early human trials for blood disorders and inherited high cholesterol",
+        "unlocks": "proof that precise, break-free editing is tolerable in patients."
+      },
+      {
+        "stage": "Next",
+        "milestone": "prime editing reaches first-in-human testing",
+        "unlocks": "correcting insertions, deletions and repeat expansions that base editors cannot address."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in vivo editing beyond the liver and blood",
+        "unlocks": "treating heart, muscle, lung and nervous-system disease with a single infusion."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multiplexed and durable edits with controlled reversibility",
+        "unlocks": "one-time cures for a wider set of genetic diseases, and combination edits where several genes contribute."
+      }
+    ]
   }
 }

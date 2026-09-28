@@ -34,5 +34,175 @@
         "def": "Devices that interact directly with the brain to capture or deliver signals."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neural sensor",
+        "role": "records the electrical activity the system decodes — from outside the skull, on the brain surface, or inside the cortex.",
+        "parts": [
+          "dry or gel EEG electrodes",
+          "ECoG electrode grids on the cortex",
+          "intracortical microelectrode arrays",
+          "endovascular stent-electrodes"
+        ]
+      },
+      {
+        "name": "Signal acquisition",
+        "role": "amplifies microvolt signals and strips out noise before decoding.",
+        "parts": [
+          "low-noise amplifiers",
+          "analogue filters",
+          "line-noise and motion-artefact rejection",
+          "wireless or wired telemetry"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns raw signals into intent — a direction, a selection, a command.",
+        "parts": [
+          "feature extraction (steady-state visual evoked potentials, P300 responses, motor-imagery rhythms, spike sorting)",
+          "machine-learning classifier",
+          "per-user calibration data"
+        ]
+      },
+      {
+        "name": "Neural write path",
+        "role": "delivers information back to the nervous system where the AR display cannot reach.",
+        "parts": [
+          "microstimulation electrodes",
+          "stimulation pulse generator",
+          "phosphene mapping"
+        ]
+      },
+      {
+        "name": "AR display and audio",
+        "role": "presents the augmented visual and auditory layer that the BCI controls.",
+        "parts": [
+          "waveguide combiner or birdbath optics",
+          "micro-LED or laser-scanning light engine",
+          "eye tracking",
+          "spatial or bone-conduction audio"
+        ]
+      },
+      {
+        "name": "Fusion and control loop",
+        "role": "merges gaze, head pose and decoded intent into one interaction model within a strict latency budget.",
+        "parts": [
+          "sensor fusion software",
+          "intent confidence and error handling",
+          "real-time scheduler"
+        ]
+      },
+      {
+        "name": "Implant support (invasive versions)",
+        "role": "keeps the electrodes alive and safe inside the body for years.",
+        "parts": [
+          "hermetic titanium or ceramic case",
+          "inductive power and data link",
+          "flexible electrode leads"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the interface class",
+        "detail": "Non-invasive (headset), minimally invasive (electrodes delivered through blood vessels), or intracortical arrays requiring surgery. This decision fixes the achievable bandwidth."
+      },
+      {
+        "title": "Fabricate the electrodes",
+        "detail": "Micromachined silicon or polymer shanks, thin-film metal contacts on flexible substrates, or conductive hydrogel electrodes for a dry headset."
+      },
+      {
+        "title": "Package and connect",
+        "detail": "Invasive devices are sealed in a hermetic case, leads are routed, and an inductive coil is fitted for power and data. Headsets get shielded wiring and active electrodes."
+      },
+      {
+        "title": "Build the acquisition electronics",
+        "detail": "Amplifiers, digitisation and wireless transmission are integrated into a headstage small and light enough to wear or implant."
+      },
+      {
+        "title": "Build the AR optics",
+        "detail": "Waveguides or combiners are assembled with the light engine and eye tracker, then characterised for field of view, brightness and latency."
+      },
+      {
+        "title": "Calibrate the decoder to the user",
+        "detail": "The person performs guided tasks while the system learns their individual signals; artefact rejection is tuned to their eye and muscle activity."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Decoded intent is mapped to AR actions — cursor movement, object selection, layer toggling — and latency and error rates are measured."
+      },
+      {
+        "title": "Add the write path (if used)",
+        "detail": "Stimulation electrodes are mapped to perceived locations so that patterns of current produce useful phosphenes or other sensations."
+      },
+      {
+        "title": "Validate safety and usability",
+        "detail": "Long-term recording stability, tissue response, thermal limits and everyday wearability are tested over months, not hours."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chronic biocompatible electrodes",
+        "status": "partial",
+        "why": "intracortical signals typically degrade over months to years as tissue reacts to the implant."
+      },
+      {
+        "tech": "High-bandwidth non-invasive recording",
+        "status": "missing",
+        "why": "skull and tissue blur EEG signals, so non-invasive read-out is far too coarse for natural-feeling control."
+      },
+      {
+        "tech": "Low-power implantable electronics and telemetry",
+        "status": "partial",
+        "why": "a device must run for years on a small battery or wireless power without heating tissue."
+      },
+      {
+        "tech": "Real-time neural decoders",
+        "status": "partial",
+        "why": "intent must be inferred within tens of milliseconds to feel coupled to the display."
+      },
+      {
+        "tech": "Neural stimulation that produces useful perception",
+        "status": "partial",
+        "why": "electrical stimulation of the visual cortex produces phosphenes, but at very low resolution."
+      },
+      {
+        "tech": "AR displays with wide field of view and low latency",
+        "status": "partial",
+        "why": "headsets must be comfortable and fast enough to overlay on natural vision without lag."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "non-invasive BCIs select and steer objects in AR/VR headsets using steady-state visual evoked potentials and motor imagery; intracortical arrays let paralysed participants type and move a cursor",
+        "unlocks": "assistive control and a research interaction vocabulary."
+      },
+      {
+        "stage": "Next",
+        "milestone": "medical BCI-AR systems: implanted arrays plus smart glasses that overlay cues, and cortical visual prostheses generating simple phosphene patterns",
+        "unlocks": "restored communication and rudimentary sight for people with severe impairment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "minimally invasive, higher-channel-count electrodes delivered without open-skull surgery",
+        "unlocks": "wider patient access and longer recording stability."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "bidirectional closed-loop interfaces with thousands of safe, stable channels reading and writing in real time",
+        "unlocks": "richer control and direct sensory feedback rather than a visual overlay alone."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "high-bandwidth non-invasive read and write",
+        "unlocks": "the seamless everyday AR integration the concept promises; no method for this exists today."
+      }
+    ]
   }
 }

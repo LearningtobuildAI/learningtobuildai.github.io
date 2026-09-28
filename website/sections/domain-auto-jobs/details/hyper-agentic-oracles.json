@@ -34,5 +34,159 @@
         "def": "Quantitative measures used to evaluate the success of an organization or system in achieving its objectives."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reasoning core",
+        "role": "the large language model that plans and decides step by step.",
+        "parts": [
+          "foundation model or fine-tuned variant",
+          "prompt and reasoning scaffold (e.g. chain-of-thought, ReAct-style tool use)",
+          "sampling and decoding settings"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "keeps state across a long task and across sessions.",
+        "parts": [
+          "in-context working memory",
+          "vector or graph store of past interactions",
+          "summarisation and retrieval pipeline"
+        ]
+      },
+      {
+        "name": "Tool and action layer",
+        "role": "lets the agent actually do things rather than just talk.",
+        "parts": [
+          "function-calling / API schemas",
+          "code execution sandbox",
+          "credential and permission scoping"
+        ]
+      },
+      {
+        "name": "Orchestrator",
+        "role": "coordinates several agents with different roles instead of one monolith.",
+        "parts": [
+          "planner agent",
+          "executor agents",
+          "critic or verifier agent",
+          "task queue and message bus"
+        ]
+      },
+      {
+        "name": "Knowledge and data connectors",
+        "role": "grounds decisions in the organisation's own records.",
+        "parts": [
+          "retrieval-augmented generation over internal documents",
+          "database and ERP connectors",
+          "data access controls"
+        ]
+      },
+      {
+        "name": "Oversight and evaluation",
+        "role": "catches errors before they reach a real decision.",
+        "parts": [
+          "automated outcome checks",
+          "human-in-the-loop approval gates",
+          "audit logging and rollback"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the decision and its metric",
+        "detail": "Pick one bounded decision — say, reordering stock or triaging claims — and state exactly how success is measured. Vague KPI ownership is why most agent projects stall."
+      },
+      {
+        "title": "Connect the data",
+        "detail": "Give the agent read access to the relevant systems and build a retrieval index over documents and tables so answers cite real records rather than model memory."
+      },
+      {
+        "title": "Choose and adapt the model",
+        "detail": "Select a foundation model that supports tool calling; fine-tune or prompt-tune it on examples of good and bad decisions in that domain."
+      },
+      {
+        "title": "Expose safe tools",
+        "detail": "Wrap each action (query, update, send, order) as a typed function with narrow permissions, spending limits and a dry-run mode."
+      },
+      {
+        "title": "Build the memory layer",
+        "detail": "Store past steps and outcomes in a vector or graph store, with periodic summarisation so the working context stays short enough to stay accurate."
+      },
+      {
+        "title": "Split work across agents",
+        "detail": "Assign a planner, executors and an independent critic, so one agent proposes and another checks rather than the same model grading itself."
+      },
+      {
+        "title": "Add the correction loop",
+        "detail": "On failure or low confidence, have the agent reflect on what went wrong and retry with a revised plan, bounded by a retry limit to stop runaway loops."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Run the system against held-out historical cases and deliberately adversarial inputs; measure not just accuracy but how often it fails safely."
+      },
+      {
+        "title": "Deploy behind approval gates",
+        "detail": "Start with human sign-off on every consequential action, log all reasoning, and widen autonomy only where measured error rates allow."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Capable foundation models with tool calling",
+        "status": "exists",
+        "why": "modern models can emit structured calls to external functions, which is the minimum for acting rather than answering."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "grounds decisions in verifiable enterprise data and reduces invented facts."
+      },
+      {
+        "tech": "Long-context and external memory architectures",
+        "status": "partial",
+        "why": "agents still lose track over hundreds of steps; memory stores and summarisation are workarounds, not solved problems."
+      },
+      {
+        "tech": "Reliable long-horizon planning",
+        "status": "missing",
+        "why": "error compounds with each step, so multi-day autonomous plans currently drift from their goal."
+      },
+      {
+        "tech": "Automated verification of agent output",
+        "status": "partial",
+        "why": "without a trustworthy checker, a self-correcting loop can confidently converge on the wrong answer."
+      },
+      {
+        "tech": "Enterprise data governance and audit",
+        "status": "partial",
+        "why": "autonomous decisions in regulated areas need provenance, permissions and a defensible audit trail."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-domain copilots that draft, retrieve and recommend with a human approving each action",
+        "unlocks": "measurable time savings in narrow workflows and the logging needed to learn from."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent pipelines in bounded domains — finance close, supply planning — with checkpoints between stages",
+        "unlocks": "handling tasks too long for one context window."
+      },
+      {
+        "stage": "Next",
+        "milestone": "persistent memory and feedback-driven improvement in production",
+        "unlocks": "agents that get better at a specific organisation's decisions over months."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "audited autonomous decisioning with formal verification and hard permission limits",
+        "unlocks": "removing the human from routine high-volume decisions — the part still unproven."
+      }
+    ]
   }
 }

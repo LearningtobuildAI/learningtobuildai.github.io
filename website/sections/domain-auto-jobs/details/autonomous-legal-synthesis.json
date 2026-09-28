@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Legal corpus and ingestion",
+        "role": "collects statutes, case law, regulations and secondary sources into a searchable store.",
+        "parts": [
+          "public court databases",
+          "licensed commercial repositories",
+          "document parsers and metadata extractors"
+        ]
+      },
+      {
+        "name": "Retrieval engine",
+        "role": "finds the passages most relevant to a legal question.",
+        "parts": [
+          "vector embeddings",
+          "keyword and citation-graph search",
+          "re-ranking model"
+        ]
+      },
+      {
+        "name": "Generative drafting model",
+        "role": "produces coherent legal text such as memos, contracts or briefs.",
+        "parts": [
+          "large language model",
+          "legal-domain fine-tuning or prompting",
+          "template and clause library"
+        ]
+      },
+      {
+        "name": "Citation verification",
+        "role": "checks that every cited authority exists and actually supports the stated proposition.",
+        "parts": [
+          "citation parser",
+          "source retrieval and matching",
+          "hallucination and contradiction detectors"
+        ]
+      },
+      {
+        "name": "Workflow and filing interface",
+        "role": "moves a document through review, signature and submission to a court or agency.",
+        "parts": [
+          "practice-management integration",
+          "e-filing connectors",
+          "deadline and docket trackers"
+        ]
+      },
+      {
+        "name": "Oversight and compliance",
+        "role": "keeps a human accountable and creates an auditable record.",
+        "parts": [
+          "human-in-the-loop review gates",
+          "audit logs",
+          "privilege and confidentiality controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble the legal corpus",
+        "detail": "Gather public and licensed case law, statutes, regulations and forms, then normalise them into a consistent machine-readable format."
+      },
+      {
+        "title": "Index for retrieval",
+        "detail": "Split documents into passages, compute vector embeddings and build keyword and citation indexes so relevant authorities can be found quickly."
+      },
+      {
+        "title": "Adapt a language model",
+        "detail": "Fine-tune or prompt a large language model on legal text so it writes in the correct register and structure."
+      },
+      {
+        "title": "Build the retrieval-augmented pipeline",
+        "detail": "Connect the model to the retrieval engine so every draft is grounded in retrieved sources rather than the model's memory alone."
+      },
+      {
+        "title": "Add citation verification",
+        "detail": "Parse each citation, fetch the cited source and check that it exists and supports the sentence it is attached to; reject or flag drafts that fail."
+      },
+      {
+        "title": "Create drafting workflows",
+        "detail": "Encode templates for common documents and assemble them from retrieved law and case facts."
+      },
+      {
+        "title": "Integrate with filing systems",
+        "detail": "Connect to court e-filing portals and practice-management software so a finished draft can be submitted and tracked."
+      },
+      {
+        "title": "Deploy with human review",
+        "detail": "Run the system in assisted mode, where a lawyer checks and signs off, while collecting data on errors and edge cases."
+      },
+      {
+        "title": "Maintain and update",
+        "detail": "Continuously ingest new decisions and statutes, retrain or re-index, and monitor for drift and hallucination."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they provide the fluent drafting and reasoning ability that makes synthesis possible."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "partial",
+        "why": "it grounds outputs in real sources but is not yet reliable enough for unsupervised legal work."
+      },
+      {
+        "tech": "Comprehensive legal databases",
+        "status": "exists",
+        "why": "authoritative case law and statutes are needed for both retrieval and verification."
+      },
+      {
+        "tech": "Citation verification and hallucination detection",
+        "status": "partial",
+        "why": "current methods catch many fabricated citations but not all misstatements of law."
+      },
+      {
+        "tech": "Regulatory acceptance of AI filing",
+        "status": "missing",
+        "why": "courts and bars generally require a licensed human to sign and take responsibility for filings."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted legal research and first-draft generation with a lawyer in the loop",
+        "unlocks": "faster document preparation and reduced routine drafting time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "verified drafting for routine, high-volume matters such as simple contracts and immigration forms",
+        "unlocks": "partial automation under human supervision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous research and drafting for narrow, well-bounded legal questions",
+        "unlocks": "end-to-end synthesis without a lawyer for every step, if regulators allow."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous filing and case management across jurisdictions",
+        "unlocks": "fully automated legal services, contingent on ethics rules, liability frameworks and public trust."
+      }
+    ]
+  }
+}

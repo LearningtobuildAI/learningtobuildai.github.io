@@ -30,5 +30,148 @@
         "def": "Molecular biology tools used to activate or deactivate specific genes, enabling targeted modification of gene expression without altering the DNA sequence."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Targeting module",
+        "role": "finds the exact DNA sequence of a drought-response gene without cutting it.",
+        "parts": [
+          "dead Cas9 (dCas9)",
+          "guide RNA",
+          "expression promoter"
+        ]
+      },
+      {
+        "name": "Epigenetic effector",
+        "role": "adds or removes chemical marks that switch the target gene on or off.",
+        "parts": [
+          "DNA methyltransferase or demethylase",
+          "histone acetyltransferase or deacetylase",
+          "linker to dCas9"
+        ]
+      },
+      {
+        "name": "Delivery and regeneration",
+        "role": "gets the editing tools into plant cells and grows whole plants from them.",
+        "parts": [
+          "Agrobacterium or gene gun",
+          "tissue culture media",
+          "selection markers"
+        ]
+      },
+      {
+        "name": "Control switch",
+        "role": "turns the editing tool on only at chosen times to limit off-target effects.",
+        "parts": [
+          "inducible promoter (chemical or heat)",
+          "terminator"
+        ]
+      },
+      {
+        "name": "Screening and validation",
+        "role": "checks that the mark is in the right place and that the plant tolerates drought.",
+        "parts": [
+          "bisulfite sequencing",
+          "RNA sequencing",
+          "drought stress phenotyping"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target gene",
+        "detail": "Identify a gene that helps the plant survive drought, such as a transcription factor or an abscisic acid biosynthesis gene."
+      },
+      {
+        "title": "Design the guide RNA",
+        "detail": "Compute a guide RNA that matches the target sequence and is unlikely to bind elsewhere in the genome."
+      },
+      {
+        "title": "Build the vector",
+        "detail": "Assemble DNA coding for dCas9 fused to an epigenetic enzyme, plus the guide RNA, under an inducible promoter."
+      },
+      {
+        "title": "Transform plant cells",
+        "detail": "Deliver the vector into callus or embryos using Agrobacterium or biolistics."
+      },
+      {
+        "title": "Regenerate plants",
+        "detail": "Grow edited cells into whole plants on selective media."
+      },
+      {
+        "title": "Induce the edit",
+        "detail": "Apply the chemical or heat trigger to switch on the fusion protein, which writes or erases the epigenetic mark at the target gene."
+      },
+      {
+        "title": "Verify the mark",
+        "detail": "Use bisulfite sequencing or chromatin immunoprecipitation to confirm the mark is present at the intended location."
+      },
+      {
+        "title": "Test drought tolerance",
+        "detail": "Grow plants under controlled drought and measure survival, yield and water use compared with unedited controls."
+      },
+      {
+        "title": "Test inheritance",
+        "detail": "Grow progeny to see whether the mark and the drought tolerance are stable without the editing tool being present."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR-Cas9 genome editing",
+        "status": "exists",
+        "why": "provides the programmable DNA-targeting platform that the epigenome editor builds on."
+      },
+      {
+        "tech": "dCas9 and epigenetic effector fusions",
+        "status": "partial",
+        "why": "demonstrated in mammalian cells and some plants, but not yet routine or reliable in major crops."
+      },
+      {
+        "tech": "Plant transformation and regeneration",
+        "status": "exists",
+        "why": "needed to introduce the tools and recover whole plants, though many crops remain hard to transform."
+      },
+      {
+        "tech": "Knowledge of crop epigenomes and drought genes",
+        "status": "partial",
+        "why": "some stress genes are known, but how epigenetic marks control them under drought is incomplete."
+      },
+      {
+        "tech": "Regulatory framework for epigenetically edited crops",
+        "status": "missing",
+        "why": "unclear how such crops would be assessed, which slows any path to commercial release."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proof-of-concept in model plants such as Arabidopsis and rice, showing drought-related genes can be toggled",
+        "unlocks": "confidence that the approach can work in plants."
+      },
+      {
+        "stage": "Next",
+        "milestone": "application to major crops (wheat, maize) in greenhouses, targeting known drought genes",
+        "unlocks": "evidence in crops that matter for food security."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field trials in drought-prone regions, testing stability across seasons and soils",
+        "unlocks": "real-world performance data and agronomic practices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulatory approval and first commercial varieties, possibly stacked with conventional drought traits",
+        "unlocks": "farmers can plant climate-resilient crops."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "expansion to other stresses such as heat and salinity, and to more crops",
+        "unlocks": "broader climate adaptation across agriculture."
+      }
+    ]
   }
 }

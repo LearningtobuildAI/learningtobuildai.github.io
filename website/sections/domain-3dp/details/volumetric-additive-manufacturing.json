@@ -33,5 +33,152 @@
         "def": "A type of resin that hardens when exposed to light, commonly used in VAM for rapid prototyping and manufacturing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Light engine",
+        "role": "projects the computed pattern into the resin from many directions.",
+        "parts": [
+          "laser or high-power LED source",
+          "galvanometer scanner or digital micromirror device",
+          "beam-shaping and relay optics",
+          "diffractive or holographic elements"
+        ]
+      },
+      {
+        "name": "Rotation stage",
+        "role": "sweeps the projection around the vat so dose accumulates from every angle.",
+        "parts": [
+          "precision rotary stage",
+          "motion controller",
+          "synchronisation with the projector"
+        ]
+      },
+      {
+        "name": "Vat and window",
+        "role": "holds the liquid resin and lets light in with minimal distortion.",
+        "parts": [
+          "optically clear cylinder",
+          "index-matching fluid or glass",
+          "oxygen-permeable membrane (in some designs)"
+        ]
+      },
+      {
+        "name": "Resin chemistry",
+        "role": "liquid that solidifies only where accumulated light dose crosses a threshold.",
+        "parts": [
+          "monomers and oligomers",
+          "photoinitiator matched to the light wavelength",
+          "reaction inhibitor, often dissolved oxygen",
+          "two-colour photoinitiator pairs in newer formulations"
+        ]
+      },
+      {
+        "name": "Dose solver",
+        "role": "converts a 3D model into the sequence of 2D projections.",
+        "parts": [
+          "tomographic reconstruction software",
+          "dose-threshold model of the resin",
+          "optimisation loop, sometimes fed by cameras"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "releases and finishes the printed part.",
+        "parts": [
+          "drain and wash station",
+          "UV post-cure",
+          "dimensional and optical inspection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the part and set a dose target",
+        "detail": "A CAD model is converted into the 3D map of light energy that must be delivered to every point: above the gelation threshold inside the object, below it outside."
+      },
+      {
+        "title": "Solve the inverse problem",
+        "detail": "Software borrowed from medical CT works backwards from that dose map to a set of 2D images, typically a few hundred, each to be projected from a different angle."
+      },
+      {
+        "title": "Formulate and condition the resin",
+        "detail": "A photoinitiator is chosen for the light wavelength and an inhibitor concentration is set so the liquid stays fluid just below the threshold and cures sharply above it."
+      },
+      {
+        "title": "Fill and degas the vat",
+        "detail": "Resin is poured into the transparent container and dissolved gas is controlled, since oxygen both slows curing and helps sharpen the threshold."
+      },
+      {
+        "title": "Expose while rotating",
+        "detail": "The projector plays the image sequence as the vat turns through 180° or more; over tens of seconds to minutes the dose adds up, and the whole object gels at once."
+      },
+      {
+        "title": "Drain and wash",
+        "detail": "Uncured liquid is poured off and the part is rinsed, leaving a self-supporting object with no layers and no support structures."
+      },
+      {
+        "title": "Post-cure and inspect",
+        "detail": "A final flood of UV light completes the polymerisation, then the part is measured for accuracy and surface finish."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Photopolymers with a sharp dose threshold",
+        "status": "partial",
+        "why": "the method only works if curing switches on abruptly above a critical accumulated dose; many ordinary resins cure too gradually."
+      },
+      {
+        "tech": "Tomographic reconstruction algorithms",
+        "status": "exists",
+        "why": "the Radon-transform mathematics used in CT scanners is inverted to compute which projections produce the wanted dose."
+      },
+      {
+        "tech": "High-brightness, high-resolution projectors",
+        "status": "exists",
+        "why": "enough light must reach the centre of the vat before the outer resin over-cures."
+      },
+      {
+        "tech": "Optically uniform vats and index matching",
+        "status": "partial",
+        "why": "refraction and distortion at the container wall smear the projected pattern and blur fine features."
+      },
+      {
+        "tech": "Oxygen and inhibitor control",
+        "status": "partial",
+        "why": "inhibitors are used deliberately to keep the threshold sharp, so their concentration must be tightly managed."
+      },
+      {
+        "tech": "Two-colour photoinitiation",
+        "status": "partial",
+        "why": "a second wavelength can activate curing only where two beams overlap, improving resolution at the cost of complexity."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations print centimetre-scale parts in seconds to minutes with no layer lines, using computed axial lithography (2019), laser tomographic printing (2020) and xolography (2020)",
+        "unlocks": "support-free printing of smooth, hollow and overhanging shapes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "scale-up to larger build volumes and multiple materials in one vat",
+        "unlocks": "useful prototyping and small-batch parts rather than novelties."
+      },
+      {
+        "stage": "Next",
+        "milestone": "medical and pharmaceutical applications, such as personalised tablets and cell-laden hydrogel scaffolds",
+        "unlocks": "printing inside living or sterile material, where layer-by-layer methods struggle."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration into factory production lines",
+        "unlocks": "fast, single-step manufacture of lenses, seals and soft structures that are awkward to print layer by layer."
+      }
+    ]
   }
 }

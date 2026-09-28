@@ -33,5 +33,172 @@
         "def": "A subset of machine learning techniques based on artificial neural networks with multiple layers, capable of learning complex patterns in large datasets."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "collects and curates the images, video and audio used to train the models.",
+        "parts": [
+          "web-scale crawlers",
+          "deduplication and quality filters",
+          "automatic captioning models",
+          "consent and licensing records"
+        ]
+      },
+      {
+        "name": "Latent codec",
+        "role": "compresses media into a smaller latent space so the generative model needs less compute.",
+        "parts": [
+          "encoder",
+          "decoder",
+          "quantisation"
+        ]
+      },
+      {
+        "name": "Generative backbone",
+        "role": "learns to turn random noise into realistic media, conditioned on a prompt or image.",
+        "parts": [
+          "diffusion U-Net or transformer",
+          "temporal attention layers for video",
+          "conditioning layers"
+        ]
+      },
+      {
+        "name": "Conditioning encoders",
+        "role": "turn text, images or motion into control signals the backbone can follow.",
+        "parts": [
+          "text encoder",
+          "image encoder",
+          "pose and motion encoder"
+        ]
+      },
+      {
+        "name": "Training and serving stack",
+        "role": "trains the models on large GPU clusters and runs them for users.",
+        "parts": [
+          "distributed training framework",
+          "GPU clusters",
+          "inference servers",
+          "API gateway"
+        ]
+      },
+      {
+        "name": "Safety and provenance layer",
+        "role": "filters harmful outputs and labels generated media as synthetic.",
+        "parts": [
+          "content classifiers",
+          "watermarking",
+          "C2PA provenance metadata",
+          "usage policy engine"
+        ]
+      },
+      {
+        "name": "User control interface",
+        "role": "lets creators direct what the model produces.",
+        "parts": [
+          "prompt box",
+          "motion brush",
+          "keyframes",
+          "inpainting",
+          "camera controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Curate the dataset",
+        "detail": "Gather images, video and audio from licensed or public sources. Filter out duplicates, low-quality and harmful material, then caption each item with human or model-generated text."
+      },
+      {
+        "title": "Train the latent codec",
+        "detail": "Teach an autoencoder to compress media into a small latent representation and reconstruct it accurately, so the generative model works on smaller tensors."
+      },
+      {
+        "title": "Pre-train conditioning encoders",
+        "detail": "Align text and images using contrastive learning, so prompts map reliably to visual and audio concepts."
+      },
+      {
+        "title": "Train the generative backbone",
+        "detail": "Start from noise and iteratively denoise latents conditioned on the prompt. For video, add temporal layers so objects and motion stay consistent across frames."
+      },
+      {
+        "title": "Fine-tune and align",
+        "detail": "Fine-tune on a smaller set of high-quality examples, then use preference data to improve aesthetics, prompt adherence and motion realism."
+      },
+      {
+        "title": "Assemble the inference pipeline",
+        "detail": "Chain the text encoder, denoiser, decoder, upscaler, frame interpolation and any audio model into one reproducible pipeline."
+      },
+      {
+        "title": "Optimise for latency",
+        "detail": "Quantise and distill the model, use faster samplers, cache intermediate results and batch requests so many users can generate media in reasonable time."
+      },
+      {
+        "title": "Deploy with safety and provenance",
+        "detail": "Expose an API and web interface, and insert content filters, watermarks and provenance metadata before any output leaves the system."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "Collect user feedback and abuse reports, retrain periodically on fresh data, and update the safety models as new misuse patterns appear."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale GPU compute",
+        "status": "exists",
+        "why": "training video and image models requires thousands of GPUs and weeks of processing."
+      },
+      {
+        "tech": "Web-scale media datasets with captions",
+        "status": "partial",
+        "why": "huge datasets exist, but legally clean, diverse and well-captioned ones are hard to assemble."
+      },
+      {
+        "tech": "Diffusion and transformer architectures",
+        "status": "exists",
+        "why": "they are the core methods that make realistic media generation possible."
+      },
+      {
+        "tech": "Text-image alignment models",
+        "status": "exists",
+        "why": "they connect written prompts to visual and audio concepts."
+      },
+      {
+        "tech": "Temporal consistency for video",
+        "status": "partial",
+        "why": "keeping objects, lighting and motion coherent across many frames remains an active research problem."
+      },
+      {
+        "tech": "Content provenance and watermarking",
+        "status": "partial",
+        "why": "society needs ways to tell synthetic media from real media, and standards are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial text-to-image and short text-to-video clips measured in seconds",
+        "unlocks": "rapid concept art, marketing visuals and previsualisation for film and games."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longer, higher-resolution video with consistent characters and camera control",
+        "unlocks": "usable clips for short films, advertisements and social media without heavy manual editing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time interactive generation and editing inside professional tools",
+        "unlocks": "iterative storytelling and virtual production where creators direct the model live."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully synthetic media pipelines with synchronised audio, voice and physics, plus built-in consent and provenance",
+        "unlocks": "personalised entertainment, synthetic actors and new interactive media forms."
+      }
+    ]
   }
 }

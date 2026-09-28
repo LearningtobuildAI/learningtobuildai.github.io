@@ -33,5 +33,159 @@
         "def": "A type of machine learning model designed to generate human-like text by understanding patterns in large amounts of textual data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "collects and filters the text the model learns from.",
+        "parts": [
+          "web crawlers",
+          "quality filters",
+          "deduplication",
+          "tokenizer"
+        ]
+      },
+      {
+        "name": "Transformer network",
+        "role": "the deep neural network that predicts the next token in a sequence.",
+        "parts": [
+          "self-attention layers",
+          "feed-forward layers",
+          "embeddings",
+          "layer normalization"
+        ]
+      },
+      {
+        "name": "Training cluster",
+        "role": "provides the massive compute needed to train the model.",
+        "parts": [
+          "thousands of GPUs or TPUs",
+          "high-bandwidth interconnects",
+          "distributed training software",
+          "checkpoint storage"
+        ]
+      },
+      {
+        "name": "Alignment stack",
+        "role": "shapes the model's behaviour to be helpful, harmless and honest.",
+        "parts": [
+          "supervised fine-tuning",
+          "reward model",
+          "reinforcement learning from human feedback",
+          "Constitutional AI prompts"
+        ]
+      },
+      {
+        "name": "Inference service",
+        "role": "serves the trained model to users with low latency.",
+        "parts": [
+          "model server",
+          "batching and caching",
+          "API gateway",
+          "safety filters"
+        ]
+      },
+      {
+        "name": "Safety and evaluation",
+        "role": "tests and monitors the model for harmful behaviour.",
+        "parts": [
+          "red teaming",
+          "automated benchmarks",
+          "interpretability tools",
+          "usage monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Curate training data",
+        "detail": "Gather text from the web, books and other sources; filter for quality, remove duplicates and harmful content."
+      },
+      {
+        "title": "Tokenize the corpus",
+        "detail": "Split text into tokens (subword units) and convert them into numerical sequences for training."
+      },
+      {
+        "title": "Pre-train the base model",
+        "detail": "Train the transformer on next-token prediction using a large cluster of GPUs for weeks or months, adjusting billions of parameters."
+      },
+      {
+        "title": "Supervised fine-tuning",
+        "detail": "Continue training on human-written examples of good answers to teach the model to follow instructions."
+      },
+      {
+        "title": "Train a reward model",
+        "detail": "Collect human comparisons of model outputs and train a separate model to predict which output humans prefer."
+      },
+      {
+        "title": "Reinforcement learning from human feedback",
+        "detail": "Use the reward model to fine-tune the policy model with reinforcement learning, increasing the probability of preferred outputs."
+      },
+      {
+        "title": "Constitutional AI",
+        "detail": "Give the model a set of written principles and have it critique and revise its own responses, reducing reliance on human labels for harmful content."
+      },
+      {
+        "title": "Red team and evaluate",
+        "detail": "Adversarially test the model for harmful, biased or unsafe outputs; measure performance on benchmarks; iterate on training and filters."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Serve the model behind an API, apply safety filters, monitor usage for misuse, and release updated versions as improvements are made."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "the neural network design that makes large-scale language modelling practical."
+      },
+      {
+        "tech": "Large-scale GPU clusters",
+        "status": "exists",
+        "why": "training requires thousands of specialised chips running in parallel for long periods."
+      },
+      {
+        "tech": "Reinforcement learning from human feedback",
+        "status": "exists",
+        "why": "the main technique for aligning model behaviour with human preferences."
+      },
+      {
+        "tech": "Constitutional AI",
+        "status": "exists",
+        "why": "Anthropic's method for scaling oversight by having the model critique itself against written principles."
+      },
+      {
+        "tech": "Interpretability tools",
+        "status": "partial",
+        "why": "understanding what happens inside large models is still an open research problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial large language models like Anthropic's Claude are widely used",
+        "unlocks": "helpful conversational assistants, coding aids and document analysis."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longer context windows and better reasoning",
+        "unlocks": "models that can work with entire books or codebases and solve multi-step problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "scaled alignment and interpretability",
+        "unlocks": "more reliable safety guarantees as models become more capable."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous agents with robust safety",
+        "unlocks": "AI that can carry out complex tasks with minimal supervision."
+      }
+    ]
   }
 }

@@ -28,5 +28,140 @@
         "def": "A thin layer applied to the surface of solar cells to minimize light reflection, increasing absorption and efficiency."
       }
     ]
+  },
+  "engineering": {
+    "author": "Claude (claude-opus-5-5)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Silicon cells",
+        "role": "turn sunlight into electric current at a p–n junction.",
+        "parts": [
+          "monocrystalline wafer",
+          "doped emitter layer",
+          "surface passivation",
+          "anti-reflective coating",
+          "printed metal contacts"
+        ]
+      },
+      {
+        "name": "Module package",
+        "role": "protects the cells outdoors for 25–30+ years.",
+        "parts": [
+          "tempered glass",
+          "encapsulant film",
+          "backsheet or rear glass",
+          "aluminium frame",
+          "junction box with bypass diodes"
+        ]
+      },
+      {
+        "name": "Mounting",
+        "role": "holds modules at the right angle; single-axis trackers follow the sun for more energy.",
+        "parts": [
+          "piles or ballast",
+          "racking",
+          "tracker motors and controllers"
+        ]
+      },
+      {
+        "name": "Inverters and power electronics",
+        "role": "convert DC to grid-compatible AC and keep each string at its maximum power point.",
+        "parts": [
+          "string or central inverters",
+          "MPPT controllers",
+          "transformers"
+        ]
+      },
+      {
+        "name": "Balance of system",
+        "role": "wiring, protection and monitoring that tie it together.",
+        "parts": [
+          "DC and AC cabling",
+          "combiner boxes",
+          "breakers and surge protection",
+          "SCADA monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Purify the silicon",
+        "detail": "Quartz is reduced to metallurgical silicon in an arc furnace, then refined into polysilicon of extreme purity — mostly by the Siemens chemical-vapour process."
+      },
+      {
+        "title": "Grow crystal ingots",
+        "detail": "Polysilicon is melted with a trace of dopant and a single crystal is slowly pulled from the melt (the Czochralski method)."
+      },
+      {
+        "title": "Slice wafers",
+        "detail": "Diamond-wire saws cut the ingot into wafers roughly 0.15 mm thick; thinner wafers save silicon but crack more easily."
+      },
+      {
+        "title": "Make the cells",
+        "detail": "The surface is etched into tiny pyramids to trap light, dopants are diffused in to form the junction, passivation and anti-reflective layers are deposited, and silver contacts are screen-printed and fired."
+      },
+      {
+        "title": "Test and sort",
+        "detail": "Every cell is flash-tested and binned by output so matched cells go into the same module."
+      },
+      {
+        "title": "Assemble modules",
+        "detail": "Cells are soldered into strings, laminated between glass and encapsulant under heat and vacuum, then framed and fitted with a junction box."
+      },
+      {
+        "title": "Quality-check modules",
+        "detail": "A flash test sets the power rating and electroluminescence imaging reveals micro-cracks invisible to the eye."
+      },
+      {
+        "title": "Build the farm",
+        "detail": "Piles and racking go in, modules are mounted and wired into strings, strings feed inverters, and a substation connects the farm to the grid."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-purity polysilicon refining",
+        "status": "exists",
+        "why": "cells need silicon far purer than any other industry except chips."
+      },
+      {
+        "tech": "Semiconductor doping and thin-film deposition",
+        "status": "exists",
+        "why": "they create the junction and the coatings that make a wafer into a cell."
+      },
+      {
+        "tech": "Diamond-wire wafer sawing",
+        "status": "exists",
+        "why": "it cut the silicon lost as sawdust and was a major reason module prices fell."
+      },
+      {
+        "tech": "Grid-tie inverters",
+        "status": "exists",
+        "why": "without them the DC output cannot be fed into an AC grid safely."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "older PERC cells give way to TOPCon and heterojunction designs",
+        "unlocks": "higher efficiency from better surface passivation, on the same production lines."
+      },
+      {
+        "stage": "Next few years",
+        "milestone": "back-contact cells and bifacial modules on trackers",
+        "unlocks": "more energy per hectare, which matters as good land gets scarcer."
+      },
+      {
+        "stage": "Next",
+        "milestone": "perovskite-on-silicon tandem cells",
+        "unlocks": "efficiencies beyond the roughly 29% ceiling of a single silicon junction — once perovskite durability is proven outdoors."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "less silver per cell and routine module recycling",
+        "unlocks": "growth without hitting a silver shortage or a waste problem at end of life."
+      }
+    ]
   }
 }

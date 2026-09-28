@@ -30,5 +30,145 @@
         "def": "A learning rule in biological neural networks where the strength of a synapse between two neurons is modified depending on the relative timing of pre- and postsynaptic spikes, facilitating efficient information processing and storage."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neuromorphic processor",
+        "role": "runs spiking neural networks in hardware with on-chip learning, consuming milliwatts instead of watts.",
+        "parts": [
+          "spiking neuron circuits",
+          "synaptic crossbar arrays",
+          "spike-timing-dependent plasticity (STDP) learning circuits",
+          "event-driven communication buses"
+        ]
+      },
+      {
+        "name": "Swarm communication layer",
+        "role": "lets robots exchange spike trains as lightweight messages without a central controller.",
+        "parts": [
+          "low-power wireless transceivers",
+          "ad-hoc mesh networking protocols",
+          "time synchronisation",
+          "spike encoding/decoding"
+        ]
+      },
+      {
+        "name": "Robotic platforms",
+        "role": "physical agents that move, sense and act in a disaster environment.",
+        "parts": [
+          "locomotion (wheels, tracks or rotors)",
+          "sensors (cameras, LiDAR, gas, thermal)",
+          "actuators",
+          "onboard neuromorphic board",
+          "battery or energy harvester"
+        ]
+      },
+      {
+        "name": "Swarm control and learning algorithms",
+        "role": "implements decentralised behaviours and plasticity rules that adapt the swarm in real time.",
+        "parts": [
+          "spiking neural network models",
+          "STDP-based learning rules",
+          "reward or error modulation",
+          "consensus and task-allocation logic"
+        ]
+      },
+      {
+        "name": "Simulation and validation environment",
+        "role": "tests swarm behaviours at scale before physical deployment.",
+        "parts": [
+          "multi-agent physics simulators",
+          "neuromorphic emulators",
+          "scenario generators for disaster zones"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the neuromorphic chip",
+        "detail": "Create silicon circuits that mimic spiking neurons and synapses, including local STDP learning, using event-driven logic to keep power low."
+      },
+      {
+        "title": "Develop spiking swarm algorithms",
+        "detail": "Define how spike timing and plasticity produce collective behaviours such as dispersion, aggregation, and area coverage."
+      },
+      {
+        "title": "Integrate hardware and robot",
+        "detail": "Mount the neuromorphic processor on a mobile robot, connect it to sensors and actuators, and write firmware to convert sensor streams into spikes."
+      },
+      {
+        "title": "Build the communication layer",
+        "detail": "Implement a wireless protocol that transmits compact spike events between robots, with time synchronisation so STDP can work across agents."
+      },
+      {
+        "title": "Simulate the swarm",
+        "detail": "Run thousands of virtual robots in a disaster scenario to tune network topology, learning rates and communication range."
+      },
+      {
+        "title": "Test with a small physical swarm",
+        "detail": "Deploy a handful of robots in a controlled lab space to verify that spike-based communication and learning produce the intended group behaviour."
+      },
+      {
+        "title": "Scale to field trials",
+        "detail": "Move to a mock disaster site with tens of robots, adding noise, obstacles and intermittent communication to test robustness."
+      },
+      {
+        "title": "Harden for real deployment",
+        "detail": "Improve power autonomy, ruggedness and fault tolerance, then validate under realistic disaster-response conditions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Neuromorphic processors with on-chip STDP",
+        "status": "partial",
+        "why": "research chips exist that implement spiking neurons and plasticity, but they are not yet mass-produced or ruggedised for field robots."
+      },
+      {
+        "tech": "Spiking neural network training methods",
+        "status": "partial",
+        "why": "training deep spiking networks to perform complex swarm tasks reliably remains an open research problem."
+      },
+      {
+        "tech": "Low-power wireless mesh networking",
+        "status": "exists",
+        "why": "robots need to exchange spike events over hundreds of metres without a central access point."
+      },
+      {
+        "tech": "Robust mobile robot platforms for disaster response",
+        "status": "partial",
+        "why": "many ground and aerial robots exist, but they are not yet cheap, autonomous and durable enough for large swarms."
+      },
+      {
+        "tech": "Decentralised swarm coordination algorithms",
+        "status": "exists",
+        "why": "classical swarm rules are well studied, but coupling them to neuromorphic learning is new."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations of a few robots using neuromorphic hardware for simple collective behaviours",
+        "unlocks": "proof that spike-based communication and learning can work on physical robots."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field trials with tens of robots in mock disaster zones, showing adaptive coverage and search",
+        "unlocks": "confidence in robustness, power budget and communication range."
+      },
+      {
+        "stage": "Next",
+        "milestone": "swarms of hundreds of low-cost robots that learn on the fly and tolerate individual failures",
+        "unlocks": "practical deployment in real disaster response, where infrastructure is damaged."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standardised neuromorphic swarm modules that can be mixed and matched for different missions",
+        "unlocks": "widespread use beyond disaster response, such as environmental monitoring and precision agriculture."
+      }
+    ]
   }
 }

@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensing",
+        "role": "measures the things the thermostat reasons about.",
+        "parts": [
+          "temperature and humidity sensor",
+          "ambient light sensor",
+          "occupancy sensor (passive infrared, or radar in newer units)",
+          "phone location for geofencing"
+        ]
+      },
+      {
+        "name": "Control and switching",
+        "role": "closes and opens the low-voltage circuits that tell the furnace, boiler or air conditioner what to do.",
+        "parts": [
+          "relay or triac outputs",
+          "terminal block for standard wires (call for heat, call for cool, fan, common)",
+          "24 V AC control interface",
+          "compressor short-cycle protection"
+        ]
+      },
+      {
+        "name": "Power supply",
+        "role": "runs the electronics from the HVAC control transformer or a battery.",
+        "parts": [
+          "rectifier and regulator",
+          "power-stealing circuit for installs without a common wire",
+          "backup battery"
+        ]
+      },
+      {
+        "name": "Compute and firmware",
+        "role": "runs the learning and scheduling logic and keeps the equipment safe.",
+        "parts": [
+          "microcontroller",
+          "on-device occupancy model",
+          "anti-short-cycle timers",
+          "over-the-air update support"
+        ]
+      },
+      {
+        "name": "Connectivity and cloud",
+        "role": "lets the unit be set up, monitored and adjusted remotely, and drawn on for grid programmes.",
+        "parts": [
+          "Wi-Fi radio",
+          "cloud service with weather feed",
+          "smartphone app",
+          "local automation interface"
+        ]
+      },
+      {
+        "name": "Enclosure and interface",
+        "role": "the part a person actually touches.",
+        "parts": [
+          "display or dial",
+          "mounting plate matching common wall-box spacing",
+          "injection-moulded case"
+        ]
+      },
+      {
+        "name": "Remote sensors (optional)",
+        "role": "extend sensing into bedrooms and living rooms so control follows people, not just the hallway.",
+        "parts": [
+          "battery door or wall sensors",
+          "wireless link to the main unit"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define compatibility",
+        "detail": "Decide which heating and cooling systems to support — gas furnace, boiler, air conditioner, heat pump — and which control wires they expose, since a missing common wire changes the whole power design."
+      },
+      {
+        "title": "Design the board and power stage",
+        "detail": "Lay out sensing, computing and switching on one printed circuit board and design the supply so the unit can run from the 24 V AC control transformer, or trickle-charge by briefly drawing current through the heating or cooling circuit where no common wire exists."
+      },
+      {
+        "title": "Calibrate the sensors",
+        "detail": "Temperature sensing is only useful if it is accurate, so each thermistor is characterised and compensated for the heat the device itself produces."
+      },
+      {
+        "title": "Write the control firmware",
+        "detail": "Implement relay timing that protects the compressor, stage logic for multi-stage equipment, and fail-safe defaults so a network outage never leaves the house without heat."
+      },
+      {
+        "title": "Build the learning layer",
+        "detail": "Combine motion history, light levels and phone location to infer when the home is occupied and asleep, then fit a schedule and setback temperatures to that pattern; a cloud service adds weather forecasts so pre-heating can be scheduled ahead of a cold morning."
+      },
+      {
+        "title": "Add connectivity and reporting",
+        "detail": "Pair the unit with a phone app over Wi-Fi, expose usage history, and enrol it in utility demand-response programmes where the homeowner opts in."
+      },
+      {
+        "title": "Manufacture and test",
+        "detail": "Surface-mount the boards, assemble the case and mounting plate, then run each unit through a functional test that exercises every output and confirms calibration."
+      },
+      {
+        "title": "Install and commission",
+        "detail": "The installer or homeowner moves the existing wires to the matching terminals, the unit detects the equipment type from the wiring, and a setup wizard confirms the first heating and cooling cycles work."
+      },
+      {
+        "title": "Operate and update",
+        "detail": "Firmware and models are improved remotely over the life of the device, and the cloud service keeps running the scheduling and reporting."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standard low-voltage HVAC control wiring",
+        "status": "exists",
+        "why": "interoperability with existing furnaces and air conditioners is what allows a thermostat to be swapped in without rewiring a house."
+      },
+      {
+        "tech": "Home Wi-Fi and always-on broadband",
+        "status": "exists",
+        "why": "remote control, weather-aware scheduling and usage reporting all depend on it."
+      },
+      {
+        "tech": "Cheap MEMS sensors and accurate digital thermistors",
+        "status": "exists",
+        "why": "occupancy and temperature sensing must cost only a few dollars to fit a mass-market product."
+      },
+      {
+        "tech": "Machine learning small enough for embedded and cloud use",
+        "status": "exists",
+        "why": "occupancy prediction is what separates a learning thermostat from a programmable one."
+      },
+      {
+        "tech": "Time-of-use tariffs and utility demand-response programmes",
+        "status": "partial",
+        "why": "without them the thermostat cannot shift heating to cheaper or cleaner hours or earn its owner anything for helping the grid."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "learning thermostats widely installed in single-zone homes",
+        "unlocks": "automatic setback in empty houses and clear energy reporting in an app."
+      },
+      {
+        "stage": "Next",
+        "milestone": "room-by-room control with wireless remote sensors and motorised vents or dampers",
+        "unlocks": "heating and cooling only the rooms in use, which conventional single-zone systems cannot do."
+      },
+      {
+        "stage": "Next",
+        "milestone": "native control of heat pumps and flexible tariffs",
+        "unlocks": "running the heat pump when electricity is cheapest and lowest-carbon, instead of on a fixed schedule."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "aggregated fleets of thermostats bidding into grid markets, coordinated with home solar and batteries",
+        "unlocks": "households paid for helping balance the grid, and less need for peaking generation."
+      }
+    ]
+  }
+}

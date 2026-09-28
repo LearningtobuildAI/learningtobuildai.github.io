@@ -38,5 +38,149 @@
         "def": "A device that increases the pressure and volume of a gas by forcing it through a smaller opening under increased pressure."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Compression train",
+        "role": "uses surplus electricity to compress air to roughly 40–70 bar.",
+        "parts": [
+          "motor-generator",
+          "multi-stage axial or centrifugal compressors",
+          "intercoolers and aftercoolers"
+        ]
+      },
+      {
+        "name": "Air reservoir",
+        "role": "stores the compressed air underground at high pressure.",
+        "parts": [
+          "solution-mined salt cavern, or porous rock / hard-rock mine",
+          "wellhead and injection piping",
+          "pressure and leak monitoring"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "handles the heat of compression — either stored for reuse or replaced by burning fuel.",
+        "parts": [
+          "packed-bed or molten-salt thermal store (advanced designs)",
+          "natural gas combustor and recuperator (conventional designs)",
+          "heat exchangers"
+        ]
+      },
+      {
+        "name": "Expansion train",
+        "role": "releases the air and drives the generator.",
+        "parts": [
+          "high-pressure and low-pressure turbines",
+          "reheat combustor",
+          "exhaust recuperator"
+        ]
+      },
+      {
+        "name": "Power conversion and grid interface",
+        "role": "switches the machine between charging and discharging duty.",
+        "parts": [
+          "motor-generator clutch",
+          "step-up transformer",
+          "switchgear and controls"
+        ]
+      },
+      {
+        "name": "Balance of plant",
+        "role": "keeps the site safe and the cavern within safe pressure limits.",
+        "parts": [
+          "brine handling ponds",
+          "fire and gas detection",
+          "cooling water system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Find the geology",
+        "detail": "Seismic surveys, test wells and core samples establish whether a thick, pure salt bed, a porous sandstone reservoir or a disused hard-rock mine can hold pressurised air without leaking."
+      },
+      {
+        "title": "Create or adapt the storage space",
+        "detail": "A salt cavern is made by solution mining: a well is drilled, fresh water is pumped down to dissolve the salt, and the resulting brine is brought to the surface. Existing mines and depleted gas fields can instead be reconditioned."
+      },
+      {
+        "title": "Prepare the wellhead",
+        "detail": "Casing and tubing are installed and pressure-tested, with valves able to isolate the cavern quickly."
+      },
+      {
+        "title": "Commission the cavern",
+        "detail": "The cavern is cycled between its minimum and maximum working pressure and checked for leaks and rock stability — the minimum pressure matters because too low a pressure can collapse the roof."
+      },
+      {
+        "title": "Build the compression train",
+        "detail": "Large compressors, intercoolers and the motor-generator are erected in a surface plant, sized for the cavern's charging rate."
+      },
+      {
+        "title": "Add the thermal system",
+        "detail": "A conventional plant installs a gas combustor; an advanced adiabatic plant installs a thermal store — a vessel packed with rock or ceramic that captures heat during compression and returns it during expansion."
+      },
+      {
+        "title": "Build the turbine hall",
+        "detail": "Expansion turbines, recuperator, generator and transformer are installed and connected to the grid."
+      },
+      {
+        "title": "Cycle test and operate",
+        "detail": "The plant is run through repeated charge-discharge cycles to tune efficiency, then handed to grid dispatch, typically for daily or weekly cycling over decades."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Suitable underground storage geology",
+        "status": "exists",
+        "why": "thick salt beds, porous reservoirs or disused mines are essential; without them the air cannot be stored cheaply at scale."
+      },
+      {
+        "tech": "Large industrial compressor and turbine sets",
+        "status": "exists",
+        "why": "the plant is essentially a power station built backwards, using mature turbomachinery."
+      },
+      {
+        "tech": "High-temperature thermal energy storage",
+        "status": "partial",
+        "why": "advanced plants must capture heat of compression at useful temperatures; packed-bed stores are proven at small scale but not on a full power-plant scale."
+      },
+      {
+        "tech": "Cheap off-peak or curtailed electricity",
+        "status": "exists",
+        "why": "the economics depend on buying low and selling high, which needs volatile prices or excess renewable output."
+      },
+      {
+        "tech": "Geomechanical modelling of cyclic pressure",
+        "status": "partial",
+        "why": "daily pressure swings can fatigue the cavern rock; long-term behaviour is still being characterised."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "a small number of conventional plants in Germany and the United States have run for decades, burning gas to reheat the air",
+        "unlocks": "proven long-duration bulk storage and operating data on salt caverns."
+      },
+      {
+        "stage": "Next",
+        "milestone": "advanced adiabatic plants that store the heat of compression instead of burning fuel",
+        "unlocks": "roughly doubled round-trip efficiency and zero direct emissions, plus several hours to days of discharge."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reuse of existing salt caverns and depleted gas reservoirs",
+        "unlocks": "much lower capital cost, because the expensive underground work is already done."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "isothermal and underwater variants that avoid extreme temperature swings",
+        "unlocks": "higher efficiency and sites in regions with no salt geology."
+      }
+    ]
   }
 }

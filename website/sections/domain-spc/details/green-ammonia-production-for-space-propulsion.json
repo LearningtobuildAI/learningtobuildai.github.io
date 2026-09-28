@@ -33,5 +33,151 @@
         "def": "Energy derived from natural resources that are replenished at a faster rate than they are consumed, such as solar or wind power."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Renewable electricity and hydrogen supply",
+        "role": "makes the hydrogen half of ammonia without fossil carbon.",
+        "parts": [
+          "wind or solar farm",
+          "water electrolyser stack",
+          "water treatment",
+          "hydrogen buffer storage"
+        ]
+      },
+      {
+        "name": "Nitrogen supply",
+        "role": "provides the other half of the molecule from ordinary air.",
+        "parts": [
+          "air separation unit (cryogenic distillation or membranes)",
+          "compressor"
+        ]
+      },
+      {
+        "name": "Ammonia synthesis loop",
+        "role": "combines hydrogen and nitrogen into NH3 over an iron-based catalyst at roughly 400–500 °C and 100–200 bar.",
+        "parts": [
+          "multi-stage compressor",
+          "catalytic reactor",
+          "heat recovery exchanger",
+          "recycle loop and condenser"
+        ]
+      },
+      {
+        "name": "Purification, liquefaction and storage",
+        "role": "gets the ammonia to a grade a thruster can burn and keeps it liquid; ammonia boils at about −33 °C at atmospheric pressure, or stays liquid at about 10 bar at room temperature.",
+        "parts": [
+          "distillation column",
+          "refrigeration plant",
+          "low-temperature or pressurised tanks",
+          "vapour recovery"
+        ]
+      },
+      {
+        "name": "Spacecraft propellant system",
+        "role": "stores and meters the ammonia in space.",
+        "parts": [
+          "titanium or stainless tanks",
+          "pressurant and feed lines",
+          "valves, filters and flow controllers"
+        ]
+      },
+      {
+        "name": "Thruster or engine",
+        "role": "turns the ammonia into thrust, either by catalytic decomposition into hot nitrogen and hydrogen, by burning it with an oxidiser, or by ionising it in an electric thruster.",
+        "parts": [
+          "decomposition catalyst bed or combustion chamber",
+          "nozzle",
+          "power electronics (if electric)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate renewable power",
+        "detail": "Dedicated wind or solar capacity supplies electricity whose carbon intensity is low enough to make the product 'green'."
+      },
+      {
+        "title": "Electrolyse water",
+        "detail": "Electric current splits purified water into hydrogen and oxygen; the hydrogen is dried and compressed."
+      },
+      {
+        "title": "Separate nitrogen from air",
+        "detail": "An air separation unit cools air until it liquefies and distils, or uses membranes, to give high-purity nitrogen."
+      },
+      {
+        "title": "Synthesise ammonia",
+        "detail": "Hydrogen and nitrogen in roughly a 3:1 ratio are compressed and passed over an iron catalyst, forming ammonia and releasing heat."
+      },
+      {
+        "title": "Purify and liquefy",
+        "detail": "Unreacted gas is recycled, water and oxygen traces are removed, and the ammonia is distilled to a very high purity — residual moisture or carbon dioxide will poison thruster catalysts."
+      },
+      {
+        "title": "Store and ship",
+        "detail": "The ammonia is held either refrigerated at about −33 °C or under pressure, then moved by tanker or pipeline to the launch site."
+      },
+      {
+        "title": "Load the spacecraft",
+        "detail": "Propellant-grade ammonia is loaded into flight tanks and the feed system is leak-checked; ammonia is toxic and corrosive to copper alloys, so handling is sealed and materials are chosen carefully."
+      },
+      {
+        "title": "Produce thrust",
+        "detail": "On orbit a catalyst bed cracks the ammonia into nitrogen and hydrogen for a simple hot-gas thruster, or an electric thruster ionises it for high-efficiency, low-thrust operation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap renewable electricity and large electrolysers",
+        "status": "exists",
+        "why": "hydrogen from electrolysis is the cost driver; if the power is not clean the ammonia is not green."
+      },
+      {
+        "tech": "Haber–Bosch synthesis and catalyst supply",
+        "status": "exists",
+        "why": "a century-old industrial process, but it must be powered by clean hydrogen rather than natural gas."
+      },
+      {
+        "tech": "High-purity ammonia handling",
+        "status": "partial",
+        "why": "fertiliser-grade ammonia is routine; propellant-grade purity, storage and loading for space are not."
+      },
+      {
+        "tech": "Ammonia-compatible thrusters",
+        "status": "partial",
+        "why": "ammonia has been tested in resistojets, arcjets and decomposition thrusters, but no mature flight-qualified engine family competes with hydrazine on performance."
+      },
+      {
+        "tech": "Reliable ignition and long-life catalysts",
+        "status": "partial",
+        "why": "ammonia is hard to light and its decomposed gas mixture attacks many catalyst and chamber materials over time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "renewable ammonia plants supplying fertiliser, and laboratory ammonia thrusters and electric-propulsion tests",
+        "unlocks": "a clean, globally traded hydrogen carrier and a demonstrated propellant chemistry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "flight qualification of ammonia-fed engines and green hydrazine made from green ammonia",
+        "unlocks": "lower-carbon in-space propulsion that reuses existing hydrazine logistics and tankage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ammonia or ammonia-blend electric propulsion adopted on satellite constellations and deep-space craft",
+        "unlocks": "an alternative to scarce xenon and to toxic hydrazine for station-keeping and long cruises."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "propellant produced from local resources instead of launched from Earth, such as ammonia or ammonia-derived fuel made from water ice and atmospheric nitrogen",
+        "unlocks": "spacecraft that refuel away from Earth and carry far less propellant at launch."
+      }
+    ]
   }
 }

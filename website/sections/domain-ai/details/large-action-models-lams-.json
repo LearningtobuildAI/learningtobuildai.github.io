@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "UI perception",
+        "role": "turn the state of an app into a machine-readable description",
+        "parts": [
+          "screenshot capture",
+          "accessibility tree parser",
+          "DOM parser",
+          "optical character recognition"
+        ]
+      },
+      {
+        "name": "Action model",
+        "role": "decide the next action to take given a goal and the current state",
+        "parts": [
+          "vision-language model",
+          "action tokenizer",
+          "policy head"
+        ]
+      },
+      {
+        "name": "Planner",
+        "role": "break a high-level goal into steps and adapt when things go wrong",
+        "parts": [
+          "task graph",
+          "chain-of-thought reasoning",
+          "error recovery loop"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "remember what has happened and what the user prefers",
+        "parts": [
+          "session context",
+          "long-term vector store",
+          "user profile"
+        ]
+      },
+      {
+        "name": "Execution engine",
+        "role": "carry out clicks, keystrokes and API calls in the target environment",
+        "parts": [
+          "browser automation",
+          "OS-level input injection",
+          "sandbox"
+        ]
+      },
+      {
+        "name": "Safety layer",
+        "role": "prevent harmful actions and keep the user in control",
+        "parts": [
+          "permission system",
+          "confirmation prompts",
+          "audit log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect interaction data",
+        "detail": "Record humans performing tasks across many apps, capturing screenshots, UI element trees and the actions they take."
+      },
+      {
+        "title": "Label and align",
+        "detail": "Pair each screen state with the goal and the correct next action, creating supervised training examples."
+      },
+      {
+        "title": "Train the action model",
+        "detail": "Fine-tune a vision-language model to predict actions from the current screen and the goal."
+      },
+      {
+        "title": "Add planning",
+        "detail": "Wrap the model in a reasoning loop that decomposes tasks and retries after failures."
+      },
+      {
+        "title": "Build the runtime",
+        "detail": "Integrate browser control, OS input and API clients into a sandboxed execution environment."
+      },
+      {
+        "title": "Insert guardrails",
+        "detail": "Define allowed action types, require confirmation for irreversible steps and log every action."
+      },
+      {
+        "title": "Evaluate and harden",
+        "detail": "Test on benchmark suites of web and desktop tasks, then collect real-user feedback to retrain."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "provide the language understanding and reasoning needed to follow goals and instructions."
+      },
+      {
+        "tech": "Vision-language models",
+        "status": "exists",
+        "why": "let the agent interpret screenshots and identify buttons, fields and text."
+      },
+      {
+        "tech": "Browser and OS automation APIs",
+        "status": "exists",
+        "why": "give a reliable way to observe and control applications."
+      },
+      {
+        "tech": "Sandboxed execution environments",
+        "status": "exists",
+        "why": "contain the agent so mistakes cannot damage the host system."
+      },
+      {
+        "tech": "Agent evaluation benchmarks",
+        "status": "partial",
+        "why": "needed to measure reliability across diverse tasks, but current suites are limited."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "narrow assistants that automate single apps or workflows",
+        "unlocks": "productivity gains in well-defined tasks like form filling or data entry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "general web agents that can operate many sites with human supervision",
+        "unlocks": "automation of multi-step online errands like booking and purchasing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that learn from demonstration and chain apps together",
+        "unlocks": "end-to-end business processes without custom integration."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous agents with robust safety and audit",
+        "unlocks": "delegation of complex digital work at scale, with humans overseeing exceptions."
+      }
+    ]
+  }
+}

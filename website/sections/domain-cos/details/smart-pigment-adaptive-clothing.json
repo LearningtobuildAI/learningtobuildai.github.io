@@ -29,5 +29,159 @@
         "def": "Small devices embedded within the clothing that detect environmental or physiological conditions to trigger color or texture changes."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Chromic material layer",
+        "role": "the part that actually changes colour, in one of four ways.",
+        "parts": [
+          "thermochromic leuco-dye microcapsules",
+          "photochromic dyes",
+          "electrochromic polymer or tungsten-oxide films",
+          "cholesteric liquid crystals / photonic-crystal structural colour"
+        ]
+      },
+      {
+        "name": "Electrodes and interconnects",
+        "role": "carry the small currents that switch each electrochromic cell.",
+        "parts": [
+          "conductive yarn (silver-coated nylon, carbon)",
+          "screen-printed silver or carbon traces",
+          "transparent conductor layer",
+          "busbars and edge contacts"
+        ]
+      },
+      {
+        "name": "Sensor suite",
+        "role": "measures the environment and the wearer.",
+        "parts": [
+          "thermistors",
+          "light and UV photodiodes",
+          "humidity sensor",
+          "skin-conductance and heart-rate electrodes",
+          "accelerometer"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "decides what colour to show and drives the cells.",
+        "parts": [
+          "microcontroller",
+          "cell driver circuitry",
+          "memory for patterns",
+          "low-power radio (Bluetooth)"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "supplies milliwatts for sensing and switching.",
+        "parts": [
+          "thin-film lithium-polymer cell",
+          "supercapacitor for switching peaks",
+          "piezoelectric or triboelectric harvesting from movement"
+        ]
+      },
+      {
+        "name": "Textile substrate and encapsulation",
+        "role": "holds everything together and survives washing.",
+        "parts": [
+          "woven or knitted base fabric",
+          "lamination and barrier films",
+          "sealed seams and flexible connectors"
+        ]
+      },
+      {
+        "name": "Pattern engine",
+        "role": "software that maps sensor input to colour states.",
+        "parts": [
+          "sensor-fusion model",
+          "colour-state lookup table",
+          "per-cell calibration data"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the colour mechanism",
+        "detail": "Pick per-application: cheap thermochromic ink for a single temperature shift, or an electrochromic film grid where each cell must be addressable independently."
+      },
+      {
+        "title": "Formulate the active material",
+        "detail": "Leuco dyes are microencapsulated (1–10 µm capsules) with a developer and a solvent whose melting point sets the switching temperature; electrochromic polymers are dissolved or dispersed into a printable ink."
+      },
+      {
+        "title": "Make the fabric conductive",
+        "detail": "Conductive yarns are knitted into the structure or silver/carbon inks are screen-printed in a grid, then cured at low temperature so the textile is not damaged."
+      },
+      {
+        "title": "Build the colour pixels",
+        "detail": "Electrochromic layer, electrolyte and counter-electrode are printed in register to form an array, typically 1–10 mm per cell — enough for patterns, not video."
+      },
+      {
+        "title": "Integrate sensors and control",
+        "detail": "A flexible module holding the microcontroller, sensors, drivers and battery is bonded to the fabric with conductive adhesive or low-temperature solder."
+      },
+      {
+        "title": "Seal and finish",
+        "detail": "The whole stack is laminated under a waterproof, flexible barrier, with sealed contacts, so the garment can be laundered."
+      },
+      {
+        "title": "Calibrate and program",
+        "detail": "Each cell's switching voltage and colour are measured and stored, then the mapping from sensor readings to colour states is written into firmware; the system is tested through repeated wash, abrasion and flex cycles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Electrochromic and thermochromic materials",
+        "status": "exists",
+        "why": "both are used commercially, but mostly on rigid glass or as simple printed inks rather than addressable textile arrays."
+      },
+      {
+        "tech": "Conductive textile yarns and printed electronics",
+        "status": "exists",
+        "why": "they provide the wiring without making the garment stiff."
+      },
+      {
+        "tech": "Washable, flexible power sources",
+        "status": "partial",
+        "why": "thin batteries exist but degrade and are a safety concern under repeated laundering."
+      },
+      {
+        "tech": "Robust encapsulation on fabric",
+        "status": "partial",
+        "why": "sealing a multilayer electronic stack against water and detergent while keeping it flexible is the main durability barrier."
+      },
+      {
+        "tech": "Reliable physiological mood sensing",
+        "status": "missing",
+        "why": "heart rate and skin conductance correlate weakly with emotional state, so 'mood-responsive' colour is currently guesswork, not measurement."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "thermochromic and photochromic garments and cosmetics sold as novelties and UV indicators",
+        "unlocks": "a supply chain of colour-changing inks and consumer familiarity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "low-resolution electrochromic panels on jackets and sportswear, driven by ambient light, temperature or a phone app",
+        "unlocks": "addressable colour on fabric, not just a single global shift."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sensor-driven garments for safety and sport — heat-stress warnings, UV exposure, visibility at night",
+        "unlocks": "a genuine functional reason to buy beyond novelty, plus the durability data the field lacks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "energy-autonomous, high-resolution textile displays powered by movement",
+        "unlocks": "clothing as a soft display; emotionally responsive colour stays speculative unless physiological sensing improves."
+      }
+    ]
   }
 }

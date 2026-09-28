@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Print head array",
+        "role": "jets microscopic droplets of liquid photopolymer, one material at a time, across the build width.",
+        "parts": [
+          "piezo or thermal inkjet heads",
+          "multi-channel resin feed",
+          "capping and cleaning station"
+        ]
+      },
+      {
+        "name": "Material supply",
+        "role": "stores and delivers several different resins plus a dissolvable support material.",
+        "parts": [
+          "resin cartridges",
+          "temperature-controlled reservoirs",
+          "recirculation and filtration"
+        ]
+      },
+      {
+        "name": "Voxel data pipeline",
+        "role": "turns a solid CAD model into a grid of voxels, each stamped with a material or blend.",
+        "parts": [
+          "volumetric modelling software",
+          "material assignment maps",
+          "slice and droplet-pattern generator"
+        ]
+      },
+      {
+        "name": "Curing and levelling",
+        "role": "solidifies each deposited layer and keeps the surface flat for the next pass.",
+        "parts": [
+          "UV lamp or LED array",
+          "roller or blade levelling",
+          "layer-height sensing"
+        ]
+      },
+      {
+        "name": "Motion stage",
+        "role": "sweeps the head (or the platform) with micron-level accuracy so droplets land where intended.",
+        "parts": [
+          "linear motors",
+          "X-Y gantry",
+          "Z-stage that lowers the build tray",
+          "encoders"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "removes support, completes cure and finishes the part.",
+        "parts": [
+          "waterjet or ultrasonic support removal",
+          "wash station",
+          "final UV flood cure"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model in voxels",
+        "detail": "CAD geometry is voxelised — divided into millions of tiny cubes — and each voxel is assigned a material, a blend, or left empty."
+      },
+      {
+        "title": "Define material transitions",
+        "detail": "Interfaces between materials are set as hard boundaries or graded mixtures, so stiffness can change gradually across a part."
+      },
+      {
+        "title": "Load materials",
+        "detail": "Cartridges of the chosen photopolymers and a support resin are fitted and primed through the print heads."
+      },
+      {
+        "title": "Generate droplet maps",
+        "detail": "Software slices the voxel grid into layers and converts each layer into a pattern of which nozzle fires where."
+      },
+      {
+        "title": "Print layer by layer",
+        "detail": "The head array scans across the tray, jetting droplets of the selected materials side by side; a UV lamp cures the layer immediately behind the head."
+      },
+      {
+        "title": "Level and repeat",
+        "detail": "A roller flattens the layer to an exact thickness, the build tray drops by one layer height, and the cycle repeats thousands of times."
+      },
+      {
+        "title": "Remove support",
+        "detail": "The part is lifted out and the support material is dissolved or blasted away, leaving overhangs and internal channels intact."
+      },
+      {
+        "title": "Finish and verify",
+        "detail": "A final UV cure hardens the part; dimensional checks and mechanical tests confirm the material map came out as designed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Inkjet print heads with reliable micron-scale droplets",
+        "status": "exists",
+        "why": "the voxel resolution is limited by how small and repeatable a jetted droplet can be."
+      },
+      {
+        "tech": "Photopolymer resins that cure fast and bond to each other",
+        "status": "exists",
+        "why": "adjacent voxels of different chemistry must cure together without delaminating."
+      },
+      {
+        "tech": "Dissolvable support materials",
+        "status": "exists",
+        "why": "internal voids and overhangs need support that can be removed without damaging the part."
+      },
+      {
+        "tech": "Voxel-level CAD and simulation tools",
+        "status": "partial",
+        "why": "conventional CAD treats a part as one material; assigning millions of voxels needs new toolchains and huge files."
+      },
+      {
+        "tech": "Multi-nozzle heads that resist cross-contamination",
+        "status": "partial",
+        "why": "running many reactive resins through one head risks clogging and mixing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial inkjet photopolymer machines that print a handful of materials in one build",
+        "unlocks": "prototypes with rigid and rubber-like regions, printed in a single pass."
+      },
+      {
+        "stage": "Next",
+        "milestone": "research platforms pushing toward ten or more materials at voxel resolution",
+        "unlocks": "parts whose stiffness, colour, conductivity or transparency vary point by point."
+      },
+      {
+        "stage": "Next",
+        "milestone": "functionally graded components with no glued joints",
+        "unlocks": "lighter parts for aerospace and medical implants where a hard surface meets a flexible core."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "printing integrated devices — conductive, insulating and structural voxels in one object",
+        "unlocks": "sensors, soft robots and custom prosthetics made in a single build."
+      }
+    ]
+  }
+}

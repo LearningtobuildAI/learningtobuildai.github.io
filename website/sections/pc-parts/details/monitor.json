@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Panel",
+        "role": "the light valve or light emitter that forms the image pixel by pixel.",
+        "parts": [
+          "glass backplane with thin-film transistors",
+          "liquid crystal layer and polarizers (LCD)",
+          "organic emissive layers and encapsulation (OLED)",
+          "colour filter and black matrix"
+        ]
+      },
+      {
+        "name": "Backlight (LCD only)",
+        "role": "provides the white light that the liquid crystal layer modulates.",
+        "parts": [
+          "LED strips",
+          "light guide plate",
+          "diffuser and prism films",
+          "local-dimming zones"
+        ]
+      },
+      {
+        "name": "Driver electronics",
+        "role": "addresses each pixel row by row and sets the voltage or current that defines its brightness.",
+        "parts": [
+          "gate driver ICs",
+          "source driver ICs",
+          "timing controller",
+          "flexible printed circuits"
+        ]
+      },
+      {
+        "name": "Scaler and interface board",
+        "role": "receives video from the computer, scales and processes it, and sends it to the panel.",
+        "parts": [
+          "HDMI, DisplayPort or USB-C receivers",
+          "scaler chip",
+          "on-screen display controller",
+          "USB hub"
+        ]
+      },
+      {
+        "name": "Power supply",
+        "role": "converts mains AC into the DC rails used by the panel, backlight and electronics.",
+        "parts": [
+          "AC-DC converter",
+          "DC-DC regulators",
+          "filtering capacitors"
+        ]
+      },
+      {
+        "name": "Chassis and stand",
+        "role": "holds the panel rigid and flat, and provides mounting and ergonomic adjustment.",
+        "parts": [
+          "bezel",
+          "rear housing",
+          "VESA mounting interface",
+          "stand with tilt, swivel and height adjustment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pattern the transistor array",
+        "detail": "On large glass sheets, thin-film transistor layers are deposited and etched by photolithography so that every pixel has its own switch. Silicon, or faster indium-gallium-zinc-oxide for high refresh rates, is used."
+      },
+      {
+        "title": "Form colour filters",
+        "detail": "Red, green and blue resin patterns and a black matrix are deposited on the opposite glass plate, one set per pixel."
+      },
+      {
+        "title": "Assemble the LCD cell",
+        "detail": "The two glass plates are aligned, sealed around the edge, and the gap is filled with liquid crystal. Polarizing films are laminated to the outside. For OLED, organic layers are deposited on the transistor backplane instead and sealed against moisture."
+      },
+      {
+        "title": "Build the backlight",
+        "detail": "LED strips are mounted along an edge or across the back. A light guide, diffuser and prism films spread the light evenly. This step is omitted for OLED, which emits its own light."
+      },
+      {
+        "title": "Bond drivers and flexible circuits",
+        "detail": "Gate and source driver chips are attached along the panel edges, and flexible printed circuits connect them to the control boards."
+      },
+      {
+        "title": "Assemble the electronics",
+        "detail": "The scaler board, power supply and input ports are screwed into the rear housing and connected to the panel."
+      },
+      {
+        "title": "Final assembly and calibration",
+        "detail": "The panel is fitted into the bezel, the stand is attached, and colour, gamma and brightness uniformity are measured and corrected before testing and packing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Thin-film transistor arrays on glass",
+        "status": "exists",
+        "why": "every pixel needs a switch for fast, uniform control."
+      },
+      {
+        "tech": "Liquid crystal materials and polarizers",
+        "status": "exists",
+        "why": "they form the light valve in the dominant LCD technology."
+      },
+      {
+        "tech": "LED backlights and local dimming",
+        "status": "exists",
+        "why": "they set brightness and contrast for LCD screens."
+      },
+      {
+        "tech": "OLED emitters and encapsulation",
+        "status": "partial",
+        "why": "organic layers give perfect blacks but must be sealed from moisture and are harder to make on large sheets."
+      },
+      {
+        "tech": "High-bandwidth display interfaces",
+        "status": "exists",
+        "why": "HDMI, DisplayPort and USB-C carry the increasing data rates of high resolution and high refresh."
+      },
+      {
+        "tech": "Colour management standards",
+        "status": "exists",
+        "why": "sRGB, DCI-P3 and HDR formats let content and monitors agree on colour and brightness."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "LCD dominates; OLED desktop monitors and mini-LED backlights are sold for better contrast and HDR",
+        "unlocks": "accurate colour and deep blacks for work and entertainment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher refresh rates and resolutions with faster interfaces",
+        "unlocks": "smoother motion for gaming and sharper detail for large screens."
+      },
+      {
+        "stage": "Next",
+        "milestone": "microLED and brighter OLED variants at desktop sizes",
+        "unlocks": "high brightness without burn-in risk and long lifetimes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "flexible and transparent panels at low cost",
+        "unlocks": "displays that roll, bend or blend into surfaces rather than sitting on a desk."
+      }
+    ]
+  }
+}

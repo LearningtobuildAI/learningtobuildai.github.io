@@ -31,5 +31,163 @@
         "def": "A process where artificial intelligence algorithms are trained to identify weeds from crops based on visual or spectral data, enabling targeted treatment applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Robot platform",
+        "role": "a small, light machine that drives between crop rows without compacting soil.",
+        "parts": [
+          "lightweight chassis (tens to a few hundred kg)",
+          "electric wheel or track drive",
+          "battery pack and docking contacts",
+          "tool mounting frame"
+        ]
+      },
+      {
+        "name": "Positioning and navigation",
+        "role": "knows where it is to a few centimetres, so it can follow rows and return to a dock.",
+        "parts": [
+          "RTK-corrected satellite positioning",
+          "inertial measurement unit",
+          "wheel encoders",
+          "safety LiDAR or ultrasonic sensors"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "tells crop from weed, plant by plant.",
+        "parts": [
+          "downward-facing RGB and multispectral cameras",
+          "onboard GPU or edge accelerator",
+          "weed/crop classification model",
+          "plant-level map"
+        ]
+      },
+      {
+        "name": "Weeding end effector",
+        "role": "acts on the individual plant rather than the whole field.",
+        "parts": [
+          "mechanical tine, hoe or punch",
+          "or micro-dose spray nozzle",
+          "or small laser"
+        ]
+      },
+      {
+        "name": "Swarm coordination",
+        "role": "lets many robots cover a field together without overlapping or colliding.",
+        "parts": [
+          "mesh radio link",
+          "shared field map and task queue",
+          "coverage-path planner",
+          "auction or market-based task allocation"
+        ]
+      },
+      {
+        "name": "Base station",
+        "role": "keeps the fleet charged, updated and supervised by the farmer.",
+        "parts": [
+          "charging dock",
+          "field-edge compute and connectivity",
+          "fleet dashboard",
+          "weather-safe housing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the light platform",
+        "detail": "Build a narrow, low-mass chassis sized to straddle or pass between rows, with electric drive chosen so ground pressure stays far below a tractor's."
+      },
+      {
+        "title": "Add centimetre positioning",
+        "detail": "Fit RTK satellite positioning plus inertial and wheel sensing so the robot can repeat a row line and dock precisely."
+      },
+      {
+        "title": "Collect and label field images",
+        "detail": "Drive the robot over real fields and annotate thousands of images to teach a model the difference between crop, weed and soil."
+      },
+      {
+        "title": "Train the recognition model",
+        "detail": "Train a convolutional or transformer network, then compress it so it runs in real time on the robot's onboard computer."
+      },
+      {
+        "title": "Fit the end effector",
+        "detail": "Mount the chosen tool — mechanical, micro-spray or laser — and calibrate its aim against the plant map."
+      },
+      {
+        "title": "Write the coordination layer",
+        "detail": "Implement simultaneous localisation and mapping, coverage planning, and a task-allocation rule that divides a field between robots."
+      },
+      {
+        "title": "Trial in real fields",
+        "detail": "Run small fleets across seasons and crops, measuring weed kill rate, crop damage and how often a human must intervene."
+      },
+      {
+        "title": "Deploy with docking and fleet software",
+        "detail": "Install charging docks and a dashboard so a farmer can dispatch, monitor and recover the fleet autonomously."
+      },
+      {
+        "title": "Scale into a product system",
+        "detail": "Combine robot, docks, models and agronomic advice into a service that fits existing farm workflows."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "RTK satellite positioning",
+        "status": "exists",
+        "why": "reliable centimetre-level guidance is what makes row-following without a driver possible."
+      },
+      {
+        "tech": "Edge AI vision chips",
+        "status": "exists",
+        "why": "real-time weed recognition must happen on the robot, often without connectivity."
+      },
+      {
+        "tech": "Plant-level weed datasets and models",
+        "status": "partial",
+        "why": "models work well in tested crops but transfer poorly to new species, soils and light conditions."
+      },
+      {
+        "tech": "Low-cost, robust electric drivetrains",
+        "status": "exists",
+        "why": "hundreds of cheap, weatherproof robots only make sense if the drivetrain is inexpensive."
+      },
+      {
+        "tech": "Mesh communication and swarm control",
+        "status": "partial",
+        "why": "demonstrated in research fields, but rarely at farm scale over a whole season."
+      },
+      {
+        "tech": "Safety rules for autonomous farm machines",
+        "status": "partial",
+        "why": "standards and liability rules for unsupervised robots in fields are still forming."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single commercial autonomous weeders working in row crops",
+        "unlocks": "proof that plant-level weeding can cut herbicide use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervised small fleets on one farm, with docking and shared maps",
+        "unlocks": "coverage rates approaching tractor work without soil compaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully unsupervised swarm operation across a season",
+        "unlocks": "labour-free crop management and continuous, low-disturbance weeding."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mixed fleets of weeding, planting and scouting robots coordinated on one farm",
+        "unlocks": "field management driven by per-plant data rather than whole-field averages."
+      }
+    ]
   }
 }

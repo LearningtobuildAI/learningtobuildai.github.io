@@ -35,5 +35,160 @@
         "def": "Physical properties that describe the behavior of a material in response to an applied force, such as strength and stiffness."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Feedstock",
+        "role": "the raw material — powder, filament, resin or wire — whose purity and shape decide the final part's strength.",
+        "parts": [
+          "gas- or plasma-atomised metal powder (titanium, nickel and aluminium alloys)",
+          "engineering polymer filament or pellets (PEEK, PEI, PEKK)",
+          "photopolymer resin",
+          "continuous fibre tow"
+        ]
+      },
+      {
+        "name": "Deposition and consolidation",
+        "role": "places material and fuses it into a solid cross-section.",
+        "parts": [
+          "fibre laser or electron beam",
+          "galvanometer scanning mirrors",
+          "extruder and hot end",
+          "recoater blade or roller",
+          "printhead or vat and projector"
+        ]
+      },
+      {
+        "name": "Motion and thermal platform",
+        "role": "moves the beam or toolhead precisely while holding temperatures steady.",
+        "parts": [
+          "precision gantry or scanner axes",
+          "heated build chamber",
+          "heated build plate",
+          "inert-gas circulation"
+        ]
+      },
+      {
+        "name": "Atmosphere and gas handling",
+        "role": "keeps oxygen and moisture away from hot reactive metals.",
+        "parts": [
+          "argon or nitrogen supply",
+          "oxygen sensors and control loop",
+          "vacuum pumps for electron-beam machines",
+          "gas recycling"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns a green or stressed near-net part into an engineered component.",
+        "parts": [
+          "powder and support removal",
+          "hot isostatic pressing (HIP)",
+          "heat-treatment furnace",
+          "CNC machining and surface finishing"
+        ]
+      },
+      {
+        "name": "Quality and metrology",
+        "role": "proves the part meets specification, which is harder for printed parts than cast or forged ones.",
+        "parts": [
+          "in-situ melt-pool and thermal monitoring",
+          "X-ray and CT scanning",
+          "tensile and fatigue testing",
+          "powder chemistry and flow analysis"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the part for printing",
+        "detail": "Topology optimisation and build simulation reshape the geometry to remove weight and predict distortion before anything is made."
+      },
+      {
+        "title": "Make the feedstock",
+        "detail": "Metal powder is produced by melting alloy and blasting it into fine droplets with high-pressure gas or plasma, which solidify into near-perfect spheres. Polymers are synthesised and compounded with carbon or glass fillers."
+      },
+      {
+        "title": "Qualify the powder or resin",
+        "detail": "Particle size distribution, oxygen content, flowability and chemistry are measured. Most printing processes want metal particles roughly 15–45 µm across; coarser powders suit electron-beam machines."
+      },
+      {
+        "title": "Set up the build",
+        "detail": "The file is sliced into layers 30–100 µm thick, support structures are added, the machine is loaded, the bed is levelled and the chamber is purged to a low-oxygen atmosphere."
+      },
+      {
+        "title": "Print layer by layer",
+        "detail": "A laser or electron beam melts each cross-section onto the one below; polymer machines instead extrude molten filament or cure resin with light. Hundreds to thousands of layers build the part."
+      },
+      {
+        "title": "Remove powder and supports",
+        "detail": "Loose powder is vacuumed out and recycled, and sacrificial supports are cut away — the part now has a rough surface and locked-in stress."
+      },
+      {
+        "title": "Heat treat and press",
+        "detail": "Hot isostatic pressing closes internal porosity under high pressure and temperature, and heat treatment sets the microstructure and relieves residual stress."
+      },
+      {
+        "title": "Machine to final tolerance",
+        "detail": "Critical mating faces, holes and threads are CNC-machined, then shot-peened, polished, anodised or coated as needed."
+      },
+      {
+        "title": "Inspect and certify",
+        "detail": "CT scanning, dimensional checks and mechanical testing confirm the part, and the whole build's process data is archived as its quality record."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Metal powder atomisation with tight chemistry control",
+        "status": "exists",
+        "why": "spherical, low-oxygen powder is the raw material; a bad batch cannot be fixed later in the process."
+      },
+      {
+        "tech": "High-power fibre lasers and fast scanning optics",
+        "status": "exists",
+        "why": "they melt each layer fast enough to be economic while keeping the melt pool stable."
+      },
+      {
+        "tech": "Inert atmosphere or vacuum control",
+        "status": "exists",
+        "why": "titanium and aluminium alloys absorb oxygen and nitrogen at melt temperature and become brittle."
+      },
+      {
+        "tech": "In-situ process monitoring",
+        "status": "partial",
+        "why": "melt-pool cameras and thermal sensors exist but are not yet trusted on their own to certify flight-critical parts."
+      },
+      {
+        "tech": "Qualification standards and validated simulation",
+        "status": "partial",
+        "why": "printed parts still need extensive test coupons and inspection, which keeps costs higher than casting or forging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "qualified parts in jet engines and medicine — printed fuel-nozzle tips have flown in commercial jet engines since 2016, and porous titanium spinal implants are routine",
+        "unlocks": "a proven niche where printing beats conventional manufacturing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "binder-jet and multi-laser machines running at production volume",
+        "unlocks": "moving from tens of parts per build to thousands, cutting cost per part."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop control using machine learning on build data",
+        "unlocks": "fewer test coupons and faster certification of load-bearing parts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-material and functionally graded parts with embedded sensors",
+        "unlocks": "components that combine stiff and tough regions, or that report their own wear."
+      }
+    ]
   }
 }

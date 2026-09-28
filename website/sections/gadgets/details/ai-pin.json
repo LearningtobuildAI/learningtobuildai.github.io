@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Optical engine",
+        "role": "draws a virtual image onto the user's palm instead of using a screen.",
+        "parts": [
+          "red, green and blue laser diodes (or a single green diode)",
+          "beam-combining optics",
+          "MEMS scanning mirror",
+          "exit window"
+        ]
+      },
+      {
+        "name": "Depth and camera sensing",
+        "role": "finds the palm, focuses the projection and reads the environment.",
+        "parts": [
+          "time-of-flight or stereo depth sensor",
+          "wide-angle camera",
+          "proximity and eye-safety detectors"
+        ]
+      },
+      {
+        "name": "Compute and connectivity",
+        "role": "runs the assistant locally and offloads heavy models to the cloud.",
+        "parts": [
+          "low-power system-on-chip",
+          "eSIM cellular modem",
+          "Wi-Fi and Bluetooth",
+          "microphone array"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "fits enough energy into a badge-sized body without burning the wearer.",
+        "parts": [
+          "small lithium-polymer cell",
+          "magnetic clip-on battery booster",
+          "graphite or vapour-chamber heat spreading"
+        ]
+      },
+      {
+        "name": "Input and interaction",
+        "role": "replaces touch and typing.",
+        "parts": [
+          "voice wake word and speech-to-text",
+          "hand gestures and taps",
+          "capacitive touch surface"
+        ]
+      },
+      {
+        "name": "Agent software",
+        "role": "turns camera, microphone and location into useful answers.",
+        "parts": [
+          "multimodal model running in the cloud",
+          "speech synthesis",
+          "phone and web app for settings"
+        ]
+      },
+      {
+        "name": "Enclosure and mounting",
+        "role": "keeps the device on clothing and aimed at the hand.",
+        "parts": [
+          "machined aluminium shell",
+          "magnetic backplate",
+          "clip and lanyard options"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optical path",
+        "detail": "Choose laser wavelengths and scan angles so that a readable image lands on a palm 20–40 cm away, then model distortion and speckle in software."
+      },
+      {
+        "title": "Fabricate the MEMS mirror",
+        "detail": "A silicon-on-insulator wafer is etched to leave a tiny suspended mirror on torsion springs, coated with a reflective layer, and diced and packaged in a vacuum or inert atmosphere."
+      },
+      {
+        "title": "Assemble the optical engine",
+        "detail": "Laser diodes, collimators and the scanning mirror are aligned to within a few micrometres in a clean room, then sealed against dust."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "The system-on-chip, depth sensor, camera, cellular modem and microphones are mounted on a dense circuit board small enough to sit in the housing."
+      },
+      {
+        "title": "Solve thermal and power",
+        "detail": "Heat paths are designed so skin-contact surfaces stay below roughly 43 °C, and the battery is sized against the measured power draw of camera, modem and projector together."
+      },
+      {
+        "title": "Calibrate each unit",
+        "detail": "Because every laser and mirror differs slightly, each device is measured on a test rig and given its own correction table so the projected image is the right shape and colour."
+      },
+      {
+        "title": "Write the agent stack",
+        "detail": "Camera frames, speech and location are streamed to a cloud model that returns text and actions; latency budgets, wake-word detection and privacy handling are tuned on real users."
+      },
+      {
+        "title": "Certify and support",
+        "detail": "The projector must pass laser-safety rules such as IEC 60825-1 as a Class 1 product, plus radio and battery approvals, before shipping — and cloud services must be funded for the life of the device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Micro laser beam-scanning displays",
+        "status": "exists",
+        "why": "tiny MEMS mirrors scanned by laser diodes are already built at scale for head-up and pico projectors."
+      },
+      {
+        "tech": "Low-latency multimodal AI models",
+        "status": "partial",
+        "why": "the assistant is only usable if vision, speech and answer return in about a second over a mobile network."
+      },
+      {
+        "tech": "Always-on, low-power cellular modules",
+        "status": "exists",
+        "why": "the device has no screen and no phone tether, so it needs its own cheap data connection."
+      },
+      {
+        "tech": "Skin-safe thermal design in sealed wearables",
+        "status": "partial",
+        "why": "a fanless device against the body must shed several watts while staying comfortable to wear."
+      },
+      {
+        "tech": "Eye-safe proximity sensing",
+        "status": "exists",
+        "why": "the projector must cut out instantly if a face enters the beam path to remain legally Class 1."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "the first commercial screenless projector wearable shipped in 2024 and its cloud service was shut down in early 2025",
+        "unlocks": "hard evidence that latency, battery life, projection brightness in daylight and a subscription price all matter more than novelty."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI glasses that pair cameras, speakers and near-eye displays with a phone",
+        "unlocks": "ambient assistance that people actually wear daily, with the display moved from the palm to the lens."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small on-device models handling speech and vision locally",
+        "unlocks": "sub-second responses and offline use, which removes the biggest complaint about cloud-only wearables."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "assistants spread across earbuds, glasses and a projector that shares one identity and context",
+        "unlocks": "genuinely ambient computing, where the interface is chosen by situation rather than fixed to one gadget."
+      }
+    ]
+  }
+}

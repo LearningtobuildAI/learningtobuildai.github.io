@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Raw magic-state source",
+        "role": "makes many noisy copies of the special state that unlocks a non-Clifford gate (the T state).",
+        "parts": [
+          "state-injection circuit",
+          "calibrated single-qubit rotations",
+          "surface-code patch to hold the state"
+        ]
+      },
+      {
+        "name": "Distillation circuit",
+        "role": "consumes a block of noisy states and outputs fewer, cleaner ones.",
+        "parts": [
+          "small stabiliser code block, such as a Reed-Muller code",
+          "Clifford-only gates and measurements",
+          "post-selection on measured syndromes"
+        ]
+      },
+      {
+        "name": "Logical qubit fabric",
+        "role": "hosts the factory: the physical qubits and their error-correcting patches.",
+        "parts": [
+          "surface-code patches",
+          "lattice-surgery merge/split operations",
+          "ancilla patches for measurement"
+        ]
+      },
+      {
+        "name": "Decoders and classical control",
+        "role": "turn syndrome measurements into corrections fast enough to keep the factory running.",
+        "parts": [
+          "real-time decoders",
+          "syndrome processing",
+          "feed-forward logic"
+        ]
+      },
+      {
+        "name": "Factory scheduler",
+        "role": "decides how many distillation stages, how many patches, and when distilled states are shipped to the algorithm.",
+        "parts": [
+          "resource-state router",
+          "qubit budget model",
+          "throughput/error trade-off logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the target",
+        "detail": "Decide the gate the algorithm needs and the output error it can tolerate, for example going from about one error in a thousand raw states to one in a billion."
+      },
+      {
+        "title": "Choose a protocol",
+        "detail": "Pick a small stabiliser code whose transversal operations act as the required gate — the 15-to-1 Reed-Muller scheme, introduced by Bravyi and Kitaev in 2005, is the classic choice."
+      },
+      {
+        "title": "Compile it fault-tolerantly",
+        "detail": "Express every operation in the protocol as Clifford gates and measurements that the underlying error-correcting code can perform safely."
+      },
+      {
+        "title": "Design state injection",
+        "detail": "Prepare a single physical qubit in the magic state and grow or merge a code patch around it, so the encoded state inherits only the physical error."
+      },
+      {
+        "title": "Simulate under noise",
+        "detail": "Run Monte Carlo simulations across realistic error rates to check the output error and the success rate, and tune the number of rounds."
+      },
+      {
+        "title": "Lay out the factory",
+        "detail": "Allocate code patches and a time schedule for each distillation stage; size the classical decoder to keep up in real time."
+      },
+      {
+        "title": "Run and recycle",
+        "detail": "Operate the factory: feed in raw states, discard blocks that fail syndrome checks, and route good distilled states to the algorithm."
+      },
+      {
+        "title": "Shrink the overhead",
+        "detail": "Revisit the protocol using newer schemes — growing a magic state directly inside a code patch, or catalyzed conversions between state types — to cut the qubit cost."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum error correction below threshold",
+        "status": "partial",
+        "why": "if adding qubits makes errors worse, no amount of distillation helps; small surface-code experiments now show error suppression as the code grows."
+      },
+      {
+        "tech": "Clifford gates and lattice surgery",
+        "status": "partial",
+        "why": "distillation circuits are built only from operations that are cheap and naturally fault-tolerant."
+      },
+      {
+        "tech": "High-fidelity state injection",
+        "status": "partial",
+        "why": "the whole chain is only as good as the raw states it starts from."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "decoders must keep pace with measurement rounds, or the logical qubits idle."
+      },
+      {
+        "tech": "Qubit counts in the thousands to millions",
+        "status": "missing",
+        "why": "factories can demand many times more qubits than the calculation they support."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "below-threshold error correction in small hardware experiments; distillation studied mainly by simulation",
+        "unlocks": "confidence that logical qubits can be made good enough to distil from."
+      },
+      {
+        "stage": "Next",
+        "milestone": "injection plus one distillation round demonstrated end to end on hardware",
+        "unlocks": "measured, not modelled, factory overhead."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a full fault-tolerant non-Clifford gate using a distilled state",
+        "unlocks": "a universal logical gate set, the gate to genuinely useful quantum algorithms."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optimised factories — cultivation and catalyzed protocols — shrink qubit cost by roughly an order of magnitude",
+        "unlocks": "logical machines large enough to run chemistry and materials calculations."
+      }
+    ]
+  }
+}

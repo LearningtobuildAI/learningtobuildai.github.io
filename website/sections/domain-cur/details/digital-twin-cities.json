@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "collects real-time data from the physical city.",
+        "parts": [
+          "IoT environmental sensors",
+          "traffic cameras and inductive loops",
+          "air-quality monitors",
+          "weather stations",
+          "mobile phone and vehicle telemetry"
+        ]
+      },
+      {
+        "name": "Geospatial model",
+        "role": "provides the 3D geometric and semantic representation of buildings, roads, terrain and vegetation.",
+        "parts": [
+          "aerial LiDAR point clouds",
+          "photogrammetry and satellite imagery",
+          "building information models (BIM)",
+          "CityGML or similar data schema"
+        ]
+      },
+      {
+        "name": "Data integration platform",
+        "role": "ingests, cleans and harmonises heterogeneous data streams into a common operating picture.",
+        "parts": [
+          "streaming data pipelines",
+          "APIs for external feeds",
+          "data lake or time-series database",
+          "metadata and provenance store"
+        ]
+      },
+      {
+        "name": "Simulation engine",
+        "role": "runs physics-based and agent-based models of city systems.",
+        "parts": [
+          "traffic microsimulation",
+          "building energy models",
+          "flood and drainage models",
+          "crowd dynamics models"
+        ]
+      },
+      {
+        "name": "AI and predictive analytics",
+        "role": "forecasts future states and suggests interventions.",
+        "parts": [
+          "machine-learning forecasting models",
+          "optimisation algorithms",
+          "anomaly detection"
+        ]
+      },
+      {
+        "name": "Visualisation and interface",
+        "role": "lets planners and operators explore the twin and act on its outputs.",
+        "parts": [
+          "web dashboards",
+          "3D GIS viewers",
+          "VR/AR clients",
+          "alerting and reporting tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define objectives and scope",
+        "detail": "Decide which city systems the twin will cover — for example traffic, energy, flooding or emergency response — and what decisions it must support."
+      },
+      {
+        "title": "Capture baseline geospatial data",
+        "detail": "Fly LiDAR and photogrammetry surveys, collect satellite imagery, and gather existing BIM and cadastral records to build a complete 3D base map."
+      },
+      {
+        "title": "Construct the 3D city model",
+        "detail": "Process point clouds into meshes, classify features such as buildings, roads, trees and terrain, and attach semantic attributes like building height and use."
+      },
+      {
+        "title": "Deploy and connect sensors",
+        "detail": "Install new IoT devices where needed and link existing feeds — traffic loops, weather stations, utility meters — into a common network."
+      },
+      {
+        "title": "Build the data integration layer",
+        "detail": "Create streaming pipelines to ingest, clean and store real-time and historical data, with APIs so external systems can publish and subscribe."
+      },
+      {
+        "title": "Develop and calibrate simulation models",
+        "detail": "Build traffic, energy, flood or crowd models, then tune them against recorded data so their predictions match observed behaviour."
+      },
+      {
+        "title": "Integrate the twin",
+        "detail": "Connect the 3D model, live data and simulations into a single platform, and validate it by replaying past events and comparing outcomes."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Use the twin for planning, real-time monitoring and emergency drills; continuously update the model as the city changes and sensors are added or replaced."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-bandwidth, low-latency networks",
+        "status": "exists",
+        "why": "real-time feeds from thousands of sensors need reliable fibre and 5G links."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "exists",
+        "why": "storing and processing city-scale data in real time exceeds local hardware."
+      },
+      {
+        "tech": "3D geospatial data capture",
+        "status": "partial",
+        "why": "LiDAR and BIM are mature, but full-city coverage at useful detail is still incomplete in many places."
+      },
+      {
+        "tech": "IoT sensor networks",
+        "status": "partial",
+        "why": "deployments are growing but remain patchy and siloed across city departments."
+      },
+      {
+        "tech": "Interoperability standards",
+        "status": "partial",
+        "why": "formats such as CityGML and IFC help, but seamless exchange across vendors and domains is not yet routine."
+      },
+      {
+        "tech": "AI for city-scale prediction",
+        "status": "partial",
+        "why": "machine learning works for specific tasks, but robust real-time forecasting across coupled city systems is still developing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "static 3D models and dashboards for planning and public consultation",
+        "unlocks": "better visualisation of proposed developments and clearer communication with citizens."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time operational twins for traffic, energy and emergency response in major cities",
+        "unlocks": "live congestion management, demand response and faster incident coordination."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-domain twins that couple water, waste, transport and energy",
+        "unlocks": "integrated resource planning and resilience against cascading failures."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "predictive, semi-autonomous city management with closed-loop control",
+        "unlocks": "continuous optimisation of services, though with significant governance and cybersecurity challenges."
+      }
+    ]
+  }
+}

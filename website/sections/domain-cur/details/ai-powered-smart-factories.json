@@ -1,0 +1,169 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "captures real-time physical data from machines, processes and products.",
+        "parts": [
+          "vibration, temperature and pressure sensors",
+          "machine vision cameras",
+          "RFID and barcode readers",
+          "programmable logic controllers (PLCs)"
+        ]
+      },
+      {
+        "name": "Connectivity and edge",
+        "role": "moves data reliably inside the factory and pre-processes it close to the source.",
+        "parts": [
+          "industrial Ethernet and time-sensitive networking (TSN)",
+          "private 5G or Wi-Fi 6",
+          "edge servers and gateways",
+          "OPC UA and MQTT brokers"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "stores and organises high-volume, high-frequency data for analysis.",
+        "parts": [
+          "time-series database",
+          "data lake",
+          "streaming pipelines",
+          "metadata catalog"
+        ]
+      },
+      {
+        "name": "AI and analytics",
+        "role": "turns data into predictions, classifications and optimised setpoints.",
+        "parts": [
+          "model training pipelines",
+          "model registry",
+          "real-time inference engines",
+          "anomaly detection and predictive maintenance models"
+        ]
+      },
+      {
+        "name": "Digital twin",
+        "role": "a virtual replica used to simulate changes before applying them to the physical line.",
+        "parts": [
+          "3D CAD and physics models",
+          "live data feeds",
+          "simulation and what-if engines"
+        ]
+      },
+      {
+        "name": "Control and automation",
+        "role": "executes AI decisions on the factory floor.",
+        "parts": [
+          "robots and cobots",
+          "CNC machines and actuators",
+          "autonomous mobile robots (AMRs)",
+          "manufacturing execution system (MES) and SCADA"
+        ]
+      },
+      {
+        "name": "Human interface",
+        "role": "presents insights and allows operators to supervise and intervene.",
+        "parts": [
+          "dashboards and HMIs",
+          "mobile and AR interfaces",
+          "alerting systems"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map processes and choose targets",
+        "detail": "Identify the lines, machines and metrics where downtime, quality or energy use can be improved; set measurable goals."
+      },
+      {
+        "title": "Instrument the factory",
+        "detail": "Retrofit or install sensors, cameras and PLCs. Sample vibration at kilohertz rates and temperatures at slower intervals, depending on the failure mode."
+      },
+      {
+        "title": "Build connectivity and edge",
+        "detail": "Lay industrial Ethernet or private 5G, install edge gateways, and set up protocol translation (e.g. OPC UA) so data can leave legacy machines."
+      },
+      {
+        "title": "Create the data platform",
+        "detail": "Stream data into a time-series database and data lake; add metadata so each reading is linked to a machine, batch and timestamp."
+      },
+      {
+        "title": "Train AI models",
+        "detail": "Use historical failure and quality data to train predictive maintenance and optimisation models; validate them against held-out data."
+      },
+      {
+        "title": "Integrate with control",
+        "detail": "Connect model outputs to MES and SCADA so the system can recommend or automatically adjust speeds, feeds and schedules."
+      },
+      {
+        "title": "Deploy a digital twin",
+        "detail": "Build a simulation of the line using CAD and physics models, feed it live data, and test changes virtually before rollout."
+      },
+      {
+        "title": "Roll out dashboards and train staff",
+        "detail": "Give operators and engineers clear interfaces; train them to trust and override the system."
+      },
+      {
+        "title": "Operate and retrain",
+        "detail": "Monitor model drift, collect new data, and periodically retrain to keep predictions accurate as equipment ages."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Industrial IoT sensors and controllers",
+        "status": "exists",
+        "why": "they provide the raw data on vibration, temperature, flow and position that every model needs."
+      },
+      {
+        "tech": "Reliable low-latency industrial networks",
+        "status": "partial",
+        "why": "5G and TSN are still being deployed in factories; many sites rely on older fieldbus systems."
+      },
+      {
+        "tech": "Edge and cloud computing",
+        "status": "exists",
+        "why": "edge servers handle millisecond control, while cloud or on-prem clusters train large models."
+      },
+      {
+        "tech": "Machine learning and optimisation algorithms",
+        "status": "exists",
+        "why": "supervised and reinforcement learning methods can predict failures and tune setpoints."
+      },
+      {
+        "tech": "Operational technology (OT) cybersecurity",
+        "status": "partial",
+        "why": "connecting legacy machines to networks expands the attack surface, and standards are still maturing."
+      },
+      {
+        "tech": "Digital twin software",
+        "status": "partial",
+        "why": "accurate physics models of whole factories remain costly to build and maintain."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wide deployment of condition monitoring and predictive maintenance on critical machines",
+        "unlocks": "fewer unplanned stoppages and lower maintenance cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop optimisation where AI adjusts process parameters in real time",
+        "unlocks": "higher yield and lower energy use per unit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous material handling and scheduling across whole lines",
+        "unlocks": "factories that run with minimal human intervention."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-optimising supply networks that negotiate orders between plants",
+        "unlocks": "mass customisation at mass-production cost."
+      }
+    ]
+  }
+}

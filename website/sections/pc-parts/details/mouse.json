@@ -1,0 +1,140 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Motion sensor",
+        "role": "turns movement across a surface into digital X/Y motion.",
+        "parts": [
+          "light source (LED or infrared laser)",
+          "lens",
+          "image sensor array",
+          "digital signal processor"
+        ]
+      },
+      {
+        "name": "Buttons",
+        "role": "register clicks and holds.",
+        "parts": [
+          "main microswitches",
+          "side buttons",
+          "shell-mounted actuators"
+        ]
+      },
+      {
+        "name": "Scroll wheel",
+        "role": "scrolls vertically and often clicks sideways.",
+        "parts": [
+          "wheel",
+          "optical or mechanical encoder with detents",
+          "centre switch"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "converts sensor and button states into standard reports the computer understands.",
+        "parts": [
+          "microcontroller",
+          "firmware",
+          "USB HID interface",
+          "memory for profiles"
+        ]
+      },
+      {
+        "name": "Connectivity and power",
+        "role": "carries data and supplies energy.",
+        "parts": [
+          "USB cable or dongle",
+          "2.4 GHz radio or Bluetooth chip",
+          "battery (wireless models)",
+          "charging contacts or coil"
+        ]
+      },
+      {
+        "name": "Housing and glide",
+        "role": "defines comfort, weight and how smoothly it slides.",
+        "parts": [
+          "moulded plastic shell",
+          "PTFE glide feet",
+          "cable strain relief"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the shape",
+        "detail": "The shell is modelled in CAD from hand scans and ergonomic studies, then 3D-printed for test fits."
+      },
+      {
+        "title": "Design the circuit board",
+        "detail": "A small PCB is laid out to carry the sensor, microcontroller, switches and radio, keeping the sensor close to the underside window."
+      },
+      {
+        "title": "Fabricate the board",
+        "detail": "Surface-mount components are placed and reflow-soldered; the optical sensor is mounted to tight positional tolerance."
+      },
+      {
+        "title": "Mould the parts",
+        "detail": "Shell halves, buttons and the wheel are injection-moulded in ABS or polycarbonate, then painted or textured."
+      },
+      {
+        "title": "Write the firmware",
+        "detail": "Firmware polls the sensor thousands of times per second, filters noise, scales motion to counts per inch, and reports over USB HID."
+      },
+      {
+        "title": "Assemble",
+        "detail": "Switches, wheel, sensor and battery are fitted into the lower shell, the top shell snaps or screws on, and glide feet are applied."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Tracking is checked on varied surfaces, click force and lifespan are measured, and wireless latency and battery life are verified."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Optical image sensors",
+        "status": "exists",
+        "why": "the sensor must photograph the surface fast enough to measure tiny movements."
+      },
+      {
+        "tech": "Low-power microcontrollers and radio chips",
+        "status": "exists",
+        "why": "wireless mice must run for months on a small battery."
+      },
+      {
+        "tech": "USB HID standard",
+        "status": "exists",
+        "why": "a standard device class means no driver install — the mouse works on any modern computer."
+      },
+      {
+        "tech": "Injection moulding tooling",
+        "status": "exists",
+        "why": "shells need cheap, precise mass production with good surface finish."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "high polling rates (1,000 Hz and well beyond) and lightweight shells with optical switches",
+        "unlocks": "lower click latency and longer switch life for gaming and precision work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wireless links matching wired latency at longer battery life",
+        "unlocks": "wireless as the default even for competitive use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "onboard haptics and per-user shape or weight adjustment",
+        "unlocks": "feedback and fit that suit individual hands and tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "tighter integration with headsets and spatial interfaces",
+        "unlocks": "pointer control inside mixed-reality workspaces."
+      }
+    ]
+  }
+}

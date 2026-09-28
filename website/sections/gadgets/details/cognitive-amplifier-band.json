@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Ultrasound transducer array",
+        "role": "generates and focuses ultrasonic waves through the skull onto a small patch of prefrontal cortex.",
+        "parts": [
+          "piezoelectric elements (e.g., PZT ceramic or capacitive micromachined ultrasound transducers)",
+          "acoustic matching and backing layers",
+          "phased-array or lens-based focusing"
+        ]
+      },
+      {
+        "name": "Driving electronics",
+        "role": "produces the electrical signals that steer and shape the ultrasound beam.",
+        "parts": [
+          "waveform generators",
+          "radio-frequency power amplifiers",
+          "phase and amplitude controllers",
+          "digital signal processor"
+        ]
+      },
+      {
+        "name": "Head-worn frame",
+        "role": "holds the transducers against the scalp with stable acoustic coupling.",
+        "parts": [
+          "flexible headband or cap",
+          "acoustic coupling gel or pad",
+          "adjustable mounts for individual head shapes"
+        ]
+      },
+      {
+        "name": "Targeting and navigation",
+        "role": "aims the focus at the intended cortical target despite skull distortion.",
+        "parts": [
+          "subject-specific head model from MRI or CT",
+          "acoustic simulation software",
+          "optical or electromagnetic tracking (if real-time guidance is used)"
+        ]
+      },
+      {
+        "name": "Safety and monitoring",
+        "role": "keeps ultrasound exposure within safe limits and detects unintended effects.",
+        "parts": [
+          "temperature sensors",
+          "impedance monitoring",
+          "optional EEG for feedback"
+        ]
+      },
+      {
+        "name": "Power and user interface",
+        "role": "supplies power and lets the user control sessions.",
+        "parts": [
+          "rechargeable battery",
+          "wireless module",
+          "smartphone or companion app"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the acoustic path",
+        "detail": "Using MRI or CT scans, simulate how ultrasound travels through the skull and where it focuses in the prefrontal cortex, adjusting for skull thickness and density."
+      },
+      {
+        "title": "Fabricate the transducer array",
+        "detail": "Dice a piezoelectric ceramic or micromachine a capacitive array, then bond matching and backing layers so the array produces a clean, steerable beam."
+      },
+      {
+        "title": "Build the driving electronics",
+        "detail": "Design circuit boards that generate phase-shifted radio-frequency signals for each element, amplify them, and fit within a wearable power budget."
+      },
+      {
+        "title": "Assemble the headgear",
+        "detail": "Integrate transducers, electronics, and cooling (if needed) into an adjustable headband that maintains acoustic contact without uncomfortable pressure."
+      },
+      {
+        "title": "Write control software",
+        "detail": "Develop algorithms for beam steering, dose calculation, session timing, and safety cut-offs, plus a simple user interface."
+      },
+      {
+        "title": "Calibrate and test in phantoms",
+        "detail": "Measure the acoustic field in tissue-mimicking materials and verify that the focus matches the simulation."
+      },
+      {
+        "title": "Validate in animal and early human studies",
+        "detail": "Run controlled experiments to confirm that stimulation changes prefrontal activity and to establish safe exposure levels."
+      },
+      {
+        "title": "Run sham-controlled clinical trials",
+        "detail": "Compare active versus inactive stimulation in tasks measuring attention and distractibility, looking for consistent, reproducible effects."
+      },
+      {
+        "title": "Scale manufacturing and seek regulatory clearance",
+        "detail": "If trials succeed, set up production of transducers and electronics, and obtain approval as a medical or wellness device depending on claims."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transcranial focused ultrasound neuromodulation",
+        "status": "partial",
+        "why": "Demonstrated in animals and small human studies to modulate cortical excitability, but effects on concentration are not yet established."
+      },
+      {
+        "tech": "Miniaturized ultrasound arrays",
+        "status": "partial",
+        "why": "Current research systems are bulky; a wearable requires dense arrays and low-power electronics that are still being developed."
+      },
+      {
+        "tech": "Subject-specific targeting without MRI",
+        "status": "partial",
+        "why": "Precise focusing usually needs an MRI-derived head model; a consumer device would need simpler, low-cost alternatives."
+      },
+      {
+        "tech": "Real-time monitoring of brain state",
+        "status": "partial",
+        "why": "Closed-loop stimulation could improve safety and effectiveness, but portable, reliable brain monitoring is still maturing."
+      },
+      {
+        "tech": "Safety standards for ultrasound neuromodulation",
+        "status": "exists",
+        "why": "Regulatory limits exist for diagnostic ultrasound, but neuromodulation doses and long-term effects need separate validation."
+      },
+      {
+        "tech": "Understanding of prefrontal cortex role in attention",
+        "status": "exists",
+        "why": "The prefrontal cortex is known to support task persistence, but individual variability is large and stimulation effects are subtle."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Laboratory studies using transcranial focused ultrasound to modulate prefrontal activity",
+        "unlocks": "Basic understanding of safe doses and short-term effects on brain circuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Sham-controlled trials in healthy volunteers and people with attention difficulties",
+        "unlocks": "Evidence on whether stimulation reliably improves concentration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Wearable research prototypes with integrated targeting and safety monitoring",
+        "unlocks": "Practical experience with head-worn form factors and real-world use."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Regulated consumer or medical device, if benefits are proven and risks are acceptable",
+        "unlocks": "Wider access to non-invasive cognitive stimulation, likely with safeguards and possibly clinical oversight."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Closed-loop systems combining stimulation with EEG or other feedback",
+        "unlocks": "Personalized, adaptive stimulation that adjusts to the user's brain state in real time."
+      }
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Micro-robot units",
+        "role": "the individual agents — centimetre-to-millimetre machines that move, sense and carry a small tool.",
+        "parts": [
+          "mobility (legs, wheels, vibration or magnetic actuation)",
+          "onboard microcontroller",
+          "repair or material-deposition tool",
+          "sensors for cracks, corrosion and position"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeping thousands of tiny robots alive without wires.",
+        "parts": [
+          "micro-battery or supercapacitor",
+          "energy harvesting (vibration, light, radio)",
+          "docking and charging pads"
+        ]
+      },
+      {
+        "name": "Localisation and messaging",
+        "role": "each robot needs to know roughly where it is and to signal its neighbours locally.",
+        "parts": [
+          "short-range radio or optical links",
+          "ultra-wideband or beacon-based position fixes",
+          "environment markers (tags, deposited pheromone-like traces)"
+        ]
+      },
+      {
+        "name": "Coordination software",
+        "role": "no central controller — the swarm's behaviour emerges from simple local rules.",
+        "parts": [
+          "stigmergy rules (robots alter the environment, others react)",
+          "ant-colony-style task allocation and path routing",
+          "consensus and quorum logic"
+        ]
+      },
+      {
+        "name": "Repair payload",
+        "role": "the actual fixing: building up material where structure has been lost.",
+        "parts": [
+          "resin, mortar or coating dispenser",
+          "surface preparation (cleaning, roughening)",
+          "curing (UV, chemical or ambient)"
+        ]
+      },
+      {
+        "name": "Deployment and supervision",
+        "role": "getting the swarm onto a bridge or pipe, and keeping a human in the loop.",
+        "parts": [
+          "carrier or release vehicle",
+          "fixed beacon network",
+          "inspection database and engineering review tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the single robot",
+        "detail": "Fix the size, locomotion and tool. At centimetre scale, wheels or vibration motors are practical; below that, engineers use magnetic fields, acoustic waves or MEMS actuators inspired by wafer-scale fabrication."
+      },
+      {
+        "title": "Fabricate thousands at once",
+        "detail": "Instead of assembling each robot, units would be patterned in sheets using photolithography and printed-circuit techniques, then released and folded — the only credible route to millions."
+      },
+      {
+        "title": "Solve the power budget",
+        "detail": "Fit the smallest battery that will run the motors and radio for a working shift, plus harvesting from vibration or light, or design docking stations where robots recharge before resuming."
+      },
+      {
+        "title": "Give each robot a voice",
+        "detail": "Add a short-range radio or infrared link so a robot only talks to neighbours within a metre or so, and onboard sensing so it can tell sound material from cracked or corroded material."
+      },
+      {
+        "title": "Write the swarm rules",
+        "detail": "Program simple local behaviours — follow a trace, deposit a trace, reinforce the strongest trail — so that ant-colony-inspired feedback routes more robots to the largest damage patch without any central command."
+      },
+      {
+        "title": "Simulate, then test in an arena",
+        "detail": "Run tens of thousands of virtual agents first, then hundreds of real robots on a test slab to check that the emergent behaviour is stable and cannot run away."
+      },
+      {
+        "title": "Deploy onto the structure",
+        "detail": "A carrier places the swarm on a bridge deck or into a pipe. A fixed beacon grid provides position, the robots fan out, and they collectively build a damage map of the asset."
+      },
+      {
+        "title": "Repair in many tiny passes",
+        "detail": "Robots deposit small amounts of resin, mortar or coating and prepare the surface ahead of the next robot. No single robot does a meaningful repair; the swarm does it by accumulating thousands of passes over the same spot."
+      },
+      {
+        "title": "Verify and withdraw",
+        "detail": "The swarm re-scans the repair and hands the data to a human engineer for sign-off, then returns to docking stations to recharge or is retrieved."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Millimetre-scale robotics and MEMS fabrication",
+        "status": "partial",
+        "why": "micro-robots have been built and steered in labs, but not manufactured in the millions or made to work outdoors for long."
+      },
+      {
+        "tech": "Micro-scale energy storage and harvesting",
+        "status": "missing",
+        "why": "batteries shrink far worse than motors and radios, so tiny robots run for minutes, not days."
+      },
+      {
+        "tech": "Decentralised swarm control algorithms",
+        "status": "partial",
+        "why": "ant-colony optimisation and stigmergy are well-established, and robot swarms of a few thousand have self-assembled in laboratories, but not in messy field conditions."
+      },
+      {
+        "tech": "Autonomous structural repair",
+        "status": "missing",
+        "why": "depositing material that genuinely restores structural strength is a job still done by people with scaffolding and mixers."
+      },
+      {
+        "tech": "Cheap position sensing without GPS",
+        "status": "partial",
+        "why": "under a bridge or inside a pipe, satellites are useless; beacon networks and lidar work but are not yet small, cheap and robust enough for a disposable robot."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "coordinated inspection fleets — drones flying survey patterns and crawler robots travelling inside pipes",
+        "unlocks": "fast, repeatable condition mapping of large assets, with humans making the repair decisions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "swarms of tens to hundreds of robots doing simple building and clean-up tasks in controlled settings",
+        "unlocks": "confidence that emergent behaviour is safe around people and property."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid operations where a swarm inspects, tags and prepares a site and a larger robot or crew does the structural work",
+        "unlocks": "real reductions in inspection cost and scaffolding time on bridges, dams and pipelines."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-contained swarms that deposit material and cure it, with an engineer approving the result remotely",
+        "unlocks": "routine autonomous patching of small defects before they become expensive failures."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "millions of disposable robots permanently resident on critical infrastructure",
+        "unlocks": "continuous, always-on maintenance — but only if micro-power, fabrication cost and reliability all improve by orders of magnitude."
+      }
+    ]
+  }
+}

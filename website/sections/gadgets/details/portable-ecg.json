@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Electrodes",
+        "role": "pick up the heart's electrical signal from the skin without gels or adhesives.",
+        "parts": [
+          "dry metal electrodes (e.g., stainless steel)",
+          "contact pads",
+          "shielded internal wiring"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplify and filter the microvolt-to-millivolt signal before digitisation.",
+        "parts": [
+          "instrumentation amplifier",
+          "anti-aliasing filter",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Digital processing and AI",
+        "role": "detect heartbeats and classify the rhythm for anomalies.",
+        "parts": [
+          "low-power microcontroller",
+          "real-time QRS detection algorithm",
+          "machine-learning classifier"
+        ]
+      },
+      {
+        "name": "Power and enclosure",
+        "role": "run the device and protect it during everyday use.",
+        "parts": [
+          "rechargeable battery",
+          "charging circuit",
+          "sealed housing",
+          "display or indicator LEDs"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "send recordings to a phone or cloud for review and storage.",
+        "parts": [
+          "Bluetooth radio",
+          "mobile app",
+          "cloud storage"
+        ]
+      },
+      {
+        "name": "User interface",
+        "role": "guide the user and show immediate results.",
+        "parts": [
+          "buttons or touch surface",
+          "screen or LEDs",
+          "haptic feedback"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode-skin interface",
+        "detail": "Choose biocompatible metals and optimise contact area and pressure to get stable signals without conductive gel."
+      },
+      {
+        "title": "Lay out the analog circuit",
+        "detail": "Place the amplifier close to the electrodes, separate analog and digital grounds, and add filters to reject noise and motion artefact."
+      },
+      {
+        "title": "Write embedded firmware",
+        "detail": "Sample at 250–500 Hz, apply digital filters, detect R peaks in real time, and buffer the trace for storage."
+      },
+      {
+        "title": "Develop the AI classifier",
+        "detail": "Train on large sets of labelled ECGs, then validate sensitivity and specificity for atrial fibrillation against cardiologist interpretation."
+      },
+      {
+        "title": "Build the mobile app and cloud service",
+        "detail": "Pair the device, display a live trace, store recordings, and generate reports that a clinician can review."
+      },
+      {
+        "title": "Prototype and test",
+        "detail": "Compare recordings with a standard 12-lead ECG in a clinical study and check for motion artefact and skin irritation."
+      },
+      {
+        "title": "Certify to medical device standards",
+        "detail": "Run electrical safety, electromagnetic compatibility and accuracy tests (e.g., IEC 60601 series) and obtain regulatory clearance."
+      },
+      {
+        "title": "Manufacture and calibrate",
+        "detail": "Use automated assembly, then calibrate each unit with a signal generator and seal it to the required ingress-protection rating."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power microcontrollers and analog-to-digital converters",
+        "status": "exists",
+        "why": "must run for days on a small battery while sampling at hundreds of hertz."
+      },
+      {
+        "tech": "Dry electrode materials",
+        "status": "exists",
+        "why": "allow use without gels or adhesives, though signal quality can be lower than with wet electrodes."
+      },
+      {
+        "tech": "AI algorithms for arrhythmia detection",
+        "status": "partial",
+        "why": "some are cleared for atrial fibrillation, but broader arrhythmia detection is still maturing."
+      },
+      {
+        "tech": "Smartphone connectivity and cloud services",
+        "status": "exists",
+        "why": "enable remote review, storage and sharing of recordings."
+      },
+      {
+        "tech": "Regulatory standards for consumer ECG",
+        "status": "exists",
+        "why": "provide a pathway to market for devices that claim to detect rhythm disorders."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-lead devices for opportunistic atrial fibrillation screening, cleared as medical devices in some regions",
+        "unlocks": "early detection of silent rhythm problems during everyday life."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-lead or continuous patch monitors for longer-term rhythm surveillance",
+        "unlocks": "better capture of intermittent arrhythmias that a 30-second reading misses."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deep integration with electronic health records and remote cardiology services",
+        "unlocks": "alerts that trigger timely clinical review and treatment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "AI that detects ischaemia or heart attack from a pocket device, with robust clinical validation",
+        "unlocks": "pre-hospital triage and faster access to emergency care."
+      }
+    ]
+  }
+}

@@ -33,5 +33,149 @@
         "def": "Controlled environments used for growing microorganisms on a large scale, often employed in industrial biotechnology processes."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Production strains",
+        "role": "the microbes that actually fix CO2 — cyanobacteria, acetogens or engineered heterotrophs.",
+        "parts": [
+          "host organism (e.g. cyanobacteria, acetogens, yeasts)",
+          "engineered carbon-fixation pathway",
+          "product synthesis genes"
+        ]
+      },
+      {
+        "name": "Community design",
+        "role": "splits the job between organisms so no single strain carries an impossible metabolic load.",
+        "parts": [
+          "producer strains",
+          "helper strains that supply sugars, vitamins or hydrogen",
+          "cross-feeding and quorum-sensing circuits"
+        ]
+      },
+      {
+        "name": "Bioreactor",
+        "role": "brings gas, light or hydrogen and microbes together at high enough rates.",
+        "parts": [
+          "gas-sparged or membrane bioreactor",
+          "light panels for photosynthetic strains",
+          "pH, temperature and dissolved-gas control"
+        ]
+      },
+      {
+        "name": "Energy and carbon feed",
+        "role": "CO2 alone is not enough — the carbon must be reduced, which costs energy.",
+        "parts": [
+          "flue-gas or direct-air-capture CO2 supply",
+          "renewable electricity",
+          "green hydrogen or formate as electron carriers"
+        ]
+      },
+      {
+        "name": "Downstream processing",
+        "role": "separates the product from water and cells.",
+        "parts": [
+          "cell separation",
+          "distillation, membranes or extraction",
+          "solvent recovery and recycle"
+        ]
+      },
+      {
+        "name": "Biocontainment",
+        "role": "stops engineered organisms escaping or losing their engineered traits.",
+        "parts": [
+          "auxotrophy and kill switches",
+          "antibiotic-free selection",
+          "environmental sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the pair",
+        "detail": "Choose a target product (a fuel, a chemical, a plastic precursor or protein) and the carbon and energy source it will be made from."
+      },
+      {
+        "title": "Engineer the carbon fixation",
+        "detail": "Install or boost a CO2-fixing route — the Calvin–Benson cycle for photosynthetic hosts, or the Wood–Ljungdahl pathway for acetogens that run on hydrogen and carbon monoxide."
+      },
+      {
+        "title": "Add the product pathway",
+        "detail": "Insert and tune the enzymes that turn fixed carbon into the desired molecule, balancing the flux so nothing toxic builds up."
+      },
+      {
+        "title": "Build the community",
+        "detail": "Where one strain struggles, split the pathway across several and engineer the cross-feeding between them."
+      },
+      {
+        "title": "Evolve and select",
+        "detail": "Grow the strains under the real feedstock for many generations to select faster growers and higher producers."
+      },
+      {
+        "title": "Scale the bioreactor",
+        "detail": "Solve the hard part: CO2 dissolves poorly in water, so gas transfer, mixing and light penetration limit how fast a tank can work."
+      },
+      {
+        "title": "Contain the organisms",
+        "detail": "Add dependence on a nutrient that does not exist in the wild, and test that the strains die if they escape."
+      },
+      {
+        "title": "Pilot on real gas",
+        "detail": "Run on actual flue gas or captured air, which carries impurities and varying CO2 concentration, and recover the product at purity."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Metabolic engineering and synthetic biology",
+        "status": "exists",
+        "why": "the toolkit for inserting, tuning and controlling multi-gene pathways."
+      },
+      {
+        "tech": "Gas fermentation at industrial scale",
+        "status": "partial",
+        "why": "acetogen fermentation of steel-mill waste gas into ethanol has been run commercially — proof the reactor type works, though not yet on captured CO2 alone."
+      },
+      {
+        "tech": "Cheap low-carbon hydrogen and electricity",
+        "status": "partial",
+        "why": "reducing CO2 biologically is energy-positive only if the input energy is clean and cheap."
+      },
+      {
+        "tech": "Direct air capture",
+        "status": "partial",
+        "why": "flue gas is concentrated, but removing historical emissions means feeding on very dilute CO2."
+      },
+      {
+        "tech": "Reliable biocontainment",
+        "status": "missing",
+        "why": "no standard method yet guarantees engineered communities cannot survive outside the reactor."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab strains that convert CO2 or waste gas into fuels and chemicals at gram scale",
+        "unlocks": "proof that the metabolic routes work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot plants running on steel-mill or fermentation off-gas, with some products already sold",
+        "unlocks": "real feedstock data and early revenue."
+      },
+      {
+        "stage": "Next",
+        "milestone": "true synthetic consortia that out-produce single strains on captured CO2",
+        "unlocks": "higher yields without the metabolic load that limits one organism."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integrated plants coupling direct air capture to microbial conversion and biocontainment",
+        "unlocks": "carbon removal that pays for itself through the products it makes."
+      }
+    ]
   }
 }

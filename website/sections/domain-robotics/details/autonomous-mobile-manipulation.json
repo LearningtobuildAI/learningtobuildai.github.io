@@ -34,5 +34,175 @@
         "def": "Software tools that enable AMM systems to learn from experience, improving their ability to recognize new objects and perform complex manipulation tasks over time."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mobile base",
+        "role": "moves the robot between picking stations and shelves.",
+        "parts": [
+          "drive wheels",
+          "electric motors and gearboxes",
+          "battery pack",
+          "safety lidar and bumpers",
+          "suspension"
+        ]
+      },
+      {
+        "name": "Robotic arm",
+        "role": "reaches to shelves and moves objects.",
+        "parts": [
+          "serial-link arm",
+          "electric joint actuators",
+          "harmonic or cycloidal reducers",
+          "joint encoders",
+          "wrist force/torque sensor"
+        ]
+      },
+      {
+        "name": "End effector",
+        "role": "grasps a wide range of items, from boxes to soft packages.",
+        "parts": [
+          "parallel-jaw gripper",
+          "vacuum suction cup",
+          "compliant fingers",
+          "tactile sensors"
+        ]
+      },
+      {
+        "name": "Perception system",
+        "role": "identifies objects and plans grasps in cluttered scenes.",
+        "parts": [
+          "RGB-D cameras (head and wrist)",
+          "lidar for navigation",
+          "onboard GPU compute",
+          "machine-learning models for detection and pose estimation"
+        ]
+      },
+      {
+        "name": "Motion planning and control",
+        "role": "coordinates navigation and arm motion to pick and place.",
+        "parts": [
+          "SLAM and path planner",
+          "inverse kinematics solver",
+          "grasp planner",
+          "whole-body controller"
+        ]
+      },
+      {
+        "name": "Power and thermal management",
+        "role": "keeps the robot running for a full shift.",
+        "parts": [
+          "lithium-ion battery",
+          "charging dock",
+          "cooling fans or heat sinks"
+        ]
+      },
+      {
+        "name": "Safety and human interaction",
+        "role": "allows safe operation near people.",
+        "parts": [
+          "emergency stop",
+          "safety-rated scanners",
+          "compliance control",
+          "status lights"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the mechanical platform",
+        "detail": "Choose a base that can carry the arm and payload, and an arm with enough reach (about 1 m) and payload (a few kilograms) for warehouse shelves."
+      },
+      {
+        "title": "Integrate actuators and sensors",
+        "detail": "Fit motors, reducers, encoders, and a wrist force/torque sensor; mount cameras on the base, arm, and wrist."
+      },
+      {
+        "title": "Develop perception pipeline",
+        "detail": "Train models to detect objects, estimate their 6D pose, and generate grasp candidates from point clouds."
+      },
+      {
+        "title": "Build navigation and manipulation planning",
+        "detail": "Implement SLAM for mapping, a global planner for moving between stations, and a local planner for arm trajectories that avoid collisions."
+      },
+      {
+        "title": "Train control policies",
+        "detail": "Use simulation with domain randomisation and, where possible, real demonstrations to learn robust grasping and placement policies."
+      },
+      {
+        "title": "Integrate and coordinate",
+        "detail": "Write a supervisor that sequences navigation, perception, grasping, and placement, handling failures by retrying or calling a human."
+      },
+      {
+        "title": "Test in simulation and a mock warehouse",
+        "detail": "Run thousands of pick-and-place cycles with varied objects, lighting, and clutter to measure success rate and cycle time."
+      },
+      {
+        "title": "Pilot in a real warehouse",
+        "detail": "Deploy a small fleet in a controlled area, with human oversight, to collect data on reliability and edge cases."
+      },
+      {
+        "title": "Iterate and harden",
+        "detail": "Improve grippers, models, and recovery behaviours based on field data until the system meets throughput and safety targets."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Generalizable object grasping",
+        "status": "partial",
+        "why": "current systems handle many known items but still fail on novel shapes, transparent or reflective materials."
+      },
+      {
+        "tech": "Robust 6D pose estimation",
+        "status": "partial",
+        "why": "works well for textured objects, less so for textureless or heavily occluded ones."
+      },
+      {
+        "tech": "Safe mobile navigation among people",
+        "status": "exists",
+        "why": "autonomous mobile robots already move goods in warehouses, but combining mobility with a moving arm adds complexity."
+      },
+      {
+        "tech": "Real-time whole-body planning",
+        "status": "partial",
+        "why": "coordinating a mobile base and a high-degree-of-freedom arm in real time is computationally demanding."
+      },
+      {
+        "tech": "Sim-to-real transfer for manipulation",
+        "status": "partial",
+        "why": "simulation speeds learning but the gap to real sensors and physics remains, especially for contact-rich tasks."
+      },
+      {
+        "tech": "High-energy-density batteries",
+        "status": "exists",
+        "why": "lithium-ion packs allow several hours of operation, though continuous heavy use may require opportunity charging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes and narrow pilots pick known items in structured zones",
+        "unlocks": "data on failure modes and human-robot workflow."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial pilots for mixed-SKU picking with human supervision",
+        "unlocks": "business case for replacing repetitive manual picking."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full autonomy for a subset of tasks (e.g., bin picking, shelf replenishment) in warehouses",
+        "unlocks": "round-the-clock operation without dedicated operators."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose mobile manipulators that handle unstructured tasks in warehouses, hospitals, and homes",
+        "unlocks": "broad automation of physical work."
+      }
+    ]
   }
 }

@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Display module",
+        "role": "a tiny transparent screen inside one lens that floats numbers in front of the swimmer's eye without blocking the view.",
+        "parts": [
+          "micro-display panel",
+          "driver electronics",
+          "flex cable",
+          "waveguide optics"
+        ]
+      },
+      {
+        "name": "Goggle lens and frame",
+        "role": "keeps water out and sight clear while holding the embedded optics.",
+        "parts": [
+          "polycarbonate or silicone-skirted frame",
+          "lens with laminated waveguide film",
+          "seals"
+        ]
+      },
+      {
+        "name": "Electronics pod",
+        "role": "the brains and battery, clamped to the goggle strap behind the head.",
+        "parts": [
+          "microcontroller or system-on-chip",
+          "rechargeable battery",
+          "Bluetooth radio",
+          "buttons and haptics"
+        ]
+      },
+      {
+        "name": "Motion sensing",
+        "role": "works out strokes, laps and turns without any external equipment.",
+        "parts": [
+          "accelerometer",
+          "gyroscope",
+          "magnetometer"
+        ]
+      },
+      {
+        "name": "Heart-rate sensing",
+        "role": "measures pulse during the swim and feeds it to the display.",
+        "parts": [
+          "optical sensor (light source plus photodiode)",
+          "strap or armband",
+          "wireless link"
+        ]
+      },
+      {
+        "name": "Firmware and companion app",
+        "role": "turns raw motion into pace, splits and stroke counts, and lets workouts be set up on a phone.",
+        "parts": [
+          "lap and turn-detection algorithms",
+          "activity sync",
+          "poolside configuration app"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optics",
+        "detail": "Ray-tracing software is used to work out how a virtual image can be projected through a swimmer's goggle lens and appear focused a couple of metres ahead, while remaining legible against bright water."
+      },
+      {
+        "title": "Make the waveguide",
+        "detail": "Fine diffraction gratings are patterned onto a master and replicated onto a thin glass or polymer sheet, which is laminated into the lens so the image travels along it and exits at the pupil."
+      },
+      {
+        "title": "Build the micro-display",
+        "detail": "A chip-scale panel — a miniature organic LED array or a lit liquid-crystal panel — is mounted with its driver circuit and connected by a flexible cable."
+      },
+      {
+        "title": "Seal the electronics",
+        "detail": "Chip, radio, battery and controls are potted into a housing that survives repeated immersion and chlorine or salt water."
+      },
+      {
+        "title": "Calibrate the sensors",
+        "detail": "Each inertial unit is calibrated for offset and drift, and the magnetometer is corrected for the metal-rich environment of an indoor pool."
+      },
+      {
+        "title": "Write the swimming algorithms",
+        "detail": "Firmware learns to count strokes, spot tumble turns and open turns, and mark manual laps from a button press."
+      },
+      {
+        "title": "Test in water",
+        "detail": "Pressure testing, drop and leak testing, optical legibility checks underwater, and pool trials against a stopwatch to validate distance and pace."
+      },
+      {
+        "title": "Pair, update and ship",
+        "detail": "Over-the-air firmware updates and phone pairing are validated, then units are assembled and shipped with the app."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transparent near-eye waveguide displays",
+        "status": "exists",
+        "why": "the same optics used in augmented-reality glasses, but engineered to stay readable in bright, moving water."
+      },
+      {
+        "tech": "Micro-scale low-power displays",
+        "status": "exists",
+        "why": "the screen must be tiny, bright and efficient enough to run from a small goggle battery."
+      },
+      {
+        "tech": "Micro-electromechanical inertial sensors",
+        "status": "exists",
+        "why": "solid-state accelerometers and gyroscopes are what make stroke and lap detection possible without touching the water."
+      },
+      {
+        "tech": "Optical heart-rate sensing",
+        "status": "exists",
+        "why": "light-based pulse measurement in a strap gives the display a heart-rate figure without a chest belt of electrodes."
+      },
+      {
+        "tech": "Low-power wireless and depth-rated sealing",
+        "status": "exists",
+        "why": "Bluetooth links to phone and strap, and seals must hold at repeated swim depth."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "goggles that show live pace, splits and stroke data, with heart rate from a paired strap",
+        "unlocks": "pool swimmers can train to a target pace without looking at a clock."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heart rate and more sensing built directly into the goggles",
+        "unlocks": "one device instead of two, and fewer pairing failures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "open-water modes with audio or haptic coaching cues",
+        "unlocks": "usable guidance in lakes and sea, where the swimmer cannot read a watch or clock face."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "richer augmented-reality overlays and multi-swimmer training features",
+        "unlocks": "virtual pacemakers, live lane data and remote coaching."
+      }
+    ]
+  }
+}

@@ -29,5 +29,137 @@
         "def": "The capability of an electric vehicle to both charge from and discharge energy back into the grid."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "converts grid AC power to DC for the battery and back again, and manages the power flow.",
+        "parts": [
+          "power electronics (inverter/rectifier)",
+          "isolation transformer",
+          "cooling system",
+          "charging connector (CCS, CHAdeMO or similar)"
+        ]
+      },
+      {
+        "name": "Vehicle battery and management",
+        "role": "stores energy and supplies it back to the grid when called upon.",
+        "parts": [
+          "lithium-ion battery pack",
+          "battery management system (BMS)",
+          "thermal management system"
+        ]
+      },
+      {
+        "name": "Communication and control",
+        "role": "lets the charger, vehicle and grid operator exchange signals and schedule discharge.",
+        "parts": [
+          "onboard telematics unit",
+          "protocol stack (e.g. ISO 15118, OCPP)",
+          "control algorithms"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "bundles many vehicles into a single controllable resource for grid services.",
+        "parts": [
+          "cloud-based aggregation software",
+          "grid interface and metering",
+          "cybersecurity and data handling"
+        ]
+      },
+      {
+        "name": "User interface and scheduling",
+        "role": "ensures the vehicle is sufficiently charged when the driver needs it.",
+        "parts": [
+          "mobile app or dashboard",
+          "backend scheduling service",
+          "preference and override settings"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design bidirectional charging hardware",
+        "detail": "Build power electronics that can safely convert AC to DC and DC to AC, with isolation and cooling for continuous operation."
+      },
+      {
+        "title": "Implement communication standards",
+        "detail": "Integrate protocol stacks so the vehicle, charger, and grid operator can negotiate power flow and schedules."
+      },
+      {
+        "title": "Install charging infrastructure",
+        "detail": "Deploy V2G-capable chargers at homes, workplaces, and fleet depots, connecting them to the local grid."
+      },
+      {
+        "title": "Integrate with the grid operator",
+        "detail": "Work with utilities to set up interconnection agreements, metering, and market participation for aggregated vehicles."
+      },
+      {
+        "title": "Enroll vehicles and set preferences",
+        "detail": "Drivers specify minimum charge levels and departure times; the system learns usage patterns."
+      },
+      {
+        "title": "Operate aggregated fleets",
+        "detail": "The aggregator sends discharge signals when the grid needs power, within the limits set by users and battery health."
+      },
+      {
+        "title": "Monitor battery health",
+        "detail": "Track degradation and adjust cycling to stay within warranty and longevity targets."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional onboard or offboard chargers",
+        "status": "partial",
+        "why": "only some vehicle models and charger products support reverse power flow today."
+      },
+      {
+        "tech": "Communication standards for V2G",
+        "status": "partial",
+        "why": "standards exist (ISO 15118-20, CHAdeMO) but are not yet universally implemented across vehicles and chargers."
+      },
+      {
+        "tech": "Grid interconnection and market rules",
+        "status": "partial",
+        "why": "regulations vary; many regions lack clear rules for selling power from vehicles."
+      },
+      {
+        "tech": "Battery degradation management",
+        "status": "partial",
+        "why": "frequent cycling can shorten battery life; warranties and control strategies are still maturing."
+      },
+      {
+        "tech": "Smart metering and aggregation software",
+        "status": "exists",
+        "why": "advanced meters and cloud platforms are widely available to measure and coordinate power flows."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilots and limited commercial deployments, mainly for fleet vehicles such as buses and delivery vans",
+        "unlocks": "real-world data on battery wear, user behavior, and grid value."
+      },
+      {
+        "stage": "Next",
+        "milestone": "broader rollout in regions with supportive regulations; V2G-capable chargers become a standard option",
+        "unlocks": "more vehicles available for grid services, lowering costs for participants."
+      },
+      {
+        "stage": "Next",
+        "milestone": "V2G integrated into wholesale electricity and ancillary services markets",
+        "unlocks": "aggregators can bid stored energy from vehicles, helping balance supply and demand."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "V2G as a standard feature in most new electric vehicles",
+        "unlocks": "a large, distributed storage resource that supports high shares of renewable power."
+      }
+    ]
   }
 }

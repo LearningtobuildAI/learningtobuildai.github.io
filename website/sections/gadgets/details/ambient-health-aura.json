@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Radio-frequency sensing front end",
+        "role": "detects the tiny body movements caused by breathing and heartbeat, without any contact.",
+        "parts": [
+          "Wi-Fi radios with channel-state-information readout",
+          "or mmWave radar modules",
+          "antenna array",
+          "signal-capture firmware"
+        ]
+      },
+      {
+        "name": "Thermal sensing",
+        "role": "reads skin and breath temperature patterns, and confirms a person is present.",
+        "parts": [
+          "uncooled microbolometer or thermopile array",
+          "low-resolution IR lens",
+          "shutter/calibration"
+        ]
+      },
+      {
+        "name": "Vital-sign extraction",
+        "role": "turns noisy radio and thermal signals into respiration and heart rates.",
+        "parts": [
+          "clutter and motion filters",
+          "frequency-domain analysis",
+          "beamforming/localisation to find the subject",
+          "motion-artefact rejection"
+        ]
+      },
+      {
+        "name": "Sensor fusion",
+        "role": "combines the two modalities so that one covers the other's blind spots.",
+        "parts": [
+          "fusion model",
+          "confidence estimation",
+          "person tracking"
+        ]
+      },
+      {
+        "name": "Edge compute and privacy layer",
+        "role": "keeps raw data in the home and outputs only health parameters.",
+        "parts": [
+          "on-device processor",
+          "encryption",
+          "no-raw-image or raw-signal retention policy"
+        ]
+      },
+      {
+        "name": "Alerts and care integration",
+        "role": "escalates anomalies to the household or a carer.",
+        "parts": [
+          "trend history",
+          "threshold and anomaly alerts",
+          "app or telehealth interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the room and sensor positions",
+        "detail": "Radio sensing needs the person within range of the antennas and a reasonably stable multipath environment; thermal needs line of sight to the face or chest."
+      },
+      {
+        "title": "Baseline the empty room",
+        "detail": "The system records how radio waves bounce off walls and furniture with nobody present, so those echoes can be subtracted."
+      },
+      {
+        "title": "Collect labelled data",
+        "detail": "Volunteers lie or sit in view while a reference method — a chest strap or ECG — records true respiration and heart rate, building a training set."
+      },
+      {
+        "title": "Train the separation model",
+        "detail": "Breathing sits near 0.2–0.3 Hz and heartbeat near 1–1.5 Hz; the model must pull the weaker heartbeat signal out of chest movement, posture shifts and speech."
+      },
+      {
+        "title": "Add thermal channels",
+        "detail": "Breath-related temperature changes near the nostrils give a second respiration estimate, and skin temperature adds a coarse thermal trend."
+      },
+      {
+        "title": "Fuse and score confidence",
+        "detail": "The system reports a reading only when radio and thermal agree and motion is low; otherwise it flags the measurement as unusable."
+      },
+      {
+        "title": "Validate against clinical reference",
+        "detail": "Accuracy is checked across age, body size, clothing and sleep position, which is what regulators require before health claims are made."
+      },
+      {
+        "title": "Deploy with privacy by design",
+        "detail": "Only derived numbers leave the device; raw signals and thermal frames are processed and discarded locally."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wi-Fi channel-state-information access on cheap chipsets",
+        "status": "partial",
+        "why": "sensing works best where firmware exposes fine-grained channel data, which consumer hardware does not always allow."
+      },
+      {
+        "tech": "Low-cost uncooled thermal arrays",
+        "status": "exists",
+        "why": "these already sit in consumer devices, though at low resolution and modest thermal sensitivity."
+      },
+      {
+        "tech": "Machine-learning models robust to real rooms",
+        "status": "partial",
+        "why": "laboratory accuracy falls sharply with movement, multiple people and unusual furniture layouts."
+      },
+      {
+        "tech": "Clinical validation and medical-device clearance",
+        "status": "partial",
+        "why": "wellness readings are easy to ship; trusted diagnosis requires evidence and regulation."
+      },
+      {
+        "tech": "On-device compute with strong privacy controls",
+        "status": "exists",
+        "why": "contactless sensing of health in the home is only acceptable if raw data never leaves it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "radio-based presence, sleep and fall detection in smart-home devices",
+        "unlocks": "contactless awareness without cameras or wearables."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wellness-grade respiration and heart-rate trends validated in the home",
+        "unlocks": "early warning of deterioration for older or chronically ill people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory clearance for specific clinical uses such as sleep apnoea screening",
+        "unlocks": "use in telehealth and remote care programmes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-room, multi-person monitoring fused with clinical records",
+        "unlocks": "continuous passive care that reduces hospital admissions — provided accuracy, bias and privacy are shown to hold up."
+      }
+    ]
+  }
+}

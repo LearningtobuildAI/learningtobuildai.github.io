@@ -29,5 +29,164 @@
         "def": "Additional steps required after the printing process to refine and enhance the properties of the printed component, such as heat treatment or surface finishing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Laser and optics module",
+        "role": "melts a precise path through each powder layer.",
+        "parts": [
+          "fibre lasers (a few hundred watts up to ~1 kW each)",
+          "galvanometer scanners",
+          "F-theta lenses",
+          "beam expanders and monitoring photodiodes"
+        ]
+      },
+      {
+        "name": "Powder delivery and recoating",
+        "role": "spreads a fresh, even layer of metal powder after each pass.",
+        "parts": [
+          "powder hoppers and dosing",
+          "recoater blade or roller",
+          "overflow and return channels",
+          "sieving and recycling station"
+        ]
+      },
+      {
+        "name": "Build chamber and atmosphere",
+        "role": "keeps oxygen away from molten metal, which would otherwise oxidise or spatter.",
+        "parts": [
+          "sealed chamber with build plate on a lowering piston",
+          "argon or nitrogen supply",
+          "oxygen sensors (often held below ~100 ppm)",
+          "gas filtration and recirculation"
+        ]
+      },
+      {
+        "name": "Machine control and monitoring",
+        "role": "turns a CAD model into scan paths and watches the melt pool in real time.",
+        "parts": [
+          "slicing and scan-strategy software",
+          "motion control",
+          "melt-pool and layer imaging",
+          "build simulation for distortion"
+        ]
+      },
+      {
+        "name": "Metal powder feedstock",
+        "role": "the raw material — spherical alloy particles that flow and fuse cleanly.",
+        "parts": [
+          "gas-atomised powder, typically 15–60 µm",
+          "alloys such as Ti-6Al-4V, Inconel 718, AlSi10Mg, cobalt-chrome and stainless steel",
+          "handling and sieving under inert gas"
+        ]
+      },
+      {
+        "name": "Post-processing line",
+        "role": "turns a rough part still attached to its plate into a finished component.",
+        "parts": [
+          "stress-relief furnace",
+          "hot isostatic pressing",
+          "wire EDM or saw to cut from the plate",
+          "CNC machining of interfaces",
+          "shot peening and polishing"
+        ]
+      },
+      {
+        "name": "Inspection and qualification",
+        "role": "proves the part is sound, since internal defects are invisible from outside.",
+        "parts": [
+          "industrial CT scanning",
+          "X-ray and dye penetrant",
+          "tensile and fatigue test coupons"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for additive",
+        "detail": "The part is re-thought for layer-by-layer building: material only where stress flows, overhangs kept within about 45°, and supports added where heat must escape."
+      },
+      {
+        "title": "Make the powder",
+        "detail": "Molten alloy is atomised into fine spherical droplets, cooled, sieved into a narrow size band and kept dry and inert."
+      },
+      {
+        "title": "Set up the machine",
+        "detail": "A build plate is fixed on the piston, powder loaded, and the chamber purged until oxygen is low enough for reactive alloys such as titanium and aluminium."
+      },
+      {
+        "title": "Print the part",
+        "detail": "The recoater spreads a layer 30–60 µm thick; lasers melt the cross-section for that slice, then the plate drops and the cycle repeats — often for days on a large build."
+      },
+      {
+        "title": "Recover and cut out",
+        "detail": "Unfused powder is vacuumed out, sieved and reused; supports and the plate are removed by wire EDM, saw or machining."
+      },
+      {
+        "title": "Heat treat and press",
+        "detail": "Stress relief removes the residual stresses locked in by rapid cooling; hot isostatic pressing closes internal porosity for fatigue-critical parts."
+      },
+      {
+        "title": "Machine and finish",
+        "detail": "Mating faces, holes and threads are CNC machined, then surfaces are shot peened or polished to the required finish."
+      },
+      {
+        "title": "Inspect and qualify",
+        "detail": "CT scanning, dimensional checks and destructive testing of accompanying coupons confirm the build met specification before the part is released."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-power fibre lasers and fast scanners",
+        "status": "exists",
+        "why": "they set how quickly metal can be melted point by point across a large bed."
+      },
+      {
+        "tech": "Gas-atomised spherical alloy powders",
+        "status": "exists",
+        "why": "particle shape, size spread and chemistry decide whether the bed spreads evenly and fuses without defects."
+      },
+      {
+        "tech": "Multi-laser stitching across large build volumes",
+        "status": "partial",
+        "why": "overlapping laser fields must align to tens of microns, or seams become weak points."
+      },
+      {
+        "tech": "In-process melt-pool monitoring and physics simulation",
+        "status": "partial",
+        "why": "without it, every new geometry needs costly trial builds to prove it is defect-free."
+      },
+      {
+        "tech": "Hot isostatic pressing and standards for AM parts",
+        "status": "exists",
+        "why": "they close pores and give regulators an accepted route to certify a printed component."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "production parts inside engines and airframes, such as printed fuel nozzles and brackets, plus medical implants",
+        "unlocks": "lighter, consolidated components and designs impossible to cast or machine."
+      },
+      {
+        "stage": "Next",
+        "milestone": "large multi-laser machines with cubic-metre build volumes printing a whole engine part in one piece",
+        "unlocks": "replacing assemblies of many welded parts with single printed components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop control backed by simulation, so first-time-right qualification replaces trial-and-error builds",
+        "unlocks": "cheaper certification and wider use in flight-critical structures."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid cells that print, machine and inspect in one automated sequence, plus directed-energy repair of worn parts",
+        "unlocks": "distributed, on-demand manufacturing and a circular route for high-value metal components."
+      }
+    ]
   }
 }

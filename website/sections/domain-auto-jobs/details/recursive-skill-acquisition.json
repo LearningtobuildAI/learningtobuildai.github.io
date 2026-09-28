@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Gap detector",
+        "role": "recognises that the current task cannot be completed with the skills already available.",
+        "parts": [
+          "failure classifier reading stack traces and test output",
+          "self-critique prompt over the failed attempt",
+          "task-feasibility estimate"
+        ]
+      },
+      {
+        "name": "Skill synthesiser",
+        "role": "writes the missing capability as executable code or a documented procedure.",
+        "parts": [
+          "code-generating language model",
+          "API and documentation lookup",
+          "parameter and interface specification"
+        ]
+      },
+      {
+        "name": "Sandboxed runtime",
+        "role": "executes the new script safely, with no way to damage real systems.",
+        "parts": [
+          "container or virtual machine",
+          "interpreter and package manager",
+          "file system snapshot and network allowlist"
+        ]
+      },
+      {
+        "name": "Verifier",
+        "role": "decides whether the new skill actually works before it is trusted or remembered.",
+        "parts": [
+          "unit tests and assertions",
+          "execution outcome and reward signal",
+          "model-based critic"
+        ]
+      },
+      {
+        "name": "Skill library",
+        "role": "stores verified skills as reusable, described functions rather than one-off transcripts.",
+        "parts": [
+          "vector index over skill descriptions",
+          "versioning and dependency metadata",
+          "composition rules for chaining skills"
+        ]
+      },
+      {
+        "name": "Orchestrator",
+        "role": "runs the propose–attempt–learn loop and decides what to try next.",
+        "parts": [
+          "task decomposition and planning",
+          "curriculum generator",
+          "stop conditions and budget limits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a verifiable environment",
+        "detail": "Pick a domain where success or failure is unambiguous — a simulated back-office system, a code repository with a test suite, or a game with a score. Without a cheap automatic check, the loop cannot close."
+      },
+      {
+        "title": "Instrument execution",
+        "detail": "Give the agent a sandboxed container with an interpreter, a package manager, a scratch file system and controlled access to the target APIs, plus full logging of every action."
+      },
+      {
+        "title": "Run the basic loop",
+        "detail": "The agent is given a task, proposes a plan, writes code, runs it, and reads back the output and any error. This alone is ordinary tool use, not learning."
+      },
+      {
+        "title": "Add failure attribution",
+        "detail": "When a run fails, the system classifies why — wrong API, wrong argument, missing permission, bad logic — so the next attempt changes the right thing rather than retrying blindly."
+      },
+      {
+        "title": "Curate before committing to memory",
+        "detail": "Only skills that pass their tests are saved, deduplicated against existing entries, and rewritten as a documented function with an explicit signature. Junk in the library poisons later retrieval."
+      },
+      {
+        "title": "Build retrieval and composition",
+        "detail": "Index the library by description so the planner can pull in the right skill and chain two or three together to solve a task none of them solves alone."
+      },
+      {
+        "title": "Generate the next task",
+        "detail": "The curriculum generator proposes a task just beyond the agent's current reach, based on which skills exist and which attempts recently failed."
+      },
+      {
+        "title": "Add regression and safety gates",
+        "detail": "Re-run older task suites after every library change to catch skills that overwrite or break earlier ones, and cap what the agent may do to real systems without human approval."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models that write reliable code",
+        "status": "exists",
+        "why": "the synthesised skill is usually a script, so code quality sets the ceiling on everything else."
+      },
+      {
+        "tech": "Cheap sandboxed execution and tool APIs",
+        "status": "exists",
+        "why": "the loop needs thousands of attempts, which must be safe and nearly free."
+      },
+      {
+        "tech": "Automated verification of success",
+        "status": "partial",
+        "why": "tests and scores exist for code and games but not for most white-collar tasks, which is the central bottleneck."
+      },
+      {
+        "tech": "Long-term memory and retrieval",
+        "status": "partial",
+        "why": "a library is only useful if the right skill is found at the right moment without degrading over time."
+      },
+      {
+        "tech": "Oversight and permission controls",
+        "status": "partial",
+        "why": "an agent that writes and runs its own procedures can also automate its own mistakes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research agents that build and reuse skill libraries inside games and software benchmarks",
+        "unlocks": "proof that the loop can raise success rates without humans writing each new capability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-domain assistants that propose new skills with human review before they are committed",
+        "unlocks": "use in document processing, data entry and IT operations where output is checkable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-curated libraries with continuous regression testing",
+        "unlocks": "agents that keep improving on long-running workflows without drifting into error."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "transfer of skills between domains and agents",
+        "unlocks": "capability growth that compounds across an organisation, but also makes oversight and auditability the binding constraint."
+      }
+    ]
+  }
+}

@@ -32,5 +32,141 @@
         "def": "Materials that exhibit zero electrical resistance and expel magnetic fields when cooled below their critical temperature."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Superconducting coil",
+        "role": "stores energy in a magnetic field with almost no resistive loss.",
+        "parts": [
+          "superconducting wire (niobium-titanium or YBCO tape)",
+          "coil former and support structure",
+          "electrical insulation"
+        ]
+      },
+      {
+        "name": "Cryogenic system",
+        "role": "keeps the coil below its critical temperature so it stays superconducting.",
+        "parts": [
+          "cryostat with vacuum insulation",
+          "cryocooler or liquid helium supply",
+          "thermal shields"
+        ]
+      },
+      {
+        "name": "Power conversion system",
+        "role": "converts AC grid power to DC for the coil and back again on demand.",
+        "parts": [
+          "AC/DC converter",
+          "DC/DC chopper",
+          "transformer",
+          "filters"
+        ]
+      },
+      {
+        "name": "Quench protection",
+        "role": "safely dissipates stored energy if the coil suddenly loses superconductivity.",
+        "parts": [
+          "quench detection sensors",
+          "dump resistor",
+          "fast circuit breakers"
+        ]
+      },
+      {
+        "name": "Control and monitoring",
+        "role": "manages charge and discharge cycles and interfaces with the grid.",
+        "parts": [
+          "current and voltage sensors",
+          "real-time controller",
+          "communication link"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the coil",
+        "detail": "Calculate the inductance and current needed for the target energy using E = ½LI², and estimate the magnetic forces on the windings."
+      },
+      {
+        "title": "Wind the coil",
+        "detail": "Wind superconducting wire onto a former, interleaving insulation and support structures that can withstand the large Lorentz forces."
+      },
+      {
+        "title": "Build the cryostat",
+        "detail": "Assemble the vacuum vessel and thermal shields that will enclose the coil and cooling system."
+      },
+      {
+        "title": "Install cooling",
+        "detail": "Fit a cryocooler or connect liquid helium plumbing to bring the coil to operating temperature — around 4 K for low-temperature superconductors, or 20–77 K for high-temperature superconductors."
+      },
+      {
+        "title": "Assemble power electronics",
+        "detail": "Build the AC/DC converter and DC/DC chopper that link the coil to the grid and control power flow in both directions."
+      },
+      {
+        "title": "Integrate quench protection",
+        "detail": "Install quench detection sensors and a dump resistor to absorb the stored energy safely if superconductivity is lost."
+      },
+      {
+        "title": "Cool down and test",
+        "detail": "Gradually cool the coil, then charge it to full current and measure response time, losses and stability."
+      },
+      {
+        "title": "Connect to grid",
+        "detail": "Commission the system at a site for power-quality buffering, verifying it can inject or absorb power within milliseconds."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting wire",
+        "status": "exists",
+        "why": "niobium-titanium and YBCO tape are commercially available and carry large currents without resistance."
+      },
+      {
+        "tech": "Cryogenic cooling",
+        "status": "exists",
+        "why": "liquid helium and cryocoolers can reach the required temperatures, though they consume power."
+      },
+      {
+        "tech": "High-power converters",
+        "status": "exists",
+        "why": "AC/DC and DC/DC converters handle the fast, bidirectional power flow between coil and grid."
+      },
+      {
+        "tech": "Quench detection and protection",
+        "status": "partial",
+        "why": "a quench can develop in milliseconds, so reliable detection and safe energy dumping are still a challenge for large coils."
+      },
+      {
+        "tech": "High-field coil engineering",
+        "status": "partial",
+        "why": "winding coils that withstand repeated thermal and mechanical stress without damage is difficult and costly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small SMES units of a few megajoules used for power-quality buffering in industry.",
+        "unlocks": "instant voltage sag compensation and flicker reduction for sensitive equipment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "medium-scale systems of tens to hundreds of megajoules demonstrated for grid stability and renewable smoothing.",
+        "unlocks": "fast frequency response and bridging of short outages on weak grids."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems combining SMES with batteries or flywheels.",
+        "unlocks": "a cost-effective mix of millisecond response and longer-duration storage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale SMES for bulk energy storage, if cryogenic and coil costs fall sharply.",
+        "unlocks": "daily or seasonal storage — though today it remains a niche, high-value tool for fast, short-duration needs."
+      }
+    ]
   }
 }

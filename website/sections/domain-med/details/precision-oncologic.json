@@ -30,5 +30,141 @@
         "def": "A medical model that uses an individual's genetic and other information to tailor treatments for specific diseases or conditions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data integration layer",
+        "role": "assembles a complete picture of each patient from scattered hospital records.",
+        "parts": [
+          "electronic health record connectors",
+          "genomic file parsers (VCF, BAM)",
+          "de-identification and consent management",
+          "standardised data models (e.g. FHIR, OMOP)"
+        ]
+      },
+      {
+        "name": "Genomic analysis pipeline",
+        "role": "reads tumour DNA and RNA to find mutations that drive the cancer.",
+        "parts": [
+          "sequence alignment software",
+          "variant calling algorithms",
+          "annotation databases (e.g. ClinVar, COSMIC)",
+          "tumour mutational burden and microsatellite instability calculations"
+        ]
+      },
+      {
+        "name": "AI/ML prediction engine",
+        "role": "learns from past patients to forecast which treatment is most likely to work.",
+        "parts": [
+          "supervised learning models for drug response",
+          "survival analysis models",
+          "model interpretability tools",
+          "continuous retraining pipelines"
+        ]
+      },
+      {
+        "name": "Clinical decision support interface",
+        "role": "presents ranked therapy options and the evidence behind them to oncologists.",
+        "parts": [
+          "user interface for clinicians",
+          "explanation of model reasoning",
+          "integration with treatment guidelines",
+          "alerting for off-label or trial options"
+        ]
+      },
+      {
+        "name": "Validation and monitoring",
+        "role": "proves the platform works in the real world and catches when it drifts.",
+        "parts": [
+          "prospective clinical trial protocols",
+          "real-world evidence collection",
+          "performance and fairness audits",
+          "regulatory documentation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and curate training data",
+        "detail": "Gather genomic sequences, treatment histories, and outcomes from thousands of consenting patients, with strict privacy safeguards and bias checks."
+      },
+      {
+        "title": "Build a knowledge base",
+        "detail": "Link genetic variants to drugs, expected responses, and levels of evidence by mining published literature and clinical guidelines."
+      },
+      {
+        "title": "Train and validate AI models",
+        "detail": "Use the curated data to train models that predict drug response, then test them on held-out patient groups to avoid overfitting."
+      },
+      {
+        "title": "Design the clinical interface",
+        "detail": "Create a tool that fits into an oncologist's workflow, showing not just a recommendation but why the model made it."
+      },
+      {
+        "title": "Run prospective trials",
+        "detail": "Compare patients treated with the platform's guidance against standard care to see if survival or quality of life improves."
+      },
+      {
+        "title": "Obtain regulatory clearance",
+        "detail": "Submit evidence to regulators such as the FDA or EMA for approval as a medical device or clinical decision support tool."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Roll out to hospitals, track real-world performance, and update models as new genomic knowledge and treatments emerge."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-throughput genomic sequencing",
+        "status": "exists",
+        "why": "reading a tumour's full mutational profile is the starting point for matching it to a therapy."
+      },
+      {
+        "tech": "Large, diverse cancer genomic databases",
+        "status": "partial",
+        "why": "public efforts like The Cancer Genome Atlas have catalogued many cancer types, but data remain fragmented and skewed toward certain populations."
+      },
+      {
+        "tech": "Interpretable machine learning",
+        "status": "partial",
+        "why": "oncologists need to trust a recommendation, so models must explain which genes and pathways drove the suggestion."
+      },
+      {
+        "tech": "Clinical data interoperability standards",
+        "status": "partial",
+        "why": "without common formats like FHIR, pulling together hospital records and genomic files is slow and error-prone."
+      },
+      {
+        "tech": "Regulatory pathways for adaptive AI",
+        "status": "partial",
+        "why": "regulators are still developing ways to approve systems that learn and change after deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI tools that classify genetic variants or read pathology slides are used in research and some clinics.",
+        "unlocks": "faster, more consistent identification of actionable mutations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integrated platforms combine genomics, clinical history, and imaging to suggest therapies in pilot studies.",
+        "unlocks": "oncologists can compare many treatment options at once with evidence attached."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Prospective trials show that AI-guided therapy improves outcomes for specific cancer types, leading to regulatory approval.",
+        "unlocks": "routine clinical use for those cancers, with reimbursement from insurers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Continuous-learning systems update as new data arrive, and recommend combination therapies or clinical trials in real time.",
+        "unlocks": "truly personalised cancer care that adapts as the tumour evolves."
+      }
+    ]
   }
 }

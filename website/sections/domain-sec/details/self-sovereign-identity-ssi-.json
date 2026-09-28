@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Holder wallet",
+        "role": "stores the user's decentralized identifiers, private keys and verifiable credentials, and presents proofs to verifiers.",
+        "parts": [
+          "mobile or desktop app",
+          "secure key store",
+          "credential database",
+          "presentation protocol handler"
+        ]
+      },
+      {
+        "name": "Issuer service",
+        "role": "verifies a subject's attributes and issues signed verifiable credentials to their wallet.",
+        "parts": [
+          "issuance API",
+          "cryptographic signing module",
+          "revocation registry interface"
+        ]
+      },
+      {
+        "name": "Verifier service",
+        "role": "requests specific credentials or claims from a holder and checks their authenticity and validity.",
+        "parts": [
+          "presentation request generator",
+          "signature and proof verifier",
+          "policy and trust engine"
+        ]
+      },
+      {
+        "name": "DID method and resolver",
+        "role": "defines how a decentralized identifier is created, resolved to a DID document, updated and deactivated.",
+        "parts": [
+          "DID method specification",
+          "resolver software",
+          "registrar service"
+        ]
+      },
+      {
+        "name": "Verifiable data registry",
+        "role": "provides a shared, tamper-evident source of DID documents and credential revocation status.",
+        "parts": [
+          "distributed ledger or alternative registry",
+          "sync and replication layer",
+          "query interface"
+        ]
+      },
+      {
+        "name": "Cryptographic library",
+        "role": "implements key generation, digital signatures, encryption and optional zero-knowledge proofs.",
+        "parts": [
+          "key pair generation",
+          "signature schemes",
+          "zero-knowledge proof circuits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a DID method",
+        "detail": "Select or define a method that specifies the identifier format, the registry it uses, and the operations for create, read, update and deactivate."
+      },
+      {
+        "title": "Set up the verifiable data registry",
+        "detail": "Deploy a distributed ledger, federated ledger, or other tamper-evident store where DID documents and revocation lists can be anchored."
+      },
+      {
+        "title": "Implement the DID resolver and registrar",
+        "detail": "Write software that registers new DIDs and resolves existing DIDs to their current public keys and service endpoints."
+      },
+      {
+        "title": "Build the holder wallet",
+        "detail": "Create an app with secure key storage (using a secure element or trusted execution environment), credential storage, and a user interface for consent and presentation."
+      },
+      {
+        "title": "Implement the issuer service",
+        "detail": "Develop APIs for credential offers and issuance, integrate a signing module that signs credentials with the issuer's private key, and connect to a revocation mechanism."
+      },
+      {
+        "title": "Implement the verifier service",
+        "detail": "Build endpoints that generate presentation requests, verify signatures and proofs, check revocation status, and apply trust policies."
+      },
+      {
+        "title": "Establish trust and governance",
+        "detail": "Define who is authorized to issue which credentials, how keys are recovered, how disputes are resolved, and what legal recognition the credentials have."
+      },
+      {
+        "title": "Test interoperability",
+        "detail": "Run conformance tests and cross-implementation trials with other wallets, issuers and verifiers to ensure the standards work end to end."
+      },
+      {
+        "title": "Pilot and deploy",
+        "detail": "Start with a limited use case such as a digital passport or health credential, gather feedback, then expand to more issuers and verifiers."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "W3C decentralized identifier (DID) and verifiable credential (VC) standards",
+        "status": "exists",
+        "why": "they provide the common data model and protocols that let independent wallets and services interoperate."
+      },
+      {
+        "tech": "Public key cryptography and digital signatures",
+        "status": "exists",
+        "why": "they let issuers sign credentials and holders prove control of their identifiers without a central authority."
+      },
+      {
+        "tech": "Secure hardware on user devices (secure element or trusted execution environment)",
+        "status": "exists",
+        "why": "private keys must be protected from theft or misuse, especially on smartphones."
+      },
+      {
+        "tech": "Verifiable data registry (distributed ledger or alternative)",
+        "status": "partial",
+        "why": "DIDs need a resolvable, tamper-evident registry, but no single registry is yet universally accepted or scaled."
+      },
+      {
+        "tech": "Governance and legal recognition frameworks",
+        "status": "missing",
+        "why": "trust in issuers, liability for misuse, and cross-border recognition must be settled before wide adoption."
+      },
+      {
+        "tech": "Zero-knowledge proofs for selective disclosure",
+        "status": "partial",
+        "why": "they enable privacy-preserving proofs, but are computationally heavy and not yet standardized across all wallets."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "government and industry pilots, such as the EU Digital Identity Wallet initiative and various health and travel credential trials",
+        "unlocks": "real-world testing of wallets, issuers and verifiers with real users."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-border and cross-sector interoperability through standards bodies and industry consortia",
+        "unlocks": "credentials issued in one jurisdiction can be verified in another."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with existing identity providers and enterprise systems in hybrid models",
+        "unlocks": "organisations can adopt SSI gradually without replacing all legacy infrastructure."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "widespread adoption for digital passports, healthcare, education and finance",
+        "unlocks": "individuals control their own identity data across many services, reducing centralised data breaches."
+      }
+    ]
+  }
+}

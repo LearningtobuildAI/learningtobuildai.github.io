@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Physical qubits",
+        "role": "the noisy hardware that stores the encoded information.",
+        "parts": [
+          "data qubits (superconducting transmons, trapped ions or neutral atoms)",
+          "tunable couplers between neighbours",
+          "readout circuits or detectors"
+        ]
+      },
+      {
+        "name": "Encoding lattice",
+        "role": "arranges data and ancilla qubits into the two-dimensional pattern the chosen code requires.",
+        "parts": [
+          "data-qubit grid",
+          "ancilla/measure qubits",
+          "boundary qubits that define the logical operators"
+        ]
+      },
+      {
+        "name": "Syndrome extraction",
+        "role": "repeatedly measures stabiliser operators without collapsing the encoded state.",
+        "parts": [
+          "entangling gate sequences",
+          "mid-circuit ancilla measurement",
+          "ancilla reset"
+        ]
+      },
+      {
+        "name": "Real-time decoder",
+        "role": "turns the stream of measured syndromes into a correction fast enough to keep up.",
+        "parts": [
+          "FPGA or ASIC hardware",
+          "matching or neural-network algorithm",
+          "low-latency link to the control system"
+        ]
+      },
+      {
+        "name": "Control and cryogenics",
+        "role": "keeps the qubits cold and delivers precise pulses at scale.",
+        "parts": [
+          "dilution refrigerator",
+          "room-temperature or cryogenic pulse electronics",
+          "wiring and multiplexing"
+        ]
+      },
+      {
+        "name": "Logical gate layer",
+        "role": "operates on logical qubits while limiting how errors spread.",
+        "parts": [
+          "lattice surgery or transversal gates",
+          "magic-state distillation for universal gates",
+          "Pauli-frame tracking"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the code and error model",
+        "detail": "Pick a stabiliser code such as the surface code and set its distance from the measured single- and two-qubit gate errors and measurement errors of the hardware."
+      },
+      {
+        "title": "Fabricate and wire the physical qubits",
+        "detail": "Make data and ancilla qubits and couple them only to their neighbours; for superconducting circuits this means patterned aluminium or niobium films on a silicon chip, for neutral atoms it means loading atoms into optical tweezers and rearranging them."
+      },
+      {
+        "title": "Calibrate every operation",
+        "detail": "Tune single-qubit gates, two-qubit gates, measurement and reset, then benchmark them with randomised benchmarking until the error per operation is below the code's threshold — roughly one percent for the surface code."
+      },
+      {
+        "title": "Initialise the logical qubit",
+        "detail": "Prepare a known logical state by measuring all stabilisers and projecting into the code space, then verify it with logical state tomography."
+      },
+      {
+        "title": "Run repeated syndrome cycles",
+        "detail": "Each cycle entangles each ancilla with its neighbouring data qubits, measures the ancilla and resets it, producing a fresh set of parity outcomes."
+      },
+      {
+        "title": "Decode in real time",
+        "detail": "Feed syndromes to an FPGA running a matching or neural-network decoder; it maintains a history of probable errors and outputs a correction before the next cycle of errors accumulates."
+      },
+      {
+        "title": "Apply corrections and track the Pauli frame",
+        "detail": "Low-level corrections are often tracked in software rather than applied physically, while the final measurement outcomes are reinterpreted at the end of the computation."
+      },
+      {
+        "title": "Scale to logical gates and more qubits",
+        "detail": "Encode many logical qubits, entangle them with lattice surgery, and add magic-state distillation to obtain the non-Clifford gates needed for universal computation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Physical qubits below the fault-tolerance threshold",
+        "status": "partial",
+        "why": "if gates and measurements are too noisy, adding more qubits makes the logical error worse rather than better; below-threshold behaviour has been shown only in small codes."
+      },
+      {
+        "tech": "High-fidelity mid-circuit measurement",
+        "status": "partial",
+        "why": "ancillas must be measured and reset repeatedly during a computation without disturbing the data qubits."
+      },
+      {
+        "tech": "Low-latency classical decoding",
+        "status": "partial",
+        "why": "the decoder must finish before the next syndrome cycle; this is microseconds for superconducting qubits and is hard to sustain on large lattices."
+      },
+      {
+        "tech": "Scalable control wiring and cryogenic electronics",
+        "status": "partial",
+        "why": "thousands of qubits need thousands of control lines, and routing them without adding heat or noise is unsolved at scale."
+      },
+      {
+        "tech": "Fabrication and tuning yield at scale",
+        "status": "missing",
+        "why": "a single useful logical qubit may need thousands of physical qubits, all working and calibrated simultaneously."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small logical qubits with demonstrated error suppression — a 2023 surface-code experiment and 2023 atom-array logical processors",
+        "unlocks": "proof that encoding and repeated syndrome extraction can reduce logical error rate."
+      },
+      {
+        "stage": "Next",
+        "milestone": "logical error falling exponentially as code distance grows, sustained over many cycles",
+        "unlocks": "a genuine fault-tolerance threshold, the point where scaling qubits actually helps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hundreds of logical qubits with logical entangling gates and distillation",
+        "unlocks": "fault-tolerant machines able to run deep quantum circuits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "utility-scale fault-tolerant computers",
+        "unlocks": "chemistry, materials and cryptanalysis problems beyond classical reach."
+      }
+    ]
+  }
+}

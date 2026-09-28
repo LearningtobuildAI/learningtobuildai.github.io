@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photometric instrument",
+        "role": "records the tiny dip in starlight as a planet crosses its star.",
+        "parts": [
+          "space telescope optics",
+          "CCD or CMOS detector",
+          "fine guidance sensors for stable pointing"
+        ]
+      },
+      {
+        "name": "Data reduction pipeline",
+        "role": "turns raw images into clean light curves.",
+        "parts": [
+          "calibration frames",
+          "aperture photometry",
+          "systematics correction (pointing drift, thermal effects)"
+        ]
+      },
+      {
+        "name": "Transit fitting",
+        "role": "measures the centre time and duration of each transit precisely.",
+        "parts": [
+          "limb-darkening models",
+          "Bayesian parameter estimation",
+          "uncertainty quantification"
+        ]
+      },
+      {
+        "name": "Signal search",
+        "role": "looks for periodic offsets in transit times or durations caused by a moon.",
+        "parts": [
+          "periodograms and wavelets",
+          "model comparison statistics",
+          "injection-recovery tests"
+        ]
+      },
+      {
+        "name": "False-positive vetting",
+        "role": "rules out other explanations for the signal.",
+        "parts": [
+          "stellar activity analysis",
+          "background eclipsing binary checks",
+          "dynamical stability checks"
+        ]
+      },
+      {
+        "name": "Follow-up observations",
+        "role": "uses other telescopes to confirm or refute a candidate.",
+        "parts": [
+          "scheduling and target-of-opportunity triggers",
+          "multi-wavelength photometry",
+          "comparison with radial-velocity data"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose target systems",
+        "detail": "Select transiting planets with many recorded transits and long observation baselines, because a moon's signal accumulates over time."
+      },
+      {
+        "title": "Obtain high-precision photometry",
+        "detail": "Collect continuous, high-cadence light curves from space telescopes to reach the parts-per-million precision needed."
+      },
+      {
+        "title": "Correct instrument and stellar noise",
+        "detail": "Remove spacecraft pointing drifts, detector systematics and the star's own brightness variations."
+      },
+      {
+        "title": "Measure transit times and durations",
+        "detail": "Fit each transit to find its mid-point and length, then compile the series of variations."
+      },
+      {
+        "title": "Search for periodic signals",
+        "detail": "Apply periodograms or Bayesian model comparison to detect small, repeating offsets in timing or duration."
+      },
+      {
+        "title": "Test against false positives",
+        "detail": "Run injection-recovery tests and check whether stellar activity, a second planet, or a background binary could mimic the signal."
+      },
+      {
+        "title": "Model the planet–moon dynamics",
+        "detail": "Simulate the gravitational interaction to see if a stable moon orbit reproduces the observed variations."
+      },
+      {
+        "title": "Follow up with other telescopes",
+        "detail": "Schedule additional transits with Hubble, JWST or CHEOPS to see if the signal repeats and holds up."
+      },
+      {
+        "title": "Validate or set limits",
+        "detail": "Combine all evidence to either claim a detection or publish an upper limit on moon size in that system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-based photometry at parts-per-million precision",
+        "status": "exists",
+        "why": "instruments like Kepler, TESS and CHEOPS can detect the tiny brightness changes involved."
+      },
+      {
+        "tech": "Long, uninterrupted observation baselines",
+        "status": "exists",
+        "why": "transit timing variations grow over many orbits, so years of data are needed."
+      },
+      {
+        "tech": "Dynamical modelling of planet–moon systems",
+        "status": "exists",
+        "why": "N-body simulations predict which signals are physically possible and stable."
+      },
+      {
+        "tech": "Understanding of astrophysical false positives",
+        "status": "partial",
+        "why": "several stellar and instrumental effects can imitate transit timing signals."
+      },
+      {
+        "tech": "Next-generation long-stare telescopes",
+        "status": "partial",
+        "why": "PLATO and JWST offer the precision and cadence to confirm candidates, but are not yet fully exploited."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Reanalysis of Kepler and TESS data; candidate signals around gas giants such as Kepler-1625b and Kepler-1708b remain disputed",
+        "unlocks": "proven methodology and published upper limits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "JWST and CHEOPS follow-up of the best candidate systems",
+        "unlocks": "confirmation or refutation of existing exomoon claims."
+      },
+      {
+        "stage": "Next",
+        "milestone": "PLATO's long, uninterrupted stares at bright stars",
+        "unlocks": "a systematic survey capable of finding the first confirmed exomoon."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Dedicated space telescopes or extremely large ground observatories with high-contrast imaging",
+        "unlocks": "direct study of exomoons and their atmospheres."
+      }
+    ]
+  }
+}

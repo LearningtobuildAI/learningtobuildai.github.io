@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Market data ingestion",
+        "role": "collects real-time prices, order-book depth, news and economic indicators.",
+        "parts": [
+          "exchange data feeds",
+          "news and sentiment APIs",
+          "normalisation and time-stamping"
+        ]
+      },
+      {
+        "name": "Predictive models",
+        "role": "forecast short-term price moves or market regimes.",
+        "parts": [
+          "feature engineering pipeline",
+          "neural networks and gradient-boosted models",
+          "regime detection"
+        ]
+      },
+      {
+        "name": "Decision engine",
+        "role": "chooses buy, sell or hold actions to meet an objective.",
+        "parts": [
+          "reinforcement learning agent",
+          "policy and value networks",
+          "reward function"
+        ]
+      },
+      {
+        "name": "Execution system",
+        "role": "places orders in the market with minimal delay.",
+        "parts": [
+          "order management system",
+          "smart order router",
+          "co-located servers"
+        ]
+      },
+      {
+        "name": "Risk management",
+        "role": "caps losses and enforces position and exposure limits.",
+        "parts": [
+          "stop-loss and drawdown rules",
+          "position limits",
+          "anomaly detection"
+        ]
+      },
+      {
+        "name": "Adaptation loop",
+        "role": "updates models as markets change and outcomes are observed.",
+        "parts": [
+          "online learning",
+          "historical backtesting",
+          "simulated market environment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the objective and constraints",
+        "detail": "state what the agent should maximise (e.g. risk-adjusted return), the assets it may trade, and hard limits on leverage and loss."
+      },
+      {
+        "title": "Build the data pipeline",
+        "detail": "connect to exchange feeds and news sources, clean and align the data into a single real-time stream."
+      },
+      {
+        "title": "Create a simulation environment",
+        "detail": "model order execution, transaction costs and market impact so the agent can be trained without risking real money."
+      },
+      {
+        "title": "Train the models",
+        "detail": "use historical data to fit predictive models, then train a reinforcement learning agent inside the simulator to map market states to actions."
+      },
+      {
+        "title": "Backtest rigorously",
+        "detail": "replay years of market data, including crashes, to check the strategy is not overfitted to past conditions."
+      },
+      {
+        "title": "Paper trade",
+        "detail": "run the agent on live data without real orders, comparing its decisions against the market and a human baseline."
+      },
+      {
+        "title": "Deploy with guardrails",
+        "detail": "start with small capital, human oversight and automatic kill switches that halt trading if losses exceed limits."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "watch for performance drift, data leaks and unexpected behaviour, then retrain on fresh data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-latency trading infrastructure",
+        "status": "exists",
+        "why": "agents that react to short-term signals need orders to reach the exchange in milliseconds."
+      },
+      {
+        "tech": "Large historical market datasets",
+        "status": "exists",
+        "why": "training and backtesting require years of clean price, volume and news data."
+      },
+      {
+        "tech": "Reinforcement learning",
+        "status": "partial",
+        "why": "works well in games and simulations, but financial markets are noisy, non-stationary and adversarial."
+      },
+      {
+        "tech": "Robust risk and compliance systems",
+        "status": "partial",
+        "why": "autonomous trading must obey position limits, market rules and audit requirements automatically."
+      },
+      {
+        "tech": "Explainable AI for finance",
+        "status": "missing",
+        "why": "regulators and firms need to understand why an agent took a risky decision, which current deep models rarely provide."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "algorithmic and high-frequency trading plus robo-advisors automate specific, narrow tasks",
+        "unlocks": "faster execution and lower-cost portfolio management under human-designed rules."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI agents that handle multi-step workflows such as rebalancing, tax optimisation and reporting with human sign-off",
+        "unlocks": "less manual work for portfolio managers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent simulations where competing AI traders model market impact and liquidity",
+        "unlocks": "better stress-testing of strategies before real capital is risked."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous agents in sandboxed or decentralised markets",
+        "unlocks": "continuous, adaptive trading — but only with strong circuit-breakers, because correlated AI behaviour can amplify crashes."
+      }
+    ]
+  }
+}

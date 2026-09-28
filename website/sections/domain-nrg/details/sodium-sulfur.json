@@ -29,5 +29,144 @@
         "def": "Materials that are in a liquid state due to being heated above their melting point. In NAS batteries, these refer to sodium and sulfur."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Cell",
+        "role": "stores energy electrochemically using molten sodium and sulfur separated by a solid ceramic electrolyte.",
+        "parts": [
+          "beta-alumina solid electrolyte tube",
+          "molten sodium anode",
+          "molten sulfur cathode",
+          "sealed cell casing"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "keeps the battery at 300–350 °C so the electrodes stay molten and the electrolyte conducts sodium ions.",
+        "parts": [
+          "electric heaters",
+          "thermal insulation",
+          "temperature sensors",
+          "cooling for standby"
+        ]
+      },
+      {
+        "name": "Module and string assembly",
+        "role": "connects many cells in series and parallel to reach the required voltage and capacity.",
+        "parts": [
+          "cell interconnects",
+          "module housing",
+          "series/parallel busbars"
+        ]
+      },
+      {
+        "name": "Power conversion system",
+        "role": "converts the battery's DC output to grid-compatible AC and controls charge/discharge.",
+        "parts": [
+          "bidirectional inverter",
+          "transformer",
+          "switchgear"
+        ]
+      },
+      {
+        "name": "Battery management and safety system",
+        "role": "monitors cell health, temperature and faults, and handles the hazards of molten sodium and sulfur.",
+        "parts": [
+          "cell voltage and temperature monitoring",
+          "fault detection",
+          "fire suppression",
+          "enclosure ventilation"
+        ]
+      },
+      {
+        "name": "Enclosure and installation",
+        "role": "houses modules and thermal systems in a weatherproof, insulated container.",
+        "parts": [
+          "insulated container",
+          "structural supports",
+          "cable entry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the beta-alumina electrolyte",
+        "detail": "Alumina powder is mixed with sodium oxide, formed into tubes, and sintered at high temperature to create a dense ceramic that conducts sodium ions."
+      },
+      {
+        "title": "Assemble individual cells",
+        "detail": "Each electrolyte tube is placed in a cell casing, filled with molten sodium inside and molten sulfur outside (or vice versa), and hermetically sealed."
+      },
+      {
+        "title": "Build modules",
+        "detail": "Cells are connected in series and parallel, wrapped in thermal insulation, and fitted with heaters and temperature sensors."
+      },
+      {
+        "title": "Assemble battery strings and containers",
+        "detail": "Modules are stacked into insulated containers, wired into strings, and connected to the power conversion system."
+      },
+      {
+        "title": "Install and commission",
+        "detail": "The container is delivered to site, connected to the grid, and slowly heated to operating temperature; capacity and safety systems are tested."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "The battery is kept hot continuously, with periodic checks of cell health, insulation and heaters; end-of-life cells are recycled."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Beta-alumina solid electrolyte manufacturing",
+        "status": "exists",
+        "why": "the ceramic membrane must be dense, thin and highly conductive to sodium ions."
+      },
+      {
+        "tech": "High-temperature materials for molten sodium and sulfur",
+        "status": "exists",
+        "why": "cell casings and seals must resist corrosion at 300–350 °C for years."
+      },
+      {
+        "tech": "Grid-scale power electronics",
+        "status": "exists",
+        "why": "bidirectional inverters and transformers are needed to interface with the grid."
+      },
+      {
+        "tech": "Thermal insulation and heating systems",
+        "status": "exists",
+        "why": "the battery must stay molten even when idle, which consumes energy."
+      },
+      {
+        "tech": "Safety systems for reactive materials",
+        "status": "exists",
+        "why": "sodium and sulfur burn on contact with water or air, so containment and fire suppression are essential."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "MW-scale NAS battery installations for peak shaving and renewable integration",
+        "unlocks": "multi-hour storage on grids with high solar or wind share."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger installations (tens to hundreds of MWh) with improved cycle life and lower standby losses",
+        "unlocks": "more cost-effective daily cycling and better competition with lithium-ion."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with grid-forming inverters and hybrid systems",
+        "unlocks": "support for weak grids and combination with fast-responding storage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop recycling of sodium and sulfur and reduced material costs",
+        "unlocks": "sustainable, lower-cost long-duration storage."
+      }
+    ]
   }
 }

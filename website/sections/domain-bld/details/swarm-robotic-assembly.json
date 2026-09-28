@@ -30,5 +30,149 @@
         "def": "A system design where decision-making and coordination are distributed among the components rather than centralized in one entity."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Robots",
+        "role": "small mobile units that pick up, carry and place building elements.",
+        "parts": [
+          "wheeled or legged base",
+          "gripper or manipulator",
+          "onboard sensors",
+          "battery"
+        ]
+      },
+      {
+        "name": "Communication",
+        "role": "lets robots share local information without a central controller.",
+        "parts": [
+          "wireless radio or infrared",
+          "mesh networking protocol"
+        ]
+      },
+      {
+        "name": "Localisation",
+        "role": "each robot must know its position and that of neighbours and blocks.",
+        "parts": [
+          "camera or LiDAR",
+          "inertial measurement unit",
+          "range sensors"
+        ]
+      },
+      {
+        "name": "Control software",
+        "role": "decentralised algorithms that turn simple rules into coordinated building.",
+        "parts": [
+          "stigmergy or pheromone-like signalling",
+          "task allocation",
+          "collision avoidance"
+        ]
+      },
+      {
+        "name": "Building material",
+        "role": "standardised blocks or components designed for robotic handling.",
+        "parts": [
+          "interlocking bricks",
+          "magnets or latches",
+          "adhesive or connectors"
+        ]
+      },
+      {
+        "name": "Site infrastructure",
+        "role": "provides a known reference frame and power if needed.",
+        "parts": [
+          "localisation beacons",
+          "charging stations",
+          "safety barriers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for robotic assembly",
+        "detail": "The structure is broken into standard modules small enough for a robot to carry, with joints that self-align."
+      },
+      {
+        "title": "Define the building blocks",
+        "detail": "Blocks are made from lightweight material and given features such as pegs, magnets or grooves so robots can grip and align them."
+      },
+      {
+        "title": "Program the swarm",
+        "detail": "Each robot runs the same simple rule set: if you see a gap, fetch a block and place it; if blocked, wait or find another task."
+      },
+      {
+        "title": "Set up the site",
+        "detail": "Localisation beacons or markers are placed so robots can determine their position to within a few centimetres."
+      },
+      {
+        "title": "Deploy and calibrate",
+        "detail": "Robots are charged, tested and started from a staging area; they synchronise their clocks and maps."
+      },
+      {
+        "title": "Assemble the structure",
+        "detail": "Robots move to pick up blocks, carry them to the build front, and place them in sequence, using local sensing to align."
+      },
+      {
+        "title": "Inspect and repair",
+        "detail": "Robots or a separate inspection swarm check for misplacements and correct them before the next layer."
+      },
+      {
+        "title": "Complete and hand over",
+        "detail": "Once the last block is placed, the swarm is recalled and the structure is verified against the design."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Swarm robotics",
+        "status": "partial",
+        "why": "lab demonstrations show tens of robots building simple structures, but not at construction scale."
+      },
+      {
+        "tech": "Decentralised coordination algorithms",
+        "status": "partial",
+        "why": "scalable rules exist in simulation, but real-world noise and failures are hard to manage."
+      },
+      {
+        "tech": "Robust localisation without GPS",
+        "status": "partial",
+        "why": "indoor and cluttered sites need alternatives such as ultra-wideband or visual markers."
+      },
+      {
+        "tech": "Small, powerful actuators and grippers",
+        "status": "exists",
+        "why": "electric motors and lightweight arms are available, but endurance is limited."
+      },
+      {
+        "tech": "Wireless mesh communication",
+        "status": "exists",
+        "why": "radio modules can network hundreds of nodes, but bandwidth and latency must suit real-time control."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory swarms build small structures from identical blocks (e.g. Harvard's TERMES project, 2014)",
+        "unlocks": "proof that simple local rules can produce complex shapes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "outdoor trials with dozens of robots assembling a wall or small shelter",
+        "unlocks": "experience with uneven ground, weather and real materials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous swarms with specialised robots for carrying, placing and inspecting",
+        "unlocks": "faster assembly and ability to handle larger components."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "construction-site deployment for buildings, or off-world habitats",
+        "unlocks": "automated building in places unsafe or impractical for human crews."
+      }
+    ]
   }
 }

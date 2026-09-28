@@ -29,5 +29,151 @@
         "def": "Materials that are safe for use in contact with biological tissues without causing adverse effects, typically used in medical implants and devices."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural recording front end",
+        "role": "picks up the electrical activity that carries a person's intention.",
+        "parts": [
+          "penetrating microelectrode arrays",
+          "electrocorticography electrode grids",
+          "endovascular electrodes placed via a blood vessel",
+          "non-invasive EEG cap",
+          "amplifiers and digitisers"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns raw spikes and field potentials into something meaningful — intended movement, or phonemes and words.",
+        "parts": [
+          "real-time spike sorting",
+          "machine-learning models trained per user",
+          "language or motor output layer"
+        ]
+      },
+      {
+        "name": "Transmission link",
+        "role": "carries the decoded signal from one person's system to another's.",
+        "parts": [
+          "low-latency wireless or wired link",
+          "encoding into a compact signal another brain can accept"
+        ]
+      },
+      {
+        "name": "Stimulation stage",
+        "role": "writes information into the receiving brain.",
+        "parts": [
+          "implanted electrodes for direct cortical stimulation",
+          "transcranial magnetic stimulation coils",
+          "focused ultrasound transducers"
+        ]
+      },
+      {
+        "name": "Closed-loop control",
+        "role": "keeps the pair synchronised as signals drift.",
+        "parts": [
+          "calibration routines",
+          "error and feedback signals",
+          "adaptive retraining"
+        ]
+      },
+      {
+        "name": "Biostability and safety system",
+        "role": "keeps electrodes working and the user well over months and years.",
+        "parts": [
+          "biocompatible coatings",
+          "hermetic implant packaging",
+          "wireless power and data",
+          "monitoring for tissue reaction"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Record neural activity",
+        "detail": "Electrodes sit on or in the cortex (or on the scalp) and pick up voltage changes from thousands of neurons, which are amplified and digitised."
+      },
+      {
+        "title": "Stabilise and calibrate",
+        "detail": "Signals drift as tissue settles and electrodes move, so the system is retrained against known tasks — for example, asking the user to try to move a hand or speak a known sentence."
+      },
+      {
+        "title": "Decode intention",
+        "detail": "Machine-learning models map activity patterns to intended movement direction or to phonemes and words; modern systems can decode attempted speech in paralysed people."
+      },
+      {
+        "title": "Compress to a transmissible signal",
+        "detail": "Sending raw neural data is impractical, so the output is reduced to a small set of commands, tokens or a synthesised voice."
+      },
+      {
+        "title": "Deliver it to another brain",
+        "detail": "The receiving side is stimulated — magnetic pulses or ultrasound through the skull, or implanted electrodes — producing a faint sensation, twitch or phosphene rather than a fully formed idea."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Both users get feedback and the system continually recalibrates, because a stimulus that worked yesterday may not fire the same neurons today."
+      },
+      {
+        "title": "Prove it is safe and durable",
+        "detail": "Any implanted version must survive years in tissue, stay hermetic and be removable or switchable off."
+      },
+      {
+        "title": "Scale bandwidth and meaning",
+        "detail": "Only after recording and stimulation both get far finer could anything like fluent idea transfer be attempted — current links carry a handful of bits per minute."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-channel-count, long-lived neural interfaces",
+        "status": "partial",
+        "why": "arrays implanted in people work for months to a few years, and signal quality degrades as scar tissue forms."
+      },
+      {
+        "tech": "Accurate neural decoding",
+        "status": "partial",
+        "why": "speech and cursor control have been restored in small numbers of paralysed patients, but decoding general meaning is unsolved."
+      },
+      {
+        "tech": "High-resolution, non-invasive stimulation",
+        "status": "missing",
+        "why": "transcranial magnetic stimulation reaches only broad patches of cortex, far too coarse to write detailed information into a brain."
+      },
+      {
+        "tech": "Understanding of the neural code for concepts",
+        "status": "missing",
+        "why": "we can map movements and words, but not abstract thought, so there is no signal to transmit."
+      },
+      {
+        "tech": "Clinically safe implantable electronics",
+        "status": "partial",
+        "why": "wireless, sealed implants exist in neurostimulation devices, but not at the channel counts and lifetimes brain-to-brain links would need."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "implanted and endovascular brain-computer interfaces restore typing or synthesised speech to a small number of severely paralysed people",
+        "unlocks": "real clinical benefit from decoding, even with no transmission between people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger, more stable electrode arrays with faster wireless data and lower surgical risk",
+        "unlocks": "longer-term use outside a few specialist centres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "laboratory two-person links carrying simple cues, building on experiments that pass motor or sensory signals between people using scalp recording and brain stimulation",
+        "unlocks": "evidence about how much information a receiving brain can actually absorb."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "shared semantic decoding between two people",
+        "unlocks": "theoretical direct idea transfer, but only if the neural code for meaning is cracked — a research question, not an engineering schedule."
+      }
+    ]
   }
 }

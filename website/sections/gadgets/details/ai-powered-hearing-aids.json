@@ -1,0 +1,129 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Microphone array",
+        "role": "captures sound from multiple directions to help separate speech from noise.",
+        "parts": [
+          "two or more miniature microphones",
+          "wind and vibration sensors",
+          "acoustic ports"
+        ]
+      },
+      {
+        "name": "Signal processing chip",
+        "role": "runs deep neural networks and classical audio algorithms in real time, with latency of a few milliseconds.",
+        "parts": [
+          "low-power digital signal processor or neural accelerator",
+          "on-chip memory",
+          "firmware"
+        ]
+      },
+      {
+        "name": "Receiver",
+        "role": "converts processed electrical signals into amplified sound inside the ear canal.",
+        "parts": [
+          "balanced armature or dynamic speaker",
+          "acoustic tubing",
+          "ear tip or custom mould"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "supplies enough energy to run AI processing for a full day.",
+        "parts": [
+          "rechargeable lithium-ion or zinc-air battery",
+          "charging contacts",
+          "power management circuit"
+        ]
+      },
+      {
+        "name": "Wireless and control",
+        "role": "streams audio from phones and TVs, and lets the user or clinician adjust settings.",
+        "parts": [
+          "Bluetooth LE radio",
+          "antenna",
+          "smartphone app or remote control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Train speech-enhancement models",
+        "detail": "Record thousands of hours of speech in noisy places, label them, and train deep neural networks to separate voices from background sound."
+      },
+      {
+        "title": "Design or select a low-power processor",
+        "detail": "Choose a chip that can run those networks in a few milliseconds while drawing only a few milliwatts, so the battery lasts a day."
+      },
+      {
+        "title": "Assemble the hardware",
+        "detail": "Fit microphones, receiver, battery and chip into a behind-the-ear or in-the-ear housing, often 3D-printed for custom shapes."
+      },
+      {
+        "title": "Implement the audio pipeline",
+        "detail": "Combine beamforming, feedback cancellation, dynamic range compression and the neural network so they work together without lag."
+      },
+      {
+        "title": "Fit to the user's hearing loss",
+        "detail": "Use an audiogram to set gain and compression for each frequency, then fine-tune in real-world situations."
+      },
+      {
+        "title": "Verify and manufacture at scale",
+        "detail": "Test each device for acoustic output, battery life and wireless performance, then produce and ship it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power microelectronics",
+        "status": "exists",
+        "why": "running a neural network on a device that fits in the ear demands extreme energy efficiency."
+      },
+      {
+        "tech": "Miniature microphones and receivers",
+        "status": "exists",
+        "why": "they must be small enough to fit in the ear yet accurate enough for speech."
+      },
+      {
+        "tech": "Bluetooth LE Audio",
+        "status": "exists",
+        "why": "provides a standard low-power way to stream audio and connect to phones and TVs."
+      },
+      {
+        "tech": "Real-time deep learning for speech",
+        "status": "partial",
+        "why": "the algorithms work well, but shrinking them to run on a hearing-aid chip without delay is still an engineering challenge."
+      },
+      {
+        "tech": "Rechargeable micro-batteries",
+        "status": "exists",
+        "why": "AI processing drains power quickly, so daily recharging is essential."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hearing aids with on-device neural noise reduction and Bluetooth LE Audio streaming",
+        "unlocks": "clearer speech in noisy places for many users."
+      },
+      {
+        "stage": "Next",
+        "milestone": "built-in sensors for health monitoring such as step counting and fall detection",
+        "unlocks": "hearing aids that also act as general health wearables."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-fitting devices that learn from user feedback and adjust automatically",
+        "unlocks": "fewer clinic visits and better performance in varied environments."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "seamless integration with augmented-reality glasses and smart-home audio",
+        "unlocks": "personalised soundscapes that blend the real and digital worlds."
+      }
+    ]
+  }
+}

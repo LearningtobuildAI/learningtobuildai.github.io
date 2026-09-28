@@ -28,5 +28,144 @@
         "def": "The component in MoE architectures responsible for deciding which expert sub-models should be activated for each input token."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Router (gating network)",
+        "role": "scores each input token and selects which experts should process it.",
+        "parts": [
+          "small neural network",
+          "top-k selection",
+          "softmax over expert scores",
+          "load-balancing loss"
+        ]
+      },
+      {
+        "name": "Expert networks",
+        "role": "independent feed-forward sub-networks that specialize on different patterns in the data.",
+        "parts": [
+          "multiple multilayer perceptrons",
+          "weights and biases",
+          "activation functions"
+        ]
+      },
+      {
+        "name": "Sparsity and capacity control",
+        "role": "limits how many experts each token uses and how many tokens each expert handles.",
+        "parts": [
+          "top-k parameter",
+          "capacity factor",
+          "token dropping or padding",
+          "auxiliary balancing losses"
+        ]
+      },
+      {
+        "name": "Distributed training infrastructure",
+        "role": "trains many experts across multiple devices using all-to-all communication.",
+        "parts": [
+          "expert parallelism",
+          "data parallelism",
+          "communication schedulers",
+          "gradient synchronization"
+        ]
+      },
+      {
+        "name": "Inference engine",
+        "role": "routes tokens efficiently at runtime and manages expert memory and batching.",
+        "parts": [
+          "routing kernel",
+          "expert caching",
+          "dynamic batching",
+          "memory manager"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Start from a dense transformer block",
+        "detail": "Begin with a standard transformer layer where the feed-forward network is a single large module."
+      },
+      {
+        "title": "Replace the feed-forward network with an MoE layer",
+        "detail": "Create many parallel expert networks instead of one, each with its own weights."
+      },
+      {
+        "title": "Add a router",
+        "detail": "Insert a small linear layer that computes a score for every expert given each token's representation."
+      },
+      {
+        "title": "Implement top-k gating",
+        "detail": "For each token, select the k highest-scoring experts, run the token through them, and combine outputs weighted by router probabilities."
+      },
+      {
+        "title": "Add auxiliary losses for load balancing",
+        "detail": "Penalize uneven expert usage so the router spreads tokens across experts during training."
+      },
+      {
+        "title": "Train with expert parallelism",
+        "detail": "Distribute experts across devices; all-to-all communication sends tokens to the selected experts and returns their outputs."
+      },
+      {
+        "title": "Tune capacity and routing",
+        "detail": "Adjust the capacity factor and k to balance model quality against computational efficiency."
+      },
+      {
+        "title": "Optimize for inference",
+        "detail": "Build efficient kernels that route tokens at runtime, cache expert weights, and batch variable numbers of tokens per expert."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "MoE layers typically replace the feed-forward sublayers inside transformer blocks."
+      },
+      {
+        "tech": "Distributed training frameworks",
+        "status": "exists",
+        "why": "frameworks that support expert parallelism and all-to-all communication are essential to train large MoE models."
+      },
+      {
+        "tech": "High-bandwidth interconnects",
+        "status": "exists",
+        "why": "routing tokens to different devices creates heavy communication that must not become the bottleneck."
+      },
+      {
+        "tech": "Load-balancing algorithms",
+        "status": "partial",
+        "why": "without them, a few experts receive most tokens while others are undertrained; research continues to improve stability."
+      },
+      {
+        "tech": "Efficient sparse computation kernels",
+        "status": "partial",
+        "why": "runtime routing creates irregular workloads that general-purpose kernels handle poorly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "MoE layers used in some production language models to cut compute per token",
+        "unlocks": "larger models that remain affordable to run at scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better routing and load balancing, enabling more experts and higher sparsity",
+        "unlocks": "further gains in efficiency without degrading quality."
+      },
+      {
+        "stage": "Next",
+        "milestone": "MoE applied to multimodal models and on-device inference",
+        "unlocks": "only the relevant parts of a model run per input, saving memory and energy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "conditional computation becomes standard across AI systems",
+        "unlocks": "very large models that stay cheap enough for everyday use."
+      }
+    ]
   }
 }

@@ -33,5 +33,161 @@
         "def": "Additional steps required after printing to refine the part, such as heat treatment or machining."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Powder feedstock and handling",
+        "role": "supplies the metal that becomes the part.",
+        "parts": [
+          "gas-atomised powder (titanium, nickel, steel, aluminium alloys)",
+          "sieving and recycling system",
+          "powder feeder"
+        ]
+      },
+      {
+        "name": "Energy source and optics",
+        "role": "melts powder precisely where needed.",
+        "parts": [
+          "fibre laser or electron beam gun",
+          "galvanometer scanners or beam deflection coils",
+          "focusing lenses",
+          "build chamber window"
+        ]
+      },
+      {
+        "name": "Build chamber and atmosphere",
+        "role": "provides a controlled environment so the melt does not oxidise.",
+        "parts": [
+          "sealed chamber",
+          "argon or nitrogen supply and recirculation",
+          "vacuum pumps (for electron beam)",
+          "heated build plate",
+          "recoater arm and blade"
+        ]
+      },
+      {
+        "name": "Motion and positioning",
+        "role": "moves the beam and powder bed with micron precision.",
+        "parts": [
+          "galvo mirrors or gantry axes",
+          "z-axis platform",
+          "precision linear stages"
+        ]
+      },
+      {
+        "name": "Control software and monitoring",
+        "role": "turns a 3D model into machine instructions and watches the process.",
+        "parts": [
+          "CAD-to-slice software",
+          "scan path and parameter generator",
+          "thermal simulation",
+          "melt-pool monitoring camera or pyrometer",
+          "feedback control"
+        ]
+      },
+      {
+        "name": "Post-processing equipment",
+        "role": "turns the printed near-net shape into a finished part.",
+        "parts": [
+          "support removal tools",
+          "heat treatment furnace",
+          "hot isostatic press",
+          "CNC machining",
+          "surface finishing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for additive",
+        "detail": "Engineers start with a 3D CAD model, often using topology optimisation to remove material where stresses are low. Support structures are added to anchor overhangs and conduct heat away."
+      },
+      {
+        "title": "Simulate the build",
+        "detail": "Software predicts thermal gradients, distortion and residual stress so the part does not warp or crack during printing."
+      },
+      {
+        "title": "Prepare the powder",
+        "detail": "Metal is melted and atomised into spherical particles tens of micrometres across. Powder is sieved to a tight size range and loaded into the machine."
+      },
+      {
+        "title": "Set up the machine",
+        "detail": "A build plate is levelled, the chamber is sealed and filled with argon (or evacuated for electron beam), and the first layer of powder is spread."
+      },
+      {
+        "title": "Print layer by layer",
+        "detail": "A laser or electron beam scans the cross-section, melting powder into solid metal. The platform drops by one layer thickness, a fresh layer is spread, and the cycle repeats thousands of times."
+      },
+      {
+        "title": "Remove the part",
+        "detail": "The build plate is taken out, excess powder is brushed or vacuumed away, and the part is cut from the plate. Supports are hand- or machine-removed."
+      },
+      {
+        "title": "Heat treat and finish",
+        "detail": "Stress-relief and hot isostatic pressing close internal pores and improve strength. Critical surfaces are machined or polished."
+      },
+      {
+        "title": "Inspect and qualify",
+        "detail": "Parts are checked with X-ray or CT scanning, dimensional measurement and mechanical testing to prove they meet specification."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Gas-atomised metal powders",
+        "status": "exists",
+        "why": "The process needs spherical, flowable particles of consistent size and chemistry; these are made by melting and atomising alloy."
+      },
+      {
+        "tech": "High-power lasers or electron beams",
+        "status": "exists",
+        "why": "They must melt metal quickly and precisely, layer after layer."
+      },
+      {
+        "tech": "Inert atmosphere or vacuum",
+        "status": "exists",
+        "why": "Titanium and aluminium oxidise at high temperature, so oxygen must be kept out."
+      },
+      {
+        "tech": "Precision motion control and optics",
+        "status": "exists",
+        "why": "The beam must follow a path accurate to tens of micrometres across a build that can span hundreds of millimetres."
+      },
+      {
+        "tech": "Fast thermal simulation and in-situ monitoring",
+        "status": "partial",
+        "why": "Predicting distortion and detecting defects in real time is still difficult, so trial builds are often needed."
+      },
+      {
+        "tech": "Qualification standards and testing methods",
+        "status": "partial",
+        "why": "Aerospace and medical regulators require repeatable properties; standards are still maturing for many alloys."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Production of complex, high-value parts such as fuel nozzles, implants and tooling inserts.",
+        "unlocks": "Weight savings and design freedom that conventional machining cannot match."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Larger build volumes, more lasers per machine and faster recoating.",
+        "unlocks": "Economic production of bigger parts, such as single-piece rocket engine chambers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid machines that print and machine in one setup, plus closed-loop control.",
+        "unlocks": "Near-net shapes finished to tolerance without manual intervention."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Distributed, on-demand manufacturing and in-space printing.",
+        "unlocks": "Spare parts made where they are needed, including on ships or in orbit."
+      }
+    ]
   }
 }

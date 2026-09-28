@@ -30,5 +30,169 @@
         "def": "The principle in quantum mechanics stating that a physical system exists partly in all its theoretically possible states simultaneously, but when measured or observed, it gives a result corresponding to only one of the possible configurations."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor node",
+        "role": "the physical device that converts a field — gravity, magnetism or time — into a quantum-measurable shift.",
+        "parts": [
+          "cold-atom vacuum chamber or diamond/atomic vapour cell",
+          "lasers and optics",
+          "detector",
+          "local clock and electronics"
+        ]
+      },
+      {
+        "name": "State preparation",
+        "role": "places the sensor in a fragile quantum state, such as a superposition or a spin-squeezed ensemble, that responds strongly to the field.",
+        "parts": [
+          "laser cooling and trapping",
+          "microwave or optical pulse sequencing",
+          "squeezing/entanglement source"
+        ]
+      },
+      {
+        "name": "Link",
+        "role": "connects nodes so their measurements can be compared or jointly entangled.",
+        "parts": [
+          "telecom-wavelength optical fibre or free-space optical terminals",
+          "phase-stabilisation servo",
+          "classical data channel"
+        ]
+      },
+      {
+        "name": "Quantum memory and repeater",
+        "role": "stores quantum states and swaps entanglement so links can extend beyond direct fibre reach.",
+        "parts": [
+          "trapped-ion, atomic-ensemble or rare-earth memory",
+          "entanglement-swapping optics",
+          "heralding detectors"
+        ]
+      },
+      {
+        "name": "Time and frequency distribution",
+        "role": "gives every node a shared timebase, since most quantum measurements are phase or frequency comparisons.",
+        "parts": [
+          "optical or microwave clock",
+          "fibre time-transfer hardware",
+          "GNSS fallback"
+        ]
+      },
+      {
+        "name": "Readout and fusion",
+        "role": "turns many node measurements into one map of the field, cancelling noise shared across the network.",
+        "parts": [
+          "local processors",
+          "classical estimation and network algorithms",
+          "calibration and drift models"
+        ]
+      },
+      {
+        "name": "Environmental hardening",
+        "role": "keeps a laboratory-grade instrument working outdoors.",
+        "parts": [
+          "thermal and vibration isolation",
+          "magnetic shielding",
+          "rugged enclosure and power supply"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the observable",
+        "detail": "Decide what the network will measure — gravitational acceleration for mass movements, magnetic field for geology, or time/frequency for elevation and crustal change. Each dictates a different sensor."
+      },
+      {
+        "title": "Build a single quantum sensor",
+        "detail": "For cold atoms, atoms are laser-cooled and launched in a vacuum chamber so that gravity or acceleration shifts their interference fringes; for magnetometry, an atomic vapour or diamond defect ensemble is optically pumped and read out."
+      },
+      {
+        "title": "Prepare an entangled or squeezed state",
+        "detail": "Correlations are generated between atoms in one sensor, or between photons shared by many sensors, so precision improves faster than the classical limit set by counting noise."
+      },
+      {
+        "title": "Ruggedise the node",
+        "detail": "The laser bench, vacuum system and electronics are shrunk through photonic integrated circuits, shielded from temperature swings and stray magnetic fields, and packaged to survive transport, weather and unattended operation."
+      },
+      {
+        "title": "Link the nodes",
+        "detail": "Fibre or free-space optical links carry both the quantum states and a classical timing channel. Optical phase over each link must be actively stabilised to a fraction of a wavelength, otherwise the comparison is meaningless."
+      },
+      {
+        "title": "Distribute and swap entanglement",
+        "detail": "Entangled photon pairs are sent from node to node; memories at intermediate stations store states and perform entanglement swapping so that two distant sensors share a joint quantum state."
+      },
+      {
+        "title": "Read out and fuse the data",
+        "detail": "Each node reports its measurement; joint estimation combines them, rejecting common-mode noise (for example the whole array shifting together) and producing a combined sensitivity better than any single sensor."
+      },
+      {
+        "title": "Calibrate and run continuously",
+        "detail": "Nodes are referenced to national time and gravity standards, then left running for months to watch slow signals such as groundwater loss, magma build-up or land subsidence."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Field-deployable quantum sensors (clocks, cold-atom gravimeters, magnetometers)",
+        "status": "partial",
+        "why": "commercial atomic clocks and cold-atom gravimeters exist, but most are large, power-hungry and operated by specialists."
+      },
+      {
+        "tech": "Entangled photon sources and distribution over telecom fibre",
+        "status": "partial",
+        "why": "entanglement has been shared over tens to hundreds of kilometres of fibre in demonstrations, mostly point-to-point rather than in networks."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "missing",
+        "why": "without them, entanglement cannot survive the loss of long fibre runs, so networks stay city-sized at best."
+      },
+      {
+        "tech": "Compact, rugged lasers and photonic integrated circuits",
+        "status": "partial",
+        "why": "a network needs hundreds of stable laser systems, not one laboratory bench."
+      },
+      {
+        "tech": "Phase-stable fibre links and precise time transfer",
+        "status": "exists",
+        "why": "optical fibre time and frequency transfer underpins today's clock comparisons and can be adapted for sensor networks."
+      },
+      {
+        "tech": "Joint estimation and noise-rejection algorithms",
+        "status": "partial",
+        "why": "theory for distributed quantum sensing is developed, but field validation against conventional instrument arrays is limited."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single quantum sensors in routine field use: atomic clocks for timekeeping, cold-atom gravimeters for surveys, optically pumped magnetometers for geomagnetic mapping",
+        "unlocks": "higher-accuracy baseline data, especially where conventional instruments drift or need frequent recalibration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small networks of quantum sensors joined by classical, phase-stabilised fibre links",
+        "unlocks": "continuous monitoring of groundwater, volcanoes and subsidence by differencing nearby nodes rather than trusting one absolute reading."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entanglement-enhanced links between a handful of nodes, beating the shot-noise limit outside the laboratory",
+        "unlocks": "sensitivity that no single classical sensor can reach, plus genuine tamper-detection on the links themselves."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "repeater-based metropolitan and regional networks with quantum memories",
+        "unlocks": "city- and region-scale sensing grids combining gravimetry, magnetometry and clock comparisons."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "continental entangled sensor networks tied to optical clock infrastructure",
+        "unlocks": "possible earthquake precursor and deep-Earth monitoring, and navigation that does not depend on satellites — if repeaters, cost and reliability are ever solved."
+      }
+    ]
   }
 }

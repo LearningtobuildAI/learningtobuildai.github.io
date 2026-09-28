@@ -41,5 +41,154 @@
         "def": "The technology for manipulating fluids at the microscale level, often used to create complex internal structures within programmable matter objects."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Repeatable unit cell",
+        "role": "the building block — a millimetre- to centimetre-scale module or material voxel that can be mass-produced identically.",
+        "parts": [
+          "rigid frame",
+          "onboard electronics",
+          "identification marker"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "lets a cell move itself or change its own shape.",
+        "parts": [
+          "micro-motors or electropermanent magnets",
+          "shape-memory alloy or polymer elements",
+          "dielectric elastomer or liquid-crystal elastomer films"
+        ]
+      },
+      {
+        "name": "Latching and bonding",
+        "role": "reversibly grips neighbouring cells firmly enough to transmit force and carry power and data.",
+        "parts": [
+          "mechanical latches",
+          "magnetic connectors",
+          "conductive contact pads"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "each cell needs energy, either carried or delivered through the structure.",
+        "parts": [
+          "small battery or supercapacitor",
+          "power rails through latches",
+          "wireless power for some designs"
+        ]
+      },
+      {
+        "name": "Computation and communication",
+        "role": "cells sense neighbours and coordinate locally, because no central controller can address millions of units.",
+        "parts": [
+          "microcontroller per cell",
+          "short-range links (infrared, capacitive or radio)",
+          "neighbour-sensing sensors"
+        ]
+      },
+      {
+        "name": "Shape planning software",
+        "role": "decides the target shape and works out a sequence of moves that gets there without jamming.",
+        "parts": [
+          "target-shape description",
+          "distributed reconfiguration algorithm",
+          "simulator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the unit cell",
+        "detail": "Choose a size and shape that tiles space, and fix how much actuator, power and electronics fits inside it."
+      },
+      {
+        "title": "Fabricate the modules",
+        "detail": "Use micro-machining, printed circuit board processes and pick-and-place assembly to make thousands of identical cells."
+      },
+      {
+        "title": "Add reversible connections",
+        "detail": "Fit each face with a latch or magnetic coupler that can be released on command yet holds under load."
+      },
+      {
+        "title": "Wire up power and data",
+        "detail": "Route conductors through the connectors so an assembled block can share electricity and messages."
+      },
+      {
+        "title": "Write distributed control",
+        "detail": "Cells run simple local rules so that, together, the swarm forms a commanded shape; test the rules in simulation first."
+      },
+      {
+        "title": "Assemble by self-reconfiguration",
+        "detail": "Modules attach, crawl over the surface and detach to migrate into the target form, rather than being placed by hand."
+      },
+      {
+        "title": "Add programmable-material skins",
+        "detail": "Where continuous shape change is wanted instead of discrete cells, print structures with shape-memory or elastomer actuators embedded in them."
+      },
+      {
+        "title": "Scale and test",
+        "detail": "Demonstrate thousands of modules or millions of printed cells, then measure cycle life, speed and failure modes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap micrometre- and millimetre-scale manufacturing",
+        "status": "exists",
+        "why": "cells only make sense if they are as disposable as pixels."
+      },
+      {
+        "tech": "Micro-actuators with useful force and speed",
+        "status": "partial",
+        "why": "demonstrated in labs, but small actuators are still weak, slow or short-lived."
+      },
+      {
+        "tech": "Reversible connectors that pass power and data",
+        "status": "partial",
+        "why": "latching has been shown in modular-robot research, yet robust, long-life versions at scale are not available."
+      },
+      {
+        "tech": "Distributed self-reconfiguration algorithms",
+        "status": "partial",
+        "why": "algorithms exist for hundreds of modules; coordinating millions without deadlock is unsolved."
+      },
+      {
+        "tech": "Fast, reversible smart materials",
+        "status": "partial",
+        "why": "shape-memory alloys and dielectric elastomers work but are slow, need high voltages, or fatigue after limited cycles."
+      },
+      {
+        "tech": "Compact energy storage",
+        "status": "partial",
+        "why": "onboard power still dominates the mass of a small module."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory swarms of hundreds of modules, and 3D-printed materials that change shape once or a few times",
+        "unlocks": "proof that self-reconfiguration and printed actuation are physically possible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "thousand-module systems with onboard power, reliable latching and open toolkits",
+        "unlocks": "useful small objects that reconfigure on command in a lab or factory."
+      },
+      {
+        "stage": "Next",
+        "milestone": "smart materials with millions of reversible cycles, printed directly into structures",
+        "unlocks": "skins and surfaces that morph smoothly, without discrete robots."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "macroscale objects that change shape, stiffness and function on demand",
+        "unlocks": "reconfigurable tools, adaptable structures and robots that alter their own body plan."
+      }
+    ]
   }
 }

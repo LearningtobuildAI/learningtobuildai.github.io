@@ -30,5 +30,139 @@
         "def": "An AI model whose internal workings are not transparent or easily understood by users, making it difficult to validate the outputs."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Predictive model",
+        "role": "the machine-learning system whose decisions need to be explained.",
+        "parts": [
+          "trained model",
+          "input pipeline",
+          "feature set"
+        ]
+      },
+      {
+        "name": "Explanation engine",
+        "role": "computes explanations from the model and data.",
+        "parts": [
+          "local surrogate methods (e.g., LIME)",
+          "game-theoretic attribution (e.g., SHAP)",
+          "gradient-based saliency (e.g., integrated gradients)",
+          "rule extraction"
+        ]
+      },
+      {
+        "name": "Explanation representation",
+        "role": "formats the output so humans can understand it.",
+        "parts": [
+          "feature importance scores",
+          "saliency maps",
+          "counterfactual examples",
+          "decision rules"
+        ]
+      },
+      {
+        "name": "User interface and integration",
+        "role": "delivers explanations to end users or downstream systems.",
+        "parts": [
+          "dashboards",
+          "APIs",
+          "natural-language summaries"
+        ]
+      },
+      {
+        "name": "Evaluation and monitoring",
+        "role": "checks that explanations are faithful and useful over time.",
+        "parts": [
+          "fidelity metrics",
+          "stability tests",
+          "user studies",
+          "drift detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the explanation goal",
+        "detail": "Decide what needs explaining: a single prediction, model behaviour overall, or a decision to a regulator."
+      },
+      {
+        "title": "Train or obtain the predictive model",
+        "detail": "Build a standard machine-learning model, ensuring it has good accuracy and suitable input features."
+      },
+      {
+        "title": "Select explanation methods",
+        "detail": "Choose techniques suited to the model type (e.g., SHAP for tree ensembles, saliency maps for neural networks) and the data modality."
+      },
+      {
+        "title": "Implement explanation generation",
+        "detail": "Integrate libraries or write custom code to compute explanations for representative inputs."
+      },
+      {
+        "title": "Validate explanations",
+        "detail": "Check fidelity to the model, stability under small input changes, and whether domain experts find them meaningful."
+      },
+      {
+        "title": "Integrate into the application",
+        "detail": "Expose explanations through an API or user interface, linking each prediction to its explanation."
+      },
+      {
+        "title": "Monitor and update",
+        "detail": "Track explanation quality as data drifts, and retrain or adjust methods when the model changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Machine learning models",
+        "status": "exists",
+        "why": "XAI explains their predictions; without a model there is nothing to explain."
+      },
+      {
+        "tech": "Interpretability algorithms",
+        "status": "partial",
+        "why": "many methods exist but no single method works well for all models and data types."
+      },
+      {
+        "tech": "Sufficient training data and features",
+        "status": "exists",
+        "why": "explanations depend on meaningful input features; poor features yield poor explanations."
+      },
+      {
+        "tech": "Domain expertise",
+        "status": "exists",
+        "why": "humans must judge whether an explanation is plausible and actionable."
+      },
+      {
+        "tech": "Compute resources",
+        "status": "exists",
+        "why": "some explanation methods are computationally intensive, especially for large models."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "post-hoc methods such as SHAP and LIME are widely used for tabular, image and text models",
+        "unlocks": "practical explanations in finance, healthcare and other regulated sectors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised evaluation metrics and regulatory requirements (e.g., a right to explanation) drive adoption",
+        "unlocks": "more trustworthy AI systems and clearer accountability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "explanation methods scale to large language models and multimodal systems",
+        "unlocks": "interpretability for generative AI and complex agents."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "inherently interpretable models that are as accurate as black-box ones",
+        "unlocks": "explanation by design, reducing reliance on post-hoc methods."
+      }
+    ]
   }
 }

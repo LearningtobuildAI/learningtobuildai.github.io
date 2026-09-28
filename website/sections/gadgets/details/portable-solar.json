@@ -34,5 +34,140 @@
         "def": "An electrical device that converts direct current (DC) to alternating current (AC), allowing for the use of AC-powered devices from DC sources like solar panels or batteries."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Fold-out solar panels",
+        "role": "turn sunlight into DC electricity wherever it is needed.",
+        "parts": [
+          "monocrystalline silicon cells",
+          "tempered glass or polymer cover",
+          "encapsulant and backsheet",
+          "aluminium frame and hinges",
+          "junction box with bypass diodes"
+        ]
+      },
+      {
+        "name": "Battery bank",
+        "role": "stores the day's charge for night and for high-power surges.",
+        "parts": [
+          "lithium iron phosphate (LiFePO4) cells, or lithium nickel chemistry for lighter units",
+          "battery management system (BMS)",
+          "cell holders and busbars"
+        ]
+      },
+      {
+        "name": "Power conversion",
+        "role": "conditions DC from panels and battery into usable outputs.",
+        "parts": [
+          "maximum power point tracking (MPPT) solar charge controller",
+          "DC-to-AC inverter",
+          "DC-to-DC converters",
+          "USB-C Power Delivery ports"
+        ]
+      },
+      {
+        "name": "Control and protection",
+        "role": "keeps cells safe and lets the user see state of charge.",
+        "parts": [
+          "microcontroller",
+          "display or app link",
+          "fuses, relays and ground-fault protection"
+        ]
+      },
+      {
+        "name": "Case and thermal management",
+        "role": "protects the pack and dissipates heat from the inverter.",
+        "parts": [
+          "moulded shell",
+          "vents and heatsinks",
+          "carry handle",
+          "DC and AC outlets",
+          "input ports for solar and mains"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the solar cells",
+        "detail": "Silicon wafers are doped to form a p–n junction, coated with an anti-reflective layer and printed with metal contacts — each cell gives about 0.6–0.7 V open-circuit."
+      },
+      {
+        "title": "Lay up and laminate the panels",
+        "detail": "Cells are soldered into strings, sandwiched between glass, encapsulant and a backsheet, then vacuum-laminated at around 150 °C to cure the plastic."
+      },
+      {
+        "title": "Frame and wire the panels",
+        "detail": "A light aluminium frame and hinges are fitted, and a junction box with bypass diodes is attached so shaded sections don't kill the whole string."
+      },
+      {
+        "title": "Assemble the battery pack",
+        "detail": "Matched cells are spot-welded or bolted into a pack — commonly 12.8 V or about 48 V nominal — with the BMS wired across every cell group."
+      },
+      {
+        "title": "Build the power electronics",
+        "detail": "An MPPT controller, an inverter and DC-DC converters are assembled on circuit boards, sized so the continuous output (typically 300 W to 3 kW) stays within the battery's discharge limit."
+      },
+      {
+        "title": "Integrate the unit",
+        "detail": "Battery, boards, display, fans and sockets are mounted in the shell and connected with fused, correctly rated cabling."
+      },
+      {
+        "title": "Test and certify",
+        "detail": "Each unit runs a capacity and load test; the inverter output is checked for a clean sine wave, and the product is submitted for electrical safety and transport-of-lithium certification."
+      },
+      {
+        "title": "Match with panels and cables",
+        "detail": "Panels are wired in series or parallel to suit the unit's input voltage window, ending in standard DC connectors."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Crystalline silicon photovoltaic cells",
+        "status": "exists",
+        "why": "they set how much power a given panel area can collect."
+      },
+      {
+        "tech": "Lithium battery cells and battery management systems",
+        "status": "exists",
+        "why": "energy density and cycle life determine weight and lifespan."
+      },
+      {
+        "tech": "MPPT charge controllers and switch-mode inverters",
+        "status": "exists",
+        "why": "they extract peak panel power and produce mains-quality AC."
+      },
+      {
+        "tech": "Wide-bandgap semiconductors (silicon carbide, gallium nitride)",
+        "status": "partial",
+        "why": "they shrink and cool inverters, enabling lighter, quieter units."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "folding panels of roughly 100–400 W paired with packs of several hundred watt-hours to a few kilowatt-hours",
+        "unlocks": "off-grid camping, job sites and emergency backup for a fridge, tools or communications gear."
+      },
+      {
+        "stage": "Next",
+        "milestone": "gallium-nitride inverters and higher-density cells in the same case",
+        "unlocks": "the same capacity at noticeably lower weight and higher surge output."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with home backup and vehicle-to-load power",
+        "unlocks": "using one pack as both campsite supply and household blackout reserve."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "lighter tandem or perovskite panels and sodium-ion packs",
+        "unlocks": "cheaper, less lithium-dependent units that fold small enough to carry on a hike."
+      }
+    ]
   }
 }

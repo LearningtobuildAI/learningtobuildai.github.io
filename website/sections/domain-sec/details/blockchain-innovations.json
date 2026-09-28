@@ -32,5 +32,156 @@
         "def": "A form of encryption that allows computations on ciphertexts, generating an encrypted result which, when decrypted, matches the result of operations performed on the plaintext."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Distributed ledger",
+        "role": "a replicated, append-only record that many parties can verify without a central owner.",
+        "parts": [
+          "blocks of transactions",
+          "cryptographic hash chain",
+          "Merkle trees",
+          "peer-to-peer gossip network"
+        ]
+      },
+      {
+        "name": "Consensus mechanism",
+        "role": "agrees on the order and validity of transactions across nodes that may not trust each other.",
+        "parts": [
+          "proof-of-work or proof-of-stake",
+          "fork-choice rule",
+          "finality gadget"
+        ]
+      },
+      {
+        "name": "Zero-knowledge proof system",
+        "role": "proves a statement is true — such as 'I know a valid transaction' — without revealing the underlying data.",
+        "parts": [
+          "arithmetic circuit",
+          "proving key and verification key",
+          "prover and verifier algorithms",
+          "trusted setup or transparent setup"
+        ]
+      },
+      {
+        "name": "Homomorphic encryption engine",
+        "role": "allows computations to be performed on encrypted data, so a node can process transactions without seeing their contents.",
+        "parts": [
+          "ciphertexts",
+          "evaluation keys",
+          "noise management (bootstrapping)",
+          "scheme parameters"
+        ]
+      },
+      {
+        "name": "Smart contract runtime",
+        "role": "executes programmable rules that define how assets move and what conditions must be met.",
+        "parts": [
+          "virtual machine",
+          "gas metering",
+          "state storage"
+        ]
+      },
+      {
+        "name": "Key and identity management",
+        "role": "manages cryptographic keys that control assets and prove identity.",
+        "parts": [
+          "public-private key pairs",
+          "hardware wallets or secure enclaves",
+          "recovery and multi-signature schemes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the ledger model",
+        "detail": "Decide whether the chain is public or permissioned, and specify how transactions are represented and hashed into blocks."
+      },
+      {
+        "title": "Select consensus and finality",
+        "detail": "Pick a consensus protocol (e.g., proof-of-stake or a Byzantine fault-tolerant algorithm) that provides the security and speed the application needs."
+      },
+      {
+        "title": "Design zero-knowledge circuits",
+        "detail": "Translate the rules you want to prove — such as a valid transfer or a private balance check — into arithmetic circuits that a prover can satisfy."
+      },
+      {
+        "title": "Set up the proving system",
+        "detail": "Generate proving and verification keys (or a transparent setup) and build the prover and verifier software."
+      },
+      {
+        "title": "Integrate homomorphic encryption",
+        "detail": "Choose an HE scheme (e.g., BFV or CKKS for specific operations) and write smart contracts that operate on ciphertexts."
+      },
+      {
+        "title": "Build the node and network layer",
+        "detail": "Implement peer-to-peer gossip, block propagation, and state synchronization so nodes can reach agreement."
+      },
+      {
+        "title": "Implement key management",
+        "detail": "Provide secure key generation, storage, and recovery, including multi-signature and hardware wallet support."
+      },
+      {
+        "title": "Audit and test",
+        "detail": "Run formal verification of circuits, cryptographic audits, and adversarial testing on a testnet."
+      },
+      {
+        "title": "Launch and upgrade",
+        "detail": "Deploy the genesis block, bootstrap validators or miners, and establish governance for future upgrades."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Blockchain and distributed consensus",
+        "status": "exists",
+        "why": "provides the immutable, decentralized ledger that these innovations build on."
+      },
+      {
+        "tech": "Zero-knowledge proof systems",
+        "status": "partial",
+        "why": "zk-SNARKs and zk-STARKs are used in production for privacy and scaling, but proving complex computations remains slow and costly."
+      },
+      {
+        "tech": "Homomorphic encryption capable of general computation",
+        "status": "missing",
+        "why": "current schemes are too slow and limited for general smart contracts on a blockchain."
+      },
+      {
+        "tech": "Secure key management and hardware",
+        "status": "exists",
+        "why": "hardware wallets and secure enclaves are commercially available to protect private keys."
+      },
+      {
+        "tech": "Scalable data availability",
+        "status": "partial",
+        "why": "techniques like data availability sampling and erasure coding are being developed to keep large proofs and encrypted data accessible."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "zero-knowledge rollups and privacy coins in production",
+        "unlocks": "cheaper, more private transactions on public blockchains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wider use of zero-knowledge proofs for identity and compliance without revealing personal data",
+        "unlocks": "privacy-preserving KYC and supply-chain tracking."
+      },
+      {
+        "stage": "Next",
+        "milestone": "homomorphic encryption integrated into smart contracts for private computation",
+        "unlocks": "decentralized applications that can process sensitive data on-chain."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully private, scalable and auditable systems combining both techniques",
+        "unlocks": "mainstream financial and data-integrity applications."
+      }
+    ]
   }
 }

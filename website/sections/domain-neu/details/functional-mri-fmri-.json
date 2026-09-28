@@ -28,5 +28,150 @@
         "def": "The change in blood flow that fMRI detects to indicate brain activity."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Superconducting main magnet",
+        "role": "creates the strong, uniform static field that polarises hydrogen nuclei in the brain.",
+        "parts": [
+          "niobium-titanium coil windings",
+          "cryostat with liquid helium",
+          "shim coils",
+          "quench safety system"
+        ]
+      },
+      {
+        "name": "Gradient coils",
+        "role": "add small, rapidly switched fields that encode spatial position, which is what makes an image possible.",
+        "parts": [
+          "x, y, z gradient coil sets",
+          "high-power gradient amplifiers",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Radio-frequency coils",
+        "role": "transmit pulses that tip nuclear spins and receive the faint signal back.",
+        "parts": [
+          "head transmit coil",
+          "multi-channel receive arrays",
+          "low-noise preamplifiers"
+        ]
+      },
+      {
+        "name": "Pulse sequence and reconstruction",
+        "role": "controls the timing of gradients and RF, then turns raw signals into images.",
+        "parts": [
+          "echo-planar imaging sequence",
+          "parallel-imaging and multiband acceleration",
+          "reconstruction computer"
+        ]
+      },
+      {
+        "name": "Stimulus and response system",
+        "role": "presents tasks and records behaviour during scanning.",
+        "parts": [
+          "visual/auditory presentation",
+          "button boxes",
+          "eye tracking"
+        ]
+      },
+      {
+        "name": "Analysis pipeline",
+        "role": "turns a time series of images into maps of brain activity.",
+        "parts": [
+          "motion correction",
+          "anatomical registration",
+          "statistical model (general linear model)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the site",
+        "detail": "A magnetically shielded room with a radio-frequency cage blocks external interference, and the floor is built to carry the magnet's weight."
+      },
+      {
+        "title": "Wind the magnet",
+        "detail": "Superconducting wire is wound into coils, clamped against the enormous magnetic forces, and sealed inside a cryostat."
+      },
+      {
+        "title": "Cool down",
+        "detail": "The magnet is cooled with liquid helium to a few kelvin, where the wire loses all resistance and can hold a persistent current."
+      },
+      {
+        "title": "Fit gradients and shims",
+        "detail": "Gradient coils are installed inside the bore and shim coils correct the field to a uniformity of a few parts per million."
+      },
+      {
+        "title": "Add RF coils",
+        "detail": "A transmit coil and a close-fitting receive array go around the head, since signal falls off steeply with distance."
+      },
+      {
+        "title": "Tune the sequence",
+        "detail": "Engineers set echo time and repetition time so the sequence is sensitive to the blood-oxygen-level-dependent (BOLD) signal, then test it on phantoms and volunteers."
+      },
+      {
+        "title": "Scan the subject",
+        "detail": "A person performs a task while the scanner collects one brain volume every one to two seconds."
+      },
+      {
+        "title": "Preprocess and model",
+        "detail": "Images are corrected for head motion and slice timing, aligned to anatomy, and fitted with a statistical model to produce activation maps."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting magnets",
+        "status": "exists",
+        "why": "the static field of 1.5–7 T cannot be produced by resistive magnets at acceptable power."
+      },
+      {
+        "tech": "Fast, strong gradient systems",
+        "status": "exists",
+        "why": "echo-planar imaging needs gradients that switch in under a millisecond to read a whole volume quickly."
+      },
+      {
+        "tech": "Multi-channel receive arrays and parallel imaging",
+        "status": "exists",
+        "why": "they shorten scan time and improve signal near the cortex."
+      },
+      {
+        "tech": "High-throughput reconstruction computing",
+        "status": "exists",
+        "why": "thousands of images per run must be reconstructed and corrected in real time or near it."
+      },
+      {
+        "tech": "A validated model of neurovascular coupling",
+        "status": "partial",
+        "why": "BOLD is an indirect, slow proxy for neural activity, so its interpretation remains an active research question."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "3 T scanners as the workhorse, with 7 T systems used in research and some clinical settings",
+        "unlocks": "routine mapping of sensory, motor and language areas before surgery, plus cognitive research."
+      },
+      {
+        "stage": "Next",
+        "milestone": "faster acquisition via multiband and MR encephalography-style sequences",
+        "unlocks": "tracking activity closer to the speed at which the brain actually works."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wider use of portable low-field scanners",
+        "unlocks": "bedside and remote imaging, though BOLD sensitivity at low field is limited."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "real-time decoding and closed-loop stimulation combined with EEG or MEG",
+        "unlocks": "direct, causal tests of brain circuits rather than correlation alone."
+      }
+    ]
   }
 }

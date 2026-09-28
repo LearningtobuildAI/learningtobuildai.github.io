@@ -34,5 +34,156 @@
         "def": "A manufacturing process that builds objects layer by layer from a digital model, often using 3D printing techniques."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Design domain setup",
+        "role": "defines the volume where material may exist and the loads it must carry.",
+        "parts": [
+          "CAD geometry",
+          "load cases",
+          "boundary conditions",
+          "keep-out zones"
+        ]
+      },
+      {
+        "name": "Finite element solver",
+        "role": "predicts stress, strain and displacement throughout the design domain.",
+        "parts": [
+          "mesher",
+          "linear or nonlinear solver",
+          "material models"
+        ]
+      },
+      {
+        "name": "Optimization algorithm",
+        "role": "iteratively redistributes material to minimise mass or compliance.",
+        "parts": [
+          "sensitivity analysis",
+          "density update (SIMP)",
+          "level-set method",
+          "evolutionary routines"
+        ]
+      },
+      {
+        "name": "Generative AI model",
+        "role": "learns from simulation results to propose novel geometries quickly.",
+        "parts": [
+          "training dataset",
+          "neural network",
+          "surrogate model"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns the optimized density field into smooth, manufacturable surfaces.",
+        "parts": [
+          "surface extraction",
+          "smoothing",
+          "CAD reconstruction"
+        ]
+      },
+      {
+        "name": "Validation",
+        "role": "confirms the final design meets strength, stiffness and manufacturability requirements.",
+        "parts": [
+          "re-analysis",
+          "safety factors",
+          "manufacturing constraints"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the design space",
+        "detail": "Create a 3D volume that encloses all possible material, with fixed supports and applied loads."
+      },
+      {
+        "title": "Mesh the volume",
+        "detail": "Divide it into small elements, often cubes or tetrahedra, so the solver can compute local stresses."
+      },
+      {
+        "title": "Run baseline analysis",
+        "detail": "Use finite element analysis to find where stress is high and where it is low under each load case."
+      },
+      {
+        "title": "Iterate the optimization",
+        "detail": "Remove material from low-stress regions and add it to high-stress regions, repeating hundreds of times."
+      },
+      {
+        "title": "Introduce generative AI",
+        "detail": "Use machine learning to propose several optimized shapes at once, trained on past simulation data."
+      },
+      {
+        "title": "Extract and smooth geometry",
+        "detail": "Convert the resulting density map into smooth surfaces and a solid CAD model."
+      },
+      {
+        "title": "Validate the design",
+        "detail": "Re-run finite element analysis on the smoothed model to check it still meets requirements."
+      },
+      {
+        "title": "Prepare for manufacture",
+        "detail": "Add manufacturing constraints such as minimum feature size, then export for 3D printing or machining."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Finite element analysis",
+        "status": "exists",
+        "why": "needed to evaluate stresses and displacements in candidate geometries."
+      },
+      {
+        "tech": "Optimization algorithms (SIMP, level-set)",
+        "status": "exists",
+        "why": "core method for redistributing material across the design domain."
+      },
+      {
+        "tech": "High-performance computing",
+        "status": "exists",
+        "why": "optimization requires many solver runs, often thousands per design."
+      },
+      {
+        "tech": "Machine learning for generative design",
+        "status": "partial",
+        "why": "surrogate models speed up exploration but are still being validated for safety-critical parts."
+      },
+      {
+        "tech": "Additive manufacturing",
+        "status": "partial",
+        "why": "complex organic shapes are often only buildable by 3D printing, which is not yet universal."
+      },
+      {
+        "tech": "CAD/CAM integration",
+        "status": "exists",
+        "why": "to take optimized geometry back into standard engineering and manufacturing workflows."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial FEA tools offer topology optimization for lightweight parts in aerospace and automotive",
+        "unlocks": "mass reduction and material efficiency in high-value components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI surrogates reduce computation time from hours to seconds for interactive design",
+        "unlocks": "real-time exploration of many design options by engineers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tight integration with additive manufacturing for production of optimized parts",
+        "unlocks": "complex geometries that were previously impossible to make."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "automated generative design for whole assemblies and building structures",
+        "unlocks": "AI that checks manufacturability, cost and safety in one loop."
+      }
+    ]
   }
 }

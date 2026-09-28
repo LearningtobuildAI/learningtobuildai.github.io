@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "detects people without requiring them to carry or press anything.",
+        "parts": [
+          "ultra-wideband and 24/60 GHz radar modules",
+          "passive infrared and door/window contacts",
+          "cameras (often depth or thermal)",
+          "bed and chair pressure mats",
+          "wearables for vital signs"
+        ]
+      },
+      {
+        "name": "Edge compute",
+        "role": "processes sensor data inside the building so raw video or radar never has to leave it.",
+        "parts": [
+          "local inference accelerator",
+          "sensor gateway",
+          "secure local storage"
+        ]
+      },
+      {
+        "name": "Fusion and tracking",
+        "role": "turns many noisy readings into one picture of who is where and what they are doing.",
+        "parts": [
+          "multi-sensor fusion engine",
+          "person tracker",
+          "activity and anomaly classifiers"
+        ]
+      },
+      {
+        "name": "Spatial reasoning and orchestration",
+        "role": "decides what the space should do next, based on context rather than fixed rules.",
+        "parts": [
+          "floor-plan and room model",
+          "device and capability registry",
+          "language-model planner or policy engine"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "carries out the decision in the physical world.",
+        "parts": [
+          "lighting and blind controllers",
+          "heating, ventilation and cooling setpoints",
+          "door locks, alerts and nurse-call messages"
+        ]
+      },
+      {
+        "name": "Consent and identity",
+        "role": "keeps the system accountable and legally usable.",
+        "parts": [
+          "enrolment and opt-out flows",
+          "privacy zones (no sensing in bathrooms)",
+          "audit logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the space and its jobs",
+        "detail": "Write down concrete goals — for example 'detect a fall within 30 seconds' or 'light the corridor at 20 lux when someone gets up at night' — and the failure modes that would be dangerous."
+      },
+      {
+        "title": "Map and instrument the building",
+        "detail": "Survey rooms in metres and place radar or sensor nodes so each covers its zone with overlap; avoid blind spots behind furniture and confirm coverage with test walks."
+      },
+      {
+        "title": "Set up identity and consent",
+        "detail": "Enrol residents or occupants, define who may be tracked, mark private areas as sensing-free, and keep the consent record with the deployment."
+      },
+      {
+        "title": "Build the spatial model",
+        "detail": "Register every sensor, light and valve with its room and capabilities so the software knows what exists and what it can control."
+      },
+      {
+        "title": "Fuse the sensor streams",
+        "detail": "Run local inference to convert radar and camera data into anonymised tracks, then merge tracks across rooms, filtering pets, fans and door swings that cause false alarms."
+      },
+      {
+        "title": "Tune activity and intent models",
+        "detail": "Train or configure classifiers for the activities that matter — sleeping, cooking, wandering, collapse — and set thresholds against measurements from the actual building, not a lab."
+      },
+      {
+        "title": "Wire the control loop",
+        "detail": "Connect decisions to actuators with hard safety limits, rate limits and a human override, so a wrong inference cannot lock a door or cut heating in winter."
+      },
+      {
+        "title": "Pilot and validate",
+        "detail": "Run for weeks alongside staff or residents, counting missed detections and false alerts and adjusting until the system is quieter than the people it is meant to help."
+      },
+      {
+        "title": "Operate, update and audit",
+        "detail": "Push model updates carefully, watch for drift when furniture or habits change, and re-check privacy settings on a schedule."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power ultra-wideband and millimetre-wave radar chips",
+        "status": "exists",
+        "why": "they detect breathing, presence and falls through clothing and darkness without a camera image."
+      },
+      {
+        "tech": "On-device machine-learning accelerators",
+        "status": "exists",
+        "why": "continuous vision and radar inference must run locally to be affordable and privacy-preserving."
+      },
+      {
+        "tech": "Interoperable building device standards",
+        "status": "exists",
+        "why": "lights, thermostats and locks from different makers must be controllable from one logic layer."
+      },
+      {
+        "tech": "Reliable activity and fall recognition",
+        "status": "partial",
+        "why": "accuracy in cluttered real homes is still well below what clinical use demands."
+      },
+      {
+        "tech": "Language-model spatial reasoning with guarantees",
+        "status": "missing",
+        "why": "a planner that can hallucinate a room must be bounded by verified rules before it is trusted with safety."
+      },
+      {
+        "tech": "Privacy law and medical-device certification for sensing homes",
+        "status": "partial",
+        "why": "continuous monitoring of vulnerable people raises consent and approval questions that are still being settled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "room-level occupancy sensing in smart homes and radar-based fall detection sold as consumer and care products",
+        "unlocks": "automatic lighting, heating and basic alerts without cameras."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal fusion giving person-level tracking with on-device processing and clear consent",
+        "unlocks": "night-time monitoring and early warning of deterioration in care homes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "language-model orchestration of device fleets",
+        "unlocks": "occupants describing desired behaviour in words instead of programming rules, with adaptation to individual habits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "certified ambient assisted living integrated with clinical records",
+        "unlocks": "people staying in their own homes longer, and hospitals monitoring recovery remotely."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "buildings that anticipate intent as a standard design layer",
+        "unlocks": "energy savings and accessibility built into new construction rather than retrofitted."
+      }
+    ]
+  }
+}

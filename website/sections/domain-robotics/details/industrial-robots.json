@@ -33,5 +33,153 @@
         "def": "Robotic systems designed to work alongside humans in shared spaces, enhancing productivity while ensuring safety through advanced sensor technologies and programming capabilities."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Manipulator structure",
+        "role": "the arm itself: rigid links connected by joints that position the tool in space.",
+        "parts": [
+          "cast aluminium or steel links",
+          "joint bearings",
+          "base mounting plate"
+        ]
+      },
+      {
+        "name": "Joint drives",
+        "role": "convert electrical power into precise rotary motion at each joint.",
+        "parts": [
+          "brushless servo motors",
+          "harmonic or cycloidal speed reducers",
+          "holding brakes",
+          "absolute encoders"
+        ]
+      },
+      {
+        "name": "Controller and motion software",
+        "role": "computes the joint angles needed to reach a commanded position and time.",
+        "parts": [
+          "industrial computer",
+          "real-time motion control loop",
+          "teach pendant",
+          "fieldbus interface"
+        ]
+      },
+      {
+        "name": "End effector",
+        "role": "the tool that actually does the work.",
+        "parts": [
+          "electric or pneumatic gripper",
+          "vacuum cups",
+          "welding torch or spray gun",
+          "quick-change tool coupling"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "lets the robot know where it is and what it is touching.",
+        "parts": [
+          "joint encoders",
+          "six-axis force/torque sensor",
+          "2D or 3D machine vision camera"
+        ]
+      },
+      {
+        "name": "Safety system",
+        "role": "keeps people safe when the arm moves fast and carries momentum.",
+        "parts": [
+          "safety-rated controller",
+          "light curtains or laser scanners",
+          "interlocked fence doors",
+          "emergency stop circuit"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the kinematics and duty",
+        "detail": "Choose the number of axes, reach in metres, payload in kilograms, and repeatability as a fraction of a millimetre, based on the task."
+      },
+      {
+        "title": "Make the links",
+        "detail": "Cast or machine aluminium or steel into arm sections, then bore and finish the bearing seats so joints align precisely."
+      },
+      {
+        "title": "Build joint modules",
+        "detail": "Assemble motor, reducer, brake and encoder into a sealed unit; the reducer removes backlash so the arm repeats its position."
+      },
+      {
+        "title": "Stack the arm",
+        "detail": "Bolt joint modules and links together, route cables internally, and add counterbalancing so the motors are not overloaded."
+      },
+      {
+        "title": "Wire and integrate the controller",
+        "detail": "Connect drives to the controller, tune current, velocity and position loops, and load the kinematic model of the arm."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Zero each joint, measure actual link lengths, set the tool centre point, and test repeatability with a dial gauge or laser tracker."
+      },
+      {
+        "title": "Validate safety",
+        "detail": "Carry out a risk assessment, install fencing or scanners, and verify emergency stop, speed limits and safe stopping distances."
+      },
+      {
+        "title": "Program and hand over",
+        "detail": "Teach paths or load CAM-generated programs, integrate the gripper and vision, and run production trials before signing off."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Closed-loop servo control",
+        "status": "exists",
+        "why": "accurate positioning depends on motors that continuously correct against encoder feedback."
+      },
+      {
+        "tech": "Precision speed reducers",
+        "status": "exists",
+        "why": "harmonic and cycloidal gears give high torque with very low backlash, which is what makes repeatability possible."
+      },
+      {
+        "tech": "Real-time motion controllers",
+        "status": "exists",
+        "why": "trajectories must be recalculated thousands of times per second to move smoothly."
+      },
+      {
+        "tech": "Machine vision and force sensing",
+        "status": "partial",
+        "why": "letting a robot find and handle parts that are not in exactly the same place remains harder than blind repetition."
+      },
+      {
+        "tech": "Collaborative robot safety technology",
+        "status": "partial",
+        "why": "power-and-force limiting and safety-rated monitoring allow robots to work beside people without full cages."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "high-speed, caged arms welding, painting, picking and assembling in factories",
+        "unlocks": "consistent mass production at low unit cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "collaborative arms with force sensing and easier programming",
+        "unlocks": "automation for small and medium workshops."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mobile manipulators — an arm on an autonomous mobile base",
+        "unlocks": "machine tending, warehouse picking and logistics tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "learning-based task planning from demonstration or language",
+        "unlocks": "robots that can be retasked quickly for new products rather than reprogrammed by specialists."
+      }
+    ]
   }
 }

@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum entropy source",
+        "role": "the physical process whose outcome is genuinely unpredictable — for example vacuum-field fluctuations or the arrival time of individual photons.",
+        "parts": [
+          "laser diode or light-emitting source",
+          "optical path or vacuum-fluctuation probe",
+          "sampling circuit"
+        ]
+      },
+      {
+        "name": "Detector and digitizer",
+        "role": "turns the quantum event into an electrical, then digital, signal.",
+        "parts": [
+          "single-photon detector or photodiode",
+          "amplifier and discriminator",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Conditioning and extraction",
+        "role": "removes bias and any classical predictability, squeezing genuine entropy into uniform bits.",
+        "parts": [
+          "entropy estimator",
+          "cryptographic hash or Toeplitz extractor",
+          "bias-correction logic"
+        ]
+      },
+      {
+        "name": "Random-number module",
+        "role": "packages the source into a usable component with a defined output rate.",
+        "parts": [
+          "photonic or electronic chip",
+          "readout firmware",
+          "entropy API or driver"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "converts the random bits into keys and gets them to where they are needed.",
+        "parts": [
+          "key derivation",
+          "hardware security module",
+          "key distribution channel"
+        ]
+      },
+      {
+        "name": "Certification and health monitoring",
+        "role": "proves the bits are random and detects drift or tampering in service.",
+        "parts": [
+          "statistical test suites",
+          "continuous on-line health tests",
+          "tamper sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose and characterise a quantum process",
+        "detail": "Candidates include the phase or amplitude noise of a laser, photon detection times, or vacuum fluctuations measured by a shot-noise-limited detector."
+      },
+      {
+        "title": "Fabricate the source",
+        "detail": "The light source and optics are built as a discrete assembly or, increasingly, a photonic integrated circuit on a semiconductor chip."
+      },
+      {
+        "title": "Add detection and readout",
+        "detail": "Photons are converted to electrical pulses; single-photon detectors are used where the source produces individual quanta."
+      },
+      {
+        "title": "Digitise the raw signal",
+        "detail": "The analogue output is sampled and thresholded to produce a raw bit stream."
+      },
+      {
+        "title": "Extract true randomness",
+        "detail": "An extractor compresses many raw bits into fewer output bits, wiping out bias and any pattern an attacker could model."
+      },
+      {
+        "title": "Validate the entropy",
+        "detail": "The design is tested against standard frameworks such as NIST SP 800-90B and BSI AIS 31 to estimate min-entropy per bit."
+      },
+      {
+        "title": "Package and integrate",
+        "detail": "The module is given a driver or API and fitted into servers, hardware security modules or network equipment."
+      },
+      {
+        "title": "Operate with live monitoring",
+        "detail": "Continuous health tests watch for stuck or drifting sources, and the module is replaced or re-seeded if they fail."
+      },
+      {
+        "title": "Wire into a security protocol",
+        "detail": "The bits become keys for encryption — and, for the strongest claims, feed a one-time pad or a post-quantum scheme rather than being treated as a lock on their own."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable random-number generation and statistical testing",
+        "status": "exists",
+        "why": "quantum sources still have to be validated and de-biased like any entropy source."
+      },
+      {
+        "tech": "Cryptographic randomness extractors",
+        "status": "exists",
+        "why": "raw quantum signals are biased; extraction is what makes the output usable as key material."
+      },
+      {
+        "tech": "Single-photon detection",
+        "status": "exists",
+        "why": "many quantum entropy schemes rely on counting individual photons accurately."
+      },
+      {
+        "tech": "Quantum key distribution",
+        "status": "partial",
+        "why": "randomness alone does not stop a key being copied in transit; QKD is needed for eavesdropper detection."
+      },
+      {
+        "tech": "Information-theoretically secure encryption and key management",
+        "status": "partial",
+        "why": "the 'uncrackable' claim only holds with a one-time pad and perfect key handling, which is operationally hard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quantum random-number generators sold as chips and rack modules for key generation",
+        "unlocks": "better keys than software pseudo-random generators, especially for long-lived secrets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale integration into processors, phones and network gear",
+        "unlocks": "quantum entropy everywhere, at little cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combined quantum random-number and quantum key distribution links",
+        "unlocks": "key exchange that detects interception, closing the copying gap."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid systems pairing quantum key distribution with post-quantum algorithms",
+        "unlocks": "practical high assurance without relying on any single physical assumption."
+      }
+    ]
+  }
+}

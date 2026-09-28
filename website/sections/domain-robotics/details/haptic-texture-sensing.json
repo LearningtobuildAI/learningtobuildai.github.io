@@ -1,0 +1,136 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Contact skin and transducer array",
+        "role": "deforms against objects and converts force into a measurable signal.",
+        "parts": [
+          "moulded elastomer dome",
+          "capacitive or piezoresistive sensing elements",
+          "optical markers for camera-based sensing"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "scans many sensing elements quickly and converts analogue signals to digital.",
+        "parts": [
+          "flexible printed circuit",
+          "multiplexers and amplifiers",
+          "analogue-to-digital converters"
+        ]
+      },
+      {
+        "name": "Mechanical mounting",
+        "role": "attaches the sensor to a robot finger or gripper without distorting measurements.",
+        "parts": [
+          "rigid base",
+          "compliant layer",
+          "protective cover"
+        ]
+      },
+      {
+        "name": "Signal processing unit",
+        "role": "turns raw force maps into texture, slip and contact-geometry estimates.",
+        "parts": [
+          "microcontroller or FPGA",
+          "feature-extraction algorithms",
+          "texture-classification models"
+        ]
+      },
+      {
+        "name": "Calibration and interface",
+        "role": "ensures readings are comparable over time and sends them to the robot controller.",
+        "parts": [
+          "calibration rig",
+          "communication bus (e.g. I2C, USB, EtherCAT)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the array",
+        "detail": "Choose spatial resolution, force range and skin stiffness for the target objects."
+      },
+      {
+        "title": "Mould the elastomer skin",
+        "detail": "Cast silicone or a similar elastomer in a mould, sometimes with embedded markers or conductive particles."
+      },
+      {
+        "title": "Pattern the electrodes",
+        "detail": "Deposit or print conductive traces and sensing electrodes on a flexible substrate using photolithography or screen printing."
+      },
+      {
+        "title": "Assemble the layers",
+        "detail": "Bond the skin to the electrode layer and encapsulate it so it survives repeated contact."
+      },
+      {
+        "title": "Connect the electronics",
+        "detail": "Attach the flexible circuit to readout boards with multiplexers and analogue-to-digital converters."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Press the sensor with known weights and indenters to map raw signals to force and shear."
+      },
+      {
+        "title": "Train and test",
+        "detail": "Collect data while sliding across textures, train a classifier, and validate on a robot gripper."
+      },
+      {
+        "title": "Integrate",
+        "detail": "Mount on a gripper, connect to the robot controller, and test precision handling tasks."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Flexible electronics and microfabrication",
+        "status": "exists",
+        "why": "to make dense electrode arrays that bend with the skin."
+      },
+      {
+        "tech": "Elastomer materials with stable properties",
+        "status": "exists",
+        "why": "the skin must deform repeatably and resist wear."
+      },
+      {
+        "tech": "High-resolution, low-noise readout",
+        "status": "exists",
+        "why": "tiny capacitance or resistance changes must be measured accurately."
+      },
+      {
+        "tech": "Machine learning for tactile signals",
+        "status": "partial",
+        "why": "texture classification and slip detection work in labs but need more robust training data."
+      },
+      {
+        "tech": "Robot hands with compliant control",
+        "status": "partial",
+        "why": "precision handling requires both sensing and dexterous, force-controlled motion."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tactile arrays and optical sensors in research and niche industrial grippers",
+        "unlocks": "reliable detection of contact, force and simple textures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sensor fusion with vision and proprioception",
+        "unlocks": "robots that can identify and handle unfamiliar objects."
+      },
+      {
+        "stage": "Next",
+        "milestone": "large-area, skin-like sensor coverings",
+        "unlocks": "safe human-robot collaboration and whole-arm manipulation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "human-level dexterity in unstructured environments",
+        "unlocks": "general-purpose robots for manufacturing, surgery and service work."
+      }
+    ]
+  }
+}

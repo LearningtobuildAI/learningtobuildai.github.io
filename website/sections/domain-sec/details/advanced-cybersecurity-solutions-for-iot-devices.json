@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Hardware root of trust",
+        "role": "a small tamper-resistant chip that holds keys no software can extract.",
+        "parts": [
+          "secure element or TPM 2.0",
+          "cryptographic accelerators",
+          "one-time-programmable key slots"
+        ]
+      },
+      {
+        "name": "Secure boot chain",
+        "role": "verifies each stage of firmware before it runs, so altered code cannot start.",
+        "parts": [
+          "immutable boot ROM",
+          "signed bootloader",
+          "measured boot log"
+        ]
+      },
+      {
+        "name": "Device identity and key management",
+        "role": "gives every device its own certificate so it can prove who it is.",
+        "parts": [
+          "per-device X.509 certificates",
+          "certificate authority and registration authority",
+          "zero-touch provisioning"
+        ]
+      },
+      {
+        "name": "Secure communications",
+        "role": "encrypts traffic between devices, gateways and cloud services.",
+        "parts": [
+          "TLS 1.3 / DTLS 1.3",
+          "OSCORE for constrained links",
+          "MQTT or CoAP brokers with mutual authentication"
+        ]
+      },
+      {
+        "name": "Monitoring and anomaly detection",
+        "role": "spots behaviour that departs from a device's normal pattern.",
+        "parts": [
+          "edge gateway traffic baselines",
+          "behavioural models running on small microcontrollers",
+          "central SIEM correlation"
+        ]
+      },
+      {
+        "name": "Update and lifecycle management",
+        "role": "keeps devices patched for a decade or more in the field.",
+        "parts": [
+          "signed over-the-air update service",
+          "software bill of materials",
+          "vulnerability intake and decommissioning"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write a threat model",
+        "detail": "Engineers decide what the device must protect — user data, physical safety, grid or building control — and which attacks are plausible for its 10–20 year life."
+      },
+      {
+        "title": "Choose silicon with a root of trust",
+        "detail": "The microcontroller or module must include a secure element or TPM plus hardware crypto, because software-only key storage can be read out with physical access."
+      },
+      {
+        "title": "Provision a unique identity",
+        "detail": "During manufacture, each device generates or receives a private key inside the secure element and is issued its own certificate, so one compromised unit cannot impersonate the fleet."
+      },
+      {
+        "title": "Build the verified boot chain",
+        "detail": "Firmware images are signed with the vendor's private key; the boot ROM checks each signature before handing control onward."
+      },
+      {
+        "title": "Encrypt the traffic",
+        "detail": "Sessions use TLS or DTLS with mutual authentication; where bandwidth and RAM are tiny — tens of kilobytes — compact profiles such as OSCORE are used instead."
+      },
+      {
+        "title": "Deploy monitoring",
+        "detail": "Gateways learn each device's normal message rate, destinations and payload sizes, and raise alerts when a device suddenly talks to new addresses or floods the network."
+      },
+      {
+        "title": "Stand up the update pipeline",
+        "detail": "Over-the-air updates are signed, versioned, staged to a small group first, and revertible, so a bad release cannot brick a fleet."
+      },
+      {
+        "title": "Operate the security programme",
+        "detail": "Publish a software bill of materials, track disclosed vulnerabilities, rotate certificates, and wipe keys when devices are retired."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power cryptography",
+        "status": "exists",
+        "why": "battery devices need encryption that costs only a few milliwatts and fits in small memory."
+      },
+      {
+        "tech": "Cheap secure elements and TPMs",
+        "status": "exists",
+        "why": "per-device keys are only trustworthy if they live in hardware."
+      },
+      {
+        "tech": "Lightweight security standards",
+        "status": "exists",
+        "why": "TLS 1.3, DTLS 1.3 and OSCORE let constrained devices speak modern encrypted protocols."
+      },
+      {
+        "tech": "Certificate infrastructure at IoT scale",
+        "status": "partial",
+        "why": "issuing, renewing and revoking millions of certificates is workable but operationally hard and unevenly adopted."
+      },
+      {
+        "tech": "On-device anomaly detection",
+        "status": "partial",
+        "why": "machine-learning models that fit microcontroller budgets exist in research and pilots more than in shipped products."
+      },
+      {
+        "tech": "Post-quantum cryptography for constrained devices",
+        "status": "partial",
+        "why": "standards were finalised in 2024, but small, efficient implementations are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "baseline hardening: unique per-device identity, secure boot and encrypted transport",
+        "unlocks": "devices that survive casual scanning and botnet recruitment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory labelling and mandatory patching duties in major markets",
+        "unlocks": "security as a purchase requirement rather than an afterthought, pushing vendors to ship updates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous attestation and network-level zero trust for device fleets",
+        "unlocks": "automatic quarantining of a device the moment it misbehaves, without waiting for a human."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "post-quantum migration and 20-year lifecycle security",
+        "unlocks": "infrastructure still trusted long after today's devices are installed."
+      }
+    ]
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Agent runtime",
+        "role": "runs one agent: a model plus its tools and local memory.",
+        "parts": [
+          "language model or policy",
+          "tool-calling interface",
+          "local memory"
+        ]
+      },
+      {
+        "name": "Orchestrator",
+        "role": "decomposes a goal into subtasks and assigns them to agents.",
+        "parts": [
+          "task graph",
+          "scheduler",
+          "role registry"
+        ]
+      },
+      {
+        "name": "Communication fabric",
+        "role": "lets agents share results and state without stepping on each other.",
+        "parts": [
+          "blackboard or message bus",
+          "shared data store",
+          "message protocol"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "stores shared knowledge and each agent's history across steps.",
+        "parts": [
+          "vector database",
+          "episodic log",
+          "world model"
+        ]
+      },
+      {
+        "name": "Tool layer",
+        "role": "connects agents to external systems so they can act.",
+        "parts": [
+          "API connectors",
+          "code execution sandbox",
+          "retrieval"
+        ]
+      },
+      {
+        "name": "Safety and oversight",
+        "role": "keeps the swarm within bounds and lets humans intervene.",
+        "parts": [
+          "policy filter",
+          "anomaly detector",
+          "audit log",
+          "human checkpoint"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the goal and decomposition",
+        "detail": "Specify success criteria and the top-level tasks that can be split among agents."
+      },
+      {
+        "title": "Choose the agent population",
+        "detail": "Decide how many agents, what roles they play, and whether they share one model or use specialised ones."
+      },
+      {
+        "title": "Build the communication substrate",
+        "detail": "Set up a shared blackboard or message bus so agents can post partial results and read others' work."
+      },
+      {
+        "title": "Implement the planner",
+        "detail": "Write a recursive task decomposer that breaks goals into subtasks and assigns them."
+      },
+      {
+        "title": "Give agents tools",
+        "detail": "Connect APIs, code interpreters and search so agents can act on the world."
+      },
+      {
+        "title": "Add memory",
+        "detail": "Store short-term context and long-term results in a vector database or structured log."
+      },
+      {
+        "title": "Define coordination rules",
+        "detail": "Choose how agents negotiate, vote, or follow a hierarchy to merge results and resolve conflicts."
+      },
+      {
+        "title": "Train or prompt",
+        "detail": "Fine-tune models on multi-agent traces or use detailed role prompts with few-shot examples."
+      },
+      {
+        "title": "Test and deploy",
+        "detail": "Run in simulation, then in a sandbox with human oversight before any autonomous operation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable reasoning",
+        "status": "partial",
+        "why": "they can plan and use tools, but long-horizon reliability is unproven."
+      },
+      {
+        "tech": "Multi-agent reinforcement learning",
+        "status": "partial",
+        "why": "research shows coordination can emerge, but it is fragile and sample-hungry."
+      },
+      {
+        "tech": "Tool-use interfaces and sandboxes",
+        "status": "exists",
+        "why": "agents need safe ways to call APIs and run code."
+      },
+      {
+        "tech": "Long-context memory and retrieval",
+        "status": "partial",
+        "why": "swarms generate far more state than a single model can hold."
+      },
+      {
+        "tech": "Safety and alignment techniques",
+        "status": "missing",
+        "why": "no proven way to guarantee a swarm of agents will stay on task and within limits."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single AI assistants with tool use",
+        "unlocks": "automation of bounded tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small agent teams for coding and research with human review",
+        "unlocks": "faster prototyping and literature review."
+      },
+      {
+        "stage": "Next",
+        "milestone": "orchestrators for enterprise workflows with audit trails",
+        "unlocks": "end-to-end automation of routine operations."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "open-ended swarms tackling novel problems with minimal oversight",
+        "unlocks": "scientific discovery and complex logistics — if safety and reliability are solved."
+      }
+    ]
+  }
+}

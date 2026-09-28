@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Display stack",
+        "role": "draws each eye's image at high resolution and frame rate.",
+        "parts": [
+          "micro-OLED on silicon, or fast LCD with backlight",
+          "pixel driver backplane",
+          "display controller"
+        ]
+      },
+      {
+        "name": "Optics",
+        "role": "magnifies a small display into a wide field of view while keeping the headset thin.",
+        "parts": [
+          "pancake lens stack (polariser, partially reflective mirror, quarter-wave plate)",
+          "or waveguide combiner for see-through AR",
+          "inter-pupillary adjustment"
+        ]
+      },
+      {
+        "name": "Tracking sensors",
+        "role": "work out where the head and hands are, without external base stations.",
+        "parts": [
+          "head-mounted cameras",
+          "inertial measurement unit (accelerometer, gyroscope)",
+          "depth sensor or structured-light projector"
+        ]
+      },
+      {
+        "name": "Passthrough pipeline",
+        "role": "shows the real world on the screens so digital objects appear placed in it.",
+        "parts": [
+          "forward-facing colour cameras",
+          "per-eye undistortion and depth reprojection",
+          "low-latency compositor"
+        ]
+      },
+      {
+        "name": "Compute and power",
+        "role": "runs the scene, tracking and rendering inside a wearable package.",
+        "parts": [
+          "mobile system-on-chip with GPU and neural accelerator",
+          "memory and storage",
+          "battery",
+          "heat spreader and fan or passive cooling"
+        ]
+      },
+      {
+        "name": "Audio and comfort",
+        "role": "makes the device usable for long sessions.",
+        "parts": [
+          "near-ear speakers or bone conduction",
+          "head strap, counterweight, face gasket"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optical path",
+        "detail": "Ray-tracing software picks lens curvatures and coatings so the display thumbnail fills a wide field of view with sharp edges and tolerable distortion."
+      },
+      {
+        "title": "Make the displays",
+        "detail": "Micro-OLED pixels are deposited on a silicon backplane; each eye needs roughly 2000×2000 pixels or more, refreshed at 90 Hz or faster."
+      },
+      {
+        "title": "Fabricate the optics",
+        "detail": "Precision-moulded polymer lenses are coated with polarising and partially reflective films, then laminated into a folded pancake stack a few centimetres deep."
+      },
+      {
+        "title": "Build the sensor ring",
+        "detail": "Camera modules, an inertial measurement unit and depth projectors are mounted around the frame, then factory-calibrated against each other."
+      },
+      {
+        "title": "Assemble the electronics",
+        "detail": "The system-on-chip, memory, radios and battery are placed on a compact board, with thermal paths to the frame."
+      },
+      {
+        "title": "Integrate and align",
+        "detail": "Optics, displays and sensors are assembled under clean conditions; each eye's display is aligned to its lens to a small fraction of a degree."
+      },
+      {
+        "title": "Write the runtime",
+        "detail": "A compositor fuses camera frames, head pose prediction and rendered imagery, aiming to keep motion-to-photon latency under about 20 ms so the view feels stable."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Per-unit calibration corrects lens distortion and colour, then units are drop-tested, sweat-tested and burn-in tested."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-density microdisplays",
+        "status": "exists",
+        "why": "the image must pack more than about 2000 pixels into each eye over a wide field of view to look sharp."
+      },
+      {
+        "tech": "Pancake and waveguide optics",
+        "status": "exists",
+        "why": "they fold the light path so a wide field of view fits in a device light enough to wear."
+      },
+      {
+        "tech": "Low-power mobile processors",
+        "status": "exists",
+        "why": "rendering two high-resolution views at 90 Hz must run on battery."
+      },
+      {
+        "tech": "Visual-inertial tracking",
+        "status": "exists",
+        "why": "cameras plus an inertial sensor give head and hand pose without external beacons."
+      },
+      {
+        "tech": "Waveguide see-through displays",
+        "status": "partial",
+        "why": "they are still dim and narrow compared with opaque headsets, limiting outdoor AR."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mixed-reality headsets with colour passthrough, hand tracking and roughly 500 g weight",
+        "unlocks": "virtual screens, training, design review and gaming in one device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "eye-tracked foveated rendering and varifocal optics",
+        "unlocks": "sharper images at lower power and comfortable viewing at close range."
+      },
+      {
+        "stage": "Next",
+        "milestone": "slimmer see-through AR glasses with brighter waveguides",
+        "unlocks": "all-day wear indoors and outdoors, not just short sessions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "offloading heavy rendering to phones, PCs or edge servers over low-latency wireless",
+        "unlocks": "glasses-like devices with far less weight and heat."
+      }
+    ]
+  }
+}

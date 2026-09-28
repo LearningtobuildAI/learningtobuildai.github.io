@@ -1,0 +1,166 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Legs and locomotion",
+        "role": "bipedal walking, balancing and recovery on uneven floors.",
+        "parts": [
+          "hip, knee and ankle joints",
+          "feet with force sensors",
+          "lightweight leg links"
+        ]
+      },
+      {
+        "name": "Actuators",
+        "role": "electric motors and gearboxes that move every joint with enough torque and speed.",
+        "parts": [
+          "brushless motors",
+          "harmonic or cycloidal reducers",
+          "torque sensors",
+          "motor drivers"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "stores and manages energy for a few hours of work.",
+        "parts": [
+          "lithium-ion battery pack",
+          "battery management system",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Manipulation",
+        "role": "arms and end effectors that pick up totes, boxes or parts.",
+        "parts": [
+          "shoulder, elbow and wrist joints",
+          "two-finger or multi-finger grippers",
+          "wrist force sensing"
+        ]
+      },
+      {
+        "name": "Perception and sensing",
+        "role": "lets the robot see its surroundings, locate objects and feel contact.",
+        "parts": [
+          "stereo and depth cameras",
+          "inertial measurement unit",
+          "joint encoders",
+          "optional LiDAR"
+        ]
+      },
+      {
+        "name": "Compute and control",
+        "role": "runs walking controllers and learned task policies on board.",
+        "parts": [
+          "embedded real-time controller",
+          "AI accelerator for vision and language models",
+          "wireless link for supervision"
+        ]
+      },
+      {
+        "name": "Safety system",
+        "role": "keeps people around the robot safe during supervised trials.",
+        "parts": [
+          "emergency stop",
+          "speed and force limits",
+          "lightweight or padded limbs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a task and a safety envelope",
+        "detail": "Pilots start with one repetitive job, such as moving totes between a conveyor and a pallet, so the robot only needs a narrow set of skills."
+      },
+      {
+        "title": "Design the kinematics",
+        "detail": "Engineers fix the number of joints, limb lengths and range of motion so the robot can reach the work without being unnecessarily heavy."
+      },
+      {
+        "title": "Make the actuators and joints",
+        "detail": "Motors, gearboxes, bearings and encoders are assembled into compact joint modules that can be swapped out quickly."
+      },
+      {
+        "title": "Fabricate the structure",
+        "detail": "Legs, arms and torso are machined or cast from aluminium or moulded from carbon fibre to keep weight down."
+      },
+      {
+        "title": "Integrate power, sensors and computing",
+        "detail": "Batteries, cameras, force sensors and the control computer are wired into the frame and the robot is balanced and calibrated."
+      },
+      {
+        "title": "Train control policies",
+        "detail": "Walking is tuned with model-based controllers, while manipulation tasks are learned from teleoperation and simulation using imitation learning."
+      },
+      {
+        "title": "Test in the lab",
+        "detail": "The robot repeats the task thousands of times, including recovering from falls and handling misplaced objects."
+      },
+      {
+        "title": "Run supervised pilots",
+        "detail": "The robot works alongside people at a real site, with remote operators ready to take over, collecting data that feeds the next software version."
+      },
+      {
+        "title": "Iterate and start volume production",
+        "detail": "Hardware and software are refined together, and manufacturing moves from hand-built prototypes toward assembly lines."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density electric actuators",
+        "status": "exists",
+        "why": "humanoids need strong, light joints; electric motors with high-ratio gearboxes now make this possible."
+      },
+      {
+        "tech": "Batteries with enough energy for a shift",
+        "status": "partial",
+        "why": "current lithium-ion packs give only a few hours of heavy work, so most pilots run short shifts or swap batteries."
+      },
+      {
+        "tech": "Learned robot foundation models",
+        "status": "partial",
+        "why": "vision-language-action models let robots generalise to new objects, but they are still unreliable over long periods."
+      },
+      {
+        "tech": "Simulation and sim-to-real transfer",
+        "status": "exists",
+        "why": "training in physics simulators lets robots learn skills without damaging real hardware."
+      },
+      {
+        "tech": "Dexterous, robust hands",
+        "status": "partial",
+        "why": "simple grippers work for totes, but human-level manipulation remains hard."
+      },
+      {
+        "tech": "Safety standards for legged collaborative robots",
+        "status": "partial",
+        "why": "existing factory robot rules assume fixed machines, so humanoid pilots use extra supervision."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "supervised single-task pilots in warehouses and factories, such as moving bins or loading parts",
+        "unlocks": "real-world data and proof that the hardware survives a working day."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial deployments of one or two tasks with remote human backup",
+        "unlocks": "a business case based on filling labour gaps rather than replacing whole jobs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-task robots that switch jobs with software updates",
+        "unlocks": "wider use in logistics, manufacturing and hazardous work."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "safe, general-purpose humanoids working among people without close supervision",
+        "unlocks": "use in homes, care settings and small businesses, if reliability and cost allow."
+      }
+    ]
+  }
+}

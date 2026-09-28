@@ -37,5 +37,162 @@
         "def": "The generation of false or inaccurate information by AI systems, often due to a lack of context or incorrect training data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and chunking",
+        "role": "Turns raw documents into clean, retrievable text segments.",
+        "parts": [
+          "file parsers (PDF, HTML, Markdown)",
+          "text cleaner",
+          "chunking strategy (fixed-size, semantic)",
+          "metadata tagger"
+        ]
+      },
+      {
+        "name": "Embedding model",
+        "role": "Maps text chunks and queries into vectors so that similar meanings are close together.",
+        "parts": [
+          "tokenizer",
+          "transformer encoder",
+          "pooling layer"
+        ]
+      },
+      {
+        "name": "Vector index",
+        "role": "Stores embeddings and finds the nearest neighbours to a query vector quickly.",
+        "parts": [
+          "vector database",
+          "approximate nearest-neighbour algorithm (e.g. HNSW, IVF)",
+          "metadata filter"
+        ]
+      },
+      {
+        "name": "Retriever",
+        "role": "Given a user query, fetches the most relevant chunks from the index.",
+        "parts": [
+          "query encoder",
+          "similarity metric (cosine, dot product)",
+          "top-k selector"
+        ]
+      },
+      {
+        "name": "Re-ranker",
+        "role": "Refines the initial retrieval by scoring query–chunk pairs more accurately.",
+        "parts": [
+          "cross-encoder model",
+          "scoring function"
+        ]
+      },
+      {
+        "name": "Generator",
+        "role": "Produces the final answer by conditioning a large language model on the retrieved context and the query.",
+        "parts": [
+          "large language model",
+          "prompt template",
+          "context window manager"
+        ]
+      },
+      {
+        "name": "Orchestration and evaluation",
+        "role": "Wires the components together and measures whether answers are grounded and useful.",
+        "parts": [
+          "pipeline framework",
+          "logging",
+          "evaluation metrics (faithfulness, relevance)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect source documents",
+        "detail": "Gather the knowledge base — manuals, articles, databases — and parse each file into plain text, preserving structure where possible."
+      },
+      {
+        "title": "Split text into chunks",
+        "detail": "Break documents into passages of a few hundred tokens, overlapping slightly so no idea is cut in half."
+      },
+      {
+        "title": "Embed every chunk",
+        "detail": "Run each chunk through an embedding model to produce a vector — a list of numbers representing its meaning."
+      },
+      {
+        "title": "Build the vector index",
+        "detail": "Insert all vectors into a vector database, which organises them for fast nearest-neighbour search."
+      },
+      {
+        "title": "Embed the query",
+        "detail": "When a user asks a question, the same embedding model converts it into a vector."
+      },
+      {
+        "title": "Retrieve candidate chunks",
+        "detail": "The retriever searches the index for the chunks whose vectors are closest to the query vector — typically the top few by cosine similarity."
+      },
+      {
+        "title": "Re-rank (optional)",
+        "detail": "A cross-encoder re-scores the candidates by looking at the query and each chunk together, improving the order."
+      },
+      {
+        "title": "Assemble the prompt",
+        "detail": "The retrieved chunks are inserted into a prompt template alongside the user's question, staying within the model's context limit."
+      },
+      {
+        "title": "Generate the answer",
+        "detail": "The language model reads the prompt and writes a response grounded in the supplied context, which is then returned to the user."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer-based language models",
+        "status": "exists",
+        "why": "Both the embedding model and the generator are built on the same architecture, which learns rich semantic representations."
+      },
+      {
+        "tech": "Approximate nearest-neighbour search",
+        "status": "exists",
+        "why": "Exact similarity search over millions of vectors is too slow; ANN algorithms make it practical."
+      },
+      {
+        "tech": "Vector databases",
+        "status": "exists",
+        "why": "They store embeddings, metadata and indexes, and expose a simple query interface."
+      },
+      {
+        "tech": "Compute for embedding and inference",
+        "status": "exists",
+        "why": "Embedding a large corpus and running a large language model both need GPUs or other accelerators."
+      },
+      {
+        "tech": "Robust document parsing",
+        "status": "partial",
+        "why": "PDFs, tables, images and scans often defeat simple parsers, leaving gaps in the knowledge base."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Basic retrieve-then-generate pipelines",
+        "unlocks": "Question answering over private document collections without retraining the model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid retrieval (keywords + vectors) and re-ranking",
+        "unlocks": "Higher precision, especially for queries with specific terms or codes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Agentic RAG that plans multiple retrieval steps",
+        "unlocks": "Answers to complex questions that need synthesis across several documents."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Integration with knowledge graphs and continuous updates",
+        "unlocks": "Reasoning over structured relationships and staying current as documents change."
+      }
+    ]
   }
 }

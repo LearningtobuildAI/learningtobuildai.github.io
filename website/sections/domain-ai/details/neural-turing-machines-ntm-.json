@@ -33,5 +33,152 @@
         "def": "An additional component in NTMs that allows the network to store and manipulate information beyond its own internal state."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Controller network",
+        "role": "the small recurrent network that reads the input, decides what to remember and emits the answer.",
+        "parts": [
+          "recurrent layers (typically LSTM) or a feedforward stack",
+          "input encoder",
+          "output head"
+        ]
+      },
+      {
+        "name": "External memory matrix",
+        "role": "a grid of numbers, usually a few hundred rows by a few tens of columns, that persists between steps and is not built into the controller's weights.",
+        "parts": [
+          "memory tensor",
+          "state carried across time steps"
+        ]
+      },
+      {
+        "name": "Read heads",
+        "role": "pull a blend of memory rows back into the controller at each step.",
+        "parts": [
+          "addressing weights",
+          "weighted-sum read vector"
+        ]
+      },
+      {
+        "name": "Write heads",
+        "role": "edit memory in two soft steps: first fade old content, then add new content.",
+        "parts": [
+          "erase vector",
+          "add vector",
+          "write weighting"
+        ]
+      },
+      {
+        "name": "Addressing mechanism",
+        "role": "decides which rows a head looks at, by similarity and by moving along the memory.",
+        "parts": [
+          "content key (cosine similarity to each row)",
+          "interpolation gate mixing content and previous address",
+          "shift weighting that slides the focus along the rows",
+          "sharpening scalar that concentrates the distribution"
+        ]
+      },
+      {
+        "name": "Training harness",
+        "role": "makes the whole read-and-write path differentiable so gradient descent can learn it.",
+        "parts": [
+          "backpropagation through time",
+          "task curriculum",
+          "evaluation on sequences longer than those seen in training"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a task with an obvious memory",
+        "detail": "Start with problems where a human would use scratch paper: copying a sequence, repeating it a set number of times, recalling items by association, or sorting by priority."
+      },
+      {
+        "title": "Choose the controller",
+        "detail": "Compare an LSTM controller against a plain feedforward one. The LSTM can carry its own hidden state and plan multi-step edits; the feedforward version forces all state into memory."
+      },
+      {
+        "title": "Size the memory",
+        "detail": "Fix the number of rows and the width of each row — for example 128 rows of 20 numbers. More rows cost more computation per step, and the design should stay far smaller than the controller's parameters."
+      },
+      {
+        "title": "Implement addressing",
+        "detail": "Compute cosine similarity between a key vector and every row, softmax to weights, then optionally interpolate with the previous weights, apply a shift distribution, and sharpen. This is what lets the network learn to walk along memory rather than only look up exact matches."
+      },
+      {
+        "title": "Implement read and write",
+        "detail": "A read is the weighted sum of rows. A write multiplies each row by (1 − w·e) to erase, then adds w·a, where w is the addressing weight and e and a are learned vectors. Both operations are smooth, so gradients flow back through the memory."
+      },
+      {
+        "title": "Train end to end",
+        "detail": "Feed task examples in batches and update controller and memory parameters together with backpropagation through time, watching for exploding or vanishing gradients over long sequences."
+      },
+      {
+        "title": "Move through a curriculum",
+        "detail": "Grow difficulty: copy, then repeat copy, then associative recall, then n-gram prediction, then priority sorting, then traversal of a learned graph."
+      },
+      {
+        "title": "Test generalisation, not memorisation",
+        "detail": "Train on short sequences and test on much longer ones, and feed untrained inputs. This distinguishes a real memory mechanism from a controller that has quietly learned the training distribution."
+      },
+      {
+        "title": "Scale it into a working system",
+        "detail": "To be useful beyond toy tasks, a modern version would pair the memory with large-scale pretraining and retrieval, rather than training a small recurrent net from scratch on each problem."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Recurrent neural networks (LSTM, GRU)",
+        "status": "exists",
+        "why": "the controller needs to carry state and emit a sequence of memory commands over time."
+      },
+      {
+        "tech": "Differentiable attention and soft addressing",
+        "status": "exists",
+        "why": "choosing which memory rows to touch must be a smooth, differentiable operation, or backpropagation cannot train the address logic."
+      },
+      {
+        "tech": "Backpropagation through time at long horizons",
+        "status": "exists",
+        "why": "gradients must survive the hundreds of steps between a write and the later read that uses it."
+      },
+      {
+        "tech": "Stable training of memory-augmented models at scale",
+        "status": "partial",
+        "why": "these architectures were demonstrated on small tasks of tens to hundreds of steps, not on the data volumes that modern large models use."
+      },
+      {
+        "tech": "Efficient hardware access to large external memory",
+        "status": "partial",
+        "why": "a memory that is read and rewritten at every step is far more costly per token than reading fixed weights."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "memory-augmented networks remain research artefacts; the attention mechanism they helped popularise became the basis of modern language models",
+        "unlocks": "the idea that a network can learn where to look, which is now standard."
+      },
+      {
+        "stage": "Next",
+        "milestone": "retrieval-augmented and tool-using models that read and write external stores during inference",
+        "unlocks": "practical large-scale memory, but with hand-designed rather than learned addressing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "end-to-end learned controllers over large memory, trained jointly with a large pretrained backbone",
+        "unlocks": "models that can accumulate and reuse experience without retraining."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agents with persistent, editable memory that survive across sessions",
+        "unlocks": "systems that learn continuously instead of being frozen at training time."
+      }
+    ]
   }
 }

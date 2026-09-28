@@ -33,5 +33,150 @@
         "def": "A network that uses quantum communication protocols for secure data transmission between quantum computers and other nodes."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Qubit chip",
+        "role": "stores and manipulates quantum states in a physical device.",
+        "parts": [
+          "superconducting transmons, trapped ions, neutral atoms or photonic circuits",
+          "couplers and readout resonators",
+          "packaging and shielding"
+        ]
+      },
+      {
+        "name": "Error-correction layer",
+        "role": "combines many noisy physical qubits into a few reliable logical qubits.",
+        "parts": [
+          "surface or LDPC code",
+          "syndrome measurement circuits",
+          "real-time decoder on FPGAs or custom chips"
+        ]
+      },
+      {
+        "name": "Control and cryogenics",
+        "role": "keeps qubits cold and quiet, and delivers precise pulses.",
+        "parts": [
+          "dilution refrigerator",
+          "low-noise cryogenic wiring",
+          "room-temperature microwave or laser electronics"
+        ]
+      },
+      {
+        "name": "Quantum interconnect",
+        "role": "entangles separate processors and distant nodes.",
+        "parts": [
+          "photonic links or microwave-to-optical transducers",
+          "optical fibre or free-space links",
+          "quantum repeaters",
+          "quantum memories"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "turns an algorithm into error-corrected pulse sequences.",
+        "parts": [
+          "compiler and scheduler",
+          "calibration and benchmarking tools",
+          "error-aware circuit design"
+        ]
+      },
+      {
+        "name": "Classical co-processing",
+        "role": "runs the parts of a job a quantum machine cannot do.",
+        "parts": [
+          "high-performance computers",
+          "decoding and orchestration software",
+          "secure key-management nodes for quantum links"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate qubit chips",
+        "detail": "Josephson junctions and resonators are patterned on silicon or sapphire in a nanofabrication cleanroom, then diced and packaged."
+      },
+      {
+        "title": "Wire and cool the processor",
+        "detail": "the chip is mounted in a dilution refrigerator at a few thousandths of a kelvin, with filtered cabling that carries signals without adding heat or noise."
+      },
+      {
+        "title": "Calibrate the gates",
+        "detail": "each qubit's frequency, pulse amplitudes and two-qubit gate timings are tuned by automated routines that measure fidelity thousands of times."
+      },
+      {
+        "title": "Encode a logical qubit",
+        "detail": "many physical qubits are entangled into one error-corrected logical qubit, and error 'syndromes' are measured repeatedly without collapsing the stored state."
+      },
+      {
+        "title": "Decode in real time",
+        "detail": "a classical decoder inspects the syndrome stream fast enough — microseconds — to correct errors before they accumulate."
+      },
+      {
+        "title": "Scale to many logical qubits",
+        "detail": "more logical qubits are added, either on larger chips or by linking smaller modules through photonic interconnects."
+      },
+      {
+        "title": "Build network nodes",
+        "detail": "to go beyond one machine, entanglement is generated between distant nodes, stored in quantum memories and swapped through repeaters to extend range."
+      },
+      {
+        "title": "Run applications at scale",
+        "detail": "fault-tolerant machines are coupled to classical supercomputers for chemistry, materials and cryptanalysis workloads; separate quantum key distribution links already carry secure keys between pilot sites."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-fidelity physical qubits and gates",
+        "status": "partial",
+        "why": "two-qubit gate fidelities near or above 99.9% are needed before error correction pays off, and only some platforms reach this."
+      },
+      {
+        "tech": "Error correction below threshold",
+        "status": "partial",
+        "why": "a 2024 superconducting experiment showed logical errors shrinking as more physical qubits were added, but at very small scale."
+      },
+      {
+        "tech": "Cryogenic and control scaling",
+        "status": "partial",
+        "why": "today's wiring and electronics would swamp a machine with millions of qubits; multiplexed cryogenic control is still being developed."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "missing",
+        "why": "a quantum internet needs to store and relay entanglement over long distances, which has not been done at useful rates."
+      },
+      {
+        "tech": "Microwave-to-optical transduction",
+        "status": "missing",
+        "why": "linking superconducting processors over fibre requires converting quantum states between microwave and optical frequencies with high efficiency."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "processors with roughly a hundred to a few hundred physical qubits and early logical-qubit demonstrations",
+        "unlocks": "benchmarks, calibration know-how and the first error-corrected memory experiments."
+      },
+      {
+        "stage": "Late 2020s to early 2030s",
+        "milestone": "early fault tolerance: hundreds of logical qubits with errors suppressed below what any classical simulation can track",
+        "unlocks": "small but genuinely useful quantum chemistry and optimisation runs."
+      },
+      {
+        "stage": "Around 2035",
+        "milestone": "fault-tolerant machines with thousands of logical qubits, plus metropolitan entanglement links between a handful of nodes",
+        "unlocks": "practical catalyst and materials design; device-independent secure communication over city distances."
+      },
+      {
+        "stage": "Beyond 2035",
+        "milestone": "modular, networked quantum computers and repeater-based long-distance quantum networks",
+        "unlocks": "distributed quantum computing and a genuine quantum internet — conditional on solving transduction, memory and control-scaling problems."
+      }
+    ]
   }
 }

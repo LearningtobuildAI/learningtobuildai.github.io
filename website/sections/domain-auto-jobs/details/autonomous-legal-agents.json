@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Legal corpus and retrieval layer",
+        "role": "supplies the authoritative text the model reasons over, so answers are grounded rather than recalled.",
+        "parts": [
+          "statutes, regulations and case-law databases",
+          "firm precedent bank and clause library",
+          "vector index over documents",
+          "citation-verification service"
+        ]
+      },
+      {
+        "name": "Reasoning engine",
+        "role": "the language model plus the tools it may call to extract, compare and draft.",
+        "parts": [
+          "long-context large language model",
+          "legal-domain fine-tuning or adapter",
+          "tool-calling layer",
+          "document parser for PDFs and scanned paper"
+        ]
+      },
+      {
+        "name": "Drafting and review module",
+        "role": "produces redlines and issue lists against an agreed position.",
+        "parts": [
+          "clause taxonomy",
+          "playbook comparison",
+          "defined-term and cross-reference checker",
+          "risk-tier flagging"
+        ]
+      },
+      {
+        "name": "Negotiation agent",
+        "role": "trades positions with a counterparty within fixed authority limits.",
+        "parts": [
+          "fallback ladder per clause",
+          "proposal and counter-proposal loop",
+          "message drafting",
+          "negotiation log"
+        ]
+      },
+      {
+        "name": "Guardrails and audit",
+        "role": "keeps a licensed human accountable and makes every action reviewable.",
+        "parts": [
+          "authority matrix and escalation triggers",
+          "confidence thresholds",
+          "versioned, tamper-evident audit trail",
+          "bias and confidentiality screening"
+        ]
+      },
+      {
+        "name": "Integration and identity",
+        "role": "connects the agent to the systems where contracts actually live.",
+        "parts": [
+          "contract lifecycle management integration",
+          "electronic signature",
+          "matter and billing systems",
+          "role-based access control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble and license the corpus",
+        "detail": "Collect public statutes and reported judgments, and the firm's own executed contracts under confidentiality. Licensing and privacy rules decide what may be used at all."
+      },
+      {
+        "title": "Build the clause taxonomy",
+        "detail": "Break contracts into labelled clause types so the agent can recognise, for example, a limitation-of-liability clause wherever it appears."
+      },
+      {
+        "title": "Encode negotiating playbooks",
+        "detail": "Lawyers write down, per clause type, an ideal position, acceptable fallbacks and absolute red lines, as structured rules rather than prose."
+      },
+      {
+        "title": "Adapt the model",
+        "detail": "Fine-tune or add adapters on legal text, then pair it with retrieval so every output is built from passages that can be cited."
+      },
+      {
+        "title": "Verify citations mechanically",
+        "detail": "Before any draft is released, each cited authority is looked up in a source database; unverifiable references are blocked, not softened."
+      },
+      {
+        "title": "Test on closed matters",
+        "detail": "Run the agent in shadow mode on past contracts with known outcomes, comparing its redlines and issue lists with the human versions."
+      },
+      {
+        "title": "Bound its authority",
+        "detail": "Set monetary and risk thresholds, list clauses it may never concede, and require human sign-off above them."
+      },
+      {
+        "title": "Deploy into the workflow",
+        "detail": "Connect to the document management and e-signature systems, start with the lowest-risk high-volume work, and widen scope as measured error rates fall."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "Track regulatory change, counterparty disputes and drift, and refresh the corpus, playbooks and model on a fixed cycle."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-context large language models",
+        "status": "exists",
+        "why": "whole contracts of scores of pages must be read and reasoned over in one pass."
+      },
+      {
+        "tech": "Retrieval-augmented generation with verification",
+        "status": "partial",
+        "why": "models still fabricate case citations; grounding and lookup checks are what make output usable."
+      },
+      {
+        "tech": "Machine-readable clause and contract data",
+        "status": "partial",
+        "why": "playbook automation needs contracts decomposed into labelled, comparable elements."
+      },
+      {
+        "tech": "Legal-reasoning evaluation benchmarks",
+        "status": "partial",
+        "why": "without agreed tests there is no reliable way to certify accuracy before deployment."
+      },
+      {
+        "tech": "Professional-responsibility and liability rules for machine practice",
+        "status": "missing",
+        "why": "rules on unauthorised practice, supervision and who is liable when an agent errs remain unsettled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistive drafting, review and diligence tools widely used with a lawyer signing off",
+        "unlocks": "faster routine work and lower cost per contract, with human accountability intact."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agent-to-agent negotiation of standardised, low-value agreements such as confidentiality or supplier terms",
+        "unlocks": "thousands of routine contracts handled with human exception handling only."
+      },
+      {
+        "stage": "Next",
+        "milestone": "end-to-end contracting pipelines under audit and professional indemnity cover",
+        "unlocks": "measured autonomy, priced risk and a record that regulators and insurers accept."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "recognised autonomy for defined matter classes, with courts and registries accepting machine-prepared filings",
+        "unlocks": "a genuine shift in how legal work is staffed and billed — contingent on liability and licensing reform rather than on model capability alone."
+      }
+    ]
+  }
+}

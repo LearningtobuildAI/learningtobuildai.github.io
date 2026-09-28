@@ -34,5 +34,137 @@
         "def": "Changes in the electrical current passing through a component, which can be indicative of varying load conditions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Motor",
+        "role": "converts electrical current into torque; its current draw is the primary signal for force sensing.",
+        "parts": [
+          "stator with copper windings",
+          "rotor with permanent magnets",
+          "bearings and shaft"
+        ]
+      },
+      {
+        "name": "Gearbox",
+        "role": "reduces speed and multiplies torque to levels needed for robot joints while keeping the motor compact.",
+        "parts": [
+          "planetary or harmonic reduction gears",
+          "output flange",
+          "lubricant"
+        ]
+      },
+      {
+        "name": "Sensing and control electronics",
+        "role": "measures motor current and rotor position to estimate output torque and control motion without a dedicated torque sensor.",
+        "parts": [
+          "current sensors",
+          "position encoder",
+          "microcontroller running field-oriented control",
+          "power transistors"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "removes heat generated during high-torque operation to protect windings and magnets.",
+        "parts": [
+          "heat sinks or cooling fins",
+          "thermal interface materials",
+          "optional liquid cooling channels"
+        ]
+      },
+      {
+        "name": "Mechanical housing and integration",
+        "role": "holds the components together rigidly and mounts the actuator to a robot limb.",
+        "parts": [
+          "machined housing",
+          "output attachment",
+          "cable routing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for a target torque and speed",
+        "detail": "Choose motor size, gear ratio and winding to meet the joint's peak and continuous torque needs while keeping mass low."
+      },
+      {
+        "title": "Wind and assemble the motor",
+        "detail": "Copper wire is wound into the stator slots, the rotor with its magnets is balanced, and the motor is put together with precision bearings."
+      },
+      {
+        "title": "Make the gearbox",
+        "detail": "Gears are machined or formed, then assembled with the output shaft and lubricated to minimize friction and backlash."
+      },
+      {
+        "title": "Fit sensors and electronics",
+        "detail": "A position encoder is attached to the rotor, and current sensors plus a microcontroller are placed on a compact circuit board."
+      },
+      {
+        "title": "Assemble the actuator",
+        "detail": "Motor, gearbox and electronics are mounted inside the housing, with thermal paths and cable routing arranged."
+      },
+      {
+        "title": "Calibrate current-to-torque mapping",
+        "detail": "The actuator is run across a range of currents, speeds and temperatures to build a model that converts measured current into estimated output torque."
+      },
+      {
+        "title": "Test and validate",
+        "detail": "Torque, speed, thermal limits and force-sensing accuracy are measured, then the actuator is integrated into a robot joint and control is tuned."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density brushless DC motors",
+        "status": "exists",
+        "why": "they provide the power and compactness needed for robot joints."
+      },
+      {
+        "tech": "Fast, accurate current sensing and field-oriented control",
+        "status": "exists",
+        "why": "the force estimate depends on measuring motor current precisely and controlling it in real time."
+      },
+      {
+        "tech": "High-ratio, efficient gearboxes",
+        "status": "exists",
+        "why": "they multiply motor torque to useful levels while keeping the motor small and light."
+      },
+      {
+        "tech": "Robust calibration for current-based torque estimation",
+        "status": "partial",
+        "why": "friction, temperature and wear change the relationship between current and output torque, so accuracy can drift."
+      },
+      {
+        "tech": "Thermal management for continuous high torque",
+        "status": "exists",
+        "why": "without effective cooling, windings overheat and the actuator cannot sustain high force."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proprioceptive actuators used in some legged robots and humanoids for dynamic, force-controlled motion",
+        "unlocks": "agile robots that can sense and react to external forces without bulky joint torque sensors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved accuracy and durability of current-based force estimation across temperature and wear",
+        "unlocks": "more reliable humanoids capable of delicate manipulation and safe physical interaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tighter integration with whole-body control and learning algorithms",
+        "unlocks": "robots that can coordinate many joints for complex tasks like walking on uneven ground or using tools."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "widespread adoption in commercial humanoid platforms with standardized actuator modules",
+        "unlocks": "lower-cost, dextrous humanoid robots for manufacturing, logistics and service work."
+      }
+    ]
   }
 }

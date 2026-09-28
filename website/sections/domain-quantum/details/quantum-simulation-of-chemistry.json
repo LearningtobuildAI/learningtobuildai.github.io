@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "the physical qubits that store and manipulate the quantum state of the simulated electrons.",
+        "parts": [
+          "superconducting transmons or trapped ions",
+          "coupling resonators",
+          "cryogenic shielding"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "drives qubit operations and reads out the final state.",
+        "parts": [
+          "microwave or laser control electronics",
+          "dilution refrigerator",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Error correction",
+        "role": "combines many noisy physical qubits into a smaller number of reliable logical qubits.",
+        "parts": [
+          "surface code or other encoding",
+          "syndrome measurement circuits",
+          "real-time decoder"
+        ]
+      },
+      {
+        "name": "Algorithm and compilation",
+        "role": "translates the molecular problem into a sequence of quantum gates.",
+        "parts": [
+          "Hamiltonian mapping (Jordan-Wigner, Bravyi-Kitaev)",
+          "circuit synthesis",
+          "variational or phase-estimation routines"
+        ]
+      },
+      {
+        "name": "Classical co-processor",
+        "role": "prepares inputs, runs outer-loop optimisations and analyses results.",
+        "parts": [
+          "high-performance CPUs or GPUs",
+          "error-mitigation software",
+          "optimisation libraries"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "programming languages, libraries and workflows that tie the layers together.",
+        "parts": [
+          "quantum SDKs",
+          "compilers and schedulers",
+          "validation suites"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the chemistry problem",
+        "detail": "Choose a molecule or material and select an active space of orbitals and electrons that captures the important correlation."
+      },
+      {
+        "title": "Map electrons to qubits",
+        "detail": "Encode the fermionic Hamiltonian as a sum of Pauli operators using a transformation such as Jordan-Wigner or Bravyi-Kitaev."
+      },
+      {
+        "title": "Design the quantum circuit",
+        "detail": "Select an algorithm — variational eigensolver for near-term devices or quantum phase estimation for fault-tolerant ones — and compile it into native gates."
+      },
+      {
+        "title": "Prepare the quantum state",
+        "detail": "Initialise the qubits in a reference state, often a Hartree-Fock solution, then apply the circuit to create the correlated state."
+      },
+      {
+        "title": "Protect against errors",
+        "detail": "Either run error mitigation on noisy hardware or encode logical qubits in an error-correcting code and repeatedly measure syndromes to detect and correct faults."
+      },
+      {
+        "title": "Execute and measure",
+        "detail": "Run the circuit many times and measure qubits in different bases to estimate the expectation values of the Hamiltonian terms."
+      },
+      {
+        "title": "Post-process classically",
+        "detail": "Combine measurements to obtain the ground-state energy and other properties, and iterate if using a variational loop."
+      },
+      {
+        "title": "Validate and scale",
+        "detail": "Compare against exact classical results for small systems, then increase the active space and qubit count toward chemically relevant accuracy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "partial",
+        "why": "small error-correcting codes have been demonstrated, but millions of physical qubits may be needed for useful chemistry."
+      },
+      {
+        "tech": "Quantum algorithms for chemistry",
+        "status": "exists",
+        "why": "Hamiltonian simulation, phase estimation and variational methods are well developed in theory."
+      },
+      {
+        "tech": "High-fidelity qubit control",
+        "status": "partial",
+        "why": "gate errors must be low enough that error correction can succeed at scale."
+      },
+      {
+        "tech": "Classical preprocessing and benchmarking",
+        "status": "exists",
+        "why": "methods like density functional theory and coupled cluster provide reference energies and guide active-space selection."
+      },
+      {
+        "tech": "Application domain knowledge",
+        "status": "exists",
+        "why": "chemists and materials scientists must identify problems where classical methods fail and quantum simulation can help."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-molecule demonstrations on noisy intermediate-scale quantum (NISQ) devices",
+        "unlocks": "proof-of-principle workflows and error-mitigation techniques."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant devices with tens to hundreds of logical qubits",
+        "unlocks": "quantum advantage for small strongly correlated systems beyond exact classical simulation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "application-specific advantage for catalysts, battery electrolytes or drug fragments",
+        "unlocks": "real design problems where quantum simulation changes industrial decisions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine quantum chemistry integrated into materials and pharmaceutical discovery",
+        "unlocks": "faster, cheaper development of new catalysts, batteries and medicines."
+      }
+    ]
+  }
+}

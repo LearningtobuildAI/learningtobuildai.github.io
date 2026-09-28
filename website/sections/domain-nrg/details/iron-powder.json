@@ -32,5 +32,143 @@
         "def": "A system where a material can be repeatedly used as a fuel source without depleting natural resources or causing environmental harm."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Iron powder fuel",
+        "role": "the energy carrier itself — fine iron particles that store energy chemically and release it as heat when burned.",
+        "parts": [
+          "iron particles roughly 10–100 µm across",
+          "dry, nitrogen-blanketed silos (iron dust is explosible)",
+          "pneumatic feeders"
+        ]
+      },
+      {
+        "name": "Burner and combustor",
+        "role": "stabilises a metal-powder flame in air, releasing heat at around 1,000–1,300 °C.",
+        "parts": [
+          "swirl or cyclone burner",
+          "pilot ignition",
+          "refractory-lined combustion chamber",
+          "air blower"
+        ]
+      },
+      {
+        "name": "Oxide capture",
+        "role": "removes the rust (iron oxide) that is the combustion product, so it can be sent back for regeneration.",
+        "parts": [
+          "cyclones",
+          "bag or ceramic filters",
+          "powder conveying"
+        ]
+      },
+      {
+        "name": "Heat recovery and flue cleanup",
+        "role": "delivers the heat to a process rather than wasting it, and treats the exhaust.",
+        "parts": [
+          "heat exchangers",
+          "steam or hot-air loop",
+          "selective catalytic reduction for thermal NOx",
+          "particulate monitoring"
+        ]
+      },
+      {
+        "name": "Regeneration plant",
+        "role": "turns the oxide back into iron using clean hydrogen — the step that closes the circle.",
+        "parts": [
+          "fluidised-bed or rotary reduction reactor at 700–900 °C",
+          "green hydrogen supply",
+          "water-vapour condenser",
+          "cooling, grinding and classifying of the fresh iron powder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Produce the iron powder",
+        "detail": "Molten iron is atomised with high-pressure gas or water, or sponge iron is milled, giving particles of a carefully controlled size and shape."
+      },
+      {
+        "title": "Classify and dry",
+        "detail": "Sieves and air classifiers remove fines and oversize; the powder is dried and stored under inert gas to avoid rusting and dust explosions."
+      },
+      {
+        "title": "Feed and burn",
+        "detail": "Pneumatic transport injects powder into a swirl burner, where a pilot flame ignites it; the particles burn in air to iron oxide, releasing heat at 1,000–1,300 °C."
+      },
+      {
+        "title": "Recover heat",
+        "detail": "Hot combustion gas passes through heat exchangers that raise steam or hot air for the industrial process — brewing, cement, paper or district heat."
+      },
+      {
+        "title": "Capture the oxide",
+        "detail": "Cyclones and filters pull the iron-oxide powder out of the exhaust, and nitrogen-oxide control keeps emissions within limits."
+      },
+      {
+        "title": "Regenerate with hydrogen",
+        "detail": "In a fluidised bed, green hydrogen reduces the oxide back to metallic iron at 700–900 °C, producing water vapour as the by-product."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The vapour is condensed, the new iron powder is cooled, milled and classified, and returned to the silo — the same material reused many times."
+      },
+      {
+        "title": "Scale the burner",
+        "detail": "Pilots move from a few hundred kilowatts to multi-megawatt burners matched to real industrial furnaces and boilers."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Renewable electricity",
+        "status": "exists",
+        "why": "every step of the cycle is ultimately driven by clean power, so the fuel is only as clean as the grid behind it."
+      },
+      {
+        "tech": "Green hydrogen",
+        "status": "partial",
+        "why": "hydrogen is the reducing agent that turns rust back into iron; today it is scarce and expensive."
+      },
+      {
+        "tech": "Hydrogen direct reduction of iron oxide",
+        "status": "exists",
+        "why": "industrial direct-reduced-iron plants already make iron with hydrogen-rich gas; adapting the chemistry to fine powder is the new part."
+      },
+      {
+        "tech": "Fine metal powder production",
+        "status": "exists",
+        "why": "atomisation and milling at industrial scale already exist for other industries."
+      },
+      {
+        "tech": "High-temperature dust handling",
+        "status": "partial",
+        "why": "feeding, burning and capturing explosible metal powder safely at scale is proven only in small pilots."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "kilowatt-scale pilots, including a 100 kW system supplying process heat at a Dutch brewery in 2020",
+        "unlocks": "evidence that a stable iron flame can heat a real industrial process."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-megawatt burners coupled on one site to a hydrogen reduction plant",
+        "unlocks": "a complete, continuously recycled loop rather than separate experiments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first commercial plants displacing natural gas in cement, brewing and paper",
+        "unlocks": "a drop-in fuel for heat that is hard to electrify."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "iron powder traded as a shippable energy carrier",
+        "unlocks": "clean heat at sites far from hydrogen pipelines or power lines — provided round-trip efficiency and cost improve."
+      }
+    ]
   }
 }

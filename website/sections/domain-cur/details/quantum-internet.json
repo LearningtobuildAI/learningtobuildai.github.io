@@ -33,5 +33,154 @@
         "def": "Materials with zero electrical resistance below a certain critical temperature, often used in quantum computing for maintaining qubits in a coherent state."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "End nodes",
+        "role": "the devices that send, receive or store quantum states — today mostly quantum key distribution (QKD) modules, in future small quantum processors.",
+        "parts": [
+          "photon source or qubit chip",
+          "control electronics",
+          "key-management software"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons without letting them be copied.",
+        "parts": [
+          "telecom-wavelength optical fibre",
+          "free-space or satellite links",
+          "trusted relay nodes"
+        ]
+      },
+      {
+        "name": "Detectors",
+        "role": "catch individual photons and record their quantum state.",
+        "parts": [
+          "superconducting nanowire single-photon detectors",
+          "cryocooler",
+          "time-tagging electronics"
+        ]
+      },
+      {
+        "name": "Quantum memories",
+        "role": "store a qubit long enough for a repeater to swap entanglement onward.",
+        "parts": [
+          "trapped ions, neutral atoms or colour centres in diamond",
+          "optical cavity",
+          "read-write laser control"
+        ]
+      },
+      {
+        "name": "Quantum repeaters",
+        "role": "extend range past the point where photons are simply lost in fibre.",
+        "parts": [
+          "entanglement sources",
+          "entanglement-swapping and purification stages",
+          "memory buffers"
+        ]
+      },
+      {
+        "name": "Classical control plane",
+        "role": "synchronises nodes, corrects errors and manages keys.",
+        "parts": [
+          "time and frequency distribution",
+          "authenticated classical channel",
+          "routing and orchestration software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate photons",
+        "detail": "Lasers or nonlinear crystals (spontaneous parametric down-conversion) create single photons or entangled pairs, sometimes from quantum dots."
+      },
+      {
+        "title": "Encode the qubit",
+        "detail": "Information is written into a photon's polarisation, phase or time-bin, so it survives the journey."
+      },
+      {
+        "title": "Match to the fibre",
+        "detail": "Photons are shifted to the 1550 nm telecom band, where glass absorbs least, and launched into the fibre."
+      },
+      {
+        "title": "Transmit and detect",
+        "detail": "After tens to hundreds of kilometres, single-photon detectors register the arrival; losses mean the link eventually stops working."
+      },
+      {
+        "title": "Add trusted nodes",
+        "detail": "For today's QKD links, intermediate stations measure and re-send the key, extending range at the cost of trusting each node."
+      },
+      {
+        "title": "Build memories and repeaters",
+        "detail": "To avoid trusting nodes, entanglement is stored in quantum memories and swapped between segments, purifying errors as it goes."
+      },
+      {
+        "title": "Chain segments into a network",
+        "detail": "Repeater links are joined with routing and classical synchronisation so any two nodes can establish entanglement."
+      },
+      {
+        "title": "Add computing nodes",
+        "detail": "Error-corrected quantum processors at the ends turn the link into a distributed quantum computer rather than just a key channel."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon sources and detectors",
+        "status": "exists",
+        "why": "the whole network is built from individual photons, so they must be generated and counted reliably."
+      },
+      {
+        "tech": "Quantum memories",
+        "status": "partial",
+        "why": "storage times of seconds have been shown in labs, but not with the efficiency and fidelity a repeater needs."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "without them, entanglement cannot cross more than a few hundred kilometres of fibre."
+      },
+      {
+        "tech": "Entanglement distribution at distance",
+        "status": "partial",
+        "why": "demonstrated over about 1,200 km via the Micius satellite (2016) and over shorter fibre links."
+      },
+      {
+        "tech": "Trusted-node QKD hardware",
+        "status": "exists",
+        "why": "commercial systems already secure metro links, though each relay node must be trusted."
+      },
+      {
+        "tech": "Error-corrected quantum processors",
+        "status": "partial",
+        "why": "nodes that actually compute, not just exchange keys, need fault-tolerant qubits."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro QKD links and satellite key distribution",
+        "unlocks": "eavesdrop-resistant keys for banks, governments and data centres over city distances."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum memories and repeater nodes tested outside the lab",
+        "unlocks": "entanglement across hundreds of kilometres without trusted relays."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entanglement-based testbeds linking several nodes",
+        "unlocks": "multi-party protocols such as blind quantum computing and clock synchronisation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a network connecting fault-tolerant quantum computers",
+        "unlocks": "distributed quantum computing and a genuinely new kind of internet."
+      }
+    ]
   }
 }

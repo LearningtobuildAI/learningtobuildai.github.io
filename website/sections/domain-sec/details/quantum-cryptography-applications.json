@@ -34,5 +34,159 @@
         "def": "Structured materials with a periodic arrangement of dielectrics to control light propagation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Transmitter",
+        "role": "prepares and sends the quantum states that carry the key.",
+        "parts": [
+          "laser",
+          "intensity modulator",
+          "variable attenuator",
+          "phase or polarisation encoder",
+          "quantum random number generator for basis choice"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons or entangled pairs between the two parties.",
+        "parts": [
+          "dedicated optical fibre (often around 1550 nm)",
+          "free-space telescope link or satellite",
+          "low-loss connectors and filters"
+        ]
+      },
+      {
+        "name": "Detector module",
+        "role": "measures the received states in a randomly chosen basis.",
+        "parts": [
+          "single-photon detectors (InGaAs avalanche photodiodes or superconducting nanowire detectors)",
+          "cooling",
+          "timing electronics"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "lets both sides compare bases, correct errors and compress the key without an eavesdropper altering messages.",
+        "parts": [
+          "pre-shared secret or post-quantum signature",
+          "ordinary network link"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns raw correlated bits into a secret key.",
+        "parts": [
+          "sifting",
+          "error correction (e.g. Cascade or LDPC)",
+          "privacy amplification by hashing"
+        ]
+      },
+      {
+        "name": "Key management and network layer",
+        "role": "stores keys and feeds them to encrypting equipment.",
+        "parts": [
+          "key store",
+          "trusted-node relay software",
+          "interfaces to AES or one-time-pad encryptors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the link",
+        "detail": "Choose fibre or free-space, measure the loss over the route, and set a key-rate target that detectors and error correction can meet."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "Assemble a laser, modulator, attenuator and encoder so each pulse contains on average far less than one photon."
+      },
+      {
+        "title": "Build the receiver",
+        "detail": "Install single-photon detectors, a random basis selector and timing electronics in a temperature-controlled enclosure."
+      },
+      {
+        "title": "Lay or point the channel",
+        "detail": "Use a dedicated dark fibre pair between the sites, or align a telescope link for free-space or satellite QKD."
+      },
+      {
+        "title": "Authenticate the classical channel",
+        "detail": "Load a pre-shared secret or a post-quantum signature key so the basis-sifting messages cannot be spoofed."
+      },
+      {
+        "title": "Run the protocol",
+        "detail": "Transmit quantum states, record detections, then publicly compare bases to keep only matching events."
+      },
+      {
+        "title": "Extract a secret key",
+        "detail": "Correct remaining errors and apply privacy amplification to shrink any eavesdropper's knowledge to a negligible amount."
+      },
+      {
+        "title": "Deliver keys to encryptors",
+        "detail": "Feed the fresh key to AES or a one-time pad for data in transit, and log key consumption."
+      },
+      {
+        "title": "Extend reach with trusted nodes",
+        "detail": "Where single-link distance is too short, chain links through secure intermediate nodes that decrypt and re-encrypt."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "they must catch individual photons with low noise; superconducting types are fast but need cryogenics."
+      },
+      {
+        "tech": "Low-loss optical fibre and free-space optics",
+        "status": "exists",
+        "why": "loss limits both distance and key rate, since photons cannot be copied or amplified."
+      },
+      {
+        "tech": "Quantum random number generators",
+        "status": "exists",
+        "why": "basis and bit choices must be unpredictable, not merely pseudo-random."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "partial",
+        "why": "without authentication, a man-in-the-middle can impersonate either side; post-quantum signatures are the scalable fix."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "they would allow long-distance entanglement without trusted nodes, which no deployed system can yet do."
+      },
+      {
+        "tech": "Integrated photonic chips for QKD",
+        "status": "partial",
+        "why": "they promise lower cost and mass production, but are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point-to-point and metro QKD links, plus satellite demonstrations such as Micius (2016) and the Beijing–Shanghai backbone (2017)",
+        "unlocks": "high-value links where a dedicated fibre and trusted nodes are acceptable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QKD integrated into telecom equipment, with higher key rates and automated key management",
+        "unlocks": "cheaper deployment in data-centre and enterprise networks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine satellite QKD and intercontinental key relay",
+        "unlocks": "key distribution between continents where no fibre exists."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and entanglement-based networks",
+        "unlocks": "device-independent security and a path toward a quantum internet."
+      }
+    ]
   }
 }

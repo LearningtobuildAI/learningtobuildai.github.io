@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Dry electrode array",
+        "role": "picks up microvolt-level electrical signals from the scalp without conductive gel.",
+        "parts": [
+          "dry sensors (conductive polymer or metal pins)",
+          "flexible headband or cap",
+          "impedance monitoring"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies and digitises the tiny EEG signals while rejecting noise.",
+        "parts": [
+          "instrumentation amplifiers",
+          "analog filters",
+          "analog-to-digital converters",
+          "shielding"
+        ]
+      },
+      {
+        "name": "Signal conditioning and artifact removal",
+        "role": "separates brain signals from muscle, eye-blink and electrical interference.",
+        "parts": [
+          "artifact-rejection algorithms",
+          "blind source separation (e.g. independent component analysis)",
+          "band-pass filtering"
+        ]
+      },
+      {
+        "name": "AI decoder",
+        "role": "maps patterns of brain activity to an intended command or category.",
+        "parts": [
+          "deep neural networks (convolutional, recurrent or transformer)",
+          "personalisation and transfer-learning pipeline",
+          "training data from many users"
+        ]
+      },
+      {
+        "name": "On-device compute and wireless",
+        "role": "runs decoding locally to keep latency low and data private.",
+        "parts": [
+          "low-power processor or neural accelerator",
+          "Bluetooth or Wi-Fi radio",
+          "battery"
+        ]
+      },
+      {
+        "name": "Command interface",
+        "role": "turns decoded intent into actions on phones, computers or other devices.",
+        "parts": [
+          "software development kit",
+          "API calls",
+          "user feedback (visual, auditory or haptic)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode layout",
+        "detail": "Decide how many electrodes and where to place them on the scalp, balancing signal coverage against comfort and wearability."
+      },
+      {
+        "title": "Build the sensor headband",
+        "detail": "Integrate dry electrodes into a flexible band that maintains consistent contact without gel, and add impedance monitoring to flag poor contact."
+      },
+      {
+        "title": "Develop the analog electronics",
+        "detail": "Design low-noise amplifiers and filters to boost microvolt EEG signals and digitise them without picking up interference."
+      },
+      {
+        "title": "Collect training data",
+        "detail": "Record EEG from many volunteers while they perform mental tasks such as imagined movement, attention to a flashing target, or silent speech attempts."
+      },
+      {
+        "title": "Train the AI decoder",
+        "detail": "Use deep learning to find patterns that predict the intended task, and apply transfer learning so a new user needs only a short calibration."
+      },
+      {
+        "title": "Implement on-device inference",
+        "detail": "Optimise the trained model to run on a low-power processor inside the headband, keeping latency low and raw data private."
+      },
+      {
+        "title": "Create the software interface",
+        "detail": "Map decoded categories to concrete actions — moving a cursor, selecting an option, or controlling a smart device — and provide clear feedback."
+      },
+      {
+        "title": "Test and validate",
+        "detail": "Measure accuracy, speed and comfort across users, and check that performance holds up outside the lab with movement and electrical noise."
+      },
+      {
+        "title": "Iterate",
+        "detail": "Refine electrodes, algorithms and user experience based on real-world use, gradually expanding the vocabulary of decodable intentions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-density dry electrode technology",
+        "status": "partial",
+        "why": "dry sensors exist, but achieving high channel counts with stable, low-impedance contact remains difficult."
+      },
+      {
+        "tech": "Low-noise analog front ends",
+        "status": "exists",
+        "why": "EEG signals are tiny, so amplification and filtering must be excellent to make decoding possible."
+      },
+      {
+        "tech": "Deep learning for EEG decoding",
+        "status": "partial",
+        "why": "networks can classify motor imagery, P300 responses and some attention states, but general intent decoding is still limited."
+      },
+      {
+        "tech": "On-device AI accelerators",
+        "status": "exists",
+        "why": "small, low-power chips can now run neural networks locally, enabling real-time decoding without sending raw brain data to the cloud."
+      },
+      {
+        "tech": "Understanding of neural correlates of intent",
+        "status": "partial",
+        "why": "we know useful signals for simple tasks, but the brain patterns behind complex intentions are not yet well mapped."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer EEG headbands for meditation, sleep tracking and simple games",
+        "unlocks": "broad familiarity with wearable brain sensing, though not high-fidelity control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "research-grade high-density dry-electrode wearables with AI for basic device control",
+        "unlocks": "lab and early-adopter applications such as cursor control or drone steering."
+      },
+      {
+        "stage": "Next",
+        "milestone": "personalised decoders that allow text entry or multi-step commands without implants",
+        "unlocks": "assistive technology for people with severe motor impairment and new hands-free interfaces."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "seamless cognitive augmentation with high information transfer rates",
+        "unlocks": "everyday use, but only if accuracy, comfort, privacy and ethics are addressed."
+      }
+    ]
+  }
+}

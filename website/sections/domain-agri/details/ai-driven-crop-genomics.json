@@ -33,5 +33,145 @@
         "def": "Statistical models that can learn patterns from data without being explicitly programmed to do so."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Germplasm and field phenotyping",
+        "role": "grow and measure large panels of plant lines to capture trait variation.",
+        "parts": [
+          "seed bank and crossing nursery",
+          "field trial plots across multiple environments",
+          "drones and ground sensors for trait measurement",
+          "environmental monitoring (weather, soil)"
+        ]
+      },
+      {
+        "name": "Genotyping laboratory",
+        "role": "read DNA sequence variation across the genome at scale.",
+        "parts": [
+          "DNA extraction from leaf tissue",
+          "SNP genotyping arrays",
+          "next-generation sequencers",
+          "quality control and filtering pipelines"
+        ]
+      },
+      {
+        "name": "Genomic reference and variant database",
+        "role": "anchor genetic markers to genes and chromosomes.",
+        "parts": [
+          "high-quality reference genome assembly",
+          "variant call files (VCF)",
+          "gene annotation",
+          "data storage and APIs"
+        ]
+      },
+      {
+        "name": "Machine learning pipeline",
+        "role": "learn the relationship between genotype and phenotype.",
+        "parts": [
+          "feature selection and encoding",
+          "prediction models (e.g., genomic best linear unbiased prediction, deep neural networks)",
+          "cross-validation and hyperparameter tuning",
+          "interpretability tools"
+        ]
+      },
+      {
+        "name": "Validation and breeding decision system",
+        "role": "test predictions in the field and use them to choose crosses.",
+        "parts": [
+          "independent field trials",
+          "statistical analysis",
+          "breeding simulation software",
+          "selection index"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble a diverse panel",
+        "detail": "Collect seeds from gene banks, landraces and elite varieties, then grow them in a common environment to create a reference population."
+      },
+      {
+        "title": "Phenotype the panel",
+        "detail": "Measure traits such as pest damage, yield and caloric content using standardised protocols across multiple locations and years."
+      },
+      {
+        "title": "Genotype the panel",
+        "detail": "Extract DNA from leaf tissue and genotype thousands of markers per plant using arrays or sequencing."
+      },
+      {
+        "title": "Build the genomic reference",
+        "detail": "Align markers to a reference genome, identify variants, and annotate genes so predictions can be linked to biology."
+      },
+      {
+        "title": "Train machine learning models",
+        "detail": "Use genotype and phenotype data to train models that predict traits from marker profiles, validating with held-out samples."
+      },
+      {
+        "title": "Validate model accuracy",
+        "detail": "Test predictions on independent field trials not used in training, checking performance across environments."
+      },
+      {
+        "title": "Deploy in breeding",
+        "detail": "Use models to predict which parents to cross or which seedlings to advance, without growing every line to maturity."
+      },
+      {
+        "title": "Iterate and update",
+        "detail": "Feed new phenotype and genotype data back into the pipeline to improve model accuracy over successive breeding cycles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-throughput genotyping",
+        "status": "exists",
+        "why": "need thousands of markers per sample at low cost to capture genome-wide variation."
+      },
+      {
+        "tech": "Reference genomes for crops",
+        "status": "partial",
+        "why": "well assembled for major crops like maize and rice, but less complete for many minor and orphan crops."
+      },
+      {
+        "tech": "Accurate, high-throughput phenotyping",
+        "status": "partial",
+        "why": "field measurement of complex traits such as caloric density is still slow and manual, limiting training data."
+      },
+      {
+        "tech": "Machine learning and statistical genomics",
+        "status": "exists",
+        "why": "algorithms for genomic prediction are established and increasingly use deep learning."
+      },
+      {
+        "tech": "Large, well-curated datasets",
+        "status": "partial",
+        "why": "models need many samples across diverse environments to generalise beyond the training set."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "genomic selection used in commercial maize and wheat breeding for traits like yield and disease resistance",
+        "unlocks": "faster selection of superior lines without growing every plant to full maturity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deep learning models that integrate environmental data (weather, soil) to predict performance across climates",
+        "unlocks": "breeding for stability in variable conditions, including climate resilience."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with speed breeding and gene editing to cut breeding cycles from years to months",
+        "unlocks": "rapid introduction of predicted favourable alleles into elite varieties."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "predictive breeding across environments for nutritional density and low-input systems",
+        "unlocks": "crops tailored to specific regions and reduced fertiliser or pesticide use."
+      }
+    ]
   }
 }

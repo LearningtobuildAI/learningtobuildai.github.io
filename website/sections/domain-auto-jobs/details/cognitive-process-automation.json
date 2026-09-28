@@ -1,0 +1,168 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Model layer",
+        "role": "the reasoning engine that reads a task, decides the next action and writes the result.",
+        "parts": [
+          "large language model (hosted or self-run)",
+          "structured output / tool-call schema",
+          "prompt and system instructions"
+        ]
+      },
+      {
+        "name": "Tool layer",
+        "role": "lets the agent actually do things instead of only talking.",
+        "parts": [
+          "API connectors to business systems",
+          "code execution sandbox",
+          "file and email actions",
+          "permission scopes per tool"
+        ]
+      },
+      {
+        "name": "Knowledge layer",
+        "role": "grounds decisions in company data rather than model memory.",
+        "parts": [
+          "document index and embeddings",
+          "retrieval pipeline",
+          "source citations",
+          "access filters"
+        ]
+      },
+      {
+        "name": "Orchestration layer",
+        "role": "runs the loop of plan, act, observe, revise, and hands work between agents.",
+        "parts": [
+          "planner and task decomposition",
+          "state machine / workflow graph",
+          "retry and idempotency handling",
+          "handoff rules"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "keeps context across steps and across sessions.",
+        "parts": [
+          "short-term conversation state",
+          "long-term store of past cases",
+          "entity and preference records"
+        ]
+      },
+      {
+        "name": "Guardrails and oversight",
+        "role": "stops the agent doing damage or inventing facts.",
+        "parts": [
+          "policy checks before actions",
+          "spend and rate limits",
+          "human approval gates",
+          "full action log for audit"
+        ]
+      },
+      {
+        "name": "Evaluation and observability",
+        "role": "measures whether the agent is actually getting the process right.",
+        "parts": [
+          "trace capture of every step",
+          "task-level test sets",
+          "regression scores after model or prompt changes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process",
+        "detail": "Write down the current workflow step by step, including every system touched, the documents involved, the decision rules, and the exceptions that humans handle today."
+      },
+      {
+        "title": "Choose one narrow slice",
+        "detail": "Pick a task with clear success criteria, high volume and tolerable cost of error — for example triaging incoming invoices or drafting first-line support replies."
+      },
+      {
+        "title": "Define the tools",
+        "detail": "Wrap each system the task needs as a narrow, well-described function with typed inputs and outputs, rather than giving the agent broad database access."
+      },
+      {
+        "title": "Build retrieval",
+        "detail": "Index the policies, product data and past cases the task depends on, chunk them sensibly, and require the agent to cite the source it used."
+      },
+      {
+        "title": "Assemble the agent loop",
+        "detail": "Wire the model to the tools with an explicit loop: it proposes an action, the system executes it, the result is fed back, and it continues until a stop condition is met."
+      },
+      {
+        "title": "Add memory and state",
+        "detail": "Persist intermediate results so a long process survives a crash, and store resolved cases so similar work gets faster."
+      },
+      {
+        "title": "Insert guardrails",
+        "detail": "Require approval above a value threshold, restrict which tools can be called, block irreversible actions without confirmation, and cap the number of loop iterations."
+      },
+      {
+        "title": "Evaluate against the old process",
+        "detail": "Run the agent and the human baseline over a held-out set of real cases and compare accuracy, handling time and escalation rate before going live."
+      },
+      {
+        "title": "Deploy narrowly, then widen",
+        "detail": "Start in shadow mode where the agent's suggestion is only compared to the human's, then let it act with review, then extend to adjacent steps."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable tool calling",
+        "status": "exists",
+        "why": "the core capability — emitting a structured call and using the returned result — is what separates an agent from a chatbot."
+      },
+      {
+        "tech": "Retrieval-augmented generation and vector search",
+        "status": "exists",
+        "why": "processes depend on company-specific facts the model was never trained on."
+      },
+      {
+        "tech": "Machine-readable APIs for the systems of record",
+        "status": "partial",
+        "why": "agents can only act where an interface exists; older ERP and mainframe systems often need wrappers first."
+      },
+      {
+        "tech": "Sandboxed code and browser execution",
+        "status": "partial",
+        "why": "many tasks need the agent to run a script or click through a UI, which must be isolated from production."
+      },
+      {
+        "tech": "Agent evaluation and tracing tooling",
+        "status": "partial",
+        "why": "multi-step failures are hard to find without step-level logs and repeatable task tests."
+      },
+      {
+        "tech": "Identity, permissions and audit for autonomous actions",
+        "status": "partial",
+        "why": "an agent needs its own scoped credentials and a defensible record of what it did."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-process agents that draft, extract or route work with a human approving every consequential action",
+        "unlocks": "measurable time savings in support, finance and back-office queues."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that finish a whole transaction end to end, including retries and escalations, under spend and policy limits",
+        "unlocks": "headcount-neutral growth in high-volume processing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "memory that persists across sessions and teams, so an agent improves with resolved cases",
+        "unlocks": "consistent decisions instead of knowledge locked in individual staff."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "supervised fleets of agents that hand work to each other across departments, with a complete audit trail",
+        "unlocks": "a genuine step change in operating cost — contingent on reliability, security and clear lines of accountability."
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cryptographic inventory",
+        "role": "find every place encryption, hashing and signing are used, including the ones nobody documented.",
+        "parts": [
+          "code and binary scanning",
+          "network traffic analysis",
+          "certificate and key discovery",
+          "cryptographic bill of materials"
+        ]
+      },
+      {
+        "name": "Data lifetime classification",
+        "role": "work out which secrets must stay confidential for longer than a quantum computer is likely to take to arrive.",
+        "parts": [
+          "retention schedules",
+          "threat models",
+          "migration priority list"
+        ]
+      },
+      {
+        "name": "Crypto-agility layer",
+        "role": "lets algorithms be swapped out without rewriting every system.",
+        "parts": [
+          "cryptographic abstraction APIs",
+          "algorithm negotiation with downgrade protection",
+          "central policy configuration"
+        ]
+      },
+      {
+        "name": "Post-quantum key establishment",
+        "role": "replaces RSA and elliptic-curve key exchange — the part of a session that captured traffic exposes first.",
+        "parts": [
+          "ML-KEM (FIPS 203)",
+          "hybrid X25519 plus ML-KEM handshakes",
+          "TLS 1.3, VPN and IPsec integration"
+        ]
+      },
+      {
+        "name": "Post-quantum authentication",
+        "role": "signatures and certificates a future quantum computer cannot forge.",
+        "parts": [
+          "ML-DSA (FIPS 204)",
+          "SLH-DSA (FIPS 205)",
+          "stateful hash-based signatures for firmware",
+          "enlarged certificates and PKI changes"
+        ]
+      },
+      {
+        "name": "Key management and hardware roots",
+        "role": "store, rotate and retire the new keys.",
+        "parts": [
+          "HSMs and secure elements with PQC support",
+          "key rotation and re-encryption pipelines",
+          "certificate authorities and trust stores"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory and classify",
+        "detail": "Discover everywhere RSA or elliptic-curve cryptography is used, then mark each secret with how many years it must stay confidential."
+      },
+      {
+        "title": "Rank by exposure",
+        "detail": "Anything whose secrecy must outlast the expected arrival of a quantum computer is urgent; short-lived session data is not."
+      },
+      {
+        "title": "Build crypto-agility first",
+        "detail": "Expose algorithm choices as configuration rather than hard-coded constants, so the next migration is a rollout, not a rewrite."
+      },
+      {
+        "title": "Deploy hybrid key exchange",
+        "detail": "Turn on ML-KEM alongside X25519 in TLS and VPNs, so traffic is protected even if one of the two algorithms is later broken."
+      },
+      {
+        "title": "Retire static key exchange",
+        "detail": "Move off static RSA and static elliptic-curve key exchange, where one long-term private key unlocks years of recorded sessions."
+      },
+      {
+        "title": "Migrate signatures and firmware",
+        "detail": "Move certificates, code signing and secure boot to post-quantum algorithms — including hash-based signatures for devices that can never be updated again."
+      },
+      {
+        "title": "Rotate long-lived secrets",
+        "detail": "Re-key and re-encrypt stored data, rotate credentials and tokens, and shorten certificate lifetimes so already-recorded ciphertext loses value."
+      },
+      {
+        "title": "Govern and decommission",
+        "detail": "Publish deadlines, track which systems still allow quantum-vulnerable algorithms, and switch them off rather than leaving them as a fallback."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "ML-KEM, ML-DSA and SLH-DSA were published as NIST Federal Information Processing Standards in 2024."
+      },
+      {
+        "tech": "Crypto-agility and updatable firmware",
+        "status": "partial",
+        "why": "many embedded and industrial devices have algorithms baked into silicon and cannot be changed later."
+      },
+      {
+        "tech": "PQC-capable hardware security modules",
+        "status": "partial",
+        "why": "keys must live in tamper-resistant hardware, and HSM support for larger post-quantum keys is still arriving."
+      },
+      {
+        "tech": "Acceptable key and signature sizes",
+        "status": "partial",
+        "why": "post-quantum public keys and signatures are far larger, straining constrained devices and certificate chains."
+      },
+      {
+        "tech": "A cryptographically relevant quantum computer",
+        "status": "missing",
+        "why": "the risk exists before the machine does — that is the whole point of harvesting traffic now."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "standards published and hybrid post-quantum key exchange running in mainstream browsers and TLS",
+        "unlocks": "recorded traffic that can no longer be broken by a future quantum computer."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum certificates, code signing and firmware in operational systems",
+        "unlocks": "authentication that survives a quantum attack, not just confidentiality."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulated and national-security systems phase out RSA and elliptic-curve cryptography by the early 2030s",
+        "unlocks": "a hard deadline that forces legacy systems to be rebuilt or retired."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "full decommissioning of quantum-vulnerable algorithms",
+        "unlocks": "data encrypted today still secret when a large-scale quantum computer eventually exists."
+      }
+    ]
+  }
+}

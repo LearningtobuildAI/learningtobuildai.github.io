@@ -28,5 +28,154 @@
         "def": "Algorithms designed specifically for quantum computers that can perform certain tasks more efficiently than their classical counterparts."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Qubit processor",
+        "role": "the quantum chip that performs the actual computation on quantum states.",
+        "parts": [
+          "qubits (superconducting circuits, trapped ions or photonics)",
+          "couplers",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Cryogenic or vacuum environment",
+        "role": "keeps qubits stable — superconducting qubits need millikelvin temperatures; trapped ions need ultra-high vacuum.",
+        "parts": [
+          "dilution refrigerator",
+          "radiation shielding",
+          "vacuum chamber"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "generates the microwave or laser pulses that manipulate qubits and reads out their states.",
+        "parts": [
+          "FPGAs",
+          "digital-to-analogue and analogue-to-digital converters",
+          "amplifiers",
+          "circulators"
+        ]
+      },
+      {
+        "name": "Classical co-processor",
+        "role": "runs the classical parts of hybrid algorithms, pre- and post-processing, and real-time control.",
+        "parts": [
+          "CPUs and GPUs",
+          "fast interconnects",
+          "memory"
+        ]
+      },
+      {
+        "name": "Quantum software stack",
+        "role": "translates machine-learning models into quantum circuits and manages their execution.",
+        "parts": [
+          "quantum compiler",
+          "machine-learning libraries",
+          "runtime scheduler"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "reduces noise so results are reliable enough for useful computation.",
+        "parts": [
+          "decoders for surface codes",
+          "dynamical decoupling",
+          "zero-noise extrapolation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a qubit modality",
+        "detail": "Decide between superconducting circuits, trapped ions, photonics or neutral atoms based on connectivity, speed and error rates."
+      },
+      {
+        "title": "Design and fabricate the quantum chip",
+        "detail": "For superconducting qubits, patterned metal films are deposited on a silicon wafer; for trapped ions, electrodes are microfabricated on a chip."
+      },
+      {
+        "title": "Package and wire the processor",
+        "detail": "The chip is mounted in a package that carries many control lines while shielding against heat and noise."
+      },
+      {
+        "title": "Build the control and readout system",
+        "detail": "Custom electronics generate precise pulses and digitise the faint signals returned from the qubits."
+      },
+      {
+        "title": "Develop the compiler and runtime",
+        "detail": "Software maps a neural network or kernel method onto a sequence of quantum gates, optimising for the hardware's connectivity."
+      },
+      {
+        "title": "Implement data encoding",
+        "detail": "Classical data must be loaded into quantum states — a step that can erase the theoretical speedup if done inefficiently."
+      },
+      {
+        "title": "Add error mitigation or correction",
+        "detail": "Techniques are layered on to fight decoherence, from simple mitigation on today's noisy devices to full fault tolerance."
+      },
+      {
+        "title": "Integrate with classical ML frameworks",
+        "detail": "The quantum device is exposed as an accelerator inside familiar tools so hybrid models can train and infer."
+      },
+      {
+        "title": "Benchmark against classical accelerators",
+        "detail": "The system is tested on tasks such as classification or optimisation to see whether it actually beats a GPU."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum processors with many low-error qubits",
+        "status": "partial",
+        "why": "today's devices have tens to hundreds of noisy qubits; useful machine learning likely needs thousands of reliable ones."
+      },
+      {
+        "tech": "Quantum algorithms with proven speedup for ML",
+        "status": "missing",
+        "why": "many proposed speedups assume ideal conditions and have not been demonstrated on real data."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "loading classical data into a quantum computer can take as long as solving the problem classically."
+      },
+      {
+        "tech": "Fault-tolerant error correction",
+        "status": "missing",
+        "why": "without it, long calculations accumulate too many errors to trust the output."
+      },
+      {
+        "tech": "Classical–quantum hybrid software",
+        "status": "partial",
+        "why": "tools exist for small experiments but not for production-scale machine learning."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale quantum machine-learning experiments on noisy devices",
+        "unlocks": "understanding which tasks might benefit and where bottlenecks lie."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation and specialised quantum kernels for niche problems",
+        "unlocks": "early commercial use in optimisation or chemistry-adjacent modelling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fault-tolerant quantum computers with thousands of logical qubits",
+        "unlocks": "larger quantum models and reliable hybrid training."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum accelerators integrated into data centres as co-processors",
+        "unlocks": "quantum-assisted AI for selected workloads, if a genuine advantage is proven."
+      }
+    ]
   }
 }

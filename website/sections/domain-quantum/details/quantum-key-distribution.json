@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the weak laser pulses or single photons that encode the key bits.",
+        "parts": [
+          "attenuated laser",
+          "intensity/phase modulator",
+          "quantum random number generator"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons between the two parties without amplification.",
+        "parts": [
+          "dedicated optical fibre (dark fibre)",
+          "free-space telescope for satellite links",
+          "optical filters and polarisation control"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "detect individual photons at very low light levels.",
+        "parts": [
+          "InGaAs avalanche photodiodes",
+          "superconducting nanowire detectors",
+          "cryogenic cooler"
+        ]
+      },
+      {
+        "name": "Classical post-processing",
+        "role": "turns raw detection events into a shared secret key.",
+        "parts": [
+          "authenticated classical channel",
+          "error-correction software",
+          "privacy-amplification hashing"
+        ]
+      },
+      {
+        "name": "Key management layer",
+        "role": "stores keys and supplies them to encryptors on demand.",
+        "parts": [
+          "key server",
+          "application programming interface",
+          "hardware security module"
+        ]
+      },
+      {
+        "name": "Trusted nodes (for long links)",
+        "role": "relay keys across distances beyond a single fibre span, at the cost of trusting the node.",
+        "parts": [
+          "trusted node servers",
+          "quantum memories and repeaters (in development)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select protocol and link type",
+        "detail": "Choose a protocol such as BB84 (polarisation or phase encoding) and decide between fibre or free-space satellite transmission."
+      },
+      {
+        "title": "Install the quantum channel",
+        "detail": "Lay dedicated dark fibre between sites or set up a ground station with a telescope for satellite passes."
+      },
+      {
+        "title": "Build transmitter and receiver",
+        "detail": "Assemble the laser, modulators, detectors and timing electronics at each end of the link."
+      },
+      {
+        "title": "Calibrate the optics",
+        "detail": "Align polarisation, adjust detector gates and verify that photon counts match expectations."
+      },
+      {
+        "title": "Run quantum transmission",
+        "detail": "Send photons one by one; the receiver records detection times and measurement bases."
+      },
+      {
+        "title": "Sift and correct errors",
+        "detail": "Over an authenticated classical channel, compare bases to keep matching events, then correct bit errors."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "Hash the key down to remove any information an eavesdropper might have gained, leaving a secret key."
+      },
+      {
+        "title": "Integrate with encryptors",
+        "detail": "Feed the keys into AES or one-time-pad systems that protect the actual data traffic."
+      },
+      {
+        "title": "Operate and monitor",
+        "detail": "Continuously generate keys and watch for disturbances that signal interception or fibre faults."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "needed to register individual photons without adding noise that would hide an eavesdropper."
+      },
+      {
+        "tech": "Low-loss optical fibre",
+        "status": "exists",
+        "why": "photon loss limits range; standard telecom fibre is used, but loss grows with distance."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "post-processing messages must be authenticated to stop a man-in-the-middle attack."
+      },
+      {
+        "tech": "Quantum repeaters and memories",
+        "status": "missing",
+        "why": "without them, fibre links are limited to roughly 100–200 km before trusted nodes are required."
+      },
+      {
+        "tech": "Satellite quantum links",
+        "status": "partial",
+        "why": "demonstrated by the Micius satellite, but only for limited passes and not yet a commercial service."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro QKD links and satellite demonstrations (e.g. Micius)",
+        "unlocks": "eavesdropper-evident key exchange over tens to hundreds of kilometres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "intercity QKD networks built from trusted nodes",
+        "unlocks": "secure key distribution between cities, as in early national testbeds."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standards and integration with telecom equipment",
+        "unlocks": "easier deployment alongside existing fibre and encryption gear."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and entanglement distribution",
+        "unlocks": "long-distance quantum networks and a future quantum internet, removing the need to trust intermediate nodes."
+      }
+    ]
+  }
+}

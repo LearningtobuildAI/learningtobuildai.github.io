@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cold-atom source",
+        "role": "creates a cloud of atoms at microkelvin temperatures so their quantum motion is simple.",
+        "parts": [
+          "rubidium-87 or caesium vapour cell",
+          "ultra-high-vacuum chamber",
+          "magneto-optical trap coils"
+        ]
+      },
+      {
+        "name": "Laser and optics bench",
+        "role": "cools the atoms, splits and recombines their quantum paths.",
+        "parts": [
+          "frequency-stabilised diode lasers",
+          "amplifiers and fibre delivery",
+          "Raman beam pair with a precisely set frequency difference",
+          "reference cavity"
+        ]
+      },
+      {
+        "name": "Interferometer and detector",
+        "role": "converts gravitational acceleration into a measurable phase shift.",
+        "parts": [
+          "pulse sequence optics",
+          "retro-reflector mirror",
+          "fluorescence or absorption imaging camera"
+        ]
+      },
+      {
+        "name": "Inertial reference and isolation",
+        "role": "removes the sensor's own motion from the gravity signal.",
+        "parts": [
+          "passive vibration isolator",
+          "classical seismometer or accelerometer",
+          "tiltmeter",
+          "magnetic shield"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "runs the timing-critical sequence and turns photodiode counts into numbers.",
+        "parts": [
+          "field-programmable gate array timing",
+          "radio-frequency and laser drivers",
+          "real-time processing"
+        ]
+      },
+      {
+        "name": "Survey platform",
+        "role": "moves the instrument over the ground or holds it still for long measurements.",
+        "parts": [
+          "tripod or truck mount",
+          "ship, aircraft or drone mount",
+          "satellite bus for space versions"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Trap and cool the atoms",
+        "detail": "Rubidium vapour is loaded into a magneto-optical trap, then cooled further in optical molasses to a few microkelvin — a thousandth of a degree above absolute zero."
+      },
+      {
+        "title": "Launch or hold the cloud",
+        "detail": "A moving optical lattice throws the atoms upward in a fountain, or the cloud is simply released and left to fall."
+      },
+      {
+        "title": "Stabilise the lasers",
+        "detail": "Lasers are locked to atomic transitions and to a stable optical cavity so the Raman pulse frequency difference stays exact to the hertz."
+      },
+      {
+        "title": "Split, redirect and recombine",
+        "detail": "Three laser pulses act as beam splitters and mirrors for the atoms: the cloud is divided into two momentum states, separated, then recombined, so the two paths interfere."
+      },
+      {
+        "title": "Read the interference",
+        "detail": "Laser-induced fluorescence reveals how many atoms ended in each output state; the imbalance encodes the local gravitational acceleration."
+      },
+      {
+        "title": "Subtract platform motion",
+        "detail": "A classical accelerometer and tiltmeter record how the instrument itself moved, and those signals are removed from the atomic phase."
+      },
+      {
+        "title": "Pair two clouds for a gradient",
+        "detail": "Two clouds stacked a metre or so apart share the same laser beams, so vibration cancels: this yields the vertical gravity gradient instead of absolute gravity."
+      },
+      {
+        "title": "Calibrate and map",
+        "detail": "Readings are compared with a known reference site or a classical absolute gravimeter, then taken along survey lines; the data are inverted into a density model showing voids, tunnels or ore bodies."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Laser cooling and trapping of atoms",
+        "status": "exists",
+        "why": "developed in the 1980s and confirmed by the 1997 Nobel Prize in Physics; without microkelvin clouds there is no usable interferometer."
+      },
+      {
+        "tech": "Atom interferometry",
+        "status": "exists",
+        "why": "gravity was first measured with interfering atoms in 1991; it is the core measurement principle."
+      },
+      {
+        "tech": "Narrow-linewidth, rugged diode lasers and fibre optics",
+        "status": "exists",
+        "why": "the Raman beam pair must keep a frequency difference stable to the hertz while being shaken on a truck or aircraft."
+      },
+      {
+        "tech": "Compact ultra-high-vacuum and magnetic shielding",
+        "status": "partial",
+        "why": "lab systems fill a room; field instruments must shrink this without losing atom numbers."
+      },
+      {
+        "tech": "Field-proven vibration compensation and gravity gradiometry",
+        "status": "partial",
+        "why": "moving-platform surveys only work if platform acceleration, tilt and Coriolis effects are measured and cancelled to microgal level."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial atom-interferometric absolute gravimeters with sensitivities near 10⁻⁸ m/s² (about one microgal) per measurement",
+        "unlocks": "absolute gravity without a falling corner cube, in observatories and geodesy networks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "truck-mounted and borehole gravity gradiometers proven in mineral exploration and void detection",
+        "unlocks": "mapping tunnels, karst, cavities and ore bodies without drilling or excavation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "airborne, drone and ship-borne quantum gravity surveys",
+        "unlocks": "fast coverage of large areas for groundwater, mineral and civil-engineering work."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "satellite quantum gravimetry and shared cold-atom inertial navigation hardware",
+        "unlocks": "global gravity mapping for ice and water mass, plus drift-free inertial navigation where satellite signals are unavailable."
+      }
+    ]
+  }
+}

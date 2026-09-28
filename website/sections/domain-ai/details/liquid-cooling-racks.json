@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Cold plates",
+        "role": "sit directly on each accelerator package and pull heat into the liquid.",
+        "parts": [
+          "microchannel copper or aluminium plate",
+          "thermal interface material",
+          "mounting hardware"
+        ]
+      },
+      {
+        "name": "Coolant distribution unit (CDU)",
+        "role": "pumps coolant through the rack and transfers heat to the building water loop.",
+        "parts": [
+          "pump",
+          "liquid-to-liquid heat exchanger",
+          "control valves",
+          "filters",
+          "leak sensors"
+        ]
+      },
+      {
+        "name": "Rack manifolds and connectors",
+        "role": "route coolant to every server and allow hot-swapping without spills.",
+        "parts": [
+          "supply and return manifolds",
+          "flexible hoses",
+          "drip-less quick disconnects",
+          "drip trays"
+        ]
+      },
+      {
+        "name": "Coolant",
+        "role": "carries heat away while protecting metals and seals.",
+        "parts": [
+          "treated water or water-glycol mixture",
+          "corrosion inhibitors",
+          "biocides"
+        ]
+      },
+      {
+        "name": "Facility heat rejection",
+        "role": "dumps the heat outdoors or reuses it.",
+        "parts": [
+          "cooling towers or dry coolers",
+          "pumps and piping",
+          "heat-reuse interface (optional)"
+        ]
+      },
+      {
+        "name": "Monitoring and control",
+        "role": "keeps flow, pressure and temperature safe and detects leaks early.",
+        "parts": [
+          "flow and temperature sensors",
+          "pressure sensors",
+          "leak-detection cable",
+          "building management system link"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the thermal budget",
+        "detail": "Work out how many kilowatts per rack must be removed and at what coolant temperature, then size the loop."
+      },
+      {
+        "title": "Choose coolant and materials",
+        "detail": "Pick a water-glycol mix and compatible metals and seals so the loop does not corrode or grow biofilm."
+      },
+      {
+        "title": "Make the cold plates",
+        "detail": "Skive or machine microchannels into copper, braze on a lid, and flat-lap the mating surface."
+      },
+      {
+        "title": "Build the CDU",
+        "detail": "Assemble pumps, heat exchanger, valves and sensors in a skid, then pressure-test and calibrate it."
+      },
+      {
+        "title": "Install rack plumbing",
+        "detail": "Fit manifolds, hoses and quick disconnects in the rack and connect them to the CDU."
+      },
+      {
+        "title": "Integrate with the servers",
+        "detail": "Attach cold plates to the accelerators, apply thermal interface material, and connect each node to the manifold."
+      },
+      {
+        "title": "Commission",
+        "detail": "Fill, flush and pressure-test the loop, check flow rates per node, and set leak alarms before running workloads."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Monitor coolant chemistry and filters, replace hoses and pumps on schedule, and service nodes using the drip-less connectors."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-thermal-density accelerators",
+        "status": "exists",
+        "why": "air cooling struggles above roughly 700–1000 W per package, which is now routine for AI chips."
+      },
+      {
+        "tech": "Reliable quick disconnects",
+        "status": "exists",
+        "why": "servers must be removable without spraying coolant over live electronics."
+      },
+      {
+        "tech": "Facility water and heat rejection",
+        "status": "exists",
+        "why": "the CDU needs a second loop and a way to reject or reuse the heat."
+      },
+      {
+        "tech": "Coolant chemistry and material compatibility",
+        "status": "partial",
+        "why": "long-term reliability depends on controlling corrosion, biofilm and galvanic effects across mixed metals."
+      },
+      {
+        "tech": "Standard interfaces",
+        "status": "partial",
+        "why": "open specifications, such as work by the Open Compute Project, let racks and CDUs from different suppliers connect predictably."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "direct-to-chip cold plates deployed in high-density AI and supercomputer racks",
+        "unlocks": "racks well beyond air-cooling limits, with less fan power."
+      },
+      {
+        "stage": "Next",
+        "milestone": "warm-water cooling at 40–50 °C",
+        "unlocks": "dry coolers instead of evaporative towers, and useful heat export to district heating or greenhouses."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher-density rack manifolds and on-rack CDUs",
+        "unlocks": "simpler scaling to ever hotter accelerators without re-plumbing the whole hall."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "two-phase cold plates or immersion cooling at scale",
+        "unlocks": "even higher density and lower pumping energy, if fluid handling and serviceability are solved."
+      }
+    ]
+  }
+}

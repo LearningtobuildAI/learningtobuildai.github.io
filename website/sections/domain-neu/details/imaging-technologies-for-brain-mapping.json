@@ -34,5 +34,154 @@
         "def": "A medical technology that uses radioactive tracers to visualize metabolic and chemical activities within the body, often used for brain mapping."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Contrast source",
+        "role": "the physiological signal that indirectly reflects neural activity.",
+        "parts": [
+          "neural currents and hemodynamic response (fMRI)",
+          "magnetic fields from neuronal currents (MEG)",
+          "radiotracer uptake and metabolism (PET)"
+        ]
+      },
+      {
+        "name": "Sensor/detector",
+        "role": "transduces the weak signal into a measurable electrical quantity.",
+        "parts": [
+          "radio-frequency coils (MRI)",
+          "SQUID magnetometers or optically pumped magnetometers (MEG)",
+          "scintillation crystals and photodetectors (PET)"
+        ]
+      },
+      {
+        "name": "Scanner hardware",
+        "role": "provides the physical environment and fields needed for the measurement.",
+        "parts": [
+          "superconducting main magnet and gradient coils (MRI)",
+          "magnetically shielded room (MEG)",
+          "detector ring and septa (PET)"
+        ]
+      },
+      {
+        "name": "Data acquisition electronics",
+        "role": "amplifies, digitises and time-stamps the sensor signals.",
+        "parts": [
+          "low-noise amplifiers",
+          "analog-to-digital converters",
+          "timing and coincidence circuits"
+        ]
+      },
+      {
+        "name": "Image reconstruction",
+        "role": "converts raw signals into three-dimensional images of the brain.",
+        "parts": [
+          "Fourier reconstruction and parallel imaging (MRI)",
+          "source localisation algorithms (MEG)",
+          "iterative or filtered backprojection reconstruction (PET)"
+        ]
+      },
+      {
+        "name": "Analysis and mapping software",
+        "role": "maps function onto anatomy and compares across subjects.",
+        "parts": [
+          "statistical parametric mapping",
+          "registration to brain atlases",
+          "connectivity and network analysis"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the contrast mechanism",
+        "detail": "Decide what physiological signal to measure — blood oxygenation for fMRI, magnetic fields for MEG, or radiotracer uptake for PET — because this sets every downstream requirement."
+      },
+      {
+        "title": "Engineer the detector",
+        "detail": "Design and fabricate sensors with the sensitivity and spatial resolution needed: superconducting wire for MRI coils, Josephson junctions for SQUIDs, or scintillator crystals coupled to photodetectors for PET."
+      },
+      {
+        "title": "Build the scanner",
+        "detail": "Assemble the main magnet, gradient coils and RF system for MRI; construct a magnetically shielded room and sensor array for MEG; or build a ring of detectors for PET."
+      },
+      {
+        "title": "Develop acquisition electronics",
+        "detail": "Build low-noise amplifiers, fast digitizers and precise timing circuits that can capture signals far weaker than ambient noise."
+      },
+      {
+        "title": "Write reconstruction software",
+        "detail": "Implement algorithms that turn raw data into images: Fourier transforms for MRI, source localisation for MEG, and tomographic reconstruction for PET."
+      },
+      {
+        "title": "Calibrate and validate",
+        "detail": "Use phantoms with known properties to test spatial accuracy, resolution and safety before any human scanning."
+      },
+      {
+        "title": "Integrate analysis tools",
+        "detail": "Build or adapt software for statistical mapping, registration to standard brain atlases and connectivity analysis."
+      },
+      {
+        "title": "Install and commission",
+        "detail": "Prepare the site — shielding, cooling, power, subject access — install the system and train operators on safety and protocols."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting magnets and cryogenics",
+        "status": "exists",
+        "why": "needed for the strong, stable fields of MRI and for the sensitive SQUID detectors used in MEG."
+      },
+      {
+        "tech": "Radio-frequency electronics and coils",
+        "status": "exists",
+        "why": "MRI transmits and receives signals at radio frequencies, requiring precisely tuned coils and amplifiers."
+      },
+      {
+        "tech": "Magnetically shielded rooms",
+        "status": "exists",
+        "why": "MEG signals are tiny compared with Earth's magnetic field and urban noise, so extreme shielding is required."
+      },
+      {
+        "tech": "Radiotracer production (cyclotrons and radiochemistry)",
+        "status": "exists",
+        "why": "PET relies on short-lived radioactive isotopes that must be made and attached to molecules on site."
+      },
+      {
+        "tech": "High-performance computing and reconstruction algorithms",
+        "status": "exists",
+        "why": "raw datasets are large and image formation is computationally intensive."
+      },
+      {
+        "tech": "Statistical analysis and brain atlases",
+        "status": "exists",
+        "why": "mapping function onto anatomy and comparing across people requires standard reference spaces and statistics."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "clinical and research use of 3T fMRI, SQUID-based MEG and PET for brain mapping",
+        "unlocks": "detailed functional maps for neuroscience and presurgical planning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable optically pumped magnetometer MEG and higher-field MRI (7T and above)",
+        "unlocks": "scanning people while they move and interact naturally, with finer spatial resolution."
+      },
+      {
+        "stage": "Next",
+        "milestone": "simultaneous multimodal imaging (PET-MRI, MEG-MRI) and large-scale connectomics",
+        "unlocks": "combined structural, functional and metabolic maps of the same brain."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "real-time functional imaging for neurofeedback and brain-computer interfaces, plus portable low-cost systems",
+        "unlocks": "closed-loop brain stimulation and accessible diagnostics outside specialised centres."
+      }
+    ]
   }
 }

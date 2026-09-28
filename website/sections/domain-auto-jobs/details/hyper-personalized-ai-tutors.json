@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Learner model",
+        "role": "maintains an evolving estimate of what the student knows, their misconceptions, and their cognitive and affective state.",
+        "parts": [
+          "knowledge tracing model (e.g. Bayesian or deep knowledge tracing)",
+          "affect classifier using text, voice or facial cues",
+          "skill and concept mapping"
+        ]
+      },
+      {
+        "name": "Domain knowledge graph",
+        "role": "organises curriculum concepts and their prerequisite relationships so the system knows what can be taught next.",
+        "parts": [
+          "concept nodes",
+          "prerequisite edges",
+          "linked learning resources and questions"
+        ]
+      },
+      {
+        "name": "Adaptive engine",
+        "role": "selects the next activity, difficulty, and pedagogical strategy in real time.",
+        "parts": [
+          "policy model (reinforcement learning or rule-based)",
+          "mastery thresholds",
+          "constraints from curriculum standards"
+        ]
+      },
+      {
+        "name": "Conversational interface",
+        "role": "delivers instruction, hints and feedback in natural language.",
+        "parts": [
+          "large language model",
+          "retrieval-augmented generation over trusted content",
+          "speech recognition and synthesis for spoken dialogue"
+        ]
+      },
+      {
+        "name": "Assessment and diagnostics",
+        "role": "measures learning and detects confusion, frustration or disengagement during a session.",
+        "parts": [
+          "auto-graded questions",
+          "open-response analysis",
+          "real-time sentiment and affect analysis"
+        ]
+      },
+      {
+        "name": "Data and privacy layer",
+        "role": "logs interactions, retrains models, and protects sensitive student data.",
+        "parts": [
+          "event streaming pipeline",
+          "anonymisation and consent management",
+          "access controls and audit logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define learning objectives and build a concept graph",
+        "detail": "Subject experts break a curriculum into fine-grained skills and map prerequisite links between them."
+      },
+      {
+        "title": "Collect and curate training data",
+        "detail": "Student responses, timings and expert annotations are gathered and labelled to train models; data must be representative and privacy-cleared."
+      },
+      {
+        "title": "Train knowledge tracing and affect models",
+        "detail": "Statistical and neural models learn to infer mastery and emotional state from sequences of interactions."
+      },
+      {
+        "title": "Develop the adaptive policy",
+        "detail": "A decision engine is built — often by simulating student behaviour or using reinforcement learning — to choose what to present and when to switch strategy."
+      },
+      {
+        "title": "Integrate an LLM with retrieval-augmented generation",
+        "detail": "The language model is grounded in vetted curriculum content so its explanations stay accurate and age-appropriate."
+      },
+      {
+        "title": "Build the real-time feedback loop",
+        "detail": "Sentiment analysis, response latency and error patterns feed back into the adaptive engine within seconds to adjust pacing or tone."
+      },
+      {
+        "title": "Create teacher and student dashboards",
+        "detail": "Interfaces show progress, flag struggling students, and let teachers override or inspect the AI's decisions."
+      },
+      {
+        "title": "Run pilots and controlled trials",
+        "detail": "Deploy in classrooms or corporate training, compare learning gains against conventional instruction, and measure engagement and equity."
+      },
+      {
+        "title": "Deploy with privacy safeguards and monitoring",
+        "detail": "Roll out with consent management, data minimisation, and continuous checks for bias, drift and harmful outputs."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they provide fluent explanations and dialogue, but need grounding to avoid factual errors."
+      },
+      {
+        "tech": "Knowledge tracing algorithms",
+        "status": "exists",
+        "why": "they estimate a student's mastery over time from their answers, forming the core of personalisation."
+      },
+      {
+        "tech": "Affect detection from text, voice or video",
+        "status": "partial",
+        "why": "accuracy is still limited and raises privacy concerns, so real-time emotional adaptation is not yet reliable."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "it lets the tutor cite trusted curriculum content instead of relying on the model's memory alone."
+      },
+      {
+        "tech": "Privacy-preserving machine learning",
+        "status": "partial",
+        "why": "student data is sensitive and often regulated; techniques like federated learning are still maturing for this use."
+      },
+      {
+        "tech": "Large-scale, diverse educational datasets",
+        "status": "partial",
+        "why": "models trained on narrow populations may not generalise, and labelled data for cognitive patterns is scarce."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI tutors that adapt difficulty and pacing based on correctness and response time",
+        "unlocks": "widely deployed homework help and corporate microlearning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal affect detection integrated into the adaptation loop",
+        "unlocks": "tutors that notice frustration or boredom and change tone or activity in real time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deep integration with school systems and teacher oversight tools",
+        "unlocks": "blended classrooms where the AI handles practice while teachers focus on mentoring."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "portable lifelong learner profiles spanning platforms",
+        "unlocks": "continuous personalised education from school into career, with the student in control of their data."
+      }
+    ]
+  }
+}

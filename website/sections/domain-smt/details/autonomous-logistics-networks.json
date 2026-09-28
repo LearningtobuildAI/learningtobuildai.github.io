@@ -31,5 +31,169 @@
         "def": "The ability of a robot or drone to navigate without human intervention using advanced sensors and software algorithms for obstacle avoidance and path planning."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Delivery vehicles",
+        "role": "the drones and ground bots that physically carry the parcel.",
+        "parts": [
+          "airframe or chassis",
+          "payload bay and parcel lock",
+          "battery pack",
+          "flight/drive controller",
+          "parachute or emergency-stop system (aerial)"
+        ]
+      },
+      {
+        "name": "Autonomy stack",
+        "role": "lets each vehicle perceive its surroundings and move safely without a pilot.",
+        "parts": [
+          "cameras, lidar and radar",
+          "detect-and-avoid software",
+          "path planner",
+          "geofencing",
+          "failsafe behaviour"
+        ]
+      },
+      {
+        "name": "Fleet orchestration",
+        "role": "decides which vehicle takes which parcel, and when to charge or rest.",
+        "parts": [
+          "cloud dispatch and task assignment",
+          "demand forecasting",
+          "routing that reacts to congestion",
+          "battery and charging scheduler"
+        ]
+      },
+      {
+        "name": "Comms and mesh networking",
+        "role": "keeps vehicles, hubs and control rooms in contact, including where cellular coverage is thin.",
+        "parts": [
+          "vehicle-to-vehicle mesh radios",
+          "cellular backhaul",
+          "vehicle-to-infrastructure links",
+          "remote-ID broadcast"
+        ]
+      },
+      {
+        "name": "Ground infrastructure",
+        "role": "where parcels are loaded, vehicles charge and landings happen.",
+        "parts": [
+          "nests and charging pads",
+          "package lockers",
+          "loading and staging areas"
+        ]
+      },
+      {
+        "name": "Airspace and regulatory layer",
+        "role": "keeps many aircraft safely separated and compliant with rules.",
+        "parts": [
+          "unmanned traffic management (UTM) links",
+          "no-fly and geofence databases",
+          "flight logging and reporting"
+        ]
+      },
+      {
+        "name": "Remote supervision",
+        "role": "human operators monitor fleets and intervene in edge cases.",
+        "parts": [
+          "control-room consoles",
+          "teleoperation for stuck robots",
+          "incident response"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the operating area",
+        "detail": "Survey streets, sidewalks, kerbs, drop-off points, obstruction heights and no-fly zones into a detailed digital map."
+      },
+      {
+        "title": "Design and build the vehicles",
+        "detail": "Mould composite drone airframes or assemble wheeled robot chassis, with payload bays sized to real parcel weights."
+      },
+      {
+        "title": "Write the autonomy stack",
+        "detail": "Train perception models on local imagery, then test obstacle avoidance, geofencing and failsafe landings or stops in closed trials."
+      },
+      {
+        "title": "Build the orchestration layer",
+        "detail": "Cloud software assigns jobs, predicts demand by time of day, and reroutes vehicles around congestion and weather."
+      },
+      {
+        "title": "Stand up the mesh and comms",
+        "detail": "Fit redundant radios so vehicles talk to each other and to hubs, and fall back to cellular where mesh links drop."
+      },
+      {
+        "title": "Install hubs and charging",
+        "detail": "Place nests, charging pads and lockers at sites with power, permission and good access to customers."
+      },
+      {
+        "title": "Certify and run supervised trials",
+        "detail": "Build a safety case for beyond-visual-line-of-sight flight or autonomous sidewalk operation, and start with a small supervised fleet."
+      },
+      {
+        "title": "Scale operations",
+        "detail": "Add vehicles and routes, staff maintenance and remote supervision, and measure delivery time, failure rate and cost per parcel."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Detect-and-avoid sensing and onboard compute",
+        "status": "exists",
+        "why": "a vehicle must reliably see people, pets, wires and other aircraft without a pilot."
+      },
+      {
+        "tech": "High energy-density lithium batteries",
+        "status": "exists",
+        "why": "range and payload are set by how much energy can be carried; today's cells cap both."
+      },
+      {
+        "tech": "Beyond-visual-line-of-sight regulation",
+        "status": "partial",
+        "why": "most rules still assume a human can see the aircraft, which limits useful range."
+      },
+      {
+        "tech": "Unmanned traffic management (UTM)",
+        "status": "partial",
+        "why": "many drones in one city need shared digital airspace, not just see-and-avoid."
+      },
+      {
+        "tech": "Low-latency mobile and mesh networks",
+        "status": "exists",
+        "why": "supervision and rerouting depend on continuous, fast links."
+      },
+      {
+        "tech": "Liability and sidewalk-access rules",
+        "status": "partial",
+        "why": "who pays when a robot injures someone or blocks a footpath is not yet settled everywhere."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "supervised drone and sidewalk-robot delivery on fixed corridors, campuses and some suburbs",
+        "unlocks": "real data on reliability, noise, weather limits and cost per parcel."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine beyond-visual-line-of-sight flights and mixed aerial-plus-ground fleets sharing hubs",
+        "unlocks": "delivery to a larger share of a city without a pilot per vehicle."
+      },
+      {
+        "stage": "Next",
+        "milestone": "UTM-integrated city networks with thousands of coordinated vehicles",
+        "unlocks": "automatic separation from crewed aircraft and other fleets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "logistics networks linked into kerbside and public-transport infrastructure",
+        "unlocks": "fewer van trips, but only if noise, safety and footpath conflicts are managed."
+      }
+    ]
   }
 }

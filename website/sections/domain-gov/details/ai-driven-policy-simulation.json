@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Geospatial data spine",
+        "role": "assembles the machine-readable picture of the place being simulated.",
+        "parts": [
+          "satellite and aerial imagery",
+          "LiDAR building and terrain models",
+          "cadastral and land-use records",
+          "transport, power and water network maps"
+        ]
+      },
+      {
+        "name": "Environment model",
+        "role": "represents the physical world agents act inside.",
+        "parts": [
+          "GIS and routing engine",
+          "network models for power, water and transport",
+          "land-use and housing stock model"
+        ]
+      },
+      {
+        "name": "Synthetic population",
+        "role": "a disaggregated set of households, firms and institutions, not an average citizen.",
+        "parts": [
+          "census and survey microdata",
+          "statistical reweighting to published totals",
+          "persona and attribute assignment"
+        ]
+      },
+      {
+        "name": "Behaviour engine",
+        "role": "decides what each agent does when the rules change.",
+        "parts": [
+          "rule-based decision modules",
+          "large language model prompted with persona and constraints",
+          "learning or adaptation over simulated time"
+        ]
+      },
+      {
+        "name": "Interaction and scheduling",
+        "role": "runs millions of agent-to-agent and agent-to-environment events per simulated day.",
+        "parts": [
+          "event scheduler",
+          "message passing between agents",
+          "distributed compute cluster"
+        ]
+      },
+      {
+        "name": "Policy interface",
+        "role": "lets an analyst express a proposed law as machine-readable parameters.",
+        "parts": [
+          "rule specification format",
+          "scenario configuration",
+          "versioned run history"
+        ]
+      },
+      {
+        "name": "Validation and governance layer",
+        "role": "keeps the output honest and lawful.",
+        "parts": [
+          "backtesting against historical outcomes",
+          "sensitivity and uncertainty analysis",
+          "privacy controls and bias audit"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the question",
+        "detail": "Decide what decision the simulation must inform and which outcomes count as success, before any code is written."
+      },
+      {
+        "title": "Build the geospatial base",
+        "detail": "Fuse remote sensing, cadastral records and utility maps into one consistent three-dimensional model of buildings, parcels, roads and networks."
+      },
+      {
+        "title": "Generate a synthetic population",
+        "detail": "Create individual households and firms with attributes drawn from census microdata, reweighted until district-level totals match published statistics."
+      },
+      {
+        "title": "Encode behaviour",
+        "detail": "Write decision rules for each agent type; where language models are used, prompt them with a persona, an income, a location and the constraints of the proposed rule, and check their choices against observed behaviour."
+      },
+      {
+        "title": "Calibrate and backtest",
+        "detail": "Replay a policy that already happened, or a shock such as a fuel price rise, and tune the model until it reproduces the real outcome within stated error bars."
+      },
+      {
+        "title": "Run scenarios",
+        "detail": "Apply the proposed rule as a parameter change and run many randomised replicates, producing distributions of outcomes rather than a single headline number."
+      },
+      {
+        "title": "Audit and report",
+        "detail": "Test whether the model penalises particular groups, quantify how much the answer depends on contested assumptions, and publish uncertainty ranges a non-modeller can read."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Agent-based modelling and microsimulation",
+        "status": "exists",
+        "why": "long-established methods for simulating many interacting decision-makers, already used in tax, transport and epidemic planning."
+      },
+      {
+        "tech": "City-scale digital twins with high-resolution data",
+        "status": "partial",
+        "why": "national and municipal twins exist as pilots and platforms, but coverage and currency vary widely."
+      },
+      {
+        "tech": "Large language models as behavioural proxies",
+        "status": "partial",
+        "why": "demonstrated in research that they can approximate survey responses, but they carry known biases and drift from real populations."
+      },
+      {
+        "tech": "Computing for million-agent runs",
+        "status": "exists",
+        "why": "cloud clusters make large ensemble runs feasible, though cost scales with the number of replicates needed for credible uncertainty."
+      },
+      {
+        "tech": "Validation data and causal inference methods",
+        "status": "partial",
+        "why": "without reliable evidence on how real people responded to past rules, a simulation is unfalsifiable."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "digital twins of cities and regions used for transport, energy and environmental planning",
+        "unlocks": "a tested geospatial and network backbone that policy models can stand on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "synthetic populations coupled to language-model agents, calibrated to surveys and elections",
+        "unlocks": "rapid pre-testing of proposed rules across many assumed behaviours."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulators formally accepting ensemble policy simulations as one input to impact assessment",
+        "unlocks": "fewer unintended consequences, provided uncertainty is reported rather than hidden."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "audited, contestable twins that citizens and researchers can inspect and challenge",
+        "unlocks": "legitimacy for decisions informed by simulation, without pretending the model is the public."
+      }
+    ]
+  }
+}

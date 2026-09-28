@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Accelerator chip",
+        "role": "does the matrix maths that runs a language model.",
+        "parts": [
+          "tensor/GPU cores",
+          "on-package memory controller",
+          "media and I/O blocks"
+        ]
+      },
+      {
+        "name": "Unified memory",
+        "role": "must hold the whole model, so capacity matters more than raw speed here.",
+        "parts": [
+          "LPDDR5X or HBM stacks",
+          "64–512 GB depending on model",
+          "several hundred GB/s bandwidth"
+        ]
+      },
+      {
+        "name": "Storage",
+        "role": "keeps model weights, which can be 20–200 GB each, on hand.",
+        "parts": [
+          "NVMe SSD",
+          "PCIe lanes"
+        ]
+      },
+      {
+        "name": "Host and interconnect",
+        "role": "runs the operating system and links one node to another.",
+        "parts": [
+          "CPU cores",
+          "PCIe or chip-to-chip link",
+          "Thunderbolt/USB4 or 10–100 Gb Ethernet"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "fits a 100–300 W chip into something that sits on a desk quietly.",
+        "parts": [
+          "vapour chamber or heatsink",
+          "blower fan",
+          "compact internal power supply"
+        ]
+      },
+      {
+        "name": "Inference software stack",
+        "role": "quantises the model and serves requests.",
+        "parts": [
+          "runtime such as llama.cpp or vLLM",
+          "4-bit formats such as GPTQ, AWQ or GGUF",
+          "KV-cache management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the chip",
+        "detail": "Engineers lay out tensor cores, memory controllers and caches, then verify the design in simulation before committing it to silicon."
+      },
+      {
+        "title": "Fab the wafer",
+        "detail": "The chip is made on a leading-edge logic process — for the fastest parts, at 3–4 nm class nodes."
+      },
+      {
+        "title": "Package the memory",
+        "detail": "Memory is soldered onto the same package as the chip (LPDDR) or stacked on an interposer (HBM), giving very wide short traces."
+      },
+      {
+        "title": "Make the board",
+        "detail": "The package is mounted on a small motherboard with voltage regulators, PCIe lanes, an SSD socket and network ports."
+      },
+      {
+        "title": "Solve the thermal problem",
+        "detail": "A vapour chamber and blower are tuned so the chip can run sustained inference without throttling or sounding like a server."
+      },
+      {
+        "title": "Assemble and burn in",
+        "detail": "Machines are built, run under load for hours and checked for memory errors before shipping."
+      },
+      {
+        "title": "Install the stack",
+        "detail": "Firmware, drivers and an inference runtime are flashed, and the operator downloads quantised model weights."
+      },
+      {
+        "title": "Quantise and serve",
+        "detail": "Weights are compressed from 16-bit to 4-bit, which roughly quarters memory use at some cost in quality, then the model is loaded and benchmarked in tokens per second."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-bandwidth memory packaging",
+        "status": "exists",
+        "why": "putting many gigabytes of memory on the same package is what lets a small box hold a large model."
+      },
+      {
+        "tech": "Low-bit quantisation",
+        "status": "exists",
+        "why": "4-bit formats shrink models enough for one machine to hold them."
+      },
+      {
+        "tech": "Efficient attention and KV-cache management",
+        "status": "exists",
+        "why": "keeps memory from ballooning as conversation context grows."
+      },
+      {
+        "tech": "Cheap high-speed local interconnect",
+        "status": "partial",
+        "why": "linking several nodes into one bigger model needs bandwidth that consumer ports only partly deliver."
+      },
+      {
+        "tech": "Memory capacity per dollar",
+        "status": "partial",
+        "why": "unified memory above 128 GB is still expensive, which limits which models can run locally."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "deskside nodes with 64–128 GB of unified memory",
+        "unlocks": "running quantised open-weight models privately at home."
+      },
+      {
+        "stage": "Next",
+        "milestone": "two to four nodes linked over fast local links",
+        "unlocks": "serving larger models at usable speed without a data centre."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cheaper 256–512 GB unified-memory machines",
+        "unlocks": "near-frontier open models on a single desk."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "household AI that keeps data on site",
+        "unlocks": "personal assistants and private document search that never send data to a cloud."
+      }
+    ]
+  }
+}

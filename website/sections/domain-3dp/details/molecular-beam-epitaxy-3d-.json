@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ultra-high-vacuum growth chamber",
+        "role": "keeps the growing crystal free of contamination — even a stray gas molecule would spoil the layer.",
+        "parts": [
+          "stainless-steel chamber",
+          "ion and cryo pumps",
+          "bake-out heaters",
+          "load-lock for wafer transfer"
+        ]
+      },
+      {
+        "name": "Source cells",
+        "role": "evaporate each element at a precisely controlled rate.",
+        "parts": [
+          "effusion (Knudsen) cells for metals like gallium",
+          "cracker cells for arsenic and phosphorus",
+          "electron-beam evaporator for silicon",
+          "radio-frequency plasma source for nitrogen or oxygen"
+        ]
+      },
+      {
+        "name": "Substrate stage",
+        "role": "holds and heats the wafer, and rotates it for uniform growth.",
+        "parts": [
+          "molybdenum or graphite holder",
+          "radiative heater and thermocouple or pyrometer",
+          "continuous-rotation manipulator"
+        ]
+      },
+      {
+        "name": "Shutters and process control",
+        "role": "start and stop each beam in a fraction of a second, which is how single atomic layers are built.",
+        "parts": [
+          "mechanical shutters",
+          "flux monitors",
+          "growth-control computer"
+        ]
+      },
+      {
+        "name": "In-situ metrology",
+        "role": "watches the surface while it grows, so layer thickness is counted rather than guessed.",
+        "parts": [
+          "reflection high-energy electron diffraction (RHEED)",
+          "optical pyrometry",
+          "residual gas analyser"
+        ]
+      },
+      {
+        "name": "Ex-situ finishing",
+        "role": "turns the grown wafer into devices.",
+        "parts": [
+          "photolithography and etching",
+          "metallisation",
+          "cleaving and packaging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the substrate",
+        "detail": "A polished single-crystal wafer is degreased, etched and mounted on a holder with indium or a graphite clamp so heat transfers evenly."
+      },
+      {
+        "title": "Reach ultra-high vacuum",
+        "detail": "The chamber is baked for hours to drive off water and hydrocarbons, reaching pressures around 10^-10 millibar — roughly a trillionth of atmospheric pressure."
+      },
+      {
+        "title": "Clean the surface",
+        "detail": "The wafer is heated to several hundred degrees Celsius under a beam of the volatile element (arsenic or phosphorus) to desorb its oxide and leave an atomically flat, ordered surface, confirmed by RHEED."
+      },
+      {
+        "title": "Calibrate the beams",
+        "detail": "Each source is warmed to its working temperature and its flux measured so the growth rate is known to within a fraction of an atomic layer per second."
+      },
+      {
+        "title": "Grow the layered stack",
+        "detail": "Shutters open and close in sequence while the substrate rotates, depositing one atomic layer at a time; temperature and flux changes set the alloy composition and built-in strain."
+      },
+      {
+        "title": "Form three-dimensional features",
+        "detail": "For quantum dots, strain is deliberately allowed to build until the film breaks into nanoscale islands; for nanowires or site-controlled dots, the wafer is pre-patterned so growth happens only in defined holes. This is where true 3D control is hardest."
+      },
+      {
+        "title": "Anneal and cap",
+        "detail": "A short anneal improves crystal quality and a thin protective cap layer stops the surface oxidising once the wafer leaves vacuum."
+      },
+      {
+        "title": "Process into devices",
+        "detail": "Standard semiconductor fabrication — lithography, etching, contacts — converts the structure into lasers, transistors or detectors."
+      },
+      {
+        "title": "Characterise",
+        "detail": "Photoluminescence, X-ray diffraction and electron microscopy confirm layer thickness, composition and defect density before the wafer is released."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultra-high-vacuum engineering",
+        "status": "exists",
+        "why": "without pressures near 10^-10 millibar, residual gas poisons the crystal as it grows."
+      },
+      {
+        "tech": "High-purity single-element source materials",
+        "status": "exists",
+        "why": "source purity sets the purity of the finished crystal; there is no later purification step."
+      },
+      {
+        "tech": "Low-defect single-crystal substrates",
+        "status": "exists",
+        "why": "the grown layers copy the atomic template beneath them, defects and all."
+      },
+      {
+        "tech": "Atomic-scale in-situ metrology",
+        "status": "exists",
+        "why": "RHEED oscillations let operators count atomic layers and stop precisely where they intend."
+      },
+      {
+        "tech": "Deterministic nanoscale placement",
+        "status": "partial",
+        "why": "self-assembled quantum dots land at random positions; site-controlled growth works in the lab but not yet reliably across a full wafer."
+      },
+      {
+        "tech": "High-throughput deposition",
+        "status": "missing",
+        "why": "MBE grows at roughly a micrometre per hour or less, far slower than chemical vapour deposition, so it stays a specialty tool."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "production MBE for compound-semiconductor devices",
+        "unlocks": "lasers, high-electron-mobility transistors, infrared detectors and low-noise electronics that other methods cannot match."
+      },
+      {
+        "stage": "Next",
+        "milestone": "site-controlled quantum dots and nanowires on patterned wafers",
+        "unlocks": "single-photon sources and qubits that can be addressed individually, because each one sits where the design puts it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine van der Waals heterostructures and 2D-material stacks",
+        "unlocks": "ultrathin devices built from dissimilar layers that would never combine in bulk crystal."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid atomic-scale manufacturing, pairing MBE with lithography or probe-based atom manipulation",
+        "unlocks": "genuinely three-dimensional atomic precision over useful areas — the idea this label points at, but not yet a production reality."
+      }
+    ]
+  }
+}

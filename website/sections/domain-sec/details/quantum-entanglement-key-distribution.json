@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Entangled photon source",
+        "role": "creates pairs of photons whose polarisation or phase is correlated in a way no classical physics can mimic.",
+        "parts": [
+          "pump laser",
+          "nonlinear crystal (periodically poled waveguide) or semiconductor quantum-dot device",
+          "spectral and polarisation filters"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries one photon of each pair to each party without measurement.",
+        "parts": [
+          "low-loss telecom fibre at about 1550 nm",
+          "or free-space/satellite optical link with telescopes",
+          "polarisation-maintaining components"
+        ]
+      },
+      {
+        "name": "Measurement stations",
+        "role": "Alice and Bob each measure their photon in a randomly chosen basis.",
+        "parts": [
+          "single-photon detectors (superconducting nanowire, or InGaAs avalanche diodes)",
+          "Bell-state analyser / interferometer",
+          "time-tagging electronics and cryogenics"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "public but tamper-proof link for comparing bases and checking the physics.",
+        "parts": [
+          "ordinary network connection",
+          "authentication keys",
+          "CHSH inequality test software"
+        ]
+      },
+      {
+        "name": "Post-processing and key management",
+        "role": "turns raw correlated bits into a short, secret key.",
+        "parts": [
+          "sifting and error-correction code",
+          "privacy-amplification hashing",
+          "key store feeding an encryptor"
+        ]
+      },
+      {
+        "name": "Repeater / network layer",
+        "role": "extends entanglement beyond the reach of a single fibre span.",
+        "parts": [
+          "quantum memories",
+          "entanglement-swapping Bell measurements",
+          "trusted relay nodes (interim)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the pairs",
+        "detail": "A laser pumps a nonlinear crystal; occasionally one pump photon splits into two lower-energy photons with linked polarisation. Quantum-dot sources aim to emit exactly one pair at a time on demand."
+      },
+      {
+        "title": "Send the photons",
+        "detail": "One photon travels down buried telecom fibre, attenuated to single-photon level, or up to a satellite and back down to a distant ground station."
+      },
+      {
+        "title": "Measure independently",
+        "detail": "Alice and Bob each randomly pick a measurement basis and record outcomes, keeping the basis choices secret until later."
+      },
+      {
+        "title": "Test the physics",
+        "detail": "They compare a subset of results against the CHSH inequality. Violating it proves the correlations are quantum, not pre-agreed — this is what blocks a copying eavesdropper."
+      },
+      {
+        "title": "Sift and correct",
+        "detail": "Over the authenticated classical channel they discard results from mismatched bases, then run error correction on the rest."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "Hashing compresses the corrected string so that any information an eavesdropper may hold becomes negligible, leaving a shared secret key."
+      },
+      {
+        "title": "Use and extend",
+        "detail": "The key drives a one-time pad or rapidly rotated symmetric cipher; for longer distances the signal is swapped through quantum memories at repeater nodes rather than sent end to end."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors with low noise",
+        "status": "exists",
+        "why": "counts must be reliable at telecom wavelengths; superconducting types need cryogenic cooling, which limits deployment."
+      },
+      {
+        "tech": "Low-loss fibre or free-space optical links",
+        "status": "exists",
+        "why": "loss rises exponentially with distance, capping fibre spans at a few hundred kilometres."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "partial",
+        "why": "entanglement swapping has been shown in labs and over metro fibre, but practical repeaters are not yet built."
+      },
+      {
+        "tech": "High-quality entangled sources",
+        "status": "partial",
+        "why": "brightness and purity must be high enough to yield useful key rates."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "without it, an attacker could impersonate a party during sifting."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro-scale entanglement-based links and satellite entanglement distribution over roughly 1,200 km (China's Micius, 2017)",
+        "unlocks": "proof that entanglement survives real-world channels."
+      },
+      {
+        "stage": "Next",
+        "milestone": "device-independent QKD prototypes that trust neither sources nor detectors",
+        "unlocks": "security far less dependent on perfect hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters using memories and entanglement swapping",
+        "unlocks": "city-to-city links without trusted intermediate nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "entanglement distribution networks",
+        "unlocks": "shared quantum resources for secure communication and, eventually, distributed quantum computing."
+      }
+    ]
+  }
+}

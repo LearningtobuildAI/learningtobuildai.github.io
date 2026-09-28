@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Data capture",
+        "role": "records how the expert works, so their decisions can be learned.",
+        "parts": [
+          "workstation and communication logs",
+          "meeting transcripts",
+          "decision and outcome records",
+          "sensor data where relevant"
+        ]
+      },
+      {
+        "name": "Knowledge structuring",
+        "role": "turns raw records into a usable representation of the expert's expertise.",
+        "parts": [
+          "knowledge graphs and ontologies",
+          "vector databases of documents",
+          "taxonomies of decisions and contexts"
+        ]
+      },
+      {
+        "name": "Base model",
+        "role": "provides general language and reasoning ability before specialization.",
+        "parts": [
+          "large language model",
+          "vision or multimodal model if needed",
+          "retrieval-augmented generation"
+        ]
+      },
+      {
+        "name": "Fine-tuning and alignment",
+        "role": "shapes the model to think like the specific expert.",
+        "parts": [
+          "supervised fine-tuning on expert data",
+          "reinforcement learning from expert feedback",
+          "prompt and persona conditioning"
+        ]
+      },
+      {
+        "name": "Action and tool use",
+        "role": "lets the proxy perform tasks, not just talk.",
+        "parts": [
+          "planning module",
+          "APIs to software tools",
+          "safety constraints and approval gates"
+        ]
+      },
+      {
+        "name": "Verification and oversight",
+        "role": "checks that the proxy behaves like the expert and catches errors.",
+        "parts": [
+          "automated tests against held-out expert decisions",
+          "human review interface",
+          "audit logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the expert and scope",
+        "detail": "Select a person whose decisions are valuable and a narrow task, such as triaging support tickets or reviewing loan applications."
+      },
+      {
+        "title": "Capture their working life",
+        "detail": "Record their screens, emails, meetings, written notes and the decisions they make, with consent and privacy safeguards."
+      },
+      {
+        "title": "Label decisions and outcomes",
+        "detail": "For each captured decision, note the context, the choice made, and what happened later, so the model can learn cause and effect."
+      },
+      {
+        "title": "Train a base model on general data",
+        "detail": "Start from a large language model that already understands language and basic reasoning."
+      },
+      {
+        "title": "Specialise the model",
+        "detail": "Fine-tune it on the expert's labelled decisions, then use reinforcement learning from the expert's corrections to match their judgement."
+      },
+      {
+        "title": "Test against the expert",
+        "detail": "Give the model unseen cases and compare its choices with the expert's; iterate until it agrees on most routine decisions."
+      },
+      {
+        "title": "Deploy with limits",
+        "detail": "Run it as a suggestion tool first, with the expert or a colleague approving every action, and expand autonomy only as trust and accuracy grow."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable reasoning",
+        "status": "partial",
+        "why": "current models can mimic style and recall facts, but still make errors and cannot truly replicate expert intuition."
+      },
+      {
+        "tech": "Comprehensive data capture from expert work",
+        "status": "partial",
+        "why": "logging tools exist, but capturing the full context of a person's decisions over years is invasive and incomplete."
+      },
+      {
+        "tech": "Methods to measure fidelity to a person's judgement",
+        "status": "missing",
+        "why": "there is no standard test for whether a model thinks like a specific human, only tests of general accuracy."
+      },
+      {
+        "tech": "Privacy-preserving training and deployment",
+        "status": "partial",
+        "why": "techniques like differential privacy and federated learning exist, but not at the scale needed for a lifetime of personal data."
+      },
+      {
+        "tech": "Safe tool-use and action frameworks",
+        "status": "partial",
+        "why": "APIs and guardrails are emerging, but letting an AI act autonomously in the real world remains risky."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI assistants that summarise, draft and retrieve information under human direction",
+        "unlocks": "productivity gains without autonomy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "domain-specific expert copilots that suggest decisions and learn from feedback",
+        "unlocks": "narrow, supervised automation of routine expert tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "digital twins of specific experts that pass routine cases with human oversight",
+        "unlocks": "scaling a single expert's judgement to many places at once."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous proxies that handle complex, novel cases with accountability",
+        "unlocks": "remote expertise as a service, if trust and verification are solved."
+      }
+    ]
+  }
+}

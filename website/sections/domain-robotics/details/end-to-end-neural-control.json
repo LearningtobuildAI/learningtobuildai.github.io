@@ -30,5 +30,156 @@
         "def": "A type of machine learning where an agent learns to take actions in an environment to maximize some notion of cumulative reward."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data engine",
+        "role": "collects and curates the demonstrations and videos used to train the policy.",
+        "parts": [
+          "teleoperation rigs",
+          "motion-capture suits",
+          "camera arrays",
+          "curated video datasets of human activity"
+        ]
+      },
+      {
+        "name": "Perception encoder",
+        "role": "turns raw camera pixels and joint feedback into a compact internal representation.",
+        "parts": [
+          "vision transformer or convolutional network",
+          "proprioception encoder",
+          "temporal fusion layer"
+        ]
+      },
+      {
+        "name": "Policy network",
+        "role": "maps the representation directly to motor commands such as joint torques.",
+        "parts": [
+          "transformer or diffusion policy backbone",
+          "action head",
+          "safety projection layer"
+        ]
+      },
+      {
+        "name": "Training stack",
+        "role": "trains the policy from demonstrations and trial-and-error experience.",
+        "parts": [
+          "imitation learning (behaviour cloning)",
+          "reinforcement learning algorithms",
+          "distributed compute cluster"
+        ]
+      },
+      {
+        "name": "Simulation and domain randomisation",
+        "role": "provides fast, safe practice and helps the policy survive the jump to reality.",
+        "parts": [
+          "physics simulator",
+          "randomised dynamics and visuals",
+          "system identification tools"
+        ]
+      },
+      {
+        "name": "Real-time controller",
+        "role": "runs the trained network on the robot and turns its outputs into safe motor signals.",
+        "parts": [
+          "onboard GPU",
+          "real-time operating system",
+          "safety monitor and emergency stop",
+          "motor drivers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define robot and task",
+        "detail": "Specify the humanoid's sensors, actuators and the exact behaviours it must learn, from walking to manipulation."
+      },
+      {
+        "title": "Build a data pipeline",
+        "detail": "Set up teleoperation or motion-capture rigs to record human demonstrations of the target tasks."
+      },
+      {
+        "title": "Assemble large-scale video",
+        "detail": "Gather diverse human videos from the internet and controlled captures to pre-train visual understanding."
+      },
+      {
+        "title": "Pre-train perception",
+        "detail": "Train a vision model with self-supervised learning so it can extract useful features from raw pixels without manual labels."
+      },
+      {
+        "title": "Train imitation policy",
+        "detail": "Use behaviour cloning on the robot demonstrations to map observations directly to joint commands."
+      },
+      {
+        "title": "Refine with reinforcement learning",
+        "detail": "Run the policy in simulation and on the real robot, using rewards to improve robustness and handle edge cases."
+      },
+      {
+        "title": "Bridge the sim-to-real gap",
+        "detail": "Apply domain randomisation and system identification so policies learned in simulation transfer reliably to hardware."
+      },
+      {
+        "title": "Deploy and iterate",
+        "detail": "Run the controller on the robot at real-time rates, monitor safety, and log failures to feed the next training round."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale video datasets and self-supervised learning",
+        "status": "partial",
+        "why": "needed to learn general visual representations without hand-labelling every frame."
+      },
+      {
+        "tech": "Fast, differentiable physics simulation",
+        "status": "partial",
+        "why": "reinforcement learning needs millions of trials that would be impractical on real hardware."
+      },
+      {
+        "tech": "High-torque, backdrivable actuators",
+        "status": "partial",
+        "why": "humanoids need joints that are strong, precise and safe enough to follow learned torque commands."
+      },
+      {
+        "tech": "Onboard compute for real-time inference",
+        "status": "exists",
+        "why": "neural networks must run at control frequency without a tether or cloud connection."
+      },
+      {
+        "tech": "Teleoperation and motion-capture systems",
+        "status": "exists",
+        "why": "they provide the high-quality demonstration data that imitation learning depends on."
+      },
+      {
+        "tech": "Scalable reinforcement learning algorithms",
+        "status": "exists",
+        "why": "methods like proximal policy optimisation are mature, but sample efficiency remains a challenge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research systems learn single tasks from pixels to torques on real humanoid robots",
+        "unlocks": "proof that end-to-end neural control can work outside simulation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-task policies that generalise across objects, scenes and slight changes in the robot",
+        "unlocks": "humanoids that can perform many household or warehouse tasks without retraining."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial humanoid robots using learned control in structured environments such as warehouses",
+        "unlocks": "economic deployment, which generates more data and better models."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose robots in unstructured human spaces",
+        "unlocks": "widespread automation of physical labour, provided safety and reliability are proven."
+      }
+    ]
   }
 }

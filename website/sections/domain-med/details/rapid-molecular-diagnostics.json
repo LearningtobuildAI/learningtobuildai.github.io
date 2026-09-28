@@ -34,5 +34,159 @@
         "def": "A type of nucleic acid amplification that occurs at a constant temperature, often used in POC diagnostics due to its simplicity and speed."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sample preparation",
+        "role": "releases nucleic acid from the pathogen and removes substances that inhibit the reaction.",
+        "parts": [
+          "lysis chamber with enzymes or chaotropic salts",
+          "silica membrane or magnetic beads",
+          "filters",
+          "waste chamber"
+        ]
+      },
+      {
+        "name": "Amplification module",
+        "role": "copies a target DNA or RNA sequence until it is detectable.",
+        "parts": [
+          "thermal cycler for PCR, or a simple heater for isothermal methods",
+          "thermostable polymerase and reverse transcriptase",
+          "primers",
+          "nucleotides and buffers"
+        ]
+      },
+      {
+        "name": "Detection",
+        "role": "reports whether the target — and sometimes a drug-resistance mutation — is present.",
+        "parts": [
+          "fluorescent probes",
+          "light source and photodetector",
+          "lateral-flow strip in some designs"
+        ]
+      },
+      {
+        "name": "Cartridge and fluidics",
+        "role": "a sealed disposable that moves reagents without contaminating the clinic or the sample.",
+        "parts": [
+          "injection-moulded plastic channels",
+          "sealed reagent blisters",
+          "valves",
+          "integrated reaction tube"
+        ]
+      },
+      {
+        "name": "Instrument and reader",
+        "role": "battery-capable device that heats, reads and displays the result.",
+        "parts": [
+          "microcontroller",
+          "heater and temperature sensor",
+          "optics",
+          "battery",
+          "screen"
+        ]
+      },
+      {
+        "name": "Connectivity and quality control",
+        "role": "sends results to clinic records and public-health systems, and checks the test is working.",
+        "parts": [
+          "wireless module",
+          "encryption",
+          "external positive and negative controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target and design the assay",
+        "detail": "A conserved gene is selected from the pathogen's genome, and primers and probes are designed against it; for resistance testing, mutations such as those in the rpoB gene for rifampicin resistance are included."
+      },
+      {
+        "title": "Optimise the chemistry",
+        "detail": "Primers, enzymes and buffers are tested against cultured pathogens to find the limit of detection and rule out cross-reactions with similar organisms."
+      },
+      {
+        "title": "Lyophilise the reagents",
+        "detail": "Enzymes, primers and nucleotides are freeze-dried so the cartridge can be shipped and stored without a cold chain."
+      },
+      {
+        "title": "Fabricate the cartridge",
+        "detail": "Plastic channels and chambers are injection-moulded and welded, reagent blisters are filled and sealed, and the disposable is assembled in a clean room."
+      },
+      {
+        "title": "Build the instrument",
+        "detail": "Heater, optics, electronics and firmware are assembled and tested for battery life, temperature accuracy and tolerance of heat and humidity."
+      },
+      {
+        "title": "Validate clinically",
+        "detail": "Patient samples are tested against reference-laboratory PCR; regulators and bodies such as WHO review the evidence before wide use."
+      },
+      {
+        "title": "Manufacture and deploy",
+        "detail": "Cartridges and instruments are produced at scale, health workers are trained, and supply chains for disposables are set up."
+      },
+      {
+        "title": "Monitor over time",
+        "detail": "Target mutations that could cause false negatives are tracked, and assays are updated as pathogens evolve."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Polymerase chain reaction (PCR)",
+        "status": "exists",
+        "why": "the foundational method for copying a specific nucleic-acid sequence."
+      },
+      {
+        "tech": "Isothermal amplification",
+        "status": "exists",
+        "why": "methods such as LAMP and nicking-enzyme amplification avoid thermal cycling, allowing simpler battery-powered devices."
+      },
+      {
+        "tech": "Thermostable enzymes and lyophilisation",
+        "status": "exists",
+        "why": "let reagents survive room-temperature storage and rough transport."
+      },
+      {
+        "tech": "Microfluidics and cartridge manufacturing",
+        "status": "exists",
+        "why": "sealed disposables make complex testing safe and repeatable outside a laboratory."
+      },
+      {
+        "tech": "Low-power electronics and batteries",
+        "status": "exists",
+        "why": "the device must run where grid power is unreliable."
+      },
+      {
+        "tech": "Reference laboratory networks",
+        "status": "partial",
+        "why": "needed for validation, quality assurance and confirmatory testing, but weak in many settings."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cartridge PCR for tuberculosis and COVID-19 at clinic level, including rifampicin-resistance detection",
+        "unlocks": "same-day diagnosis and treatment decisions where a laboratory is hours or days away."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multiplex cartridges that test many pathogens and resistance genes at once",
+        "unlocks": "better fever and respiratory panels without multiple tests."
+      },
+      {
+        "stage": "Next",
+        "milestone": "CRISPR-based and portable sequencing tests for strain typing",
+        "unlocks": "outbreak tracking and resistance surveillance at district level."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully integrated sample-to-answer devices needing no laboratory at all",
+        "unlocks": "molecular diagnosis almost anywhere, including for antimicrobial-resistance monitoring."
+      }
+    ]
   }
 }

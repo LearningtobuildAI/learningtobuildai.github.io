@@ -34,5 +34,151 @@
         "def": "Signals related to meaning or intent detected from neural activity, often used in BCI applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural sensor array",
+        "role": "reads the electrical activity of motor and language areas of the cortex.",
+        "parts": [
+          "penetrating microelectrode arrays or flexible electrode threads",
+          "surface electrode grids",
+          "low-noise amplifiers"
+        ]
+      },
+      {
+        "name": "Implant electronics and link",
+        "role": "amplifies, digitises and transmits neural signals out of the body without wires.",
+        "parts": [
+          "recording chip (ASIC)",
+          "wireless transceiver",
+          "inductive power or sealed battery",
+          "hermetic titanium case"
+        ]
+      },
+      {
+        "name": "Real-time decoder",
+        "role": "turns spike and field-potential patterns into an estimate of what the user intends.",
+        "parts": [
+          "spike detection and sorting",
+          "recurrent neural-network decoders",
+          "calibration and drift correction"
+        ]
+      },
+      {
+        "name": "Intent-to-output bridge",
+        "role": "maps a decoded intent vector onto a generative model that writes code or makes art.",
+        "parts": [
+          "shared latent representation",
+          "large language model or code model",
+          "art and media generators",
+          "agent that runs or renders the result"
+        ]
+      },
+      {
+        "name": "Feedback channel",
+        "role": "lets the user see, hear or feel the result and steer it.",
+        "parts": [
+          "visual or auditory display",
+          "optional cortical microstimulation",
+          "confidence cues"
+        ]
+      },
+      {
+        "name": "Safety and control layer",
+        "role": "keeps the loop bounded and reversible.",
+        "parts": [
+          "sandboxed execution",
+          "human confirmation gates",
+          "logging and rate limits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the neural dataset",
+        "detail": "Record from volunteers, often people with paralysis, while they attempt movements, handwriting or speech; align the recordings with what they meant to do."
+      },
+      {
+        "title": "Place the electrodes",
+        "detail": "A neurosurgeon implants arrays over or into the cortex that controls movement and speech, with a wired or wireless connection through the skull."
+      },
+      {
+        "title": "Train a decoding model",
+        "detail": "A network learns the mapping from recorded activity to intended letters, cursor positions or phonemes, reaching tens of words per minute in the best published trials."
+      },
+      {
+        "title": "Stabilise the signal over time",
+        "detail": "Electrodes scar and drift, so the decoder is recalibrated regularly, ideally without asking the user to redo training."
+      },
+      {
+        "title": "Align intent with a generative model",
+        "detail": "The decoded intent is embedded into the same latent space as a code or art model, so a rough thought resolves into a concrete candidate output."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The user sees the code or image, notices it is wrong, and the correction is decoded as the next input — the model and the user co-adapt."
+      },
+      {
+        "title": "Let the agent act",
+        "detail": "A software agent runs the generated code or renders the artwork in a sandbox, then reports back."
+      },
+      {
+        "title": "Constrain and validate",
+        "detail": "Executable output is checked by tests and human review before it touches anything real, because decoding errors become errors in running software."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-lived, high-channel-count neural recording",
+        "status": "partial",
+        "why": "current implants lose signal over months to years as scar tissue forms."
+      },
+      {
+        "tech": "Real-time decoding of intended speech and movement",
+        "status": "partial",
+        "why": "small clinical trials have restored typing and speech for paralysed participants, but only in lab settings."
+      },
+      {
+        "tech": "Fully implantable, wireless, safe electronics",
+        "status": "partial",
+        "why": "a device that sits in the brain for a decade without infection or battery failure has not been demonstrated."
+      },
+      {
+        "tech": "Generative models that expand sparse intent into full artefacts",
+        "status": "exists",
+        "why": "code and image models already turn short prompts into complete outputs; the missing link is the neural front end."
+      },
+      {
+        "tech": "Reliable intent attribution",
+        "status": "missing",
+        "why": "distinguishing deliberate intent from stray neural noise is unsolved, and mistakes would produce unwanted actions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab and clinical trials restore communication and cursor control for a few dozen people",
+        "unlocks": "proof that intended speech and movement can be decoded in real time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wireless implants with hundreds to thousands of stable channels over several years",
+        "unlocks": "everyday use outside a research lab, with less calibration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "decoded intent driving a generative tool with visual feedback",
+        "unlocks": "fast drafting of code or images by thought, still reviewed by a human."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop agents that act on decoded intent under safety constraints",
+        "unlocks": "a genuine thought-speed workflow — most plausible first for people who have lost movement, before any wider use."
+      }
+    ]
   }
 }

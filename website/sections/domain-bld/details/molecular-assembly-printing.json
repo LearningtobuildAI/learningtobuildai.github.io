@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Probe array",
+        "role": "the tools that touch individual atoms — a single scanning probe tip can move atoms, but practical printing needs thousands working in parallel.",
+        "parts": [
+          "ultra-sharp cantilever tips (silicon, or carbon nanotube)",
+          "piezoelectric actuators for sub-nanometre motion",
+          "force/current feedback loop"
+        ]
+      },
+      {
+        "name": "Tip chemistry and feedstock",
+        "role": "gives each tip a specific chemical job rather than just a push.",
+        "parts": [
+          "functionalised tip apex",
+          "precursor molecules (e.g. carbon monoxide, or reactive radicals)",
+          "passivating layer on the workpiece"
+        ]
+      },
+      {
+        "name": "Positioning and metrology",
+        "role": "knowing exactly where every atom is, and proving it afterwards.",
+        "parts": [
+          "scanning tunnelling / atomic force imaging",
+          "laser interferometry",
+          "vibration isolation",
+          "ultra-high vacuum and often cryogenic cooling"
+        ]
+      },
+      {
+        "name": "Workpiece",
+        "role": "the structure being built, plus the surface chemistry that makes sites reactive or inert on demand.",
+        "parts": [
+          "atomically flat substrate",
+          "hydrogen- or other-terminated surface",
+          "growing lattice (silicon, diamond-like carbon, or a designed molecule)"
+        ]
+      },
+      {
+        "name": "Design and control software",
+        "role": "turns a wanted object into a legal sequence of atomic placement moves.",
+        "parts": [
+          "computational chemistry of candidate reactions",
+          "toolpath planner",
+          "error detection and repair logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the molecule and the route",
+        "detail": "Computational chemistry is used to find reactions that place the desired atom and leave nothing unwanted behind — the hard part is chemistry, not machinery."
+      },
+      {
+        "title": "Prepare an atomically clean surface",
+        "detail": "A flat crystal is cleaned in ultra-high vacuum and its surface atoms capped with hydrogen or another species so it is inert except where the tool works."
+      },
+      {
+        "title": "Park the tip",
+        "detail": "Piezoelectric actuators bring a probe tip to a chosen site, with feedback keeping the gap stable; vibration and thermal drift of a fraction of an atom are the enemies."
+      },
+      {
+        "title": "Open one reactive site",
+        "detail": "The tip plucks a single hydrogen atom, or otherwise activates one lattice position, leaving a dangling bond for a precursor molecule to bond to."
+      },
+      {
+        "title": "Deposit the atom or group",
+        "detail": "A precursor is delivered to that site and the tip supplies energy or force to break and form specific bonds, leaving the atom locked in place."
+      },
+      {
+        "title": "Verify and correct",
+        "detail": "The same tip images the result; misplaced atoms are removed and the step repeated."
+      },
+      {
+        "title": "Parallelise the writing",
+        "detail": "Instead of one tip, an array of thousands writes identical patterns at once, the way research cantilever arrays already write in parallel — this is what turns a demonstration into manufacturing."
+      },
+      {
+        "title": "Build machines that build",
+        "detail": "In the speculative end game, the printed structures are themselves molecular-scale assembly devices, so production copies itself and output grows exponentially. No such device has been demonstrated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Atomic-resolution imaging and single-atom manipulation",
+        "status": "exists",
+        "why": "atoms have been positioned one at a time under a scanning probe since the late 1980s, though only in vacuum and at a crawl."
+      },
+      {
+        "tech": "Parallel, independently controlled probe arrays",
+        "status": "partial",
+        "why": "large cantilever arrays have been demonstrated for writing, but each tip is not yet a precise atomic tool."
+      },
+      {
+        "tech": "Mechanosynthesis reaction design",
+        "status": "missing",
+        "why": "credible, computed step-by-step reaction sequences for building rigid 3-D lattices are still mostly proposals."
+      },
+      {
+        "tech": "In-situ atomic-scale error detection",
+        "status": "partial",
+        "why": "without fast, non-destructive verification, error rates compound and a printed object is never trustworthy."
+      },
+      {
+        "tech": "Self-assembly as a co-process",
+        "status": "partial",
+        "why": "DNA origami and similar methods already build precise nanoscale shapes in bulk, far faster than any tip; combining the two is the most plausible route."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab demonstrations of atom-by-atom writing, hydrogen-depassivation lithography on silicon, and bulk DNA origami",
+        "unlocks": "proof that atoms can be placed deliberately, and that self-assembly can make precise shapes cheaply."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small, functional device whose critical layer is made atom by atom",
+        "unlocks": "atomically precise electronics, sensors and catalysts that are genuinely better than conventional ones."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid production: self-assembly does the bulk, lithography defines the precise parts",
+        "unlocks": "useful atomically precise materials at realistic cost and speed."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose molecular assemblers",
+        "unlocks": "zero-waste, perfect-material manufacturing — highly speculative, and disputed among chemists over whether the required reactions are feasible outside a vacuum."
+      }
+    ]
+  }
+}

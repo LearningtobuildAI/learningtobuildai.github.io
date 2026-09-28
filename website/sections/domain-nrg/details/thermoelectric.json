@@ -28,5 +28,148 @@
         "def": "A measure used to evaluate the performance of thermoelectric materials, balancing electrical conductivity and thermal conductivity with the Seebeck coefficient."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Thermocouple legs",
+        "role": "the working pairs that generate voltage; one leg is doped p-type, the other n-type, joined at the hot end.",
+        "parts": [
+          "p-type semiconductor leg",
+          "n-type semiconductor leg",
+          "hot-side junction"
+        ]
+      },
+      {
+        "name": "Contacts and barriers",
+        "role": "carry current in and out without the semiconductor and metal reacting or diffusing together at temperature.",
+        "parts": [
+          "solder or braze layer",
+          "nickel or other diffusion barrier",
+          "metallised end faces"
+        ]
+      },
+      {
+        "name": "Substrates and interconnects",
+        "role": "hold the legs in place, insulate them electrically and route current so the legs add in series.",
+        "parts": [
+          "alumina or aluminium-nitride ceramic plates",
+          "copper conductor patterns",
+          "electrical feedthroughs"
+        ]
+      },
+      {
+        "name": "Hot-side heat exchanger",
+        "role": "pulls heat out of the exhaust or flue gas and delivers it to the modules.",
+        "parts": [
+          "finned or heat-pipe block",
+          "thermal interface material",
+          "clamping frame"
+        ]
+      },
+      {
+        "name": "Cold side",
+        "role": "keeps the temperature difference large; the bigger the gap, the more power.",
+        "parts": [
+          "liquid cold plate or finned air sink",
+          "coolant loop or fan"
+        ]
+      },
+      {
+        "name": "Power conversion",
+        "role": "conditions the low, load-dependent DC output into something a grid, battery or device can use.",
+        "parts": [
+          "DC-DC converter",
+          "maximum-power-point tracker",
+          "storage or load connection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the semiconductor",
+        "detail": "Bismuth telluride for temperatures near ambient, or lead telluride, skutterudites and half-Heusler alloys for hot exhaust; the ingot is melted, zone-refined and doped p- or n-type."
+      },
+      {
+        "title": "Cut and metallise the legs",
+        "detail": "Ingots are sawn into millimetre-scale pillars, their ends lapped flat, then coated with contact and barrier layers so solder cannot poison the semiconductor."
+      },
+      {
+        "title": "Print the ceramic circuits",
+        "detail": "Copper patterns are bonded to alumina or aluminium-nitride plates; the ceramic must conduct heat well but block current."
+      },
+      {
+        "title": "Solder the array",
+        "detail": "Legs are placed in a jig and soldered between top and bottom plates, alternating p and n so the hundreds of junctions are electrically in series and thermally in parallel."
+      },
+      {
+        "title": "Seal and test",
+        "detail": "Modules are laminated, cured and measured for internal resistance, voltage and power at a known temperature difference — the figure of merit, ZT, is what everything is judged on."
+      },
+      {
+        "title": "Build the heat exchangers",
+        "detail": "Modules are clamped between a hot-side duct or fin block and a cold plate; clamping pressure and thermal grease matter as much as the chips."
+      },
+      {
+        "title": "Integrate with the host",
+        "detail": "The assembly is fitted to an exhaust pipe, industrial flue, engine or boiler, with the coolant loop tied into the existing system."
+      },
+      {
+        "title": "Tune the electronics",
+        "detail": "The converter tracks the maximum power point, because the module's voltage sags as it heats up and the load changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-efficiency thermoelectric materials",
+        "status": "partial",
+        "why": "commercial bismuth telluride modules reach a ZT near 1 and single-digit percent efficiency; laboratory materials reach roughly 2–3, which is the threshold for wider use."
+      },
+      {
+        "tech": "Stable contacts and diffusion barriers",
+        "status": "partial",
+        "why": "a module must survive thousands of thermal cycles without the junction layers cracking or reacting."
+      },
+      {
+        "tech": "Compact high-performance heat exchangers",
+        "status": "exists",
+        "why": "the temperature difference across the module, not the chip, usually limits the power."
+      },
+      {
+        "tech": "Cheap low-voltage power electronics",
+        "status": "exists",
+        "why": "module output is only volts and varies with load, so efficient conversion is essential."
+      },
+      {
+        "tech": "Competing waste-heat technologies",
+        "status": "exists",
+        "why": "organic Rankine cycle and other turbine-based systems are more efficient at large scale, so thermoelectrics must win on simplicity, size or reliability."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial modules in niche uses: remote sensors, pipeline cathodic protection, wood-stove and vehicle auxiliary power",
+        "unlocks": "a proven, maintenance-free product where running wires or generators is impractical."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mass-produced automotive and industrial modules using half-Heusler, skutterudite and nanostructured materials",
+        "unlocks": "kilowatts of recovered power per vehicle or furnace at acceptable cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised integration into cement, steel and glass flues",
+        "unlocks": "waste heat turned into electricity with no working fluid, no moving parts and almost no maintenance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid systems pairing thermoelectrics with bottoming-cycle turbines",
+        "unlocks": "recovery across the full temperature range of an exhaust stream."
+      }
+    ]
   }
 }

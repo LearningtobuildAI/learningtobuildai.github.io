@@ -33,5 +33,167 @@
         "def": "Robots designed with two legs, enabling them to walk and move like humans or other bipedal creatures."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Locomotion system",
+        "role": "keeps the robot balanced and moving on two legs over uneven ground.",
+        "parts": [
+          "hip, knee and ankle joints",
+          "feet with force and torque sensors",
+          "whole-body balance controller"
+        ]
+      },
+      {
+        "name": "Actuators",
+        "role": "convert electrical power into precise, high-torque joint motion.",
+        "parts": [
+          "custom electric motors",
+          "harmonic or cycloidal reducers",
+          "joint encoders and drivers"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "builds a real-time picture of the surroundings and of the robot's own body.",
+        "parts": [
+          "head-mounted cameras and depth sensors",
+          "inertial measurement unit",
+          "tactile sensors in hands and feet"
+        ]
+      },
+      {
+        "name": "Hands and end-effectors",
+        "role": "grasp and manipulate objects of unknown shape and weight.",
+        "parts": [
+          "multi-fingered hands",
+          "finger actuators",
+          "tactile skin"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "supplies energy and sheds heat from dense electronics.",
+        "parts": [
+          "lithium-ion battery pack",
+          "power electronics",
+          "cooling channels"
+        ]
+      },
+      {
+        "name": "Compute and control",
+        "role": "runs learned policies and safety checks in real time.",
+        "parts": [
+          "onboard GPU compute",
+          "real-time safety controller",
+          "wireless link for teleoperation"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "turns sensor data into actions and learns new tasks.",
+        "parts": [
+          "vision-language-action model",
+          "simulation training environment",
+          "teleoperation data pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Specify the kinematics",
+        "detail": "Choose degrees of freedom, reach, payload and speed, then derive the torque and speed each joint must deliver in Nm and radians per second."
+      },
+      {
+        "title": "Build the actuators",
+        "detail": "Wind and assemble custom motors with low-backlash reducers and drivers, then test them on benches for torque, efficiency and heat."
+      },
+      {
+        "title": "Fabricate the body",
+        "detail": "Cut and join lightweight aluminium or carbon-fibre limbs and torso, keeping mass low because every kilogram must be carried and accelerated."
+      },
+      {
+        "title": "Integrate sensors, compute and power",
+        "detail": "Fit cameras, inertial and tactile sensors, the onboard computer and a battery pack of a few kilowatt-hours into the torso and head."
+      },
+      {
+        "title": "Develop the control stack",
+        "detail": "Build a simulation model of the robot, train balance and walking policies with reinforcement learning, then transfer them to hardware."
+      },
+      {
+        "title": "Collect teleoperation data",
+        "detail": "Humans operate the robot or wear motion-capture suits to gather thousands of demonstrations of grasping, carrying and placing."
+      },
+      {
+        "title": "Train vision-language-action models",
+        "detail": "Large-scale imitation learning maps camera images and spoken or written instructions directly to joint commands."
+      },
+      {
+        "title": "Test and harden",
+        "detail": "Run repeated trials for reliability, battery life, fall recovery and safe stopping near people, fixing failures before wider use."
+      },
+      {
+        "title": "Pilot deployments",
+        "detail": "Place robots in warehouses or factories under supervision, doing narrow tasks while data and experience accumulate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density electric actuators",
+        "status": "partial",
+        "why": "human-scale limbs need joints that are strong, light and efficient enough to move the whole body."
+      },
+      {
+        "tech": "Sim-to-real reinforcement learning",
+        "status": "partial",
+        "why": "most walking and balance skills are learned in simulation, but the gap to the real world still causes failures."
+      },
+      {
+        "tech": "Vision-language-action foundation models",
+        "status": "partial",
+        "why": "general-purpose manipulation needs models that generalise across objects and tasks, not hand-coded routines."
+      },
+      {
+        "tech": "Dexterous hands with tactile sensing",
+        "status": "partial",
+        "why": "without touch, robots struggle with unknown objects and fragile items."
+      },
+      {
+        "tech": "Batteries with high energy density",
+        "status": "exists",
+        "why": "lithium-ion packs are available, but running a full working shift on one charge remains hard."
+      },
+      {
+        "tech": "Safety standards and certification for humanoids",
+        "status": "missing",
+        "why": "existing robot safety rules assume fixed arms, not free-moving bipeds sharing space with people."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot robots doing narrow tasks such as moving totes or tending machines in warehouses and factories, with human supervision",
+        "unlocks": "real operating data and early commercial contracts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one robot switching between several unrelated tasks without reprogramming, in semi-structured workplaces",
+        "unlocks": "broader deployment in logistics and manufacturing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "foundation models that generalise across sites, with learning from a few demonstrations or plain instructions",
+        "unlocks": "use by smaller businesses and in service roles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "safe, reliable autonomy around untrained people in homes and public spaces",
+        "unlocks": "domestic assistance and care work."
+      }
+    ]
   }
 }

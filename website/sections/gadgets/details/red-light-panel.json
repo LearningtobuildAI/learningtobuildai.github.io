@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Emitter array",
+        "role": "produces red and near-infrared light at specific wavelengths that penetrate tissue.",
+        "parts": [
+          "LEDs (typically 630–670 nm red and 810–850 nm near-infrared)",
+          "printed circuit board",
+          "mounting pads"
+        ]
+      },
+      {
+        "name": "Driver electronics",
+        "role": "supplies a stable, controlled current so light output stays constant.",
+        "parts": [
+          "constant-current driver",
+          "pulse-width modulation for pulsing modes",
+          "microcontroller"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "removes heat from LEDs, which lose efficiency and shift wavelength if they overheat.",
+        "parts": [
+          "aluminium heat sink",
+          "cooling fan or passive fins",
+          "thermal interface material"
+        ]
+      },
+      {
+        "name": "Optical window",
+        "role": "spreads light evenly over the treatment area and protects the emitters.",
+        "parts": [
+          "diffuser sheet or lens",
+          "transparent cover (acrylic or glass)"
+        ]
+      },
+      {
+        "name": "Housing and controls",
+        "role": "contains the device and lets the user set time, intensity and pulse settings.",
+        "parts": [
+          "plastic or metal enclosure",
+          "stand or strap",
+          "buttons or touch panel",
+          "timer"
+        ]
+      },
+      {
+        "name": "Power supply",
+        "role": "converts mains or battery power to the low-voltage DC the LEDs need.",
+        "parts": [
+          "AC-DC adapter or battery pack",
+          "safety fuse",
+          "cable"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose wavelengths and dose",
+        "detail": "Select LED wavelengths based on research into how deep light penetrates and how tissue absorbs it, then set a target irradiance (power per area) and treatment time."
+      },
+      {
+        "title": "Mount the LEDs",
+        "detail": "Solder or reflow LEDs onto a circuit board, often with an aluminium backing to conduct heat away."
+      },
+      {
+        "title": "Build the driver",
+        "detail": "Assemble a constant-current driver and microcontroller so each LED receives the same current and can be pulsed or dimmed reliably."
+      },
+      {
+        "title": "Attach cooling",
+        "detail": "Bond the board to a heat sink and fit a fan or vents so the panel can run for many minutes without overheating."
+      },
+      {
+        "title": "Fit the optical window",
+        "detail": "Place a diffuser over the LEDs to blur bright spots and spread light evenly across the skin."
+      },
+      {
+        "title": "Enclose and wire controls",
+        "detail": "Install the board, driver and power supply in the housing, connect the timer and buttons, and seal the unit."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Measure light output at a set distance with a power meter, adjust the driver if needed, and check eye-safety limits before packaging."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "LEDs at therapeutic wavelengths",
+        "status": "exists",
+        "why": "red and near-infrared LEDs are mass-produced for lighting and remote controls, so suitable emitters are cheap and widely available."
+      },
+      {
+        "tech": "Power electronics for constant current",
+        "status": "exists",
+        "why": "stable current is needed to keep wavelength and output from drifting as the LEDs warm up."
+      },
+      {
+        "tech": "Understanding of light-tissue interaction",
+        "status": "partial",
+        "why": "research suggests light is absorbed by mitochondrial components, but the exact dose–response and signalling pathways are still debated."
+      },
+      {
+        "tech": "Clinical evidence for specific benefits",
+        "status": "partial",
+        "why": "some trials show modest effects on pain, skin or recovery, but many are small or poorly controlled, so results are not yet conclusive."
+      },
+      {
+        "tech": "Optical safety standards",
+        "status": "exists",
+        "why": "limits for eye and skin exposure to bright light guide safe design, though consumer panels vary in how strictly they follow them."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer panels sold for wellness and recovery with widely varying power and instructions",
+        "unlocks": "low-cost access to red and near-infrared light at home."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised reporting of wavelength, irradiance and dose on every device",
+        "unlocks": "users and researchers can compare devices and reproduce studies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger sham-controlled trials for specific conditions such as wound healing or joint pain",
+        "unlocks": "clear evidence for which uses actually work and at what dose."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulated medical devices with proven indications and optimised treatment protocols",
+        "unlocks": "routine clinical use alongside or instead of existing therapies."
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Token embedding and routing input",
+        "role": "turns each input token into a vector the router can score.",
+        "parts": [
+          "token embedding layer",
+          "positional encoding"
+        ]
+      },
+      {
+        "name": "Gating network (router)",
+        "role": "computes a score for each expert per token and selects the top few.",
+        "parts": [
+          "linear projection",
+          "softmax or top-k selection",
+          "optional noise for exploration"
+        ]
+      },
+      {
+        "name": "Expert networks",
+        "role": "independent sub-networks that process only the tokens assigned to them.",
+        "parts": [
+          "feed-forward layers",
+          "activation functions",
+          "expert-specific parameters"
+        ]
+      },
+      {
+        "name": "Dispatch and combine module",
+        "role": "sends tokens to chosen experts and merges their outputs with gate weights.",
+        "parts": [
+          "token routing tables",
+          "all-to-all communication",
+          "weighted sum"
+        ]
+      },
+      {
+        "name": "Load balancing controller",
+        "role": "keeps experts evenly used so none are idle or overloaded.",
+        "parts": [
+          "auxiliary loss",
+          "capacity factor",
+          "token dropping or padding"
+        ]
+      },
+      {
+        "name": "Distributed execution engine",
+        "role": "runs experts in parallel across many accelerators.",
+        "parts": [
+          "expert parallelism",
+          "data parallelism",
+          "communication scheduler"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the MoE configuration",
+        "detail": "Decide the number of experts, how many are active per token (top-k), and the size of each expert. Common choices are 8 to 64 experts with top-2 routing."
+      },
+      {
+        "title": "Initialize experts and router",
+        "detail": "Create the expert feed-forward networks with random weights and initialize the router's linear layer."
+      },
+      {
+        "title": "Implement routing logic",
+        "detail": "For each token, compute gate logits, apply softmax to get expert probabilities, and select the highest-scoring k experts."
+      },
+      {
+        "title": "Add load balancing",
+        "detail": "Introduce an auxiliary loss that penalizes uneven expert usage, and set a capacity factor to limit how many tokens any one expert can receive per batch."
+      },
+      {
+        "title": "Set up distributed execution",
+        "detail": "Partition experts across devices and implement all-to-all communication so tokens are sent to the devices holding their chosen experts."
+      },
+      {
+        "title": "Train the model",
+        "detail": "In the forward pass, route tokens, let experts process them, combine outputs weighted by gate values, and backpropagate gradients to both experts and the router."
+      },
+      {
+        "title": "Optimize inference",
+        "detail": "Reduce latency with batching, caching, and overlapping communication with computation; possibly specialize kernels for sparse expert activation."
+      },
+      {
+        "title": "Deploy and serve",
+        "detail": "Integrate the trained MoE into a serving system with expert parallelism, monitor load balance and output quality, and adjust routing as needed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense neural network training",
+        "status": "exists",
+        "why": "MoE layers replace or augment standard transformer feed-forward blocks, so the base architecture and training loops must already work."
+      },
+      {
+        "tech": "Distributed training frameworks",
+        "status": "exists",
+        "why": "Models with many experts and billions of parameters require frameworks that can shard parameters and synchronize gradients across devices."
+      },
+      {
+        "tech": "High-bandwidth interconnects",
+        "status": "exists",
+        "why": "All-to-all communication between experts is bandwidth-intensive and can become the bottleneck without fast links such as NVLink or InfiniBand."
+      },
+      {
+        "tech": "Load balancing algorithms",
+        "status": "partial",
+        "why": "Basic auxiliary losses and capacity limits exist, but stable and efficient routing that avoids expert collapse is still an active research area."
+      },
+      {
+        "tech": "Sparse tensor operations and libraries",
+        "status": "partial",
+        "why": "Frameworks support MoE, but highly optimized kernels for dynamic token routing and sparse expert execution are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sparse MoE models with top-1 or top-2 routing, such as Switch Transformer (2021) and Mixtral 8x7B (2023), deployed in production",
+        "unlocks": "larger models at lower inference cost, because only a fraction of parameters run per token."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved routing algorithms like expert choice (where experts select tokens) and soft routing reduce load imbalance and training instability",
+        "unlocks": "more reliable scaling to trillions of parameters and better utilization of all experts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware and software co-design: chips with fast on-chip networks and MoE-aware compilers",
+        "unlocks": "lower communication overhead and higher effective compute throughput."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "conditional computation throughout the model, with routing at every layer and dynamic expert specialization",
+        "unlocks": "modular, efficient AI that activates only relevant parameters for each input."
+      }
+    ]
+  }
+}

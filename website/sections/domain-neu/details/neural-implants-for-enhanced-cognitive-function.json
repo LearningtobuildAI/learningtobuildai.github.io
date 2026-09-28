@@ -35,5 +35,160 @@
         "def": "The ability of a material or device to perform its intended function without causing adverse effects on living tissues or systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Electrode interface",
+        "role": "the physical contact with brain tissue that both listens to neurons and delivers current.",
+        "parts": [
+          "silicon shanks with micrometre-scale recording sites (Utah-style arrays)",
+          "thin-film polymer arrays",
+          "depth leads for deep structures",
+          "surface grids"
+        ]
+      },
+      {
+        "name": "Implant electronics",
+        "role": "amplifies faint neural signals and generates precise stimulation pulses.",
+        "parts": [
+          "low-noise amplifiers",
+          "current-controlled stimulator",
+          "multiplexing and digitisation",
+          "hermetic titanium case with feedthroughs"
+        ]
+      },
+      {
+        "name": "Power and telemetry",
+        "role": "gets data out and power in without a cable crossing the skin.",
+        "parts": [
+          "inductive or radio link",
+          "battery or supercapacitor",
+          "wireless data transmitter"
+        ]
+      },
+      {
+        "name": "Decoding and control software",
+        "role": "decides when the brain is about to encode poorly and what pulse to deliver.",
+        "parts": [
+          "real-time signal processing",
+          "biomarker or classifier model",
+          "closed-loop trigger logic"
+        ]
+      },
+      {
+        "name": "Surgical delivery",
+        "role": "places the array in the right millimetre of tissue.",
+        "parts": [
+          "stereotactic frame or frameless navigation",
+          "intraoperative MRI or CT",
+          "microdrive inserter"
+        ]
+      },
+      {
+        "name": "Biocompatibility package",
+        "role": "keeps the immune response from smothering the electrodes.",
+        "parts": [
+          "anti-inflammatory coatings",
+          "flexible strain-relieving tether",
+          "sealing and encapsulation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Identify the circuit to target",
+        "detail": "Researchers record from electrodes already implanted in epilepsy patients awaiting surgery, and correlate activity in the hippocampus and surrounding cortex with whether a word or image is later remembered."
+      },
+      {
+        "title": "Design the array",
+        "detail": "Recording sites are laid out at micrometre spacing on shanks thin enough not to tear tissue, with stimulation contacts placed on the same or a paired structure."
+      },
+      {
+        "title": "Microfabricate",
+        "detail": "Photolithography and etching build the conductive traces and electrode sites on a silicon or polymer substrate; the wafer is diced into individual arrays."
+      },
+      {
+        "title": "Package and seal",
+        "detail": "The array is bonded to a flexible cable and a hermetic can holding the amplifier, stimulator and radio, so that only the electrodes are exposed to tissue."
+      },
+      {
+        "title": "Implant",
+        "detail": "Under imaging guidance, a neurosurgeon inserts the array into the target structure through a small opening in the skull, or lays a grid on the cortical surface."
+      },
+      {
+        "title": "Tune the decoder",
+        "detail": "Recorded activity is used to train a model that flags the neural state associated with a memory that will soon be forgotten, using each patient's own signals."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "When the decoder detects that state, the device delivers brief, patterned microstimulation at microamp currents to nudge the network back into an encoding-friendly rhythm."
+      },
+      {
+        "title": "Test against sham",
+        "detail": "Performance is compared with randomly timed or absent stimulation, ideally double-blind, to separate real effects from placebo and practice."
+      },
+      {
+        "title": "Monitor for years",
+        "detail": "Signal quality is tracked over months and years, because scarring and electrode movement are what usually end these experiments."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Electrodes that survive for years in the brain",
+        "status": "partial",
+        "why": "signal quality typically degrades as glial tissue encapsulates the array, so long-term implants remain the core unsolved problem."
+      },
+      {
+        "tech": "A working model of human memory encoding",
+        "status": "partial",
+        "why": "decoding when memory is likely to fail has been shown in small patient groups, but the underlying code is not fully understood."
+      },
+      {
+        "tech": "Real-time closed-loop stimulation hardware",
+        "status": "partial",
+        "why": "existing neurostimulators are built for tremor or epilepsy, not for millisecond-timed memory pulses."
+      },
+      {
+        "tech": "Wireless, high-bandwidth, low-power implants",
+        "status": "partial",
+        "why": "hundreds of channels of neural data are hard to stream through the skin without heat or wires."
+      },
+      {
+        "tech": "Rules for enhancement, not just therapy",
+        "status": "missing",
+        "why": "regulators approve devices for disease; using them to boost healthy cognition raises consent, fairness and identity questions with no settled framework."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "deep brain stimulation is routine for movement disorders; memory-focused stimulation trials in epilepsy and Alzheimer's patients show mixed or small effects",
+        "unlocks": "surgical safety, hardware and years of human neural data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable closed-loop memory prostheses that measurably improve recall in people with injury or disease",
+        "unlocks": "a genuine restorative therapy, and the first proof that stimulation can change cognition on demand."
+      },
+      {
+        "stage": "Next",
+        "milestone": "electrodes that keep recording for a decade and fully implanted, wireless systems",
+        "unlocks": "unobtrusive devices suitable for everyday life rather than the lab."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "non-invasive or minimally invasive routes, such as focused ultrasound or surface arrays",
+        "unlocks": "wider access, and the possibility of use by people without a diagnosis."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "enhancement of healthy cognition",
+        "unlocks": "nothing until the biology, the durability and the ethics are all far more settled; the near-term reality is restoration, not supercharging."
+      }
+    ]
   }
 }

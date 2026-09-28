@@ -33,5 +33,177 @@
         "def": "Extensive collections of data used for training machine learning models, often containing millions or billions of examples."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "Gathers and cleans the text and code that the model learns from.",
+        "parts": [
+          "web crawlers",
+          "deduplication and quality filters",
+          "tokenizer",
+          "data mixing and curriculum"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "The neural network that processes sequences and produces predictions.",
+        "parts": [
+          "transformer blocks",
+          "multi-head attention",
+          "feed-forward or mixture-of-experts layers",
+          "positional encoding",
+          "normalization layers"
+        ]
+      },
+      {
+        "name": "Pre-training infrastructure",
+        "role": "Trains the base model on next-token prediction at massive scale.",
+        "parts": [
+          "GPU or TPU clusters",
+          "distributed training framework",
+          "checkpointing and fault tolerance",
+          "mixed-precision arithmetic"
+        ]
+      },
+      {
+        "name": "Post-training and alignment",
+        "role": "Turns the base model into a helpful, reasoning assistant.",
+        "parts": [
+          "supervised fine-tuning datasets",
+          "reward models",
+          "reinforcement learning algorithms (e.g. PPO)",
+          "process reward models",
+          "constitutional or rule-based filters"
+        ]
+      },
+      {
+        "name": "Inference serving",
+        "role": "Runs the model efficiently for many users.",
+        "parts": [
+          "inference servers",
+          "KV cache",
+          "quantization",
+          "continuous batching",
+          "speculative decoding"
+        ]
+      },
+      {
+        "name": "Tool use and agent framework",
+        "role": "Lets the model call external tools and act over long tasks.",
+        "parts": [
+          "API connectors",
+          "sandboxed code execution",
+          "retrieval-augmented generation",
+          "memory and state management"
+        ]
+      },
+      {
+        "name": "Evaluation and safety",
+        "role": "Measures capability and catches harmful or unreliable behavior.",
+        "parts": [
+          "benchmark suites",
+          "red-teaming",
+          "interpretability tools",
+          "human evaluation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and filter data",
+        "detail": "Crawl the web, gather code, books, and papers; remove duplicates, spam, and toxic content; balance domains to avoid bias."
+      },
+      {
+        "title": "Train a tokenizer",
+        "detail": "Use byte-pair encoding or similar to split text into subword tokens, fixing the vocabulary the model will use."
+      },
+      {
+        "title": "Pre-train the base model",
+        "detail": "Train a transformer on trillions of tokens to predict the next token, using thousands of accelerators in parallel; often mixture-of-experts to cut compute per token."
+      },
+      {
+        "title": "Supervised fine-tuning",
+        "detail": "Fine-tune on demonstrations of helpful, step-by-step reasoning, including chain-of-thought examples and tool-use traces."
+      },
+      {
+        "title": "Train reward models",
+        "detail": "Collect human or AI preferences to score responses; for reasoning, use verifiable rewards from unit tests or math answers."
+      },
+      {
+        "title": "Reinforcement learning",
+        "detail": "Optimize the model with algorithms like PPO to maximize reward while staying close to the fine-tuned model, often with process rewards for each reasoning step."
+      },
+      {
+        "title": "Add tool use and agent scaffolding",
+        "detail": "Integrate search, code interpreters, and APIs; train the model to decide when and how to call them, and to recover from errors."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Test on reasoning, coding, and safety benchmarks; probe for deception, bias, and jailbreaks; iterate on data and training."
+      },
+      {
+        "title": "Deploy and optimize inference",
+        "detail": "Serve the model with quantization, batching, and caching; monitor for drift and abuse; update periodically."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "The attention mechanism lets models scale to billions of parameters and long contexts."
+      },
+      {
+        "tech": "Large-scale distributed training",
+        "status": "exists",
+        "why": "Training requires thousands of accelerators working together for weeks or months."
+      },
+      {
+        "tech": "Reinforcement learning for language models",
+        "status": "partial",
+        "why": "RLHF works for style and safety, but reliable multi-step reasoning is still an active research area."
+      },
+      {
+        "tech": "Verifiable reward environments",
+        "status": "partial",
+        "why": "Math and code give automatic feedback, but most real-world tasks lack a clear reward signal."
+      },
+      {
+        "tech": "High-quality human feedback",
+        "status": "partial",
+        "why": "Expert annotation is slow and expensive, and can encode biases."
+      },
+      {
+        "tech": "Efficient inference hardware",
+        "status": "exists",
+        "why": "Serving reasoning models is computationally heavy, so advances in chips and serving software matter."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "models with chain-of-thought and tool use power coding assistants and research tools",
+        "unlocks": "productivity gains in software and analysis."
+      },
+      {
+        "stage": "Next",
+        "milestone": "more reliable multi-step reasoning and longer context",
+        "unlocks": "agents that can complete complex tasks with less supervision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reinforcement learning with verifiable rewards scales to more domains",
+        "unlocks": "self-improving models that can write and debug code, maybe conduct research."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose agents that operate computers and collaborate with humans",
+        "unlocks": "automation of knowledge work, with safety and alignment challenges."
+      }
+    ]
   }
 }

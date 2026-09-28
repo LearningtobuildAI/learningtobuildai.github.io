@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data ingestion",
+        "role": "pulls the company's financial and operational records into one canonical model.",
+        "parts": [
+          "ERP and accounting adapters",
+          "bank feeds",
+          "payroll and invoicing systems",
+          "API and file ingestion",
+          "normalisation pipeline"
+        ]
+      },
+      {
+        "name": "Regulatory knowledge base",
+        "role": "holds the law as machine-readable rules, versioned by jurisdiction and date.",
+        "parts": [
+          "rule catalogue",
+          "jurisdiction and effective-date metadata",
+          "change-tracking"
+        ]
+      },
+      {
+        "name": "Control engine",
+        "role": "tests transactions and records against those rules before or as they are booked.",
+        "parts": [
+          "validation rules",
+          "threshold and rate tables",
+          "reconciliation checks",
+          "duplicate and anomaly detection"
+        ]
+      },
+      {
+        "name": "Reporting and filing engine",
+        "role": "produces statutory returns and transmits them through government channels.",
+        "parts": [
+          "report generators",
+          "government API or gateway connectors",
+          "digital signature and submission receipts"
+        ]
+      },
+      {
+        "name": "Identity and screening",
+        "role": "checks counterparties against sanctions, politically exposed person and watch lists.",
+        "parts": [
+          "customer due diligence",
+          "sanctions list ingestion",
+          "adverse media screening"
+        ]
+      },
+      {
+        "name": "Evidence and audit trail",
+        "role": "keeps an immutable record of what was filed, when and on what basis.",
+        "parts": [
+          "immutable event log",
+          "document retention",
+          "access controls"
+        ]
+      },
+      {
+        "name": "Exception workflow",
+        "role": "routes anything the rules cannot resolve to a human.",
+        "parts": [
+          "alerting",
+          "case management",
+          "approval and escalation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the obligations",
+        "detail": "Tax and legal specialists read each regulation and write down every duty, threshold, deadline and data field it requires."
+      },
+      {
+        "title": "Model the data",
+        "detail": "Design a canonical schema for transactions, entities and periods so many source systems and many jurisdictions speak one language."
+      },
+      {
+        "title": "Build the connectors",
+        "detail": "Write adapters for accounting systems, banks and payroll so records flow in without manual re-entry."
+      },
+      {
+        "title": "Encode the rules",
+        "detail": "Turn each obligation into explicit, testable logic — rates, thresholds, rounding, effective dates — with automated tests against known cases."
+      },
+      {
+        "title": "Connect to authorities",
+        "detail": "Integrate with government portals and APIs, using sandbox environments first, then live submission with signed receipts."
+      },
+      {
+        "title": "Run continuous monitoring",
+        "detail": "Validation happens at the point of entry rather than at period end, so problems surface while they can still be corrected."
+      },
+      {
+        "title": "Record the evidence",
+        "detail": "Log every check, decision and submission in a tamper-evident trail that stands up to an audit."
+      },
+      {
+        "title": "Maintain the rules",
+        "detail": "A standing process watches for legal changes, updates the rule catalogue and re-tests before the effective date."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Digitised tax and filing infrastructure",
+        "status": "partial",
+        "why": "automation depends on authorities offering APIs and accepting structured submissions; coverage is very uneven between countries."
+      },
+      {
+        "tech": "Structured e-invoicing standards",
+        "status": "exists",
+        "why": "standard formats let invoices carry the data an authority needs without a human reading them."
+      },
+      {
+        "tech": "Cloud compute, storage and stream processing",
+        "status": "exists",
+        "why": "real-time validation across millions of transactions requires elastic processing."
+      },
+      {
+        "tech": "Strong customer authentication and digital signatures",
+        "status": "exists",
+        "why": "filings and approvals need legally binding proof of who submitted what."
+      },
+      {
+        "tech": "Machine-readable regulation (rules as code)",
+        "status": "partial",
+        "why": "law is written for humans; translating it into unambiguous logic is still largely manual and error-prone."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mandatory e-invoicing and real-time transaction reporting in several countries — Italy's SdI, Hungary's real-time invoice reporting, India's GST e-invoicing — plus AML transaction monitoring",
+        "unlocks": "routine compliance without armies of staff, and tax authorities seeing transactions near-live."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pre-validation at the point of sale, where a transaction is checked and cleared as it is created",
+        "unlocks": "fewer corrections and penalties; compliance becomes a design constraint rather than a clean-up job."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous audit and supervisory technology, with regulators querying company data directly rather than receiving annual returns",
+        "unlocks": "assurance in near-real time, and earlier detection of systemic problems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "legislation drafted and published as machine-readable code alongside the human text",
+        "unlocks": "shorter lag between a law passing and systems implementing it — though legal accountability stays with people."
+      }
+    ]
+  }
+}

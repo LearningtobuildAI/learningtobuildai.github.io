@@ -30,5 +30,159 @@
         "def": "Automobiles capable of performing driving functions without human intervention through the use of advanced sensors, software, and sometimes artificial intelligence."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the hardware that runs the quantum subroutine — today a few hundred noisy qubits, not a general-purpose computer.",
+        "parts": [
+          "superconducting qubits or trapped ions (gate-based)",
+          "quantum annealing array",
+          "dilution refrigerator or vacuum and laser system"
+        ]
+      },
+      {
+        "name": "Classical control and readout",
+        "role": "drives the qubits with microwave or laser pulses and reads back probabilistic results.",
+        "parts": [
+          "waveform generators",
+          "cryogenic wiring",
+          "readout electronics"
+        ]
+      },
+      {
+        "name": "Quantum software stack",
+        "role": "turns a driving problem into a form the hardware can accept and interprets the output.",
+        "parts": [
+          "compiler and transpiler",
+          "problem encoding (QUBO / Ising or Hamiltonian)",
+          "error mitigation",
+          "hybrid solver loop"
+        ]
+      },
+      {
+        "name": "Vehicle perception stack",
+        "role": "real-time cameras, LiDAR and radar fused by ordinary neural networks — this part stays classical.",
+        "parts": [
+          "sensors",
+          "perception models",
+          "world model"
+        ]
+      },
+      {
+        "name": "Planning and control layer",
+        "role": "where a quantum call could plausibly sit: choosing between discrete manoeuvres, corridors or fleet routes.",
+        "parts": [
+          "mission and route planner",
+          "behaviour and motion planner",
+          "classical trajectory controller"
+        ]
+      },
+      {
+        "name": "Safety and arbitration layer",
+        "role": "independently checks any proposed plan and can veto it.",
+        "parts": [
+          "rule-based safety monitor",
+          "redundant classical planner",
+          "fail-operational hardware"
+        ]
+      },
+      {
+        "name": "Hybrid orchestration",
+        "role": "decides what runs on the quantum device, what runs on-board, and what runs in a data centre.",
+        "parts": [
+          "latency budget",
+          "task scheduler",
+          "network link or on-board co-processor"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a problem with real combinatorial structure",
+        "detail": "Pick something like multi-vehicle route assignment, merge ordering at a junction, or selecting one of many discrete trajectories. Perception and continuous control are poor candidates and stay classical."
+      },
+      {
+        "title": "Encode it as qubits",
+        "detail": "The problem is written as a QUBO or Ising model for an annealer, or as a cost Hamiltonian for a gate-based machine, so that cheap valid plans correspond to low-energy states."
+      },
+      {
+        "title": "Fabricate the quantum hardware",
+        "detail": "Qubits are patterned on a chip and cooled in a dilution refrigerator to milli-kelvin temperatures, or trapped and laser-cooled, with control and readout lines attached."
+      },
+      {
+        "title": "Build the hybrid algorithm",
+        "detail": "A short quantum circuit, or an annealing schedule, is wrapped inside a classical loop that feeds back and post-processes, with error mitigation to cope with noisy qubits."
+      },
+      {
+        "title": "Benchmark against classical solvers",
+        "detail": "The same instance is solved by the best available classical heuristic under the same time limit, energy budget and hardware cost. Without a clear win there is no product."
+      },
+      {
+        "title": "Integrate with the vehicle",
+        "detail": "The solver runs off-board in a data centre for planning tasks that tolerate seconds of delay, or on a co-processor for anything faster. The car carries a classical planner that works when the quantum path is unavailable."
+      },
+      {
+        "title": "Validate for functional safety",
+        "detail": "Show that the classical safety monitor never lets through an unsafe or infeasible plan, including when the quantum device returns a poor or degraded answer."
+      },
+      {
+        "title": "Field test",
+        "detail": "Trials on closed sites or in simulation compare the hybrid planner with a purely classical one over many scenarios, not just demonstrative single runs."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum hardware with useful coherence and low error rates",
+        "status": "partial",
+        "why": "today's devices are too noisy and too small for problems of vehicle-relevant size."
+      },
+      {
+        "tech": "Error correction with many logical qubits",
+        "status": "missing",
+        "why": "useful speed-ups for optimisation or machine learning generally assume fault-tolerant machines that do not yet exist."
+      },
+      {
+        "tech": "Demonstrated quantum advantage on optimisation or learning",
+        "status": "missing",
+        "why": "no established case yet where a quantum method beats the best classical method at equal cost."
+      },
+      {
+        "tech": "Millisecond-scale quantum computation",
+        "status": "missing",
+        "why": "control loops demand fresh answers every 10–100 ms, while current quantum routines take far longer and need many repeated runs."
+      },
+      {
+        "tech": "Standards for validating learning-based planners",
+        "status": "partial",
+        "why": "safety cases for data-driven planners are still immature even without quantum elements."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small noisy quantum processors and annealers used in research; hybrids trialled on traffic-flow and routing problems from a data centre",
+        "unlocks": "experience in encoding logistics problems for quantum hardware, far from the vehicle itself."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid quantum-classical solvers tested on offline driving datasets and fleet planning, always against a strong classical baseline",
+        "unlocks": "honest evidence about whether any vehicle-relevant task benefits, and where the break-even lies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant machines with tens to hundreds of logical qubits",
+        "unlocks": "larger optimisation and sampling problems to be attempted at useful scale."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a narrow, proven advantage on one planning or optimisation task, run as a co-processor with a classical fallback",
+        "unlocks": "a realistic niche for quantum computing in autonomy — not a replacement for the classical perception and control stack that actually keeps a car on the road."
+      }
+    ]
   }
 }

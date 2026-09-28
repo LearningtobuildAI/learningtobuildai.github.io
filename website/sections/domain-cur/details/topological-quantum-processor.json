@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Topological material",
+        "role": "where the exotic quantum states are supposed to live.",
+        "parts": [
+          "semiconductor nanowire (indium arsenide)",
+          "epitaxial aluminium shell grown without breaking vacuum",
+          "or a two-dimensional hybrid with a superconducting layer"
+        ]
+      },
+      {
+        "name": "Gate electrodes",
+        "role": "locally tune the electron density and create the conditions for Majorana modes.",
+        "parts": [
+          "dielectric layers",
+          "nanoscale metallic gates",
+          "bias wiring"
+        ]
+      },
+      {
+        "name": "Device architecture",
+        "role": "arranges several nanowire segments so that pairs of modes can be created, moved and exchanged.",
+        "parts": [
+          "H- or T-shaped nanowire junctions",
+          "tunnel junctions to normal-metal readout contacts",
+          "coupling elements between qubits"
+        ]
+      },
+      {
+        "name": "Cryogenic and magnet system",
+        "role": "the physics only appears near absolute zero and in a magnetic field.",
+        "parts": [
+          "dilution refrigerator",
+          "superconducting magnet",
+          "filtering and shielding"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "detects the parity of the modes, which is what carries the quantum information.",
+        "parts": [
+          "tunnelling spectroscopy",
+          "charge sensors",
+          "radio-frequency measurement lines"
+        ]
+      },
+      {
+        "name": "Control and software layer",
+        "role": "sequences the voltages that create, braid and measure qubits.",
+        "parts": [
+          "pulse generator",
+          "calibration stack",
+          "error-tracking logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the hybrid material",
+        "detail": "A semiconductor nanowire and a thin superconducting shell are grown together in a vacuum chamber so the interface stays atomically clean — dirty interfaces are the main reason signals have been ambiguous."
+      },
+      {
+        "title": "Pattern the device",
+        "detail": "Electron-beam lithography defines gates, contacts and junctions on a substrate; the wires are placed or grown in position and connected by metal."
+      },
+      {
+        "title": "Tune into the topological regime",
+        "detail": "A magnetic field is applied and gate voltages are adjusted until the wire is expected to host a pair of Majorana zero modes, one at each end."
+      },
+      {
+        "title": "Verify the modes",
+        "detail": "Tunnelling spectroscopy looks for a zero-bias conductance peak. That peak alone is not proof, so the accepted test is a 'gap protocol': the energy gap must open and close in the pattern only the topological phase predicts."
+      },
+      {
+        "title": "Build a small qubit",
+        "detail": "Four modes are arranged on one device; the way their parities pair up stores one qubit of information non-locally, so it is insensitive to local noise."
+      },
+      {
+        "title": "Measure parity",
+        "detail": "A tunnel junction to a nearby sensor reads whether the paired modes hold an even or odd number of electrons."
+      },
+      {
+        "title": "Braiding",
+        "detail": "Voltages are pulsed to physically move modes around one another. The order of the moves, not their speed, determines the operation — this is the fault tolerance. It has not been demonstrated."
+      },
+      {
+        "title": "Scale to an array",
+        "detail": "Repeat the unit thousands of times with wiring and control that works at millikelvin temperatures."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Clean semiconductor–superconductor interfaces",
+        "status": "partial",
+        "why": "majorana-like signals have appeared mainly in devices where disorder and unwanted states can mimic them."
+      },
+      {
+        "tech": "Independent confirmation of non-abelian anyons",
+        "status": "missing",
+        "why": "the whole approach rests on their existence; the field is still arguing over evidence."
+      },
+      {
+        "tech": "Braiding operations",
+        "status": "missing",
+        "why": "no experiment has shown that swapping the excitations performs the protected operation the theory requires."
+      },
+      {
+        "tech": "Millikelvin cryogenics at scale",
+        "status": "exists",
+        "why": "dilution refrigerators are standard, but a useful machine needs thousands of wires inside one."
+      },
+      {
+        "tech": "Cryogenic control electronics",
+        "status": "partial",
+        "why": "conventional room-temperature racks cannot wire up a large array without drowning it in heat and noise."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "careful spectroscopy on nanowire hybrids, and a repeating argument about whether zero-bias peaks are real Majorana modes or disorder",
+        "unlocks": "better materials, cleaner growth and stricter verification tests."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a device where braiding is demonstrated and the result is reproduced by an independent group",
+        "unlocks": "confidence that the qubit concept works at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a single protected qubit that stays coherent far longer than conventional superconducting qubits",
+        "unlocks": "a reason to engineer arrays rather than individual devices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a few hundred to a few thousand logical-quality qubits with cryogenic control",
+        "unlocks": "fault-tolerant machines for materials simulation and cryptanalysis — the prize that has driven the field since the 1990s."
+      }
+    ]
+  }
+}

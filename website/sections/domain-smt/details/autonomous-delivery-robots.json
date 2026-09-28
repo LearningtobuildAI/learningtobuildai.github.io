@@ -30,5 +30,156 @@
         "def": "Experimental projects designed to test new technologies or methods on a limited scale before full-scale implementation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Chassis and drivetrain",
+        "role": "a small wheeled platform stable enough to carry a parcel over kerbs and uneven paving.",
+        "parts": [
+          "six-wheel drive with suspension",
+          "weather-sealed body",
+          "cargo compartment with powered lid",
+          "lights and audible warning"
+        ]
+      },
+      {
+        "name": "Perception sensors",
+        "role": "sense pedestrians, cyclists, pets, kerbs, crossings and obstacles.",
+        "parts": [
+          "cameras (fisheye and stereo)",
+          "lidar",
+          "ultrasonic and radar sensors",
+          "IMU and wheel odometry"
+        ]
+      },
+      {
+        "name": "Onboard autonomy",
+        "role": "drive the route without a human, at walking pace, and stop safely when confused.",
+        "parts": [
+          "local compute",
+          "HD map and localisation",
+          "path planner",
+          "obstacle detection and braking"
+        ]
+      },
+      {
+        "name": "Remote supervision",
+        "role": "one human watches many robots and drives any that get stuck.",
+        "parts": [
+          "teleoperation link over cellular",
+          "fleet console",
+          "incident logging"
+        ]
+      },
+      {
+        "name": "Power and charging",
+        "role": "run a shift on a battery and return to a base to recharge.",
+        "parts": [
+          "lithium-ion pack",
+          "charging contacts and dock"
+        ]
+      },
+      {
+        "name": "Handoff and order backend",
+        "role": "links the robot to a shop or app and lets the customer open it.",
+        "parts": [
+          "order dispatch software",
+          "unlock code or app control",
+          "fleet scheduling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the operating area",
+        "detail": "Sidewalks, crossings, kerb heights and gradients are surveyed and turned into a high-definition map, because pavement maps rarely exist in usable form."
+      },
+      {
+        "title": "Design the chassis",
+        "detail": "The platform is sized to carry a small parcel, climb kerbs of roughly 10 cm, and stay upright on slopes and in rain."
+      },
+      {
+        "title": "Assemble the sensor suite",
+        "detail": "Cameras, lidar and ultrasonics are mounted, sealed and calibrated so their measurements agree."
+      },
+      {
+        "title": "Train the autonomy software",
+        "detail": "Engineers collect and label thousands of hours of footage, then test perception and planning in simulation before road trials."
+      },
+      {
+        "title": "Build the robots",
+        "detail": "Units are assembled in low volumes, each tested on an indoor track for braking, steering and lid closure."
+      },
+      {
+        "title": "Run a controlled pilot",
+        "detail": "A campus or neighbourhood is mapped, a remote-operations centre is staffed, and a small fleet runs short routes with heavy supervision."
+      },
+      {
+        "title": "Scale the fleet",
+        "detail": "Route density rises, more robots share one operator, and the service integrates with delivery apps and shops."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Robots run shifts at about walking pace, return to dock to charge, and are cleaned and repaired between shifts."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost lidar and camera modules",
+        "status": "exists",
+        "why": "perception used to be too expensive for a machine costing less than a car."
+      },
+      {
+        "tech": "High-definition pedestrian and kerb maps",
+        "status": "partial",
+        "why": "usable sidewalk geometry is missing in most cities."
+      },
+      {
+        "tech": "Low-speed autonomy in crowded spaces",
+        "status": "partial",
+        "why": "the hard problems are unpredictable pedestrians, dogs, roadworks and wet leaves."
+      },
+      {
+        "tech": "Cheap lithium-ion batteries and motors",
+        "status": "exists",
+        "why": "they make a shift's worth of range affordable."
+      },
+      {
+        "tech": "Remote teleoperation over cellular networks",
+        "status": "partial",
+        "why": "stuck robots need a fallback, and one operator must cover many robots to make the economics work."
+      },
+      {
+        "tech": "City permits for pavement robots",
+        "status": "partial",
+        "why": "rules vary from city to city and often cap fleet size or speed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot fleets delivering food and groceries on campuses and in a few neighbourhoods",
+        "unlocks": "real data on reliability, cost per delivery and pedestrian behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one remote operator supervising many robots, with denser routes and app integration",
+        "unlocks": "a cost per delivery that competes with a human courier."
+      },
+      {
+        "stage": "Next",
+        "milestone": "purpose-built lightweight robots that cross roads and last several years",
+        "unlocks": "coverage of ordinary residential streets, not just campuses."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "shared curb-side charging and regulated pavement access in many cities",
+        "unlocks": "robots as routine local infrastructure alongside bikes and scooters."
+      }
+    ]
   }
 }

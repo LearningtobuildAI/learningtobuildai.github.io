@@ -33,5 +33,166 @@
         "def": "Rubbish left over from past space missions that poses a risk of collision with operational satellites and spacecraft."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "collects sunlight uninterrupted by night or weather, at roughly several times the intensity available on the ground.",
+        "parts": [
+          "lightweight thin-film or composite photovoltaic panels",
+          "deployment booms",
+          "sun-tracking gimbal"
+        ]
+      },
+      {
+        "name": "Power conversion and transmitter",
+        "role": "converts direct current into a microwave beam aimed at one spot on Earth.",
+        "parts": [
+          "DC-to-RF converters (solid-state amplifiers or magnetrons)",
+          "phased-array transmitting antenna",
+          "cooling radiators for waste heat"
+        ]
+      },
+      {
+        "name": "Beam steering and pilot link",
+        "role": "keeps the beam locked on the receiving site so energy lands only where intended.",
+        "parts": [
+          "retrodirective phase control",
+          "ground pilot signal receiver",
+          "beam-shaping electronics"
+        ]
+      },
+      {
+        "name": "Structure and attitude control",
+        "role": "holds a structure kilometres across rigid enough to aim the beam precisely.",
+        "parts": [
+          "modular truss or inflatable frame",
+          "thrusters and reaction wheels for station-keeping"
+        ]
+      },
+      {
+        "name": "Rectenna",
+        "role": "the ground station: a field of antennas that turns microwaves back into electricity.",
+        "parts": [
+          "dipole or patch antenna elements",
+          "rectifying diodes",
+          "support masts and land"
+        ]
+      },
+      {
+        "name": "Launch and orbital assembly",
+        "role": "gets thousands of tonnes of hardware into orbit and puts it together.",
+        "parts": [
+          "reusable heavy-lift rockets",
+          "robotic assembly arms",
+          "autonomous docking and module joining"
+        ]
+      },
+      {
+        "name": "Grid interface",
+        "role": "conditions the rectenna output for transmission to consumers.",
+        "parts": [
+          "DC collection network",
+          "inverters and transformers",
+          "connection to high-voltage lines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for launch mass",
+        "detail": "Every kilogram must be lifted to orbit, so panels, antennas and structure are engineered around minimum mass per watt rather than minimum cost."
+      },
+      {
+        "title": "Make the solar modules",
+        "detail": "Thin-film or lightweight composite cells are laid onto flexible substrates that can be rolled up for launch."
+      },
+      {
+        "title": "Make the transmitting array",
+        "detail": "Thousands of small solid-state amplifiers and antenna elements are built into flat tiles that can be joined edge to edge."
+      },
+      {
+        "title": "Launch the modules",
+        "detail": "Reusable heavy-lift rockets carry tile stacks to a low parking orbit, a few hundred tonnes per station at a time."
+      },
+      {
+        "title": "Assemble in orbit",
+        "detail": "Robotic arms or crews join modules into a flat array several kilometres across, then raise the orbit to geostationary altitude."
+      },
+      {
+        "title": "Deploy and test the beam",
+        "detail": "The array unfolds, sun-tracking gimbals are commissioned, and the transmitter is phased against a pilot signal from the ground site."
+      },
+      {
+        "title": "Build the rectenna",
+        "detail": "A field kilometres across is populated with antenna elements and rectifier circuits on land chosen for low population density."
+      },
+      {
+        "title": "Beam at low power",
+        "detail": "Initial operation uses beam power densities well below sunlight intensity at the ground, to verify pointing and safety margins."
+      },
+      {
+        "title": "Scale to a pilot plant",
+        "detail": "Power is stepped up and fed through inverters into the grid, while regulators confirm spectrum and exposure limits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Very low-cost heavy-lift launch",
+        "status": "partial",
+        "why": "a single gigawatt station implies thousands of tonnes in orbit; today's launch prices make the electricity unaffordable."
+      },
+      {
+        "tech": "Microwave power beaming",
+        "status": "partial",
+        "why": "kilowatts have been sent over tens of metres in ground tests, and a small in-orbit experiment (Caltech's SSPD-1, 2023) detected a faint signal on Earth, but nothing at power-plant scale."
+      },
+      {
+        "tech": "In-orbit robotic assembly",
+        "status": "partial",
+        "why": "kilometre-scale structures must be built automatically, which has only been done at much smaller scale."
+      },
+      {
+        "tech": "Lightweight high-efficiency photovoltaics and RF amplifiers",
+        "status": "exists",
+        "why": "the physics works today, but efficiency and mass per watt must improve for the economics to close."
+      },
+      {
+        "tech": "Spectrum allocation and beam-safety rules",
+        "status": "missing",
+        "why": "nobody has yet agreed international limits for a continuous microwave beam crossing airspace and inhabited land."
+      },
+      {
+        "tech": "Geostationary orbit capacity and debris rules",
+        "status": "missing",
+        "why": "large fleets of very big satellites would need coordinated slots and end-of-life disposal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sub-scale orbital and ground beaming demonstrations",
+        "unlocks": "evidence that pointing, phasing and rectification work outside the laboratory."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a megawatt-class orbital demonstrator delivering measurable power to a grid-connected rectenna",
+        "unlocks": "real cost and efficiency figures instead of estimates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a pilot station of tens of megawatts with agreed spectrum and safety rules",
+        "unlocks": "a credible comparison with terrestrial wind and solar."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt stations assembled from mass-produced modules",
+        "unlocks": "firm, weather-independent power exported by beam to regions with poor renewable resources."
+      }
+    ]
   }
 }

@@ -30,5 +30,163 @@
         "def": "The use of computational and mathematical methods for understanding biological data, particularly relevant here for analyzing genetic sequences from liquid biopsies."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Blood collection and plasma separation",
+        "role": "gets cell-free DNA out of the blood without it being contaminated by DNA from burst blood cells.",
+        "parts": [
+          "cell-stabilising blood tube (typically 10 mL)",
+          "centrifuge",
+          "plasma aliquot"
+        ]
+      },
+      {
+        "name": "cfDNA extraction",
+        "role": "purifies the small fragments of free-floating DNA from plasma.",
+        "parts": [
+          "magnetic beads or silica column",
+          "washing and elution buffers",
+          "fluorometric quantification"
+        ]
+      },
+      {
+        "name": "Library preparation",
+        "role": "turns tiny amounts of DNA into something a sequencer can read, with molecular tags so each original fragment can be traced.",
+        "parts": [
+          "end-repair and adapter ligation",
+          "unique molecular barcodes",
+          "amplification"
+        ]
+      },
+      {
+        "name": "Sequencing",
+        "role": "reads millions of DNA fragments in parallel.",
+        "parts": [
+          "high-throughput sequencer",
+          "flow cell",
+          "base-calling software"
+        ]
+      },
+      {
+        "name": "Signal detection and error suppression",
+        "role": "separates true tumour mutations from sequencing noise at fractions well under 1%.",
+        "parts": [
+          "read alignment",
+          "duplex consensus building",
+          "variant caller",
+          "tumour-fraction estimate"
+        ]
+      },
+      {
+        "name": "Methylation and fragment analysis",
+        "role": "adds a second signal — chemical marks on DNA and fragment sizes — that can indicate the tissue a tumour came from.",
+        "parts": [
+          "bisulphite or enzymatic conversion",
+          "fragment-length profiling",
+          "deconvolution model"
+        ]
+      },
+      {
+        "name": "Clinical reporting",
+        "role": "turns variants into a decision a clinician can act on.",
+        "parts": [
+          "variant annotation against databases",
+          "report generation",
+          "quality-control thresholds"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Draw and stabilise the blood",
+        "detail": "A 10 mL blood sample goes into a tube that prevents white blood cells from releasing their own DNA and swamping the signal."
+      },
+      {
+        "title": "Separate the plasma",
+        "detail": "Centrifugation spins cells to the bottom; the straw-coloured plasma on top carries the cell-free DNA."
+      },
+      {
+        "title": "Extract the cfDNA",
+        "detail": "The DNA is captured on beads or a column, washed and eluted into a small volume — often only a few nanograms of very short fragments."
+      },
+      {
+        "title": "Build a tagged library",
+        "detail": "Adapters with unique molecular barcodes are ligated so the two strands of each original fragment can later be matched and cross-checked."
+      },
+      {
+        "title": "Sequence deeply",
+        "detail": "The library is read to very high depth, because a tumour mutation may sit at one in a thousand molecules."
+      },
+      {
+        "title": "Suppress errors",
+        "detail": "Reads sharing a barcode are collapsed into consensus sequences, so random sequencing mistakes cancel out and real variants survive."
+      },
+      {
+        "title": "Layer on methylation and fragment patterns",
+        "detail": "Conversion chemistry and fragment-size profiles are analysed alongside mutations to estimate whether — and where — a tumour is present."
+      },
+      {
+        "title": "Interpret and report",
+        "detail": "Variants are checked against cancer databases, tumour fraction is estimated, and a report states what the result does and does not support."
+      },
+      {
+        "title": "Validate the assay",
+        "detail": "Each laboratory establishes limits of detection, reproducibility and controls, which regulators review before clinical use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-throughput DNA sequencing",
+        "status": "exists",
+        "why": "detecting variants at fractions below 1% requires reading the same positions tens of thousands of times."
+      },
+      {
+        "tech": "Reference human genome and cancer mutation databases",
+        "status": "exists",
+        "why": "a variant is meaningless without knowing what is normal and what is known to drive cancer."
+      },
+      {
+        "tech": "Low-input library preparation with molecular barcodes",
+        "status": "exists",
+        "why": "plasma yields very little DNA, and barcodes are what make rare true variants distinguishable from noise."
+      },
+      {
+        "tech": "Methylation and fragmentomics reference data",
+        "status": "partial",
+        "why": "inferring tumour tissue of origin from blood alone depends on large, well-annotated training datasets."
+      },
+      {
+        "tech": "Evidence that early detection changes outcomes",
+        "status": "partial",
+        "why": "finding a cancer early only helps if treatment then works better — this is still being tested in large trials."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "blood tests that guide targeted therapy in advanced cancer",
+        "unlocks": "genotyping without a surgical biopsy, and repeat testing as tumours evolve."
+      },
+      {
+        "stage": "Next",
+        "milestone": "treatment monitoring and residual-disease detection after surgery",
+        "unlocks": "earlier warning of relapse and better decisions about who needs further therapy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-cancer early-detection screening in large populations",
+        "unlocks": "a routine blood draw as a screening tool for several cancers at once."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "longitudinal monitoring woven into standard care",
+        "unlocks": "cancer managed like a chronic condition, tracked by periodic blood tests rather than repeated scans and biopsies."
+      }
+    ]
   }
 }

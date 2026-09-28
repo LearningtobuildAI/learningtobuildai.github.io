@@ -30,5 +30,160 @@
         "def": "An AI-driven process that generates multiple design options based on user-defined parameters and constraints, enabling designers to explore a wide range of possibilities quickly."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Design space and boundary conditions",
+        "role": "defines the volume where material may exist and the loads and supports it must withstand.",
+        "parts": [
+          "CAD geometry import",
+          "load cases (forces, pressures, temperatures)",
+          "fixed supports and symmetry planes",
+          "material properties"
+        ]
+      },
+      {
+        "name": "Finite element solver",
+        "role": "computes stresses, displacements and sensitivities for each candidate shape.",
+        "parts": [
+          "mesh generator",
+          "linear or nonlinear solver",
+          "sensitivity analysis"
+        ]
+      },
+      {
+        "name": "Optimization engine",
+        "role": "iteratively redistributes or removes material to meet an objective such as minimum mass or maximum stiffness.",
+        "parts": [
+          "topology optimization algorithm (e.g. SIMP, level-set, BESO)",
+          "objective function (e.g. compliance)",
+          "constraints (stress, displacement, frequency)"
+        ]
+      },
+      {
+        "name": "Generative/AI layer",
+        "role": "explores many design alternatives, sometimes using machine learning surrogates to speed up the search.",
+        "parts": [
+          "parametric variation generator",
+          "surrogate models",
+          "design space exploration"
+        ]
+      },
+      {
+        "name": "Post-processing and CAD reconstruction",
+        "role": "turns the organic, mesh-based density result into a smooth, manufacturable solid model.",
+        "parts": [
+          "surface smoothing",
+          "feature recognition",
+          "CAD kernel"
+        ]
+      },
+      {
+        "name": "Validation and manufacturing interface",
+        "role": "confirms the final shape meets requirements and can actually be produced.",
+        "parts": [
+          "re-analysis with conventional FEA",
+          "additive manufacturing checks (overhangs, supports)",
+          "cost and lead-time estimation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the design space",
+        "detail": "Start with a CAD model of the available volume and subtract keep-out zones for bolts, cables, bearings and other non-negotiable features."
+      },
+      {
+        "title": "Apply loads and constraints",
+        "detail": "Specify the forces, pressures and thermal loads the part must carry, and fix the points where it attaches to the rest of the structure."
+      },
+      {
+        "title": "Set objectives and limits",
+        "detail": "Choose what to minimise (usually mass) subject to limits on stress, stiffness or vibration, and set a target volume fraction of material to keep."
+      },
+      {
+        "title": "Mesh and run optimization",
+        "detail": "The solver divides the space into small elements and iteratively removes or redistributes material, often using gradient-based methods, until the objective stops improving."
+      },
+      {
+        "title": "Interpret the result",
+        "detail": "The output is a density map showing where material is needed; it usually looks grainy and organic, with clear load paths emerging."
+      },
+      {
+        "title": "Smooth and rebuild",
+        "detail": "Convert the density map into a clean CAD model, adding fillets and thickness where needed so the shape is practical to make."
+      },
+      {
+        "title": "Validate",
+        "detail": "Run a conventional finite element analysis on the final smooth geometry to confirm it still meets all stress and stiffness requirements."
+      },
+      {
+        "title": "Prepare for manufacturing",
+        "detail": "Adapt the design for the chosen process — for example, generate support structures for metal 3D printing or adjust draft angles for casting."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Finite element analysis (FEA)",
+        "status": "exists",
+        "why": "every optimization cycle needs fast, accurate stress and stiffness calculations."
+      },
+      {
+        "tech": "Topology optimization algorithms",
+        "status": "exists",
+        "why": "the mathematical core that decides which elements to keep or remove."
+      },
+      {
+        "tech": "High-performance computing",
+        "status": "exists",
+        "why": "optimization runs involve thousands of solver iterations on fine meshes."
+      },
+      {
+        "tech": "Additive manufacturing",
+        "status": "partial",
+        "why": "many optimized shapes are too complex for traditional machining, so 3D printing is often needed to realise them."
+      },
+      {
+        "tech": "CAD/CAE interoperability",
+        "status": "exists",
+        "why": "geometry must pass cleanly between design, analysis, optimization and manufacturing software."
+      },
+      {
+        "tech": "Machine learning surrogates",
+        "status": "partial",
+        "why": "they can accelerate exploration but are not yet reliable enough to replace full simulation for final validation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "topology optimization is a standard tool for brackets, brackets and lightweight aerospace and automotive parts",
+        "unlocks": "significant mass savings in components where every kilogram matters."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tighter integration with additive manufacturing, including automated support generation and printability checks inside the optimization loop",
+        "unlocks": "faster transition from optimized concept to printed metal part."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-physics optimization that simultaneously considers structural, thermal, fluid and electromagnetic performance",
+        "unlocks": "designs for heat exchangers, antennas and motors that were previously impossible to optimise as a whole."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "AI-driven generative design that proposes complete assemblies and systems rather than single parts",
+        "unlocks": "system-level mass and cost reduction from the earliest concept stage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "real-time interactive design with simulation feedback and certification-ready generative workflows",
+        "unlocks": "engineers can explore hundreds of certified-ready options in minutes."
+      }
+    ]
   }
 }

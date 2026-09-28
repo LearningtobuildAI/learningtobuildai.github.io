@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "picks up the brain's tiny voltages — millionths of a volt — from the scalp or ear canal.",
+        "parts": [
+          "dry contact electrodes",
+          "gel or saline electrodes",
+          "ear-EEG earpieces",
+          "reference and ground electrodes"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "turns microvolt signals into clean digital data without drowning in noise.",
+        "parts": [
+          "high-impedance instrumentation amplifiers",
+          "band-pass and notch filters",
+          "shielded leads",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Stimulus and task protocol",
+        "role": "gives every session the same conditions so recordings can be compared.",
+        "parts": [
+          "visual or auditory stimulus generator",
+          "timing synchronisation",
+          "eyes-open resting-state recording"
+        ]
+      },
+      {
+        "name": "Feature extraction",
+        "role": "reduces a noisy waveform to a compact signature.",
+        "parts": [
+          "artifact rejection for blinks and muscle activity",
+          "spectral band power",
+          "event-related potential windows",
+          "cross-channel connectivity measures"
+        ]
+      },
+      {
+        "name": "Matcher",
+        "role": "compares a live recording with the enrolled template and accepts or rejects.",
+        "parts": [
+          "enrolment template",
+          "similarity metric or trained classifier",
+          "decision threshold"
+        ]
+      },
+      {
+        "name": "Liveness and anti-spoofing",
+        "role": "checks that the signal comes from a living person present at the sensor.",
+        "parts": [
+          "replay detection",
+          "signal-quality and impedance checks",
+          "challenge-response tasks"
+        ]
+      },
+      {
+        "name": "Template store",
+        "role": "holds the biometric reference securely and allows it to be revoked.",
+        "parts": [
+          "encrypted template database",
+          "cancelable-biometric or key-binding scheme"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the neural response",
+        "detail": "Decide whether to read spontaneous rhythms at rest or a response evoked by a stimulus. A useful signature must be repeatable across days, not just within one sitting."
+      },
+      {
+        "title": "Build the headset",
+        "detail": "Place electrodes at fixed, documented positions on a comfortable headset or earpiece, with stable skin contact and low contact impedance."
+      },
+      {
+        "title": "Record enrolment sessions",
+        "detail": "Capture several sessions from each volunteer on different days and at different times, so the template includes natural variation rather than one lucky recording."
+      },
+      {
+        "title": "Clean and featurise",
+        "detail": "Remove eye-blink and muscle artifacts, filter the signal, and extract the features that will represent a person."
+      },
+      {
+        "title": "Train and validate the matcher",
+        "detail": "The test must be cross-session: enrol on one day, verify on another. Within-session accuracy flatters brain biometrics and is not the number that matters."
+      },
+      {
+        "title": "Add liveness checks",
+        "detail": "Show that a recorded or synthesised signal is rejected, and that the enrolled person must actually perform the task."
+      },
+      {
+        "title": "Protect the template",
+        "detail": "Store a transformed version of the signature so that a leaked database cannot be replayed, and the template can be cancelled and reissued."
+      },
+      {
+        "title": "Trial in a controlled setting",
+        "detail": "Deploy on a small, consenting group and track accuracy over months, since the signature can drift with fatigue, caffeine, medication or illness."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wearable EEG sensors with stable contact",
+        "status": "partial",
+        "why": "dry and in-ear electrodes exist, but good contact without gel still degrades over a session."
+      },
+      {
+        "tech": "Low-noise, high-impedance amplifiers",
+        "status": "exists",
+        "why": "brain signals are tiny, so amplifier noise and mains interference set the ceiling on accuracy."
+      },
+      {
+        "tech": "Multi-session, multi-subject EEG datasets",
+        "status": "missing",
+        "why": "most published work uses small groups recorded once, so long-term stability is not measured."
+      },
+      {
+        "tech": "Biometric template protection",
+        "status": "partial",
+        "why": "brain signals cannot be changed like a password, so a secure revocable template is essential."
+      },
+      {
+        "tech": "Signal-source verification",
+        "status": "missing",
+        "why": "without reliable liveness detection a recording can be replayed to the sensor."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory studies identify individuals from resting or evoked brain activity with high within-session accuracy",
+        "unlocks": "proof that a neural signature carries identity information at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared multi-session datasets and standard protocols",
+        "unlocks": "honest measurement of how much accuracy survives weeks and months."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ear-EEG and fusion with liveness or a second factor",
+        "unlocks": "unobtrusive, continuous authentication from a wearable rather than a lab headset."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "higher-bandwidth neural sensing",
+        "unlocks": "a practical high-security access method — or the field stays a research niche used only where nothing cheaper will do."
+      }
+    ]
+  }
+}

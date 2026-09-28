@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Qubit register",
+        "role": "stores the quantum state of the number being factored and the work register.",
+        "parts": [
+          "physical qubits (superconducting, trapped-ion or photonic)",
+          "couplers",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Quantum gate control",
+        "role": "applies the precise sequence of quantum gates that perform the arithmetic.",
+        "parts": [
+          "microwave or laser pulse generators",
+          "control lines",
+          "classical compiler"
+        ]
+      },
+      {
+        "name": "Error-correction layer",
+        "role": "encodes each logical qubit into many physical qubits and corrects errors in real time.",
+        "parts": [
+          "surface-code or other code",
+          "syndrome measurement",
+          "decoder"
+        ]
+      },
+      {
+        "name": "Modular exponentiation circuit",
+        "role": "computes a^x mod N in superposition, the core arithmetic of the algorithm.",
+        "parts": [
+          "quantum adders",
+          "multipliers",
+          "modular reduction gates"
+        ]
+      },
+      {
+        "name": "Quantum Fourier transform",
+        "role": "converts the period of the function into measurable probabilities.",
+        "parts": [
+          "Hadamard gates",
+          "controlled-phase gates",
+          "swap network"
+        ]
+      },
+      {
+        "name": "Classical pre- and post-processing",
+        "role": "chooses the base a, and extracts factors from the measured output using continued fractions.",
+        "parts": [
+          "classical computer",
+          "number-theory routines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build a small qubit processor",
+        "detail": "Fabricate a handful of physical qubits with basic gates and readout, enough to run simple circuits."
+      },
+      {
+        "title": "Demonstrate the arithmetic",
+        "detail": "Implement and test quantum adders and modular multipliers on small numbers, verifying against classical results."
+      },
+      {
+        "title": "Run Shor's algorithm on small composites",
+        "detail": "Use the machine to factor numbers such as 15 or 21, checking that the measured period yields the correct factors."
+      },
+      {
+        "title": "Add error correction",
+        "detail": "Encode one logical qubit into many physical qubits, show that it lives longer and computes more accurately than any single physical qubit."
+      },
+      {
+        "title": "Scale logical qubits",
+        "detail": "Increase the number of logical qubits and gate fidelity until the circuit for a chosen number fits and runs reliably."
+      },
+      {
+        "title": "Integrate real-time control",
+        "detail": "Build classical electronics and software that measure error syndromes and feed back corrections within the qubit coherence time."
+      },
+      {
+        "title": "Target a cryptographic size",
+        "detail": "Repeat for a number used in public-key cryptography, such as a 2048-bit RSA modulus, requiring millions of physical qubits."
+      },
+      {
+        "title": "Verify and repeat",
+        "detail": "Check the factors against classical computation; refine hardware and software until results are repeatable."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum error correction",
+        "status": "missing",
+        "why": "no experiment has yet shown a logical qubit that beats the best physical qubit over many cycles."
+      },
+      {
+        "tech": "Large-scale qubit integration",
+        "status": "partial",
+        "why": "machines with hundreds of physical qubits exist, but millions are needed for cryptographic factoring."
+      },
+      {
+        "tech": "High-fidelity quantum gates and readout",
+        "status": "partial",
+        "why": "two-qubit gate errors are around 0.1–1%, still far too high for deep arithmetic circuits."
+      },
+      {
+        "tech": "Quantum compiler for modular arithmetic",
+        "status": "partial",
+        "why": "circuits for small numbers have been designed and tested, but resource estimates for large numbers remain enormous."
+      },
+      {
+        "tech": "Classical number theory (continued fractions)",
+        "status": "exists",
+        "why": "the classical post-processing step is well understood and runs instantly on ordinary computers."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small noisy machines factor numbers like 15 and 21",
+        "unlocks": "proof that the algorithm's logic works on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "logical qubits that outperform physical qubits",
+        "unlocks": "a path to scaling error-corrected machines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small fault-tolerant processors running simple algorithms",
+        "unlocks": "confidence that deep circuits can run reliably."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a quantum computer with millions of physical qubits",
+        "unlocks": "breaking RSA-2048 and other public-key cryptography."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "distributed or modular quantum computers",
+        "unlocks": "factoring even larger numbers by linking smaller processors."
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Chaser spacecraft bus",
+        "role": "carries the capture payload and provides power, propulsion and control.",
+        "parts": [
+          "solar arrays",
+          "batteries",
+          "avionics",
+          "attitude-control thrusters",
+          "main propulsion"
+        ]
+      },
+      {
+        "name": "Rendezvous and navigation",
+        "role": "finds, tracks and safely approaches a non-cooperative object.",
+        "parts": [
+          "cameras",
+          "LiDAR",
+          "star trackers",
+          "guidance and control algorithms"
+        ]
+      },
+      {
+        "name": "Capture mechanism",
+        "role": "secures the target so it can be controlled.",
+        "parts": [
+          "robotic arm",
+          "net",
+          "harpoon",
+          "magnetic docking plate"
+        ]
+      },
+      {
+        "name": "De-orbit system",
+        "role": "lowers the combined stack's orbit so it burns up in the atmosphere.",
+        "parts": [
+          "chemical thruster",
+          "electric propulsion",
+          "drag sail",
+          "electrodynamic tether"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "tracks objects, commands the mission and coordinates space traffic.",
+        "parts": [
+          "radar and optical telescopes",
+          "mission control",
+          "space-surveillance catalogue"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target",
+        "detail": "Use space-surveillance catalogues to select a large derelict, such as a defunct satellite or spent upper stage, in a crowded low orbit where removal matters most."
+      },
+      {
+        "title": "Design the capture method",
+        "detail": "The object is likely tumbling and its shape may be unknown, so net or harpoon suits large bulky targets while a robotic arm suits ones with known features; a magnetic plate works only if the target has a compatible interface."
+      },
+      {
+        "title": "Build the chaser spacecraft",
+        "detail": "Assemble a bus with solar arrays, batteries, star trackers and enough propulsion to match the target's orbit and later de-orbit the combined mass."
+      },
+      {
+        "title": "Integrate sensors and autonomy",
+        "detail": "Fit cameras and LiDAR plus software that can close the last few hundred metres without a human in the loop, because radio delays make manual control too slow."
+      },
+      {
+        "title": "Test the capture payload",
+        "detail": "Exercise the net, harpoon or arm on air-bearing tables that mimic weightlessness, then in thermal-vacuum chambers that mimic space."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "Ride-share to an orbit near the target, then check out power, propulsion and sensors over several weeks."
+      },
+      {
+        "title": "Rendezvous and inspect",
+        "detail": "Drift up to the target, fly around it to map its shape and measure its spin, keeping a safe stand-off distance."
+      },
+      {
+        "title": "Capture and stabilise",
+        "detail": "Match the target's rotation, deploy the capture device, then damp the combined stack so it can be steered."
+      },
+      {
+        "title": "De-orbit and dispose",
+        "detail": "Fire thrusters to lower the perigee into the atmosphere, where the target burns up; the chaser either releases first or re-enters with it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space situational awareness",
+        "status": "partial",
+        "why": "you cannot remove what you cannot find and track, and many small objects are still untracked."
+      },
+      {
+        "tech": "Autonomous rendezvous and proximity operations",
+        "status": "partial",
+        "why": "demonstrated with cooperative targets and some inspection of non-cooperative ones, but close capture without human control remains risky."
+      },
+      {
+        "tech": "Capture of uncooperative objects",
+        "status": "partial",
+        "why": "nets and harpoons have been demonstrated in orbit, but not yet used to de-orbit a real derelict."
+      },
+      {
+        "tech": "De-orbit propulsion and drag devices",
+        "status": "exists",
+        "why": "thrusters, drag sails and tethers can lower an orbit, though the added mass of a captured object demands extra performance."
+      },
+      {
+        "tech": "Standard grapple fixtures on new satellites",
+        "status": "missing",
+        "why": "future spacecraft need a common interface so they can be captured and removed more easily."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "demonstration missions such as RemoveDEBRIS (2018), ELSA-d (2021) and ADRAS-J (2024)",
+        "unlocks": "confidence in net, harpoon, magnetic capture and close inspection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a commercial mission to remove one large derelict",
+        "unlocks": "proof that removal can be done end-to-end."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-target removal and standard grapple fixtures on new satellites",
+        "unlocks": "lower cost per object removed and easier future servicing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine removal tied to launch licensing",
+        "unlocks": "stabilising the most crowded orbits and reducing Kessler-syndrome risk."
+      }
+    ]
+  }
+}

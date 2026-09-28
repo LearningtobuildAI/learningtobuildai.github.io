@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Stimulus presentation",
+        "role": "presents visual patterns that trigger a repeatable brain response.",
+        "parts": [
+          "display screen",
+          "precise timing controller",
+          "stimulus set (images, flicker patterns)"
+        ]
+      },
+      {
+        "name": "EEG acquisition",
+        "role": "records the brain's electrical activity from the scalp.",
+        "parts": [
+          "electrodes (wet or dry)",
+          "headset or cap",
+          "amplifier",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Signal conditioning",
+        "role": "cleans the raw signal and extracts relevant features.",
+        "parts": [
+          "band-pass filter",
+          "artifact removal (eye blinks, muscle)",
+          "epoch segmentation",
+          "feature extractor (event-related potentials, spectral power)"
+        ]
+      },
+      {
+        "name": "Template management",
+        "role": "stores each user's unique neural signature securely.",
+        "parts": [
+          "feature template database",
+          "encryption",
+          "template update mechanism"
+        ]
+      },
+      {
+        "name": "Matching engine",
+        "role": "compares a live recording to stored templates and makes a decision.",
+        "parts": [
+          "classifier (e.g. support vector machine, neural network)",
+          "decision threshold",
+          "score fusion"
+        ]
+      },
+      {
+        "name": "Presentation attack detection",
+        "role": "ensures a live person is present and prevents replay or synthetic signals.",
+        "parts": [
+          "liveness checks",
+          "signal randomness analysis"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a stimulus protocol",
+        "detail": "Select visual stimuli such as images of faces, objects or flickering patterns that evoke strong, consistent EEG responses. Test on volunteers to find the most discriminative set."
+      },
+      {
+        "title": "Design the headset",
+        "detail": "Integrate dry or comfortable wet electrodes in a quick-to-don headset. Optimise electrode placement over visual areas of the brain and amplify signals with low noise."
+      },
+      {
+        "title": "Collect enrollment data",
+        "detail": "Each user views the stimuli many times across several sessions. Record EEG with precise timing relative to each stimulus."
+      },
+      {
+        "title": "Preprocess the signals",
+        "detail": "Filter out drift and noise, remove eye blinks and muscle artifacts, and segment the recording into short epochs around each stimulus."
+      },
+      {
+        "title": "Extract features",
+        "detail": "Compute event-related potentials or spectral features from each epoch. Select features that are stable within a person but differ between people."
+      },
+      {
+        "title": "Train a classifier",
+        "detail": "Use machine learning to build a model that maps features to identity. Validate with data from new sessions and new users."
+      },
+      {
+        "title": "Integrate into an access system",
+        "detail": "Build a verification station with display and headset. The user undergoes a short session; real-time processing compares the signal to a stored template."
+      },
+      {
+        "title": "Add security and privacy measures",
+        "detail": "Encrypt templates, enforce liveness, and allow revocation if a template is compromised. Test against spoofing and replay attacks."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Portable, reliable EEG hardware",
+        "status": "partial",
+        "why": "dry electrode headsets exist, but signal quality and comfort for security use are still improving."
+      },
+      {
+        "tech": "Machine learning for EEG signals",
+        "status": "exists",
+        "why": "mature techniques can classify brain signals, but adapting them to robust authentication needs more data."
+      },
+      {
+        "tech": "Understanding of individual neural signatures",
+        "status": "partial",
+        "why": "research shows EEG differs between people, yet the most stable and discriminative features are not fully standardised."
+      },
+      {
+        "tech": "Protection of biometric templates",
+        "status": "exists",
+        "why": "encryption and secure storage methods are well developed, though neural data raises new privacy questions."
+      },
+      {
+        "tech": "Anti-spoofing for neural signals",
+        "status": "missing",
+        "why": "no proven method guarantees a recorded signal comes from a live person rather than a replay or synthesis."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab studies achieve high accuracy in small groups under controlled conditions",
+        "unlocks": "proof that neural signatures can identify people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dry-electrode headsets and shorter protocols enable pilot trials in high-security access",
+        "unlocks": "real-world testing of usability and reliability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fusion with other biometrics (fingerprint, face) to reduce error rates",
+        "unlocks": "practical deployment where one modality fails."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous authentication from wearable or implanted sensors",
+        "unlocks": "seamless, ongoing identity verification without explicit actions."
+      }
+    ]
+  }
+}

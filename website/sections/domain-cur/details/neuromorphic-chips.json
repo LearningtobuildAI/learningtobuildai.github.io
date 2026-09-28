@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neuron circuit",
+        "role": "mimics a biological neuron: it accumulates input and emits a short voltage pulse (a spike) when a threshold is crossed.",
+        "parts": [
+          "membrane capacitor or digital accumulator",
+          "threshold comparator",
+          "refractory timer",
+          "spike generator"
+        ]
+      },
+      {
+        "name": "Synapse array",
+        "role": "stores the weights connecting neurons and multiplies them by incoming spikes.",
+        "parts": [
+          "crossbar of resistive memory cells (RRAM or phase-change)",
+          "selector transistors",
+          "analogue summing wires"
+        ]
+      },
+      {
+        "name": "Weight memory",
+        "role": "holds learned weights next to the computing cells, avoiding a trip to external DRAM.",
+        "parts": [
+          "non-volatile memory cells",
+          "read/write circuits",
+          "drift and variability compensation"
+        ]
+      },
+      {
+        "name": "Event router",
+        "role": "sends spikes only to the neurons that need them, as small data packets.",
+        "parts": [
+          "asynchronous network-on-chip",
+          "address-event representation encoder",
+          "scheduling and arbitration"
+        ]
+      },
+      {
+        "name": "Plasticity engine",
+        "role": "updates weights as the chip runs, using rules that depend on spike timing.",
+        "parts": [
+          "spike-timing-dependent plasticity circuits",
+          "local learning controllers",
+          "weight update buses"
+        ]
+      },
+      {
+        "name": "Sensors and I/O",
+        "role": "feeds the chip from event-based sensors, which report only changes rather than full frames.",
+        "parts": [
+          "event camera interface",
+          "audio or radar front end",
+          "host link"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the neuron model",
+        "detail": "Designers pick a mathematical model — usually leaky integrate-and-fire — and decide what must be analogue and what must be digital."
+      },
+      {
+        "title": "Design the synapse crossbar",
+        "detail": "A grid of memory cells is laid out so a spike travelling along a row is multiplied by each stored weight and summed on a column wire, the same way a biological synapse adds charge."
+      },
+      {
+        "title": "Fabricate the memory cells",
+        "detail": "Resistive or phase-change cells are fabricated in the back-end wiring layers above standard CMOS, so memory and logic sit on one die. Device-to-device variation must be kept low, because the weights are physical conductances."
+      },
+      {
+        "title": "Tape out at a foundry",
+        "detail": "The digital neuron logic and routers are made on a mature CMOS node, then the memory layers are added; each layer needs its own masks and process calibration."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Every chip is measured, and on-chip or host software trims the conductance of each cell to compensate for manufacturing spread and temperature drift."
+      },
+      {
+        "title": "Package and stack",
+        "detail": "Multiple dies are bonded together and connected to event sensors, often in a single module for edge devices."
+      },
+      {
+        "title": "Map the network",
+        "detail": "A compiler places neurons on cores, routes the spike traffic and quantises the trained weights into the analogue cells' usable range — usually the hardest step engineering-wise."
+      },
+      {
+        "title": "Train and deploy",
+        "detail": "The network is trained (often conventionally, then converted), loaded onto the chip, and fine-tuned on-device with the plasticity circuits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-variability analogue non-volatile memory",
+        "status": "partial",
+        "why": "weights are stored as physical resistance, so device spread directly becomes computational error."
+      },
+      {
+        "tech": "Mature CMOS with back-end memory layers",
+        "status": "exists",
+        "why": "every design so far is standard silicon with added resistive memory or pure digital neuron cores."
+      },
+      {
+        "tech": "Event-based sensors",
+        "status": "partial",
+        "why": "the power advantage only appears when the input is already sparse spikes rather than video frames."
+      },
+      {
+        "tech": "Training methods for spiking networks",
+        "status": "missing",
+        "why": "standard deep-learning training assumes continuous numbers, not discrete spikes in time."
+      },
+      {
+        "tech": "Compilers and programming models",
+        "status": "partial",
+        "why": "mapping a neural network onto thousands of cores without wasting them is still largely manual."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research chips and first commercial edge parts — IBM's TrueNorth, Intel's Loihi line, Manchester's SpiNNaker, and low-power inference chips aimed at always-on sensing",
+        "unlocks": "real workloads at microwatt-to-milliwatt power budgets where conventional accelerators are wasteful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems where an analogue in-memory array handles matrix work alongside digital logic",
+        "unlocks": "in-memory computing for ordinary AI, which is a large market even before spiking models mature."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-chip learning that works reliably across temperature and ageing",
+        "unlocks": "devices that adapt in the field instead of being retrained in a data centre."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large brain-scale systems with sparse, event-driven communication",
+        "unlocks": "always-on perception and robotics at a tiny fraction of today's energy per operation — the main prize, and the one still furthest away."
+      }
+    ]
+  }
+}

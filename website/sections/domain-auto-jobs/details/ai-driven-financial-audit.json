@@ -34,5 +34,149 @@
         "def": "Records of financial transactions in a digital ledger system, typically used in blockchain technology to track financial activities."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data integration",
+        "role": "pulls every transaction from accounting and enterprise systems into one analysable dataset.",
+        "parts": [
+          "connectors to ERP and ledger systems",
+          "ETL pipelines",
+          "data lake or warehouse"
+        ]
+      },
+      {
+        "name": "Data preparation",
+        "role": "cleans, standardises and enriches raw entries so models can compare like with like.",
+        "parts": [
+          "data quality rules",
+          "entity resolution",
+          "feature engineering"
+        ]
+      },
+      {
+        "name": "Anomaly detection engine",
+        "role": "finds unusual patterns across the full population rather than a sample.",
+        "parts": [
+          "unsupervised models (autoencoders, clustering)",
+          "supervised models trained on labelled cases",
+          "rules-based checks"
+        ]
+      },
+      {
+        "name": "Risk scoring and prioritisation",
+        "role": "ranks flagged items by materiality and likelihood so auditors focus on what matters.",
+        "parts": [
+          "scoring algorithm",
+          "threshold tuning",
+          "feedback loop from auditor decisions"
+        ]
+      },
+      {
+        "name": "Explainability and audit trail",
+        "role": "gives reasons for each flag and keeps evidence that an audit can rely on.",
+        "parts": [
+          "model interpretability methods (e.g. SHAP, LIME)",
+          "immutable logs",
+          "documentation"
+        ]
+      },
+      {
+        "name": "Visualisation and workflow",
+        "role": "presents findings and routes them into the audit process.",
+        "parts": [
+          "dashboards",
+          "alerts",
+          "case management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define audit objectives and data needs",
+        "detail": "Decide which risks and assertions the system will address, and what transaction data and metadata are required."
+      },
+      {
+        "title": "Connect to financial systems",
+        "detail": "Integrate with ERP, general ledger and sub-ledger systems to extract the full population of transactions, ideally in real time."
+      },
+      {
+        "title": "Clean and prepare data",
+        "detail": "Normalise formats, resolve entities, handle missing values and engineer features such as timing, amount and counterparty patterns."
+      },
+      {
+        "title": "Train anomaly detection models",
+        "detail": "Use historical data, synthetic anomalies and expert labels to train unsupervised and supervised models that flag unusual entries."
+      },
+      {
+        "title": "Validate models",
+        "detail": "Test against known fraud or error cases and control tests to measure detection rates and false positives."
+      },
+      {
+        "title": "Deploy into a continuous pipeline",
+        "detail": "Run the models on streaming or frequent batch data so every new transaction is scored automatically."
+      },
+      {
+        "title": "Integrate with audit workflow",
+        "detail": "Feed flagged items, risk scores and explanations into the auditors' case management and reporting tools."
+      },
+      {
+        "title": "Monitor, retrain and refine",
+        "detail": "Track performance, incorporate auditor feedback and update models to adapt to changing business patterns."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Complete, real-time access to transaction data",
+        "status": "partial",
+        "why": "many organisations still have siloed systems and batch reporting, limiting full-population analysis."
+      },
+      {
+        "tech": "Machine learning for anomaly detection",
+        "status": "exists",
+        "why": "unsupervised and supervised methods are well established in research and commercial tools."
+      },
+      {
+        "tech": "Explainable AI",
+        "status": "partial",
+        "why": "auditors and regulators need to understand why a transaction was flagged, and current methods are not always sufficient."
+      },
+      {
+        "tech": "Regulatory and professional acceptance",
+        "status": "partial",
+        "why": "auditing standards are adapting to allow AI-based evidence, but acceptance varies by jurisdiction."
+      },
+      {
+        "tech": "Scalable computing infrastructure",
+        "status": "exists",
+        "why": "cloud platforms can process large transaction volumes in near real time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot projects applying AI to specific audit areas such as journal entry testing",
+        "unlocks": "efficiency gains and early detection of unusual patterns."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous auditing of entire transaction populations in real time",
+        "unlocks": "move from sample-based to full-population assurance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory acceptance of AI-generated audit evidence",
+        "unlocks": "standardised use across the profession."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-improving audit models integrated with financial reporting systems",
+        "unlocks": "near-real-time assurance and reduced manual effort."
+      }
+    ]
   }
 }

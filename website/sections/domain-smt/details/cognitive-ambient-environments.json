@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neural sensing",
+        "role": "reads brain activity without requiring the user to do anything.",
+        "parts": [
+          "dry-contact EEG electrodes in headrests or furniture",
+          "amplifiers",
+          "motion and muscle-artefact sensors"
+        ]
+      },
+      {
+        "name": "Supporting physiology",
+        "role": "cross-checks the brain signal with the rest of the body.",
+        "parts": [
+          "heart-rate variability sensor",
+          "eye tracking or blink detection",
+          "skin conductance"
+        ]
+      },
+      {
+        "name": "Signal and inference layer",
+        "role": "turns noisy voltages into a real-time estimate of mental workload.",
+        "parts": [
+          "artefact removal",
+          "feature extraction (EEG band power, evoked responses)",
+          "per-user machine-learning model"
+        ]
+      },
+      {
+        "name": "Actuators",
+        "role": "change the room in ways people feel rather than notice.",
+        "parts": [
+          "tunable LED lighting (dimming and colour temperature)",
+          "active noise control and sound masking",
+          "haptic or tactile seating",
+          "ventilation and temperature control"
+        ]
+      },
+      {
+        "name": "Control loop",
+        "role": "decides when and how much to adjust.",
+        "parts": [
+          "low-latency controller",
+          "hysteresis and rate limits to avoid flicker",
+          "user override and manual presets"
+        ]
+      },
+      {
+        "name": "Privacy and consent layer",
+        "role": "keeps neural data on-site and under the user's control.",
+        "parts": [
+          "on-device processing",
+          "consent and opt-out logic",
+          "audit logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define what is being measured",
+        "detail": "Pick a validated index of cognitive load and prove it moves with task difficulty, using standard tasks and a workload questionnaire such as the NASA Task Load Index."
+      },
+      {
+        "title": "Build comfortable, long-wear sensing",
+        "detail": "Dry electrodes must work through hair or be hidden in a headrest, and stay stable for hours while people move and talk."
+      },
+      {
+        "title": "Collect labelled training data",
+        "detail": "Record many people doing easy and hard versions of real tasks so the system learns what high load looks like, including fatigue and stress, which look similar."
+      },
+      {
+        "title": "Train and calibrate the decoder",
+        "detail": "Models are trained partly on groups and partly per person; a short calibration routine and drift correction are needed because electrode contact changes."
+      },
+      {
+        "title": "Instrument the room",
+        "detail": "Install lights, speakers, seating and HVAC that can be adjusted finely and quickly, and test that the change is perceptible but not distracting."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "A controller maps load estimate to a room setting, with a latency budget of roughly a second, plus limits on how often it may change."
+      },
+      {
+        "title": "Design for safety and consent",
+        "detail": "Add failsafes, always-on manual control, on-device processing and data-minimisation rules before anyone experiences the system."
+      },
+      {
+        "title": "Pilot in a real space",
+        "detail": "Deploy in a classroom, clinic or control room alongside a control group, and measure outcomes such as task performance, stress and comfort."
+      },
+      {
+        "title": "Validate claims",
+        "detail": "Regulators treat health claims strictly, so the product must separate proven effects from unsupported wellness marketing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Passive brain-computer interfaces",
+        "status": "partial",
+        "why": "estimating workload from EEG without asking the user to act is demonstrated in labs, but reliability outside them is limited."
+      },
+      {
+        "tech": "Dry, discreet, long-wear EEG electrodes",
+        "status": "partial",
+        "why": "signal quality still degrades with hair, sweat and movement over a working day."
+      },
+      {
+        "tech": "Tunable lighting and active acoustics",
+        "status": "exists",
+        "why": "commercially deployed LED and noise-control systems give a fast, fine-grained actuator layer."
+      },
+      {
+        "tech": "Low-latency on-device machine learning",
+        "status": "exists",
+        "why": "inference must run locally to keep latency and privacy acceptable."
+      },
+      {
+        "tech": "Biosignal privacy standards",
+        "status": "missing",
+        "why": "rules for neural data in buildings — retention, consent, misuse — are largely absent."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab studies linking measured workload to adaptive lighting or sound",
+        "unlocks": "evidence that the closed loop changes anything useful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "single-room pilots in clinics or classrooms with control groups",
+        "unlocks": "real-world reliability figures and user acceptance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-user spaces that sense groups rather than individuals",
+        "unlocks": "offices, schools and hospitals where adaptation benefits most people present."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "buildings that adapt to occupants by default under clear consent rules",
+        "unlocks": "environments tuned continuously for attention, rest and accessibility — provided the privacy and evidence questions are settled."
+      }
+    ]
+  }
+}

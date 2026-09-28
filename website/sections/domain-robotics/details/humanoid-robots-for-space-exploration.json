@@ -34,5 +34,168 @@
         "def": "A process to remove moisture and impurities from materials by heating them in a vacuum environment."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Legs and locomotion",
+        "role": "move and stay upright where gravity is a third of Earth's, or effectively zero.",
+        "parts": [
+          "articulated leg joints",
+          "wide, pressure-tolerant feet",
+          "balance controller",
+          "tether or anchorage points for microgravity"
+        ]
+      },
+      {
+        "name": "Arms and hands",
+        "role": "use the same tools and controls designed for astronauts.",
+        "parts": [
+          "shoulder, elbow and wrist joints",
+          "multi-fingered hands with force sensing",
+          "tool and connector interfaces"
+        ]
+      },
+      {
+        "name": "Head and perception",
+        "role": "build a 3D picture of an unfamiliar, poorly mapped environment.",
+        "parts": [
+          "stereo and depth cameras",
+          "LiDAR",
+          "inertial measurement unit",
+          "pan-tilt neck"
+        ]
+      },
+      {
+        "name": "Avionics and autonomy",
+        "role": "decide what to do when nobody can steer it in real time.",
+        "parts": [
+          "radiation-tolerant processors",
+          "local task-planning software",
+          "simulation-trained motion control",
+          "data recorder"
+        ]
+      },
+      {
+        "name": "Power and thermal control",
+        "role": "survive vacuum, hard sunlight and deep cold, and keep working.",
+        "parts": [
+          "battery pack",
+          "radiators and heaters",
+          "insulation",
+          "solar charging when parked"
+        ]
+      },
+      {
+        "name": "Shielding and mechanisms",
+        "role": "resist abrasive dust, radiation and the risk of vacuum welding.",
+        "parts": [
+          "sealed joints",
+          "space-rated lubricants",
+          "dust covers",
+          "hardened electronics"
+        ]
+      },
+      {
+        "name": "Communications and teleoperation",
+        "role": "let controllers on Earth supervise, despite long signal delays.",
+        "parts": [
+          "radio or relay link",
+          "supervisory control station",
+          "delayed-command software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the jobs",
+        "detail": "Start from tasks astronauts actually do — inspection, sample handling, carrying tools, plugging connectors — and define the reach, strength and precision needed."
+      },
+      {
+        "title": "Design the kinematics",
+        "detail": "Size the limbs so the robot can reach human workspaces and grip human-rated tools; allow for the fact that legs must both walk in gravity and anchor in free fall."
+      },
+      {
+        "title": "Fabricate the frame",
+        "detail": "Machine limbs from lightweight aluminium or titanium alloys and composites, avoiding thin sections that crack under launch vibration."
+      },
+      {
+        "title": "Build the actuators",
+        "detail": "Fit high-torque electric motors with gear reducers or series-elastic joints, using dry or vacuum-compatible lubricants so parts cannot seize or cold-weld in vacuum."
+      },
+      {
+        "title": "Add sensing and compute",
+        "detail": "Install cameras, LiDAR and joint torque sensors, cabled to radiation-tolerant computers rather than ordinary consumer chips."
+      },
+      {
+        "title": "Write the control software",
+        "detail": "Train walking and manipulation policies in physics simulation, then adapt them to the real robot, and layer in autonomy so it can act during multi-minute communication gaps."
+      },
+      {
+        "title": "Test in relevant conditions",
+        "detail": "Thermal-vacuum chambers for temperature and vacuum, vibration tables for launch loads, neutral-buoyancy pools and parabolic flights for reduced-gravity movement, sand and dust for Mars-like surfaces."
+      },
+      {
+        "title": "Deploy and supervise",
+        "detail": "Launch it to a station or surface, begin with tightly supervised tasks, and widen its autonomy only as reliability is proven."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dynamic legged locomotion in low and zero gravity",
+        "status": "partial",
+        "why": "hopping and floating gaits have been studied in parabolic flights and on research quadrupeds, but nothing walks reliably on the Moon or Mars yet."
+      },
+      {
+        "tech": "Dexterous robotic hands",
+        "status": "partial",
+        "why": "multi-fingered hands and teleoperated grasping are demonstrated in the lab and on the ISS, but ruggedness over years of dust and thermal cycling is unproven."
+      },
+      {
+        "tech": "Radiation-tolerant high-performance computing",
+        "status": "partial",
+        "why": "space-hardened processors lag far behind the chips that modern vision and AI software assume, limiting onboard intelligence."
+      },
+      {
+        "tech": "Autonomy under long communication delays",
+        "status": "missing",
+        "why": "a Mars robot faces delays of roughly 4–24 minutes each way, so it must plan and recover from errors without a human in the loop."
+      },
+      {
+        "tech": "Space-rated actuators, seals and lubricants",
+        "status": "exists",
+        "why": "these exist for rovers and spacecraft mechanisms, but humanoid joints demand far more cycles and higher loads."
+      },
+      {
+        "tech": "Reduced-gravity power and thermal management",
+        "status": "exists",
+        "why": "batteries, heaters and radiators are mature from rover and station experience."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "humanoids on space stations and in research labs doing supervised or teleoperated chores",
+        "unlocks": "real operating data on how robots cope with vacuum, vibration and crewed workspaces."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robots performing routine exterior inspection and simple maintenance without a spacewalk",
+        "unlocks": "less crew time and risk spent outside habitats and vehicles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervised humanoids working inside habitats and on planetary surfaces ahead of crews",
+        "unlocks": "pre-positioning equipment and checking habitats before people arrive."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "teams of robots building and maintaining a surface base largely on their own",
+        "unlocks": "settlements that can grow without every task depending on a suited human."
+      }
+    ]
   }
 }

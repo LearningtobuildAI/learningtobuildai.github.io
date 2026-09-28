@@ -31,5 +31,151 @@
         "def": "A modified Cas enzyme fused with reverse transcriptase, enabling direct and efficient modifications of the DNA sequence without cutting the strand."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Prime editor protein",
+        "role": "the enzyme that writes the new sequence directly into DNA.",
+        "parts": [
+          "Cas9 nickase (H840A)",
+          "engineered reverse transcriptase",
+          "linker between the two"
+        ]
+      },
+      {
+        "name": "Prime editing guide RNA",
+        "role": "carries both the address of the target site and the new sequence to write.",
+        "parts": [
+          "spacer that finds the DNA target",
+          "primer binding site",
+          "extension that encodes the desired edit"
+        ]
+      },
+      {
+        "name": "Second nick guide RNA",
+        "role": "a nick on the opposite strand that biases the cell toward keeping the edit.",
+        "parts": [
+          "spacer for a nearby site",
+          "nickase-competent editor"
+        ]
+      },
+      {
+        "name": "Delivery system",
+        "role": "gets protein and RNA into the right cells and no others.",
+        "parts": [
+          "lipid nanoparticles (mRNA and guide RNA)",
+          "viral vectors or virus-like particles",
+          "electroporation of ribonucleoprotein (ex vivo)"
+        ]
+      },
+      {
+        "name": "Design and verification pipeline",
+        "role": "chooses edits that work and proves what actually changed.",
+        "parts": [
+          "computational pegRNA design",
+          "deep sequencing of the target and of off-target sites"
+        ]
+      },
+      {
+        "name": "Safety controls",
+        "role": "limits unintended edits, immune reactions and cell stress.",
+        "parts": [
+          "off-target nicking profile",
+          "p53 and DNA-damage checks",
+          "transient, self-limiting editor expression"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Find the mutation",
+        "detail": "Sequencing identifies the exact disease-causing change — a substitution, a small insertion or deletion — that prime editing could correct without adding foreign DNA."
+      },
+      {
+        "title": "Design the pegRNA",
+        "detail": "Software picks a nearby protospacer, then designs the primer binding site and the extension containing the corrected sequence, balancing length and melting temperature."
+      },
+      {
+        "title": "Engineer the editor",
+        "detail": "The Cas9 nickase is fused to a reverse transcriptase that has been evolved for higher fidelity and processivity, and the whole protein is codon-optimised for human cells."
+      },
+      {
+        "title": "Test in cells",
+        "detail": "Candidate pegRNAs and editors are screened in cultured patient-derived cells and measured by targeted sequencing, keeping only the combinations that give high purity of the intended edit."
+      },
+      {
+        "title": "Package for delivery",
+        "detail": "For ex vivo therapy, cells are collected and the editor delivered by electroporation; for in vivo use, mRNA for the protein plus guide RNAs are encapsulated in lipid nanoparticles or split across viral vectors."
+      },
+      {
+        "title": "Edit the cells",
+        "detail": "The editor nicks one strand, the primer binding site anneals, the reverse transcriptase copies the extension, and the cell's own repair machinery resolves the flap into the new sequence."
+      },
+      {
+        "title": "Verify before use",
+        "detail": "Edited cell populations or whole animals are deep-sequenced to quantify on-target purity and to look for off-target edits and large rearrangements."
+      },
+      {
+        "title": "Return or infuse",
+        "detail": "Edited blood stem cells are expanded and transplanted back; nanoparticles or viral vectors are simply infused and the editor is cleared by the body."
+      },
+      {
+        "title": "Monitor durability",
+        "detail": "Clinicians track edited-cell numbers and safety over years, since a corrected cell population must persist for the treatment to keep working."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Programmable CRISPR-Cas targeting",
+        "status": "exists",
+        "why": "supplies the protein that finds a chosen DNA sequence — the address system prime editing builds on."
+      },
+      {
+        "tech": "Reverse transcriptase biology",
+        "status": "exists",
+        "why": "the enzyme that copies RNA into DNA is what lets the editor write new sequence rather than just cut."
+      },
+      {
+        "tech": "p53/DNA-damage and liver-toxicity data from earlier therapies",
+        "status": "exists",
+        "why": "modern therapies still carry uncertainty about long-term effects of editing human cells."
+      },
+      {
+        "tech": "Safe, tissue-specific in vivo delivery",
+        "status": "partial",
+        "why": "lipid nanoparticles reliably reach the liver, but muscle, lung, brain and eye still need better carriers."
+      },
+      {
+        "tech": "Long-term outcome data on edited patients",
+        "status": "missing",
+        "why": "nobody yet knows how dozens of years of edited cells behave in a human body."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prime editing working in cultured cells and animal models, with heavy focus on purity and off-target control",
+        "unlocks": "a credible correction route for small mutations behind diseases such as sickle-cell disease and some inherited blindness."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first-in-human trials, most likely ex vivo in blood stem cells and in vivo in liver",
+        "unlocks": "the first human read-out on whether precise writing is safe and durable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "delivery to tissues beyond liver and blood",
+        "unlocks": "correction of muscle and central-nervous-system disorders that are currently out of reach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "one-shot in vivo therapies that correct a mutation permanently after a single infusion",
+        "unlocks": "a treatment model closer to a cure than to chronic management."
+      }
+    ]
   }
 }

@@ -28,5 +28,154 @@
         "def": "A formal system that uses symbols to represent logical expressions and operations, enabling precise reasoning."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neural proposer",
+        "role": "generates candidate reasoning steps, translations, or conjectures from raw input.",
+        "parts": [
+          "transformer or other deep network",
+          "tokenizer/encoder",
+          "beam search or sampling"
+        ]
+      },
+      {
+        "name": "Symbolic reasoner",
+        "role": "checks candidate steps against formal rules and derives new facts.",
+        "parts": [
+          "inference engine",
+          "rule base",
+          "SAT/SMT solver or theorem prover"
+        ]
+      },
+      {
+        "name": "Neuro-symbolic interface",
+        "role": "translates between continuous neural representations and discrete symbols.",
+        "parts": [
+          "semantic parser",
+          "grounding module",
+          "differentiable logic layer (optional)"
+        ]
+      },
+      {
+        "name": "Knowledge base",
+        "role": "stores domain facts, axioms, and ontologies used for reasoning.",
+        "parts": [
+          "ontology",
+          "fact database",
+          "rule repository"
+        ]
+      },
+      {
+        "name": "Search and planning controller",
+        "role": "guides the exploration of reasoning paths using neural heuristics.",
+        "parts": [
+          "heuristic scorer",
+          "backtracking/search algorithm",
+          "memoization"
+        ]
+      },
+      {
+        "name": "Verification and explanation",
+        "role": "produces a proof or trace that the final answer is consistent.",
+        "parts": [
+          "proof checker",
+          "explanation generator",
+          "confidence estimator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the formal domain",
+        "detail": "Choose a reasoning task and its formal language (e.g., first-order logic, arithmetic, or a planning domain)."
+      },
+      {
+        "title": "Encode knowledge and rules",
+        "detail": "Write down axioms, facts, and inference rules that capture what is known about the domain."
+      },
+      {
+        "title": "Train the neural component",
+        "detail": "Train a neural network on examples of inputs and correct reasoning steps, such as pairs of problems and solution traces."
+      },
+      {
+        "title": "Build the neuro-symbolic bridge",
+        "detail": "Implement parsing and grounding so that neural outputs become symbolic facts or goals the reasoner can use."
+      },
+      {
+        "title": "Implement the symbolic engine",
+        "detail": "Integrate a theorem prover or solver that can check consistency and derive conclusions from the encoded rules."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Let the symbolic engine’s feedback—success or failure of a candidate step—fine-tune the neural proposer."
+      },
+      {
+        "title": "Evaluate on benchmarks",
+        "detail": "Test on held-out problems, measuring both answer accuracy and the proportion of steps that can be formally verified."
+      },
+      {
+        "title": "Deploy in a constrained setting",
+        "detail": "Start with domains where errors are tolerable or human-checked, such as assisting with proofs or generating verified code snippets."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep neural networks",
+        "status": "exists",
+        "why": "provide the pattern recognition and generation capabilities needed to propose candidate steps."
+      },
+      {
+        "tech": "Automated theorem provers and SAT/SMT solvers",
+        "status": "exists",
+        "why": "provide the formal verification backbone that checks logical consistency."
+      },
+      {
+        "tech": "Knowledge representation and ontologies",
+        "status": "exists",
+        "why": "allow facts and rules to be stored, shared, and reasoned over systematically."
+      },
+      {
+        "tech": "Differentiable logic and neural-symbolic integration",
+        "status": "partial",
+        "why": "methods to train neural and symbolic parts together are still maturing and often require hand-tuning."
+      },
+      {
+        "tech": "Robust natural language to formal logic translation",
+        "status": "partial",
+        "why": "most systems require structured input or carefully engineered parsers rather than free text."
+      },
+      {
+        "tech": "Scalable reasoning under uncertainty",
+        "status": "missing",
+        "why": "real-world problems involve noise and incomplete information that current systems handle poorly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "narrow-domain systems that combine large language models with symbolic checkers for math and code",
+        "unlocks": "verifiable answers in well-defined domains, reducing hallucinations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "general-purpose neuro-symbolic reasoners that learn rules from data and explain their steps",
+        "unlocks": "trustworthy AI for science and engineering tasks that require multi-step precision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with planning and robotics, where symbolic goals guide neural policies",
+        "unlocks": "safe autonomous agents that can justify their actions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "human-like flexible reasoning across open-ended domains",
+        "unlocks": "AI that can assist in open-ended discovery and complex decision-making."
+      }
+    ]
   }
 }

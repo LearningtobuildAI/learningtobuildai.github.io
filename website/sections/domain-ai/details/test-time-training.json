@@ -29,5 +29,152 @@
         "def": "The process of using a trained machine learning model to make predictions on new, unseen data during runtime."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Base model",
+        "role": "provides the bulk of the learned capability; usually a large pre-trained network that stays mostly frozen.",
+        "parts": [
+          "pre-trained weights",
+          "architecture (transformer or CNN)"
+        ]
+      },
+      {
+        "name": "Adaptation parameters",
+        "role": "the small subset of weights that are actually updated at test time, keeping computation manageable.",
+        "parts": [
+          "low-rank adapters",
+          "bias terms",
+          "last-layer weights",
+          "per-task heads"
+        ]
+      },
+      {
+        "name": "Self-supervised objective",
+        "role": "creates a learning signal from unlabeled test inputs so the model can update without human labels.",
+        "parts": [
+          "masked reconstruction loss",
+          "contrastive loss",
+          "entropy minimisation",
+          "consistency under augmentation"
+        ]
+      },
+      {
+        "name": "On-the-fly optimiser",
+        "role": "performs the weight update for each input or batch before the final prediction is made.",
+        "parts": [
+          "automatic differentiation",
+          "gradient clipping",
+          "update rule (SGD or Adam)",
+          "meta-learned optimiser"
+        ]
+      },
+      {
+        "name": "Memory and replay",
+        "role": "stores past examples or parameter-importance statistics to reduce catastrophic forgetting.",
+        "parts": [
+          "replay buffer",
+          "regularisation term (e.g. elastic weight consolidation)",
+          "parameter importance weights"
+        ]
+      },
+      {
+        "name": "Controller and safety",
+        "role": "decides when to adapt, how much, and guards against degradation or runaway updates.",
+        "parts": [
+          "drift detector",
+          "confidence estimator",
+          "rollback checkpoint",
+          "update budget"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pre-train a base model",
+        "detail": "Train a large network on a broad dataset so it already has strong general representations."
+      },
+      {
+        "title": "Select what to adapt",
+        "detail": "Full fine-tuning at test time is too expensive, so choose a small set of parameters — adapters, biases or the last layer — that will be updated."
+      },
+      {
+        "title": "Design the test-time objective",
+        "detail": "Define a self-supervised task computable without labels, such as predicting masked parts of the input or enforcing consistency across augmented views."
+      },
+      {
+        "title": "Implement the update loop",
+        "detail": "For each test input, compute the self-supervised loss, backpropagate only through the adaptation parameters, and update them before producing the final output."
+      },
+      {
+        "title": "Prevent forgetting",
+        "detail": "Mix in stored examples from a replay buffer or add a regularisation penalty that keeps the adapted parameters close to their original values."
+      },
+      {
+        "title": "Meta-train the adaptation",
+        "detail": "Optionally train the base model so that a few gradient steps on new data yield fast, large improvements — a meta-learning outer loop."
+      },
+      {
+        "title": "Evaluate under distribution shift",
+        "detail": "Test on benchmarks where the test distribution differs from training, measuring accuracy before and after adaptation."
+      },
+      {
+        "title": "Deploy with monitoring",
+        "detail": "Run in shadow mode, track performance, and include a rollback mechanism if adaptation degrades accuracy or stability."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large pre-trained foundation models",
+        "status": "exists",
+        "why": "test-time adaptation starts from a strong base model; without it there is little to adapt."
+      },
+      {
+        "tech": "Automatic differentiation and efficient optimisers",
+        "status": "exists",
+        "why": "gradients must be computed and applied on the fly, often on a single example."
+      },
+      {
+        "tech": "Meta-learning algorithms",
+        "status": "partial",
+        "why": "methods like MAML show how to learn a model that adapts quickly, but they are not yet widely deployed at scale."
+      },
+      {
+        "tech": "Continual learning without catastrophic forgetting",
+        "status": "missing",
+        "why": "reliably updating a network over long periods without losing earlier knowledge remains an open research problem."
+      },
+      {
+        "tech": "Edge hardware for on-device updates",
+        "status": "partial",
+        "why": "small models can be fine-tuned on some devices, but updating large models locally is still limited by memory and power."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research methods for test-time training and entropy minimisation in vision and language",
+        "unlocks": "better accuracy under distribution shift in controlled benchmarks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration of lightweight adapters that update at inference for personalisation",
+        "unlocks": "models that tailor themselves to individual users or domains without full retraining."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continual learning agents that accumulate knowledge over months without forgetting",
+        "unlocks": "long-lived assistants and robots that improve from experience."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous systems that safely self-improve in deployment",
+        "unlocks": "robust AI in changing environments where retraining from scratch is impractical."
+      }
+    ]
   }
 }

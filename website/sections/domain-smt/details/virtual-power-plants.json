@@ -37,5 +37,161 @@
         "def": "A grid service provided by VPPs that helps maintain grid frequency stability by adjusting power output in real-time."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Distributed assets",
+        "role": "the flexible devices that actually shift or supply power.",
+        "parts": [
+          "home batteries",
+          "smart EV chargers",
+          "solar inverters",
+          "smart thermostats and water heaters",
+          "industrial loads"
+        ]
+      },
+      {
+        "name": "Communication layer",
+        "role": "carries commands and telemetry between the cloud and thousands of devices.",
+        "parts": [
+          "home internet or cellular links",
+          "APIs and device gateways",
+          "redundant paths for critical assets"
+        ]
+      },
+      {
+        "name": "Control platform",
+        "role": "forecasts, optimises and dispatches the whole fleet as one unit.",
+        "parts": [
+          "demand and renewable forecasts",
+          "optimisation engine",
+          "real-time dispatch scheduler",
+          "state estimation"
+        ]
+      },
+      {
+        "name": "Market interface",
+        "role": "turns the aggregated fleet into a bidder in electricity markets.",
+        "parts": [
+          "bidding and scheduling systems",
+          "telemetry to the grid operator",
+          "settlement and performance verification"
+        ]
+      },
+      {
+        "name": "Customer interface",
+        "role": "recruits households and businesses and keeps them willing to participate.",
+        "parts": [
+          "mobile app",
+          "incentive and tariff engine",
+          "opt-out and override controls"
+        ]
+      },
+      {
+        "name": "Grid integration",
+        "role": "keeps the aggregated resource visible and safe for the network.",
+        "parts": [
+          "distribution network models",
+          "protection coordination",
+          "cybersecurity and authentication"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Recruit participants",
+        "detail": "Sign up households and businesses with batteries, EVs or flexible loads, usually through an energy retailer or device maker, and agree how much control they give up and what they are paid."
+      },
+      {
+        "title": "Install or connect controls",
+        "detail": "Fit smart inverters, controllable chargers or retrofit relays so each asset can be commanded remotely. Older devices may need a gateway; new ones often connect directly over the internet."
+      },
+      {
+        "title": "Establish telemetry",
+        "detail": "Stream power, state of charge and availability from every device to the cloud on a regular schedule, with fail-safe defaults if the link drops."
+      },
+      {
+        "title": "Build the control and forecasting platform",
+        "detail": "Software learns each asset's flexibility, forecasts household demand and solar output, and computes an aggregate dispatch plan that meets a grid need without inconveniencing customers."
+      },
+      {
+        "title": "Integrate with grid and market systems",
+        "detail": "Connect to the grid operator's dispatch signals and to market bidding platforms, meeting their communication and metering standards."
+      },
+      {
+        "title": "Register as a market participant",
+        "detail": "Qualify the aggregated fleet as a single resource where rules allow, proving it can deliver a stated amount of power or demand reduction reliably."
+      },
+      {
+        "title": "Dispatch and control in real time",
+        "detail": "When a price spike or grid stress occurs, the platform sends setpoints to thousands of devices at once — charging batteries, pausing EV charging or pre-heating homes — then releases them."
+      },
+      {
+        "title": "Verify and settle",
+        "detail": "Meter data is used to measure how much the fleet actually shifted, so the operator can be paid and participants rewarded. Poor performance is penalised."
+      },
+      {
+        "title": "Scale and automate",
+        "detail": "Grow the fleet, automate recruitment and maintenance, and add new services such as local voltage support or backup power for neighbourhoods."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Smart, controllable devices",
+        "status": "exists",
+        "why": "batteries, EV chargers and inverters must accept external commands and report their state."
+      },
+      {
+        "tech": "Reliable low-latency communications",
+        "status": "exists",
+        "why": "thousands of assets must respond together, often within seconds for frequency services."
+      },
+      {
+        "tech": "Market rules that allow aggregation",
+        "status": "partial",
+        "why": "many electricity markets still bar small distributed resources from bidding as a group, though some regions are opening up."
+      },
+      {
+        "tech": "Forecasting and optimisation algorithms",
+        "status": "exists",
+        "why": "the platform must predict demand, solar output and customer behaviour to bid and dispatch safely."
+      },
+      {
+        "tech": "Cybersecurity and privacy protection",
+        "status": "partial",
+        "why": "controlling devices inside homes creates a tempting target and requires strong authentication and data handling."
+      },
+      {
+        "tech": "Standard interoperability protocols",
+        "status": "partial",
+        "why": "a fleet mixes brands and vintages, so common data models and control interfaces are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot fleets providing frequency response and peak shaving, often with a few thousand homes",
+        "unlocks": "proof that aggregated devices can respond reliably enough to be trusted."
+      },
+      {
+        "stage": "Next",
+        "milestone": "VPPs bidding into wholesale energy and capacity markets as regular participants",
+        "unlocks": "a revenue stream that pays for batteries and smart devices beyond backup power."
+      },
+      {
+        "stage": "Next",
+        "milestone": "VPPs providing local network services such as voltage support and congestion relief",
+        "unlocks": "deferred grid upgrades and more hosting capacity for rooftop solar."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "VPPs routinely displacing peaking power plants and providing resilience during outages",
+        "unlocks": "a lower-cost, lower-emission grid that uses existing devices instead of new central plants."
+      }
+    ]
   }
 }

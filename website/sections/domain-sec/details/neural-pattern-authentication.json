@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural sensing",
+        "role": "turns brain activity into a measurable signal.",
+        "parts": [
+          "scalp EEG electrodes (wet or dry)",
+          "ECoG or penetrating electrode arrays (invasive)",
+          "amplifier and digitizer"
+        ]
+      },
+      {
+        "name": "Stimulus and task protocol",
+        "role": "provokes a repeatable, person-specific response.",
+        "parts": [
+          "visual or auditory oddball stimuli",
+          "flicker patterns for steady-state visual evoked potentials",
+          "imagined-movement or resting-state tasks"
+        ]
+      },
+      {
+        "name": "Signal conditioning",
+        "role": "cleans the recording before matching.",
+        "parts": [
+          "band-pass and notch filtering",
+          "artefact rejection for eye blinks, muscle and movement",
+          "epoch segmentation"
+        ]
+      },
+      {
+        "name": "Feature extraction and matching",
+        "role": "converts cleaned signal into a compact identity signature and compares it.",
+        "parts": [
+          "spectral power features",
+          "event-related potential waveforms",
+          "connectivity measures",
+          "classifier with accept/reject threshold"
+        ]
+      },
+      {
+        "name": "Template store and liveness checks",
+        "role": "holds enrolled signatures and blocks fakes.",
+        "parts": [
+          "encrypted or cancelable templates",
+          "replay-attack detection",
+          "multi-factor fallback"
+        ]
+      },
+      {
+        "name": "Consent and data governance",
+        "role": "handles neural data, which cannot be reissued like a password.",
+        "parts": [
+          "enrolment consent record",
+          "retention and deletion rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the sensing modality",
+        "detail": "Scalp EEG is cheap and non-invasive but noisy; implanted electrodes give far better signal-to-noise at surgical risk and cost."
+      },
+      {
+        "title": "Design the protocol",
+        "detail": "Decide whether the user rests quietly, looks at flickering targets or responds to rare stimuli, and how long a check must take to be acceptable."
+      },
+      {
+        "title": "Enrol the person",
+        "detail": "Record several sessions on different days, at different times, so the template captures normal day-to-day variation rather than one lucky recording."
+      },
+      {
+        "title": "Preprocess the recordings",
+        "detail": "Filter to the relevant bands, detect and discard contaminated epochs, and keep enough clean data per session."
+      },
+      {
+        "title": "Extract identity features",
+        "detail": "Compute band power, evoked-response shape and cross-electrode coupling, then reduce these to a compact signature."
+      },
+      {
+        "title": "Calibrate the matcher",
+        "detail": "Set the decision threshold against target false-accept and false-reject rates, testing how the signature drifts across weeks and after caffeine, sleep loss or medication."
+      },
+      {
+        "title": "Deploy with anti-spoofing",
+        "detail": "Require a live, cooperative subject, detect replayed recordings, and combine the neural check with a conventional factor so a misread cannot stand alone."
+      },
+      {
+        "title": "Re-enrol and monitor",
+        "detail": "Refresh templates periodically and watch for slow drift, since a neural signature is not as fixed as a fingerprint."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable non-invasive neural sensing",
+        "status": "partial",
+        "why": "research-grade EEG works in a lab, but consumer headsets give unstable signals once the user moves or sweats."
+      },
+      {
+        "tech": "Artefact-robust decoding",
+        "status": "partial",
+        "why": "muscle, eye and motion noise dominate real-world recordings and can imitate or mask a signature."
+      },
+      {
+        "tech": "Presentation-attack defence",
+        "status": "missing",
+        "why": "a recorded brain signal or a synthetic one can be replayed into the matcher unless liveness is proven."
+      },
+      {
+        "tech": "Implantable electrode longevity and safety",
+        "status": "partial",
+        "why": "invasive arrays record better but degrade over months to years and need surgery."
+      },
+      {
+        "tech": "Neural-data privacy and template protection",
+        "status": "missing",
+        "why": "neural data can leak health and cognitive information, and unlike passwords it cannot be reset."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory studies showing that resting-state and evoked EEG patterns can distinguish individuals in small groups",
+        "unlocks": "evidence that brain signals carry identity information at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longitudinal trials measuring accuracy across months and outside the lab",
+        "unlocks": "realistic error rates and an understanding of how much re-enrolment is needed."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combination with established biometrics and hardware liveness detection",
+        "unlocks": "use as a second factor in high-security settings such as research facilities and controlled rooms."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous authentication on wearable or implanted neural interfaces",
+        "unlocks": "identity confirmed moment to moment during brain-controlled device use — the closest thing to the tile's claim, and still nothing like 'absolute'."
+      }
+    ]
+  }
+}

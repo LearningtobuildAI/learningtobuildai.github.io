@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Tissue preservation and sectioning",
+        "role": "turns a whole brain into a stable, sliceable block whose wiring survives the process.",
+        "parts": [
+          "perfusion fixation",
+          "heavy-metal staining",
+          "resin embedding",
+          "ultramicrotome or diamond knife"
+        ]
+      },
+      {
+        "name": "Volume electron microscopy",
+        "role": "images every section at a resolution fine enough to see synapses — a few nanometres per pixel.",
+        "parts": [
+          "multi-beam scanning electron microscope",
+          "automated tape-collecting lathe",
+          "sample stage and detectors"
+        ]
+      },
+      {
+        "name": "Image alignment and segmentation",
+        "role": "stitches millions of images into one volume and traces each neuron and synapse out of the pixel data.",
+        "parts": [
+          "registration software",
+          "machine-learning segmentation models",
+          "human proofreading interface"
+        ]
+      },
+      {
+        "name": "Connectome graph and annotation",
+        "role": "stores the result as a graph of neurons and their connections, labelled by cell type and synapse type.",
+        "parts": [
+          "graph database",
+          "cell-type classifiers",
+          "synapse-type labels"
+        ]
+      },
+      {
+        "name": "Functional mapping",
+        "role": "captures what the circuit actually does, not just how it is wired.",
+        "parts": [
+          "calcium or voltage imaging",
+          "electrophysiology",
+          "gene-expression profiles per cell"
+        ]
+      },
+      {
+        "name": "Emulation substrate",
+        "role": "runs the reconstructed network as a simulation.",
+        "parts": [
+          "neuron and synapse models",
+          "neuromorphic or GPU cluster",
+          "real-time scheduling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix and stain the brain",
+        "detail": "The tissue is chemically fixed so structure stops changing, then soaked in heavy-metal stains that make membranes and synapses visible to electrons."
+      },
+      {
+        "title": "Embed and slice",
+        "detail": "The brain is set in resin and cut into tens of thousands of ultrathin sections, each a few tens of nanometres thick, collected in order on tape or wafers."
+      },
+      {
+        "title": "Image every section",
+        "detail": "A multi-beam electron microscope scans each section, producing a stack of images that, for a human brain, would total on the order of exabytes — far beyond any dataset built so far."
+      },
+      {
+        "title": "Align the stack",
+        "detail": "Software registers each image to its neighbours so that a single dendrite can be followed across thousands of sections without drifting apart."
+      },
+      {
+        "title": "Trace neurons and find synapses",
+        "detail": "Machine-learning models segment cell membranes and flag the tiny junctions where one neuron contacts another; human proofreaders correct the errors, which is currently the slowest and most expensive step."
+      },
+      {
+        "title": "Type the cells and synapses",
+        "detail": "Structure alone does not say whether a synapse is excitatory or inhibitory, or which receptor it uses. Extra molecular labelling — or paired recordings and gene-expression data — is needed to give each node and edge a functional meaning."
+      },
+      {
+        "title": "Add activity",
+        "detail": "Recordings from the same or a comparable brain are used to fit a model that reproduces its firing patterns, since a wiring diagram at one instant says little about dynamics, glia, neuromodulators or plasticity."
+      },
+      {
+        "title": "Run the emulation",
+        "detail": "The annotated graph is loaded onto a computer that integrates each neuron's state over time. Doing this for a human brain, at speeds that keep pace with real life, is many orders of magnitude beyond current machines."
+      },
+      {
+        "title": "Validate — and confront the open question",
+        "detail": "The emulation's behaviour would be compared against the original. Whether a sufficiently accurate simulation would itself be conscious is not a question any current method can test; a copy is also not the same as transferring a mind."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Whole-brain synaptic-resolution imaging",
+        "status": "partial",
+        "why": "complete maps exist for a nematode and, since 2024, the adult fruit fly; a whole mouse brain and certainly a human brain remain out of reach."
+      },
+      {
+        "tech": "Automated dense segmentation and proofreading",
+        "status": "partial",
+        "why": "machine learning does most of the tracing, but the remaining human correction is a decades-scale bottleneck at human volumes."
+      },
+      {
+        "tech": "Synapse and cell-type annotation",
+        "status": "missing",
+        "why": "micrographs show a junction but not its transmitter, receptor type or strength — essential for a functional, not just structural, copy."
+      },
+      {
+        "tech": "Non-destructive scanning of a living brain",
+        "status": "missing",
+        "why": "every technique described here kills and slices the tissue; no known method reads a living human connectome intact, which is the core requirement for 'uploading' a person rather than reconstructing a deceased one."
+      },
+      {
+        "tech": "Whole-brain emulation compute",
+        "status": "partial",
+        "why": "exascale machines exist, but real-time simulation of ~10^14 synapses with biologically detailed models would need a further leap of many orders of magnitude."
+      },
+      {
+        "tech": "A testable theory of consciousness",
+        "status": "missing",
+        "why": "without one, there is no way to tell whether an emulation experiences anything, so the central promise cannot be verified."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "complete connectomes of small organisms and of small mammalian volumes, paired with activity data",
+        "unlocks": "proof that dense reconstruction and functional mapping can be joined at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a complete mouse brain connectome with cell types and recorded activity",
+        "unlocks": "the first mammal-scale emulation, useful for neuroscience and as a crude benchmark."
+      },
+      {
+        "stage": "Next",
+        "milestone": "molecular-resolution synapse typing and proofreading automated to near-zero human effort",
+        "unlocks": "human-scale reconstruction becomes an engineering cost rather than a lifetime project."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a post-mortem human connectome, reconstructed as a non-conscious model of that individual's circuits",
+        "unlocks": "research uses and a hard test of whether structure alone reproduces behaviour."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "a non-destructive, living-brain readout — currently no known physical mechanism",
+        "unlocks": "the only route by which 'uploading' would mean anything other than making a digital copy of a dead brain."
+      }
+    ]
+  }
+}

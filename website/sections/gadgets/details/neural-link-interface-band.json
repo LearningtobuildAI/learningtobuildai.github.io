@@ -1,0 +1,140 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor array",
+        "role": "picks up electrical activity from muscles and nerves at the skin surface.",
+        "parts": [
+          "dry or hydrogel electrodes",
+          "flexible substrate",
+          "shielding"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies tiny signals and removes noise.",
+        "parts": [
+          "instrumentation amplifiers",
+          "band-pass filters",
+          "analog-to-digital converters"
+        ]
+      },
+      {
+        "name": "Embedded processor",
+        "role": "runs signal processing and machine-learning models on the band itself.",
+        "parts": [
+          "low-power microcontroller or system-on-chip",
+          "neural accelerator",
+          "memory"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "keeps the band running for a day or more.",
+        "parts": [
+          "lithium-polymer battery",
+          "charging circuit",
+          "power management integrated circuit"
+        ]
+      },
+      {
+        "name": "Wireless link",
+        "role": "sends commands to a computer or headset.",
+        "parts": [
+          "Bluetooth Low Energy radio",
+          "antenna"
+        ]
+      },
+      {
+        "name": "Mechanical housing",
+        "role": "holds electrodes against the skin with consistent pressure.",
+        "parts": [
+          "flexible strap",
+          "adjustable clasp",
+          "skin-safe materials"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode layout",
+        "detail": "Place electrodes a few millimetres apart to capture signals from forearm muscles and underlying nerves; simulate signal quality."
+      },
+      {
+        "title": "Fabricate the flexible circuit",
+        "detail": "Print conductive traces and electrodes on a flexible substrate that conforms to the wrist."
+      },
+      {
+        "title": "Assemble electronics",
+        "detail": "Solder the analog front end, processor, radio and power management onto the circuit."
+      },
+      {
+        "title": "Develop signal processing",
+        "detail": "Write filters to remove motion artifacts and power-line interference; extract features like signal amplitude and frequency."
+      },
+      {
+        "title": "Train machine-learning models",
+        "detail": "Collect labelled data from users performing gestures; train a classifier to map signals to commands."
+      },
+      {
+        "title": "Optimize for on-device inference",
+        "detail": "Compress the model to run within the band's power and memory limits."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Fit the band to a user, calibrate baseline signals, and test gesture recognition accuracy."
+      },
+      {
+        "title": "Validate in real use",
+        "detail": "Test in scenarios like controlling a cursor or virtual-reality interface, measuring latency and false activations."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry electrode materials",
+        "status": "exists",
+        "why": "need to pick up signals without conductive gel for everyday wear."
+      },
+      {
+        "tech": "Low-power AI chips",
+        "status": "exists",
+        "why": "allow complex models to run on a battery-powered wearable."
+      },
+      {
+        "tech": "Gesture recognition algorithms",
+        "status": "partial",
+        "why": "still struggle with variability across users and sessions."
+      },
+      {
+        "tech": "Neural signal decoding from surface electrodes",
+        "status": "missing",
+        "why": "detecting individual nerve signals non-invasively remains very difficult; most systems rely on muscle signals."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes and limited commercial electromyography bands control simple gestures",
+        "unlocks": "hands-free control for augmented reality, virtual reality and accessibility."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-modal bands combining electromyography with ultrasound or impedance sensing",
+        "unlocks": "more reliable decoding of intended movements."
+      },
+      {
+        "stage": "Next",
+        "milestone": "adaptive models that calibrate automatically",
+        "unlocks": "seamless use without lengthy setup."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "non-invasive neural interfaces that read nerve signals directly",
+        "unlocks": "high-bandwidth, intuitive computer control."
+      }
+    ]
+  }
+}

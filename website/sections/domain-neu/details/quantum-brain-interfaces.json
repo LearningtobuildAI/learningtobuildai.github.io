@@ -34,5 +34,154 @@
         "def": "Quantum bits are the basic units of quantum information, analogous to classical bits but capable of representing multiple states simultaneously due to superposition."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum sensor array",
+        "role": "picks up the tiny magnetic fields that flowing neural currents produce.",
+        "parts": [
+          "nitrogen-vacancy (NV) centres in diamond",
+          "optically pumped magnetometers (OPMs)",
+          "SQUID magnetometers (older, cryogenic route)",
+          "laser and microwave drive electronics"
+        ]
+      },
+      {
+        "name": "Magnetic shielding and control",
+        "role": "keeps the sensor from being swamped by Earth's field and ambient noise.",
+        "parts": [
+          "mu-metal shield room",
+          "active cancellation coils",
+          "thermal and vibration isolation"
+        ]
+      },
+      {
+        "name": "Signal acquisition",
+        "role": "turns faint analogue pickups into clean digital data at kilohertz rates.",
+        "parts": [
+          "low-noise amplifiers",
+          "high-speed digitisers",
+          "real-time data link"
+        ]
+      },
+      {
+        "name": "Decoding layer",
+        "role": "converts raw field patterns into neural sources and, in principle, intended actions.",
+        "parts": [
+          "classical inverse-problem and beamforming software",
+          "quantum processor with error correction",
+          "hybrid quantum-classical algorithms"
+        ]
+      },
+      {
+        "name": "Stimulation pathway",
+        "role": "the write side — puts signals back into the nervous system.",
+        "parts": [
+          "electrode arrays",
+          "focused ultrasound",
+          "optogenetic or magnetic stimulation"
+        ]
+      },
+      {
+        "name": "Safety and control loop",
+        "role": "closes the loop in milliseconds without heating or damaging tissue.",
+        "parts": [
+          "latency budget and real-time scheduler",
+          "thermal and dosimetry monitoring",
+          "fail-safe shutoff"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the magnetic sensor",
+        "detail": "Diamond is grown with NV defects, or a vapour cell of alkali atoms is prepared, then calibrated against known field sources so it can resolve femtotesla changes."
+      },
+      {
+        "title": "Control the quantum state",
+        "detail": "Lasers and microwaves initialise the sensor's quantum state and read its response optically; microwave and optical paths must be stable to parts per million."
+      },
+      {
+        "title": "Shield and cancel fields",
+        "detail": "The sensor head sits inside a mu-metal enclosure with coils that cancel the roughly 50 microtesla Earth field, leaving room for the sensor to face the scalp."
+      },
+      {
+        "title": "Fit the array to a head",
+        "detail": "Sensors are packed into a helmet or flexible cap a few centimetres from the cortex, trading closeness against the need for thermal insulation and comfort."
+      },
+      {
+        "title": "Stream and digitise",
+        "detail": "Each channel is amplified, sampled in the kilohertz range and time-stamped so channels can be compared to microseconds."
+      },
+      {
+        "title": "Reconstruct sources",
+        "detail": "Software solves the inverse problem to estimate which patches of cortex produced each field pattern."
+      },
+      {
+        "title": "Decode intent",
+        "detail": "Classical machine learning is benchmarked first; quantum algorithms are tested only where they can be shown to beat it on the same data."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Decoded intent drives a stimulator, with the whole cycle kept under about 100 milliseconds so it feels like control rather than delay."
+      },
+      {
+        "title": "Validate safety and reliability",
+        "detail": "Long sessions test heating, magnetic exposure limits and whether the system drifts over months."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum magnetic field sensors",
+        "status": "partial",
+        "why": "NV-diamond sensors have detected single-neuron action potentials in the lab, and OPM-MEG helmets are now sold commercially."
+      },
+      {
+        "tech": "Error-corrected quantum computing",
+        "status": "missing",
+        "why": "today's processors are too noisy to promise any advantage on the high-dimensional decoding this would need."
+      },
+      {
+        "tech": "Non-invasive neural decoding",
+        "status": "partial",
+        "why": "EEG, MEG and implanted electrode arrays already decode simple intent, but far below natural movement and speech."
+      },
+      {
+        "tech": "Safe stimulation with fine resolution",
+        "status": "partial",
+        "why": "electrodes, focused ultrasound and magnetic stimulation exist, but none yet writes precise patterns into deep brain circuits safely for years."
+      },
+      {
+        "tech": "Room-temperature sensor packaging",
+        "status": "partial",
+        "why": "OPMs and NV sensors avoid liquid helium, but lasers, optics and shielding still make the hardware bulky."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wearable OPM-MEG helmets in research and specialist clinics",
+        "unlocks": "brain imaging while a person moves and speaks, which fixed scanners cannot do."
+      },
+      {
+        "stage": "Next",
+        "milestone": "NV-diamond arrays reading activity from small groups of neurons in living animals",
+        "unlocks": "a path from whole-brain fields toward cellular-resolution magnetic readout."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid quantum-classical decoders benchmarked honestly against classical ones",
+        "unlocks": "evidence for or against quantum processing in neural decoding."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a bidirectional device that reads and writes neural activity in real time",
+        "unlocks": "high-bandwidth communication and prosthetics — realistic only if error-corrected quantum hardware and safe stimulation both mature."
+      }
+    ]
   }
 }

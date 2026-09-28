@@ -29,5 +29,165 @@
         "def": "A trading strategy that relies on mathematical models and algorithms to identify profitable trades based on statistical patterns in market data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Market data and order-book pipeline",
+        "role": "gives the agent a real-time picture of prices, depth and events.",
+        "parts": [
+          "exchange feeds (tick and order-book data)",
+          "normalisation and time-stamping",
+          "news and alternative-data feeds"
+        ]
+      },
+      {
+        "name": "Market simulator",
+        "role": "the training gym — an agent learns only as well as the world it is trained in.",
+        "parts": [
+          "historical order-book replay",
+          "market-impact and transaction-cost models",
+          "latency model",
+          "multi-agent/adversary simulation"
+        ]
+      },
+      {
+        "name": "State and feature builder",
+        "role": "turns raw data into the representation the policy sees.",
+        "parts": [
+          "volatility and correlation features",
+          "inventory and P&L state",
+          "order-book imbalance signals"
+        ]
+      },
+      {
+        "name": "Policy (RL agent)",
+        "role": "maps market state to hedge and execution actions.",
+        "parts": [
+          "policy network",
+          "value/critic network",
+          "reward function with risk and cost terms",
+          "action-space definition"
+        ]
+      },
+      {
+        "name": "Risk and control layer",
+        "role": "hard limits that sit outside the agent and can always override it.",
+        "parts": [
+          "pre-trade limits and position caps",
+          "kill switch",
+          "drawdown and exposure monitoring",
+          "audit log"
+        ]
+      },
+      {
+        "name": "Execution gateway",
+        "role": "turns decisions into orders and fills.",
+        "parts": [
+          "order router",
+          "low-latency connectivity to venues",
+          "fill and slippage analytics"
+        ]
+      },
+      {
+        "name": "Monitoring and retraining loop",
+        "role": "detects when the learned policy stops matching the market.",
+        "parts": [
+          "drift and regime-change detection",
+          "shadow-mode scoring",
+          "periodic retraining and version control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the objective",
+        "detail": "Write down what the agent maximises and what it must not do: risk-adjusted return minus transaction costs, with explicit penalties for drawdown, leverage and concentration. Most failures start with a mis-specified reward."
+      },
+      {
+        "title": "Build the simulator first",
+        "detail": "Assemble historical order-book data, an impact model that makes large orders move prices, and a latency model. The agent will exploit any gap between the simulator and the real market, so this is the hardest and most important step."
+      },
+      {
+        "title": "Curate the data",
+        "detail": "Clean tick data, adjust for corporate actions, and avoid survivorship and look-ahead bias, so the training set reflects what was actually known at each moment."
+      },
+      {
+        "title": "Design state and actions",
+        "detail": "Decide what the agent observes (inventory, volatility, book imbalance) and what it may do (hedge ratios, slices of an order, quotes at various prices). Keep the action space small enough to learn and rich enough to be useful."
+      },
+      {
+        "title": "Train the policy",
+        "detail": "Run large-scale parallel simulation with a policy-gradient or actor-critic method, including distributional and risk-sensitive variants. Train across many market regimes, not one calm year."
+      },
+      {
+        "title": "Stress-test offline",
+        "detail": "Walk-forward tests on unseen periods, plus synthetic shocks: liquidity gaps, correlation breakdowns, exchange outages, and adversarial behaviour from other participants."
+      },
+      {
+        "title": "Shadow-deploy",
+        "detail": "Run the agent live beside the existing desk with no capital at risk, comparing its decisions and simulated fills against what humans and conventional algorithms did."
+      },
+      {
+        "title": "Go live under caps",
+        "detail": "Allocate limited capital inside hard pre-trade limits and a kill switch, with a human able to stop it instantly, then widen limits only as evidence accumulates."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "Watch for degradation, retrain on fresh data, and retire models whose edge has decayed. Markets are non-stationary, so a frozen policy will eventually fail."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep reinforcement learning",
+        "status": "exists",
+        "why": "methods that learn sequential decisions from reward are mature in games and simulation; RL beating top human players at Go in 2016 showed the approach works in closed worlds."
+      },
+      {
+        "tech": "Realistic market simulators and impact models",
+        "status": "partial",
+        "why": "price impact and other participants' reactions are still modelled crudely, and agents trained on a wrong simulator lose money in reality."
+      },
+      {
+        "tech": "Low-latency electronic execution",
+        "status": "exists",
+        "why": "an agent's decision is worthless without fast, reliable routing of orders to trading venues."
+      },
+      {
+        "tech": "Pre-trade risk controls and automated-trading rules",
+        "status": "exists",
+        "why": "regulators in major markets require pre-trade limits, kill switches and audit trails for algorithmic trading, and a fully autonomous agent must sit inside them."
+      },
+      {
+        "tech": "Handling of non-stationary, adversarial markets",
+        "status": "partial",
+        "why": "unlike chess or Go, the market changes rules and opponents react to your own orders, which no current agent solves robustly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "learned models assisting execution and quoting, with humans setting limits",
+        "unlocks": "lower transaction costs and more consistent order placement on desks that already trade electronically."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that choose hedge ratios across several instruments inside fixed risk budgets",
+        "unlocks": "hours freed for human traders, plus hedging that reacts faster than a person can."
+      },
+      {
+        "stage": "Next",
+        "milestone": "portfolio-level agents coordinating across desks, with proven live track records",
+        "unlocks": "capital allocation that adjusts continuously rather than in periodic committee decisions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "firms comfortable letting agents run with wide latitude",
+        "unlocks": "fully autonomous strategies — but only as far as regulation, liability and the risk of correlated model failure allow."
+      }
+    ]
   }
 }

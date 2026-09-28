@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Individual robot unit",
+        "role": "the basic agent that moves and acts in the environment.",
+        "parts": [
+          "chassis (often 10–30 cm across)",
+          "wheels, tracks or rotors",
+          "microcontroller",
+          "motors and drivers",
+          "battery"
+        ]
+      },
+      {
+        "name": "Sensing and perception",
+        "role": "lets each robot detect its surroundings and nearby swarm-mates.",
+        "parts": [
+          "proximity sensors (infrared or ultrasonic)",
+          "camera or LiDAR",
+          "inertial measurement unit",
+          "GPS or indoor localization beacons"
+        ]
+      },
+      {
+        "name": "Local communication",
+        "role": "shares state and intent with robots within range.",
+        "parts": [
+          "radio module (e.g. Zigbee, Bluetooth, LoRa)",
+          "infrared or acoustic transceivers",
+          "mesh-networking firmware"
+        ]
+      },
+      {
+        "name": "Power and energy management",
+        "role": "keeps robots running between charges or refuels.",
+        "parts": [
+          "lithium-ion or lithium-polymer cells",
+          "charging contacts or inductive coil",
+          "optional solar panel",
+          "power-management circuit"
+        ]
+      },
+      {
+        "name": "Swarm control software",
+        "role": "produces collective behaviour from simple local rules.",
+        "parts": [
+          "ant-colony-optimisation or flocking algorithms",
+          "stigmergy (virtual pheromone) maps",
+          "decentralised task allocation",
+          "collision-avoidance rules"
+        ]
+      },
+      {
+        "name": "Deployment and support infrastructure",
+        "role": "gets robots to the site and keeps them operating.",
+        "parts": [
+          "docking station or charging pad",
+          "base station for monitoring (optional)",
+          "transport cases",
+          "firmware-update system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the mission",
+        "detail": "Choose the environment (warehouse floor, field, water surface) and the collective goal, such as area coverage or object collection."
+      },
+      {
+        "title": "Design the individual robot",
+        "detail": "Specify size, sensors, actuators, radio and battery so that one robot can perform its local task reliably."
+      },
+      {
+        "title": "Prototype a single unit",
+        "detail": "Build and test one robot for mobility, sensing range and communication distance."
+      },
+      {
+        "title": "Develop swarm algorithms in simulation",
+        "detail": "Use physics simulators to test coordination rules with hundreds of virtual robots before touching hardware."
+      },
+      {
+        "title": "Assemble a small swarm",
+        "detail": "Manufacture or hand-build tens of identical robots, keeping unit cost low and behaviour consistent."
+      },
+      {
+        "title": "Run controlled experiments",
+        "detail": "Release the swarm in an indoor arena or fenced outdoor testbed to observe emergent patterns and measure performance."
+      },
+      {
+        "title": "Iterate hardware and software",
+        "detail": "Improve fault tolerance, energy use and scalability based on test failures and bottlenecks."
+      },
+      {
+        "title": "Scale production",
+        "detail": "Move to batch manufacturing with reliable components and automated calibration."
+      },
+      {
+        "title": "Pilot in a real application",
+        "detail": "Deploy in a structured setting such as a warehouse, farm or inspection site, with human supervision."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power wireless mesh networking",
+        "status": "exists",
+        "why": "robots must share local state without a central hub; scaling to thousands of nodes is still challenging."
+      },
+      {
+        "tech": "Miniaturised sensors and actuators",
+        "status": "exists",
+        "why": "cheap, small components make it practical to build many identical robots."
+      },
+      {
+        "tech": "High-energy-density batteries",
+        "status": "exists",
+        "why": "long missions need energy storage that fits on a small robot."
+      },
+      {
+        "tech": "Decentralised swarm algorithms",
+        "status": "partial",
+        "why": "ant-colony and flocking rules work in simulation and small tests, but robust scaling in the real world is not yet proven."
+      },
+      {
+        "tech": "Self-repair and fault tolerance",
+        "status": "missing",
+        "why": "a swarm must keep working when individual robots fail; automatic recovery is still a research problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research testbeds with tens to hundreds of simple robots in labs and arenas",
+        "unlocks": "understanding of how local rules produce collective behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot deployments in structured environments such as warehouses and farms",
+        "unlocks": "commercial validation for specific, bounded tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "large-scale swarms for environmental cleanup or disaster response",
+        "unlocks": "the ability to tackle problems too large or dangerous for individual robots."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous, self-organising swarms in unstructured environments",
+        "unlocks": "ubiquitous use in logistics, agriculture and construction with minimal human oversight."
+      }
+    ]
+  }
+}

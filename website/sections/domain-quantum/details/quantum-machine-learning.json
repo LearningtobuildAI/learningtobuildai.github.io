@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "the hardware that runs the circuits — today noisy, with tens to hundreds of physical qubits.",
+        "parts": [
+          "qubits (superconducting, trapped-ion or photonic)",
+          "control electronics",
+          "cryogenics or vacuum systems"
+        ]
+      },
+      {
+        "name": "Data encoding",
+        "role": "loads information into quantum states, the step that decides whether a speedup is even possible.",
+        "parts": [
+          "angle and amplitude encoding",
+          "quantum random-access memory (proposed)",
+          "feature maps"
+        ]
+      },
+      {
+        "name": "Parameterised circuit (ansatz)",
+        "role": "the trainable model — layers of gates whose angles are the learnable weights.",
+        "parts": [
+          "single-qubit rotations",
+          "entangling gates",
+          "repeated layers"
+        ]
+      },
+      {
+        "name": "Measurement and readout",
+        "role": "turns a quantum state into numbers a classical computer can use.",
+        "parts": [
+          "repeated-shot estimation",
+          "observable measurement",
+          "tomography or shadow methods"
+        ]
+      },
+      {
+        "name": "Classical training loop",
+        "role": "adjusts circuit parameters to reduce a cost function.",
+        "parts": [
+          "gradient estimators such as the parameter-shift rule",
+          "optimisers",
+          "frameworks such as Qiskit, Cirq or PennyLane"
+        ]
+      },
+      {
+        "name": "Error handling",
+        "role": "keeps noisy results usable, or corrects them as hardware improves.",
+        "parts": [
+          "error mitigation",
+          "error-correcting codes (future)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide whether quantum helps",
+        "detail": "Check if the data is genuinely quantum, or has structure a quantum model exploits — otherwise a classical method is usually cheaper and better."
+      },
+      {
+        "title": "Encode the data",
+        "detail": "Map each input sample onto a quantum state using rotations or amplitudes; this loading step is often the hidden bottleneck."
+      },
+      {
+        "title": "Design the ansatz",
+        "detail": "Choose a circuit template with tunable gate angles and enough entangling layers to represent the target function."
+      },
+      {
+        "title": "Define the cost function",
+        "detail": "Pick an observable whose measured expectation value scores how well the model is doing."
+      },
+      {
+        "title": "Estimate gradients",
+        "detail": "Run the circuit many times per parameter to estimate gradients, using the parameter-shift rule or similar methods."
+      },
+      {
+        "title": "Train with a classical optimiser",
+        "detail": "Feed the estimates to a classical optimiser, update angles, and repeat — watching for barren plateaus where gradients vanish."
+      },
+      {
+        "title": "Apply error mitigation",
+        "detail": "Correct for hardware noise by running calibration circuits and extrapolating, or by zero-noise techniques."
+      },
+      {
+        "title": "Benchmark against classical models",
+        "detail": "Compare on identical data against strong classical baselines; a claimed advantage only counts if it survives this test."
+      },
+      {
+        "title": "Scale to fault-tolerant hardware",
+        "detail": "For provable advantages, run the algorithm on error-corrected logical qubits — a step that does not yet exist."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-corrected logical qubits",
+        "status": "missing",
+        "why": "most proven quantum speedups assume fault-tolerant circuits; today's devices are too noisy."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "loading classical data into a quantum state can cost more than the speedup it enables."
+      },
+      {
+        "tech": "Trainable circuits without barren plateaus",
+        "status": "missing",
+        "why": "gradients in many ansatz designs shrink exponentially with size, stalling training."
+      },
+      {
+        "tech": "Quantum data sources",
+        "status": "partial",
+        "why": "quantum sensors and simulators do produce genuinely quantum data, the clearest near-term use case."
+      },
+      {
+        "tech": "Strong classical baselines",
+        "status": "exists",
+        "why": "neural networks are cheap and effective, so any quantum claim must beat them, not just match them."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale experiments on noisy hardware, mostly learning properties of quantum states",
+        "unlocks": "tooling and intuition, but no demonstrated broad advantage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "provable advantages on quantum data from sensors or simulators, with error mitigation",
+        "unlocks": "a real, narrow commercial niche before general speedups."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant algorithms",
+        "unlocks": "larger circuits where quantum kernels and linear-algebra routines start to pay off."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant quantum models for chemistry, materials and possibly classical data",
+        "unlocks": "speedups on problems classical machines handle poorly — if data loading is ever solved."
+      }
+    ]
+  }
+}

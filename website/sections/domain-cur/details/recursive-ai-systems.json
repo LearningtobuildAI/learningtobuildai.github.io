@@ -33,5 +33,169 @@
         "def": "A condition where a model learns the training data too well, including noise and outliers, leading to poor generalization on new data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Base model and training stack",
+        "role": "the large neural network(s) that do the reasoning and generation.",
+        "parts": [
+          "transformer or mixture-of-experts weights",
+          "distributed training framework",
+          "data pipeline and tokeniser",
+          "accelerator clusters"
+        ]
+      },
+      {
+        "name": "Search and proposal layer",
+        "role": "generates candidate improvements — to code, architecture, hyperparameters, data or training recipe.",
+        "parts": [
+          "evolutionary / population search",
+          "Bayesian optimisation",
+          "mutation and recombination operators",
+          "candidate scoring"
+        ]
+      },
+      {
+        "name": "Evaluation harness",
+        "role": "decides whether a proposed change is actually better, on held-out tasks.",
+        "parts": [
+          "automatic benchmarks and unit tests",
+          "held-out validation sets",
+          "regression suites",
+          "statistical significance checks"
+        ]
+      },
+      {
+        "name": "Sandboxed execution environment",
+        "role": "runs AI-written code safely and reproducibly.",
+        "parts": [
+          "containers or virtual machines",
+          "resource and time limits",
+          "checkpointing",
+          "network isolation"
+        ]
+      },
+      {
+        "name": "Self-improvement controller",
+        "role": "closes the loop: propose, test, keep the winners, retrain or rewrite.",
+        "parts": [
+          "scheduler",
+          "lineage and version store",
+          "selection rule",
+          "stopping criteria"
+        ]
+      },
+      {
+        "name": "Oversight layer",
+        "role": "watches for the loop drifting into unsafe or degenerate behaviour.",
+        "parts": [
+          "dangerous-capability evaluations",
+          "interpretability probes",
+          "logging and audit trail",
+          "human approval gates and an off switch"
+        ]
+      },
+      {
+        "name": "Domain simulators and data engines",
+        "role": "supply fast, cheap ground truth for science problems.",
+        "parts": [
+          "molecular and materials simulation",
+          "robotic or automated laboratories",
+          "large curated datasets"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Train a strong base model",
+        "detail": "Pretrain on text, code and scientific data so the system can read, write and reason about its own source."
+      },
+      {
+        "title": "Give it tools",
+        "detail": "Attach a code interpreter, retrieval over documentation, and access to simulators so proposals can be executed rather than just described."
+      },
+      {
+        "title": "Define verifiable objectives",
+        "detail": "Choose problems with automatic, objective scoring — a test suite that passes, a simulation result, a measured property — because an unmeasurable goal cannot drive a loop."
+      },
+      {
+        "title": "Add the search layer",
+        "detail": "Wrap the model in a population-based search that proposes many candidate changes and scores each one, keeping the best."
+      },
+      {
+        "title": "Automate the cycle",
+        "detail": "Replace human steps one at a time: generate, execute, evaluate, select, retrain. Each turn produces a recorded lineage of what changed and why."
+      },
+      {
+        "title": "Sandbox and checkpoint everything",
+        "detail": "Every generation runs in an isolated environment with compute and time caps, and is snapshotted so a bad lineage can be rolled back."
+      },
+      {
+        "title": "Add capability and safety gates",
+        "detail": "Before any self-modification is kept, run evaluations for loss of control, reward hacking and dangerous capabilities; require human sign-off for large jumps."
+      },
+      {
+        "title": "Scale iteratively",
+        "detail": "Widen what the loop is allowed to change — first hyperparameters, then training code, then architecture, then its own search procedure — only as fast as verification can keep up."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale model training and inference",
+        "status": "exists",
+        "why": "the loop is only as good as the model proposing the changes."
+      },
+      {
+        "tech": "Automated machine learning and architecture search",
+        "status": "exists",
+        "why": "already deployed for tuning models, and is the narrow ancestor of a self-improving loop."
+      },
+      {
+        "tech": "Trustworthy automatic evaluation of open-ended work",
+        "status": "partial",
+        "why": "tests exist for code and maths, but 'is this research idea better?' still needs human judgement."
+      },
+      {
+        "tech": "Sandboxed, isolated code execution",
+        "status": "partial",
+        "why": "containers work, but containing a system that can rewrite itself is much harder than containing ordinary software."
+      },
+      {
+        "tech": "Interpretability and control of learned systems",
+        "status": "missing",
+        "why": "without it, no one can tell whether a self-modification removed a safety property."
+      },
+      {
+        "tech": "Fast simulators or automated laboratories",
+        "status": "partial",
+        "why": "science domains need cheap, high-throughput experiments to give the loop a signal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI that assists AI work: code assistants, automated tuning, search that discovers better algorithms and chip layouts",
+        "unlocks": "measurable speed-ups in narrow, verifiable engineering tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agent systems that run whole experimental cycles in one domain, such as candidate molecules or battery materials, with humans reviewing results",
+        "unlocks": "research throughput limited mainly by laboratory capacity rather than by people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-improvement loops approved on well-verifiable tasks end to end, under sandboxing and audit",
+        "unlocks": "evidence about whether the loop compounds or stalls."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "loops allowed to modify their own training and search code",
+        "unlocks": "faster progress, but only if interpretability, evaluation and governance keep pace; compute, data and the cost of verification remain the binding limits."
+      }
+    ]
   }
 }

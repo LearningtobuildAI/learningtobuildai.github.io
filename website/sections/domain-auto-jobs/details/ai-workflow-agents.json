@@ -33,5 +33,168 @@
         "def": "Natural Language Processing"
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Model core",
+        "role": "provides language understanding, reasoning and generation.",
+        "parts": [
+          "foundation model",
+          "fine-tuned adapters",
+          "inference engine"
+        ]
+      },
+      {
+        "name": "Planning module",
+        "role": "breaks a goal into steps and decides what to do next.",
+        "parts": [
+          "task decomposition",
+          "chain-of-thought or tree search",
+          "self-reflection"
+        ]
+      },
+      {
+        "name": "Tool integration layer",
+        "role": "lets the agent call external software, APIs and databases.",
+        "parts": [
+          "function schemas",
+          "API clients",
+          "authentication and permissions"
+        ]
+      },
+      {
+        "name": "Memory and context",
+        "role": "stores past interactions and retrieves relevant knowledge.",
+        "parts": [
+          "vector store",
+          "short-term buffer",
+          "summarisation"
+        ]
+      },
+      {
+        "name": "Orchestration engine",
+        "role": "executes the plan, manages state and handles errors.",
+        "parts": [
+          "execution loop",
+          "state machine",
+          "retry and fallback logic"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop interface",
+        "role": "allows people to review, approve or correct actions.",
+        "parts": [
+          "approval UI",
+          "feedback capture",
+          "escalation paths"
+        ]
+      },
+      {
+        "name": "Safety and monitoring",
+        "role": "guards against harmful actions and tracks performance.",
+        "parts": [
+          "guardrails",
+          "logging",
+          "evaluation metrics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and boundaries",
+        "detail": "Write a precise specification of what the agent should accomplish and what it must never do, including data it may access."
+      },
+      {
+        "title": "Choose and prepare the model",
+        "detail": "Select a foundation model with strong reasoning, optionally fine-tune it on domain examples and set decoding parameters for consistency."
+      },
+      {
+        "title": "Build tool integrations",
+        "detail": "Create functions the agent can call to read and write data, send messages, query databases or operate software, each with typed inputs and outputs."
+      },
+      {
+        "title": "Implement the planning and execution loop",
+        "detail": "Code the cycle where the agent receives a goal, proposes a plan, acts through a tool, observes the result and decides whether to continue or stop."
+      },
+      {
+        "title": "Add memory and context management",
+        "detail": "Connect a vector database for long-term recall and a rolling buffer for recent turns, with summarisation to stay within context limits."
+      },
+      {
+        "title": "Create human oversight",
+        "detail": "Design interfaces where a person can inspect proposed actions, approve high-risk steps and correct mistakes before they propagate."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Run the agent on realistic and adversarial tasks, measure success and failure modes, and iterate on prompts, tools and guardrails."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Release into production with logging, rate limits, rollback ability and dashboards that track task completion and error rates."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with multi-step reasoning",
+        "status": "exists",
+        "why": "they provide the core ability to understand instructions and plan."
+      },
+      {
+        "tech": "Tool and function calling APIs",
+        "status": "exists",
+        "why": "they allow the model to interact with external software reliably."
+      },
+      {
+        "tech": "Vector databases and retrieval-augmented generation",
+        "status": "exists",
+        "why": "they give agents long-term memory and access to private knowledge."
+      },
+      {
+        "tech": "Reliable long-horizon planning",
+        "status": "partial",
+        "why": "agents still lose track and make errors over many steps, limiting autonomy."
+      },
+      {
+        "tech": "Safety and alignment techniques",
+        "status": "partial",
+        "why": "preventing harmful or unintended actions remains an open problem."
+      },
+      {
+        "tech": "Standardised agent-tool protocols",
+        "status": "partial",
+        "why": "interoperability between different agents and systems is still emerging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-task agents for narrow workflows such as drafting replies or summarising documents",
+        "unlocks": "productivity gains in repetitive, well-bounded tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems that divide a project among specialised roles",
+        "unlocks": "handling of larger workflows that need different skills."
+      },
+      {
+        "stage": "Next",
+        "milestone": "long-horizon autonomy with self-correction and minimal supervision",
+        "unlocks": "end-to-end completion of multi-day knowledge work."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "enterprise-wide integration with legacy systems and human teams",
+        "unlocks": "widespread automation of back-office and professional tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "generalist agents that learn new domains with little data",
+        "unlocks": "broad economic impact across many industries."
+      }
+    ]
   }
 }

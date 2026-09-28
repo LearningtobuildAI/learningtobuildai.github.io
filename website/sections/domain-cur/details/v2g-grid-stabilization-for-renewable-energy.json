@@ -29,5 +29,145 @@
         "def": "The capability of an electrical vehicle's battery to both charge from and discharge energy to the grid."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "converts grid AC power to DC for the battery and back again, synchronising with the grid.",
+        "parts": [
+          "power electronics (inverter/rectifier)",
+          "control unit",
+          "connector (CCS or CHAdeMO)"
+        ]
+      },
+      {
+        "name": "Vehicle battery and BMS",
+        "role": "stores energy and manages safe charging and discharging.",
+        "parts": [
+          "lithium-ion cells",
+          "battery management system",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Communication and control",
+        "role": "lets vehicle, charger, aggregator and grid operator exchange signals.",
+        "parts": [
+          "ISO 15118 or CHAdeMO protocol stack",
+          "telematics unit",
+          "aggregator software"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "pools many vehicles to act as a single grid resource.",
+        "parts": [
+          "cloud servers",
+          "forecasting algorithms",
+          "market interface"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "ensures safe connection to the distribution network.",
+        "parts": [
+          "isolation transformer",
+          "protection relays",
+          "revenue metering"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design bidirectional power electronics",
+        "detail": "Develop a charger that can invert DC battery power to grid-synchronised AC and rectify AC to DC, with efficiency above 90%."
+      },
+      {
+        "title": "Implement communication standards",
+        "detail": "Embed ISO 15118-20 or CHAdeMO protocols in vehicles and chargers so they can negotiate discharge rates and grid services."
+      },
+      {
+        "title": "Equip vehicles",
+        "detail": "Install larger onboard chargers or use external chargers, and update battery management firmware to allow controlled discharge without excessive degradation."
+      },
+      {
+        "title": "Build aggregation software",
+        "detail": "Create a platform that aggregates thousands of vehicles, forecasts availability, and bids into electricity markets or grid-operator schemes."
+      },
+      {
+        "title": "Deploy charging infrastructure",
+        "detail": "Install bidirectional chargers at homes, workplaces and depots, with wiring and switchgear rated for two-way power flow."
+      },
+      {
+        "title": "Establish grid interconnection",
+        "detail": "Work with utilities to set protection settings, metering arrangements and tariffs that allow and reward export to the grid."
+      },
+      {
+        "title": "Run pilot fleets",
+        "detail": "Test V2G with buses, delivery vans and employee cars to validate technology, battery wear and revenue streams under real conditions."
+      },
+      {
+        "title": "Scale up manufacturing and markets",
+        "detail": "Mass-produce bidirectional chargers, open grid markets to aggregated vehicles, and roll out to consumers."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging hardware",
+        "status": "partial",
+        "why": "chargers exist but are costly and not yet mass-produced for homes or small fleets."
+      },
+      {
+        "tech": "Communication standards for V2G",
+        "status": "partial",
+        "why": "ISO 15118-20 and CHAdeMO support it, but implementation across vehicles and chargers is uneven."
+      },
+      {
+        "tech": "Grid interconnection rules",
+        "status": "partial",
+        "why": "some regions allow small-scale export, but many lack standards for aggregated vehicle power."
+      },
+      {
+        "tech": "Aggregation and market access",
+        "status": "partial",
+        "why": "pilot aggregators exist, but electricity markets rarely accept small, mobile resources at scale."
+      },
+      {
+        "tech": "Battery degradation data",
+        "status": "partial",
+        "why": "more cycling may shorten battery life; long-term data is still limited."
+      },
+      {
+        "tech": "Smart grid infrastructure",
+        "status": "exists",
+        "why": "advanced metering and grid sensors are widely deployed in many countries."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot projects with fleet vehicles (buses, delivery vans) provide grid services",
+        "unlocks": "real-world data on battery wear and revenue."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial V2G for fleets and workplace charging, with aggregators selling frequency response",
+        "unlocks": "a viable business case for businesses with parked vehicles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "residential V2G available with bidirectional home chargers and supportive tariffs",
+        "unlocks": "household backup power and lower energy bills."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "widespread V2G integrated into grid markets, providing large-scale storage and backup",
+        "unlocks": "cheaper integration of variable renewables, reducing need for dedicated batteries."
+      }
+    ]
   }
 }

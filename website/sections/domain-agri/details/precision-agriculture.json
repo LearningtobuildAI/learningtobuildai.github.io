@@ -34,5 +34,142 @@
         "def": "Areas within a field that are managed differently based on the specific conditions found in those areas, such as soil type or plant health."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Positioning and guidance",
+        "role": "tells machines exactly where they are in the field, to within a few centimetres.",
+        "parts": [
+          "GNSS receiver",
+          "RTK correction source (base station or network)",
+          "auto-steer controller",
+          "in-cab display"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "measures how soil, crops and weather vary across a field.",
+        "parts": [
+          "soil moisture and nutrient probes",
+          "multispectral cameras on drones or satellites",
+          "yield monitors on harvesters",
+          "weather stations"
+        ]
+      },
+      {
+        "name": "Data and analytics",
+        "role": "turns sensor readings into maps and decisions.",
+        "parts": [
+          "farm management software",
+          "cloud storage and processing",
+          "AI models for yield prediction and disease detection",
+          "variable-rate prescription maps"
+        ]
+      },
+      {
+        "name": "Variable-rate application",
+        "role": "adjusts seed, fertiliser and pesticide rates on the move.",
+        "parts": [
+          "electric-drive seed meters",
+          "pulse-width-modulated spray nozzles",
+          "variable-rate spreaders",
+          "ISOBUS controllers"
+        ]
+      },
+      {
+        "name": "Connectivity and integration",
+        "role": "links machines, sensors and software into one system.",
+        "parts": [
+          "cellular or radio modems",
+          "ISOBUS compatibility",
+          "telematics units",
+          "data standards such as ISOXML"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define management zones",
+        "detail": "Collect yield maps, satellite imagery and soil samples (e.g. one sample per 1–2 hectares) to divide the field into zones with similar potential."
+      },
+      {
+        "title": "Set up positioning",
+        "detail": "Install an RTK base station or subscribe to a correction service so tractors and implements know their position to 2–3 cm."
+      },
+      {
+        "title": "Instrument the machinery",
+        "detail": "Fit GNSS receivers, auto-steer, section control and variable-rate controllers to tractors, seeders, sprayers and spreaders."
+      },
+      {
+        "title": "Build prescription maps",
+        "detail": "Use farm software to convert zone data into a prescription: how much seed, fertiliser or spray to apply at each point."
+      },
+      {
+        "title": "Calibrate and apply",
+        "detail": "Calibrate flow sensors and nozzles, then run the prescription; the machine changes rates automatically as it moves."
+      },
+      {
+        "title": "Monitor and adjust",
+        "detail": "Compare as-applied maps with yield maps and satellite imagery at harvest to refine zones for the next season."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "GNSS and RTK correction",
+        "status": "exists",
+        "why": "gives the 2–3 cm accuracy needed for auto-steer, section control and precise mapping."
+      },
+      {
+        "tech": "Soil and crop sensors",
+        "status": "exists",
+        "why": "measure variability in nutrients, moisture and plant health."
+      },
+      {
+        "tech": "Variable-rate machinery",
+        "status": "exists",
+        "why": "can change seed, fertiliser and spray rates on the go."
+      },
+      {
+        "tech": "Rural broadband and mobile coverage",
+        "status": "partial",
+        "why": "many fields lack reliable connectivity for real-time data and remote support."
+      },
+      {
+        "tech": "AI and remote-sensing analytics",
+        "status": "partial",
+        "why": "turning satellite and drone imagery into reliable, actionable maps is still developing."
+      },
+      {
+        "tech": "Autonomous field machinery",
+        "status": "partial",
+        "why": "robotic weeders and autonomous tractors are emerging but not yet common for broadacre crops."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "GNSS auto-steer and yield mapping are standard on many farms.",
+        "unlocks": "less overlap and a baseline of field-level data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Variable-rate seeding and spraying guided by satellite and drone imagery reaches scale.",
+        "unlocks": "lower input costs and more even crops."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Autonomous tractors and robotic weeders work commercially in high-value crops.",
+        "unlocks": "reduced labour and around-the-clock operation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Whole-farm digital twins with AI decision support that predicts and prescribes in real time.",
+        "unlocks": "field-by-field optimisation with minimal manual input."
+      }
+    ]
   }
 }

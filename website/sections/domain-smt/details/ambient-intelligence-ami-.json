@@ -30,5 +30,171 @@
         "def": "A technique used in AmI systems to analyze patterns in sensor data and predict future states or needs based on historical behavior."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "detects presence, identity, activity and sometimes vital signs without requiring contact.",
+        "parts": [
+          "passive infrared motion sensors",
+          "60 GHz mmWave radar",
+          "privacy-filtered cameras",
+          "temperature, humidity and CO2 sensors",
+          "wearable tags"
+        ]
+      },
+      {
+        "name": "Edge inference",
+        "role": "turns raw sensor streams into context locally, for low latency and privacy.",
+        "parts": [
+          "low-power microcontrollers and systems-on-chip",
+          "neural accelerators",
+          "quantised on-device models",
+          "sensor-fusion middleware"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "links sensors, processors and actuators reliably.",
+        "parts": [
+          "BLE, Zigbee, Thread and Wi-Fi radios",
+          "wired building buses",
+          "gateways",
+          "time synchronisation"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "changes the environment physically in response.",
+        "parts": [
+          "lighting and blinds",
+          "heating, ventilation and air conditioning",
+          "door locks",
+          "service robots"
+        ]
+      },
+      {
+        "name": "Ambient feedback",
+        "role": "communicates state subtly, without demanding attention.",
+        "parts": [
+          "colour-tunable lights",
+          "spatial speakers",
+          "ultrasonic haptic surfaces",
+          "small ambient displays"
+        ]
+      },
+      {
+        "name": "Privacy and security",
+        "role": "keeps sensing lawful, consented and resistant to misuse.",
+        "parts": [
+          "secure elements",
+          "local-only processing modes",
+          "encryption and access control",
+          "anonymisation"
+        ]
+      },
+      {
+        "name": "Orchestration",
+        "role": "learns routines and coordinates devices around people.",
+        "parts": [
+          "context models",
+          "rule engines",
+          "reinforcement learning",
+          "interoperability APIs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the scenario",
+        "detail": "Choose the outcome — a hospital ward that reduces falls, or a home that cuts energy use — and list the signals needed to achieve it."
+      },
+      {
+        "title": "Instrument the space",
+        "detail": "Mount sensors so every zone is covered, calibrate radar and infrared fields of view, and label each sensor's location and purpose."
+      },
+      {
+        "title": "Design power and network",
+        "detail": "Decide between battery, mains and Power over Ethernet, then pick radios and a gateway that meet latency and reliability targets."
+      },
+      {
+        "title": "Build the edge pipeline",
+        "detail": "Collect representative data, train lightweight models, quantise them, and deploy to local processors that can run without the cloud."
+      },
+      {
+        "title": "Fuse context and set policy",
+        "detail": "Combine motion, presence, sound and environmental readings into a single context model, then encode rules for how the space should respond."
+      },
+      {
+        "title": "Integrate actuators",
+        "detail": "Connect lighting, heating, locks and feedback surfaces so that decisions result in safe, reversible physical actions."
+      },
+      {
+        "title": "Embed privacy and security",
+        "detail": "Process sensitive data locally, encrypt links, require consent for identification, and log access to the system."
+      },
+      {
+        "title": "Test in the real environment",
+        "detail": "Run for weeks in occupied rooms, measure false positives and missed events, then iterate before wider deployment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power sensors and radios",
+        "status": "exists",
+        "why": "mmWave radar, passive infrared and BLE radios make always-on sensing affordable and unobtrusive."
+      },
+      {
+        "tech": "Edge AI accelerators",
+        "status": "exists",
+        "why": "local chips can run vision and audio models without sending private data to a data centre."
+      },
+      {
+        "tech": "Interoperability standards",
+        "status": "partial",
+        "why": "protocols such as Matter and Thread reduce fragmentation, but coverage across device classes is incomplete."
+      },
+      {
+        "tech": "Privacy-preserving sensing",
+        "status": "partial",
+        "why": "on-device processing and radar-only sensing are demonstrated, yet consent and anonymisation remain hard to guarantee."
+      },
+      {
+        "tech": "Haptic and ambient feedback surfaces",
+        "status": "partial",
+        "why": "ultrasonic haptics and ambient displays exist in labs and products, but are not yet robust or cheap enough for every room."
+      },
+      {
+        "tech": "Robust human activity recognition",
+        "status": "partial",
+        "why": "recognising complex activities across different people and buildings still produces false alarms."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-room systems in homes and hospitals: occupancy lighting, voice assistants, fall alerts",
+        "unlocks": "incremental convenience, energy savings and safety."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-room, multi-modal context awareness in pilot homes and hospital wards",
+        "unlocks": "proactive care, personalised comfort and early warnings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "buildings that adapt to individuals while processing data locally under clear consent",
+        "unlocks": "personalisation without mass surveillance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ambient intelligence as ordinary building infrastructure, like electricity or heating",
+        "unlocks": "invisible assistance anywhere people live, work and recover."
+      }
+    ]
   }
 }

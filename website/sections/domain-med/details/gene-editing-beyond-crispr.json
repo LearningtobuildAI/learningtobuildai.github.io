@@ -30,5 +30,140 @@
         "def": "A gene-editing tool that can make both single-base changes and insertions/deletions in a single step without creating double-strand breaks."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Editor protein",
+        "role": "the enzyme that rewrites DNA without cutting both strands.",
+        "parts": [
+          "Cas nickase (a partly deactivated Cas enzyme)",
+          "deaminase domain (base editing)",
+          "reverse transcriptase domain (prime editing)",
+          "linkers and nuclear localisation signals"
+        ]
+      },
+      {
+        "name": "Guide RNA",
+        "role": "programmes the editor to one address in the genome.",
+        "parts": [
+          "CRISPR RNA and tracrRNA, or a single guide",
+          "prime editing guide RNA (pegRNA) with a template tail and primer binding site"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into the right cells and no others.",
+        "parts": [
+          "lipid nanoparticles",
+          "engineered AAV vectors",
+          "electroporation (for cells edited outside the body)"
+        ]
+      },
+      {
+        "name": "Target and PAM design",
+        "role": "picks a site the editor can reach and that matters clinically.",
+        "parts": [
+          "genome sequence databases",
+          "off-target prediction software",
+          "engineered PAM variants"
+        ]
+      },
+      {
+        "name": "Manufacturing and analytics",
+        "role": "makes the editor reproducibly and proves what it did.",
+        "parts": [
+          "cell-free protein or mRNA synthesis",
+          "guide RNA synthesis",
+          "whole-genome sequencing to count unintended edits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the correction",
+        "detail": "Identify the exact single-letter change or short insertion to make, and the disease it would treat."
+      },
+      {
+        "title": "Engineer the editor",
+        "detail": "Fuse a Cas nickase to a deaminase (for C-to-T or A-to-G changes) or to a reverse transcriptase, then screen variants for activity and purity in bacterial and mammalian cells."
+      },
+      {
+        "title": "Design the guide",
+        "detail": "Select a ~20-nucleotide sequence next to a usable PAM; for prime editing, extend the guide with a primer binding site and a written template of the new sequence."
+      },
+      {
+        "title": "Test in cells",
+        "detail": "Deliver into cultured patient cells, sequence the target, and measure editing efficiency against off-target edits."
+      },
+      {
+        "title": "Deliver to the tissue",
+        "detail": "Package as mRNA in lipid nanoparticles for the liver, or as AAV for eye, muscle or brain; or edit blood stem cells outside the body and reinfuse them."
+      },
+      {
+        "title": "Establish safety",
+        "detail": "Long-term animal studies check for off-target edits, immune reactions and cancer risk before any human trial."
+      },
+      {
+        "title": "Run clinical trials",
+        "detail": "Escalating doses in small patient groups, with sequencing of blood and tissue to see what was edited."
+      },
+      {
+        "title": "Scale manufacture",
+        "detail": "Produce clinical-grade editor and guide under pharmaceutical rules, with batch release testing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Programmable CRISPR targeting",
+        "status": "exists",
+        "why": "the Cas protein's ability to be aimed by a guide RNA is the foundation both methods build on."
+      },
+      {
+        "tech": "DNA-modifying enzymes",
+        "status": "exists",
+        "why": "deaminases and reverse transcriptases are borrowed from nature and retuned for human cells."
+      },
+      {
+        "tech": "Safe in-vivo delivery to specific organs",
+        "status": "partial",
+        "why": "lipid nanoparticles reach the liver well but other organs poorly, which limits which diseases are treatable."
+      },
+      {
+        "tech": "Whole-genome off-target detection",
+        "status": "partial",
+        "why": "you cannot claim precision without sequencing that can find rare unintended edits."
+      },
+      {
+        "tech": "Long-term safety data",
+        "status": "missing",
+        "why": "edits are permanent, so decades of follow-up are needed to know the true risk."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "base-editing therapies in early clinical trials, mainly for blood disorders and inherited high cholesterol",
+        "unlocks": "first human evidence that these editors work and are tolerated."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first prime-editing treatment tested in people",
+        "unlocks": "insertions, deletions and precise multi-letter rewrites, not just single base swaps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable delivery beyond the liver and blood",
+        "unlocks": "editing for genetic lung, muscle, eye and brain diseases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-gene and enhancer-region editing",
+        "unlocks": "polygenic conditions — and, much more speculatively, trait enhancement, which raises hard ethical questions rather than purely technical ones."
+      }
+    ]
   }
 }

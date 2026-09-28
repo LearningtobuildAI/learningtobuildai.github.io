@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neural recording",
+        "role": "listens to the sender's brain.",
+        "parts": [
+          "scalp EEG electrodes",
+          "electrocorticography (ECoG) grids",
+          "intracortical microelectrode arrays",
+          "low-noise amplifiers and digitisers"
+        ]
+      },
+      {
+        "name": "Decoding pipeline",
+        "role": "converts recorded activity into a message.",
+        "parts": [
+          "feature extraction",
+          "machine-learning classifier",
+          "real-time inference hardware"
+        ]
+      },
+      {
+        "name": "Encoding pipeline",
+        "role": "turns that message into stimulation parameters suited to the receiver's cortex.",
+        "parts": [
+          "individual cortical maps",
+          "stimulus waveform generator",
+          "intensity safety limits"
+        ]
+      },
+      {
+        "name": "Transmission link",
+        "role": "carries the message between the two nervous systems, usually over ordinary digital networks.",
+        "parts": [
+          "low-latency network path",
+          "error correction",
+          "session authentication"
+        ]
+      },
+      {
+        "name": "Neural stimulation",
+        "role": "writes the message into the receiver's brain.",
+        "parts": [
+          "transcranial magnetic stimulation (TMS) coil",
+          "transcranial focused ultrasound transducer",
+          "implanted electrode array with current drivers"
+        ]
+      },
+      {
+        "name": "Timing and feedback",
+        "role": "keeps sender and receiver in step and lets them adapt.",
+        "parts": [
+          "synchronisation clock",
+          "latency monitor",
+          "behavioural feedback display"
+        ]
+      },
+      {
+        "name": "Safety and consent layer",
+        "role": "stops the interface harming or coercing a participant.",
+        "parts": [
+          "charge-density and temperature limits",
+          "electrode impedance monitoring",
+          "session logging and consent protocols"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map both brains",
+        "detail": "Functional imaging and, where implanted electrodes exist, direct mapping locate the cortical areas that will be read from and written to."
+      },
+      {
+        "title": "Fit the sender's sensors",
+        "detail": "An EEG cap is applied with conductive gel, or an already-implanted array is connected; signal quality is checked against a baseline."
+      },
+      {
+        "title": "Train the sender's decoder",
+        "detail": "Over many sessions the sender performs a simple mental task, such as imagining a hand movement, while a classifier learns the pattern that distinguishes it."
+      },
+      {
+        "title": "Calibrate the receiver's encoder",
+        "detail": "Stimulation sites and intensities are tested until they reliably evoke a faint sensation — a phosphene, a twitch — that is noticeable but not painful."
+      },
+      {
+        "title": "Restrict to a low-bandwidth code",
+        "detail": "Because the channel is so narrow, the pair agree on a simple code: one detectable signal means 'yes', its absence means 'no', and the task is built around that."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The decoded state is transmitted, converted into a stimulus, and delivered to the receiver while both participants see the shared task and adjust."
+      },
+      {
+        "title": "Add error checking",
+        "detail": "Redundant trials and confidence thresholds are used so that a single misread pattern does not become a wrong message."
+      },
+      {
+        "title": "Increase channel count",
+        "detail": "More electrodes, sharper stimulation and better decoders are added step by step to raise the number of distinguishable signals."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable, long-lived neural recording",
+        "status": "partial",
+        "why": "implanted arrays lose signal over months, and scalp EEG is blurred by the skull."
+      },
+      {
+        "tech": "Real-time neural decoding",
+        "status": "exists",
+        "why": "classifiers already turn motor-imagery patterns into control signals for prostheses and spellers."
+      },
+      {
+        "tech": "Focal, non-invasive stimulation with millisecond precision",
+        "status": "missing",
+        "why": "TMS is precise in time but coarse in space, so it excites broad patches of cortex rather than chosen neurons."
+      },
+      {
+        "tech": "A workable neural code for writing information",
+        "status": "missing",
+        "why": "we can evoke crude sensations but cannot yet dictate what pattern of activity a specific perception requires."
+      },
+      {
+        "tech": "Fast, low-latency digital transport",
+        "status": "exists",
+        "why": "the network side is easy; the bottleneck is entirely at the two brains."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations between a handful of participants, such as the University of Washington human-to-human link reported in 2014 and the three-person 'BrainNet' experiment published in 2019",
+        "unlocks": "proof that a signal can pass from one nervous system into another, at a few bits per minute at best."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sensory-substitution and sensory-restoration research that reliably writes patterned activity into cortex",
+        "unlocks": "a richer alphabet than a single on/off signal."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bidirectional closed-loop links in which both partners both send and receive, with learned mappings for each individual",
+        "unlocks": "communication rather than one-way triggering."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a common neural interface standard with agreed codecs, consent rules and privacy protections",
+        "unlocks": "any wider use — and forces society to decide what should never be shared between minds."
+      }
+    ]
+  }
+}

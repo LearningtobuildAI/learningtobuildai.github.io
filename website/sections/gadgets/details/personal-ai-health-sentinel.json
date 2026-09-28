@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing chemistry",
+        "role": "turns the concentration of a molecule into an electrical signal.",
+        "parts": [
+          "microneedle or implanted electrode array",
+          "enzyme or aptamer recognition layer",
+          "reference electrode",
+          "anti-fouling membrane"
+        ]
+      },
+      {
+        "name": "Skin interface",
+        "role": "keeps the sensor in contact with interstitial fluid without causing irritation or infection.",
+        "parts": [
+          "adhesive patch",
+          "insertion mechanism",
+          "sterile barrier"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "measures tiny currents, averages noise and stores readings.",
+        "parts": [
+          "potentiostat circuit",
+          "low-power microcontroller",
+          "battery",
+          "wireless radio"
+        ]
+      },
+      {
+        "name": "Analytics",
+        "role": "turns a stream of numbers into a personal baseline and flags departures from it.",
+        "parts": [
+          "signal-quality filters",
+          "per-person baseline model",
+          "anomaly detector",
+          "other wearable inputs such as heart rate and temperature"
+        ]
+      },
+      {
+        "name": "Data and alerting layer",
+        "role": "stores the history, compares it with reference data and routes warnings to the user or a clinician.",
+        "parts": [
+          "encrypted cloud storage",
+          "reference-signal datasets",
+          "alerting rules",
+          "clinician dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the analytes",
+        "detail": "Choose which molecules to track — glucose is the only one with mature continuous sensing; lactate, ketones, electrolytes and inflammatory markers are candidates but far less proven."
+      },
+      {
+        "title": "Design the sensing chemistry",
+        "detail": "For each target, select an enzyme, aptamer or ion-selective membrane that reacts specifically with it and produces a measurable current or voltage."
+      },
+      {
+        "title": "Fabricate the sensor",
+        "detail": "Microneedles or thin-film electrodes are patterned by etching or lithography, then coated with the recognition layer and a protective membrane that resists fouling by proteins."
+      },
+      {
+        "title": "Bench-test in vitro",
+        "detail": "Sensors are soaked in synthetic interstitial fluid to measure sensitivity, response time, drift and cross-sensitivity to similar molecules."
+      },
+      {
+        "title": "Package and sterilise",
+        "detail": "The sensor is mounted in a patch with its electronics, sealed against moisture and sterilised for skin contact."
+      },
+      {
+        "title": "Validate against blood",
+        "detail": "Clinical studies compare sensor readings with laboratory blood draws over days, across people and skin types."
+      },
+      {
+        "title": "Learn a personal baseline",
+        "detail": "The device runs for a stretch of healthy days so the model can learn what is normal for this individual, since absolute concentrations vary widely between people."
+      },
+      {
+        "title": "Fuse signals and set thresholds",
+        "detail": "The algorithm combines chemistry with heart rate, temperature and sleep, then is tuned so that it warns early without drowning the user in false alarms."
+      },
+      {
+        "title": "Clear it and wire it into care",
+        "detail": "Regulatory review and clinician workflows decide what happens when the device says something is wrong — a step where most such systems stall."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Continuous glucose sensing",
+        "status": "exists",
+        "why": "the only continuous molecular monitor in wide use; it proves the subcutaneous sensing principle but only for one molecule."
+      },
+      {
+        "tech": "Multiplexed minimally invasive biosensing",
+        "status": "partial",
+        "why": "measuring several analytes stably for days or weeks in living tissue remains a research problem."
+      },
+      {
+        "tech": "Low-power wearable electronics",
+        "status": "exists",
+        "why": "a patch must run for days on a small battery while sampling and transmitting."
+      },
+      {
+        "tech": "Longitudinal datasets linking physiology to disease onset",
+        "status": "partial",
+        "why": "reference data exist for heart rhythm and glucose, but far less for the broader chemistry-and-illness link."
+      },
+      {
+        "tech": "Validated early-illness prediction models",
+        "status": "missing",
+        "why": "showing that a signal change precedes symptoms, and that acting on it improves outcomes, is largely unproven."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "continuous glucose monitors plus wrist-worn heart-rate and temperature sensors",
+        "unlocks": "real-time tracking of one molecule and general physiological trends."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-analyte patches that hold calibration for a week or more",
+        "unlocks": "monitoring beyond diabetes, such as in hospital or post-surgical care."
+      },
+      {
+        "stage": "Next",
+        "milestone": "prospective trials showing that alerts change clinical outcomes",
+        "unlocks": "regulatory clearance for illness prediction rather than just measurement."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration into routine care and, cautiously, consumer use",
+        "unlocks": "shifting some medicine from episodic testing to continuous surveillance — raising open questions about false alarms, privacy and anxiety."
+      }
+    ]
+  }
+}

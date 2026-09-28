@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Training compute cluster",
+        "role": "supplies the raw arithmetic for training and serving a very large model.",
+        "parts": [
+          "racks of specialised accelerators (GPUs/TPUs)",
+          "high-bandwidth interconnect between chips",
+          "power distribution and liquid cooling"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "turns raw text, code, images and audio into clean training material.",
+        "parts": [
+          "web and licensed corpora",
+          "deduplication and quality filters",
+          "tokeniser",
+          "provenance and licensing records"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "the mathematical structure that learns and stores patterns.",
+        "parts": [
+          "transformer-style layers",
+          "sparse mixture-of-experts routing",
+          "long-context attention",
+          "memory and retrieval modules"
+        ]
+      },
+      {
+        "name": "Learning algorithms",
+        "role": "the procedures that turn data into capability.",
+        "parts": [
+          "self-supervised pretraining",
+          "reinforcement learning on verifiable tasks",
+          "fine-tuning and preference tuning",
+          "distillation into smaller models"
+        ]
+      },
+      {
+        "name": "Agent and tool layer",
+        "role": "lets the model act over time rather than answer one prompt.",
+        "parts": [
+          "planner",
+          "persistent memory",
+          "tool and API calls",
+          "sandboxed code execution"
+        ]
+      },
+      {
+        "name": "Evaluation and safety harness",
+        "role": "measures what the system can do and limits what it may do.",
+        "parts": [
+          "capability benchmarks",
+          "red-teaming suites",
+          "interpretability probes",
+          "runtime guardrails and audit logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target",
+        "detail": "Write down the capabilities that count as 'general' and the evaluations that would show them, before training starts."
+      },
+      {
+        "title": "Assemble data and compute",
+        "detail": "Gather and filter corpora, build or rent a cluster with tens of thousands of accelerators, and secure the electricity and cooling to run it."
+      },
+      {
+        "title": "Pretrain the base model",
+        "detail": "Train a large neural network to predict missing parts of data, an objective that forces it to absorb structure across many domains."
+      },
+      {
+        "title": "Post-train for behaviour",
+        "detail": "Use reinforcement learning on tasks with checkable answers, plus human and AI feedback, to make the model useful and obedient to instructions."
+      },
+      {
+        "title": "Add memory and tools",
+        "detail": "Give the system persistent memory, retrieval over documents, and the ability to call software — essential for long, multi-step work."
+      },
+      {
+        "title": "Scale up agency",
+        "detail": "Let the model plan, act, observe results and correct itself in loops, with sandboxing so mistakes stay contained."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Test for transfer to unseen domains, deception, and dangerous capabilities; investigate the internals to check it is doing what it claims."
+      },
+      {
+        "title": "Deploy under oversight",
+        "detail": "Serve the system with monitoring, human review at high-stakes decision points, and the ability to roll back."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Frontier-scale compute and its supply chain",
+        "status": "exists",
+        "why": "training runs already use thousands of accelerators; general capability may need far more."
+      },
+      {
+        "tech": "High-quality training data",
+        "status": "partial",
+        "why": "readily available human text is being exhausted, and synthetic data can amplify errors."
+      },
+      {
+        "tech": "Continual, sample-efficient learning",
+        "status": "missing",
+        "why": "today's models are largely frozen after training and need far more examples than a person to learn a new skill."
+      },
+      {
+        "tech": "Interpretability of large models",
+        "status": "partial",
+        "why": "without it, we cannot verify whether a system's reasoning is genuine or safe."
+      },
+      {
+        "tech": "Robust evaluation of general ability",
+        "status": "missing",
+        "why": "benchmarks are quickly saturated or gamed, so 'general' progress is hard to measure honestly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multimodal models that write, code, see and hold long conversations, wrapped in early agent scaffolding",
+        "unlocks": "useful automation of bounded, checkable tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that complete multi-hour or multi-day projects with memory and tool use",
+        "unlocks": "delegation of real knowledge work under human supervision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "systems that transfer a new skill learned in one domain to another with little extra data",
+        "unlocks": "the practical definition of 'general' that most researchers would accept."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reliable, interpretable systems with governance agreed across borders",
+        "unlocks": "wide deployment — and the reason to be cautious about the pace."
+      }
+    ]
+  }
+}

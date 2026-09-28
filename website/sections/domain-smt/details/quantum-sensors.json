@@ -30,5 +30,148 @@
         "def": "The principle in quantum mechanics stating that a physical system exists partly in all its theoretically possible states simultaneously but, upon measurement, is found to be in only one of those states."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum element",
+        "role": "the part whose quantum state does the sensing — cold atoms, trapped ions, spins in diamond, or a superconducting circuit.",
+        "parts": [
+          "vacuum cell or trap",
+          "atomic or spin source",
+          "diamond defect (nitrogen-vacancy) or superconducting loop"
+        ]
+      },
+      {
+        "name": "Laser and optical bench",
+        "role": "prepares, manipulates and reads the quantum state with light.",
+        "parts": [
+          "frequency-stabilised diode lasers",
+          "optical fibres and modulators",
+          "photodetectors"
+        ]
+      },
+      {
+        "name": "Coil and shielding package",
+        "role": "defines a clean magnetic environment so the sensor sees the signal, not the room.",
+        "parts": [
+          "mu-metal shields",
+          "bias and gradient coils",
+          "RF screening"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "runs the precise pulse sequence and extracts a tiny phase or frequency shift.",
+        "parts": [
+          "RF synthesiser",
+          "FPGA timing controller",
+          "low-noise amplifier and digitiser"
+        ]
+      },
+      {
+        "name": "Isolation and platform",
+        "role": "keeps acceleration, vibration and temperature drifts from swamping the measurement.",
+        "parts": [
+          "vibration isolation",
+          "thermal enclosure",
+          "gimbal or rigid mount"
+        ]
+      },
+      {
+        "name": "Reference and calibration chain",
+        "role": "ties the sensor's output to a known standard.",
+        "parts": [
+          "atomic clock or frequency comb",
+          "known test masses or fields"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the interrogation scheme",
+        "detail": "Choose the physical quantity, the quantum state, and the pulse sequence that converts a shift in that state into a signal."
+      },
+      {
+        "title": "Fabricate the quantum element",
+        "detail": "Grow and cut diamond for spin sensors, or build a vacuum chamber and load an alkali-metal source for cold-atom devices."
+      },
+      {
+        "title": "Build the laser system",
+        "detail": "Assemble and frequency-lock the lasers so their wavelength matches an atomic transition to a fraction of a linewidth."
+      },
+      {
+        "title": "Prepare the state",
+        "detail": "Cool and trap atoms in a magneto-optical trap, or optically polarise spins, so nearly every sensor element starts in the same state."
+      },
+      {
+        "title": "Run the sequence",
+        "detail": "Apply pulses that put the state into superposition, let it evolve while the external field or acceleration imprints a phase, then recombine it."
+      },
+      {
+        "title": "Detect the result",
+        "detail": "Measure fluorescence or light absorption to read out how much phase accumulated."
+      },
+      {
+        "title": "Shield and stabilise",
+        "detail": "Enclose the sensor in magnetic shielding and vibration isolation so external noise does not dominate the signal."
+      },
+      {
+        "title": "Calibrate and package",
+        "detail": "Compare against a reference standard, characterise drift, and engineer the bench into a rugged field instrument."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Frequency-stabilised lasers",
+        "status": "exists",
+        "why": "the whole measurement hinges on controlling light to atomic precision."
+      },
+      {
+        "tech": "Laser cooling and trapping",
+        "status": "exists",
+        "why": "cold, slow atoms are what make atom-interferometer sensors so sensitive."
+      },
+      {
+        "tech": "Magnetic shielding and low-noise electronics",
+        "status": "exists",
+        "why": "the signals are often smaller than ordinary environmental noise."
+      },
+      {
+        "tech": "Photonic and vacuum integration",
+        "status": "partial",
+        "why": "shoebox-sized optics benches must shrink to chip-scale devices to leave the lab, and this is only partly solved."
+      },
+      {
+        "tech": "Entanglement-enhanced metrology",
+        "status": "partial",
+        "why": "squeezed light and entangled states push sensitivity past the classical limit; squeezed light is already used in gravitational-wave detectors, but most other entanglement schemes remain research."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "deployed atomic clocks for timing and navigation, and cold-atom gravimeters used in geophysical surveying",
+        "unlocks": "better positioning, timing and underground mapping."
+      },
+      {
+        "stage": "Next",
+        "milestone": "optically pumped magnetometers and spin-defect sensors in clinical and industrial use",
+        "unlocks": "brain imaging without cryogenics, and non-destructive inspection of materials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field-portable cold-atom inertial sensors for navigation without satellite fixes",
+        "unlocks": "navigation where GPS is unavailable or jammed."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "entangled and networked sensors sharing quantum states",
+        "unlocks": "sensitivity and stability beyond what any single sensor can reach, plus new tests of fundamental physics."
+      }
+    ]
   }
 }

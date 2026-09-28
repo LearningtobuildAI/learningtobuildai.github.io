@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Extreme adaptive optics",
+        "role": "corrects atmospheric turbulence thousands of times per second so the star image stays sharp.",
+        "parts": [
+          "deformable mirror with thousands of actuators",
+          "high-speed wavefront sensor (Shack-Hartmann or pyramid)",
+          "real-time control computer"
+        ]
+      },
+      {
+        "name": "Coronagraph",
+        "role": "blocks the bright star so faint companions can be seen beside it.",
+        "parts": [
+          "apodizer or shaped pupil",
+          "focal-plane mask (vortex or Lyot)",
+          "Lyot stop"
+        ]
+      },
+      {
+        "name": "Integral field spectrograph",
+        "role": "splits the remaining light into a spectrum at every pixel, giving the planet's colour and temperature.",
+        "parts": [
+          "lenslet array",
+          "prisms or grisms",
+          "low-noise infrared detector"
+        ]
+      },
+      {
+        "name": "Wavefront calibration",
+        "role": "measures and removes the optical errors that the wavefront sensor cannot see.",
+        "parts": [
+          "reference star or internal source",
+          "non-common-path aberration sensing",
+          "predictive control software"
+        ]
+      },
+      {
+        "name": "Post-processing pipeline",
+        "role": "subtracts the residual stellar halo in software.",
+        "parts": [
+          "angular differential imaging",
+          "spectral differential imaging",
+          "PSF subtraction algorithms"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for a specific telescope",
+        "detail": "The coronagraph, adaptive optics and spectrograph are matched to the telescope's aperture, obstruction and site turbulence."
+      },
+      {
+        "title": "Fabricate the deformable mirror",
+        "detail": "A thin reflective membrane is bonded to thousands of piezo or MEMS actuators and polished to optical quality."
+      },
+      {
+        "title": "Make the coronagraph masks",
+        "detail": "Focal-plane masks and apodizers are etched or deposited with nanometre precision to suppress starlight at the target wavelength."
+      },
+      {
+        "title": "Integrate the instrument",
+        "detail": "Optics, detectors and cryogenics are assembled in a clean room and aligned on a vibration-isolated bench."
+      },
+      {
+        "title": "Commission on the telescope",
+        "detail": "The instrument is mounted at a focus, the AO loop is closed on real stars, and non-common-path aberrations are calibrated."
+      },
+      {
+        "title": "Observe with the star blocked",
+        "detail": "Deep exposures are taken while the field rotates, so the planet moves relative to the residual starlight."
+      },
+      {
+        "title": "Post-process the data",
+        "detail": "Reference images and the rotating field are combined to subtract the halo, revealing faint point sources."
+      },
+      {
+        "title": "Extract spectra and orbits",
+        "detail": "The companion's spectrum gives its temperature and atmosphere, while repeated images give its orbit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large telescopes (8–10 m class)",
+        "status": "exists",
+        "why": "They collect enough light to see a planet millions of times fainter than its star."
+      },
+      {
+        "tech": "Deformable mirrors with thousands of actuators",
+        "status": "exists",
+        "why": "They must shape the wavefront finely enough to create a dark hole beside the star."
+      },
+      {
+        "tech": "Fast, low-noise infrared detectors",
+        "status": "exists",
+        "why": "The planet signal is weak, so every stray electron matters."
+      },
+      {
+        "tech": "Coronagraph mask fabrication",
+        "status": "exists",
+        "why": "Masks must be made to sub-wavelength precision to block starlight without dimming the planet."
+      },
+      {
+        "tech": "Real-time computing and post-processing algorithms",
+        "status": "exists",
+        "why": "The AO loop runs at kilohertz rates, and halo subtraction needs large image archives."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ground-based extreme AO instruments on 8-m telescopes image young, self-luminous giant planets and take their spectra",
+        "unlocks": "the first atmospheric studies of directly imaged exoplanets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated high-contrast instruments on 30-m class telescopes now under construction",
+        "unlocks": "imaging of older, fainter giant planets and possibly large rocky planets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reflected-light spectroscopy of mature planetary systems",
+        "unlocks": "comparison of exoplanet atmospheres with those in our Solar System."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "space-based coronagraphs on future observatories",
+        "unlocks": "direct imaging of Earth-like planets around nearby stars — if starlight suppression improves by another factor of a thousand."
+      }
+    ]
+  }
+}

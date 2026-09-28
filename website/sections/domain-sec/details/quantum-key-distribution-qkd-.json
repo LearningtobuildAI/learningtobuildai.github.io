@@ -38,5 +38,157 @@
         "def": "Devices that use photons for information processing and communication, such as modulators, detectors, and lasers."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the quantum states that carry the key.",
+        "parts": [
+          "attenuated laser pulses",
+          "polarization or phase modulators",
+          "optional entangled photon source"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons between the two parties.",
+        "parts": [
+          "dedicated optical fibre (dark fibre)",
+          "free-space optical telescope for satellite or line-of-sight links",
+          "optical filters and isolators"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "detect individual photons with high efficiency and low noise.",
+        "parts": [
+          "cooled InGaAs avalanche photodiodes",
+          "superconducting nanowire single-photon detectors",
+          "cryogenic coolers"
+        ]
+      },
+      {
+        "name": "Classical channel and post-processing",
+        "role": "authenticated classical communication to sift, correct errors and amplify privacy.",
+        "parts": [
+          "classical network link",
+          "FPGA or CPU for real-time processing",
+          "software for error correction and hashing"
+        ]
+      },
+      {
+        "name": "Key management system",
+        "role": "stores and supplies keys to encryption devices.",
+        "parts": [
+          "key store",
+          "key management API",
+          "integration with encryptors such as AES or one-time pad"
+        ]
+      },
+      {
+        "name": "Trusted nodes and quantum repeaters",
+        "role": "extend range beyond a single point-to-point link.",
+        "parts": [
+          "trusted node servers (current approach)",
+          "quantum memories and repeaters (research)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the endpoints",
+        "detail": "Install transmitter and receiver hardware at two locations, with power, cooling and rack space."
+      },
+      {
+        "title": "Deploy the quantum channel",
+        "detail": "Lay dedicated optical fibre or establish a free-space optical path, minimising loss and maintaining polarization."
+      },
+      {
+        "title": "Calibrate detectors and timing",
+        "detail": "Cool single-photon detectors to operating temperature, align optics, and synchronise clocks between the two ends."
+      },
+      {
+        "title": "Run the protocol",
+        "detail": "The transmitter sends photons encoded in randomly chosen bases; the receiver measures in randomly chosen bases."
+      },
+      {
+        "title": "Sift and reconcile",
+        "detail": "Over an authenticated classical channel, compare bases, discard mismatches, and correct remaining errors."
+      },
+      {
+        "title": "Privacy amplification",
+        "detail": "Hash the key to compress it and remove any information an eavesdropper may have gained."
+      },
+      {
+        "title": "Authenticate and distribute",
+        "detail": "Use the resulting key to encrypt data, or supply it to a key management system for later use."
+      },
+      {
+        "title": "Extend with trusted nodes",
+        "detail": "For longer distances, chain QKD links through secure intermediate nodes that decrypt and re-encrypt keys."
+      },
+      {
+        "title": "Monitor and rekey",
+        "detail": "Continuously measure the quantum bit error rate; if it rises, abort and rekey to maintain security."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "efficient, low-noise detectors are needed to receive the very weak quantum signals."
+      },
+      {
+        "tech": "Low-loss optical fibre or free-space optics",
+        "status": "exists",
+        "why": "fibre loss and atmospheric turbulence limit the range and key rate."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "without authentication, an eavesdropper could impersonate either party during reconciliation."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "needed to extend range without trusting intermediate nodes, but not yet practical."
+      },
+      {
+        "tech": "Standards and certification",
+        "status": "partial",
+        "why": "interoperability and security certification for QKD systems are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro-scale QKD links and trusted-node networks operate in several countries",
+        "unlocks": "high-security links for finance, government and critical infrastructure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite QKD, demonstrated by the Micius satellite in 2017, moves toward operational services",
+        "unlocks": "intercontinental key exchange where fibre is impractical."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale QKD transmitters and receivers are integrated into standard telecom equipment",
+        "unlocks": "lower cost and much wider deployment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and entanglement swapping remove the need for trusted nodes",
+        "unlocks": "a global quantum internet."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid QKD and post-quantum cryptography systems are standardised",
+        "unlocks": "defence against both quantum and classical attacks."
+      }
+    ]
   }
 }

@@ -32,5 +32,145 @@
         "def": "The high-temperature process that fuses the remaining particles in the green part into a solid metal structure."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Powder delivery and recoating",
+        "role": "spreads a fresh, even layer of metal powder across the build area after every pass.",
+        "parts": [
+          "powder hopper/feed",
+          "roller or blade recoater",
+          "build box and piston"
+        ]
+      },
+      {
+        "name": "Printhead and binder system",
+        "role": "deposits droplets of binder only where the part should be solid.",
+        "parts": [
+          "industrial inkjet head array",
+          "binder reservoir and supply",
+          "droplet control electronics"
+        ]
+      },
+      {
+        "name": "Binder chemistry",
+        "role": "glues powder particles together strongly enough to survive handling before sintering.",
+        "parts": [
+          "polymer binder",
+          "solvent/carrier",
+          "surfactants and additives"
+        ]
+      },
+      {
+        "name": "Debinding and sintering furnace",
+        "role": "burns out the binder, then bonds the metal particles into a dense solid below the melting point.",
+        "parts": [
+          "controlled-atmosphere furnace",
+          "thermal schedule controller",
+          "gas supply (argon, hydrogen, or vacuum)"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "brings the porous, slightly oversized sintered part to final tolerances.",
+        "parts": [
+          "hot isostatic press (optional)",
+          "CNC machining",
+          "surface finishing",
+          "optional bronze infiltration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the powder",
+        "detail": "Gas-atomised metal powder — stainless steel, tool steel, copper, nickel alloy or tungsten carbide — is sieved to a tight particle-size range so it flows and spreads evenly."
+      },
+      {
+        "title": "Spread a layer",
+        "detail": "The recoater sweeps a thin layer of powder, typically tens of micrometres thick, across the build plate."
+      },
+      {
+        "title": "Jet the binder",
+        "detail": "Inkjet heads print binder droplets onto the powder exactly where the cross-section of the part lies."
+      },
+      {
+        "title": "Repeat layer on layer",
+        "detail": "The build platform drops by one layer thickness and the cycle repeats until the whole part is printed as a fragile 'green' body embedded in loose powder."
+      },
+      {
+        "title": "Depowder",
+        "detail": "The build box is removed and loose powder is brushed, vacuumed or vibrated away, leaving the green part; unused powder is recycled."
+      },
+      {
+        "title": "Cure",
+        "detail": "Gentle heating sets the binder so the green part is strong enough to be moved and handled."
+      },
+      {
+        "title": "Debind",
+        "detail": "A slow furnace cycle decomposes and drives off the polymer binder without cracking or contaminating the metal."
+      },
+      {
+        "title": "Sinter",
+        "detail": "At high temperature the particles fuse by diffusion, the part densifies and shrinks — often around 15–20% linearly — so the print must be scaled up in advance to compensate."
+      },
+      {
+        "title": "Finish",
+        "detail": "Hot isostatic pressing closes residual porosity where full density is required, then critical faces are machined and surfaces finished."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fine spherical metal powders",
+        "status": "exists",
+        "why": "binder jetting needs free-flowing, closely sized powder that spreads flat, unlike the coarser cuts used in laser melting."
+      },
+      {
+        "tech": "Industrial inkjet printheads",
+        "status": "exists",
+        "why": "thousands of nozzles must fire reliably for hours over an abrasive powder bed."
+      },
+      {
+        "tech": "Controlled-atmosphere sintering furnaces",
+        "status": "exists",
+        "why": "sintering must happen without oxidation, and with precise temperature and time control to avoid distortion."
+      },
+      {
+        "tech": "Binder systems that burn out cleanly",
+        "status": "partial",
+        "why": "residue left behind becomes porosity or contamination in the finished metal."
+      },
+      {
+        "tech": "Shrinkage-compensation models",
+        "status": "partial",
+        "why": "the whole part shrinks during sintering; predicting and pre-scaling it is what makes tight tolerances possible."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial binder jet systems producing tooling, prototypes and modest production runs",
+        "unlocks": "metal parts without tooling, at higher throughput than laser powder-bed printing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger build boxes, faster recoating and qualified material databases",
+        "unlocks": "batch production of parts that currently need casting or machining."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sintering and hot isostatic pressing tuned for full density and repeatable tolerances",
+        "unlocks": "safety-critical and fatigue-loaded parts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "in-line automation from powder to finished part",
+        "unlocks": "volume manufacturing of components for automotive and industrial equipment."
+      }
+    ]
   }
 }

@@ -33,5 +33,140 @@
         "def": "A phenomenon in which the quantum state of two or more objects has to be described with reference to each other, even when separated by large distances."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "the qubit chip that would run the optimisation or sampling core of a robot's planner.",
+        "parts": [
+          "superconducting or trapped-ion qubits",
+          "control electronics",
+          "dilution refrigerator or vacuum chamber"
+        ]
+      },
+      {
+        "name": "Classical–quantum interface",
+        "role": "feeds robot state into the quantum machine and returns an answer fast enough to act on.",
+        "parts": [
+          "low-latency links",
+          "classical optimiser in the hybrid loop",
+          "compiler translating robot problems into quantum circuits"
+        ]
+      },
+      {
+        "name": "Perception front end",
+        "role": "turns cameras, LiDAR, radar and touch into a compact state description the quantum routine can ingest.",
+        "parts": [
+          "sensor suite",
+          "classical neural networks",
+          "state encoder"
+        ]
+      },
+      {
+        "name": "Algorithm stack",
+        "role": "the quantum routines that would actually help: sampling, combinatorial optimisation, linear algebra, quantum reinforcement learning.",
+        "parts": [
+          "variational algorithms",
+          "annealing or QAOA-style routines",
+          "error-mitigation routines"
+        ]
+      },
+      {
+        "name": "Robot control and actuation",
+        "role": "converts high-level decisions into safe motion.",
+        "parts": [
+          "classical motion planner and safety monitor",
+          "motor drives",
+          "real-time controller"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate qubits",
+        "detail": "Josephson-junction circuits, or trapped ions, are made in semiconductor-style cleanrooms with nanometre precision."
+      },
+      {
+        "title": "Wire up control",
+        "detail": "Each qubit needs its own microwave or laser control lines and readout resonators, cooled to near absolute zero for superconducting designs."
+      },
+      {
+        "title": "Build the hybrid loop",
+        "detail": "Classical software encodes the robot's situation — poses, tasks, constraints — as a cost function and parameterised circuit, runs it, measures, and updates."
+      },
+      {
+        "title": "Train the quantum policy",
+        "detail": "Repeated hybrid runs tune circuit parameters, in the way variational quantum algorithms are trained today, but on real or simulated robot data."
+      },
+      {
+        "title": "Shrink the latency",
+        "detail": "Decisions must arrive in milliseconds to steer a machine, so the whole cycle would need hardware far faster than today's queue-and-run cloud access."
+      },
+      {
+        "title": "Fuse with classical control",
+        "detail": "A classical controller keeps running the robot; the quantum core only handles sub-problems where it demonstrably wins."
+      },
+      {
+        "title": "Certify safety",
+        "detail": "Any probabilistic element must be wrapped in deterministic limits so the machine can always stop safely."
+      },
+      {
+        "title": "Deploy and measure",
+        "detail": "Field trials would compare against strong classical planners on the same tasks to see whether the quantum path actually helps."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Qubits with low error rates",
+        "status": "partial",
+        "why": "today's best machines have tens to a few hundred physical qubits with error rates far too high for long computations."
+      },
+      {
+        "tech": "Fault-tolerant error correction",
+        "status": "missing",
+        "why": "useful robot-scale optimisation is thought to need thousands of logical qubits built from many physical ones; this has not been achieved."
+      },
+      {
+        "tech": "Millisecond-latency hybrid computation",
+        "status": "missing",
+        "why": "robots act in real time, whereas most quantum access is batch or cloud-based."
+      },
+      {
+        "tech": "Demonstrated quantum advantage on robotics problems",
+        "status": "missing",
+        "why": "no quantum machine has shown a practical speed-up over classical solvers on planning or control tasks."
+      },
+      {
+        "tech": "Compact, rugged quantum hardware",
+        "status": "missing",
+        "why": "dilution refrigerators and laser systems are lab-scale, not something a mobile robot carries."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quantum reinforcement learning and annealing-based task allocation studied on simulators and small quantum devices",
+        "unlocks": "a clearer picture of which robotics problems map cleanly onto qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant machines running small optimisation problems with proven speed-ups",
+        "unlocks": "credible benchmarking against classical planners."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid quantum–classical controllers demonstrated on real robots for narrow tasks such as multi-robot scheduling",
+        "unlocks": "industrial pilots in logistics, warehousing and manufacturing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "if a real advantage holds, onboard or edge-linked quantum co-processors",
+        "unlocks": "better handling of combinatorial planning in autonomous vehicles and adaptive factories — speculative, and contingent on error correction arriving."
+      }
+    ]
   }
 }

@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Foundation model",
+        "role": "the reasoning core that reads a goal and decides what to do next.",
+        "parts": [
+          "large language model",
+          "function/tool-calling interface",
+          "extended reasoning or chain-of-thought mode"
+        ]
+      },
+      {
+        "name": "Planner",
+        "role": "breaks a goal into ordered sub-tasks and revises the plan as results come back.",
+        "parts": [
+          "task decomposition prompt or search",
+          "progress tracker",
+          "replanning loop"
+        ]
+      },
+      {
+        "name": "Tool and action layer",
+        "role": "lets the agent actually change something in the world.",
+        "parts": [
+          "API and function calls",
+          "code interpreter",
+          "browser or GUI driver",
+          "database and file access"
+        ]
+      },
+      {
+        "name": "Memory and state",
+        "role": "keeps context across long runs without overflowing the model's window.",
+        "parts": [
+          "context window management",
+          "vector or key–value store",
+          "summarised episodic log"
+        ]
+      },
+      {
+        "name": "Verification and guardrails",
+        "role": "checks whether an action worked and whether it was allowed.",
+        "parts": [
+          "outcome checker or critic model",
+          "test/assertion suite",
+          "permission and spend limits",
+          "audit log"
+        ]
+      },
+      {
+        "name": "Orchestration runtime",
+        "role": "schedules steps, retries failures and reports what happened.",
+        "parts": [
+          "workflow engine",
+          "sandbox or container",
+          "tracing and cost monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and its success test",
+        "detail": "Narrow the job to something checkable — a passing test suite, a filled form, a reconciled ledger — because an agent can only self-correct against a measurable outcome."
+      },
+      {
+        "title": "Pick and wire the base models",
+        "detail": "Choose a model strong enough at tool calling and long context, then route easier sub-tasks to smaller, cheaper models."
+      },
+      {
+        "title": "Expose tools",
+        "detail": "Wrap each capability as a documented function with typed arguments and clear error messages, so the model can call it and understand failures."
+      },
+      {
+        "title": "Build the plan–act–observe loop",
+        "detail": "The model writes a plan, emits one or a few tool calls, reads the results, and updates the plan; a step budget and timeout stop runaway loops."
+      },
+      {
+        "title": "Add memory",
+        "detail": "Summarise old context, persist facts and intermediate artefacts to a store, and retrieve only what the current step needs."
+      },
+      {
+        "title": "Insert a verifier",
+        "detail": "A separate critic model or deterministic check inspects each result; failed checks trigger a retry, a replan, or a hand-off to a human."
+      },
+      {
+        "title": "Sandbox and permission",
+        "detail": "Run code and commands in a container with least-privilege credentials, hard limits on money and data access, and an immutable action log."
+      },
+      {
+        "title": "Evaluate before shipping",
+        "detail": "Run the agent against held-out tasks and adversarial inputs, measuring task success, cost per task, and how often it does something harmful."
+      },
+      {
+        "title": "Deploy with oversight",
+        "detail": "Start on reversible, low-stakes work with human approval at key checkpoints, then widen autonomy only where measured reliability supports it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-context models with reliable tool calling",
+        "status": "exists",
+        "why": "without dependable structured output the planner cannot drive tools or read their results."
+      },
+      {
+        "tech": "Sandboxed code execution",
+        "status": "exists",
+        "why": "agents grant real action; isolation is what keeps mistakes from becoming damage."
+      },
+      {
+        "tech": "Agentic evaluation benchmarks",
+        "status": "partial",
+        "why": "task suites exist for coding and browsing, but they under-measure long-horizon reliability and side effects."
+      },
+      {
+        "tech": "Robust self-verification",
+        "status": "missing",
+        "why": "models are poor judges of their own errors, so long chains drift without an external checker."
+      },
+      {
+        "tech": "Standard tool and identity protocols",
+        "status": "partial",
+        "why": "emerging conventions let agents discover tools and act on a user's behalf safely and revocably."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-domain agents over APIs and code with human-in-the-loop approval",
+        "unlocks": "automation of well-specified, reversible back-office workflows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "long-horizon reliability — agents that finish multi-hour tasks without drifting",
+        "unlocks": "delegation of whole projects rather than individual steps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised tool, identity and permission layers",
+        "unlocks": "agents that can be trusted with credentials and spend across many systems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "verified autonomy in safety-critical settings",
+        "unlocks": "wider deployment where a wrong action is expensive or irreversible."
+      }
+    ]
+  }
+}

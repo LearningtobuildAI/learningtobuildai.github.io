@@ -43,5 +43,160 @@
         "def": "A process of continuously observing and evaluating the performance, behavior, and status of an autonomous system in real-time to detect anomalies, ensure compliance with safety standards, and make necessary adjustments or interventions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Operational design domain (ODD) and hazard analysis",
+        "role": "defines exactly where and when the system may operate, and what can go wrong there.",
+        "parts": [
+          "ODD definition (roads, weather, speed, terrain)",
+          "hazard identification methods (STPA, HAZOP, FMEA)",
+          "risk acceptance criteria"
+        ]
+      },
+      {
+        "name": "Safety architecture",
+        "role": "engineered structure that keeps failures from becoming harm.",
+        "parts": [
+          "redundant and diverse sensors and compute",
+          "safety-rated independent monitor or watchdog",
+          "fail-safe and degraded operating modes"
+        ]
+      },
+      {
+        "name": "Runtime assurance",
+        "role": "a supervisor that watches the live system and intervenes before a dangerous state.",
+        "parts": [
+          "uncertainty and out-of-distribution detection",
+          "safety envelope enforcement",
+          "override or emergency-stop path",
+          "event data recorder"
+        ]
+      },
+      {
+        "name": "Verification and validation",
+        "role": "evidence that the system behaves safely, including in rare cases.",
+        "parts": [
+          "simulation and scenario libraries",
+          "closed-course and field testing",
+          "formal verification of critical logic",
+          "coverage metrics over the ODD"
+        ]
+      },
+      {
+        "name": "Human factors and fallback",
+        "role": "handles the moments when a machine cannot cope alone.",
+        "parts": [
+          "takeover and disengagement design",
+          "remote supervision and teleoperation",
+          "operator training and interface"
+        ]
+      },
+      {
+        "name": "Post-deployment assurance",
+        "role": "safety is maintained, not just proven once.",
+        "parts": [
+          "fleet logging and incident reporting",
+          "software update and regression validation",
+          "field-failure feedback into the safety case"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the ODD and the mission",
+        "detail": "Write down the operating conditions, task, speed range and environment the system is allowed into, and the conditions in which it must refuse to operate."
+      },
+      {
+        "title": "Identify hazards",
+        "detail": "Use structured methods (STPA, HAZOP, FMEA) to list what can cause harm, including software and human causes, and rank them by severity and likelihood."
+      },
+      {
+        "title": "Set safety requirements",
+        "detail": "Turn hazards into testable requirements: detection times, stopping distances, maximum tolerable failure rates, and required redundancy."
+      },
+      {
+        "title": "Design the safety architecture",
+        "detail": "Allocate functions to redundant sensing, a separate safety monitor and a defined safe state, so no single failure leads to harm."
+      },
+      {
+        "title": "Build runtime assurance",
+        "detail": "Implement uncertainty checks, out-of-distribution detection and envelope enforcement, plus a recorder that captures all sensor and decision data for incidents."
+      },
+      {
+        "title": "Verify by simulation and testing",
+        "detail": "Run millions of simulated kilometres or operational hours across a scenario library, then a smaller set of track and real-world trials; formally verify the critical logic."
+      },
+      {
+        "title": "Assemble the safety case",
+        "detail": "Compile the argument, evidence and residual risks into a document an independent assessor can audit against standards."
+      },
+      {
+        "title": "Deploy in stages and monitor",
+        "detail": "Restrict the first deployments to the simplest ODD, keep remote supervision, log everything, and expand only as field evidence accumulates."
+      },
+      {
+        "title": "Maintain and re-certify",
+        "detail": "Treat each software update, new sensor or new region as a change requiring regression testing and an updated safety case."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Functional-safety standards and practice",
+        "status": "exists",
+        "why": "established regimes such as IEC 61508, ISO 26262 for road vehicles and DO-178C for airborne software give methods for specifying and proving safety."
+      },
+      {
+        "tech": "Safety-rated compute and redundant hardware",
+        "status": "exists",
+        "why": "the architecture needs processors, sensors and power paths that fail independently and predictably."
+      },
+      {
+        "tech": "Perception with calibrated uncertainty",
+        "status": "partial",
+        "why": "a safety monitor can only be as good as the system's knowledge of what it does not know."
+      },
+      {
+        "tech": "Scenario-based simulation at scale",
+        "status": "partial",
+        "why": "rare, dangerous situations cannot be found by real-world driving or flight hours alone."
+      },
+      {
+        "tech": "Formal methods and verification tooling",
+        "status": "partial",
+        "why": "proving properties of learning-based or very large systems is beyond today's tools."
+      },
+      {
+        "tech": "Standards for high autonomy",
+        "status": "partial",
+        "why": "UL 4600 (2020) addresses autonomous products, and ISO 21448 covers performance limits, but open-world autonomy has no settled certification route."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "safety cases for driver assistance and bounded industrial robots, built on functional-safety standards with driver or operator as fallback",
+        "unlocks": "widespread deployment of automation that always keeps a human in reserve."
+      },
+      {
+        "stage": "Next",
+        "milestone": "certified low-speed autonomous systems in tightly bounded ODDs, with remote supervision and rigorous scenario testing",
+        "unlocks": "delivery robots, shuttles and agricultural machines running without an onboard human."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared safety evidence and standard incident reporting across fleets and jurisdictions",
+        "unlocks": "faster, cheaper assurance, because failures anywhere become lessons everywhere."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantified safety targets for open-world autonomy and continuously updated safety cases",
+        "unlocks": "truly driverless, pilotless operation at scale in complex environments."
+      }
+    ]
   }
 }

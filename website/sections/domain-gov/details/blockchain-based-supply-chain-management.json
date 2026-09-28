@@ -34,5 +34,152 @@
         "def": "A type of database that is managed by multiple participants in a network rather than by a single entity, providing transparency and security for transactions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Identifier and tagging layer",
+        "role": "gives every batch, pallet or item a unique identity that can be read at each handoff.",
+        "parts": [
+          "GS1 identifiers (GTIN, SSCC, batch/serial numbers)",
+          "barcodes and QR codes",
+          "RFID or NFC tags",
+          "EPCIS event format"
+        ]
+      },
+      {
+        "name": "Data capture",
+        "role": "records what happened to the goods, where and when.",
+        "parts": [
+          "handheld and fixed scanners",
+          "IoT sensors for temperature, shock, humidity",
+          "weighbridges and gate readers",
+          "mobile apps for small suppliers"
+        ]
+      },
+      {
+        "name": "Ledger network",
+        "role": "a shared, append-only record that no single party can secretly rewrite.",
+        "parts": [
+          "permissioned blockchain nodes (e.g. Hyperledger Fabric or similar)",
+          "consensus and endorsement rules",
+          "on-chain vs off-chain storage split"
+        ]
+      },
+      {
+        "name": "Smart contracts",
+        "role": "automate the rules that parties have agreed to.",
+        "parts": [
+          "custody-transfer logic",
+          "certificate and compliance checks",
+          "payment or escrow triggers",
+          "recall rules"
+        ]
+      },
+      {
+        "name": "Identity and governance",
+        "role": "decides which organisations may read or write, and who arbitrates disputes.",
+        "parts": [
+          "organisational certificates and key management",
+          "consortium charter and onboarding process",
+          "auditor and regulator access"
+        ]
+      },
+      {
+        "name": "Integration layer",
+        "role": "connects the ledger to the software companies already run.",
+        "parts": [
+          "APIs to ERP, WMS and transport systems",
+          "legacy EDI bridges",
+          "analytics and dashboards"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the problem and the consortium",
+        "detail": "Decide which traceability question must be answered — origin, cold chain, counterfeit, custody — and recruit the parties who actually hold the data."
+      },
+      {
+        "title": "Agree the data model",
+        "detail": "Map products, locations, events and ownership transfers onto shared standards such as GS1 identifiers and EPCIS events, so data means the same thing to everyone."
+      },
+      {
+        "title": "Design what goes on-chain",
+        "detail": "Store hashes and key events on the ledger; keep bulky documents and personal data off it, linking by reference."
+      },
+      {
+        "title": "Stand up a permissioned network",
+        "detail": "Deploy nodes with each member and a governance body, with certificate authorities issuing keys."
+      },
+      {
+        "title": "Write the smart contracts",
+        "detail": "Encode custody transfer, certificate validation and recall triggers, with manual override paths for errors."
+      },
+      {
+        "title": "Integrate and instrument",
+        "detail": "Connect ERP and warehouse systems, and fit scanners or sensors where goods change hands."
+      },
+      {
+        "title": "Pilot on one product line",
+        "detail": "Run a narrow, high-value or high-risk product through the chain and compare the ledger record against reality."
+      },
+      {
+        "title": "Scale and audit",
+        "detail": "Extend to more suppliers, add independent audits, and publish consumer-facing provenance where it matters."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Shared product-identification standards",
+        "status": "exists",
+        "why": "without common identifiers and event formats, each company's ledger is an island."
+      },
+      {
+        "tech": "Permissioned distributed-ledger platforms",
+        "status": "exists",
+        "why": "consortium chains need known, accountable participants rather than anonymous miners."
+      },
+      {
+        "tech": "Enterprise identity and key management",
+        "status": "exists",
+        "why": "writing rights must be tied to real, verifiable organisations."
+      },
+      {
+        "tech": "Cheap item-level tagging and sensing",
+        "status": "partial",
+        "why": "tagging makes sense for medicines, food and luxury goods, but not for cheap bulk commodities."
+      },
+      {
+        "tech": "Cross-ledger interoperability",
+        "status": "missing",
+        "why": "a product crossing several chains must have its history carried across them intact."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "traceability consortia and pilots for food, pharmaceuticals and shipping",
+        "unlocks": "proof that multiple competitors will share a ledger, and realistic costs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory digital product passports, starting with batteries in the EU",
+        "unlocks": "a legal reason for every supplier to carry verifiable data, not just volunteers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interoperable ledgers and standardised credentials across sectors",
+        "unlocks": "end-to-end records that survive handoffs between different networks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ledgers tied to customs, carbon accounting and finance",
+        "unlocks": "faster clearance and trusted sustainability or origin claims, if the data quality holds up."
+      }
+    ]
   }
 }

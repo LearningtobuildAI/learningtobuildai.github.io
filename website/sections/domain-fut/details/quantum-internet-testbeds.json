@@ -30,5 +30,162 @@
         "def": "Devices that store and protect quantum information for extended periods, allowing for the manipulation and transmission of quantum states over long distances."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Entangled photon source",
+        "role": "produces pairs of photons whose quantum states are linked, so measuring one instantly constrains the other.",
+        "parts": [
+          "nonlinear crystal or chip for spontaneous parametric down-conversion",
+          "quantum-dot emitter (alternative)",
+          "pump laser and filters"
+        ]
+      },
+      {
+        "name": "Transmission channel",
+        "role": "carries single photons while preserving their fragile state.",
+        "parts": [
+          "dark telecom fibre (1550 nm)",
+          "free-space or satellite optical link",
+          "polarisation or phase-stabilisation hardware"
+        ]
+      },
+      {
+        "name": "Quantum memory",
+        "role": "stores a photon's quantum state until a partner arrives from further away.",
+        "parts": [
+          "atomic ensemble (rubidium) or nitrogen-vacancy centre",
+          "rare-earth-doped crystal",
+          "optical cavity and control lasers"
+        ]
+      },
+      {
+        "name": "Repeater / swapping node",
+        "role": "performs a joint measurement on two stored photons to teleport entanglement onwards.",
+        "parts": [
+          "Bell-state measurement optics",
+          "interferometer with active phase locking",
+          "heralding logic"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "register individual photons with near-perfect efficiency and low noise.",
+        "parts": [
+          "superconducting nanowire detectors",
+          "cryogenic cooler",
+          "time-tagging electronics"
+        ]
+      },
+      {
+        "name": "Classical control plane",
+        "role": "synchronises distant nodes, carries heralding signals and manages keys.",
+        "parts": [
+          "clock distribution",
+          "fibre-based timing channel",
+          "software stack and key management"
+        ]
+      },
+      {
+        "name": "Application endpoints",
+        "role": "the nodes that actually use the quantum link.",
+        "parts": [
+          "QKD terminals",
+          "blind or distributed quantum computing clients"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the link",
+        "detail": "Pick an encoding (polarisation, time-bin or phase), a wavelength that survives fibre, and a topology — point-to-point, ring or star."
+      },
+      {
+        "title": "Prepare the fibre",
+        "detail": "Lease or lay dark fibre with no live traffic amplifiers, then measure loss, polarisation drift and vibration sensitivity over months."
+      },
+      {
+        "title": "Build the nodes",
+        "detail": "Assemble sources, detectors and optical benches inside temperature- and humidity-stable racks at each site."
+      },
+      {
+        "title": "Synchronise the network",
+        "detail": "Distribute a common clock and a classical channel so nodes agree on which detection events belong together."
+      },
+      {
+        "title": "Distribute entanglement",
+        "detail": "Run the source, send photons to two nodes, and verify the link with a Bell-inequality test."
+      },
+      {
+        "title": "Insert a memory or repeater node",
+        "detail": "Add a middle station that stores photons and performs entanglement swapping, extending reach beyond direct-loss limits."
+      },
+      {
+        "title": "Harden for field operation",
+        "detail": "Automate alignment and calibration so the link can run unattended through real weather and traffic conditions."
+      },
+      {
+        "title": "Attach applications",
+        "detail": "Connect QKD terminals, or research clients for distributed quantum computing, and characterise end-to-end performance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-loss telecom fibre and single-photon detection",
+        "status": "exists",
+        "why": "photons must survive tens of kilometres of fibre and still be counted reliably."
+      },
+      {
+        "tech": "Entangled photon sources",
+        "status": "exists",
+        "why": "entanglement is the resource the network distributes rather than ordinary key bits."
+      },
+      {
+        "tech": "Entanglement swapping and Bell-state measurement",
+        "status": "partial",
+        "why": "demonstrated in labs and metro trials, but not yet at the rates and fidelities a network needs."
+      },
+      {
+        "tech": "Long-lived, efficient quantum memories",
+        "status": "partial",
+        "why": "without them a repeater cannot hold one photon while its partner travels."
+      },
+      {
+        "tech": "Satellite quantum links",
+        "status": "partial",
+        "why": "free-space links are the practical way to cross oceans, where fibre loss is prohibitive."
+      },
+      {
+        "tech": "Cryogenics and precision optics at scale",
+        "status": "exists",
+        "why": "detectors and memories need cooling and interferometric stability in ordinary buildings."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro testbeds and trusted-node QKD links, plus satellite demonstrations",
+        "unlocks": "real-world data on loss, stability and cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entanglement-based metro networks with memory nodes",
+        "unlocks": "links that no single trusted relay can eavesdrop on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters spanning hundreds of kilometres",
+        "unlocks": "regional and national networks without trusted intermediate nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "satellite-plus-repeater backbones and distributed quantum processors",
+        "unlocks": "intercontinental entanglement distribution and modular quantum computing."
+      }
+    ]
   }
 }

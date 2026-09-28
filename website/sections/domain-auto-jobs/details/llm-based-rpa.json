@@ -30,5 +30,153 @@
         "def": "Software technology designed to automate repetitive, rule-based tasks by mimicking human interactions with software applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Visual perception",
+        "role": "turns screen pixels into structured understanding of the user interface.",
+        "parts": [
+          "screen capture module",
+          "vision-language model",
+          "OCR engine",
+          "UI element detector"
+        ]
+      },
+      {
+        "name": "Reasoning and planning",
+        "role": "interprets the goal, decomposes it into steps and decides actions.",
+        "parts": [
+          "large language model",
+          "task planner",
+          "prompt and context manager"
+        ]
+      },
+      {
+        "name": "Action execution",
+        "role": "performs clicks, keystrokes and API calls on the target systems.",
+        "parts": [
+          "input simulation (mouse/keyboard)",
+          "OS accessibility APIs",
+          "API connectors"
+        ]
+      },
+      {
+        "name": "Workflow orchestration",
+        "role": "sequences tasks, manages state and handles errors.",
+        "parts": [
+          "workflow engine",
+          "state machine",
+          "retry logic",
+          "logging and monitoring"
+        ]
+      },
+      {
+        "name": "Security and governance",
+        "role": "protects credentials, enforces access control and keeps audit trails.",
+        "parts": [
+          "credential vault",
+          "access control",
+          "audit log",
+          "compliance reporting"
+        ]
+      },
+      {
+        "name": "Integration and data",
+        "role": "connects to applications, databases and files.",
+        "parts": [
+          "prebuilt connectors",
+          "database drivers",
+          "file system access",
+          "message queues"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process",
+        "detail": "Document the manual workflow step by step, noting the applications, data fields and decision points involved."
+      },
+      {
+        "title": "Record demonstrations",
+        "detail": "Capture screen video and input events while a human performs the task, creating a labelled dataset of UI states and actions."
+      },
+      {
+        "title": "Choose or train the vision-language model",
+        "detail": "Select a pretrained VLM or fine-tune one on screenshots to recognise buttons, fields and text reliably."
+      },
+      {
+        "title": "Build the reasoning layer",
+        "detail": "Design prompts and a planner that turns the goal and current screen into the next action, with fallback rules for uncertainty."
+      },
+      {
+        "title": "Implement the action layer",
+        "detail": "Write code that executes the chosen action using UI automation APIs, keyboard/mouse simulation or direct API calls."
+      },
+      {
+        "title": "Wire up orchestration and security",
+        "detail": "Connect the components into a workflow engine with retries, credential management and audit logging."
+      },
+      {
+        "title": "Test on real workflows",
+        "detail": "Run the agent against live applications in a sandbox, measure success rates and add human-in-the-loop checkpoints for risky steps."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Roll out to production, watch for UI changes and failures, and retrain the model as applications evolve."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large vision-language models",
+        "status": "exists",
+        "why": "they provide the ability to interpret screenshots and understand natural-language instructions."
+      },
+      {
+        "tech": "UI automation and accessibility APIs",
+        "status": "exists",
+        "why": "they allow software to programmatically click, type and read UI elements across operating systems."
+      },
+      {
+        "tech": "Enterprise API connectivity",
+        "status": "partial",
+        "why": "many modern SaaS tools have APIs, but legacy and desktop applications often lack them, forcing UI-level automation."
+      },
+      {
+        "tech": "Reliable multi-step planning",
+        "status": "partial",
+        "why": "LLMs can plan, but they still make errors on long, complex tasks without careful guardrails."
+      },
+      {
+        "tech": "Security and audit infrastructure",
+        "status": "exists",
+        "why": "credential vaults and logging are mature, but applying them to autonomous agents is still developing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "LLM-based RPA used in pilots for narrow, repetitive tasks like invoice data entry or form filling.",
+        "unlocks": "reduced manual effort in back-office administration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that handle multi-application workflows end-to-end with human oversight and exception handling.",
+        "unlocks": "automation of complex processes such as onboarding or claims processing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that learn from corrections and adapt to UI changes without reprogramming.",
+        "unlocks": "lower maintenance costs and broader adoption."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous agents that coordinate with each other and with humans across many systems.",
+        "unlocks": "self-managing administrative operations, with humans focused on exceptions and strategy."
+      }
+    ]
   }
 }

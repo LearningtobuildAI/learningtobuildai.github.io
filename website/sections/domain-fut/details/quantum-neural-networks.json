@@ -33,5 +33,150 @@
         "def": "A phenomenon where the quantum state of two or more particles is linked together such that the state of one cannot be described independently of the others."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "holds and manipulates the qubits that do the computation.",
+        "parts": [
+          "physical qubits (superconducting, trapped-ion, photonic or neutral-atom)",
+          "couplers and control lines",
+          "dilution refrigerator or laser/optical control"
+        ]
+      },
+      {
+        "name": "Data encoder",
+        "role": "loads classical data into quantum states as an input state or feature map.",
+        "parts": [
+          "angle or amplitude encoding",
+          "feature-map circuit"
+        ]
+      },
+      {
+        "name": "Parameterized circuit (ansatz)",
+        "role": "the trainable part — a repeating pattern of gates whose angles are the weights being learned.",
+        "parts": [
+          "rotation gates",
+          "entangling layers",
+          "repeated circuit blocks"
+        ]
+      },
+      {
+        "name": "Measurement and readout",
+        "role": "extracts numbers from the quantum state by repeating the run many times (shots).",
+        "parts": [
+          "measurement circuits",
+          "classical averaging of expectation values"
+        ]
+      },
+      {
+        "name": "Classical optimizer",
+        "role": "updates the circuit parameters to reduce the loss.",
+        "parts": [
+          "gradient estimation",
+          "parameter update rule",
+          "loss function"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "counters noise that corrupts results before it swamps the signal.",
+        "parts": [
+          "zero-noise extrapolation and similar mitigation",
+          "error-correcting code (e.g. surface code)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the task and encoding",
+        "detail": "A machine-learning problem is reduced to a form that can be loaded into qubits, usually as a feature map or a small data set."
+      },
+      {
+        "title": "Design the ansatz",
+        "detail": "A layered circuit of rotation and entangling gates is chosen; its gate angles are the parameters to be trained."
+      },
+      {
+        "title": "Compile for the hardware",
+        "detail": "The circuit is translated into the native gates and qubit connectivity of a specific device, adding swap operations where needed."
+      },
+      {
+        "title": "Calibrate the machine",
+        "detail": "Qubit frequencies, pulse amplitudes and readout thresholds are tuned before a run."
+      },
+      {
+        "title": "Execute and sample",
+        "detail": "The circuit is run many times; each run ends in a measurement, and the average gives an estimate of an output value."
+      },
+      {
+        "title": "Update classically in a loop",
+        "detail": "A classical computer estimates the gradient and adjusts the parameters, then the circuit is run again — often thousands of iterations."
+      },
+      {
+        "title": "Mitigate or correct errors",
+        "detail": "Noise is measured and partly cancelled, or, in a fault-tolerant design, logical qubits are encoded so errors can be corrected mid-circuit."
+      },
+      {
+        "title": "Benchmark honestly",
+        "detail": "The result must beat the best classical method on the same data at comparable cost; so far this has rarely happened."
+      },
+      {
+        "title": "Scale the qubit count",
+        "detail": "Useful learning tasks would likely need many logical qubits and long coherence — beyond today's machines."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant logical qubits",
+        "status": "missing",
+        "why": "today's noisy qubits lose coherence within microseconds, so deep circuits cannot run reliably."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "copying large classical data sets into a quantum state can cost more than the speed-up it might buy."
+      },
+      {
+        "tech": "Trainability theory (avoiding barren plateaus)",
+        "status": "partial",
+        "why": "many ansatz designs have gradients that vanish as qubit count grows, making training impractical."
+      },
+      {
+        "tech": "Theory of quantum advantage for learning",
+        "status": "partial",
+        "why": "proven speed-ups exist for narrow problems, but broad claims about machine learning remain unproven."
+      },
+      {
+        "tech": "Classical machine-learning hardware",
+        "status": "exists",
+        "why": "the baseline a quantum model must beat — GPUs and specialised chips are cheap, mature and improving fast."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small variational circuits run on noisy hardware in research labs, mostly matching or losing to classical models",
+        "unlocks": "hands-on understanding of noise, encodings and optimisers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "demonstrated advantage on a narrow, well-defined learning task with a fair classical comparison",
+        "unlocks": "a credible reason to keep building the field."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error-corrected logical qubits running repeated circuits",
+        "unlocks": "deeper ansatze and larger data sets without noise dominating."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant processors with thousands of logical qubits",
+        "unlocks": "the possibility of genuine quantum machine learning — still unproven even then."
+      }
+    ]
   }
 }

@@ -33,5 +33,152 @@
         "def": "A collection of sensors deployed in a specific area or environment, used to collect data on various parameters such as temperature, humidity, traffic flow, etc."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures the physical state of assets — pressure, vibration, flow, strain, temperature, imagery.",
+        "parts": [
+          "pressure and flow sensors in water mains",
+          "accelerometers on pumps, motors and bridges",
+          "strain gauges and tiltmeters",
+          "thermal and visual cameras on vehicles or poles"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "gets the readings out of buried pipes, tunnels and roadside cabinets.",
+        "parts": [
+          "low-power wide-area radio",
+          "cellular modems",
+          "wired links on fixed assets",
+          "edge gateways that buffer when the link drops"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "stores and aligns streams from many agencies and vendors.",
+        "parts": [
+          "time-series database",
+          "asset registry tying each sensor to a physical asset",
+          "data-quality and drift checks"
+        ]
+      },
+      {
+        "name": "Models",
+        "role": "turn readings into a probability of failure within a horizon — days, weeks or months.",
+        "parts": [
+          "anomaly detection on individual signals",
+          "survival or remaining-useful-life models",
+          "computer vision for cracks and corrosion",
+          "physics-based simulation for structures"
+        ]
+      },
+      {
+        "name": "Workflow integration",
+        "role": "converts a prediction into a work order a crew will actually act on.",
+        "parts": [
+          "maintenance management system interface",
+          "risk and criticality scoring",
+          "crew scheduling"
+        ]
+      },
+      {
+        "name": "Feedback loop",
+        "role": "records what was found and whether the prediction was right.",
+        "parts": [
+          "inspection results capture",
+          "model retraining pipeline",
+          "accuracy and false-alarm reporting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory the assets and their failure modes",
+        "detail": "List pumps, mains, bridges and signals, and for each one write down how it actually fails — corrosion, fatigue, blockage, seal wear."
+      },
+      {
+        "title": "Choose what to sense",
+        "detail": "Pick the cheapest measurable proxy for each failure mode: pressure transients for pipe bursts, vibration spectra for bearing wear, strain for structural fatigue."
+      },
+      {
+        "title": "Instrument and connect",
+        "detail": "Fit sensors, power them, and prove the data arrives reliably for months before trusting it."
+      },
+      {
+        "title": "Build the historical record",
+        "detail": "Assemble years of past failures, repairs, weather and load data, and label the periods leading up to each failure."
+      },
+      {
+        "title": "Train and validate models",
+        "detail": "Train on the older portion of the record and test on the newer, checking how far ahead failures are caught and how many alerts are false."
+      },
+      {
+        "title": "Wire predictions into the maintenance system",
+        "detail": "Models push alerts with a confidence and a recommended action into the existing work-order software, not a separate dashboard nobody opens."
+      },
+      {
+        "title": "Run in shadow mode first",
+        "detail": "For several months, compare what the model predicted with what crews found, without letting it change schedules."
+      },
+      {
+        "title": "Roll out and retrain",
+        "detail": "Once accuracy is stable, let predictions drive prioritisation, then retrain periodically as assets age and conditions change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, long-life sensors and battery or energy-harvesting power",
+        "status": "exists",
+        "why": "instrumenting thousands of assets only pays off if each sensor is inexpensive and needs no wiring."
+      },
+      {
+        "tech": "Low-power wide-area networks and cellular coverage",
+        "status": "exists",
+        "why": "underground and remote assets still need a path for their data."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "exists",
+        "why": "continuous model inference over many streams needs cheap compute near or away from the site."
+      },
+      {
+        "tech": "Digitised asset registers and maintenance history",
+        "status": "partial",
+        "why": "many cities still hold this on paper or in incompatible systems, leaving no labels to learn from."
+      },
+      {
+        "tech": "Labelled failure data at scale",
+        "status": "missing",
+        "why": "serious failures are rare by design, so there are few examples for a model to learn from."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "narrow deployments: acoustic leak detection on water networks, vibration monitoring of pumps and rail assets",
+        "unlocks": "measured reductions in unplanned outages and water losses, one asset class at a time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared data standards and asset registries so streams from different vendors and departments can be combined",
+        "unlocks": "models that see a whole system rather than isolated sensors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fused sensing with regular drone or vehicle imagery plus physical simulation",
+        "unlocks": "earlier detection of slow structural degradation, not just sudden machine faults."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop, city-scale digital twins that schedule repairs and adjust operations automatically",
+        "unlocks": "capital planning driven by measured condition rather than fixed replacement cycles."
+      }
+    ]
   }
 }

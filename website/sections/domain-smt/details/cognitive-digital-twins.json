@@ -33,5 +33,169 @@
         "def": "A computational model that uses mathematical equations based on physical laws to simulate real-world phenomena."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor and IoT layer",
+        "role": "streams the live state of the city into the model.",
+        "parts": [
+          "weather and air-quality stations",
+          "traffic detectors and cameras",
+          "utility meters and substation sensors",
+          "LoRaWAN / NB-IoT / 5G backhaul"
+        ]
+      },
+      {
+        "name": "Geometric city model",
+        "role": "provides the 3D physical form everything else is referenced to.",
+        "parts": [
+          "airborne and mobile LiDAR point clouds",
+          "photogrammetry",
+          "terrain and cadastral GIS layers",
+          "BIM/IFC models of buildings and networks"
+        ]
+      },
+      {
+        "name": "Data integration layer",
+        "role": "turns messy feeds into one time-stamped, georeferenced picture.",
+        "parts": [
+          "streaming brokers",
+          "geospatial ETL",
+          "CityGML/IFC data standards",
+          "time-series database",
+          "query APIs"
+        ]
+      },
+      {
+        "name": "Physics simulation engines",
+        "role": "model how the city actually behaves.",
+        "parts": [
+          "computational fluid dynamics for wind and dispersion",
+          "hydraulic and urban flood models",
+          "traffic microsimulation",
+          "building energy and thermal models"
+        ]
+      },
+      {
+        "name": "Cognitive layer",
+        "role": "learns from the stream, forecasts, spots anomalies and proposes interventions.",
+        "parts": [
+          "state estimation / data assimilation",
+          "machine-learning forecasters",
+          "simulation-optimisation loop",
+          "natural-language querying"
+        ]
+      },
+      {
+        "name": "Visualisation and control interface",
+        "role": "how planners and operators actually use the twin.",
+        "parts": [
+          "3D engine and GIS viewer",
+          "dashboards and alerting",
+          "scenario comparison tools"
+        ]
+      },
+      {
+        "name": "Compute platform",
+        "role": "keeps simulations running at or faster than real time.",
+        "parts": [
+          "cloud and HPC clusters",
+          "edge nodes near sensors",
+          "storage and model registry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what the twin must answer",
+        "detail": "Pick concrete decisions first — where to put a flood barrier, how to retime signals — because this fixes the resolution and sensor set needed."
+      },
+      {
+        "title": "Build the geometric base",
+        "detail": "Aircraft and road vehicles carry LiDAR and cameras to capture point clouds; these are merged with BIM models, cadastral data and terrain into a coherent 3D city model."
+      },
+      {
+        "title": "Instrument the city",
+        "detail": "Sensors, meters and cameras are installed and networked, with power and backhaul routed to each site."
+      },
+      {
+        "title": "Build the ingestion pipelines",
+        "detail": "Feeds are translated into shared standards, georeferenced, time-synchronised and quality-checked, then written to time-series storage with APIs on top."
+      },
+      {
+        "title": "Calibrate the simulations",
+        "detail": "Flood, airflow and traffic models are tuned until they reproduce recorded past events within acceptable error — an uncalibrated model is only decoration."
+      },
+      {
+        "title": "Train the cognitive models",
+        "detail": "Historical data trains forecasters and anomaly detectors; data assimilation continuously nudges the simulation state back toward the measured one."
+      },
+      {
+        "title": "Integrate and run in shadow mode",
+        "detail": "The twins run alongside real operations, issuing predictions that are compared with what actually happens before anyone acts on them."
+      },
+      {
+        "title": "Operate, govern and recalibrate",
+        "detail": "Models are retrained as the city changes; privacy, cybersecurity and data-sharing rules are enforced, and accuracy is audited."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense municipal IoT sensing and connectivity",
+        "status": "exists",
+        "why": "the twin can only be as live and accurate as the data flowing into it."
+      },
+      {
+        "tech": "Open geospatial and building-data standards",
+        "status": "exists",
+        "why": "without shared formats, each department's data stays in its own silo and cannot be fused."
+      },
+      {
+        "tech": "Cheap large-scale simulation and storage",
+        "status": "exists",
+        "why": "city-scale physics at real-time rates needs cloud or HPC resources that were impractical a decade ago."
+      },
+      {
+        "tech": "Fast surrogate and data-assimilation models",
+        "status": "partial",
+        "why": "full physics is far too slow for real time, so machine-learning approximations must stand in."
+      },
+      {
+        "tech": "Validated urban physics models for flood, airflow and heat",
+        "status": "partial",
+        "why": "prediction quality in complex built environments still varies widely between sites."
+      },
+      {
+        "tech": "City data governance and privacy regimes",
+        "status": "partial",
+        "why": "continuous sensing of streets raises legitimate surveillance and consent questions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "3D city models and dashboards in municipal pilots, such as Virtual Singapore and the Herrenberg twin in Germany",
+        "unlocks": "planning and public communication based on shared geometry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time twins for single domains — flooding, traffic or district energy",
+        "unlocks": "operational forecasting and faster emergency response."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-domain cognitive layer that proposes and ranks interventions",
+        "unlocks": "evidence-based planning instead of siloed departmental decisions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop control of signals, pumps and grid assets, with federated twins spanning regions",
+        "unlocks": "continuous automated optimisation of city services, if governance and accountability keep pace."
+      }
+    ]
   }
 }

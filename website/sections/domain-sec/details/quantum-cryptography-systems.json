@@ -29,5 +29,149 @@
         "def": "A method for securely distributing cryptographic keys using principles of quantum mechanics to ensure security."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "emits the single photons or heavily attenuated laser pulses that carry each key bit.",
+        "parts": [
+          "laser diode",
+          "modulator",
+          "decoy-state pulse control"
+        ]
+      },
+      {
+        "name": "Quantum channel and detectors",
+        "role": "the link where any eavesdropping necessarily disturbs the quantum states, plus the detectors that record them.",
+        "parts": [
+          "single-mode optical fibre",
+          "single-photon detectors (semiconductor avalanche or superconducting nanowire)",
+          "cryocooler for nanowire detectors",
+          "free-space telescope for satellite links"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "public, non-secret traffic used to compare measurements, correct errors and prove the sifted key is genuine.",
+        "parts": [
+          "ordinary network link",
+          "message authentication codes",
+          "key management software"
+        ]
+      },
+      {
+        "name": "Post-quantum algorithm suite",
+        "role": "software-only encryption and signatures whose security rests on mathematical problems believed hard for quantum computers.",
+        "parts": [
+          "lattice key encapsulation (ML-KEM)",
+          "lattice and hash-based signatures (ML-DSA, SLH-DSA)",
+          "cryptographically secure random number generator"
+        ]
+      },
+      {
+        "name": "Protocol integration",
+        "role": "slots the new keys into the channels people actually use.",
+        "parts": [
+          "hybrid TLS 1.3 handshake (classical Elliptic Curve Diffie-Hellman plus ML-KEM)",
+          "certificate and PKI formats",
+          "crypto libraries"
+        ]
+      },
+      {
+        "name": "Range extenders",
+        "role": "carry keys beyond the roughly 100–200 km a single fibre span allows.",
+        "parts": [
+          "trusted-node relay servers (in use today)",
+          "quantum memories and repeaters (research)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the threat model",
+        "detail": "Decide whether you need hardware key distribution, software-only quantum-resistant algorithms, or both, and how long the protected data must stay secret."
+      },
+      {
+        "title": "Fabricate detectors",
+        "detail": "Semiconductor single-photon avalanche diodes are made on doped wafers; superconducting nanowire detectors are patterned as nanometre-wide meanders and later cooled to a few kelvin."
+      },
+      {
+        "title": "Align the optical module",
+        "detail": "Laser, modulator and fibre couplers are positioned to sub-micron tolerance, bonded, sealed and temperature-stabilised."
+      },
+      {
+        "title": "Build the key pipeline",
+        "detail": "Raw detections are sifted, error-corrected and privacy-amplified, with every classical message authenticated, until both ends hold identical secret bits."
+      },
+      {
+        "title": "Implement the post-quantum algorithms",
+        "detail": "ML-KEM and ML-DSA are coded in constant time, checked against the published standard test vectors, and fuzzed and probed for side-channel leaks."
+      },
+      {
+        "title": "Hybridise and integrate",
+        "detail": "The classical and post-quantum exchanges run together in one TLS handshake, so a break in either alone does not expose the session."
+      },
+      {
+        "title": "Roll out",
+        "detail": "Browsers, servers, VPN gateways and certificate authorities are upgraded, with monitoring so an old client cannot quietly negotiate a weaker mode."
+      },
+      {
+        "title": "Operate and monitor",
+        "detail": "Key rate and detector noise are watched for signs of interception, while the algorithm suite is tracked against advances in cryptanalysis."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon sources and detectors",
+        "status": "exists",
+        "why": "quantum key distribution cannot work without devices that emit and register individual photons reliably."
+      },
+      {
+        "tech": "Low-loss optical fibre and free-space links",
+        "status": "exists",
+        "why": "photons lost in transit cannot carry key material."
+      },
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "lattice and hash-based schemes were published as US federal standards in 2024, giving vendors something stable to implement."
+      },
+      {
+        "tech": "Side-channel-resistant implementations",
+        "status": "partial",
+        "why": "algorithms are only as strong as the code and hardware that run them; timing and power leaks remain a live risk."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "missing",
+        "why": "without them, key distribution is limited to single fibre spans or chains of trusted nodes that must themselves be physically secure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid classical-plus-post-quantum handshakes are switched on in mainstream browsers, and metro-scale quantum key links operate in a few countries",
+        "unlocks": "protection of today's traffic against future decryption of recorded data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum certificates and signatures replace classical ones across certificate authorities and long-lived devices",
+        "unlocks": "end-to-end quantum-resistant authentication, not just key agreement."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite and inter-city quantum links extend key distribution beyond single fibre spans",
+        "unlocks": "national-scale key delivery where trusted relay nodes are unacceptable."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "repeater-based quantum networks and device-independent protocols",
+        "unlocks": "key security that rests on measured physics rather than on trusting the hardware vendor."
+      }
+    ]
   }
 }

@@ -1,0 +1,166 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Space sensing layer",
+        "role": "global coverage where ground instruments cannot reach — oceans, ice, remote forest.",
+        "parts": [
+          "radar satellites using interferometry to measure millimetre ground movement",
+          "optical and hyperspectral imagers",
+          "gravity-measuring satellite pairs",
+          "atmospheric sounders for temperature, water vapour and greenhouse gases"
+        ]
+      },
+      {
+        "name": "Ground sensing layer",
+        "role": "dense, high-precision measurement of the solid Earth beneath our feet.",
+        "parts": [
+          "broadband seismometers",
+          "GNSS stations tracking slow crustal strain",
+          "borehole strainmeters and tiltmeters",
+          "volcanic gas and thermal sensors"
+        ]
+      },
+      {
+        "name": "Ocean and ice layer",
+        "role": "the largest and least-instrumented part of the planet.",
+        "parts": [
+          "drifting profiling floats measuring temperature and salinity with depth",
+          "tide gauges and moored buoys",
+          "underwater gliders and animal-borne tags",
+          "ice-penetrating radar and altimeters"
+        ]
+      },
+      {
+        "name": "Biological sensing layer",
+        "role": "detects change in living systems, the hardest signals to automate.",
+        "parts": [
+          "camera traps",
+          "acoustic recorders and machine-learning birdsong or whale classifiers",
+          "environmental DNA water and soil sampling",
+          "satellite vegetation and chlorophyll indices"
+        ]
+      },
+      {
+        "name": "Quantum and precision sensing layer",
+        "role": "the frontier: instruments that measure gravity, magnetism and time far more sensitively than classical ones.",
+        "parts": [
+          "cold-atom gravimeters and gravity gradiometers",
+          "atomic magnetometers for subsurface and volcanic imaging",
+          "optical atomic clocks for precise time and strain reference"
+        ]
+      },
+      {
+        "name": "Communications and timing",
+        "role": "ties thousands of heterogeneous instruments into one coherent, timestamped record.",
+        "parts": [
+          "satellite backhaul for remote sites",
+          "low-power radio mesh between nearby nodes",
+          "GNSS-disciplined clocks",
+          "power supplies for unattended operation"
+        ]
+      },
+      {
+        "name": "Data assimilation and AI",
+        "role": "turns a flood of raw readings into a running model of the whole planet.",
+        "parts": [
+          "calibration and quality-control pipelines",
+          "physics-based Earth-system models",
+          "machine-learning surrogates and anomaly detection",
+          "a digital twin for simulation and forecasting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the observables",
+        "detail": "Decide what must be measured — ground displacement, soil moisture, seismic waves, species presence — and at what spatial spacing and how often, because this sets the whole cost."
+      },
+      {
+        "title": "Standardise the instruments",
+        "detail": "Sensors must be calibrated to common references, report open, documented data formats, and carry metadata describing where and how each reading was taken. Without this, fusion is impossible."
+      },
+      {
+        "title": "Launch the space segment",
+        "detail": "Constellations are built and launched in compatible orbital planes so the same patch of ground is imaged repeatedly, which is what lets radar interferometry detect slow deformation."
+      },
+      {
+        "title": "Deploy ground, ocean and biological networks",
+        "detail": "Seismometers are installed in boreholes or vaults, floats are released on scheduled ocean cycles, and recorders, cameras and sampling sites are distributed by habitat type."
+      },
+      {
+        "title": "Connect and time-synchronise",
+        "detail": "Each node is given power, a data link and a common clock, generally disciplined by satellite timing, so that a signal arriving at different stations can be triangulated."
+      },
+      {
+        "title": "Fuse into a digital twin",
+        "detail": "Streaming observations are assimilated into a coupled model of the solid Earth, oceans, atmosphere and biosphere, with machine learning filling gaps and flagging anomalies."
+      },
+      {
+        "title": "Validate and quantify uncertainty",
+        "detail": "Each layer is cross-checked against independent instruments and past events, and error bars are published alongside the maps."
+      },
+      {
+        "title": "Deliver warnings and interfaces",
+        "detail": "The system is wired into tsunami, earthquake, volcano and ecosystem alerting, where minutes of lead time matter more than any long-term trend."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost, low-power environmental sensing",
+        "status": "partial",
+        "why": "instrumenting millions of points only makes sense if each node is cheap enough to leave unattended for years."
+      },
+      {
+        "tech": "Earth-observing satellite constellations with radar, gravity and hyperspectral payloads",
+        "status": "partial",
+        "why": "space is the only practical way to get uniform global coverage, but revisit frequency and resolution are still limited."
+      },
+      {
+        "tech": "Field-rugged quantum sensors",
+        "status": "partial",
+        "why": "cold-atom gravimeters and magnetometers exist in laboratories and early surveys, not yet as mass-deployed field stations."
+      },
+      {
+        "tech": "Global-scale data assimilation and machine learning",
+        "status": "partial",
+        "why": "the computing and modelling techniques now exist but have not been applied across all these domains at once."
+      },
+      {
+        "tech": "Persistent power and connectivity in remote regions",
+        "status": "exists",
+        "why": "satellite backhaul and solar-battery systems can already run isolated stations, though at a cost."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mature but separate observing systems: seismic networks, drifting ocean floats, weather satellites, biodiversity camera grids",
+        "unlocks": "domain-specific science and hazard warnings, with little cross-talk between them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "national and regional digital twins of Earth, combining observations with physical models",
+        "unlocks": "integrated simulation and forecasting over large regions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field-deployable quantum gravity and magnetic sensors added to geophysical surveys and volcano monitoring",
+        "unlocks": "seeing subsurface mass and fluid movement that classical instruments miss."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a genuinely federated global sensing and modelling layer with open data standards",
+        "unlocks": "early warning of earthquakes, eruptions and ecosystem collapse as a shared public utility."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "autonomous, self-organising sensor networks that reallocate coverage as anomalies appear",
+        "unlocks": "a planet-scale feedback loop — the sense in which the idea is called a 'nervous system'."
+      }
+    ]
+  }
+}

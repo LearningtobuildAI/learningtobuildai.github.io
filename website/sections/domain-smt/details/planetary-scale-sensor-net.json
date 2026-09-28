@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensor element",
+        "role": "the part that actually measures something — pressure, temperature, vibration, a chemical trace.",
+        "parts": [
+          "MEMS accelerometer and pressure sensor",
+          "chemical or particulate sensor",
+          "microphone or strain gauge"
+        ]
+      },
+      {
+        "name": "Mote platform",
+        "role": "a complete computer, radio and antenna small enough to be deployed in enormous numbers.",
+        "parts": [
+          "microcontroller",
+          "sub-watt radio transceiver",
+          "chip antenna",
+          "protective package"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeps a node alive for years without maintenance.",
+        "parts": [
+          "thin-film battery",
+          "solar or vibration energy harvesting",
+          "power-management circuit"
+        ]
+      },
+      {
+        "name": "Local collection layer",
+        "role": "gathers data from thousands of nearby motes.",
+        "parts": [
+          "fixed gateways",
+          "balloon- or drone-borne relay",
+          "low-power mesh radio"
+        ]
+      },
+      {
+        "name": "Space segment",
+        "role": "links remote regions and oceans back to the internet.",
+        "parts": [
+          "low-earth-orbit satellite constellation",
+          "inter-satellite laser links",
+          "ground-station downlink"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "turns a firehose of raw readings into calibrated, usable information.",
+        "parts": [
+          "edge filtering",
+          "cloud ingestion",
+          "data-assimilation models",
+          "alerting services"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the mote",
+        "detail": "Sensor, radio and processor are co-designed so the whole node fits on a few square millimetres and draws microwatts when idle."
+      },
+      {
+        "title": "Solve the power budget",
+        "detail": "Every reading and transmission is counted in joules; the design balances a tiny battery against harvested energy to give a target service life."
+      },
+      {
+        "title": "Fabricate at wafer scale",
+        "detail": "MEMS structures are etched from silicon and packaged in the same way as microchips, so the cost per unit falls with volume rather than rising."
+      },
+      {
+        "title": "Build the ground and airborne layer",
+        "detail": "Gateways, buoys, drones and stratospheric balloons are deployed to carry data out of places with no mobile coverage."
+      },
+      {
+        "title": "Launch the satellite mesh",
+        "detail": "A constellation in low earth orbit provides backhaul over oceans and deserts, with optical links between satellites."
+      },
+      {
+        "title": "Release or place the nodes",
+        "detail": "Ground, ocean and infrastructure sensors are installed by hand; any atmospheric version would be dropped from balloons or aircraft, which raises the question of recovering or biodegrading them."
+      },
+      {
+        "title": "Calibrate against references",
+        "detail": "Cheap sensors drift, so the network must be continuously checked against a small number of accurate reference stations."
+      },
+      {
+        "title": "Fuse and act",
+        "detail": "Readings are merged into models of the atmosphere, oceans and crust, and thresholds trigger automatic warnings."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Microelectromechanical sensors",
+        "status": "exists",
+        "why": "smart-dust research since the late 1990s showed sensing, computing and radio can fit in a cubic millimetre."
+      },
+      {
+        "tech": "Low-power radio and mesh networking",
+        "status": "exists",
+        "why": "standards such as LoRaWAN show that thousands of battery nodes can share a gateway."
+      },
+      {
+        "tech": "Cheap low-earth-orbit launch and satellite backhaul",
+        "status": "partial",
+        "why": "large constellations exist, but a mesh that can pick up a whisper from a millimetre-scale transmitter does not."
+      },
+      {
+        "tech": "Energy harvesting at microwatt scale",
+        "status": "partial",
+        "why": "solar and vibration harvesting work, but power density limits how often a node can transmit."
+      },
+      {
+        "tech": "Biodegradable or recoverable node materials",
+        "status": "missing",
+        "why": "dispersing billions of devices into the air or ocean would otherwise be an environmental problem in itself."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "existing observatories — a few thousand drifting ocean floats, national seismic networks, weather satellites and early-warning systems",
+        "unlocks": "coarse global coverage of climate and earthquakes, with big gaps over oceans and in the developing world."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dense regional sensor meshes and cheap satellite backhaul",
+        "unlocks": "city-scale and catchment-scale monitoring of air quality, flooding and shaking."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-powered motes at sub-cent cost",
+        "unlocks": "deployment in millions rather than thousands, including on farmland, rivers and ice."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a genuinely planet-wide network, likely ground- and ocean-based first",
+        "unlocks": "near-real-time digital twin of the planet; airborne dust sensors remain the least plausible and most contested part."
+      }
+    ]
+  }
+}

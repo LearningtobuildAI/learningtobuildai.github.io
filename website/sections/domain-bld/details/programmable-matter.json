@@ -34,5 +34,148 @@
         "def": "Components that detect changes in the environment and provide feedback for control systems in programmable matter."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Unit cell (the 'catom')",
+        "role": "the repeating robotic building block, ideally a millimetre or smaller; each cell is a complete robot with body, motion and a way to grip its neighbours.",
+        "parts": [
+          "micro-machined frame",
+          "grip/latch faces",
+          "sensors for contact and orientation"
+        ]
+      },
+      {
+        "name": "Actuation and latching",
+        "role": "lets a cell move itself and lock to neighbours so the whole mass holds a shape.",
+        "parts": [
+          "electropermanent or electrostatic actuators",
+          "piezo or shape-memory elements",
+          "mechanical or magnetic latches"
+        ]
+      },
+      {
+        "name": "Power distribution",
+        "role": "delivers electrical energy to thousands of cells packed inside a solid object.",
+        "parts": [
+          "conductive lattice paths",
+          "local supercapacitor or microbattery",
+          "energy harvesting from vibration or light"
+        ]
+      },
+      {
+        "name": "Communication and localisation",
+        "role": "each cell must know its neighbours and its position within the whole body.",
+        "parts": [
+          "capacitive or optical short-range links",
+          "on-board clocks",
+          "relative position sensing"
+        ]
+      },
+      {
+        "name": "Distributed computation",
+        "role": "thousands of tiny processors cooperate so no single controller is needed.",
+        "parts": [
+          "microcontroller per cell",
+          "firmware for neighbour discovery and consensus"
+        ]
+      },
+      {
+        "name": "Shape-planning software",
+        "role": "translates 'become a chair' into a sequence of safe local moves that no cell collides with another.",
+        "parts": [
+          "target-shape compiler",
+          "motion planner",
+          "simulator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the unit cell",
+        "detail": "Fix the size, number of connection faces and how much motion one cell can make; every later choice follows from this."
+      },
+      {
+        "title": "Micro-fabricate the parts",
+        "detail": "Use semiconductor-style lithography and micro-machining to make actuators, latches, sensors and circuitry too small to assemble by hand."
+      },
+      {
+        "title": "Assemble cells at scale",
+        "detail": "Pick-and-place robots or self-assembly in fluid must build millions of identical cells cheaply, since a solid object needs vast numbers of them."
+      },
+      {
+        "title": "Give each cell energy",
+        "detail": "Fit a local store and a conductive path so power can flow through a mass of cells rather than only to the surface."
+      },
+      {
+        "title": "Program local rules",
+        "detail": "Load firmware so each cell follows simple rules — move, grip, release, pass messages — from which global shape change emerges."
+      },
+      {
+        "title": "Compile target shapes",
+        "detail": "Turn a 3D model into a collision-free schedule of millions of coordinated cell moves."
+      },
+      {
+        "title": "Prove a small lattice",
+        "detail": "Demonstrate a few thousand cells holding a load, changing shape and repairing a fault."
+      },
+      {
+        "title": "Scale to useful structures",
+        "detail": "Grow cell counts and reduce cell size until a wall or beam can be built entirely from programmable cells."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Millimetre-scale modular robots",
+        "status": "partial",
+        "why": "lab systems such as electropermanent-magnet cubes and folding chains have self-assembled, but only in small numbers."
+      },
+      {
+        "tech": "Micro-actuators with useful force",
+        "status": "partial",
+        "why": "at small scales surface forces dominate and most micro-actuators are weak, slow or fragile."
+      },
+      {
+        "tech": "Dense on-board power",
+        "status": "missing",
+        "why": "no battery or harvester today fits in a sub-millimetre cell and supplies enough energy for repeated motion."
+      },
+      {
+        "tech": "Robust distributed control",
+        "status": "partial",
+        "why": "algorithms for thousands of units with unreliable links are still a research area."
+      },
+      {
+        "tech": "Cheap high-volume micro-assembly",
+        "status": "partial",
+        "why": "making millions of identical micro-robots at low cost is an unsolved manufacturing problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab demonstrators of tens to a few hundred self-reconfiguring modules, largely magnetically coupled",
+        "unlocks": "proof that shape change from local rules is possible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lattices of thousands of cells that hold a load and heal damage",
+        "unlocks": "adaptive structures that change stiffness or shape on demand."
+      },
+      {
+        "stage": "Next",
+        "milestone": "centimetre-scale programmable matter in real objects",
+        "unlocks": "shape-changing tools, robots and interfaces rather than fixed hardware."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "micron-scale, self-powered cells made in bulk",
+        "unlocks": "the original vision: matter that behaves like software, including self-building infrastructure — currently speculation."
+      }
+    ]
   }
 }

@@ -31,5 +31,150 @@
         "def": "A farming management concept that uses information technology to optimize crop yields by making precise inputs at the right time and place based on real-time data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Field sensors",
+        "role": "measure the soil and microclimate where the crop actually grows.",
+        "parts": [
+          "capacitive or TDR soil-moisture probes at several depths",
+          "soil and air temperature sensors",
+          "humidity and leaf-wetness sensors",
+          "pyranometer for solar radiation"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "carries readings from the field to a gateway or the internet without wires.",
+        "parts": [
+          "LoRaWAN or NB-IoT radio modules",
+          "field gateways and antennas",
+          "SIM or satellite backhaul where cellular coverage is poor"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeps remote nodes alive for a whole season without mains electricity.",
+        "parts": [
+          "small solar panel",
+          "rechargeable battery",
+          "energy-harvesting or low-power sleep circuitry"
+        ]
+      },
+      {
+        "name": "Edge and cloud platform",
+        "role": "turns raw readings into decisions.",
+        "parts": [
+          "data logger or edge controller",
+          "cloud ingestion and storage",
+          "dashboards, alerts and irrigation-scheduling models"
+        ]
+      },
+      {
+        "name": "Actuation and machinery",
+        "role": "acts on the data — water, fertiliser or machine guidance.",
+        "parts": [
+          "solenoid valves and variable-rate irrigation controllers",
+          "fertigation dosing pumps",
+          "GNSS-guided tractors and implements"
+        ]
+      },
+      {
+        "name": "Livestock and asset tags",
+        "role": "the same stack applied to animals and equipment.",
+        "parts": [
+          "ear tags or collars with accelerometers",
+          "gateway receivers",
+          "herd-health and location software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what to measure",
+        "detail": "Choose the variables that change a decision — typically soil moisture in the root zone, rainfall, temperature and humidity — rather than sensing everything."
+      },
+      {
+        "title": "Select and calibrate sensors",
+        "detail": "Soil-moisture sensors are calibrated for the local soil type, because the same reading means different water content in sand and clay."
+      },
+      {
+        "title": "Design the node",
+        "detail": "Sensors, radio, battery and solar panel are packaged in a weatherproof enclosure sized for the season's energy budget."
+      },
+      {
+        "title": "Build connectivity",
+        "detail": "Gateways are placed to cover the fields, and the backhaul to the farm office or cloud is tested before mass deployment."
+      },
+      {
+        "title": "Install in the field",
+        "detail": "Probes are buried at defined depths, weather stations are levelled, and each node is registered to its location."
+      },
+      {
+        "title": "Set up the data pipeline",
+        "detail": "Readings flow into a platform that stores them, plots trends, raises alerts and feeds an irrigation or spraying model."
+      },
+      {
+        "title": "Integrate with control",
+        "detail": "The platform is wired to valves, pumps or machinery so that recommendations can be executed automatically or by the farmer."
+      },
+      {
+        "title": "Maintain and validate",
+        "detail": "Sensors are cleaned, checked for drift and recalibrated, and the model's advice is compared with measured crop outcomes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power wide-area radio (LoRaWAN, NB-IoT)",
+        "status": "exists",
+        "why": "long-range, battery-powered links are what make field-scale monitoring practical."
+      },
+      {
+        "tech": "Low-cost environmental sensors",
+        "status": "exists",
+        "why": "cheap soil and climate sensors put many measurement points within reach of a farm budget."
+      },
+      {
+        "tech": "Cloud data platforms",
+        "status": "exists",
+        "why": "they store and analyse continuous time-series data from thousands of devices."
+      },
+      {
+        "tech": "GNSS positioning",
+        "status": "exists",
+        "why": "it ties every reading and every machine pass to a precise map location."
+      },
+      {
+        "tech": "Rural connectivity",
+        "status": "partial",
+        "why": "coverage in remote farmland is still patchy, so some sites need satellite or proprietary gateways."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sensor-based irrigation and frost alerts on individual fields",
+        "unlocks": "less water and energy used per hectare, and earlier warning of stress."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop variable-rate irrigation and fertiliser driven directly by sensor data",
+        "unlocks": "inputs matched to the crop's needs metre by metre."
+      },
+      {
+        "stage": "Next",
+        "milestone": "farm-scale digital twins fed by IoT plus satellite imagery",
+        "unlocks": "season-ahead planning and yield forecasting."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous field operations coordinated by the same data layer",
+        "unlocks": "labour-lean farming on large or remote holdings — if connectivity, power and sensor reliability all hold up."
+      }
+    ]
   }
 }

@@ -29,5 +29,146 @@
         "def": "A strong, lightweight, corrosion-resistant metal alloy used in aerospace and other high-performance applications due to its strength-to-weight ratio and ability to withstand extreme temperatures."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Laser and optics",
+        "role": "provides the energy to melt metal powder and a thin layer of the substrate, forming a metallurgical bond.",
+        "parts": [
+          "fiber laser (typically 1–4 kW)",
+          "focusing optics",
+          "laser head"
+        ]
+      },
+      {
+        "name": "Powder delivery system",
+        "role": "feeds titanium powder precisely into the melt pool.",
+        "parts": [
+          "powder hopper",
+          "volumetric feeder",
+          "carrier gas line",
+          "nozzle"
+        ]
+      },
+      {
+        "name": "Deposition head",
+        "role": "co-axially delivers the laser beam, powder and shielding gas to the work area.",
+        "parts": [
+          "coaxial nozzle",
+          "water cooling",
+          "gas ports"
+        ]
+      },
+      {
+        "name": "Motion platform",
+        "role": "moves the deposition head or the part to trace the toolpath.",
+        "parts": [
+          "industrial robot or CNC gantry",
+          "rotary table",
+          "linear axes"
+        ]
+      },
+      {
+        "name": "Inert environment",
+        "role": "prevents oxygen and nitrogen contamination of the molten titanium.",
+        "parts": [
+          "glovebox or local shielding",
+          "argon supply",
+          "oxygen sensor"
+        ]
+      },
+      {
+        "name": "Control and monitoring",
+        "role": "keeps the melt pool stable and the geometry accurate.",
+        "parts": [
+          "CNC controller",
+          "melt-pool camera or pyrometer",
+          "software for toolpath generation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and slice",
+        "detail": "A 3D CAD model is sliced into layers and converted into a toolpath for the deposition head."
+      },
+      {
+        "title": "Prepare substrate",
+        "detail": "The base plate or existing part is machined flat and cleaned to remove oxide and grease."
+      },
+      {
+        "title": "Set up machine",
+        "detail": "Grade-5 titanium powder (Ti-6Al-4V) is loaded, and the chamber is purged with argon until oxygen is below a few tens of parts per million."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Laser power, powder feed rate and travel speed are dialled in to produce a stable melt pool."
+      },
+      {
+        "title": "Deposit",
+        "detail": "The laser melts the substrate and the blown powder, building up material track by track, layer by layer."
+      },
+      {
+        "title": "Monitor",
+        "detail": "Cameras and pyrometers watch the melt pool; the controller adjusts power and feed in real time."
+      },
+      {
+        "title": "Post-process",
+        "detail": "The part is stress-relieved, hot-isostatic-pressed for critical uses, and machined to final dimensions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-power fiber lasers",
+        "status": "exists",
+        "why": "they deliver a concentrated, controllable heat source that melts titanium without excessive distortion."
+      },
+      {
+        "tech": "Titanium powder feedstock",
+        "status": "exists",
+        "why": "gas-atomised Ti-6Al-4V powder with spherical particles and low oxygen is essential for a consistent melt."
+      },
+      {
+        "tech": "Inert atmosphere control",
+        "status": "exists",
+        "why": "titanium reacts with oxygen and nitrogen at high temperature, so the melt pool must be shielded with argon."
+      },
+      {
+        "tech": "Motion systems and CAM software",
+        "status": "exists",
+        "why": "precise multi-axis motion and toolpath generation are needed to build complex shapes."
+      },
+      {
+        "tech": "Real-time process monitoring",
+        "status": "partial",
+        "why": "closed-loop control of the melt pool is still maturing, which limits certification for flight-critical parts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "repair and near-net shape production of aerospace components",
+        "unlocks": "saving expensive titanium parts from scrap and shortening lead times."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid DED-CNC machines that deposit and machine in one setup",
+        "unlocks": "finished parts with better surface finish and tolerances."
+      },
+      {
+        "stage": "Next",
+        "milestone": "certification of DED titanium for flight-critical structures",
+        "unlocks": "wider use in airframes and engines."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "larger, more integrated titanium structures with in-situ alloying",
+        "unlocks": "tailored properties and fewer joints in demanding applications."
+      }
+    ]
   }
 }

@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sample acquisition and inlet",
+        "role": "brings ice, brine, sediment or gas into the instrument without adding contaminants of its own.",
+        "parts": [
+          "drill, corer or ice-melting probe",
+          "microfluidic sample handling",
+          "gas or aerosol inlet",
+          "sealed, cleanroom-built plumbing"
+        ]
+      },
+      {
+        "name": "Separation front end",
+        "role": "spreads a complex mixture out so individual molecules can be counted one at a time.",
+        "parts": [
+          "liquid chromatography column",
+          "capillary electrophoresis",
+          "ion mobility cell",
+          "chiral stationary phase for left/right-handed separation"
+        ]
+      },
+      {
+        "name": "Mass analyser",
+        "role": "weighs ions precisely and breaks them apart to reveal how their atoms were joined.",
+        "parts": [
+          "electrospray or laser ion source",
+          "time-of-flight or high-resolution trap analyser",
+          "tandem mass spectrometry collision cell",
+          "detector"
+        ]
+      },
+      {
+        "name": "Complexity scorer",
+        "role": "converts spectra into a number describing how hard the molecule would be to build without biology.",
+        "parts": [
+          "molecular graph reconstruction from fragments",
+          "assembly index calculation (assembly theory)",
+          "statistical threshold or trained classifier",
+          "reference libraries of abiotic and biotic molecules"
+        ]
+      },
+      {
+        "name": "Orthogonal biosignature channels",
+        "role": "independent checks that do not rely on the complexity metric at all.",
+        "parts": [
+          "chirality measurement by circular dichroism or chiral chromatography",
+          "isotope ratio mass spectrometry",
+          "chemical disequilibrium sensors, e.g. co-present oxygen and methane"
+        ]
+      },
+      {
+        "name": "Contamination control",
+        "role": "keeps Earth's own complex molecules from being mistaken for an alien detection.",
+        "parts": [
+          "procedural blanks and controls",
+          "sterilisation and cleanroom assembly",
+          "sealed sample path with no reusable surfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the signal and the null",
+        "detail": "Decide what counts as biology-agnostic complexity, and assemble reference samples whose origin is known — meteoritic organics and laboratory abiotic syntheses on one side, Earth biology on the other."
+      },
+      {
+        "title": "Choose and prepare samples",
+        "detail": "Take ice, brine, sediment or gas and keep it cold and sealed so fragile large molecules survive the trip into the instrument."
+      },
+      {
+        "title": "Separate the mixture",
+        "detail": "Chromatography or electrophoresis spreads thousands of compounds across time so the detector is not swamped by a single blended signal."
+      },
+      {
+        "title": "Ionise gently",
+        "detail": "Electrospray or a soft laser turns molecules into intact ions rather than shattering them, preserving the structure that carries the information."
+      },
+      {
+        "title": "Measure mass and fragment",
+        "detail": "Tandem mass spectrometry records each ion's mass, then deliberately breaks it into pieces, giving a graph of which atoms were bonded to which."
+      },
+      {
+        "title": "Compute a complexity score",
+        "detail": "The reconstructed graph is scored by assembly index or a related metric, with a threshold above which abiotic synthesis is argued to be implausibly unlikely."
+      },
+      {
+        "title": "Calibrate and blind-test",
+        "detail": "Run the pipeline on samples where the answer is known, then on samples where it is hidden, to measure how often the metric is simply wrong."
+      },
+      {
+        "title": "Package it for flight",
+        "detail": "Shrink pumps, column, analyser and electronics into a sealed, radiation-tolerant unit and test it in cold deserts, subglacial lakes and other stand-in environments."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-resolution tandem mass spectrometry",
+        "status": "exists",
+        "why": "near-identical molecular formulas and structural fragments must be resolved before any complexity number is trustworthy."
+      },
+      {
+        "tech": "Soft ionisation",
+        "status": "exists",
+        "why": "large fragile molecules have to reach the detector intact or the complexity signal is destroyed on the way in."
+      },
+      {
+        "tech": "Miniaturised vacuum and fluid handling",
+        "status": "partial",
+        "why": "flight instruments have a fraction of a laboratory's pumping speed, sample volume and solvent handling."
+      },
+      {
+        "tech": "A validated complexity metric",
+        "status": "missing",
+        "why": "assembly theory's threshold is actively debated, and no metric has been shown to separate all biology from all abiotic chemistry."
+      },
+      {
+        "tech": "Reference libraries of abiotic complexity",
+        "status": "partial",
+        "why": "abiotic chemistry, including in meteorites and hydrothermal settings, makes surprisingly large molecules, which sets a demanding bar."
+      },
+      {
+        "tech": "Chiral separation and detection on tiny samples",
+        "status": "partial",
+        "why": "a strong left/right-handedness bias is one of the best biology-agnostic clues, but measuring it in micrograms of sample is hard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "benchmark complexity scoring against a broad set of known biotic and abiotic samples",
+        "unlocks": "honest error bars, and a clear idea of whether the metric says anything useful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fly a compact mass-spectrometry suite to a plume or subsurface setting on an ocean-world or Mars mission",
+        "unlocks": "real measurements from an environment that has never hosted Earth life."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combine complexity, chirality, isotope ratios and chemical disequilibrium into one detection claim",
+        "unlocks": "a result that survives sceptical review rather than resting on a single contested metric."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a standard instrument package that can be repeated across ocean worlds and used to interpret exoplanet atmospheres",
+        "unlocks": "the ability to search for life as we do not know it as a routine capability rather than a one-off experiment."
+      }
+    ]
+  }
+}

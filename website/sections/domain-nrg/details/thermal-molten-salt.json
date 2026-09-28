@@ -32,5 +32,154 @@
         "def": "The ability of an energy source to provide power on demand, as opposed to being dependent on the time of day or weather conditions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Hot and cold salt tanks",
+        "role": "hold the same nitrate salt at two temperatures — roughly 290 °C and 565 °C — and so store the energy.",
+        "parts": [
+          "welded carbon-steel tank shells",
+          "mineral-wool insulation",
+          "ring or pile foundation",
+          "level and temperature instrumentation"
+        ]
+      },
+      {
+        "name": "Solar or heat source",
+        "role": "recharges the store.",
+        "parts": [
+          "heliostat field and central receiver, or parabolic-trough collectors",
+          "electric immersion heaters or heat pumps (power-to-heat variants)",
+          "receiver heat-transfer fluid loop"
+        ]
+      },
+      {
+        "name": "Charging loop",
+        "role": "moves cold salt up to the hot tank.",
+        "parts": [
+          "circulation pumps",
+          "piping and valves",
+          "heat exchangers"
+        ]
+      },
+      {
+        "name": "Discharging loop",
+        "role": "taps hot salt to make steam or hot gas.",
+        "parts": [
+          "steam generator or process heat exchanger",
+          "feedwater pump",
+          "salt return piping"
+        ]
+      },
+      {
+        "name": "Steam cycle and generator",
+        "role": "turns the delivered heat into electricity where power is the product.",
+        "parts": [
+          "steam turbine",
+          "condenser",
+          "generator"
+        ]
+      },
+      {
+        "name": "Freeze protection and controls",
+        "role": "keeps salt above its freezing point, around 220 °C, everywhere in the loop.",
+        "parts": [
+          "electric trace heating",
+          "thermal insulation",
+          "control and safety system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the duty",
+        "detail": "Decide the temperature range, hours of discharge and whether the output is electricity, steam or direct process heat — this sets the salt volume and tank size."
+      },
+      {
+        "title": "Select the salt",
+        "detail": "Most plants use a 60/40 sodium-nitrate/potassium-nitrate mix, which is cheap and stable to about 565 °C; chloride or carbonate salts are studied for hotter operation."
+      },
+      {
+        "title": "Build the tanks",
+        "detail": "Large insulated steel tanks are erected on engineered foundations, with internal distributors so incoming salt does not mix the hot and cold layers."
+      },
+      {
+        "title": "Build the collector or heater",
+        "detail": "A heliostat field and tower, a trough field, or banks of electric heaters are installed to deliver heat into the loop."
+      },
+      {
+        "title": "Install the molten-salt loop",
+        "detail": "Pumps, valves, expansion vessels and heat exchangers are fitted, and the whole circuit is wrapped in trace heating and insulation."
+      },
+      {
+        "title": "Melt and fill",
+        "detail": "Salt arrives as solid pellets or flakes; it is melted with auxiliary heaters and circulated to fill the tanks, a slow first-time process."
+      },
+      {
+        "title": "Charge",
+        "detail": "The heat source raises cold salt to the hot tank, storing energy for hours at a time."
+      },
+      {
+        "title": "Discharge and deliver",
+        "detail": "Hot salt is pumped through a steam generator or process exchanger, returns to the cold tank, and the steam drives a turbine or feeds an industrial plant."
+      },
+      {
+        "title": "Operate with freeze watch",
+        "detail": "Controls hold every pipe above the salt's freezing point, since a solid plug can shut down the plant."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Concentrating solar collectors or large electric heaters",
+        "status": "exists",
+        "why": "they supply the heat that charges the store."
+      },
+      {
+        "tech": "Molten nitrate salt handling",
+        "status": "exists",
+        "why": "decades of use in solar thermal plants have proven pumps, valves and materials."
+      },
+      {
+        "tech": "High-temperature pumps and valves",
+        "status": "exists",
+        "why": "salt must circulate hundreds of times a day without leaking or seizing."
+      },
+      {
+        "tech": "Cheap off-peak or surplus electricity",
+        "status": "partial",
+        "why": "electric thermal storage only pays when power is very cheap for part of the day."
+      },
+      {
+        "tech": "Industrial heat integration",
+        "status": "partial",
+        "why": "many factories need continuous steam or heat that a store must match exactly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "concentrating solar plants with 8–15 hours of molten-salt storage, such as Gemasolar and Noor Ouarzazate",
+        "unlocks": "solar power delivered into the evening and night."
+      },
+      {
+        "stage": "Next",
+        "milestone": "electric thermal stores using salt, sand or brick feeding industrial steam and heat",
+        "unlocks": "decarbonising factories that cannot run on intermittent power directly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "retiring coal plants rebuilt around thermal stores and electric heaters",
+        "unlocks": "reuse of existing turbines, grid connections and sites."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-day thermal storage paired with very cheap wind and solar",
+        "unlocks": "firm, dispatchable heat and power over week-long lulls."
+      }
+    ]
   }
 }

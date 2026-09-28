@@ -33,5 +33,150 @@
         "def": "A photosensitive liquid or gel that solidifies upon exposure to light, commonly used as the building material in 2PP."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Laser source",
+        "role": "provides femtosecond pulses of near-infrared light that drive two-photon absorption.",
+        "parts": [
+          "mode-locked femtosecond laser (Ti:sapphire or fibre)",
+          "beam attenuator",
+          "fast shutter"
+        ]
+      },
+      {
+        "name": "Beam delivery and focusing",
+        "role": "focuses the laser to a diffraction-limited spot and scans it through the photoresist.",
+        "parts": [
+          "galvanometer mirrors",
+          "high-numerical-aperture objective lens",
+          "beam expander",
+          "dichroic mirror for imaging"
+        ]
+      },
+      {
+        "name": "Photoresist and sample",
+        "role": "the light-sensitive material that solidifies only where two-photon absorption occurs.",
+        "parts": [
+          "substrate (glass or silicon)",
+          "acrylate- or epoxy-based photoresist",
+          "immersion oil (optional)"
+        ]
+      },
+      {
+        "name": "Positioning stage",
+        "role": "moves the sample or focus in three dimensions with nanometre precision.",
+        "parts": [
+          "piezoelectric nanopositioners",
+          "motorised stages for coarse movement",
+          "vibration isolation table"
+        ]
+      },
+      {
+        "name": "Control system",
+        "role": "synchronises laser, scanning and stage motion to write the desired 3D structure.",
+        "parts": [
+          "computer with CAD/CAM software",
+          "control electronics",
+          "real-time camera for alignment"
+        ]
+      },
+      {
+        "name": "Post-processing station",
+        "role": "removes unpolymerised resist and prepares the finished structure.",
+        "parts": [
+          "developer solvents",
+          "critical point dryer",
+          "optional metallisation or coating tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the structure",
+        "detail": "Create a 3D CAD model or use slicing software to define the geometry and toolpath."
+      },
+      {
+        "title": "Prepare the sample",
+        "detail": "Clean a glass or silicon substrate and apply a photoresist layer by spin coating or drop casting to the desired thickness, often between a few and a few hundred micrometres."
+      },
+      {
+        "title": "Mount and align",
+        "detail": "Place the sample on the nanopositioning stage and focus the laser into the resist using the objective lens."
+      },
+      {
+        "title": "Set printing parameters",
+        "detail": "Choose laser power, pulse energy, scan speed and slicing distance based on the resist and the target feature size, which can be below 100 nm."
+      },
+      {
+        "title": "Write the structure",
+        "detail": "Scan the focused laser through the resist. Two-photon absorption occurs only at the focal point, solidifying a tiny volume; moving the stage or beam builds the structure in three dimensions."
+      },
+      {
+        "title": "Develop",
+        "detail": "Immerse the sample in a developer solvent to wash away the unexposed resist, leaving the polymerised structure."
+      },
+      {
+        "title": "Dry and post-process",
+        "detail": "Dry carefully, often with a critical point dryer to avoid collapse, and optionally coat with metal or other materials for specific functions."
+      },
+      {
+        "title": "Inspect",
+        "detail": "Use optical or electron microscopy to verify dimensions, surface quality and alignment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Femtosecond lasers",
+        "status": "exists",
+        "why": "they deliver the high peak intensity needed for two-photon absorption without damaging the material."
+      },
+      {
+        "tech": "High-numerical-aperture microscope objectives",
+        "status": "exists",
+        "why": "they focus light tightly enough to confine polymerisation to a sub-micron volume."
+      },
+      {
+        "tech": "Two-photon absorption",
+        "status": "exists",
+        "why": "the physical effect, predicted in the 1930s and demonstrated in the 1960s, underpins the entire process."
+      },
+      {
+        "tech": "Photoresists with high two-photon sensitivity",
+        "status": "exists",
+        "why": "they polymerise efficiently at the focal point and can be developed away elsewhere."
+      },
+      {
+        "tech": "Nanopositioning systems",
+        "status": "exists",
+        "why": "they provide the sub-100 nm motion control required to write precise 3D features."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial systems print micro-optics, microlenses and scaffolds with feature sizes down to about 100 nm",
+        "unlocks": "rapid prototyping of complex micro-scale devices for photonics, microfluidics and biology."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher throughput using multiple laser foci, spatial light modulators or faster scanning",
+        "unlocks": "larger-area printing and parallel production of many identical parts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with other microfabrication techniques such as soft lithography and thin-film deposition",
+        "unlocks": "hybrid microdevices that combine 2PP structures with electronics or sensors."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "high-volume manufacturing of metamaterials, photonic integrated circuits and biomedical implants",
+        "unlocks": "widespread use of 2PP as a standard industrial micro-manufacturing tool."
+      }
+    ]
   }
 }

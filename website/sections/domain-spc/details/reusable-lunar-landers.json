@@ -33,5 +33,168 @@
         "def": "The ability of an engine to vary its thrust output over a wide range. Crucial for controlled landings on the Moon's surface."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Descent stage",
+        "role": "brakes the vehicle out of lunar orbit and lands it softly on the surface.",
+        "parts": [
+          "throttleable main engines",
+          "landing legs",
+          "thrust structure"
+        ]
+      },
+      {
+        "name": "Ascent/crew module",
+        "role": "carries the crew up and down and is the only part that must survive the whole trip.",
+        "parts": [
+          "pressurised cabin",
+          "life support",
+          "airlock or docking hatch",
+          "heat shield or return propulsion"
+        ]
+      },
+      {
+        "name": "Propellant system and depot",
+        "role": "stores cryogenic methane and oxygen for months and takes on more from a tanker in orbit.",
+        "parts": [
+          "insulated tanks",
+          "low-leakage valves",
+          "transfer couplings",
+          "cryocoolers",
+          "orbital depot"
+        ]
+      },
+      {
+        "name": "Avionics and landing sensors",
+        "role": "flies the descent without a pilot's eyes, avoiding boulders and craters.",
+        "parts": [
+          "flight computers",
+          "radar and lidar altimeters",
+          "terrain-relative navigation cameras",
+          "inertial measurement units"
+        ]
+      },
+      {
+        "name": "Power and thermal control",
+        "role": "keeps propellant liquid and electronics alive across the 14-day lunar night.",
+        "parts": [
+          "solar arrays",
+          "batteries",
+          "radiators",
+          "multi-layer insulation"
+        ]
+      },
+      {
+        "name": "Surface access and cargo handling",
+        "role": "gets crew and equipment from the cabin to the regolith.",
+        "parts": [
+          "ladder or elevator",
+          "airlock",
+          "deployable ramps",
+          "cargo pallets"
+        ]
+      },
+      {
+        "name": "Docking and refuelling interface",
+        "role": "mates with an orbiting station or ferry craft and with tankers.",
+        "parts": [
+          "docking mechanism",
+          "fluid and electrical quick-disconnects",
+          "navigation aids"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for reuse from the start",
+        "detail": "Structures, tanks and engines are specified for multiple landing cycles, not one — which means fatigue-tolerant metals, inspectable welds and easily replaceable engine parts."
+      },
+      {
+        "title": "Build the pressure vessel and tanks",
+        "detail": "Large stainless or aluminium-lithium tank domes are welded and pressure-tested; the crew cabin is a separate pressure vessel with a hatch and windows."
+      },
+      {
+        "title": "Install engines and plumbing",
+        "detail": "Throttleable engines, feed lines, valves and cryogenic insulation go on, with redundancy so one engine failure is survivable during the final descent."
+      },
+      {
+        "title": "Fit avionics and landing sensors",
+        "detail": "Computers, lidar, cameras and inertial units are installed and the landing software is trained on high-resolution lunar terrain data."
+      },
+      {
+        "title": "Test on the ground",
+        "detail": "Propulsion, tanking, docking and life support are exercised in vacuum chambers and on test stands; tethered hover tests prove the throttle control."
+      },
+      {
+        "title": "Launch and refuel in orbit",
+        "detail": "The lander reaches low Earth orbit, then a series of tanker flights fills its tanks so it has the velocity change needed to reach lunar orbit."
+      },
+      {
+        "title": "Fly to lunar orbit and dock",
+        "detail": "The lander cruises to the Moon, enters orbit and docks with a station or crew vehicle to take on astronauts."
+      },
+      {
+        "title": "Land, operate and relaunch",
+        "detail": "After descent and surface work, the ascent stage lifts off; if the design is truly reusable, the vehicle is refuelled and flown again rather than discarded."
+      },
+      {
+        "title": "Refurbish between missions",
+        "detail": "Engines, seals, avionics and insulation are inspected and replaced where worn, using surface or orbital infrastructure rather than returning the whole vehicle to Earth."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cryogenic propellant transfer in orbit",
+        "status": "partial",
+        "why": "methane and oxygen must be moved between vehicles in microgravity — only small-scale demonstrations have been attempted, never a full ship-to-ship fill."
+      },
+      {
+        "tech": "Large reusable super-heavy launch vehicles",
+        "status": "partial",
+        "why": "refuelling a lunar lander takes many tanker flights, which only makes sense with cheap, rapidly reusable launchers."
+      },
+      {
+        "tech": "Precision landing and hazard avoidance",
+        "status": "partial",
+        "why": "robotic landers have hit the surface repeatedly, but crewed landings need far higher confidence than uncrewed ones."
+      },
+      {
+        "tech": "Long-duration cryogenic storage in space",
+        "status": "partial",
+        "why": "propellant boils off over months unless actively cooled or well insulated."
+      },
+      {
+        "tech": "Human-rated deep-space life support",
+        "status": "exists",
+        "why": "the technology exists from Earth-orbit and Apollo experience, but not yet with months-long loitering and reuse."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "crewed lunar landers in development under the Artemis programme, with uncrewed cargo landers already flying",
+        "unlocks": "cargo delivery and landing-software testing on the real surface."
+      },
+      {
+        "stage": "Next",
+        "milestone": "the first crewed Artemis landing, then cargo and crew flights to an orbiting lunar station",
+        "unlocks": "regular access and the start of sustained surface activity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "demonstrated orbital refuelling and lander reuse between missions",
+        "unlocks": "cost per landing falls far enough for long-term bases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "propellant produced from lunar ice rather than shipped from Earth",
+        "unlocks": "a self-sustaining transport loop rather than a one-way supply line."
+      }
+    ]
   }
 }

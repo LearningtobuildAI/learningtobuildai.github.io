@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "holds and manipulates qubits; today this means superconducting circuits at millikelvin temperatures or trapped ions.",
+        "parts": [
+          "qubit chip",
+          "control and readout resonators",
+          "shielding"
+        ]
+      },
+      {
+        "name": "Cryogenic and control hardware",
+        "role": "keeps qubits cold and delivers precisely shaped microwave or laser pulses.",
+        "parts": [
+          "dilution refrigerator",
+          "microwave or RF sources",
+          "wiring and filters"
+        ]
+      },
+      {
+        "name": "Quantum–classical interface",
+        "role": "reads out qubit states and hands results to ordinary electronics fast enough to matter.",
+        "parts": [
+          "FPGA or ASIC controllers",
+          "analogue-to-digital readout",
+          "low-latency link"
+        ]
+      },
+      {
+        "name": "Quantum sensing layer",
+        "role": "the most mature quantum contribution to robotics: cold-atom or atomic-vapour sensors for navigation, timing and magnetic fields.",
+        "parts": [
+          "atomic clock or inertial sensor",
+          "laser and optics package",
+          "magnetic shielding"
+        ]
+      },
+      {
+        "name": "Robot platform",
+        "role": "the body that acts on the results — arms, wheels or legs, all classical.",
+        "parts": [
+          "actuators",
+          "classical embedded controller",
+          "safety interlocks",
+          "power supply"
+        ]
+      },
+      {
+        "name": "Hybrid software stack",
+        "role": "maps a robotics problem (task allocation, path planning, sampling) onto qubit operations and back.",
+        "parts": [
+          "problem encoding",
+          "quantum or annealing circuits",
+          "classical optimiser in the loop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a task where quantum might actually help",
+        "detail": "Combinatorial allocation, sampling or search problems are candidates; smooth control and perception usually are not, and classical chips win."
+      },
+      {
+        "title": "Fabricate or program the qubit layer",
+        "detail": "Superconducting qubits are patterned on silicon wafers in a cleanroom; ion-trap designs instead load individual atoms and address them with lasers."
+      },
+      {
+        "title": "Cool, shield and wire the processor",
+        "detail": "A dilution refrigerator takes the chip to around 10 millikelvin, with filtered cabling carrying signals down through several temperature stages."
+      },
+      {
+        "title": "Calibrate gates and readout",
+        "detail": "Engineers tune pulse amplitudes and phases and measure error rates per gate, typically around one part in a thousand for the best two-qubit gates today."
+      },
+      {
+        "title": "Build the hybrid loop",
+        "detail": "The processor returns samples or measurement outcomes; a classical computer updates the problem and sends the next circuit, within a latency budget set by the robot's motion."
+      },
+      {
+        "title": "Add quantum sensors",
+        "detail": "Atomic inertial sensors or clocks are mounted to give drift-resistant navigation where satellite positioning is unavailable."
+      },
+      {
+        "title": "Integrate onto the robot with classical fallbacks",
+        "detail": "The quantum unit sits in a rack or off-board and talks to the robot over a network; every safety-relevant decision still runs on certified classical hardware."
+      },
+      {
+        "title": "Benchmark against classical baselines",
+        "detail": "Every claimed advantage must be measured against the best classical algorithm on the same task, at the same wall-clock time."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-corrected logical qubits",
+        "status": "missing",
+        "why": "today's physical qubits fail often enough that thousands are needed to make one reliable logical qubit."
+      },
+      {
+        "tech": "Fast quantum–classical interfaces",
+        "status": "partial",
+        "why": "readout and feedback at microsecond timescales have been demonstrated in labs but are not a standard component."
+      },
+      {
+        "tech": "Compact cryogenics and power",
+        "status": "missing",
+        "why": "a dilution refrigerator is room-sized and power-hungry, so nothing quantum-computing goes on a mobile robot yet."
+      },
+      {
+        "tech": "Miniaturised quantum sensors",
+        "status": "partial",
+        "why": "atomic clocks, magnetometers and inertial sensors exist in commercial and lab forms, but are still bulky and costly."
+      },
+      {
+        "tech": "Quantum algorithms with proven robotics advantage",
+        "status": "missing",
+        "why": "no published result yet shows a practical robot task solved faster or better end-to-end on quantum hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quantum annealing and small gate-based processors used in research on optimisation and machine learning; quantum sensors used in laboratory navigation experiments",
+        "unlocks": "a clearer map of which robotics problems are even candidates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error-corrected logical qubits, with processors kept in a rack and reached over a network by classical robots",
+        "unlocks": "hybrid systems where the quantum part is a cloud-style accelerator rather than an on-board component."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ruggedised quantum sensor packages for positioning and timing on vehicles",
+        "unlocks": "reliable navigation and coordination where satellite signals are jammed or absent — the most credible near-term robotics benefit."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-board quantum co-processors in a portable package",
+        "unlocks": "speculative: robots whose planning and control genuinely run on quantum hardware, if error correction and cryogenics shrink dramatically."
+      }
+    ]
+  }
+}

@@ -34,5 +34,151 @@
         "def": "A device that converts energy into mechanical motion, enabling robots to perform tasks like lifting or moving materials."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Machine platform",
+        "role": "the moving body that does the work — a modified excavator, a gantry, a mobile arm or a tracked base.",
+        "parts": [
+          "hydraulic or electric actuators",
+          "boom or gantry structure",
+          "tracks or wheels",
+          "ruggedised enclosure for dust and weather"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "works out where the machine is and what is around it on a messy, changing site.",
+        "parts": [
+          "lidar",
+          "stereo or depth cameras",
+          "GNSS with real-time kinematic correction",
+          "inertial measurement unit"
+        ]
+      },
+      {
+        "name": "End effector",
+        "role": "the tool that actually touches the work.",
+        "parts": [
+          "gripper or vacuum lifter",
+          "tool changer",
+          "concrete print nozzle",
+          "brick or block placement head"
+        ]
+      },
+      {
+        "name": "Autonomy stack",
+        "role": "turns a task from the site plan into safe machine motions.",
+        "parts": [
+          "localisation and mapping software",
+          "motion planner",
+          "task executor",
+          "remote teleoperation fallback",
+          "emergency stop and geofencing"
+        ]
+      },
+      {
+        "name": "Coordination layer",
+        "role": "divides work between several machines and keeps them out of each other's way.",
+        "parts": [
+          "fleet task allocator",
+          "shared site model or digital twin",
+          "wireless site network",
+          "collision avoidance between robots"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a task worth automating",
+        "detail": "Success comes from narrow, high-volume, repetitive jobs — tying rebar, laying blocks, drilling ceilings, cutting openings, moving earth along fixed haul routes — not from a general-purpose builder."
+      },
+      {
+        "title": "Start from a proven machine",
+        "detail": "Take an existing excavator or lift and retrofit sensors, actuators and a control interface, rather than designing a robot from scratch."
+      },
+      {
+        "title": "Fit and calibrate sensors",
+        "detail": "Lidar, cameras and GNSS are mounted and calibrated so measurements line up with the machine's own geometry to a few centimetres."
+      },
+      {
+        "title": "Load the site geometry",
+        "detail": "The building information model or survey is converted into machine-readable coordinates, so the robot knows where the wall, trench or pile should go."
+      },
+      {
+        "title": "Build the perception-to-action loop",
+        "detail": "Software repeatedly senses the scene, compares it with the plan, plans a motion and commands the actuators — with a human able to take over at any moment."
+      },
+      {
+        "title": "Trial in a controlled zone",
+        "detail": "Early runs happen in a fenced area or during quiet hours, with a spotter and hard-wired safety stops, to prove reliability and measure output per hour."
+      },
+      {
+        "title": "Integrate with the construction schedule",
+        "detail": "The robot is slotted into the sequence of trades, its work verified by survey, and crews are trained to work alongside it."
+      },
+      {
+        "title": "Add more machines",
+        "detail": "Once one machine is reliable, fleets are coordinated by a central allocator sharing one site model; fully decentralised swarm behaviour remains a research goal."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Machine vision and lidar perception",
+        "status": "exists",
+        "why": "robots must locate themselves and obstacles in cluttered, unstructured sites."
+      },
+      {
+        "tech": "GNSS real-time kinematic positioning and robotic total stations",
+        "status": "exists",
+        "why": "give centimetre-level position outdoors and inside building frames."
+      },
+      {
+        "tech": "Digital site models (BIM) and survey data",
+        "status": "partial",
+        "why": "robots need machine-readable geometry, but models are often incomplete or inconsistent across trades."
+      },
+      {
+        "tech": "Dexterous manipulation in unstructured settings",
+        "status": "partial",
+        "why": "picking up and placing irregular objects reliably is far harder than welding on a fixed line."
+      },
+      {
+        "tech": "Safety rules for autonomous plant on shared sites",
+        "status": "partial",
+        "why": "regulators and insurers are still defining how robots and workers safely share the same ground."
+      },
+      {
+        "tech": "Multi-robot task coordination",
+        "status": "missing",
+        "why": "central fleet allocation exists in research; decentralised swarm construction has only been shown in lab demonstrations."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "semi-automated machine control, drone survey, autonomous haul trucks in mining and quarrying",
+        "unlocks": "proven perception, positioning and safety practice, plus measurable productivity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "single-task autonomous machines working in fenced or off-hours zones",
+        "unlocks": "bricklaying, rebar tying, drilling and concrete printing with fewer workers in hazardous spots."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-machine fleets coordinated through one site model",
+        "unlocks": "parallel working, shorter programmes and better use of scarce skilled labour."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-organising robot teams needing little central control",
+        "unlocks": "construction in remote, extreme or hazardous locations where crews are hard to field."
+      }
+    ]
   }
 }

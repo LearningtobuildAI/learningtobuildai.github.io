@@ -30,5 +30,165 @@
         "def": "The delay in data transmission between Earth and Mars due to the vast distance, which can range from 4 minutes to over 20 minutes depending on their relative positions in orbit."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Mobility chassis",
+        "role": "carries the rover over rock, sand and slopes.",
+        "parts": [
+          "six wheels with machined treads",
+          "rocker-bogie suspension",
+          "steering and drive motors",
+          "suspension sensors"
+        ]
+      },
+      {
+        "name": "Power source",
+        "role": "keeps instruments and heaters running through dust storms and cold nights.",
+        "parts": [
+          "solar arrays (smaller rovers)",
+          "multi-mission radioisotope thermoelectric generator using plutonium-238 (larger rovers)",
+          "lithium-ion batteries"
+        ]
+      },
+      {
+        "name": "Thermal control",
+        "role": "survives nights near −90 °C and operations between roughly −130 °C and +30 °C.",
+        "parts": [
+          "fluid loop",
+          "radioisotope heater units",
+          "insulation and louvers"
+        ]
+      },
+      {
+        "name": "Sensor mast and cameras",
+        "role": "sees the terrain and aims the instruments.",
+        "parts": [
+          "navigation and hazard cameras",
+          "zoom stereo mast cameras",
+          "laser spectrometer for rock chemistry",
+          "spectrometers for mineralogy"
+        ]
+      },
+      {
+        "name": "Arm and sample handling",
+        "role": "places tools on rocks and takes cores.",
+        "parts": [
+          "turret with drill and abrasion tool",
+          "sample tubes and sealing mechanism",
+          "caching carousel"
+        ]
+      },
+      {
+        "name": "Onboard computing",
+        "role": "drives autonomously when the round-trip radio delay is up to about 40 minutes.",
+        "parts": [
+          "radiation-hardened processors",
+          "vision-based navigation software",
+          "flight software for command sequencing"
+        ]
+      },
+      {
+        "name": "Communications",
+        "role": "sends data home via relay orbiters or direct to Earth.",
+        "parts": [
+          "high-gain antenna",
+          "UHF relay transceiver",
+          "orbiting relay spacecraft"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for one launch",
+        "detail": "Mass, volume and power are fixed by the rocket and the lander, so instruments compete for every kilogram and watt."
+      },
+      {
+        "title": "Build the flight vehicle",
+        "detail": "The chassis, mast, arm and instrument electronics are assembled in a cleanroom and tested as a system."
+      },
+      {
+        "title": "Test on Earth",
+        "detail": "A twin rover drives over simulated Martian terrain; thermal-vacuum chambers reproduce the cold, thin atmosphere."
+      },
+      {
+        "title": "Launch and cruise",
+        "detail": "The spacecraft is launched, then coasts for about six to nine months, with trajectory corrections along the way."
+      },
+      {
+        "title": "Land",
+        "detail": "Friction heats the heat shield, a parachute slows the descent, and rockets or airbags (or a sky crane) set the rover down inside an ancient lakebed."
+      },
+      {
+        "title": "Commission",
+        "detail": "Controllers deploy the mast and antennas, check every instrument, and drive a short distance off the landing platform."
+      },
+      {
+        "title": "Explore and drill",
+        "detail": "The rover drives a planned route, uses autonomous navigation across blind terrain, and drills cores from selected rocks."
+      },
+      {
+        "title": "Cache or analyse",
+        "detail": "Samples are either analysed inside the rover's laboratory or sealed in tubes and left on the surface for a future mission to collect."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep Space Network tracking and commanding",
+        "status": "exists",
+        "why": "every rover depends on large Earth antennas to receive data and send commands."
+      },
+      {
+        "tech": "Radioisotope power systems",
+        "status": "partial",
+        "why": "plutonium-238 supply is scarce and limits how many long-lived rovers can be built."
+      },
+      {
+        "tech": "Entry, descent and landing of a one-tonne payload",
+        "status": "exists",
+        "why": "getting a heavy rover down intact in a thin atmosphere is the hardest single step."
+      },
+      {
+        "tech": "Autonomous terrain navigation",
+        "status": "exists",
+        "why": "the radio delay makes joystick driving impossible; the rover must choose safe paths itself."
+      },
+      {
+        "tech": "Radiation-tolerant electronics",
+        "status": "exists",
+        "why": "cosmic rays corrupt memory and can end a mission without hardened parts and error checking."
+      },
+      {
+        "tech": "Planetary protection cleaning",
+        "status": "exists",
+        "why": "rovers must not carry Earth microbes to sites that might host Martian life."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "long-lived nuclear-powered rovers analysing ancient lakebed rocks and caching samples",
+        "unlocks": "detailed geology and a stored set of cores for return."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a mission to collect the cached tubes and bring them to Earth",
+        "unlocks": "laboratory analysis with instruments far too large and power-hungry to fly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "subsurface drilling rovers reaching metres below the radiation-bleached surface",
+        "unlocks": "a chance at detecting preserved organic material or living microbes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "robotic scouting and resource demonstrations ahead of crews",
+        "unlocks": "landing-site selection, water and oxygen production, and reduced risk for human missions."
+      }
+    ]
   }
 }

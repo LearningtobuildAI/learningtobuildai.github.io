@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Router / gating network",
+        "role": "Decides which experts each token should use, activating only a small subset of parameters.",
+        "parts": [
+          "token-to-expert affinity scorer",
+          "top-k selection",
+          "load-balancing loss"
+        ]
+      },
+      {
+        "name": "Expert layers",
+        "role": "Feed-forward networks that hold most of the model's parameters; only selected experts run for a given token.",
+        "parts": [
+          "expert weight matrices",
+          "activation functions",
+          "capacity limits"
+        ]
+      },
+      {
+        "name": "Sparse compute kernels",
+        "role": "Efficiently execute batched matrix multiplications only for the experts that were chosen.",
+        "parts": [
+          "gather/scatter routines",
+          "fused GEMM kernels",
+          "grouped expert batching"
+        ]
+      },
+      {
+        "name": "Memory manager",
+        "role": "Keeps expert weights in the fastest available memory and moves them when they are needed.",
+        "parts": [
+          "GPU memory allocator",
+          "CPU/disk offloading",
+          "prefetch scheduler"
+        ]
+      },
+      {
+        "name": "Communication layer",
+        "role": "Moves tokens between devices when experts are spread across multiple GPUs or nodes.",
+        "parts": [
+          "all-to-all exchange",
+          "expert parallelism groups",
+          "high-bandwidth interconnect drivers"
+        ]
+      },
+      {
+        "name": "Serving scheduler",
+        "role": "Batches incoming requests, balances work across experts and handles overload.",
+        "parts": [
+          "continuous batching",
+          "expert load monitor",
+          "token dropping or deferral policy"
+        ]
+      },
+      {
+        "name": "Quantisation and compression",
+        "role": "Reduces the precision of expert weights so more experts fit in memory and run faster.",
+        "parts": [
+          "8-bit or 4-bit weight formats",
+          "calibration data",
+          "dequantisation kernels"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Profile the MoE model",
+        "detail": "Measure how often each expert is activated, where memory is spent, and where latency comes from during inference."
+      },
+      {
+        "title": "Design the routing policy",
+        "detail": "Choose top-k gating, a load-balancing objective and a capacity factor so no single expert becomes a bottleneck."
+      },
+      {
+        "title": "Write sparse compute kernels",
+        "detail": "Implement gather, grouped matrix multiplication and scatter operations that skip unselected experts entirely."
+      },
+      {
+        "title": "Lay out experts in memory",
+        "detail": "Place expert weights across available GPUs, and add CPU or disk offloading with prefetching for experts that do not fit on the GPU."
+      },
+      {
+        "title": "Parallelise across devices",
+        "detail": "Distribute experts across GPUs or nodes and implement the all-to-all communication that routes tokens to the right expert."
+      },
+      {
+        "title": "Quantise expert weights",
+        "detail": "Convert expert matrices to 8-bit or 4-bit formats, calibrate accuracy and fuse dequantisation into the compute kernels."
+      },
+      {
+        "title": "Optimise batching",
+        "detail": "Group tokens by expert, pad to a fixed capacity, and decide how to handle overflow tokens so latency stays predictable."
+      },
+      {
+        "title": "Deploy and auto-tune",
+        "detail": "Benchmark on real traffic, then tune batch sizes, kernel configurations, routing temperature and offload thresholds."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sparse Mixture-of-Experts transformer architecture",
+        "status": "exists",
+        "why": "Provides the expert layers and gating mechanism that inference optimisation builds on."
+      },
+      {
+        "tech": "Efficient sparse tensor operations",
+        "status": "exists",
+        "why": "Gather/scatter and grouped GEMM kernels are needed to run only selected experts without wasting compute."
+      },
+      {
+        "tech": "High-bandwidth interconnects",
+        "status": "exists",
+        "why": "All-to-all token exchange between devices becomes the bottleneck when experts are distributed."
+      },
+      {
+        "tech": "Low-precision quantisation",
+        "status": "exists",
+        "why": "8-bit and 4-bit formats shrink expert weights enough to fit more of them in memory."
+      },
+      {
+        "tech": "Memory offloading and prefetching",
+        "status": "partial",
+        "why": "Lets models larger than GPU memory run, but adds latency that must be hidden by careful scheduling."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Production serving of sparse MoE models with hundreds of billions of parameters",
+        "unlocks": "Lower cost per token than equivalent dense models by activating only a fraction of weights."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Better routing and load balancing that reduce token dropping and latency variance",
+        "unlocks": "More predictable throughput for real-time applications."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Wider use of expert offloading to CPU memory and fast storage",
+        "unlocks": "Serving models far larger than the combined GPU memory of a single node."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Dynamic expert pruning, merging and speculative routing",
+        "unlocks": "Further cuts in compute and memory while preserving model quality."
+      }
+    ]
+  }
+}

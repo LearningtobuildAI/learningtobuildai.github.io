@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Voxel medium",
+        "role": "the physical thing in mid-air that scatters or emits light so a viewer sees a point of image.",
+        "parts": [
+          "ionised air (plasma) from a focused pulsed laser",
+          "optically trapped particle steered in 3D",
+          "ultrasonically levitated bead",
+          "near-eye retinal projection (virtual image in the eye instead of in the room)"
+        ]
+      },
+      {
+        "name": "Emitter and scanner",
+        "role": "places each voxel at the right coordinate thousands of times per second.",
+        "parts": [
+          "pulsed or RGB lasers",
+          "scanning mirrors or spatial light modulators",
+          "phased array of ultrasonic transducers",
+          "trap-beam optics"
+        ]
+      },
+      {
+        "name": "Spatial sensing",
+        "role": "knows where the user's head, hands and the room's surfaces are.",
+        "parts": [
+          "depth cameras",
+          "inertial sensors",
+          "hand and eye tracking",
+          "room mapping"
+        ]
+      },
+      {
+        "name": "Spatial audio",
+        "role": "gives interface elements a position you can hear.",
+        "parts": [
+          "head-tracked binaural renderer",
+          "small speaker array or earbuds"
+        ]
+      },
+      {
+        "name": "Compute and render stack",
+        "role": "turns an application's 3D scene into a timed stream of voxel coordinates.",
+        "parts": [
+          "volumetric renderer",
+          "voxel scheduler and latency budget",
+          "GPU",
+          "calibration data"
+        ]
+      },
+      {
+        "name": "Holographic OS layer",
+        "role": "the actual operating system: window manager for volumes, input model, permissions, app framework.",
+        "parts": [
+          "3D compositor",
+          "spatial anchors",
+          "gesture and voice input",
+          "developer APIs"
+        ]
+      },
+      {
+        "name": "Safety envelope",
+        "role": "keeps lasers and ultrasound from injuring eyes, skin or lungs, and manages exhaust gases.",
+        "parts": [
+          "laser-safety interlocks and beam enclosures",
+          "ultrasound exposure limits",
+          "ozone and nitrogen-oxide handling",
+          "field-of-view keep-out zones"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the voxel mechanism",
+        "detail": "Decide how light will exist in empty space. Options in the lab are laser-induced plasma, a laser-trapped particle, an ultrasonically levitated bead, or projection straight into the viewer's eye. Each choice fixes the rest of the design."
+      },
+      {
+        "title": "Build the emitter array",
+        "detail": "Assemble and align lasers with scanning optics, or an ultrasonic phased array with a trap beam, so voxels can be addressed in three dimensions across the intended volume."
+      },
+      {
+        "title": "Solve safety and containment",
+        "detail": "Focused laser pulses must be eye-safe and enclosed in a managed field of view; plasma in air makes ozone and nitrogen oxides that need ventilation; high-intensity ultrasound must stay within heating limits. This step, not the optics, is what decides whether the device can sit in a home."
+      },
+      {
+        "title": "Make the render pipeline",
+        "detail": "Write a volumetric renderer and a scheduler that fires every voxel in the right order. Like a CRT, the image relies on persistence: the whole volume must be redrawn faster than the eye can follow, so brightness and complexity trade off directly against refresh rate."
+      },
+      {
+        "title": "Add tracking and audio",
+        "detail": "Depth cameras and inertial sensors track head and hands so the interface is anchored to real space; a head-tracked binaural renderer gives each element a sound position."
+      },
+      {
+        "title": "Write the OS layer",
+        "detail": "Build a compositor that manages 3D regions the way a desktop manages windows, plus a spatial input model, an app framework, permissions for cameras and microphones, and a way for apps to declare how much of the volume they occupy."
+      },
+      {
+        "title": "Calibrate and stress-test",
+        "detail": "Optical and geometric calibration keeps voxels where the renderer thinks they are as the hardware warms and ages; latency, occlusion and multi-user viewing are measured and iterated."
+      },
+      {
+        "title": "Productise",
+        "detail": "Shrink power, cooling and optics into something affordable and quiet, and decide the honest target: a controlled desktop volume, a near-eye display that merely looks free-space, or a whole room."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Free-space voxel generation bright enough to see in daylight",
+        "status": "missing",
+        "why": "plasma and trapped-particle displays demonstrated so far are dim, tiny and monochrome-ish; nothing yet scales to a room-sized, daylight-readable volume."
+      },
+      {
+        "tech": "Real-time volumetric rendering and low-latency tracking",
+        "status": "exists",
+        "why": "modern headsets already render stereo 3D with head tracking at low latency, and that pipeline is reusable."
+      },
+      {
+        "tech": "Spatial operating systems",
+        "status": "partial",
+        "why": "headset operating systems with 3D window managers and hand tracking exist, but only behind a display, not in open air."
+      },
+      {
+        "tech": "Eye-safe laser and ultrasound exposure frameworks",
+        "status": "exists",
+        "why": "laser and ultrasound safety standards exist and would constrain brightness, range and refresh rate for any free-space display."
+      },
+      {
+        "tech": "Occlusion and multi-viewer support",
+        "status": "missing",
+        "why": "a volume of light has no solid surfaces to block what is behind it, so depth cues collapse for anyone but a single tracked viewer."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "spatial computing on headset displays",
+        "unlocks": "proven 3D window management, hand tracking and app ecosystems — the software half of a holographic OS."
+      },
+      {
+        "stage": "Next",
+        "milestone": "near-eye light-field and holographic displays that remove bulky optics",
+        "unlocks": "thin, comfortable devices with convincing depth, still worn rather than floating in the room."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lab-scale free-space volumetric displays of useful brightness and size",
+        "unlocks": "single-user interfaces that genuinely exist in mid-air inside a desk-sized safe volume."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "room-scale, multi-user, daylight-visible volumetric display with safe power and ventilation",
+        "unlocks": "a true holographic operating system, replacing screens rather than supplementing them."
+      }
+    ]
+  }
+}

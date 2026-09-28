@@ -1,0 +1,134 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Biosignal sensing array",
+        "role": "picks up tiny electrical signals from speech muscles (subvocalization) and, to a lesser extent, from the brain.",
+        "parts": [
+          "dry EMG electrodes on the ear canal",
+          "ear-EEG electrodes",
+          "reference electrode",
+          "flexible substrate"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies and filters microvolt-level signals before digitization.",
+        "parts": [
+          "low-noise amplifiers",
+          "band-pass filters",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "On-board processor and AI decoder",
+        "role": "extracts features from the signals and translates them into text using a trained neural network.",
+        "parts": [
+          "microcontroller",
+          "neural network accelerator",
+          "firmware"
+        ]
+      },
+      {
+        "name": "Wireless link and power",
+        "role": "sends decoded text to a phone or computer and keeps the earbud running.",
+        "parts": [
+          "Bluetooth radio",
+          "rechargeable battery",
+          "charging contacts"
+        ]
+      },
+      {
+        "name": "User feedback and fit",
+        "role": "confirms recognition and ensures the earbud stays comfortably in place.",
+        "parts": [
+          "haptic actuator or speaker",
+          "soft silicone tip",
+          "ear canal seal"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode interface",
+        "detail": "Engineer dry electrodes that make stable contact with the ear canal skin without gel, and that are comfortable for hours."
+      },
+      {
+        "title": "Fabricate the flexible sensor array",
+        "detail": "Print or laminate conductive traces and electrodes on a flexible polymer substrate that fits the ear canal shape."
+      },
+      {
+        "title": "Integrate the electronics",
+        "detail": "Assemble the analog front end, processor, AI accelerator, Bluetooth radio and battery onto a miniature printed circuit board."
+      },
+      {
+        "title": "Collect training data",
+        "detail": "Record EMG and EEG signals from many volunteers while they silently mouth words or sentences, paired with the intended text."
+      },
+      {
+        "title": "Train the decoding model",
+        "detail": "Use machine learning to map signal features to phonemes or words, with per-user fine-tuning to handle individual anatomy."
+      },
+      {
+        "title": "Assemble the earbud",
+        "detail": "Package the sensor array and electronics into a moisture-resistant shell, seal it, and attach the ear tip and charging contacts."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Each user performs a short calibration; then accuracy, latency, comfort and safety are validated before use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry, comfortable biosignal electrodes",
+        "status": "partial",
+        "why": "existing dry electrodes work for short-term ECG or EEG, but long-term, high-quality EMG in the ear is still a research challenge."
+      },
+      {
+        "tech": "Low-power neural network accelerators",
+        "status": "exists",
+        "why": "smartphone and earbud chips can run small AI models on a battery."
+      },
+      {
+        "tech": "Subvocalization decoding algorithms",
+        "status": "partial",
+        "why": "laboratory systems have recognised small sets of words from face and neck EMG, but not yet general speech."
+      },
+      {
+        "tech": "Ear-EEG for neural intent",
+        "status": "partial",
+        "why": "ear-EEG can detect some brain states, but decoding imagined speech from it is not yet reliable."
+      },
+      {
+        "tech": "Miniature solid-state batteries",
+        "status": "exists",
+        "why": "small lithium-ion and emerging solid-state cells power earbuds for hours."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Laboratory prototypes recognise a few dozen subvocalized words using electrodes on the jaw or neck.",
+        "unlocks": "Proof that muscle signals during silent speech can be decoded."
+      },
+      {
+        "stage": "Next",
+        "milestone": "In-ear prototypes combine EMG and ear-EEG to decode short phrases in real time.",
+        "unlocks": "Hands-free, silent messaging for users in noisy or quiet environments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Commercial earbuds with a limited vocabulary for specific tasks (e.g., controlling a phone).",
+        "unlocks": "First consumer products, though not yet general thought-to-text."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "General-purpose thought-to-text with large vocabulary and minimal calibration.",
+        "unlocks": "Seamless silent communication for anyone, including people with speech impairments."
+      }
+    ]
+  }
+}

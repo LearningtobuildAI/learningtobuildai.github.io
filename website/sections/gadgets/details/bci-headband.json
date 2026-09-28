@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "picks up microvolt-scale voltages from the scalp through hair without conductive gel.",
+        "parts": [
+          "dry or semi-dry electrodes",
+          "spring-loaded or flexible pins",
+          "skin-contact interface"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies tiny signals while rejecting noise.",
+        "parts": [
+          "low-noise instrumentation amplifiers",
+          "high-impedance input stage",
+          "notch and band-pass filters"
+        ]
+      },
+      {
+        "name": "Digitisation and link",
+        "role": "converts the analog signal to digital data and streams it wirelessly.",
+        "parts": [
+          "24-bit analog-to-digital converters",
+          "microcontroller",
+          "Bluetooth or Wi-Fi radio"
+        ]
+      },
+      {
+        "name": "Signal processing",
+        "role": "cleans the data and extracts features.",
+        "parts": [
+          "artefact rejection (eye blinks, muscle, motion)",
+          "frequency-band decomposition",
+          "spatial filtering"
+        ]
+      },
+      {
+        "name": "Decoding model",
+        "role": "maps brain patterns to commands, attention scores or text.",
+        "parts": [
+          "trained neural network or classifier",
+          "per-user calibration routine",
+          "on-device or cloud inference"
+        ]
+      },
+      {
+        "name": "Application layer",
+        "role": "turns decoded output into something useful.",
+        "parts": [
+          "control interface",
+          "feedback display",
+          "privacy and data controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the paradigm",
+        "detail": "Decide whether the system uses motor imagery, steady-state visual evoked potentials, or attention-related rhythms, because each dictates electrode placement."
+      },
+      {
+        "title": "Design the headband",
+        "detail": "A flexible frame is shaped to hold electrodes at standard scalp positions (the 10–20 system) and to stay put during head movement."
+      },
+      {
+        "title": "Build the electrodes",
+        "detail": "Conductive elastomer or metal pins are made to contact the scalp through hair with low and stable impedance."
+      },
+      {
+        "title": "Assemble the electronics",
+        "detail": "The analog front end is laid out to keep noise below a microvolt, then shielded from the radio and power supply."
+      },
+      {
+        "title": "Calibrate and collect data",
+        "detail": "Each user performs guided tasks while labelled brain data is recorded; the model is trained or fine-tuned on those labels."
+      },
+      {
+        "title": "Validate",
+        "detail": "Performance is tested against chance and against conventional input, with false-positive and fatigue rates measured."
+      },
+      {
+        "title": "Integrate and ship",
+        "detail": "The decoder is embedded in software or firmware, with limits on what data leaves the device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry EEG electrodes",
+        "status": "partial",
+        "why": "gel-free contact through hair is less stable than laboratory gel electrodes, so signals drift."
+      },
+      {
+        "tech": "Low-noise, low-power analog electronics",
+        "status": "exists",
+        "why": "brain signals are only a few microvolts and are easily drowned by mains hum and muscle activity."
+      },
+      {
+        "tech": "Machine-learning decoders",
+        "status": "partial",
+        "why": "models must generalise across users and sessions; most still need per-person calibration."
+      },
+      {
+        "tech": "Large labelled brain-signal datasets",
+        "status": "partial",
+        "why": "decoding improves with data, but privacy and variability make such datasets scarce."
+      },
+      {
+        "tech": "Comfortable long-wear headgear",
+        "status": "partial",
+        "why": "signals degrade as the headband slips or the user tires."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer headsets that report coarse attention or relaxation, and research spellers using P300 or SSVEP",
+        "unlocks": "real but low-bandwidth control, mainly for accessibility and focus tracking."
+      },
+      {
+        "stage": "Next",
+        "milestone": "calibration-free decoders that work across users and sessions",
+        "unlocks": "a device you can put on and use immediately, like a mouse."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dry sensors with signal quality approaching gel electrodes",
+        "unlocks": "reliable control without a technician or conductive paste."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "high-bandwidth non-invasive decoding of imagined speech or movement",
+        "unlocks": "typing and device control at useful speeds for people with severe paralysis — though skull and tissue blur the signal, so invasive arrays will likely stay ahead for the hardest cases."
+      }
+    ]
+  }
+}

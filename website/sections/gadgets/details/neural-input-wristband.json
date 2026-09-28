@@ -1,0 +1,132 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "picks up the tiny voltages that motor neurons generate in the forearm muscles.",
+        "parts": [
+          "dry skin-contact electrodes",
+          "flexible band",
+          "shielding"
+        ]
+      },
+      {
+        "name": "Analogue front end",
+        "role": "amplifies and cleans signals of a few microvolts while rejecting mains hum and movement noise.",
+        "parts": [
+          "instrumentation amplifiers",
+          "band-pass filters",
+          "analogue-to-digital converter"
+        ]
+      },
+      {
+        "name": "Motion and context sensing",
+        "role": "lets the decoder separate intended gestures from arm movement and changing posture.",
+        "parts": [
+          "inertial measurement unit",
+          "optional impedance or optical sensors"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns the multi-channel signal into an intended hand gesture or continuous control.",
+        "parts": [
+          "trained neural network",
+          "personalisation layer",
+          "on-device inference"
+        ]
+      },
+      {
+        "name": "Compute, power and radio",
+        "role": "runs the model on the wrist and sends the result to a headset, phone or computer.",
+        "parts": [
+          "low-power processor",
+          "battery",
+          "Bluetooth or similar radio"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode band",
+        "detail": "Electrodes are arranged around the forearm to sit over the muscles that move the fingers and wrist, on a comfortable, repeatable fit."
+      },
+      {
+        "title": "Build the analogue front end",
+        "detail": "Each channel amplifies microvolt-level signals, filters out low-frequency motion artefacts and high-frequency noise, and digitises the result."
+      },
+      {
+        "title": "Collect training data",
+        "detail": "Volunteers perform many gestures and finer movements while their signals are recorded, synchronised with what they were asked to do."
+      },
+      {
+        "title": "Train the decoder",
+        "detail": "A model learns the mapping from electrode patterns to intended movement, using data from many people so it can generalise."
+      },
+      {
+        "title": "Calibrate the individual",
+        "detail": "A short personalised session adapts the model to the user's anatomy, electrode contact and resting state."
+      },
+      {
+        "title": "Integrate the wearable",
+        "detail": "Processor, battery and radio are packaged into a wristband that stays comfortable and keeps good skin contact."
+      },
+      {
+        "title": "Validate in realistic use",
+        "detail": "The band is tested for latency, accuracy and fatigue in tasks such as menu selection, typing or controlling a cursor."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Comfortable dry sEMG electrodes",
+        "status": "exists",
+        "why": "without stable skin contact the signal drifts and the decoder degrades."
+      },
+      {
+        "tech": "Low-power on-device machine learning",
+        "status": "exists",
+        "why": "the model must run for a day on a small battery."
+      },
+      {
+        "tech": "Large labelled EMG gesture datasets",
+        "status": "partial",
+        "why": "generalisation across people and sessions is the main unsolved problem."
+      },
+      {
+        "tech": "Understanding of motor-unit decoding",
+        "status": "partial",
+        "why": "reading intent before visible movement requires better signal models and more data."
+      },
+      {
+        "tech": "Low-latency wireless links",
+        "status": "exists",
+        "why": "input feels wrong if the gesture is decoded instantly but arrives late."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes from Meta's Reality Labs and others read several distinct gestures and simple continuous control from a wristband",
+        "unlocks": "hands-free input for AR/VR and accessibility use cases."
+      },
+      {
+        "stage": "Next",
+        "milestone": "consumer devices ship with a wristband as a companion input to glasses or phones",
+        "unlocks": "everyday gesture control without cameras watching the hands."
+      },
+      {
+        "stage": "Next",
+        "milestone": "decoders that need little or no per-session calibration",
+        "unlocks": "reliable use across users, sweat, fatigue and changing electrode positions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "higher-bandwidth signals decoded from individual motor units",
+        "unlocks": "fine control such as typing or manipulating virtual objects with intent alone."
+      }
+    ]
+  }
+}

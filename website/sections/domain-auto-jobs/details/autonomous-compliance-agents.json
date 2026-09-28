@@ -29,5 +29,166 @@
         "def": "The practice of adhering to laws, regulations, and standards set by governmental or other regulatory bodies."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Regulatory ingestion",
+        "role": "continuously collects and parses regulations, gazettes, and guidance from official sources.",
+        "parts": [
+          "web crawlers",
+          "document parsers for PDF and HTML",
+          "optical character recognition",
+          "text normaliser"
+        ]
+      },
+      {
+        "name": "Regulatory knowledge base",
+        "role": "stores and indexes regulatory text so an AI model can retrieve the right clauses.",
+        "parts": [
+          "vector database",
+          "embedding model",
+          "metadata schema",
+          "chunking pipeline"
+        ]
+      },
+      {
+        "name": "Impact analysis engine",
+        "role": "maps each regulatory change to affected internal policies, procedures, and controls.",
+        "parts": [
+          "clause matcher",
+          "dependency graph of internal documents",
+          "risk classifier"
+        ]
+      },
+      {
+        "name": "Drafting and update engine",
+        "role": "generates proposed updates to standard operating procedures with citations to source text.",
+        "parts": [
+          "large language model with guardrails",
+          "document templates",
+          "citation generator",
+          "diff viewer"
+        ]
+      },
+      {
+        "name": "Workflow and approval",
+        "role": "routes proposed changes to the right people for review, edit, and sign-off.",
+        "parts": [
+          "review queue",
+          "role-based access control",
+          "audit log",
+          "notification system"
+        ]
+      },
+      {
+        "name": "Integration and action layer",
+        "role": "pushes approved changes into document management and governance systems, then tracks acknowledgements.",
+        "parts": [
+          "APIs and connectors",
+          "version control",
+          "task tracker"
+        ]
+      },
+      {
+        "name": "Monitoring and evaluation",
+        "role": "measures accuracy, detects model drift, and keeps an immutable audit trail.",
+        "parts": [
+          "evaluation harness",
+          "feedback loop",
+          "immutable logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define regulatory scope",
+        "detail": "Choose which jurisdictions, regulators, and document types the agent must cover, and agree on what counts as a material change."
+      },
+      {
+        "title": "Build the ingestion pipeline",
+        "detail": "Write crawlers for official gazettes and regulator websites; parse and normalise documents into clean, structured text."
+      },
+      {
+        "title": "Create the retrieval index",
+        "detail": "Split regulations into clauses, generate embeddings, and load them into a vector database with rich metadata such as jurisdiction, date, and status."
+      },
+      {
+        "title": "Map regulations to internal controls",
+        "detail": "Build a graph linking each regulatory clause to the company policies, procedures, and controls that implement it, using human experts to seed and validate the mapping."
+      },
+      {
+        "title": "Implement change detection",
+        "detail": "Compare new regulatory text against the previous version to isolate added, removed, or amended clauses, and raise alerts only for material changes."
+      },
+      {
+        "title": "Generate draft updates",
+        "detail": "Use a retrieval-augmented generation pipeline to draft revised procedure text, with every statement citing the specific clause it responds to."
+      },
+      {
+        "title": "Add human review and approval",
+        "detail": "Route drafts to compliance officers and legal reviewers; require explicit sign-off before any document is changed."
+      },
+      {
+        "title": "Deploy and integrate",
+        "detail": "Connect the agent to document management and governance systems so approved changes are published, versioned, and acknowledged by staff."
+      },
+      {
+        "title": "Monitor and audit",
+        "detail": "Log every step, measure false positives and missed changes, and feed corrections back into the retrieval and drafting models."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable long-context reasoning",
+        "status": "partial",
+        "why": "current models can read long regulations but still miss nuances and hallucinate, so human review remains essential."
+      },
+      {
+        "tech": "Retrieval-augmented generation and vector databases",
+        "status": "exists",
+        "why": "they let a model ground its answers in specific regulatory text rather than relying on memory."
+      },
+      {
+        "tech": "Structured legal and regulatory ontologies",
+        "status": "partial",
+        "why": "few jurisdictions publish machine-readable, consistently structured regulations, making automatic mapping harder."
+      },
+      {
+        "tech": "Governance, risk, and compliance (GRC) system APIs",
+        "status": "exists",
+        "why": "the agent must write approved changes back into the systems companies already use."
+      },
+      {
+        "tech": "Evaluation and guardrails for high-stakes text",
+        "status": "partial",
+        "why": "there is no widely accepted benchmark for whether an AI-drafted compliance update is correct and complete."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assisted monitoring and drafting: agents flag regulatory changes and propose text, and humans review everything",
+        "unlocks": "faster awareness of new rules with a full human audit trail."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents autonomously draft and route updates for most changes, with human approval as the final gate",
+        "unlocks": "large reductions in the manual effort of routine compliance maintenance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop updates for low-risk, well-structured changes, with automated testing against internal controls",
+        "unlocks": "compliance documents that stay current without waiting for a review cycle."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous compliance assurance across multiple jurisdictions, with agents detecting and correcting gaps in near real time",
+        "unlocks": "compliance treated as a live system rather than a periodic audit."
+      }
+    ]
   }
 }

@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reasoning and planning core",
+        "role": "decomposes high-level goals into steps and decides what to do next.",
+        "parts": [
+          "large language or action model",
+          "chain-of-thought and recursive prompting",
+          "goal-state tracker"
+        ]
+      },
+      {
+        "name": "Memory and context",
+        "role": "stores past interactions, knowledge and current task state so the agent does not forget.",
+        "parts": [
+          "vector database for long-term memory",
+          "context window management",
+          "episodic task log"
+        ]
+      },
+      {
+        "name": "Tool and action layer",
+        "role": "lets the agent actually do things in software: call APIs, write code, browse the web.",
+        "parts": [
+          "API connectors and authentication",
+          "code interpreter sandbox",
+          "browser automation"
+        ]
+      },
+      {
+        "name": "Orchestration and multi-agent coordination",
+        "role": "runs several specialised agents together and assigns work.",
+        "parts": [
+          "task queue and scheduler",
+          "agent registry and roles",
+          "inter-agent messaging"
+        ]
+      },
+      {
+        "name": "Safety, oversight and evaluation",
+        "role": "keeps the agent within bounds and catches mistakes.",
+        "parts": [
+          "output filters and policy checks",
+          "permission and approval gates",
+          "logging and audit trail",
+          "automated test harness"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the environment",
+        "detail": "Identify which platforms, APIs and data sources the agents must operate, and what permissions they will need."
+      },
+      {
+        "title": "Assemble training data",
+        "detail": "Collect demonstrations of human workflows, tool-use traces and successful task completions to teach the model how to act."
+      },
+      {
+        "title": "Train or fine-tune the core model",
+        "detail": "Start from a large language model, then use instruction tuning and reinforcement learning from human feedback to improve planning and tool use."
+      },
+      {
+        "title": "Implement memory and state",
+        "detail": "Add a vector database for long-term recall, a context manager to fit relevant information into the model's window, and a task log."
+      },
+      {
+        "title": "Build the tool integration layer",
+        "detail": "Write connectors to each external service, with sandboxed code execution and error handling for failed calls."
+      },
+      {
+        "title": "Develop planning and self-correction loops",
+        "detail": "Implement recursive reasoning where the agent proposes a plan, executes a step, checks the result, and revises the plan if needed."
+      },
+      {
+        "title": "Add multi-agent orchestration",
+        "detail": "Create a supervisor that breaks a goal into sub-tasks, assigns them to specialised agents, and merges their outputs."
+      },
+      {
+        "title": "Install safety and oversight",
+        "detail": "Add policy filters, permission systems, human approval steps for sensitive actions, and full logging."
+      },
+      {
+        "title": "Pilot, monitor and iterate",
+        "detail": "Deploy in a controlled setting, measure success and failure rates, and continuously retrain on new data while guarding against drift."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with strong reasoning and instruction following",
+        "status": "exists",
+        "why": "they provide the basic ability to understand goals and generate plans."
+      },
+      {
+        "tech": "Reliable tool use and function calling",
+        "status": "partial",
+        "why": "models can call APIs, but error rates are still high for long sequences of actions."
+      },
+      {
+        "tech": "Long-term memory and long context windows",
+        "status": "partial",
+        "why": "current context windows are large but not unlimited, and retrieving the right memory remains hard."
+      },
+      {
+        "tech": "Robust planning and self-correction",
+        "status": "partial",
+        "why": "agents can plan, but they often fail on tasks requiring many steps or recovery from unexpected errors."
+      },
+      {
+        "tech": "Multi-agent coordination protocols",
+        "status": "partial",
+        "why": "frameworks exist, but stable, efficient teamwork between agents is not yet solved."
+      },
+      {
+        "tech": "Safety and alignment for autonomous action",
+        "status": "partial",
+        "why": "keeping agents from harmful or unintended actions is an open research problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-purpose agents for coding, customer support and data entry",
+        "unlocks": "productivity gains in narrow, well-defined tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that can complete multi-step workflows within one platform",
+        "unlocks": "automation of routine business processes with human oversight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-platform generalist agents that plan and execute across several systems",
+        "unlocks": "autonomous project management and reduced coordination overhead."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-improving teams of agents managing end-to-end operations",
+        "unlocks": "new organisational forms, alongside major governance and safety challenges."
+      }
+    ]
+  }
+}

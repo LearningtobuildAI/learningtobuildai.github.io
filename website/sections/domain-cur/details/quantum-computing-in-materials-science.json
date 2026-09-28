@@ -33,5 +33,157 @@
         "def": "A phenomenon in which the quantum state of one particle is dependent on the state of another, even when separated by large distances."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the qubits that represent the electrons of the molecule or material.",
+        "parts": [
+          "superconducting transmon chip, trapped-ion chain or neutral-atom array",
+          "control and readout wiring",
+          "dilution refrigerator or vacuum chamber"
+        ]
+      },
+      {
+        "name": "Encoding layer",
+        "role": "translates a chemistry problem into a form the qubits can hold.",
+        "parts": [
+          "basis-set and active-space selection",
+          "fermion-to-qubit mapping (Jordan–Wigner, Bravyi–Kitaev)",
+          "Hamiltonian coefficients"
+        ]
+      },
+      {
+        "name": "Error handling",
+        "role": "keeps noise from destroying the answer.",
+        "parts": [
+          "error-mitigation schemes such as zero-noise extrapolation",
+          "error-correcting codes (surface code) and logical qubits"
+        ]
+      },
+      {
+        "name": "Algorithm stack",
+        "role": "the procedure run on the hardware to find energies and properties.",
+        "parts": [
+          "variational quantum eigensolver",
+          "quantum phase estimation",
+          "time-evolution / quantum simulation routines"
+        ]
+      },
+      {
+        "name": "Classical co-processor",
+        "role": "optimises circuit parameters and stores results, in a tight loop with the quantum device.",
+        "parts": [
+          "gradient-free or gradient-based optimiser",
+          "chemistry libraries",
+          "data pipeline"
+        ]
+      },
+      {
+        "name": "Validation and workflow",
+        "role": "checks the answer against trusted classical methods and feeds it into real design work.",
+        "parts": [
+          "density functional theory, coupled cluster, DMRG or quantum Monte Carlo references",
+          "experimental data",
+          "materials screening tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a problem classical computers cannot solve",
+        "detail": "Target strongly correlated systems — transition-metal catalysts, battery electrolytes, magnetic oxides — where density functional theory is unreliable."
+      },
+      {
+        "title": "Define the active space",
+        "detail": "Choose which electrons and orbitals matter, and a basis set, to keep the problem small enough to encode."
+      },
+      {
+        "title": "Map the Hamiltonian to qubits",
+        "detail": "Write the electronic Hamiltonian in second quantisation, then convert fermionic operators into qubit operators using a Jordan–Wigner or Bravyi–Kitaev mapping."
+      },
+      {
+        "title": "Estimate the resources needed",
+        "detail": "Work out how many qubits, how deep a circuit, and how many measurements the problem demands; this usually shows present hardware is far too small and noisy."
+      },
+      {
+        "title": "Prepare and measure trial states",
+        "detail": "On hardware today, run a variational eigensolver: prepare a parameterised state, measure its energy, and let a classical optimiser adjust the parameters."
+      },
+      {
+        "title": "Mitigate or correct errors",
+        "detail": "Apply zero-noise extrapolation and similar techniques now; move to error-corrected logical qubits for the accuracy chemistry requires (roughly millihartree, or about 0.03 eV)."
+      },
+      {
+        "title": "Extract observables",
+        "detail": "Read out energies, forces, reaction barriers and spectra from the measured state rather than only the ground-state energy."
+      },
+      {
+        "title": "Validate against benchmarks",
+        "detail": "Compare with coupled-cluster or experimental values; discard results that only look precise because of noise."
+      },
+      {
+        "title": "Embed in a design pipeline",
+        "detail": "Feed validated numbers into classical molecular dynamics or screening workflows that propose new catalysts, electrolytes or superconductors."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum error correction",
+        "status": "missing",
+        "why": "chemistry needs far more accurate qubits than today's noisy devices provide; logical qubits are still at the demonstration stage."
+      },
+      {
+        "tech": "Fermion-to-qubit encodings and hybrid algorithms",
+        "status": "partial",
+        "why": "methods exist and have run on small molecules, but resource estimates for useful problems remain out of reach."
+      },
+      {
+        "tech": "Small-scale quantum chemistry demonstrations",
+        "status": "partial",
+        "why": "ground-state energies of a few small molecules have been computed on quantum hardware, without outperforming classical methods."
+      },
+      {
+        "tech": "Trusted classical methods",
+        "status": "exists",
+        "why": "density functional theory and coupled cluster are the baseline every quantum result must beat or complement."
+      },
+      {
+        "tech": "Quantum simulators",
+        "status": "partial",
+        "why": "cold atoms and Rydberg arrays can emulate model spin systems directly, offering materials insight before general-purpose quantum computers mature."
+      },
+      {
+        "tech": "Cryogenics and control electronics",
+        "status": "exists",
+        "why": "dilution refrigerators and microwave control are mature, but scaling to many thousands of qubits is not."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid variational calculations of small molecules and analogue simulation of model magnets",
+        "unlocks": "proof that the mapping, algorithms and hardware can work together at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error-corrected machines with tens to hundreds of logical qubits",
+        "unlocks": "accurate ground-state energies for problems just beyond classical reach."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum advantage on a recognised materials problem, validated against experiment",
+        "unlocks": "industrial interest, funding and a reason to scale hardware further."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum chemistry as a routine step inside commercial materials-discovery pipelines",
+        "unlocks": "faster design of catalysts, batteries and superconductors — the actual promise of the field."
+      }
+    ]
   }
 }

@@ -30,5 +30,159 @@
         "def": "Retrieval-Augmented Generation, an approach where models retrieve information from external sources before generating responses."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Foundation model",
+        "role": "provides language understanding, reasoning and the ability to follow instructions.",
+        "parts": [
+          "large language model (LLM)",
+          "context window",
+          "optional fine-tuning"
+        ]
+      },
+      {
+        "name": "Memory and personalization",
+        "role": "stores what the agent knows about the user and recalls it when needed.",
+        "parts": [
+          "vector database",
+          "embedding model",
+          "summarization and retrieval pipeline",
+          "user profile store"
+        ]
+      },
+      {
+        "name": "Tool integration",
+        "role": "lets the agent read from and act in other apps and services.",
+        "parts": [
+          "function-calling interface",
+          "API connectors",
+          "authentication (e.g. OAuth)",
+          "action schemas"
+        ]
+      },
+      {
+        "name": "Planning and orchestration",
+        "role": "breaks a goal into steps and decides when to use memory or a tool.",
+        "parts": [
+          "task planner",
+          "execution loop",
+          "reflection and error handling",
+          "state tracker"
+        ]
+      },
+      {
+        "name": "Safety and privacy",
+        "role": "protects personal data and keeps the agent within user-set limits.",
+        "parts": [
+          "access controls",
+          "encryption",
+          "audit logs",
+          "content filters"
+        ]
+      },
+      {
+        "name": "User interface and data capture",
+        "role": "where the user interacts and where new personal context enters the system.",
+        "parts": [
+          "chat or voice interface",
+          "notifications",
+          "data source connectors",
+          "feedback controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select and host a foundation model",
+        "detail": "Choose an LLM with strong reasoning and a large context window. Run it via an API or on your own servers, depending on privacy needs."
+      },
+      {
+        "title": "Build the memory system",
+        "detail": "Create a vector database and an embedding pipeline that turns past conversations, documents and preferences into searchable vectors. Add summarization so old context stays compact."
+      },
+      {
+        "title": "Connect external tools",
+        "detail": "Define clear function schemas for each app the agent may use. Implement authentication so the agent can act only with the user's permission."
+      },
+      {
+        "title": "Implement planning and orchestration",
+        "detail": "Write a loop that takes a user goal, decomposes it into steps, chooses tools or memory lookups, executes them, and checks the result before moving on."
+      },
+      {
+        "title": "Add personalization",
+        "detail": "Feed retrieved memories into the model's prompt or fine-tune on user-specific data. Update the memory store after each interaction so the agent improves over time."
+      },
+      {
+        "title": "Enforce safety and privacy",
+        "detail": "Add access controls, encrypt stored data, log every action, and give the user clear controls to view, edit or delete what the agent remembers."
+      },
+      {
+        "title": "Evaluate with real tasks",
+        "detail": "Test the agent on multi-step workflows across apps. Measure task success, harmful actions and user satisfaction, then iterate on prompts, tools and memory."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Serve the agent to users, monitor for failures or misuse, and keep models and connectors up to date."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with strong reasoning",
+        "status": "exists",
+        "why": "the agent needs to understand goals, plan steps and recover from errors."
+      },
+      {
+        "tech": "Retrieval-augmented generation and vector databases",
+        "status": "exists",
+        "why": "they let the agent pull relevant personal facts from a large store without retraining the model."
+      },
+      {
+        "tech": "Tool-use and function-calling APIs",
+        "status": "exists",
+        "why": "they are how the agent reads from and writes to other apps."
+      },
+      {
+        "tech": "Long-term memory architectures",
+        "status": "partial",
+        "why": "current memory is often session-limited or shallow; persistent, reliable recall across months is still being developed."
+      },
+      {
+        "tech": "Standardized app integration and permissioning",
+        "status": "exists",
+        "why": "connecting many services requires common authentication and data-access patterns."
+      },
+      {
+        "tech": "Privacy-preserving computation at scale",
+        "status": "partial",
+        "why": "handling deeply personal data safely and cheaply is not yet routine."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-app assistants with basic memory and tool use",
+        "unlocks": "convenience within one ecosystem, such as chat plus a few connected services."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-app agents with persistent, permissioned memory",
+        "unlocks": "automated workflows that span email, calendar, documents and messaging."
+      },
+      {
+        "stage": "Next",
+        "milestone": "proactive agents that anticipate needs and act without prompting",
+        "unlocks": "true life management, where the agent handles routine decisions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "robust, auditable personal agents with strong safety guarantees",
+        "unlocks": "delegation of complex, multi-day tasks with trust."
+      }
+    ]
   }
 }

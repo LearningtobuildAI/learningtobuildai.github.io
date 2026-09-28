@@ -29,5 +29,153 @@
         "def": "The process of incorporating small, reflective markers into the tactile skin to enable optical tracking."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Contact skin",
+        "role": "the soft surface that deforms when touched and springs back.",
+        "parts": [
+          "cast silicone or elastomer gel",
+          "opaque or translucent membrane",
+          "protective outer layer"
+        ]
+      },
+      {
+        "name": "Illumination",
+        "role": "lights the inside of the skin so deformation changes the image.",
+        "parts": [
+          "light-emitting diodes",
+          "coloured or directional lighting for shape-from-shading",
+          "light guide"
+        ]
+      },
+      {
+        "name": "Optical stack",
+        "role": "images the inside of the skin at high resolution.",
+        "parts": [
+          "small CMOS camera",
+          "short-focal-length lens",
+          "rigid housing holding camera and skin at a fixed distance"
+        ]
+      },
+      {
+        "name": "Markers or reflective coating",
+        "role": "makes surface movement measurable.",
+        "parts": [
+          "printed marker dot pattern",
+          "reflective membrane",
+          "embedded pins"
+        ]
+      },
+      {
+        "name": "Signal processing",
+        "role": "turns images into contact geometry and forces.",
+        "parts": [
+          "embedded processor",
+          "photometric-stereo or marker-tracking algorithms",
+          "learned models mapping images to force and slip"
+        ]
+      },
+      {
+        "name": "Mechanical and electrical interface",
+        "role": "connects the sensor to a finger or gripper without distorting it.",
+        "parts": [
+          "curved fingertip mount",
+          "flexible cabling",
+          "calibration fixture"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the skin",
+        "detail": "Choose elastomer stiffness, thickness and optical opacity so it deforms enough to sense but survives repeated contact."
+      },
+      {
+        "title": "Cast the gel",
+        "detail": "Silicone is mixed, degassed under vacuum to remove bubbles, poured into a mould and cured at controlled temperature."
+      },
+      {
+        "title": "Apply markers or a reflective layer",
+        "detail": "A dot pattern is printed on the surface, or a reflective membrane is bonded behind a translucent gel, so the camera sees movement clearly."
+      },
+      {
+        "title": "Build the optical core",
+        "detail": "A miniature camera, short lens and light-emitting diodes are fixed inside a rigid housing at a set distance from the skin, giving a wide field of view and deep focus."
+      },
+      {
+        "title": "Assemble and bond",
+        "detail": "The cured skin is sealed to the housing with the illumination inside, so the sensor becomes one sealed unit with only the camera cable leaving it."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Known indenters and forces are pressed into the surface while images are recorded, building a look-up table or training set that links pixels to contact shape and force."
+      },
+      {
+        "title": "Derive the reconstruction model",
+        "detail": "Photometric stereo or a neural network converts each frame into a depth map, a contact-patch mask and estimated shear and normal forces."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "The sensor is mounted on a fingertip or gripper and its output streams to the robot controller fast enough to adjust grip force and detect slip."
+      },
+      {
+        "title": "Ruggedise",
+        "detail": "Repeated contact tests check for wear, hysteresis and drift; housing seals guard against dust and fluids."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature CMOS cameras",
+        "status": "exists",
+        "why": "the whole sensor is built around a camera small enough to fit inside a fingertip."
+      },
+      {
+        "tech": "Tunable optical silicones",
+        "status": "exists",
+        "why": "the skin must be soft, transparent or opaque as designed, and stable over many cycles."
+      },
+      {
+        "tech": "Photometric stereo and marker tracking",
+        "status": "exists",
+        "why": "these are the algorithms that turn a flat image into surface shape and motion."
+      },
+      {
+        "tech": "Low-latency embedded inference",
+        "status": "partial",
+        "why": "models must run onboard at high frame rates to be useful for real-time grip control."
+      },
+      {
+        "tech": "Durable high-density tactile skins",
+        "status": "partial",
+        "why": "covering a whole hand or body needs sensors that survive abrasion and impact, which most laboratory designs do not."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single optical fingertip sensors sold for research and niche industrial use",
+        "unlocks": "robots that can feel contact geometry well enough for delicate handling and inspection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-finger hands with calibrated, wear-resistant sensors and slip detection",
+        "unlocks": "reliable grasping of unknown objects and force-controlled assembly without vision alone."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-body skins with distributed sensing and onboard processing",
+        "unlocks": "safer physical interaction with people and operation in cluttered, unpredictable spaces."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "learned manipulation policies trained with large-scale tactile datasets and simulation",
+        "unlocks": "human-level dexterity in unstructured tasks such as care work, harvesting and repair."
+      }
+    ]
   }
 }

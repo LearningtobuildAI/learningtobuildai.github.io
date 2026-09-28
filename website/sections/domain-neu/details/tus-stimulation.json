@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Transducer array",
+        "role": "generates the ultrasound beam and steers it electronically to a deep target.",
+        "parts": [
+          "piezoelectric elements (lead zirconate titanate or single-crystal)",
+          "backing and matching layers",
+          "array housing"
+        ]
+      },
+      {
+        "name": "Drive electronics",
+        "role": "generate the shaped electrical pulses delivered to each element.",
+        "parts": [
+          "multi-channel amplifiers",
+          "phase and amplitude controllers",
+          "pulse programmer"
+        ]
+      },
+      {
+        "name": "Targeting and acoustic modelling",
+        "role": "works out where the beam actually lands after the skull distorts it.",
+        "parts": [
+          "CT and MRI scans",
+          "skull-thickness and density model",
+          "wave-propagation simulation",
+          "neuronavigation registration"
+        ]
+      },
+      {
+        "name": "Coupling and positioning",
+        "role": "gets sound into the head without air gaps and holds the array in place.",
+        "parts": [
+          "hydrogel or gel pad",
+          "positioning arm or robot",
+          "strap or frame"
+        ]
+      },
+      {
+        "name": "Monitoring and safety interlocks",
+        "role": "detects unwanted heating or neural effects and stops delivery.",
+        "parts": [
+          "thermometry or acoustic feedback",
+          "EEG or EMG",
+          "dose-logging software"
+        ]
+      },
+      {
+        "name": "Protocol and control software",
+        "role": "defines pulse patterns and enforces limits on intensity and duty cycle.",
+        "parts": [
+          "pulse-sequence library",
+          "dose calculator",
+          "sham and blinding controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the array",
+        "detail": "Piezoelectric material is diced into many elements, wired individually, and potted into a housing that fits against the scalp."
+      },
+      {
+        "title": "Characterise the beam",
+        "detail": "The array is scanned in a water tank to map its pressure field, focal size and sidelobes at each steering setting."
+      },
+      {
+        "title": "Model the individual skull",
+        "detail": "A CT scan gives skull thickness and density; software simulates how much the bone slows, absorbs and bends the beam."
+      },
+      {
+        "title": "Correct the phases",
+        "detail": "Each element's phase and amplitude are adjusted so the distorted waves still arrive in step at the chosen target."
+      },
+      {
+        "title": "Register and position",
+        "detail": "The array is aligned to the patient's MRI using neuronavigation, then coupled to the scalp with gel or a hydrogel pad."
+      },
+      {
+        "title": "Select a dose",
+        "detail": "Frequency, intensity, pulse length, duty cycle and train duration are chosen low enough to be non-thermal but strong enough to shift neuronal activity."
+      },
+      {
+        "title": "Deliver and monitor",
+        "detail": "Pulses are delivered in short trains while EEG and device readouts watch for unintended effects or heating."
+      },
+      {
+        "title": "Verify the effect",
+        "detail": "Change in brain activity is checked by functional imaging or electrophysiology, and the result is compared against a sham condition."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Phased-array piezoelectric transducers",
+        "status": "exists",
+        "why": "they allow electronic steering of a focus through the skull without moving the device."
+      },
+      {
+        "tech": "Skull aberration correction",
+        "status": "partial",
+        "why": "bone distorts and absorbs the beam, so targeting depends on CT-based modelling that is still imperfect."
+      },
+      {
+        "tech": "Structural and functional imaging",
+        "status": "exists",
+        "why": "MRI and CT are needed to pick and verify a deep target."
+      },
+      {
+        "tech": "Mechanobiology of mechanosensitive channels",
+        "status": "partial",
+        "why": "the mechanism is thought to involve membrane displacement and channels such as Piezo1, but details at the doses used remain unsettled."
+      },
+      {
+        "tech": "Dosimetry and safety standards for neuromodulation",
+        "status": "partial",
+        "why": "standards exist for diagnostic imaging and ablation, not for repeated low-intensity brain stimulation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small human trials targeting deep structures such as the thalamus, hippocampus and prefrontal cortex",
+        "unlocks": "evidence that the technique can change activity in chosen circuits safely."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger sham-controlled trials for depression, epilepsy and chronic pain",
+        "unlocks": "separation of real effect from placebo and confirmation of parameter sets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop systems that read brain activity and adjust the beam automatically",
+        "unlocks": "more precise, personalised dosing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulatory clearance for a neuromodulation indication",
+        "unlocks": "clinical adoption; high-intensity ultrasound ablation of deep brain targets is already clinically used for tremor, which de-risks the delivery hardware."
+      }
+    ]
+  }
+}

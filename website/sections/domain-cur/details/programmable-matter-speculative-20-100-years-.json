@@ -33,5 +33,152 @@
         "def": "Materials designed to respond to and interact with their environment in a controlled manner."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Unit cell",
+        "role": "the repeated element — a millimetre- to centimetre-scale module or lattice cell whose state can be set individually.",
+        "parts": [
+          "rigid frame or node",
+          "compliant or hinged linkage",
+          "local state element"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "changes each cell's shape, stiffness or magnetic/optical state on command.",
+        "parts": [
+          "shape-memory alloy or polymer",
+          "magneto- or electro-active material",
+          "micro-motor or electrostatic actuator"
+        ]
+      },
+      {
+        "name": "Latching and coupling",
+        "role": "lets neighbouring cells grip, release and pass force between each other.",
+        "parts": [
+          "mechanical latches",
+          "magnetic or electrostatic clamps"
+        ]
+      },
+      {
+        "name": "Power and data distribution",
+        "role": "addresses and energises thousands of cells without a wire to every one.",
+        "parts": [
+          "shared bus or power rails",
+          "local driver chips",
+          "addressing scheme"
+        ]
+      },
+      {
+        "name": "Sensing and local control",
+        "role": "each cell or cluster reports its own state so the bulk material knows its own shape.",
+        "parts": [
+          "strain or position sensors",
+          "microcontroller per cluster"
+        ]
+      },
+      {
+        "name": "Inverse-design software",
+        "role": "works backwards from a desired shape or property to the cell states that produce it.",
+        "parts": [
+          "metamaterial simulation",
+          "topology optimisation",
+          "compiler to cell commands"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the encoding",
+        "detail": "Decide whether 'programmable' means discrete robotic modules that rearrange, or a continuous material whose stiffness, shape or surface can be tuned. The two paths need completely different factories."
+      },
+      {
+        "title": "Design the unit cell",
+        "detail": "Simulate a lattice of the cell with topology optimisation to find how much range of stiffness, volume change or shape it can achieve within one design."
+      },
+      {
+        "title": "Fabricate the units cheaply",
+        "detail": "Because useful materials need millions of identical cells, the cell must be made by MEMS processing, injection moulding or high-throughput printing — not one at a time."
+      },
+      {
+        "title": "Wire power and communication",
+        "detail": "Build a bus so every cell can be addressed and driven without individual wiring, keeping conductor volume small compared with the material itself."
+      },
+      {
+        "title": "Write the compiler",
+        "detail": "Turn a target — a chair shape, a beam that stiffens under load — into a sequence of per-cell commands, checking that neighbouring cells can physically follow it."
+      },
+      {
+        "title": "Assemble the bulk",
+        "detail": "Tile or self-assemble cells into a sheet, rod or block; defects and missing cells must not stop the whole from working."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "Use on-board sensing to compare actual and intended shape, then correct the commands as loads change."
+      },
+      {
+        "title": "Demonstrate one real function",
+        "detail": "Show a single useful task at useful scale — a morphing aerodynamic surface, a stiffness-tunable beam, a self-deploying structure — before claiming general-purpose matter."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Programmable metamaterials and tunable-stiffness lattices",
+        "status": "partial",
+        "why": "lab lattices with electronically switchable stiffness and shape exist at centimetre scale, not at structural scale."
+      },
+      {
+        "tech": "Micro-robotics and MEMS actuators",
+        "status": "partial",
+        "why": "tiny actuators and drive electronics are demonstrated in research, but cost and lifetime are far from a bulk material."
+      },
+      {
+        "tech": "Shape-memory alloys and 4D printing",
+        "status": "partial",
+        "why": "they give one-way shape change, but only a few cycles and one preset transformation per part."
+      },
+      {
+        "tech": "Distributed control of very large arrays",
+        "status": "missing",
+        "why": "no proven way to coordinate, power and address millions of independent cells reliably."
+      },
+      {
+        "tech": "Self-assembly at engineering scale",
+        "status": "missing",
+        "why": "getting units to assemble themselves into a specified macroscopic form, repeatedly, remains unsolved."
+      },
+      {
+        "tech": "Inverse-design and machine-learning compilers",
+        "status": "partial",
+        "why": "inverse design works for single metamaterial parts; compiling arbitrary 3D goals onto discrete cells is still research."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations: self-reconfiguring modular robot chains, magnetically actuated lattice sheets, switchable-stiffness metamaterials, and early programme work such as DARPA's mid-2000s programmable-matter effort",
+        "unlocks": "proof that useful transformations are physically possible at small scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mesoscale parts of a few thousand cells that change shape or stiffness and hold it under load",
+        "unlocks": "specialised uses in aerospace surfaces, vibration damping and adaptive tooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cheap, fault-tolerant cells plus a real compiler, made in large batches",
+        "unlocks": "building components that are specified in software rather than fabricated per shape."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-assembling materials that reconfigure between tasks on site",
+        "unlocks": "construction and manufacturing where one material is reused for many functions — if power, control and cost are solved."
+      }
+    ]
   }
 }

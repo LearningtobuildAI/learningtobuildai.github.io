@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Scalp sensor array",
+        "role": "picks up the faint electrical and optical signals that leak through the skull.",
+        "parts": [
+          "dry or gel EEG electrodes",
+          "fNIRS light emitters and detectors",
+          "flexible headset frame"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies microvolt signals without drowning them in noise.",
+        "parts": [
+          "low-noise amplifiers",
+          "shielded wiring",
+          "motion and impedance sensors"
+        ]
+      },
+      {
+        "name": "Optical channel (fNIRS)",
+        "role": "measures blood-oxygen changes in the outer cortex as a slower, complementary signal.",
+        "parts": [
+          "near-infrared LEDs or lasers",
+          "photodiodes",
+          "wavelength filters"
+        ]
+      },
+      {
+        "name": "Decoding pipeline",
+        "role": "turns noisy multi-channel signals into a command.",
+        "parts": [
+          "filtering and artefact removal",
+          "feature extraction",
+          "machine-learning classifier",
+          "per-user calibration"
+        ]
+      },
+      {
+        "name": "Feedback and output",
+        "role": "closes the loop so the user can learn to control the system.",
+        "parts": [
+          "screen or speaker feedback",
+          "cursor or keyboard interface",
+          "device-control API"
+        ]
+      },
+      {
+        "name": "Compute unit",
+        "role": "runs the model, ideally on the headset rather than in the cloud.",
+        "parts": [
+          "low-power processor",
+          "battery",
+          "wireless link"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the signal",
+        "detail": "Decide whether to read electrical activity with EEG, blood-oxygen with fNIRS, or both; each trades speed against robustness."
+      },
+      {
+        "title": "Make the sensors",
+        "detail": "Electrodes are printed or moulded from conductive polymer or metal; optical emitters and detectors are packaged at wavelengths that pass through skin and skull."
+      },
+      {
+        "title": "Lay out the headset",
+        "detail": "Sensors are positioned over the motor and frontal cortex, with enough channels to separate signals but few enough to stay wearable."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "Amplifiers, filters, digitisers and shielding are designed to reject mains hum and muscle movement."
+      },
+      {
+        "title": "Collect labelled data",
+        "detail": "A user performs imagined or real tasks while the system records the resulting patterns, repeated over many sessions."
+      },
+      {
+        "title": "Train and calibrate the decoder",
+        "detail": "A model is fitted to that person's data, then adapted on the fly as signals drift with fatigue and electrode contact."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The decoded command drives a cursor, speller or device, and the visible result lets the user improve control."
+      },
+      {
+        "title": "Validate outside the lab",
+        "detail": "The headset must work with hair, sweat and movement, over months, before it is anything more than a demonstration."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-density dry EEG electrodes",
+        "status": "partial",
+        "why": "gel electrodes give clean signals but are impractical for daily wear; dry arrays are still noisier."
+      },
+      {
+        "tech": "Wearable near-infrared spectroscopy",
+        "status": "exists",
+        "why": "compact fNIRS units exist, though they only see the outer few millimetres of cortex and respond slowly."
+      },
+      {
+        "tech": "Large labelled neural datasets",
+        "status": "partial",
+        "why": "decoders need many hours of recordings from many people; such datasets are scarce."
+      },
+      {
+        "tech": "Real-time decoding on low-power hardware",
+        "status": "exists",
+        "why": "a headset must classify signals locally, within tens of milliseconds, without a laptop."
+      },
+      {
+        "tech": "Optogenetics in humans",
+        "status": "missing",
+        "why": "it needs gene therapy plus implanted light guides, so it is invasive and not part of any wearable; it is not a route to a non-invasive headset."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research and clinical spellers using EEG and fNIRS to pick letters or move a cursor",
+        "unlocks": "proof that intent can be read non-invasively, at a few bits per minute."
+      },
+      {
+        "stage": "Next",
+        "milestone": "consumer headsets with a small, reliable command set such as selection or attention control",
+        "unlocks": "everyday hands-free input for games and accessibility."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinical communication aids for people with paralysis, benchmarked against implanted arrays",
+        "unlocks": "a non-surgical alternative for restoring speech or typing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "higher-bandwidth non-invasive decoding through better sensors and models, not through optogenetics",
+        "unlocks": "general-purpose mental input — if the skull's blurring of signals can be overcome."
+      }
+    ]
+  }
+}

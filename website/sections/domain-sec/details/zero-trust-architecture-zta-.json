@@ -30,5 +30,170 @@
         "def": "A network design approach that divides a larger network into smaller segments with strict access controls between them, enhancing security by limiting lateral movement and exposure of sensitive data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Identity and access management (IAM)",
+        "role": "verifies that users and devices are who they claim to be before any access is granted.",
+        "parts": [
+          "identity provider (IdP)",
+          "multi-factor authentication",
+          "single sign-on",
+          "directory services"
+        ]
+      },
+      {
+        "name": "Policy engine and administrator",
+        "role": "the brain: evaluates every access request against policy and decides allow, deny or limit.",
+        "parts": [
+          "policy decision point",
+          "policy engine",
+          "policy administrator",
+          "policy repository"
+        ]
+      },
+      {
+        "name": "Policy enforcement points (PEPs)",
+        "role": "the gatekeepers placed in front of each resource to enforce the decision.",
+        "parts": [
+          "gateways",
+          "proxies",
+          "endpoint agents",
+          "API gateways"
+        ]
+      },
+      {
+        "name": "Device identity and posture",
+        "role": "ensures that only known, healthy devices can connect.",
+        "parts": [
+          "device certificates",
+          "endpoint agents",
+          "mobile device management",
+          "posture checks"
+        ]
+      },
+      {
+        "name": "Micro-segmentation and software-defined perimeter",
+        "role": "breaks the network into small zones so a breach cannot spread laterally.",
+        "parts": [
+          "workload identity",
+          "segmentation firewalls",
+          "software-defined perimeter controllers",
+          "overlay networks"
+        ]
+      },
+      {
+        "name": "Continuous monitoring and analytics",
+        "role": "watches behaviour, logs events and feeds anomalies back into policy.",
+        "parts": [
+          "SIEM",
+          "UEBA",
+          "log aggregation",
+          "threat intelligence feeds"
+        ]
+      },
+      {
+        "name": "Data protection and encryption",
+        "role": "protects data at rest and in transit so that even if access is gained, data is unreadable.",
+        "parts": [
+          "encryption",
+          "key management",
+          "data loss prevention",
+          "data classification tagging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the protect surface",
+        "detail": "Identify the most critical data, applications, assets and services (DAAS) that need protection first."
+      },
+      {
+        "title": "Map transaction flows",
+        "detail": "Document how users, devices and services interact with each protect surface, including protocols and dependencies."
+      },
+      {
+        "title": "Architect the zero-trust network",
+        "detail": "Design micro-segmentation, place policy enforcement points close to resources, and plan for least-privilege connectivity."
+      },
+      {
+        "title": "Deploy strong identity",
+        "detail": "Roll out an identity provider, multi-factor authentication and single sign-on for all users, and issue device identities."
+      },
+      {
+        "title": "Establish device trust",
+        "detail": "Enrol devices, enforce posture checks (patch level, encryption, malware protection) and deny access to non-compliant devices."
+      },
+      {
+        "title": "Build the policy engine",
+        "detail": "Centralise policy as code, define rules based on identity, device health, location and behaviour, and integrate with enforcement points."
+      },
+      {
+        "title": "Enforce and adapt",
+        "detail": "Start with monitoring mode, then enforce least privilege, just-in-time access and session controls; continuously refine policies from logs."
+      },
+      {
+        "title": "Monitor, log and improve",
+        "detail": "Aggregate logs into a SIEM, use analytics to detect anomalies, and feed insights back into policy decisions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Strong identity and access management",
+        "status": "exists",
+        "why": "zero trust is impossible without reliable authentication and authorisation for every user and device."
+      },
+      {
+        "tech": "Public key infrastructure (PKI) and encryption",
+        "status": "exists",
+        "why": "certificates and encryption underpin device identity and data protection."
+      },
+      {
+        "tech": "Network segmentation and software-defined networking",
+        "status": "exists",
+        "why": "lateral movement must be blocked by dividing the network into small, policy-controlled zones."
+      },
+      {
+        "tech": "Endpoint detection and response (EDR)",
+        "status": "exists",
+        "why": "continuous device posture and threat detection are needed to decide whether a device can be trusted."
+      },
+      {
+        "tech": "Standardised policy languages and interoperability",
+        "status": "partial",
+        "why": "emerging standards like Open Policy Agent help, but seamless multi-vendor policy exchange is still maturing."
+      },
+      {
+        "tech": "Cloud-native workload identity",
+        "status": "partial",
+        "why": "service meshes and workload identities are advancing, but legacy systems often lack modern identity hooks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "enterprise and government adoption guided by NIST SP 800-207 and US Executive Order 14028",
+        "unlocks": "reduced blast radius from breaches; identity-centric security for remote work and cloud."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated policy orchestration across hybrid clouds and on-premises",
+        "unlocks": "consistent enforcement without manual rule updates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "zero trust extended to operational technology (OT) and IoT",
+        "unlocks": "protection for industrial and embedded systems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous authentication using behavioural biometrics and risk signals",
+        "unlocks": "access decisions that adapt in real time to user behaviour."
+      }
+    ]
   }
 }

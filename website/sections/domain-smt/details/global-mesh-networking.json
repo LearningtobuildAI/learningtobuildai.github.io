@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Radio node",
+        "role": "a small computer with one or more radios that both serves local users and relays other nodes' traffic.",
+        "parts": [
+          "Wi-Fi or sub-GHz radio chipset",
+          "processor board",
+          "directional antennas",
+          "weatherproof enclosure"
+        ]
+      },
+      {
+        "name": "Mesh routing layer",
+        "role": "finds a path for every packet across whichever nodes happen to be up, and reroutes when one fails.",
+        "parts": [
+          "link-state or distance-vector routing protocol (e.g. Babel, OLSR)",
+          "automatic IP addressing",
+          "link quality measurement"
+        ]
+      },
+      {
+        "name": "Spectrum plan",
+        "role": "shares scarce unlicensed airtime so nodes do not drown each other in interference.",
+        "parts": [
+          "channel assignment",
+          "transmit-power control",
+          "directional backhaul links"
+        ]
+      },
+      {
+        "name": "Backhaul gateway",
+        "role": "connects the mesh to the wider internet — the part mesh networking cannot replace.",
+        "parts": [
+          "fibre or fixed-wireless uplink",
+          "NAT and traffic shaping"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeps rooftop and hillside nodes alive.",
+        "parts": [
+          "mains supply",
+          "solar panel and battery for off-grid sites",
+          "Power over Ethernet"
+        ]
+      },
+      {
+        "name": "Trust and identity",
+        "role": "keeps an open, volunteer-run network from being trivially abused.",
+        "parts": [
+          "node keys and certificates",
+          "encrypted tunnels between nodes",
+          "traffic logging rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the radio bands",
+        "detail": "High-band Wi-Fi gives hundreds of megabits over line-of-sight links of a few to tens of kilometres; sub-GHz radios like LoRa trade that down to a few kilobits per second for ranges of many kilometres through buildings and trees."
+      },
+      {
+        "title": "Build the node",
+        "detail": "A processor board, radio cards, antenna connectors and surge protection go into a sealed box that can sit on a mast for years."
+      },
+      {
+        "title": "Site the nodes",
+        "detail": "Installers mount nodes on rooftops, towers and hills with clear lines of sight, aiming directional antennas at their nearest neighbours."
+      },
+      {
+        "title": "Form the mesh",
+        "detail": "Each node broadcasts its presence; the routing protocol builds a map of the network and picks paths automatically, with no central server to configure."
+      },
+      {
+        "title": "Add backhaul",
+        "detail": "A few well-placed nodes are given a wired or licensed-wireless uplink, acting as gateways between the mesh and the global internet."
+      },
+      {
+        "title": "Secure and meter it",
+        "detail": "Traffic is encrypted node-to-node, and gateways apply fair-use rules so one user cannot consume the whole shared link."
+      },
+      {
+        "title": "Operate and grow",
+        "detail": "Volunteers or a cooperative monitor links, replace failed hardware, and extend coverage — the network heals around outages because routing simply recomputes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap mesh-capable radios",
+        "status": "exists",
+        "why": "unlicensed Wi-Fi chipsets and low-power wide-area radios are mass-produced and inexpensive."
+      },
+      {
+        "tech": "Scalable mesh routing protocols",
+        "status": "partial",
+        "why": "routing works well for tens to a few hundred nodes but generates heavy overhead as networks grow."
+      },
+      {
+        "tech": "Directional, high-gain antennas",
+        "status": "exists",
+        "why": "they turn short-range radios into multi-kilometre point-to-point links."
+      },
+      {
+        "tech": "Long-haul capacity that is not carrier-owned",
+        "status": "missing",
+        "why": "data still has to cross continents by submarine fibre or satellite, both owned by large operators — a mesh of local hops cannot span an ocean."
+      },
+      {
+        "tech": "Off-grid power at relay sites",
+        "status": "exists",
+        "why": "solar and battery systems let nodes run where no mains supply reaches."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "city and rural community networks in which residents own the routers and share an uplink",
+        "unlocks": "low-cost access in places commercial operators skip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "disaster and emergency meshes that keep working when cell towers fail",
+        "unlocks": "resilient communications for responders and affected communities."
+      },
+      {
+        "stage": "Next",
+        "milestone": "device-to-device relays built into phones and vehicles as a standard feature",
+        "unlocks": "coverage that thickens automatically wherever people gather."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "federated regional networks linked by shared, openly governed backbone capacity",
+        "unlocks": "meaningful independence from a single ISP, though the global core would still be shared infrastructure rather than a pure peer-to-peer mesh."
+      }
+    ]
+  }
+}

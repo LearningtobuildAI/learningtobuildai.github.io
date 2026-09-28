@@ -1,0 +1,167 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "picks up what is happening in a space without being asked.",
+        "parts": [
+          "MEMS microphones",
+          "millimetre-wave presence radar",
+          "low-resolution or privacy-preserving cameras",
+          "wearable inertial and heart-rate sensors",
+          "temperature, light and occupancy sensors"
+        ]
+      },
+      {
+        "name": "Always-on edge compute",
+        "role": "does the first, cheapest pass of interpretation locally so nothing has to be streamed.",
+        "parts": [
+          "microcontroller or low-power system-on-chip",
+          "neural accelerator",
+          "power management for microwatt-to-milliwatt budgets",
+          "wake-word and motion-trigger circuits"
+        ]
+      },
+      {
+        "name": "Connectivity fabric",
+        "role": "lets devices find each other and hand context between rooms and devices.",
+        "parts": [
+          "Wi-Fi and Bluetooth Low Energy",
+          "Thread and Zigbee mesh radios",
+          "ultra-wideband for ranging and direction",
+          "local hub or border router"
+        ]
+      },
+      {
+        "name": "Multimodal models",
+        "role": "turn raw signals into intent — speech, gesture, gaze, presence.",
+        "parts": [
+          "speech recognition and speaker identification",
+          "vision and gesture models",
+          "sensor-fusion model",
+          "language model for reasoning about requests"
+        ]
+      },
+      {
+        "name": "Context and arbitration engine",
+        "role": "decides who is present, what they probably want, and which device should respond.",
+        "parts": [
+          "identity and presence state",
+          "activity and location history",
+          "device selection rules",
+          "confidence thresholds and fallbacks"
+        ]
+      },
+      {
+        "name": "Output and actuation",
+        "role": "answers in whatever channel is least intrusive — sometimes no screen at all.",
+        "parts": [
+          "speakers and spatial audio",
+          "displays and smart glasses",
+          "haptics and light cues",
+          "smart-home actuators (lights, locks, heating)"
+        ]
+      },
+      {
+        "name": "Privacy and data governance",
+        "role": "keeps continuous sensing acceptable to the people living with it.",
+        "parts": [
+          "on-device processing to avoid uploading raw audio or video",
+          "hardware mute and recording indicators",
+          "local encryption and access control",
+          "retention and deletion controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide the context to support",
+        "detail": "Pick a bounded behaviour — hands-free control of lights and media, or a wearable that answers when glanced at — rather than 'everything, everywhere'."
+      },
+      {
+        "title": "Instrument the space or body",
+        "detail": "Mount microphones, radar and sensors where they have power and a clean line of sight, and design for always-on operation at milliwatts so batteries last weeks."
+      },
+      {
+        "title": "Build the low-power trigger stage",
+        "detail": "A tiny always-listening or always-watching circuit detects a wake word, a person entering, or a gesture, and only then powers up the heavy processor."
+      },
+      {
+        "title": "Fit models onto the device",
+        "detail": "Speech, vision and fusion models are quantised and pruned so they run within the processor's memory and thermal budget, with latency under a few hundred milliseconds."
+      },
+      {
+        "title": "Establish the device fabric",
+        "detail": "Bring devices onto a shared mesh (for example Thread or Matter) with a local hub, so a request in one room can act on hardware made by another vendor."
+      },
+      {
+        "title": "Build the context model",
+        "detail": "Fuse presence, identity, time, location and recent activity into a state estimate, then define which device should answer and how confident that estimate must be before acting."
+      },
+      {
+        "title": "Handle heavy reasoning off-device",
+        "detail": "Route requests that exceed local compute to a cloud or home server, with clear rules about what data leaves the device."
+      },
+      {
+        "title": "Design the privacy architecture",
+        "detail": "Minimise raw data movement, process audio and video locally, add hardware mute and visible indicators, and encrypt anything that is stored."
+      },
+      {
+        "title": "Tune behaviour in real homes",
+        "detail": "The hard part is not accuracy but appropriateness — silence, escalation, graceful failure and the ability to correct a wrong guess in one step."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power MEMS sensors and radar",
+        "status": "exists",
+        "why": "always-on sensing has to cost microwatts to milliwatts if it is to be built into rooms and wearables."
+      },
+      {
+        "tech": "On-device neural accelerators",
+        "status": "exists",
+        "why": "running speech and vision locally is what keeps latency low and raw data off the network."
+      },
+      {
+        "tech": "Multimodal foundation models",
+        "status": "partial",
+        "why": "models that combine speech, vision and language exist, but shrinking them onto low-power hardware is still limited."
+      },
+      {
+        "tech": "Device interoperability standards",
+        "status": "partial",
+        "why": "cross-vendor ecosystems only work if devices share addressing, discovery and control protocols."
+      },
+      {
+        "tech": "Reliable presence and speaker identification",
+        "status": "partial",
+        "why": "acting on context without a command is only acceptable if the system almost never mistakes who is there."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "voice assistants, smart speakers and phone-level sensor fusion respond to explicit commands and simple routines",
+        "unlocks": "habits and hardware already in homes, but fragmented across vendors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal on-device assistants in earbuds, watches and glasses that use presence, gaze and gesture rather than wake words",
+        "unlocks": "interaction that survives without a screen or a spoken command."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised interoperability so devices from different makers share context in one home",
+        "unlocks": "a genuine ambient layer instead of isolated product silos."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuously personalised assistance with local models and strong privacy guarantees",
+        "unlocks": "computing that fades into the environment, as long as sensing remains trustworthy."
+      }
+    ]
+  }
+}

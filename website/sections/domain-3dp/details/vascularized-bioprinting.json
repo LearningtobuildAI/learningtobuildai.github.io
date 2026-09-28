@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bioprinter hardware",
+        "role": "deposits living cells and structural gels in a precise 3D pattern.",
+        "parts": [
+          "multiple print heads",
+          "co-axial and multi-nozzle extruders",
+          "temperature-controlled print bed",
+          "optical or DLP light source for light-cured gels"
+        ]
+      },
+      {
+        "name": "Bioinks",
+        "role": "carry the cells and set into a soft, cell-friendly matrix.",
+        "parts": [
+          "hydrogel (alginate, gelatin, collagen, hyaluronic acid)",
+          "living cells",
+          "sacrificial ink that later dissolves",
+          "crosslinking agents"
+        ]
+      },
+      {
+        "name": "Vascular design software",
+        "role": "generates a branching channel tree that can actually be printed and perfused.",
+        "parts": [
+          "imaging data from CT or MRI scans",
+          "branching-algorithm models",
+          "print-path generation"
+        ]
+      },
+      {
+        "name": "Endothelial lining",
+        "role": "coats each channel so it behaves like a real blood vessel wall.",
+        "parts": [
+          "endothelial cells",
+          "pericytes or smooth-muscle support cells",
+          "cell-culture media"
+        ]
+      },
+      {
+        "name": "Perfusion and maturation",
+        "role": "pumps oxygen and nutrients through the channels and lets the tissue mature.",
+        "parts": [
+          "peristaltic or syringe pumps",
+          "oxygen and pH sensors",
+          "bioreactor housing"
+        ]
+      },
+      {
+        "name": "Quality control",
+        "role": "checks that channels are open, leak-free and correctly lined.",
+        "parts": [
+          "microscopy and dye perfusion",
+          "fluorescent tracer imaging",
+          "mechanical testing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the vasculature",
+        "detail": "Scan the target tissue, then use image data to design a branching channel tree down to vessels a few hundred micrometres across."
+      },
+      {
+        "title": "Formulate the inks",
+        "detail": "Mix a cell-laden hydrogel for the tissue bulk and a sacrificial ink that can be printed and later washed out."
+      },
+      {
+        "title": "Co-axial print",
+        "detail": "In one pass, a nozzle extrudes the sacrificial ink as a core surrounded by the cell-laden gel, laying down hollow precursors inside the tissue."
+      },
+      {
+        "title": "Crosslink and stack",
+        "detail": "The hydrogel is gelled by light, temperature or ions, and the process repeats layer by layer into a thick construct."
+      },
+      {
+        "title": "Evacuate the channels",
+        "detail": "The sacrificial core is dissolved or melted out, leaving an open, interconnected lumen."
+      },
+      {
+        "title": "Seed the lining",
+        "detail": "Endothelial cells are perfused through the channels and allowed to attach, forming a barrier like a blood-vessel wall."
+      },
+      {
+        "title": "Perfuse and mature",
+        "detail": "Culture medium is pumped through the network in a bioreactor for days to weeks so the tissue survives and differentiates."
+      },
+      {
+        "title": "Test or implant",
+        "detail": "Constructs are used for drug testing, or, in animal trials, connected to a host blood supply."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sacrificial-ink and co-axial extrusion printing",
+        "status": "partial",
+        "why": "the core technique for carving channels, demonstrated with simple tissues but not at organ scale."
+      },
+      {
+        "tech": "Soft hydrogels with the right stiffness and printability",
+        "status": "partial",
+        "why": "gels soft enough for cells are often too weak to hold millimetre-scale channels open."
+      },
+      {
+        "tech": "Vascular cell biology and endothelial culture",
+        "status": "exists",
+        "why": "the lining must stay alive, non-clotting and leak-tight under flow."
+      },
+      {
+        "tech": "Perfusion bioreactors",
+        "status": "exists",
+        "why": "without flow, tissue thicker than roughly a millimetre starves of oxygen."
+      },
+      {
+        "tech": "Printing true capillaries below about 10 µm",
+        "status": "missing",
+        "why": "no printing method yet matches the finest vessels that reach every cell in a real organ."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "millimetre-scale perfusable tissue chips for drug testing",
+        "unlocks": "more realistic toxicity and disease models, cutting some animal testing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "vascularised implantable patches and organ-on-chip systems",
+        "unlocks": "repair of thin or simple tissues and better predictors of human drug response."
+      },
+      {
+        "stage": "Next",
+        "milestone": "centimetre-thick vascularised constructs that survive after grafting",
+        "unlocks": "repair of larger injuries and eventually simple organ subunits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "whole printed organs with a full hierarchical vessel tree",
+        "unlocks": "an alternative to donor waiting lists, if capillary-scale vessels and long-term safety can be achieved."
+      }
+    ]
+  }
+}

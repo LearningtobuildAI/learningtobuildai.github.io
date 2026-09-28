@@ -1,0 +1,164 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "watches the city second by second — power flows, traffic, weather, building demand.",
+        "parts": [
+          "smart electricity meters",
+          "phasor measurement units on substations",
+          "traffic detectors and cameras",
+          "weather and temperature sensors",
+          "edge gateways"
+        ]
+      },
+      {
+        "name": "Neuromorphic compute layer",
+        "role": "processes sensor events as spikes, the way neurons do, using very little power.",
+        "parts": [
+          "mixed-signal neuron cores",
+          "on-chip synaptic memory",
+          "event-routing network",
+          "neuromorphic accelerator boards"
+        ]
+      },
+      {
+        "name": "Learning and control layer",
+        "role": "turns spike patterns into decisions: when to shift load, which route to open.",
+        "parts": [
+          "spike encoders",
+          "local learning rules such as spike-timing-dependent plasticity",
+          "reinforcement-learning reward functions",
+          "digital-twin simulator for training"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "the muscles — physical devices that actually change the flow of energy and vehicles.",
+        "parts": [
+          "remotely controlled circuit breakers",
+          "transformer tap changers",
+          "smart EV chargers and batteries",
+          "traffic signal controllers",
+          "district heating valves"
+        ]
+      },
+      {
+        "name": "Communications and time sync",
+        "role": "keeps thousands of nodes agreeing on the same picture of the city.",
+        "parts": [
+          "fibre backhaul",
+          "private wireless or 5G links",
+          "edge servers",
+          "precise time synchronisation"
+        ]
+      },
+      {
+        "name": "Safety and fallback",
+        "role": "ensures that if the learned controller misbehaves, the city does not black out.",
+        "parts": [
+          "classical rule-based SCADA control",
+          "fail-safe interlocks",
+          "formal verification tooling",
+          "human operators on standby"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument a district",
+        "detail": "Install meters, phasor measurement units and traffic sensors so every important node reports its state at high rate."
+      },
+      {
+        "title": "Build the digital twin",
+        "detail": "Model the electricity network and road network together in simulation, calibrated against real measurements."
+      },
+      {
+        "title": "Encode the data as spikes",
+        "detail": "Convert continuous measurements into event streams — a spike when a value crosses a threshold or changes fast — which is what neuromorphic chips consume efficiently."
+      },
+      {
+        "title": "Train the spiking network",
+        "detail": "Use surrogate-gradient or local learning rules to teach the network to forecast load and congestion, rewarding it for keeping supply and traffic flowing."
+      },
+      {
+        "title": "Map onto neuromorphic hardware",
+        "detail": "Compile the trained network onto neuron cores, placing heavily connected neurons close together to cut communication."
+      },
+      {
+        "title": "Wrap it in a supervisory layer",
+        "detail": "Connect the neuromorphic controller to existing SCADA and traffic management systems so it advises or supervises, rather than directly driving breakers."
+      },
+      {
+        "title": "Pilot closed-loop on one feeder and one corridor",
+        "detail": "Let the system actually act on a small area under human supervision and with classical controllers ready to take over."
+      },
+      {
+        "title": "Verify, harden and scale",
+        "detail": "Prove safety and cyber-security, then extend node by node across the city, keeping a classical fallback at every level."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Neuromorphic processor hardware",
+        "status": "partial",
+        "why": "research chips exist and run spiking networks, but capacity, toolchains and supply for city-scale deployment do not yet."
+      },
+      {
+        "tech": "Efficient spiking-network training",
+        "status": "partial",
+        "why": "learning methods for deep spiking networks are improving but remain less mature than ordinary deep learning."
+      },
+      {
+        "tech": "Real-time sensing of grid and traffic",
+        "status": "exists",
+        "why": "smart meters, phasor measurement units and traffic detectors already provide much of the raw data, though coverage is uneven."
+      },
+      {
+        "tech": "Low-latency, reliable communications",
+        "status": "partial",
+        "why": "control decisions in milliseconds need deterministic links that public networks do not always guarantee."
+      },
+      {
+        "tech": "Safety certification for learned controllers",
+        "status": "missing",
+        "why": "no established route exists to certify a continuously learning controller for critical infrastructure."
+      },
+      {
+        "tech": "High-fidelity coupled digital twins",
+        "status": "partial",
+        "why": "power and transport are usually modelled separately; a joint twin is needed to train and test the controller."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Laboratory demonstrations of spiking networks for load forecasting and traffic signal timing",
+        "unlocks": "evidence that event-driven control can match conventional methods at lower energy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Advisory pilot on a campus microgrid and a small traffic network",
+        "unlocks": "trust, data and interfaces with real utility and city systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Closed-loop control of a single distribution feeder and adjacent signal corridor",
+        "unlocks": "proof that learned, spike-based control is safe alongside classical automation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "District-scale coordination of power, transport and heating with human oversight",
+        "unlocks": "measurable resilience gains — faster rerouting after faults or accidents."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "City-scale self-healing infrastructure",
+        "unlocks": "urban systems that absorb shocks and recover without central command, if certification and security are solved."
+      }
+    ]
+  }
+}

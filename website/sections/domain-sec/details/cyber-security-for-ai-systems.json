@@ -34,5 +34,160 @@
         "def": "The protection of personal information from unauthorized access and disclosure."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Supply-chain integrity",
+        "role": "ensures the data, weights and model files you run are the ones you intended to run.",
+        "parts": [
+          "dataset provenance records",
+          "signed model weights and hashes",
+          "malware scanning of serialised model files",
+          "AI bill of materials listing components and dependencies"
+        ]
+      },
+      {
+        "name": "Identity and access control",
+        "role": "decides which humans and services may train, deploy or query a model.",
+        "parts": [
+          "API keys and token scopes",
+          "role-based access policies",
+          "secrets management and key rotation",
+          "per-tenant isolation and rate limits"
+        ]
+      },
+      {
+        "name": "Data protection and confidential computing",
+        "role": "keeps training data and prompts private, including from the infrastructure operator.",
+        "parts": [
+          "encryption at rest and in transit",
+          "hardware trusted execution environments (for example Intel SGX, AMD SEV, NVIDIA confidential computing)",
+          "differential privacy and federated learning",
+          "access and retention logs"
+        ]
+      },
+      {
+        "name": "Input and output guardrails",
+        "role": "stops hostile inputs and unsafe outputs at the model boundary.",
+        "parts": [
+          "prompt-injection and jailbreak filtering",
+          "content classifiers",
+          "output validation and citation checks",
+          "sandboxed tool calling with least privilege for agents"
+        ]
+      },
+      {
+        "name": "Adversarial testing and monitoring",
+        "role": "finds and detects attacks that bypass the guardrails.",
+        "parts": [
+          "red-team tooling and benchmarks",
+          "poisoning, evasion and model-extraction tests",
+          "drift and anomaly detection",
+          "prompt and decision logging"
+        ]
+      },
+      {
+        "name": "Governance and response",
+        "role": "turns findings into fixes and manages incidents when prevention fails.",
+        "parts": [
+          "model registry and versioning",
+          "rollback and kill-switch procedures",
+          "incident response runbooks",
+          "audit trail for compliance"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory the AI assets",
+        "detail": "List every model, dataset, endpoint, agent and third-party API in use, with an owner. You cannot defend what you have not catalogued."
+      },
+      {
+        "title": "Threat-model the pipeline",
+        "detail": "Work through each stage — data collection, training, fine-tuning, deployment, inference, retirement — and name the attacks that apply: poisoning, evasion, prompt injection, model theft, supply-chain compromise, insider misuse."
+      },
+      {
+        "title": "Harden the supply chain",
+        "detail": "Verify data sources, scan downloaded model files for embedded code, prefer safe serialisation formats over executable ones, pin dependency versions and sign the artefacts you release."
+      },
+      {
+        "title": "Lock down the infrastructure",
+        "detail": "Segment the network, apply least-privilege identities, store secrets in a managed vault, encrypt data at rest and in transit, and run sensitive inference inside a trusted execution environment."
+      },
+      {
+        "title": "Build guardrails into the application",
+        "detail": "Validate and sanitise inputs, screen prompts and outputs, restrict what tools an agent may call, cap query rates per user, and constrain what the model's responses can trigger downstream."
+      },
+      {
+        "title": "Instrument for detection",
+        "detail": "Log prompts, tool calls and decisions with privacy controls, watch for extraction patterns, unusual query volumes and output drift, and plant canary data to catch leakage."
+      },
+      {
+        "title": "Test adversarially and continuously",
+        "detail": "Run automated and human red teams, feed their attacks into regression suites, and gate model releases in CI/CD on security test results."
+      },
+      {
+        "title": "Prepare the response",
+        "detail": "Write runbooks for model compromise, keep the ability to roll back or disable a model, rehearse disclosure and reporting, and fold lessons back into retraining and policy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Public-key infrastructure and key management",
+        "status": "exists",
+        "why": "signing models, verifying artefacts and encrypting traffic all depend on mature key handling."
+      },
+      {
+        "tech": "Secure software supply-chain practice",
+        "status": "partial",
+        "why": "software bills of materials are established, but machine-learning-specific inventories of data and weights are still maturing."
+      },
+      {
+        "tech": "Machine-learning attack and defence research",
+        "status": "partial",
+        "why": "attacks are well demonstrated; robust defences against evasion, poisoning and prompt injection remain unsolved in general."
+      },
+      {
+        "tech": "Hardware trusted execution environments",
+        "status": "partial",
+        "why": "confidential inference is available on some current server and accelerator hardware, but capacity, overhead and attestation coverage limit it."
+      },
+      {
+        "tech": "Data lineage and provenance tooling",
+        "status": "partial",
+        "why": "tracking every transformation of a training set at scale is possible but rarely complete in practice."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "model scanning, access control and guardrails applied to enterprise deployments",
+        "unlocks": "a defensible baseline where the most common exposure paths are closed."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised AI bills of materials with signed weights and attestation",
+        "unlocks": "buyers can verify what a model contains and where it came from."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated red-teaming embedded in release pipelines",
+        "unlocks": "continuous assurance as models are retrained and updated rather than one-off audits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "formal verification of narrow components and hard containment for autonomous agents",
+        "unlocks": "limited provable guarantees, and the ability to let agents act with real permissions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cross-border audit and disclosure norms for AI incidents",
+        "unlocks": "shared evidence and faster coordinated response across organisations."
+      }
+    ]
   }
 }

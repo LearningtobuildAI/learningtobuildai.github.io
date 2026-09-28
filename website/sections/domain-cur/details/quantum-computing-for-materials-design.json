@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "the hardware that performs quantum operations on qubits.",
+        "parts": [
+          "qubits (superconducting, trapped ion, photonic, or other modalities)",
+          "control lines and resonators",
+          "cryostat or ultra-high-vacuum chamber"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "generates the precise pulses that manipulate qubits and reads out their final states.",
+        "parts": [
+          "microwave or optical signal generators",
+          "amplifiers and filters",
+          "digitizers",
+          "cryogenic wiring"
+        ]
+      },
+      {
+        "name": "Quantum software stack",
+        "role": "translates a materials problem into a runnable quantum circuit and manages hardware noise.",
+        "parts": [
+          "compiler and transpiler",
+          "error-mitigation routines",
+          "noise models and calibration"
+        ]
+      },
+      {
+        "name": "Quantum algorithms for materials",
+        "role": "methods that simulate electron behaviour to predict material properties.",
+        "parts": [
+          "variational quantum eigensolver (VQE)",
+          "quantum phase estimation (QPE)",
+          "quantum machine learning for property prediction"
+        ]
+      },
+      {
+        "name": "Classical computing infrastructure",
+        "role": "runs the hybrid loop, optimises parameters, and benchmarks quantum results.",
+        "parts": [
+          "high-performance computers",
+          "density functional theory and molecular dynamics codes",
+          "data analysis pipelines"
+        ]
+      },
+      {
+        "name": "Materials synthesis and characterisation",
+        "role": "tests quantum predictions in the real world and feeds results back.",
+        "parts": [
+          "automated synthesis reactors",
+          "spectroscopy and microscopy",
+          "property measurement rigs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target materials problem",
+        "detail": "Pick a property to improve — for example, a catalyst that lowers activation energy or an electrolyte that conducts ions faster — and define it in computable terms."
+      },
+      {
+        "title": "Encode the electronic structure",
+        "detail": "Write the Schrödinger equation for the relevant atoms and electrons as a Hamiltonian, often using a basis set that balances accuracy and qubit count."
+      },
+      {
+        "title": "Map the Hamiltonian to qubits",
+        "detail": "Use fermion-to-qubit transformations such as Jordan–Wigner or Bravyi–Kitaev so the problem can be expressed as quantum gates."
+      },
+      {
+        "title": "Select a quantum algorithm",
+        "detail": "For today's noisy hardware choose a shallow variational method like VQE; for future fault-tolerant machines plan for quantum phase estimation."
+      },
+      {
+        "title": "Compile and optimise the circuit",
+        "detail": "Translate the algorithm into the native gates of the chosen quantum processor, minimising depth and two-qubit operations."
+      },
+      {
+        "title": "Apply error mitigation or correction",
+        "detail": "Use techniques like zero-noise extrapolation or, eventually, full quantum error correction to reduce the impact of decoherence."
+      },
+      {
+        "title": "Execute on quantum hardware",
+        "detail": "Run the circuit on a quantum processor, often in a loop with a classical optimiser that adjusts parameters."
+      },
+      {
+        "title": "Validate and feed back",
+        "detail": "Compare results with classical simulations and, where possible, synthesise and measure the material to confirm or correct the prediction."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "materials simulations need deep circuits, but today's qubits lose coherence long before such circuits finish."
+      },
+      {
+        "tech": "High qubit counts (hundreds to thousands)",
+        "status": "partial",
+        "why": "current devices offer tens to a few hundred noisy qubits, far short of what realistic materials require."
+      },
+      {
+        "tech": "Quantum algorithms for chemistry and materials",
+        "status": "partial",
+        "why": "small molecules have been simulated on quantum hardware, but complex solids and strongly correlated systems remain out of reach."
+      },
+      {
+        "tech": "Classical simulation and experimental validation",
+        "status": "exists",
+        "why": "density functional theory and laboratory synthesis provide the benchmarks and feedback needed to trust quantum results."
+      },
+      {
+        "tech": "Scalable cryogenics and control wiring",
+        "status": "partial",
+        "why": "cooling and addressing thousands of qubits without overwhelming heat load is an unsolved engineering problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proof-of-concept simulations of small molecules on noisy quantum computers",
+        "unlocks": "early evidence that quantum hardware can reproduce known chemistry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation and hybrid algorithms handle larger molecules and simple crystalline materials",
+        "unlocks": "quantum-assisted screening of candidate compounds for batteries or catalysts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant devices demonstrate quantum advantage for a specific materials problem",
+        "unlocks": "a credible reason for industry to invest in quantum materials design."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine quantum-assisted design of catalysts, superconductors and battery materials",
+        "unlocks": "faster discovery cycles for clean energy and advanced manufacturing."
+      }
+    ]
+  }
+}

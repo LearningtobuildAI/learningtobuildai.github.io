@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute die",
+        "role": "the chip itself: thousands of small cores that run the same instruction across many data points at once.",
+        "parts": [
+          "stream processors / shader cores",
+          "tensor cores for matrix maths",
+          "ray-tracing cores",
+          "scheduler and L2 cache"
+        ]
+      },
+      {
+        "name": "Memory subsystem",
+        "role": "feeds the cores fast enough that they are not starved of data.",
+        "parts": [
+          "GDDR or HBM chips",
+          "memory controller",
+          "wide memory bus",
+          "high-bandwidth cache"
+        ]
+      },
+      {
+        "name": "Board and interface",
+        "role": "carries power and data between the GPU, the motherboard and the display.",
+        "parts": [
+          "multi-layer PCB",
+          "PCIe edge connector",
+          "display outputs such as DisplayPort and HDMI",
+          "power connectors"
+        ]
+      },
+      {
+        "name": "Power delivery",
+        "role": "converts the 12 V (or higher) input into the sub-1 V the die needs at hundreds of amps.",
+        "parts": [
+          "multi-phase voltage regulators",
+          "inductors and capacitors",
+          "power monitoring"
+        ]
+      },
+      {
+        "name": "Thermal solution",
+        "role": "removes hundreds of watts of heat from a small piece of silicon.",
+        "parts": [
+          "vapour chamber or heat-pipe heatsink",
+          "fans or liquid cold plate",
+          "thermal interface material"
+        ]
+      },
+      {
+        "name": "Firmware and driver stack",
+        "role": "turns silicon into a usable device for games, video and AI workloads.",
+        "parts": [
+          "on-card firmware and power management",
+          "device driver",
+          "compute and graphics APIs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the chip",
+        "detail": "Engineers describe the logic in a hardware description language, verify it in simulation for months, then place and route billions of transistors into a physical layout."
+      },
+      {
+        "title": "Fabricate the wafers",
+        "detail": "A foundry prints each layer of the circuit onto silicon wafers using deep-ultraviolet and extreme-ultraviolet lithography, in a process that takes weeks per wafer."
+      },
+      {
+        "title": "Test and dice",
+        "detail": "Each die is probed on the wafer; faulty ones are marked and good ones are cut apart."
+      },
+      {
+        "title": "Package the die",
+        "detail": "The GPU die and its memory are flip-chip bonded onto a substrate — often several dies and HBM stacks on a silicon interposer — then sealed under a lid."
+      },
+      {
+        "title": "Assemble the board",
+        "detail": "Surface-mount machines place the packaged module, memory, regulators and connectors on the PCB, which then passes through a reflow oven."
+      },
+      {
+        "title": "Fit the cooler",
+        "detail": "Thermal paste or pad, heatsink or vapour chamber, fans and shroud are attached, and the shroud is tested for noise and airflow."
+      },
+      {
+        "title": "Qualify and bin",
+        "detail": "Every card is run under load; those that pass at higher clocks or are fully functional are sold as premium models, others are downrated."
+      },
+      {
+        "title": "Ship software",
+        "detail": "Drivers and firmware are written, validated against thousands of games and applications, and released alongside the hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Leading-edge logic fabrication (7 nm class and below)",
+        "status": "exists",
+        "why": "only a handful of foundries can pattern features this small at volume."
+      },
+      {
+        "tech": "EUV lithography",
+        "status": "exists",
+        "why": "needed to print the finest layers without excessive multi-patterning."
+      },
+      {
+        "tech": "High-bandwidth memory (HBM)",
+        "status": "exists",
+        "why": "stacked memory on an interposer gives the bandwidth that wide AI and graphics workloads need."
+      },
+      {
+        "tech": "Advanced 2.5D/3D packaging",
+        "status": "exists",
+        "why": "lets multiple dies and memory stacks sit in one package when a single die has hit its size limit."
+      },
+      {
+        "tech": "Mature EDA tools and IP libraries",
+        "status": "exists",
+        "why": "no team can verify or lay out a modern GPU by hand."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "chiplet-based flagships with HBM and dedicated matrix-maths units",
+        "unlocks": "training and running large AI models on a single accelerator."
+      },
+      {
+        "stage": "Next",
+        "milestone": "3D stacking of logic and cache dies",
+        "unlocks": "less energy spent moving data on and off the package."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-packaged optics connecting accelerators across racks",
+        "unlocks": "clusters of tens of thousands of GPUs working as one machine without copper bottlenecks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "domain-specific accelerators alongside general-purpose GPUs",
+        "unlocks": "higher efficiency for specialised workloads, with the GPU as the flexible fallback."
+      }
+    ]
+  }
+}

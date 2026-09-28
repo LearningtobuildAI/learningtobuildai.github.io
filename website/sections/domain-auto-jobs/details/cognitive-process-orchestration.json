@@ -34,5 +34,167 @@
         "def": "The dynamic interaction between Manager and Worker agents to allocate resources efficiently and ensure smooth workflow execution."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Process model",
+        "role": "a machine-readable map of the workflow: steps, owners, dependencies, deadlines and exception paths.",
+        "parts": [
+          "process graph or BPMN diagram",
+          "service-level targets",
+          "escalation rules"
+        ]
+      },
+      {
+        "name": "Planning layer",
+        "role": "turns a goal such as 'clear this backlog' into an ordered set of tasks and assigns them.",
+        "parts": [
+          "goal decomposition",
+          "scheduler",
+          "deadline and priority logic"
+        ]
+      },
+      {
+        "name": "Manager agents",
+        "role": "supervise a group of tasks, watch for failure or delay, reallocate and escalate.",
+        "parts": [
+          "monitor",
+          "re-allocation logic",
+          "escalation to a human"
+        ]
+      },
+      {
+        "name": "Worker agents",
+        "role": "actually do the work: call an API, update a record, draft a message, request a signature.",
+        "parts": [
+          "tool/API connectors",
+          "retrieval from internal documents",
+          "robotic process automation for legacy screens"
+        ]
+      },
+      {
+        "name": "Negotiation and allocation",
+        "role": "lets agents bid for scarce resources (budget, staff time, dock slots) instead of waiting for a human decision.",
+        "parts": [
+          "bidding protocol",
+          "constraint solver",
+          "conflict resolution"
+        ]
+      },
+      {
+        "name": "State and audit store",
+        "role": "a durable log of every task, decision and result so the workflow can resume after a crash and be reviewed.",
+        "parts": [
+          "event log or message queue",
+          "shared memory/context store",
+          "tracing and replay"
+        ]
+      },
+      {
+        "name": "Guardrails",
+        "role": "limits what agents may do without a person: spending caps, permission scopes, approval gates.",
+        "parts": [
+          "identity and permissions",
+          "spend and rate limits",
+          "human-in-the-loop checkpoints"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process as it really runs",
+        "detail": "Interview staff and mine existing system logs to recover the true sequence of steps, the common exceptions and where delays actually occur."
+      },
+      {
+        "title": "Make every step callable",
+        "detail": "Wrap each action — check stock, book a shipment, raise a purchase order — as a typed tool with defined inputs, outputs and failure modes."
+      },
+      {
+        "title": "Define the agent hierarchy",
+        "detail": "Decide which decisions a worker may take alone, which need a manager agent, and which must go to a person; write these as explicit rules."
+      },
+      {
+        "title": "Build the planner and allocator",
+        "detail": "Implement goal decomposition plus a bidding or constraint-solving scheme so tasks are assigned against real costs, deadlines and capacities."
+      },
+      {
+        "title": "Add durable state",
+        "detail": "Put every task and decision into an event log so a workflow can be paused, replayed and resumed without duplicating orders or payments (idempotency)."
+      },
+      {
+        "title": "Set permissions and guardrails",
+        "detail": "Give each agent its own identity with the minimum rights it needs, plus spending caps, rate limits and mandatory approval points."
+      },
+      {
+        "title": "Shadow-run against historical data",
+        "detail": "Replay months of past cases and compare the agents' proposed decisions with what humans did, before any live action is allowed."
+      },
+      {
+        "title": "Pilot in one department",
+        "detail": "Run with humans approving each action, measure exceptions and hand-offs, and widen autonomy only where the error rate stays acceptable."
+      },
+      {
+        "title": "Expand across departments",
+        "detail": "Connect the second and third process so manager agents can negotiate across them, then keep monitoring for drift and new failure modes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable tool and API integration",
+        "status": "partial",
+        "why": "agents can only be as dependable as the systems they call; many supply-chain steps still sit behind legacy interfaces."
+      },
+      {
+        "tech": "Language-model reasoning with tool use",
+        "status": "partial",
+        "why": "strong on single steps, still weak at long chains of decisions without losing track or drifting from instructions."
+      },
+      {
+        "tech": "Durable workflow engines",
+        "status": "exists",
+        "why": "decades of business-process and messaging software already provide restartable, exactly-once execution."
+      },
+      {
+        "tech": "Machine-readable agent coordination standards",
+        "status": "partial",
+        "why": "agent-to-agent messaging, capability description and hand-off formats are still being standardised and are not yet interoperable."
+      },
+      {
+        "tech": "Identity, audit and accountability for autonomous actors",
+        "status": "partial",
+        "why": "an organisation must be able to say which agent did what, under whose authority, when a decision is challenged."
+      },
+      {
+        "tech": "Evaluation of multi-step agent behaviour",
+        "status": "missing",
+        "why": "there is no settled way to certify that a long-horizon agent workflow is safe and correct before it runs at scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-team agent workflows with a person approving each action",
+        "unlocks": "automation of repetitive steps and faster exception triage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-department orchestration inside one company, with manager agents reallocating work",
+        "unlocks": "end-to-end handling of supply disruptions without waiting on meetings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "negotiated orchestration between separate firms' agents under contract terms",
+        "unlocks": "real-time rerouting of orders and capacity across a supplier network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuously self-optimising processes bounded by formal rules and full audit",
+        "unlocks": "planning that adapts to demand and disruption faster than human review cycles."
+      }
+    ]
   }
 }

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "converts sunlight to direct current far above the atmosphere, with no night, cloud or seasons.",
+        "parts": [
+          "thin-film or triple-junction photovoltaic modules",
+          "deployment booms",
+          "sun-tracking drive"
+        ]
+      },
+      {
+        "name": "Power conversion and transmitter",
+        "role": "turns DC into radio-frequency power at a few gigahertz.",
+        "parts": [
+          "solid-state amplifiers (or magnetrons)",
+          "DC-DC converters",
+          "phase control electronics"
+        ]
+      },
+      {
+        "name": "Transmit array",
+        "role": "a phased array that forms and electronically steers the beam with no moving parts.",
+        "parts": [
+          "thousands of radiating elements",
+          "pilot-signal receiver for retrodirective pointing",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Ground rectenna",
+        "role": "receives the beam and rectifies it back to DC, then feeds the grid.",
+        "parts": [
+          "dipole antenna mesh",
+          "Schottky diode rectifiers",
+          "grid inverter and transformer"
+        ]
+      },
+      {
+        "name": "Structure and thermal control",
+        "role": "holds the array and radiates the waste heat that never conducts away in vacuum.",
+        "parts": [
+          "lightweight truss",
+          "deployable joints",
+          "radiator panels"
+        ]
+      },
+      {
+        "name": "Assembly, orbit and control",
+        "role": "gets modules to the operating orbit and keeps the beam on target.",
+        "parts": [
+          "robotic assembly hardware",
+          "electric thrusters",
+          "attitude sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the solar modules",
+        "detail": "Photovoltaic cells are grown on very thin substrates so that each square metre of blanket weighs as little as possible — launch mass is the dominating cost."
+      },
+      {
+        "title": "Build transmitter tiles",
+        "detail": "Amplifier, phase control and radiating elements are combined into flat tiles that can be joined edge to edge to build a very large aperture."
+      },
+      {
+        "title": "Launch in modules",
+        "detail": "Because no fairing can hold a kilometre-wide satellite, it goes up in many pieces on reusable heavy-lift vehicles."
+      },
+      {
+        "title": "Assemble in orbit",
+        "detail": "Robots or self-deploying mechanisms latch the tiles and structure together, then the array unfolds."
+      },
+      {
+        "title": "Raise to geostationary orbit",
+        "detail": "Electric thrusters spiral the assembled platform to about 35,800 km, where it stays fixed over one spot on Earth."
+      },
+      {
+        "title": "Point with a pilot beam",
+        "detail": "A small signal sent up from the ground rectenna tells the array exactly where to aim; the phase of each element is adjusted so the beam adds up in that direction."
+      },
+      {
+        "title": "Build the rectenna",
+        "detail": "A field of antenna mesh and diodes, kilometres across, is laid out on the ground and connected to the grid."
+      },
+      {
+        "title": "Ramp the beam",
+        "detail": "Power is raised gradually while beam shape and ground intensity are measured, because a beam that wanders is a hazard, not just an inefficiency."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wireless power beaming",
+        "status": "partial",
+        "why": "microwave beaming has been shown over kilometres in the lab and was demonstrated in orbit by a small satellite experiment in 2023, but never at power-plant scale."
+      },
+      {
+        "tech": "Cheap, heavy-lift reusable launch",
+        "status": "partial",
+        "why": "a gigawatt-class platform would be thousands of tonnes, so cost per kilogram must fall far below today's prices."
+      },
+      {
+        "tech": "Very large in-space assembly",
+        "status": "missing",
+        "why": "kilometre-scale structures with millimetre alignment have never been built in orbit."
+      },
+      {
+        "tech": "Lightweight high-efficiency solar blankets",
+        "status": "partial",
+        "why": "space arrays are efficient but heavy, and weight is what the economics hinge on."
+      },
+      {
+        "tech": "Beam safety and spectrum regulation",
+        "status": "missing",
+        "why": "rules for continuous high-power microwave transmission through shared airspace do not yet exist."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "in-orbit beaming of a few watts and laboratory beaming over kilometres",
+        "unlocks": "proof that the physics chain works end to end."
+      },
+      {
+        "stage": "Next",
+        "milestone": "kilowatt-scale beam from a small satellite to a modest ground receiver",
+        "unlocks": "real data on beam pointing, efficiency and interference."
+      },
+      {
+        "stage": "Next",
+        "milestone": "megawatt-scale demonstrator assembled robotically in orbit",
+        "unlocks": "confidence in in-space construction and thermal control."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt geostationary plants selling grid power",
+        "unlocks": "firm, weather-independent generation — if launch and assembly costs fall far enough."
+      }
+    ]
+  }
+}

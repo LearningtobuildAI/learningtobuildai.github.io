@@ -34,5 +34,141 @@
         "def": "Man-made objects or fragments in Earth's orbit that pose a risk to operational spacecraft and satellites due to the potential for collisions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "collects unfiltered sunlight above the atmosphere, where it is available almost continuously.",
+        "parts": [
+          "ultra-light thin-film or blanket photovoltaic cells",
+          "deployment booms",
+          "sun-tracking drives",
+          "power conditioning"
+        ]
+      },
+      {
+        "name": "Microwave transmitter",
+        "role": "converts DC electricity into a steerable radio beam a few gigahertz in frequency.",
+        "parts": [
+          "solid-state amplifiers or magnetrons",
+          "phased-array antenna panel with thousands of elements",
+          "beam-forming and phase-control electronics"
+        ]
+      },
+      {
+        "name": "Spacecraft structure and control",
+        "role": "holds the array and transmitter together, points them, and dumps waste heat.",
+        "parts": [
+          "modular truss or free-flying formation of panels",
+          "attitude control and station-keeping thrusters",
+          "thermal radiators"
+        ]
+      },
+      {
+        "name": "Ground receiver (rectenna)",
+        "role": "catches the beam and turns it back into electricity.",
+        "parts": [
+          "dipole antenna elements",
+          "rectifying diodes",
+          "supporting mesh several kilometres across"
+        ]
+      },
+      {
+        "name": "Grid or load interface",
+        "role": "conditions the DC output and delivers it.",
+        "parts": [
+          "inverters",
+          "transformers",
+          "connection to a national grid or to an isolated load such as a mining site or island"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide the orbit",
+        "detail": "Geostationary orbit gives continuous sunlight and a fixed spot in the sky, so the ground antenna never tracks — but the transmitter must be very large. Low Earth orbit is cheaper to reach but each satellite is overhead for only minutes at a time."
+      },
+      {
+        "title": "Make the sunlight-catching cells",
+        "detail": "Thin-film photovoltaic material is deposited onto flexible substrates to keep the array as light as possible per kilowatt."
+      },
+      {
+        "title": "Assemble the array in orbit",
+        "detail": "Because a gigawatt plant would span kilometres, it cannot be launched in one piece: modules are launched folded, then joined by robots, by crews, or by flying in tight formation and beaming as one."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "Thousands of small amplifier-and-antenna elements are laid out across a panel. Their phases are adjusted individually so their waves add up into a narrow beam aimed at one spot on the ground."
+      },
+      {
+        "title": "Steer and lock the beam",
+        "detail": "A pilot signal from the ground tells the satellite where the receiver is; feedback keeps the beam centred and shuts it off if it drifts or an aircraft crosses."
+      },
+      {
+        "title": "Build the rectenna",
+        "detail": "A wire mesh of dipoles and diodes, tens of metres above ground so it can double as farmland beneath, spans several square kilometres."
+      },
+      {
+        "title": "Convert and deliver",
+        "detail": "Rectified DC is inverted to grid-frequency AC and fed into a substation, or used directly for an isolated load."
+      },
+      {
+        "title": "Demonstrate end to end",
+        "detail": "Only a stepwise programme — ground beaming tests, then a small in-orbit beaming demo, then a megawatt-scale pilot — can show that efficiency, beam safety and cost all hold together."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Very low-cost, high-cadence launch",
+        "status": "partial",
+        "why": "mass to orbit dominates the economics; the concept only works once launch costs fall far below historical levels."
+      },
+      {
+        "tech": "Robotic assembly and servicing in orbit",
+        "status": "partial",
+        "why": "kilometre-scale structures have to be built in space from modular parts."
+      },
+      {
+        "tech": "Wireless power beaming at useful efficiency",
+        "status": "partial",
+        "why": "microwave transmission has been demonstrated over tens of metres on the ground and at low power from orbit in 2023, but never at power-plant scale."
+      },
+      {
+        "tech": "Lightweight high-efficiency solar cells",
+        "status": "partial",
+        "why": "specific power per kilogram matters far more here than for rooftop panels."
+      },
+      {
+        "tech": "Spectrum, orbital-slot and safety regulation",
+        "status": "missing",
+        "why": "no framework yet governs continuous high-power beams through airspace and orbit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory and small satellite demonstrations of beaming power through the atmosphere",
+        "unlocks": "evidence that efficiency and beam pointing can work at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "kilowatt-to-megawatt demonstration satellite beaming to a large ground rectenna",
+        "unlocks": "real efficiency, cost and safety data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot plants serving isolated loads — islands, remote industry, disaster relief — where conventional grids are expensive",
+        "unlocks": "a first market before competing with ordinary grid power."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt-scale plants, possibly built on the Moon from lunar material",
+        "unlocks": "firm, weather-independent power on a scale that would matter globally — if launch and assembly costs fall far enough."
+      }
+    ]
   }
 }

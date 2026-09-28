@@ -30,5 +30,154 @@
         "def": "A formal system of logic in which every expression is associated with a unique meaning, allowing for precise reasoning about propositions and their relationships."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Transaction data pipeline",
+        "role": "ingests all corporate transactions in real time from source systems.",
+        "parts": [
+          "connectors to ERP, banking and ledger systems",
+          "message queues for streaming",
+          "schema mapping and normalization"
+        ]
+      },
+      {
+        "name": "Regulatory knowledge base",
+        "role": "stores and versions global regulations with jurisdiction and date metadata.",
+        "parts": [
+          "document store",
+          "citation index",
+          "metadata for applicability"
+        ]
+      },
+      {
+        "name": "Retrieval and reasoning engine",
+        "role": "matches transactions to applicable rules and generates justifications for flags.",
+        "parts": [
+          "vector database for semantic search",
+          "symbolic rule engine",
+          "large language model for text generation"
+        ]
+      },
+      {
+        "name": "Anomaly detection",
+        "role": "flags transactions that may violate rules.",
+        "parts": [
+          "statistical models",
+          "machine learning classifiers",
+          "rule-based checks"
+        ]
+      },
+      {
+        "name": "Audit trail and reporting",
+        "role": "records every decision and produces reports for regulators.",
+        "parts": [
+          "immutable log",
+          "report generator",
+          "dashboard"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop interface",
+        "role": "lets compliance officers review, correct and train the system.",
+        "parts": [
+          "review queue",
+          "annotation tools",
+          "feedback loop to retrain models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Ingest and normalize transaction data",
+        "detail": "Connect to source systems, stream transactions into a common format, and ensure real-time throughput."
+      },
+      {
+        "title": "Structure regulatory texts",
+        "detail": "Convert legal documents into machine-readable rules and metadata, capturing jurisdiction and effective dates."
+      },
+      {
+        "title": "Build retrieval and reasoning",
+        "detail": "Create vector embeddings of regulations, combine with symbolic logic to apply rules to transactions, and train the language model to generate justifications."
+      },
+      {
+        "title": "Train anomaly detection models",
+        "detail": "Use historical compliance cases and synthetic data to learn patterns of violations, balancing false positives and false negatives."
+      },
+      {
+        "title": "Integrate components",
+        "detail": "Link data pipeline, knowledge base, reasoning, and detection into a single engine that outputs flags with justifications."
+      },
+      {
+        "title": "Develop human review interface",
+        "detail": "Build dashboards for auditors to inspect flags, provide feedback, and correct errors, feeding corrections back into the models."
+      },
+      {
+        "title": "Pilot deployment",
+        "detail": "Run the system in parallel with existing processes on a subset of transactions, measuring precision and recall."
+      },
+      {
+        "title": "Scale and iterate",
+        "detail": "Expand to all transactions and jurisdictions, continuously update models and rules as regulations change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with legal reasoning",
+        "status": "partial",
+        "why": "they can generate explanations but may hallucinate or misinterpret regulations without verification."
+      },
+      {
+        "tech": "Regulatory knowledge graphs",
+        "status": "partial",
+        "why": "some exist for specific domains, but comprehensive global coverage is lacking."
+      },
+      {
+        "tech": "Real-time stream processing",
+        "status": "exists",
+        "why": "needed to handle high-volume transaction streams without delay."
+      },
+      {
+        "tech": "Explainable AI",
+        "status": "partial",
+        "why": "auditors and regulators need to understand why a flag was raised to trust the system."
+      },
+      {
+        "tech": "Standardized regulatory data",
+        "status": "missing",
+        "why": "regulations are published as text, not machine-readable rules, requiring manual translation."
+      },
+      {
+        "tech": "Secure and private data handling",
+        "status": "exists",
+        "why": "financial data is sensitive and subject to strict privacy and security rules."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI assists with specific compliance tasks like anti-money laundering alert triage.",
+        "unlocks": "reduced manual effort in narrow areas and faster initial screening."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Pilot systems autonomously flag and justify some transaction types under a single regulation.",
+        "unlocks": "faster, more consistent detection with fewer false positives."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Real-time scanning across multiple regulations and jurisdictions.",
+        "unlocks": "continuous compliance monitoring and cross-border consistency."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fully autonomous auditing with human oversight.",
+        "unlocks": "lower compliance costs, real-time risk mitigation, and scalable coverage of all transactions."
+      }
+    ]
   }
 }

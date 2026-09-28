@@ -28,5 +28,169 @@
         "def": "A method that integrates retrieval-based models with generative models for improved AI capabilities in text processing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and parsing",
+        "role": "turn messy source files into clean text a machine can index.",
+        "parts": [
+          "connectors to document stores, wikis, databases",
+          "PDF/HTML/OCR text extraction",
+          "table and layout handling",
+          "de-duplication"
+        ]
+      },
+      {
+        "name": "Chunking and enrichment",
+        "role": "cut documents into retrievable passages that still carry meaning.",
+        "parts": [
+          "splitter (fixed-size, sentence, or semantic)",
+          "overlap between chunks",
+          "metadata: source, date, section, permissions",
+          "optional summaries or synthetic questions per chunk"
+        ]
+      },
+      {
+        "name": "Embedding and indexing",
+        "role": "store passages so similar meanings can be found quickly.",
+        "parts": [
+          "text embedding model",
+          "approximate nearest-neighbour index (e.g. HNSW or IVF-PQ)",
+          "keyword index (e.g. BM25)",
+          "metadata filters"
+        ]
+      },
+      {
+        "name": "Query processing",
+        "role": "improve the raw user question before it hits the index.",
+        "parts": [
+          "query rewriting and expansion",
+          "multi-query or sub-question decomposition",
+          "hybrid fusion of dense and keyword results",
+          "conversation-aware reformulation"
+        ]
+      },
+      {
+        "name": "Retrieval and reranking",
+        "role": "pick the few passages that actually help, out of thousands of candidates.",
+        "parts": [
+          "top-k vector and keyword search",
+          "cross-encoder reranker",
+          "diversity and de-duplication",
+          "access-control filtering"
+        ]
+      },
+      {
+        "name": "Context assembly and generation",
+        "role": "pack the evidence into a prompt and produce a grounded answer.",
+        "parts": [
+          "token budget management",
+          "prompt template with instructions and citations",
+          "language model",
+          "citation and quote extraction"
+        ]
+      },
+      {
+        "name": "Evaluation and monitoring",
+        "role": "prove the pipeline is accurate and catch it drifting.",
+        "parts": [
+          "retrieval metrics (recall@k, MRR)",
+          "answer faithfulness and relevance scoring",
+          "regression test sets",
+          "latency and cost telemetry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect the corpus",
+        "detail": "Decide which documents the system may answer from, and connect to those sources. Permissions matter: a user must never retrieve a passage they are not allowed to read."
+      },
+      {
+        "title": "Parse to clean text",
+        "detail": "Extract text from PDFs, web pages and databases, recover headings and tables, and strip boilerplate such as navigation and footers."
+      },
+      {
+        "title": "Chunk the text",
+        "detail": "Split each document into passages of a few hundred tokens with some overlap, so a sentence split across a boundary is still retrievable."
+      },
+      {
+        "title": "Enrich with metadata",
+        "detail": "Attach source, date, section and access tags to every chunk, and optionally generate a short summary or question that the chunk answers."
+      },
+      {
+        "title": "Embed and index",
+        "detail": "Run each chunk through an embedding model and write the vectors into an approximate nearest-neighbour index; build a keyword index over the same chunks for exact-term matching."
+      },
+      {
+        "title": "Build the query pipeline",
+        "detail": "Add rewriting, expansion and hybrid fusion so that vague, conversational or acronym-heavy questions still retrieve well."
+      },
+      {
+        "title": "Add retrieval and reranking",
+        "detail": "Fetch a generous candidate set, rerank it with a more accurate (and slower) model, then keep the best handful within the token budget."
+      },
+      {
+        "title": "Assemble and generate",
+        "detail": "Insert the chosen passages into a prompt that instructs the model to answer only from them and to cite each claim."
+      },
+      {
+        "title": "Evaluate and operate",
+        "detail": "Measure retrieval and answer quality on a held-out question set, then re-index as sources change and monitor for degraded or hallucinated answers."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer language models",
+        "status": "exists",
+        "why": "both the embedding models and the generator depend on them; the technique was first described in a 2020 research paper."
+      },
+      {
+        "tech": "Vector similarity search at scale",
+        "status": "exists",
+        "why": "exact nearest-neighbour search is too slow over millions of chunks, so approximate indexes are essential."
+      },
+      {
+        "tech": "Long-context models",
+        "status": "exists",
+        "why": "several retrieved passages must fit in the prompt alongside the conversation and instructions."
+      },
+      {
+        "tech": "Cheap, fast inference",
+        "status": "partial",
+        "why": "retrieval plus generation multiplies cost and latency, so serving economics decide what is practical."
+      },
+      {
+        "tech": "Reliable grounded-generation evaluation",
+        "status": "partial",
+        "why": "detecting unsupported claims automatically is still imperfect, which limits how much autonomy can be given to the system."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "production RAG over enterprise document sets with citations",
+        "unlocks": "question answering that reflects private, changing data without retraining the model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid search, rerankers and multi-step or agentic retrieval as defaults",
+        "unlocks": "handling of comparative, multi-hop and numeric questions that a single search pass gets wrong."
+      },
+      {
+        "stage": "Next",
+        "milestone": "graph and structured retrieval over entities and relationships",
+        "unlocks": "answers that require joining facts rather than quoting one passage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "retrieval trained into the model or triggered during generation",
+        "unlocks": "lower latency and fewer missed passages, with verifiable citations as the standard."
+      }
+    ]
   }
 }

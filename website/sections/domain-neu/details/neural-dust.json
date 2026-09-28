@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor mote",
+        "role": "the implant itself — a speck of silicon and crystal a few millimetres on a side that sits in tissue.",
+        "parts": [
+          "piezoelectric crystal",
+          "custom CMOS chip",
+          "recording or stimulating electrodes",
+          "protective coating"
+        ]
+      },
+      {
+        "name": "Ultrasonic power and data link",
+        "role": "a patch or array outside the body sends sound pulses in and listens for the mote's reply.",
+        "parts": [
+          "piezoelectric transducer array",
+          "pulse driver",
+          "beam-steering electronics",
+          "receive amplifier"
+        ]
+      },
+      {
+        "name": "Energy harvester",
+        "role": "the crystal converts incoming ultrasound into the tiny amount of electricity the chip needs.",
+        "parts": [
+          "piezo element",
+          "rectifier",
+          "storage capacitor"
+        ]
+      },
+      {
+        "name": "Front-end circuit",
+        "role": "amplifies nerve signals, or drives a stimulation current, at microwatt power levels.",
+        "parts": [
+          "low-noise amplifier",
+          "analogue-to-digital converter",
+          "current driver",
+          "backscatter switch"
+        ]
+      },
+      {
+        "name": "Packaging",
+        "role": "keeps body fluid out of the electronics for years without stiffening the tissue around it.",
+        "parts": [
+          "thin-film barrier coating",
+          "sealed feed-throughs",
+          "flexible substrate"
+        ]
+      },
+      {
+        "name": "External decoding and control",
+        "role": "turns the reflected pulse stream into usable neural data or stimulation commands.",
+        "parts": [
+          "demodulation software",
+          "neural decoder",
+          "clinician interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the chip",
+        "detail": "Engineers lay out a CMOS circuit with only what is needed — amplifier, rectifier, a switch to reflect ultrasound back — because every transistor costs power and space."
+      },
+      {
+        "title": "Fabricate and thin the silicon",
+        "detail": "The chip is made in a standard CMOS foundry, then ground down to a sliver thin enough to implant."
+      },
+      {
+        "title": "Bond the piezoelectric crystal",
+        "detail": "A small piece of piezoelectric material is attached to the chip, becoming both its power source and its antenna."
+      },
+      {
+        "title": "Attach electrodes",
+        "detail": "Fine leads are connected so the mote can sit on a nerve or in brain tissue and pick up or deliver charge."
+      },
+      {
+        "title": "Encapsulate",
+        "detail": "Layers of thin-film coating are deposited to seal the device against salt water while keeping it flexible enough not to damage surrounding tissue."
+      },
+      {
+        "title": "Build the external transceiver",
+        "detail": "A matched ultrasound array is assembled and calibrated to focus pulses on each mote and read its weak echo."
+      },
+      {
+        "title": "Bench test in fluid",
+        "detail": "Motes are suspended in saline or gel, and the link is measured for range, power budget and data rate."
+      },
+      {
+        "title": "Implant in animals",
+        "detail": "Devices are placed on peripheral nerves or in muscle in rodents and larger animals, then monitored for months to see how long they keep working."
+      },
+      {
+        "title": "Move to human use",
+        "detail": "The remaining hurdles are surgical delivery, years-long reliability and regulatory approval for specific clinical uses."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sub-millimetre low-power CMOS",
+        "status": "exists",
+        "why": "the whole mote must run on microwatts harvested from sound, so the circuit has to be tiny and frugal."
+      },
+      {
+        "tech": "Piezoelectric ultrasound transducers",
+        "status": "exists",
+        "why": "they convert the external beam into power and encode the mote's signal in the reflection."
+      },
+      {
+        "tech": "Hermetic long-life encapsulation",
+        "status": "partial",
+        "why": "implants must survive years of warm, salty, moving tissue — the weakest link in the chain."
+      },
+      {
+        "tech": "Neural signal decoding",
+        "status": "partial",
+        "why": "useful control signals must be extracted from noisy, drifting recordings."
+      },
+      {
+        "tech": "Minimally invasive surgical delivery",
+        "status": "partial",
+        "why": "thousands of separate motes need a practical way to be placed and, if needed, retrieved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proof-of-concept motes recording nerve and muscle activity in animals, and versions that stimulate as well as sense",
+        "unlocks": "evidence that ultrasound can power and query implants deep in tissue without wires."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chronic implants in larger animals with months-to-years lifetimes",
+        "unlocks": "confidence that packaging and the acoustic link survive real biology."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first human clinical uses, likely on peripheral nerves for prosthetics or organ control",
+        "unlocks": "a regulatory path and real patient data for a new class of interface."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large numbers of motes in the brain read and written by one external array",
+        "unlocks": "high-bandwidth, fully wireless brain interfacing without a cable through the skull."
+      }
+    ]
+  }
+}

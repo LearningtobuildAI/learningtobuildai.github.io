@@ -30,5 +30,154 @@
         "def": "A field that combines engineering principles with biological systems to design and construct new biological parts, devices, and systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "holds a register of qubits whose quantum states represent the electrons of a molecule or the variables of a design problem.",
+        "parts": [
+          "superconducting or trapped-ion qubits",
+          "control electronics",
+          "cryogenics or vacuum chamber"
+        ]
+      },
+      {
+        "name": "Error correction and mitigation",
+        "role": "makes results trustworthy, since today's qubits lose information in microseconds.",
+        "parts": [
+          "logical qubits built from many physical qubits",
+          "noise-characterisation and mitigation software"
+        ]
+      },
+      {
+        "name": "Quantum chemistry algorithms",
+        "role": "translate a molecule's electrons into a sequence of quantum operations.",
+        "parts": [
+          "basis-set and fermion-to-qubit encoding",
+          "variational eigensolver loops",
+          "quantum phase estimation"
+        ]
+      },
+      {
+        "name": "Hybrid classical stack",
+        "role": "runs the parts classical computers do far better — optimisation, data handling, comparing candidates.",
+        "parts": [
+          "compiler and scheduler",
+          "classical optimiser",
+          "machine-learning models"
+        ]
+      },
+      {
+        "name": "Biological design layer",
+        "role": "turns computed chemistry into an actual genetic change.",
+        "parts": [
+          "enzyme and pathway databases",
+          "protein structure models",
+          "codon and pathway design software"
+        ]
+      },
+      {
+        "name": "Build and test foundry",
+        "role": "makes the DNA, puts it into a host organism and measures what comes out.",
+        "parts": [
+          "DNA synthesis",
+          "genome-editing reagents",
+          "bioreactors",
+          "analytical instruments"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a target worth simulating",
+        "detail": "Choose chemistry that classical methods handle poorly — typically an enzyme active site containing a transition metal, such as the iron-molybdenum cofactor of nitrogenase — where electron correlation dominates."
+      },
+      {
+        "title": "Encode the electrons",
+        "detail": "Choose an orbital basis, then map the fermionic problem onto qubits, trading accuracy against qubit count."
+      },
+      {
+        "title": "Run the quantum calculation",
+        "detail": "A variational loop repeatedly prepares a trial state, measures its energy and lets a classical optimiser adjust the parameters; a fault-tolerant machine would instead use phase estimation for a definite answer."
+      },
+      {
+        "title": "Validate against reality",
+        "detail": "Compare computed energies and reaction barriers with classical quantum-chemistry results and with laboratory measurements; discard anything that does not match."
+      },
+      {
+        "title": "Design the enzyme or pathway",
+        "detail": "Use the computed mechanism to propose specific amino-acid substitutions or a new set of metabolic reactions, then have software choose the DNA sequence that encodes them."
+      },
+      {
+        "title": "Build and test in a host",
+        "detail": "Synthesise the gene, insert it into a microbe such as a yeast or bacterium, grow small cultures and measure product titre, rate and by-products."
+      },
+      {
+        "title": "Scale to fermentation",
+        "detail": "Take the best-performing strain through larger bioreactors, optimising feed, temperature and oxygen to raise yield per litre."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Feed measured performance back as training data, so each round of design is better than the last."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "useful enzyme active sites need thousands to millions of reliable operations; today's machines manage a small fraction before errors dominate."
+      },
+      {
+        "tech": "Practical quantum algorithms for strongly correlated electrons",
+        "status": "partial",
+        "why": "variational methods have been demonstrated only on small molecules with tens of orbitals, far below enzyme cofactors."
+      },
+      {
+        "tech": "Accurate classical baselines",
+        "status": "exists",
+        "why": "density functional theory and classical machine learning handle most design work today and set the bar a quantum method must beat."
+      },
+      {
+        "tech": "High-quality biological data and models",
+        "status": "exists",
+        "why": "enzyme structures and metabolic models, plus tools such as AlphaFold, give the design layer something concrete to compute on."
+      },
+      {
+        "tech": "Cheap DNA synthesis and genome editing",
+        "status": "exists",
+        "why": "CRISPR-based editing and commercial gene synthesis turn a design into a living strain within weeks."
+      },
+      {
+        "tech": "Automated, high-throughput screening",
+        "status": "exists",
+        "why": "hundreds of variants must be built and measured to find the few that work better."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-molecule and model-system simulations on noisy quantum hardware, alongside classical machine learning and robotic labs that already design enzymes",
+        "unlocks": "proof that hybrid quantum-classical chemistry can match classical accuracy on a narrow class of problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error-corrected machines simulating small metal-containing active sites",
+        "unlocks": "chemistry of the kind classical methods struggle with, feeding candidate enzyme designs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid pipelines where quantum hardware solves the active-site step and classical models design the whole pathway",
+        "unlocks": "faster strain engineering for molecules that are hard to make chemically."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine quantum-assisted design integrated into biomanufacturing plants",
+        "unlocks": "enzymes and routes for fuels, materials and medicines that today's design tools cannot reach."
+      }
+    ]
   }
 }

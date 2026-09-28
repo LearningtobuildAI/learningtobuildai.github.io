@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the physical qubits whose entangled states stand in for the boundary theory in a holographic duality.",
+        "parts": [
+          "superconducting qubit chip with couplers, or a surface-electrode ion trap",
+          "control wiring and resonators",
+          "dilution refrigerator or ultra-high-vacuum trap"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "prepares states, applies the simulated Hamiltonian and reads out correlations.",
+        "parts": [
+          "microwave or radio-frequency pulse generators",
+          "cryogenic amplifiers and digitizers",
+          "classical control electronics",
+          "measurement readout chains"
+        ]
+      },
+      {
+        "name": "Holographic encoding",
+        "role": "the dictionary that translates a gravity model into a quantum circuit on the boundary.",
+        "parts": [
+          "tensor-network circuits (e.g. MERA-style)",
+          "interaction couplings of toy models such as SYK",
+          "circuit compiler that maps couplings to gates"
+        ]
+      },
+      {
+        "name": "Error handling",
+        "role": "keeps the simulated state faithful long enough to measure.",
+        "parts": [
+          "error-mitigation protocols",
+          "quantum error-correcting codes and decoders",
+          "calibration and benchmarking routines"
+        ]
+      },
+      {
+        "name": "Classical support",
+        "role": "simulates the same model classically to check the quantum results.",
+        "parts": [
+          "GPU or CPU cluster",
+          "tensor-network and exact-diagonalisation software"
+        ]
+      },
+      {
+        "name": "Verification layer",
+        "role": "tests whether the output really behaves like the dual gravity theory.",
+        "parts": [
+          "entanglement-entropy estimation",
+          "scrambling diagnostics such as out-of-time-order correlators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a tractable dual model",
+        "detail": "Choose a low-dimensional boundary theory with a known gravity dual, small enough to fit on today's qubits — for example a one-dimensional fermion model with chaotic, all-to-all couplings."
+      },
+      {
+        "title": "Discretise and encode",
+        "detail": "Put the theory on a lattice, map fermions to qubit operators with a Jordan-Wigner transform, and compile the couplings into a gate sequence using Trotter or variational simulation."
+      },
+      {
+        "title": "Fabricate the qubits",
+        "detail": "For superconducting hardware, pattern aluminium or niobium circuits on a silicon chip with tunable couplers; for ions, mill a surface-electrode trap and load individual atoms."
+      },
+      {
+        "title": "Wire up the environment",
+        "detail": "Cool the chip to around 10 millikelvin in a dilution refrigerator, or hold ions in ultra-high vacuum with laser cooling; connect signal lines to the control electronics."
+      },
+      {
+        "title": "Calibrate gates",
+        "detail": "Tune single- and two-qubit gate fidelities with randomised benchmarking until the simulated model's errors are small enough to interpret."
+      },
+      {
+        "title": "Prepare and evolve",
+        "detail": "Initialise the encoded state, apply the simulated Hamiltonian for a known time, and measure two-point and four-point correlators."
+      },
+      {
+        "title": "Diagnose the gravity signature",
+        "detail": "Look for the behaviour expected of the dual black hole: fast scrambling, a specific entanglement-entropy pattern, or a negative shockwave response."
+      },
+      {
+        "title": "Cross-check classically",
+        "detail": "Reproduce the same run with tensor networks or exact diagonalisation for small systems, to confirm the hardware is not simply producing noise."
+      },
+      {
+        "title": "Scale the boundary dimension",
+        "detail": "Grow qubit count and connectivity until two-dimensional boundary theories, whose dual is three-dimensional gravity, become simulable."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Holographic duality (AdS/CFT)",
+        "status": "exists",
+        "why": "it supplies the mathematical translation between a boundary quantum theory and a bulk gravity description."
+      },
+      {
+        "tech": "Quantum Hamiltonian simulation",
+        "status": "exists",
+        "why": "Trotterisation and variational methods are the algorithms that turn a model into a circuit."
+      },
+      {
+        "tech": "Fault-tolerant, error-corrected quantum computing",
+        "status": "partial",
+        "why": "only small logical qubits have been demonstrated; useful simulation of strongly entangled models needs far more."
+      },
+      {
+        "tech": "High-connectivity, high-fidelity qubits",
+        "status": "partial",
+        "why": "chaotic dual models need many long-range couplings, which planar superconducting chips serve poorly."
+      },
+      {
+        "tech": "A tested theory of quantum gravity at the Planck scale",
+        "status": "missing",
+        "why": "the Planck energy is about 10^19 GeV, roughly 15 orders of magnitude beyond any accelerator; no experiment currently constrains it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "toy holographic models run on a few tens of physical qubits; a 2022 9-qubit superconducting experiment reproduced traversable-wormhole dynamics",
+        "unlocks": "proof that holographic models can be expressed as quantum circuits and measured."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-corrected simulation of one- and two-dimensional boundary theories on hundreds of logical qubits",
+        "unlocks": "controlled study of scrambling and entanglement structure with credible error bounds."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum simulators reaching regimes classical tensor networks cannot",
+        "unlocks": "a genuine numerical laboratory for quantum-gravity toy models."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "benchmarking candidate quantum-gravity ideas against simulator output",
+        "unlocks": "constraints on holographic proposals — not universe emulation, and not direct access to Planck-scale physics."
+      }
+    ]
+  }
+}

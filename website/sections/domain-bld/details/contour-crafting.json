@@ -34,5 +34,147 @@
         "def": "A mixture composed primarily of cement and water, which sets to form a solid structure when cured."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Positioning frame",
+        "role": "carries the nozzle along the exact path each layer needs, either as an overhead gantry on rails or as a robotic arm.",
+        "parts": [
+          "steel truss rails and beams",
+          "servo drives",
+          "encoders and limit switches"
+        ]
+      },
+      {
+        "name": "Extrusion head",
+        "role": "shapes the concrete bead as it leaves the nozzle — the defining feature is a trowel-like side plate that smooths the surfaces of the wall as it is laid.",
+        "parts": [
+          "nozzle with trowel edges",
+          "auger or screw feed",
+          "flow-control valve"
+        ]
+      },
+      {
+        "name": "Material supply",
+        "role": "delivers a stiff, fast-setting mortar at a steady rate without clogging.",
+        "parts": [
+          "mixer and hopper",
+          "peristaltic or screw pump",
+          "hose to the head",
+          "accelerator dosing"
+        ]
+      },
+      {
+        "name": "Control and toolpath software",
+        "role": "turns a building model into a machine path and keeps the machine on it.",
+        "parts": [
+          "CAD model and slicing",
+          "motion controller",
+          "speed and pressure feedback"
+        ]
+      },
+      {
+        "name": "Reinforcement and structure",
+        "role": "printed concrete is strong in compression but weak in tension, so steel or fibre must be added.",
+        "parts": [
+          "vertical rebar placed by hand or robot",
+          "horizontal steel or cable between layers",
+          "printed voids later filled with concrete",
+          "fibre reinforcement in the mix"
+        ]
+      },
+      {
+        "name": "Site support",
+        "role": "everything around the printer.",
+        "parts": [
+          "level foundation slab",
+          "power and water",
+          "curing cover",
+          "material handling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and engineer the structure",
+        "detail": "The building is modelled digitally and checked for the loads it must carry. Wall thickness, layer height and reinforcement are chosen together."
+      },
+      {
+        "title": "Slice into toolpaths",
+        "detail": "The model is cut into horizontal layers and each layer turned into a path for the nozzle, including openings for doors and windows. Typical layers are 1–2 cm high."
+      },
+      {
+        "title": "Set up the printer",
+        "detail": "Gantry rails are levelled on the foundation, or a robotic arm is positioned. Nozzle height, flow rate and travel speed are calibrated."
+      },
+      {
+        "title": "Mix and pump the concrete",
+        "detail": "A mortar with fine aggregate, a retarder for the pump line and an accelerator at the nozzle is mixed and kept flowing. The mix must be fluid enough to pump but stiff enough to stand as soon as it lands."
+      },
+      {
+        "title": "Print layer by layer",
+        "detail": "The head traces each path, laying a bead while the trowel edges smooth it. The machine keeps moving to fresh spots so earlier layers can stiffen, and prints only as fast as the concrete can carry its own weight."
+      },
+      {
+        "title": "Add reinforcement as you go",
+        "detail": "Vertical bars are inserted into still-soft layers, horizontal steel is laid between layers, or hollow channels are left to be filled with concrete later."
+      },
+      {
+        "title": "Finish the building",
+        "detail": "The printer leaves walls; trades then add floors, roof, windows, wiring and plumbing, often through voids designed into the walls."
+      },
+      {
+        "title": "Cure, inspect and certify",
+        "detail": "Walls are cured under cover, cores and dimensions are checked, and the structure is assessed against building rules."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Pumpable, fast-stiffening concrete mixes",
+        "status": "partial",
+        "why": "ordinary concrete sags under its own weight; printed walls need mixes tuned with accelerators and rheology modifiers."
+      },
+      {
+        "tech": "Servo motion control and toolpath software",
+        "status": "exists",
+        "why": "the nozzle must follow complex wall paths within a few millimetres."
+      },
+      {
+        "tech": "Reliable reinforcement for printed walls",
+        "status": "partial",
+        "why": "without steel or fibre, tall printed walls fail in tension and in earthquakes."
+      },
+      {
+        "tech": "Building codes and approval pathways",
+        "status": "missing",
+        "why": "most codes do not yet describe how a printed wall is certified, which blocks commercial projects."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-storey houses and pavilions printed on site by gantry and arm machines",
+        "unlocks": "proof of concept and first building approvals."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-storey buildings with engineered reinforcement and validated fire and seismic performance",
+        "unlocks": "use beyond demonstration housing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "printers that lay floors, walls and structural elements in one pass, with robotic placement of steel",
+        "unlocks": "faster, less labour-intensive construction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "printing with local or recycled aggregate and, in research, building habitats off Earth from local material",
+        "unlocks": "low-transport construction in remote and extreme settings."
+      }
+    ]
   }
 }

@@ -1,0 +1,129 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Light collector",
+        "role": "gathers photons from a target star over a large area so that very brief flashes can be detected.",
+        "parts": [
+          "large segmented or single mirror",
+          "alt-azimuth mount",
+          "tracking drive"
+        ]
+      },
+      {
+        "name": "Fast photodetector",
+        "role": "converts individual photons into electrical pulses with nanosecond timing resolution.",
+        "parts": [
+          "photomultiplier tube (PMT)",
+          "avalanche photodiode (APD)",
+          "preamplifier"
+        ]
+      },
+      {
+        "name": "Coincidence and trigger electronics",
+        "role": "requires simultaneous hits in multiple telescopes to reject cosmic-ray-induced flashes.",
+        "parts": [
+          "constant-fraction discriminators",
+          "time-to-digital converters",
+          "GPS timing receiver",
+          "coincidence logic unit"
+        ]
+      },
+      {
+        "name": "Data acquisition and control",
+        "role": "records candidate events and manages telescope pointing and observation schedule.",
+        "parts": [
+          "digitizers",
+          "computers",
+          "event-filtering software"
+        ]
+      },
+      {
+        "name": "Background rejection",
+        "role": "separates true laser pulses from natural astrophysical variability and atmospheric effects.",
+        "parts": [
+          "multi-telescope coincidence",
+          "pulse-shape analysis",
+          "offline statistical filters"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select and site telescopes",
+        "detail": "Choose existing Cherenkov arrays or dedicated optical telescopes in dark, dry locations with good weather and low light pollution."
+      },
+      {
+        "title": "Install fast photodetectors",
+        "detail": "Mount PMTs or APDs at the focal plane, sometimes behind a beamsplitter to allow simultaneous multi-wavelength or multi-detector coverage."
+      },
+      {
+        "title": "Add timing and coincidence hardware",
+        "detail": "Equip each telescope with GPS-disciplined clocks and fast discriminators to timestamp photon arrivals to nanosecond precision."
+      },
+      {
+        "title": "Connect telescopes into a coincidence network",
+        "detail": "Link signals from multiple telescopes so that only near-simultaneous detections, within tens of nanoseconds, are recorded."
+      },
+      {
+        "title": "Commission and calibrate",
+        "detail": "Use pulsed laser tests and cosmic-ray events to measure timing offsets and detection efficiency across the array."
+      },
+      {
+        "title": "Run observations",
+        "detail": "Point at nearby stars and record any nanosecond pulses, storing data for offline analysis."
+      },
+      {
+        "title": "Analyze data",
+        "detail": "Search for pulses that repeat or match expected laser signatures, and rule out instrumental and atmospheric artifacts."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large optical telescopes or mirror arrays",
+        "status": "exists",
+        "why": "collects enough photons from distant stars to detect brief flashes."
+      },
+      {
+        "tech": "Nanosecond photodetectors",
+        "status": "exists",
+        "why": "resolves laser pulses that last only a few nanoseconds."
+      },
+      {
+        "tech": "Precise timing and coincidence electronics",
+        "status": "exists",
+        "why": "distinguishes true pulses from cosmic-ray flashes that hit multiple telescopes."
+      },
+      {
+        "tech": "Fast data acquisition and computing",
+        "status": "exists",
+        "why": "records and processes high-rate event data in real time or near real time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "optical SETI searches on a small number of Cherenkov arrays and dedicated telescopes",
+        "unlocks": "limits on artificial laser beacons within tens of light-years of Earth."
+      },
+      {
+        "stage": "Next",
+        "milestone": "expansion to more telescopes and wider sky coverage",
+        "unlocks": "increased chance of detection and continuous monitoring of nearby stars."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated global network with standardized hardware and real-time alerts",
+        "unlocks": "rapid follow-up and independent confirmation of candidate signals."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration with radio and infrared SETI for multi-wavelength searches",
+        "unlocks": "a more comprehensive survey of potential technosignatures."
+      }
+    ]
+  }
+}

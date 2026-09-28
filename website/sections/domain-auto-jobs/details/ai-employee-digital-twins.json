@@ -29,5 +29,163 @@
         "def": "A subset of artificial intelligence that involves training algorithms on data to enable them to perform tasks without explicit programming."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Data ingestion pipeline",
+        "role": "collects the employee's communications, documents, decisions and outcomes with consent and access controls.",
+        "parts": [
+          "connectors to email, chat and document stores",
+          "consent and retention rules",
+          "anonymisation filters"
+        ]
+      },
+      {
+        "name": "Knowledge base and vector store",
+        "role": "organises the expert's knowledge so the model can retrieve relevant facts and past decisions.",
+        "parts": [
+          "document embeddings",
+          "knowledge graph of entities and relationships",
+          "versioned snapshots"
+        ]
+      },
+      {
+        "name": "Language model core",
+        "role": "provides general language understanding, reasoning and generation.",
+        "parts": [
+          "pretrained transformer model",
+          "tokeniser",
+          "inference runtime"
+        ]
+      },
+      {
+        "name": "Personalisation layer",
+        "role": "adapts the general model to the individual's style, priorities and expertise.",
+        "parts": [
+          "fine-tuning or parameter-efficient adapters",
+          "style and tone profiles",
+          "role-specific prompt templates"
+        ]
+      },
+      {
+        "name": "Agent runtime",
+        "role": "turns queries into actions: retrieving information, drafting replies, calling tools or escalating.",
+        "parts": [
+          "planner and task decomposer",
+          "tool interface for calendars, ticketing, databases",
+          "safety and refusal logic"
+        ]
+      },
+      {
+        "name": "Privacy and security layer",
+        "role": "keeps the twin's data isolated and prevents leaks or impersonation.",
+        "parts": [
+          "encryption at rest and in transit",
+          "access control and audit logs",
+          "differential privacy or federated learning techniques"
+        ]
+      },
+      {
+        "name": "Feedback and evaluation loop",
+        "role": "continuously improves the twin from corrections and outcomes.",
+        "parts": [
+          "user ratings and edits",
+          "performance dashboards",
+          "retraining pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and consent",
+        "detail": "Decide which tasks the twin will handle, obtain the employee's informed consent, and set rules for what data may be used."
+      },
+      {
+        "title": "Collect and clean data",
+        "detail": "Gather emails, chat logs, documents and decision records; remove sensitive personal data and redact anything outside the agreed scope."
+      },
+      {
+        "title": "Build a private knowledge base",
+        "detail": "Convert documents into embeddings and a structured graph, stored in an access-controlled system so retrieval only returns what the user is allowed to see."
+      },
+      {
+        "title": "Adapt a base model",
+        "detail": "Fine-tune or attach lightweight adapters to a pretrained language model using the employee's anonymised data and example interactions."
+      },
+      {
+        "title": "Wrap it in an agent",
+        "detail": "Add a planner that can break down requests, call tools such as email or ticketing APIs, and hand back to a human when confidence is low."
+      },
+      {
+        "title": "Install guardrails",
+        "detail": "Enforce access controls, rate limits, impersonation warnings and audit trails so the twin cannot act beyond its authority."
+      },
+      {
+        "title": "Pilot in a sandbox",
+        "detail": "Run the twin in a limited, monitored setting with human review of every action; collect corrections."
+      },
+      {
+        "title": "Iterate continuously",
+        "detail": "Use feedback to update the knowledge base and adapters, while monitoring for drift, bias and security incidents."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with fine-tuning or adapters",
+        "status": "exists",
+        "why": "they provide the base language and reasoning ability the twin builds on."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "lets the model answer from the employee's own documents without retraining from scratch."
+      },
+      {
+        "tech": "Privacy-preserving machine learning",
+        "status": "partial",
+        "why": "techniques such as federated learning and differential privacy exist in research but are not yet routine for this scale of personal data."
+      },
+      {
+        "tech": "Data governance and consent frameworks",
+        "status": "partial",
+        "why": "organisations need clear rules for using employee communications; practice lags the technology."
+      },
+      {
+        "tech": "Continual learning without catastrophic forgetting",
+        "status": "missing",
+        "why": "a twin must keep learning new facts without erasing old ones, which current methods handle poorly."
+      },
+      {
+        "tech": "Reliable agent tool-use and safety",
+        "status": "partial",
+        "why": "agents can call external systems, but error rates and security risks are still high."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "general-purpose AI assistants that answer questions from a shared knowledge base",
+        "unlocks": "routine query handling for many employees."
+      },
+      {
+        "stage": "Next",
+        "milestone": "role-specific assistants trained on department documents and past tickets",
+        "unlocks": "faster onboarding and consistent answers in support, legal or engineering."
+      },
+      {
+        "stage": "Next",
+        "milestone": "personal digital twins for individual experts, with strict access controls and human review",
+        "unlocks": "a way to scale an expert's availability without cloning them without consent."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "federated twins that collaborate and learn from each other under privacy guarantees",
+        "unlocks": "organisational memory that persists through staff turnover."
+      }
+    ]
   }
 }

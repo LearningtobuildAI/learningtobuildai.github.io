@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensor element",
+        "role": "converts a physical quantity — temperature, pressure, motion, trace gases — into an electrical signal.",
+        "parts": [
+          "MEMS transducer",
+          "chemically sensitive film",
+          "microphone or photodiode"
+        ]
+      },
+      {
+        "name": "Node electronics",
+        "role": "processes readings and drives the radio in a package a few millimetres across.",
+        "parts": [
+          "ultra-low-power microcontroller or ASIC",
+          "radio transceiver",
+          "antenna",
+          "non-volatile memory"
+        ]
+      },
+      {
+        "name": "Power source",
+        "role": "keeps a chip-scale node alive for months without maintenance.",
+        "parts": [
+          "thin-film battery",
+          "photovoltaic or thermoelectric harvester",
+          "power-management circuit"
+        ]
+      },
+      {
+        "name": "Dispersion platform",
+        "role": "releases very large numbers of nodes across a target region at a chosen altitude.",
+        "parts": [
+          "high-altitude balloon or aircraft dispenser",
+          "drop canister",
+          "release scheduler"
+        ]
+      },
+      {
+        "name": "Mesh and backhaul",
+        "role": "moves readings from isolated drifting nodes to the internet.",
+        "parts": [
+          "multi-hop mesh routing",
+          "gateway towers or ground stations",
+          "satellite uplink"
+        ]
+      },
+      {
+        "name": "Data layer",
+        "role": "fuses billions of intermittent streams into a usable picture of a region or the planet.",
+        "parts": [
+          "edge aggregation",
+          "cloud storage and compute",
+          "weather, climate and hazard models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the node",
+        "detail": "Chip-scale co-design of sensor, radio, power and packaging within a target volume of a few cubic millimetres, with an energy budget that dictates how often it can sense and transmit."
+      },
+      {
+        "title": "Fabricate the wafers",
+        "detail": "MEMS structures and CMOS circuits are made on standard semiconductor lines, since no new physics is needed — only extreme miniaturisation and yield control."
+      },
+      {
+        "title": "Add power and encapsulation",
+        "detail": "Thin-film batteries or tiny harvesters are attached, then the node is sealed in a casing engineered to dissolve after a set exposure to rain, sunlight and microbes."
+      },
+      {
+        "title": "Assemble at volume",
+        "detail": "Panel-level or roll-to-roll packaging places billions of nodes per year at a cost low enough that losing most of them is acceptable."
+      },
+      {
+        "title": "Disperse",
+        "detail": "Balloons, aircraft or drones release batches of nodes over the target area, relying on wind to spread them; each node falls slowly and begins reporting on landing or while airborne."
+      },
+      {
+        "title": "Self-organise",
+        "detail": "Nodes discover neighbours, form multi-hop routes and forward readings toward whichever gateway or satellite pass is cheapest in energy."
+      },
+      {
+        "title": "Backhaul and fuse",
+        "detail": "Gateways and satellites relay data to data centres, where streams are quality-checked, geolocated and merged into continuous fields."
+      },
+      {
+        "title": "Model and act",
+        "detail": "The fused field feeds weather prediction, disaster warning and climate monitoring — the actual purpose of the network."
+      },
+      {
+        "title": "Degrade and account",
+        "detail": "Nodes break down on schedule; operators track material mass balance so that what is dispersed does not accumulate in soils, water or food chains."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chip-scale sensing and radio",
+        "status": "partial",
+        "why": "MEMS sensors and low-power radios are everywhere, but combining sensing, radio and power in a sub-millimetre drifting package has not been demonstrated."
+      },
+      {
+        "tech": "Wireless mesh networking at extreme scale",
+        "status": "partial",
+        "why": "meshes of thousands of fixed nodes work; trillions of moving, power-starved nodes would need routing and spectrum schemes that do not yet exist."
+      },
+      {
+        "tech": "Ambient energy harvesting at millimetre scale",
+        "status": "partial",
+        "why": "tiny solar cells and thermal harvesters work, but not at the power density needed for constant sensing plus radio transmission."
+      },
+      {
+        "tech": "Biodegradable or transient electronics",
+        "status": "partial",
+        "why": "dissolvable silicon and biodegradable substrates have been shown in labs for medical implants, not for millions of tonnes of environmental hardware."
+      },
+      {
+        "tech": "Low-power global backhaul",
+        "status": "partial",
+        "why": "satellite links for small devices exist, but bandwidth and coverage are far below what a planetary mesh would generate."
+      },
+      {
+        "tech": "High-volume micro-manufacturing",
+        "status": "exists",
+        "why": "the semiconductor and display industries already make billions of devices a year at very low unit cost."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "coarse coverage from static ground networks, ocean drifters and Earth-observation satellites",
+        "unlocks": "regional weather forecasting and disaster monitoring, with large gaps over oceans and sparsely instrumented land."
+      },
+      {
+        "stage": "Next",
+        "milestone": "denser airborne and drifting sensors — more weather balloons, ocean drifters and high-altitude platforms, including short-lived disposable ones",
+        "unlocks": "better data over the roughly two-thirds of the planet that is ocean."
+      },
+      {
+        "stage": "Next",
+        "milestone": "controlled-release micro-node swarms over a bounded test region, with full recovery or degradation accounting",
+        "unlocks": "evidence on cost, lifetime, spectrum use and environmental impact before any wider release."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continental-scale mesh feeding a continuously updated digital model of the surface and atmosphere",
+        "unlocks": "faster hazard warning and better-constrained climate projections."
+      },
+      {
+        "stage": "Longest term",
+        "milestone": "a genuinely planet-wide mesh, if energy, communication, material lifetime and ecological questions are all answered",
+        "unlocks": "the stated goal of dense global sensing — though 'every square metre' remains a physical and environmental limit, not just an engineering one."
+      }
+    ]
+  }
+}

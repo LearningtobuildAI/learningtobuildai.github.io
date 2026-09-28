@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Individual robot unit",
+        "role": "the repeated, deliberately simple element — cheap enough that losing some is acceptable.",
+        "parts": [
+          "chassis, motors and wheels or rotors",
+          "battery",
+          "microcontroller",
+          "basic sensors (IMU, camera, ranging)",
+          "payload mount"
+        ]
+      },
+      {
+        "name": "Localisation and sensing",
+        "role": "lets each unit know roughly where it is and where its neighbours are, usually without satellite positioning.",
+        "parts": [
+          "inertial measurement unit and odometry",
+          "ultra-wideband or radio ranging",
+          "camera or depth sensor",
+          "GNSS where the sky is visible"
+        ]
+      },
+      {
+        "name": "Communication mesh",
+        "role": "neighbour-to-neighbour radio links that relay messages across the group with no central tower.",
+        "parts": [
+          "low-power radio transceivers",
+          "mesh routing protocol",
+          "time synchronisation"
+        ]
+      },
+      {
+        "name": "Coordination software",
+        "role": "identical rules running on every unit, using only local information, that add up to a useful collective behaviour.",
+        "parts": [
+          "behaviour rules (separation, alignment, cohesion)",
+          "task allocation or auction logic",
+          "consensus and formation control",
+          "collision avoidance"
+        ]
+      },
+      {
+        "name": "Operator interface",
+        "role": "one person tasks and supervises a whole swarm rather than piloting each unit.",
+        "parts": [
+          "tasking and zone-drawing interface",
+          "live map of swarm state",
+          "override and safe-stop control"
+        ]
+      },
+      {
+        "name": "Support infrastructure",
+        "role": "keeps dozens to hundreds of units charged, transported and repaired.",
+        "parts": [
+          "charging docks or swap batteries",
+          "transport cases and launch racks",
+          "spares and firmware update tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the collective task",
+        "detail": "Decide what the swarm must achieve — map an area, find a target, move material — and work out the minimum each robot must sense and do to contribute."
+      },
+      {
+        "title": "Design the unit for cost and repair",
+        "detail": "Simplicity is the point: a unit that costs a few hundred dollars can be fielded in hundreds and replaced rather than mended. Use commodity motors, chips and sensors."
+      },
+      {
+        "title": "Choose how units locate themselves",
+        "detail": "Outdoors, GNSS plus inertial dead reckoning. Indoors or underground, ultra-wideband ranging between units or visual markers, accepting that accuracy degrades in cluttered spaces."
+      },
+      {
+        "title": "Build the radio mesh",
+        "detail": "Fit each unit with a low-power radio, a routing protocol that survives units dropping out, and tight time synchronisation so messages can be slotted without collisions."
+      },
+      {
+        "title": "Write decentralised control rules",
+        "detail": "Every unit runs the same short rule set — stay apart, drift toward neighbours, follow the local gradient of a task — so no central computer is needed and the swarm keeps working when some units fail."
+      },
+      {
+        "title": "Simulate thousands of agents",
+        "detail": "Run the rules in a simulator with radio and sensor noise before cutting metal, because emergent behaviour is hard to predict and bugs appear only at scale."
+      },
+      {
+        "title": "Trial at tens, then hundreds",
+        "detail": "Field tests expose what simulation hides: radio congestion, battery spread, units colliding, and the difficulty of getting them all deployed and recovered."
+      },
+      {
+        "title": "Add human supervision",
+        "detail": "Give one operator a tasking view, a live picture of the swarm, and a reliable stop command that reaches every unit."
+      },
+      {
+        "title": "Scale manufacturing and upkeep",
+        "detail": "Set up batch production, charging routines and firmware updates, since maintenance of hundreds of units is the real cost of ownership."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap microcontrollers, MEMS sensors and brushless motors",
+        "status": "exists",
+        "why": "swarm behaviour only makes sense when a single unit is inexpensive enough to mass-produce."
+      },
+      {
+        "tech": "Low-power mesh radio with time synchronisation",
+        "status": "exists",
+        "why": "neighbour-to-neighbour communication without a base station is what makes coordination decentralised."
+      },
+      {
+        "tech": "Relative localisation without GNSS",
+        "status": "partial",
+        "why": "ultra-wideband and vision work in open or mapped spaces but degrade indoors, underground and in rubble."
+      },
+      {
+        "tech": "Onboard perception within a tight power budget",
+        "status": "partial",
+        "why": "small units must recognise terrain, people or ore with milliwatts, not server racks."
+      },
+      {
+        "tech": "Autonomous recharging or battery swapping",
+        "status": "partial",
+        "why": "a swarm that must be collected by hand every hour cannot work at scale."
+      },
+      {
+        "tech": "Rules for operating many autonomous vehicles at once",
+        "status": "missing",
+        "why": "aviation, road and mining regulators have no settled framework for hundreds of independent machines in one place."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory swarms of a thousand simple robots demonstrating self-assembly and collective transport",
+        "unlocks": "confidence that decentralised rules scale without a central controller."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field pilots in search and rescue, agriculture and inspection with tens to a few hundred units",
+        "unlocks": "real operating experience with radio congestion, terrain and recovery."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mixed swarms of a few capable robots and many simple ones sharing one map",
+        "unlocks": "tasks too varied for identical units, such as surveying then excavating."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "planetary mining swarms operating without continuous contact with Earth",
+        "unlocks": "resource extraction where a single large machine would be too risky to lose and too heavy to land."
+      }
+    ]
+  }
+}

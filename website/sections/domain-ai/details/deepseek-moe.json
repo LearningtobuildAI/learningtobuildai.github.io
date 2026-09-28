@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Expert networks",
+        "role": "many small feed-forward networks, each expected to specialise in different patterns; only a few run for any given token.",
+        "parts": [
+          "two or three linear layers per expert",
+          "activation function"
+        ]
+      },
+      {
+        "name": "Router (gating network)",
+        "role": "scores every expert for each token and picks the top few to run.",
+        "parts": [
+          "small linear gate",
+          "top-k selection",
+          "score normalisation"
+        ]
+      },
+      {
+        "name": "Shared experts",
+        "role": "a small set of experts that always run, absorbing common knowledge so the routed experts can specialise.",
+        "parts": [
+          "always-active feed-forward blocks"
+        ]
+      },
+      {
+        "name": "Load-balancing mechanism",
+        "role": "stops the router sending everything to a handful of experts, which would waste the rest.",
+        "parts": [
+          "expert-usage statistics",
+          "per-expert bias adjustments or an auxiliary loss"
+        ]
+      },
+      {
+        "name": "Attention and representation layers",
+        "role": "understand context; in this family the key/value cache is compressed into a low-rank latent to cut memory.",
+        "parts": [
+          "multi-head attention",
+          "low-rank key/value compression",
+          "normalisation layers"
+        ]
+      },
+      {
+        "name": "Distributed training and serving stack",
+        "role": "spreads experts across many accelerators and shuttles tokens to whichever expert needs them.",
+        "parts": [
+          "expert-parallel partitioning",
+          "all-to-all interconnect",
+          "low-precision arithmetic",
+          "inference batching and caching"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the sparsity budget",
+        "detail": "Choose layer count, how many experts per layer, how finely they are split, and how many are active per token — this sets the cost/quality trade-off."
+      },
+      {
+        "title": "Write the expert and router code",
+        "detail": "Implement the expert feed-forward blocks, the top-k gate, and the shared-expert path in a training framework such as PyTorch."
+      },
+      {
+        "title": "Add balancing and stability tricks",
+        "detail": "Bias terms nudged up or down according to each expert's load, plus careful initialisation, keep training from collapsing onto few experts."
+      },
+      {
+        "title": "Partition across accelerators",
+        "detail": "Experts are placed on different devices; tokens are dispatched to their chosen experts and results returned, so fast interconnects matter more than raw compute."
+      },
+      {
+        "title": "Pre-train on a large text corpus",
+        "detail": "The model learns to predict the next token at scale, with the router gradually sorting itself into specialisms."
+      },
+      {
+        "title": "Post-train and align",
+        "detail": "Supervised fine-tuning and preference-based reinforcement learning shape the base model into a helpful assistant."
+      },
+      {
+        "title": "Quantise and serve",
+        "detail": "Weights are stored at low precision and an inference engine batches requests so that only the needed experts are loaded and run per token."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "experts replace the feed-forward blocks of an otherwise standard transformer."
+      },
+      {
+        "tech": "Sparse mixture-of-experts training",
+        "status": "exists",
+        "why": "the core idea of routing tokens to a subset of parameters is well established and now widely reproduced."
+      },
+      {
+        "tech": "High-bandwidth accelerator interconnect",
+        "status": "exists",
+        "why": "every token must be shipped to its experts and back; slow links make the savings disappear."
+      },
+      {
+        "tech": "Low-precision training and inference",
+        "status": "exists",
+        "why": "eight-bit formats cut memory and bandwidth enough to make very large sparse models economic."
+      },
+      {
+        "tech": "Routing and load-balancing research",
+        "status": "partial",
+        "why": "getting experts to specialise usefully rather than collapse is still an active, partly empirical problem."
+      },
+      {
+        "tech": "Large-scale distributed training infrastructure",
+        "status": "exists",
+        "why": "thousands of accelerators must run for weeks without a failure ending the run."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "open-weight sparse models served cheaply by many providers",
+        "unlocks": "frontier-class capability at a fraction of dense-model inference cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "finer expert granularity and learned, hardware-aware routing",
+        "unlocks": "better quality per unit of compute and less wasted communication."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sparse models extended to images, audio and long agentic tasks",
+        "unlocks": "one economical model handling many modalities."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "experts that can be swapped or updated independently after training",
+        "unlocks": "cheap specialisation and patching without retraining the whole network."
+      }
+    ]
+  }
+}

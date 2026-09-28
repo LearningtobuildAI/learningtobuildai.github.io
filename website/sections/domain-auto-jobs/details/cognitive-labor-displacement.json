@@ -35,5 +35,169 @@
         "def": "The ability of AI agents to interact with external tools or systems to perform specific tasks, such as data analysis or project management software."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Base model",
+        "role": "the language engine that understands the task and writes the plan.",
+        "parts": [
+          "transformer neural network",
+          "trained weights",
+          "tokenizer",
+          "instruction-tuned checkpoint"
+        ]
+      },
+      {
+        "name": "Planning loop",
+        "role": "turns a goal into steps, checks each result and revises when something fails.",
+        "parts": [
+          "task decomposer",
+          "reasoning scratchpad",
+          "critic or verifier",
+          "replanner"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "keeps project state alive across days, not just one conversation.",
+        "parts": [
+          "working context window",
+          "embedding model plus vector index for retrieval",
+          "episodic log of past actions and outcomes",
+          "structured project state store"
+        ]
+      },
+      {
+        "name": "Tool and action layer",
+        "role": "lets the agent actually change things rather than only talk.",
+        "parts": [
+          "API and function calling",
+          "code execution sandbox",
+          "browser and document tools",
+          "scoped credentials and permissions"
+        ]
+      },
+      {
+        "name": "Multi-agent orchestration",
+        "role": "splits work among specialised sub-agents and merges their output.",
+        "parts": [
+          "supervisor or router",
+          "role and persona prompts",
+          "message bus",
+          "concurrency, token and cost limits"
+        ]
+      },
+      {
+        "name": "Evaluation, guardrails and audit",
+        "role": "catches failure before it reaches real work.",
+        "parts": [
+          "task benchmark suite",
+          "trajectory logging",
+          "output filters",
+          "human approval gates"
+        ]
+      },
+      {
+        "name": "Serving infrastructure",
+        "role": "runs many agents at once at tolerable latency and cost.",
+        "parts": [
+          "GPU accelerators",
+          "inference server with batching and key-value cache",
+          "queue and rate limits",
+          "monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and curate data",
+        "detail": "Web text, code, documentation and licensed material are filtered, deduplicated and decontaminated against test sets."
+      },
+      {
+        "title": "Pre-train the base model",
+        "detail": "The network learns to predict the next token across trillions of words, which builds general language and reasoning ability."
+      },
+      {
+        "title": "Align for instruction and tool use",
+        "detail": "Supervised fine-tuning, preference learning and records of correct tool calls teach the model to follow a goal and emit structured actions."
+      },
+      {
+        "title": "Add retrieval memory",
+        "detail": "Documents and past project state are embedded into vectors and stored in an index the agent queries before each step."
+      },
+      {
+        "title": "Build the agent loop",
+        "detail": "A controller alternates reason, act, observe: it calls tools, reads results, and decides the next step. Code runs in a sandbox with scoped credentials."
+      },
+      {
+        "title": "Layer orchestration",
+        "detail": "A supervisor agent decomposes the project, spawns sub-agents with narrow roles, passes messages and merges and checks their outputs against budget limits."
+      },
+      {
+        "title": "Build the evaluation harness",
+        "detail": "Long tasks with checkable outcomes are run repeatedly to measure success rate, cost, and where the agent goes off track."
+      },
+      {
+        "title": "Deploy behind guardrails",
+        "detail": "Agents go live with permission scopes, spending caps, full action logs and human approval at defined decision points."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Failure traces are mined and fed back into fine-tuning, prompt and tool design, and new evaluations."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large pre-trained transformer models",
+        "status": "exists",
+        "why": "they supply the general language and reasoning ability the whole system rests on."
+      },
+      {
+        "tech": "Reliable tool use and error recovery",
+        "status": "partial",
+        "why": "models call functions well in short bursts but degrade over long chains of steps and rarely recover cleanly from mistakes."
+      },
+      {
+        "tech": "Long-horizon task evaluation",
+        "status": "partial",
+        "why": "without tests that run for hours or days, improvement in real project execution cannot be measured honestly."
+      },
+      {
+        "tech": "Secure sandboxing, identity and permissions",
+        "status": "partial",
+        "why": "an agent with real credentials and write access is a security and liability problem that current tooling only partly contains."
+      },
+      {
+        "tech": "Project-scale persistent memory",
+        "status": "missing",
+        "why": "no deployed system yet maintains coherent, auditable state across months of work by many agents."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistants that complete short, bounded tasks with a human in the loop",
+        "unlocks": "time savings on drafting, search, coding and data handling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents with persistent memory and real tools running multi-step workflows under review",
+        "unlocks": "whole processes, not single tasks, handed over with a reviewer checking outputs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervisor agents coordinating sub-agents across a live project, with humans approving budget and key decisions",
+        "unlocks": "small teams overseeing work of a size that used to need many more people."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "auditable end-to-end delivery of defined knowledge-work processes",
+        "unlocks": "genuine substitution of certain roles — but full executive project management without oversight remains a research and governance frontier, not a demonstrated capability."
+      }
+    ]
   }
 }

@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Excitation laser",
+        "role": "shines a narrow, monochromatic beam onto the sample; the tiny fraction of light that scatters inelastically carries the chemical fingerprint.",
+        "parts": [
+          "diode or VCSEL laser, commonly 785 nm or 1064 nm",
+          "laser driver and thermoelectric stabiliser",
+          "safety interlock and beam shutter"
+        ]
+      },
+      {
+        "name": "Probe optics",
+        "role": "delivers the laser to the sample and collects the faint scattered light while blocking the much brighter unshifted laser light.",
+        "parts": [
+          "focusing and collection lenses",
+          "dichroic beamsplitter",
+          "notch or edge filter",
+          "fibre-optic probe (some models)",
+          "point-and-shoot nose or vial holder"
+        ]
+      },
+      {
+        "name": "Spectrograph",
+        "role": "spreads the collected light into a spectrum so each Raman shift falls on a different detector element.",
+        "parts": [
+          "entrance slit",
+          "volume holographic or ruled diffraction grating",
+          "camera mirror and focusing optics"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "converts the very weak spectrum into electrical signal with low noise.",
+        "parts": [
+          "deep-depletion silicon CCD (visible/NIR) or indium gallium arsenide array (1064 nm)",
+          "thermoelectric cooler",
+          "readout electronics"
+        ]
+      },
+      {
+        "name": "Embedded computer and library",
+        "role": "identifies the substance by comparing the measured spectrum against stored reference spectra.",
+        "parts": [
+          "processor and firmware",
+          "spectral reference library",
+          "matching algorithm (for example correlation or hit-quality index)",
+          "screen, battery, wireless link"
+        ]
+      },
+      {
+        "name": "Calibration and self-test",
+        "role": "keeps the wavelength axis and intensity response honest between services.",
+        "parts": [
+          "internal reference standard",
+          "automated alignment check",
+          "temperature and laser-power monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the laser wavelength",
+        "detail": "A shorter wavelength gives a stronger Raman signal but excites more sample fluorescence; 785 nm is the common compromise, while 1064 nm sacrifices signal to avoid fluorescence in coloured or biological samples."
+      },
+      {
+        "title": "Assemble and align the optical bench",
+        "detail": "The laser, filters, lenses and grating are mounted on a rigid bench and painstakingly aligned so the laser spot and the collection path overlap on the sample."
+      },
+      {
+        "title": "Build the spectrograph",
+        "detail": "The grating and slit are chosen to give roughly 8–15 cm⁻¹ resolution over the fingerprint region, enough to distinguish most organic compounds."
+      },
+      {
+        "title": "Fit and cool the detector",
+        "detail": "The CCD or InGaAs array is bonded to a thermoelectric cooler in a sealed package, since the signal from a single laser shot is extremely weak."
+      },
+      {
+        "title": "Calibrate the wavelength axis",
+        "detail": "Known standards — a polystyrene film with its sharp peak near 1001 cm⁻¹, or a gas-discharge lamp — are used to map detector pixels to Raman shift."
+      },
+      {
+        "title": "Load and validate the spectral library",
+        "detail": "Reference spectra of thousands of compounds are measured on the same instrument type and tested against blind samples so matching thresholds are trustworthy."
+      },
+      {
+        "title": "Package for field use",
+        "detail": "The optics go into a sealed, drop-tested housing with a class 3B laser enclosure, interlock, battery and simple point-and-shoot interface."
+      },
+      {
+        "title": "Verify against laboratory methods",
+        "detail": "Field results are checked against laboratory infrared or mass-spectrometry analysis to quantify false positives and false negatives."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Compact, wavelength-stable diode lasers",
+        "status": "exists",
+        "why": "the excitation source must be narrow-line and stable, or the fingerprint peaks blur."
+      },
+      {
+        "tech": "Low-noise cooled detector arrays",
+        "status": "exists",
+        "why": "Raman scattering is roughly one photon in a million, so detector noise sets the detection limit."
+      },
+      {
+        "tech": "Holographic notch and edge filters",
+        "status": "exists",
+        "why": "without them the scattered laser light would swamp the weak Raman signal."
+      },
+      {
+        "tech": "Machine-readable spectral reference libraries",
+        "status": "partial",
+        "why": "common hazardous and pharmaceutical materials are covered well, but rare or novel compounds may not be."
+      },
+      {
+        "tech": "Surface-enhanced Raman substrates",
+        "status": "partial",
+        "why": "needed to detect trace residues or single molecules, but substrates vary in reproducibility."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "handheld Raman units used for hazardous-material identification, pharmaceutical raw-material checks and mineral or gemstone testing",
+        "unlocks": "laboratory-grade identification at the point of need, in seconds and without consumables."
+      },
+      {
+        "stage": "Next",
+        "milestone": "through-container and standoff variants, plus spatially offset sampling to suppress fluorescence",
+        "unlocks": "scanning sealed drums, bags and vials safely, without opening them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deep-ultraviolet excitation and further optical miniaturisation",
+        "unlocks": "stronger signals from small samples and clearer spectra from materials that currently fluoresce."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "merged multi-technique sensors with machine-learning interpretation",
+        "unlocks": "one handheld tool that covers elements, molecules and trace residues, and moves Raman toward clinical and food-safety testing."
+      }
+    ]
+  }
+}

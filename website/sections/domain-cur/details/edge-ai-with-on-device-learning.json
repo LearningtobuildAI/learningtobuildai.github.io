@@ -32,5 +32,154 @@
         "def": "Computer chips designed to mimic the structure and function of biological neural networks, often used for efficient AI processing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor front end",
+        "role": "turns physical signals into data the device can process locally.",
+        "parts": [
+          "microphone, camera or inertial sensor",
+          "analogue front end and analogue-to-digital converter",
+          "sample buffer"
+        ]
+      },
+      {
+        "name": "Edge compute chip",
+        "role": "runs inference and, increasingly, training within a milliwatt-to-watt power budget.",
+        "parts": [
+          "neural accelerator or digital signal processor",
+          "CPU cores",
+          "on-chip SRAM"
+        ]
+      },
+      {
+        "name": "Model runtime",
+        "role": "executes compressed models with minimal memory and power.",
+        "parts": [
+          "quantised inference engine (commonly 8-bit integer)",
+          "operator library for the target chip",
+          "scheduler and memory planner"
+        ]
+      },
+      {
+        "name": "On-device learning engine",
+        "role": "adapts a pre-trained model to local data without sending it to a server.",
+        "parts": [
+          "local training loop",
+          "frozen backbone plus trainable head or low-rank adapter",
+          "gradient buffer and optimiser state"
+        ]
+      },
+      {
+        "name": "Memory and storage",
+        "role": "holds weights, activations and training samples within tight limits.",
+        "parts": [
+          "flash or embedded storage",
+          "RAM for activations",
+          "small cache of recent samples"
+        ]
+      },
+      {
+        "name": "Privacy and security layer",
+        "role": "protects raw data and any model updates that leave the device.",
+        "parts": [
+          "secure enclave or trusted execution environment",
+          "encryption",
+          "differential privacy or secure aggregation hooks"
+        ]
+      },
+      {
+        "name": "Power management",
+        "role": "keeps learning within a battery or energy-harvesting budget.",
+        "parts": [
+          "dynamic voltage and frequency scaling",
+          "duty cycling of the accelerator",
+          "thermal control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the task and data",
+        "detail": "Decide what the device must decide locally, such as wake-word or anomaly detection, and how it will collect representative samples without shipping raw data off the device."
+      },
+      {
+        "title": "Design a compact model",
+        "detail": "Use architectures that fit edge memory: depthwise-separable convolutions, small recurrent or attention blocks, and a frozen feature extractor that can be reused."
+      },
+      {
+        "title": "Compress for the target",
+        "detail": "Quantise weights and activations to 8-bit or lower, prune unimportant connections, and verify accuracy against the original floating-point model."
+      },
+      {
+        "title": "Compile and deploy",
+        "detail": "Lower the model to the accelerator's instruction set, place buffers in on-chip memory, and measure latency, memory and energy per inference."
+      },
+      {
+        "title": "Add local adaptation",
+        "detail": "Freeze most weights and train only a small head or low-rank adapter on-device, using a handful of local examples to personalise without catastrophic forgetting."
+      },
+      {
+        "title": "Optionally federate",
+        "detail": "If many devices improve together, send only encrypted model updates to a server for aggregation (federated learning), never the raw data."
+      },
+      {
+        "title": "Test and update safely",
+        "detail": "Validate on-device learning against data drift and adversarial inputs, then push updated base models over the air without erasing local personalisation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power neural accelerators",
+        "status": "exists",
+        "why": "inference in the milliwatt-to-watt range is already common in phones and microcontrollers."
+      },
+      {
+        "tech": "Quantisation and pruning",
+        "status": "exists",
+        "why": "8-bit integer models are standard; lower-bit formats are emerging but still less reliable."
+      },
+      {
+        "tech": "On-device training algorithms",
+        "status": "partial",
+        "why": "backpropagation needs more memory than inference; research uses frozen backbones and tiny trainable heads."
+      },
+      {
+        "tech": "Federated learning infrastructure",
+        "status": "partial",
+        "why": "deployed in some keyboard and health pilots, but aggregation across very large fleets is not routine."
+      },
+      {
+        "tech": "Privacy-preserving computation",
+        "status": "partial",
+        "why": "secure aggregation and differential privacy are demonstrated but add cost and complexity."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "edge inference for vision, voice and sensing in phones, cameras and vehicles",
+        "unlocks": "low-latency features that work without a network."
+      },
+      {
+        "stage": "Next",
+        "milestone": "personalisation on the device, such as speaker or activity adaptation with a small trainable head",
+        "unlocks": "models that improve for each user without sending raw data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "federated learning across large fleets with secure aggregation",
+        "unlocks": "collective improvement while keeping data local."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continual learning on tiny devices without forgetting earlier tasks",
+        "unlocks": "always-adapting sensors and robots that learn on the job."
+      }
+    ]
   }
 }

@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Compute module",
+        "role": "the sealed heart of the device — processor, memory and storage on one small board.",
+        "parts": [
+          "ARM or RISC-V system-on-chip",
+          "LPDDR RAM",
+          "eMMC or UFS storage",
+          "power-management IC"
+        ]
+      },
+      {
+        "name": "Mainboard",
+        "role": "carries the module and everything else, and its full schematic and board layout are published.",
+        "parts": [
+          "openly licensed PCB design",
+          "connector headers",
+          "sensor set",
+          "expansion pads"
+        ]
+      },
+      {
+        "name": "Radio modules",
+        "role": "connect to mobile and local networks, deliberately as replaceable parts.",
+        "parts": [
+          "cellular modem on a socketed module",
+          "Wi-Fi and Bluetooth chip",
+          "GNSS receiver",
+          "antennas"
+        ]
+      },
+      {
+        "name": "Display and input",
+        "role": "the human interface.",
+        "parts": [
+          "LCD or OLED panel",
+          "touch digitizer",
+          "buttons and switches",
+          "optional keyboard shell"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "keeps it running and lets the user swap the cell.",
+        "parts": [
+          "replaceable lithium-ion cell",
+          "USB-C charging and power-delivery circuit",
+          "fuel gauge"
+        ]
+      },
+      {
+        "name": "Enclosure and mechanicals",
+        "role": "holds the parts together in a way that can be opened with ordinary tools.",
+        "parts": [
+          "injection-moulded or machined case",
+          "standard screws rather than glue",
+          "mounting points for accessories"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "makes the hardware usable and keeps it working after the maker moves on.",
+        "parts": [
+          "bootloader",
+          "mainline Linux kernel with device drivers",
+          "touch-friendly desktop environment",
+          "over-the-air update service"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a chip that can be documented",
+        "detail": "Everything depends on picking a processor whose datasheet and registers can be published without a non-disclosure agreement, and whose support can be merged into the mainline Linux kernel. Most mobile chips fail this test, so the choice is narrow."
+      },
+      {
+        "title": "Design the mainboard",
+        "detail": "Engineers draw the schematic and lay out the printed circuit board with free design tools, putting the cellular modem on a socketed module so a single component can be replaced or upgraded later."
+      },
+      {
+        "title": "Publish the design",
+        "detail": "Schematic, board files, bill of materials and mechanical drawings are released under an open licence before manufacturing, so others can inspect, correct and re-spin them."
+      },
+      {
+        "title": "Bring up prototypes",
+        "detail": "A handful of boards are assembled by a quick-turn service; developers then write or fix drivers for the display, touch, modem and power management until the device boots and runs a standard kernel."
+      },
+      {
+        "title": "Design the case and tooling",
+        "detail": "The case is 3D-printed through several iterations, then a steel mould is cut for injection moulding, or the design is kept small enough for machining and 3D printing by users."
+      },
+      {
+        "title": "Certify the device",
+        "detail": "The finished design must pass radio-emissions, electrical-safety and cellular-network approval — an expensive step that must be budgeted before any production run."
+      },
+      {
+        "title": "Run a small production batch",
+        "detail": "A contract manufacturer populates and tests the boards, the units are assembled with battery and screen, and each one is flashed and functionally tested before shipping."
+      },
+      {
+        "title": "Maintain and supply spares",
+        "detail": "The hard part after launch: keep kernel support current, sell screens, batteries and boards individually for years, and hand the design to a community that can keep producing it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Processors with openly published documentation",
+        "status": "missing",
+        "why": "without register-level documentation, no one outside the chip vendor can write or maintain a driver."
+      },
+      {
+        "tech": "Mainline kernel support for mobile chips",
+        "status": "partial",
+        "why": "several phone chips now boot a stock kernel, but camera, modem and power management often lag for years."
+      },
+      {
+        "tech": "Open cellular modem firmware",
+        "status": "missing",
+        "why": "baseband firmware remains proprietary, so even a fully open phone relies on a closed black box."
+      },
+      {
+        "tech": "Small-batch printed-circuit assembly",
+        "status": "exists",
+        "why": "contract manufacturers can build a few thousand boards cheaply, which is what makes niche devices possible at all."
+      },
+      {
+        "tech": "Open touch-friendly Linux interfaces",
+        "status": "partial",
+        "why": "projects such as Phosh and Plasma Mobile provide usable shells, but app polish and battery life still trail mainstream phones."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "niche open handhelds like the PinePhone and Librem 5 ship in thousands, running community distributions such as postmarketOS",
+        "unlocks": "proof that a repairable, openly documented pocket computer can be bought and used daily, with real compromises."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better-documented SoCs and faster mainline bring-up",
+        "unlocks": "porting a new device drops from years to months, letting more small makers enter the market."
+      },
+      {
+        "stage": "Next",
+        "milestone": "modular designs with a published parts list and guaranteed spares",
+        "unlocks": "a device that can be upgraded and repaired for a decade instead of replaced every three years."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "repairability rules and interoperable modules spread to mainstream handsets",
+        "unlocks": "open-hardware practice moves from hobby scale into ordinary consumer devices."
+      }
+    ]
+  }
+}

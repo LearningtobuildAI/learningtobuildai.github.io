@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Front end",
+        "role": "expresses an algorithm as gates acting on qubits.",
+        "parts": [
+          "circuit builder libraries",
+          "OpenQASM-style assembly",
+          "variational and Hamiltonian problem formats"
+        ]
+      },
+      {
+        "name": "Intermediate representation",
+        "role": "a hardware-neutral form the rest of the stack compiles from.",
+        "parts": [
+          "LLVM-based Quantum IR (QIR)",
+          "gate-level IR with typed qubit references"
+        ]
+      },
+      {
+        "name": "Optimisation and routing",
+        "role": "rewrites the circuit to use fewer and shorter operations, then maps virtual qubits onto real ones.",
+        "parts": [
+          "gate cancellation and peephole passes",
+          "qubit-mapping and SWAP-insertion",
+          "hardware-aware instruction scheduling"
+        ]
+      },
+      {
+        "name": "Native lowering and pulse control",
+        "role": "turns abstract gates into the physical control signals a machine accepts.",
+        "parts": [
+          "gate decomposition into the native gate set",
+          "calibration data for each qubit pair",
+          "pulse-level compiler and arbitrary-waveform generators",
+          "microwave or laser drive electronics"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "reduces the effect of noise on results.",
+        "parts": [
+          "readout-error correction",
+          "zero-noise extrapolation",
+          "probabilistic error cancellation",
+          "decoders for error-correcting codes"
+        ]
+      },
+      {
+        "name": "Runtime and orchestration",
+        "role": "runs jobs, manages shots and drives hybrid classical–quantum loops.",
+        "parts": [
+          "cloud backends and job queues",
+          "shot and parameter-sweep management",
+          "classical optimiser tightly coupled to the device"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the abstract interface",
+        "detail": "Define how an algorithm describes qubits, gates and measurements so that many front ends can target the same stack."
+      },
+      {
+        "title": "Build the hardware-neutral IR",
+        "detail": "Lower the circuit into a typed intermediate representation, typically an LLVM-based dialect, that can be optimised and reasoned about."
+      },
+      {
+        "title": "Read the device model",
+        "detail": "Import a machine description: which qubits exist, which pairs can interact, native gates, and timing constraints."
+      },
+      {
+        "title": "Map and route",
+        "detail": "Because not every qubit is connected to every other, insert swaps or teleportations so interacting qubits become neighbours."
+      },
+      {
+        "title": "Optimise within the constraints",
+        "detail": "Cancel redundant gates, fuse rotations, and schedule operations so that parallel gates do not conflict in time."
+      },
+      {
+        "title": "Lower to native gates and pulses",
+        "detail": "Decompose into the machine's native gate set and translate each gate into calibrated control pulses for the drive electronics."
+      },
+      {
+        "title": "Wrap with mitigation",
+        "detail": "Apply readout correction and noise-scaling or noise-cancelling techniques so that computed expectation values are closer to the ideal."
+      },
+      {
+        "title": "Run and measure",
+        "detail": "Execute repeated shots, gather statistics, and hand results back to the hybrid classical optimiser that adjusts the next circuit."
+      },
+      {
+        "title": "Validate against simulation and benchmarks",
+        "detail": "Compare against classical simulators of small circuits and against randomised benchmarking on real hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Working qubit hardware with open control",
+        "status": "exists",
+        "why": "superconducting, trapped-ion, neutral-atom and photonic machines all expose gate and pulse interfaces."
+      },
+      {
+        "tech": "A shared machine-level IR standard",
+        "status": "exists",
+        "why": "QIR lets front ends, optimisers and hardware backends be developed by different groups."
+      },
+      {
+        "tech": "Per-qubit calibration and noise data",
+        "status": "partial",
+        "why": "calibrations drift, so compilers need continuously refreshed hardware models to be accurate."
+      },
+      {
+        "tech": "Classical simulation for validation",
+        "status": "exists",
+        "why": "small circuits can be checked exactly on classical computers, which is how bugs are found."
+      },
+      {
+        "tech": "Fast decoders and error-correcting codes",
+        "status": "partial",
+        "why": "a fault-tolerant stack needs the decoder to keep up with syndrome measurements in real time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mature circuit compilers and transpilers shipping with cloud hardware backends",
+        "unlocks": "researchers can run small noisy circuits without writing machine-level code."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pulse-level and calibration-aware compilation as the default",
+        "unlocks": "meaningfully lower error rates from the same physical qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation and lightweight correction combined in the runtime",
+        "unlocks": "larger circuits whose results are trustworthy enough for chemistry and optimisation problems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "real-time decoding integrated with logical-qubit compilers",
+        "unlocks": "programming against error-corrected logical qubits rather than physical ones."
+      }
+    ]
+  }
+}

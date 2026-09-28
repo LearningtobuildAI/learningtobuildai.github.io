@@ -33,5 +33,142 @@
         "def": "The use of metamaterials to create devices that can render objects invisible or undetectable by electromagnetic radiation. This effect relies on manipulating the path of waves around an object as if it were not there."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Unit cell",
+        "role": "the repeating element, smaller than the wavelength it acts on, whose shape sets the material's response.",
+        "parts": [
+          "split-ring or wire resonators (microwave)",
+          "nanoscale pillars or fins (optical)",
+          "cavity or membrane structures (acoustic)"
+        ]
+      },
+      {
+        "name": "Host matrix",
+        "role": "the medium that holds the unit cells in a fixed pattern.",
+        "parts": [
+          "polymer or resin",
+          "silica or semiconductor substrate",
+          "metal films"
+        ]
+      },
+      {
+        "name": "Fabrication route",
+        "role": "the method that writes features from tens of nanometres to a few millimetres.",
+        "parts": [
+          "electron-beam or optical lithography",
+          "nanoimprint",
+          "additive printing",
+          "layer stacking"
+        ]
+      },
+      {
+        "name": "Tuning elements",
+        "role": "let the response be changed after manufacture.",
+        "parts": [
+          "liquid crystals",
+          "phase-change films",
+          "varactor diodes",
+          "mechanical actuation"
+        ]
+      },
+      {
+        "name": "Characterisation and design",
+        "role": "simulation plus measurement of how waves actually behave in the structure.",
+        "parts": [
+          "electromagnetic or acoustic solvers",
+          "spectrometers, interferometers",
+          "anechoic and microwave test ranges"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the wave and the effect",
+        "detail": "Decide whether the device will act on microwaves, infrared, visible light, sound or heat, and what unusual property is wanted — a negative index, a flat focal plane, absorption at one band."
+      },
+      {
+        "title": "Design the unit cell",
+        "detail": "Simulate a single element that is roughly a tenth of the wavelength or smaller, and tune its geometry until it gives the required phase, impedance or stiffness."
+      },
+      {
+        "title": "Check the array",
+        "detail": "Arrange thousands to billions of cells in a lattice and simulate the whole surface, because neighbouring elements interact and shift the response."
+      },
+      {
+        "title": "Make the master pattern",
+        "detail": "For nanoscale devices, write the pattern with electron-beam lithography or a deep-ultraviolet mask, then replicate it by nanoimprint or stamping."
+      },
+      {
+        "title": "Build up the layers",
+        "detail": "Deposit and etch alternating films of metal, dielectric or semiconductor, or print polymer and metal structures for millimetre-scale acoustic and microwave parts."
+      },
+      {
+        "title": "Add tunability",
+        "detail": "Infiltrate liquid crystal, deposit a phase-change layer, or bond diodes so the response can be switched electrically or thermally."
+      },
+      {
+        "title": "Test and iterate",
+        "detail": "Measure transmission, reflection and loss across the band, compare with the model, and correct the design — losses and fabrication tolerance are usually the limiting factors."
+      },
+      {
+        "title": "Package and integrate",
+        "detail": "Encapsulate the structure, attach it to a lens barrel, antenna feed, window or panel, and verify performance in the real environment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Nanoscale and microscale patterning",
+        "status": "exists",
+        "why": "features must be far smaller than the wavelength, so lithography or high-resolution printing is essential."
+      },
+      {
+        "tech": "Computational wave simulation",
+        "status": "exists",
+        "why": "the behaviour cannot be predicted by hand; full-wave solvers are how designs are found."
+      },
+      {
+        "tech": "Low-loss materials",
+        "status": "partial",
+        "why": "resonant elements absorb energy, and loss is the main reason optical metamaterials rarely beat conventional optics."
+      },
+      {
+        "tech": "Large-area, low-cost replication",
+        "status": "partial",
+        "why": "a useful lens or panel needs square centimetres to square metres patterned cheaply and uniformly."
+      },
+      {
+        "tech": "Tunable and active materials",
+        "status": "partial",
+        "why": "fixed structures can only do one job; switching needs materials whose properties change on demand."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "niche commercial parts such as flat beam-steering antennas and shaped electromagnetic absorbers",
+        "unlocks": "products where a thin, flat surface replaces a bulky conventional component."
+      },
+      {
+        "stage": "Next",
+        "milestone": "metalenses and metamaterial filters that match conventional optics in efficiency and cost",
+        "unlocks": "much thinner cameras, sensors and displays."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reconfigurable surfaces that steer beams electronically",
+        "unlocks": "cheaper satellite links and, potentially, better wireless coverage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "broadband cloaking-style control of sound, vibration and radar",
+        "unlocks": "quieter machinery, better acoustic isolation and harder-to-detect objects — still mostly theoretical for wide frequency ranges."
+      }
+    ]
   }
 }

@@ -28,5 +28,145 @@
         "def": "Photovoltaic cells composed of multiple layers, each optimized for different parts of the solar spectrum. In perovskite-silicon tandems, this means combining silicon with a perovskite layer to capture more light."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Silicon bottom cell",
+        "role": "absorbs infrared and red light that passes through the perovskite, and provides the mechanical and electrical base.",
+        "parts": [
+          "n-type silicon wafer (often TOPCon or heterojunction)",
+          "textured front surface",
+          "rear passivation and contact"
+        ]
+      },
+      {
+        "name": "Perovskite top cell",
+        "role": "a wide-bandgap absorber, tuned to around 1.6–1.7 eV, that harvests the blue and green photons silicon cannot use well.",
+        "parts": [
+          "perovskite absorber layer (lead halide with mixed organic cations)",
+          "additives and passivators",
+          "capping layer"
+        ]
+      },
+      {
+        "name": "Charge transport and interconnect",
+        "role": "selectively extracts electrons and holes and, in a two-terminal stack, joins the two cells electrically.",
+        "parts": [
+          "hole transport layer",
+          "electron transport layer",
+          "recombination junction or transparent interconnect"
+        ]
+      },
+      {
+        "name": "Contacts and light management",
+        "role": "collects current across the whole cell while letting light through to the layers below.",
+        "parts": [
+          "transparent conductive oxide (indium tin oxide or similar)",
+          "metal grid fingers or busbars",
+          "antireflection and barrier coatings"
+        ]
+      },
+      {
+        "name": "Encapsulation",
+        "role": "keeps out moisture and oxygen and filters ultraviolet light, which are what destroy a perovskite layer.",
+        "parts": [
+          "front glass and rear glass or backsheet",
+          "edge seal",
+          "UV-stable encapsulant"
+        ]
+      },
+      {
+        "name": "Coating and lamination line",
+        "role": "turns the stack into a module at speed and without damage.",
+        "parts": [
+          "slot-die or thermal evaporation tools",
+          "low-temperature sputterer",
+          "laminator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the silicon bottom cell",
+        "detail": "Wafers are textured, doped and passivated into finished high-efficiency silicon cells, then their front surface is flattened or re-textured so a thin perovskite layer can coat it evenly."
+      },
+      {
+        "title": "Deposit the interconnect and transport layers",
+        "detail": "Thin layers that select charge carriers and join the two sub-cells are deposited on the silicon, often by sputtering or atomic layer deposition."
+      },
+      {
+        "title": "Coat the perovskite",
+        "detail": "A precursor ink of lead halide salts and organic cations is spread over the cell — by spin coating in the lab, or slot-die coating or hybrid evaporation on a production line — then dried and annealed so it crystallises into a uniform film about half a micrometre thick."
+      },
+      {
+        "title": "Add the top transport and electrode layers",
+        "detail": "The electron or hole transport layer is coated, then a transparent conductive oxide is sputtered gently enough not to damage the perovskite beneath it."
+      },
+      {
+        "title": "Metallise and isolate",
+        "detail": "Metal fingers and busbars are printed or plated to carry current out, and the cell edges are cleaned and isolated."
+      },
+      {
+        "title": "Encapsulate and laminate",
+        "detail": "The stack is sealed between glass panes with an edge seal and a UV-blocking encapsulant — the step that decides whether the module survives outdoors."
+      },
+      {
+        "title": "Flash-test and light-soak",
+        "detail": "Finished modules are measured under standard test conditions, then exposed to light and heat for days to screen out cells that degrade, and binned by output."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-efficiency silicon cells",
+        "status": "exists",
+        "why": "the tandem adds to an already good bottom cell; on a mediocre one the gain is smaller."
+      },
+      {
+        "tech": "Scalable perovskite deposition",
+        "status": "partial",
+        "why": "spin coating works in the lab but wastes ink and is too slow for factories; slot-die and evaporation are being proven on pilot lines."
+      },
+      {
+        "tech": "Perovskite stability and encapsulation",
+        "status": "partial",
+        "why": "perovskites degrade with moisture, heat, light and ultraviolet, and a commercial module must last 25 years, not months."
+      },
+      {
+        "tech": "Low-damage transparent electrode deposition",
+        "status": "partial",
+        "why": "sputtering the top electrode is an energetic process that can ruin the perovskite underneath."
+      },
+      {
+        "tech": "Lead handling and recycling infrastructure",
+        "status": "missing",
+        "why": "most high-performing perovskites contain lead, so end-of-life recovery and safe manufacturing must be built in."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot production of two-terminal tandem modules on full-size wafers",
+        "unlocks": "real field and factory data on yield, stability and cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tandem modules in utility-scale demonstration plants alongside silicon panels",
+        "unlocks": "evidence that they out-produce standard modules over years, not weeks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mechanically stacked four-terminal tandems and first commercial-scale lines",
+        "unlocks": "easier integration with existing silicon lines, since each sub-cell is made and tested separately."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "all-perovskite tandems and triple junctions",
+        "unlocks": "cells well beyond silicon's theoretical ceiling, with lighter, flexible modules."
+      }
+    ]
   }
 }

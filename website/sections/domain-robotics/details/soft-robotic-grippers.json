@@ -34,5 +34,137 @@
         "def": "A system that uses a liquid, typically oil, to transfer energy and perform work in machines."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Soft actuator",
+        "role": "the flexible finger or membrane that conforms to the object; inflating internal chambers bends or expands it.",
+        "parts": [
+          "elastomer body (silicone or polyurethane)",
+          "reinforcing fibres or fabric",
+          "pneumatic inlet port"
+        ]
+      },
+      {
+        "name": "Pneumatic control unit",
+        "role": "supplies and regulates air pressure to each actuator.",
+        "parts": [
+          "compressor or compressed-air supply",
+          "solenoid valves",
+          "pressure regulators",
+          "tubing"
+        ]
+      },
+      {
+        "name": "Sensing and feedback",
+        "role": "measures grip force, object presence or slip so the controller can adjust.",
+        "parts": [
+          "pressure sensors",
+          "force or tactile sensors",
+          "optional camera"
+        ]
+      },
+      {
+        "name": "Controller",
+        "role": "commands valves and interprets sensor data to achieve a stable grasp.",
+        "parts": [
+          "microcontroller or PLC",
+          "control algorithms",
+          "user interface"
+        ]
+      },
+      {
+        "name": "Mounting and integration",
+        "role": "connects the gripper to a robot arm and routes power and air.",
+        "parts": [
+          "wrist adapter",
+          "quick-change coupling",
+          "cable and tube management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the actuator geometry",
+        "detail": "Use CAD and finite-element simulation to shape internal chambers and reinforcements so the actuator bends or expands as intended under a chosen pressure, typically 50–300 kPa."
+      },
+      {
+        "title": "Make the moulds",
+        "detail": "Machine or 3D-print moulds for the elastomer parts, often in two halves to allow demoulding."
+      },
+      {
+        "title": "Cast the elastomer",
+        "detail": "Pour degassed silicone or polyurethane into the moulds and cure at room temperature or in an oven."
+      },
+      {
+        "title": "Add reinforcement",
+        "detail": "Embed inextensible fibres, fabric or a stiffer layer on one side to force bending rather than simple ballooning."
+      },
+      {
+        "title": "Bond and assemble",
+        "detail": "Bond layers together with adhesive or by further casting to seal the pneumatic channels, then attach fittings."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Inflate each actuator, measure force and displacement, and trim the control pressure range."
+      },
+      {
+        "title": "Integrate with the robot",
+        "detail": "Mount the gripper on the arm, connect air lines and wiring, and program grasp sequences."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Elastomers with high tear and fatigue resistance",
+        "status": "exists",
+        "why": "they must survive millions of inflation cycles without cracking."
+      },
+      {
+        "tech": "Miniature pneumatic valves and regulators",
+        "status": "exists",
+        "why": "fast, precise pressure control is needed for gentle grasping."
+      },
+      {
+        "tech": "Flexible tactile and force sensors",
+        "status": "partial",
+        "why": "many are still research prototypes; robust, low-cost versions are emerging."
+      },
+      {
+        "tech": "Grasp control algorithms for deformable actuators",
+        "status": "partial",
+        "why": "modelling soft materials is hard, so control often relies on heuristics or learning."
+      },
+      {
+        "tech": "Additive manufacturing for moulds and soft parts",
+        "status": "exists",
+        "why": "3D-printed moulds speed up design iteration, and some printers can deposit soft materials directly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Commercial soft grippers handle food, produce and fragile packaged goods in pick-and-place lines.",
+        "unlocks": "reduced damage and less need for custom hard tooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Grippers with embedded sensing and closed-loop control that adapt to unknown objects.",
+        "unlocks": "reliable grasping in less structured warehouses."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Multi-finger soft hands with many independently controlled chambers.",
+        "unlocks": "dexterous manipulation of a wider range of shapes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fully soft robots that can squeeze through gaps or work safely alongside humans.",
+        "unlocks": "new applications in agriculture, surgery and disaster response."
+      }
+    ]
   }
 }

@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Issuer and trust framework",
+        "role": "the body that vouches for a fact about you — your age, nationality or licence — and signs it.",
+        "parts": [
+          "accredited issuers such as a government registry or bank",
+          "issuer signing keys",
+          "published list of recognised issuers"
+        ]
+      },
+      {
+        "name": "Credential format and signatures",
+        "role": "lets the holder later reveal only part of what was signed, without breaking the signature.",
+        "parts": [
+          "W3C Verifiable Credentials data model",
+          "selective-disclosure schemes such as BBS+ signatures or SD-JWT",
+          "blinding and derivation logic"
+        ]
+      },
+      {
+        "name": "Holder wallet",
+        "role": "keeps credentials on the user's own device and generates the proof only with their consent.",
+        "parts": [
+          "mobile or browser app",
+          "secure element or keystore",
+          "prover library",
+          "consent and disclosure screen"
+        ]
+      },
+      {
+        "name": "Proof system and circuits",
+        "role": "turns the claim into a tiny proof that reveals nothing else.",
+        "parts": [
+          "circuit compiler producing arithmetic constraints",
+          "proving key",
+          "SNARK or STARK prover",
+          "trusted-setup artefacts where required"
+        ]
+      },
+      {
+        "name": "Verifier",
+        "role": "the relying party checks the proof in milliseconds and binds it to the current request.",
+        "parts": [
+          "verification key",
+          "session nonce",
+          "browser or server verification library"
+        ]
+      },
+      {
+        "name": "Revocation and status service",
+        "role": "prevents revoked or already-used credentials from working again.",
+        "parts": [
+          "status lists or cryptographic accumulators",
+          "nullifier registry",
+          "issuer refresh channel"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the claim and the trust model",
+        "detail": "Decide precisely what must be proved ('age is over 18', 'resident in this country'), who is allowed to sign it, and what the verifier is entitled to learn."
+      },
+      {
+        "title": "Issue a signed credential",
+        "detail": "The issuer signs the user's attributes with a key that supports selective disclosure — for example a BBS+ signature or a salted SD-JWT — and hands the credential to the user's wallet."
+      },
+      {
+        "title": "Encode the claim as a circuit",
+        "detail": "The verification logic is written as arithmetic constraints: the computation the proof must attest to, including hidden inputs for the secret attributes."
+      },
+      {
+        "title": "Set up the keys",
+        "detail": "Systems like Groth16 need a one-time trusted setup per circuit, whose ceremony must be witnessed and destroyed afterwards; PLONK-style systems use a universal setup and STARKs need none at all."
+      },
+      {
+        "title": "Generate the witness and proof",
+        "detail": "The wallet supplies the hidden values plus randomness, runs the prover on the phone or a server, and produces a short proof and a one-time nullifier."
+      },
+      {
+        "title": "Verify and bind the proof",
+        "detail": "The relying party runs the verification key against the proof, checks a fresh session nonce so an old proof cannot be replayed, and reads the one public bit it asked for."
+      },
+      {
+        "title": "Wire in revocation",
+        "detail": "The verifier checks a status list or accumulator, and records the nullifier so the same credential cannot be presented twice for the same entitlement."
+      },
+      {
+        "title": "Audit and operate",
+        "detail": "The circuits, the setup ceremony and the wallet's randomness handling are audited; issuers rotate keys and publish status updates for the life of the system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Practical zero-knowledge proof systems",
+        "status": "exists",
+        "why": "Groth16, PLONK and STARKs make proofs small and fast enough to verify on an ordinary server."
+      },
+      {
+        "tech": "Selective-disclosure credentials",
+        "status": "partial",
+        "why": "standards such as W3C Verifiable Credentials and SD-JWT with BBS+ are settled but unevenly deployed."
+      },
+      {
+        "tech": "Secure wallets in phones and browsers",
+        "status": "exists",
+        "why": "the secret attributes and signing keys must stay on hardware the user controls."
+      },
+      {
+        "tech": "Revocation and anti-replay infrastructure",
+        "status": "partial",
+        "why": "without status checks and nullifiers a stolen or spent credential still works."
+      },
+      {
+        "tech": "Trusted issuer registries",
+        "status": "partial",
+        "why": "a verifier has to know which keys belong to a legitimate authority before believing any proof."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "zero-knowledge proofs in production since Zcash in 2016 and now in zk-rollups verifying millions of proofs",
+        "unlocks": "confidence that the cryptography works at scale, even though identity use is still mostly pilots."
+      },
+      {
+        "stage": "Next",
+        "milestone": "EU Digital Identity Wallet under eIDAS 2.0, with member states required to offer wallets to residents during 2026",
+        "unlocks": "hundreds of millions of people holding government-backed credentials that can prove a fact without handing over the document."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reusable KYC and age checks across unrelated services",
+        "unlocks": "one verified credential instead of the same passport scan sent to dozens of companies."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general anonymous credentials, plus post-quantum and transparent proof systems",
+        "unlocks": "everyday proofs about income, qualifications or entitlements with no central party seeing the underlying data."
+      }
+    ]
+  }
+}

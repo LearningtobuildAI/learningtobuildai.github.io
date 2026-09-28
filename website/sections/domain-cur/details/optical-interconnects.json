@@ -29,5 +29,150 @@
         "def": "The process of creating semiconductor devices by layering various materials on a substrate using precise techniques."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Photonic integrated circuit (PIC)",
+        "role": "routes and manipulates light on a silicon chip.",
+        "parts": [
+          "silicon-on-insulator waveguides",
+          "modulators",
+          "photodetectors",
+          "couplers"
+        ]
+      },
+      {
+        "name": "Light source",
+        "role": "provides the continuous-wave laser light that the data is written onto.",
+        "parts": [
+          "external laser module (1310 nm or 1550 nm)",
+          "or integrated III-V laser",
+          "optical isolator"
+        ]
+      },
+      {
+        "name": "Modulator",
+        "role": "converts a fast electrical data signal into an optical one.",
+        "parts": [
+          "Mach-Zehnder interferometer or ring resonator",
+          "doping junctions",
+          "driver electronics"
+        ]
+      },
+      {
+        "name": "Photodetector and receiver",
+        "role": "turns incoming light back into an electrical signal.",
+        "parts": [
+          "germanium-on-silicon photodiode",
+          "transimpedance amplifier (TIA)",
+          "equaliser"
+        ]
+      },
+      {
+        "name": "Fiber coupling and packaging",
+        "role": "gets light reliably in and out of the chip.",
+        "parts": [
+          "grating or edge couplers",
+          "fiber array unit",
+          "alignment and epoxy"
+        ]
+      },
+      {
+        "name": "Module or co-package",
+        "role": "houses the optics with the switching or compute chip.",
+        "parts": [
+          "pluggable module housing",
+          "or co-packaged optics on a substrate",
+          "thermal management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the PIC wafer",
+        "detail": "Waveguides are patterned on 300 mm silicon-on-insulator wafers using deep-ultraviolet lithography, the same toolset as advanced CMOS."
+      },
+      {
+        "title": "Form modulators and detectors",
+        "detail": "Ion implantation creates the diode structures for modulators; germanium is grown selectively and patterned into photodetectors."
+      },
+      {
+        "title": "Add metal and vias",
+        "detail": "Copper wiring connects the photonic devices to the electronic driver and amplifier chips."
+      },
+      {
+        "title": "Attach the laser",
+        "detail": "A III-V laser die is either bonded to the PIC or kept in a separate module and coupled in with lensed fiber."
+      },
+      {
+        "title": "Couple the fiber",
+        "detail": "Fiber array units are actively aligned to on-chip couplers and fixed in place, a step that dominates assembly cost."
+      },
+      {
+        "title": "Test and burn-in",
+        "detail": "Every optical channel is tested for bit-error rate and power before packaging."
+      },
+      {
+        "title": "Assemble the module or co-package",
+        "detail": "The PIC is placed in a pluggable transceiver or bonded directly alongside a switch ASIC on a common substrate."
+      },
+      {
+        "title": "Deploy and link",
+        "detail": "Modules are plugged into switches or accelerators, and the optical link is trained and monitored in the data centre."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics manufacturing",
+        "status": "exists",
+        "why": "photonic chips are made on established CMOS lines, giving low cost and high volume."
+      },
+      {
+        "tech": "High-speed optical modulators",
+        "status": "exists",
+        "why": "they must switch light hundreds of billions of times per second with low loss."
+      },
+      {
+        "tech": "Efficient fiber-to-chip coupling",
+        "status": "exists",
+        "why": "misalignment of a fraction of a micrometre loses most of the light."
+      },
+      {
+        "tech": "Co-packaged optics",
+        "status": "partial",
+        "why": "putting optics on the same package as the switch chip is demonstrated but only beginning to ship."
+      },
+      {
+        "tech": "Standards for optical interfaces",
+        "status": "exists",
+        "why": "multi-vendor interoperability lets data centres mix equipment from different suppliers."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pluggable 800G and 1.6T optical transceivers in data centres",
+        "unlocks": "high-bandwidth links between switches and between racks with lower power than copper."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-packaged optics on switch ASICs",
+        "unlocks": "removes the electrical loss of long copper traces from the switch faceplate to the chip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "optical I/O chiplets for GPUs and accelerators",
+        "unlocks": "chip-to-chip and board-to-board links at terabit speeds with less heat."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "all-optical switching fabrics inside AI clusters",
+        "unlocks": "scaling to many thousands of accelerators without an electrical bottleneck."
+      }
+    ]
   }
 }

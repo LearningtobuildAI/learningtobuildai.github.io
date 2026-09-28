@@ -33,5 +33,150 @@
         "def": "A cylindrical structure used in MTF to compress and contain the plasma target during fusion attempts."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Plasma injector",
+        "role": "forms a compact, magnetised plasma ring and fires it into the reaction chamber.",
+        "parts": [
+          "formation electrodes and gas valves",
+          "magnet coils",
+          "accelerator section",
+          "capacitor bank"
+        ]
+      },
+      {
+        "name": "Compression driver",
+        "role": "delivers the mechanical blow that crushes the plasma in a few microseconds.",
+        "parts": [
+          "hydraulic or pneumatic pistons",
+          "precision trigger and timing electronics",
+          "energy storage"
+        ]
+      },
+      {
+        "name": "Liquid-metal liner",
+        "role": "a rotating molten lead-lithium vortex that collapses inward and squeezes the plasma.",
+        "parts": [
+          "molten lead-lithium (PbLi)",
+          "vortex-forming chamber and nozzles",
+          "high-temperature pumps and seals"
+        ]
+      },
+      {
+        "name": "Reaction chamber",
+        "role": "a steel vessel that holds the vacuum, the liner and the blast of each pulse.",
+        "parts": [
+          "vacuum vessel",
+          "vacuum pumps",
+          "neutron shielding"
+        ]
+      },
+      {
+        "name": "Heat and fuel recovery",
+        "role": "the liner absorbs the fusion neutrons, carrying off heat and breeding tritium from lithium.",
+        "parts": [
+          "PbLi circulation loop",
+          "tritium extraction unit",
+          "heat exchanger and steam turbine"
+        ]
+      },
+      {
+        "name": "Diagnostics and control",
+        "role": "times each pulse and measures what the plasma actually did.",
+        "parts": [
+          "interferometers and spectroscopy",
+          "neutron detectors",
+          "sub-microsecond control system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Form the magnetised plasma",
+        "detail": "Gas is ionised in an injector and shaped by coils into a self-contained magnetised ring (a spheromak) that carries its own magnetic field."
+      },
+      {
+        "title": "Create the liquid-metal vortex",
+        "detail": "Molten lead-lithium is spun inside the chamber so centrifugal force holds a cylindrical cavity open in the centre — the 'liner'."
+      },
+      {
+        "title": "Inject and trap the plasma",
+        "detail": "The plasma ring is fired into the cavity, where the liquid metal wall and magnetic field keep it away from any solid surface."
+      },
+      {
+        "title": "Compress",
+        "detail": "Pistons slam the outside of the chamber; the pressure wave collapses the cavity inward at tens to hundreds of metres per second, squeezing the plasma and its field together."
+      },
+      {
+        "title": "Heat to fusion conditions",
+        "detail": "Compression heats the plasma nearly adiabatically toward roughly 10 keV (about 100 million °C), where deuterium and tritium nuclei begin to fuse."
+      },
+      {
+        "title": "Burn and absorb neutrons",
+        "detail": "Fusion lasts microseconds. The neutrons are stopped in the surrounding liquid metal, depositing their energy there."
+      },
+      {
+        "title": "Extract heat and breed fuel",
+        "detail": "The hot lead-lithium is pumped out to a heat exchanger, and lithium in the metal breeds tritium to refuel the machine."
+      },
+      {
+        "title": "Reset and repeat",
+        "detail": "The pistons withdraw, the vortex reforms, and the cycle repeats several times a second — the engineering challenge is doing this reliably, thousands of times a day."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Magnetised plasma formation and sustainment",
+        "status": "partial",
+        "why": "the plasma ring has to stay stable long enough to be compressed, which has been shown only at small scale."
+      },
+      {
+        "tech": "High-energy, fast-acting mechanical drivers",
+        "status": "exists",
+        "why": "industrial hydraulics and pneumatic rams already supply the energies and repeat rates needed, though not yet with fusion-grade timing."
+      },
+      {
+        "tech": "Liquid lead-lithium handling",
+        "status": "partial",
+        "why": "molten-metal loops exist in fission and blanket research, but pumping and sealing lead-lithium at fusion temperature for years is unproven."
+      },
+      {
+        "tech": "Tritium breeding and recovery",
+        "status": "missing",
+        "why": "tritium is scarce and radioactive; a plant must make and capture its own fuel."
+      },
+      {
+        "tech": "Neutron-tolerant structural materials",
+        "status": "missing",
+        "why": "a pulse-repeating chamber takes neutron and thermal shock that no qualified material currently survives for a plant lifetime."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "bench-scale experiments forming and compressing magnetised plasmas",
+        "unlocks": "evidence that a liquid liner can compress a plasma without losing it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated pulse experiments that produce measurable fusion neutrons",
+        "unlocks": "validation of the whole cycle — form, inject, compress, breed, reset."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a single-machine pilot plant that recovers heat and shows net energy gain",
+        "unlocks": "a credible cost case, since the design uses cheap pistons and liquid metal rather than expensive superconducting magnets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "modular commercial units",
+        "unlocks": "factory-built fusion modules small enough to site near demand, if materials and tritium breeding are solved."
+      }
+    ]
   }
 }

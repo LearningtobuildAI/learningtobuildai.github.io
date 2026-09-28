@@ -33,5 +33,165 @@
         "def": "Biocompatible materials used in bioprinting that are later removed to create channels for vascularisation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Bioink formulation",
+        "role": "Provides living cells and a supportive matrix that can be printed and then crosslinked into a solid tissue.",
+        "parts": [
+          "cell-laden hydrogel (e.g., alginate, gelatin methacryloyl)",
+          "crosslinker (photoinitiator or ionic solution)",
+          "growth factors and nutrients"
+        ]
+      },
+      {
+        "name": "Sacrificial vascular ink",
+        "role": "Creates a network of channels that are later flushed out to become perfusable blood vessels.",
+        "parts": [
+          "thermoresponsive polymer (e.g., Pluronic F127)",
+          "gelatin or carbohydrate glass",
+          "removal method (cooling, dissolving, or melting)"
+        ]
+      },
+      {
+        "name": "Printing system",
+        "role": "Deposits multiple materials layer by layer with precise spatial control.",
+        "parts": [
+          "printhead (extrusion, inkjet, or laser-assisted)",
+          "XYZ motion stage",
+          "nozzle or orifice",
+          "temperature and pressure controllers"
+        ]
+      },
+      {
+        "name": "Endothelialisation and perfusion",
+        "role": "Lines the channels with endothelial cells and pumps oxygenated medium through them to keep the tissue alive.",
+        "parts": [
+          "endothelial cells",
+          "peristaltic or syringe pump",
+          "bioreactor chamber",
+          "sterile tubing and connectors"
+        ]
+      },
+      {
+        "name": "Imaging and control",
+        "role": "Verifies channel geometry, cell distribution, and tissue structure during and after printing.",
+        "parts": [
+          "optical microscope",
+          "fluorescent dyes and cameras",
+          "print-path software"
+        ]
+      },
+      {
+        "name": "Support matrix and tissue cells",
+        "role": "The actual organ-specific cells and structural scaffold that give the tissue its function.",
+        "parts": [
+          "parenchymal cells (e.g., hepatocytes, cardiomyocytes)",
+          "structural hydrogel or sacrificial support",
+          "crosslinking agents"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the tissue and vascular tree",
+        "detail": "Use computer-aided design to model the organ shape and a branching vascular network, ensuring no cell is more than 200 µm from a channel — the approximate diffusion limit for oxygen."
+      },
+      {
+        "title": "Prepare the bioinks",
+        "detail": "Mix tissue-specific cells with a hydrogel precursor. Separately prepare a sacrificial ink, such as Pluronic F127, that liquefies when cooled to around 4 °C."
+      },
+      {
+        "title": "Calibrate the printer",
+        "detail": "Set extrusion pressure, print speed, and nozzle temperature so that both the cell-laden ink and the sacrificial ink deposit as continuous, uniform filaments."
+      },
+      {
+        "title": "Print the construct",
+        "detail": "Alternate layers of cell-laden bioink and sacrificial ink, building a 3D block of tissue with an embedded network of channels that mimic blood vessels."
+      },
+      {
+        "title": "Crosslink the matrix",
+        "detail": "Apply light or a chemical crosslinker to solidify the cell-laden hydrogel while leaving the sacrificial ink intact and removable."
+      },
+      {
+        "title": "Remove the sacrificial ink",
+        "detail": "Cool the construct to liquefy the sacrificial ink, then flush it out with a warm buffer to leave hollow, interconnected channels."
+      },
+      {
+        "title": "Seed endothelial cells",
+        "detail": "Perfuse a suspension of endothelial cells through the channels so they adhere to the walls and form a confluent, blood-compatible lining."
+      },
+      {
+        "title": "Perfuse and mature",
+        "detail": "Connect the construct to a bioreactor that pumps oxygenated nutrient medium through the channels. Culture for days to weeks to allow the tissue to mature and stabilise."
+      },
+      {
+        "title": "Test and analyse",
+        "detail": "Assess cell viability, vessel integrity, and tissue-specific function using microscopy and biochemical assays before the model is used for research or drug testing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "3D bioprinting (extrusion, inkjet, or laser-assisted)",
+        "status": "partial",
+        "why": "Needed to deposit multiple materials with the spatial control required to build a branching vascular network."
+      },
+      {
+        "tech": "Biocompatible hydrogels",
+        "status": "exists",
+        "why": "Provide a printable, cell-friendly matrix that can be crosslinked into a stable tissue scaffold."
+      },
+      {
+        "tech": "Endothelial cell biology",
+        "status": "exists",
+        "why": "Understanding how to line channels with endothelial cells that resist clotting and form tight junctions is essential for functional vessels."
+      },
+      {
+        "tech": "Microfluidic perfusion",
+        "status": "exists",
+        "why": "Keeps nutrient medium flowing through the channels, which is the only way to keep cells beyond a few hundred micrometres alive."
+      },
+      {
+        "tech": "High-resolution printing below 50 µm",
+        "status": "partial",
+        "why": "Capillaries are 5–10 µm wide, but most bioprinters currently struggle to reliably create channels that small."
+      },
+      {
+        "tech": "Long-term bioreactor culture",
+        "status": "partial",
+        "why": "Thick tissues require weeks of sterile, stable perfusion without contamination or structural degradation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Print vascularised tissue models up to a few millimetres thick for drug toxicity testing.",
+        "unlocks": "More predictive drug screening and a reduction in animal testing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Achieve capillary-scale channels (under 10 µm) with stable perfusion for several weeks, enabling tissues thicker than 1 cm.",
+        "unlocks": "Functional organ models for research and early transplantation studies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integrate multiple cell types, including immune cells, to mimic organ complexity and disease states.",
+        "unlocks": "Advanced disease modelling and personalised medicine approaches."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Implantable vascularised tissues (e.g., skin, blood vessel patches) that connect to a patient's own circulation.",
+        "unlocks": "Regenerative therapies for organ failure and chronic wounds."
+      },
+      {
+        "stage": "Long-term",
+        "milestone": "Whole organs (e.g., kidney, liver) grown from a patient's own cells with a complete vascular tree.",
+        "unlocks": "An end to donor organ shortages and immune rejection."
+      }
+    ]
   }
 }

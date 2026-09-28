@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Syndrome extraction interface",
+        "role": "reads the measurement outcomes of ancilla qubits that flag errors without collapsing the data qubits.",
+        "parts": [
+          "ancilla qubits",
+          "measurement circuits",
+          "classical readout lines"
+        ]
+      },
+      {
+        "name": "Decoder algorithm core",
+        "role": "turns a stream of syndromes into a guess at which physical errors occurred.",
+        "parts": [
+          "matching or union-find graph decoder",
+          "neural-network or tensor-network variants",
+          "lookup tables for small codes"
+        ]
+      },
+      {
+        "name": "Classical processing fabric",
+        "role": "runs the decoder fast enough to keep up with the quantum computer.",
+        "parts": [
+          "field-programmable gate arrays (FPGAs)",
+          "application-specific integrated circuits (ASICs)",
+          "memory and interconnect"
+        ]
+      },
+      {
+        "name": "Feedback and control path",
+        "role": "applies corrections to the live quantum computation before errors spread.",
+        "parts": [
+          "real-time control electronics",
+          "pulse generators",
+          "synchronisation with the quantum control stack"
+        ]
+      },
+      {
+        "name": "Calibration and validation",
+        "role": "keeps the decoder matched to the machine's actual noise.",
+        "parts": [
+          "noise-characterisation routines",
+          "simulation test benches",
+          "hardware-in-the-loop checks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the quantum error-correcting code",
+        "detail": "Most designs use a surface code or a related topological code, which defines what a syndrome means and how errors must be corrected."
+      },
+      {
+        "title": "Model the noise",
+        "detail": "Error rates for each gate and measurement are measured on the real hardware, because the decoder's accuracy depends on this model."
+      },
+      {
+        "title": "Design the decoder algorithm",
+        "detail": "A graph-based method such as minimum-weight perfect matching or union-find is chosen for its speed and accuracy; neural decoders are researched as alternatives."
+      },
+      {
+        "title": "Map it onto classical hardware",
+        "detail": "The algorithm is rewritten into parallel, pipelined logic for FPGAs, or laid out as an ASIC when volumes justify the cost."
+      },
+      {
+        "title": "Meet the latency budget",
+        "detail": "The decoder must return a correction within the coherence time of the qubits, often under a microsecond, which sets how much parallelism and memory bandwidth are needed."
+      },
+      {
+        "title": "Integrate with the quantum control stack",
+        "detail": "The decoder is wired into the same real-time electronics that drive the qubits, so syndromes arrive and corrections leave in step with the experiment."
+      },
+      {
+        "title": "Validate in simulation and on hardware",
+        "detail": "Decoders are first tested against simulated noise, then run on small real quantum processors to check that logical error rates fall as expected."
+      },
+      {
+        "title": "Scale to many qubits",
+        "detail": "Larger codes need decoder instances running in parallel, with careful partitioning so that communication does not become the bottleneck."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum error-correcting codes",
+        "status": "exists",
+        "why": "surface and related codes are well understood in theory and are now run on small hardware."
+      },
+      {
+        "tech": "Qubits with error rates below the code threshold",
+        "status": "partial",
+        "why": "below-threshold operation has been shown in small experiments, but not yet at the scale of a useful computation."
+      },
+      {
+        "tech": "Fast classical logic (FPGA and ASIC)",
+        "status": "exists",
+        "why": "these devices can implement graph decoders with sub-microsecond latency in laboratory demonstrations."
+      },
+      {
+        "tech": "Low-latency cryogenic or room-temperature control electronics",
+        "status": "partial",
+        "why": "signals must move between the cryogenic quantum chip and the decoder without introducing delays that break the correction cycle."
+      },
+      {
+        "tech": "Integration with quantum control software",
+        "status": "partial",
+        "why": "the decoder must be synchronised with pulse-level control, which is still an active engineering problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "real-time decoding demonstrated on small surface-code experiments",
+        "unlocks": "proof that correction can keep pace with a handful of logical qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "decoders scaled to hundreds of qubits with FPGA clusters",
+        "unlocks": "logical qubits that live long enough for early algorithms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ASIC decoders with tight integration to cryogenic control",
+        "unlocks": "the latency and power needed for thousands of qubits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant logical processors with thousands of logical qubits",
+        "unlocks": "practical quantum computing for chemistry, materials and cryptography."
+      }
+    ]
+  }
+}

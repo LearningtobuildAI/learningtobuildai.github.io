@@ -29,5 +29,140 @@
         "def": "Real-time data feeds from external sources, such as financial news and global trade databases, integrated into the system for continuous updates."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data ingestion and streaming",
+        "role": "collects live market prices, trade flows, and economic indicators from multiple sources.",
+        "parts": [
+          "API connectors",
+          "message queues",
+          "data normalisation"
+        ]
+      },
+      {
+        "name": "Data storage and processing",
+        "role": "cleans, aligns, and stores historical and real-time data for analysis.",
+        "parts": [
+          "time-series database",
+          "ETL pipelines",
+          "feature store"
+        ]
+      },
+      {
+        "name": "Forecasting models",
+        "role": "generate predictions using statistical and machine learning methods.",
+        "parts": [
+          "statistical models (e.g. ARIMA, exponential smoothing)",
+          "machine learning models (e.g. gradient boosting, LSTM, transformers)",
+          "ensemble methods"
+        ]
+      },
+      {
+        "name": "Training and backtesting",
+        "role": "fits models and evaluates their accuracy against historical data.",
+        "parts": [
+          "backtesting framework",
+          "cross-validation",
+          "hyperparameter tuning"
+        ]
+      },
+      {
+        "name": "Deployment and serving",
+        "role": "runs models in production and delivers forecasts to users and downstream systems.",
+        "parts": [
+          "model serving infrastructure",
+          "API endpoints",
+          "scheduling and orchestration"
+        ]
+      },
+      {
+        "name": "Monitoring and governance",
+        "role": "tracks performance, detects drift, and ensures compliance with regulations.",
+        "parts": [
+          "dashboards",
+          "alerting",
+          "audit logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define forecasting targets",
+        "detail": "Specify which variables to predict (e.g. revenue, cash flow, market volatility) and the required horizon and accuracy."
+      },
+      {
+        "title": "Ingest and integrate data",
+        "detail": "Connect to live APIs and internal systems, stream data into a central store, and align timestamps across sources."
+      },
+      {
+        "title": "Clean and engineer features",
+        "detail": "Handle missing values, remove outliers, and create lagged, rolling, and calendar-based features that help models learn patterns."
+      },
+      {
+        "title": "Select and train models",
+        "detail": "Try statistical and machine learning approaches, tune hyperparameters, and train on historical data."
+      },
+      {
+        "title": "Backtest and validate",
+        "detail": "Evaluate models on held-out time periods, compare against benchmarks, and stress-test under different market conditions."
+      },
+      {
+        "title": "Deploy into production",
+        "detail": "Package the best model, expose it via an API, and schedule regular retraining as new data arrives."
+      },
+      {
+        "title": "Monitor and update",
+        "detail": "Track forecast errors, detect concept drift, and retrain or adjust models to maintain accuracy over time."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Time-series forecasting algorithms",
+        "status": "exists",
+        "why": "they provide the mathematical foundation for predicting future values from historical patterns."
+      },
+      {
+        "tech": "Real-time data APIs and streaming infrastructure",
+        "status": "exists",
+        "why": "live market and trade data must be ingested continuously to keep forecasts current."
+      },
+      {
+        "tech": "Cloud computing and scalable storage",
+        "status": "exists",
+        "why": "large volumes of data and frequent model training require elastic compute and storage."
+      },
+      {
+        "tech": "Data quality and governance",
+        "status": "partial",
+        "why": "inconsistent or biased data remains a common cause of poor forecast accuracy in practice."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "batch or near-real-time forecasting for budgets, risk, and planning",
+        "unlocks": "faster reporting cycles and more consistent financial projections."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully real-time forecasts integrated with trading and operational systems",
+        "unlocks": "continuous updating of positions and resource allocation as markets move."
+      },
+      {
+        "stage": "Next",
+        "milestone": "incorporation of alternative data and causal inference",
+        "unlocks": "better anticipation of regime changes and less reliance on purely historical patterns."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous forecasting agents that adjust strategies automatically",
+        "unlocks": "self-tuning financial operations with human oversight focused on exceptions."
+      }
+    ]
   }
 }

@@ -35,5 +35,153 @@
         "def": "Devices that detect physical properties like temperature, pressure, or position for navigation and task completion."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mobile base",
+        "role": "moves the robot around the site and positions it for work.",
+        "parts": [
+          "wheeled or tracked chassis (ground)",
+          "multirotor frame (aerial)",
+          "drive motors",
+          "battery pack"
+        ]
+      },
+      {
+        "name": "Manipulator and end effector",
+        "role": "performs physical tasks such as placing bricks or connecting pipework.",
+        "parts": [
+          "robotic arm",
+          "grippers",
+          "tool changer",
+          "force-torque sensor"
+        ]
+      },
+      {
+        "name": "Perception suite",
+        "role": "maps the site, locates materials and guides precise placement.",
+        "parts": [
+          "stereo or depth cameras",
+          "LiDAR",
+          "inertial measurement unit",
+          "GNSS receiver"
+        ]
+      },
+      {
+        "name": "Onboard compute and AI",
+        "role": "runs localisation, object recognition, motion planning and manipulation policies.",
+        "parts": [
+          "edge GPU computer",
+          "real-time operating system",
+          "machine-learning models"
+        ]
+      },
+      {
+        "name": "Site integration and safety",
+        "role": "coordinates with workers, building plans and other machines while staying safe.",
+        "parts": [
+          "wireless network link",
+          "BIM/digital-twin interface",
+          "emergency stop",
+          "geofencing"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "supplies energy for locomotion and manipulation.",
+        "parts": [
+          "lithium-ion battery",
+          "charging dock or tether",
+          "power management electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a single task",
+        "detail": "Choose one well-defined job, such as laying bricks or fitting a repeated pipe run, because general-purpose construction work is far too varied for one machine."
+      },
+      {
+        "title": "Design the platform",
+        "detail": "Select a ground or aerial base that can carry the required arm and payload, and size the battery for a realistic work shift."
+      },
+      {
+        "title": "Integrate sensors and actuators",
+        "detail": "Mount cameras, LiDAR, the robotic arm and tool changer, and wire them to the onboard computer."
+      },
+      {
+        "title": "Build perception and localisation",
+        "detail": "Write software that builds a map of the changing site, recognises bricks, pipes and workers, and tracks the robot’s position to centimetre accuracy."
+      },
+      {
+        "title": "Train manipulation policies",
+        "detail": "Use simulation and imitation learning so the arm can grasp and place irregular objects without a fixed jig."
+      },
+      {
+        "title": "Add safety and coordination",
+        "detail": "Implement emergency stops, geofencing, and a link to the building information model so the robot knows what to build and where."
+      },
+      {
+        "title": "Test in simulation and mock-ups",
+        "detail": "Run the full task in a digital twin and then on a controlled test site before any live deployment."
+      },
+      {
+        "title": "Deploy with human supervision",
+        "detail": "Start with teleoperation and a safety spotter, then gradually hand over more tasks as reliability improves."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Robust SLAM in cluttered, changing environments",
+        "status": "partial",
+        "why": "construction sites are full of moving people, vehicles and materials that confuse today’s mapping systems."
+      },
+      {
+        "tech": "Dexterous manipulation of heavy, irregular objects",
+        "status": "partial",
+        "why": "bricks and pipe sections vary in shape and weight, and robots still struggle to handle them as reliably as a human."
+      },
+      {
+        "tech": "High-capacity, fast-charging batteries",
+        "status": "exists",
+        "why": "battery life limits how long a robot can work before it must return to charge."
+      },
+      {
+        "tech": "Building information modelling (BIM)",
+        "status": "exists",
+        "why": "a digital plan is needed for the robot to know what to build and where."
+      },
+      {
+        "tech": "Safety standards for autonomous machines on sites",
+        "status": "missing",
+        "why": "rules for robots working alongside people are still being written, which slows deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "task-specific robots and drones for surveying, bricklaying and drilling, mostly teleoperated or semi-autonomous",
+        "unlocks": "productivity gains on repetitive, well-defined jobs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervised autonomy for single tasks, with a human able to take over",
+        "unlocks": "one operator overseeing several machines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-robot coordination on a shared digital twin of the site",
+        "unlocks": "robots handing off work and materials to each other."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose construction robots that can install plumbing and other trades",
+        "unlocks": "a step change in how buildings are assembled, if safety and dexterity problems are solved."
+      }
+    ]
   }
 }

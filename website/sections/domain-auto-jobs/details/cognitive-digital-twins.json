@@ -30,5 +30,154 @@
         "def": "The process of collecting, processing, and delivering data from various sources into a system for analysis and modeling."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Knowledge base and retrieval",
+        "role": "stores and indexes the person's professional documents, communications, and past decisions for quick search.",
+        "parts": [
+          "document store",
+          "vector database",
+          "retrieval pipeline"
+        ]
+      },
+      {
+        "name": "Base language model",
+        "role": "provides general language understanding, reasoning, and generation capabilities.",
+        "parts": [
+          "pre-trained transformer model",
+          "tokenizer"
+        ]
+      },
+      {
+        "name": "Personalization layer",
+        "role": "adapts the model to the individual's writing style, vocabulary, and decision patterns.",
+        "parts": [
+          "fine-tuning dataset",
+          "adapter modules or full fine-tuning",
+          "style embeddings"
+        ]
+      },
+      {
+        "name": "Memory and context manager",
+        "role": "maintains conversation history and long-term memory of decisions for continuity.",
+        "parts": [
+          "session memory",
+          "episodic memory store",
+          "context window manager"
+        ]
+      },
+      {
+        "name": "Interaction interface",
+        "role": "allows users to query the twin and receive responses in text, voice, or via API.",
+        "parts": [
+          "chat interface",
+          "API",
+          "voice interface"
+        ]
+      },
+      {
+        "name": "Governance and security",
+        "role": "ensures privacy, access control, and alignment with professional standards.",
+        "parts": [
+          "access control",
+          "audit logs",
+          "privacy filters",
+          "bias detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect professional data",
+        "detail": "Gather the individual's emails, reports, memos, meeting transcripts, and decision logs, with consent and legal compliance."
+      },
+      {
+        "title": "Prepare and structure data",
+        "detail": "Clean, anonymize where needed, and organize the data into a knowledge base. Create question-answer pairs or decision scenarios for fine-tuning."
+      },
+      {
+        "title": "Build retrieval index",
+        "detail": "Convert documents into embeddings and store them in a vector database so the system can retrieve relevant context on demand."
+      },
+      {
+        "title": "Fine-tune the base model",
+        "detail": "Use supervised fine-tuning on the individual's writing and decision outcomes. Optionally apply reinforcement learning from human feedback to align with professional judgment."
+      },
+      {
+        "title": "Integrate retrieval and model",
+        "detail": "Combine the fine-tuned model with the retrieval system so responses are grounded in the person's specific knowledge and past cases."
+      },
+      {
+        "title": "Add memory mechanisms",
+        "detail": "Implement session and long-term memory so the twin remembers past interactions and can update its knowledge base over time."
+      },
+      {
+        "title": "Validate against real decisions",
+        "detail": "Test the twin on held-out decisions the person made. Measure agreement, identify failure modes, and iterate on data and fine-tuning."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Release to a limited set of users, monitor for errors and drift, and continuously update with new data and user feedback."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "provide the core language and reasoning ability needed to mimic professional communication."
+      },
+      {
+        "tech": "Retrieval-augmented generation (RAG)",
+        "status": "exists",
+        "why": "lets the model access specific, up-to-date professional knowledge instead of relying only on training data."
+      },
+      {
+        "tech": "Parameter-efficient fine-tuning",
+        "status": "exists",
+        "why": "makes it practical to personalize a large model on the limited data one person generates."
+      },
+      {
+        "tech": "High-quality personal data",
+        "status": "partial",
+        "why": "a professional's records are often scattered across systems and restricted by privacy rules."
+      },
+      {
+        "tech": "Evaluation methods for professional judgment",
+        "status": "missing",
+        "why": "there is no standard way to measure whether an AI truly replicates a person's decision-making quality."
+      },
+      {
+        "tech": "Privacy-preserving computation",
+        "status": "partial",
+        "why": "handling sensitive professional data safely requires techniques like federated learning or differential privacy."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI assistants that summarize documents and draft routine communications using retrieval-augmented generation",
+        "unlocks": "time savings and familiarity with AI in professional settings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Domain-specific decision-support tools fine-tuned on an individual's past work, with human oversight",
+        "unlocks": "personalized advice for routine decisions and early experience with digital-twin workflows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Interactive digital twins for specific roles that autonomously handle bounded tasks and escalate complex ones",
+        "unlocks": "partial delegation of professional workload under clear limits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Full-fidelity cognitive digital twins that act as independent professional agents",
+        "unlocks": "scalable expertise, but only after solving validation, liability, and privacy challenges."
+      }
+    ]
   }
 }

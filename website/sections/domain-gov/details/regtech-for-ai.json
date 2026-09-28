@@ -34,5 +34,149 @@
         "def": "Adherence to laws, regulations, or standards set by governing bodies."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Model and system inventory",
+        "role": "a live register of every AI system in use, who owns it and what it does.",
+        "parts": [
+          "auto-discovery connectors to cloud and ML platforms",
+          "metadata store",
+          "ownership and lifecycle records"
+        ]
+      },
+      {
+        "name": "Risk classification engine",
+        "role": "decides which rules apply to a given use case.",
+        "parts": [
+          "rule set encoding regulatory categories",
+          "questionnaire or intake form",
+          "jurisdiction mapping"
+        ]
+      },
+      {
+        "name": "Data governance and lineage",
+        "role": "tracks what data trained or drives each model, and whether its use is lawful.",
+        "parts": [
+          "data catalogue",
+          "provenance and consent records",
+          "retention rules"
+        ]
+      },
+      {
+        "name": "Testing and evaluation",
+        "role": "measures bias, accuracy, robustness and drift before and after deployment.",
+        "parts": [
+          "fairness metric libraries",
+          "red-team and stress-test harnesses",
+          "evaluation datasets"
+        ]
+      },
+      {
+        "name": "Evidence and documentation",
+        "role": "produces the paperwork regulators and auditors expect.",
+        "parts": [
+          "model cards and technical files",
+          "versioned audit log",
+          "automated report generation"
+        ]
+      },
+      {
+        "name": "Runtime monitoring and incidents",
+        "role": "watches deployed models and routes problems to humans.",
+        "parts": [
+          "telemetry and drift alerts",
+          "human-oversight workflow",
+          "incident log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Translate rules into controls",
+        "detail": "Legal text and standards such as the NIST AI Risk Management Framework or ISO/IEC 42001 are broken into discrete, testable controls."
+      },
+      {
+        "title": "Connect to the estate",
+        "detail": "Connectors read model registries, cloud accounts, code repositories and procurement records so systems are discovered automatically rather than self-reported."
+      },
+      {
+        "title": "Capture and classify each system",
+        "detail": "Users record purpose, data, affected people and jurisdiction; the rules engine assigns a risk tier and the obligations that follow."
+      },
+      {
+        "title": "Automate evidence collection",
+        "detail": "Scheduled jobs run bias, robustness and drift tests and store results with timestamps and model versions attached."
+      },
+      {
+        "title": "Generate documentation",
+        "detail": "Templates are filled from the collected evidence to produce model cards, technical files and conformity declarations."
+      },
+      {
+        "title": "Monitor in production",
+        "detail": "Live telemetry is checked against thresholds; breaches trigger alerts, human review and a recorded decision."
+      },
+      {
+        "title": "Expose an audit interface",
+        "detail": "Dashboards and exportable, immutable evidence packs let internal auditors, customers or regulators inspect the trail."
+      },
+      {
+        "title": "Keep the rules current",
+        "detail": "The control library is versioned and updated as regulations and harmonised standards change, so past assessments stay reproducible."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Machine-readable regulatory requirements",
+        "status": "partial",
+        "why": "the EU AI Act set obligations that phase in from 2024, but the harmonised technical standards that make them checkable are still being written."
+      },
+      {
+        "tech": "Model registries and ML metadata tooling",
+        "status": "exists",
+        "why": "compliance tools need a reliable list of models, versions and training runs to attach evidence to."
+      },
+      {
+        "tech": "Fairness, robustness and drift metrics",
+        "status": "exists",
+        "why": "there is a working toolkit of statistical measures, though which ones satisfy a regulator is unsettled."
+      },
+      {
+        "tech": "Data lineage and provenance",
+        "status": "partial",
+        "why": "traceability across large training corpora is often incomplete, weakening any claim about lawful data use."
+      },
+      {
+        "tech": "Organisational AI governance",
+        "status": "partial",
+        "why": "tools record decisions but cannot supply the accountable owner, review board or policy that regulation assumes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "firms build AI inventories and run voluntary assessments against frameworks such as the NIST AI RMF",
+        "unlocks": "visibility of what AI is actually deployed."
+      },
+      {
+        "stage": "Next",
+        "milestone": "high-risk obligations under the EU AI Act take effect and conformity assessment matures",
+        "unlocks": "a genuine market for auditable compliance tooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI governance platforms merge with model observability and security tooling",
+        "unlocks": "one pipeline that tests, documents and monitors a model continuously."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulator-facing reporting interfaces and mutual recognition between jurisdictions",
+        "unlocks": "evidence produced once can satisfy multiple regulators, cutting duplicated audits."
+      }
+    ]
   }
 }

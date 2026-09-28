@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Planner / reasoning core",
+        "role": "turns a goal into an ordered set of steps and decides what to do next.",
+        "parts": [
+          "large language model",
+          "planning loop (propose–act–observe)",
+          "context assembly",
+          "model router for cheap vs capable calls"
+        ]
+      },
+      {
+        "name": "Tool and connector layer",
+        "role": "gives the agent hands: typed calls into the software it must operate.",
+        "parts": [
+          "API connectors described by schemas",
+          "screen-level automation for legacy apps without APIs",
+          "authentication and credential broker",
+          "per-tool input/output validation"
+        ]
+      },
+      {
+        "name": "Memory and state",
+        "role": "remembers the goal, the documents behind decisions and what has already been done.",
+        "parts": [
+          "working scratchpad",
+          "retrieval index over policies and records",
+          "task state store",
+          "audit log of every action"
+        ]
+      },
+      {
+        "name": "Execution runtime",
+        "role": "runs the agent's actions safely and resumably.",
+        "parts": [
+          "durable workflow engine",
+          "sandboxed containers or virtual machines",
+          "browser automation for web-only tools",
+          "rate and spend limits"
+        ]
+      },
+      {
+        "name": "Guardrails and oversight",
+        "role": "keeps a probabilistic system inside permitted behaviour.",
+        "parts": [
+          "deterministic policy checks before irreversible actions",
+          "human approval gates",
+          "allowlists of domains, actions and amounts",
+          "escalation path to a person"
+        ]
+      },
+      {
+        "name": "Evaluation and observability",
+        "role": "measures whether the agent actually works, and why it failed.",
+        "parts": [
+          "traces of prompts, tool calls and results",
+          "replayable recorded task suites",
+          "success, cost and latency scoring",
+          "regression tests run before each model change"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the workflow",
+        "detail": "Watch people do the job and record it: inputs, systems touched, decision points, exception paths and what 'done' means. Agents fail on the steps nobody wrote down."
+      },
+      {
+        "title": "Define the tools",
+        "detail": "Wrap each system action as a typed call with a strict input schema — fetch invoice, update record, send email. For software with no API, capture click paths instead and treat the user interface as the interface."
+      },
+      {
+        "title": "Build the knowledge base",
+        "detail": "Load the policies, price lists and past cases the decisions depend on into a retrieval index that returns citations, so the agent's reasoning can be traced to a source."
+      },
+      {
+        "title": "Write the orchestration loop",
+        "detail": "The model proposes an action, the runtime validates and executes it, and the result is fed back for the next step. Loop until the goal is met, a limit is hit, or confidence falls below a threshold."
+      },
+      {
+        "title": "Make it durable",
+        "detail": "Checkpoint state after every step so a crash, a multi-day approval or a rate-limit pause can resume without redoing work or repeating a payment."
+      },
+      {
+        "title": "Sandbox and scope permissions",
+        "detail": "Run the agent in a throwaway container with credentials that can only reach the systems and records the task needs, never a general-purpose account."
+      },
+      {
+        "title": "Add deterministic guardrails",
+        "detail": "Hard-code the rules that must never be broken — maximum payment, no external email, no deletion — outside the model, where reasoning cannot talk its way past them."
+      },
+      {
+        "title": "Evaluate and harden",
+        "detail": "Replay a suite of recorded real tasks after every prompt or model change, then watch production traces for silent failure modes such as confidently wrong data entry."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "LLMs with reliable structured tool calling",
+        "status": "exists",
+        "why": "function and tool calling became a standard API feature from 2023, letting a model emit machine-checkable actions rather than prose."
+      },
+      {
+        "tech": "Reasoning-and-acting prompting patterns",
+        "status": "exists",
+        "why": "interleaving thought with action (as in the ReAct line of work) is what turns a chatbot into something that can act on results."
+      },
+      {
+        "tech": "Durable workflow execution engines",
+        "status": "exists",
+        "why": "long multi-step jobs need checkpointing and retries, already solved for conventional back-office automation."
+      },
+      {
+        "tech": "Standardised connector and context protocols",
+        "status": "partial",
+        "why": "interfaces such as the Model Context Protocol and OpenAPI descriptions exist, but coverage across enterprise software is uneven."
+      },
+      {
+        "tech": "Identity, permissions and evaluation for non-deterministic systems",
+        "status": "partial",
+        "why": "there is still no settled way to give an agent a scoped identity or to certify that a probabilistic workflow is safe to run unattended."
+      },
+      {
+        "tech": "Screen-level automation for legacy systems",
+        "status": "exists",
+        "why": "much corporate software has no usable API, so robotic process automation remains the fallback interface."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-domain assistants that draft and prepare work while a person approves each action",
+        "unlocks": "measured time savings in support, finance operations and back-office processing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "task-level autonomy inside one function, with full audit trails and replayed evaluation suites",
+        "unlocks": "agents trusted with defined workloads end to end, such as reconciliation or claims triage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standard agent identities, scoped permissions and cross-vendor hand-offs",
+        "unlocks": "workflows that span several companies' systems without a human relaying information."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "long-horizon operations supervised by exception rather than by step",
+        "unlocks": "accountability shifts from checking each action to auditing outcomes, which is the real barrier rather than model capability."
+      }
+    ]
+  }
+}

@@ -34,5 +34,155 @@
         "def": "A subset of machine learning based on artificial neural networks with representation learning. It typically involves multiple layers of nonlinear processing to extract features from raw data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Base language model",
+        "role": "the engine that predicts the next token and generates each reply.",
+        "parts": [
+          "transformer decoder layers",
+          "tokeniser",
+          "embeddings",
+          "attention and feed-forward weights"
+        ]
+      },
+      {
+        "name": "Character and persona layer",
+        "role": "keeps a given character's voice, backstory and style consistent across a chat.",
+        "parts": [
+          "character definition (name, greeting, traits)",
+          "system or persona conditioning",
+          "style fine-tuning data"
+        ]
+      },
+      {
+        "name": "Memory and context management",
+        "role": "decides what the model can still 'remember' once a conversation outgrows its context window.",
+        "parts": [
+          "rolling context buffer",
+          "summarisation of older turns",
+          "fact or memory store with retrieval",
+          "pinned character facts"
+        ]
+      },
+      {
+        "name": "Inference serving stack",
+        "role": "turns a request into streamed text fast enough to feel like conversation.",
+        "parts": [
+          "GPU cluster",
+          "request batching and scheduling",
+          "KV-cache management",
+          "quantised weights",
+          "streaming API"
+        ]
+      },
+      {
+        "name": "Safety and moderation",
+        "role": "screens inputs and outputs before and after generation.",
+        "parts": [
+          "input classifiers",
+          "output filters",
+          "age gating",
+          "reporting and review tools"
+        ]
+      },
+      {
+        "name": "Consumer app and creation tools",
+        "role": "where users build characters, discover them and chat.",
+        "parts": [
+          "mobile and web clients",
+          "character creation editor",
+          "discovery feed",
+          "chat interface with history"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble training data",
+        "detail": "Large text corpora are gathered for pretraining, while dialogue, script and roleplay material is curated separately for the conversational fine-tuning stage."
+      },
+      {
+        "title": "Pretrain a base model",
+        "detail": "The model learns to predict the next token over billions of words, which builds general language ability but no character behaviour."
+      },
+      {
+        "title": "Fine-tune on dialogue",
+        "detail": "Supervised training on multi-turn conversations teaches turn-taking, question answering and staying in a given persona."
+      },
+      {
+        "title": "Align to preferences",
+        "detail": "Human raters compare pairs of replies; methods such as reinforcement learning from human feedback or direct preference optimisation push the model toward replies that are engaging, in-character and safe."
+      },
+      {
+        "title": "Build the memory layer",
+        "detail": "Conversation history is stored per user, older turns are summarised, and character facts are embedded so they can be retrieved and re-inserted into the prompt."
+      },
+      {
+        "title": "Stand up serving infrastructure",
+        "detail": "GPU clusters run the model with batching, cached attention state and quantisation to cut cost per reply, exposed through a streaming API."
+      },
+      {
+        "title": "Layer on safety",
+        "detail": "Classifiers and filters are trained and placed on both the user input and the generated output, with age gates and human review queues."
+      },
+      {
+        "title": "Ship and iterate",
+        "detail": "Clients, character creation and discovery are released; telemetry, ratings and A/B tests then drive repeated retraining and prompt tuning."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer language models",
+        "status": "exists",
+        "why": "the self-attention architecture is what makes fluent multi-turn text generation practical at all."
+      },
+      {
+        "tech": "Large-scale GPU compute",
+        "status": "exists",
+        "why": "both pretraining and low-latency chat serving need thousands of accelerators running continuously."
+      },
+      {
+        "tech": "Preference and instruction tuning methods",
+        "status": "exists",
+        "why": "raw pretrained models drift out of character and ignore safety instructions without this step."
+      },
+      {
+        "tech": "Retrieval and long-context memory",
+        "status": "partial",
+        "why": "no model reliably remembers a very long relationship without external storage and summarisation."
+      },
+      {
+        "tech": "Reliable content moderation",
+        "status": "partial",
+        "why": "filters for a system designed to roleplay conflict, romance and villainy can never be perfect."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "text chat with user-created characters at consumer scale",
+        "unlocks": "entertainment, language practice and companionship use cases that already exist."
+      },
+      {
+        "stage": "Next",
+        "milestone": "persistent memory and voice input/output in real time",
+        "unlocks": "characters that recognise a returning user and can be spoken to naturally."
+      },
+      {
+        "stage": "Next",
+        "milestone": "characters that call tools and APIs to act, not just talk",
+        "unlocks": "tutors, game non-player characters and in-app assistants with a consistent personality."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "animated avatars with emotional modelling",
+        "unlocks": "immersive interactive entertainment — alongside unresolved questions about dependency and disclosure."
+      }
+    ]
   }
 }

@@ -34,5 +34,160 @@
         "def": "Methods used to separate and isolate proteins from other cellular components to ensure high-quality products with specific functions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Training data and structure databases",
+        "role": "the model learns the rules of protein folding from experimentally solved structures.",
+        "parts": [
+          "Protein Data Bank (more than 200,000 entries)",
+          "amino-acid sequence databases",
+          "multiple sequence alignments"
+        ]
+      },
+      {
+        "name": "Generative backbone model",
+        "role": "a diffusion model starts from random noise and repeatedly denoises it into a plausible 3D protein backbone.",
+        "parts": [
+          "noise schedule",
+          "equivariant neural network",
+          "conditioning inputs (target motif, symmetry, binding site)",
+          "sampling loop"
+        ]
+      },
+      {
+        "name": "Sequence design layer",
+        "role": "picks the amino-acid sequence that will fold into the generated backbone.",
+        "parts": [
+          "graph neural network such as ProteinMPNN",
+          "fixed-residue constraints",
+          "sequence sampling"
+        ]
+      },
+      {
+        "name": "In-silico validation",
+        "role": "predicts whether the design will actually fold and whether it has the intended shape.",
+        "parts": [
+          "structure predictors (AlphaFold, ESMFold, RoseTTAFold)",
+          "confidence metrics (pLDDT, predicted alignment error)",
+          "shape-complementarity and solubility filters"
+        ]
+      },
+      {
+        "name": "Wet-lab expression and assay",
+        "role": "turns designed sequences into real molecules and measures what they do.",
+        "parts": [
+          "gene synthesis",
+          "expression hosts (E. coli, yeast, mammalian cells)",
+          "binding and enzyme assays",
+          "cryo-electron microscopy or X-ray crystallography"
+        ]
+      },
+      {
+        "name": "Design–make–test–learn loop",
+        "role": "experimental results are fed back to retrain or re-condition the model.",
+        "parts": [
+          "assay data capture",
+          "fine-tuning or retraining",
+          "next-round library design"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble training data",
+        "detail": "Hundreds of thousands of experimentally determined structures, each given as atomic coordinates in nanometres (1 Å = 0.1 nm), are cleaned, aligned and used as the model's ground truth."
+      },
+      {
+        "title": "Train the diffusion model",
+        "detail": "The network is shown real structures with increasing amounts of Gaussian noise added, and learns to reverse the process — predicting the structure from noise alone. It runs on clusters of graphics processors for days to weeks."
+      },
+      {
+        "title": "Write the design brief",
+        "detail": "The user conditions generation: 'place a binding surface against this patch of the target protein', 'build a three-fold symmetric cage', or 'hold these active-site residues in exactly this geometry'."
+      },
+      {
+        "title": "Generate backbones",
+        "detail": "Starting from random coordinates, the model denoises over dozens of steps, producing many candidate backbones that satisfy the brief but have never existed in nature."
+      },
+      {
+        "title": "Design sequences onto the backbone",
+        "detail": "A sequence-design network assigns amino acids at every position so the chain folds into the generated shape, while keeping catalytic or binding residues fixed."
+      },
+      {
+        "title": "Filter in silico",
+        "detail": "Each design is folded again by a structure predictor; those whose predicted shape matches the design and whose confidence scores are high go forward, usually a few percent of the starting set."
+      },
+      {
+        "title": "Synthesise and express",
+        "detail": "Genes for the surviving designs are synthesised chemically, inserted into a host organism and grown so the protein can be purified in milligram to gram quantities."
+      },
+      {
+        "title": "Test in the lab",
+        "detail": "Assays measure binding affinity or catalytic rate, and cryo-electron microscopy or crystallography confirms the actual atomic structure."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Failed and successful designs both inform the next round: the model is fine-tuned or the brief adjusted, and another generation of candidates is made."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep learning on graphics processors",
+        "status": "exists",
+        "why": "training and sampling demand very large amounts of parallel compute."
+      },
+      {
+        "tech": "Experimental structure databases",
+        "status": "exists",
+        "why": "the model can only learn real folding rules from structures solved in laboratories."
+      },
+      {
+        "tech": "Accurate structure prediction",
+        "status": "exists",
+        "why": "without a fast way to check that a designed sequence folds as intended, most candidates would be wasted lab work."
+      },
+      {
+        "tech": "Cheap, fast DNA synthesis",
+        "status": "exists",
+        "why": "every candidate design must be turned into a physical gene to be tested."
+      },
+      {
+        "tech": "High-throughput functional assays",
+        "status": "partial",
+        "why": "binding is now relatively easy to measure, but catalytic activity and stability at industrial conditions remain slow, low-throughput tests."
+      },
+      {
+        "tech": "Cryo-electron microscopy and crystallography access",
+        "status": "partial",
+        "why": "confirming atomic structure is essential for learning, but instrument time is scarce and expensive."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "diffusion-based models generate novel binders, symmetric assemblies and small scaffolds that fold as designed; a handful of designed proteins have entered early clinical trials",
+        "unlocks": "protein therapeutics and reagents that do not exist in nature."
+      },
+      {
+        "stage": "Next",
+        "milestone": "designed enzymes for specific industrial reactions with rates approaching natural enzymes",
+        "unlocks": "custom catalysts for chemical manufacturing, plastic breakdown and waste treatment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-enzyme pathway and multi-domain design in one pass",
+        "unlocks": "engineered organisms that make complex molecules such as pharmaceuticals from simple feedstocks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop autonomous laboratories that design, build and test thousands of proteins a week with minimal human input",
+        "unlocks": "rapid iteration toward proteins for carbon capture, biosensors and materials."
+      }
+    ]
   }
 }

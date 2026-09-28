@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Optical pulse oximeter",
+        "role": "tracks blood-oxygen saturation through the skin, the signal that dips when breathing pauses.",
+        "parts": [
+          "red and infrared LEDs",
+          "photodiodes",
+          "analogue front end",
+          "shielding from ambient light"
+        ]
+      },
+      {
+        "name": "Motion sensing",
+        "role": "detects body movement and the small surges that mark arousals and breathing effort.",
+        "parts": [
+          "3-axis MEMS accelerometer",
+          "optional gyroscope"
+        ]
+      },
+      {
+        "name": "On-device signal processing",
+        "role": "turns raw optical and motion data into nightly breathing-disturbance features.",
+        "parts": [
+          "motion-artefact rejection",
+          "desaturation-event detector",
+          "breathing-disturbance index",
+          "wear-state check"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "keeps the sensors running through a full night without a nightly charge.",
+        "parts": [
+          "lithium-polymer cell",
+          "charging coil",
+          "low-power mode scheduling"
+        ]
+      },
+      {
+        "name": "Radio, app and reporting",
+        "role": "moves the nightly result to a phone and presents a risk signal rather than a diagnosis.",
+        "parts": [
+          "Bluetooth Low Energy",
+          "companion app",
+          "on-device or cloud model",
+          "exportable report for a clinician"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define what to measure",
+        "detail": "Clinical scoring of apnoea uses airflow, breathing effort and oxygen desaturation, summarised as an apnoea–hypopnoea index in events per hour. A wrist device cannot measure airflow directly, so it targets the oxygen dips and movement surges that follow each pause, plus the resulting fragmentation of sleep."
+      },
+      {
+        "title": "Choose and place the sensors",
+        "detail": "Reflective pulse oximetry shines red and infrared light into the skin and reads what scatters back; placing the emitter and photodiode on the back of the wrist keeps good contact with the skin for most sleep positions. An accelerometer sits on the same board."
+      },
+      {
+        "title": "Gather labelled training data",
+        "detail": "Volunteers wear the prototype overnight while undergoing attended polysomnography in a sleep laboratory. Each night of wearable data is paired with the technician-scored breathing events, giving thousands of labelled hours across ages, body types, medications and health conditions."
+      },
+      {
+        "title": "Train and test the detection model",
+        "detail": "The model learns the nightly pattern — repeated 3 % or larger oxygen dips, their clustering, motion arousals — and outputs either a nightly index or a simple risk notification. It is tested on nights and people held out of training, and separately across skin pigmentation, because melanin absorbs the oximeter's light and can bias readings."
+      },
+      {
+        "title": "Engineer the wearable",
+        "detail": "Sensor, microcontroller, battery and haptics are integrated into a watch-sized case, the optical path is calibrated against a reference oximeter, and the enclosure is sealed so the device can be worn continuously, including in the bath and shower."
+      },
+      {
+        "title": "Validate against a clinical standard",
+        "detail": "Prospective studies compare the device's nightly output with simultaneous polysomnography or a validated home sleep test. The claim is deliberately narrow: flagging people at moderate-to-severe risk who should be tested, not diagnosing apnoea or distinguishing its causes."
+      },
+      {
+        "title": "Fit the care pathway",
+        "detail": "A notification routes the wearer to a clinician, who orders a home sleep-apnoea test or a laboratory study. The device only works as a front door to diagnosis; without that pathway, a flag produces anxiety and no treatment."
+      },
+      {
+        "title": "Maintain and iterate",
+        "detail": "Firmware updates improve artefact rejection, verify the device is being worn properly, and respond to drift in the optical sensor as it ages. Post-market surveillance tracks false negatives and complaints."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reflective pulse oximetry in wearables",
+        "status": "exists",
+        "why": "measuring oxygen saturation from the wrist rather than a fingertip is the core sensing trick."
+      },
+      {
+        "tech": "Clinical validation against polysomnography",
+        "status": "exists",
+        "why": "regulators require agreement studies against the laboratory standard before any screening claim."
+      },
+      {
+        "tech": "Large, diverse labelled sleep datasets",
+        "status": "partial",
+        "why": "sleep-lab data is expensive, skewed towards people who already seek care, and thin in some skin tones and age groups."
+      },
+      {
+        "tech": "Bias-corrected optical sensing across skin tones",
+        "status": "partial",
+        "why": "darker skin can cause oximeters to overestimate saturation, which risks missing real events."
+      },
+      {
+        "tech": "A routing pathway into sleep medicine",
+        "status": "partial",
+        "why": "a flag is only useful if the person can actually reach a test and a clinician."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer watches and under-mattress sensors flag likely moderate-to-severe sleep apnoea and prompt a doctor visit",
+        "unlocks": "screening a population that would otherwise never be tested."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger validation studies across skin tones, ages and conditions, with results published rather than only filed with regulators",
+        "unlocks": "trust from sleep physicians and clearer limits on who should not rely on the signal."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tighter pairing of wearables with home sleep-apnoea tests",
+        "unlocks": "fewer people needing an expensive night in a laboratory to get a diagnosis."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop monitoring linked to therapy, from auto-titrating positive-airway-pressure machines to implanted nerve stimulators",
+        "unlocks": "treatment adjusted from nightly data instead of a yearly clinic visit, and better tracking of cardiovascular risk linked to untreated apnoea."
+      }
+    ]
+  }
+}

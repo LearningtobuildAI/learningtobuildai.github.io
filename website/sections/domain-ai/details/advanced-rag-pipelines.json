@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and chunking",
+        "role": "break source documents into retrievable passages and attach metadata.",
+        "parts": [
+          "text extractors for PDF, HTML and office files",
+          "semantic or fixed-size chunkers",
+          "metadata taggers for source, date and section"
+        ]
+      },
+      {
+        "name": "Embedding and vector index",
+        "role": "convert passages into vectors and store them for fast similarity search.",
+        "parts": [
+          "embedding model",
+          "vector database",
+          "approximate nearest neighbour index"
+        ]
+      },
+      {
+        "name": "Query understanding",
+        "role": "turn a user question into one or more effective search queries.",
+        "parts": [
+          "query rewriter",
+          "query expander",
+          "sub-question decomposer"
+        ]
+      },
+      {
+        "name": "Retrieval and fusion",
+        "role": "fetch candidate passages from multiple retrieval methods.",
+        "parts": [
+          "dense retriever",
+          "sparse retriever",
+          "hybrid fusion such as reciprocal rank fusion"
+        ]
+      },
+      {
+        "name": "Reranking",
+        "role": "reorder candidates by relevance using a more expensive model.",
+        "parts": [
+          "cross-encoder reranker",
+          "listwise language-model reranker"
+        ]
+      },
+      {
+        "name": "Generation and refinement",
+        "role": "produce an answer from retrieved context and check or improve it iteratively.",
+        "parts": [
+          "large language model",
+          "self-critique or corrective loop",
+          "citation builder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Ingest source documents",
+        "detail": "Collect files, web pages or database records; extract plain text; remove duplicates and boilerplate."
+      },
+      {
+        "title": "Chunk text",
+        "detail": "Split into passages of a few hundred words with overlap; store metadata such as source, date and section."
+      },
+      {
+        "title": "Embed and index",
+        "detail": "Compute a vector for each passage with an embedding model; insert into a vector database that builds an approximate nearest neighbour index."
+      },
+      {
+        "title": "Build query pipeline",
+        "detail": "Add a module that rewrites, expands or decomposes the user's question into one or more search queries."
+      },
+      {
+        "title": "Retrieve candidates",
+        "detail": "Run dense and sparse retrieval in parallel over the index; combine results with a fusion method such as reciprocal rank fusion."
+      },
+      {
+        "title": "Rerank",
+        "detail": "Score the top candidates with a cross-encoder that reads the query and passage together; keep the highest-scoring passages."
+      },
+      {
+        "title": "Generate with context",
+        "detail": "Pass the selected passages and the original question to a large language model with instructions to answer using only that context and to cite sources."
+      },
+      {
+        "title": "Refine iteratively",
+        "detail": "If the answer is incomplete or low-confidence, reformulate the query, retrieve again and regenerate; repeat for a set number of rounds."
+      },
+      {
+        "title": "Evaluate and monitor",
+        "detail": "Measure retrieval and answer quality on a labelled test set; log queries and outcomes to detect drift and improve the pipeline."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Vector databases",
+        "status": "exists",
+        "why": "they provide fast similarity search over large collections of embeddings, which keyword search alone cannot match."
+      },
+      {
+        "tech": "Embedding models",
+        "status": "exists",
+        "why": "they map text to dense vectors that capture semantic meaning, enabling retrieval by intent rather than exact words."
+      },
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they generate fluent answers from retrieved context and can follow instructions to cite sources."
+      },
+      {
+        "tech": "Cross-encoder rerankers",
+        "status": "exists",
+        "why": "they score query–passage pairs jointly, greatly improving precision over vector similarity alone."
+      },
+      {
+        "tech": "Hybrid search",
+        "status": "exists",
+        "why": "combining dense and sparse retrieval covers both semantic and keyword matches, making retrieval more robust."
+      },
+      {
+        "tech": "Evaluation methods for RAG",
+        "status": "partial",
+        "why": "metrics for faithfulness and context relevance are still maturing, so quality assurance is partly manual."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid retrieval plus cross-encoder reranking is the standard for enterprise search and assistants",
+        "unlocks": "accurate, source-cited answers over private document collections."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic RAG where the model decides when to retrieve, which tools to call and how many steps to take",
+        "unlocks": "handling complex, multi-hop questions without a fixed pipeline."
+      },
+      {
+        "stage": "Next",
+        "milestone": "long-context models and better chunking reduce the number of retrieval steps, but retrieval remains essential for freshness and provenance",
+        "unlocks": "simpler pipelines with lower latency for many tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-improving RAG that tunes chunking, embeddings and reranking automatically from user feedback and evaluation signals",
+        "unlocks": "pipelines that adapt to new domains with minimal engineering."
+      }
+    ]
+  }
+}

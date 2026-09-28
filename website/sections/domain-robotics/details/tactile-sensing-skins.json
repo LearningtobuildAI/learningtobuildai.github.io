@@ -38,5 +38,148 @@
         "def": "Sensors that measure changes in capacitance when subjected to pressure or contact, commonly used for touch detection and force measurement."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor array",
+        "role": "turns touch into electrical signals at many points per square centimetre.",
+        "parts": [
+          "capacitive or piezo-resistive taxels",
+          "piezoelectric elements for dynamic contact",
+          "temperature-sensing elements"
+        ]
+      },
+      {
+        "name": "Elastomer skin",
+        "role": "the soft, stretchable body that carries the sensors and transmits force to them.",
+        "parts": [
+          "silicone or polyurethane layers",
+          "microstructured ridges mimicking fingerprints"
+        ]
+      },
+      {
+        "name": "Wiring and interconnect",
+        "role": "carries signals off a surface that bends and stretches.",
+        "parts": [
+          "stretchable conductive traces",
+          "flexible ribbon cables",
+          "row-column multiplexing"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "scans hundreds to thousands of taxels fast enough to feel slip.",
+        "parts": [
+          "analogue front end",
+          "multiplexers",
+          "analogue-to-digital converters sampling above 1 kHz"
+        ]
+      },
+      {
+        "name": "Tactile perception software",
+        "role": "converts raw pressure maps into usable information.",
+        "parts": [
+          "contact-location and force estimation",
+          "slip detection",
+          "machine-learning models trained on touch data"
+        ]
+      },
+      {
+        "name": "Feedback path",
+        "role": "returns touch information to a human or robot.",
+        "parts": [
+          "stimulation electrodes for nerves",
+          "haptic actuators",
+          "controller interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the transduction principle",
+        "detail": "Capacitive arrays give stable pressure readings; piezo-resistive composites are simpler to print; optical designs image the deformation of a soft surface with a tiny camera."
+      },
+      {
+        "title": "Make the flexible substrate",
+        "detail": "A thin polymer film or silicone sheet is cast and cleaned to form the base of the skin."
+      },
+      {
+        "title": "Pattern the electrodes",
+        "detail": "Conductive inks are screen-printed, or metal films are photolithographically etched, into rows and columns a few hundred micrometres wide."
+      },
+      {
+        "title": "Add the sensing layer",
+        "detail": "A dielectric or piezo-resistive composite is deposited between the electrodes so that pressure changes capacitance or resistance."
+      },
+      {
+        "title": "Laminate and wire the skin",
+        "detail": "Layers are bonded together and connected to stretchable traces, then routed to rigid readout boards at the edge."
+      },
+      {
+        "title": "Calibrate each taxel",
+        "detail": "Known weights, indentation rigs and temperature stages map raw signals to newtons, pascals and degrees Celsius, and correct taxel-to-taxel variation."
+      },
+      {
+        "title": "Integrate with the gripper or limb",
+        "detail": "The skin is moulded to fingertips, joints or a prosthetic socket, with wiring passing through the structure."
+      },
+      {
+        "title": "Deploy and retrain",
+        "detail": "Controllers learn from the new signals; data from use refines slip and contact models."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Flexible and stretchable electronics",
+        "status": "partial",
+        "why": "sensors must survive millions of bending cycles without losing calibration."
+      },
+      {
+        "tech": "Microfabrication and printed electronics",
+        "status": "exists",
+        "why": "they make dense, cheap electrode arrays on polymer films."
+      },
+      {
+        "tech": "Fast, low-power readout electronics",
+        "status": "exists",
+        "why": "slip happens in milliseconds, so hundreds of taxels must be sampled continuously."
+      },
+      {
+        "tech": "Machine learning for tactile signals",
+        "status": "partial",
+        "why": "touch data is high-dimensional and unlike images, so models are still being developed."
+      },
+      {
+        "tech": "Safe neural stimulation interfaces",
+        "status": "partial",
+        "why": "returning touch to a prosthetic user means stimulating nerves without causing damage or pain."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "fingertip-scale sensor arrays on research hands and some commercial grippers",
+        "unlocks": "robotic grasping of known objects and early sensory feedback in prosthetics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-hand coverage with integrated readout and on-board processing",
+        "unlocks": "dexterous manipulation, in-hand reorientation and safer human-robot collaboration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "long-term use in prosthetic limbs with nerve-based feedback",
+        "unlocks": "users who can judge grip force and texture without looking."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "durable skins with human-comparable density, self-repair and mass production",
+        "unlocks": "robots that handle unfamiliar, fragile or slippery objects in unstructured settings."
+      }
+    ]
   }
 }

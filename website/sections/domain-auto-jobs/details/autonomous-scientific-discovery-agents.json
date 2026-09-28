@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reasoning and planning core",
+        "role": "proposes hypotheses and designs experiments to test them.",
+        "parts": [
+          "large language model or hybrid AI",
+          "domain knowledge base",
+          "experiment planner"
+        ]
+      },
+      {
+        "name": "Robotic execution platform",
+        "role": "physically carries out the experiments the planner requests.",
+        "parts": [
+          "liquid handlers",
+          "robotic arms",
+          "analytical instruments",
+          "sample storage"
+        ]
+      },
+      {
+        "name": "Data pipeline and analysis",
+        "role": "captures results, analyses them, and feeds them back to the planner.",
+        "parts": [
+          "sensors",
+          "data processing",
+          "statistical analysis",
+          "model updating"
+        ]
+      },
+      {
+        "name": "Knowledge integration",
+        "role": "grounds the agent in existing literature and prior results.",
+        "parts": [
+          "literature search",
+          "structured databases",
+          "ontologies"
+        ]
+      },
+      {
+        "name": "Safety and oversight",
+        "role": "keeps experiments safe and results trustworthy.",
+        "parts": [
+          "safety constraints",
+          "human-in-the-loop review",
+          "validation protocols"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a domain",
+        "detail": "Pick a narrow scientific field such as materials synthesis or drug formulation, and define the vocabulary of actions and measurements the agent will use."
+      },
+      {
+        "title": "Curate training data",
+        "detail": "Collect papers, lab protocols, and experimental datasets so the model can learn what a good hypothesis and a valid experiment look like."
+      },
+      {
+        "title": "Train or fine-tune the model",
+        "detail": "Adapt a large language model to propose hypotheses, rank them, and translate them into step-by-step experimental plans."
+      },
+      {
+        "title": "Integrate with lab robots",
+        "detail": "Write software adapters so the planner can command liquid handlers, robotic arms, and instruments through their APIs or a standard lab-automation language."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Connect planning, execution, and analysis so results automatically update the agent's beliefs and trigger the next experiment."
+      },
+      {
+        "title": "Validate against known results",
+        "detail": "Have the agent reproduce experiments with known outcomes, and compare its proposed plans with those of human experts."
+      },
+      {
+        "title": "Add safety checks",
+        "detail": "Encode physical and chemical safety limits, and keep a human able to pause or override the system."
+      },
+      {
+        "title": "Deploy on a real problem",
+        "detail": "Run the agent on a specific discovery task, with human scientists reviewing results, then gradually widen its scope."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with scientific reasoning",
+        "status": "exists",
+        "why": "they provide the hypothesis-generation and planning capability, though deep scientific reasoning is still limited."
+      },
+      {
+        "tech": "Robotic lab automation",
+        "status": "partial",
+        "why": "many instruments can be automated, but few labs are fully robot-ready and hardware is often bespoke."
+      },
+      {
+        "tech": "Standardised lab equipment interfaces",
+        "status": "partial",
+        "why": "proprietary APIs and data formats make it hard for one agent to control many different instruments."
+      },
+      {
+        "tech": "Automated experiment design algorithms",
+        "status": "exists",
+        "why": "methods such as Bayesian optimisation already choose experiments efficiently in narrow settings."
+      },
+      {
+        "tech": "High-quality structured scientific data",
+        "status": "partial",
+        "why": "much experimental data is unpublished or in inconsistent formats, limiting what agents can learn from."
+      },
+      {
+        "tech": "Safety and verification frameworks",
+        "status": "missing",
+        "why": "there is no established way to certify that an autonomous agent will not run dangerous or invalid experiments."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "demonstrations such as A-Lab and Coscientist show closed-loop discovery in narrow domains",
+        "unlocks": "proof that an AI agent can design, run, and interpret experiments without step-by-step human control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cloud labs expose standard APIs so agents can run experiments remotely across many instruments",
+        "unlocks": "scalable, around-the-clock experimentation without building a new lab for every project."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that formulate novel hypotheses and design multi-step experiments, with human oversight",
+        "unlocks": "faster discovery in materials science, drug discovery, and chemistry."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-improving agents that operate across several scientific domains",
+        "unlocks": "continuous, automated scientific progress — if safety, verification, and data-sharing problems are solved."
+      }
+    ]
+  }
+}

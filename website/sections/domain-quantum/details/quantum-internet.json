@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Entanglement sources",
+        "role": "produce pairs of photons whose quantum states are correlated.",
+        "parts": [
+          "nonlinear crystals for spontaneous parametric down-conversion",
+          "semiconductor quantum dots",
+          "pump lasers"
+        ]
+      },
+      {
+        "name": "Quantum memories",
+        "role": "hold a qubit's state long enough for a network to synchronise.",
+        "parts": [
+          "trapped ions or neutral atoms",
+          "rare-earth-doped crystals",
+          "optical cavities"
+        ]
+      },
+      {
+        "name": "Repeater nodes",
+        "role": "extend range past fibre loss by swapping entanglement segment by segment.",
+        "parts": [
+          "heralding detectors",
+          "entanglement-swapping logic",
+          "classical signalling link"
+        ]
+      },
+      {
+        "name": "Transmission links",
+        "role": "carry fragile photons between nodes.",
+        "parts": [
+          "telecom-wavelength fibre",
+          "wavelength converters",
+          "free-space or satellite terminals"
+        ]
+      },
+      {
+        "name": "End nodes",
+        "role": "small quantum processors that store, manipulate and read out entanglement.",
+        "parts": [
+          "matter qubits",
+          "photon–matter interface",
+          "classical control electronics"
+        ]
+      },
+      {
+        "name": "Classical control plane",
+        "role": "synchronises clocks, reports successful links and routes entanglement.",
+        "parts": [
+          "timing distribution",
+          "herald channels",
+          "network management software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate entangled photons",
+        "detail": "A laser pumps a nonlinear crystal or a quantum dot, emitting photon pairs in an entangled state."
+      },
+      {
+        "title": "Shift to telecom wavelength",
+        "detail": "Photons are converted to wavelengths around 1550 nm so they survive the least-lossy fibre window."
+      },
+      {
+        "title": "Send down fibre or free space",
+        "detail": "Pairs travel through installed fibre, or via satellite for intercontinental links."
+      },
+      {
+        "title": "Catch and store",
+        "detail": "At a repeater or end node, a photon is absorbed into a quantum memory and its arrival is heralded."
+      },
+      {
+        "title": "Swap to extend range",
+        "detail": "A node performs a joint measurement on two stored photons, transferring entanglement between distant partners; a classical signal confirms success."
+      },
+      {
+        "title": "Link to processors",
+        "detail": "Photons are entangled with matter qubits in small processors, so computation can happen on the stored state."
+      },
+      {
+        "title": "Repeat and route",
+        "detail": "Chains of swaps connect distant nodes, and a control plane routes entanglement requests across the network."
+      },
+      {
+        "title": "Run an application",
+        "detail": "Users consume entanglement for quantum key distribution, distributed algorithms or blind computation without exposing their data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-distance entanglement distribution",
+        "status": "exists",
+        "why": "entanglement has been shared over hundreds of kilometres of fibre and via satellite, proving the basic channel."
+      },
+      {
+        "tech": "Quantum memories with high efficiency and long coherence",
+        "status": "partial",
+        "why": "storage times and read-out fidelities improved a lot but still limit swap rates."
+      },
+      {
+        "tech": "Entanglement swapping and repeater protocols",
+        "status": "partial",
+        "why": "demonstrated in small multi-node testbeds, not yet chained across a real network."
+      },
+      {
+        "tech": "Microwave-to-optical transduction",
+        "status": "missing",
+        "why": "superconducting processors work at microwave frequencies and need conversion to telecom photons to link to fibre."
+      },
+      {
+        "tech": "Fault-tolerant quantum error correction",
+        "status": "partial",
+        "why": "a useful quantum internet needs many logical qubits per node, which today's hardware cannot yet supply."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point-to-point entanglement links and trusted-node metropolitan key networks; satellite entanglement demonstrated by the Micius mission in 2017",
+        "unlocks": "secure key distribution and proof that photons survive long links."
+      },
+      {
+        "stage": "Next",
+        "milestone": "three-node repeater networks with memories, such as the Delft demonstration in 2021",
+        "unlocks": "the building block for a true repeater chain."
+      },
+      {
+        "stage": "Next",
+        "milestone": "metropolitan quantum networks connecting two or more small processors",
+        "unlocks": "distributed quantum computing and networked sensing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "intercity and intercontinental links using satellites and repeaters, integrated with error-corrected processors",
+        "unlocks": "a general quantum internet with applications that cannot be replicated classically."
+      }
+    ]
+  }
+}

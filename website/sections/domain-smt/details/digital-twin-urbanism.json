@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "gathers real-time data from the city.",
+        "parts": [
+          "LiDAR and photogrammetry for geometry",
+          "traffic cameras and loop detectors",
+          "air-quality and weather sensors",
+          "smart meters and building management systems"
+        ]
+      },
+      {
+        "name": "Connectivity and compute",
+        "role": "moves and processes the data stream.",
+        "parts": [
+          "fibre and 5G networks",
+          "edge computing nodes",
+          "cloud data platform"
+        ]
+      },
+      {
+        "name": "3D city model",
+        "role": "the geometric and semantic replica of the built environment.",
+        "parts": [
+          "terrain and building meshes",
+          "infrastructure networks (roads, pipes, cables)",
+          "semantic attributes (building use, materials, age)"
+        ]
+      },
+      {
+        "name": "Simulation engines",
+        "role": "model how the city behaves under different conditions.",
+        "parts": [
+          "traffic microsimulation",
+          "energy and thermal models",
+          "flood and wind models",
+          "crowd dynamics"
+        ]
+      },
+      {
+        "name": "Integration and API layer",
+        "role": "connects live data to models and applications.",
+        "parts": [
+          "data standards and schemas",
+          "APIs",
+          "orchestration software"
+        ]
+      },
+      {
+        "name": "User interface and decision support",
+        "role": "lets planners and operators see and act on the twin.",
+        "parts": [
+          "dashboards",
+          "AR/VR viewers",
+          "alerting systems"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and governance",
+        "detail": "Decide which systems (traffic, energy, water) the twin will cover, and set rules for data ownership, access and privacy."
+      },
+      {
+        "title": "Capture static geometry",
+        "detail": "Aircraft or drones with LiDAR scan the city; ground surveys fill gaps; data is processed into a 3D mesh."
+      },
+      {
+        "title": "Deploy sensor network",
+        "detail": "Install or connect IoT devices: traffic counters, air-quality monitors, smart meters, and building sensors."
+      },
+      {
+        "title": "Build the data pipeline",
+        "detail": "Stream sensor data into a cloud platform with storage, cleansing, and time-stamping so it can be used in real time."
+      },
+      {
+        "title": "Create the semantic model",
+        "detail": "Tag buildings and infrastructure with attributes (use, age, materials) so simulations can reason about them."
+      },
+      {
+        "title": "Calibrate simulations",
+        "detail": "Run models against recorded events (e.g. a past flood or rush hour) and adjust until they match reality."
+      },
+      {
+        "title": "Integrate and visualize",
+        "detail": "Connect models to a 3D engine and dashboards so users can explore scenarios in real time."
+      },
+      {
+        "title": "Operate and update",
+        "detail": "Keep the twin live by streaming data, updating geometry when buildings change, and re-calibrating periodically."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Pervasive IoT and sensing",
+        "status": "partial",
+        "why": "cities have some sensors but not comprehensive coverage of all relevant systems."
+      },
+      {
+        "tech": "High-bandwidth, low-latency networks",
+        "status": "exists",
+        "why": "5G and fibre enable real-time data flow from sensors to compute."
+      },
+      {
+        "tech": "3D modelling and game-engine rendering",
+        "status": "exists",
+        "why": "mature engines can render large city models with reasonable performance."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "exists",
+        "why": "provide the compute and storage for simulations and data streams."
+      },
+      {
+        "tech": "Data interoperability standards",
+        "status": "partial",
+        "why": "cities use many incompatible formats and protocols, making integration hard."
+      },
+      {
+        "tech": "Privacy-preserving analytics",
+        "status": "partial",
+        "why": "needed to use personal data (e.g. mobility traces) without violating privacy."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "district-scale digital twins for specific domains (traffic, energy) in pilot projects, such as Singapore's Virtual Singapore and the EU's Destination Earth",
+        "unlocks": "better understanding of data integration and simulation accuracy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-wide integrated twins that combine multiple domains",
+        "unlocks": "real-time control of traffic signals and energy demand, improving efficiency and reducing emissions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "predictive twins for climate resilience and disaster response",
+        "unlocks": "simulate floods, heatwaves and evacuations before they happen, saving lives and reducing damage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous urban management",
+        "unlocks": "AI systems that continuously optimize city operations with human oversight, creating more responsive and sustainable cities."
+      }
+    ]
+  }
+}

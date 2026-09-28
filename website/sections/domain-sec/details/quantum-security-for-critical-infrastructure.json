@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cryptographic discovery",
+        "role": "finds every place encryption and signatures are used, since you cannot migrate what you cannot see.",
+        "parts": [
+          "network traffic scanners",
+          "code and firmware analysis",
+          "cryptographic bill of materials (CBOM)"
+        ]
+      },
+      {
+        "name": "Post-quantum key establishment",
+        "role": "replaces the RSA and elliptic-curve key exchange whose security a future quantum computer would break.",
+        "parts": [
+          "ML-KEM (NIST FIPS 203, lattice-based)",
+          "hybrid mode combining it with a classical curve"
+        ]
+      },
+      {
+        "name": "Post-quantum signatures",
+        "role": "keeps device and software authentication unforgeable.",
+        "parts": [
+          "ML-DSA (FIPS 204)",
+          "SLH-DSA (FIPS 205, hash-based, conservative fallback)"
+        ]
+      },
+      {
+        "name": "Protocol integration",
+        "role": "carries the new algorithms through the protocols infrastructure actually speaks.",
+        "parts": [
+          "TLS 1.3",
+          "IPsec and IKEv2",
+          "SSH",
+          "X.509 certificates and PKI"
+        ]
+      },
+      {
+        "name": "Hardware roots of trust",
+        "role": "signs keys and boot images in silicon so the algorithms cannot be swapped by an attacker.",
+        "parts": [
+          "hardware security modules",
+          "trusted platform modules",
+          "embedded secure elements with limited memory"
+        ]
+      },
+      {
+        "name": "Key and certificate management",
+        "role": "re-issues, rotates and revokes an entire estate of certificates.",
+        "parts": [
+          "certificate authority and registration authority",
+          "certificate lifecycle automation",
+          "revocation"
+        ]
+      },
+      {
+        "name": "Quantum key distribution (optional link layer)",
+        "role": "an alternative that derives keys from physics rather than mathematics, over dedicated fibre.",
+        "parts": [
+          "photon source and detectors",
+          "trusted nodes or repeaters",
+          "key management layer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build a cryptographic inventory",
+        "detail": "Scan every network link, server, firmware image and protocol to record what algorithms, key sizes and certificate lifetimes are in use across operational technology as well as IT."
+      },
+      {
+        "title": "Rank what must move first",
+        "detail": "Anything whose data must stay secret for decades, or that is expensive to replace, is prioritised — long-lived grid and industrial equipment especially."
+      },
+      {
+        "title": "Choose hybrid deployments",
+        "detail": "Run a post-quantum algorithm alongside a classical one in the same handshake, so security holds if either is later broken."
+      },
+      {
+        "title": "Integrate into protocol stacks",
+        "detail": "Implement the algorithms in TLS, IPsec and certificate libraries, respecting the tight packet-size and memory limits of embedded devices."
+      },
+      {
+        "title": "Test performance on real devices",
+        "detail": "Larger keys and signatures cost bandwidth and compute; measure on substation gateways and meters before rollout, not in a lab only."
+      },
+      {
+        "title": "Re-issue the PKI",
+        "detail": "Regenerate certificate authorities and device certificates with post-quantum signatures, and push them out through controlled maintenance windows."
+      },
+      {
+        "title": "Deploy in stages",
+        "detail": "Roll out to external-facing systems first, then internal, then the slowest control networks with the longest hardware lifetimes."
+      },
+      {
+        "title": "Monitor and retire",
+        "detail": "Continuously scan for regressions or forgotten classical endpoints, and phase out the old algorithms once every peer supports the new ones."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "NIST published its first post-quantum standards in 2024, giving implementers fixed targets."
+      },
+      {
+        "tech": "Crypto-agile software and firmware",
+        "status": "partial",
+        "why": "many operational systems hard-code their cryptography and cannot be updated without replacement."
+      },
+      {
+        "tech": "Post-quantum capable hardware security modules",
+        "status": "partial",
+        "why": "keys must be generated and stored in certified hardware, and support is still arriving."
+      },
+      {
+        "tech": "Field-updatable critical infrastructure",
+        "status": "partial",
+        "why": "substation and industrial devices can run for decades with no practical path for a firmware change."
+      },
+      {
+        "tech": "Quantum key distribution hardware",
+        "status": "partial",
+        "why": "commercially available over limited fibre distances, but needs dedicated links and trusted nodes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "post-quantum standards published; hybrid key exchange already switched on in mainstream browsers and some VPNs",
+        "unlocks": "a proven, interoperable algorithm set to build against."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full post-quantum TLS, IPsec and certificate rollout across enterprise and utility networks",
+        "unlocks": "resistance to recorded traffic being decrypted later."
+      },
+      {
+        "stage": "Next",
+        "milestone": "refreshed PKI and hardware roots of trust, aligned with national-security migration deadlines around 2030 and exclusive use by the early 2030s",
+        "unlocks": "forgery-resistant authentication for grid and financial control traffic."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "retirement of RSA and elliptic-curve cryptography, plus quantum repeaters for long-distance QKD",
+        "unlocks": "an end-to-end quantum-resistant critical-infrastructure estate."
+      }
+    ]
+  }
+}

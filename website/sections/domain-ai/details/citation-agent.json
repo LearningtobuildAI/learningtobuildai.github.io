@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Claim extraction",
+        "role": "breaks a document or answer into atomic factual statements that can be checked separately.",
+        "parts": [
+          "sentence splitter",
+          "dependency parser",
+          "claim decomposition model"
+        ]
+      },
+      {
+        "name": "Evidence retrieval",
+        "role": "finds relevant passages from a trusted corpus or the live web.",
+        "parts": [
+          "search index",
+          "dense retriever",
+          "passage reranker"
+        ]
+      },
+      {
+        "name": "Source validation",
+        "role": "judges whether a cited source is credible, current and actually supports the claim.",
+        "parts": [
+          "domain reputation list",
+          "publication metadata checker",
+          "cross-reference tool"
+        ]
+      },
+      {
+        "name": "Veracity assessment",
+        "role": "compares each claim with retrieved evidence and labels it supported, contradicted or unverifiable.",
+        "parts": [
+          "natural language inference model",
+          "fact verification classifier",
+          "confidence scorer"
+        ]
+      },
+      {
+        "name": "Explanation generation",
+        "role": "shows a human why a claim was accepted or rejected, quoting the evidence.",
+        "parts": [
+          "evidence highlighter",
+          "rationale summariser"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop review",
+        "role": "routes low-confidence cases to a person and feeds corrections back into training.",
+        "parts": [
+          "active learning queue",
+          "annotation interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect training data",
+        "detail": "Assemble datasets of claims paired with evidence and true/false labels, such as the FEVER dataset, plus domain-specific examples."
+      },
+      {
+        "title": "Train claim extraction",
+        "detail": "Fine-tune a language model to split text into checkable claims without losing context."
+      },
+      {
+        "title": "Build a retrieval index",
+        "detail": "Crawl and index trusted sources (encyclopaedias, academic papers, government data) into a searchable vector and keyword index."
+      },
+      {
+        "title": "Train the verifier",
+        "detail": "Teach a natural language inference model to read a claim and a passage and decide entailment, contradiction or neutral."
+      },
+      {
+        "title": "Assemble the pipeline",
+        "detail": "Connect extraction, retrieval, source checking and verification so a single API call returns a verdict with citations."
+      },
+      {
+        "title": "Calibrate and evaluate",
+        "detail": "Measure precision and recall on held-out claims, then calibrate confidence scores so uncertain answers are flagged."
+      },
+      {
+        "title": "Deploy with oversight",
+        "detail": "Release as a tool that shows evidence and confidence, and sends borderline cases to human reviewers."
+      },
+      {
+        "title": "Maintain continuously",
+        "detail": "Update the source index, retrain on new corrections and monitor for drift in language and facts."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models and natural language inference",
+        "status": "exists",
+        "why": "they provide the core ability to compare a claim with a passage."
+      },
+      {
+        "tech": "Large-scale fact-checking datasets",
+        "status": "partial",
+        "why": "datasets like FEVER exist but cover limited domains and languages."
+      },
+      {
+        "tech": "Web-scale retrieval infrastructure",
+        "status": "exists",
+        "why": "search engines and vector databases can find candidate evidence quickly."
+      },
+      {
+        "tech": "Source credibility signals",
+        "status": "partial",
+        "why": "there is no universal, machine-readable standard for judging a source's reliability."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated flagging of unsupported citations in Wikipedia and research papers",
+        "unlocks": "faster cleanup of obvious citation errors at scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "domain-specific verifiers for medicine, law and finance",
+        "unlocks": "reliable checking where sources are structured and authority is clear."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time verification woven into language model outputs",
+        "unlocks": "answers that cite and justify each factual sentence as they are written."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "auditable provenance graphs linking claims to primary evidence",
+        "unlocks": "a traceable knowledge layer for journalism, science and public policy."
+      }
+    ]
+  }
+}

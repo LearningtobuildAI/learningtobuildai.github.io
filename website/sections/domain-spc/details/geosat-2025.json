@@ -30,5 +30,152 @@
         "def": "Advanced computational methods used to analyze and interpret large volumes of data collected by sensors on board the satellite."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Optical payload",
+        "role": "the telescope that forms the image — aperture sets the finest detail it can resolve.",
+        "parts": [
+          "primary mirror (often silicon carbide or a glass-ceramic)",
+          "secondary mirror and baffles",
+          "focal-plane detector array",
+          "filter wheel"
+        ]
+      },
+      {
+        "name": "Attitude determination and control",
+        "role": "points the spacecraft accurately enough to keep a moving image sharp.",
+        "parts": [
+          "star trackers",
+          "fibre-optic or ring-laser gyroscopes",
+          "reaction wheels",
+          "magnetorquers"
+        ]
+      },
+      {
+        "name": "Structure and mechanism",
+        "role": "a stiff, light body that keeps mirrors aligned through launch and thermal swings.",
+        "parts": [
+          "carbon-fibre composite panels",
+          "telescope bench",
+          "deployable solar-array hinges"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "runs the payload and holds the optics within a fraction of a degree.",
+        "parts": [
+          "solar arrays",
+          "battery",
+          "radiators",
+          "heat pipes and multilayer insulation"
+        ]
+      },
+      {
+        "name": "Propulsion",
+        "role": "inserts the satellite into its orbit and maintains it against drag.",
+        "parts": [
+          "chemical or electric thruster",
+          "propellant tanks"
+        ]
+      },
+      {
+        "name": "Data handling and downlink",
+        "role": "processes images onboard and sends them to ground stations.",
+        "parts": [
+          "radiation-tolerant processor",
+          "solid-state recorder",
+          "X-band or Ka-band transmitter",
+          "encryption"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the orbit and resolution",
+        "detail": "Ground sample distance follows from aperture and altitude: a 1 m mirror at 550 nm diffraction-limited from about 500 km can resolve roughly 0.3 m on the ground."
+      },
+      {
+        "title": "Fabricate the mirror",
+        "detail": "A blank of silicon carbide or glass-ceramic is ground, lapped and polished to nanometre smoothness, then coated with reflective aluminium or silver."
+      },
+      {
+        "title": "Build the telescope",
+        "detail": "Mirrors are mounted in a stiff, athermal structure and aligned with interferometric metrology; the focal plane is fitted in a cleanroom."
+      },
+      {
+        "title": "Assemble the bus",
+        "detail": "Panels, harness, reaction wheels, battery, thrusters and computers are integrated and functionally tested."
+      },
+      {
+        "title": "Integrate payload and spacecraft",
+        "detail": "The telescope is mated to the bus and its alignment re-verified."
+      },
+      {
+        "title": "Test for space",
+        "detail": "Vibration and acoustic tests mimic launch; thermal-vacuum tests cycle the satellite between sunlit and eclipse temperatures."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "The satellite rides to a sun-synchronous low Earth orbit, deploys its arrays, then spends months calibrating geometry, radiometry and pointing."
+      },
+      {
+        "title": "Operate and deliver data",
+        "detail": "Tasking plans are uplinked, images downlinked to ground stations, then radiometrically and geometrically corrected into map-ready products."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large lightweight precision optics",
+        "status": "exists",
+        "why": "resolution is set by aperture, and mass and stiffness limit how large a mirror can be launched."
+      },
+      {
+        "tech": "Radiation-tolerant onboard computing",
+        "status": "partial",
+        "why": "onboard processing, including machine-learning inference, cuts how much imagery must be downlinked."
+      },
+      {
+        "tech": "High-bandwidth downlink",
+        "status": "exists",
+        "why": "a single high-resolution scene can be hundreds of megabytes; X-band and Ka-band links move it quickly."
+      },
+      {
+        "tech": "Low-cost repeatable launch",
+        "status": "exists",
+        "why": "constellations only work if satellites can be launched cheaply and often."
+      },
+      {
+        "tech": "Precise attitude control and orbit maintenance",
+        "status": "exists",
+        "why": "images blur without sub-metre pointing stability, and drag decays low orbits."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "high-resolution optical and radar satellites in sun-synchronous orbit, delivering imagery hours after collection",
+        "unlocks": "routine mapping, agriculture, disaster response and defence monitoring."
+      },
+      {
+        "stage": "Next",
+        "milestone": "constellations of many smaller satellites with onboard AI that downlink only what matters",
+        "unlocks": "revisit times of minutes rather than days."
+      },
+      {
+        "stage": "Next",
+        "milestone": "inter-satellite laser links forming a space data backbone",
+        "unlocks": "near-real-time relay to any ground station, including over oceans."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "larger deployed or segmented apertures",
+        "unlocks": "sub-metre resolution combined with high revisit rates."
+      }
+    ]
   }
 }

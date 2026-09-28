@@ -30,5 +30,172 @@
         "def": "A mathematical method for optimizing the layout of materials within a design domain to achieve maximum performance under given constraints."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Parametric model",
+        "role": "describes the design as geometry driven by numbers and rules, so it can be varied automatically rather than redrawn by hand.",
+        "parts": [
+          "geometry kernel",
+          "parameter list (spans, grids, heights)",
+          "rule-based assemblies"
+        ]
+      },
+      {
+        "name": "Constraint layer",
+        "role": "encodes what the design is not allowed to do.",
+        "parts": [
+          "site and boundary limits",
+          "structural design codes",
+          "fire, egress and accessibility rules",
+          "budget and carbon caps"
+        ]
+      },
+      {
+        "name": "Simulation engines",
+        "role": "give each candidate a score by predicting how it would actually behave.",
+        "parts": [
+          "finite element structural analysis",
+          "daylight and thermal modelling",
+          "wind and airflow simulation",
+          "cost and embodied-carbon estimators"
+        ]
+      },
+      {
+        "name": "Optimization engine",
+        "role": "searches the space of possible designs for the best trade-offs.",
+        "parts": [
+          "topology optimization (material placed where stress demands it)",
+          "evolutionary and genetic solvers",
+          "multi-objective Pareto search",
+          "sensitivity and gradient solvers"
+        ]
+      },
+      {
+        "name": "Surrogate models",
+        "role": "machine-learning approximations of slow simulations, so hundreds of thousands of options can be screened in minutes.",
+        "parts": [
+          "training data from past simulations",
+          "neural network or regression predictor",
+          "uncertainty estimates"
+        ]
+      },
+      {
+        "name": "Evaluation and selection",
+        "role": "ranks results and keeps a human in charge of the final choice.",
+        "parts": [
+          "objective weighting",
+          "Pareto-front viewer",
+          "compliance checking",
+          "designer override"
+        ]
+      },
+      {
+        "name": "Downstream delivery",
+        "role": "turns a chosen geometry into something that can be built.",
+        "parts": [
+          "BIM export (IFC and similar)",
+          "drawing and schedule generation",
+          "CNC or robotic fabrication files",
+          "additive-manufacturing data for organic parts"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the design space",
+        "detail": "Set the parameters that may vary — bay spacing, column positions, floor heights, facade depth — and the ranges each may take."
+      },
+      {
+        "title": "Encode constraints",
+        "detail": "Translate building codes, site boundaries, structural limits and budget into rules the search cannot violate."
+      },
+      {
+        "title": "Set objectives",
+        "detail": "Choose what to minimise or maximise, such as mass, embodied carbon, cost, daylight, or stiffness, and decide how to weigh conflicting goals."
+      },
+      {
+        "title": "Build the analysis loop",
+        "detail": "Wire a parametric model to simulation tools so any parameter set can be generated and scored automatically."
+      },
+      {
+        "title": "Run topology optimization",
+        "detail": "Divide a component or structural zone into small elements and let the algorithm remove material from where stresses are low, leaving an efficient load path."
+      },
+      {
+        "title": "Search with evolutionary methods",
+        "detail": "Breed and mutate populations of candidate designs over many generations, keeping the best performers and discarding the rest."
+      },
+      {
+        "title": "Speed up with surrogates",
+        "detail": "Train a fast predictive model on simulation results so the search can test far more options than full analysis would allow."
+      },
+      {
+        "title": "Inspect the trade-offs",
+        "detail": "Review the Pareto front — the set of designs where no objective can improve without another getting worse — and pick one by judgement."
+      },
+      {
+        "title": "Rationalise for construction",
+        "detail": "Smooth the geometry, snap it to standard sections and connection details, and export to BIM and fabrication files."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Parametric and computational geometry",
+        "status": "exists",
+        "why": "nothing can be varied automatically unless the design is expressed as editable rules rather than fixed drawings."
+      },
+      {
+        "tech": "Finite element analysis",
+        "status": "exists",
+        "why": "the search needs a fast, credible measure of whether each candidate stands up structurally."
+      },
+      {
+        "tech": "Topology optimization methods",
+        "status": "exists",
+        "why": "the mathematical basis for letting a computer place material where it is needed dates to work published in 1988."
+      },
+      {
+        "tech": "Cheap parallel compute",
+        "status": "exists",
+        "why": "thousands of design variants cannot be analysed one after another; they must run in parallel, usually in the cloud."
+      },
+      {
+        "tech": "Open BIM and data exchange",
+        "status": "partial",
+        "why": "handing an optimised geometry to engineers, cost consultants and fabricators still loses information in translation."
+      },
+      {
+        "tech": "Additive manufacturing and robotic fabrication",
+        "status": "partial",
+        "why": "the organic shapes the algorithms produce often cannot be made with conventional steel and concrete methods."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "optimization of individual structural components and nodes, and parametric tuning of massing, facades and daylight",
+        "unlocks": "measurable material savings on parts of a building, and faster option studies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-building generative workflows fed by live cost and carbon data, with automated code checking",
+        "unlocks": "optimisation of complete designs against real budgets rather than single components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "machine-learning models that generate and screen floor plans and layouts directly",
+        "unlocks": "rapid early-stage exploration, with engineers verifying rather than drawing from scratch."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed loops from generative design to robotic and additive construction",
+        "unlocks": "buildings whose optimised geometry is fabricated without being simplified back to rectangles."
+      }
+    ]
   }
 }

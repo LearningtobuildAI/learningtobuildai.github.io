@@ -30,5 +30,152 @@
         "def": "Functional Magnetic Resonance Imaging, a neuroimaging method that measures changes in blood flow associated with neural activity."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing front end",
+        "role": "measures brain activity, usually as tiny voltages on the scalp.",
+        "parts": [
+          "dry or gel EEG electrodes",
+          "low-noise amplifiers",
+          "headset or cap",
+          "optional fNIRS optodes"
+        ]
+      },
+      {
+        "name": "Decoding pipeline",
+        "role": "turns noisy recordings into an estimate of the user's mental state.",
+        "parts": [
+          "artefact rejection for blinks and muscle activity",
+          "spectral and connectivity features",
+          "subject-trained classifier"
+        ]
+      },
+      {
+        "name": "Stimulation stage",
+        "role": "nudges activity in a chosen brain region, or provides feedback only.",
+        "parts": [
+          "tDCS/tACS sponge or gel electrodes",
+          "constant-current source",
+          "or a TMS coil for deeper targets",
+          "safety current limiter"
+        ]
+      },
+      {
+        "name": "Closed-loop controller",
+        "role": "adjusts stimulation in real time based on the decoded state.",
+        "parts": [
+          "low-latency processing",
+          "phase or state estimator",
+          "dose model",
+          "fail-safe cutout"
+        ]
+      },
+      {
+        "name": "Training task and interface",
+        "role": "the cognitive work the user does while the loop runs.",
+        "parts": [
+          "working-memory or attention task",
+          "visual/auditory feedback",
+          "session logging"
+        ]
+      },
+      {
+        "name": "Verification layer",
+        "role": "separates a real effect from expectation and practice.",
+        "parts": [
+          "sham stimulation mode",
+          "blinded outcome tests",
+          "adverse-event monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target and the outcome",
+        "detail": "Choose a specific function such as working memory span or sustained attention, and a validated test that will measure it before and after."
+      },
+      {
+        "title": "Fit the sensor",
+        "detail": "Place electrodes at standard scalp positions, check contact impedance, and record a baseline of the individual's brain activity at rest and during the task."
+      },
+      {
+        "title": "Train a personal decoder",
+        "detail": "Collect many labelled trials, extract rhythm power and connectivity features, and fit a classifier that separates the mental states of interest."
+      },
+      {
+        "title": "Choose the stimulation dose",
+        "detail": "Select electrode montage, current (typically 1–2 mA for tDCS, well under tissue-damage thresholds), duration and ramp-up, with a hardware limit that cannot be exceeded."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Feed the decoded state back within tens of milliseconds to trigger stimulation or adapt the task, then iterate over multiple sessions."
+      },
+      {
+        "title": "Run controlled trials",
+        "detail": "Compare real against sham stimulation in blinded participants, and test whether any gain transfers to untrained tasks and persists after the device is removed."
+      },
+      {
+        "title": "Harden the hardware",
+        "detail": "Move from gel electrodes and lab amplifiers to dry arrays, automatic calibration and drift compensation so the device works outside a shielded room."
+      },
+      {
+        "title": "Clear a regulatory path",
+        "detail": "Decide whether the product is a medical device for a clinical deficit or a lower-risk wellness product, and gather the safety data each route requires."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-impedance dry electrode arrays",
+        "status": "partial",
+        "why": "comfortable, long-wear sensors are needed for daily use, but signal quality still lags gel electrodes."
+      },
+      {
+        "tech": "Real-time neural decoding",
+        "status": "exists",
+        "why": "rhythm and state decoding is routine in laboratories; the gap is robustness outside the lab."
+      },
+      {
+        "tech": "Causal maps of stimulation to cognitive circuits",
+        "status": "missing",
+        "why": "without knowing which circuit change produces which cognitive gain, dosing is guesswork."
+      },
+      {
+        "tech": "Individualised dosing models",
+        "status": "missing",
+        "why": "skull thickness, anatomy and brain state all change how much current reaches a target region."
+      },
+      {
+        "tech": "Long-term safety evidence",
+        "status": "partial",
+        "why": "single sessions look safe, but years of repeated stimulation have not been studied."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "neurofeedback and tDCS marketed for attention and memory; TMS used clinically for depression in several countries",
+        "unlocks": "a large user base and cheap hardware, but weak and inconsistent evidence for enhancement in healthy people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop systems that time stimulation to an individual's own brain rhythm",
+        "unlocks": "effects larger and more reproducible than fixed-dose stimulation, because dose adapts to state."
+      },
+      {
+        "stage": "Next",
+        "milestone": "implanted memory prostheses in small clinical trials, such as the DARPA Restoring Active Memory programme",
+        "unlocks": "a ground-truth model of which signals matter, which can be approximated non-invasively."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "individually calibrated devices with blinded, replicated evidence of durable cognitive gain",
+        "unlocks": "legitimate clinical use for deficits and a defensible route to enhancement claims."
+      }
+    ]
   }
 }

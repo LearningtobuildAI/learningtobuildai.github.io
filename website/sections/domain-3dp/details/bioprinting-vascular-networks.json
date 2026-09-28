@@ -34,5 +34,148 @@
         "def": "A material used in co-extrusion with bioinks that is later removed, leaving behind channels for vascular networks."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bioink and cells",
+        "role": "the printable living material: cells suspended in a gel that sets after printing.",
+        "parts": [
+          "hydrogel (alginate, gelatin, fibrin, or modified collagen)",
+          "patient-derived or stem-cell lines",
+          "growth-factor additives"
+        ]
+      },
+      {
+        "name": "Print head",
+        "role": "deposits ink in fine lines without killing the cells.",
+        "parts": [
+          "extrusion or inkjet nozzle",
+          "coaxial nozzle for layered strands",
+          "temperature and shear control",
+          "crosslinking (light, ion or enzyme)"
+        ]
+      },
+      {
+        "name": "Sacrificial ink",
+        "role": "temporary material printed where vessels should be, removed later to leave hollow channels.",
+        "parts": [
+          "pluronic or gelatin-based sacrificial gel",
+          "dissolving or melting step"
+        ]
+      },
+      {
+        "name": "Support and perfusion",
+        "role": "keeps soft printed structures from collapsing and feeds them.",
+        "parts": [
+          "support bath",
+          "peristaltic pump",
+          "oxygenated culture medium"
+        ]
+      },
+      {
+        "name": "Maturation bioreactor",
+        "role": "lets the tissue knit together and endothelial cells line the channels.",
+        "parts": [
+          "temperature and gas control",
+          "mechanical or flow conditioning",
+          "sterile housing"
+        ]
+      },
+      {
+        "name": "Imaging and quality control",
+        "role": "checks that channels are patent and connected before use.",
+        "parts": [
+          "micro-CT or light-sheet imaging",
+          "perfusion dye tests"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the target tissue",
+        "detail": "Clinical imaging such as CT or MRI is converted into a 3D model of the organ and its branching vessel tree."
+      },
+      {
+        "title": "Design the vascular tree",
+        "detail": "Software splits the geometry into printed features — large vessels first, then fine capillaries below the printer's resolution."
+      },
+      {
+        "title": "Formulate the bioink",
+        "detail": "Cells are mixed into a gel tuned to flow through the nozzle yet hold shape once printed."
+      },
+      {
+        "title": "Print the tissue",
+        "detail": "A bioprinter lays down alternating strands of cell-laden bioink and sacrificial ink, building the organ layer by layer."
+      },
+      {
+        "title": "Form the channels",
+        "detail": "The sacrificial ink is dissolved or melted out, leaving hollow tubes that follow the modelled vessel layout."
+      },
+      {
+        "title": "Seed the endothelium",
+        "detail": "Endothelial cells are perfused through the channels so they coat the walls and form a blood-compatible lining."
+      },
+      {
+        "title": "Mature under flow",
+        "detail": "The construct is kept in a bioreactor perfused with oxygen and nutrients, letting cells organise and the channels stabilise."
+      },
+      {
+        "title": "Implant and connect",
+        "detail": "The graft is surgically joined to the patient's own blood supply and observed for clotting and leakage."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-resolution multi-material bioprinters",
+        "status": "exists",
+        "why": "they must place two inks precisely enough to create channels tens to hundreds of micrometres wide."
+      },
+      {
+        "tech": "Expandable human cell sources",
+        "status": "partial",
+        "why": "a solid organ needs billions of cells from the patient to avoid immune rejection."
+      },
+      {
+        "tech": "Tunable, printable hydrogels",
+        "status": "partial",
+        "why": "the gel must protect cells in the nozzle, then stiffen and later dissolve or remodel in the body."
+      },
+      {
+        "tech": "Bioreactors with perfusion",
+        "status": "exists",
+        "why": "tissue thicker than a fraction of a millimetre dies without a blood supply, so it must be fed artificially first."
+      },
+      {
+        "tech": "Clinical and regulatory pathways for living grafts",
+        "status": "missing",
+        "why": "rules for implanting lab-grown living structures are still being defined."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab models of vascularised tissue used for drug testing",
+        "unlocks": "better toxicity screening without animal testing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "implantable thin patches with built-in vessels (skin, cornea, cardiac patches)",
+        "unlocks": "repair of surfaces that need only a simple blood supply."
+      },
+      {
+        "stage": "Next",
+        "milestone": "perfusable thick tissue and small organs in animals",
+        "unlocks": "evidence that printed vessels can stay open and carry real blood flow."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "patient-matched solid organs",
+        "unlocks": "an alternative to donor waiting lists, if vessels, cells and regulation all come together."
+      }
+    ]
   }
 }

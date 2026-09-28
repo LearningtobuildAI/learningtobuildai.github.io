@@ -1,0 +1,165 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing element",
+        "role": "converts a physical quantity into a readable signal.",
+        "parts": [
+          "MEMS pressure, temperature and humidity dies",
+          "gas and particulate sensors",
+          "chemical or biological assay layers"
+        ]
+      },
+      {
+        "name": "Node electronics and power",
+        "role": "lets one tiny device measure, store and transmit on its own.",
+        "parts": [
+          "microcontroller and memory",
+          "radio transceiver",
+          "energy harvester (solar, vibration, thermal)",
+          "battery or supercapacitor"
+        ]
+      },
+      {
+        "name": "Communications and mesh",
+        "role": "moves data from huge numbers of tiny nodes to the internet.",
+        "parts": [
+          "low-power radio links",
+          "mesh routing protocols",
+          "gateway/base stations",
+          "satellite backhaul"
+        ]
+      },
+      {
+        "name": "Localisation and timing",
+        "role": "gives every reading a place and a clock.",
+        "parts": [
+          "GNSS receiver or network-based positioning",
+          "onboard clock"
+        ]
+      },
+      {
+        "name": "Deployment platforms",
+        "role": "scatters nodes where people cannot go.",
+        "parts": [
+          "high-altitude balloons",
+          "fixed-wing drones and aircraft",
+          "ships and drifting buoys",
+          "satellite-deployed probes"
+        ]
+      },
+      {
+        "name": "Data backend",
+        "role": "turns an unmanageable stream into usable environmental fields.",
+        "parts": [
+          "ingest and calibration pipeline",
+          "data assimilation into weather and climate models",
+          "storage and access layer"
+        ]
+      },
+      {
+        "name": "End-of-life handling",
+        "role": "prevents billions of devices becoming litter.",
+        "parts": [
+          "biodegradable substrates and conductors",
+          "controlled descent or recovery"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the measurands",
+        "detail": "Decide what the node must sense — temperature, pressure, humidity, particulate matter, specific gases — and design MEMS structures for those only, because every extra sensor costs power."
+      },
+      {
+        "title": "Fabricate the dies",
+        "detail": "Sensors and the microcontroller are patterned on silicon wafers by the same lithography used for computer chips, so a single wafer yields thousands of identical dies."
+      },
+      {
+        "title": "Solve the power budget",
+        "detail": "Add a harvester and design the firmware to sleep almost always and wake briefly. Most nodes will transmit rarely and at very low power, since a tiny harvester produces at most milliwatts."
+      },
+      {
+        "title": "Design the link",
+        "detail": "Use short-range radio, or backscatter that reflects an existing signal instead of generating one, and route packets through neighbouring nodes to a gateway."
+      },
+      {
+        "title": "Package it",
+        "detail": "Encapsulate against water, salt, UV and pressure, or build the shell from biodegradable polymer and printed conductors so a lost node degrades on its own."
+      },
+      {
+        "title": "Mass-produce",
+        "detail": "Drive unit cost to cents using wafer-scale fabrication and roll-to-roll printing for the disposable parts, otherwise the economics never work."
+      },
+      {
+        "title": "Distribute",
+        "detail": "Release nodes from balloons, drones or aircraft along planned tracks, or attach them to existing buoys, masts and vehicles. Each node must stabilise and start reporting on its own."
+      },
+      {
+        "title": "Calibrate against references",
+        "detail": "Cross-check every device against national metrology-grade stations, and correct for drift, ageing and contamination over time."
+      },
+      {
+        "title": "Assimilate the data",
+        "detail": "Feed the stream into weather and climate models, which need careful weighting of millions of imperfect readings rather than raw addition."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultra-low-power MEMS sensing",
+        "status": "exists",
+        "why": "phone-grade pressure, humidity and motion sensors already run on very little current."
+      },
+      {
+        "tech": "Microwatt radio and backscatter communication",
+        "status": "partial",
+        "why": "ordinary radio transmitters need far more power than a tiny node can harvest; reflecting ambient signals works only over short distances."
+      },
+      {
+        "tech": "Energy harvesting at millimetre scale",
+        "status": "partial",
+        "why": "a node the size of a grain has little area to catch sunlight or vibration, so lifetime is limited."
+      },
+      {
+        "tech": "Satellite backhaul for very small transmitters",
+        "status": "partial",
+        "why": "small satellites can relay data from low-power ground nodes, but coverage and capacity are still limited."
+      },
+      {
+        "tech": "Biodegradable or recoverable electronics",
+        "status": "missing",
+        "why": "scattering billions of devices into the environment is only acceptable if they break down safely or are retrieved."
+      },
+      {
+        "tech": "Data assimilation at extreme scale",
+        "status": "partial",
+        "why": "today's models ingest thousands of observations; billions demand new statistical and computing methods."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "established observing networks — radiosondes launched twice daily, thousands of drifting ocean profiling floats, ground air-quality stations, and orbiting Earth-observation satellites",
+        "unlocks": "the models and data pipelines that any denser network would feed."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dense regional mesh deployments — smart-city air-quality grids, agricultural soil networks, instrumented rivers",
+        "unlocks": "proving that cheap unattended nodes survive real weather and stay calibrated."
+      },
+      {
+        "stage": "Next",
+        "milestone": "nodes cheap enough to be dropped and abandoned, with biodegradable casings",
+        "unlocks": "coverage over oceans, forests and deserts where nobody can service a device."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a globally coordinated sensing layer feeding a single data system",
+        "unlocks": "near-real-time environmental fields rather than interpolated maps — but only if disposal and radio spectrum are governed internationally."
+      }
+    ]
+  }
+}

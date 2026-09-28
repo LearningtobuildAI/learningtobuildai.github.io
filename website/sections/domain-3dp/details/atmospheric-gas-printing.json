@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Atmosphere intake and separation",
+        "role": "captures and sorts the local gas into a carbon feedstock and everything else.",
+        "parts": [
+          "compressor and intake",
+          "CO2 sorbent or cryogenic separator",
+          "buffer tanks"
+        ]
+      },
+      {
+        "name": "Carbon feedstock plant",
+        "role": "breaks carbon dioxide apart so pure carbon is available to deposit.",
+        "parts": [
+          "solid-oxide or molten-salt CO2 electrolyser",
+          "reverse water-gas shift reactor",
+          "oxygen vent or storage"
+        ]
+      },
+      {
+        "name": "Plasma deposition head",
+        "role": "grows solid carbon layer by layer — the actual 'print head'.",
+        "parts": [
+          "microwave or DC plasma source",
+          "carbon-bearing gas feed and hydrogen line",
+          "substrate stage and heater",
+          "gas exhaust"
+        ]
+      },
+      {
+        "name": "Motion and positioning",
+        "role": "moves the head, or the growing part, with micron accuracy over metres of travel.",
+        "parts": [
+          "gantry or robotic arm",
+          "metrology and feedback",
+          "sealed bearings"
+        ]
+      },
+      {
+        "name": "Structure and stress management",
+        "role": "keeps the printed solid from cracking as it thickens.",
+        "parts": [
+          "graded interlayers",
+          "reinforcement phase (fibre or metal)",
+          "thermal control of the part"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "plasma deposition and gas compression are power-hungry.",
+        "parts": [
+          "fission surface reactor or large solar array",
+          "waste-heat radiators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the local atmosphere",
+        "detail": "Measure composition and pressure. Mars is roughly 95% carbon dioxide at about 0.6 kPa; Titan is mostly nitrogen at about 146 kPa; Venus is about 96% carbon dioxide at roughly 9 MPa. The feedstock strategy depends entirely on which of these you have."
+      },
+      {
+        "title": "Capture and separate the gas",
+        "detail": "Compress the intake gas and pull out carbon dioxide with a sorbent bed or by chilling it out, leaving nitrogen, argon and traces to be vented or used separately."
+      },
+      {
+        "title": "Reduce carbon dioxide to carbon",
+        "detail": "Electrolyse or chemically split the CO2 into carbon monoxide and oxygen, then reduce further to solid or gaseous carbon. On Mars the oxygen is a valuable by-product, not waste."
+      },
+      {
+        "title": "Grow solid carbon in a plasma",
+        "detail": "Feed carbon-bearing gas plus hydrogen into a plasma at roughly 700–1000 °C so carbon deposits onto a seeded substrate as diamond or diamond-like carbon. Growth is slow — microns per hour in lab reactors — so a thick wall takes an extremely long time."
+      },
+      {
+        "title": "Address nitrogen's real role",
+        "detail": "Nitrogen does not build a diamond lattice. In practice it is used as a dopant, as a plasma additive that changes film texture, or as a route toward hard carbon-nitride phases such as the proposed beta-C3N4 — which has never been made in bulk."
+      },
+      {
+        "title": "Stack layers into a shape",
+        "detail": "Move the deposition head or the workpiece so material accumulates where the structure needs it, building walls, ribs and domes incrementally rather than as a single casting."
+      },
+      {
+        "title": "Control residual stress",
+        "detail": "Diamond-like carbon films carry high internal stress and are stiff but brittle. Graded interlayers, careful temperature control and a reinforcing phase are needed to stop thick sections from delaminating or shattering."
+      },
+      {
+        "title": "Assemble and commission",
+        "detail": "Join printed segments, seal and pressure-test the shell, and integrate it with power, life support and thermal systems."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Plasma-enhanced chemical vapour deposition of diamond and diamond-like carbon",
+        "status": "exists",
+        "why": "it is the only demonstrated way to grow solid carbon from a gas; today it is used for coatings and cutting tools, not structures."
+      },
+      {
+        "tech": "Carbon dioxide electrolysis and the reverse water-gas shift",
+        "status": "exists",
+        "why": "these turn the feedstock gas into carbon and oxygen; NASA's MOXIE demonstrated CO2-to-oxygen conversion on Mars in 2021."
+      },
+      {
+        "tech": "Thick, low-stress free-standing diamond growth",
+        "status": "partial",
+        "why": "free-standing CVD diamond plates a few millimetres thick can be made, but structural-scale bulk material does not exist."
+      },
+      {
+        "tech": "Hard carbon-nitride phases (e.g. beta-C3N4)",
+        "status": "missing",
+        "why": "predicted to be superhard, but no bulk crystalline sample has been produced in decades of attempts."
+      },
+      {
+        "tech": "Continuous off-world power",
+        "status": "partial",
+        "why": "fission surface-power designs have been tested on Earth, but no reactor has operated on another world."
+      },
+      {
+        "tech": "Robotic construction in vacuum and low gravity",
+        "status": "partial",
+        "why": "demonstrated at small scale for regolith and metal printing, not for metre-scale pressure structures."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "diamond and diamond-like carbon grown as micron-scale coatings in vacuum chambers",
+        "unlocks": "the physics of layer-by-layer carbon deposition, at coating scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "thicker free-standing diamond plates and scaled-up plasma reactors",
+        "unlocks": "material thick enough to carry structural loads and be machined."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ISRU demonstrators that extract oxygen, water and metals from local materials on the Moon or Mars",
+        "unlocks": "the gas handling, power and robotics that any printing plant needs."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a robotic testbed printing a small pressure vessel from atmospheric carbon",
+        "unlocks": "evidence on whether growth rates and stress control can be pushed to building scale."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "habitat-scale printing from local atmosphere",
+        "unlocks": "structures built where shipping them from Earth is impossible — if deposition speed, brittleness and power demands can all be solved."
+      }
+    ]
+  }
+}

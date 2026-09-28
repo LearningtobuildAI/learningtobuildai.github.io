@@ -34,5 +34,154 @@
         "def": "A series of electrochemical cells connected in series or parallel to form a larger power output unit within a flow battery system."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrolyte and tanks",
+        "role": "stores the energy as two liquids in separate tanks; doubling the tank volume doubles the stored energy without touching the stack.",
+        "parts": [
+          "positive electrolyte tank",
+          "negative electrolyte tank",
+          "vanadium, iron, zinc or organic redox salts dissolved in acid or alkaline solution",
+          "level and temperature sensors"
+        ]
+      },
+      {
+        "name": "Cell stack",
+        "role": "converts electrical energy to chemical energy and back; more cells or larger cells mean more power.",
+        "parts": [
+          "carbon or graphite felt electrodes",
+          "bipolar plates with flow channels",
+          "ion-exchange membrane between each half-cell",
+          "gaskets and end plates",
+          "clamping bolts or tie rods"
+        ]
+      },
+      {
+        "name": "Hydraulic loop",
+        "role": "pumps both electrolytes through the stacks at a steady rate.",
+        "parts": [
+          "pumps",
+          "piping and valves",
+          "flow meters",
+          "drip trays and secondary containment"
+        ]
+      },
+      {
+        "name": "Power conversion",
+        "role": "turns the stack's direct current into grid-compatible alternating current in both directions.",
+        "parts": [
+          "bidirectional inverter",
+          "transformer",
+          "DC busbars and contactors",
+          "stack voltage monitoring"
+        ]
+      },
+      {
+        "name": "Thermal and rebalancing system",
+        "role": "keeps electrolyte in its working temperature range and corrects the slow migration of active material across the membrane.",
+        "parts": [
+          "heat exchanger or chiller",
+          "rebalancing cell or electrolyte re-mixing loop",
+          "ventilation"
+        ]
+      },
+      {
+        "name": "Controls",
+        "role": "runs charge and discharge cycles, tracks state of charge and protects the stack.",
+        "parts": [
+          "battery management controller",
+          "state-of-charge estimator",
+          "SCADA link to the grid operator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Produce the active material",
+        "detail": "Vanadium pentoxide is reduced and dissolved in sulfuric acid to make electrolyte at roughly 1.5–2 moles of vanadium per litre — often sourced from steel-slag or mining residues. Iron, zinc and organic flow chemistries start from cheaper salts or synthesised molecules."
+      },
+      {
+        "title": "Cast the membrane",
+        "detail": "A perfluorosulfonic-acid polymer or a hydrocarbon alternative is cast into a thin film a few tens of micrometres thick. It must let charge-carrying ions through while blocking the active species from mixing."
+      },
+      {
+        "title": "Make the electrodes and plates",
+        "detail": "Carbon felt or cloth is heat-treated, and conductive carbon-polymer composite plates are moulded with flow channels that spread electrolyte evenly across the felt."
+      },
+      {
+        "title": "Stack the cells",
+        "detail": "Electrode, membrane and plate are repeated tens to over a hundred times, compressed between end plates so each cell sits at about 1.2–1.6 V and the stack totals tens to hundreds of volts."
+      },
+      {
+        "title": "Build the hydraulic loop",
+        "detail": "Tanks, pumps, pipework and sensors are assembled, usually inside shipping-container-sized modules that can be trucked to site and bolted together."
+      },
+      {
+        "title": "Fill and condition",
+        "detail": "Both tanks are filled with electrolyte and the stack is cycled gently so the electrodes and membrane reach stable performance."
+      },
+      {
+        "title": "Connect and commission",
+        "detail": "The inverter is tied to the grid transformer, and charge/discharge cycles are run to verify round-trip efficiency, typically 65–80% for vanadium systems, and to calibrate state of charge."
+      },
+      {
+        "title": "Operate and service",
+        "detail": "The system runs for 20 years or more with tens of thousands of cycles; maintenance is mostly pump, sensor and electrolyte top-up work rather than cell replacement."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ion-exchange membranes",
+        "status": "exists",
+        "why": "the cell only works if one ion can cross while the two electrolytes stay separate; membrane cost is a large share of system cost."
+      },
+      {
+        "tech": "Vanadium and other redox-active salts at scale",
+        "status": "exists",
+        "why": "electrolyte is the single biggest cost item, so supply of vanadium, iron or cheap organic molecules sets the economics."
+      },
+      {
+        "tech": "Bidirectional grid inverters",
+        "status": "exists",
+        "why": "the stack produces DC and the grid needs AC in both directions."
+      },
+      {
+        "tech": "Cheap organic and iron-based chemistries",
+        "status": "partial",
+        "why": "they could undercut vanadium, but most are only in pilot or early commercial use."
+      },
+      {
+        "tech": "Very low-cost tank and piping manufacturing",
+        "status": "partial",
+        "why": "long duration is won by buying cheap liquid containment, not expensive electrochemistry."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "vanadium systems of tens to hundreds of megawatts connected to grids, including a 100 MW / 400 MWh installation in Dalian, China, energised in 2022",
+        "unlocks": "multi-hour storage that can be cycled daily for decades without capacity fade."
+      },
+      {
+        "stage": "Next",
+        "milestone": "iron, zinc and organic flow chemistries moving from pilots to commercial production",
+        "unlocks": "storage that does not depend on vanadium prices and can be built from abundant materials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "electrolyte leasing and reuse, with the liquid recovered and refurbished at end of life",
+        "unlocks": "much lower lifetime cost, since the electrolyte outlives the stack."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routines of 12–100 hour storage built alongside wind and solar farms",
+        "unlocks": "firm power through multi-day calm or cloudy periods, displacing gas peaking plants."
+      }
+    ]
   }
 }

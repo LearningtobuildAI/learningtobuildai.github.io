@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Robot unit",
+        "role": "the minimal agent — cheap, robust and expendable in large numbers.",
+        "parts": [
+          "microcontroller or small computer",
+          "motor drivers and wheels or rotors",
+          "proximity and position sensors",
+          "short-range radio or infrared transceiver",
+          "rechargeable battery"
+        ]
+      },
+      {
+        "name": "Local communication mesh",
+        "role": "lets robots exchange messages only with nearby neighbours, so no central node is required.",
+        "parts": [
+          "ad-hoc radio protocol",
+          "message relay",
+          "time synchronisation"
+        ]
+      },
+      {
+        "name": "Stigmergic field",
+        "role": "a shared virtual environment where robots leave and read digital pheromone markers.",
+        "parts": [
+          "virtual pheromone map",
+          "decay and diffusion model",
+          "marker read/write interface"
+        ]
+      },
+      {
+        "name": "Decentralised control",
+        "role": "turns simple local rules into coordinated group behaviour.",
+        "parts": [
+          "response-threshold or auction task allocation",
+          "collision avoidance",
+          "flocking and aggregation rules"
+        ]
+      },
+      {
+        "name": "Power and docking",
+        "role": "keeps hundreds of small robots charged without human intervention.",
+        "parts": [
+          "battery management",
+          "docking stations",
+          "autonomous return-to-charge"
+        ]
+      },
+      {
+        "name": "Mission interface",
+        "role": "lets a human set goals and monitor the swarm at a high level.",
+        "parts": [
+          "goal specification",
+          "aggregate status dashboard",
+          "safety override"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the swarm task",
+        "detail": "Decide what the group must achieve — mapping an area, moving goods, or searching rubble — and the behaviours needed to achieve it."
+      },
+      {
+        "title": "Design the minimal robot",
+        "detail": "Choose sensors, actuators and compute small enough and cheap enough that losing some units is acceptable."
+      },
+      {
+        "title": "Implement local communication",
+        "detail": "Build a radio or infrared link that lets each robot talk only to neighbours within range."
+      },
+      {
+        "title": "Create the virtual pheromone model",
+        "detail": "Define how digital markers are deposited, read, and allowed to decay or diffuse over time."
+      },
+      {
+        "title": "Write local interaction rules",
+        "detail": "Program each robot to react to its neighbours and to pheromone levels, producing swarm behaviour without a central controller."
+      },
+      {
+        "title": "Simulate at scale",
+        "detail": "Test hundreds or thousands of virtual robots to find parameter settings that stay stable and efficient."
+      },
+      {
+        "title": "Build and calibrate the physical swarm",
+        "detail": "Assemble the robots, calibrate sensors, and tune communication ranges so real units match simulation."
+      },
+      {
+        "title": "Validate in a controlled environment",
+        "detail": "Run the swarm on a bounded task such as warehouse shelving or a mock disaster site, measuring completion and failure rates."
+      },
+      {
+        "title": "Deploy with human oversight",
+        "detail": "Place the swarm in real operations with a supervisor able to pause, redirect or shut it down."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost embedded electronics",
+        "status": "exists",
+        "why": "hundreds of units are only practical if each robot is cheap to build and replace."
+      },
+      {
+        "tech": "Wireless mesh networking",
+        "status": "exists",
+        "why": "robots need to pass messages without a central access point."
+      },
+      {
+        "tech": "Swarm coordination algorithms",
+        "status": "partial",
+        "why": "many behaviours work in simulation, but real-world noise and latency still cause failures."
+      },
+      {
+        "tech": "Reliable localisation and collision avoidance",
+        "status": "partial",
+        "why": "each robot must know roughly where it is and avoid neighbours in crowded, changing spaces."
+      },
+      {
+        "tech": "Energy autonomy",
+        "status": "partial",
+        "why": "docking and battery management must work without human help for long missions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory swarms of tens to hundreds of small robots and large-scale simulations",
+        "unlocks": "proof that decentralised rules can produce useful group behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "warehouse fleets that self-allocate tasks and routes instead of following a central scheduler",
+        "unlocks": "more resilient logistics that keep working when individual robots fail."
+      },
+      {
+        "stage": "Next",
+        "milestone": "disaster-response swarms that map buildings and locate survivors",
+        "unlocks": "faster situational awareness where infrastructure is damaged."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-assembling and self-repairing robot groups",
+        "unlocks": "adaptive structures and environmental monitoring at scales no single robot could cover."
+      }
+    ]
+  }
+}

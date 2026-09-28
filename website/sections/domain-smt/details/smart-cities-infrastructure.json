@@ -30,5 +30,156 @@
         "def": "A city that uses information and communication technologies to improve the efficiency and sustainability of urban services while enhancing quality of life for residents."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what is happening in the city — traffic flow, air quality, noise, energy and water use.",
+        "parts": [
+          "air-quality sensors (particulate matter in µg/m³, NO₂)",
+          "traffic counters and cameras",
+          "smart electricity and water meters",
+          "acoustic sensors (dB)",
+          "parking occupancy sensors"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "moves data from street furniture to computing centres.",
+        "parts": [
+          "low-power wide-area networks (LoRaWAN, NB-IoT)",
+          "fibre backhaul",
+          "5G or Wi-Fi for high-bandwidth feeds",
+          "gateways and edge nodes"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "stores, cleans and shares data from many city departments.",
+        "parts": [
+          "streaming ingestion",
+          "time-series database",
+          "APIs and data catalogue",
+          "digital twin model of buildings, roads and pipes"
+        ]
+      },
+      {
+        "name": "Analytics and control",
+        "role": "turns data into decisions — often automatically.",
+        "parts": [
+          "traffic signal optimisation",
+          "demand-response for power",
+          "predictive maintenance for pipes and lights",
+          "dashboards for operators"
+        ]
+      },
+      {
+        "name": "Applications and services",
+        "role": "what residents and city staff actually use.",
+        "parts": [
+          "mobility and parking apps",
+          "waste-collection routing",
+          "emergency response tools",
+          "public information displays"
+        ]
+      },
+      {
+        "name": "Security and privacy",
+        "role": "protects networks, data and citizen trust.",
+        "parts": [
+          "identity and access management",
+          "encryption",
+          "anonymisation of personal data",
+          "operational-technology security monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Audit and set goals",
+        "detail": "Map existing assets — lights, signals, meters, pipes — and define measurable aims such as cutting traffic delay or water loss."
+      },
+      {
+        "title": "Pilot sensors",
+        "detail": "Install a small number of sensors or smart meters in one district to test power, connectivity and maintenance needs."
+      },
+      {
+        "title": "Build the network",
+        "detail": "Add gateways and backhaul (fibre or wireless) so devices can report reliably without expensive per-device cellular plans."
+      },
+      {
+        "title": "Create the data platform",
+        "detail": "Stand up ingestion, storage and APIs, and connect departmental silos so a single view of the city is possible."
+      },
+      {
+        "title": "Develop analytics",
+        "detail": "Write and tune algorithms — for example, adjusting traffic signal timing based on measured vehicle queues, or flagging water pressure drops that suggest a leak."
+      },
+      {
+        "title": "Integrate with operations",
+        "detail": "Link the platform to traffic control rooms, utility SCADA systems and maintenance crews so insights trigger real actions."
+      },
+      {
+        "title": "Roll out services",
+        "detail": "Release citizen apps and public dashboards, and train staff to use the new tools."
+      },
+      {
+        "title": "Secure and iterate",
+        "detail": "Apply security patches, review privacy impact, and expand to more districts based on measured results."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power wide-area networking",
+        "status": "exists",
+        "why": "battery-powered sensors need cheap, long-range links that last years."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "exists",
+        "why": "city-scale data is too large to process only in local control rooms."
+      },
+      {
+        "tech": "Open data standards and interoperability",
+        "status": "partial",
+        "why": "without shared formats, each department's system remains a silo."
+      },
+      {
+        "tech": "Operational-technology cybersecurity",
+        "status": "partial",
+        "why": "connecting traffic lights or water pumps to networks creates new attack paths."
+      },
+      {
+        "tech": "Privacy-preserving data handling",
+        "status": "partial",
+        "why": "cameras and mobility traces can identify individuals unless anonymised by design."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "siloed deployments such as smart street lighting, smart meters and adaptive traffic signals in individual districts",
+        "unlocks": "proven components and early efficiency gains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated city platforms that combine transport, energy, water and waste data",
+        "unlocks": "cross-domain optimisation — for example, timing waste trucks to avoid congestion."
+      },
+      {
+        "stage": "Next",
+        "milestone": "operational digital twins used for planning and live control",
+        "unlocks": "testing changes in simulation before touching the real city."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop, adaptive infrastructure that continuously reconfigures itself",
+        "unlocks": "cities that respond automatically to weather, events and demand — if security and privacy are solved."
+      }
+    ]
   }
 }

@@ -32,5 +32,139 @@
         "def": "A paradigm where data processing occurs only when specific events or changes are detected, as opposed to continuous processing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Spiking neuron circuits",
+        "role": "mimic biological neurons: they accumulate input and emit a spike only when a threshold is crossed.",
+        "parts": [
+          "leaky integrate-and-fire silicon neuron",
+          "membrane capacitor",
+          "threshold comparator and refractory circuit"
+        ]
+      },
+      {
+        "name": "Synaptic array",
+        "role": "stores connection weights locally, so computation and memory sit together.",
+        "parts": [
+          "memristor or phase-change crossbar",
+          "SRAM weight cells",
+          "weight-update circuitry"
+        ]
+      },
+      {
+        "name": "Event-driven interconnect",
+        "role": "routes spikes as asynchronous packets only when a neuron fires, saving power.",
+        "parts": [
+          "network-on-chip routers",
+          "address-event representation (AER) links"
+        ]
+      },
+      {
+        "name": "Learning and plasticity engine",
+        "role": "adjusts weights using local rules such as spike-timing-dependent plasticity.",
+        "parts": [
+          "STDP circuits",
+          "programmable learning-rule tables",
+          "off-chip training interface"
+        ]
+      },
+      {
+        "name": "Sensory front-end",
+        "role": "converts real-world signals into sparse spike trains.",
+        "parts": [
+          "event-based vision sensor (DVS)",
+          "silicon cochlea",
+          "spike encoder"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "maps neural networks onto the hardware and simulates them.",
+        "parts": [
+          "compiler and mapper",
+          "spiking neural network simulator",
+          "libraries and APIs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a neuron model",
+        "detail": "Pick a simple, hardware-friendly spiking model such as leaky integrate-and-fire, then design its analog or digital circuit."
+      },
+      {
+        "title": "Design the synapse",
+        "detail": "Select a weight-storage technology — memristor, phase-change memory or SRAM — and lay out a dense crossbar array."
+      },
+      {
+        "title": "Lay out a tile",
+        "detail": "Combine a group of neurons, their synapses and a router into a repeating tile that can be tiled across the chip."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Use standard CMOS for logic and signalling; if memristors are used, add them in the back-end-of-line above the transistors."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Measure spiking behaviour across many neurons and compensate for device-to-device variability with calibration."
+      },
+      {
+        "title": "Train and map the network",
+        "detail": "Train the network (often off-chip with conventional deep-learning tools), then compile its weights onto the synaptic array."
+      },
+      {
+        "title": "Integrate into a system",
+        "detail": "Pair the chip with event-based sensors and a host processor to run always-on inference in a real device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Non-volatile memory with analog weight storage",
+        "status": "partial",
+        "why": "memristors and phase-change cells can hold weights densely and cheaply, but their variability and endurance are still being improved."
+      },
+      {
+        "tech": "Event-based sensors",
+        "status": "exists",
+        "why": "cameras that output spikes only when pixels change are commercially available and naturally match neuromorphic hardware."
+      },
+      {
+        "tech": "Asynchronous, massively parallel chip design",
+        "status": "exists",
+        "why": "spiking chips avoid a global clock, so they need proven network-on-chip and handshaking techniques."
+      },
+      {
+        "tech": "Brain-inspired learning algorithms",
+        "status": "partial",
+        "why": "local rules like STDP work in small demos but scaling them to large, accurate tasks remains an open research problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research chips and large-scale spiking machines demonstrate real-time spiking neural networks",
+        "unlocks": "ultra-low-power always-on vision and robotics prototypes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems that combine neuromorphic cores with conventional processors",
+        "unlocks": "practical edge devices for keyword spotting, gesture recognition and anomaly detection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial chips with on-chip learning and memristor crossbars",
+        "unlocks": "adaptive sensors and devices that learn locally without sending data to the cloud."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale brain-inspired architectures for cognitive computing",
+        "unlocks": "new AI workloads that today's deep learning handles poorly, such as continual learning and sparse reasoning."
+      }
+    ]
   }
 }

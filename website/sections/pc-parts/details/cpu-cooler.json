@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Contact plate and interface",
+        "role": "picks heat up from the processor's metal lid with as little resistance as possible.",
+        "parts": [
+          "nickel-plated copper cold plate",
+          "thermal paste or pad",
+          "retention bracket"
+        ]
+      },
+      {
+        "name": "Heat spreader",
+        "role": "moves heat sideways away from the small contact patch to a larger area.",
+        "parts": [
+          "sintered copper heat pipes",
+          "or a vapour chamber"
+        ]
+      },
+      {
+        "name": "Fin stack",
+        "role": "the surface area that air is blown across.",
+        "parts": [
+          "stacked aluminium or copper fins",
+          "solder or thermal epoxy joints"
+        ]
+      },
+      {
+        "name": "Fan and airflow path",
+        "role": "replaces the warmed air layer around the fins.",
+        "parts": [
+          "brushless motor",
+          "PWM controller",
+          "sleeve or fluid-dynamic bearing",
+          "blades"
+        ]
+      },
+      {
+        "name": "Liquid loop (alternative)",
+        "role": "carries heat by pumped coolant to a remote radiator.",
+        "parts": [
+          "cold plate with microchannels",
+          "pump",
+          "flexible tubing",
+          "radiator",
+          "reservoir"
+        ]
+      },
+      {
+        "name": "Mounting and control",
+        "role": "holds the cooler at the right pressure and matches fan speed to heat load.",
+        "parts": [
+          "spring-loaded screws or lever",
+          "backplate",
+          "temperature sensor and fan curve"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the thermal target",
+        "detail": "Design to a heat load in watts and a desired temperature rise above room air, expressed as a thermal resistance in °C per watt."
+      },
+      {
+        "title": "Form the cold plate",
+        "detail": "A copper block is machined flat, then skimmed and lapped so contact is measured in micrometres."
+      },
+      {
+        "title": "Make the heat pipes",
+        "detail": "Copper tube is filled with a sintered or grooved wick, evacuated, charged with a small amount of water or another working fluid, and sealed."
+      },
+      {
+        "title": "Bond pipes to fins and base",
+        "detail": "Pipes are pressed into the cold plate, then threaded through hundreds of stamped fins and soldered in a furnace so every joint conducts."
+      },
+      {
+        "title": "Balance and assemble the fan",
+        "detail": "Blades are injection-moulded, the rotor is balanced, the bearing is fitted and the motor is wired to a speed controller."
+      },
+      {
+        "title": "Finish and test",
+        "detail": "Nickel plating, a pre-applied paste or pad, and a run on a heated test rig to measure thermal resistance and noise."
+      },
+      {
+        "title": "Install and tune",
+        "detail": "The cooler is clamped to the socket with even pressure, then the fan curve is set so it stays quiet at idle and ramps up under load."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Heat pipe and vapour chamber manufacture",
+        "status": "exists",
+        "why": "the reason a small air cooler can shed 150 W without a large temperature penalty."
+      },
+      {
+        "tech": "Precision copper working and plating",
+        "status": "exists",
+        "why": "flatness and joint quality set how much heat actually crosses the contact patch."
+      },
+      {
+        "tech": "Thermal interface materials",
+        "status": "exists",
+        "why": "microscopic air gaps between metal surfaces would otherwise act as insulation."
+      },
+      {
+        "tech": "Quiet brushless fans and bearings",
+        "status": "exists",
+        "why": "cooling only works if air keeps moving, and users reject loud machines."
+      },
+      {
+        "tech": "Microchannel cold plates and pumps",
+        "status": "partial",
+        "why": "needed for very high heat-flux chips; still being engineered for reliability at scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "air coolers and sealed liquid coolers that handle 150–250 W",
+        "unlocks": "reliable performance for desktop and server processors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "direct-to-chip liquid cooling for dense AI racks",
+        "unlocks": "removing hundreds of watts per chip with warm water, cutting cooling energy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "two-phase and single-phase immersion cooling",
+        "unlocks": "whole servers submerged in a non-conducting fluid, no fans at all."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cooling built into the chip package itself",
+        "unlocks": "microfluidic channels in the silicon or lid, pushing the limit of how fast a processor can run."
+      }
+    ]
+  }
+}

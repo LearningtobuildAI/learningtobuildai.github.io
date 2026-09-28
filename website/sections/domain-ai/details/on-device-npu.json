@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute array",
+        "role": "does the multiply-accumulate arithmetic at high parallelism.",
+        "parts": [
+          "multiply-accumulate (MAC) units",
+          "systolic or SIMD data path",
+          "accumulators"
+        ]
+      },
+      {
+        "name": "On-chip memory",
+        "role": "feeds weights and activations to the array fast enough to keep it busy.",
+        "parts": [
+          "weight buffers",
+          "activation buffers",
+          "SRAM banks",
+          "register files"
+        ]
+      },
+      {
+        "name": "Data-movement fabric",
+        "role": "moves tensors between memory, array and the rest of the chip.",
+        "parts": [
+          "DMA engines",
+          "on-chip interconnect",
+          "interface to shared SoC memory"
+        ]
+      },
+      {
+        "name": "Controller and scheduler",
+        "role": "sequences operations, tiles tensors and overlaps memory with compute.",
+        "parts": [
+          "instruction sequencer",
+          "pipeline control",
+          "tiling logic"
+        ]
+      },
+      {
+        "name": "Numeric conversion",
+        "role": "translates between full-precision models and the low-precision formats the array uses.",
+        "parts": [
+          "quantisation and scaling units",
+          "zero-point handling",
+          "rounding and clipping"
+        ]
+      },
+      {
+        "name": "Host and power interface",
+        "role": "lets the CPU or GPU hand work to the NPU and gates unused blocks.",
+        "parts": [
+          "CPU/GPU handshake",
+          "clock and power gating",
+          "thermal sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the workload and number formats",
+        "detail": "Engineers choose INT8, FP16 or mixed precision, a throughput target in TOPS and a power budget set by the device's battery and cooling."
+      },
+      {
+        "title": "Design the architecture",
+        "detail": "They decide the array size, dataflow, memory hierarchy and how much SRAM fits in the area budget."
+      },
+      {
+        "title": "Write and verify the RTL",
+        "detail": "The design is described in hardware description language, then simulated, formally checked and run on emulators against real neural networks."
+      },
+      {
+        "title": "Do physical design",
+        "detail": "Synthesis, floorplanning, place-and-route and timing closure turn the logic into a manufacturable layout, with careful clock and power distribution."
+      },
+      {
+        "title": "Integrate into the system-on-chip",
+        "detail": "The NPU block is connected to CPU, GPU, memory and peripherals through the chip's interconnect, and its caches and power domains are tied in."
+      },
+      {
+        "title": "Fabricate the silicon",
+        "detail": "A mask set is made and wafers are processed at an advanced logic node; each die is tested before packaging."
+      },
+      {
+        "title": "Package and validate",
+        "detail": "The SoC is packaged, and system-level tests check thermal behaviour, power and real inference workloads."
+      },
+      {
+        "title": "Build the software stack",
+        "detail": "A graph compiler, kernel library and runtime map models from frameworks onto the NPU, inserting quantisation and fallback paths."
+      },
+      {
+        "title": "Tune on device",
+        "detail": "Operators that do not fit are optimised or offloaded, and power and thermal limits are tuned for sustained rather than peak performance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced logic process nodes",
+        "status": "exists",
+        "why": "dense, low-power transistors are needed to put a useful array on a phone chip."
+      },
+      {
+        "tech": "Low-power SRAM",
+        "status": "exists",
+        "why": "weights and activations must sit close to the arithmetic to avoid burning energy on data movement."
+      },
+      {
+        "tech": "Quantisation-aware training",
+        "status": "exists",
+        "why": "models must tolerate INT8 or lower precision without losing useful accuracy."
+      },
+      {
+        "tech": "Neural-network compilers and runtimes",
+        "status": "exists",
+        "why": "without them, developers cannot easily get models onto the specialised hardware."
+      },
+      {
+        "tech": "High-bandwidth memory interfaces",
+        "status": "exists",
+        "why": "larger models still need to stream data from shared memory without stalling the array."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NPUs in smartphones, tablets and laptops handling camera, speech and photo tasks",
+        "unlocks": "private, low-latency inference without a network round trip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device large language models running with unified memory and mixed precision",
+        "unlocks": "assistants that work offline and keep data on the device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chiplets and heterogeneous compute that share memory between CPU, GPU and NPU",
+        "unlocks": "larger models and more flexible scheduling on battery-powered devices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "in-memory and analog compute blocks for matrix multiplication",
+        "unlocks": "much better energy efficiency, if accuracy and manufacturing variability can be controlled."
+      }
+    ]
+  }
+}

@@ -38,5 +38,172 @@
         "def": "A repository of structured and unstructured documents relevant to a specific domain used in RAG pipelines for context-aware generation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion",
+        "role": "pulls raw content out of source systems and turns it into clean text.",
+        "parts": [
+          "source connectors (wikis, file stores, ticketing systems, databases)",
+          "document parsers and OCR",
+          "metadata extraction"
+        ]
+      },
+      {
+        "name": "Chunking and enrichment",
+        "role": "cuts documents into passages small enough to retrieve precisely.",
+        "parts": [
+          "chunkers with overlap or semantic boundaries",
+          "table and figure handling",
+          "per-chunk metadata (source, date, section, permissions)"
+        ]
+      },
+      {
+        "name": "Indexing",
+        "role": "makes every chunk findable by meaning and by keyword.",
+        "parts": [
+          "embedding model",
+          "vector index (approximate nearest-neighbour, e.g. HNSW or IVF)",
+          "keyword index (BM25)",
+          "document store for the original text"
+        ]
+      },
+      {
+        "name": "Retrieval",
+        "role": "turns a user question into the handful of passages that matter.",
+        "parts": [
+          "query rewriting and decomposition",
+          "dense retriever",
+          "sparse retriever",
+          "result fusion and metadata filters"
+        ]
+      },
+      {
+        "name": "Reranking and context assembly",
+        "role": "reorders candidates by true relevance and packs them into the prompt.",
+        "parts": [
+          "cross-encoder reranker",
+          "deduplication",
+          "token-budget packing",
+          "citation markers"
+        ]
+      },
+      {
+        "name": "Generation",
+        "role": "writes the answer using only the supplied passages.",
+        "parts": [
+          "instruction-tuned language model",
+          "prompt template",
+          "citation rendering",
+          "refusal when evidence is missing"
+        ]
+      },
+      {
+        "name": "Evaluation and observability",
+        "role": "measures whether the pipeline is actually right.",
+        "parts": [
+          "labelled question-answer sets",
+          "retrieval and faithfulness metrics",
+          "request tracing",
+          "user feedback capture"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory the content",
+        "detail": "List every source the answers must come from, and note which are clean text and which are scanned PDFs, spreadsheets or nested tables."
+      },
+      {
+        "title": "Parse and clean",
+        "detail": "Extract text while keeping structure — headings, lists, table rows — and strip boilerplate such as navigation and footers."
+      },
+      {
+        "title": "Chunk with metadata",
+        "detail": "Split each document into passages of a few hundred tokens, carrying source, date, section and access permissions with every chunk."
+      },
+      {
+        "title": "Build both indexes",
+        "detail": "Run chunks through an embedding model into a vector index, and build a keyword index over the same text so exact terms, codes and names are still findable."
+      },
+      {
+        "title": "Wire the query path",
+        "detail": "Rewrite the user question, apply permission filters, run dense and sparse search in parallel and merge the ranked lists."
+      },
+      {
+        "title": "Add reranking and packing",
+        "detail": "Score the merged candidates with a cross-encoder, keep the best few, deduplicate and fit them into the model's context window."
+      },
+      {
+        "title": "Generate with citations",
+        "detail": "Prompt the model to answer only from the supplied passages, attach source links, and return a clear 'not found' when the evidence is weak."
+      },
+      {
+        "title": "Evaluate offline",
+        "detail": "Run a labelled question set and score retrieval separately from answer quality, so failures can be traced to the right stage."
+      },
+      {
+        "title": "Monitor and refresh",
+        "detail": "Trace live requests, log failures and user feedback, re-embed changed documents incrementally, and re-tune chunk size or model when scores drift."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense text embedding models",
+        "status": "exists",
+        "why": "retrieval by meaning depends on mapping queries and passages into the same vector space."
+      },
+      {
+        "tech": "Approximate nearest-neighbour vector search",
+        "status": "exists",
+        "why": "exact comparison against millions of vectors would be too slow at interactive latency."
+      },
+      {
+        "tech": "Long-context language-model inference",
+        "status": "exists",
+        "why": "several retrieved passages plus the conversation must fit in one prompt."
+      },
+      {
+        "tech": "Cross-encoder rerankers",
+        "status": "exists",
+        "why": "cheap first-stage retrieval is noisy; reranking fixes much of the ordering."
+      },
+      {
+        "tech": "Robust document parsing for messy files",
+        "status": "partial",
+        "why": "scanned pages, multi-column layouts and complex tables still lose information."
+      },
+      {
+        "tech": "Automated evaluation and judging",
+        "status": "partial",
+        "why": "without reliable scoring, chunking and model choices are guesses rather than engineering decisions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid retrieval, reranking and citations as the standard production pattern",
+        "unlocks": "assistants that answer from a known corpus and show their sources."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic retrieval that rewrites, decomposes and repeats searches before answering",
+        "unlocks": "multi-hop questions that a single lookup cannot resolve."
+      },
+      {
+        "stage": "Next",
+        "milestone": "structured retrieval over tables, knowledge graphs and databases alongside text",
+        "unlocks": "numeric and relational questions, not just prose ones."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "retrieval trained jointly with the generator, plus caching of stable context",
+        "unlocks": "lower latency and fewer unsupported claims without hand-tuned pipelines."
+      }
+    ]
   }
 }

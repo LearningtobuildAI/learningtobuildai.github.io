@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Front end",
+        "role": "fetches and decodes instructions so the rest of the core knows what to do.",
+        "parts": [
+          "branch predictor",
+          "instruction cache",
+          "decoder"
+        ]
+      },
+      {
+        "name": "Execution core",
+        "role": "performs the actual arithmetic, logic and data movement.",
+        "parts": [
+          "integer ALUs",
+          "floating-point and vector units",
+          "register file",
+          "out-of-order scheduler"
+        ]
+      },
+      {
+        "name": "Cache hierarchy",
+        "role": "keeps frequently used data close to the core so it does not wait on main memory.",
+        "parts": [
+          "L1 and L2 caches",
+          "shared L3 cache",
+          "cache coherence logic"
+        ]
+      },
+      {
+        "name": "Memory and I/O interfaces",
+        "role": "connects the CPU to RAM and to devices such as SSDs and graphics cards.",
+        "parts": [
+          "integrated memory controller",
+          "PCIe lanes",
+          "ring or mesh interconnect"
+        ]
+      },
+      {
+        "name": "Clock and power management",
+        "role": "sets the operating frequency and voltage, and throttles to stay within thermal limits.",
+        "parts": [
+          "phase-locked loop",
+          "on-die voltage regulators",
+          "temperature and power sensors"
+        ]
+      },
+      {
+        "name": "Package",
+        "role": "protects the silicon and connects it to the motherboard.",
+        "parts": [
+          "silicon die or dies",
+          "organic substrate",
+          "solder bumps",
+          "heat spreader",
+          "socket pins or pads"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the architecture",
+        "detail": "Define the instruction set, number of cores and cache sizes, then write the logic in a hardware description language."
+      },
+      {
+        "title": "Verify and synthesise",
+        "detail": "Simulate billions of test cases to catch bugs, then convert the design into a gate-level netlist and place-and-route the transistors."
+      },
+      {
+        "title": "Make photomasks",
+        "detail": "Every layer of the chip needs a master pattern. The smallest layers are written with extreme-ultraviolet lithography using 13.5 nm light."
+      },
+      {
+        "title": "Fabricate wafers",
+        "detail": "Grow a silicon crystal, slice it into 300 mm wafers, then repeat lithography, etching, deposition and doping hundreds of times to build up transistors and wiring."
+      },
+      {
+        "title": "Test and dice",
+        "detail": "Probe each die on the wafer to mark working ones, then cut the wafer into individual dies."
+      },
+      {
+        "title": "Package",
+        "detail": "Attach good dies to a substrate, add a heat spreader and form the socket interface."
+      },
+      {
+        "title": "Bin and final test",
+        "detail": "Test each finished CPU at different speeds and voltages, label it accordingly and ship it."
+      },
+      {
+        "title": "Integrate into a system",
+        "detail": "Mount it in a motherboard socket, add cooling, and load firmware and an operating system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Semiconductor fabrication",
+        "status": "exists",
+        "why": "needs fabs with cleanrooms and multi-billion-dollar equipment to build transistors at nanometre scale."
+      },
+      {
+        "tech": "EUV lithography",
+        "status": "exists",
+        "why": "enables the smallest transistor features; only a few firms supply the machines."
+      },
+      {
+        "tech": "Electronic design automation",
+        "status": "exists",
+        "why": "software to design and verify circuits of billions of transistors before committing to silicon."
+      },
+      {
+        "tech": "Instruction set architecture",
+        "status": "exists",
+        "why": "the contract between hardware and software, such as x86, ARM or RISC-V."
+      },
+      {
+        "tech": "Advanced packaging",
+        "status": "partial",
+        "why": "chiplets and 3D stacking let designers mix dies, but supply and standards are still maturing."
+      },
+      {
+        "tech": "Ultra-pure materials",
+        "status": "exists",
+        "why": "silicon, gases and chemicals must be purified to parts-per-trillion levels or the transistors fail."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multi-core processors at 3–5 nm nodes, often built as chiplets",
+        "unlocks": "high performance per watt for laptops, servers and phones."
+      },
+      {
+        "stage": "Next",
+        "milestone": "gate-all-around transistors and backside power delivery",
+        "unlocks": "better control of current and lower voltage loss at smaller sizes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "3D stacking of logic and cache, plus more on-die accelerators",
+        "unlocks": "more memory bandwidth and faster special-purpose tasks without raising clock speed."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical interconnects and new channel materials",
+        "unlocks": "continued scaling if silicon transistors reach their physical limits."
+      }
+    ]
+  }
+}

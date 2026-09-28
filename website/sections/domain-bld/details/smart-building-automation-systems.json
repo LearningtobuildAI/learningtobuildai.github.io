@@ -30,5 +30,163 @@
         "def": "A subset of artificial intelligence that involves the use of algorithms and statistical models to enable systems to improve their performance in a specific task over time without being explicitly programmed."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Field devices",
+        "role": "sense conditions and physically move things.",
+        "parts": [
+          "temperature, humidity and CO2 sensors",
+          "occupancy sensors and light meters",
+          "actuators for valves, dampers and relays",
+          "variable-speed drives"
+        ]
+      },
+      {
+        "name": "Local controllers",
+        "role": "run the control loops even when the network or server is down.",
+        "parts": [
+          "direct digital controllers",
+          "I/O modules",
+          "PID control logic",
+          "real-time clock and schedules"
+        ]
+      },
+      {
+        "name": "Control network",
+        "role": "carries data between devices and the supervisory layer.",
+        "parts": [
+          "building automation protocols (BACnet, KNX, Modbus)",
+          "wired buses and wireless mesh radios",
+          "gateways and protocol translators",
+          "IP backbone and network switches"
+        ]
+      },
+      {
+        "name": "Supervisory software",
+        "role": "gives operators one view of the whole building.",
+        "parts": [
+          "graphical dashboards",
+          "schedules and setpoints",
+          "alarms and event logs",
+          "trend historian"
+        ]
+      },
+      {
+        "name": "Analytics and optimisation",
+        "role": "turns trend data into predictions and better setpoints.",
+        "parts": [
+          "load and occupancy forecasting",
+          "fault detection and diagnostics",
+          "model predictive control",
+          "energy and carbon reporting"
+        ]
+      },
+      {
+        "name": "Integration and security",
+        "role": "links building systems together without exposing them to attack.",
+        "parts": [
+          "APIs to lighting, access control, meters and fire systems",
+          "network segmentation and role-based access",
+          "demand-response and smart-meter interfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define points and sequences",
+        "detail": "List every measurement and command, and write the intended control logic for each system before any hardware is bought."
+      },
+      {
+        "title": "Design the network",
+        "detail": "Lay out controller locations, cable routes, IP addressing and how the building network is separated from the corporate one."
+      },
+      {
+        "title": "Install sensors and actuators",
+        "detail": "Fit temperature, CO2 and occupancy sensors, valves, dampers and drives; calibrate each one against a reference."
+      },
+      {
+        "title": "Install controllers and wiring",
+        "detail": "Mount control panels, terminate I/O, power the buses and confirm every device is reachable."
+      },
+      {
+        "title": "Program control sequences",
+        "detail": "Configure schedules, setpoints, resets, interlocks and PID tuning, then test each loop in isolation."
+      },
+      {
+        "title": "Integrate third-party systems",
+        "detail": "Use protocol gateways to pull chiller, meter, lighting and access-control data into the supervisory layer."
+      },
+      {
+        "title": "Commission point by point",
+        "detail": "Verify every point end to end with functional performance tests, and record baseline trend data."
+      },
+      {
+        "title": "Add the analytics layer",
+        "detail": "Build predictive models on the trend data, set fault-detection rules and enable automatic setpoint optimisation."
+      },
+      {
+        "title": "Operate and retune",
+        "detail": "Watch alarms and comfort complaints, retune as occupancy changes, and periodically re-commission."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Open building control protocols",
+        "status": "exists",
+        "why": "BACnet, KNX and Modbus let equipment from different makers share one network."
+      },
+      {
+        "tech": "Low-cost sensing and wireless radios",
+        "status": "exists",
+        "why": "cheap sensors and mesh radios make dense, retrofit-friendly monitoring practical."
+      },
+      {
+        "tech": "Edge and cloud computing",
+        "status": "exists",
+        "why": "optimisation and forecasting need compute and storage beyond a local controller."
+      },
+      {
+        "tech": "Operational-technology cybersecurity",
+        "status": "partial",
+        "why": "building networks are increasingly IP-connected, and poorly secured systems are a real attack surface."
+      },
+      {
+        "tech": "Shared data models and tagging",
+        "status": "partial",
+        "why": "without consistent semantic labels, data from different systems cannot be compared or automated reliably."
+      },
+      {
+        "tech": "Grid-interactive interfaces",
+        "status": "partial",
+        "why": "buildings can only shift load for the grid where demand-response signalling and metering are in place."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "networked control of HVAC, lighting and access across most new commercial buildings",
+        "unlocks": "scheduled, centralised control and basic energy savings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dense sensing plus automated fault detection across building portfolios",
+        "unlocks": "problems found and fixed without waiting for occupant complaints."
+      },
+      {
+        "stage": "Next",
+        "milestone": "model predictive control driven by weather, occupancy and energy prices",
+        "unlocks": "buildings that shift and trim load automatically while holding comfort."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "grid-interactive, near-autonomous buildings",
+        "unlocks": "large flexible demand that helps balance a renewable-heavy electricity grid."
+      }
+    ]
   }
 }

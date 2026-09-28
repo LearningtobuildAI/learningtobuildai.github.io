@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Command-and-control link",
+        "role": "the radio path between pilot or autonomy stack and the aircraft; if it can be hijacked, the aircraft can be stolen.",
+        "parts": [
+          "encrypted radio or cellular link",
+          "message signing (e.g. MAVLink 2 signing)",
+          "replay protection",
+          "key rotation"
+        ]
+      },
+      {
+        "name": "Identity and trust anchor",
+        "role": "gives every drone and ground station a verifiable identity rather than a shared password.",
+        "parts": [
+          "hardware secure element or trusted platform module",
+          "public-key infrastructure and certificate authority",
+          "secure boot of flight firmware",
+          "device provisioning records"
+        ]
+      },
+      {
+        "name": "Navigation integrity",
+        "role": "keeps position fixes trustworthy when satellite signals are jammed or spoofed.",
+        "parts": [
+          "multi-constellation GNSS receiver",
+          "authenticated GNSS signals and signal-quality monitoring",
+          "inertial and visual odometry cross-check",
+          "controlled-reception-pattern or null-steering antenna"
+        ]
+      },
+      {
+        "name": "Onboard monitoring and response",
+        "role": "detects that something is wrong and puts the aircraft into a safe state.",
+        "parts": [
+          "telemetry anomaly detection",
+          "geofence and altitude limits enforced onboard",
+          "return-to-home or land-in-place logic",
+          "tamper and debug-port lockout"
+        ]
+      },
+      {
+        "name": "Fleet network layer",
+        "role": "secures the mesh or swarm links and the broadcast identity other airspace users rely on.",
+        "parts": [
+          "authenticated mesh routing and neighbour checks",
+          "air-to-ground gateway and ground control station",
+          "broadcast remote identification",
+          "traffic and log collection"
+        ]
+      },
+      {
+        "name": "Ground operations",
+        "role": "keeps the software, credentials and people behind the fleet under control.",
+        "parts": [
+          "signed over-the-air firmware updates",
+          "credential revocation and inventory",
+          "operator authentication and role limits",
+          "incident logging and forensics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the threats",
+        "detail": "List what an attacker could do at each layer — jam the control link, spoof the position, take over the ground station, push malicious firmware — and rank them by impact: collision, hijack, or data theft."
+      },
+      {
+        "title": "Put a root of trust in the airframe",
+        "detail": "Solder a secure element onto the flight-controller board and make the bootloader verify a signed firmware image before anything else runs, so modified software cannot start."
+      },
+      {
+        "title": "Stand up key management",
+        "detail": "Issue a unique key pair and certificate per aircraft and per ground station from a certificate authority, record them in an inventory, and define how keys are rotated and revoked when an airframe is lost or sold."
+      },
+      {
+        "title": "Secure the links",
+        "detail": "Turn on signing and encryption for command, telemetry and video; add nonces or sequence numbers so a recorded message cannot be replayed; where cellular is used, run the traffic inside a tunnel to the operator's own network."
+      },
+      {
+        "title": "Harden navigation",
+        "detail": "Combine satellites from several constellations, monitor signal strength and consistency, and fuse inertial and visual measurements so a false position fix contradicts the other sensors and is rejected."
+      },
+      {
+        "title": "Add detection and safe-state logic",
+        "detail": "Run lightweight anomaly checks on the flight controller for unexpected commands, sudden position jumps or link loss, and define exactly what the aircraft does in each case — hold, return, or land."
+      },
+      {
+        "title": "Make the fleet updateable",
+        "detail": "Build a signed update pipeline so a patch can be pushed to hundreds of airframes and verified, because unpatched drones are the most common real vulnerability."
+      },
+      {
+        "title": "Operate and rehearse",
+        "detail": "Log everything, monitor for attack indicators, run tabletop exercises and occasional red-team flights, and keep a procedure for grounding the fleet if a key is compromised."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lightweight cryptography for embedded systems",
+        "status": "exists",
+        "why": "flight controllers have little processing power and memory, so signatures and ciphers must be cheap."
+      },
+      {
+        "tech": "Hardware root of trust (secure elements, TPMs)",
+        "status": "exists",
+        "why": "without a protected key store, an attacker who opens the airframe can simply copy the credentials."
+      },
+      {
+        "tech": "Authenticated satellite navigation",
+        "status": "partial",
+        "why": "encrypted or signed navigation signals exist on some constellations but are not yet universal or fully supported in low-cost receivers."
+      },
+      {
+        "tech": "Fleet-scale key and certificate management",
+        "status": "partial",
+        "why": "the tools exist in IT and automotive practice, but drone fleets rarely run them properly today."
+      },
+      {
+        "tech": "Remote identification standards",
+        "status": "exists",
+        "why": "broadcast identity lets authorities and other aircraft tell who is flying, and underpins enforcement."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "signed telemetry links and broadcast remote identification on commercial fleets",
+        "unlocks": "basic protection against casual command injection and a way to attribute flights."
+      },
+      {
+        "stage": "Next",
+        "milestone": "zero-trust fleet identity with per-flight credentials and short-lived keys",
+        "unlocks": "a stolen airframe or leaked password cannot be used to hijack a mission."
+      },
+      {
+        "stage": "Next",
+        "milestone": "authenticated navigation fused with strong inertial backup",
+        "unlocks": "safe flight through areas where jamming and spoofing are known to occur."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "certified autonomy that detects compromise and recovers without a human",
+        "unlocks": "routine beyond-visual-line-of-sight operations and dense drone logistics in shared airspace."
+      }
+    ]
+  }
+}

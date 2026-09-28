@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Antenna",
+        "role": "radiates and receives low-frequency radio waves that can pass through kilometres of ice.",
+        "parts": [
+          "deployable booms 10–40 m long",
+          "wire dipole or array elements",
+          "feed and matching network"
+        ]
+      },
+      {
+        "name": "Transmitter",
+        "role": "generates short, high-power pulses at frequencies of a few megahertz.",
+        "parts": [
+          "power amplifier",
+          "pulse modulator",
+          "frequency synthesiser"
+        ]
+      },
+      {
+        "name": "Receiver",
+        "role": "detects the very weak echoes returning from deep interfaces.",
+        "parts": [
+          "low-noise amplifier",
+          "band-pass filters",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Digital processing unit",
+        "role": "turns raw echoes into radargrams and corrects for ionospheric and surface clutter.",
+        "parts": [
+          "FPGA or radiation-hard processor",
+          "memory",
+          "pulse-compression and focusing software"
+        ]
+      },
+      {
+        "name": "Timing and navigation",
+        "role": "provides precise clock and orbit knowledge so echoes can be located on the surface.",
+        "parts": [
+          "ultra-stable oscillator",
+          "star trackers",
+          "inertial measurement unit"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "supplies electricity and keeps electronics within safe temperatures in space.",
+        "parts": [
+          "solar array or radioisotope power",
+          "batteries",
+          "radiators and heaters"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the science requirements",
+        "detail": "Choose the target depth, vertical resolution and ice properties; these fix the radar frequency, bandwidth and pulse length."
+      },
+      {
+        "title": "Design the antenna",
+        "detail": "Model the radiation pattern and select boom length and element geometry for the chosen frequency band."
+      },
+      {
+        "title": "Build the RF electronics",
+        "detail": "Assemble the transmitter, receiver and timing circuits, using space-qualified components and shielding against radiation."
+      },
+      {
+        "title": "Write the processing chain",
+        "detail": "Develop algorithms for pulse compression, synthetic aperture focusing, ionospheric distortion correction and surface-clutter removal."
+      },
+      {
+        "title": "Integrate and test on the ground",
+        "detail": "Test the full instrument in an anechoic chamber and, where possible, over known ice sheets or in a cold chamber to calibrate penetration."
+      },
+      {
+        "title": "Launch and deploy",
+        "detail": "After launch, deploy the antenna booms and check that the radar returns clean echoes from the surface."
+      },
+      {
+        "title": "Operate and map",
+        "detail": "Fly repeated passes, record radargrams, model the ionosphere for each pass and convert echo delays into depth profiles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-frequency radar electronics",
+        "status": "exists",
+        "why": "transmitters and receivers at 1–20 MHz are mature from terrestrial ice-penetrating radar."
+      },
+      {
+        "tech": "Large deployable space antennas",
+        "status": "exists",
+        "why": "antennas tens of metres long have flown on Mars orbiters."
+      },
+      {
+        "tech": "Ionospheric correction models",
+        "status": "partial",
+        "why": "Mars' ionosphere is relatively weak, but Earth's and Jupiter's are more distorting, especially at low frequencies."
+      },
+      {
+        "tech": "Radiation-hardened digital processors",
+        "status": "partial",
+        "why": "the processing needed for real-time clutter removal demands high computing power that must survive space radiation."
+      },
+      {
+        "tech": "Precise orbit and timing knowledge",
+        "status": "exists",
+        "why": "the depth measurement depends on knowing the spacecraft position and echo time to within metres and nanoseconds."
+      },
+      {
+        "tech": "Deep-space data downlink",
+        "status": "exists",
+        "why": "raw radar data volumes are large, so onboard compression and selective downlink are needed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Orbital sounders map Mars' polar caps and buried glaciers; airborne radar charts Earth's ice sheets.",
+        "unlocks": "proven method for detecting liquid water under ice without landing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Radars on Europa Clipper and JUICE sound the ice shells of Europa and Ganymede.",
+        "unlocks": "first direct measurements of the depth and structure of an extraterrestrial ocean."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Multi-frequency and higher-power sounders distinguish brine from fresh water and resolve thin internal layers.",
+        "unlocks": "better estimates of ocean habitability and ice-shell dynamics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Dedicated radar sounders for Enceladus, Titan and other ocean worlds, possibly with real-time onboard processing.",
+        "unlocks": "systematic survey of subsurface oceans across the outer solar system."
+      }
+    ]
+  }
+}

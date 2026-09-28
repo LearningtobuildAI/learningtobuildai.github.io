@@ -30,5 +30,154 @@
         "def": "A type of network topology where each node connects directly with several other nodes, allowing data to be routed through multiple paths to reach its destination."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing element",
+        "role": "converts a physical signal — temperature, humidity, vibration, gas concentration, seismic motion — into an electrical reading.",
+        "parts": [
+          "micro-electromechanical (MEMS) transducer",
+          "chemically selective coating for gas sensitivity",
+          "reference element for drift correction"
+        ]
+      },
+      {
+        "name": "Power source",
+        "role": "keeps a buried, unattended node alive for years without a battery change.",
+        "parts": [
+          "piezoelectric cantilever harvesting vibration",
+          "thermoelectric element harvesting temperature gradients",
+          "thin-film solid-state storage or supercapacitor buffer"
+        ]
+      },
+      {
+        "name": "Radio and antenna",
+        "role": "sends readings a few tens to a few hundred metres to the next node.",
+        "parts": [
+          "ultra-low-power transceiver",
+          "on-chip or printed antenna",
+          "wake-up receiver"
+        ]
+      },
+      {
+        "name": "Mesh protocol stack",
+        "role": "lets nodes find neighbours, relay each other's traffic and stay synchronised without a central controller.",
+        "parts": [
+          "self-forming routing",
+          "time synchronisation",
+          "data compression and priority queues",
+          "power management firmware"
+        ]
+      },
+      {
+        "name": "Gateway and backhaul tier",
+        "role": "gathers mesh traffic in a region and forwards it to the internet.",
+        "parts": [
+          "mains- or solar-powered relay poles",
+          "low-power wide-area gateways (e.g. LoRaWAN, NB-IoT)",
+          "satellite or cellular backhaul"
+        ]
+      },
+      {
+        "name": "Deployment and retrieval system",
+        "role": "places nodes where they are needed and recovers them at end of life.",
+        "parts": [
+          "aerial dispensers or agricultural subsoilers",
+          "tagging and inventory database"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the sensor die",
+        "detail": "MEMS transducers are patterned on silicon wafers by the same lithographic processes used for microchips, then released and sealed."
+      },
+      {
+        "title": "Shrink the radio onto the same package",
+        "detail": "A transceiver, memory and a small processor are integrated with the sensor so one device does sensing and communication."
+      },
+      {
+        "title": "Solve the power budget",
+        "detail": "A piezoelectric cantilever or thermoelectric element is tuned to the local environment. Harvested power is measured in microwatts, so the node sleeps most of the time and wakes only to sample and transmit."
+      },
+      {
+        "title": "Package for decades underground",
+        "detail": "The device is hermetically sealed against moisture, frost, salt and soil chemistry — the failure mode that kills most field sensors long before the electronics wear out."
+      },
+      {
+        "title": "Build the self-forming mesh",
+        "detail": "Firmware and protocols are developed so thousands of nodes negotiate routes, hand off data hop by hop, and keep working when individual nodes die or are dug up."
+      },
+      {
+        "title": "Stand up the gateway tier",
+        "detail": "Every few kilometres, higher-power relay nodes with larger antennas and a mains or solar supply collect mesh traffic and pass it to a satellite or cellular link."
+      },
+      {
+        "title": "Deploy at scale",
+        "detail": "Nodes are dispersed by aircraft, by farm machinery or by hand. For a trillion nodes across the planet's land surface, each one would cover only about 150 square metres — so dispersal, not manufacturing, becomes the hard problem."
+      },
+      {
+        "title": "Calibrate, verify and retire",
+        "detail": "Readings are cross-checked between neighbouring nodes, drift is corrected, and end-of-life nodes are located and recovered to avoid scattering electronic waste."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap MEMS and nanofabrication",
+        "status": "exists",
+        "why": "the sensing and radio parts already exist; they must become far cheaper per unit."
+      },
+      {
+        "tech": "Micropower energy harvesting",
+        "status": "partial",
+        "why": "vibration and thermal harvesters work, but deliver only microwatts, so nodes must be extremely frugal."
+      },
+      {
+        "tech": "Sub-cent, high-volume packaging",
+        "status": "missing",
+        "why": "sealing millions of millions of devices against soil and weather at negligible cost has no established route."
+      },
+      {
+        "tech": "Low-power mesh and wide-area radio",
+        "status": "exists",
+        "why": "LoRaWAN, NB-IoT and mesh standards already carry data from thousands of sensors per gateway."
+      },
+      {
+        "tech": "Satellite IoT backhaul",
+        "status": "partial",
+        "why": "small satellites can reach remote regions, but coverage, cost and duty-cycle limits remain."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "industrial and agricultural sensor fleets of thousands to millions of nodes",
+        "unlocks": "real-time monitoring of soil, pipelines, bridges and forests in specific places."
+      },
+      {
+        "stage": "Next",
+        "milestone": "battery-free nodes that run on harvested energy",
+        "unlocks": "deployments in places where battery replacement is impossible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dense regional meshes over fault lines, glaciers, wildfire zones and farmland",
+        "unlocks": "early warning of earthquakes, thaw and fire, and fine-grained climate data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continent-scale mesh with satellite backhaul",
+        "unlocks": "a continuous picture of the land surface rather than scattered point measurements."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "a trillion-node planetary crust and atmosphere network",
+        "unlocks": "global environmental sensing — but it would demand a manufacturing, dispersal and recovery effort with no precedent, and the environmental cost of the hardware itself would have to be weighed against the data gained."
+      }
+    ]
   }
 }

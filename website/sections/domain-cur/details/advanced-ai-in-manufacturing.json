@@ -33,5 +33,171 @@
         "def": "Artificial intelligence models inspired by the structure and function of biological brains, used to process information and learn from it."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data acquisition layer",
+        "role": "captures machine and process data in real time.",
+        "parts": [
+          "vibration, temperature and power sensors",
+          "programmable logic controllers (PLCs)",
+          "industrial cameras",
+          "RFID tags"
+        ]
+      },
+      {
+        "name": "Industrial connectivity",
+        "role": "moves data reliably from the shop floor to computing resources.",
+        "parts": [
+          "industrial Ethernet",
+          "OPC UA and MQTT protocols",
+          "edge gateways",
+          "private 5G or Wi-Fi 6"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "stores, cleans and serves data for analysis and model training.",
+        "parts": [
+          "time-series database",
+          "data lake or lakehouse",
+          "cloud or on-premises servers",
+          "data catalog"
+        ]
+      },
+      {
+        "name": "Analytics and ML models",
+        "role": "learn patterns to predict failures and optimize process parameters.",
+        "parts": [
+          "training pipelines",
+          "feature store",
+          "model registry",
+          "anomaly detection and regression algorithms"
+        ]
+      },
+      {
+        "name": "Predictive maintenance",
+        "role": "forecasts equipment failure before it happens.",
+        "parts": [
+          "condition monitoring",
+          "remaining useful life estimation",
+          "alerting and work-order triggers"
+        ]
+      },
+      {
+        "name": "Process optimization",
+        "role": "adjusts setpoints and schedules in real time.",
+        "parts": [
+          "digital twin",
+          "optimization solvers",
+          "closed-loop control interfaces"
+        ]
+      },
+      {
+        "name": "Integration and HMI",
+        "role": "connects insights to enterprise systems and presents them to operators.",
+        "parts": [
+          "APIs to MES and ERP",
+          "dashboards",
+          "augmented reality displays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process and select use cases",
+        "detail": "Identify high-value assets for predictive maintenance and quality bottlenecks for optimization."
+      },
+      {
+        "title": "Instrument assets",
+        "detail": "Install sensors and connect existing PLCs to gather vibration, temperature, pressure, power and image data."
+      },
+      {
+        "title": "Establish connectivity",
+        "detail": "Build a secure industrial network using OPC UA or MQTT, edge gateways and sufficient bandwidth."
+      },
+      {
+        "title": "Build the data pipeline",
+        "detail": "Stream data to a time-series database or data lake, clean it, and label historical outcomes."
+      },
+      {
+        "title": "Develop models",
+        "detail": "Train anomaly detection and remaining-useful-life models on historical failures, and optimization models on process data."
+      },
+      {
+        "title": "Validate in shadow mode",
+        "detail": "Run models alongside existing operations without acting on outputs, comparing predictions with actual events."
+      },
+      {
+        "title": "Deploy at the edge",
+        "detail": "Install inference hardware near machines to get low-latency predictions and avoid sending all data to the cloud."
+      },
+      {
+        "title": "Integrate and close the loop",
+        "detail": "Connect predictions to maintenance schedules and, where safe, to control systems for automatic adjustments."
+      },
+      {
+        "title": "Scale and maintain",
+        "detail": "Roll out to more lines, monitor model drift, retrain with new data, and expand to new use cases."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Industrial IoT sensors",
+        "status": "exists",
+        "why": "without measurement there is no data to learn from."
+      },
+      {
+        "tech": "Edge and cloud computing",
+        "status": "exists",
+        "why": "ML training and real-time inference need compute close to and far from the plant."
+      },
+      {
+        "tech": "Machine learning frameworks",
+        "status": "exists",
+        "why": "provide algorithms and tools for model development."
+      },
+      {
+        "tech": "Digital twins",
+        "status": "partial",
+        "why": "simulation of processes helps train and validate optimization models safely."
+      },
+      {
+        "tech": "Private 5G or deterministic networks",
+        "status": "partial",
+        "why": "low-latency, reliable links are needed for closed-loop control."
+      },
+      {
+        "tech": "Data standards and governance",
+        "status": "partial",
+        "why": "interoperability and quality data are prerequisites for reliable AI."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "condition monitoring and predictive maintenance on critical rotating equipment",
+        "unlocks": "reduced unplanned downtime and maintenance costs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI-based visual inspection and process parameter optimization",
+        "unlocks": "higher product quality and yield."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop autonomous control of individual production cells",
+        "unlocks": "adaptive, self-correcting manufacturing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-optimizing factories with generative AI for design, scheduling and supply chain",
+        "unlocks": "mass customization and resilience."
+      }
+    ]
   }
 }

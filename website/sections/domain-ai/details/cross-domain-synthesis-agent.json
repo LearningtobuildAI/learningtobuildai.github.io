@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Corpus ingestion",
+        "role": "gathers and parses scientific text and structured data from many different fields.",
+        "parts": [
+          "open-access literature APIs",
+          "PDF and XML parsers",
+          "entity and relation extractors"
+        ]
+      },
+      {
+        "name": "Knowledge graph",
+        "role": "stores concepts and their relationships as a queryable network with provenance.",
+        "parts": [
+          "ontology and vocabulary alignment",
+          "graph database or triple store",
+          "provenance tracking"
+        ]
+      },
+      {
+        "name": "Semantic embedding model",
+        "role": "places concepts from different fields in a shared vector space so similar ideas sit close together.",
+        "parts": [
+          "text encoders (language models)",
+          "graph embeddings",
+          "cross-domain alignment training"
+        ]
+      },
+      {
+        "name": "Link discovery engine",
+        "role": "finds missing or non-obvious connections between distant domains.",
+        "parts": [
+          "link prediction models",
+          "path ranking algorithms",
+          "community and cluster detection"
+        ]
+      },
+      {
+        "name": "Hypothesis ranker and explainer",
+        "role": "orders candidate links by novelty and evidence, and explains them in plain language.",
+        "parts": [
+          "scoring functions",
+          "explanation generator",
+          "expert review interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble a cross-domain corpus",
+        "detail": "Collect open-access papers, patents and structured datasets from several fields, normalising formats and licences."
+      },
+      {
+        "title": "Extract entities and relations",
+        "detail": "Run natural-language processing to pull out concepts such as genes, materials or methods, and the relationships stated in text."
+      },
+      {
+        "title": "Align vocabularies",
+        "detail": "Map synonyms and field-specific terms onto shared identifiers using existing ontologies, so that a term in one field can be compared with a term in another."
+      },
+      {
+        "title": "Build the knowledge graph",
+        "detail": "Store nodes, edges and their provenance in a graph database that supports fast traversal and querying."
+      },
+      {
+        "title": "Train semantic and graph models",
+        "detail": "Learn vector representations and link-prediction models that generalise across domains rather than memorising one field."
+      },
+      {
+        "title": "Generate candidate links",
+        "detail": "Apply algorithms to propose edges or paths that are absent from the graph but statistically plausible given the surrounding structure."
+      },
+      {
+        "title": "Rank and explain candidates",
+        "detail": "Score each candidate by novelty, evidence strength and coherence, then produce a short human-readable rationale."
+      },
+      {
+        "title": "Validate and iterate",
+        "detail": "Test top candidates with domain experts or bench experiments, and feed the results back to retrain and improve the models."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale scientific text mining",
+        "status": "exists",
+        "why": "the system must read and parse millions of documents across fields."
+      },
+      {
+        "tech": "Shared ontologies and identifiers",
+        "status": "partial",
+        "why": "fields use different vocabularies, and alignment is often incomplete or contested."
+      },
+      {
+        "tech": "Graph neural networks and link prediction",
+        "status": "partial",
+        "why": "these work well within a domain but are less reliable across very different ones."
+      },
+      {
+        "tech": "Large language models for reasoning",
+        "status": "partial",
+        "why": "they can connect ideas but may hallucinate and lack grounding in verified data."
+      },
+      {
+        "tech": "Expert validation capacity",
+        "status": "exists",
+        "why": "human judgement is still needed to separate a real cross-domain insight from a plausible-looking coincidence."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "literature-based discovery tools that suggest cross-domain links from published text",
+        "unlocks": "faster hypothesis generation in areas such as drug repurposing and materials search."
+      },
+      {
+        "stage": "Next",
+        "milestone": "domain-focused synthesis agents that combine text, data and simulations to propose testable hypotheses",
+        "unlocks": "more reliable leads with fewer false positives."
+      },
+      {
+        "stage": "Next",
+        "milestone": "general cross-domain agents that autonomously design and run in-silico experiments",
+        "unlocks": "rapid exploration of very large search spaces across several fields at once."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop discovery where AI proposes, robots test and results feed back automatically",
+        "unlocks": "accelerated science with less human bottleneck in routine experimentation."
+      }
+    ]
+  }
+}

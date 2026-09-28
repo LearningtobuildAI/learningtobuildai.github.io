@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum transducer",
+        "role": "the element whose quantum state shifts measurably when a tiny magnetic or electric field changes — the actual sensor.",
+        "parts": [
+          "nitrogen-vacancy centres in diamond",
+          "laser-cooled atomic vapour in a cell",
+          "superconducting quantum interference device (SQUID)",
+          "trapped ions"
+        ]
+      },
+      {
+        "name": "Control and excitation",
+        "role": "prepares the quantum state and reads out its shift.",
+        "parts": [
+          "narrow-linewidth laser",
+          "microwave source (GHz)",
+          "pulse sequencer"
+        ]
+      },
+      {
+        "name": "Magnetic shielding and field control",
+        "role": "keeps the Earth's field and building noise from swamping the signal.",
+        "parts": [
+          "mu-metal or ferrite shield",
+          "active cancellation coils",
+          "vibration isolation"
+        ]
+      },
+      {
+        "name": "Optical readout",
+        "role": "converts faint fluorescence or microwave transmission into a digital signal.",
+        "parts": [
+          "photodetector or camera",
+          "low-noise amplifier",
+          "signal averager"
+        ]
+      },
+      {
+        "name": "Clinical interface",
+        "role": "puts the sensor next to the body in a usable, tolerable way.",
+        "parts": [
+          "wearable helmet for brain fields",
+          "scan probe for tissue samples",
+          "magnetic nanoparticle contrast agents"
+        ]
+      },
+      {
+        "name": "Software and inference",
+        "role": "separates the biological signal from noise and turns it into a clinical reading.",
+        "parts": [
+          "real-time noise rejection",
+          "reconstruction and classification"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the sensing material",
+        "detail": "For diamond sensors, high-purity diamond is grown by chemical vapour deposition and doped so that nitrogen-vacancy centres sit at controlled depths and orientations."
+      },
+      {
+        "title": "Fabricate the sensor element",
+        "detail": "The diamond is cut, polished and patterned with microwave antennas and optical structures; vapour cells are instead filled with an alkali metal and a buffer gas and sealed."
+      },
+      {
+        "title": "Assemble control optics",
+        "detail": "Lasers, modulators, fibres and microwave electronics are aligned so each sensor can be addressed individually."
+      },
+      {
+        "title": "Shield the instrument",
+        "detail": "Layers of high-permeability metal plus cancellation coils reduce ambient fields by many orders of magnitude."
+      },
+      {
+        "title": "Calibrate against a known field",
+        "detail": "Each sensor is characterised for sensitivity, bandwidth and drift using reference magnetic fields, often traceable to a standards laboratory."
+      },
+      {
+        "title": "Build the array",
+        "detail": "Many sensors are tiled into a wearable or probe array, with wiring and heat managed so it can touch a patient."
+      },
+      {
+        "title": "Reconstruct an image or reading",
+        "detail": "Algorithms combine the array's signals into a magnetic map of a brain, heart or tissue sample."
+      },
+      {
+        "title": "Validate clinically",
+        "detail": "The device is compared against existing scanners on real patient cohorts before any diagnostic claim is made."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-purity diamond growth and defect engineering",
+        "status": "partial",
+        "why": "the sensitivity of a diamond sensor depends on placing single defects precisely, which is still hard at wafer scale."
+      },
+      {
+        "tech": "Compact narrow-linewidth lasers and microwave electronics",
+        "status": "exists",
+        "why": "they prepare and read the quantum state, and their noise floor sets the device's limit."
+      },
+      {
+        "tech": "Effective magnetic shielding and active field cancellation",
+        "status": "exists",
+        "why": "biomagnetic signals are a billionth of the Earth's field, so shielding is what makes them visible."
+      },
+      {
+        "tech": "Robust analysis for very weak biosignals",
+        "status": "partial",
+        "why": "separating a real biomarker from environmental and physiological noise is the practical bottleneck."
+      },
+      {
+        "tech": "Clinical evidence and regulatory clearance",
+        "status": "missing",
+        "why": "no quantum sensing device has yet been cleared as a stand-alone diagnostic for cancer or neurology."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "optically pumped magnetometers and SQUID arrays record brain and heart fields in research labs, and diamond magnetometers detect single magnetic nanoparticles in samples",
+        "unlocks": "non-invasive functional measurement without cryogenic cooling, and laboratory-scale molecular detection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable, room-temperature brain scanners in clinical pilot studies",
+        "unlocks": "presurgical mapping and epilepsy assessment in ordinary hospital rooms rather than shielded suites."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum sensors as contrast detectors for hyperpolarised MRI and magnetic nanoparticle labelling",
+        "unlocks": "earlier detection of small tumours and mapping of molecular targets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "validated, regulated diagnostic instruments incorporating quantum sensors",
+        "unlocks": "routine early diagnosis of cancer and neurological disease at the point of care."
+      }
+    ]
+  }
+}

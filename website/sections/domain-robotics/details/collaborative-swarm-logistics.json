@@ -1,0 +1,166 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mobile robot platform",
+        "role": "carries goods across the warehouse floor; fleets are built from many identical units rather than a few big machines.",
+        "parts": [
+          "chassis and drive wheels",
+          "lifting or conveyor top deck",
+          "battery pack",
+          "onboard computer"
+        ]
+      },
+      {
+        "name": "Onboard perception and localisation",
+        "role": "lets each robot know where it is and what is in front of it, indoors where GPS does not work.",
+        "parts": [
+          "lidar or 3D cameras",
+          "wheel odometry and inertial sensors",
+          "floor tags or ceiling fiducials",
+          "safety-rated bumpers and scanners"
+        ]
+      },
+      {
+        "name": "Task allocation layer",
+        "role": "decides which robot takes which job.",
+        "parts": [
+          "auction or bidding protocol",
+          "priority and deadline rules",
+          "workload balancing"
+        ]
+      },
+      {
+        "name": "Traffic and deadlock layer",
+        "role": "keeps hundreds of robots from blocking each other in narrow aisles.",
+        "parts": [
+          "reservation of map cells with expiry times",
+          "one-way lane rules",
+          "cycle detection and rerouting"
+        ]
+      },
+      {
+        "name": "Stigmergic environment layer",
+        "role": "robots coordinate indirectly by leaving traces in a shared world model rather than talking to each other.",
+        "parts": [
+          "shared occupancy and reservation grid",
+          "virtual pheromone fields that grow with congestion and decay over time",
+          "persistent state store"
+        ]
+      },
+      {
+        "name": "Communication and edge compute",
+        "role": "links robots, charging bays and the warehouse software.",
+        "parts": [
+          "dense indoor Wi-Fi or private cellular",
+          "handover-tolerant message queue",
+          "on-premise servers"
+        ]
+      },
+      {
+        "name": "Warehouse interface",
+        "role": "connects the swarm to shelves, conveyors and human pickers.",
+        "parts": [
+          "station and conveyor handoff points",
+          "order-management software API",
+          "manual pick stations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the building as a traffic grammar",
+        "detail": "The floor is divided into a grid of cells with one-way lanes, passing places, charging bays and no-go zones for people."
+      },
+      {
+        "title": "Instrument the environment",
+        "detail": "Floor markers or ceiling tags are fitted, radio coverage is surveyed, and a site map is calibrated so every robot shares one coordinate frame."
+      },
+      {
+        "title": "Build the robot",
+        "detail": "A simple chassis with drive motors, a lift or conveyor deck, a battery and a rugged onboard computer is assembled and tested."
+      },
+      {
+        "title": "Write local navigation",
+        "detail": "Each robot runs localisation, obstacle avoidance and a safety-rated emergency stop entirely on board, so it can still behave safely if the network drops."
+      },
+      {
+        "title": "Design the coordination protocol",
+        "detail": "Jobs are offered to nearby robots through a bidding rule; a winner reserves the cells along its route for a set time, and stale reservations expire automatically."
+      },
+      {
+        "title": "Add the stigmergic layer",
+        "detail": "Software pheromones are deposited on congested cells and decay each second, so the colony of robots drifts away from jams without any central controller issuing each move."
+      },
+      {
+        "title": "Simulate at scale",
+        "detail": "Thousands of virtual robots run against the real map and order stream to find deadlocks and throughput limits before any hardware moves."
+      },
+      {
+        "title": "Integrate and commission",
+        "detail": "A handful of robots is run alongside human pickers, then the fleet is ramped up while throughput, collisions and charging behaviour are measured."
+      },
+      {
+        "title": "Tune for heterogeneous fleets",
+        "detail": "Robots with different sizes, speeds and payloads are given weights in the same reservation system so they can share aisles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Indoor localisation without GPS",
+        "status": "exists",
+        "why": "each robot needs centimetre-to-decimetre accuracy using lidar, cameras or fiducials."
+      },
+      {
+        "tech": "Dense, low-latency wireless",
+        "status": "exists",
+        "why": "hundreds of robots exchanging state need reliable coverage without dead spots."
+      },
+      {
+        "tech": "Multi-agent task allocation and deadlock-free routing",
+        "status": "partial",
+        "why": "provably collision-free, deadlock-free planning is solved in research settings but harder on a messy real floor."
+      },
+      {
+        "tech": "Safety-rated autonomous operation near people",
+        "status": "partial",
+        "why": "robots sharing space with pickers must detect people and stop reliably, which is regulated engineering, not just software."
+      },
+      {
+        "tech": "Cheap high-cycle batteries and opportunity charging",
+        "status": "exists",
+        "why": "swarms only pay off if robots charge in short bursts instead of being swapped out by hand."
+      },
+      {
+        "tech": "Cheap embedded compute and sensors",
+        "status": "exists",
+        "why": "coordination only makes economic sense when each unit is inexpensive enough to field in hundreds."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "centrally managed fleets of hundreds of mobile robots moving shelves and totes, common in large e-commerce warehouses",
+        "unlocks": "high-throughput goods-to-person picking with far less walking."
+      },
+      {
+        "stage": "Next",
+        "milestone": "decentralised task auctions and stigmergic congestion signalling running in pilots alongside central control",
+        "unlocks": "simpler scaling to larger fleets and no single point of failure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mixed fleets of robots, automated forklifts and manipulators sharing one reservation layer",
+        "unlocks": "one coordination system across a whole site instead of separate islands per vendor."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "open, verifiable swarm protocols across sites and outdoor yards",
+        "unlocks": "robots that can hand off loads between buildings, yards and delivery vehicles without a central dispatcher."
+      }
+    ]
+  }
+}

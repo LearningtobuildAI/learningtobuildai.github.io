@@ -29,5 +29,149 @@
         "def": "A form of computing that uses light instead of electrical signals to process information, aiming for faster processing speeds and lower energy consumption."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Device layer",
+        "role": "the physical units that imitate neurons and synapses, or that manipulate light instead of electrons.",
+        "parts": [
+          "spiking neuron circuits",
+          "memristor or phase-change memory cells",
+          "silicon waveguides and interferometers"
+        ]
+      },
+      {
+        "name": "Weight storage",
+        "role": "holds the model's parameters where the computation happens, avoiding shuttling data to and from memory.",
+        "parts": [
+          "resistive crossbar arrays",
+          "phase-change or ferroelectric cells",
+          "photonic phase shifters"
+        ]
+      },
+      {
+        "name": "Light sources and detectors",
+        "role": "supply and read the optical signals in photonic designs.",
+        "parts": [
+          "III-V lasers bonded to silicon",
+          "modulators",
+          "germanium photodiodes"
+        ]
+      },
+      {
+        "name": "Interconnect and packaging",
+        "role": "moves signals between chips and to the outside world.",
+        "parts": [
+          "co-packaged optics",
+          "fibre arrays and edge couplers",
+          "3D stacking and through-silicon vias"
+        ]
+      },
+      {
+        "name": "Analog support circuitry",
+        "role": "bridges the analog or optical core to ordinary digital systems.",
+        "parts": [
+          "analog-to-digital converters",
+          "drivers and control loops",
+          "thermal control"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "compiles trained networks onto hardware that does not behave like a normal CPU.",
+        "parts": [
+          "spiking compilers",
+          "quantisation and mapping tools",
+          "training frameworks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design at device level",
+        "detail": "The network is expressed as events for spiking hardware, or as matrices mapped onto interferometers or crossbar rows and columns."
+      },
+      {
+        "title": "Fabricate the CMOS base",
+        "detail": "Control logic and neuron circuits are made in a standard silicon foundry on mature nodes, which keeps cost down."
+      },
+      {
+        "title": "Add the special layer",
+        "detail": "Photonic waveguides, modulators and detectors are patterned in the same flow, or resistive memory cells are built into the wiring layers above the transistors."
+      },
+      {
+        "title": "Attach light sources",
+        "detail": "Because silicon does not emit light well, III-V laser material is bonded or micro-transfer-printed onto the chip and aligned to the waveguides."
+      },
+      {
+        "title": "Package and cool",
+        "detail": "Fibres are coupled to the chip edges with sub-micron alignment, and the package is built to hold temperature stable because optical and analog behaviour drifts with heat."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Every device is slightly different, so phase shifters, laser power and resistance levels are tuned individually before use."
+      },
+      {
+        "title": "Compile or train",
+        "detail": "A trained model is mapped onto the hardware, or the chip is trained in place by adjusting its physical weights."
+      },
+      {
+        "title": "Deploy in a niche",
+        "detail": "The first uses are where the advantage is clearest: always-on sensing, event-based vision and low-power inference at the edge."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics manufacturing",
+        "status": "exists",
+        "why": "optical transceivers already ship in volume, giving a supply chain for waveguides and modulators."
+      },
+      {
+        "tech": "Co-packaged optics",
+        "status": "partial",
+        "why": "moving optics next to the processor is the step that makes photonic computing practical."
+      },
+      {
+        "tech": "Reliable analog memory devices",
+        "status": "partial",
+        "why": "memristors and phase-change cells drift and vary, which limits accuracy without heavy calibration."
+      },
+      {
+        "tech": "Mature spiking software and training methods",
+        "status": "partial",
+        "why": "ordinary deep-learning tools assume dense arithmetic, not sparse spikes or analog physics."
+      },
+      {
+        "tech": "Low-loss integrated lasers and amplifiers",
+        "status": "partial",
+        "why": "optical computing needs light on the chip without large external laser racks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research chips such as IBM's TrueNorth, Intel's Loihi and the SpiNNaker systems, plus event-based vision sensors",
+        "unlocks": "proven low-power, event-driven computation in the lab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "photonic interconnects and co-packaged optics in datacentres",
+        "unlocks": "a manufacturing base and design tools for chips that compute with light."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid accelerators that do matrix multiplication optically or in analog memory, with digital cleanup",
+        "unlocks": "big energy savings for inference-heavy workloads such as AI models."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "brain-scale spiking systems and in-situ learning on edge devices",
+        "unlocks": "always-on sensing and robotics that cannot afford to run conventional chips."
+      }
+    ]
   }
 }

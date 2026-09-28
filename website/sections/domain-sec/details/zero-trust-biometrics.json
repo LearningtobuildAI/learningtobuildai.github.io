@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Signal capture",
+        "role": "collects behaviour from whatever the user is touching, without extra hardware.",
+        "parts": [
+          "keyboard and touch timing",
+          "mouse and pointer paths",
+          "device motion sensors (gait)",
+          "session and application context"
+        ]
+      },
+      {
+        "name": "Feature extraction",
+        "role": "turns raw events into compact, comparable numbers.",
+        "parts": [
+          "keystroke dwell and flight times",
+          "pointer velocity, curvature, pressure",
+          "typing rhythm over a word or phrase",
+          "sensor statistics for walking patterns"
+        ]
+      },
+      {
+        "name": "Behaviour model",
+        "role": "holds a per-user template and scores how well current behaviour matches it.",
+        "parts": [
+          "enrolment profile",
+          "one-class or anomaly scorer",
+          "drift adaptation"
+        ]
+      },
+      {
+        "name": "Risk fusion engine",
+        "role": "combines the behaviour score with other live signals into one continuous trust value.",
+        "parts": [
+          "device and OS posture",
+          "network and location",
+          "explicit sign-in events (password, passkey)"
+        ]
+      },
+      {
+        "name": "Policy engine",
+        "role": "decides what the trust value means right now.",
+        "parts": [
+          "step-up challenges",
+          "silent re-authentication",
+          "session revocation"
+        ]
+      },
+      {
+        "name": "Privacy layer",
+        "role": "keeps templates protected and revocable.",
+        "parts": [
+          "on-device or encrypted template storage",
+          "consent and retention controls",
+          "audit logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose what to sense",
+        "detail": "Decide which signals are reliable on the target devices — keyboard and pointer on desktops, touch and motion on phones — and where collection happens."
+      },
+      {
+        "title": "Instrument the client",
+        "detail": "An SDK or browser component emits timestamped events to the feature pipeline, keeping raw keystrokes on the device where possible."
+      },
+      {
+        "title": "Enrol each user",
+        "detail": "Behaviour is sampled over an initial period so a personal template can be built; enrolment must tolerate people who type unusually little."
+      },
+      {
+        "title": "Engineer features",
+        "detail": "Intervals, speeds and rhythms are normalised so that a slow day or a new keyboard does not look like an impostor."
+      },
+      {
+        "title": "Train the scorer",
+        "detail": "A per-user anomaly model is trained alongside population models that recognise generic human versus machine input."
+      },
+      {
+        "title": "Fuse and threshold",
+        "detail": "The score is combined with device, network and explicit-auth signals, and risk bands are set for allow, challenge and block."
+      },
+      {
+        "title": "Tune false accepts and false rejects",
+        "detail": "Thresholds are adjusted on real traffic so genuine users are rarely interrupted while impostors are caught."
+      },
+      {
+        "title": "Deploy, monitor and keep learning",
+        "detail": "The template adapts gradually to genuine drift, while monitoring looks for poisoning, replay or injection of synthetic input."
+      },
+      {
+        "title": "Wire into access control",
+        "detail": "The policy engine drives step-up prompts, silent re-authentication and session termination through the existing identity system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sensors on ordinary client devices",
+        "status": "exists",
+        "why": "keyboards, touchscreens and accelerometers already produce the signals, so no new hardware is needed."
+      },
+      {
+        "tech": "Low-latency machine learning at the edge",
+        "status": "exists",
+        "why": "scoring must finish in milliseconds inside the login or session flow."
+      },
+      {
+        "tech": "A strong explicit authenticator to anchor trust",
+        "status": "exists",
+        "why": "behaviour alone drifts; standards such as FIDO2/WebAuthn passkeys give a cryptographic starting point that behaviour then extends."
+      },
+      {
+        "tech": "Anti-spoofing for behavioural signals",
+        "status": "partial",
+        "why": "injected or replayed input can imitate a user, and detection methods are still maturing; presentation-attack standards such as ISO/IEC 30107 cover biometrics more broadly than behaviour."
+      },
+      {
+        "tech": "Accepted privacy and evaluation norms",
+        "status": "partial",
+        "why": "behavioural data is personal data under privacy law, and there is no settled cross-vendor benchmark for accuracy or fairness."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "continuous risk scoring running behind online banking and fraud detection",
+        "unlocks": "silent, friction-free scrutiny of sessions that today rely on passwords and one-time codes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous authentication adopted in enterprise and consumer sign-in alongside passkeys",
+        "unlocks": "sessions that re-verify themselves instead of expiring on a timer."
+      },
+      {
+        "stage": "Next",
+        "milestone": "common evaluation benchmarks and interoperability between vendors",
+        "unlocks": "honest comparison of false-accept rates and fair treatment across typing styles, devices and disabilities."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device templates bound to hardware attestation",
+        "unlocks": "behaviour that never leaves the phone, and trust that can be proven rather than inferred from a central store."
+      }
+    ]
+  }
+}

@@ -33,5 +33,141 @@
         "def": "Electromagnetic waves used for wireless communication and broadcasting, including signals from Wi-Fi, cellular networks, and TV transmitters."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Antenna and matching network",
+        "role": "captures ambient radio waves and reflects them back with altered properties.",
+        "parts": [
+          "wideband antenna",
+          "impedance matching circuit"
+        ]
+      },
+      {
+        "name": "Energy harvester",
+        "role": "rectifies a small fraction of ambient RF into direct current to power the tag.",
+        "parts": [
+          "rectifier diodes",
+          "storage capacitor",
+          "power management integrated circuit"
+        ]
+      },
+      {
+        "name": "Modulator",
+        "role": "changes the antenna's load so it reflects or absorbs waves, encoding binary data.",
+        "parts": [
+          "RF switch transistor",
+          "biasing circuit"
+        ]
+      },
+      {
+        "name": "Controller and sensor",
+        "role": "reads the sensor, encodes the data and manages power budget.",
+        "parts": [
+          "ultra-low-power microcontroller",
+          "sensor element"
+        ]
+      },
+      {
+        "name": "Protocol stack",
+        "role": "handles addressing, error detection and sharing of the ambient channel.",
+        "parts": [
+          "framing",
+          "error correction",
+          "medium access rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose target signals",
+        "detail": "Select ambient bands such as broadcast TV, Wi-Fi or cellular and design an antenna that works across them."
+      },
+      {
+        "title": "Fabricate the tag",
+        "detail": "Print conductive traces and antenna on a flexible substrate such as PET using conductive inks."
+      },
+      {
+        "title": "Integrate the harvester",
+        "detail": "Attach rectifier and power management components that convert ambient RF into a usable supply voltage."
+      },
+      {
+        "title": "Add the modulator",
+        "detail": "Place a fast RF switch at the antenna feed so the tag can alternate between reflecting and absorbing."
+      },
+      {
+        "title": "Attach controller and sensor",
+        "detail": "Bond an ultra-low-power microcontroller and the chosen sensor, then program the communication logic."
+      },
+      {
+        "title": "Assemble and encapsulate",
+        "detail": "Laminate or coat the tag to protect it from moisture and handling."
+      },
+      {
+        "title": "Test with simulated ambient signals",
+        "detail": "Use a signal generator to mimic real broadcast or Wi-Fi signals and measure read range and error rate."
+      },
+      {
+        "title": "Field-test near real transmitters",
+        "detail": "Place tags near actual TV, Wi-Fi or cellular towers to see how building clutter and signal strength affect performance."
+      },
+      {
+        "title": "Calibrate and deploy",
+        "detail": "Adjust thresholds and antenna tuning for the installation environment, then roll out in a pilot."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultra-low-power microcontrollers and sensors",
+        "status": "exists",
+        "why": "the tag must operate on microwatts harvested from ambient waves."
+      },
+      {
+        "tech": "RF energy harvesting",
+        "status": "partial",
+        "why": "efficient rectifiers and power management at very low input power are still improving."
+      },
+      {
+        "tech": "Ambient RF infrastructure",
+        "status": "exists",
+        "why": "broadcast TV, Wi-Fi and cellular signals provide the carrier waves the tag reflects."
+      },
+      {
+        "tech": "Backscatter modulation techniques",
+        "status": "partial",
+        "why": "RFID proves the principle, but modulating arbitrary ambient signals is harder."
+      },
+      {
+        "tech": "Flexible printed electronics",
+        "status": "partial",
+        "why": "low-cost mass production of reliable tags on flexible substrates is still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Lab demonstrations of ambient backscatter and commercial RFID as a precursor",
+        "unlocks": "proof that a tag can communicate by reflecting existing signals."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Pilot deployments in controlled settings such as building or factory sensors",
+        "unlocks": "real-world reliability and lifetime data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Integration with Wi-Fi and cellular base stations acting as readers",
+        "unlocks": "wide-area coverage without dedicated reader infrastructure."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Ubiquitous battery-free tags for inventory, agriculture and environmental monitoring",
+        "unlocks": "maintenance-free sensing at very low cost per tag."
+      }
+    ]
   }
 }

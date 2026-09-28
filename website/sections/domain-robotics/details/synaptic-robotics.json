@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural culture",
+        "role": "the living processor: a few hundred thousand neurons that grow into a spontaneously active network.",
+        "parts": [
+          "cortical neurons derived from induced pluripotent stem cells (or rodent primary cells)",
+          "astrocyte support cells",
+          "glucose-and-salt culture medium",
+          "adhesion coating such as poly-D-lysine and laminin"
+        ]
+      },
+      {
+        "name": "Electrode interface",
+        "role": "the two-way plug between wet tissue and dry electronics.",
+        "parts": [
+          "microelectrode array (often 60 electrodes at roughly 100–200 µm spacing)",
+          "high-density CMOS array with tens of thousands of electrodes at 10–20 µm spacing",
+          "biocompatible passivation layer",
+          "on-chip amplifiers and multiplexers"
+        ]
+      },
+      {
+        "name": "Life support",
+        "role": "keeps tissue at body conditions for weeks to months, not hours.",
+        "parts": [
+          "incubator held near 37 °C with 5 % CO2",
+          "microfluidic perfusion pump",
+          "medium reservoir and waste trap",
+          "bubble traps and sterile fluid lines",
+          "oxygen, glucose and pH sensors"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "detects the millivolt spikes of individual neurons and turns them into data.",
+        "parts": [
+          "low-noise amplifiers",
+          "band-pass filters around 300–3000 Hz",
+          "analogue-to-digital converters",
+          "spike-sorting and feature-extraction processor"
+        ]
+      },
+      {
+        "name": "Stimulation path",
+        "role": "writes signals back into the network — the basis of any learning.",
+        "parts": [
+          "constant-current stimulator",
+          "charge-balanced biphasic pulses",
+          "optogenetic light source and genetically encoded ion channels, where used"
+        ]
+      },
+      {
+        "name": "Closed-loop controller and body",
+        "role": "decodes network activity into action and encodes the robot's senses back as stimulation.",
+        "parts": [
+          "real-time computer running a decoding model",
+          "robot actuators and sensors",
+          "encoder mapping sensor readings to stimulation patterns"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Derive and quality-check neurons",
+        "detail": "Skin or blood cells are reprogrammed to stem cells, then driven to become cortical neurons over several weeks and screened for healthy spontaneous firing."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "A CMOS or glass substrate is patterned with metal electrodes, insulated except at the tips, and coated with adhesion proteins that let neurons grip it."
+      },
+      {
+        "title": "Seed and mature the culture",
+        "detail": "Cells are plated at a few thousand per square millimetre, fed every few days, and left for two to four weeks until the network settles into stable, patterned activity."
+      },
+      {
+        "title": "Close the electrical loop",
+        "detail": "The array is wired to amplifiers and a computer that can record spikes and deliver stimulation within a few milliseconds — fast enough for the loop to feel instantaneous to the cells."
+      },
+      {
+        "title": "Train the network",
+        "detail": "Stimulation patterns are paired with feedback chosen to exploit spike-timing-dependent plasticity, so the network's firing slowly reorganises toward the task rather than drifting randomly."
+      },
+      {
+        "title": "Connect a body",
+        "detail": "Decoded output drives robot joints or a virtual agent's controls; the robot's sensors are re-encoded as stimulation, so the culture acts on the world it is being told about."
+      },
+      {
+        "title": "Engineer field life support",
+        "detail": "For anything beyond a bench, the incubator becomes a miniaturised, shock-tolerant perfusion system with sterile fluidics, temperature control and waste removal — the hardest step, since a robot that falls over must not kill its own brain."
+      },
+      {
+        "title": "Build in redundancy",
+        "detail": "Cultures die, so a practical machine would carry several independent units, automatic health monitoring and the ability to switch control when one degrades."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reproducible neuron and organoid culture",
+        "status": "exists",
+        "why": "without a steady supply of healthy, uniform neural tissue there is no reliable device."
+      },
+      {
+        "tech": "Bidirectional high-density electrode arrays",
+        "status": "partial",
+        "why": "laboratory CMOS arrays can stimulate and record thousands of sites, but not yet for months at a time in a moving machine."
+      },
+      {
+        "tech": "Real-time spike sorting and decoding",
+        "status": "partial",
+        "why": "the loop must close in milliseconds, which needs dedicated hardware rather than recorded-and-analysed-later data."
+      },
+      {
+        "tech": "In-vitro learning and memory",
+        "status": "partial",
+        "why": "cultures do show plasticity, but the stable, generalisable learning needed for useful tasks is not demonstrated."
+      },
+      {
+        "tech": "Long-term life support outside an incubator",
+        "status": "missing",
+        "why": "there is no established way to keep cortical tissue viable for years in a portable, powered, moving platform."
+      },
+      {
+        "tech": "Oversight for neuron-based machines",
+        "status": "missing",
+        "why": "rules for devices containing human-derived neural tissue, and for when they should be switched off, do not yet exist."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cultured networks on multi-electrode arrays displaying stimulus-dependent activity; in 2022 human and mouse neurons in a dish were reported to learn a simple paddle game within minutes",
+        "unlocks": "proof that living networks can be trained through an electrode interface at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop laboratory hybrids where a neural culture controls a simple robot or simulated body and improves with practice",
+        "unlocks": "benchmark tasks and the first honest comparison against conventional spiking hardware on energy per decision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "neural cultures used as low-power accelerators for narrow pattern-recognition problems, accessed remotely as a service",
+        "unlocks": "a commercial reason to fund the life-support engineering."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "portable, self-maintaining neural units with reliable fluidics and months-long viability",
+        "unlocks": "hybrid machines that leave the lab."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "directed neuron-to-tissue interfaces for prosthetics, where cultured or grafted neurons talk to a patient's nervous system",
+        "unlocks": "prosthetic control that borrows biology's own signalling — far more plausible near-term than fully biological robots doing general labour."
+      }
+    ]
+  }
+}

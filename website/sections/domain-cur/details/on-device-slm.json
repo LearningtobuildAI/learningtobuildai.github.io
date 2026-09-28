@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Model weights",
+        "role": "the compressed neural network itself, small enough to sit in RAM.",
+        "parts": [
+          "transformer layers",
+          "embedding and output projection",
+          "quantization scales and zero-points"
+        ]
+      },
+      {
+        "name": "Tokenizer and prompt layer",
+        "role": "turns text into tokens and wraps it in the instruction format the model was tuned for.",
+        "parts": [
+          "byte-pair or SentencePiece vocabulary",
+          "chat template",
+          "stop-token rules"
+        ]
+      },
+      {
+        "name": "Inference runtime",
+        "role": "schedules the maths, manages the key-value cache and chooses which processor runs each operation.",
+        "parts": [
+          "operator kernels for NPU, GPU and CPU",
+          "memory planner",
+          "key-value cache manager",
+          "sampling and decoding"
+        ]
+      },
+      {
+        "name": "Accelerator hardware",
+        "role": "the NPU (plus GPU and CPU) inside the phone or laptop.",
+        "parts": [
+          "neural accelerator cores",
+          "unified or shared memory",
+          "thermal and power governor"
+        ]
+      },
+      {
+        "name": "Application orchestration",
+        "role": "what the user actually sees: chat, summarisation, assistance.",
+        "parts": [
+          "local retrieval over documents for grounding",
+          "tool or function calls",
+          "safety filtering and refusal rules",
+          "fallback routing to a larger cloud model"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the size budget",
+        "detail": "The target device's memory decides everything. A 3-billion-parameter model at 4 bits weighs roughly 2 GB; a 7-billion one roughly 4 GB, before the key-value cache and the rest of the operating system."
+      },
+      {
+        "title": "Train or adopt a base model",
+        "detail": "Teams either train a small transformer from scratch on a very large text corpus, or start from an openly published small base model and adapt it."
+      },
+      {
+        "title": "Distil from a larger teacher",
+        "detail": "A much bigger model generates outputs and soft probability targets; the small model is trained to imitate them, which packs capability into far fewer parameters."
+      },
+      {
+        "title": "Post-train for instruction following",
+        "detail": "Supervised fine-tuning on curated question-answer pairs, then preference tuning, teaches the model to follow instructions, use tools and refuse harmful requests."
+      },
+      {
+        "title": "Quantize to low bit-width",
+        "detail": "Weights are grouped into blocks and each block stored with a shared scale, typically 4 bits per weight. Calibration data is passed through the model to choose scales, and sometimes quantization-aware training recovers lost accuracy."
+      },
+      {
+        "title": "Compress further",
+        "detail": "Structured pruning removes attention heads or whole channels; weight sharing and small mixtures-of-experts reduce the parameters actually touched per token."
+      },
+      {
+        "title": "Compile for the accelerator",
+        "detail": "The graph is exported (for example to ONNX, Core ML or ExecuTorch format), operators are fused, and layers are assigned to NPU, GPU or CPU depending on which backend supports them."
+      },
+      {
+        "title": "Build the runtime",
+        "detail": "Weights are memory-mapped so they load instantly, the key-value cache is pre-allocated and managed in pages, and a streaming decoder emits tokens as they are produced."
+      },
+      {
+        "title": "Tune on real hardware",
+        "detail": "Engineers measure tokens per second, time-to-first-token, memory ceiling and battery drain, then shrink context length or offload layers until the device stays responsive and cool."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-bit (4-bit and below) quantization methods",
+        "status": "exists",
+        "why": "without them a 7-billion-parameter model would need around 14 GB in half precision — more than a phone has."
+      },
+      {
+        "tech": "NPUs with usable software stacks",
+        "status": "partial",
+        "why": "the hardware exists widely, but operator coverage and toolchains differ per vendor, so models often fall back to slower CPU execution."
+      },
+      {
+        "tech": "Memory bandwidth close to the compute unit",
+        "status": "exists",
+        "why": "generating one token requires reading the whole model once, so speed is limited by bandwidth, not raw arithmetic."
+      },
+      {
+        "tech": "Efficient attention and key-value cache compression",
+        "status": "partial",
+        "why": "long conversations otherwise blow the memory budget even when the weights fit."
+      },
+      {
+        "tech": "Small-model training data and distillation pipelines",
+        "status": "exists",
+        "why": "a tiny model only performs well if its training signal is unusually clean and dense."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "3–8 billion parameter models running at conversational speed on recent laptops and phones",
+        "unlocks": "private, offline assistants for summarising, rewriting, transcription and on-device search."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mixtures-of-experts and speculative decoding tuned for device memory",
+        "unlocks": "larger effective capability at the same tokens-per-second cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "native on-device vision and audio alongside text",
+        "unlocks": "assistants that read the screen, camera and microphone without sending data away."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "locally fine-tuned personal models using small adapter layers trained on the user's own data",
+        "unlocks": "genuinely personalised agents, with harder tasks routed to cloud models when the user allows it."
+      }
+    ]
+  }
+}

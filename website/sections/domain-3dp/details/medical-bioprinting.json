@@ -32,5 +32,156 @@
         "def": "The ability of a material or substance to perform with an appropriate host response under the conditions of its use."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bioink",
+        "role": "the printable material: living cells suspended in a gel that keeps them alive and later becomes the scaffold.",
+        "parts": [
+          "natural hydrogels (alginate, collagen, gelatin, hyaluronic acid)",
+          "synthetic or modified polymers",
+          "cells at high concentration",
+          "growth factors and crosslinkers"
+        ]
+      },
+      {
+        "name": "Print head",
+        "role": "deposits the ink precisely without killing the cells.",
+        "parts": [
+          "extrusion nozzle or syringe",
+          "inkjet or micro-valve head",
+          "laser-assisted transfer unit",
+          "heating or cooling jacket"
+        ]
+      },
+      {
+        "name": "Motion and control",
+        "role": "turns a medical scan or design file into a toolpath.",
+        "parts": [
+          "multi-axis stages or robotic arm",
+          "slicing and path-planning software",
+          "pressure and temperature control"
+        ]
+      },
+      {
+        "name": "Support and sacrificial material",
+        "role": "holds soft structures up while they are printed, then is washed away.",
+        "parts": [
+          "gel support bath",
+          "sacrificial ink (e.g. gelatin or pluronic)",
+          "removal step"
+        ]
+      },
+      {
+        "name": "Vascular and perfusion system",
+        "role": "gives cells deep inside the construct a supply of oxygen and nutrients.",
+        "parts": [
+          "printed channels down to capillary scale",
+          "bioreactor perfusion loop",
+          "oxygenator"
+        ]
+      },
+      {
+        "name": "Maturation bioreactor",
+        "role": "conditions the construct so cells organise into working tissue.",
+        "parts": [
+          "perfusion pump",
+          "mechanical or electrical stimulation",
+          "environmental sensors"
+        ]
+      },
+      {
+        "name": "Quality control",
+        "role": "proves the construct is sterile, viable and mechanically sound before use.",
+        "parts": [
+          "live/dead cell assays",
+          "sterility testing",
+          "microscopy and mechanical testing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose and grow the cells",
+        "detail": "A small sample of the patient's own cells (or donor cells) is expanded in culture, often first reprogrammed to an induced pluripotent state and then steered into the needed cell type — heart muscle, cartilage, liver or skin."
+      },
+      {
+        "title": "Formulate the bioink",
+        "detail": "Cells are mixed into a hydrogel at tens of millions per millilitre. The ink must flow through a nozzle, set quickly, and stay soft enough for cells to move and grow."
+      },
+      {
+        "title": "Convert the scan into a design",
+        "detail": "MRI or CT imaging of the patient's anatomy is segmented into a three-dimensional model, then sliced into the paths the printer will follow."
+      },
+      {
+        "title": "Print the structure",
+        "detail": "The print head lays down ink layer by layer — increasingly inside a support bath so overhanging and hollow shapes do not collapse. Channels for blood vessels are printed at the same time, in a sacrificial ink."
+      },
+      {
+        "title": "Crosslink and clear",
+        "detail": "Light, temperature or a chemical trigger solidifies the gel, then the support bath and sacrificial channels are melted or washed out to leave open vessels."
+      },
+      {
+        "title": "Perfuse and mature",
+        "detail": "The construct goes into a bioreactor where nutrient fluid is pumped through its channels for days to weeks, with mechanical or electrical stimulation to train the tissue."
+      },
+      {
+        "title": "Test and release",
+        "detail": "Samples are checked for sterility, cell viability and strength; the implant is then either used in a patient or, for drug testing, placed in a multiwell plate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Human induced pluripotent stem cells",
+        "status": "exists",
+        "why": "they give an expandable, patient-matched source of almost any cell type without the ethical and immune problems of embryonic lines."
+      },
+      {
+        "tech": "Printable hydrogels that mimic living tissue",
+        "status": "partial",
+        "why": "most inks are either printable or cell-friendly, rarely both; stiffness and remodelling are still hard to match."
+      },
+      {
+        "tech": "Vascularisation of thick tissue",
+        "status": "missing",
+        "why": "cells more than roughly 100–200 µm from a blood supply suffocate, so anything thicker than a sheet needs working vessels."
+      },
+      {
+        "tech": "GMP cell and tissue manufacturing",
+        "status": "partial",
+        "why": "living products must be made, shipped and implanted within days under strict cleanliness rules."
+      },
+      {
+        "tech": "Regulatory route for living implants",
+        "status": "partial",
+        "why": "combination products of cells, drugs and devices do not fit existing device or drug approval pathways cleanly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "bioprinted tissue used as laboratory models for drug testing",
+        "unlocks": "better prediction of liver and heart toxicity before human trials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "simple implants reach clinical use — skin, cartilage, cornea, bone patches",
+        "unlocks": "repair of injuries without donor tissue."
+      },
+      {
+        "stage": "Next",
+        "milestone": "perfusable thick tissue with printed vessel networks",
+        "unlocks": "organ-like constructs, including kidney and liver tissue."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "patient-specific whole organs printed on demand",
+        "unlocks": "an answer to donor shortage — if vascularisation, maturation and regulation are all solved."
+      }
+    ]
   }
 }

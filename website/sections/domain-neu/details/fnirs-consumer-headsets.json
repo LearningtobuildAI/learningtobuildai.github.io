@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Light emitters",
+        "role": "send near-infrared light through the scalp into the cortex.",
+        "parts": [
+          "LEDs or laser diodes at two wavelengths",
+          "pulsed drive electronics",
+          "time-multiplexing circuit"
+        ]
+      },
+      {
+        "name": "Photodetectors",
+        "role": "measure how much light returns after passing through tissue.",
+        "parts": [
+          "silicon photodiodes",
+          "transimpedance amplifiers",
+          "ambient-light shielding"
+        ]
+      },
+      {
+        "name": "Optode array and montage",
+        "role": "positions source–detector pairs over a target region, usually the forehead.",
+        "parts": [
+          "source–detector pairs 2–3 cm apart",
+          "short-separation channels",
+          "flexible holder"
+        ]
+      },
+      {
+        "name": "Headset mechanics",
+        "role": "keeps optodes against the scalp through hair without pressing hard enough to cut off blood flow.",
+        "parts": [
+          "sprung or cantilevered probes",
+          "adjustable frame or band",
+          "light-blocking cover"
+        ]
+      },
+      {
+        "name": "Signal electronics and firmware",
+        "role": "digitises the faint returning signal and strips ambient noise.",
+        "parts": [
+          "analog-to-digital converter",
+          "dark-current and gain calibration",
+          "battery and wireless link"
+        ]
+      },
+      {
+        "name": "Processing and classification",
+        "role": "converts raw light into haemoglobin changes and then into a focus or stress score.",
+        "parts": [
+          "modified Beer–Lambert conversion",
+          "motion and physiological artefact removal",
+          "trained classifier"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the wavelengths",
+        "detail": "Two wavelengths are chosen, typically near 760 nm and 850 nm, so the differing absorption of oxygenated and deoxygenated haemoglobin can be separated."
+      },
+      {
+        "title": "Fix the channel geometry",
+        "detail": "Source–detector separation sets how deep the light samples: short gaps see mostly scalp blood flow, longer ones reach cortical tissue, so both are included."
+      },
+      {
+        "title": "Assemble the emitters",
+        "detail": "Small LED or laser-diode dies are mounted, encapsulated and wired to drivers that pulse them in sequence so channels do not interfere."
+      },
+      {
+        "title": "Build the detectors",
+        "detail": "Photodiodes are paired with low-noise amplifiers and recessed behind baffles so room light does not swamp the tiny returning signal."
+      },
+      {
+        "title": "Design the headset",
+        "detail": "Probes are arranged over the prefrontal cortex following standard scalp landmarks, mounted on a flexible frame that tolerates head movement and hair."
+      },
+      {
+        "title": "Calibrate the electronics",
+        "detail": "Each channel's dark current, gain and source power are measured so the raw numbers mean the same thing on every device."
+      },
+      {
+        "title": "Write the signal pipeline",
+        "detail": "Raw intensity is converted to optical density, then to haemoglobin changes; heartbeats, breathing, Mayer waves and motion spikes are filtered out, often using the short channels as a scalp reference."
+      },
+      {
+        "title": "Train and validate the classifier",
+        "detail": "Volunteers perform tasks of known difficulty while the headset records; models learn to map cortical response to load, and are tested on people who were not in the training set."
+      },
+      {
+        "title": "Ship with honest limits",
+        "detail": "The device reports an index with confidence bounds, because forehead fNIRS reflects cortical blood flow with a lag of seconds and is easily confused by jaw clenching, talking or sweating."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Near-infrared optoelectronics",
+        "status": "exists",
+        "why": "cheap LEDs, laser diodes and photodiodes make a wearable optical sensor possible."
+      },
+      {
+        "tech": "Low-power analog front ends and wireless chips",
+        "status": "exists",
+        "why": "the returning signal is very faint and must be amplified and streamed without drowning in electrical noise."
+      },
+      {
+        "tech": "Haemodynamic modelling (modified Beer–Lambert law)",
+        "status": "exists",
+        "why": "it converts measured light attenuation into estimates of oxygenated and deoxygenated haemoglobin."
+      },
+      {
+        "tech": "Short-channel artefact regression",
+        "status": "partial",
+        "why": "scalp blood flow and heart-rate signals otherwise contaminate the cortical measurement."
+      },
+      {
+        "tech": "Validated cognitive-load markers",
+        "status": "partial",
+        "why": "prefrontal oxygenation tracks mental effort on average, but varies widely between people and tasks."
+      },
+      {
+        "tech": "Large labelled datasets for classification",
+        "status": "missing",
+        "why": "consumer-grade accuracy claims need ground truth from harder, more reliable methods across many users."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "forehead-only headsets sold for attention training and basic biofeedback",
+        "unlocks": "a cheap, safe, wearable window on cortical blood flow."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-head, dry-optode arrays with better hair penetration and short-channel correction",
+        "unlocks": "measurement over motor and language regions, not just the forehead."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fusion with EEG and other body signals",
+        "unlocks": "separating the fast electrical response from the slow blood-flow response, improving load estimates."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "validated, individually calibrated workload monitoring in training and safety-critical work",
+        "unlocks": "practical use where mistakes are costly — if accuracy and comfort improve enough."
+      }
+    ]
+  }
+}

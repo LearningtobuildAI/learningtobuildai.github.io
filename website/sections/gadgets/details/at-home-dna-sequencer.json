@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sample-prep cartridge",
+        "role": "turns a saliva or blood sample into ready-to-sequence DNA without a lab technician.",
+        "parts": [
+          "cell lysis reagents",
+          "DNA extraction and purification",
+          "optional PCR or tagmentation",
+          "fluidics and waste chambers"
+        ]
+      },
+      {
+        "name": "Flow cell and nanopores",
+        "role": "the sensing surface where individual DNA strands are read.",
+        "parts": [
+          "protein nanopores",
+          "synthetic lipid or polymer membrane",
+          "array of hundreds to thousands of wells",
+          "motor protein that ratchets DNA through the pore"
+        ]
+      },
+      {
+        "name": "Sensor chip",
+        "role": "measures the tiny current changes as each base passes through a pore.",
+        "parts": [
+          "application-specific integrated circuit",
+          "low-noise amplifiers",
+          "electrode array",
+          "temperature control"
+        ]
+      },
+      {
+        "name": "Onboard compute and software",
+        "role": "turns raw electrical signal into base calls, methylation calls and a report.",
+        "parts": [
+          "edge processor",
+          "basecalling neural network",
+          "methylation-aware models",
+          "mapping and pathogen databases"
+        ]
+      },
+      {
+        "name": "Power, connectivity and app",
+        "role": "makes the device usable outside a laboratory.",
+        "parts": [
+          "battery and USB power",
+          "wireless link to a phone or laptop",
+          "user-facing health report"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Engineer the pore protein",
+        "detail": "A pore protein is mutated and screened so that each of the four DNA bases blocks the current in a measurably distinct way."
+      },
+      {
+        "title": "Build the flow cell",
+        "detail": "Pores are inserted into a membrane across an array of microwells, each with its own electrode, on a silicon chip."
+      },
+      {
+        "title": "Design the sensor chip",
+        "detail": "A custom integrated circuit amplifies currents in the picoamp range and digitises them at kilohertz rates."
+      },
+      {
+        "title": "Simplify sample prep",
+        "detail": "Reagents and fluidics are packaged so that a swab or finger-prick sample can be processed in a sealed cartridge."
+      },
+      {
+        "title": "Train the basecalling models",
+        "detail": "Neural networks learn to map characteristic current traces to bases and to methylated bases."
+      },
+      {
+        "title": "Assemble the instrument",
+        "detail": "Chip, cartridge interface, processor, battery and housing are integrated and calibrated against reference samples."
+      },
+      {
+        "title": "Validate and clear it",
+        "detail": "The device is tested against clinical-grade sequencing and submitted to regulators for defined health claims."
+      },
+      {
+        "title": "Deploy with surveillance links",
+        "detail": "Reports feed into public-health systems so that unusual pathogens are flagged early."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Nanopore sequencing chemistry",
+        "status": "exists",
+        "why": "commercially deployed portable sequencers already read long DNA strands in the field."
+      },
+      {
+        "tech": "Direct methylation detection",
+        "status": "partial",
+        "why": "methylation can be inferred from the raw current signal without chemical treatment, but accuracy is still improving."
+      },
+      {
+        "tech": "Low-cost microfluidics and lab-on-cartridge",
+        "status": "partial",
+        "why": "untrained users cannot pipette reagents or run clean-up steps."
+      },
+      {
+        "tech": "Edge machine-learning accelerators",
+        "status": "exists",
+        "why": "basecalling needs substantial compute, which must be cheap and low-power in a home device."
+      },
+      {
+        "tech": "Regulatory framework for consumer genetic tests",
+        "status": "partial",
+        "why": "some direct-to-consumer genetic tests are authorised, but broad pathogen and epigenetic claims are not."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "portable nanopore sequencers used in clinics, field outbreak response and space",
+        "unlocks": "proof that sequencing need not live in a central lab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "point-of-care cartridges needing no manual library prep",
+        "unlocks": "sequencing in small clinics and pharmacies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulated at-home tests for specific, well-defined conditions",
+        "unlocks": "consumer devices with narrow, validated claims rather than open-ended health screening."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous or wearable molecular monitoring",
+        "unlocks": "early warning of infection and tracking of epigenetic ageing — still largely research."
+      }
+    ]
+  }
+}

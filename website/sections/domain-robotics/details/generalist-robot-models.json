@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "collects and curates the demonstrations from which the model learns.",
+        "parts": [
+          "teleoperation rigs",
+          "simulated environments",
+          "human video datasets",
+          "data labelling and filtering tools"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "a transformer that turns camera images and instructions into motor commands.",
+        "parts": [
+          "vision encoder",
+          "language encoder",
+          "transformer backbone",
+          "action decoder head"
+        ]
+      },
+      {
+        "name": "Training infrastructure",
+        "role": "runs the large-scale distributed training that builds the model.",
+        "parts": [
+          "GPU clusters",
+          "data loaders",
+          "checkpointing and logging",
+          "hyperparameter search"
+        ]
+      },
+      {
+        "name": "Embodiment adapter",
+        "role": "maps the model's outputs onto the kinematics of different robot bodies.",
+        "parts": [
+          "action space normalisation",
+          "kinematic and dynamic mappings",
+          "low-level controllers"
+        ]
+      },
+      {
+        "name": "Evaluation and safety layer",
+        "role": "tests performance and prevents dangerous actions.",
+        "parts": [
+          "simulation benchmarks",
+          "real-world testbeds",
+          "safety monitors",
+          "fallback controllers"
+        ]
+      },
+      {
+        "name": "Deployment runtime",
+        "role": "executes the model on the robot with low latency.",
+        "parts": [
+          "inference engine",
+          "onboard compute",
+          "sensor drivers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect demonstration data",
+        "detail": "Teleoperate robots to perform many tasks, recording camera views, joint positions and actions."
+      },
+      {
+        "title": "Add simulated and human video data",
+        "detail": "Generate synthetic demonstrations in physics simulators and use internet videos to broaden visual and semantic knowledge."
+      },
+      {
+        "title": "Pretrain a vision-language backbone",
+        "detail": "Train a transformer on large image-text datasets so it learns general visual and language representations."
+      },
+      {
+        "title": "Fine-tune on robot demonstrations",
+        "detail": "Teach the model to output actions by training on the collected robot data."
+      },
+      {
+        "title": "Align action spaces across robots",
+        "detail": "Normalise and map actions so one model can control different robot arms and grippers."
+      },
+      {
+        "title": "Evaluate in simulation and on real robots",
+        "detail": "Measure success rates, generalisation to new tasks and safety, then iterate."
+      },
+      {
+        "title": "Deploy to a target robot",
+        "detail": "Compile the model for onboard inference, connect to sensors and low-level controllers."
+      },
+      {
+        "title": "Update from field data",
+        "detail": "Collect new demonstrations during use and periodically retrain to improve performance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale robot demonstration datasets",
+        "status": "partial",
+        "why": "models need thousands of hours of diverse manipulation data, which are still being aggregated."
+      },
+      {
+        "tech": "Transformer architectures",
+        "status": "exists",
+        "why": "the same attention-based design that powers language models can map observations to actions."
+      },
+      {
+        "tech": "Physics simulation",
+        "status": "partial",
+        "why": "simulators generate cheap data but still differ from reality in contact-rich tasks."
+      },
+      {
+        "tech": "Low-cost teleoperation hardware",
+        "status": "exists",
+        "why": "human operators must demonstrate tasks, and affordable rigs make data collection practical."
+      },
+      {
+        "tech": "Onboard compute for inference",
+        "status": "partial",
+        "why": "robots need enough local processing to run large models without cloud latency."
+      },
+      {
+        "tech": "Safety and reliability standards",
+        "status": "missing",
+        "why": "general-purpose robots must be provably safe around people before wide deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Today",
+        "milestone": "single-robot, multi-task models demonstrated in research",
+        "unlocks": "robots that can perform several household or warehouse tasks from one model."
+      },
+      {
+        "stage": "Near term",
+        "milestone": "cross-embodiment models that transfer between a few robot platforms",
+        "unlocks": "faster deployment of new robots without retraining from scratch."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial pilots in warehouses and factories",
+        "unlocks": "real-world data flywheel and proof of reliability."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose robots that learn new tasks from a handful of demonstrations",
+        "unlocks": "flexible automation in unstructured environments."
+      }
+    ]
+  }
+}

@@ -34,5 +34,155 @@
         "def": "A nuclease that binds to guide RNA and cleaves double-stranded DNA at the target site."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Targeting complex",
+        "role": "finds the exact DNA sequence to be changed.",
+        "parts": [
+          "guide RNA",
+          "Cas9 enzyme",
+          "protospacer adjacent motif (PAM)"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editing tools into the right cells.",
+        "parts": [
+          "lipid nanoparticles",
+          "viral vectors (AAV, lentivirus)",
+          "electroporation (for cells edited outside the body)"
+        ]
+      },
+      {
+        "name": "Editing and repair",
+        "role": "cuts DNA and lets the cell's own repair machinery create the desired change.",
+        "parts": [
+          "DNA double-strand break",
+          "repair template",
+          "base editor or prime editor (newer tools)"
+        ]
+      },
+      {
+        "name": "Cell manufacturing (ex vivo)",
+        "role": "collects, edits, grows and purifies a patient's own cells.",
+        "parts": [
+          "apheresis machine",
+          "cell culture bioreactor",
+          "electroporation device",
+          "cryopreservation"
+        ]
+      },
+      {
+        "name": "Quality control",
+        "role": "checks that the edit is correct and off-target changes are minimal.",
+        "parts": [
+          "DNA sequencing",
+          "off-target assays",
+          "sterility testing"
+        ]
+      },
+      {
+        "name": "Patient care and administration",
+        "role": "prepares the patient and delivers the therapy.",
+        "parts": [
+          "chemotherapy conditioning",
+          "intravenous infusion",
+          "long-term follow-up"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target",
+        "detail": "Identify the gene and the exact mutation that causes the disease."
+      },
+      {
+        "title": "Design the guide RNA",
+        "detail": "Compute a guide sequence that matches the target and has as few near-matches elsewhere in the genome as possible."
+      },
+      {
+        "title": "Build the editing payload",
+        "detail": "Combine the guide RNA with Cas9 — delivered as mRNA, protein or DNA — and package it in a chosen delivery vehicle."
+      },
+      {
+        "title": "Test in cells and animals",
+        "detail": "Measure editing efficiency, toxicity and off-target edits in laboratory cells and animal models."
+      },
+      {
+        "title": "Run clinical trials",
+        "detail": "Escalate dose in small patient groups, watching for safety and signs of benefit."
+      },
+      {
+        "title": "Manufacture the therapy (ex vivo)",
+        "detail": "Collect a patient's cells by apheresis, edit them outside the body, expand the corrected cells and test the batch."
+      },
+      {
+        "title": "Treat the patient",
+        "detail": "Give chemotherapy conditioning to make space in the bone marrow, then infuse the edited cells."
+      },
+      {
+        "title": "Monitor long term",
+        "detail": "Track edited cells, check for unintended changes and follow patients for years to confirm durability and safety."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "DNA sequencing",
+        "status": "exists",
+        "why": "needed to find the disease-causing mutation and to verify that the intended edit was made."
+      },
+      {
+        "tech": "CRISPR-Cas9 system",
+        "status": "exists",
+        "why": "the core editing tool, first shown to cut DNA in 2012."
+      },
+      {
+        "tech": "Safe and targeted delivery",
+        "status": "partial",
+        "why": "editing cells outside the body works for blood disorders, but reaching specific organs inside the body remains difficult."
+      },
+      {
+        "tech": "Cell manufacturing at scale",
+        "status": "partial",
+        "why": "producing enough edited cells for many patients is complex, slow and expensive."
+      },
+      {
+        "tech": "Control of off-target editing",
+        "status": "partial",
+        "why": "unintended edits could cause cancer or other harm, so they must be measured and minimised."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ex vivo therapies for blood disorders; the first CRISPR-based therapy was approved in late 2023 for sickle cell disease and beta-thalassemia",
+        "unlocks": "proof that editing a patient's own cells can cure a genetic disease."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in vivo editing for the liver and eye, with lipid nanoparticles or viral vectors carrying the editors directly into the body",
+        "unlocks": "treatments that do not require removing and re-engineering a patient's cells."
+      },
+      {
+        "stage": "Next",
+        "milestone": "base editing and prime editing, which change DNA letters without making a full double-strand break",
+        "unlocks": "more precise edits with fewer unintended changes, opening more diseases to treatment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "delivery to muscle, lung and brain tissue",
+        "unlocks": "therapies for muscular dystrophy, cystic fibrosis and some neurological diseases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "safe, repeatable, tissue-specific delivery for common conditions",
+        "unlocks": "one-time or occasional treatments for high cholesterol, chronic infections and other widespread diseases."
+      }
+    ]
   }
 }

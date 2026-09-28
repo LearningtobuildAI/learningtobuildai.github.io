@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Radios",
+        "role": "connect the hub to the home network and to low-power devices.",
+        "parts": [
+          "Wi-Fi and Ethernet",
+          "Thread radio (IEEE 802.15.4)",
+          "Bluetooth Low Energy"
+        ]
+      },
+      {
+        "name": "Compute and storage",
+        "role": "runs the software that coordinates devices and stores automation rules.",
+        "parts": [
+          "system-on-chip",
+          "RAM",
+          "flash storage",
+          "secure element"
+        ]
+      },
+      {
+        "name": "Matter stack",
+        "role": "speaks the common application-layer language so devices from different brands interoperate.",
+        "parts": [
+          "Matter controller",
+          "commissioner",
+          "device attestation"
+        ]
+      },
+      {
+        "name": "Thread border router",
+        "role": "bridges the low-power Thread mesh to the home IP network.",
+        "parts": [
+          "Thread stack",
+          "IPv6 routing",
+          "border router service"
+        ]
+      },
+      {
+        "name": "Automation engine",
+        "role": "runs schedules, scenes and rules locally so they work without the internet.",
+        "parts": [
+          "rules engine",
+          "local database",
+          "event scheduler"
+        ]
+      },
+      {
+        "name": "Power and enclosure",
+        "role": "houses and powers the hub.",
+        "parts": [
+          "power supply",
+          "case",
+          "status LEDs",
+          "buttons"
+        ]
+      },
+      {
+        "name": "Remote access bridge",
+        "role": "optional; allows control when away and links to voice assistants.",
+        "parts": [
+          "secure tunnel",
+          "cloud service",
+          "account linking"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the hardware",
+        "detail": "Choose a system-on-chip with Wi-Fi, Thread and Bluetooth radios, lay out the board and antennas, and design the enclosure."
+      },
+      {
+        "title": "Port the Matter stack",
+        "detail": "Implement the Matter controller and commissioner so the hub can discover, pair and command certified devices."
+      },
+      {
+        "title": "Integrate the Thread border router",
+        "detail": "Add the Thread stack and border router service so low-power devices on the mesh can be reached over IPv6."
+      },
+      {
+        "title": "Build the local automation engine",
+        "detail": "Write the rules engine, scheduler and scene handling so automations keep running when the internet is down."
+      },
+      {
+        "title": "Implement commissioning",
+        "detail": "Add Bluetooth Low Energy setup, QR-code scanning and Matter pairing to bring new devices onto the network securely."
+      },
+      {
+        "title": "Certify the product",
+        "detail": "Pass Matter certification, Thread certification, and regional radio and safety approvals."
+      },
+      {
+        "title": "Manufacture and test",
+        "detail": "Assemble boards, run functional tests and provision unique credentials for each unit."
+      },
+      {
+        "title": "Ship software updates",
+        "detail": "Deploy over-the-air updates for security patches and new Matter device types."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Matter standard",
+        "status": "exists",
+        "why": "provides the common application layer that lets different brands work together."
+      },
+      {
+        "tech": "Thread protocol",
+        "status": "exists",
+        "why": "gives battery-powered sensors and locks a low-power mesh network."
+      },
+      {
+        "tech": "Wi-Fi and Ethernet",
+        "status": "exists",
+        "why": "carry high-bandwidth traffic and connect the hub to the home router."
+      },
+      {
+        "tech": "Bluetooth Low Energy",
+        "status": "exists",
+        "why": "used for initial device commissioning and setup."
+      },
+      {
+        "tech": "Secure boot and secure element",
+        "status": "exists",
+        "why": "protects credentials and attestation keys from tampering."
+      },
+      {
+        "tech": "IPv6 networking",
+        "status": "exists",
+        "why": "both Matter and Thread are IP-based, so devices need routable addresses."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Matter 1.x hubs with Thread border routers are common",
+        "unlocks": "cross-brand control and local automation without an app per device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Matter adds more device types such as energy, water and appliance devices",
+        "unlocks": "whole-home energy management and richer automations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Thread and border router improvements for larger, more reliable meshes",
+        "unlocks": "robust coverage across large homes and multiple floors."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device AI for automation and anomaly detection",
+        "unlocks": "privacy-preserving, adaptive smart homes that learn routines locally."
+      }
+    ]
+  }
+}

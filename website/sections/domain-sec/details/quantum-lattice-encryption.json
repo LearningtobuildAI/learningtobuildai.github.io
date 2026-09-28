@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Lattice problem core",
+        "role": "defines the hard mathematical problem whose difficulty underpins all security.",
+        "parts": [
+          "Learning With Errors (LWE) problem",
+          "Shortest Vector Problem (SVP)",
+          "module-lattice variants"
+        ]
+      },
+      {
+        "name": "Key generation",
+        "role": "creates a public key and a private key from random lattice points and small errors.",
+        "parts": [
+          "cryptographic random seed",
+          "error distribution sampler",
+          "public matrix generation"
+        ]
+      },
+      {
+        "name": "Encryption and encapsulation",
+        "role": "encodes a shared secret or message using the public key, adding noise to hide it.",
+        "parts": [
+          "polynomial arithmetic modulo q",
+          "noise addition",
+          "ciphertext compression"
+        ]
+      },
+      {
+        "name": "Decryption and decapsulation",
+        "role": "recovers the secret with the private key and corrects for the added noise.",
+        "parts": [
+          "error correction",
+          "reconciliation"
+        ]
+      },
+      {
+        "name": "Digital signatures",
+        "role": "proves authenticity and integrity using lattice-based signature schemes.",
+        "parts": [
+          "rejection sampling",
+          "hash functions"
+        ]
+      },
+      {
+        "name": "Implementation layer",
+        "role": "makes the algorithms fast and safe on real processors and hardware.",
+        "parts": [
+          "constant-time code",
+          "side-channel countermeasures",
+          "hardware accelerators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a hardness assumption",
+        "detail": "Select a lattice problem, such as Learning With Errors, that is believed hard even for quantum computers."
+      },
+      {
+        "title": "Design the scheme",
+        "detail": "Construct key generation, encryption and decryption using polynomial arithmetic modulo a prime, with carefully chosen noise."
+      },
+      {
+        "title": "Prove security",
+        "detail": "Reduce the scheme's security to the underlying lattice problem and analyse parameters against known classical and quantum attacks."
+      },
+      {
+        "title": "Standardise",
+        "detail": "Submit the design to a public standardisation process, invite years of open cryptanalysis, and select stable algorithms."
+      },
+      {
+        "title": "Implement efficiently",
+        "detail": "Write constant-time software and use number-theoretic transforms for fast polynomial multiplication."
+      },
+      {
+        "title": "Test and validate",
+        "detail": "Run official test vectors, check side-channel resistance, and formally verify critical code paths."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "Embed the algorithms in TLS, VPNs, messaging apps and hardware security modules, often in hybrid mode with classical cryptography."
+      },
+      {
+        "title": "Deploy and migrate",
+        "detail": "Roll out to production, then gradually phase out RSA and elliptic-curve cryptography as confidence grows."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice-based hardness assumptions (LWE, SVP)",
+        "status": "exists",
+        "why": "the entire security proof rests on these problems remaining hard for quantum computers."
+      },
+      {
+        "tech": "Quantum computers capable of running Shor's algorithm at scale",
+        "status": "partial",
+        "why": "the threat model that motivates lattice encryption, though full-scale machines do not yet exist."
+      },
+      {
+        "tech": "Fast modular arithmetic and number-theoretic transforms",
+        "status": "exists",
+        "why": "makes lattice cryptography practical on ordinary processors."
+      },
+      {
+        "tech": "Side-channel resistant implementations",
+        "status": "partial",
+        "why": "prevents attackers from stealing keys through timing, power or electromagnetic leaks."
+      },
+      {
+        "tech": "Public standardisation and cryptanalysis",
+        "status": "exists",
+        "why": "builds trust and ensures different systems can interoperate."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NIST published the first post-quantum standards in 2024, including lattice-based ML-KEM and ML-DSA",
+        "unlocks": "a stable, internationally recognised basis for quantum-resistant encryption."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid deployment in browsers, VPNs and messaging apps, mixing lattice encryption with classical methods",
+        "unlocks": "protection against 'store now, decrypt later' attacks without abandoning current security."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hardware acceleration and secure elements for lattice algorithms",
+        "unlocks": "quantum-resistant cryptography on phones, smart cards and industrial devices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Full migration of critical infrastructure away from RSA and elliptic curves",
+        "unlocks": "a global financial and communications system that remains secure even if large quantum computers arrive."
+      }
+    ]
+  }
+}

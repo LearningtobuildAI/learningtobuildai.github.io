@@ -1,0 +1,136 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Vehicle battery and power electronics",
+        "role": "stores energy and manages bidirectional power flow.",
+        "parts": [
+          "traction battery",
+          "battery management system",
+          "onboard charger/inverter (for AC V2G)",
+          "DC-DC converter"
+        ]
+      },
+      {
+        "name": "Bidirectional charger",
+        "role": "converts between grid AC and vehicle DC in both directions.",
+        "parts": [
+          "power conversion stage",
+          "control electronics",
+          "connector (e.g., CHAdeMO, CCS, or AC)"
+        ]
+      },
+      {
+        "name": "Communication and control",
+        "role": "coordinates charging and discharging with grid signals.",
+        "parts": [
+          "vehicle-to-charger protocol (e.g., ISO 15118)",
+          "charger-to-grid protocol (e.g., OCPP)",
+          "telemetry and safety interlocks"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "pools many vehicles to act as a single grid resource.",
+        "parts": [
+          "cloud software",
+          "forecasting algorithms",
+          "market bidding engine",
+          "user application"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "connects the charger to the distribution network safely.",
+        "parts": [
+          "transformer",
+          "switchgear",
+          "protection relays",
+          "metering"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make vehicles V2G-capable",
+        "detail": "Ensure the battery and power electronics can handle bidirectional power, and unlock software where hardware already supports it."
+      },
+      {
+        "title": "Deploy bidirectional chargers",
+        "detail": "Install AC or DC chargers that can invert power, at homes, depots or public sites."
+      },
+      {
+        "title": "Implement communication standards",
+        "detail": "Adopt protocols such as ISO 15118-20 for bidirectional power transfer and OCPP for charger management."
+      },
+      {
+        "title": "Build aggregation software",
+        "detail": "Develop a platform to manage many vehicles, forecast availability, and bid into grid markets."
+      },
+      {
+        "title": "Integrate with the grid operator",
+        "detail": "Agree on interconnection, protection settings and market rules for discharging to the grid."
+      },
+      {
+        "title": "Run pilot fleets",
+        "detail": "Test with a small group of vehicles to validate performance, battery wear and grid impact."
+      },
+      {
+        "title": "Scale up",
+        "detail": "Expand to more vehicles, sites and markets as regulations and standards mature."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging hardware",
+        "status": "partial",
+        "why": "some vehicles and chargers support it, but it is not standard equipment."
+      },
+      {
+        "tech": "Standardized communication protocols",
+        "status": "partial",
+        "why": "ISO 15118-20 and related standards exist, but adoption is limited."
+      },
+      {
+        "tech": "Grid market access and regulation",
+        "status": "partial",
+        "why": "some regions allow V2G, many do not yet have rules for it."
+      },
+      {
+        "tech": "Aggregation and control software",
+        "status": "partial",
+        "why": "pilots demonstrate the concept, but mature commercial platforms are few."
+      },
+      {
+        "tech": "EV battery capacity and adoption",
+        "status": "exists",
+        "why": "millions of EVs are on the road, providing a large potential resource."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot projects demonstrate V2G for frequency regulation and peak shaving",
+        "unlocks": "proof that vehicles can provide grid services without undue battery wear."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial V2G for fleets with predictable schedules",
+        "unlocks": "a revenue stream for depot operators and a flexible grid resource."
+      },
+      {
+        "stage": "Next",
+        "milestone": "residential V2G in markets with supportive regulation",
+        "unlocks": "households can earn from their cars while parked."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "V2G integrated into grid planning as a standard resource",
+        "unlocks": "millions of vehicles stabilising the grid and enabling more renewables."
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Optical sensing array",
+        "role": "shines light into the skin and detects the faint signal scattered back, aiming to infer biomarker concentrations.",
+        "parts": [
+          "light-emitting diodes at selected wavelengths",
+          "photodetectors",
+          "optical filters"
+        ]
+      },
+      {
+        "name": "Skin interface",
+        "role": "keeps the optical path stable against the skin so measurements are repeatable despite movement and varying skin tones.",
+        "parts": [
+          "optical window",
+          "pressure sensor",
+          "flexible gasket"
+        ]
+      },
+      {
+        "name": "Signal processing and calibration",
+        "role": "converts raw optical readings into estimates of glucose and cortisol using models trained against blood references.",
+        "parts": [
+          "analog front-end",
+          "microcontroller",
+          "machine-learning model"
+        ]
+      },
+      {
+        "name": "Power and connectivity",
+        "role": "runs the ring for days and sends data to a phone.",
+        "parts": [
+          "rechargeable battery",
+          "wireless charging coil",
+          "Bluetooth radio"
+        ]
+      },
+      {
+        "name": "Ring housing",
+        "role": "protects the electronics and fits comfortably on a finger.",
+        "parts": [
+          "biocompatible shell",
+          "sizing inserts",
+          "seal"
+        ]
+      },
+      {
+        "name": "Companion app",
+        "role": "shows trends and gives metabolic-health guidance.",
+        "parts": [
+          "mobile app",
+          "cloud analytics",
+          "user dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the spectroscopy method",
+        "detail": "Compare near-infrared, Raman and photoacoustic approaches for signal strength, skin penetration and how well they can be miniaturised into a ring."
+      },
+      {
+        "title": "Fabricate the sensor module",
+        "detail": "Integrate light sources, detectors and filters on a substrate small enough to fit inside a ring, while keeping optical alignment precise."
+      },
+      {
+        "title": "Design the optical path",
+        "detail": "Use lenses, light guides and filters to direct light into the skin and collect scattered light efficiently from a consistent depth."
+      },
+      {
+        "title": "Collect paired training data",
+        "detail": "Record optical signals while volunteers also use a blood draw or an invasive continuous glucose monitor, building a dataset that links light to biomarker levels."
+      },
+      {
+        "title": "Train calibration algorithms",
+        "detail": "Apply machine learning to separate the weak biomarker signal from noise caused by skin, blood flow, temperature and movement."
+      },
+      {
+        "title": "Validate in clinical studies",
+        "detail": "Test the ring against venous blood measurements across meals, exercise and sleep, checking accuracy for different people and skin types."
+      },
+      {
+        "title": "Miniaturise the electronics",
+        "detail": "Shrink the processor, battery and radio into the ring while managing heat and power use."
+      },
+      {
+        "title": "Clear regulatory approval",
+        "detail": "Gain approval as a medical device for glucose monitoring, which is required before any health claims can be made."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniaturised optical sensors",
+        "status": "exists",
+        "why": "small LEDs and photodiodes are already used in wearables for heart rate and oxygen."
+      },
+      {
+        "tech": "Non-invasive glucose sensing",
+        "status": "missing",
+        "why": "no optical method has yet proven reliable enough for clinical use outside the lab."
+      },
+      {
+        "tech": "Non-invasive cortisol sensing",
+        "status": "missing",
+        "why": "cortisol is present at very low, rapidly changing levels that optical signals cannot yet isolate."
+      },
+      {
+        "tech": "Machine-learning chemometrics",
+        "status": "partial",
+        "why": "models can extract signals from complex spectra, but they need large, diverse training sets and can fail on new users."
+      },
+      {
+        "tech": "Wearable power and connectivity",
+        "status": "exists",
+        "why": "small batteries and Bluetooth are already standard in smart rings and watches."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research labs test optical and other non-invasive glucose methods; smart rings track heart rate, temperature and sleep",
+        "unlocks": "a base of wearable hardware and data pipelines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "controlled pilot studies show a ring can track glucose trends closely enough to be useful",
+        "unlocks": "investment for larger clinical trials."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first commercial ring cleared for non-invasive glucose monitoring",
+        "unlocks": "everyday metabolic tracking without needles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-analyte rings that also estimate cortisol, lactate and other markers",
+        "unlocks": "continuous, broad metabolic health monitoring."
+      }
+    ]
+  }
+}

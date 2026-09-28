@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what is happening in a space without asking anyone.",
+        "parts": [
+          "mmWave radar presence sensors",
+          "CO₂, temperature and humidity sensors",
+          "cameras with on-device processing",
+          "wearable heart-rate and skin-temperature sensors"
+        ]
+      },
+      {
+        "name": "Interoperability layer",
+        "role": "lets lights, blinds, heating and appliances from different makers be controlled through one interface.",
+        "parts": [
+          "Matter/Thread and Zigbee radios",
+          "building protocols such as BACnet or KNX",
+          "local hub"
+        ]
+      },
+      {
+        "name": "Context and intent engine",
+        "role": "turns raw sensor streams into an estimate of who is present, what they are doing and what they probably want.",
+        "parts": [
+          "occupancy and activity models",
+          "preference profiles",
+          "machine-learning inference at the edge"
+        ]
+      },
+      {
+        "name": "Actuation and control",
+        "role": "changes the physical environment — typically heating, cooling, light and shade.",
+        "parts": [
+          "heat-pump or HVAC setpoints",
+          "dimmable lighting",
+          "motorised blinds",
+          "smart plugs and appliance scheduling"
+        ]
+      },
+      {
+        "name": "Identity and personalisation",
+        "role": "decides whose preferences win when two people share a room.",
+        "parts": [
+          "device pairing",
+          "voice or gait identification",
+          "conflict-resolution rules",
+          "per-user privacy settings"
+        ]
+      },
+      {
+        "name": "BCI input channel",
+        "role": "an optional, still-experimental route for inferring intent directly from brain signals.",
+        "parts": [
+          "dry or gel EEG electrodes",
+          "artefact rejection",
+          "intent classifier",
+          "calibration loop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the building",
+        "detail": "Radar, CO₂ and thermal sensors are fitted per room at heights that see occupants but not through walls, plus metering on major loads."
+      },
+      {
+        "title": "Unify the device layer",
+        "detail": "Devices are commissioned onto one standard so the control software sees them as capabilities (light, heat, shade) rather than brands."
+      },
+      {
+        "title": "Collect labelled data",
+        "detail": "For months, sensor traces are recorded alongside what occupants actually did — which window they opened, which setpoint they chose."
+      },
+      {
+        "title": "Train models",
+        "detail": "Activity and comfort models learn patterns such as CO₂ rising while a room fills, or a person preferring 21 °C while working but 19 °C while sleeping."
+      },
+      {
+        "title": "Run inference at the edge",
+        "detail": "Models are quantised to run on a local hub in tens of milliseconds, so control still works without internet and video never leaves the home."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "The system adjusts heating, lighting and shading automatically, with an override that teaches it when it guessed wrong."
+      },
+      {
+        "title": "Add identity and personalisation",
+        "detail": "Individual preferences are attached to profiles and merged with a fair rule when people disagree."
+      },
+      {
+        "title": "Pilot a BCI channel",
+        "detail": "In a research setting only, a small headset is worn for calibration sessions; the classifier is trained on labelled mental states and tested as an extra input, never the only one."
+      },
+      {
+        "title": "Audit privacy",
+        "detail": "Data minimisation, local storage and a visible indicator of when sensing is active are built in from the start, because a system that guesses intent is also a surveillance system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap pervasive sensing",
+        "status": "exists",
+        "why": "radar and gas sensors now cost a few dollars each and can run for years on a coin cell."
+      },
+      {
+        "tech": "Interoperable building-control standards",
+        "status": "partial",
+        "why": "Matter and Thread cover common devices, but HVAC plant and older building systems often remain proprietary."
+      },
+      {
+        "tech": "Reliable activity and intent recognition",
+        "status": "partial",
+        "why": "occupancy is fairly well solved; inferring what a person wants next is not."
+      },
+      {
+        "tech": "Non-invasive brain–computer interfaces",
+        "status": "missing",
+        "why": "electrodes on the scalp pick up faint, noisy signals; today's systems need calibration and can decode a handful of commands, not unspoken intent."
+      },
+      {
+        "tech": "On-device machine learning",
+        "status": "exists",
+        "why": "privacy and latency both require inference locally rather than in the cloud."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "sensor-rich buildings that dim lights and trim heating when rooms are empty",
+        "unlocks": "meaningful energy savings with no user input."
+      },
+      {
+        "stage": "Next",
+        "milestone": "per-person comfort control driven by phones and wearables",
+        "unlocks": "comfort settings that follow a person between rooms rather than rooms that guess."
+      },
+      {
+        "stage": "Next",
+        "milestone": "passive BCI as an accessibility input, for people who cannot use voice or touch",
+        "unlocks": "real-world validation of EEG decoding outside the lab and honest limits on what it can read."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop environments that anticipate actions across a district",
+        "unlocks": "an ambient layer only if consent, identity and failure modes are solved — otherwise it stays a well-automated building."
+      }
+    ]
+  }
+}

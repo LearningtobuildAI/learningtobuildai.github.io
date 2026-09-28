@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Antenna",
+        "role": "radiates low-frequency radio waves into the ice and receives the weak reflections.",
+        "parts": [
+          "deployable dipole or array elements",
+          "feed network",
+          "impedance matching"
+        ]
+      },
+      {
+        "name": "Transmitter",
+        "role": "generates high-power chirped pulses that penetrate ice with low loss.",
+        "parts": [
+          "waveform generator",
+          "power amplifier",
+          "transmit/receive switch"
+        ]
+      },
+      {
+        "name": "Receiver and digitizer",
+        "role": "captures and digitises faint echoes from internal layers and the base.",
+        "parts": [
+          "low-noise amplifier",
+          "bandpass filters",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Digital signal processor",
+        "role": "compresses chirps and coherently sums pulses to build a radargram.",
+        "parts": [
+          "FPGA or ASIC",
+          "memory",
+          "timing and clocking"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "supplies high-voltage pulses and removes heat in vacuum.",
+        "parts": [
+          "power conditioning",
+          "capacitor bank",
+          "radiators"
+        ]
+      },
+      {
+        "name": "Navigation and attitude",
+        "role": "provides precise orbit and pointing so echoes can be positioned on the surface.",
+        "parts": [
+          "star trackers",
+          "inertial measurement",
+          "orbit determination"
+        ]
+      },
+      {
+        "name": "Data handling",
+        "role": "stores and downlinks the large volume of radar data.",
+        "parts": [
+          "solid-state recorder",
+          "telemetry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set science requirements",
+        "detail": "Target depth, layer resolution and ice composition determine the frequency, typically a few MHz for kilometres of penetration up to tens of MHz for shallow layers."
+      },
+      {
+        "title": "Design the antenna",
+        "detail": "Antenna length scales with wavelength; a spacecraft needs a deployable dipole or array that fits in the launch fairing."
+      },
+      {
+        "title": "Build the transmitter and receiver",
+        "detail": "A high-power amplifier generates chirped pulses, while a low-noise receiver and a fast switch protect the electronics from the transmit pulse."
+      },
+      {
+        "title": "Implement digital processing",
+        "detail": "Chirp generation, pulse compression and coherent summing are coded into radiation-tolerant processors."
+      },
+      {
+        "title": "Test on Earth",
+        "detail": "The sounder is flown over known ice sheets or placed in an anechoic chamber to calibrate timing, gain and polarisation."
+      },
+      {
+        "title": "Integrate with the spacecraft",
+        "detail": "The antenna, electronics and power supply are mounted and checked for electromagnetic compatibility with other instruments."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "The antenna is deployed in space and the instrument is switched on to verify operation."
+      },
+      {
+        "title": "Operate and collect",
+        "detail": "The spacecraft flies repeated ground tracks while the sounder records echoes along each pass."
+      },
+      {
+        "title": "Process the data",
+        "detail": "Ionospheric distortion is removed, echoes are migrated to true depth, and layers and basal reflections are mapped."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-frequency RF electronics",
+        "status": "exists",
+        "why": "penetration requires metres-long wavelengths and high-power pulses that must be switched and received cleanly."
+      },
+      {
+        "tech": "Coherent radar processing",
+        "status": "exists",
+        "why": "echoes from deep layers are extremely weak and must be integrated over many pulses."
+      },
+      {
+        "tech": "Deployable space antennas",
+        "status": "exists",
+        "why": "the antenna is far larger than the spacecraft body and must unfold reliably after launch."
+      },
+      {
+        "tech": "Ice dielectric and attenuation models",
+        "status": "partial",
+        "why": "converting travel time into depth and detecting liquid water depends on how ice absorbs and bends radio waves."
+      },
+      {
+        "tech": "Precise orbit and attitude knowledge",
+        "status": "exists",
+        "why": "echo position on the surface depends on knowing where the spacecraft is to within a few tens of metres."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "orbital sounders map polar ice on Earth and Mars, and have detected buried layers and possible briny water",
+        "unlocks": "routine subsurface mapping of ice sheets and polar caps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated sounders on missions to icy moons, such as Europa Clipper and JUICE, probe ice shells and search for subsurface oceans",
+        "unlocks": "direct evidence of liquid water beneath the surfaces of ocean worlds."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-frequency and higher-resolution sounders combined with gravity and magnetic data",
+        "unlocks": "confident separation of liquid water from ice and rock."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "landed or airborne sounders on icy moons, followed by in-situ verification",
+        "unlocks": "ground-truth calibration and detailed characterisation of habitable zones."
+      }
+    ]
+  }
+}

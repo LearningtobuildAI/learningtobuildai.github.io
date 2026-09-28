@@ -37,5 +37,159 @@
         "def": "A field of AI that focuses on the interaction between computers and human language, enabling machines to understand, interpret, and generate natural language."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and parsing",
+        "role": "turns raw documents into clean text with structure preserved.",
+        "parts": [
+          "connectors to source systems",
+          "OCR and layout parsing",
+          "metadata tagging"
+        ]
+      },
+      {
+        "name": "Chunking and embedding",
+        "role": "splits text into retrievable pieces and converts each into a numeric vector.",
+        "parts": [
+          "chunker",
+          "embedding model",
+          "batch encoding job"
+        ]
+      },
+      {
+        "name": "Index stores",
+        "role": "hold the searchable representations of the corpus.",
+        "parts": [
+          "vector index",
+          "keyword (lexical) index",
+          "optionally a graph or relational store of entities and relations"
+        ]
+      },
+      {
+        "name": "Retriever",
+        "role": "finds the passages most relevant to a query.",
+        "parts": [
+          "query encoder",
+          "approximate-nearest-neighbour search",
+          "hybrid score fusion",
+          "cross-encoder reranker"
+        ]
+      },
+      {
+        "name": "Generator",
+        "role": "writes the answer from the retrieved passages.",
+        "parts": [
+          "context assembler",
+          "prompt template",
+          "instruction-tuned language model"
+        ]
+      },
+      {
+        "name": "Orchestration and evaluation",
+        "role": "runs the pipeline and measures whether it is actually good.",
+        "parts": [
+          "pipeline framework",
+          "tracing and logging",
+          "retrieval and faithfulness metrics"
+        ]
+      },
+      {
+        "name": "Guardrails and access control",
+        "role": "keeps outputs grounded and stops users seeing documents they are not entitled to.",
+        "parts": [
+          "document-level permissions",
+          "citation enforcement",
+          "input and output filters"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect the corpus",
+        "detail": "Connect to the source systems — documents, tickets, databases — and pull the text plus permission metadata that must travel with every chunk."
+      },
+      {
+        "title": "Parse and clean",
+        "detail": "Extract text from PDFs, web pages and scans; strip boilerplate; keep headings, tables and page numbers as structure."
+      },
+      {
+        "title": "Chunk",
+        "detail": "Cut documents into passages of a few hundred words, with slight overlap so sentences aren't severed mid-thought."
+      },
+      {
+        "title": "Embed and index",
+        "detail": "Run every chunk through an embedding model and write the vectors into an index tuned for fast approximate search; build a lexical index alongside it."
+      },
+      {
+        "title": "Build the retrieval path",
+        "detail": "Encode the user's query, fetch candidates from both indexes, merge the rankings, and rerank the top few dozen with a slower, more accurate model."
+      },
+      {
+        "title": "Assemble the prompt",
+        "detail": "Insert the winning passages with their source labels into a prompt that instructs the model to answer only from them and cite them."
+      },
+      {
+        "title": "Evaluate",
+        "detail": "Score retrieval hits and answer faithfulness on a labelled question set, then tune chunk size, embedding model and reranker against those numbers."
+      },
+      {
+        "title": "Deploy with a freshness loop",
+        "detail": "Re-embed changed documents on a schedule or on write, and invalidate stale vectors so answers track current data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer embedding models",
+        "status": "exists",
+        "why": "they map text to vectors where semantic similarity becomes arithmetic distance."
+      },
+      {
+        "tech": "Approximate nearest-neighbour search",
+        "status": "exists",
+        "why": "exact comparison against millions of vectors is too slow for interactive use."
+      },
+      {
+        "tech": "Instruction-tuned language models with long context",
+        "status": "exists",
+        "why": "the model must read several retrieved passages and cite them rather than rely on memory."
+      },
+      {
+        "tech": "Incremental graph and stream updates",
+        "status": "partial",
+        "why": "keeping a knowledge graph current with real-time events is still custom engineering, not a commodity."
+      },
+      {
+        "tech": "Retrieval and faithfulness evaluation",
+        "status": "partial",
+        "why": "without measurement, pipelines silently degrade as the corpus drifts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid retrieval with reranking and enforced citations over static corpora",
+        "unlocks": "assistants that answer from private documents without retraining the model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "incremental and streaming indexing",
+        "unlocks": "answers that reflect data changed minutes ago, not months ago."
+      },
+      {
+        "stage": "Next",
+        "milestone": "graph-augmented retrieval over entity-relationship stores",
+        "unlocks": "multi-hop questions that single-passage search cannot reach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agentic pipelines that plan their own retrievals, verify claims and self-correct",
+        "unlocks": "research and operations workflows where the pipeline decides what to look up next."
+      }
+    ]
   }
 }

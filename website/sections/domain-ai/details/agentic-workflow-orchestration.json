@@ -33,5 +33,153 @@
         "def": "Iterative processes where LLMs use external tools to execute tasks and learn from the outcomes"
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Orchestrator",
+        "role": "runs the iterative loop, deciding when to plan, act, reflect, or stop.",
+        "parts": [
+          "state machine",
+          "task queue",
+          "termination criteria",
+          "logging"
+        ]
+      },
+      {
+        "name": "Language model",
+        "role": "the reasoning engine that generates plans, actions, and critiques.",
+        "parts": [
+          "instruction-tuned LLM",
+          "prompt templates",
+          "sampling parameters"
+        ]
+      },
+      {
+        "name": "Tool interface",
+        "role": "lets the agent call external functions, APIs, or code interpreters.",
+        "parts": [
+          "function-calling schema",
+          "tool registry",
+          "output parsers",
+          "error handlers"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "stores context and past steps so the agent can refer back and learn within a session.",
+        "parts": [
+          "short-term context buffer",
+          "long-term vector store",
+          "retrieval mechanisms"
+        ]
+      },
+      {
+        "name": "Critic",
+        "role": "assesses output quality and triggers refinement or replanning.",
+        "parts": [
+          "reflection prompts",
+          "self-consistency checks",
+          "unit tests",
+          "rubric evaluators"
+        ]
+      },
+      {
+        "name": "Execution sandbox",
+        "role": "provides a safe environment for running generated code or taking actions.",
+        "parts": [
+          "code interpreter",
+          "file system",
+          "resource limits",
+          "network isolation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and success criteria",
+        "detail": "Specify what the agent must accomplish, how success is measured, and any constraints on time, cost, or safety."
+      },
+      {
+        "title": "Set up the language model interface",
+        "detail": "Choose a model, configure API access, and design prompt templates for planning, acting, and reflecting."
+      },
+      {
+        "title": "Implement the tool layer",
+        "detail": "Define each tool with a clear schema, write wrappers that call it safely, and parse its output back into the loop."
+      },
+      {
+        "title": "Build the orchestration loop",
+        "detail": "Code a state machine that alternates between planning, tool use, observation, and reflection, with a clear stopping condition."
+      },
+      {
+        "title": "Add memory and context management",
+        "detail": "Implement a short-term buffer and a long-term store, with retrieval that keeps the active prompt within the model's token limit."
+      },
+      {
+        "title": "Integrate a critic or verifier",
+        "detail": "Add self-evaluation steps — using the same model or separate checks — that score output and trigger revisions when needed."
+      },
+      {
+        "title": "Create an execution sandbox",
+        "detail": "For code or actions, provide an isolated environment with resource limits so mistakes cannot harm the host system."
+      },
+      {
+        "title": "Test and evaluate",
+        "detail": "Run benchmark tasks, log full traces, measure success rate, cost, and latency, then iterate on prompts, tools, and loop logic."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with strong reasoning",
+        "status": "exists",
+        "why": "they generate plans, actions, and critiques; without them the loop has no core engine."
+      },
+      {
+        "tech": "Function-calling or tool-use APIs",
+        "status": "exists",
+        "why": "they let the agent interact with external systems, files, and code interpreters."
+      },
+      {
+        "tech": "Vector databases and retrieval",
+        "status": "exists",
+        "why": "they provide long-term memory and context management beyond a single prompt window."
+      },
+      {
+        "tech": "Evaluation benchmarks for agents",
+        "status": "partial",
+        "why": "measuring progress and comparing architectures is still an open problem."
+      },
+      {
+        "tech": "Standard protocols for agent communication",
+        "status": "partial",
+        "why": "multi-agent systems need interoperability, but conventions are still emerging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-agent loops with reflection and tool use",
+        "unlocks": "automating simple coding, research, and data-processing tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent collaboration with specialised roles",
+        "unlocks": "handling complex projects that require planning, coding, and verification together."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised protocols for agent-tool and agent-agent interaction",
+        "unlocks": "composable agent ecosystems and easier integration across platforms."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reliable, long-horizon autonomy with safety guarantees",
+        "unlocks": "agents that can operate for days on open-ended goals with minimal human oversight."
+      }
+    ]
   }
 }

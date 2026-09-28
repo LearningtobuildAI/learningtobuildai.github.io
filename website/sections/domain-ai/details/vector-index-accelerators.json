@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Host interface",
+        "role": "connects the accelerator card to the server CPU over PCIe, or coherently over CXL.",
+        "parts": [
+          "PCIe/CXL controller",
+          "DMA engine",
+          "doorbell and queue registers"
+        ]
+      },
+      {
+        "name": "Vector memory",
+        "role": "holds the embedding database close to the compute so it is not re-fetched over the bus.",
+        "parts": [
+          "HBM stacks or DDR channels",
+          "on-die SRAM scratchpad",
+          "memory-side cache"
+        ]
+      },
+      {
+        "name": "Distance engines",
+        "role": "compute dot products or Euclidean distances between a query and many stored vectors in parallel.",
+        "parts": [
+          "SIMD multiply-accumulate arrays",
+          "int8/int4 dequantisation units",
+          "reduction trees"
+        ]
+      },
+      {
+        "name": "Index traversal unit",
+        "role": "walks the search structure instead of brute-forcing every vector.",
+        "parts": [
+          "graph adjacency walker for HNSW-style indexes",
+          "inverted-list / centroid scanner for IVF-style indexes",
+          "candidate priority queue"
+        ]
+      },
+      {
+        "name": "Quantisation and compression engine",
+        "role": "stores vectors in compressed form so more of the index fits in fast memory.",
+        "parts": [
+          "product-quantisation codebook lookup",
+          "scalar quantisation scaling",
+          "code packing"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "builds the index, batches queries and keeps results accurate.",
+        "parts": [
+          "kernel driver",
+          "index-build and offload API",
+          "integration with a vector-search library and database"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the workload",
+        "detail": "Measure embedding dimension, database size, queries per second and the recall the application actually needs; recall targets set how much compression is acceptable."
+      },
+      {
+        "title": "Architect the datapath",
+        "detail": "Decide how many distance engines fit per memory channel and how the traversal unit schedules them, then model throughput and memory bandwidth in simulation."
+      },
+      {
+        "title": "Write and verify the RTL",
+        "detail": "Implement the design in a hardware description language and verify it against a software reference index so that search results match bit-for-bit where required."
+      },
+      {
+        "title": "Emulate on FPGAs",
+        "detail": "Run real indexes on FPGA prototypes to catch bandwidth bottlenecks before committing to silicon."
+      },
+      {
+        "title": "Physical design and tape-out",
+        "detail": "Synthesise, place and route, check timing and design rules, then send the layout for mask-making at a foundry."
+      },
+      {
+        "title": "Package with memory",
+        "detail": "Attach HBM stacks on a silicon interposer so the distance engines get terabyte-per-second bandwidth without leaving the package."
+      },
+      {
+        "title": "Bring up and test silicon",
+        "detail": "Power on, run memory training and built-in self-test, then bin parts by speed."
+      },
+      {
+        "title": "Build the software stack",
+        "detail": "Write the driver, an index format that lives in device memory, and an API that a vector database can call in place of its CPU or GPU path."
+      },
+      {
+        "title": "Benchmark recall versus throughput",
+        "detail": "Compare recall@k and latency against a tuned software baseline (such as FAISS or ScaNN on a GPU) — if the accelerator does not beat it per watt, it has no market."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Approximate nearest neighbour algorithms",
+        "status": "exists",
+        "why": "graph and inverted-list indexes (HNSW, IVF) are what the hardware would traverse; without them there is nothing to accelerate."
+      },
+      {
+        "tech": "Vector quantisation",
+        "status": "exists",
+        "why": "product and scalar quantisation shrink vectors so an index fits in on-package memory at acceptable recall."
+      },
+      {
+        "tech": "High-bandwidth memory interfaces",
+        "status": "exists",
+        "why": "distance computation is memory-bound, so HBM-class bandwidth is the whole point of a dedicated chip."
+      },
+      {
+        "tech": "CXL and coherent accelerator memory",
+        "status": "partial",
+        "why": "lets the CPU and accelerator share one vector index instead of copying it, which matters for databases."
+      },
+      {
+        "tech": "Processing-in-memory",
+        "status": "partial",
+        "why": "putting comparison logic inside DRAM removes the bus entirely — demonstrated in research silicon but not a mass-market part for search."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "vector search runs on CPUs and GPUs using libraries such as FAISS and ScaNN, with databases layering indexes on top",
+        "unlocks": "working retrieval-augmented generation and semantic search at moderate scale."
+      },
+      {
+        "stage": "Near term",
+        "milestone": "FPGA and early ASIC cards that offload distance computation and index traversal",
+        "unlocks": "lower latency and power per query than a general-purpose GPU for large indexes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "CXL-attached accelerators sharing a single index with the host CPU",
+        "unlocks": "databases that mix filtering, joins and vector search without duplicating terabytes of embeddings."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "search logic embedded in memory modules, with comparison done beside the DRAM arrays",
+        "unlocks": "indexes far larger than on-package memory at near-memory bandwidth."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Micro airframe",
+        "role": "carries the pollen tip to a specific flower and hovers there long enough to make contact.",
+        "parts": [
+          "carbon-fibre or moulded-plastic frame",
+          "brushless motors and propellers, or flapping-wing actuators",
+          "lightweight battery",
+          "flight controller and inertial sensors"
+        ]
+      },
+      {
+        "name": "Pollen transfer tip",
+        "role": "picks pollen up from one flower and releases it onto the stigma of another without bruising either.",
+        "parts": [
+          "soft bristles (horsehair, nylon or microfibre)",
+          "gel or adhesive coating, or an electrostatic charging electrode",
+          "quick-release mount so the tip can be cleaned or replaced"
+        ]
+      },
+      {
+        "name": "Perception system",
+        "role": "finds open, pollen-receptive flowers and positions the tip within a millimetre or two.",
+        "parts": [
+          "small camera",
+          "onboard or offboard computer running a flower detector",
+          "height and proximity sensor to stop the drone crashing into petals"
+        ]
+      },
+      {
+        "name": "Flight control and autonomy",
+        "role": "flies slow, precise paths down crop rows instead of fast point-to-point flight.",
+        "parts": [
+          "position hold (RTK satellite navigation or visual odometry)",
+          "obstacle avoidance for stems, trellis wire and people",
+          "mission planner that maps which flowers have already been visited"
+        ]
+      },
+      {
+        "name": "Swarm coordination",
+        "role": "one drone cannot pollinate a field, so dozens must work a block together.",
+        "parts": [
+          "shared field map",
+          "collision avoidance between drones",
+          "base station or docking perch with battery swap or recharge"
+        ]
+      },
+      {
+        "name": "Pollen supply and handling",
+        "role": "pollen is living material that must stay viable and be matched to the right variety.",
+        "parts": [
+          "pollen collection and drying",
+          "cooled storage",
+          "loading or refilling of the tip"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set a mass and airtime budget",
+        "detail": "Everything follows from this: a drone light enough to hover precisely over a flower for a few minutes, with battery, camera and tip included."
+      },
+      {
+        "title": "Design the pollen tip",
+        "detail": "Choose bristle stiffness and length, then test coatings — an adhesive gel or an electrostatic charge — to see which picks up the most pollen and releases it on contact. Pollen grains are tens of micrometres across and easily damaged."
+      },
+      {
+        "title": "Prove it on single flowers",
+        "detail": "In a greenhouse or lab, hover over one flower, touch the tip to the anthers, then touch it to another flower's stigma, and count pollen grains transferred under a microscope. A 2017 experiment in Japan used a small quadcopter with horsehair bristles wetted with an ionic-liquid gel to move pollen between lily flowers."
+      },
+      {
+        "title": "Build the flower detector",
+        "detail": "Photograph thousands of flowers at different stages, label which are open and receptive, and train a vision model to find them and aim the tip. Cherry, apple and kiwi flowers all look different, so models are crop-specific."
+      },
+      {
+        "title": "Automate a whole plant",
+        "detail": "Fly a full tree or plant, visit every suitable flower in sequence, and log which were skipped. Fruit set on the drone-visited branches is then compared with bee-visited and hand-pollinated controls."
+      },
+      {
+        "title": "Run field trials",
+        "detail": "Move to an orchard or greenhouse row, fly within wind and daylight limits, and measure the share of flowers that set fruit and the quality of the fruit — this is the only number that matters commercially."
+      },
+      {
+        "title": "Scale to a swarm",
+        "detail": "Multiply to tens or hundreds of units working one block, with docking stations for recharging. Coverage, not flight, is the limiting factor: a field has hundreds of thousands of flowers per hectare."
+      },
+      {
+        "title": "Manufacture cheaply enough",
+        "detail": "Pollination drones will be lost to wind, rain and collisions, so they must cost a few dollars each — injection-moulded frames, printed circuit boards, robot assembly, and no exotic parts."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Micro-robot flight and hovering control",
+        "status": "partial",
+        "why": "flapping-wing robots the size of an insect and small quadcopters both fly, but short flight time and drift make millimetre-precise hovering hard outdoors."
+      },
+      {
+        "tech": "Lightweight batteries or wireless power",
+        "status": "missing",
+        "why": "today's small drones fly for minutes, so a field-scale operation needs frequent recharging or docking."
+      },
+      {
+        "tech": "Autonomous flower recognition",
+        "status": "partial",
+        "why": "vision models can find open flowers in controlled conditions; doing it reliably in a real orchard canopy, in sunlight and wind, is not solved."
+      },
+      {
+        "tech": "Viable pollen supply and storage",
+        "status": "partial",
+        "why": "pollen loses fertility within hours to days and must be kept cool and dry. Hand pollination of date palms and kiwifruit already runs a pollen industry that drones could plug into."
+      },
+      {
+        "tech": "Crop-specific pollination knowledge",
+        "status": "exists",
+        "why": "knowing when each variety is receptive decides whether drone visits happen at the right time of day at all."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-flower demonstrations in greenhouses and lab testbeds",
+        "unlocks": "proof that a machine can move viable pollen without destroying the flower."
+      },
+      {
+        "stage": "Next",
+        "milestone": "greenhouse pollination services for high-value crops such as tomatoes and strawberries",
+        "unlocks": "a first commercial niche, because indoor rows are wind-free, mapped and already use purchased bumblebee hives."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supplementing bees in orchards, targeted at varieties or hot spells where bee visits fall short",
+        "unlocks": "a role alongside pollinators rather than instead of them."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a managed field-scale pollination service priced per hectare",
+        "unlocks": "a hedge for growers if wild and managed pollinators keep declining."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "selective cross-pollination to set specific varieties",
+        "unlocks": "a quality tool, not just a rescue measure, since drones can be programmed to carry one variety's pollen to another."
+      }
+    ]
+  }
+}

@@ -29,5 +29,149 @@
         "def": "A process that reduces the precision of weights in neural networks, making them smaller and faster to compute without significantly compromising accuracy."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compressed model",
+        "role": "the neural network itself, shrunk to fit a phone's memory and power budget.",
+        "parts": [
+          "weights reduced to 8-bit or 4-bit integers",
+          "pruned and distilled network",
+          "task-specific layers"
+        ]
+      },
+      {
+        "name": "Compute accelerator",
+        "role": "runs the matrix maths without draining the battery.",
+        "parts": [
+          "neural processing unit (NPU)",
+          "GPU and digital signal processor",
+          "matrix-multiply and activation units"
+        ]
+      },
+      {
+        "name": "Memory system",
+        "role": "feeds a compute engine that is starved of bandwidth long before it runs out of arithmetic.",
+        "parts": [
+          "on-chip SRAM buffers",
+          "shared LPDDR memory",
+          "weight streaming"
+        ]
+      },
+      {
+        "name": "Runtime and compiler",
+        "role": "turns a trained model into a schedule of operations the chip can execute.",
+        "parts": [
+          "graph optimiser",
+          "operator fusion and kernel selection",
+          "scheduler and memory planner"
+        ]
+      },
+      {
+        "name": "Storage and update layer",
+        "role": "stores model files and replaces them without breaking the device.",
+        "parts": [
+          "flash storage",
+          "over-the-air model updates",
+          "versioning and rollback"
+        ]
+      },
+      {
+        "name": "Power and thermal manager",
+        "role": "keeps sustained performance from collapsing into throttling.",
+        "parts": [
+          "dynamic voltage and frequency scaling",
+          "thermal sensors",
+          "workload batching"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Train the model",
+        "detail": "Large datasets and many accelerators produce an accurate but oversized network in a data centre."
+      },
+      {
+        "title": "Compress it",
+        "detail": "Pruning removes near-useless connections, distillation trains a smaller student network, and quantization maps floating-point weights onto 8-bit or 4-bit integers."
+      },
+      {
+        "title": "Compile for the target chip",
+        "detail": "The runtime fuses operations, chooses kernels written for that NPU or GPU, and plans how tensors move between memory tiers."
+      },
+      {
+        "title": "Bind it into the application",
+        "detail": "The model file ships inside an app or operating system, called through a framework API rather than a network request."
+      },
+      {
+        "title": "Validate on real hardware",
+        "detail": "Accuracy, latency, memory footprint and battery drain are measured on the actual devices and chips being targeted."
+      },
+      {
+        "title": "Ship and version",
+        "detail": "The model is delivered in an app update or operating system release, with fallbacks for older hardware."
+      },
+      {
+        "title": "Run in production",
+        "detail": "Inference happens locally; telemetry (where privacy permits) reports crashes and latency rather than sending user data away."
+      },
+      {
+        "title": "Improve from the field",
+        "detail": "Curated samples or on-device learning loops feed a retrained model back into the next release."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power parallel silicon (NPUs)",
+        "status": "exists",
+        "why": "general-purpose CPUs cannot run modern neural networks at acceptable speed per watt."
+      },
+      {
+        "tech": "Model compression and quantization tooling",
+        "status": "exists",
+        "why": "without 4–8 bit integer weights, most models simply do not fit in device memory."
+      },
+      {
+        "tech": "Efficient neural architectures",
+        "status": "exists",
+        "why": "compact transformer and convolutional designs set the ceiling on what a device can run."
+      },
+      {
+        "tech": "Mature ML compiler stacks",
+        "status": "partial",
+        "why": "each accelerator vendor still needs its own kernels and toolchain, so models are not portable for free."
+      },
+      {
+        "tech": "On-device training and federated learning",
+        "status": "partial",
+        "why": "personalisation without sending raw data to a server is demonstrated but not routine."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "speech recognition, translation, photo processing and small vision models running locally on phones and laptops",
+        "unlocks": "instant, private, offline features."
+      },
+      {
+        "stage": "Next",
+        "milestone": "billion-parameter language models running on flagship phones and PCs",
+        "unlocks": "assistants that keep working with no connectivity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device personalisation and federated training at scale",
+        "unlocks": "models that adapt to one user without their data leaving the device."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "always-on local agents coordinating several models across a device's chips",
+        "unlocks": "a shift of routine inference from data centres to the edge, cutting latency and energy."
+      }
+    ]
   }
 }

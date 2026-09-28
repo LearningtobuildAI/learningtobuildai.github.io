@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "emits the faint laser pulses, or true entangled pairs, that carry the key.",
+        "parts": [
+          "laser and attenuator, or spontaneous parametric down-conversion crystal",
+          "polarisation or phase encoder"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons without letting them be copied — optical fibre underground, or free space to a satellite.",
+        "parts": [
+          "low-loss telecom fibre or telescope link",
+          "optical amplifiers avoided (they would break the protocol)"
+        ]
+      },
+      {
+        "name": "Detectors",
+        "role": "catch individual photons and record their quantum state.",
+        "parts": [
+          "superconducting nanowire or InGaAs avalanche photodiodes",
+          "cooling and timing electronics"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "public but authenticated link used to compare measurement bases, correct errors and distil the key.",
+        "parts": [
+          "conventional network link",
+          "message authentication"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "turns raw correlated bits into keys and delivers them to the right users.",
+        "parts": [
+          "sifting, error correction, privacy amplification",
+          "key store and API for encrypting traffic"
+        ]
+      },
+      {
+        "name": "Range extenders",
+        "role": "bridge distances beyond what a single fibre span can carry.",
+        "parts": [
+          "trusted relay nodes (today)",
+          "quantum repeaters and memories (in the lab)",
+          "satellite relays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate the quantum states",
+        "detail": "A laser is attenuated so that on average less than one photon per pulse travels, or a nonlinear crystal splits one photon into an entangled pair."
+      },
+      {
+        "title": "Transmit",
+        "detail": "Photons go down dark fibre, or from a ground station to a satellite and back, with losses growing exponentially with distance."
+      },
+      {
+        "title": "Measure",
+        "detail": "The receiver randomly picks a measurement basis for each photon and records the result."
+      },
+      {
+        "title": "Reconcile",
+        "detail": "Sender and receiver publicly compare which bases were used, discard the rest, and correct the mismatches."
+      },
+      {
+        "title": "Detect eavesdropping",
+        "detail": "Any interception disturbs the states and raises the error rate; past a threshold the key is thrown away."
+      },
+      {
+        "title": "Distil the key",
+        "detail": "Privacy amplification shrinks the surviving bits into a short key that an eavesdropper has negligible information about."
+      },
+      {
+        "title": "Encrypt traffic",
+        "detail": "The key drives a one-time pad or rekeys symmetric encryption between the two endpoints."
+      },
+      {
+        "title": "Scale out",
+        "detail": "Metropolitan rings are linked by trusted nodes, and research aims to replace those nodes with quantum repeaters for a true mesh."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors and sources",
+        "status": "exists",
+        "why": "commercial QKD hardware depends on reliably detecting individual photons."
+      },
+      {
+        "tech": "Low-loss fibre and satellite optical links",
+        "status": "exists",
+        "why": "photon loss sets the maximum distance for a single span."
+      },
+      {
+        "tech": "Quantum memories",
+        "status": "partial",
+        "why": "storing and releasing entangled photons is needed to synchronise repeater segments, and remains short-lived in the lab."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "without them, long links rely on trusted nodes that are themselves hackable."
+      },
+      {
+        "tech": "Post-quantum cryptography standards",
+        "status": "exists",
+        "why": "software-only quantum-resistant algorithms (NIST standards finalised in 2024) are the pragmatic alternative for most traffic."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metropolitan QKD links and national testbeds, plus satellite QKD demonstrated by China's Micius mission from 2016 and the roughly 2,000 km Beijing–Shanghai trunk line",
+        "unlocks": "point-to-point keys between fixed sites, and confidence in the hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "intercity backbones and satellite constellations, and Europe's EuroQCI programme",
+        "unlocks": "key distribution between cities and across regions, still using trusted nodes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "working quantum repeaters with memories",
+        "unlocks": "genuine long-distance entanglement without trusted nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "entanglement-based global mesh",
+        "unlocks": "a communication layer whose security rests on physics rather than computational hardness — a claim only valid once side channels and endpoint trust are engineered away."
+      }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Dual-view telescope",
+        "role": "images two patches of sky about 106° apart at the same instant on one shared focal plane, so small drifts in pointing cancel out of the measurement.",
+        "parts": [
+          "silicon-carbide mirrors",
+          "rigid optical bench",
+          "common focal plane assembly"
+        ]
+      },
+      {
+        "name": "Focal plane",
+        "role": "detects the stars; a wide, faint strip finds them, a large central array measures their positions, and flanking instruments measure colour and radial velocity.",
+        "parts": [
+          "large CCD mosaic (about a billion pixels)",
+          "sky-mapper detection strips",
+          "blue and red spectro-photometers",
+          "radial-velocity spectrometer"
+        ]
+      },
+      {
+        "name": "Scanning attitude control",
+        "role": "spins the spacecraft slowly and precesses the spin axis so the whole sky is swept repeatedly in a fixed pattern.",
+        "parts": [
+          "cold-gas micro-thrusters",
+          "star trackers",
+          "reaction-less pointing logic"
+        ]
+      },
+      {
+        "name": "Thermally stable structure",
+        "role": "keeps the optics aligned to nanometres, because a wobble in the telescope looks exactly like a wobble in a star.",
+        "parts": [
+          "silicon-carbide structural frame",
+          "sunshield",
+          "passive and active thermal control"
+        ]
+      },
+      {
+        "name": "Downlink and reduction pipeline",
+        "role": "turns billions of individual CCD transits into a single self-consistent catalogue.",
+        "parts": [
+          "onboard storage",
+          "ground stations",
+          "global iterative solver",
+          "relativistic and geometric models"
+        ]
+      },
+      {
+        "name": "Reference frame and validation",
+        "role": "defines the zero point of the sky and checks the result against independent data.",
+        "parts": [
+          "quasar-based celestial reference frame",
+          "ground-based radial-velocity spectrographs",
+          "VLBI tie"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide the error budget",
+        "detail": "Microarcsecond positions demand a single focal plane shared by both telescope views, a thermally inert structure, and a scan pattern that revisits every star at many angles."
+      },
+      {
+        "title": "Fabricate optics and bench",
+        "detail": "Mirrors and the structural frame are machined from silicon carbide, polished, and assembled into a bench whose dimensions must not drift."
+      },
+      {
+        "title": "Build the focal plane",
+        "detail": "A mosaic of large CCDs is bonded into a plane of roughly a billion pixels, with wide detection strips feeding the high-precision astrometric array."
+      },
+      {
+        "title": "Integrate and thermal-vacuum test",
+        "detail": "The payload is assembled, then run end to end in a thermal-vacuum chamber so its optical distortion can be measured and calibrated before launch."
+      },
+      {
+        "title": "Launch and cruise to L2",
+        "detail": "The observatory is placed in a Lissajous orbit around the Sun–Earth L2 point, roughly 1.5 million km from Earth, giving a stable thermal and viewing environment."
+      },
+      {
+        "title": "Commission and calibrate",
+        "detail": "The 106° basic angle and the field distortion are measured to microarcsecond level using dense star fields, and the scan pattern is trimmed."
+      },
+      {
+        "title": "Downlink and solve",
+        "detail": "Each day's transits are sent to the ground; a global iterative solution fits position, parallax, proper motion and orbital wobble simultaneously across all observations to date."
+      },
+      {
+        "title": "Confirm any planets",
+        "detail": "A candidate wobble is only accepted after ground-based radial-velocity spectroscopy rules out a stellar companion and pins down the mass."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-format CCD mosaics and low-noise readout",
+        "status": "exists",
+        "why": "a census needs billions of faint stars measured many times, so it needs huge detectors that work at high cadence."
+      },
+      {
+        "tech": "Nanometre-stable structures and thermal control",
+        "status": "exists",
+        "why": "the instrument must be more stable than the signal it is trying to detect."
+      },
+      {
+        "tech": "Micro-thruster attitude control",
+        "status": "exists",
+        "why": "the spacecraft must be pointed and spun without the jitter that reaction wheels or thruster firings would inject."
+      },
+      {
+        "tech": "Global iterative astrometric solution",
+        "status": "exists",
+        "why": "positions and orbits cannot be solved star by star; every observation constrains every other, needing very large computing campaigns."
+      },
+      {
+        "tech": "Precise ground-based radial-velocity spectrographs",
+        "status": "exists",
+        "why": "astrometry alone gives a mass times an unknown inclination, so an independent measurement is needed to confirm and weigh a planet."
+      },
+      {
+        "tech": "A quasar-defined celestial reference frame",
+        "status": "exists",
+        "why": "parallaxes and proper motions are meaningless without a fixed, non-rotating frame to measure them against."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "final data releases from the current whole-sky astrometric mission, with improved proper motions and a vetted list of astrometric planet candidates",
+        "unlocks": "a common distance and mass scale for hundreds of millions of stars, plus the first population of planets found by wobble rather than by dimming or velocity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combining astrometry with radial velocity, direct imaging and microlensing for the same systems",
+        "unlocks": "true masses and full orbits instead of minimum masses, especially for the wide-orbit giants that other methods miss."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a proposed dedicated astrometric exoplanet mission, or a near-infrared successor, aiming for tens of microarcseconds or better",
+        "unlocks": "sensitivity to planets a few times the mass of Jupiter at orbits of several years, and to the fainter, cooler stars where a distance scale is hardest to build."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a systematic census of the solar neighbourhood with consistent true masses",
+        "unlocks": "direct tests of planet-formation models, because the giant planets that shape a system's architecture are exactly the ones astrometry sees best."
+      }
+    ]
+  }
+}

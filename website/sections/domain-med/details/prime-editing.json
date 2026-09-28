@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Targeting module",
+        "role": "finds the exact DNA address and nicks just one strand.",
+        "parts": [
+          "Cas9 nickase (H840A)",
+          "nuclear localisation signals"
+        ]
+      },
+      {
+        "name": "Writing module",
+        "role": "copies a new sequence from an RNA template into the DNA.",
+        "parts": [
+          "engineered reverse transcriptase",
+          "linker peptide joining the two proteins"
+        ]
+      },
+      {
+        "name": "pegRNA",
+        "role": "the guide that both addresses the site and carries the replacement text.",
+        "parts": [
+          "spacer complementary to target DNA",
+          "scaffold that binds Cas9",
+          "primer binding site",
+          "reverse transcriptase template"
+        ]
+      },
+      {
+        "name": "Nick guidance and repair tuning",
+        "role": "a second cut or a repair-suppressing protein biases the cell toward keeping the edit.",
+        "parts": [
+          "nicking guide RNA (PE3)",
+          "mismatch repair inhibitor (PE4/PE5)"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into the right cells and no others.",
+        "parts": [
+          "lipid nanoparticle",
+          "engineered virus capsid",
+          "electroporation for cells removed from the body",
+          "ribonucleoprotein or mRNA payload"
+        ]
+      },
+      {
+        "name": "Cell repair machinery",
+        "role": "the host's own flap and ligation enzymes actually finish the edit.",
+        "parts": [
+          "flap endonucleases",
+          "DNA ligase",
+          "mismatch repair pathway"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the edit",
+        "detail": "Decide the exact bases to change — a point mutation, a small insertion or a small deletion — and check what else in the genome looks similar."
+      },
+      {
+        "title": "Design the pegRNA",
+        "detail": "A software model picks the spacer, the primer binding site that will grip the nicked strand, and the template that spells out the new sequence."
+      },
+      {
+        "title": "Make the editor",
+        "detail": "The nickase and reverse transcriptase genes are fused into one construct, produced as protein or as mRNA in a manufacturing facility."
+      },
+      {
+        "title": "Package and deliver",
+        "detail": "For cells taken from a patient the payload goes in by electroporation; for treatment inside the body it is wrapped in lipid nanoparticles or a viral capsid that targets a chosen tissue."
+      },
+      {
+        "title": "Nick and prime",
+        "detail": "Inside the nucleus the complex binds its target and cuts only the strand carrying the PAM; the freed 3' end pairs with the pegRNA's primer binding site."
+      },
+      {
+        "title": "Write the new sequence",
+        "detail": "The reverse transcriptase extends that 3' end using the pegRNA template, building a flap of DNA that contains the desired edit."
+      },
+      {
+        "title": "Resolve the flap",
+        "detail": "The cell's own enzymes equilibrate the new and old flaps, remove the unedited one and ligate the edited strand into place."
+      },
+      {
+        "title": "Bias the outcome",
+        "detail": "A second nick on the opposite strand, or temporary suppression of mismatch repair, makes the cell keep the edited version rather than reverting it."
+      },
+      {
+        "title": "Verify",
+        "detail": "Targeted and whole-genome sequencing confirms the intended edit and checks for unintended changes before any clinical use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR-Cas9 programmable targeting",
+        "status": "exists",
+        "why": "prime editing reuses the same address-finding machinery, adapted so it nicks rather than cuts both strands."
+      },
+      {
+        "tech": "Reverse transcriptase enzymes",
+        "status": "exists",
+        "why": "the writing step is an RNA-to-DNA copy, an enzyme class borrowed from retroviruses and engineered for accuracy."
+      },
+      {
+        "tech": "Synthetic guide RNA manufacturing",
+        "status": "exists",
+        "why": "a pegRNA is a longer, more structured guide than standard CRISPR guide RNA and must be made to high purity."
+      },
+      {
+        "tech": "Safe delivery to specific tissues",
+        "status": "partial",
+        "why": "editing the right cells inside the body, especially outside the liver, is the main obstacle to treating most diseases."
+      },
+      {
+        "tech": "Control of cellular DNA repair",
+        "status": "partial",
+        "why": "the cell decides whether to keep the edit, so efficiency depends on understanding flap and mismatch repair."
+      },
+      {
+        "tech": "Long-term safety data on genome editors",
+        "status": "partial",
+        "why": "off-target edits and large rearrangements must be ruled out over years, not months."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prime editing used widely as a research tool in cells, organoids and animals; base editing and first-generation CRISPR therapies already reaching patients",
+        "unlocks": "proof that precise, break-free editing works, and a regulatory path for edited cell therapies."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first human trials of prime-edited cells for blood and immune disorders",
+        "unlocks": "real safety and durability data in people, using ex vivo editing where delivery is easiest."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in vivo prime editing of liver and other organs, and larger edits via twin prime editing or integrase-assisted insertion",
+        "unlocks": "one-off treatments for metabolic and genetic liver disease."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-edit and organ-targeted treatments at scale",
+        "unlocks": "correcting several mutations at once, and reaching tissues such as muscle, lung or nerve where delivery is still unsolved."
+      }
+    ]
+  }
+}

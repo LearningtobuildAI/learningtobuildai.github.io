@@ -30,5 +30,156 @@
         "def": "A feedback mechanism where output is continuously monitored and adjusted to maintain optimal conditions based on real-time data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "continuously measures crop state and the growing environment.",
+        "parts": [
+          "RGB and multispectral cameras",
+          "hyperspectral imaging units",
+          "temperature, humidity and CO2 sensors",
+          "nutrient sensors (EC, pH)"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "changes light, climate and fertigation in response to control signals.",
+        "parts": [
+          "tunable LED arrays",
+          "HVAC and dehumidification",
+          "nutrient dosing pumps",
+          "CO2 injectors"
+        ]
+      },
+      {
+        "name": "Edge compute and data pipeline",
+        "role": "captures high-volume sensor streams and prepares them for models in real time.",
+        "parts": [
+          "edge gateways",
+          "time-series database",
+          "image preprocessing"
+        ]
+      },
+      {
+        "name": "AI models",
+        "role": "detect stress, forecast growth and choose setpoints.",
+        "parts": [
+          "computer vision for early stress",
+          "reinforcement learning controllers",
+          "growth models"
+        ]
+      },
+      {
+        "name": "Digital twin",
+        "role": "simulates the crop and environment to test actions before applying them.",
+        "parts": [
+          "crop growth simulator",
+          "climate model",
+          "calibration engine"
+        ]
+      },
+      {
+        "name": "Operator interface",
+        "role": "lets growers monitor, override and learn from the system.",
+        "parts": [
+          "dashboards",
+          "alerts",
+          "API for farm management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose crop and define targets",
+        "detail": "Select a crop with known grow recipes and set yield, quality and energy goals."
+      },
+      {
+        "title": "Instrument the grow room",
+        "detail": "Install environmental sensors, cameras (including hyperspectral if used) and actuators for light, climate and fertigation."
+      },
+      {
+        "title": "Run baseline cycles",
+        "detail": "Grow the crop under standard control, logging every sensor reading, action and outcome to create a labelled dataset."
+      },
+      {
+        "title": "Build the data pipeline",
+        "detail": "Connect sensors to edge computers and a time-series database; preprocess images and sensor data for model training."
+      },
+      {
+        "title": "Train stress and growth models",
+        "detail": "Use labelled images (healthy vs stressed) to train detection models; use historical data to fit growth and response models."
+      },
+      {
+        "title": "Develop control policy",
+        "detail": "Start with advisory recommendations, then use reinforcement learning or model predictive control to adjust setpoints automatically."
+      },
+      {
+        "title": "Deploy closed loop",
+        "detail": "Let the system control one variable at a time (e.g. light spectrum) while monitoring for safety, then expand."
+      },
+      {
+        "title": "Validate and scale",
+        "detail": "Compare yield, resource use and crop uniformity against baseline; replicate across rooms and sites."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Hyperspectral imaging",
+        "status": "partial",
+        "why": "cameras exist but are costly and need calibration for plant stress signatures."
+      },
+      {
+        "tech": "Tunable LED lighting",
+        "status": "exists",
+        "why": "commercial LEDs can adjust spectrum and intensity."
+      },
+      {
+        "tech": "Machine learning for image analysis",
+        "status": "exists",
+        "why": "deep learning can classify plant stress from images."
+      },
+      {
+        "tech": "IoT sensors and actuators",
+        "status": "exists",
+        "why": "environmental and nutrient sensors are widely used in controlled environment agriculture."
+      },
+      {
+        "tech": "Digital twin frameworks",
+        "status": "partial",
+        "why": "crop growth models exist but are not yet accurate enough for full closed-loop control."
+      },
+      {
+        "tech": "Reliable data infrastructure",
+        "status": "exists",
+        "why": "edge computing and time-series databases are mature."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Rule-based climate control with AI advisory for lighting and nutrients",
+        "unlocks": "lower energy and waste in existing vertical farms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Closed-loop AI control of light spectrum and fertigation in commercial farms",
+        "unlocks": "higher yields and more consistent quality."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hyperspectral stress detection integrated into daily operations",
+        "unlocks": "early intervention before visible damage, reducing crop loss."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fully autonomous, self-optimizing vertical farms",
+        "unlocks": "scalable urban food production with minimal labour."
+      }
+    ]
   }
 }

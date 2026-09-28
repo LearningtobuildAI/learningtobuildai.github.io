@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Corpus ingestion",
+        "role": "builds the raw record of what is being researched, patented, funded and hired for.",
+        "parts": [
+          "patent and preprint databases",
+          "grant and funding registries",
+          "job postings and code repositories",
+          "news and product-launch feeds"
+        ]
+      },
+      {
+        "name": "Entity resolution and taxonomy",
+        "role": "turns messy names into stable things — one organisation, one technology, one concept.",
+        "parts": [
+          "author and assignee disambiguation",
+          "concept tagging",
+          "embedding index",
+          "versioned technology taxonomy"
+        ]
+      },
+      {
+        "name": "Signal detection",
+        "role": "finds weak, early traces before they become obvious.",
+        "parts": [
+          "citation-graph velocity",
+          "burst and novelty detection",
+          "topic and community clustering",
+          "cross-domain co-occurrence analysis"
+        ]
+      },
+      {
+        "name": "Forecasting models",
+        "role": "extrapolates each signal into a dated expectation with uncertainty.",
+        "parts": [
+          "time-series and sequence models",
+          "diffusion/adoption curve fitting",
+          "survival models for time-to-maturity",
+          "ensemble and calibration layer"
+        ]
+      },
+      {
+        "name": "Evaluation harness",
+        "role": "the part that keeps the system honest.",
+        "parts": [
+          "historical backtesting ('hindcasting')",
+          "scoring against later-confirmed outcomes",
+          "bias and survivorship audits"
+        ]
+      },
+      {
+        "name": "Analyst interface",
+        "role": "presents a forecast with its evidence, not just a number.",
+        "parts": [
+          "retrieval and citation tools",
+          "conflict and contradiction flags",
+          "confidence display",
+          "feedback capture"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble the corpora",
+        "detail": "Pull decades of patents, papers, grants, job ads and product announcements, with licence terms recorded per source so the training data can legally be used."
+      },
+      {
+        "title": "Normalise and deduplicate",
+        "detail": "Resolve 'who' and 'what' consistently: merge spelling variants, split namesakes, and map free text onto a controlled taxonomy of technologies."
+      },
+      {
+        "title": "Build the signals",
+        "detail": "Convert the corpus into time series — new entrants per field, citation velocity, co-authorship between previously separate fields, hiring shifts — each timestamped so nothing seen later leaks into earlier predictions."
+      },
+      {
+        "title": "Detect emergence",
+        "detail": "Flag clusters that are growing faster than their field's baseline, and, more importantly, clusters forming at the boundary between two fields, which is where genuinely new capabilities usually appear."
+      },
+      {
+        "title": "Fit forecasting models",
+        "detail": "Train models to map an early signal pattern to a later outcome — shipped product, commercial deployment, or fade-out — using only information available at the time of the prediction."
+      },
+      {
+        "title": "Backtest honestly",
+        "detail": "Re-run the system as if standing in past years and score its forecasts against what actually happened, including the predictions it never made and the ones that quietly failed."
+      },
+      {
+        "title": "Calibrate uncertainty",
+        "detail": "Adjust stated confidence so that '70% likely' events really do occur about 70% of the time, and refuse to output a point estimate without a range and a date."
+      },
+      {
+        "title": "Wrap in an agent loop",
+        "detail": "Give the model tools to retrieve evidence, follow citations and check its own claims, so every forecast can be traced back to the records that produced it."
+      },
+      {
+        "title": "Deploy with human review",
+        "detail": "Analysts triage outputs, record where the system was wrong, and those judgements feed back into the taxonomy and the calibration layer."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large machine-readable corpora of research and patents",
+        "status": "exists",
+        "why": "forecasting needs decades of dated records, and much historical text is still paywalled or un-digitised."
+      },
+      {
+        "tech": "Transformer language models",
+        "status": "exists",
+        "why": "they supply the embeddings and concept extraction that make cross-domain similarity searchable."
+      },
+      {
+        "tech": "Citation and collaboration graph infrastructure",
+        "status": "exists",
+        "why": "the structure of who-cites-whom and who-works-with-whom carries much of the early signal."
+      },
+      {
+        "tech": "Labelled datasets of technology emergence and failure",
+        "status": "missing",
+        "why": "no large, unbiased record exists of which early signals actually led to deployed technology; without it, models are tuned on anecdotes."
+      },
+      {
+        "tech": "Methods to separate substance from hype",
+        "status": "missing",
+        "why": "publication and funding counts rise with fashion as well as with real progress, and current models cannot reliably tell the two apart."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "retrieval-and-summarise assistants over patent and literature databases",
+        "unlocks": "faster expert scanning, with the model as a search tool rather than an oracle."
+      },
+      {
+        "stage": "Next",
+        "milestone": "calibrated short-horizon forecasts (roughly 1–3 years) that are backtested and published with their error rates",
+        "unlocks": "usable early warning for research funders and engineering teams."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared benchmark suites and open hindcasting for technology forecasting",
+        "unlocks": "comparable claims, and honest measurement of what machine forecasting can and cannot do."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "combining text signals with cost, materials and manufacturing constraints",
+        "unlocks": "forecasts that account for whether something can actually be built and shipped, not merely published."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "audited decision-support systems in research and industrial strategy",
+        "unlocks": "portfolio choices informed by evidence — provided the limits of prediction are stated up front."
+      }
+    ]
+  }
+}

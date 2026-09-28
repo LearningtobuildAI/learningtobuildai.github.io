@@ -29,5 +29,162 @@
         "def": "The field of AI focused on enabling computers to understand, interpret, and generate human language."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data and tokeniser",
+        "role": "turns raw text into the token IDs the model actually learns from.",
+        "parts": [
+          "web and code corpora",
+          "cleaning and de-duplication filters",
+          "byte-level tokeniser with a large vocabulary"
+        ]
+      },
+      {
+        "name": "Sparse mixture-of-experts layers",
+        "role": "replaces the single dense feed-forward block in each layer with many expert blocks, of which only a few fire per token.",
+        "parts": [
+          "router network",
+          "expert feed-forward blocks",
+          "load-balancing logic"
+        ]
+      },
+      {
+        "name": "Attention with compressed cache",
+        "role": "lets every token attend to earlier ones without storing a full key/value table for each head.",
+        "parts": [
+          "latent attention projection",
+          "rotary position encoding",
+          "long-context handling"
+        ]
+      },
+      {
+        "name": "Training stack",
+        "role": "runs pretraining and fine-tuning across thousands of accelerators.",
+        "parts": [
+          "mixed-precision kernels",
+          "pipeline and expert parallelism",
+          "checkpointing and failure recovery"
+        ]
+      },
+      {
+        "name": "Post-training for reasoning",
+        "role": "teaches the model to work through problems step by step rather than answer immediately.",
+        "parts": [
+          "supervised instruction data",
+          "reinforcement learning on verifiable answers",
+          "reward models for harder tasks"
+        ]
+      },
+      {
+        "name": "Inference and serving layer",
+        "role": "makes a very large model cheap enough to answer queries.",
+        "parts": [
+          "quantised weights",
+          "paged key/value cache",
+          "batching and speculative decoding"
+        ]
+      },
+      {
+        "name": "Distillation pipeline",
+        "role": "copies the large model's behaviour into small dense models that run locally.",
+        "parts": [
+          "generated training traces",
+          "smaller transformer architectures"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and clean the corpus",
+        "detail": "Crawl text and code, strip boilerplate, remove duplicates and filter for quality and safety — this shapes the model more than any later step."
+      },
+      {
+        "title": "Design the architecture",
+        "detail": "Choose layer count, hidden width, the number of experts per layer and how many are active per token, balancing quality against inference cost."
+      },
+      {
+        "title": "Pretrain on a large cluster",
+        "detail": "Run next-token prediction for weeks on thousands of accelerators, using low-precision arithmetic and parallelism across chips to fit the model in memory."
+      },
+      {
+        "title": "Supervised fine-tuning",
+        "detail": "Train on curated question–answer pairs so the raw text predictor becomes a usable assistant."
+      },
+      {
+        "title": "Reinforcement learning for reasoning",
+        "detail": "Sample many answers per problem, score them against checkable answers (maths, code), and update the model toward the patterns that succeeded."
+      },
+      {
+        "title": "Distil into smaller models",
+        "detail": "Use the large model to generate training data for compact versions that fit on a single server or a laptop."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Test accuracy, reasoning, bias and safety; fix failure modes before release."
+      },
+      {
+        "title": "Serve and iterate",
+        "detail": "Quantise, batch and cache for cheap inference, publish weights, and feed production failures back into the next training round."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "the attention-and-feed-forward block is the base every modern language model is built from."
+      },
+      {
+        "tech": "Massive accelerator clusters",
+        "status": "exists",
+        "why": "training a model of this size needs many thousands of high-bandwidth GPUs and fast interconnects."
+      },
+      {
+        "tech": "Low-precision training kernels",
+        "status": "exists",
+        "why": "8-bit and lower arithmetic cuts memory and time without wrecking accuracy."
+      },
+      {
+        "tech": "Scalable reinforcement learning for language models",
+        "status": "partial",
+        "why": "RL on verifiable tasks works well for maths and code but is harder to extend to open-ended domains."
+      },
+      {
+        "tech": "Cheap long-context inference",
+        "status": "partial",
+        "why": "serving reasoning models at scale is expensive because they emit many tokens per query."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "open-weight mixture-of-experts models with exposed reasoning traces",
+        "unlocks": "frontier-class capability that anyone can download, fine-tune or self-host."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cheaper long-chain reasoning through better caching, distillation and quantisation",
+        "unlocks": "reasoning models affordable at high query volumes and on local hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable tool use and agentic loops",
+        "unlocks": "models that plan, call software and verify their own results rather than only answering."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reinforcement learning extended to domains without a checkable answer",
+        "unlocks": "steady improvement in research, engineering and medicine rather than just maths and code."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multimodal and on-device versions of the same stack",
+        "unlocks": "private, low-latency assistance without sending data to a data centre."
+      }
+    ]
   }
 }

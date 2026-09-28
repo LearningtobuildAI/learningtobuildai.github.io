@@ -30,5 +30,155 @@
         "def": "The design and construction of robots at the molecular scale, capable of performing precise operations on individual molecules or atoms."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Scanning probe head",
+        "role": "the working end — a sharp tip a few atoms across, held within a fraction of a nanometre of the workpiece.",
+        "parts": [
+          "metal or carbon-monoxide-terminated tip",
+          "piezoelectric tube scanner",
+          "coarse approach stage"
+        ]
+      },
+      {
+        "name": "Positioning and metrology",
+        "role": "tells the system exactly where the tip is, and keeps it there.",
+        "parts": [
+          "laser interferometers",
+          "capacitive sensors",
+          "vibration-isolated vacuum chamber",
+          "thermal drift compensation"
+        ]
+      },
+      {
+        "name": "Tip chemistry",
+        "role": "makes the tip a tool rather than just a probe — reactive or catalytic.",
+        "parts": [
+          "reactive atom or molecular fragment at apex",
+          "pulsed voltage or field control",
+          "local force and tunnel-current feedback"
+        ]
+      },
+      {
+        "name": "Feedstock handling",
+        "role": "delivers the right molecules, one at a time, to the right place.",
+        "parts": [
+          "gas or molecular-beam dosing",
+          "surface holding sites",
+          "cryogenic substrate stage"
+        ]
+      },
+      {
+        "name": "Reaction control",
+        "role": "triggers bond formation and bond breaking at a chosen atom.",
+        "parts": [
+          "voltage pulses",
+          "simulation-guided pulse design",
+          "real-time imaging of each step"
+        ]
+      },
+      {
+        "name": "Computational control",
+        "role": "simulates the reaction, plans the sequence and verifies the result.",
+        "parts": [
+          "quantum chemistry models",
+          "error detection and retry logic",
+          "sequence planner for larger structures"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the reaction",
+        "detail": "Compute, atom by atom, which molecule will react with which, and what energy or pulse is needed to make it happen without side reactions."
+      },
+      {
+        "title": "Shape the tooltip",
+        "detail": "Prepare a scanning probe tip, often by deliberately picking up a single molecule or atom to give it a known reactive apex."
+      },
+      {
+        "title": "Verify atomically",
+        "detail": "Image the surface and the tip with the same instrument, so the operator knows exactly what is where before touching anything."
+      },
+      {
+        "title": "Place the feedstock",
+        "detail": "Deposit a single molecule from the surface or the tip into a defined site, at liquid-helium temperatures that stop it wandering."
+      },
+      {
+        "title": "Form one bond",
+        "detail": "Apply a local voltage pulse or force to drive a single bond-forming reaction at the chosen atoms."
+      },
+      {
+        "title": "Confirm and correct",
+        "detail": "Re-image to check the product; if the reaction failed, remove the fragment and try again."
+      },
+      {
+        "title": "Repeat under automation",
+        "detail": "Software sequences tens of thousands of such steps to build a small atomically precise object."
+      },
+      {
+        "title": "Scale the throughput",
+        "detail": "Replace the single tip with arrays of thousands of independently controlled tips, or with self-assembling molecular machines that replicate the same chemistry in bulk."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Atomically precise surface imaging",
+        "status": "exists",
+        "why": "scanning tunnelling and atomic force microscopy, developed from 1981 onward, are what make position-by-position work possible at all."
+      },
+      {
+        "tech": "Sub-ångström positioning",
+        "status": "exists",
+        "why": "piezoelectric scanners already move and hold a tip to better than 0.1 nm at low temperature."
+      },
+      {
+        "tech": "Computational reaction design",
+        "status": "partial",
+        "why": "quantum chemistry can predict many reactions, but predicting the exact outcome under a probe tip is not yet reliable."
+      },
+      {
+        "tech": "Tip-driven mechanosynthesis",
+        "status": "missing",
+        "why": "only a handful of specific, simple bond-forming reactions have been driven this way in the laboratory; general tooltips are unproven."
+      },
+      {
+        "tech": "Parallel tip arrays with error correction",
+        "status": "missing",
+        "why": "one tip is far too slow to make anything useful; thousands working in parallel with automatic retries do not exist."
+      },
+      {
+        "tech": "Product handling",
+        "status": "missing",
+        "why": "nothing yet shows how a finished, atomically precise object is detached, kept stable and used at practical scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-atom positioning and imaging, first demonstrated by spelling a logo with individual atoms in 1989, plus molecular machines recognised by a Nobel Prize in 2016",
+        "unlocks": "proof that atoms can be addressed one at a time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routinely driving designed bond-forming reactions under a probe tip, and characterising the products",
+        "unlocks": "a real toolbox of mechanosynthetic reactions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "parallel tip arrays building small atomically precise structures such as stiff rods, gears or graphene-like sheets",
+        "unlocks": "demonstration that positional assembly can beat chemistry's usual messiness."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-assembling or self-replicating molecular machinery that copies the same chemistry rapidly",
+        "unlocks": "cheap, defect-free materials — or, if it proves physically impractical, a definitive answer that this route is a dead end."
+      }
+    ]
   }
 }

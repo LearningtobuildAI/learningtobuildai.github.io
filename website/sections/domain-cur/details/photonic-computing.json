@@ -34,5 +34,159 @@
         "def": "The process used in semiconductor manufacturing to pattern materials onto a surface using light or other methods."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Light source",
+        "role": "supplies the coherent light that carries the signal; unlike electrons, photons must be generated, not just switched.",
+        "parts": [
+          "III-V lasers bonded or grown on silicon",
+          "external fibre-coupled laser banks",
+          "optical amplifiers"
+        ]
+      },
+      {
+        "name": "Waveguides and routing",
+        "role": "guide light on-chip with very low loss.",
+        "parts": [
+          "silicon-on-insulator waveguides",
+          "splitters and combiners",
+          "wavelength multiplexers",
+          "fibre-to-chip couplers"
+        ]
+      },
+      {
+        "name": "Modulators",
+        "role": "imprint electrical data onto the light.",
+        "parts": [
+          "Mach-Zehnder interferometer modulators",
+          "ring resonators",
+          "high-speed driver electronics"
+        ]
+      },
+      {
+        "name": "Linear compute fabric",
+        "role": "performs the arithmetic — mostly matrix multiplication, done by letting light beams interfere.",
+        "parts": [
+          "meshes of phase shifters and couplers",
+          "wavelength-division banks",
+          "multiply-accumulate arrays"
+        ]
+      },
+      {
+        "name": "Nonlinearity and activation",
+        "role": "the hard part: light does not naturally interact with light, so nonlinear functions need help.",
+        "parts": [
+          "photodiodes feeding electronic nonlinear circuits",
+          "saturable absorbers",
+          "semiconductor optical amplifiers"
+        ]
+      },
+      {
+        "name": "Detection and readout",
+        "role": "converts the optical answer back into electrical signals.",
+        "parts": [
+          "germanium photodiodes",
+          "transimpedance amplifiers",
+          "analogue-to-digital converters"
+        ]
+      },
+      {
+        "name": "Control and thermal management",
+        "role": "keeps every phase shifter at the right operating point as temperature drifts.",
+        "parts": [
+          "on-chip heaters",
+          "bias control loops",
+          "temperature sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the photonic circuit",
+        "detail": "Each interferometer, waveguide and modulator is laid out with a foundry process design kit, then simulated for optical loss and phase errors."
+      },
+      {
+        "title": "Fabricate the photonic chip",
+        "detail": "Silicon-on-insulator wafers (typically a 220 nm silicon layer on buried oxide) are patterned with deep-ultraviolet lithography and etched to form waveguides a few hundred nanometres wide."
+      },
+      {
+        "title": "Add active regions",
+        "detail": "Ion implantation forms the doped regions of modulators and phase shifters; germanium is grown in windows to make photodiodes, all in a CMOS-compatible foundry flow."
+      },
+      {
+        "title": "Attach the light source",
+        "detail": "Because silicon does not emit light well, lasers are either bonded as III-V material in a separate process step or kept off-chip and coupled in through fibres."
+      },
+      {
+        "title": "Wire up control electronics",
+        "detail": "Metal tracks and heaters are patterned, then the photonic die is flip-chip bonded or co-packaged with a conventional electronic chip for drive, memory and nonlinearity."
+      },
+      {
+        "title": "Package and fibre-attach",
+        "detail": "Arrays of optical fibres are aligned and glued to the chip edge or grating couplers with sub-micron precision — often the most expensive step."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Fabrication variation means no two phase shifters are identical; control software sweeps each one and stores correction values, then holds them steady against temperature drift."
+      },
+      {
+        "title": "Characterise and bin",
+        "detail": "Insertion loss, bandwidth and bit-error rate are measured, and parts are sorted by performance grade."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics manufacturing",
+        "status": "exists",
+        "why": "CMOS-compatible foundries already make optical transceivers at volume, giving photonic computing a fabrication base."
+      },
+      {
+        "tech": "Lasers integrated on silicon",
+        "status": "partial",
+        "why": "silicon cannot lase efficiently, so light must come from bonded III-V material or off-chip sources, adding cost and packaging complexity."
+      },
+      {
+        "tech": "Optical memory and optical nonlinearity at low power",
+        "status": "missing",
+        "why": "without a practical optical transistor or optical RAM, most schemes fall back on electronics for logic and storage."
+      },
+      {
+        "tech": "High-speed analogue electronics (drivers, DACs, ADCs)",
+        "status": "exists",
+        "why": "the power and cost of converting between electrons and photons often dominate the system."
+      },
+      {
+        "tech": "Precision optical packaging",
+        "status": "partial",
+        "why": "aligning fibres and coupling light on and off chip to tight tolerances is slow and costly at scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "silicon-photonic transceivers and optical interconnects deployed in data centres",
+        "unlocks": "proven high-volume photonic manufacturing and a reason to keep shrinking optical components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-packaged optics, where the optical link sits beside the processor instead of at the rack edge",
+        "unlocks": "removes copper interconnect bandwidth and reach limits for large AI and cloud systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "photonic accelerators performing matrix multiplication in real inference systems, with electronics handling activation and memory",
+        "unlocks": "faster, lower-energy linear algebra where that is the bottleneck."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "genuine optical logic and optical storage on chip",
+        "unlocks": "general-purpose photonic computing, which depends on nonlinear materials and devices that do not yet exist."
+      }
+    ]
   }
 }

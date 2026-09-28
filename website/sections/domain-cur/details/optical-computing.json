@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Light source",
+        "role": "supplies the laser light that carries the computation.",
+        "parts": [
+          "off-chip or flip-chip lasers",
+          "multi-wavelength comb sources",
+          "optical amplifiers",
+          "fibre or grating couplers"
+        ]
+      },
+      {
+        "name": "Photonic compute core",
+        "role": "performs matrix multiplication by splitting, phase-shifting and recombining light.",
+        "parts": [
+          "waveguides",
+          "Mach-Zehnder interferometer meshes or microring weight banks",
+          "phase shifters (thermo-optic or electro-optic)",
+          "beam splitters and combiners"
+        ]
+      },
+      {
+        "name": "Electro-optic interface",
+        "role": "converts electronic data into light and back again.",
+        "parts": [
+          "modulators",
+          "photodetectors",
+          "digital-to-analogue and analogue-to-digital converters",
+          "driver and transimpedance amplifiers"
+        ]
+      },
+      {
+        "name": "Weight storage and control",
+        "role": "holds the numbers the mesh multiplies by, and keeps the mesh stable.",
+        "parts": [
+          "electronic memory feeding the phase shifters",
+          "non-volatile phase-change or ferroelectric elements (emerging)",
+          "thermal tuning loops",
+          "calibration firmware"
+        ]
+      },
+      {
+        "name": "Packaging and optical I/O",
+        "role": "gets light in and out of the chip and joins it to electronics.",
+        "parts": [
+          "fibre arrays and edge or grating couplers",
+          "co-packaged optics",
+          "through-silicon vias and interposers",
+          "heat spreaders and coolers"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "maps neural networks onto physical light paths.",
+        "parts": [
+          "compiler that places matrix operations on the mesh",
+          "quantisation and calibration routines",
+          "host and framework interfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the photonic circuit",
+        "detail": "Engineers lay out waveguides, splitters and phase shifters in software, simulating how light will interfere so that the mesh computes the intended matrix."
+      },
+      {
+        "title": "Fabricate on silicon-on-insulator wafers",
+        "detail": "Standard CMOS lithography and etching form nanometre-scale rib waveguides, plus doped regions for modulators and germanium photodetectors."
+      },
+      {
+        "title": "Add active materials",
+        "detail": "Phase-shifting layers such as silicon nitride, or thin films of lithium niobate or barium titanate, are deposited or bonded to give fast, low-loss tuning."
+      },
+      {
+        "title": "Integrate light sources",
+        "detail": "III-V laser chips are flip-chip bonded or wafer-bonded to the photonic die, because silicon itself does not emit useful light."
+      },
+      {
+        "title": "Package with electronics",
+        "detail": "The photonic chip is co-packaged with a driver ASIC, memory and fibre arrays, then actively aligned to sub-micron precision and sealed."
+      },
+      {
+        "title": "Calibrate the mesh",
+        "detail": "Every phase shifter is tuned to route and weight light correctly; closed-loop control cancels the drift caused by temperature changes."
+      },
+      {
+        "title": "Build the system",
+        "detail": "Converters, memory and host links are added, and the software compiler is used to map a real workload onto the hardware."
+      },
+      {
+        "title": "Test and qualify",
+        "detail": "Optical, thermal and reliability testing confirms the accelerator can run continuously in a data-centre rack."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics manufacturing",
+        "status": "exists",
+        "why": "CMOS-compatible photonic chips are already mass-produced for data-centre transceivers."
+      },
+      {
+        "tech": "High-speed, low-power electro-optic modulators",
+        "status": "exists",
+        "why": "they set how fast data can be converted between electrons and photons."
+      },
+      {
+        "tech": "Integrated on-chip lasers",
+        "status": "partial",
+        "why": "bonding III-V material to silicon works in production, but fully integrated sources remain costly."
+      },
+      {
+        "tech": "Non-volatile optical memory",
+        "status": "missing",
+        "why": "weights must persist and be updated cheaply, or the tuning power cancels the optical advantage."
+      },
+      {
+        "tech": "Co-packaged optics and advanced packaging",
+        "status": "partial",
+        "why": "joining photonics and electronics without losing alignment or overheating is the main yield problem."
+      },
+      {
+        "tech": "Analogue-to-digital conversion at scale",
+        "status": "exists",
+        "why": "the converters at the edges are accurate and fast, though they dominate the energy budget."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "optical transceivers and co-packaged optics inside data centres",
+        "unlocks": "proven photonic manufacturing, packaging and fibre-attach supply chains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "photonic matrix-multiply accelerators for AI inference in pilot deployments",
+        "unlocks": "a demonstration that light can beat electronics on energy per operation for real models."
+      },
+      {
+        "stage": "Next",
+        "milestone": "processors with optical compute and optical I/O on the same package",
+        "unlocks": "lower power and higher bandwidth between chips, easing the memory bottleneck."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical logic, switching and memory beyond linear algebra",
+        "unlocks": "general-purpose optical computing rather than fixed-function accelerators."
+      }
+    ]
+  }
+}

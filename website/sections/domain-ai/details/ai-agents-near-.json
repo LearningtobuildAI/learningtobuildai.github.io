@@ -31,5 +31,161 @@
         "def": "The field of AI focused on enabling computers to understand, interpret, and generate human language."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Interface and perception",
+        "role": "takes in user input and turns it into a form the agent can reason about.",
+        "parts": [
+          "multimodal encoders",
+          "speech-to-text",
+          "input parsers"
+        ]
+      },
+      {
+        "name": "Language model core",
+        "role": "the reasoning engine that understands intent and generates plans and responses.",
+        "parts": [
+          "transformer-based large language model",
+          "context window manager",
+          "fine-tuned weights"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "stores past interactions and retrieves relevant knowledge.",
+        "parts": [
+          "short-term context buffer",
+          "vector database",
+          "retrieval-augmented generation pipeline"
+        ]
+      },
+      {
+        "name": "Planning and decision-making",
+        "role": "breaks goals into steps and chooses which action to take next.",
+        "parts": [
+          "task decomposer",
+          "chain-of-thought and tree-search prompting",
+          "reinforcement learning policy"
+        ]
+      },
+      {
+        "name": "Tool use and action",
+        "role": "executes actions in the world beyond text generation.",
+        "parts": [
+          "API connectors",
+          "code interpreter",
+          "web browser",
+          "robotic actuators"
+        ]
+      },
+      {
+        "name": "Safety and governance",
+        "role": "keeps the agent within ethical and operational limits.",
+        "parts": [
+          "guardrails",
+          "content filters",
+          "audit logs",
+          "human-in-the-loop review",
+          "alignment techniques"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and success criteria",
+        "detail": "Decide exactly which tasks the agent may perform, what autonomy it has, and how success and failure are measured."
+      },
+      {
+        "title": "Select or train a foundation model",
+        "detail": "Choose a pre-trained language model or train one on domain data, then fine-tune it to follow instructions and call tools."
+      },
+      {
+        "title": "Design the agent architecture",
+        "detail": "Combine planning, memory and tool modules into a loop, and specify how the language model invokes each one."
+      },
+      {
+        "title": "Implement tool integrations",
+        "detail": "Connect APIs, databases and code execution environments with clear permission boundaries so the agent cannot act outside its remit."
+      },
+      {
+        "title": "Build memory and retrieval",
+        "detail": "Set up vector databases and context management so the agent remembers relevant past interactions and looks up current facts."
+      },
+      {
+        "title": "Add safety and governance layers",
+        "detail": "Insert guardrails, content filters and logging, and define which actions require human approval before execution."
+      },
+      {
+        "title": "Train for reasoning and tool use",
+        "detail": "Use reinforcement learning from human feedback and simulated environments to improve multi-step problem solving and reliable tool calls."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Test in sandboxed scenarios for reliability, bias, security holes and failure modes before any real deployment."
+      },
+      {
+        "title": "Deploy with monitoring and oversight",
+        "detail": "Run in production with continuous logging, performance tracking and human review of critical decisions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they provide the core language understanding and generation that agents build on."
+      },
+      {
+        "tech": "Reinforcement learning from human feedback",
+        "status": "exists",
+        "why": "it aligns model outputs with human preferences and improves multi-step reasoning."
+      },
+      {
+        "tech": "Vector databases and retrieval-augmented generation",
+        "status": "exists",
+        "why": "they give agents long-term memory and access to external knowledge beyond their training data."
+      },
+      {
+        "tech": "Standardised tool-use protocols and APIs",
+        "status": "partial",
+        "why": "many services still lack safe, uniform interfaces for autonomous agents to call."
+      },
+      {
+        "tech": "AI alignment and interpretability",
+        "status": "partial",
+        "why": "we cannot yet guarantee an agent's goals remain aligned with human values as it acts autonomously over long periods."
+      },
+      {
+        "tech": "Compute infrastructure",
+        "status": "exists",
+        "why": "training and running large agents requires substantial accelerator capacity and memory."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "narrow agents for specific tasks, such as coding assistants and customer-service bots, that use tools but need close human supervision",
+        "unlocks": "productivity gains in well-defined domains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-step autonomous agents that can plan and execute complex workflows with human-in-the-loop approval",
+        "unlocks": "automation of multi-stage business and research processes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-improving agents that learn from experience and coordinate in multi-agent systems",
+        "unlocks": "adaptive problem-solving and division of labour among specialised agents."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-sustaining agents with robust ethical governance and alignment guarantees",
+        "unlocks": "reliable autonomous operation in high-stakes environments, if alignment is solved."
+      }
+    ]
   }
 }

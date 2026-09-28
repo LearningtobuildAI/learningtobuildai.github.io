@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "produces the faint light pulses that carry each key bit — usually a laser attenuated to well below one photon per pulse, or an entangled-photon source.",
+        "parts": [
+          "telecom-wavelength laser",
+          "attenuator",
+          "optional spontaneous parametric down-conversion crystal"
+        ]
+      },
+      {
+        "name": "Encoding stage",
+        "role": "imprints each random bit on a quantum property of the photon that cannot be copied without disturbing it.",
+        "parts": [
+          "polarisation rotators, or phase/time-bin modulators",
+          "random-number generator to choose the bit and the basis"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries the photons between the two parties — optical fibre underground, or a free-space/satellite link.",
+        "parts": [
+          "low-loss single-mode fibre or telescope",
+          "optical amplifiers are not usable, so loss sets the range"
+        ]
+      },
+      {
+        "name": "Detectors",
+        "role": "register individual photons at the far end.",
+        "parts": [
+          "single-photon avalanche diodes, cooled",
+          "or superconducting nanowire detectors for higher efficiency and lower noise"
+        ]
+      },
+      {
+        "name": "Classical post-processing",
+        "role": "turns noisy raw detections into a short, secret key.",
+        "parts": [
+          "sifting",
+          "error correction",
+          "privacy amplification",
+          "authenticated classical channel"
+        ]
+      },
+      {
+        "name": "Key management layer",
+        "role": "stores fresh keys and hands them to encryptors and applications on demand.",
+        "parts": [
+          "key store",
+          "key-delivery API",
+          "encryptor integration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate the photons",
+        "detail": "A laser is pulsed and attenuated until a pulse almost never contains more than one photon, so an eavesdropper cannot split off a copy."
+      },
+      {
+        "title": "Encode each bit",
+        "detail": "A quantum random-number generator picks a bit value (0 or 1) and a basis; a modulator sets the photon's polarisation, phase or time-bin accordingly."
+      },
+      {
+        "title": "Transmit along the channel",
+        "detail": "Photons travel through fibre or free space. Because the no-cloning theorem forbids copying an unknown quantum state, any interception leaves detectable disturbance."
+      },
+      {
+        "title": "Detect and record",
+        "detail": "The receiver independently picks a basis for each arriving photon and measures it, logging both the outcome and the basis used."
+      },
+      {
+        "title": "Sift the raw key",
+        "detail": "Over an ordinary authenticated channel the two sides compare which bases they used and keep only the cases where they matched."
+      },
+      {
+        "title": "Correct errors and bound eavesdropping",
+        "detail": "They estimate the error rate from a sample of bits; a rate above roughly 11% for standard BB84 means too much was intercepted and the key is discarded."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "Hashing compresses the remaining bits so that any partial information an eavesdropper holds becomes negligible, yielding a shorter secret key."
+      },
+      {
+        "title": "Deliver keys to the encryptors",
+        "detail": "The key manager supplies keys to one-time-pad or AES encryptors; because the classical channel is only computationally authenticated, it is typically hardened with post-quantum algorithms too."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detection",
+        "status": "exists",
+        "why": "without efficient, low-noise detectors the key rate collapses and the range shrinks."
+      },
+      {
+        "tech": "Low-loss telecom fibre and optics",
+        "status": "exists",
+        "why": "fibre loss caps practical links at roughly a few hundred kilometres without relays."
+      },
+      {
+        "tech": "Information-theoretically secure authentication",
+        "status": "exists",
+        "why": "QKD itself provides no authentication, so an unauthenticated classical channel can be impersonated."
+      },
+      {
+        "tech": "Quantum repeaters and quantum memories",
+        "status": "missing",
+        "why": "these would extend range beyond fibre loss limits and remove the need for trusted relay nodes."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "partial",
+        "why": "standardised in 2024 and being deployed; it is the software-only alternative that protects data against future quantum computers without special hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro QKD links and trusted-node networks in operation, including a long intercity trunk line in China and testbeds in Europe",
+        "unlocks": "proof that key distribution works over installed fibre, though at limited distance and cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite QKD and intercontinental key exchange",
+        "unlocks": "key distribution between distant ground stations where no fibre exists."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters with memories",
+        "unlocks": "longer links without trusting intermediate nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "device-independent and measurement-device-independent protocols",
+        "unlocks": "security that does not rely on trusting the hardware itself."
+      }
+    ]
+  }
+}

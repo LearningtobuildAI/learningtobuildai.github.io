@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Catoms (unit modules)",
+        "role": "the repeating cell; each is a tiny robot that must sense, compute, latch and move relative to its neighbours.",
+        "parts": [
+          "microcontroller or logic chip",
+          "neighbour-to-neighbour data link",
+          "actuator",
+          "latch",
+          "power contacts"
+        ]
+      },
+      {
+        "name": "Latching and connection",
+        "role": "hold modules rigidly enough to carry structural load, then release to reconfigure.",
+        "parts": [
+          "electropermanent magnets or electrostatic plates",
+          "mechanical alignment pins",
+          "separation mechanism"
+        ]
+      },
+      {
+        "name": "Power distribution",
+        "role": "get energy to every module, including ones buried inside a shape with no external connection.",
+        "parts": [
+          "power bus contacts between neighbours",
+          "local supercapacitors or thin-film cells",
+          "inductive coupling surfaces"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "move one module past another — the hardest part, because micron-scale actuators are weak.",
+        "parts": [
+          "electrostatic inchworm drives",
+          "micro-motors or shape-memory elements",
+          "guide rails and bearing surfaces"
+        ]
+      },
+      {
+        "name": "Localisation and sensing",
+        "role": "each module must know where it is and how it sits relative to its neighbours.",
+        "parts": [
+          "capacitive or optical neighbour sensors",
+          "internal position feedback",
+          "external reference signals"
+        ]
+      },
+      {
+        "name": "Control software",
+        "role": "translate a commanded global shape into moves that individual modules can carry out locally.",
+        "parts": [
+          "distributed shape algorithms",
+          "simulator",
+          "fault handling for dead modules"
+        ]
+      },
+      {
+        "name": "Fabrication and handling",
+        "role": "make millions of identical modules cheaply and test them.",
+        "parts": [
+          "semiconductor or MEMS process line",
+          "micro-assembly and packaging",
+          "automated test rigs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the unit cell",
+        "detail": "choose a module size (typically quoted between about 1 mm and 1 cm) and split that volume between power, logic, actuation and latch; every increase in size cubes the number of modules a given volume needs."
+      },
+      {
+        "title": "Fabricate the modules",
+        "detail": "the logic and sensors would be made with standard silicon lithography, while actuators, latches and contacts are added by MEMS processes such as deep etching, electroplating and wafer bonding, then diced into individual catoms."
+      },
+      {
+        "title": "Make the faces",
+        "detail": "each cube face carries conductive pads for power and data plus the latch surfaces; electrical contact must survive thousands of make-and-break cycles in a dusty, humid environment."
+      },
+      {
+        "title": "Solve actuation",
+        "detail": "modules move by electrostatic or magnetic inchworm steps: surfaces are clamped in sequence so the module walks across its neighbour. Lab demonstrations at centimetre scale have done this with magnetic latching; shrinking to millimetres is unresolved."
+      },
+      {
+        "title": "Add local intelligence",
+        "detail": "each module runs a small program that reads neighbour states and follows simple local rules, since no central controller can address millions of units in real time."
+      },
+      {
+        "title": "Write the shape compiler",
+        "detail": "software converts a target 3D shape into sequences of module moves, then simulates whether the moves are physically possible without collisions."
+      },
+      {
+        "title": "Build a first lattice",
+        "detail": "start with a few hundred centimetre-scale modules making and breaking simple shapes, then scale down module size and up module count."
+      },
+      {
+        "title": "Scale and self-repair",
+        "detail": "a functioning material needs enough surplus modules that broken ones can be replaced by neighbours shuffling through the structure; this redundancy, not the modules themselves, sets the achievable reliability."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Micro-scale actuators with useful force density",
+        "status": "missing",
+        "why": "electrostatic forces scale badly at small sizes and micro-motors are hard to make with the torque and lifetime needed to move a module carrying its own power and logic."
+      },
+      {
+        "tech": "Power delivery through a reconfigurable body",
+        "status": "missing",
+        "why": "contact pads between modules wear and oxidise, and there is no way to wire a shape that is constantly changing."
+      },
+      {
+        "tech": "Millions-off micro-fabrication at low unit cost",
+        "status": "partial",
+        "why": "semiconductor lines produce billions of transistors cheaply, but complete micro-robots combining logic, power storage and moving parts are far more complex to package and test."
+      },
+      {
+        "tech": "Distributed shape-control algorithms",
+        "status": "partial",
+        "why": "simulated and small-robot demonstrations exist; guaranteeing a target shape emerges from local rules with faulty, lost or jammed modules is unsolved."
+      },
+      {
+        "tech": "High-voltage or high-current drive on chip",
+        "status": "partial",
+        "why": "electrostatic actuation needs hundreds of volts and magnetic latching needs current pulses, both awkward to generate and switch at micron scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "2D and small 3D self-reconfiguring modular robots at centimetre scale in university laboratories",
+        "unlocks": "techniques for latching, neighbour sensing and shape algorithms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "centimetre-scale 3D modules with integrated power and computation, in lattices of hundreds",
+        "unlocks": "demonstrations of a solid object changing shape under software control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "millimetre-scale modules made in quantity, self-assembling into thousands-unit blocks",
+        "unlocks": "material thin and fine enough to be useful rather than a sculpture."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "structures of millions of modules with self-repair and structural load-bearing",
+        "unlocks": "walls, furniture and tools that reconfigure on command — speculative, and gated entirely on the actuator and power problems above."
+      }
+    ]
+  }
+}

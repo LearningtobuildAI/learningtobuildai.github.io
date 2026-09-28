@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Microphone array",
+        "role": "captures speech from all directions while rejecting background noise.",
+        "parts": [
+          "MEMS microphones",
+          "acoustic mesh",
+          "beamforming DSP"
+        ]
+      },
+      {
+        "name": "On-device processing",
+        "role": "detects wake words, compresses audio and manages power.",
+        "parts": [
+          "low-power system-on-chip",
+          "wake-word engine",
+          "audio codec"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "links the pendant to a phone or directly to the internet.",
+        "parts": [
+          "Bluetooth Low Energy",
+          "Wi-Fi",
+          "optional cellular modem"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeps the device running through a day of intermittent use.",
+        "parts": [
+          "lithium-polymer battery",
+          "charging case",
+          "power management IC"
+        ]
+      },
+      {
+        "name": "Cloud AI pipeline",
+        "role": "turns speech into summaries, reminders and translations.",
+        "parts": [
+          "speech-to-text",
+          "large language model",
+          "text-to-speech"
+        ]
+      },
+      {
+        "name": "Privacy and security",
+        "role": "protects recordings and gives the user control over when audio is captured.",
+        "parts": [
+          "encryption",
+          "hardware mute switch",
+          "recording indicator LED"
+        ]
+      },
+      {
+        "name": "Enclosure",
+        "role": "makes the device wearable and discreet.",
+        "parts": [
+          "plastic or metal housing",
+          "clip or lanyard",
+          "magnets"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the acoustic front end",
+        "detail": "Choose MEMS microphones and place them in an array to form beams that favour the wearer's voice and suppress ambient noise."
+      },
+      {
+        "title": "Develop always-on firmware",
+        "detail": "Implement low-power wake-word detection and circular audio buffering on a microcontroller so the device listens without draining the battery."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "Lay out and assemble the printed circuit board with the system-on-chip, memory, radios and battery management, then test each unit."
+      },
+      {
+        "title": "Create the cloud pipeline",
+        "detail": "Stream audio to a speech-to-text service, pass the transcript to a large language model for summarisation and question answering, and store results securely."
+      },
+      {
+        "title": "Write the companion app",
+        "detail": "Pair over Bluetooth, let the user manage settings, and display transcripts, summaries and reminders."
+      },
+      {
+        "title": "Manufacture and assemble",
+        "detail": "Injection-mould enclosures, solder components, fit the battery and microphone mesh, and seal the unit."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Measure microphone sensitivity, battery life and wireless range in an anechoic chamber and in real environments, then update firmware."
+      },
+      {
+        "title": "Deploy and iterate",
+        "detail": "Ship the product, gather usage data with consent, and push over-the-air updates to improve accuracy and add features."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "MEMS microphones",
+        "status": "exists",
+        "why": "provide high-fidelity, small and low-power audio capture."
+      },
+      {
+        "tech": "Low-power always-on audio processing",
+        "status": "exists",
+        "why": "enables all-day listening without a large battery."
+      },
+      {
+        "tech": "Cloud large language models",
+        "status": "exists",
+        "why": "power summarisation, translation and conversational responses."
+      },
+      {
+        "tech": "Speech-to-text",
+        "status": "exists",
+        "why": "converts captured audio into text the language model can use."
+      },
+      {
+        "tech": "Bluetooth and Wi-Fi",
+        "status": "exists",
+        "why": "connect the pendant to a phone or directly to cloud services."
+      },
+      {
+        "tech": "Privacy-preserving on-device processing",
+        "status": "partial",
+        "why": "reduces cloud reliance and protects sensitive audio, but is still limited by battery and compute."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "basic capture and cloud summarisation",
+        "unlocks": "hands-free notes, reminders and translations for early adopters."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device language models for offline summaries and stronger privacy",
+        "unlocks": "reliable use without a constant internet connection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal input such as a small camera for context",
+        "unlocks": "richer understanding of meetings, objects and surroundings."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ambient computing woven into glasses and smart environments",
+        "unlocks": "seamless, always-available assistance without a visible device."
+      }
+    ]
+  }
+}

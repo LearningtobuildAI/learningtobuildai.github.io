@@ -33,5 +33,144 @@
         "def": "Equipment used to create specific sequences of DNA by adding nucleotides in the correct order."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Encoding and error correction",
+        "role": "maps binary data to DNA sequences and back, with redundancy to survive errors.",
+        "parts": [
+          "software codec",
+          "error-correcting codes",
+          "addressing scheme"
+        ]
+      },
+      {
+        "name": "DNA synthesis",
+        "role": "writes the sequences — the 'write head' of the system.",
+        "parts": [
+          "array-based chemical synthesis",
+          "enzymatic synthesis (emerging)",
+          "oligonucleotide pools"
+        ]
+      },
+      {
+        "name": "Storage medium and preservation",
+        "role": "keeps the DNA stable for decades to millennia.",
+        "parts": [
+          "dehydrated DNA",
+          "encapsulation (e.g. silica or polymer)",
+          "cold, dry storage"
+        ]
+      },
+      {
+        "name": "Random access and retrieval",
+        "role": "pulls a single file out of a mixed pool without reading everything.",
+        "parts": [
+          "PCR primers",
+          "polymerase chain reaction",
+          "microfluidic handling"
+        ]
+      },
+      {
+        "name": "Sequencing and readout",
+        "role": "reads the stored sequences back as digital signal.",
+        "parts": [
+          "high-throughput sequencers",
+          "base-calling software"
+        ]
+      },
+      {
+        "name": "Decoding and reconstruction",
+        "role": "corrects errors and rebuilds the original file.",
+        "parts": [
+          "decoder software",
+          "quality scoring",
+          "file assembly"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Encode the data",
+        "detail": "The file is converted into a string of A, C, G and T bases, with error-correcting codes and index sequences added so it can be found and repaired later."
+      },
+      {
+        "title": "Synthesise the DNA",
+        "detail": "Thousands to millions of short oligonucleotides are written in parallel on a chip or in a plate, usually by phosphoramidite chemistry, each carrying a fragment of the file."
+      },
+      {
+        "title": "Pool and package",
+        "detail": "The oligos are combined into one tube, dried, and often encapsulated in silica or a polymer to protect them from water, oxygen and heat."
+      },
+      {
+        "title": "Store",
+        "detail": "The encapsulated DNA is kept in a cool, dry, dark place — far less demanding than the climate-controlled rooms needed for tape or disk archives."
+      },
+      {
+        "title": "Retrieve a file",
+        "detail": "To read one file, primers matching its index are used in a polymerase chain reaction to amplify only that file's fragments out of the pool."
+      },
+      {
+        "title": "Sequence",
+        "detail": "The amplified DNA is fed into a high-throughput sequencer, which reads the order of bases."
+      },
+      {
+        "title": "Decode",
+        "detail": "Software corrects sequencing and synthesis errors and reassembles the original bits into the file."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost, high-throughput DNA synthesis",
+        "status": "partial",
+        "why": "writing DNA is far slower and more expensive per bit than writing to tape or disk; this is the main bottleneck."
+      },
+      {
+        "tech": "High-throughput DNA sequencing",
+        "status": "exists",
+        "why": "reading DNA is already fast and cheap enough for research demonstrations, though still costly for routine archives."
+      },
+      {
+        "tech": "Error-correcting codes for DNA",
+        "status": "exists",
+        "why": "synthesis and sequencing introduce errors, so robust coding schemes must exist to recover data reliably."
+      },
+      {
+        "tech": "Long-term preservation methods",
+        "status": "partial",
+        "why": "dehydrated and encapsulated DNA survives for long periods in the lab, but standardised, scalable packaging is not yet established."
+      },
+      {
+        "tech": "Automation and robotics",
+        "status": "exists",
+        "why": "a practical system needs robotic handling of thousands of samples without human error."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research demonstrations storing small files — images, text and short videos — in synthetic DNA",
+        "unlocks": "proof that encoding, storage and readout can work end-to-end."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dramatically cheaper and faster synthesis, driven by the broader DNA-synthesis industry",
+        "unlocks": "storing megabytes to gigabytes at a cost that begins to compete with long-term archival media."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot archival services for cold data — legal records, scientific archives, cultural material",
+        "unlocks": "real-world testing of retrieval times, reliability and preservation over years."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standardised, automated DNA storage facilities",
+        "unlocks": "routine use for data that must last centuries, where DNA's density and durability beat magnetic tape."
+      }
+    ]
   }
 }

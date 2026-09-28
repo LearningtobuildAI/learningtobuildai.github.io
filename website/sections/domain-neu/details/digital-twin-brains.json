@@ -1,0 +1,165 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Preservation and fixation",
+        "role": "freeze the brain's structure in place, down to synapses, before it decays.",
+        "parts": [
+          "perfusion with chemical fixative",
+          "cryoprotection and freezing",
+          "heavy-metal staining (osmium) for electron contrast",
+          "resin embedding"
+        ]
+      },
+      {
+        "name": "Sectioning",
+        "role": "slice the roughly 1.3 litre organ into millions of ultrathin sections thin enough to image.",
+        "parts": [
+          "ultramicrotome or automated tape-collecting lathe",
+          "diamond knife",
+          "section handling and mounting"
+        ]
+      },
+      {
+        "name": "Volume imaging",
+        "role": "capture every synapse at nanometre resolution.",
+        "parts": [
+          "multi-beam scanning electron microscope",
+          "throughput automation",
+          "petascale storage"
+        ]
+      },
+      {
+        "name": "Image reconstruction",
+        "role": "turn millions of separate images into one 3D volume.",
+        "parts": [
+          "slice alignment",
+          "machine-learning segmentation of neurons and synapses",
+          "human proofreading"
+        ]
+      },
+      {
+        "name": "Connectome graph",
+        "role": "the wiring diagram plus the weight of every connection.",
+        "parts": [
+          "neuron skeletons",
+          "synapse list with size and type",
+          "cell-type classification"
+        ]
+      },
+      {
+        "name": "Dynamical model",
+        "role": "give the graph physiology so it behaves like the original brain.",
+        "parts": [
+          "compartmental neuron models",
+          "ion-channel and membrane parameters",
+          "inhibitory/excitatory and neuromodulator mapping",
+          "simulation engine"
+        ]
+      },
+      {
+        "name": "Compute substrate",
+        "role": "run roughly 86 billion neurons and 100 trillion synapses fast enough to be useful.",
+        "parts": [
+          "exascale-class supercomputer or specialised hardware",
+          "real-time scheduling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Obtain and fix the brain",
+        "detail": "Within minutes of death the tissue must be perfused with fixative so synaptic structure does not degrade. This applies to any animal brain; for a specific human it also needs a lawful, consented route."
+      },
+      {
+        "title": "Stain and embed",
+        "detail": "Heavy-metal stains are infused to give membranes electron contrast, then water is replaced and the tissue cast in hard resin so it can be cut."
+      },
+      {
+        "title": "Cut into ultrathin sections",
+        "detail": "A diamond knife shaves the block into sections tens of nanometres thick — millions of them for a whole human brain — collected on tape or wafers."
+      },
+      {
+        "title": "Image the sections",
+        "detail": "Each section is scanned in a multi-beam electron microscope at a few nanometres per pixel, producing a 2D image stack. Data volume for a whole human brain would exceed any existing data infrastructure by many orders of magnitude."
+      },
+      {
+        "title": "Align and segment",
+        "detail": "The images are registered into one volume, then machine-learning models trace every neurite and mark every synapse, with people checking the errors."
+      },
+      {
+        "title": "Build the connectome graph",
+        "detail": "Neurons become nodes, synapses become weighted edges, and cells are sorted into types by shape, targets and molecular markers where those are known."
+      },
+      {
+        "title": "Assign physiology",
+        "detail": "Each cell type is given a realistic model with the right membrane properties, and synapses are assigned strengths — most of which cannot be read from anatomy alone."
+      },
+      {
+        "title": "Calibrate against real activity",
+        "detail": "The model is run and its output compared with recorded brain activity. At whole-human scale no ground truth exists, so this step is currently impossible."
+      },
+      {
+        "title": "Run and use the twin",
+        "detail": "If it works, the twin executes on a large computer and can be probed for experiments. A full human brain in real time is far beyond today's fastest machines."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Synaptic-resolution imaging of whole brains",
+        "status": "missing",
+        "why": "complete connectomes exist only for small animals; a whole human brain is roughly six orders of magnitude larger in volume than the largest published datasets."
+      },
+      {
+        "tech": "Preservation that survives the scanning pipeline",
+        "status": "partial",
+        "why": "fixed and plastic-embedded tissue can be imaged, but keeping a whole human brain intact through millions of sections is unsolved."
+      },
+      {
+        "tech": "Automated segmentation",
+        "status": "partial",
+        "why": "machine learning can trace neurons in fly and mouse data, but human-scale proofreading cost remains prohibitive."
+      },
+      {
+        "tech": "Neuron models with correct dynamics",
+        "status": "partial",
+        "why": "anatomy gives wiring, not the strengths, time constants and neuromodulation that decide what a circuit actually computes."
+      },
+      {
+        "tech": "Exascale simulation compute",
+        "status": "missing",
+        "why": "simulating 86 billion neurons and 100 trillion synapses at millisecond resolution in real time is far beyond demonstrated capability."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "complete wiring diagrams for small nervous systems, such as the 302-neuron nematode (1986) and the adult fruit fly brain (2024)",
+        "unlocks": "methods for stitching and segmenting large connectomes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole mouse brain at synaptic resolution, plus macroscale human maps from diffusion MRI such as the Human Connectome Project",
+        "unlocks": "a bridge between wiring and measured brain activity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "human cortical tissue blocks imaged and modelled functionally",
+        "unlocks": "validation of whether structure alone predicts dynamics in human tissue."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "whole human connectome, requiring a step change in sectioning, imaging, storage and analysis",
+        "unlocks": "a static digital replica — still not a working mind."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "validated whole-brain emulation running in real time",
+        "unlocks": "in-silico drug and disease testing. Treat 'consciousness backup' as philosophy, not engineering: a faithful copy would be a separate entity, not a continuation of the original person."
+      }
+    ]
+  }
+}

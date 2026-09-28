@@ -29,5 +29,164 @@
         "def": "A fundamental concept in quantum mechanics stating that certain pairs of physical properties, like position and momentum, cannot both be precisely measured at the same time. This principle is exploited to ensure security in QKD."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Transmitter",
+        "role": "prepares each bit as a faint laser pulse whose quantum state encodes 0 or 1.",
+        "parts": [
+          "tuneable laser at telecom wavelength (about 1550 nm on fibre)",
+          "intensity modulator and attenuator down to single-photon level",
+          "quantum random number generator",
+          "phase or polarisation encoder"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries the photons without allowing them to be copied undetected.",
+        "parts": [
+          "low-loss optical fibre, or a free-space/satellite link",
+          "optical amplifiers are avoided because they would copy the state"
+        ]
+      },
+      {
+        "name": "Receiver",
+        "role": "measures each photon in a randomly chosen basis.",
+        "parts": [
+          "single-photon avalanche diodes, or superconducting nanowire detectors needing cryogenic cooling",
+          "random basis selector",
+          "timing electronics"
+        ]
+      },
+      {
+        "name": "Classical channel and authentication",
+        "role": "lets both ends compare notes publicly without leaking the key.",
+        "parts": [
+          "authenticated network link",
+          "pre-shared secret for the first handshake"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns raw detections into a short, secret key.",
+        "parts": [
+          "sifting software",
+          "error-correction codes",
+          "privacy amplification (hashing)",
+          "quantum bit error rate monitor"
+        ]
+      },
+      {
+        "name": "Key management and integration",
+        "role": "delivers keys to the encryptors that actually protect traffic.",
+        "parts": [
+          "key store",
+          "key-delivery API",
+          "one-time-pad or AES key-refresh encryptors",
+          "trusted-node relays for longer routes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate raw bits",
+        "detail": "A quantum random number generator produces the bit values and the measurement bases."
+      },
+      {
+        "title": "Encode and attenuate",
+        "detail": "Each bit is written onto a laser pulse, then dimmed until pulses average less than one photon — in the BB84 scheme, four states in two incompatible bases."
+      },
+      {
+        "title": "Transmit",
+        "detail": "Pulses travel through fibre as light, or through free space to a satellite, losing photons with distance."
+      },
+      {
+        "title": "Detect",
+        "detail": "The receiver picks a random basis for each pulse; a click only counts when its basis matches the sender's."
+      },
+      {
+        "title": "Sift",
+        "detail": "Over the ordinary network, the two sides announce which bases they used and keep only the coincidences."
+      },
+      {
+        "title": "Estimate the eavesdropper",
+        "detail": "They measure the error rate. An intercepting attack raises errors, so a high rate means abort — this is the detection, not prevention, mechanism."
+      },
+      {
+        "title": "Correct and compress",
+        "detail": "Error correction reconciles the two strings; privacy amplification hashes them into a shorter key about which an eavesdropper knows almost nothing."
+      },
+      {
+        "title": "Authenticate",
+        "detail": "The classical messages must be authenticated, which requires a pre-shared secret — a bootstrapping weakness, not a quantum one."
+      },
+      {
+        "title": "Feed the encryptors",
+        "detail": "Keys are stored and handed to one-time-pad or AES equipment, or relayed node by node across a network."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon sources and detectors",
+        "status": "exists",
+        "why": "the whole scheme depends on counting individual photons; the best detectors need cryogenic cooling."
+      },
+      {
+        "tech": "Low-loss fibre or free-space optical links",
+        "status": "exists",
+        "why": "photons cannot be amplified or copied, so distance is limited by loss alone."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "without them, links beyond roughly a few hundred kilometres of fibre need 'trusted nodes' that hold the key in the clear."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "partial",
+        "why": "QKD cannot authenticate itself; it needs a pre-shared secret or public-key signatures to start."
+      },
+      {
+        "tech": "Standards and certification",
+        "status": "partial",
+        "why": "industry specifications and security evaluations exist but are still maturing, and real systems have been broken by implementation flaws such as detector blinding."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "exists",
+        "why": "not a prerequisite, but a competing answer: software-only algorithms that resist quantum computers and need no new hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro and inter-city QKD links and national fibre backbones, plus financial-sector trials",
+        "unlocks": "point-to-point key distribution between fixed sites at modest key rates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale transmitters and receivers with trusted-node networks joining many cities",
+        "unlocks": "lower cost and wider coverage, still with trusted relays at each node."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite key distribution for intercontinental links",
+        "unlocks": "key exchange where no fibre exists, limited by weather and pass times."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and entanglement distribution, eventually device-independent protocols",
+        "unlocks": "genuinely long-range, relay-free security — the point at which the 'unbreakable' claim would hold broadly."
+      },
+      {
+        "stage": "Alongside",
+        "milestone": "hybrid deployment with post-quantum cryptography",
+        "unlocks": "protection against future quantum computers for the many cases where new fibre and hardware are impractical."
+      }
+    ]
   }
 }

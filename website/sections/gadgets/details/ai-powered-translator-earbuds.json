@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Microphone array",
+        "role": "captures the wearer's voice and nearby speakers while rejecting noise.",
+        "parts": [
+          "MEMS microphones",
+          "beamforming DSP",
+          "voice activity detector"
+        ]
+      },
+      {
+        "name": "Speech recognition engine",
+        "role": "turns streaming audio into text in real time.",
+        "parts": [
+          "acoustic model",
+          "language model",
+          "punctuation and formatting module"
+        ]
+      },
+      {
+        "name": "Translation engine",
+        "role": "converts text from one language to another with context.",
+        "parts": [
+          "neural machine translation model",
+          "large language model for context",
+          "glossary and domain adaptation"
+        ]
+      },
+      {
+        "name": "Speech synthesis engine",
+        "role": "speaks the translated text back in a natural voice.",
+        "parts": [
+          "neural text-to-speech model",
+          "neural vocoder",
+          "prosody controller"
+        ]
+      },
+      {
+        "name": "Wireless and compute link",
+        "role": "sends audio to a phone or cloud and returns translated speech fast enough to feel live.",
+        "parts": [
+          "Bluetooth radio",
+          "low-latency audio codec",
+          "on-device system-on-chip or cloud inference"
+        ]
+      },
+      {
+        "name": "Power and audio output",
+        "role": "runs the earbuds for hours and plays the translation into the ear.",
+        "parts": [
+          "battery",
+          "speaker driver",
+          "charging case"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the acoustics",
+        "detail": "Place microphones to pick up the wearer's voice and outside speech, then tune the earbud fit and seal to reduce noise."
+      },
+      {
+        "title": "Collect and clean speech data",
+        "detail": "Gather multilingual audio with many accents, background noises and speaking styles, then label and transcribe it."
+      },
+      {
+        "title": "Train the speech recogniser",
+        "detail": "Train acoustic and language models to convert streaming audio into accurate text with low latency."
+      },
+      {
+        "title": "Train the translation model",
+        "detail": "Train on large parallel text and speech corpora so the system handles idioms, names and incomplete sentences."
+      },
+      {
+        "title": "Train the voice synthesiser",
+        "detail": "Train neural text-to-speech models to produce natural, intelligible speech in the target language."
+      },
+      {
+        "title": "Integrate the pipeline",
+        "detail": "Chain recognition, translation and synthesis so audio flows continuously instead of waiting for whole sentences."
+      },
+      {
+        "title": "Optimise for latency and power",
+        "detail": "Use streaming inference, model compression and on-device chips to cut delay and battery drain."
+      },
+      {
+        "title": "Test in real conversations",
+        "detail": "Run field tests with noisy streets, group discussions and many language pairs, then fix failure cases."
+      },
+      {
+        "title": "Manufacture and assemble",
+        "detail": "Build the earbuds, flash the models, calibrate microphones and pair them with a phone app."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Automatic speech recognition",
+        "status": "exists",
+        "why": "converts spoken audio to text, but accuracy drops in noise and with heavy accents."
+      },
+      {
+        "tech": "Neural machine translation",
+        "status": "exists",
+        "why": "translates text between languages, though low-resource languages and casual speech remain harder."
+      },
+      {
+        "tech": "Neural text-to-speech",
+        "status": "exists",
+        "why": "generates natural-sounding speech, but must run fast enough to feel conversational."
+      },
+      {
+        "tech": "Low-latency wireless audio",
+        "status": "partial",
+        "why": "Bluetooth links add delay; newer low-latency modes help but are not universal."
+      },
+      {
+        "tech": "Efficient on-device neural compute",
+        "status": "partial",
+        "why": "running large speech and translation models locally needs chips that are still improving."
+      },
+      {
+        "tech": "Multilingual speech and text datasets",
+        "status": "exists",
+        "why": "training good models requires large, diverse, legally usable corpora."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "push-to-talk or one-way translation in earbuds",
+        "unlocks": "basic travel and simple conversation help."
+      },
+      {
+        "stage": "Next",
+        "milestone": "near-real-time duplex translation with automatic turn-taking",
+        "unlocks": "smoother back-and-forth conversation without pressing buttons."
+      },
+      {
+        "stage": "Next",
+        "milestone": "simultaneous interpretation that separates and translates multiple speakers",
+        "unlocks": "meetings and group settings where several languages are spoken."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "offline, low-power translation across many languages on the earbud itself",
+        "unlocks": "private, reliable use anywhere without a phone or network."
+      }
+    ]
+  }
+}

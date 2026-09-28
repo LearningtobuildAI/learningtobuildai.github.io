@@ -33,5 +33,153 @@
         "def": "The process of identifying unusual patterns in data that do not conform to expected behavior, often used for fraud detection."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data ingestion layer",
+        "role": "pulls ledger, bank and payment data into one canonical model.",
+        "parts": [
+          "APIs and file connectors",
+          "schema mapping",
+          "currency and FX normalisation"
+        ]
+      },
+      {
+        "name": "Rule engine",
+        "role": "applies deterministic accounting logic to match entries and flag breaks.",
+        "parts": [
+          "matching rules",
+          "tolerance thresholds",
+          "exception queues"
+        ]
+      },
+      {
+        "name": "Anomaly detection models",
+        "role": "learns normal transaction patterns and scores outliers.",
+        "parts": [
+          "feature pipeline",
+          "clustering or autoencoder models",
+          "risk scoring"
+        ]
+      },
+      {
+        "name": "Reconciliation engine",
+        "role": "matches transactions across accounts and resolves many-to-many links.",
+        "parts": [
+          "matching algorithms",
+          "auto-clearing logic",
+          "audit trail"
+        ]
+      },
+      {
+        "name": "Workflow and controls",
+        "role": "routes unresolved items and enforces segregation of duties.",
+        "parts": [
+          "case management",
+          "approvals and escalation",
+          "access controls"
+        ]
+      },
+      {
+        "name": "Reporting and audit log",
+        "role": "produces immutable records for finance, tax and regulators.",
+        "parts": [
+          "event log",
+          "dashboards",
+          "compliance exports"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the accounting model",
+        "detail": "Define the chart of accounts, legal entities, currencies and intercompany relationships that the system must reconcile."
+      },
+      {
+        "title": "Build data connectors",
+        "detail": "Extract entries from ERP general ledgers, bank feeds and payment processors, then normalise them into a common format."
+      },
+      {
+        "title": "Encode deterministic rules",
+        "detail": "Write rules for duplicate detection, timing differences, FX translation and tolerance thresholds, based on accounting policy."
+      },
+      {
+        "title": "Train anomaly models",
+        "detail": "Use historical reconciled data to learn normal patterns, so the model can flag unusual amounts, dates or counterparties."
+      },
+      {
+        "title": "Combine rules and ML",
+        "detail": "Run deterministic matches first, then use model scores to rank remaining exceptions and set auto-clear versus review thresholds."
+      },
+      {
+        "title": "Build audit trail and explainability",
+        "detail": "Log every decision, version every rule, and make model outputs explainable so auditors can trace why an item cleared or was flagged."
+      },
+      {
+        "title": "Replay historical periods",
+        "detail": "Test against past closed periods to measure false positives, false negatives and any missed reconciliations before go-live."
+      },
+      {
+        "title": "Deploy in shadow mode",
+        "detail": "Run alongside manual reconciliation, compare results, and only then enable auto-resolution for low-risk, well-understood exceptions."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "Watch for data drift and new transaction types, retrain models, and update rules as accounting standards and regulations change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Structured double-entry ledger data",
+        "status": "exists",
+        "why": "automated reconciliation needs machine-readable debits, credits, dates and account codes."
+      },
+      {
+        "tech": "Banking and payment APIs",
+        "status": "exists",
+        "why": "real-time feeds let the system see cash movements without waiting for statements."
+      },
+      {
+        "tech": "Machine-learning anomaly detection",
+        "status": "exists",
+        "why": "it finds unusual patterns that fixed rules miss, especially in high-volume data."
+      },
+      {
+        "tech": "Explainable AI and model governance",
+        "status": "partial",
+        "why": "auditors and regulators need to understand why a transaction was flagged or cleared."
+      },
+      {
+        "tech": "Regulatory acceptance of automated audit",
+        "status": "partial",
+        "why": "full autonomy is limited where law or professional standards require human sign-off."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated reconciliation of high-volume, structured accounts",
+        "unlocks": "faster financial close and fewer manual matching errors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time continuous audit across multiple entities and currencies",
+        "unlocks": "instant detection of breaks and anomalies as they occur."
+      },
+      {
+        "stage": "Next",
+        "milestone": "predictive audit that anticipates misstatements before period end",
+        "unlocks": "preventive controls instead of after-the-fact correction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous audit for well-defined domains with human oversight on exceptions",
+        "unlocks": "lower cost and greater coverage, provided regulation and explainability mature."
+      }
+    ]
   }
 }

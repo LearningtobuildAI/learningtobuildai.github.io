@@ -30,5 +30,149 @@
         "def": "A digital record-keeping system that maintains a continuously updated chronological list of all financial transactions within an organization."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data ingestion layer",
+        "role": "pulls every transaction from accounting systems, banks and payment platforms in near real time.",
+        "parts": [
+          "API connectors",
+          "ETL/streaming pipelines",
+          "data lake or warehouse"
+        ]
+      },
+      {
+        "name": "Rules and controls engine",
+        "role": "encodes accounting standards and internal controls as machine-checkable rules.",
+        "parts": [
+          "rule repository",
+          "execution engine",
+          "version control"
+        ]
+      },
+      {
+        "name": "AI anomaly detection",
+        "role": "flags unusual patterns that static rules miss, such as subtle fraud or error.",
+        "parts": [
+          "feature engineering",
+          "ML models (e.g. clustering, autoencoders)",
+          "model registry"
+        ]
+      },
+      {
+        "name": "Regulatory mapping",
+        "role": "links each transaction to the specific regulation or standard it must satisfy.",
+        "parts": [
+          "compliance knowledge graph",
+          "natural language processing",
+          "ontology"
+        ]
+      },
+      {
+        "name": "Alerting and case management",
+        "role": "routes flags to human auditors and tracks investigation to resolution.",
+        "parts": [
+          "alert queue",
+          "workflow",
+          "immutable audit trail"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define audit scope and rules",
+        "detail": "Gather the relevant accounting standards and internal policies — for example revenue recognition under IFRS or controls under SOX — and write them down as explicit testable assertions."
+      },
+      {
+        "title": "Connect to financial systems",
+        "detail": "Build read-only connectors to ERP ledgers, bank feeds and payment gateways so every journal entry can be captured as it is posted."
+      },
+      {
+        "title": "Normalise transaction data",
+        "detail": "Map each source into a single transaction schema with consistent fields such as date, amount, account, counterparty and approval chain."
+      },
+      {
+        "title": "Encode controls as executable rules",
+        "detail": "Translate each assertion into a rule the engine can run automatically — for example, 'any payment above a threshold must have two approvers'."
+      },
+      {
+        "title": "Train anomaly detection models",
+        "detail": "Use historical transactions and known fraud or error cases to train models that assign an anomaly score to each new entry."
+      },
+      {
+        "title": "Build the real-time pipeline",
+        "detail": "Stream transactions through the rules and models within seconds, writing results to an audit log and alert queue."
+      },
+      {
+        "title": "Integrate with audit workflow",
+        "detail": "Connect alerts to the auditors' case management system so a human can review evidence, add notes and close the loop."
+      },
+      {
+        "title": "Validate and calibrate",
+        "detail": "Replay years of historical data to measure false positives and missed anomalies, then tune thresholds and retrain models."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Run the system continuously, monitor data quality and model drift, and update rules as regulations change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transaction-level data access via APIs",
+        "status": "exists",
+        "why": "without a complete, timely feed of every entry, continuous auditing is impossible."
+      },
+      {
+        "tech": "Real-time stream processing",
+        "status": "exists",
+        "why": "makes it feasible to check each transaction as it is posted rather than in a monthly batch."
+      },
+      {
+        "tech": "Machine learning for anomaly detection",
+        "status": "partial",
+        "why": "models work in pilots but need careful tuning and clean historical labels to be reliable in audit."
+      },
+      {
+        "tech": "Explainable AI",
+        "status": "partial",
+        "why": "auditors and regulators must understand why a transaction was flagged before they can act on it."
+      },
+      {
+        "tech": "Formal representation of regulations",
+        "status": "partial",
+        "why": "much of accounting and tax law is still interpreted by humans; turning it into machine rules is manual and incomplete."
+      },
+      {
+        "tech": "Tamper-evident audit logs",
+        "status": "exists",
+        "why": "the system's own findings and evidence must be trustworthy and admissible."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rule-based continuous monitoring inside major ERP systems",
+        "unlocks": "automated checks for segregation of duties and obvious policy violations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI anomaly detection piloted alongside internal audit teams",
+        "unlocks": "early warnings on unusual patterns that rules alone would miss."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated continuous audit with human review of every high-risk alert",
+        "unlocks": "audit findings produced in days instead of months, with a clear evidence trail."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous audit agents accepted by regulators for low-risk areas",
+        "unlocks": "near-real-time assurance at a fraction of the manual cost, freeing auditors for judgement-heavy work."
+      }
+    ]
   }
 }

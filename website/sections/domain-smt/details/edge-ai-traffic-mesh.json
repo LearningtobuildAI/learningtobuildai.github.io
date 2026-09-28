@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Roadside sensing unit",
+        "role": "captures real-time traffic at each intersection.",
+        "parts": [
+          "cameras",
+          "radar",
+          "lidar",
+          "mounting poles"
+        ]
+      },
+      {
+        "name": "Edge computing node",
+        "role": "runs AI models locally to avoid cloud latency.",
+        "parts": [
+          "GPU or TPU accelerator",
+          "memory and storage",
+          "rugged enclosure",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Communication mesh",
+        "role": "shares data between intersections and vehicles.",
+        "parts": [
+          "C-V2X or DSRC radios",
+          "fiber or wireless backhaul",
+          "mesh networking software"
+        ]
+      },
+      {
+        "name": "Signal control interface",
+        "role": "translates decisions into safe signal phases.",
+        "parts": [
+          "traffic signal controller",
+          "NTCIP interface",
+          "fail-safe logic"
+        ]
+      },
+      {
+        "name": "Distributed optimization engine",
+        "role": "coordinates timing across multiple intersections.",
+        "parts": [
+          "reinforcement learning or model predictive control",
+          "consensus protocols",
+          "fallback fixed-time plans"
+        ]
+      },
+      {
+        "name": "Power and infrastructure",
+        "role": "keeps nodes running reliably outdoors.",
+        "parts": [
+          "power supply",
+          "surge protection",
+          "battery backup"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Survey and instrument intersections",
+        "detail": "Install cameras, radar and edge computers on poles at selected crossings, with local power and network links."
+      },
+      {
+        "title": "Train perception models",
+        "detail": "Collect and label local video and sensor data, then train models to detect and track cars, bicycles and pedestrians."
+      },
+      {
+        "title": "Deploy edge inference",
+        "detail": "Optimize models to run in milliseconds on low-power edge hardware, testing under rain, glare and night conditions."
+      },
+      {
+        "title": "Establish mesh communication",
+        "detail": "Configure wireless mesh or fiber links between intersections, measuring latency and reliability over days of operation."
+      },
+      {
+        "title": "Implement distributed control",
+        "detail": "Develop algorithms that adjust green times and offsets based on local queues and data from neighbouring nodes, with a safe fallback to fixed-time plans."
+      },
+      {
+        "title": "Integrate with signal controllers",
+        "detail": "Use standard interfaces such as NTCIP to send phase commands to existing traffic signal controllers without replacing them."
+      },
+      {
+        "title": "Simulate and field-test",
+        "detail": "Validate the mesh in a traffic simulation, then pilot on a real corridor while measuring travel times, stops and emissions."
+      },
+      {
+        "title": "Evaluate and scale",
+        "detail": "Compare results against fixed-time and centrally controlled signals, then expand the mesh to more intersections if gains hold."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Edge AI hardware",
+        "status": "partial",
+        "why": "needs low-power, high-performance chips that survive heat, cold and vibration in roadside cabinets."
+      },
+      {
+        "tech": "Vehicle-to-everything (V2X) communication",
+        "status": "partial",
+        "why": "standards like C-V2X exist, but few vehicles on the road are equipped to talk to intersections."
+      },
+      {
+        "tech": "Real-time computer vision",
+        "status": "exists",
+        "why": "mature for detection and tracking, but still challenged by heavy rain, snow and low sun."
+      },
+      {
+        "tech": "Traffic signal controller interoperability",
+        "status": "partial",
+        "why": "many controllers use proprietary protocols, and standard interfaces like NTCIP are not universally adopted."
+      },
+      {
+        "tech": "Distributed control algorithms",
+        "status": "partial",
+        "why": "shown in simulation and small pilots, but large-scale field validation is still limited."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilots on single corridors with a handful of instrumented intersections",
+        "unlocks": "evidence that edge AI can cut delay and emissions compared with fixed-time signals."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-wide mesh coordinating hundreds of intersections",
+        "unlocks": "network-level flow optimisation and reduced stop-and-go traffic across districts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with connected and autonomous vehicles",
+        "unlocks": "cooperative driving where vehicles and signals negotiate safe, smooth crossings."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standardised, interoperable edge-AI traffic mesh deployed in many cities",
+        "unlocks": "safer, cleaner and more efficient urban mobility at scale."
+      }
+    ]
+  }
+}

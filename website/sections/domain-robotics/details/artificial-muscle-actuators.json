@@ -33,5 +33,140 @@
         "def": "Metals that can be deformed and then return to their original shape when heated above a certain temperature."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Active element",
+        "role": "the part that changes shape when energised.",
+        "parts": [
+          "stretched silicone or acrylic elastomer film",
+          "sealed liquid-dielectric pouch (HASEL type)",
+          "or braided pneumatic tube (McKibben type)"
+        ]
+      },
+      {
+        "name": "Compliant electrodes",
+        "role": "carry charge across a soft surface without stiffening it.",
+        "parts": [
+          "carbon-loaded silicone or grease",
+          "conductive hydrogel",
+          "stretchable wiring"
+        ]
+      },
+      {
+        "name": "Structure and transmission",
+        "role": "turns the material's strain into useful pull or push at a defined stroke.",
+        "parts": [
+          "rigid end caps and frames",
+          "tendons or braided mesh",
+          "layered stacks that multiply force"
+        ]
+      },
+      {
+        "name": "Drive electronics",
+        "role": "supply the kilovolts these actuators need, efficiently and safely.",
+        "parts": [
+          "high-voltage converter",
+          "charge-recovery circuit",
+          "current limiting and isolation"
+        ]
+      },
+      {
+        "name": "Sensing and control",
+        "role": "knows how far the muscle has contracted and commands it precisely.",
+        "parts": [
+          "capacitive self-sensing from the actuator itself",
+          "strain or force sensors",
+          "closed-loop controller"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formulate the elastomer",
+        "detail": "Silicone or acrylic resin is mixed and cast or calendered into films tens to hundreds of micrometres thick; pinholes or thickness variation cause electrical breakdown later."
+      },
+      {
+        "title": "Prestretch and mount the film",
+        "detail": "The film is stretched biaxially over a frame and fixed in place, because prestretch raises breakdown strength and improves how much it can deform."
+      },
+      {
+        "title": "Build the active element",
+        "detail": "For a HASEL actuator, two films are heat-sealed around the edges and filled with a liquid dielectric; for a plain dielectric elastomer, compliant electrodes are applied to both faces of the stretched film."
+      },
+      {
+        "title": "Apply compliant electrodes",
+        "detail": "Carbon-loaded silicone or conductive grease is sprayed or stencilled on, keeping the electrode soft enough to follow the film as it moves."
+      },
+      {
+        "title": "Stack or roll into a usable geometry",
+        "detail": "Layers are stacked and wired in parallel to add force, or a tube is sheathed in a braided mesh so internal pressure becomes contraction along the axis."
+      },
+      {
+        "title": "Fit end caps and tendons",
+        "detail": "Rigid fittings and load-bearing tendons are bonded on so the strain can drive a gripper, joint or exosuit."
+      },
+      {
+        "title": "Add drive and control electronics",
+        "detail": "A converter steps low voltage up to the kilovolt range, with charge recovery to cut losses and capacitance readout for position feedback."
+      },
+      {
+        "title": "Cycle-test and package",
+        "detail": "Actuators are run through millions of contraction cycles to measure creep, fatigue and self-healing, then sealed against dust and moisture."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Elastomers with high breakdown strength and low creep",
+        "status": "partial",
+        "why": "the actuator's force and lifetime are limited by how much voltage the film survives and how little it drifts under load."
+      },
+      {
+        "tech": "Miniature, efficient high-voltage electronics",
+        "status": "partial",
+        "why": "kilovolt drive circuits exist on the bench, but small, light and low-loss versions are still the bottleneck for wearable and mobile use."
+      },
+      {
+        "tech": "Stretchable conductors and electrodes",
+        "status": "partial",
+        "why": "metal wiring cracks after a few percent strain, so soft conducting materials must take over the electrical connections."
+      },
+      {
+        "tech": "Soft sensors and model-based control",
+        "status": "partial",
+        "why": "these actuators are strongly non-linear and slow to respond, so precision needs accurate models and feedback rather than simple position commands."
+      },
+      {
+        "tech": "Mass production of defect-free thin films",
+        "status": "missing",
+        "why": "lab batches are hand-made; a commercial muscle needs roll-to-roll film with almost no faults, since one pinhole destroys a layer."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab demonstrators such as HASEL pouches and dielectric elastomer grippers",
+        "unlocks": "proof that soft contraction can be electrically commanded."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable assistive devices and exosuits in clinical and workplace pilots",
+        "unlocks": "light, quiet augmentation of human movement without rigid frames."
+      },
+      {
+        "stage": "Next",
+        "milestone": "soft grippers handling delicate produce and packaging on production lines",
+        "unlocks": "automation tasks that rigid claws cannot do safely."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "muscle-like actuators in legged robots, prosthetics and haptics",
+        "unlocks": "machines that move with the compliance, silence and efficiency of animal muscle."
+      }
+    ]
   }
 }

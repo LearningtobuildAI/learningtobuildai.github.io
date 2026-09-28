@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Observation layer",
+        "role": "gathers the digital traces of work without interrupting it.",
+        "parts": [
+          "endpoint agents (window focus, app switches, screen frames)",
+          "SaaS API and webhook taps (tickets, chats, documents, code)",
+          "central event bus with timestamps and user IDs"
+        ]
+      },
+      {
+        "name": "Identity and permission mapping",
+        "role": "makes sure a reconstructed page is only visible to people who could see the source material.",
+        "parts": [
+          "directory/SSO sync",
+          "role and team graph",
+          "permission inheritance rules"
+        ]
+      },
+      {
+        "name": "Workflow reconstruction",
+        "role": "turns a messy event stream into repeatable procedures.",
+        "parts": [
+          "sessionisation and deduplication",
+          "process-mining / sequence modelling",
+          "variant clustering across people and teams"
+        ]
+      },
+      {
+        "name": "Knowledge synthesis",
+        "role": "writes and updates the wiki text itself.",
+        "parts": [
+          "long-context language model",
+          "entity and step extraction",
+          "retrieval-augmented generation over a vector index and knowledge graph",
+          "citation linker back to source events"
+        ]
+      },
+      {
+        "name": "Governance and privacy",
+        "role": "keeps observation lawful, bounded and auditable.",
+        "parts": [
+          "PII and secret detection/redaction",
+          "consent and scope registry",
+          "retention and deletion jobs",
+          "access and audit logs"
+        ]
+      },
+      {
+        "name": "Curation interface",
+        "role": "puts a human between machine drafts and the published page.",
+        "parts": [
+          "review queue and diff viewer",
+          "approve/reject and edit capture",
+          "drift and staleness alerts"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Connect the sources",
+        "detail": "Wire the enterprise directory, chat, ticketing, document and version-control systems into a single event stream, plus an endpoint agent for activity that never reaches a server."
+      },
+      {
+        "title": "Set consent, scope and redaction",
+        "detail": "Each team opts in per tool and per data type; rules strip personal data, credentials and anything outside the agreed scope before storage."
+      },
+      {
+        "title": "Capture low-level events",
+        "detail": "Record app focus changes, document and ticket IDs, command invocations and clipped screen regions, all time-stamped. Content is captured only where consent allows."
+      },
+      {
+        "title": "Sessionise and correlate",
+        "detail": "Group events into work sessions, then apply process-mining techniques to recover the order of steps and the tools involved."
+      },
+      {
+        "title": "Find stable procedures",
+        "detail": "Keep sequences that recur across people and weeks; discard one-off or low-confidence paths. Score each candidate with a confidence value."
+      },
+      {
+        "title": "Draft articles",
+        "detail": "A long-context model writes a step-by-step page from the winning sequence, grounding every claim in retrieved source events and emitting links to them."
+      },
+      {
+        "title": "Diff against the live wiki",
+        "detail": "Compare the draft with existing pages to detect stale steps, contradictions and gaps; propose edits rather than blind overwrites."
+      },
+      {
+        "title": "Review, publish, version",
+        "detail": "A domain expert edits and approves; the change is committed with authorship, provenance and a rollback path."
+      },
+      {
+        "title": "Watch for drift",
+        "detail": "Monitor the event stream for divergence from the published procedure and regenerate drafts, lowering confidence where evidence thins."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-context language models",
+        "status": "exists",
+        "why": "summarising hours of interleaved events into readable steps needs very large context windows."
+      },
+      {
+        "tech": "Retrieval-augmented generation and vector search",
+        "status": "exists",
+        "why": "keeps generated text anchored to real source records instead of plausible invention."
+      },
+      {
+        "tech": "Process mining and event-log analysis",
+        "status": "exists",
+        "why": "supplies the statistical backbone for inferring ordered workflows from raw logs."
+      },
+      {
+        "tech": "Permission-aware retrieval",
+        "status": "partial",
+        "why": "a wiki page built from several systems must inherit the strictest source permission, which few pipelines enforce today."
+      },
+      {
+        "tech": "Scalable on-device or private redaction",
+        "status": "partial",
+        "why": "detecting personal data before it leaves the endpoint is the difference between a useful tool and a compliance breach."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistants that draft pages from tickets, meeting notes and repositories",
+        "unlocks": "faster onboarding and less manual documentation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "per-team workflow capture with human review before every publish",
+        "unlocks": "runbooks that track the real process rather than the intended one."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-tool process graphs with inherited permissions and provenance",
+        "unlocks": "living documentation that doubles as audit evidence."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "knowledge bases that flag process friction, not just describe it",
+        "unlocks": "feedback from the record of work into how work is designed."
+      }
+    ]
+  }
+}

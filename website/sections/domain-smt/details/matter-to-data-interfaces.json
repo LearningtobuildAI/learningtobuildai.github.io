@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Field generator array",
+        "role": "creates the acoustic or magnetic field that holds and shapes the medium.",
+        "parts": [
+          "ultrasonic transducer grid (for acoustic levitation)",
+          "electromagnet coil array (for magnetic shaping)",
+          "drive electronics with phase and amplitude control"
+        ]
+      },
+      {
+        "name": "Responsive medium",
+        "role": "the material that temporarily takes the shape dictated by the field.",
+        "parts": [
+          "small lightweight particles (e.g. polystyrene beads)",
+          "ferrofluid droplets or films",
+          "optional binder or coating for cohesion"
+        ]
+      },
+      {
+        "name": "Computational engine",
+        "role": "converts a desired digital shape into the field pattern that produces it.",
+        "parts": [
+          "inverse solver for acoustic or magnetic fields",
+          "real-time optimisation code",
+          "shape database and interpolation"
+        ]
+      },
+      {
+        "name": "Interaction sensing",
+        "role": "tracks the user's hands or tools so the shape can respond and update.",
+        "parts": [
+          "depth cameras or capacitive sensors",
+          "force or proximity sensing",
+          "low-latency feedback loop"
+        ]
+      },
+      {
+        "name": "Containment and safety",
+        "role": "keeps the medium, sound or magnetic fields safely enclosed.",
+        "parts": [
+          "sealed chamber for particles or fluid",
+          "acoustic damping or magnetic shielding",
+          "filtration for airborne particles"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the medium and actuation principle",
+        "detail": "Decide between acoustic levitation of lightweight particles and magnetic shaping of ferrofluid, based on desired resolution, speed and safety."
+      },
+      {
+        "title": "Design the array",
+        "detail": "Arrange transducers or coils in a 2D or 3D grid, spacing them so their fields overlap to form a controllable trap or shape."
+      },
+      {
+        "title": "Build drive electronics",
+        "detail": "Create circuits that can set the phase and amplitude of each array element independently, at frequencies from tens of kilohertz (acoustic) to kilohertz (magnetic)."
+      },
+      {
+        "title": "Implement the inverse solver",
+        "detail": "Write software that takes a target shape and computes the field pattern needed to assemble the medium into that shape, using iterative optimisation."
+      },
+      {
+        "title": "Calibrate with static shapes",
+        "detail": "Test simple forms like lines, dots and surfaces, measuring how closely the medium follows the computed field."
+      },
+      {
+        "title": "Add real-time sensing and feedback",
+        "detail": "Integrate cameras or sensors to detect user touch, then update the field at least 30 times per second so the shape feels responsive."
+      },
+      {
+        "title": "Scale resolution and refresh rate",
+        "detail": "Increase array density, improve solver speed and reduce latency to allow finer, more dynamic shapes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Acoustic levitation",
+        "status": "exists",
+        "why": "standing ultrasonic waves can trap and move small particles in mid-air, demonstrated in laboratory setups."
+      },
+      {
+        "tech": "Ferrofluid manipulation",
+        "status": "exists",
+        "why": "magnetic fields can sculpt ferrofluid into spikes and blobs, but not yet into arbitrary high-resolution shapes."
+      },
+      {
+        "tech": "Programmable electromagnetic arrays",
+        "status": "exists",
+        "why": "grids of coils with independent control are used in magnetic levitation and haptics research."
+      },
+      {
+        "tech": "Real-time inverse field solvers",
+        "status": "partial",
+        "why": "computing the exact field to form a complex shape fast enough for interaction is still a research challenge."
+      },
+      {
+        "tech": "High-resolution tactile sensing",
+        "status": "partial",
+        "why": "detecting where and how a user touches a dynamic shape requires dense, low-latency sensing."
+      },
+      {
+        "tech": "Safe containment of particles or fluid",
+        "status": "missing",
+        "why": "keeping airborne particles or magnetic fluid fully enclosed while allowing open interaction is unsolved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations of levitated particles and ferrofluid shapes",
+        "unlocks": "proof that fields can assemble matter into simple temporary forms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interactive prototypes with centimetre-scale resolution and real-time response",
+        "unlocks": "tactile feedback for simple digital objects, like buttons or raised lines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with virtual and augmented reality headsets",
+        "unlocks": "feeling virtual objects without wearing gloves or holding controllers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose matter-to-data interfaces with millimetre resolution and fast refresh",
+        "unlocks": "physical telepresence, where remote data becomes touchable shapes in real time."
+      }
+    ]
+  }
+}

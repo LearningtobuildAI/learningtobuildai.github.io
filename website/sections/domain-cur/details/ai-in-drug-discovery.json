@@ -33,5 +33,150 @@
         "def": "The process by which a government agency evaluates new drugs for safety and efficacy before granting permission for their sale and distribution."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data layer",
+        "role": "collects and standardises the biological, chemical and clinical data that models learn from.",
+        "parts": [
+          "public protein structure and sequence databases",
+          "bioactivity and assay datasets",
+          "genomic and clinical records",
+          "cleaning and standardisation pipelines"
+        ]
+      },
+      {
+        "name": "Target discovery models",
+        "role": "identify and prioritise disease-causing proteins or pathways.",
+        "parts": [
+          "genomic analysis models",
+          "CRISPR screen analysis",
+          "knowledge graphs linking genes to disease"
+        ]
+      },
+      {
+        "name": "Structure and binding models",
+        "role": "predict the 3D shapes of targets and how candidate molecules bind to them.",
+        "parts": [
+          "protein structure prediction (AlphaFold-style)",
+          "molecular dynamics simulation",
+          "docking and scoring functions"
+        ]
+      },
+      {
+        "name": "Generative chemistry models",
+        "role": "propose novel molecules with desired properties.",
+        "parts": [
+          "variational autoencoders, GANs or diffusion models",
+          "reinforcement learning for optimisation",
+          "synthetic feasibility and novelty filters"
+        ]
+      },
+      {
+        "name": "Property and safety predictors",
+        "role": "estimate absorption, toxicity, metabolism and other drug-like qualities before synthesis.",
+        "parts": [
+          "ADMET models",
+          "toxicity classifiers",
+          "quantitative structure-activity relationship models"
+        ]
+      },
+      {
+        "name": "Experimental validation loop",
+        "role": "tests AI predictions in the lab and feeds results back to improve the models.",
+        "parts": [
+          "automated synthesis platforms",
+          "high-throughput biochemical and cell assays",
+          "active learning pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Curate the data",
+        "detail": "Gather and clean bioactivity, structural, genomic and clinical data; standardise chemical structures and assay results so models can learn from them."
+      },
+      {
+        "title": "Train predictive models",
+        "detail": "Train or fine-tune machine-learning models to predict protein structure, binding affinity, toxicity and other properties from sequence and chemical structure."
+      },
+      {
+        "title": "Choose and validate a target",
+        "detail": "Use genomics and AI prioritisation to pick a protein implicated in disease, then confirm its role with lab experiments such as CRISPR knockouts."
+      },
+      {
+        "title": "Generate candidate molecules",
+        "detail": "Generative models propose novel molecules that fit the target; filters remove those that are impossible to make or too similar to known compounds."
+      },
+      {
+        "title": "Predict and rank",
+        "detail": "Models estimate potency, selectivity, ADMET properties and safety; docking simulates how each candidate binds. Only the top-ranked few move forward."
+      },
+      {
+        "title": "Synthesise and assay",
+        "detail": "Top candidates are made, often with automated synthesis, and tested in high-throughput biochemical and cell assays."
+      },
+      {
+        "title": "Learn from results",
+        "detail": "Assay data feeds back to retrain the models, and the design–make–test–analyse cycle repeats, improving predictions each round."
+      },
+      {
+        "title": "Advance to trials",
+        "detail": "Optimised candidates undergo animal testing, then phased human trials; AI helps design trials and analyse the resulting data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large, high-quality biomedical datasets",
+        "status": "partial",
+        "why": "many public and proprietary datasets exist, but they are fragmented, biased and often not machine-readable."
+      },
+      {
+        "tech": "Protein structure prediction",
+        "status": "partial",
+        "why": "AlphaFold and similar tools predict many single-protein structures accurately, but not all complexes, motions or binding affinities."
+      },
+      {
+        "tech": "Scalable computing and cloud infrastructure",
+        "status": "exists",
+        "why": "training and running these models needs GPUs and large storage, now widely available."
+      },
+      {
+        "tech": "Automated laboratory experimentation",
+        "status": "partial",
+        "why": "robotic labs can run thousands of assays, but closed-loop integration with AI is still rare."
+      },
+      {
+        "tech": "Regulatory frameworks for AI in medicine",
+        "status": "partial",
+        "why": "regulators are issuing guidance, but standards for AI-derived evidence and model transparency are still evolving."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI models routinely predict protein structures and screen billions of compounds virtually",
+        "unlocks": "faster hit finding and repurposing of existing drugs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first AI-designed drugs complete late-stage trials and reach approval",
+        "unlocks": "validation of the whole approach and investment at scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop autonomous labs run design–make–test–analyse cycles with minimal human input",
+        "unlocks": "discovery timelines cut from years to months."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "generative models design new proteins, enzymes and cell therapies for previously undruggable targets",
+        "unlocks": "treatments for diseases that have resisted small-molecule drugs."
+      }
+    ]
   }
 }

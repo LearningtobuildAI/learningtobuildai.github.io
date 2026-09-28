@@ -33,5 +33,145 @@
         "def": "A mathematical function used in optimization problems to determine the best solution based on certain criteria."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception and input",
+        "role": "gathers data from sensors, APIs or users so the agent knows the current situation.",
+        "parts": [
+          "sensors and data connectors",
+          "preprocessing pipeline",
+          "state estimator"
+        ]
+      },
+      {
+        "name": "Memory and world model",
+        "role": "stores past experience and domain knowledge to inform future decisions.",
+        "parts": [
+          "vector database for retrieval",
+          "episodic memory of past actions",
+          "knowledge graph or structured store"
+        ]
+      },
+      {
+        "name": "Reasoning and planning",
+        "role": "decides the next action by combining learned policy with deliberate planning.",
+        "parts": [
+          "large language model or policy network",
+          "planner or search algorithm",
+          "tool-selection logic"
+        ]
+      },
+      {
+        "name": "Tool and action interface",
+        "role": "turns decisions into real actions in software or the physical world.",
+        "parts": [
+          "API clients",
+          "robot controllers",
+          "actuators or software commands"
+        ]
+      },
+      {
+        "name": "Verification and safety",
+        "role": "checks that proposed actions are safe and likely to succeed before they are taken.",
+        "parts": [
+          "rule-based guardrails",
+          "simulation rollouts",
+          "formal or statistical verifiers"
+        ]
+      },
+      {
+        "name": "Learning and feedback loop",
+        "role": "improves the agent from experience over time.",
+        "parts": [
+          "reward or success signal",
+          "data logging",
+          "fine-tuning or reinforcement-learning pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and environment",
+        "detail": "Specify what the agent must achieve, what actions are allowed, and what counts as success."
+      },
+      {
+        "title": "Build a simulation and data pipeline",
+        "detail": "Create a physics or software simulator to generate safe, cheap experience, and instrument the real environment to log data."
+      },
+      {
+        "title": "Train or select a base model",
+        "detail": "Start from a pretrained language model or train a reinforcement-learning policy on simulated tasks."
+      },
+      {
+        "title": "Integrate memory and tool use",
+        "detail": "Connect the model to a retrieval store and a set of callable tools, and design the loop that lets it act, observe and try again."
+      },
+      {
+        "title": "Add verification and safety layers",
+        "detail": "Wrap the agent with rule-based checks and model-based rollouts so unsafe or nonsensical actions are blocked before execution."
+      },
+      {
+        "title": "Close the learning loop",
+        "detail": "Feed real outcomes back as reward signals, retrain or fine-tune the policy, and guard against reward hacking or drift."
+      },
+      {
+        "title": "Deploy, monitor and iterate",
+        "detail": "Run the agent in a controlled setting, log everything, and continuously retrain as the environment or task changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with tool use",
+        "status": "exists",
+        "why": "they provide the flexible reasoning layer that can call APIs and write code."
+      },
+      {
+        "tech": "Reinforcement learning from real-world feedback",
+        "status": "partial",
+        "why": "works in simulation and narrow domains but is sample-hungry and fragile on real hardware."
+      },
+      {
+        "tech": "Long-term memory and retrieval",
+        "status": "exists",
+        "why": "vector databases and retrieval-augmented generation let agents remember past interactions."
+      },
+      {
+        "tech": "Robust verification of learned policies",
+        "status": "missing",
+        "why": "there is no practical way to formally prove a neural policy safe in an open environment."
+      },
+      {
+        "tech": "High-fidelity simulation environments",
+        "status": "partial",
+        "why": "simulators exist for many tasks but the gap between simulation and reality still breaks learned policies."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "task-specific agents that use tools in a loop (e.g. coding assistants, web-browsing bots)",
+        "unlocks": "automation of well-defined digital workflows with human oversight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents with persistent memory and self-checking in sandboxed environments",
+        "unlocks": "longer, multi-step tasks that need context and error recovery."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that learn from real-world experience in controlled domains such as warehouse robots or grid balancing",
+        "unlocks": "continuous improvement without manual retraining."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general autonomous agents with verifiable safety guarantees",
+        "unlocks": "deployment in open-ended physical and social settings."
+      }
+    ]
   }
 }

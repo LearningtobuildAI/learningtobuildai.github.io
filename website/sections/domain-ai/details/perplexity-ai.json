@@ -29,5 +29,152 @@
         "def": "A field of AI focused on the interaction between computers and human language, enabling machines to understand, interpret, and generate natural language."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Query understanding",
+        "role": "turns a messy question into something searchable, and decides whether a web lookup is needed at all.",
+        "parts": [
+          "intent classifier",
+          "query rewriter",
+          "conversation and memory state"
+        ]
+      },
+      {
+        "name": "Retrieval layer",
+        "role": "finds candidate documents from the live web and from any private corpus.",
+        "parts": [
+          "crawler and page parser",
+          "inverted (lexical) index",
+          "embedding model and vector index",
+          "hybrid fusion of lexical and semantic hits"
+        ]
+      },
+      {
+        "name": "Ranking and reranking",
+        "role": "narrows hundreds of candidates down to the handful that actually answer the question.",
+        "parts": [
+          "cross-encoder reranker",
+          "freshness and source-quality signals",
+          "deduplication of near-identical pages"
+        ]
+      },
+      {
+        "name": "Generation model",
+        "role": "the language model that writes the answer from the retrieved passages.",
+        "parts": [
+          "transformer decoder stack",
+          "tokenizer",
+          "long context window",
+          "instruction-tuned weights"
+        ]
+      },
+      {
+        "name": "Grounding and citation",
+        "role": "binds each claim in the answer to a specific source span.",
+        "parts": [
+          "passage-to-sentence attribution",
+          "citation extractor",
+          "faithfulness checker"
+        ]
+      },
+      {
+        "name": "Serving infrastructure",
+        "role": "keeps latency low while the search and generation steps run in sequence.",
+        "parts": [
+          "GPU inference cluster",
+          "KV cache and request batching",
+          "result cache",
+          "streaming response layer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Crawl and index the web",
+        "detail": "A crawler fetches pages, strips boilerplate, and stores cleaned text in a lexical index so it can be searched by keyword."
+      },
+      {
+        "title": "Chunk and embed documents",
+        "detail": "Text is split into passages of a few hundred tokens; an embedding model converts each into a vector stored in a similarity index, so search works on meaning, not just matching words."
+      },
+      {
+        "title": "Pretrain and tune the language model",
+        "detail": "The base model learns language from a very large text corpus, then is instruction-tuned and preference-tuned so it follows questions and formats answers."
+      },
+      {
+        "title": "Build the orchestration pipeline",
+        "detail": "The user's question is rewritten into several search queries; retrieval, reranking and generation are chained, and the pipeline decides when to search again mid-answer."
+      },
+      {
+        "title": "Assemble the grounded prompt",
+        "detail": "Retrieved passages are inserted into the model's context with explicit instructions to answer only from them and to mark which passage supports each statement."
+      },
+      {
+        "title": "Train and evaluate attribution",
+        "detail": "Answers are graded for whether the citations genuinely support the sentences they sit next to; the pipeline is tuned until unsupported claims are rare."
+      },
+      {
+        "title": "Serve at low latency",
+        "detail": "Models are quantised and batched on GPUs, repeated queries are cached, and the answer is streamed token by token so the reader sees text within a second or two."
+      },
+      {
+        "title": "Ship the interface",
+        "detail": "The answer appears with inline numbered sources, follow-up questions, and the ability to restrict search to a private document set."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer language models",
+        "status": "exists",
+        "why": "provides the generative core that can read several long passages and write a synthesised answer."
+      },
+      {
+        "tech": "Web-scale crawling and search indexes",
+        "status": "exists",
+        "why": "without a fresh index the answers would be limited to the model's training cutoff."
+      },
+      {
+        "tech": "Dense retrieval and embeddings",
+        "status": "exists",
+        "why": "lets a question find relevant passages even when the wording differs completely."
+      },
+      {
+        "tech": "Large GPU inference fleets",
+        "status": "exists",
+        "why": "each query costs several model calls — rewrite, rerank, generate — so serving cost and latency are the binding constraints."
+      },
+      {
+        "tech": "Automatic claim verification",
+        "status": "partial",
+        "why": "current checkers catch obvious contradictions but cannot yet guarantee that every sentence is supported by its cited source."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "citation-backed answer engines that combine live web retrieval with a chat model",
+        "unlocks": "usable answers to questions the model was never trained on, with sources a reader can inspect."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic research that runs many searches, opens pages and assembles a cited report",
+        "unlocks": "multi-step tasks such as comparing products or summarising a fast-moving news story."
+      },
+      {
+        "stage": "Next",
+        "milestone": "enterprise grounding on private documents with permission-aware retrieval",
+        "unlocks": "internal assistants that cite company files rather than the open web."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reliable automated fact-checking layered over generation",
+        "unlocks": "answers trustworthy enough for regulated and high-stakes settings."
+      }
+    ]
   }
 }

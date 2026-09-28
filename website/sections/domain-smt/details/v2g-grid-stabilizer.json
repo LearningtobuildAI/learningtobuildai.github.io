@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "moves power both ways between the battery and the grid.",
+        "parts": [
+          "DC–AC inverter",
+          "onboard charger (AC-coupled designs)",
+          "isolation and filtering",
+          "charge connector"
+        ]
+      },
+      {
+        "name": "Battery and management",
+        "role": "stores energy and reports what it can safely deliver back.",
+        "parts": [
+          "lithium-ion pack",
+          "battery management system",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Communications",
+        "role": "negotiates how much power, when, and in which direction.",
+        "parts": [
+          "charging protocol (CHAdeMO, or CCS with ISO 15118-20)",
+          "charge-point protocol such as OCPP",
+          "metering and telemetry"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "pools many vehicles into one controllable block that a utility can dispatch.",
+        "parts": [
+          "fleet scheduling software",
+          "dispatch signal handling",
+          "driver consent and override logic"
+        ]
+      },
+      {
+        "name": "Grid interface",
+        "role": "connects the site safely to the distribution network.",
+        "parts": [
+          "transformer and switchgear",
+          "protection and anti-islanding",
+          "revenue meter"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the fleet",
+        "detail": "Start with buses, vans or school buses: large batteries, fixed routes and long parked periods make them predictable."
+      },
+      {
+        "title": "Specify bidirectional-capable vehicles",
+        "detail": "Buy vehicles whose charger and protocols support export, not just charging."
+      },
+      {
+        "title": "Install bidirectional chargers",
+        "detail": "Fit units at depots, upgrade the site supply and add export-capable protection."
+      },
+      {
+        "title": "Build the aggregation layer",
+        "detail": "Software tracks each vehicle's state of charge, schedule and driver consent, then combines them into one dispatchable capacity."
+      },
+      {
+        "title": "Test and certify interconnection",
+        "detail": "Demonstrate anti-islanding, power quality and response time to the local network operator."
+      },
+      {
+        "title": "Contract for grid services",
+        "detail": "Register the pooled capacity in markets for frequency response, capacity or peak shaving."
+      },
+      {
+        "title": "Operate and dispatch",
+        "detail": "The platform sends charge or discharge signals; vehicles top up off-peak and export at peaks."
+      },
+      {
+        "title": "Expand and automate",
+        "detail": "Move from depot pilots to standardised home and workplace units as standards mature."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging standards",
+        "status": "partial",
+        "why": "CHAdeMO offers it today; CCS gained it through ISO 15118-20, which is still being implemented."
+      },
+      {
+        "tech": "Interconnection rules for small dispersed storage",
+        "status": "partial",
+        "why": "many grid codes were written for generation, not millions of small two-way devices."
+      },
+      {
+        "tech": "Aggregated market access",
+        "status": "partial",
+        "why": "utilities and market operators must accept pooled small resources as a single dispatchable unit."
+      },
+      {
+        "tech": "Battery durability evidence",
+        "status": "partial",
+        "why": "extra cycling must be shown not to cut pack life or void warranties."
+      },
+      {
+        "tech": "Owner participation and consent",
+        "status": "exists",
+        "why": "cars must be plugged in and the owner willing, which caps how much capacity is actually available."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "depot pilots using buses and vans for frequency response",
+        "unlocks": "real revenue and operating experience without depending on private drivers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised bidirectional AC charging on mass-market cars",
+        "unlocks": "home and workplace vehicles joining the pool."
+      },
+      {
+        "stage": "Next",
+        "milestone": "aggregators bidding millions of vehicles into grid markets",
+        "unlocks": "a cheap, fast-responding reserve that displaces peaking plants."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "V2G treated as normal grid infrastructure",
+        "unlocks": "more renewable power absorbed, with vehicles acting as a distributed buffer."
+      }
+    ]
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the quantum states of light used as qubits.",
+        "parts": [
+          "pump lasers",
+          "nonlinear optical waveguides",
+          "microring resonators",
+          "quantum dots"
+        ]
+      },
+      {
+        "name": "Photonic processor",
+        "role": "a chip-scale mesh of interferometers that manipulates light to perform gates.",
+        "parts": [
+          "waveguides",
+          "beam splitters",
+          "phase shifters",
+          "optical cavities"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "measures the output photons.",
+        "parts": [
+          "superconducting nanowire single-photon detectors",
+          "avalanche photodiodes",
+          "cryogenic coolers (for superconducting detectors)"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "configures the chip and reads out measurement results.",
+        "parts": [
+          "field-programmable gate arrays",
+          "digital-to-analog converters",
+          "classical computers"
+        ]
+      },
+      {
+        "name": "Error correction and encoding",
+        "role": "protects quantum information against loss and noise using bosonic codes.",
+        "parts": [
+          "squeezed light sources",
+          "Gottesman-Kitaev-Preskill states",
+          "measurement-based feedback"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the photonic circuit and error-correcting code",
+        "detail": "Specify the interferometer mesh, the encoding (e.g. GKP states), and the measurement pattern for a given algorithm."
+      },
+      {
+        "title": "Fabricate the photonic integrated circuit",
+        "detail": "Use silicon photonics or similar: deposit and etch waveguides, beam splitters and phase shifters on a chip, aiming for very low optical loss."
+      },
+      {
+        "title": "Generate and prepare the light",
+        "detail": "Produce squeezed light or single photons using nonlinear optics, either off-chip and coupled in, or integrated on-chip."
+      },
+      {
+        "title": "Integrate detectors",
+        "detail": "Attach or fabricate single-photon detectors, often superconducting nanowires that need cooling to a few kelvin, and couple them to the chip outputs."
+      },
+      {
+        "title": "Package and calibrate",
+        "detail": "Align and bond fibres, tune phase shifters, and measure loss and fidelity of the optical circuit."
+      },
+      {
+        "title": "Operate the processor",
+        "detail": "Use control electronics to set the circuit, inject light, and read out photon detections to obtain results."
+      },
+      {
+        "title": "Scale with error correction",
+        "detail": "Combine many modules via optical interconnects and implement real-time feedback to correct errors, moving toward fault tolerance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-quality photon sources",
+        "status": "partial",
+        "why": "on-demand single photons and squeezed states exist but need higher efficiency and purity for scaling."
+      },
+      {
+        "tech": "Low-loss photonic integrated circuits",
+        "status": "partial",
+        "why": "fabrication must achieve extremely low optical loss to preserve quantum states."
+      },
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "superconducting nanowire detectors are highly efficient but need cryogenic cooling; room-temperature alternatives are noisier."
+      },
+      {
+        "tech": "Fault-tolerant error correction",
+        "status": "missing",
+        "why": "encoding and real-time feedback at the required scale have not been demonstrated."
+      },
+      {
+        "tech": "Scalable manufacturing and packaging",
+        "status": "partial",
+        "why": "photonic chips can be made in CMOS foundries, but quantum-specific integration and packaging are not yet standard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale photonic processors demonstrating quantum advantage in specific tasks such as boson sampling",
+        "unlocks": "validation of the approach and early applications in sampling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "programmable photonic quantum computers with tens to hundreds of modes and basic error detection",
+        "unlocks": "early quantum algorithms and error-corrected logical qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "modular systems interconnected by optical fibre, with real-time error correction",
+        "unlocks": "scaling to thousands of qubits and distributed quantum computing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant photonic quantum computers",
+        "unlocks": "practical quantum simulation, optimisation and cryptography at scale."
+      }
+    ]
+  }
+}

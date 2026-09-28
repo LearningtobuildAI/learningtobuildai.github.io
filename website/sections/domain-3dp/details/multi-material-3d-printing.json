@@ -35,5 +35,154 @@
         "def": "Systems that deposit melted or semi-melted material through a nozzle to form layers in the object being printed."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Multi-feedstock delivery",
+        "role": "brings two or more materials to the build point at once.",
+        "parts": [
+          "multiple extruders or a filament changer",
+          "powder feeders or wire feeders (metals)",
+          "resin print heads with separate nozzles"
+        ]
+      },
+      {
+        "name": "Deposition or fusion head",
+        "role": "melts, cures or fuses each material as it is laid down.",
+        "parts": [
+          "heated nozzles",
+          "laser or electron beam",
+          "UV curing lamps",
+          "inkjet print head"
+        ]
+      },
+      {
+        "name": "Motion and build platform",
+        "role": "positions the head and layers the part with micron-level repeatability.",
+        "parts": [
+          "gantry or robotic arm",
+          "linear encoders",
+          "heated build plate"
+        ]
+      },
+      {
+        "name": "Slicing and toolpath software",
+        "role": "assigns a material to every point in the part, not just a shape.",
+        "parts": [
+          "multi-material CAD model",
+          "material-zone slicer",
+          "tool-change and purge logic"
+        ]
+      },
+      {
+        "name": "Process monitoring",
+        "role": "catches defects in a part that cannot easily be inspected later.",
+        "parts": [
+          "thermal camera",
+          "layer imaging",
+          "melt-pool sensors"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "removes supports, joins interfaces and finishes the part.",
+        "parts": [
+          "support dissolution station",
+          "heat treatment furnace (metals)",
+          "surface finishing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for materials, not just shape",
+        "detail": "The CAD model is split into regions, each tagged with the material it should be — a stiff core, a soft grip, a conductive track."
+      },
+      {
+        "title": "Slice into material zones",
+        "detail": "Software plans tool changes, purge cycles and the order of deposition so each material lands where it belongs and different materials meet cleanly."
+      },
+      {
+        "title": "Prepare feedstocks",
+        "detail": "Filaments are dried, powders are sieved to a controlled particle-size range, or resins are loaded into separate print-head reservoirs."
+      },
+      {
+        "title": "Start the base layers",
+        "detail": "The machine prints a raft or the first solid layers of the primary material on a levelled, heated platform."
+      },
+      {
+        "title": "Switch materials mid-build",
+        "detail": "Extruders, feeders or print heads swap on command; purge towers or wipe cycles clear the old material before the new one is laid."
+      },
+      {
+        "title": "Print the interfaces",
+        "detail": "Where two materials meet, the process is tuned — overlapping beads, interlocking geometry or chemical compatibilisers — so the bond can carry load."
+      },
+      {
+        "title": "Build up the part",
+        "detail": "Layers continue until the whole component, including any embedded channels or electronics, is complete."
+      },
+      {
+        "title": "Cool and remove",
+        "detail": "The part is cooled under controlled conditions to limit warping, then freed from the plate and its supports dissolved or cut away."
+      },
+      {
+        "title": "Finish and qualify",
+        "detail": "Heat treatment, machining or coating follows; for regulated industries the part is then inspected and its process recorded."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Multi-material CAD and slicing software",
+        "status": "exists",
+        "why": "without it, designers cannot specify where each material goes and machines cannot plan tool changes."
+      },
+      {
+        "tech": "Materials that bond to each other",
+        "status": "partial",
+        "why": "many pairs of plastics or metals simply do not adhere, so the interface becomes the weak point."
+      },
+      {
+        "tech": "Multi-nozzle and multi-feeder hardware",
+        "status": "exists",
+        "why": "dual-extruder and multi-resin machines are sold commercially, though mostly for polymers."
+      },
+      {
+        "tech": "In-situ monitoring and closed-loop control",
+        "status": "partial",
+        "why": "a defect buried inside a multi-material part cannot be fixed by machining it away later."
+      },
+      {
+        "tech": "Multi-material metal powder-bed fusion",
+        "status": "missing",
+        "why": "spreading a fresh, clean layer of a second metal powder without contamination is still a research problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multi-resin and dual-extruder polymer printers in wide commercial use",
+        "unlocks": "prototypes and tooling with rigid and flexible regions, and dissolvable supports."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-material metal deposition (powder- or wire-fed) qualified for load-bearing parts",
+        "unlocks": "one-piece components that replace welded assemblies of different alloys."
+      },
+      {
+        "stage": "Next",
+        "milestone": "printed-in conductors, sensors and channels",
+        "unlocks": "parts that sense their own strain or route fluid and current internally."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "graded materials that shift composition smoothly rather than in steps",
+        "unlocks": "blades, implants and heat shields tailored to the loads they actually see."
+      }
+    ]
   }
 }

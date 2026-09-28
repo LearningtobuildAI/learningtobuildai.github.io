@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing array",
+        "role": "picks up electrical activity from the scalp and muscles.",
+        "parts": [
+          "dry or gel EEG electrodes",
+          "EMG electrodes over forearm or jaw",
+          "optional fNIRS optodes for blood-oxygen signals"
+        ]
+      },
+      {
+        "name": "Analog front-end",
+        "role": "amplifies and digitises microvolt-level signals without drowning them in noise.",
+        "parts": [
+          "low-noise instrumentation amplifiers",
+          "band-pass filters",
+          "24-bit analog-to-digital converters",
+          "driven right-leg circuit"
+        ]
+      },
+      {
+        "name": "Signal conditioning",
+        "role": "removes artefacts and extracts usable features.",
+        "parts": [
+          "blink and muscle-artefact rejection",
+          "common spatial pattern filters",
+          "frequency-band power extraction (mu, beta, gamma)"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns features into intended commands.",
+        "parts": [
+          "on-device neural network",
+          "trained classification or regression model",
+          "optional small language model for context-aware command mapping"
+        ]
+      },
+      {
+        "name": "Headband and electrodes",
+        "role": "keeps sensors in stable contact with the skin for hours.",
+        "parts": [
+          "flexible frame",
+          "adjustable strap",
+          "conductive gel or dry contact pads",
+          "cushioned pressure points"
+        ]
+      },
+      {
+        "name": "Radio and power",
+        "role": "sends data to a phone, computer or headset and runs for a day.",
+        "parts": [
+          "Bluetooth Low Energy or Wi-Fi radio",
+          "rechargeable battery",
+          "power-management circuit"
+        ]
+      },
+      {
+        "name": "Host integration",
+        "role": "makes the decoded intent act like a keyboard, mouse or gamepad.",
+        "parts": [
+          "operating-system accessibility API",
+          "calibration and feedback app",
+          "haptic or visual confirmation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the headband",
+        "detail": "Place electrodes over motor-cortex regions and EMG sensors where they will not shift during head movement."
+      },
+      {
+        "title": "Make the electrodes",
+        "detail": "Fabricate dry conductive pads or hydrogel electrodes that maintain stable impedance on skin."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "Assemble a low-noise analog front-end, microcontroller and radio on a flexible printed circuit board."
+      },
+      {
+        "title": "Write firmware",
+        "detail": "Sample at a few hundred hertz per channel, filter, and stream data with low latency."
+      },
+      {
+        "title": "Collect training data",
+        "detail": "Record the user imagining or performing specific movements while the intended command is labelled."
+      },
+      {
+        "title": "Train the decoder",
+        "detail": "Fit a model to map signal patterns to commands; use data from many users, then fine-tune per person."
+      },
+      {
+        "title": "Calibrate for the user",
+        "detail": "Run a short session to adapt to the individual's anatomy and signal patterns, and correct for drift."
+      },
+      {
+        "title": "Integrate with the host",
+        "detail": "Expose the decoder output through standard input APIs so it can control a cursor, select items or type."
+      },
+      {
+        "title": "Test and iterate",
+        "detail": "Measure accuracy, false activations and comfort over long sessions, then refine hardware and model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry EEG electrode materials",
+        "status": "partial",
+        "why": "they avoid gel but still struggle with stable contact through hair."
+      },
+      {
+        "tech": "Low-power biosignal front-ends",
+        "status": "exists",
+        "why": "wearable EEG and EMG devices already need tiny, quiet amplifiers."
+      },
+      {
+        "tech": "Machine-learning decoders for brain signals",
+        "status": "partial",
+        "why": "deep learning has improved motor-imagery classification, but accuracy remains limited outside the lab."
+      },
+      {
+        "tech": "On-device inference chips",
+        "status": "exists",
+        "why": "small neural networks can run locally without sending raw brain data to the cloud."
+      },
+      {
+        "tech": "Operating-system accessibility interfaces",
+        "status": "exists",
+        "why": "a wearable can already emulate a keyboard or pointer once intent is decoded."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial EEG and EMG wearables for simple control, focus tracking and rehabilitation games",
+        "unlocks": "comfortable sensors and basic intent detection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable motor-intent decoding for cursor control and short text entry",
+        "unlocks": "hands-free use of ordinary desktop and mobile software."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal headbands combining EEG, EMG and fNIRS",
+        "unlocks": "higher bandwidth and fewer false triggers in noisy environments."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "calibration-free, high-bandwidth non-invasive interfaces",
+        "unlocks": "everyday neural control without a training session or a technician."
+      }
+    ]
+  }
+}

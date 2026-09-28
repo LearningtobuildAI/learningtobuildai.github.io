@@ -28,5 +28,146 @@
         "def": "A series of processes that convert thermal energy into mechanical work, often used in the context of LAES for energy recovery."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Liquefaction train",
+        "role": "turns gaseous air into liquid at about −196 °C using off-peak electricity.",
+        "parts": [
+          "multistage compressor",
+          "cold box with plate-fin heat exchangers",
+          "turbo-expander",
+          "moisture and CO₂ removal unit"
+        ]
+      },
+      {
+        "name": "Cryogenic storage",
+        "role": "holds the liquid air in insulated tanks; tank size sets the hours of storage, independently of power output.",
+        "parts": [
+          "insulated cryogenic tanks",
+          "low-temperature pumps",
+          "boil-off management"
+        ]
+      },
+      {
+        "name": "Cold store",
+        "role": "captures the cold released when liquid air is warmed, to pre-cool the next batch of incoming air.",
+        "parts": [
+          "insulated vessel",
+          "packed bed of gravel or ceramic",
+          "phase-change material (alternative)"
+        ]
+      },
+      {
+        "name": "Heat store",
+        "role": "keeps the heat of compression produced during charging, then returns it during discharge.",
+        "parts": [
+          "thermal oil or pressurised water tanks",
+          "pumps and heat exchangers"
+        ]
+      },
+      {
+        "name": "Power recovery train",
+        "role": "expands the pressurised, re-warmed air through a turbine to make electricity.",
+        "parts": [
+          "cryogenic pump",
+          "evaporator and superheater",
+          "turbo-expander",
+          "generator"
+        ]
+      },
+      {
+        "name": "Grid interface and controls",
+        "role": "imports power to charge, exports power to discharge, and trades in electricity markets.",
+        "parts": [
+          "step-up transformer",
+          "switchgear",
+          "SCADA and dispatch software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the site",
+        "detail": "Unlike pumped hydro or underground compressed air, LAES needs no special geology. What matters is a strong grid connection, cheap or negatively priced off-peak power, and ideally a nearby source of waste heat such as an industrial plant or thermal power station."
+      },
+      {
+        "title": "Build the liquefaction plant",
+        "detail": "Compressor trains and a cold box of stacked plate-fin heat exchangers cool air until it condenses. Water vapour and carbon dioxide are scrubbed out first, because they would freeze and block the passages."
+      },
+      {
+        "title": "Install cryogenic tanks",
+        "detail": "Large insulated tanks hold the liquid air at low pressure. Because the liquid occupies roughly one seven-hundredth of the gas volume, even multi-hour stores stay compact."
+      },
+      {
+        "title": "Build the thermal stores",
+        "detail": "A cold-packed bed and a hot thermal-oil or water store capture the cold and heat that would otherwise be wasted. These stores are the main lever on round-trip efficiency."
+      },
+      {
+        "title": "Assemble the discharge train",
+        "detail": "A cryogenic pump raises the liquid to high pressure, an evaporator warms and superheats it, and a turbo-expander drives a generator sized to the plant's megawatt rating."
+      },
+      {
+        "title": "Connect and commission",
+        "detail": "The plant is tied to the grid, control software is tuned, the cold box is cooled down, and charge/discharge cycles are run to check efficiency and response time."
+      },
+      {
+        "title": "Operate on markets",
+        "detail": "The plant charges when power is cheap and discharges at peak prices, and can be co-located with waste-heat or cold sources to lift efficiency further."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Industrial cryogenic liquefaction",
+        "status": "exists",
+        "why": "decades of air-separation plants already supply the compressors, cold boxes, turbo-expanders and operating know-how."
+      },
+      {
+        "tech": "Large cryogenic storage",
+        "status": "exists",
+        "why": "the LNG and industrial-gas industries build the insulated tanks and pumps at the required scale."
+      },
+      {
+        "tech": "Cheap surplus renewable electricity",
+        "status": "exists",
+        "why": "the business case rests on buying low and selling high, so wide price spreads matter more than round-trip efficiency."
+      },
+      {
+        "tech": "High-efficiency cold and heat recovery stores",
+        "status": "partial",
+        "why": "without recycling the cold and the heat of compression, round-trip efficiency falls to roughly 50% or below; packed-bed and phase-change stores are still being optimised."
+      },
+      {
+        "tech": "Large turbo-expander and cryogenic pump manufacturing",
+        "status": "partial",
+        "why": "units sized for hundreds of megawatts of discharge are not yet a standard catalogue item."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multi-megawatt grid-connected demonstrators, such as a 5 MW / 15 MWh plant in the UK, with round-trip efficiency around 50–60%",
+        "unlocks": "proof that the cycle works on a real grid and that the equipment lasts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first commercial plants of roughly 50 MW / several hundred MWh, often on former power station sites with existing grid connections",
+        "unlocks": "long-duration storage at a cost per unit of energy below lithium-ion."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-location with waste-heat sources and LNG terminals, lifting efficiency toward 60–70%",
+        "unlocks": "better economics and use of otherwise wasted industrial heat and cold."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt-hour plants of several hundred megawatts built from modular tank and cold-box units",
+        "unlocks": "bulk shifting of wind and solar output across days, plus rotating-machine inertia for grid stability."
+      }
+    ]
   }
 }

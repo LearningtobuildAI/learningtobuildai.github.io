@@ -41,5 +41,160 @@
         "def": "The process of using formal logic and rules to represent and manipulate knowledge, often integrated with machine learning techniques in AGI systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Model architecture",
+        "role": "the trainable structure that turns input into predictions; today this almost always means a deep neural network built from attention blocks.",
+        "parts": [
+          "transformer blocks with self-attention",
+          "feed-forward layers",
+          "mixture-of-experts routing",
+          "context window and positional encoding"
+        ]
+      },
+      {
+        "name": "Training pipeline",
+        "role": "adjusts billions of parameters so the model predicts well across many tasks.",
+        "parts": [
+          "data ingestion and filtering",
+          "pretraining objective",
+          "distributed training across thousands of accelerators",
+          "optimiser and checkpointing"
+        ]
+      },
+      {
+        "name": "Post-training and feedback",
+        "role": "shapes a raw predictor into something that follows instructions and reasons through multi-step problems.",
+        "parts": [
+          "supervised fine-tuning",
+          "reward models and reinforcement learning from human feedback",
+          "chain-of-thought and reasoning training",
+          "red-team data"
+        ]
+      },
+      {
+        "name": "Memory and tools",
+        "role": "lets the system act beyond a single text prompt.",
+        "parts": [
+          "retrieval over a document store",
+          "tool and API calls",
+          "planning loop (agent scaffold)",
+          "long-term state store"
+        ]
+      },
+      {
+        "name": "Inference infrastructure",
+        "role": "serves the model to users at acceptable speed and cost.",
+        "parts": [
+          "accelerator clusters and interconnect",
+          "batching, caching and quantisation",
+          "serving stack and rate control",
+          "megawatt-scale datacentre cooling and power"
+        ]
+      },
+      {
+        "name": "Evaluation and safety harness",
+        "role": "measures whether capability is actually general and whether the system can be controlled.",
+        "parts": [
+          "capability benchmark suites",
+          "held-out and adversarial tests",
+          "interpretability probes",
+          "monitoring and incident response"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick an architecture and a scale target",
+        "detail": "Choose a sequence model family and estimate how much data and compute a given parameter count needs, using empirical scaling relationships."
+      },
+      {
+        "title": "Assemble and clean training data",
+        "detail": "Gather text, code, images and audio at web scale, then filter, deduplicate and balance it, because data quality now limits results as much as size does."
+      },
+      {
+        "title": "Pretrain",
+        "detail": "Run the model over the corpus on a cluster of many thousands of accelerators for weeks, sharding the model and data and checkpointing constantly."
+      },
+      {
+        "title": "Post-train on feedback",
+        "detail": "Fine-tune on curated examples, then optimise against a reward model trained on human or model judgements, plus verifiable tasks such as code and maths."
+      },
+      {
+        "title": "Add memory, tools and an agent loop",
+        "detail": "Wrap the model in software that retrieves documents, calls tools, keeps state and can attempt a task, observe failure and retry."
+      },
+      {
+        "title": "Evaluate capability and safety",
+        "detail": "Run benchmark suites, long-horizon task tests and adversarial probes; measure where the system fails, not just where it scores well."
+      },
+      {
+        "title": "Deploy and operate",
+        "detail": "Serve the system, watch for misuse and drift, and feed observed failures back into the next training round."
+      },
+      {
+        "title": "Close the loop toward generality",
+        "detail": "The step not yet achieved: systems that keep learning from their own experience, generate their own training signal and transfer skills to genuinely new domains without retraining from scratch."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Massively parallel accelerator compute",
+        "status": "exists",
+        "why": "frontier training runs consume very large amounts of compute; datacentres now draw power on the scale of hundreds of megawatts."
+      },
+      {
+        "tech": "Transformer and attention architectures",
+        "status": "exists",
+        "why": "introduced in 2017, they made it practical to train very large networks on parallel hardware."
+      },
+      {
+        "tech": "Reinforcement learning from human feedback",
+        "status": "partial",
+        "why": "it turned raw predictors into usable assistants but is expensive and does not by itself produce open-ended learning."
+      },
+      {
+        "tech": "Continual learning and long-term memory",
+        "status": "missing",
+        "why": "today's models are frozen after training; they do not accumulate durable skill from experience the way a person does."
+      },
+      {
+        "tech": "Capability and safety evaluation",
+        "status": "partial",
+        "why": "benchmarks saturate quickly and give weak evidence about general ability or about whether a system stays under control."
+      },
+      {
+        "tech": "Interpretability of large networks",
+        "status": "missing",
+        "why": "without a reliable way to inspect what a model has learned, claims about general intelligence or safety cannot be verified."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "general-purpose language and multimodal models that handle a wide but shallow range of tasks",
+        "unlocks": "automation of drafting, coding assistance, search and analysis."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable agents that complete multi-hour, multi-step work with tools and memory",
+        "unlocks": "a measurable step up in economic usefulness and a real test of generality."
+      },
+      {
+        "stage": "Next",
+        "milestone": "systems that learn continually from their own experience and improve their own training data",
+        "unlocks": "capability growth that no longer depends mainly on adding human-written data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a system matching human performance across the full range of cognitive tasks, with evaluation and control solved in parallel",
+        "unlocks": "if it happens, broad automation of knowledge work — and the governance problem of managing it."
+      }
+    ]
   }
 }

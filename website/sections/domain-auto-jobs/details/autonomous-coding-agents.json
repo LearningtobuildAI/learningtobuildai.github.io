@@ -30,5 +30,162 @@
         "def": "A complete software development lifecycle including planning, coding, testing, deployment, and maintenance."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Code model",
+        "role": "the language model that reads code and writes patches; usually a general model further trained on software repositories.",
+        "parts": [
+          "transformer weights",
+          "long-context handling",
+          "code-and-diff training data"
+        ]
+      },
+      {
+        "name": "Repository context layer",
+        "role": "finds the few files and symbols that matter in a codebase far larger than the context window.",
+        "parts": [
+          "syntax-tree and symbol index",
+          "embedding store for semantic search",
+          "dependency and call-graph analysis",
+          "ranking and token budgeting"
+        ]
+      },
+      {
+        "name": "Agent loop",
+        "role": "the control program that turns a task into a sequence of edits, runs and retries.",
+        "parts": [
+          "task planner",
+          "tool-call parser",
+          "iteration and retry policy",
+          "context compaction as history grows"
+        ]
+      },
+      {
+        "name": "Execution sandbox",
+        "role": "a disposable container where the agent can build, run tests and crash without touching real systems.",
+        "parts": [
+          "container or micro-VM image of the repo",
+          "build and test runner",
+          "resource and network limits",
+          "log capture"
+        ]
+      },
+      {
+        "name": "Verification harness",
+        "role": "decides whether the change is actually good, not just plausible.",
+        "parts": [
+          "unit and integration tests",
+          "linters and type checkers",
+          "static analysis and security scanning",
+          "diff review against the stated spec"
+        ]
+      },
+      {
+        "name": "Review and governance layer",
+        "role": "keeps a human in the loop and records what the agent did.",
+        "parts": [
+          "pull-request interface",
+          "approval gates and permission scopes",
+          "audit log of every edit and command"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and clean training data",
+        "detail": "Permissively licensed repositories are gathered with their tests, issues and commit history, then filtered for credentials, licence conflicts and low-quality code."
+      },
+      {
+        "title": "Pretrain and fine-tune the model",
+        "detail": "A base model is adapted on code, diffs and bug-fix commits so it learns to write patches rather than whole files."
+      },
+      {
+        "title": "Build the repository index",
+        "detail": "The target codebase is parsed into syntax trees and symbol graphs and embedded, so relevant functions can be retrieved on demand."
+      },
+      {
+        "title": "Define the tool interface",
+        "detail": "The agent is given a small, typed set of actions: read file, apply patch, run command, run test, open pull request."
+      },
+      {
+        "title": "Implement the agent loop",
+        "detail": "The planner proposes a change, the sandbox runs it, the model reads the failure output and revises; a budget caps iterations, time and cost."
+      },
+      {
+        "title": "Wire up the sandbox",
+        "detail": "Each task runs in a fresh container with only the repository and its dependencies, no production credentials."
+      },
+      {
+        "title": "Build the evaluation harness",
+        "detail": "Benchmarks such as SWE-bench, plus private held-out issues with hidden tests, measure how often the agent actually fixes the bug without breaking other tests."
+      },
+      {
+        "title": "Improve with feedback from successful runs",
+        "detail": "Trajectories that passed the tests are used to train the next model generation, and failures are mined for new test cases."
+      },
+      {
+        "title": "Deploy behind review gates",
+        "detail": "The agent opens ordinary pull requests; humans approve merges, at least until accuracy is high enough to relax this."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with strong code ability",
+        "status": "exists",
+        "why": "the raw capability to read a function and produce a plausible patch."
+      },
+      {
+        "tech": "Long-context and retrieval methods",
+        "status": "partial",
+        "why": "real repositories are far too big to feed in whole, so selection quality decides success."
+      },
+      {
+        "tech": "Reliable tool calling and structured output",
+        "status": "exists",
+        "why": "the agent must emit valid commands and edits rather than prose."
+      },
+      {
+        "tech": "Cheap, fast sandboxed execution",
+        "status": "exists",
+        "why": "every candidate fix must be built and tested, sometimes many times per task."
+      },
+      {
+        "tech": "Thorough automated test suites",
+        "status": "partial",
+        "why": "the harness can only verify what the tests cover; legacy or untested code has no safety net."
+      },
+      {
+        "tech": "Specifications that can be checked mechanically",
+        "status": "missing",
+        "why": "correctness still depends on prose requirements that no tool can verify automatically."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistants that draft code and fix scoped bugs under human review",
+        "unlocks": "large productivity gains on well-tested, modular codebases."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that close routine issues end-to-end and keep continuous-integration pipelines green",
+        "unlocks": "engineers shifting from writing code to reviewing and specifying it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent fleets with independent verification and adversarial self-review",
+        "unlocks": "longer, multi-file changes with fewer human corrections."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-maintaining systems where agents handle dependency upgrades, security patches and refactors continuously",
+        "unlocks": "software that ages more slowly — provided verification and accountability keep pace."
+      }
+    ]
   }
 }

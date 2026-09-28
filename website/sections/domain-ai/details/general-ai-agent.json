@@ -1,0 +1,170 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Perception and interface",
+        "role": "turns the outside world into something the agent can reason over.",
+        "parts": [
+          "text and speech encoders",
+          "image and video encoders",
+          "sensor and telemetry streams",
+          "task specification and instruction parsing"
+        ]
+      },
+      {
+        "name": "Reasoning core",
+        "role": "the central model that plans, decides and predicts consequences of actions.",
+        "parts": [
+          "large pretrained neural network",
+          "planning and search over candidate actions",
+          "world model of how the environment responds"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "lets the agent act over hours or years rather than one conversation.",
+        "parts": [
+          "working context",
+          "episodic store of past experience",
+          "retrieval index",
+          "skill library written from experience"
+        ]
+      },
+      {
+        "name": "Action and tool layer",
+        "role": "connects decisions to real effects.",
+        "parts": [
+          "software tools and APIs",
+          "code execution sandbox",
+          "browsers and file systems",
+          "robotic actuators",
+          "permission and rate limits"
+        ]
+      },
+      {
+        "name": "Learning loop",
+        "role": "improves behaviour from outcomes instead of staying fixed after training.",
+        "parts": [
+          "outcome and reward signals",
+          "self-critique and error attribution",
+          "retraining or weight update pipeline",
+          "curriculum generator"
+        ]
+      },
+      {
+        "name": "Oversight layer",
+        "role": "keeps a capable agent inside human-set bounds.",
+        "parts": [
+          "interpretability tools",
+          "monitoring and anomaly detection",
+          "interrupt and containment controls",
+          "audit logging"
+        ]
+      },
+      {
+        "name": "Compute substrate",
+        "role": "the hardware that trains and runs everything above.",
+        "parts": [
+          "training clusters of accelerators",
+          "inference serving infrastructure",
+          "high-bandwidth memory and interconnect"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Gather training signal",
+        "detail": "Assemble text, images, audio, code, recorded human demonstrations and logged interactions. Increasingly, agents also generate their own experience in simulated environments."
+      },
+      {
+        "title": "Pretrain a foundation model",
+        "detail": "Train a large neural network on a self-supervised objective so it learns general patterns of language, perception and reasoning from raw data."
+      },
+      {
+        "title": "Post-train for instruction and reasoning",
+        "detail": "Fine-tune on curated examples, then use feedback-based reinforcement learning to make the model follow goals, decompose tasks and show its working."
+      },
+      {
+        "title": "Give it memory and retrieval",
+        "detail": "Add external stores the model can read and write, so it can recall past events and reuse solutions rather than restarting every time."
+      },
+      {
+        "title": "Wire up tools and actuators",
+        "detail": "Expose APIs, code execution and, for embodied agents, motors and sensors — behind sandboxes and permission checks so mistakes stay contained."
+      },
+      {
+        "title": "Build the agent loop",
+        "detail": "Run perceive → plan → act → observe repeatedly, with replanning when results differ from expectation and decomposition when a task is too large."
+      },
+      {
+        "title": "Train for long-horizon autonomy",
+        "detail": "Use curricula, sparse-reward methods and self-play so the agent can stay coherent across thousands of steps rather than a few."
+      },
+      {
+        "title": "Add continual learning",
+        "detail": "Let the agent absorb new skills after deployment without forgetting old ones — the hardest unsolved part of a genuinely general agent."
+      },
+      {
+        "title": "Evaluate, red-team and deploy gradually",
+        "detail": "Measure capability across diverse tasks, probe failure and deception modes, and expand autonomy only where reliability is demonstrated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale accelerator compute",
+        "status": "exists",
+        "why": "general capability scales with training and inference compute; supply and energy are the constraints."
+      },
+      {
+        "tech": "Foundation models with general reasoning",
+        "status": "partial",
+        "why": "they handle broad tasks but remain unreliable over long horizons and on unfamiliar problems."
+      },
+      {
+        "tech": "Continual learning without forgetting",
+        "status": "missing",
+        "why": "today a model is largely frozen after training; it does not reliably acquire new skills on its own."
+      },
+      {
+        "tech": "Robust world models for embodied action",
+        "status": "partial",
+        "why": "physical tasks need prediction of real dynamics, where data is scarce and mistakes are costly."
+      },
+      {
+        "tech": "Evaluation of general capability",
+        "status": "partial",
+        "why": "benchmarks saturate or are gamed, so it is hard to state what an agent can and cannot do."
+      },
+      {
+        "tech": "Alignment and oversight methods",
+        "status": "missing",
+        "why": "no proven way to guarantee that a system more capable than its operators pursues the intended goal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tool-using agents that complete bounded software and knowledge tasks",
+        "unlocks": "automation of narrow, checkable workflows under human review."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable multi-hour and multi-day agents with durable memory",
+        "unlocks": "delegation of whole projects in software, research support and administration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "embodied agents that learn new physical skills on the job",
+        "unlocks": "general-purpose robots in warehouses, farms and construction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agents that continually learn and set their own subgoals under oversight",
+        "unlocks": "broad autonomy across science and industry, with control and safety still unresolved."
+      }
+    ]
+  }
+}

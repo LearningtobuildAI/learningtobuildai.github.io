@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data collection layer",
+        "role": "gathers telemetry from networks, endpoints, cloud services and identity systems.",
+        "parts": [
+          "network flow sensors",
+          "packet capture appliances",
+          "endpoint agents",
+          "cloud API connectors",
+          "log forwarders"
+        ]
+      },
+      {
+        "name": "Normalisation and enrichment",
+        "role": "turns raw events into a common schema with context.",
+        "parts": [
+          "parsers",
+          "schema mapping",
+          "threat intelligence feeds",
+          "MITRE ATT&CK tagging"
+        ]
+      },
+      {
+        "name": "Baseline modelling",
+        "role": "learns normal behaviour from historical data using unsupervised learning.",
+        "parts": [
+          "feature extraction",
+          "clustering algorithms",
+          "autoencoders",
+          "time-series models"
+        ]
+      },
+      {
+        "name": "Anomaly detection and scoring",
+        "role": "flags deviations from the baseline and ranks them by risk.",
+        "parts": [
+          "anomaly detection algorithms",
+          "scoring engine",
+          "alert generation"
+        ]
+      },
+      {
+        "name": "Investigation and response orchestration",
+        "role": "provides context and automates containment actions.",
+        "parts": [
+          "query interface",
+          "case management",
+          "SOAR playbooks",
+          "automated containment"
+        ]
+      },
+      {
+        "name": "Feedback and retraining",
+        "role": "improves models from analyst feedback and new data.",
+        "parts": [
+          "labelling tools",
+          "model retraining pipeline",
+          "evaluation metrics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and data sources",
+        "detail": "Choose which threats to hunt and which logs to collect — network flows, endpoint events, authentication records, cloud audit logs."
+      },
+      {
+        "title": "Ingest and store data",
+        "detail": "Build pipelines that collect telemetry at scale and store it in a searchable data lake or SIEM."
+      },
+      {
+        "title": "Normalise and enrich",
+        "detail": "Parse logs into a common schema, add threat intelligence and asset context, and map events to techniques such as MITRE ATT&CK."
+      },
+      {
+        "title": "Engineer features",
+        "detail": "Create quantitative features from raw events — connection frequency, byte volumes, time-of-day patterns, user-entity relationships."
+      },
+      {
+        "title": "Train baseline models",
+        "detail": "Use unsupervised learning on months of historical data to model normal behaviour without labelled attacks."
+      },
+      {
+        "title": "Deploy detection and scoring",
+        "detail": "Run models in production to score anomalies in real time and generate ranked alerts."
+      },
+      {
+        "title": "Integrate with SOC workflows",
+        "detail": "Connect alerts to case management and SOAR platforms so analysts can triage and respond."
+      },
+      {
+        "title": "Tune with feedback",
+        "detail": "Collect analyst verdicts, retrain models and adjust thresholds to reduce false positives over time."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale log storage and querying",
+        "status": "exists",
+        "why": "threat hunting needs months of searchable telemetry to establish baselines and investigate anomalies."
+      },
+      {
+        "tech": "Unsupervised machine learning",
+        "status": "exists",
+        "why": "there are few labelled attack examples, so systems must learn normal behaviour from unlabelled data."
+      },
+      {
+        "tech": "Threat intelligence and MITRE ATT&CK",
+        "status": "exists",
+        "why": "context from known adversary techniques helps prioritise anomalies and guide investigation."
+      },
+      {
+        "tech": "Endpoint detection and response (EDR)",
+        "status": "exists",
+        "why": "endpoint telemetry is a primary data source for detecting host-based compromise."
+      },
+      {
+        "tech": "Automated response (SOAR)",
+        "status": "partial",
+        "why": "playbooks can contain simple threats, but full autonomy still requires human oversight."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted threat hunting in security operations centres",
+        "unlocks": "faster detection of novel threats that signature-based tools miss."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous agents that investigate and contain low-level threats",
+        "unlocks": "reduced analyst workload and faster response to common incidents."
+      },
+      {
+        "stage": "Next",
+        "milestone": "federated learning across organisations for privacy-preserving detection",
+        "unlocks": "broader visibility of attack patterns without sharing raw sensitive data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-healing cyber defence systems that respond at machine speed",
+        "unlocks": "real-time containment and recovery with minimal human intervention."
+      }
+    ]
+  }
+}

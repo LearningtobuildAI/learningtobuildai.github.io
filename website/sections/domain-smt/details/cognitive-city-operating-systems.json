@@ -34,5 +34,170 @@
         "def": "A distributed computing paradigm where data is processed close to its source, reducing latency and bandwidth requirements."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is actually doing — traffic counts, air quality, energy and water flows, bin fill levels.",
+        "parts": [
+          "inductive loops and radar at junctions",
+          "camera and LiDAR",
+          "smart electricity and water meters",
+          "air-quality and noise sensors",
+          "vehicle and bus fleet telemetry"
+        ]
+      },
+      {
+        "name": "Connectivity layer",
+        "role": "moves that data to where it is processed without delay.",
+        "parts": [
+          "fibre backhaul",
+          "public 4G/5G",
+          "LPWAN such as LoRaWAN or NB-IoT",
+          "edge compute nodes at substations and signal cabinets"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "makes data from dozens of departments and vendors readable by one system.",
+        "parts": [
+          "streaming ingestion",
+          "time-series and geospatial stores",
+          "catalogue and access control",
+          "semantic models (NGSI-LD, CityGML)"
+        ]
+      },
+      {
+        "name": "Digital twin",
+        "role": "a live 3D and network model of the city that can be simulated forward.",
+        "parts": [
+          "3D city model and building stock",
+          "road and public-transport network model",
+          "power, water and waste network models",
+          "calibration data from history"
+        ]
+      },
+      {
+        "name": "Decision and control layer",
+        "role": "chooses what to change minute by minute.",
+        "parts": [
+          "demand and flow forecasting",
+          "optimisation and model-predictive control",
+          "rule engine for published operating policies",
+          "audit log of every automated action"
+        ]
+      },
+      {
+        "name": "Actuation interfaces",
+        "role": "the less glamorous half — the ability to actually change something.",
+        "parts": [
+          "adaptive traffic signal controllers",
+          "building management and demand-response links",
+          "fleet dispatch for buses and waste trucks",
+          "grid and district-energy setpoints"
+        ]
+      },
+      {
+        "name": "Operations centre",
+        "role": "humans who watch the twin, override it, and handle incidents.",
+        "parts": [
+          "dashboards and map walls",
+          "incident workflow",
+          "public and press communication"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what the system is allowed to control",
+        "detail": "List the assets the city genuinely owns or can direct — signals, bus priority, street lighting, municipal buildings, waste routes. A twin that can only advise is a different, much cheaper product than one that can act."
+      },
+      {
+        "title": "Instrument the city",
+        "detail": "Fit sensors where the decisions need data and nowhere else: junctions, substations, pumping stations, key buildings and vehicle fleets. Power and communications to each point are usually the slow part."
+      },
+      {
+        "title": "Build the streaming backbone",
+        "detail": "Stand up message brokers, time-series storage and a data catalogue, and agree a shared vocabulary so a bus operator's stop ID and the traffic department's junction ID refer to the same place."
+      },
+      {
+        "title": "Build the base model",
+        "detail": "Survey or derive a 3D city model, road network and utility networks, and assemble them in a common coordinate frame and level of detail."
+      },
+      {
+        "title": "Calibrate against history",
+        "detail": "Tune the traffic, energy and waste models until replaying last year's data reproduces last year's measurements within a stated tolerance. Uncalibrated twins give confident wrong answers."
+      },
+      {
+        "title": "Close the loop carefully",
+        "detail": "Connect the model to real controllers through documented APIs, then run in shadow mode — predicting what it would have done — for months before letting it change anything."
+      },
+      {
+        "title": "Stand up the operations centre",
+        "detail": "Put trained staff in front of the twin with clear authority limits, escalation rules and a way to revert to fixed signal plans or manual operation instantly."
+      },
+      {
+        "title": "Govern it continuously",
+        "detail": "Publish privacy, cybersecurity and procurement rules, and re-calibrate as the city changes, because a model that drifts silently is worse than no model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, low-power urban sensing",
+        "status": "exists",
+        "why": "per-junction and per-building instrumentation is only affordable if sensors are cheap and last years on a battery."
+      },
+      {
+        "tech": "Low-latency edge computing",
+        "status": "partial",
+        "why": "signal control and safety-adjacent decisions cannot wait for a round trip to a distant data centre."
+      },
+      {
+        "tech": "Interoperable city data standards",
+        "status": "partial",
+        "why": "without shared semantics the 'operating system' is just a dashboard over incompatible silos."
+      },
+      {
+        "tech": "Sensor-grade mobile networks",
+        "status": "exists",
+        "why": "4G and 5G carry most current deployments; 6G is a research item with no agreed standard, so it is not a prerequisite for anything being built now."
+      },
+      {
+        "tech": "Calibrated urban simulation",
+        "status": "partial",
+        "why": "traffic and energy models exist but drift when the city or the weather changes."
+      },
+      {
+        "tech": "Cybersecurity and privacy governance",
+        "status": "partial",
+        "why": "a system that can move traffic signals and read household meters is a high-value target and a surveillance risk."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "city operations centres and department-level twins feed dashboards and advice to staff",
+        "unlocks": "faster incident response and evidence for policy, with humans still deciding."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop adaptive traffic signals, building demand response and waste routing in defined districts",
+        "unlocks": "measurable cuts in congestion, peak power and truck kilometres in those areas."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-domain coupling — energy, transport, water and waste optimised together rather than one at a time",
+        "unlocks": "savings no single department could capture alone, and honest trade-offs between them."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "portable, standards-based city platforms with published interfaces, so a city can change vendors without rebuilding",
+        "unlocks": "procurement at a scale that makes the technology affordable outside a handful of well-funded cities."
+      }
+    ]
   }
 }

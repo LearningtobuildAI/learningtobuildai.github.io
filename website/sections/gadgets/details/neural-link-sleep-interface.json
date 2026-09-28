@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sleep-staging sensor array",
+        "role": "detects which sleep stage the wearer is in, second by second, without a gel-and-wire lab setup.",
+        "parts": [
+          "dry EEG electrodes at forehead and behind the ear",
+          "eye-movement and jaw-muscle sensors",
+          "accelerometer and breathing microphone",
+          "analogue front end with motion artefact rejection"
+        ]
+      },
+      {
+        "name": "Real-time controller",
+        "role": "classifies the current stage and decides exactly when a stimulus is allowed.",
+        "parts": [
+          "embedded processor",
+          "stage classifier trained against polysomnography",
+          "phase-locking and wake-detection cutoffs"
+        ]
+      },
+      {
+        "name": "Cue delivery",
+        "role": "replays sounds, words or odours tied to material learned during the day — the one part with solid lab evidence.",
+        "parts": [
+          "bone-conduction or open-ear speakers",
+          "vibration or scent dispenser",
+          "low-latency audio buffer",
+          "volume limits that avoid arousal"
+        ]
+      },
+      {
+        "name": "Electrical stimulation path",
+        "role": "weak transcranial current applied to the scalp to bias cortical rhythms.",
+        "parts": [
+          "electrode pads",
+          "current-controlled stimulator",
+          "impedance monitoring",
+          "hard current and charge limits"
+        ]
+      },
+      {
+        "name": "Magnetic stimulation path",
+        "role": "the ambitious claim — pulsed magnetic fields to drive specific cortical patterns in a headband.",
+        "parts": [
+          "coil windings",
+          "pulse-power electronics and capacitor bank",
+          "cooling",
+          "acoustic noise damping"
+        ]
+      },
+      {
+        "name": "Stimulus library and synchronisation",
+        "role": "pairs the daytime learning material with the cues that will be replayed at night.",
+        "parts": [
+          "cue-learning pairing app",
+          "timestamped session log",
+          "privacy controls for recorded brain data"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the sensing band",
+        "detail": "Dry, springy electrodes are pressed through hair on the forehead and mastoid; impedance and comfort are tested over multi-hour wear."
+      },
+      {
+        "title": "Validate sleep staging",
+        "detail": "The classifier's stage calls are compared against simultaneous full polysomnography in a sleep lab, and disagreement rates are measured against how much the stimulus timing actually matters."
+      },
+      {
+        "title": "Pick the stimulation modality",
+        "detail": "Audio and odour cues are cheap, safe and already work in labs; transcranial current is next; wearable magnetic stimulation is ruled in or out on acoustics, weight and power."
+      },
+      {
+        "title": "Pair cues with daytime learning",
+        "detail": "Participants learn a task while a distinct sound is played; that sound becomes the retrieval key to be replayed later."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The controller waits for the target stage — slow-wave sleep for memory, REM for dream-content work — and fires a cue only when the pattern is stable and arousal risk is low."
+      },
+      {
+        "title": "Test against sham",
+        "detail": "Every claimed effect — better recall, more lucid dreams — must survive blinded comparison with an identical headband that delivers nothing."
+      },
+      {
+        "title": "Integrate and shrink",
+        "detail": "Electronics, battery and shielding are packed into a washable shell light enough to sleep in, with thermal and pressure safety margins."
+      },
+      {
+        "title": "Regulate",
+        "detail": "A device that claims to alter memory or dreams is a medical device in most markets, needing clinical evidence and approval before sale."
+      },
+      {
+        "title": "Longer-run field study",
+        "detail": "Months of home use, checked against objective tests, to see whether any gain persists or fades."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Comfortable all-night dry EEG",
+        "status": "partial",
+        "why": "consumer sleep bands get stage calls roughly right but not reliably enough to time stimulation to a brain rhythm."
+      },
+      {
+        "tech": "Automatic sleep staging from few channels",
+        "status": "partial",
+        "why": "accurate staging is the gate on every closed-loop claim."
+      },
+      {
+        "tech": "Targeted memory reactivation by cue",
+        "status": "partial",
+        "why": "replaying sounds or odours tied to daytime learning has been shown to shift memory in lab studies, but effects are modest and materials are specific."
+      },
+      {
+        "tech": "Wearable transcranial magnetic stimulation",
+        "status": "missing",
+        "why": "magnetic coils need large pulse currents, cooling and heavy shielding, and click loudly — an unsolved fit for a headband worn during sleep."
+      },
+      {
+        "tech": "Understanding sleep's role in learning",
+        "status": "partial",
+        "why": "sleep is known to consolidate what was already learned; evidence for acquiring genuinely new complex skills overnight is weak."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research rigs using polysomnography, cue replay and weak scalp current to nudge sleep rhythms and sometimes trigger lucid dreams",
+        "unlocks": "proof that external stimulation can reach a sleeping brain at the right moment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "consumer headbands that stage sleep and play quiet closed-loop audio to deepen slow-wave sleep",
+        "unlocks": "a wearable platform, though with a narrow and disputable benefit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinically validated memory-cueing for rehabilitation, for example after stroke or in early cognitive decline",
+        "unlocks": "a real medical use for the loop, tested against sham."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "the marketing claims in this tile — fast skill acquisition and controlled dreaming from a headband",
+        "unlocks": "nothing, until wearable magnetic or electrical stimulation, brain-state decoding and a theory of how the stimulation produces a skill all exist together."
+      }
+    ]
+  }
+}

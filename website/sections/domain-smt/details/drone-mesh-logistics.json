@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Delivery drone",
+        "role": "carries the package and flies the route.",
+        "parts": [
+          "multirotor or VTOL airframe",
+          "electric motors and propellers",
+          "lithium-ion battery pack",
+          "payload bay and release mechanism"
+        ]
+      },
+      {
+        "name": "Mesh communication",
+        "role": "lets drones talk to each other and to ground nodes without relying on a central tower.",
+        "parts": [
+          "radio transceivers",
+          "directional antennas",
+          "mesh networking protocol",
+          "ground gateway"
+        ]
+      },
+      {
+        "name": "Edge autonomy",
+        "role": "computes flight paths, collision avoidance and coordination onboard in real time.",
+        "parts": [
+          "flight controller",
+          "companion computer",
+          "obstacle-detection sensors (lidar, cameras, radar)",
+          "swarm-coordination software"
+        ]
+      },
+      {
+        "name": "Navigation",
+        "role": "keeps the drone on course and aware of its position.",
+        "parts": [
+          "GNSS receiver",
+          "inertial measurement unit",
+          "barometer",
+          "visual odometry"
+        ]
+      },
+      {
+        "name": "Ground infrastructure",
+        "role": "supports take-off, landing, charging and package handover.",
+        "parts": [
+          "landing pads",
+          "charging or battery-swap stations",
+          "package lockers",
+          "mesh gateway to the internet"
+        ]
+      },
+      {
+        "name": "Traffic management",
+        "role": "integrates drones into airspace and prevents conflicts with other aircraft.",
+        "parts": [
+          "remote identification",
+          "UTM software",
+          "geofencing",
+          "weather data feed"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design airframe and payload",
+        "detail": "Choose a multirotor for hover-and-deliver or a fixed-wing VTOL for longer range; size the battery for the required payload and distance."
+      },
+      {
+        "title": "Integrate flight controller and sensors",
+        "detail": "Install the autopilot, GNSS, inertial measurement unit and obstacle-detection sensors, then tune for stable flight."
+      },
+      {
+        "title": "Develop mesh networking",
+        "detail": "Write the protocol for drone-to-drone and drone-to-ground communication, including routing and handover between moving nodes."
+      },
+      {
+        "title": "Implement edge computing",
+        "detail": "Program onboard computers to run path planning, collision avoidance and swarm-coordination algorithms without a central server."
+      },
+      {
+        "title": "Build ground stations",
+        "detail": "Set up landing pads, charging or battery-swap stations and mesh gateways across the service area."
+      },
+      {
+        "title": "Simulate and flight-test",
+        "detail": "Use software simulation and controlled flights to validate coordination, safety and failure modes."
+      },
+      {
+        "title": "Certify and integrate with traffic management",
+        "detail": "Obtain regulatory approval for beyond-visual-line-of-sight operations and connect to airspace-management systems."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Battery energy density",
+        "status": "partial",
+        "why": "current lithium-ion packs limit range and payload; better cells are needed for practical delivery distances."
+      },
+      {
+        "tech": "Detect-and-avoid sensors",
+        "status": "partial",
+        "why": "drones must reliably sense and avoid other aircraft and obstacles without a human pilot."
+      },
+      {
+        "tech": "UTM systems",
+        "status": "partial",
+        "why": "regulators need a way to track and separate many drones in shared airspace."
+      },
+      {
+        "tech": "Mesh networking standards",
+        "status": "partial",
+        "why": "decentralised communication between fast-moving nodes is not yet standardised for aviation use."
+      },
+      {
+        "tech": "Edge computing hardware",
+        "status": "exists",
+        "why": "powerful, low-power processors are available for onboard autonomy and real-time routing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot projects delivering medical supplies and small parcels in limited areas",
+        "unlocks": "real-world data on range, reliability and public acceptance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine beyond-visual-line-of-sight operations in selected corridors",
+        "unlocks": "remote supervision of many drones instead of one pilot per aircraft."
+      },
+      {
+        "stage": "Next",
+        "milestone": "urban mesh networks where drones coordinate routes directly with each other",
+        "unlocks": "denser delivery without a single point of failure or central bottleneck."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous mesh logistics integrated with ground robots and airspace management",
+        "unlocks": "same-hour delivery at city scale as a normal utility."
+      }
+    ]
+  }
+}

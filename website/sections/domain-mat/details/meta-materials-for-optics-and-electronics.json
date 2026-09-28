@@ -32,5 +32,150 @@
         "def": "An idealized lens that can focus all wavelengths to a single point without any diffraction limitations."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Unit cell (meta-atom)",
+        "role": "the sub-wavelength building block whose exact geometry sets how the material responds to light or radio waves.",
+        "parts": [
+          "resonator shape (split ring, pillar, fin, hole)",
+          "spacer layer",
+          "substrate"
+        ]
+      },
+      {
+        "name": "Material platform",
+        "role": "the base materials whose loss and index limit what the design can do.",
+        "parts": [
+          "low-loss dielectrics (silicon, titanium dioxide, silicon nitride)",
+          "noble metals for plasmonic structures",
+          "polymer or glass substrates"
+        ]
+      },
+      {
+        "name": "Array and lattice",
+        "role": "unit cells repeated, or graded, to bend, focus or absorb waves.",
+        "parts": [
+          "single-layer metasurface",
+          "multi-layer stacks",
+          "inter-layer alignment"
+        ]
+      },
+      {
+        "name": "Tuning and active control",
+        "role": "lets the response be switched or steered rather than fixed at manufacture.",
+        "parts": [
+          "phase-change materials such as vanadium dioxide or GST",
+          "liquid crystals",
+          "MEMS actuators",
+          "transparent electrodes or diode elements"
+        ]
+      },
+      {
+        "name": "Fabrication stack",
+        "role": "the toolchain that writes features smaller than the wavelength being used.",
+        "parts": [
+          "electron-beam or deep-UV lithography",
+          "nanoimprint",
+          "thin-film deposition and etching"
+        ]
+      },
+      {
+        "name": "Design and simulation toolchain",
+        "role": "predicts behaviour and searches the vast geometry space.",
+        "parts": [
+          "electromagnetic solvers",
+          "inverse and topology optimisation",
+          "machine-learning surrogates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the target response",
+        "detail": "Decide what the material must do — bend a wavefront, absorb a band, shift phase, or show a negative refractive index — at a chosen wavelength or frequency."
+      },
+      {
+        "title": "Design the unit cell",
+        "detail": "Simulate a sub-wavelength resonator geometry until its resonance and phase response match the target; inverse-design methods search far more shapes than a human can."
+      },
+      {
+        "title": "Choose materials for the wavelength",
+        "detail": "Dielectrics are used where metal losses are unacceptable; metals are used where strong plasmonic resonance is needed; phase-change or liquid-crystal layers are added where switching is required."
+      },
+      {
+        "title": "Pattern the layer",
+        "detail": "Deposit the film, spin resist, expose the pattern with electron-beam or deep-UV lithography, then etch the features and strip the resist."
+      },
+      {
+        "title": "Stack and align",
+        "detail": "Bulk three-dimensional metamaterials are built layer by layer, with each layer aligned to the one below to tolerances far smaller than the wavelength."
+      },
+      {
+        "title": "Integrate the active elements",
+        "detail": "Electrodes, heaters or MEMS are added so the response can be tuned electrically or thermally after manufacture."
+      },
+      {
+        "title": "Characterise and package",
+        "detail": "Measure transmission, reflection, phase and, critically, loss; then encapsulate the device for its environment."
+      },
+      {
+        "title": "Scale the process",
+        "detail": "Move from a single laboratory sample to wafer-scale or roll-to-roll replication using nanoimprint, since writing every device with an electron beam is far too slow for volume production."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sub-wavelength nanofabrication",
+        "status": "exists",
+        "why": "the features are smaller than the wavelength of light, so only advanced lithography can make them."
+      },
+      {
+        "tech": "Electromagnetic simulation at scale",
+        "status": "exists",
+        "why": "design is done almost entirely in software before anything is fabricated."
+      },
+      {
+        "tech": "Low-loss materials at the operating wavelength",
+        "status": "partial",
+        "why": "metals absorb heavily in the visible, which limits efficiency in metal-based optical metamaterials."
+      },
+      {
+        "tech": "Tunable and switchable materials",
+        "status": "partial",
+        "why": "a fixed response is rarely useful; active control is needed for beam steering, displays and reconfigurable surfaces."
+      },
+      {
+        "tech": "High-volume, large-area patterning",
+        "status": "partial",
+        "why": "electron-beam writing is precise but slow, so cheap replication methods must mature."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metasurface components in niche optics and metamaterial-inspired antennas in communications hardware",
+        "unlocks": "flatter, thinner optical and radio components than conventional designs allow."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wafer-scale, mass-produced flat lenses and metasurface sensors",
+        "unlocks": "cheaper cameras, LiDAR and imaging systems with fewer curved glass elements."
+      },
+      {
+        "stage": "Next",
+        "milestone": "electrically reconfigurable surfaces that steer beams without moving parts",
+        "unlocks": "solid-state LiDAR and reconfigurable antenna surfaces for next-generation wireless networks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "three-dimensional bulk optical metamaterials with low loss",
+        "unlocks": "negative-index optics, superlenses and true wave-cloaking devices."
+      }
+    ]
   }
 }

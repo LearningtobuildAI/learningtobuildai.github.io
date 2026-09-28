@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Memory cell array",
+        "role": "stores each bit as a tiny electric charge in a capacitor, gated by a transistor.",
+        "parts": [
+          "1-transistor, 1-capacitor (1T1C) cells",
+          "word lines",
+          "bit lines"
+        ]
+      },
+      {
+        "name": "Address decoding and command logic",
+        "role": "turns requests from the memory controller into precise row and column selections.",
+        "parts": [
+          "row decoder",
+          "column decoder",
+          "command and mode registers"
+        ]
+      },
+      {
+        "name": "Sense amplifiers and I/O",
+        "role": "detects the minuscule charge on each cell and drives the data out at high speed.",
+        "parts": [
+          "sense amplifiers",
+          "I/O buffers",
+          "internal data bus"
+        ]
+      },
+      {
+        "name": "Refresh circuitry",
+        "role": "rewrites each cell periodically, because the capacitor charge leaks away.",
+        "parts": [
+          "refresh counter",
+          "timing generator"
+        ]
+      },
+      {
+        "name": "High-speed interface",
+        "role": "moves data between the memory and the processor or memory controller.",
+        "parts": [
+          "DDR physical layer (PHY)",
+          "delay-locked loop or phase-locked loop",
+          "on-die termination"
+        ]
+      },
+      {
+        "name": "Packaging and module",
+        "role": "protects the die and connects it to the motherboard.",
+        "parts": [
+          "chip package",
+          "printed-circuit board (DIMM)",
+          "gold edge connector",
+          "serial presence detect chip",
+          "heat spreader"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow and slice silicon",
+        "detail": "A pure silicon crystal is pulled from a melt, then sliced and polished into mirror-smooth wafers."
+      },
+      {
+        "title": "Pattern the transistors",
+        "detail": "Photolithography, etching and deposition define billions of tiny transistors across the wafer, one per memory cell."
+      },
+      {
+        "title": "Form the capacitors",
+        "detail": "Each cell gets a capacitor — either a deep trench etched into the silicon or a tall stack built above it — using high-k dielectrics to store enough charge in a very small volume."
+      },
+      {
+        "title": "Build the wiring",
+        "detail": "Many layers of copper wiring are deposited and patterned to connect word lines, bit lines and control circuits."
+      },
+      {
+        "title": "Probe the wafer",
+        "detail": "Test needles touch each die to check for defects and measure speed before the wafer is cut."
+      },
+      {
+        "title": "Dice and package",
+        "detail": "The wafer is cut into individual dies, which are encapsulated in protective chip packages with fine metal connections."
+      },
+      {
+        "title": "Assemble the module",
+        "detail": "Multiple memory chips are soldered onto a small circuit board, a serial presence detect chip is added, and a heat spreader may be attached."
+      },
+      {
+        "title": "Final test and binning",
+        "detail": "Each module is tested for capacity, speed and reliability, then sorted into performance grades."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced photolithography",
+        "status": "exists",
+        "why": "printing the smallest features of each cell requires deep-ultraviolet or extreme-ultraviolet light."
+      },
+      {
+        "tech": "High-k dielectrics and atomic layer deposition",
+        "status": "exists",
+        "why": "capacitors must store enough charge in a volume of a few tens of nanometres without leaking."
+      },
+      {
+        "tech": "High-speed interface standards",
+        "status": "exists",
+        "why": "the processor and memory must agree on signalling, timing and voltage to move data reliably."
+      },
+      {
+        "tech": "Ultra-pure silicon wafer manufacturing",
+        "status": "exists",
+        "why": "any impurity or crystal defect can ruin millions of cells."
+      },
+      {
+        "tech": "Error correction and testing",
+        "status": "exists",
+        "why": "as cells shrink, soft errors and weak bits must be detected and corrected in use."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "DDR5 and LPDDR5 modules, plus high-bandwidth memory stacked beside processors",
+        "unlocks": "fast, high-capacity main memory for computers, phones and servers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "further DRAM generations and 3D-stacked memory with more layers",
+        "unlocks": "higher bandwidth and capacity without a proportional increase in cost or power."
+      },
+      {
+        "stage": "Next",
+        "milestone": "memory expansion over high-speed interconnects such as CXL",
+        "unlocks": "pooled and shared memory across servers, easing capacity limits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "computing inside or very near the memory array",
+        "unlocks": "less data movement, which is the main energy cost in modern computing."
+      }
+    ]
+  }
+}

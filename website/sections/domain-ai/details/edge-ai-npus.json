@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Matrix compute array",
+        "role": "does the bulk of neural-network maths — multiplying and accumulating large blocks of numbers.",
+        "parts": [
+          "systolic or SIMD multiply-accumulate units",
+          "activation and weight buffers",
+          "accumulators"
+        ]
+      },
+      {
+        "name": "On-chip memory",
+        "role": "keeps data close to the compute units so they are not starved.",
+        "parts": [
+          "SRAM scratchpads",
+          "register files",
+          "weight cache",
+          "memory controller for LPDDR or HBM"
+        ]
+      },
+      {
+        "name": "Dataflow controller",
+        "role": "schedules how tensors are tiled, fed and pipelined through the array.",
+        "parts": [
+          "microcode sequencer",
+          "DMA engines",
+          "tensor descriptors"
+        ]
+      },
+      {
+        "name": "Low-precision arithmetic units",
+        "role": "support the reduced number formats that make on-device inference efficient.",
+        "parts": [
+          "INT8 and INT4 MAC units",
+          "FP16/BF16 units",
+          "scale and shift blocks"
+        ]
+      },
+      {
+        "name": "Host and system interface",
+        "role": "connects the NPU to the CPU, GPU and shared memory of the device.",
+        "parts": [
+          "on-chip interconnect",
+          "shared memory interface",
+          "PCIe or proprietary link for discrete NPUs"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "turns a trained model into commands the NPU can execute.",
+        "parts": [
+          "graph compiler",
+          "kernel libraries",
+          "driver and runtime",
+          "APIs such as ONNX, Core ML or DirectML"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the dataflow",
+        "detail": "Architects choose how data moves through the chip — how many multiply-accumulate units, what precision, how much on-chip memory — by simulating common neural-network layers."
+      },
+      {
+        "title": "Write and verify the RTL",
+        "detail": "The design is described in a hardware description language, then verified against software models to catch functional bugs before fabrication."
+      },
+      {
+        "title": "Synthesise and place-and-route",
+        "detail": "Tools convert the RTL into a transistor-level layout, placing logic cells and routing wires while meeting timing and power targets."
+      },
+      {
+        "title": "Tape out",
+        "detail": "The finished layout becomes a set of photomasks sent to a semiconductor foundry."
+      },
+      {
+        "title": "Fabricate the die",
+        "detail": "The foundry builds the NPU block alongside CPU, GPU and memory controllers on a silicon wafer using an advanced CMOS process, layer by layer."
+      },
+      {
+        "title": "Package and test",
+        "detail": "Wafers are diced, good dies are packaged, and each part is tested for speed, power and defects."
+      },
+      {
+        "title": "Enable the software",
+        "detail": "Compilers, kernel libraries and drivers are written so that popular model formats can run on the new hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced CMOS process nodes",
+        "status": "exists",
+        "why": "dense, low-power logic is what allows billions of operations per second in a phone or laptop."
+      },
+      {
+        "tech": "Low-precision quantisation",
+        "status": "exists",
+        "why": "reducing weights and activations to 8 or 4 bits cuts memory traffic and power with little loss of accuracy."
+      },
+      {
+        "tech": "High-bandwidth on-chip memory",
+        "status": "exists",
+        "why": "neural networks are memory-bound; fast SRAM and LPDDR/HBM keep the compute units fed."
+      },
+      {
+        "tech": "Heterogeneous compilers",
+        "status": "partial",
+        "why": "mapping a model efficiently across CPU, GPU and NPU is still hard and often vendor-specific."
+      },
+      {
+        "tech": "Standard model formats and APIs",
+        "status": "exists",
+        "why": "ONNX and similar formats let developers target many NPUs without rewriting models."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NPUs in phones and PCs delivering tens of TOPS for local speech, image and language tasks.",
+        "unlocks": "private, low-latency AI that works offline."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Chiplet-based NPUs and unified memory architectures that scale to hundreds of TOPS.",
+        "unlocks": "larger models running entirely on-device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "On-device training and personalisation.",
+        "unlocks": "models that adapt to a user without sending data to the cloud."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Always-on, microwatt NPUs for sensors and wearables.",
+        "unlocks": "continuous AI in tiny battery-powered devices."
+      }
+    ]
+  }
+}

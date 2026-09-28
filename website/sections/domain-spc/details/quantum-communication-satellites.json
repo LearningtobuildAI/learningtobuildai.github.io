@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum photon source payload",
+        "role": "produces the faint pulses of light that carry the key — either entangled photon pairs or weak laser pulses.",
+        "parts": [
+          "spontaneous parametric down-conversion crystal",
+          "pump laser and optical bench",
+          "entanglement or polarisation preparation optics"
+        ]
+      },
+      {
+        "name": "Optical terminal",
+        "role": "aims that light at a ground telescope through a moving, turbulent atmosphere.",
+        "parts": [
+          "telescope",
+          "fast steering mirror",
+          "fine-pointing sensors",
+          "beacon lasers"
+        ]
+      },
+      {
+        "name": "Ground receiving station",
+        "role": "collects single photons and separates them from daylight.",
+        "parts": [
+          "large-aperture telescope",
+          "narrowband filters",
+          "single-photon detectors (superconducting nanowire or avalanche diodes)",
+          "adaptive optics"
+        ]
+      },
+      {
+        "name": "Timing and classical channel",
+        "role": "marks which pulse is which and carries the public conversation needed to turn detections into a key.",
+        "parts": [
+          "radio or laser downlink",
+          "clock synchronisation",
+          "sifting, error-correction and privacy-amplification computers"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "stores keys and delivers them to users.",
+        "parts": [
+          "key store",
+          "encryption appliances",
+          "trusted-node relays between ground stations"
+        ]
+      },
+      {
+        "name": "Satellite bus",
+        "role": "keeps the payload powered, cold and pointing correctly.",
+        "parts": [
+          "solar arrays",
+          "attitude control",
+          "thermal and vibration isolation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the link budget",
+        "detail": "Work out how many photons survive the trip: atmospheric loss, diffraction spreading over hundreds to thousands of kilometres, and telescope gains. This decides the orbit, the aperture sizes and the key rate."
+      },
+      {
+        "title": "Build and test the photon source",
+        "detail": "A non-linear crystal is pumped by a laser to emit entangled pairs. On the bench, the team measures entanglement fidelity and count rate before anything is flight-qualified."
+      },
+      {
+        "title": "Space-qualify the optics",
+        "detail": "The payload is shaken, baked in vacuum and cycled between hot and cold to prove the alignment of micrometre-scale optics survives launch and orbit."
+      },
+      {
+        "title": "Assemble payload and bus",
+        "detail": "The optical bench is bolted into the satellite, wired to power and telemetry, and the telescope is aligned to the spacecraft axes."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "After orbit insertion the payload is switched on, its pointing calibrated, and the telescope boresighted against known stars."
+      },
+      {
+        "title": "Acquire the ground link",
+        "detail": "During a pass, the satellite finds the ground station's beacon, the station finds the satellite's downlink, and both steer to hold the link while the pair moves at kilometres per second."
+      },
+      {
+        "title": "Run the key exchange",
+        "detail": "Photons are sent one at a time. The ground station records detections; over the public channel the two sides compare which pulses arrived, discard the rest, correct errors and compress what remains so any eavesdropping is squeezed out."
+      },
+      {
+        "title": "Distribute and relay keys",
+        "detail": "Finished keys are stored and handed to users, or relayed through trusted ground nodes to link two cities that never see the satellite at once."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Entangled-photon sources and single-photon detectors",
+        "status": "exists",
+        "why": "both are routine in laboratories and available commercially; the challenge is making them robust and fast enough in orbit."
+      },
+      {
+        "tech": "Free-space laser communication terminals",
+        "status": "exists",
+        "why": "satellite-to-ground and satellite-to-satellite optical links have been demonstrated, proving the pointing and acquisition problem is solvable."
+      },
+      {
+        "tech": "Space-qualified quantum payloads",
+        "status": "partial",
+        "why": "a handful of missions have flown quantum sources and detectors, but long-lifetime, high-rate instruments are not yet off-the-shelf."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "missing",
+        "why": "without them, entanglement cannot be stored or swapped, so long chains of links cannot be joined into a genuine end-to-end quantum network."
+      },
+      {
+        "tech": "Interoperable key-delivery standards and certified hardware",
+        "status": "partial",
+        "why": "users need keys that plug into ordinary encryption equipment, with device behaviour they can trust."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "low-Earth-orbit demonstrations such as China's Micius satellite, launched in 2016, which distributed entangled photons and keys to ground stations over more than 1,000 km",
+        "unlocks": "proof that quantum signals survive a satellite link."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated, higher-rate quantum satellites serving several ground stations per pass",
+        "unlocks": "key delivery at rates and duty cycles useful to banks, utilities and governments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "constellations of satellites plus trusted ground nodes",
+        "unlocks": "continent-scale key distribution, though with the caveat that intermediate nodes must be trusted."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "satellite links joined by quantum repeaters and memories",
+        "unlocks": "entanglement shared between distant users, removing trust assumptions and pointing towards a quantum internet. Note this carries keys, not data — the payload traffic still travels over ordinary channels."
+      }
+    ]
+  }
+}

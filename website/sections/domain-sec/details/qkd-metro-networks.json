@@ -34,5 +34,163 @@
         "def": "A method used in QKD networks that combines elements of both prepare-and-measure and measurement-device-independent protocols to enhance security and distance."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the faint laser pulses or single photons that carry the quantum key.",
+        "parts": [
+          "laser or entangled-photon source",
+          "attenuator to reach single-photon level",
+          "modulator for encoding"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries photons between nodes without amplification, which would destroy the quantum state.",
+        "parts": [
+          "dark fibre (dedicated or multiplexed)",
+          "free-space or satellite link for long distances",
+          "optical switches and splitters"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "register individual photons at the receiving node.",
+        "parts": [
+          "superconducting nanowire or avalanche photodiode detectors",
+          "cryogenics or cooling for some types"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "authenticated public messages for sifting and error correction.",
+        "parts": [
+          "conventional internet or dedicated link",
+          "message authentication using pre-shared keys"
+        ]
+      },
+      {
+        "name": "Key post-processing",
+        "role": "turns raw detections into a short, secret key.",
+        "parts": [
+          "sifting software",
+          "error correction",
+          "privacy amplification"
+        ]
+      },
+      {
+        "name": "Trusted nodes and relays",
+        "role": "extend range by decoding and re-encrypting at intermediate sites.",
+        "parts": [
+          "secure node hardware",
+          "key management system"
+        ]
+      },
+      {
+        "name": "Network control",
+        "role": "routes key material and integrates with existing encryption gear.",
+        "parts": [
+          "key management layer",
+          "interface to VPN or optical transport equipment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the link and topology",
+        "detail": "Decide between a dedicated fibre pair, a multiplexed telecom fibre, or a free-space path between buildings."
+      },
+      {
+        "title": "Install quantum endpoints",
+        "detail": "Place a transmitter at one node and a receiver at the other, with precise optical alignment."
+      },
+      {
+        "title": "Calibrate the optical path",
+        "detail": "Measure loss and detector dark counts, and tune timing so photons arrive within the detection window."
+      },
+      {
+        "title": "Run the quantum exchange",
+        "detail": "Send photons in randomly chosen bases; the receiver measures in its own randomly chosen bases and records detections."
+      },
+      {
+        "title": "Sift and correct",
+        "detail": "Over the authenticated classical channel, the two sides keep matching bases and correct errors without revealing the key."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "Compress the corrected string so that any information an eavesdropper might have is removed, leaving a secret key."
+      },
+      {
+        "title": "Deliver the key",
+        "detail": "Feed the key into an encryption device — for example, to refresh keys for a VPN or optical link."
+      },
+      {
+        "title": "Extend the network",
+        "detail": "Add trusted nodes to bridge longer distances, or deploy twin-field QKD to push reach without trusting intermediate sites."
+      },
+      {
+        "title": "Monitor and audit",
+        "detail": "Continuously check the quantum bit error rate; a rise above the security threshold means the key is discarded and the link investigated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "no detector, no quantum key; their efficiency and noise set the maximum distance."
+      },
+      {
+        "tech": "Low-loss optical fibre",
+        "status": "exists",
+        "why": "photons cannot be amplified, so every decibel of loss directly shortens the link."
+      },
+      {
+        "tech": "Quantum random number generators",
+        "status": "exists",
+        "why": "the security proof assumes truly random basis choices and keys."
+      },
+      {
+        "tech": "Authentication for the classical channel",
+        "status": "exists",
+        "why": "without it, an attacker could impersonate a node during sifting and error correction."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "they would allow entanglement to be extended over long distances without trusted nodes; today's networks rely on trust or short links."
+      },
+      {
+        "tech": "Standards and certification",
+        "status": "partial",
+        "why": "groups such as ETSI have published QKD specifications, but interoperability and security certification are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro-scale QKD links and small networks in several countries, plus satellite demonstrations such as Micius (2016)",
+        "unlocks": "point-to-point high-assurance key exchange for banks, data centres and government links."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with telecom networks and hybrid use alongside post-quantum cryptography",
+        "unlocks": "QKD where it adds value, with cheaper classical algorithms covering the rest."
+      },
+      {
+        "stage": "Next",
+        "milestone": "twin-field QKD and improved detectors extending reach beyond a few hundred kilometres of fibre",
+        "unlocks": "regional networks without trusting every intermediate node."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and entanglement distribution",
+        "unlocks": "a quantum internet that can also link quantum computers, not just distribute keys."
+      }
+    ]
   }
 }

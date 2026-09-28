@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "NPU core",
+        "role": "performs the matrix and tensor arithmetic that dominates neural-network inference.",
+        "parts": [
+          "MAC arrays for low-precision math (INT8, INT4)",
+          "dedicated on-chip SRAM",
+          "activation and normalization units"
+        ]
+      },
+      {
+        "name": "Host CPU and GPU",
+        "role": "run the operating system, orchestrate tasks and handle any model layers the NPU cannot.",
+        "parts": [
+          "CPU cores",
+          "integrated GPU",
+          "shared cache and interconnect"
+        ]
+      },
+      {
+        "name": "Memory subsystem",
+        "role": "feeds the accelerators with model weights and activations fast enough to keep them busy.",
+        "parts": [
+          "unified or shared LPDDR memory",
+          "memory controller",
+          "high-bandwidth fabric"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "turns trained models into instructions the NPU understands.",
+        "parts": [
+          "driver and runtime",
+          "graph compiler and quantizer",
+          "frameworks and APIs (e.g. ONNX, DirectML, Core ML)"
+        ]
+      },
+      {
+        "name": "Thermal and power management",
+        "role": "keeps the chip within its power and temperature budget in a thin laptop.",
+        "parts": [
+          "voltage regulators",
+          "heat pipes and fans",
+          "dynamic frequency and power gating"
+        ]
+      },
+      {
+        "name": "Model storage and loading",
+        "role": "stores compressed models and loads them securely on demand.",
+        "parts": [
+          "NVMe solid-state drive",
+          "encryption and secure boot",
+          "model cache in memory"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the SoC",
+        "detail": "Architects define the NPU block, its instruction set and its connection to CPU, GPU and memory, then write and verify the register-transfer-level design."
+      },
+      {
+        "title": "Fabricate the silicon",
+        "detail": "The design is taped out to a foundry and built on an advanced process node, where billions of transistors are patterned layer by layer on a silicon wafer."
+      },
+      {
+        "title": "Package and test the chip",
+        "detail": "The die is cut, bonded into a package with memory and power delivery, and tested for defects before shipment."
+      },
+      {
+        "title": "Build the mainboard",
+        "detail": "The packaged SoC is soldered onto a printed circuit board alongside memory, storage, power regulators and connectors."
+      },
+      {
+        "title": "Assemble the laptop",
+        "detail": "The board, battery, display, keyboard and cooling system are fitted into the chassis and tested for fit and function."
+      },
+      {
+        "title": "Enable the software",
+        "detail": "Drivers, compilers and OS integrations are written so that mainstream AI frameworks can target the NPU; models are quantized to low precision to fit."
+      },
+      {
+        "title": "Validate performance and power",
+        "detail": "Engineers run inference benchmarks, measure battery life and thermal behaviour, and verify that AI features work reliably across applications."
+      },
+      {
+        "title": "Flash, certify and ship",
+        "detail": "Final firmware and operating system images are installed, the device is certified for sale, and it is packed for distribution."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced semiconductor manufacturing",
+        "status": "exists",
+        "why": "NPUs only make sense when millions of arithmetic units can be built cheaply on a small, low-power die."
+      },
+      {
+        "tech": "Low-precision arithmetic hardware",
+        "status": "exists",
+        "why": "neural networks tolerate 8-bit and 4-bit math, which is far more energy-efficient than floating point."
+      },
+      {
+        "tech": "Model compression and quantization",
+        "status": "exists",
+        "why": "large models must be shrunk to fit in laptop memory and run within a battery budget."
+      },
+      {
+        "tech": "Efficient inference runtimes",
+        "status": "exists",
+        "why": "compilers and runtimes map model graphs onto NPU hardware without hand-tuning each model."
+      },
+      {
+        "tech": "High-bandwidth, low-power memory",
+        "status": "exists",
+        "why": "inference is often memory-bound, so feeding the NPU is as important as the math itself."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NPUs of tens of TOPS in mainstream laptops, used for background blur, transcription and photo editing",
+        "unlocks": "always-on AI features that run locally without sending data to the cloud."
+      },
+      {
+        "stage": "Next",
+        "milestone": "NPUs approaching 100 TOPS and unified memory architectures",
+        "unlocks": "running small and medium language models entirely on the device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-processing between NPU, GPU and CPU for mixed workloads",
+        "unlocks": "faster, more flexible local assistants that combine vision, speech and text."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device personal agents with persistent memory and privacy",
+        "unlocks": "AI that learns from your data without it ever leaving the laptop."
+      }
+    ]
+  }
+}

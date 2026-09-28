@@ -30,5 +30,162 @@
         "def": "Precision devices that can switch between multiple bio-inks during the printing process to achieve complex tissue architectures."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bio-ink library",
+        "role": "carries the living cells and gives structure until the tissue matures.",
+        "parts": [
+          "cell suspension (stem cells or donor cells)",
+          "hydrogel such as alginate, gelatin-methacryloyl or collagen",
+          "decellularised tissue matrix",
+          "growth factors and crosslinkers"
+        ]
+      },
+      {
+        "name": "Print heads",
+        "role": "deposit several materials in one build without stopping.",
+        "parts": [
+          "microfluidic mixing/switching head",
+          "extrusion nozzles",
+          "inkjet or laser-assisted heads for fine detail",
+          "peristaltic or syringe pumps"
+        ]
+      },
+      {
+        "name": "Motion and control platform",
+        "role": "moves the heads along the sliced geometry with micron precision.",
+        "parts": [
+          "gantry or robotic arm",
+          "sterile print chamber",
+          "temperature control",
+          "software that maps a material to every point in the volume"
+        ]
+      },
+      {
+        "name": "Sacrificial and support materials",
+        "role": "hold open the channels and overhangs that become blood vessels, then disappear.",
+        "parts": [
+          "thermally reversible gel (e.g. pluronic-type)",
+          "water-soluble polymers",
+          "removal by cooling or dissolving"
+        ]
+      },
+      {
+        "name": "Maturation bioreactor",
+        "role": "keeps the construct alive while it becomes functional tissue.",
+        "parts": [
+          "perfusion pump",
+          "oxygen and nutrient control",
+          "mechanical or electrical stimulation",
+          "waste removal"
+        ]
+      },
+      {
+        "name": "Vascular seeding and perfusion",
+        "role": "lines printed channels with endothelial cells so they behave as capillaries.",
+        "parts": [
+          "endothelial cell suspension",
+          "flow loop",
+          "sterility monitoring"
+        ]
+      },
+      {
+        "name": "Imaging and quality control",
+        "role": "proves the cells survived and the structure matches the design.",
+        "parts": [
+          "confocal and light-sheet microscopy",
+          "viability and metabolic assays",
+          "in-line pressure and flow sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Source and expand cells",
+        "detail": "A small biopsy is reprogrammed or expanded in culture over weeks until there are enough cells — often hundreds of millions — for a clinically relevant piece of tissue."
+      },
+      {
+        "title": "Formulate the inks",
+        "detail": "Cells are gently mixed into a hydrogel that stays liquid enough to print and can later be set into a gel, tuned so the cells are not damaged by shear."
+      },
+      {
+        "title": "Design the tissue",
+        "detail": "Patient imaging (CT or MRI) is turned into a digital model, and software assigns each voxel a material: cell type, matrix stiffness, or sacrificial ink where a vessel should run."
+      },
+      {
+        "title": "Print the volume",
+        "detail": "The microfluidic head switches between inks layer by layer, building the different cell regions and the branching channel network in one continuous job."
+      },
+      {
+        "title": "Set the structure",
+        "detail": "Light, ionic or thermal crosslinking locks the hydrogel in place, while the sacrificial ink stays soft enough to be flushed out later."
+      },
+      {
+        "title": "Open and line the vessels",
+        "detail": "The sacrificial material is melted or dissolved away, and the resulting hollow channels are perfused with endothelial cells, which attach and form a living lining."
+      },
+      {
+        "title": "Mature under perfusion",
+        "detail": "The construct spends days to weeks in a bioreactor with nutrient flow and, where relevant, stretching or electrical pulses, until the cells organise into tissue rather than a gel full of cells."
+      },
+      {
+        "title": "Test and implant",
+        "detail": "Safety and function are assessed in animals and in regulated trials; only a few printed living products, such as cartilage-type implants, have reached human trials, and none are routine."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable human cell expansion",
+        "status": "partial",
+        "why": "a solid organ needs billions of cells of several types; today's culture methods make this slow, costly and variable."
+      },
+      {
+        "tech": "Biocompatible printable hydrogels",
+        "status": "exists",
+        "why": "the matrix must be printable, non-toxic and then remodel itself as real tissue takes over."
+      },
+      {
+        "tech": "Printed vasculature in thick tissue",
+        "status": "missing",
+        "why": "without a perfused capillary network, anything thicker than roughly a fraction of a millimetre starves in the centre — this is the central unsolved problem."
+      },
+      {
+        "tech": "Long-term bioreactor maturation",
+        "status": "partial",
+        "why": "tissue must be kept alive and coaxed to maturity for weeks before implantation."
+      },
+      {
+        "tech": "Regulatory pathway for living implants",
+        "status": "partial",
+        "why": "a printed, cell-based product is neither a conventional device nor a simple drug, so approval routes are still being defined."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multi-material printers producing tissue models for drug testing and thin patches such as skin and cartilage in early human trials",
+        "unlocks": "better toxicity screening and replacement tissue for surface or load-bearing repair."
+      },
+      {
+        "stage": "Next",
+        "milestone": "thick, actively perfused constructs with printed vessel trees that survive weeks in a bioreactor",
+        "unlocks": "tissue pieces large enough to be surgically useful, such as heart patches or insulin-producing cell clusters."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first-in-human trials of a printed solid organ or organ-assist implant",
+        "unlocks": "proof that printed tissue can integrate, be supplied with blood and function long term."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hospital-scale, patient-specific printing from a patient's own cells",
+        "unlocks": "on-demand replacement tissue and organs without lifelong immune suppression, if the vascular and regulatory problems are solved."
+      }
+    ]
   }
 }

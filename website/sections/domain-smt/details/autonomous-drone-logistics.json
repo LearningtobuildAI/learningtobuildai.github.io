@@ -29,5 +29,164 @@
         "def": "A method where multiple drones work together to achieve a common goal, coordinating their movements through AI algorithms."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Airframe",
+        "role": "carries the package and stays airborne — either a multirotor that hovers or a fixed-wing craft that cruises.",
+        "parts": [
+          "carbon-fibre composite body",
+          "fixed-wing or multirotor configuration",
+          "motors and propellers",
+          "lithium battery pack",
+          "parachute or emergency descent system",
+          "skids or winch for package release"
+        ]
+      },
+      {
+        "name": "Flight control",
+        "role": "flies and stabilises the aircraft with no pilot on board, and fails safely if something breaks.",
+        "parts": [
+          "redundant flight computers",
+          "inertial measurement units",
+          "GNSS receivers",
+          "barometer and pitot tube",
+          "flight-termination system"
+        ]
+      },
+      {
+        "name": "Detect-and-avoid",
+        "role": "spots other aircraft, terrain, power lines and people, then steers clear.",
+        "parts": [
+          "LiDAR",
+          "radar",
+          "cameras",
+          "ADS-B receiver",
+          "sensor-fusion processor"
+        ]
+      },
+      {
+        "name": "Ground infrastructure",
+        "role": "launches, recovers, recharges and hands packages over without a person standing outside.",
+        "parts": [
+          "launch and recovery pad",
+          "winch or tether for lowering packages",
+          "battery charging bay",
+          "package magazine",
+          "weather mast"
+        ]
+      },
+      {
+        "name": "Command and control links",
+        "role": "keeps each aircraft in contact with remote pilots and the fleet system.",
+        "parts": [
+          "cellular modem",
+          "satellite backup link",
+          "radio line-of-sight link",
+          "remote ID transmitter"
+        ]
+      },
+      {
+        "name": "Fleet orchestration and airspace management",
+        "role": "assigns routes, keeps aircraft apart and fits them into managed airspace.",
+        "parts": [
+          "cloud dispatch",
+          "geofence database",
+          "uncrewed traffic management (UTM) interface",
+          "operations dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and mould the airframe",
+        "detail": "Carbon-fibre cloth is laid into moulds and cured in an autoclave to make light, stiff bodies and wings."
+      },
+      {
+        "title": "Assemble the powertrain",
+        "detail": "Motors, electronic speed controllers and battery packs are fitted and bench-tested for thrust and endurance."
+      },
+      {
+        "title": "Install avionics",
+        "detail": "Redundant flight computers, inertial sensors, GNSS receivers and the flight-termination system are mounted and wired."
+      },
+      {
+        "title": "Calibrate the perception suite",
+        "detail": "LiDAR, radar and cameras are aligned and their outputs fused so the aircraft can tell a bird from a parachute from a power line."
+      },
+      {
+        "title": "Write and simulate the autonomy stack",
+        "detail": "Route planning, geofencing, weather limits and contingency behaviour are tested for thousands of hours in software simulation before flight."
+      },
+      {
+        "title": "Build the ground stations",
+        "detail": "Launch pads, chargers, package magazines and the winch mechanism are installed and connected to the dispatch cloud."
+      },
+      {
+        "title": "Fly the test campaign",
+        "detail": "Flights gradually expand the envelope: hover, cruise, wind limits, sensor-failure cases and parachute deployment."
+      },
+      {
+        "title": "Certify with the aviation regulator",
+        "detail": "The operator obtains an airworthiness approval and an operating certificate that permits flights beyond visual line of sight."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Remote pilots supervise several aircraft each, while a maintenance loop replaces batteries, motors and propellers on a schedule."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High energy-density lithium batteries",
+        "status": "exists",
+        "why": "endurance is set by battery mass; today's cells limit most craft to tens of kilometres of range."
+      },
+      {
+        "tech": "GNSS and inertial navigation",
+        "status": "exists",
+        "why": "aircraft need reliable position and attitude without a pilot looking out of a window."
+      },
+      {
+        "tech": "Detect-and-avoid sensors and sensor fusion",
+        "status": "partial",
+        "why": "small, light and cheap enough sensors that reliably see other traffic are still maturing."
+      },
+      {
+        "tech": "Uncrewed traffic management and remote ID",
+        "status": "partial",
+        "why": "many aircraft sharing airspace need digital traffic coordination, not radio calls."
+      },
+      {
+        "tech": "Beyond-visual-line-of-sight regulation",
+        "status": "partial",
+        "why": "routine long-range flight is only legal where regulators have written and granted the rules."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "medical delivery along fixed corridors, such as blood and vaccine flights in Rwanda from 2016",
+        "unlocks": "proof that routine autonomous flight can be safe and useful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "suburban parcel delivery in approved corridors, with one operator managing many aircraft",
+        "unlocks": "a viable cost per delivery for small, urgent packages."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared traffic management networks letting several operators fly the same airspace",
+        "unlocks": "denser networks and longer routes without new bespoke regulation for each one."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "dense urban networks with heavier payloads",
+        "unlocks": "routine aerial delivery integrated with crewed aviation and ground logistics."
+      }
+    ]
   }
 }

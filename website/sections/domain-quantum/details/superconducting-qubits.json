@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Qubit chip",
+        "role": "the processor itself — a millimetre-scale silicon or sapphire die carrying tens to hundreds of qubits.",
+        "parts": [
+          "superconducting metal films",
+          "coplanar waveguide resonators",
+          "readout resonators",
+          "coupling buses"
+        ]
+      },
+      {
+        "name": "Josephson junctions",
+        "role": "the non-linear element that makes a circuit behave like an artificial atom with distinct energy levels.",
+        "parts": [
+          "aluminium electrodes",
+          "thin aluminium-oxide tunnel barrier"
+        ]
+      },
+      {
+        "name": "Cryogenics",
+        "role": "cools the chip to around 10–20 millikelvin, where the circuits become superconducting and thermal noise disappears.",
+        "parts": [
+          "dilution refrigerator",
+          "pulse tubes and compressors",
+          "millikelvin mixing chamber stage"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "generate the microwave pulses that drive gates and interpret the faint signals coming back.",
+        "parts": [
+          "room-temperature microwave sources",
+          "arbitrary waveform generators",
+          "parametric amplifiers",
+          "digitizers"
+        ]
+      },
+      {
+        "name": "Shielding and filtering",
+        "role": "keeps stray heat, infrared light and magnetic fields from destroying the quantum state.",
+        "parts": [
+          "copper and cryoperm shields",
+          "attenuators and filters",
+          "infrared-blocking absorbers"
+        ]
+      },
+      {
+        "name": "Wiring and packaging",
+        "role": "carries hundreds of control lines from room temperature down to the chip without overheating the fridge.",
+        "parts": [
+          "superconducting ribbon cables",
+          "sample holder",
+          "multiplexed readout lines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow and clean the substrate",
+        "detail": "A high-purity silicon or sapphire wafer is polished and cleaned so films will grow with very few defects — defects cause qubit decoherence."
+      },
+      {
+        "title": "Deposit superconducting films",
+        "detail": "Niobium or aluminium is deposited by sputtering or evaporation, then patterned with photolithography and etching to form resonators and wiring."
+      },
+      {
+        "title": "Fabricate Josephson junctions",
+        "detail": "A shadow-evaporation technique — often the Dolan bridge — lays down one aluminium electrode, oxidises its surface to form a nanometre-thin barrier, then lays down the second electrode at a different angle."
+      },
+      {
+        "title": "Dice and mount the chip",
+        "detail": "The wafer is diced and the chip wire-bonded into a shielded sample package with well-controlled microwave ports."
+      },
+      {
+        "title": "Wire the cryostat",
+        "detail": "The package is mounted at the coldest stage of a dilution refrigerator, with carefully attenuated and filtered lines for every qubit and readout channel."
+      },
+      {
+        "title": "Cool down",
+        "detail": "Over roughly a day the fridge steps down through several temperature stages to millikelvin, and the metal films become superconducting."
+      },
+      {
+        "title": "Calibrate the qubits",
+        "detail": "Each qubit's frequency, pulse amplitudes and readout thresholds are measured and tuned; cross-talk between neighbours is characterised."
+      },
+      {
+        "title": "Run gates and correct errors",
+        "detail": "Single- and two-qubit gates are executed, measured, and repeated in error-correcting cycles that combine many physical qubits into one more reliable logical qubit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "superconducting qubits only behave quantum-mechanically near absolute zero, and the fridge must cool hundreds of wires without adding noise."
+      },
+      {
+        "tech": "Nanoscale superconducting thin-film fabrication",
+        "status": "exists",
+        "why": "junction barriers a nanometre thick must be uniform, or qubits vary too much to control."
+      },
+      {
+        "tech": "Low-noise microwave control and amplification",
+        "status": "exists",
+        "why": "gates are microwave pulses, and reading a single qubit requires amplifiers near the quantum limit."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "physical qubits are too error-prone alone; many must be combined into one logical qubit, and this has been shown to work better as the code grows only recently."
+      },
+      {
+        "tech": "Cryogenic control electronics",
+        "status": "partial",
+        "why": "thousands of room-temperature cables per chip do not scale; control must move into the fridge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cloud-accessible processors with tens to a few hundred noisy physical qubits",
+        "unlocks": "early experiments in quantum simulation, optimisation and algorithm research."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-corrected logical qubits that clearly outperform the best physical ones",
+        "unlocks": "longer, more reliable circuits than any single qubit could run."
+      },
+      {
+        "stage": "Next",
+        "milestone": "machines with hundreds of logical qubits, wired and controlled in three dimensions",
+        "unlocks": "quantum chemistry and materials problems beyond classical simulation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant processors running millions of gate operations",
+        "unlocks": "practical attacks on some cryptography and design of new catalysts and drugs."
+      }
+    ]
+  }
+}

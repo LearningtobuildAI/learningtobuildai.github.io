@@ -34,5 +34,152 @@
         "def": "A method of reasoning where the AI explicitly explains its thought process, leading to more transparent and explainable decision-making."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Document ingestion and parsing",
+        "role": "Turns contracts in any format into structured, searchable text.",
+        "parts": [
+          "PDF and Word parsers",
+          "OCR for scanned pages",
+          "layout and table extraction"
+        ]
+      },
+      {
+        "name": "Legal knowledge base",
+        "role": "Provides the domain knowledge the agent reasons against.",
+        "parts": [
+          "annotated clause corpus",
+          "risk taxonomy",
+          "regulatory and precedent database"
+        ]
+      },
+      {
+        "name": "Retrieval and grounding engine",
+        "role": "Finds the clauses and legal context relevant to each question, so the model does not rely on memory alone.",
+        "parts": [
+          "embedding model",
+          "vector database",
+          "retriever and reranker",
+          "citation linker"
+        ]
+      },
+      {
+        "name": "Reasoning and agent controller",
+        "role": "Plans the review, calls tools, and chains reasoning across documents.",
+        "parts": [
+          "large language model",
+          "chain-of-thought and self-check prompts",
+          "task planner",
+          "tool interface for search, compare and calculate"
+        ]
+      },
+      {
+        "name": "Review and audit interface",
+        "role": "Shows findings to a human reviewer and records every decision.",
+        "parts": [
+          "clause highlighting",
+          "risk scoring",
+          "explanation generation",
+          "audit log and feedback loop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the review scope",
+        "detail": "Choose which contract types, risks and jurisdictions the agent will handle, and build a risk taxonomy and clause library from existing legal expertise."
+      },
+      {
+        "title": "Collect and annotate data",
+        "detail": "Gather a large corpus of contracts and have lawyers label clauses and risk levels to create training and evaluation sets."
+      },
+      {
+        "title": "Choose and adapt the language model",
+        "detail": "Select a base large language model, fine-tune or prompt-engineer it on legal tasks, and add guardrails against hallucination."
+      },
+      {
+        "title": "Build the retrieval pipeline",
+        "detail": "Chunk contracts, generate embeddings, index them, and tune retrieval to surface the right clauses and regulations for each query."
+      },
+      {
+        "title": "Implement the agent workflow",
+        "detail": "Write the planner that breaks a review into steps and give it tools to search, compare clauses and check consistency across documents."
+      },
+      {
+        "title": "Integrate with document systems",
+        "detail": "Connect to the firm’s document management system, enforce security and access controls, and handle versioning and redlines."
+      },
+      {
+        "title": "Test and validate",
+        "detail": "Run the agent on held-out contracts, measure recall and precision of risk detection, and compare its findings against human review."
+      },
+      {
+        "title": "Deploy with human oversight",
+        "detail": "Start in assistive mode where lawyers approve every finding, then gradually expand autonomy for routine, low-risk clauses."
+      },
+      {
+        "title": "Monitor and improve",
+        "detail": "Log errors, retrain on feedback, and update the knowledge base as laws and contract practices change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with long context and strong reasoning",
+        "status": "exists",
+        "why": "the agent must read and reason over long, complex contracts without losing track of earlier clauses."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "grounds the model in actual contract text and law, reducing hallucination and improving traceability."
+      },
+      {
+        "tech": "Legal ontologies and annotated contract datasets",
+        "status": "partial",
+        "why": "high-quality labeled data is scarce and jurisdiction-specific, limiting how well agents generalize."
+      },
+      {
+        "tech": "Secure and private document handling",
+        "status": "exists",
+        "why": "contracts are confidential and often regulated, so the system must isolate data and control access."
+      },
+      {
+        "tech": "Agent orchestration frameworks for reliable multi-step planning",
+        "status": "partial",
+        "why": "current frameworks still struggle with long-horizon tasks, tool use and error recovery in complex reviews."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistive review where AI highlights clauses and risks and a human makes the final call",
+        "unlocks": "faster first-pass review and better consistency across large contract sets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "semi-autonomous review for routine agreements, with the agent drafting redlines and summaries for approval",
+        "unlocks": "reduced lawyer time on standard contracts and faster deal cycles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-document consistency checking across a portfolio",
+        "unlocks": "stronger risk management in mergers, compliance and supply-chain reviews."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous negotiation support within human-set bounds",
+        "unlocks": "near-instant contracting for low-risk, high-volume deals."
+      },
+      {
+        "stage": "Long term",
+        "milestone": "self-improving legal agents that learn from outcomes and update their own knowledge",
+        "unlocks": "continuous adaptation to changing law and business practice without manual retraining."
+      }
+    ]
   }
 }

@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception encoder",
+        "role": "turns camera images and joint readings into a sequence of tokens the model can attend to.",
+        "parts": [
+          "vision backbone (convolutional or vision transformer)",
+          "proprioception encoder",
+          "tokenizer"
+        ]
+      },
+      {
+        "name": "Transformer backbone",
+        "role": "models long-range dependencies between past observations, instructions and actions.",
+        "parts": [
+          "self-attention layers",
+          "feed-forward networks",
+          "context window",
+          "positional encodings"
+        ]
+      },
+      {
+        "name": "Action head",
+        "role": "decodes the model's output into continuous motor commands for the robot.",
+        "parts": [
+          "action tokenizer or regression head",
+          "joint target generator",
+          "gripper command output"
+        ]
+      },
+      {
+        "name": "Training pipeline",
+        "role": "learns control policies from human demonstrations and simulated experience.",
+        "parts": [
+          "demonstration dataset (video, joint states, actions)",
+          "physics simulator",
+          "imitation learning loss",
+          "reinforcement learning fine-tuning"
+        ]
+      },
+      {
+        "name": "Deployment runtime",
+        "role": "runs the model on the robot with low enough latency for control.",
+        "parts": [
+          "inference engine",
+          "onboard GPU or accelerator",
+          "real-time control loop"
+        ]
+      },
+      {
+        "name": "Safety and oversight",
+        "role": "keeps the learned controller within safe bounds.",
+        "parts": [
+          "action limiters",
+          "fallback controller",
+          "emergency stop",
+          "monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect human demonstrations",
+        "detail": "Operators teleoperate a robot through many variations of each task, recording video, joint positions and commanded actions."
+      },
+      {
+        "title": "Build a simulation environment",
+        "detail": "Physics engines model the robot and objects; randomize lighting, textures and physics to broaden experience."
+      },
+      {
+        "title": "Design the model",
+        "detail": "Choose a transformer that ingests image and state tokens and outputs action tokens; set context length and action chunking."
+      },
+      {
+        "title": "Train in simulation",
+        "detail": "Use imitation learning from scripted or human demonstrations, then reinforcement learning to refine policies."
+      },
+      {
+        "title": "Fine-tune on real data",
+        "detail": "Adapt the simulated policy to the real robot using the collected demonstration dataset, correcting for the sim-to-real gap."
+      },
+      {
+        "title": "Evaluate and iterate",
+        "detail": "Test on held-out tasks; measure success rate and failure modes; collect more data where the model fails."
+      },
+      {
+        "title": "Deploy on the robot",
+        "detail": "Optimize the model for real-time inference, integrate with the robot's control bus, and run at the required control frequency."
+      },
+      {
+        "title": "Add safety layers",
+        "detail": "Wrap the learned policy with action limits, a fallback controller and an emergency stop so unsafe outputs are rejected."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale robot demonstration datasets",
+        "status": "partial",
+        "why": "learning general policies needs many hours of diverse real-world manipulation data, which is expensive to collect."
+      },
+      {
+        "tech": "High-fidelity physics simulation",
+        "status": "partial",
+        "why": "simulators can generate unlimited data but still struggle to match real contact dynamics and sensor noise."
+      },
+      {
+        "tech": "Transformer architectures for sequential decision making",
+        "status": "exists",
+        "why": "attention-based models are well established in language and vision and adapt naturally to action sequences."
+      },
+      {
+        "tech": "Real-time inference accelerators",
+        "status": "exists",
+        "why": "onboard GPUs can run large models fast enough for robot control loops."
+      },
+      {
+        "tech": "Safety certification for learned controllers",
+        "status": "missing",
+        "why": "no standard way to prove a neural network controller is safe across all situations it may encounter."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes perform single tasks such as picking and placing with high success in controlled settings.",
+        "unlocks": "proof that end-to-end control can work on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "models generalize across many tasks and several robot bodies, trained on aggregated datasets.",
+        "unlocks": "reusable policies that reduce per-task engineering."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial humanoid robots use end-to-end control for specific jobs in warehouses or factories.",
+        "unlocks": "real-world deployment and data flywheel."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose robots learn new tasks from a few demonstrations and operate safely alongside people.",
+        "unlocks": "flexible automation in unstructured environments."
+      }
+    ]
+  }
+}

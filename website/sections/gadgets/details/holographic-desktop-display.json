@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Spatial light modulator (SLM) array",
+        "role": "modulates light to form the holographic interference pattern that reconstructs the 3D image.",
+        "parts": [
+          "phase-modulating LCOS or MEMS panels",
+          "high-speed driver electronics"
+        ]
+      },
+      {
+        "name": "Illumination",
+        "role": "provides coherent or partially coherent light that the SLM can shape.",
+        "parts": [
+          "red, green and blue laser diodes",
+          "beam shaping and combining optics",
+          "laser cooling"
+        ]
+      },
+      {
+        "name": "Optical relay and steering",
+        "role": "directs the modulated light to the viewer's eyes and expands the viewing zone.",
+        "parts": [
+          "lenses and mirrors",
+          "beam splitters or waveguides",
+          "galvanometer or other steering mirrors"
+        ]
+      },
+      {
+        "name": "Hologram rendering pipeline",
+        "role": "computes the interference pattern from a 3D scene in real time.",
+        "parts": [
+          "GPU or FPGA hardware",
+          "hologram computation algorithms (e.g. point-cloud or layer-based)"
+        ]
+      },
+      {
+        "name": "Eye tracking",
+        "role": "tracks the viewer's pupil positions to adapt the hologram and reduce computational load.",
+        "parts": [
+          "infrared cameras",
+          "infrared illumination",
+          "low-latency tracking software"
+        ]
+      },
+      {
+        "name": "Housing and thermal management",
+        "role": "keeps the precise optical alignment stable and components within operating temperature.",
+        "parts": [
+          "rigid enclosure",
+          "heat sinks and fans",
+          "vibration isolation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Specify the optical design",
+        "detail": "Choose target resolution, viewing angle, physical size and colour gamut; these set the required SLM pixel count, laser wavelengths and optical path length."
+      },
+      {
+        "title": "Fabricate the SLM panels",
+        "detail": "High-resolution phase modulators are made on silicon backplanes using liquid-crystal-on-silicon (LCOS) or micro-electromechanical (MEMS) processes, then packaged with driver chips."
+      },
+      {
+        "title": "Assemble the light engine",
+        "detail": "Red, green and blue laser diodes are collimated, combined into a single beam and directed to the SLM with beam-shaping optics."
+      },
+      {
+        "title": "Align the optical train",
+        "detail": "The SLM, relay lenses, mirrors and steering elements are mounted and aligned to micron tolerances so the reconstructed wavefront is correct."
+      },
+      {
+        "title": "Develop the rendering hardware and software",
+        "detail": "Real-time hologram computation is implemented on GPUs or FPGAs, using algorithms that convert 3D scene data into phase patterns at kilohertz rates."
+      },
+      {
+        "title": "Integrate eye tracking",
+        "detail": "Cameras and infrared illuminators are positioned to capture pupil positions, and the rendering pipeline is adapted to update the hologram only for the observed eye locations."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "The assembled display is calibrated to correct optical aberrations, then tested for image quality, viewing angle, colour accuracy and user comfort."
+      },
+      {
+        "title": "Package into a desktop unit",
+        "detail": "The optics, electronics and cooling are fitted into a monitor-like enclosure with standard video interfaces and ergonomic adjustments."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-resolution, high-speed spatial light modulators",
+        "status": "partial",
+        "why": "current SLMs have too few pixels and too slow refresh rates to produce wide-angle, real-time holograms at desktop scale."
+      },
+      {
+        "tech": "Real-time hologram computation algorithms and hardware",
+        "status": "partial",
+        "why": "rendering a full-colour hologram from a complex 3D scene requires enormous computing power that is only now becoming feasible."
+      },
+      {
+        "tech": "Compact, efficient red-green-blue laser sources",
+        "status": "exists",
+        "why": "laser diodes are mature, but further cost reduction and size shrinking are needed for consumer desktop products."
+      },
+      {
+        "tech": "Low-latency eye tracking",
+        "status": "exists",
+        "why": "eye tracking is used in virtual-reality headsets, but must be integrated with hologram rendering to expand the viewing zone."
+      },
+      {
+        "tech": "High-bandwidth data interfaces",
+        "status": "partial",
+        "why": "driving millions of SLM pixels at kilohertz rates demands data links faster than current display standards."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes demonstrate small, monochrome or limited-colour holographic displays with narrow viewing angles.",
+        "unlocks": "proof that light-field reconstruction without glasses is possible in a desktop form factor."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved SLMs and algorithms enable desktop-sized prototypes with acceptable resolution, colour and real-time performance.",
+        "unlocks": "use in design review and medical imaging, where depth cues matter."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration of eye tracking and optical steering yields wider viewing zones and support for multiple viewers.",
+        "unlocks": "collaborative work and entertainment applications."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commercial products with full colour, high resolution and comfortable viewing angles reach the market.",
+        "unlocks": "replacement of conventional monitors for tasks that benefit from true 3D visuals."
+      }
+    ]
+  }
+}

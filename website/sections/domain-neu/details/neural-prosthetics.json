@@ -33,5 +33,158 @@
         "def": "A device that can communicate directly with neural tissue, either recording or stimulating activity."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "the actual contact with nervous tissue — recording spikes or delivering charge.",
+        "parts": [
+          "silicon or flexible-polymer shanks",
+          "platinum or iridium oxide contacts",
+          "cochlear electrode array inserted into the inner ear",
+          "cuff electrodes around peripheral nerves"
+        ]
+      },
+      {
+        "name": "Implant electronics",
+        "role": "amplify tiny neural voltages and generate stimulation pulses.",
+        "parts": [
+          "low-noise amplifiers",
+          "analogue-to-digital converters",
+          "current-controlled stimulation drivers",
+          "microcontroller"
+        ]
+      },
+      {
+        "name": "Hermetic package and body",
+        "role": "seals electronics against salt water and the immune system for years.",
+        "parts": [
+          "titanium or ceramic case",
+          "laser-welded lid",
+          "feedthroughs",
+          "silicone or parylene coating"
+        ]
+      },
+      {
+        "name": "Power and data link",
+        "role": "gets energy and signals in and out through intact skin.",
+        "parts": [
+          "inductive coil",
+          "radio or infrared telemetry",
+          "battery or supercapacitor"
+        ]
+      },
+      {
+        "name": "Decoder and control software",
+        "role": "turns a pattern of neural activity into a command, or a command into a stimulation pattern.",
+        "parts": [
+          "spike sorting",
+          "machine-learning decoder",
+          "stimulation scheduler",
+          "clinician tuning interface"
+        ]
+      },
+      {
+        "name": "External wearable",
+        "role": "the part the user wears or carries.",
+        "parts": [
+          "transmitter headpiece",
+          "processor",
+          "phone or computer app"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target and electrode geometry",
+        "detail": "Engineers map the tissue to be interfaced — cochlea, motor cortex, retina — and size contacts accordingly. A cortical Utah array, for example, is a 10×10 grid of 1.5 mm silicon shanks on a 400 µm pitch."
+      },
+      {
+        "title": "Fabricate in a cleanroom",
+        "detail": "Thin metal films are patterned photolithographically on silicon, polyimide or parylene, then insulated everywhere except the contact sites."
+      },
+      {
+        "title": "Assemble and seal the electronics",
+        "detail": "Chips are mounted in a titanium or ceramic case, feedthroughs are welded in, and the whole package is tested in warm saline to prove it is watertight."
+      },
+      {
+        "title": "Test for biocompatibility and lifetime",
+        "detail": "Accelerated soak tests, cell-culture assays and animal implants establish that the device neither poisons tissue nor corrodes."
+      },
+      {
+        "title": "Validate in animals, then clinical trials",
+        "detail": "Efficacy and safety are demonstrated in animals and then in staged human trials under medical-device regulators."
+      },
+      {
+        "title": "Implant surgically",
+        "detail": "A stereotactic frame or surgical robot places the array to sub-millimetre accuracy; the lead is tunnelled under the skin to a connector or coil on the skull."
+      },
+      {
+        "title": "Calibrate with the user",
+        "detail": "Over weeks, the decoder is trained on the individual's neural signals, and the user learns to modulate them reliably."
+      },
+      {
+        "title": "Monitor and revise",
+        "detail": "Electrode performance is tracked; scar tissue can raise impedance and reduce signal over years."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Biocompatible microelectrode fabrication",
+        "status": "exists",
+        "why": "without contacts that survive in tissue, no interface lasts long enough to be useful."
+      },
+      {
+        "tech": "Hermetic implant packaging",
+        "status": "partial",
+        "why": "sealing electronics for a decade inside a warm, salty, moving body is still the main engineering limit."
+      },
+      {
+        "tech": "Low-power wireless neural telemetry",
+        "status": "partial",
+        "why": "hundreds of channels of raw data cannot cross the skin through wires without infection risk."
+      },
+      {
+        "tech": "Neural decoding algorithms",
+        "status": "partial",
+        "why": "movement intent can be decoded well; memory and mood are far less understood."
+      },
+      {
+        "tech": "A scientific account of memory and conscious states",
+        "status": "missing",
+        "why": "there is no validated method to read, let alone copy or 'upload', a conscious state — the digital-afterlife part of this idea has no experimental basis."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cochlear implants and deep brain stimulation are routine clinical devices; motor brain-computer interfaces let a small number of paralysed people type and control robotic arms in trials",
+        "unlocks": "restored hearing, tremor control and basic communication for severe paralysis."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully implanted, wireless, higher-channel interfaces with multi-year stability — several stent-like and cortical devices are in early human trials",
+        "unlocks": "everyday use without cables or a technician present."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sensory and memory prosthetics — cortical visual implants, and research programmes stimulating the hippocampus to aid memory encoding",
+        "unlocks": "partial restoration of sight and of the ability to form new memories."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop implants that both read and stimulate, used for epilepsy, depression and spinal-cord injury",
+        "unlocks": "treatments tuned to the individual's own neural state."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "high-bandwidth whole-brain read-out and transfer",
+        "unlocks": "unknown — this requires discoveries in neuroscience that have not been made, and is not simply a matter of better electrodes."
+      }
+    ]
   }
 }

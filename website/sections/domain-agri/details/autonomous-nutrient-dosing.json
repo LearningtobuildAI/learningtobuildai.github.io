@@ -35,5 +35,145 @@
         "def": "A method of growing plants in nutrient-rich water solutions without soil, often used in vertical farming systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing array",
+        "role": "measures the nutrient solution in real time",
+        "parts": [
+          "pH probes",
+          "electrical conductivity (EC) sensors",
+          "ion-selective electrodes or ion chromatography",
+          "temperature and flow sensors"
+        ]
+      },
+      {
+        "name": "Dosing and mixing hardware",
+        "role": "injects concentrated nutrients in precise amounts",
+        "parts": [
+          "peristaltic or diaphragm pumps",
+          "solenoid valves",
+          "static mixer",
+          "stock solution tanks (A/B and micronutrients)"
+        ]
+      },
+      {
+        "name": "Control and computation",
+        "role": "runs the closed-loop algorithm that decides what to dose",
+        "parts": [
+          "edge controller or PLC",
+          "control software",
+          "machine learning models",
+          "safety interlocks"
+        ]
+      },
+      {
+        "name": "Fluid handling loop",
+        "role": "circulates and delivers the adjusted solution to the plants",
+        "parts": [
+          "recirculation pumps",
+          "pipes and manifolds",
+          "irrigation emitters",
+          "return lines and filters"
+        ]
+      },
+      {
+        "name": "Data and interface",
+        "role": "logs data, allows setpoints, and alerts operators",
+        "parts": [
+          "cloud or local database",
+          "dashboard",
+          "mobile or web app",
+          "API for integration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the crop and nutrient recipe",
+        "detail": "Define the target crop and its ideal nutrient concentrations at each growth stage, using established hydroponic recipes as a baseline."
+      },
+      {
+        "title": "Select and calibrate sensors",
+        "detail": "Pick sensors that can measure the ions of interest — pH, EC, and where possible specific ions like nitrate, potassium or calcium — and establish a calibration schedule against laboratory samples."
+      },
+      {
+        "title": "Install dosing hardware",
+        "detail": "Plumb stock tanks, pumps, valves and a mixing manifold into the existing irrigation loop, with failsafes to prevent overdosing."
+      },
+      {
+        "title": "Implement control software",
+        "detail": "Write or configure a closed-loop controller (e.g., PID) and train machine learning models on historical sensor and dosing data to predict plant uptake."
+      },
+      {
+        "title": "Commission and tune",
+        "detail": "Run baseline cycles, compare sensor readings with lab analysis, and adjust the model until dosing tracks the recipe accurately."
+      },
+      {
+        "title": "Integrate with climate and irrigation",
+        "detail": "Link the nutrient controller to the irrigation schedule and environmental controls so dosing responds to changes in light, temperature and humidity."
+      },
+      {
+        "title": "Validate in trials",
+        "detail": "Run side-by-side trials against standard EC-based dosing, measuring yield, nutrient use efficiency and crop health."
+      },
+      {
+        "title": "Scale and monitor",
+        "detail": "Roll out to multiple zones, add remote monitoring and alarms, and retrain models as more data accumulates."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ion-selective sensing",
+        "status": "partial",
+        "why": "continuous, accurate measurement of individual nutrients (not just total EC) is still limited by sensor drift and interference."
+      },
+      {
+        "tech": "Machine learning for plant nutrient uptake",
+        "status": "partial",
+        "why": "models need large datasets linking environmental conditions, plant demand and optimal dosing, which are still being collected."
+      },
+      {
+        "tech": "Precision fluid handling",
+        "status": "exists",
+        "why": "peristaltic and diaphragm pumps can already dose small volumes accurately."
+      },
+      {
+        "tech": "Controlled environment agriculture (hydroponics)",
+        "status": "exists",
+        "why": "the growing system itself — recirculating water, inert media, climate control — is widely deployed in vertical farms and greenhouses."
+      },
+      {
+        "tech": "Edge computing and data connectivity",
+        "status": "exists",
+        "why": "low-cost controllers and cloud platforms can run models locally and aggregate data."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Automated EC and pH dosing is standard in commercial greenhouses and vertical farms.",
+        "unlocks": "stable baseline nutrition with less labour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Pilot systems add ion-selective sensors and ML to control individual nutrients in real time.",
+        "unlocks": "tighter control of crop quality and reduced nutrient waste."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Autonomous systems learn crop-specific recipes and adjust them as plants grow.",
+        "unlocks": "higher yields and lower operating costs."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Integration with plant sensing (e.g., imaging, sap analysis) closes the loop on actual plant status.",
+        "unlocks": "fully autonomous, resource-efficient vertical farms."
+      }
+    ]
   }
 }

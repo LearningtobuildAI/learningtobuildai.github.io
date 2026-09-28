@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Post-quantum cryptographic primitives",
+        "role": "mathematical functions that resist attacks by both classical and quantum computers, used for key exchange and digital signatures.",
+        "parts": [
+          "lattice-based key encapsulation (e.g., ML-KEM)",
+          "lattice-based digital signatures (e.g., ML-DSA)",
+          "hash-based signatures for firmware or long-lived roots"
+        ]
+      },
+      {
+        "name": "Key generation and storage",
+        "role": "creates and protects the long-term private keys that define an identity.",
+        "parts": [
+          "quantum-resistant random number generator",
+          "hardware security module (HSM) with PQC support",
+          "secure element or trusted execution environment in devices"
+        ]
+      },
+      {
+        "name": "Identity provisioning",
+        "role": "enrols users and issues quantum-safe credentials.",
+        "parts": [
+          "registration authority",
+          "certificate authority issuing PQC or hybrid certificates",
+          "credential database and lifecycle management"
+        ]
+      },
+      {
+        "name": "Authentication protocol",
+        "role": "proves identity using PQC signatures or key exchange without revealing the private key.",
+        "parts": [
+          "challenge-response handshake",
+          "session key establishment via PQC key encapsulation",
+          "mutual authentication logic"
+        ]
+      },
+      {
+        "name": "Client authenticator",
+        "role": "the user side that holds the private key and signs challenges.",
+        "parts": [
+          "software wallet or app",
+          "hardware security key (e.g., FIDO2 with PQC extensions)",
+          "biometric or PIN unlock"
+        ]
+      },
+      {
+        "name": "Verification infrastructure",
+        "role": "validates signatures and checks whether credentials are still trusted.",
+        "parts": [
+          "certificate revocation lists or OCSP responders",
+          "policy engine for trust decisions"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Standardise the algorithms",
+        "detail": "NIST selects and publishes standards for lattice-based key encapsulation and digital signatures, fixing parameter sizes and security levels."
+      },
+      {
+        "title": "Implement in cryptographic libraries",
+        "detail": "Open-source and commercial libraries add the new primitives, with constant-time code to resist side-channel attacks."
+      },
+      {
+        "title": "Extend identity protocols",
+        "detail": "TLS, FIDO2, X.509 and similar standards are updated to carry larger PQC keys and hybrid certificates."
+      },
+      {
+        "title": "Build hardware support",
+        "detail": "HSMs, secure elements and TPMs gain PQC acceleration and enough secure storage for keys many kilobytes long."
+      },
+      {
+        "title": "Deploy certificate authorities",
+        "detail": "CAs begin issuing PQC and hybrid certificates, so new credentials can coexist with legacy ones."
+      },
+      {
+        "title": "Roll out to clients",
+        "detail": "Browsers, operating systems and authenticator apps add PQC support, often defaulting to hybrid modes."
+      },
+      {
+        "title": "Migrate servers and services",
+        "detail": "Authentication servers accept PQC and hybrid logins, while gradually phasing out classical-only cryptography."
+      },
+      {
+        "title": "Audit and certify",
+        "detail": "Independent testing checks correctness, side-channel resistance and interoperability before high-value systems switch over."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "partial",
+        "why": "NIST has selected algorithms, but final standards and parameter sets are still being completed."
+      },
+      {
+        "tech": "Quantum computers that break RSA/ECC",
+        "status": "missing",
+        "why": "Not yet built, but encrypted data can be harvested today and decrypted later, making early migration urgent."
+      },
+      {
+        "tech": "High-performance PQC hardware",
+        "status": "partial",
+        "why": "Lattice operations are heavier than RSA, so acceleration in HSMs and secure elements is needed for acceptable speed."
+      },
+      {
+        "tech": "Interoperable identity standards",
+        "status": "partial",
+        "why": "Protocols like FIDO2 and X.509 need extensions for PQC, which are still under development."
+      },
+      {
+        "tech": "Secure key storage",
+        "status": "exists",
+        "why": "Hardware security modules and secure enclaves exist, but must be upgraded to hold larger PQC keys."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NIST PQC standardisation and early library implementations",
+        "unlocks": "developers can experiment and build prototypes of quantum-safe identity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid deployments in browsers and TLS (classical plus PQC)",
+        "unlocks": "protection against harvest-now-decrypt-later without breaking compatibility."
+      },
+      {
+        "stage": "Next",
+        "milestone": "PQC identity systems in enterprise and government pilots",
+        "unlocks": "quantum-safe authentication for high-value systems and long-lived credentials."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Global migration to PQC-only identity infrastructure",
+        "unlocks": "full resistance to quantum attacks across the internet."
+      }
+    ]
+  }
+}

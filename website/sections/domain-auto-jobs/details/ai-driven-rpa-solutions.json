@@ -34,5 +34,154 @@
         "def": "A subset of AI that involves training algorithms to make predictions or decisions based on data, enabling systems to improve their performance over time without explicit programming."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Bot runtime and orchestrator",
+        "role": "executes automations on a schedule or event, and queues work items between them.",
+        "parts": [
+          "job scheduler",
+          "work queue",
+          "credential vault",
+          "logging"
+        ]
+      },
+      {
+        "name": "Interface adapters",
+        "role": "let software act like a human user across old and new systems.",
+        "parts": [
+          "browser DOM and accessibility APIs",
+          "desktop UI automation libraries",
+          "terminal emulation for mainframes",
+          "API and database connectors"
+        ]
+      },
+      {
+        "name": "Document understanding",
+        "role": "turns scanned forms, invoices and emails into structured fields.",
+        "parts": [
+          "optical character recognition",
+          "layout and table analysis",
+          "key-value extraction model",
+          "handwriting and language handling"
+        ]
+      },
+      {
+        "name": "Decision layer",
+        "role": "handles the judgement calls that plain rules cannot.",
+        "parts": [
+          "classification and anomaly models",
+          "confidence thresholds",
+          "rules engine",
+          "exception routing"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop console",
+        "role": "review queues where people approve, correct or take over.",
+        "parts": [
+          "task inbox",
+          "side-by-side data view",
+          "correction capture for retraining"
+        ]
+      },
+      {
+        "name": "Governance and audit",
+        "role": "keeps automated changes traceable and within policy.",
+        "parts": [
+          "audit trail",
+          "role-based access control",
+          "process versioning",
+          "regulatory reporting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Mine the process",
+        "detail": "Event logs from the systems involved are analysed, and employee screen activity is recorded, to reconstruct how a task is really done and how often it varies."
+      },
+      {
+        "title": "Select and scope",
+        "detail": "High-volume, rules-heavy, stable tasks with digital inputs are chosen; anything needing frequent human judgement stays out of the first wave."
+      },
+      {
+        "title": "Model the workflow",
+        "detail": "Each step, decision point, exception and system of record is written down, and the target straight-through processing rate is set."
+      },
+      {
+        "title": "Train the document models",
+        "detail": "Several hundred to a few thousand representative documents are annotated, extraction models trained, and accuracy measured per field, not just overall."
+      },
+      {
+        "title": "Build the bot",
+        "detail": "Actions are scripted or recorded against each interface, API calls replace screen actions where possible, and credentials are stored in the vault rather than in the script."
+      },
+      {
+        "title": "Test against reality",
+        "detail": "Runs are shadowed alongside human workers on live queues, deliberately fed malformed inputs, and checked for correct exception handling before any write access is granted."
+      },
+      {
+        "title": "Deploy with human review",
+        "detail": "The bot processes confident cases automatically and sends low-confidence ones to a review queue, with volumes ramped up gradually."
+      },
+      {
+        "title": "Monitor and maintain",
+        "detail": "Straight-through rates, error types and model drift are tracked continuously; UI changes, new form layouts and new exception classes force scheduled rebuilding."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Digital systems of record with usable interfaces",
+        "status": "exists",
+        "why": "a bot can only drive screens, APIs or files that exist and are reachable."
+      },
+      {
+        "tech": "OCR and document AI",
+        "status": "exists",
+        "why": "most business inputs arrive as PDFs, scans and emails rather than clean data."
+      },
+      {
+        "tech": "Cloud orchestration and container runtime",
+        "status": "exists",
+        "why": "bots need scheduled, scalable, isolated execution with central logging."
+      },
+      {
+        "tech": "Identity, secrets and audit infrastructure",
+        "status": "exists",
+        "why": "software acting as an employee needs the same access controls and traceability."
+      },
+      {
+        "tech": "Reliable language models for unstructured tasks",
+        "status": "partial",
+        "why": "handling free-form emails and unexpected documents still needs review, and output must be constrained to be dependable."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rules-based bots with OCR on structured forms in finance, insurance and shared-service centres",
+        "unlocks": "lower cost and fewer keystroke errors on high-volume back-office work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combined automation plus machine-learning decisioning, with measured straight-through rates and human review only for exceptions",
+        "unlocks": "automation of tasks that need classification or judgement, not just rule-following."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agent-style workflows where a language model plans steps across several systems under tight guardrails",
+        "unlocks": "semi-structured and long-tail tasks that were previously uneconomic to automate."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-monitoring automations that detect interface drift, re-learn and request approval for changed behaviour",
+        "unlocks": "lower maintenance burden, which is the main reason automation programmes stall."
+      }
+    ]
   }
 }

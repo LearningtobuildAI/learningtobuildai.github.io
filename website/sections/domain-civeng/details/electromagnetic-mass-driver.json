@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Pulsed power supply",
+        "role": "delivers enormous bursts of current in milliseconds, then recharges between shots.",
+        "parts": [
+          "capacitor banks or flywheel/homopolar generators",
+          "high-current switches",
+          "on-site generation or grid connection"
+        ]
+      },
+      {
+        "name": "Accelerator track",
+        "role": "converts that current into a travelling force on the sled.",
+        "parts": [
+          "coil segments (coilgun) or continuous rails (railgun)",
+          "superconducting coils if cryogenic cooling is used",
+          "support and alignment structure"
+        ]
+      },
+      {
+        "name": "Armature and payload bucket",
+        "role": "the moving part that carries the payload and releases it cleanly at the muzzle.",
+        "parts": [
+          "conducting armature",
+          "lightweight sabot/bucket",
+          "release mechanism"
+        ]
+      },
+      {
+        "name": "Guideway",
+        "role": "keeps the sled on a straight, precisely aimed path.",
+        "parts": [
+          "evacuated tube for atmospheric use",
+          "bare track on an airless body",
+          "aiming and thermal-expansion joints",
+          "pylons or tunnel"
+        ]
+      },
+      {
+        "name": "Payload vehicle",
+        "role": "the cargo itself, which must circularise its orbit after release.",
+        "parts": [
+          "small thruster or kick stage",
+          "thermal protection if released in atmosphere",
+          "guidance and telemetry"
+        ]
+      },
+      {
+        "name": "Control and timing",
+        "role": "synchronises switching with sled position to keep acceleration smooth.",
+        "parts": [
+          "position sensors",
+          "real-time controllers",
+          "diagnostics and wear monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the site",
+        "detail": "An airless, low-gravity body such as the Moon allows a bare track aimed near the equator; on Earth the track must sit in an evacuated tube, ideally on high ground, because air drag and heating grow with the square of speed."
+      },
+      {
+        "title": "Build the guideway",
+        "detail": "Pylons or a tunnel carry a straight track aligned to millimetre tolerances over kilometres, with joints that absorb day–night thermal movement."
+      },
+      {
+        "title": "Lay the accelerator",
+        "detail": "Coil segments or rails are installed along the whole length in modules, so a failed section can be replaced without rebuilding the line."
+      },
+      {
+        "title": "Build the power plant",
+        "detail": "Capacitor banks, switches and generators sized to the shot energy are installed at the breech end, with enough generation or storage to recharge between launches."
+      },
+      {
+        "title": "Make the sled",
+        "detail": "A light armature is bonded to a bucket that holds the payload rigidly under high acceleration."
+      },
+      {
+        "title": "Test sub-scale",
+        "detail": "Short prototype tracks fire instrumented slugs to measure force, alignment and wear without risking a payload."
+      },
+      {
+        "title": "Creep up in speed",
+        "detail": "Successive shots raise muzzle velocity, revealing heating, arcing and rail erosion before they become failures."
+      },
+      {
+        "title": "Release and circularise",
+        "detail": "At the muzzle the payload separates and fires a small stage to raise its perigee, so the ballistic arc becomes a stable orbit."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Launches are spaced to allow cooling, track servicing and recharging, which sets the practical launch cadence."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-energy pulsed power and switching",
+        "status": "partial",
+        "why": "capacitor banks and switches exist, but the combination of energy density, repetition rate and lifetime needed for routine launches does not."
+      },
+      {
+        "tech": "Electromagnetic launchers at scale",
+        "status": "partial",
+        "why": "naval electromagnetic catapults and laboratory railguns demonstrate the principle, but nothing has reached orbital velocity outside a vacuum chamber experiment."
+      },
+      {
+        "tech": "Superconducting magnets and cryogenics",
+        "status": "exists",
+        "why": "they make coilgun tracks more efficient, though they add cooling mass to the system."
+      },
+      {
+        "tech": "Large evacuated tubes",
+        "status": "partial",
+        "why": "vacuum systems exist at kilometre scale in particle accelerators, but not as cheap, reusable launch infrastructure."
+      },
+      {
+        "tech": "Payloads tolerant of high acceleration",
+        "status": "exists",
+        "why": "the launcher suits bulk cargo, propellant and raw materials far more than people or delicate instruments."
+      },
+      {
+        "tech": "Orbital circularisation stages",
+        "status": "exists",
+        "why": "something must add the few hundred metres per second needed to turn the launch arc into an orbit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "electromagnetic catapults and laboratory launchers prove force and control",
+        "unlocks": "confidence that a long track can accelerate a heavy sled."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small-scale demonstrators — a short lunar prototype or an Earth-based suborbital shot",
+        "unlocks": "real data on wear, switching and vacuum operation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a lunar launcher delivering cargo to low lunar orbit",
+        "unlocks": "routine delivery of water, propellant and structural material off the Moon, where orbital speed is about 1.7 km/s and escape about 2.4 km/s."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an Earth launch-assist system, or a full lunar export facility feeding orbital industry",
+        "unlocks": "very cheap bulk freight, at the cost of a track hundreds of kilometres long and enormous pulsed power."
+      }
+    ]
+  }
+}

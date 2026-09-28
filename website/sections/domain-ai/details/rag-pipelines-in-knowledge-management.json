@@ -33,5 +33,157 @@
         "def": "A machine learning model that generates coherent text based on the retrieved information and context provided by the retrieval model."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and parsing",
+        "role": "Turns heterogeneous source documents into clean, machine-readable text.",
+        "parts": [
+          "source connectors",
+          "OCR for scans",
+          "layout and table extraction",
+          "boilerplate removal"
+        ]
+      },
+      {
+        "name": "Chunking and embedding",
+        "role": "Splits text into retrievable passages and converts each into a vector.",
+        "parts": [
+          "chunking strategy with overlap",
+          "embedding model",
+          "metadata tagging (source, date, section)"
+        ]
+      },
+      {
+        "name": "Vector index",
+        "role": "Stores embeddings so that similar passages can be found quickly.",
+        "parts": [
+          "vector database",
+          "approximate nearest-neighbour index",
+          "metadata filters"
+        ]
+      },
+      {
+        "name": "Retriever and re-ranker",
+        "role": "Fetches candidate passages and selects the most relevant ones for the query.",
+        "parts": [
+          "dense retriever",
+          "keyword or sparse retriever",
+          "cross-encoder re-ranker",
+          "hybrid scoring"
+        ]
+      },
+      {
+        "name": "Generator",
+        "role": "Composes a grounded answer from the retrieved passages.",
+        "parts": [
+          "large language model",
+          "prompt template",
+          "context window management",
+          "citation and attribution"
+        ]
+      },
+      {
+        "name": "Orchestration and evaluation",
+        "role": "Wires the stages together and measures whether answers are faithful and useful.",
+        "parts": [
+          "pipeline orchestrator",
+          "query logging",
+          "evaluation harness (retrieval recall, answer faithfulness)",
+          "guardrails against unsupported claims"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Connect and extract",
+        "detail": "Attach the pipeline to document stores, wikis, databases or web sources, then extract raw text and strip navigation, headers and other clutter."
+      },
+      {
+        "title": "Parse and chunk",
+        "detail": "Split the extracted text into passages of a few hundred tokens, with slight overlap and preserved headings, tables and source metadata so context is not lost at the boundaries."
+      },
+      {
+        "title": "Embed passages",
+        "detail": "Run every chunk through an embedding model to produce a vector that represents its meaning."
+      },
+      {
+        "title": "Index vectors",
+        "detail": "Insert the vectors and their metadata into a vector database and build an approximate nearest-neighbour index for fast search."
+      },
+      {
+        "title": "Set up retrieval",
+        "detail": "Combine semantic vector search with keyword search, then add a re-ranking model to pick the handful of passages most likely to answer the user's question."
+      },
+      {
+        "title": "Design the generation prompt",
+        "detail": "Instruct the language model to answer only from the supplied context, to say when the context is insufficient, and to cite the passages it used."
+      },
+      {
+        "title": "Run queries end to end",
+        "detail": "At question time, embed the query, retrieve and re-rank passages, pass them to the generator, and return a cited answer."
+      },
+      {
+        "title": "Evaluate and tune",
+        "detail": "Measure retrieval recall and answer faithfulness on a labelled question set, then adjust chunk size, embedding model, re-ranker and prompt until quality is acceptable."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Serve the pipeline behind an API, log queries and failures, and watch for stale documents, drifted embedding models and changing user needs."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "The generation step needs a model capable of synthesising an answer from supplied passages."
+      },
+      {
+        "tech": "Text embedding models",
+        "status": "exists",
+        "why": "They convert passages and queries into vectors so semantic similarity can be computed."
+      },
+      {
+        "tech": "Vector databases and approximate nearest-neighbour search",
+        "status": "exists",
+        "why": "They make it practical to search millions of passages in milliseconds."
+      },
+      {
+        "tech": "Document parsing and OCR",
+        "status": "exists",
+        "why": "Much enterprise knowledge sits in PDFs, scans and slide decks that must be converted to text first."
+      },
+      {
+        "tech": "Reliable evaluation methods for RAG",
+        "status": "partial",
+        "why": "Measuring faithfulness, relevance and attribution is still an active research area, so quality assurance remains partly manual."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Basic retrieve-then-generate pipelines widely deployed in search and support tools",
+        "unlocks": "Answers grounded in an organisation's own documents rather than the model's training data alone."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid retrieval, re-ranking and strict citation grounding become standard",
+        "unlocks": "Lower hallucination rates and answers that users can trace back to sources."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Agentic RAG with query rewriting, multi-step retrieval and tool use",
+        "unlocks": "Handling of complex, multi-part questions that no single search can answer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Continuous, self-evaluating knowledge pipelines that detect stale content and retrain retrieval components",
+        "unlocks": "Knowledge systems that stay accurate as underlying documents change."
+      }
+    ]
   }
 }

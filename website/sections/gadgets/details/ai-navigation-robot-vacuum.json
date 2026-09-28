@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Drive and chassis",
+        "role": "moves the robot and keeps it stable on carpets, tiles and thresholds.",
+        "parts": [
+          "brushless wheel motors",
+          "suspension and castor",
+          "bumpers",
+          "cliff sensors"
+        ]
+      },
+      {
+        "name": "Cleaning head",
+        "role": "lifts dust and debris from the floor into the bin.",
+        "parts": [
+          "roller brush",
+          "side brush",
+          "suction fan",
+          "dustbin",
+          "mop pad and water pump"
+        ]
+      },
+      {
+        "name": "Perception suite",
+        "role": "builds a map and recognises obstacles in real time.",
+        "parts": [
+          "spinning LiDAR or time-of-flight scanner",
+          "forward camera",
+          "inertial measurement unit",
+          "wheel odometry"
+        ]
+      },
+      {
+        "name": "Onboard compute",
+        "role": "runs navigation, mapping and vision models without sending video to the cloud.",
+        "parts": [
+          "system-on-chip with neural accelerator",
+          "memory and storage",
+          "real-time controller"
+        ]
+      },
+      {
+        "name": "Docking station",
+        "role": "recharges the robot and empties or washes its bin and mop between runs.",
+        "parts": [
+          "charging contacts",
+          "dust evacuation pump",
+          "water tanks",
+          "mop washing and drying elements"
+        ]
+      },
+      {
+        "name": "Power and connectivity",
+        "role": "stores energy and links the robot to the home network and app.",
+        "parts": [
+          "lithium-ion battery pack",
+          "charging circuitry",
+          "Wi-Fi and Bluetooth radio",
+          "app and firmware stack"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and simulate",
+        "detail": "Engineers model the chassis, sensors and cleaning airflow in CAD, then test navigation software in a simulated apartment before building hardware."
+      },
+      {
+        "title": "Fabricate chassis and drivetrain",
+        "detail": "Plastic parts are injection-moulded, motors and gearboxes are assembled, and wheels and suspension are fitted to a rigid frame."
+      },
+      {
+        "title": "Build the cleaning path",
+        "detail": "The roller brush, side brush, suction fan, air ducts and dustbin are assembled and sealed so air is drawn through the brush rather than around it."
+      },
+      {
+        "title": "Integrate sensors",
+        "detail": "LiDAR, camera, inertial unit, bumpers and cliff sensors are mounted, wired and calibrated so their readings agree on the robot’s position."
+      },
+      {
+        "title": "Train and deploy vision models",
+        "detail": "Large labelled image datasets teach a small neural network to tell cables, shoes and pet waste from open floor; the model is compressed to run on the onboard chip."
+      },
+      {
+        "title": "Assemble the dock",
+        "detail": "The charging station is built with contacts, a dust-evacuation fan and sealed bags, plus pumps and tanks if it washes the mop."
+      },
+      {
+        "title": "Factory calibration and test",
+        "detail": "Each robot is calibrated, driven through a test course, checked for suction and sensor faults, and its battery is cycled."
+      },
+      {
+        "title": "Update in the home",
+        "detail": "Over-the-air software updates add rooms, fix navigation bugs and improve obstacle recognition as the fleet gathers more driving experience."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Simultaneous localisation and mapping (SLAM)",
+        "status": "exists",
+        "why": "lets the robot build a map with a laser scanner while tracking its own position in it."
+      },
+      {
+        "tech": "Low-power edge AI chips",
+        "status": "exists",
+        "why": "a vision model must run on battery power, in milliseconds, without a cloud connection."
+      },
+      {
+        "tech": "Miniature LiDAR and time-of-flight sensors",
+        "status": "exists",
+        "why": "they measure distances to walls and low obstacles accurately at consumer prices."
+      },
+      {
+        "tech": "High-energy-density lithium-ion batteries",
+        "status": "exists",
+        "why": "they give enough runtime to clean a whole home and recharge between rooms."
+      },
+      {
+        "tech": "Home Wi-Fi and over-the-air updates",
+        "status": "exists",
+        "why": "they let the robot receive maps, schedules and software improvements."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mapping robots that avoid cables and pet waste and empty their own bins",
+        "unlocks": "hands-off daily cleaning in most homes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "finer semantic understanding of rooms and objects",
+        "unlocks": "cleaning that changes suction and mopping by floor type, and reports what it saw."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robotic arms or grippers added to the platform",
+        "unlocks": "picking up socks, toys and small debris before cleaning, not just driving around them."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a general home robot using the same navigation and AI stack",
+        "unlocks": "tasks beyond floors, such as fetching items or monitoring the home."
+      }
+    ]
+  }
+}

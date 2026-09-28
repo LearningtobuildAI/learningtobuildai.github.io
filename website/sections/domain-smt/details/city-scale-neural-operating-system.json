@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures the city's flows in real time — energy, water, traffic, air, waste.",
+        "parts": [
+          "smart electricity and water meters",
+          "traffic cameras and radar",
+          "air-quality and weather sensors",
+          "vehicle and fleet telemetry"
+        ]
+      },
+      {
+        "name": "Connectivity and edge compute",
+        "role": "moves and pre-processes data where it is generated, so the city is not one enormous central computer.",
+        "parts": [
+          "fibre backhaul",
+          "low-power wireless (LoRaWAN, NB-IoT) and 5G",
+          "edge servers in substations and cabinets",
+          "precise time synchronisation"
+        ]
+      },
+      {
+        "name": "City model / digital twin",
+        "role": "a shared, living representation of buildings, networks and people that every service can query.",
+        "parts": [
+          "3D geometry and terrain",
+          "network graphs for roads, pipes, cables",
+          "asset register",
+          "simulation engines for traffic, hydraulics, power flow"
+        ]
+      },
+      {
+        "name": "Learning layer",
+        "role": "forecasts demand, congestion and faults, and proposes settings.",
+        "parts": [
+          "per-district or per-utility models",
+          "federated aggregation across operators",
+          "reinforcement learning for control policies"
+        ]
+      },
+      {
+        "name": "Control and actuation interfaces",
+        "role": "turns forecasts into real changes in the physical city.",
+        "parts": [
+          "SCADA links to substations, pumps and traffic signals",
+          "demand-response signals to buildings",
+          "safety interlocks and rate limits"
+        ]
+      },
+      {
+        "name": "Governance and privacy layer",
+        "role": "decides who may see and change what, and keeps records.",
+        "parts": [
+          "differential privacy and anonymisation",
+          "role-based access control",
+          "audit logs",
+          "data-sharing agreements between agencies and utilities"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument one district",
+        "detail": "Fit meters, flow sensors and cameras with published privacy rules, so there is real data with known gaps and failure modes."
+      },
+      {
+        "title": "Build the shared data layer",
+        "detail": "Agree common schemas and time stamps, then stand up a time-series store and the first version of the 3D twin geometry."
+      },
+      {
+        "title": "Connect the control systems",
+        "detail": "Give traffic signals, pumps and transformers a common read/write interface, with hardware interlocks that cannot be overridden by software."
+      },
+      {
+        "title": "Train local models",
+        "detail": "Let each utility or district learn from its own data; only model updates, not raw records, leave the operator."
+      },
+      {
+        "title": "Federate and simulate",
+        "detail": "Aggregate the models and run coupled what-if simulations in the twin — a street closure, a heatwave, a feeder fault."
+      },
+      {
+        "title": "Close the loop slowly",
+        "detail": "Begin with advice to human operators, move to human-approved actions, and only then to automatic control of narrow, low-risk functions."
+      },
+      {
+        "title": "Harden for failure and attack",
+        "detail": "Every loop needs a local fallback when the network drops, and red-teaming against poisoned data and spoofed sensors."
+      },
+      {
+        "title": "Extend across domains",
+        "detail": "Add water, waste and buildings using interoperability standards, rather than rebuilding for each service."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "City-scale digital twins",
+        "status": "partial",
+        "why": "planning-grade 3D models exist, but few are wired to live control systems and updated continuously."
+      },
+      {
+        "tech": "Federated learning",
+        "status": "partial",
+        "why": "proven on consumer devices such as phone keyboards; untested on utility control loops with hard safety requirements."
+      },
+      {
+        "tech": "Ubiquitous low-power sensing and networks",
+        "status": "exists",
+        "why": "cheap sensors and low-power wide-area networks make dense instrumentation affordable."
+      },
+      {
+        "tech": "Real-time coupled simulation",
+        "status": "partial",
+        "why": "traffic, hydraulic and power-flow simulators exist separately; running them together at city scale in real time is still research."
+      },
+      {
+        "tech": "Data governance and interoperability standards",
+        "status": "partial",
+        "why": "city indicator and data standards exist, but adoption is uneven and legal authority over shared data is fragmented."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "district-scale digital twins used for planning, plus isolated smart metering and adaptive traffic signals",
+        "unlocks": "data, models and trust built one service at a time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city twins fed by live feeds, running in advisory mode for operators",
+        "unlocks": "evidence that predictions are good enough to act on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "federated learning across several utilities under one governance framework",
+        "unlocks": "cross-sector optimisation without pooling citizens' raw data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "coordinated control of energy, water and transport in a few cities",
+        "unlocks": "measurable efficiency gains — with human authority retained over safety-critical decisions."
+      }
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Metamaterial unit cell",
+        "role": "the sub-wavelength building block that bends waves the wrong way.",
+        "parts": [
+          "split-ring resonators",
+          "metal wires",
+          "dielectric spacer layers"
+        ]
+      },
+      {
+        "name": "Cloaking shell",
+        "role": "arranges unit cells in a graded pattern that guides waves around the hidden object.",
+        "parts": [
+          "conformal layers",
+          "graded index profile",
+          "outer boundary matching layer"
+        ]
+      },
+      {
+        "name": "Design and simulation",
+        "role": "computes the required material properties from transformation optics.",
+        "parts": [
+          "transformation optics algorithms",
+          "finite-element solvers",
+          "optimization routines"
+        ]
+      },
+      {
+        "name": "Fabrication toolchain",
+        "role": "makes the tiny structures accurately and at the right scale.",
+        "parts": [
+          "electron-beam lithography",
+          "focused ion beam milling",
+          "nanoimprint or self-assembly"
+        ]
+      },
+      {
+        "name": "Characterisation setup",
+        "role": "measures whether the cloak actually works.",
+        "parts": [
+          "anechoic chamber or optical bench",
+          "vector network analyser or spectrometer",
+          "field-mapping sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target waveband and object size",
+        "detail": "Decide which frequencies to cloak (e.g. radar microwaves, infrared, visible light) and the dimensions of the object, since the cloak must be many wavelengths across to hide it."
+      },
+      {
+        "title": "Run transformation optics",
+        "detail": "Solve for the spatial map of permittivity and permeability that would bend incoming rays smoothly around the object and restore them on the far side."
+      },
+      {
+        "title": "Design unit cells",
+        "detail": "Engineer sub-wavelength resonators whose response reproduces the required local values at the chosen frequency."
+      },
+      {
+        "title": "Simulate the full cloak",
+        "detail": "Use electromagnetic solvers to check that the assembled shell hides the object across the intended band, adjusting the design for losses and reflections."
+      },
+      {
+        "title": "Fabricate the elements",
+        "detail": "Pattern metal and dielectric layers with lithography or self-assembly to form the resonators; stack them into a three-dimensional shell."
+      },
+      {
+        "title": "Assemble the shell",
+        "detail": "Position the elements around the object, often layer by layer, maintaining the designed gradient."
+      },
+      {
+        "title": "Test in a controlled environment",
+        "detail": "Measure scattering and shadow with the cloak on and off, in an anechoic chamber for microwaves or an optical testbed for light."
+      },
+      {
+        "title": "Integrate and field-test",
+        "detail": "Attach the cloak to the real object and check performance under realistic angles, polarisations and backgrounds."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Metamaterials with negative refractive index",
+        "status": "partial",
+        "why": "demonstrated at microwave frequencies, but low-loss operation at infrared and visible wavelengths remains hard."
+      },
+      {
+        "tech": "Transformation optics design methods",
+        "status": "exists",
+        "why": "mathematical framework is well established and used to specify cloaking shells."
+      },
+      {
+        "tech": "Nanofabrication at sub-wavelength scale",
+        "status": "partial",
+        "why": "electron-beam lithography and related tools can make the needed features, but scaling to large 3D shells is slow and expensive."
+      },
+      {
+        "tech": "Low-loss materials",
+        "status": "missing",
+        "why": "metal resonators absorb energy, so most cloaks are lossy and narrowband."
+      },
+      {
+        "tech": "Broadband cloaking",
+        "status": "missing",
+        "why": "current designs work only over a narrow frequency range, while real stealth or privacy needs wide bands."
+      },
+      {
+        "tech": "Scalability to human-scale objects",
+        "status": "missing",
+        "why": "cloaks have been shown only for objects a few wavelengths across, not for aircraft or buildings."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "microwave cloaks demonstrated in laboratories for small objects",
+        "unlocks": "proof that the physics works, and testbeds for design tools."
+      },
+      {
+        "stage": "Next",
+        "milestone": "infrared and visible cloaks at microscopic scales",
+        "unlocks": "applications in microscopy and sensing where hiding a probe is useful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "adaptive or active cloaks that sense and cancel scattered waves",
+        "unlocks": "wider bandwidth and tolerance to changing angles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "practical stealth or privacy cloaks at useful sizes",
+        "unlocks": "military stealth, private communications, or architectural privacy — if losses, bandwidth and fabrication are solved."
+      }
+    ]
+  }
+}

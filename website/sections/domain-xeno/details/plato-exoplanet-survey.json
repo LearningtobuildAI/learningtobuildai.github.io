@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Camera array",
+        "role": "26 small refracting telescopes stare at the same patch of sky; 24 normal cameras plus 2 fast cameras that read out quickly so the brightest stars can be observed without saturating.",
+        "parts": [
+          "off-axis lens assemblies, about 120 mm aperture",
+          "lens barrel and baffles",
+          "mounting interface to the optical bench"
+        ]
+      },
+      {
+        "name": "Focal planes",
+        "role": "turn starlight into precise brightness measurements.",
+        "parts": [
+          "four large CCDs per camera — roughly a hundred in total",
+          "front-end electronics",
+          "readout at 25 s (normal cameras) and 2.5 s (fast cameras)"
+        ]
+      },
+      {
+        "name": "Optical bench and thermal control",
+        "role": "holds all 26 cameras in rigid alignment and keeps them stable to fractions of a degree over years.",
+        "parts": [
+          "silicon-carbide bench structure",
+          "radiators and heaters",
+          "multi-layer insulation"
+        ]
+      },
+      {
+        "name": "Onboard data handling",
+        "role": "raw images from a hundred CCDs far exceed the downlink, so windows around target stars are extracted and compressed in orbit.",
+        "parts": [
+          "data processing units",
+          "star catalogue and window tables",
+          "mass memory"
+        ]
+      },
+      {
+        "name": "Service module",
+        "role": "powers, points and communicates.",
+        "parts": [
+          "solar arrays and batteries",
+          "attitude control thrusters and star trackers",
+          "X-band transmitter and antenna"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "operates the spacecraft and turns telemetry into light curves.",
+        "parts": [
+          "mission operations centre",
+          "science operations centre",
+          "photometric pipeline",
+          "archive"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optics for bright stars",
+        "detail": "A lens telescope with no central obstruction gives a clean point-spread function and little scattered light, so the very bright stars PLATO targets can be measured accurately. Several lens materials are stacked to control colour blur across the wide passband."
+      },
+      {
+        "title": "Fabricate and coat the lenses",
+        "detail": "Each lens is ground, polished to a precise aspheric figure and anti-reflection coated; stray-light baffles are fitted around the barrel."
+      },
+      {
+        "title": "Build the focal planes",
+        "detail": "Thinned, back-illuminated CCDs are packaged four to a camera with their readout electronics, giving a large sensitive area and fast, low-noise readout."
+      },
+      {
+        "title": "Assemble the payload",
+        "detail": "The 26 cameras are bolted to a single stiff bench in a partly overlapping pattern, then aligned so their fields of view add up to one big patch of sky."
+      },
+      {
+        "title": "Test on the ground",
+        "detail": "The payload and then the whole spacecraft go through thermal-vacuum, vibration and electromagnetic testing, and the photometric performance is verified against artificial stars."
+      },
+      {
+        "title": "Launch to L2",
+        "detail": "A rocket lifts the spacecraft into space; it cruises about 1.5 million km away from Earth to a stable halo orbit around the second Lagrange point, where the thermal environment is steady and the Earth never blocks the view."
+      },
+      {
+        "title": "Commission",
+        "detail": "Detectors are cooled and stabilised, focus and alignment are checked, and the pointing and data pipeline are calibrated on real stars."
+      },
+      {
+        "title": "Run the survey",
+        "detail": "The spacecraft stares at one patch of sky for two years, then steps to a second patch, downlinking reduced data daily and building continuous brightness records for hundreds of thousands of stars."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space photometry at micromagnitude-class precision",
+        "status": "exists",
+        "why": "proved by earlier transit missions; PLATO must reach comparable precision on much brighter stars."
+      },
+      {
+        "tech": "Large-format CCDs with fast, low-noise readout",
+        "status": "exists",
+        "why": "a hundred detectors must run simultaneously for years without drifting."
+      },
+      {
+        "tech": "Autonomous onboard data reduction",
+        "status": "exists",
+        "why": "the raw image rate cannot be downlinked, so bright-star windows must be selected and compressed in orbit."
+      },
+      {
+        "tech": "A heavy-lift launcher and a deep-space ground network",
+        "status": "exists",
+        "why": "the payload mass and the continuous data stream need both."
+      },
+      {
+        "tech": "Precise stellar catalogues and asteroseismology models",
+        "status": "exists",
+        "why": "the same light curves are used to measure star sizes and ages, which is what makes planet radii and habitability meaningful."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "payload assembled and spacecraft in final test, awaiting its launch slot",
+        "unlocks": "a launch-ready observatory and a trained operations and science team."
+      },
+      {
+        "stage": "Next",
+        "milestone": "launch and commissioning at L2",
+        "unlocks": "verified photometric performance on real stars."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first long stare of two years",
+        "unlocks": "a catalogue of planets including small, temperate worlds around bright, well-characterised stars."
+      },
+      {
+        "stage": "Next",
+        "milestone": "second field and extended mission",
+        "unlocks": "more sky, longer baselines and a broader sample of stars."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "follow-up spectroscopy of the best targets by later observatories",
+        "unlocks": "masses and, for transiting planets, atmospheric measurements — turning candidates into characterised worlds."
+      }
+    ]
+  }
+}

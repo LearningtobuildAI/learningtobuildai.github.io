@@ -29,5 +29,153 @@
         "def": "A network of physical devices, vehicles, home appliances, and other items embedded with sensors, software, and connectivity to enable them to collect and exchange data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what is actually happening across the city in near-real time.",
+        "parts": [
+          "traffic cameras and radar",
+          "smart electricity and water meters",
+          "air-quality and noise sensors",
+          "GPS traces from buses and delivery fleets"
+        ]
+      },
+      {
+        "name": "Communications and data platform",
+        "role": "moves that data reliably and holds it in a usable, standardised form.",
+        "parts": [
+          "fibre and low-power wide-area networks",
+          "streaming data pipelines",
+          "data catalogue and access rules",
+          "anonymisation and access control"
+        ]
+      },
+      {
+        "name": "City digital twin",
+        "role": "a live 3D model of buildings, roads and networks that can be simulated before anything is changed.",
+        "parts": [
+          "geospatial building and terrain models",
+          "network models for power, water and traffic",
+          "simulation engines"
+        ]
+      },
+      {
+        "name": "Prediction and optimisation",
+        "role": "forecasts demand and finds better settings for pumps, signals and generators.",
+        "parts": [
+          "demand-forecasting models",
+          "traffic-signal optimisers",
+          "energy dispatch and demand-response logic",
+          "predictive-maintenance models"
+        ]
+      },
+      {
+        "name": "Control and actuation",
+        "role": "turns recommendations into physical actions.",
+        "parts": [
+          "signal controllers",
+          "pump and valve actuators",
+          "grid and battery dispatch systems"
+        ]
+      },
+      {
+        "name": "Human oversight",
+        "role": "keeps people able to see, override and audit what the system does.",
+        "parts": [
+          "operations dashboards",
+          "rule sets and limits",
+          "fallback to manual control",
+          "audit logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument a single domain",
+        "detail": "Start narrow — one city installs meters, sensors and cameras along a corridor or across one utility network."
+      },
+      {
+        "title": "Build the data pipeline",
+        "detail": "Data is cleaned, time-stamped, geo-referenced and made available in one place, with privacy protections applied at the point of collection."
+      },
+      {
+        "title": "Model the system",
+        "detail": "Engineers build a simulation of that corridor or network and check it reproduces measured behaviour."
+      },
+      {
+        "title": "Train and validate models",
+        "detail": "Forecasting and optimisation models are trained on historical data and tested on held-out periods, including unusual days."
+      },
+      {
+        "title": "Run in shadow mode",
+        "detail": "The system issues recommendations while humans still make every decision, so its mistakes are visible and harmless."
+      },
+      {
+        "title": "Close the loop in one domain",
+        "detail": "Adaptive traffic signals or leak-detection and pump control are allowed to act automatically inside strict bounds."
+      },
+      {
+        "title": "Add oversight and fallback",
+        "detail": "Operators get dashboards, hard limits and a one-button return to manual operation, plus logging for later audit."
+      },
+      {
+        "title": "Link domains",
+        "detail": "Separate systems are connected through a shared digital twin so that, for example, transport and energy decisions are coordinated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, low-power sensing and metering",
+        "status": "exists",
+        "why": "you cannot optimise a city you are not measuring."
+      },
+      {
+        "tech": "City-scale digital twins",
+        "status": "partial",
+        "why": "several cities have built them, but most cover a few systems rather than the whole city."
+      },
+      {
+        "tech": "Common data standards and interoperability",
+        "status": "partial",
+        "why": "utilities, transport and buildings usually keep their data in incompatible formats."
+      },
+      {
+        "tech": "Safe machine-learning control",
+        "status": "partial",
+        "why": "models that act on physical infrastructure need guarantees and fallbacks that today's systems rarely provide."
+      },
+      {
+        "tech": "Privacy-preserving analytics",
+        "status": "partial",
+        "why": "continuous sensing of public space raises surveillance risks that limit what can lawfully be deployed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "adaptive traffic-signal systems (such as SCOOT and SCATS) and utility leak detection running in many cities",
+        "unlocks": "measurable savings in congestion, water loss and energy use in single domains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "national and municipal digital-twin programmes, such as Virtual Singapore, extended to more live data",
+        "unlocks": "cross-domain simulation before construction or policy decisions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "semi-autonomous control of power, water and transport with mandatory human override",
+        "unlocks": "faster response to faults and peaks than human operators alone can manage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "coordinated autonomous management of several urban systems at once",
+        "unlocks": "city-wide efficiency, bounded by law, liability and public consent rather than by the software."
+      }
+    ]
   }
 }

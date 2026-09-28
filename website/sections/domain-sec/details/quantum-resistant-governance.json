@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Key encapsulation (ML-KEM)",
+        "role": "replaces RSA and Diffie–Hellman key exchange with a lattice problem no known quantum algorithm solves.",
+        "parts": [
+          "module-lattice (MLWE) maths",
+          "key generation",
+          "encapsulation and decapsulation",
+          "parameter sets by security level"
+        ]
+      },
+      {
+        "name": "Digital signatures",
+        "role": "authenticates software, servers and documents; two families are standardised because they fail differently.",
+        "parts": [
+          "ML-DSA (lattice-based)",
+          "FN-DSA/Falcon (lattice, compact signatures)",
+          "SLH-DSA/SPHINCS+ (hash-based, conservative)",
+          "hash functions"
+        ]
+      },
+      {
+        "name": "Symmetric primitives and hashing",
+        "role": "bulk encryption and integrity, where quantum computers are far less threatening.",
+        "parts": [
+          "AES-256",
+          "SHA-3 and SHAKE",
+          "key derivation"
+        ]
+      },
+      {
+        "name": "Hybrid transition layer",
+        "role": "runs classical and post-quantum algorithms together so a break in either alone is not fatal.",
+        "parts": [
+          "TLS 1.3 hybrid groups",
+          "SSH and VPN handshakes",
+          "protocol negotiation"
+        ]
+      },
+      {
+        "name": "Cryptographic inventory and agility",
+        "role": "finds every place RSA or elliptic-curve crypto hides, and makes swapping it routine.",
+        "parts": [
+          "cryptographic bill of materials",
+          "dependency and firmware scanning",
+          "swap-ready library interfaces"
+        ]
+      },
+      {
+        "name": "Hardware and embedded implementation",
+        "role": "puts the new algorithms into chips that must resist side-channel and fault attacks.",
+        "parts": [
+          "HSMs and secure elements",
+          "constant-time code",
+          "smart cards and IoT firmware"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory the cryptography",
+        "detail": "Scan code, certificates, firmware and protocols to find every use of RSA, Diffie–Hellman and elliptic curves, including inside devices that are hard to update."
+      },
+      {
+        "title": "Pick algorithms and parameters",
+        "detail": "Choose from the NIST standards — ML-KEM for key exchange, ML-DSA or SLH-DSA for signatures — sized to the data's lifetime and the device's memory."
+      },
+      {
+        "title": "Implement defensively",
+        "detail": "Write constant-time code that leaks nothing through timing or power draw, and test against published vectors."
+      },
+      {
+        "title": "Validate",
+        "detail": "Run the algorithms through formal cryptographic validation and certification programmes before deploying them in critical systems."
+      },
+      {
+        "title": "Deploy in hybrid mode",
+        "detail": "Enable classical-plus-post-quantum handshakes in browsers, messengers, SSH and VPNs so a single algorithm failing does not open the connection."
+      },
+      {
+        "title": "Move signatures into the chain of trust",
+        "detail": "Reissue root and intermediate certificates, code-signing keys and firmware-signing keys with post-quantum signatures, working from the shortest-lived to the longest-lived."
+      },
+      {
+        "title": "Protect stored and archived data",
+        "detail": "Re-encrypt or re-key long-lived secrets and backups, since traffic recorded today can be decrypted once a quantum computer arrives."
+      },
+      {
+        "title": "Retire the old algorithms",
+        "detail": "Once the hybrid stack is proven and dependencies are gone, switch off RSA and elliptic-curve modes and keep agility so the next migration is easier."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice-based cryptography",
+        "status": "exists",
+        "why": "the hardness of learning-with-errors problems underpins the new key exchange and signature schemes."
+      },
+      {
+        "tech": "Hash-based signatures",
+        "status": "exists",
+        "why": "they offer a conservative fallback whose security rests only on hash functions."
+      },
+      {
+        "tech": "NIST post-quantum standards",
+        "status": "exists",
+        "why": "FIPS 203, 204 and 205, published in August 2024, give vendors one interoperable target."
+      },
+      {
+        "tech": "Cryptographic agility in software and hardware",
+        "status": "partial",
+        "why": "many systems hard-code one algorithm and cannot be re-keyed without replacement."
+      },
+      {
+        "tech": "Side-channel-resistant implementations",
+        "status": "partial",
+        "why": "post-quantum maths uses large matrices and sampling that are harder to make leak-proof than RSA."
+      },
+      {
+        "tech": "Quantum computers able to run Shor's algorithm at scale",
+        "status": "missing",
+        "why": "they are the threat being defended against; today's machines are far too small and error-prone."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid key exchange already on by default in major browsers, messengers and OpenSSH",
+        "unlocks": "protection against recorded-now-decrypt-later attacks on today's sessions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum signatures inside certificate authorities, code signing and firmware updates",
+        "unlocks": "a chain of trust that survives a quantum break."
+      },
+      {
+        "stage": "Next",
+        "milestone": "national-security and regulated sectors complete migration ahead of long-dated deadlines",
+        "unlocks": "proof that whole enterprises, not just browsers, can convert."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "RSA and elliptic curves retired and agility treated as routine engineering",
+        "unlocks": "resilience to whatever the next cryptanalytic surprise turns out to be."
+      }
+    ]
+  }
+}

@@ -29,5 +29,139 @@
         "def": "Waste materials in space, including old satellites and fragments of broken objects, posing risks to space missions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "collects sunlight 24 hours a day, without weather or night, in geostationary orbit.",
+        "parts": [
+          "lightweight photovoltaic panels",
+          "deployment booms",
+          "sun-tracking structure"
+        ]
+      },
+      {
+        "name": "Power conversion and transmitter",
+        "role": "converts generated DC into microwaves and radiates them as a steerable beam.",
+        "parts": [
+          "DC-to-RF converters or amplifiers",
+          "phased-array antenna modules",
+          "pilot-beam receiver for aiming"
+        ]
+      },
+      {
+        "name": "Structure, thermal and attitude control",
+        "role": "holds a very large, very light assembly together and keeps it pointed.",
+        "parts": [
+          "truss or inflatable frame",
+          "radiators",
+          "thrusters for station-keeping"
+        ]
+      },
+      {
+        "name": "Ground rectenna",
+        "role": "receives the microwave beam and converts it back to electricity.",
+        "parts": [
+          "dipole or patch antenna elements",
+          "rectifying diodes",
+          "grid interface and inverter"
+        ]
+      },
+      {
+        "name": "Robotic assembly and servicing",
+        "role": "builds and repairs a structure far too big to launch in one piece.",
+        "parts": [
+          "robotic arms",
+          "module docking interfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design around mass",
+        "detail": "Everything depends on watts delivered per kilogram launched. Designers minimise structure and use thin-film or concentrator cells to cut mass."
+      },
+      {
+        "title": "Make the solar panels",
+        "detail": "High-efficiency cells are laid onto lightweight substrates that can fold for launch and unfold in orbit."
+      },
+      {
+        "title": "Build transmitter modules",
+        "detail": "Thousands of solid-state amplifiers or magnetrons, each feeding an antenna element, are made and tested as identical plug-in units."
+      },
+      {
+        "title": "Launch in many pieces",
+        "detail": "Reusable rockets carry the modules to orbit over dozens or hundreds of flights, because the array is kilometres across."
+      },
+      {
+        "title": "Assemble in orbit",
+        "detail": "Robots or autonomous docking join modules into a single array, then connect power and cooling."
+      },
+      {
+        "title": "Aim the beam",
+        "detail": "A pilot signal from the ground tells the phased array where to point; thousands of elements are phased so the beam arrives as one spot."
+      },
+      {
+        "title": "Build the rectenna",
+        "detail": "A receiving field, kilometres across, is installed on the ground — ideally in a sparsely populated area — with grid connections."
+      },
+      {
+        "title": "Commission to the grid",
+        "detail": "Power output, beam losses, safety limits and interference are verified before routine operation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost reusable launch",
+        "status": "partial",
+        "why": "reuse exists today, but the economics only close if launch costs fall by a large factor from current levels."
+      },
+      {
+        "tech": "Wireless power beaming at scale",
+        "status": "partial",
+        "why": "a US university in-orbit demonstrator beamed a small, detectable microwave signal to a ground receiver in 2023; useful power levels are far higher."
+      },
+      {
+        "tech": "Robotic in-orbit assembly",
+        "status": "partial",
+        "why": "the structure is far larger than any fairing, so it must be built in space."
+      },
+      {
+        "tech": "Lightweight high-efficiency photovoltaics and solid-state RF amplifiers",
+        "status": "exists",
+        "why": "the system only pays off if the mass per kilowatt is very low and conversion losses are small."
+      },
+      {
+        "tech": "Radio spectrum access and beam safety rules",
+        "status": "partial",
+        "why": "a gigawatt-class beam needs agreed frequencies, exclusion zones and limits on power density at the ground."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "component demonstrations — in-orbit beaming tests, deployable structures and lightweight array studies",
+        "unlocks": "evidence that the individual pieces work outside the atmosphere."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small satellite that beams useful power to a ground station",
+        "unlocks": "measured end-to-end efficiency, which decides whether the idea is viable at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a robotic-assembled pilot station in orbit delivering megawatts to a rectenna",
+        "unlocks": "real cost and reliability data, plus early niche uses such as remote or disaster-area power."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt-scale stations supplying grid baseload",
+        "unlocks": "firm, always-on power delivered to any country with a rectenna — provided launch, assembly and safety all scale together."
+      }
+    ]
   }
 }

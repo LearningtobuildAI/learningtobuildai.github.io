@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Positioning stage",
+        "role": "moves the tool relative to the workpiece with accuracy better than an atom's width, and holds it there.",
+        "parts": [
+          "piezoelectric nanopositioners",
+          "laser-interferometer metrology",
+          "vibration-isolated vacuum chamber",
+          "cryogenic cooling"
+        ]
+      },
+      {
+        "name": "Probe tip and tool",
+        "role": "the working 'hand' — an atomically sharp apex that picks up, moves and chemically bonds molecular fragments.",
+        "parts": [
+          "silicon or tungsten cantilever",
+          "functionalised apex (a single atom or small cluster)",
+          "tip bias and heating control"
+        ]
+      },
+      {
+        "name": "Feedstock delivery",
+        "role": "brings molecular building blocks to the tip cleanly and in the right order.",
+        "parts": [
+          "molecular precursors",
+          "vapour dosing",
+          "temperature-controlled substrate"
+        ]
+      },
+      {
+        "name": "Sensing and feedback",
+        "role": "reads what just happened at the surface and corrects the next move.",
+        "parts": [
+          "tunnelling-current sensor",
+          "atomic-force sensor",
+          "real-time control electronics and software"
+        ]
+      },
+      {
+        "name": "Synthesis planning",
+        "role": "works out which reactions and moves build a target structure, atom by atom.",
+        "parts": [
+          "reaction libraries",
+          "quantum-chemistry simulation",
+          "error-detection and repair routines"
+        ]
+      },
+      {
+        "name": "Parallel tip arrays",
+        "role": "many tips working at once, because one tip is far too slow to make anything useful.",
+        "parts": [
+          "MEMS cantilever arrays",
+          "independent tip actuation",
+          "shared metrology and control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the structure and its route",
+        "detail": "Choose a target — say a stiff covalent lattice — then use simulation to break it into molecular building blocks and a sequence of bond-forming steps, as a chemical route rather than a blueprint."
+      },
+      {
+        "title": "Make atomically sharp tips",
+        "detail": "Etch or field-evaporate metal or silicon to a radius near 1 nanometre, then attach a chosen atom or small cluster to the apex so it performs one specific reaction."
+      },
+      {
+        "title": "Build the positioning environment",
+        "detail": "Combine piezoelectric stages, interferometer metrology, ultra-high vacuum and cryogenic cooling so the tip and surface stay fixed to within about 0.01 nanometres for hours."
+      },
+      {
+        "title": "Demonstrate a single bond",
+        "detail": "Use the tip to pick up one molecular fragment and press it onto another, forming a covalent bond on demand. This has been done for a few surface reactions (for example hydrogen on silicon) but not yet as general carbon–carbon mechanosynthesis."
+      },
+      {
+        "title": "Chain steps into a sequence",
+        "detail": "Repeat place-bond-check thousands of times without contaminating the surface, adding imaging between steps so mistakes are found and reversed rather than built in."
+      },
+      {
+        "title": "Scale out with parallel arrays",
+        "detail": "Fabricate thousands of independently driven cantilevers on one chip, each running the same sequence over its own patch of substrate, to turn an experiment into a production method."
+      },
+      {
+        "title": "Build a macroscale part",
+        "detail": "Grow the structure layer by layer into a component big enough to hold and test — a task that would take an array working for a very long time, which is why the economics are unresolved."
+      },
+      {
+        "title": "Characterise and integrate",
+        "detail": "Measure strength, stiffness and defects, then bond the part to conventional hardware. Only then can any claim of extreme strength-to-weight ratio be checked rather than assumed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Atomic manipulation with scanning probes",
+        "status": "exists",
+        "why": "researchers have dragged and placed individual atoms and written patterns with them since the late 1980s, proving the concept but not the factory."
+      },
+      {
+        "tech": "Atomically precise tip chemistry",
+        "status": "partial",
+        "why": "tip-induced hydrogen removal on silicon works and is used in research lithography, but forming arbitrary covalent bonds with a tip is not yet routine."
+      },
+      {
+        "tech": "Sub-nanometre positioning and metrology at speed",
+        "status": "partial",
+        "why": "today's instruments are precise but slow, and drift over minutes; production needs precision held over hours."
+      },
+      {
+        "tech": "Computational design of mechanosynthetic reactions",
+        "status": "partial",
+        "why": "simulations can propose tip reactions but are not yet reliable enough to predict outcomes without experiment."
+      },
+      {
+        "tech": "Massively parallel MEMS probe arrays",
+        "status": "partial",
+        "why": "large cantilever arrays exist for data storage and microscopy research, but not with the individual chemical control needed here."
+      },
+      {
+        "tech": "Cleanliness and error correction at scale",
+        "status": "missing",
+        "why": "a single stray molecule ruins a structure, and no one has shown how to find and fix errors fast enough to matter."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-atom placement and tip-induced surface chemistry in ultra-high vacuum",
+        "unlocks": "tools and know-how for controlled bond making."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a demonstrated, repeatable mechanosynthetic reaction sequence forming a small well-defined molecule",
+        "unlocks": "evidence that atom-by-atom construction is chemistry, not just manipulation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "parallel tip arrays producing simple atomically precise building blocks at useful rates",
+        "unlocks": "realistic cost estimates and the first niche materials."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a general-purpose assembler building macroscale parts",
+        "unlocks": "materials with exceptional stiffness and strength — if speed, cleanliness and repair can all be solved, which remains speculative."
+      }
+    ]
+  }
+}

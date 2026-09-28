@@ -33,5 +33,145 @@
         "def": "Programs that perform the same task but have different internal logic, making it computationally infeasible to distinguish between them without knowledge of their secrets."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Program representation",
+        "role": "turns the program to be hidden into a mathematical form the obfuscator can process.",
+        "parts": [
+          "boolean circuit model",
+          "branching program",
+          "matrix branching program"
+        ]
+      },
+      {
+        "name": "Hardness assumption layer",
+        "role": "provides the computational problem that makes the obfuscation secure.",
+        "parts": [
+          "learning with errors (LWE)",
+          "lattice problems",
+          "multilinear maps / graded encodings"
+        ]
+      },
+      {
+        "name": "Randomized encoding",
+        "role": "hides intermediate values while preserving the final output of the program.",
+        "parts": [
+          "secret randomness",
+          "noise",
+          "encoded inputs and outputs"
+        ]
+      },
+      {
+        "name": "Obfuscator and evaluator",
+        "role": "the two algorithms: one scrambles the program, the other runs the scrambled version.",
+        "parts": [
+          "obfuscation algorithm",
+          "evaluation algorithm",
+          "input and output decoders"
+        ]
+      },
+      {
+        "name": "Security reduction",
+        "role": "proves that two functionally identical programs produce indistinguishable obfuscations.",
+        "parts": [
+          "simulator",
+          "hybrid argument",
+          "adversary model"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the program model",
+        "detail": "Express the program to be obfuscated as a boolean circuit or branching program, so that it can be manipulated algebraically."
+      },
+      {
+        "title": "Choose a hardness assumption",
+        "detail": "Base security on a computational problem believed to be hard, such as learning with errors or a multilinear map scheme."
+      },
+      {
+        "title": "Design a randomized encoding",
+        "detail": "Encode each wire or step with secret randomness so that intermediate values are hidden but the final output is preserved."
+      },
+      {
+        "title": "Build the obfuscator",
+        "detail": "Use the encoding to transform the program into an obfuscated program that evaluates correctly but reveals nothing about its internal logic."
+      },
+      {
+        "title": "Implement evaluation",
+        "detail": "Write a procedure that takes the obfuscated program and an input, and computes the output without access to the original program."
+      },
+      {
+        "title": "Prove security",
+        "detail": "Show that for any two functionally equivalent programs, the obfuscated versions are computationally indistinguishable to any efficient adversary."
+      },
+      {
+        "title": "Test on small examples",
+        "detail": "Obfuscate simple functions, such as a few logic gates, to check that the scheme is correct and the security proof holds in practice."
+      },
+      {
+        "title": "Optimize for size and speed",
+        "detail": "Reduce the enormous blow-up in program size and evaluation time, which currently makes even small programs impractical to obfuscate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice-based cryptography (LWE)",
+        "status": "exists",
+        "why": "provides a well-studied hardness assumption on which modern candidate constructions are built."
+      },
+      {
+        "tech": "Multilinear maps / graded encodings",
+        "status": "partial",
+        "why": "early candidate obfuscators relied on them, but many were broken or proved too inefficient for real use."
+      },
+      {
+        "tech": "Circuit obfuscation theory",
+        "status": "exists",
+        "why": "the mathematical definition of indistinguishability obfuscation is well-established and guides construction."
+      },
+      {
+        "tech": "Efficient algorithms for large circuits",
+        "status": "missing",
+        "why": "current constructions blow up program size to impractically large levels, so only tiny programs could be handled."
+      },
+      {
+        "tech": "Security proofs under standard assumptions",
+        "status": "partial",
+        "why": "recent constructions reduce to LWE plus other assumptions, but not yet to the most standard assumptions alone."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "theoretical constructions exist with proofs under strong assumptions, but no practical implementation",
+        "unlocks": "a clear mathematical definition and a target for future cryptographers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "simplify assumptions to well-studied ones and improve efficiency",
+        "unlocks": "constructions that are easier to trust and closer to being implementable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "demonstrate obfuscation of small programs in practice",
+        "unlocks": "proof that the approach works beyond theory and can handle real code fragments."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "apply obfuscation to software protection and advanced cryptographic protocols",
+        "unlocks": "practical tools for hiding secrets inside untrusted software."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "if made practical, indistinguishability obfuscation could enable powerful cryptographic applications",
+        "unlocks": "a foundation for secure computation and protection that is not achievable with today's cryptography."
+      }
+    ]
   }
 }

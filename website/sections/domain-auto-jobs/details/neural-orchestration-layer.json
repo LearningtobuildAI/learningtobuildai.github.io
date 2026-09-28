@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Agent runtimes",
+        "role": "the isolation layer where each localized AI agent actually executes work.",
+        "parts": [
+          "container or sandbox per agent",
+          "model-serving endpoint",
+          "tool and permission bindings",
+          "local state store"
+        ]
+      },
+      {
+        "name": "Task graph",
+        "role": "breaks incoming work into discrete, assignable tasks with dependencies.",
+        "parts": [
+          "task schema (inputs, cost estimate, required capability)",
+          "dependency graph",
+          "priority queue",
+          "retry and dead-letter handling"
+        ]
+      },
+      {
+        "name": "Priority governor",
+        "role": "the central policy engine that decides which agent gets which task right now.",
+        "parts": [
+          "weighting rules per objective (speed, cost, accuracy)",
+          "capacity and load model",
+          "admission control",
+          "preemption and migration"
+        ]
+      },
+      {
+        "name": "Telemetry and scoring",
+        "role": "measures real-time efficiency so the governor has something to optimise.",
+        "parts": [
+          "latency and throughput meters",
+          "cost accounting per task",
+          "quality or confidence scoring of outputs",
+          "structured logs and traces"
+        ]
+      },
+      {
+        "name": "Learning loop",
+        "role": "adjusts priorities and routing as conditions change.",
+        "parts": [
+          "online bandit or reinforcement-learning allocator",
+          "replay and simulation harness",
+          "offline evaluation",
+          "policy versioning and rollback"
+        ]
+      },
+      {
+        "name": "Governance and guardrails",
+        "role": "keeps autonomy bounded and auditable.",
+        "parts": [
+          "permissions and data-scope rules",
+          "budget caps",
+          "audit trail",
+          "human escalation path"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define a task contract",
+        "detail": "Specify a machine-readable description of every unit of work: required capability, expected duration, cost ceiling and acceptable output format. Without this, nothing downstream can be compared or routed."
+      },
+      {
+        "title": "Instrument the agents",
+        "detail": "Wrap each agent so it emits standard traces and metrics (latency in milliseconds, tokens or compute consumed, success or failure) to one collection point."
+      },
+      {
+        "title": "Build the queue and graph",
+        "detail": "Stand up a durable queue plus a dependency graph so tasks that must follow others are held back until their inputs exist."
+      },
+      {
+        "title": "Run a static scheduler first",
+        "detail": "Assign tasks with fixed rules — capability match, round-robin, simple priority — to establish a baseline and expose bottleneck agents."
+      },
+      {
+        "title": "Add admission control",
+        "detail": "Reject or delay work that would exceed a budget or overload a runtime, so the system fails gracefully instead of thrashing."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Feed measured latency, cost and quality back into the weighting rules, initially as hand-tuned thresholds rather than learned ones."
+      },
+      {
+        "title": "Simulate and replay",
+        "detail": "Before changing live policy, replay recorded workloads through the proposed weights to check that utilisation improves and no agent is starved."
+      },
+      {
+        "title": "Learn the policy",
+        "detail": "Introduce contextual bandits or reinforcement learning that choose assignments from observed outcomes, with strict rollback if a policy degrades service."
+      },
+      {
+        "title": "Operate and temper",
+        "detail": "Watch for oscillation and feedback loops — a fast agent rewarded with more work can slow down, so the governor needs damping and fairness floors."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable agent runtimes and containers",
+        "status": "exists",
+        "why": "isolated, restartable execution units are the substrate the scheduler places work onto."
+      },
+      {
+        "tech": "Distributed cluster schedulers",
+        "status": "exists",
+        "why": "placing workloads across many machines at scale is a solved problem in general-purpose computing and provides the placement machinery."
+      },
+      {
+        "tech": "Standardised telemetry",
+        "status": "exists",
+        "why": "efficiency can only be optimised if latency, cost and outcome are measured in a common format across heterogeneous agents."
+      },
+      {
+        "tech": "Low-latency, low-cost inference",
+        "status": "partial",
+        "why": "running hundreds of agents concurrently multiplies serving cost, which caps how much the scheduler can usefully balance."
+      },
+      {
+        "tech": "Automated output evaluation",
+        "status": "partial",
+        "why": "the governor needs a quality signal, not just a speed signal, or it will route work to fast but wrong agents."
+      },
+      {
+        "tech": "Safe online learning for control",
+        "status": "partial",
+        "why": "learned allocation policies are researched in simulation but remain risky to run unguarded in production."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "human-authored orchestration: workflow engines and RPA orchestrators dispatch work by fixed rules, with people setting priorities",
+        "unlocks": "automation across tens to hundreds of bots inside a single organisation, with predictable behaviour and clear audit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop scheduling within one operator, optimising measured latency, cost and quality rather than guessed priorities",
+        "unlocks": "better utilisation of existing agents without changing them, plus automatic spillover when one agent or region is overloaded."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agent federation across teams or vendors, with shared task contracts and negotiated priorities instead of one central owner",
+        "unlocks": "work can move to whichever provider is cheapest and fastest at that moment — market-style allocation, still largely theoretical."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a self-tuning layer that reallocates work across organisations under common governance, with evaluations and permissions strong enough to be trusted",
+        "unlocks": "the closest realistic version of the 'hive' idea: many independent agents behaving as one coordinated fleet, bounded by hard safety and audit limits."
+      }
+    ]
+  }
+}

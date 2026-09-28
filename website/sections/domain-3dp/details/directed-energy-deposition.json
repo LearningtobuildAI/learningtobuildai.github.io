@@ -29,5 +29,161 @@
         "def": "The base material on which the DED process is performed. It can be new or existing, depending on whether the goal is part creation or repair."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Laser and optics",
+        "role": "provides the focused heat to melt metal.",
+        "parts": [
+          "high-power fiber or diode laser",
+          "optical head with focusing lenses",
+          "protective window",
+          "water cooling"
+        ]
+      },
+      {
+        "name": "Deposition head",
+        "role": "delivers the laser beam and feedstock to the melt pool.",
+        "parts": [
+          "powder or wire nozzle",
+          "coaxial gas inlets",
+          "height adjustment"
+        ]
+      },
+      {
+        "name": "Feedstock delivery",
+        "role": "supplies metal powder or wire at a controlled rate.",
+        "parts": [
+          "powder hopper and metering disc",
+          "carrier gas line",
+          "or wire spool and drive rolls"
+        ]
+      },
+      {
+        "name": "Motion system",
+        "role": "moves the deposition head or part along the toolpath.",
+        "parts": [
+          "robotic arm or gantry",
+          "linear and rotary axes",
+          "CNC controller"
+        ]
+      },
+      {
+        "name": "Process monitoring and control",
+        "role": "keeps the melt pool stable and the deposit consistent.",
+        "parts": [
+          "melt-pool camera",
+          "pyrometer",
+          "laser height sensor",
+          "closed-loop software"
+        ]
+      },
+      {
+        "name": "Shielding and atmosphere",
+        "role": "prevents oxidation of the hot metal.",
+        "parts": [
+          "argon or nitrogen supply",
+          "local shielding nozzle",
+          "sealed chamber for reactive metals"
+        ]
+      },
+      {
+        "name": "Substrate and fixturing",
+        "role": "holds the base part or build plate in place.",
+        "parts": [
+          "machined substrate or damaged part",
+          "clamps and fixtures",
+          "optional preheating system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design or scan the part",
+        "detail": "Create a CAD model of the desired geometry, or scan a damaged component to map the repair volume."
+      },
+      {
+        "title": "Prepare the substrate",
+        "detail": "Clean and machine the surface; for repair, remove damaged material to sound metal."
+      },
+      {
+        "title": "Generate the toolpath",
+        "detail": "Slice the model into layers and plan deposition paths, accounting for bead width and overlap."
+      },
+      {
+        "title": "Set up the machine",
+        "detail": "Mount and align the part, load powder or wire, and set laser power, feed rate and travel speed."
+      },
+      {
+        "title": "Deposit material",
+        "detail": "The laser creates a moving melt pool; feedstock is injected and fused layer by layer."
+      },
+      {
+        "title": "Monitor and adjust",
+        "detail": "Sensors track melt-pool temperature, size and height, and the controller corrects in real time."
+      },
+      {
+        "title": "Post-process and inspect",
+        "detail": "Heat treat to relieve stresses, machine to final dimensions, and check with non-destructive testing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-power lasers",
+        "status": "exists",
+        "why": "fiber and diode lasers of several kilowatts melt metal at useful deposition rates."
+      },
+      {
+        "tech": "Metal powders and wires",
+        "status": "exists",
+        "why": "clean, consistent feedstock of alloys such as titanium, nickel and steel is needed for sound deposits."
+      },
+      {
+        "tech": "Multi-axis motion control",
+        "status": "exists",
+        "why": "robotic arms and gantries follow complex toolpaths around large or curved parts."
+      },
+      {
+        "tech": "CAD/CAM for additive",
+        "status": "exists",
+        "why": "software converts 3D models into machine paths with proper layer overlap and offset."
+      },
+      {
+        "tech": "Inert shielding gas",
+        "status": "exists",
+        "why": "argon or nitrogen excludes oxygen that would otherwise contaminate the hot metal."
+      },
+      {
+        "tech": "Closed-loop process control",
+        "status": "partial",
+        "why": "real-time sensing and correction of melt-pool size and height are still maturing for full reliability."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "repair of high-value components such as turbine blades, molds and dies",
+        "unlocks": "extended service life and lower replacement cost for expensive parts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid machines that deposit and machine in one setup",
+        "unlocks": "near-net shapes finished to tolerance without re-fixturing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger-scale deposition for aerospace and energy structures",
+        "unlocks": "shorter lead times for big metal parts like rocket nozzles and marine components."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "certified flight-critical parts with in-situ quality assurance",
+        "unlocks": "routine use of DED for safety-critical production, not just repair."
+      }
+    ]
   }
 }

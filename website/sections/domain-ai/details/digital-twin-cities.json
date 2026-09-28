@@ -34,5 +34,156 @@
         "def": "The development of computer systems that can perform tasks that typically require human intelligence, such as learning, problem-solving, perception, and decision-making."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor and data layer",
+        "role": "measures what the city is actually doing, moment to moment.",
+        "parts": [
+          "traffic loops and camera feeds",
+          "air-quality and weather stations",
+          "utility and building meters",
+          "satellite imagery"
+        ]
+      },
+      {
+        "name": "3D city model",
+        "role": "a shared geometric and semantic representation of buildings, roads, terrain and infrastructure.",
+        "parts": [
+          "aerial LiDAR and photogrammetry surfaces",
+          "building information models (BIM)",
+          "GIS layers",
+          "CityGML-style semantic schema"
+        ]
+      },
+      {
+        "name": "Simulation engines",
+        "role": "run physics and behaviour models over the geometry.",
+        "parts": [
+          "computational fluid dynamics for wind and heat",
+          "traffic microsimulation",
+          "flood and drainage models",
+          "agent-based population models"
+        ]
+      },
+      {
+        "name": "Integration and streaming layer",
+        "role": "keeps live data bound to the right model objects as things change.",
+        "parts": [
+          "APIs and message brokers",
+          "semantic mapping tables",
+          "time-series storage"
+        ]
+      },
+      {
+        "name": "Privacy and access control",
+        "role": "prevents the twin from becoming surveillance.",
+        "parts": [
+          "anonymisation and aggregation",
+          "role-based access",
+          "audit logging"
+        ]
+      },
+      {
+        "name": "Visualisation and decision tools",
+        "role": "turns model output into something a planner or operator can act on.",
+        "parts": [
+          "dashboards",
+          "scenario comparison views",
+          "VR/AR walkthroughs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the decisions",
+        "detail": "A twin is only useful if it answers specific questions — where to put a bus lane, how a new district will flood, how to cool a square in a heatwave. Scope follows from that, not the other way around."
+      },
+      {
+        "title": "Capture the geometry",
+        "detail": "LiDAR flown over the city, oblique aerial imagery and mobile street scanning produce a point cloud; automated processing converts it into surfaces and volumes."
+      },
+      {
+        "title": "Give objects meaning",
+        "detail": "Buildings are classified, footprints and heights recorded, and walls, roofs and windows tagged so simulations know what each surface is made of."
+      },
+      {
+        "title": "Fuse into one coordinate frame",
+        "detail": "Survey data, utility records, BIM models of new buildings and terrain models are aligned to a single national grid and vertical datum."
+      },
+      {
+        "title": "Instrument the city",
+        "detail": "Sensors are installed or existing feeds connected, with agreed formats, sampling rates and data-sharing agreements."
+      },
+      {
+        "title": "Calibrate the models",
+        "detail": "Simulation parameters are tuned until the twin reproduces measured history — a past flood, a known traffic peak, a measured temperature profile. Fidelity is documented with uncertainty."
+      },
+      {
+        "title": "Link live data to model objects",
+        "detail": "Streaming feeds are bound to specific buildings, roads and pipes so the twin updates as the city changes."
+      },
+      {
+        "title": "Embed in real workflows",
+        "detail": "The twin is plugged into planning approvals, emergency response or network operations, otherwise it decays into a demo."
+      },
+      {
+        "title": "Maintain and version",
+        "detail": "Geometry and calibration are refreshed as construction, demolition and climate change move the baseline."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "City-wide sensing and open data",
+        "status": "partial",
+        "why": "many cities have good traffic and weather data but patchy coverage of buildings, drainage and air quality."
+      },
+      {
+        "tech": "3D geospatial and BIM interoperability",
+        "status": "partial",
+        "why": "CityGML and IFC exist and work reasonably well, but converting between formats still loses detail."
+      },
+      {
+        "tech": "Large-scale simulation and cloud/HPC compute",
+        "status": "exists",
+        "why": "running city-scale fluid or traffic models at useful speed requires substantial compute, now readily rentable."
+      },
+      {
+        "tech": "Privacy-preserving data governance",
+        "status": "missing",
+        "why": "combining mobility, utility and camera data can re-identify people; most legal frameworks lag the technology."
+      },
+      {
+        "tech": "Standards for twin fidelity",
+        "status": "missing",
+        "why": "there is no agreed way to state how accurate a city twin is, which makes procurement and trust difficult."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "district- and purpose-specific twins for flood risk, energy planning or traffic",
+        "unlocks": "evidence-based decisions on individual projects."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-scale twins connected to live operational systems such as transport control rooms and drainage networks",
+        "unlocks": "real-time management, not just planning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "twins used routinely inside statutory planning and emergency response",
+        "unlocks": "faster approvals and better-prepared cities."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "federated twins sharing standardised data between neighbouring cities and regions",
+        "unlocks": "coordinated planning of transport, water and energy across boundaries."
+      }
+    ]
   }
 }

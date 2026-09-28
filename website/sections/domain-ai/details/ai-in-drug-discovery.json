@@ -33,5 +33,144 @@
         "def": "Proteins, enzymes, or other molecules in the body that can be targeted by drugs to treat diseases. These targets are crucial for understanding how potential drug candidates might interact with the human body."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data layer",
+        "role": "supplies the biological and chemical information that models learn from.",
+        "parts": [
+          "protein structures",
+          "bioactivity and assay results",
+          "genomic and clinical data",
+          "scientific literature"
+        ]
+      },
+      {
+        "name": "Model layer",
+        "role": "turns data into predictions about molecules and targets.",
+        "parts": [
+          "property and toxicity predictors",
+          "generative molecule models",
+          "protein structure prediction",
+          "docking and simulation"
+        ]
+      },
+      {
+        "name": "Lab validation",
+        "role": "tests whether predictions hold true in real biological systems.",
+        "parts": [
+          "high-throughput assays",
+          "cell and organoid models",
+          "animal studies",
+          "automated liquid-handling robots"
+        ]
+      },
+      {
+        "name": "Clinical development",
+        "role": "moves a validated candidate into human trials.",
+        "parts": [
+          "trial design",
+          "biomarker selection",
+          "patient stratification"
+        ]
+      },
+      {
+        "name": "Compute and data infrastructure",
+        "role": "makes training and deployment practical at scale.",
+        "parts": [
+          "GPU clusters",
+          "cloud storage",
+          "machine-learning pipelines",
+          "data governance"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target",
+        "detail": "Researchers analyse genomic, proteomic and clinical data to pick a protein or pathway linked to a disease."
+      },
+      {
+        "title": "Assemble training data",
+        "detail": "Known molecules, their measured activities and relevant protein structures are collected, standardised and cleaned."
+      },
+      {
+        "title": "Train and validate models",
+        "detail": "Models learn to predict properties such as binding affinity, solubility and toxicity, and are tested on data they have never seen."
+      },
+      {
+        "title": "Generate candidate molecules",
+        "detail": "Generative models propose novel chemical structures that should hit the target while avoiding known liabilities."
+      },
+      {
+        "title": "Rank and filter",
+        "detail": "Candidates are scored for potency, selectivity, ADMET (absorption, distribution, metabolism, excretion, toxicity) and how easily they can be synthesised."
+      },
+      {
+        "title": "Synthesise and assay",
+        "detail": "Chemists or automated labs make the shortlisted compounds and test them in biochemical and cell assays."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Measured results feed back into the models, which propose improved molecules for the next round."
+      },
+      {
+        "title": "Advance to preclinical and clinical trials",
+        "detail": "The best candidate is tested for safety in animals, then in human trials, where most drugs still fail."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large, standardised biological and chemical datasets",
+        "status": "partial",
+        "why": "models are only as good as the data; many assays are small, inconsistent or never published."
+      },
+      {
+        "tech": "Protein structure prediction and simulation",
+        "status": "partial",
+        "why": "AlphaFold (2020) made many structures available, but dynamics and binding are still hard to predict."
+      },
+      {
+        "tech": "High-throughput and automated laboratories",
+        "status": "partial",
+        "why": "fast, reproducible testing is needed to validate the thousands of candidates AI proposes."
+      },
+      {
+        "tech": "GPU computing and cloud infrastructure",
+        "status": "exists",
+        "why": "training modern generative models requires large parallel compute."
+      },
+      {
+        "tech": "Regulatory pathways for AI-derived evidence",
+        "status": "partial",
+        "why": "agencies are still deciding how to assess drugs designed this way."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI used to find targets, repurpose existing drugs and generate candidate molecules",
+        "unlocks": "shorter early discovery timelines for some programmes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI-designed drugs progress through later-stage clinical trials",
+        "unlocks": "evidence that the approach produces medicines, not just molecules."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Self-driving labs that design, make and test compounds in a closed loop",
+        "unlocks": "much faster iteration and less human bias."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "AI integrated into personalised medicine and clinical trial design",
+        "unlocks": "treatments matched to individual patients, with higher success rates."
+      }
+    ]
   }
 }

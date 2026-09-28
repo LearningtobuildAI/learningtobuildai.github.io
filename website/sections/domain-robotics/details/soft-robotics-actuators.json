@@ -33,5 +33,142 @@
         "def": "Relating to the mechanical power of liquids, especially fluids confined in a container or pipe system."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Actuator body",
+        "role": "the soft muscle itself — elastomer chambers that deform when pressurised or electrically excited.",
+        "parts": [
+          "silicone or thermoplastic elastomer",
+          "fibre reinforcement that steers the motion",
+          "internal channels or electrode layers"
+        ]
+      },
+      {
+        "name": "Pressure or field supply",
+        "role": "inflates the chambers, or charges electrodes in electrically driven designs.",
+        "parts": [
+          "compressor or pump",
+          "miniature solenoid valves",
+          "pressure regulator",
+          "high-voltage supply for dielectric elastomer or electrohydraulic actuators"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "soft bodies bend in ways rigid sensors cannot measure directly.",
+        "parts": [
+          "stretchable strain sensors",
+          "pressure and flow sensors",
+          "capacitive tactile skin",
+          "cameras for external pose estimation"
+        ]
+      },
+      {
+        "name": "Control",
+        "role": "commands are non-linear, so the controller must model or learn the body's behaviour.",
+        "parts": [
+          "microcontroller",
+          "hyperelastic finite-element model or learned model",
+          "closed-loop pressure or voltage regulation"
+        ]
+      },
+      {
+        "name": "Structure and interface",
+        "role": "connects the soft actuator to a gripper, limb or tool and takes the load.",
+        "parts": [
+          "mounting plate",
+          "compliant joints",
+          "tubing or wiring harness"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the chamber geometry",
+        "detail": "Channels, wall thickness and fibre winding are chosen so internal pressure produces the wanted bend, twist or extension."
+      },
+      {
+        "title": "Make a mould",
+        "detail": "A two-part mould is machined or 3D-printed; complex internal channels are cast around a dissolvable or wax core."
+      },
+      {
+        "title": "Cast the elastomer",
+        "detail": "Mixed silicone is degassed under vacuum and poured, then cured in an oven."
+      },
+      {
+        "title": "Bond the layers",
+        "detail": "Multiple cast halves are joined with uncured silicone as adhesive, and reinforcing fibres or fabric are wrapped around or embedded."
+      },
+      {
+        "title": "Add sensing and electrodes",
+        "detail": "Stretchable conductors, strain gauges or electrode layers are printed, sprayed or cast into the walls."
+      },
+      {
+        "title": "Plumb and wire up",
+        "detail": "Tubing, valves and electrical connections are fitted, and the actuator is leak-tested."
+      },
+      {
+        "title": "Characterise",
+        "detail": "Blocked force, free displacement and fatigue life are measured on a test rig over many cycles."
+      },
+      {
+        "title": "Tune the controller",
+        "detail": "A model or learned policy is fitted to the measurements, then closed-loop control is validated on the target task."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fatigue-resistant elastomers",
+        "status": "partial",
+        "why": "soft actuators must survive millions of inflate-deflate cycles without tearing."
+      },
+      {
+        "tech": "Miniature valves and pumps",
+        "status": "partial",
+        "why": "today's compressors and valves are bulky, so most soft robots are tethered to off-board air."
+      },
+      {
+        "tech": "Stretchable electronics and sensors",
+        "status": "partial",
+        "why": "sensing that bends with the body is needed for closed-loop control."
+      },
+      {
+        "tech": "Soft-body modelling and simulation",
+        "status": "partial",
+        "why": "hyperelastic materials deform non-linearly, making real-time control hard."
+      },
+      {
+        "tech": "High-voltage, compact drivers",
+        "status": "partial",
+        "why": "electrically driven elastomer actuators need kilovolt-class supplies small enough to carry."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercially sold soft grippers for food, agriculture and fragile packaging",
+        "unlocks": "handling of items that rigid jaws damage or cannot grasp."
+      },
+      {
+        "stage": "Next",
+        "milestone": "untethered soft actuators with onboard power and sensing",
+        "unlocks": "mobile robots, wearable assistive gloves and exosuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "soft instruments in surgical and endoscopic robots",
+        "unlocks": "safer interaction with tissue and access through narrow, curved paths."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "durable, self-sensing artificial muscle with plant-like fatigue life",
+        "unlocks": "prosthetics and humanoid limbs that move and feel more like biological muscle."
+      }
+    ]
   }
 }

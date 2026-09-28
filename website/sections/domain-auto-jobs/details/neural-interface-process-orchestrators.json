@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural signal acquisition",
+        "role": "reads electrical activity from the brain, either through implanted electrodes or from the scalp.",
+        "parts": [
+          "intracortical microelectrode arrays or surface electrode grids",
+          "subdural or endovascular electrodes",
+          "EEG electrodes and caps",
+          "low-noise amplifiers, digitisers, wireless link"
+        ]
+      },
+      {
+        "name": "Intent decoder",
+        "role": "turns raw voltage patterns into candidate intentions such as 'select', 'send', 'undo'.",
+        "parts": [
+          "feature extraction (spike rates, frequency-band power)",
+          "machine-learning classifier",
+          "subject-specific calibration model"
+        ]
+      },
+      {
+        "name": "Confirmation and safety layer",
+        "role": "stops a brain signal from silently committing an irreversible action.",
+        "parts": [
+          "confidence thresholding",
+          "deliberate confirm gesture or dwell timer",
+          "abort/kill switch",
+          "audit log of decoded intents"
+        ]
+      },
+      {
+        "name": "Orchestration engine",
+        "role": "plans multi-step digital tasks and calls the right software tools in order.",
+        "parts": [
+          "task planner / agent policy model",
+          "workflow state machine",
+          "retry, rollback and idempotency logic"
+        ]
+      },
+      {
+        "name": "Integration layer",
+        "role": "connects the orchestrator to real systems.",
+        "parts": [
+          "API connectors (email, CRM, file stores, ticketing)",
+          "credential and permission management",
+          "rate limiting"
+        ]
+      },
+      {
+        "name": "Feedback channel",
+        "role": "closes the loop so the user knows what was interpreted.",
+        "parts": [
+          "visual or haptic confirmation",
+          "optional cortical or peripheral stimulation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the neural interface",
+        "detail": "Decide between implanted arrays (high signal quality, surgery required) and non-invasive EEG (safe, but far lower information rate)."
+      },
+      {
+        "title": "Record labelled training data",
+        "detail": "A user performs or imagines defined actions — moving a cursor, attempting speech, counting — while neural activity and the intended label are logged together."
+      },
+      {
+        "title": "Train the decoder",
+        "detail": "Classifiers learn which patterns precede which intents; accuracy, latency and false-positive rate are measured, not assumed."
+      },
+      {
+        "title": "Calibrate per user and per session",
+        "detail": "Electrodes drift and signals change day to day, so a short recalibration routine runs before each use."
+      },
+      {
+        "title": "Build the orchestrator",
+        "detail": "A planning model is given a catalogue of tools and a policy for choosing and sequencing them, tested first on reversible actions like drafting or searching."
+      },
+      {
+        "title": "Add the confirmation layer",
+        "detail": "Actions above a risk threshold require an explicit second signal or a dwell timer; everything is logged so a mistake can be traced and undone."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Feedback is returned to the user after each decoded intent so they can correct the system in real time."
+      },
+      {
+        "title": "Validate over months, not minutes",
+        "detail": "Signal stability, decoder drift and user fatigue are measured across long sessions before any consequential task is allowed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-lived, high-channel-count neural electrodes",
+        "status": "partial",
+        "why": "intracortical arrays lose signal over months to years as scar tissue forms; electrode counts and lifetimes are still the hard limit."
+      },
+      {
+        "tech": "Decoding of abstract intent, not just movement",
+        "status": "partial",
+        "why": "cursor control and attempted-speech decoding work in small clinical studies, but open-ended goals like 'reconcile this account' are not yet decodable."
+      },
+      {
+        "tech": "Non-invasive bandwidth",
+        "status": "missing",
+        "why": "scalp EEG resolves roughly a few bits per minute of deliberate command, far too little to drive multi-step workflows."
+      },
+      {
+        "tech": "Reliable agentic task planning",
+        "status": "partial",
+        "why": "software agents can chain API calls, but long-horizon correctness and permission handling remain unsolved."
+      },
+      {
+        "tech": "Neural-data privacy and control standards",
+        "status": "missing",
+        "why": "brain signals are uniquely identifying and cannot be revoked like a password."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "clinical BCIs let paralysed participants move a cursor, type and control robotic arms",
+        "unlocks": "proof that movement and communication intent can be decoded reliably in a lab setting."
+      },
+      {
+        "stage": "Next",
+        "milestone": "passive BCIs that read cognitive load, attention or error signals to adapt ordinary software",
+        "unlocks": "neural input used as a weak hint that adjusts an interface, without controlling it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "research systems pairing decoded intent with software agents on narrow, reversible tasks",
+        "unlocks": "evidence about which intents are decodable and which need explicit confirmation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulated orchestration of consequential workflows, with confirmation layers and audit trails",
+        "unlocks": "assistive control of real work for people with severe motor impairment, and only then wider use."
+      }
+    ]
+  }
+}

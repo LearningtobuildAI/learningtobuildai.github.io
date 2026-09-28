@@ -29,5 +29,149 @@
         "def": "A process where UV light is used to rapidly cure or solidify the deposited materials."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Printhead array",
+        "role": "jets droplets of multiple photopolymer materials and a support material onto the build area.",
+        "parts": [
+          "piezoelectric or thermal inkjet heads",
+          "nozzle plates with dozens to hundreds of orifices",
+          "drive electronics"
+        ]
+      },
+      {
+        "name": "Material delivery",
+        "role": "supplies and conditions the liquid resins so they jet reliably.",
+        "parts": [
+          "resin cartridges or tanks",
+          "micro-pumps and filters",
+          "temperature and viscosity control"
+        ]
+      },
+      {
+        "name": "UV curing system",
+        "role": "solidifies each deposited layer instantly as the printhead passes.",
+        "parts": [
+          "UV LED or arc lamp",
+          "reflectors and shielding",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Motion and build stage",
+        "role": "moves the printhead across the build area and lowers the platform for each new layer.",
+        "parts": [
+          "X–Y gantry or scanning carriage",
+          "Z-axis elevator",
+          "precision linear encoders"
+        ]
+      },
+      {
+        "name": "Support removal system",
+        "role": "removes the gel-like or soluble support material that holds overhangs and internal voids.",
+        "parts": [
+          "water-jet or pressure washer",
+          "solvent bath or ultrasonic tank",
+          "drying station"
+        ]
+      },
+      {
+        "name": "Control software",
+        "role": "slices the 3D model, assigns materials and colors to each voxel, and coordinates jetting and curing.",
+        "parts": [
+          "slicing and voxel-assignment engine",
+          "print-job compiler",
+          "machine calibration routines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the digital model",
+        "detail": "The part is designed in CAD and then sliced into layers of typically 14–30 micrometres. Each voxel is assigned a material, hardness or color, so the software knows which printhead to fire at every point."
+      },
+      {
+        "title": "Load materials",
+        "detail": "Cartridges of photocurable resin — sometimes several rigid and flexible grades plus a support material — are loaded into the machine. The system primes and purges the printheads."
+      },
+      {
+        "title": "Calibrate the printheads",
+        "detail": "The machine runs a test pattern to align the multiple printheads and verify droplet size and placement. Poor calibration would cause gaps or material mixing between layers."
+      },
+      {
+        "title": "Print layer by layer",
+        "detail": "The printhead carriage scans across the build platform, jetting microscopic droplets of build and support materials. A UV lamp mounted beside the heads cures the droplets immediately, forming a solid layer."
+      },
+      {
+        "title": "Lower and repeat",
+        "detail": "The build platform drops by one layer thickness, and the carriage scans again. This repeats until the object is complete, with support material deposited wherever overhangs or internal channels need it."
+      },
+      {
+        "title": "Remove the part",
+        "detail": "The finished part is lifted from the platform. Excess uncured resin is wiped or blown away."
+      },
+      {
+        "title": "Strip the support",
+        "detail": "The part is placed in a water jet or solvent bath to dissolve or blast away the support material, leaving the multi-material geometry intact."
+      },
+      {
+        "title": "Post-process",
+        "detail": "Optional steps include additional UV curing for full strength, sanding, polishing, or painting. Some materials can be machined or drilled after printing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "UV-curable photopolymer resins",
+        "status": "exists",
+        "why": "they must cure in milliseconds under a lamp and jet cleanly through tiny nozzles."
+      },
+      {
+        "tech": "Multi-nozzle inkjet printheads",
+        "status": "exists",
+        "why": "they allow several materials to be deposited simultaneously with high spatial resolution."
+      },
+      {
+        "tech": "Soluble or gel-like support materials",
+        "status": "exists",
+        "why": "they hold up overhangs and internal voids, then wash away without damaging the part."
+      },
+      {
+        "tech": "Voxel-level slicing software",
+        "status": "exists",
+        "why": "it maps material properties to individual droplets, enabling gradual transitions in hardness or color."
+      },
+      {
+        "tech": "Precise motion and curing control",
+        "status": "exists",
+        "why": "the printhead must scan at constant speed while the UV lamp cures each droplet at exactly the right moment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial machines print parts with dozens of materials and full-color gradients for prototypes, dental models, jigs and fixtures",
+        "unlocks": "fast iteration on realistic multi-material prototypes and custom tooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher-throughput printheads and larger build envelopes",
+        "unlocks": "printing bigger parts and small production batches directly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "new engineering photopolymers that mimic thermoplastics, elastomers and biocompatible resins",
+        "unlocks": "functional end-use parts for medical devices, wearables and fluidics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "automated support removal and integrated post-processing",
+        "unlocks": "unattended, factory-style production of multi-material jetted parts."
+      }
+    ]
   }
 }

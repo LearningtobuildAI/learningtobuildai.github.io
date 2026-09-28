@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Identity and access management",
+        "role": "verifies who or what is making every request, continuously.",
+        "parts": [
+          "identity provider",
+          "multi-factor authentication",
+          "risk signals",
+          "directory services"
+        ]
+      },
+      {
+        "name": "AI policy engine",
+        "role": "decides in real time whether a request should be allowed, based on context and learned behaviour.",
+        "parts": [
+          "policy decision point",
+          "machine learning models",
+          "rules engine",
+          "continuous learning loop"
+        ]
+      },
+      {
+        "name": "Microsegmentation and enforcement",
+        "role": "divides the network into small zones and blocks lateral movement if something is compromised.",
+        "parts": [
+          "software-defined perimeter",
+          "workload firewalls",
+          "service mesh",
+          "cloud security groups"
+        ]
+      },
+      {
+        "name": "Telemetry pipeline",
+        "role": "collects signals from across users, devices, workloads and networks.",
+        "parts": [
+          "endpoint agents",
+          "network flow logs",
+          "identity logs",
+          "security information and event management (SIEM)"
+        ]
+      },
+      {
+        "name": "Orchestration and automation",
+        "role": "acts on policy decisions by changing access, isolating workloads or triggering investigations.",
+        "parts": [
+          "security orchestration, automation and response (SOAR) platform",
+          "APIs to enforcement points",
+          "workflow engine",
+          "response playbooks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory assets and data flows",
+        "detail": "Map every user, device, application and service, and record how they communicate. You cannot protect what you have not identified."
+      },
+      {
+        "title": "Define trust zones and policies",
+        "detail": "Group assets by sensitivity and function, then write explicit rules for what may talk to what, under which conditions."
+      },
+      {
+        "title": "Deploy strong identity for users and workloads",
+        "detail": "Enforce multi-factor authentication, issue short-lived credentials, and give every workload a verifiable identity."
+      },
+      {
+        "title": "Roll out microsegmentation",
+        "detail": "Insert policy enforcement points between zones, typically using software agents or network overlays, so traffic is denied by default."
+      },
+      {
+        "title": "Instrument telemetry",
+        "detail": "Stream logs, flow records and identity events into a central platform so the AI has continuous, high-quality data to learn from."
+      },
+      {
+        "title": "Train and validate AI models",
+        "detail": "Use historical and simulated data to teach models normal behaviour and common attack patterns, then test them against red-team exercises."
+      },
+      {
+        "title": "Integrate orchestration with enforcement points",
+        "detail": "Connect the policy engine to firewalls, identity providers and endpoint tools through APIs so decisions can be applied automatically."
+      },
+      {
+        "title": "Operate and continuously retrain",
+        "detail": "Run the system in monitor-and-recommend mode first, then allow automatic enforcement as confidence grows, retraining models as the environment changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Identity and access management",
+        "status": "exists",
+        "why": "zero trust requires knowing exactly who or what is requesting access before any decision can be made."
+      },
+      {
+        "tech": "Microsegmentation and software-defined networking",
+        "status": "exists",
+        "why": "without fine-grained network controls, a single breach can spread unchecked."
+      },
+      {
+        "tech": "AI and machine learning for security analytics",
+        "status": "partial",
+        "why": "models that spot subtle anomalies in real time are still maturing and can produce false positives."
+      },
+      {
+        "tech": "Open APIs for security enforcement",
+        "status": "partial",
+        "why": "orchestration needs to talk to many different tools, but not all expose standard interfaces."
+      },
+      {
+        "tech": "High-quality, standardised telemetry",
+        "status": "exists",
+        "why": "AI models are only as good as the data they learn from, so consistent logging is essential."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "zero trust architecture with manual policy definition and basic automation",
+        "unlocks": "a reduced attack surface and clearer audit trails."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI-assisted policy recommendations and automated responses to common threats",
+        "unlocks": "faster reaction times and less burden on security teams."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time autonomous policy enforcement across hybrid cloud environments",
+        "unlocks": "consistent security regardless of where users or workloads are located."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-optimising zero trust that predicts and preempts attacks",
+        "unlocks": "proactive defence with minimal human intervention."
+      }
+    ]
+  }
+}

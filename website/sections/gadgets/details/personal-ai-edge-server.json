@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Accelerator",
+        "role": "does the matrix arithmetic that dominates language-model inference.",
+        "parts": [
+          "matrix-multiply units",
+          "on-package high-bandwidth memory",
+          "large shared cache",
+          "quantised-integer datapaths"
+        ]
+      },
+      {
+        "name": "Host processor and memory",
+        "role": "runs the operating system and moves weights and activations into the accelerator.",
+        "parts": [
+          "multi-core CPU",
+          "unified or shared LPDDR5X memory",
+          "memory controller"
+        ]
+      },
+      {
+        "name": "Storage",
+        "role": "holds model weights, which run to tens or hundreds of gigabytes.",
+        "parts": [
+          "NVMe SSD",
+          "model cache",
+          "swap space for larger models"
+        ]
+      },
+      {
+        "name": "Inference runtime",
+        "role": "turns a stored model into tokens, as fast as the hardware allows.",
+        "parts": [
+          "quantised compute kernels",
+          "scheduler and continuous batching",
+          "KV-cache manager",
+          "sampling and tokeniser"
+        ]
+      },
+      {
+        "name": "Thermal and power system",
+        "role": "keeps a machine that runs hot and continuously quiet enough for a home.",
+        "parts": [
+          "heatsink and fans or liquid loop",
+          "power supply",
+          "acoustic damping"
+        ]
+      },
+      {
+        "name": "Local service boundary",
+        "role": "exposes the model to apps on the home network without sending data off it.",
+        "parts": [
+          "local HTTP API",
+          "authentication and per-app sandboxing",
+          "optional encrypted remote tunnel"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the model budget",
+        "detail": "Decide which model sizes and context lengths the box must serve, since they set the hard memory floor: a 4-bit quantised model needs roughly half a gigabyte of memory per billion parameters, plus cache."
+      },
+      {
+        "title": "Pick the memory architecture",
+        "detail": "Inference is usually memory-bandwidth-bound, not compute-bound, so the design starts by choosing on-package memory delivering hundreds of gigabytes to a few terabytes per second."
+      },
+      {
+        "title": "Design or select the accelerator",
+        "detail": "Specify integer matrix-multiply units and cache sized for quantised weights, with an instruction set the compiler can target."
+      },
+      {
+        "title": "Assemble board and package",
+        "detail": "Accelerator die, memory stacks and host components are packaged together and mounted on a board with a small firmware image for boot and power management."
+      },
+      {
+        "title": "Bring up firmware and drivers",
+        "detail": "Boot the board, load the accelerator driver, and validate that memory errors and thermal throttling are detected and handled."
+      },
+      {
+        "title": "Build the inference kernels",
+        "detail": "Write and tune routines for 4-bit and 8-bit weights: dequantise, multiply, accumulate, and keep the arithmetic units fed from cache rather than from main memory."
+      },
+      {
+        "title": "Integrate model management",
+        "detail": "Add download of open-weight models, conversion and calibration into quantised formats, and an LRU cache so switching models does not stall."
+      },
+      {
+        "title": "Tune acoustics and thermals",
+        "detail": "Set fan curves and power caps so sustained generation does not sound like a rack server in a living room."
+      },
+      {
+        "title": "Validate and ship",
+        "detail": "Measure time-to-first-token, tokens per second, memory ceiling and wall power, then ship with a local API and documented privacy guarantees."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantised inference formats and kernels",
+        "status": "exists",
+        "why": "4-bit and 8-bit schemes such as GGUF, GPTQ and AWQ are how large models fit in consumer memory at all."
+      },
+      {
+        "tech": "High-bandwidth on-package memory",
+        "status": "partial",
+        "why": "HBM and LPDDR5X exist, but the cheapest large-bandwidth parts are still costly and supply-constrained."
+      },
+      {
+        "tech": "Usable NPUs with open toolchains",
+        "status": "partial",
+        "why": "accelerators are shipping in laptops and small boards, but vendor compilers and operator coverage lag what the inference runtimes need."
+      },
+      {
+        "tech": "Efficient attention and mixture-of-experts architectures",
+        "status": "partial",
+        "why": "grouped-query attention and sparse experts cut cost per token, but the KV cache still grows with context length."
+      },
+      {
+        "tech": "Strong open-weight models",
+        "status": "exists",
+        "why": "without downloadable weights there is nothing to run locally."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "local inference on workstations, gaming GPUs and unified-memory desktops using open runtimes",
+        "unlocks": "private, offline assistants for enthusiasts and small offices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quiet, fanless-or-near-silent appliances with 64–256 GB of fast memory at a few hundred watts",
+        "unlocks": "a home box that serves a mid-size model to every device in the house."
+      },
+      {
+        "stage": "Next",
+        "milestone": "open NPU toolchains and standard quantised kernels across vendors",
+        "unlocks": "portable software, so models are not locked to one accelerator."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device fine-tuning and personal retrieval indexes",
+        "unlocks": "assistants tuned to one household's data without that data ever leaving it."
+      }
+    ]
+  }
+}

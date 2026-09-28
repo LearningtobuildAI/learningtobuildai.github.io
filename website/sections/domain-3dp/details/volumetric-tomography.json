@@ -33,5 +33,131 @@
         "def": "The process of directing and shaping light beams into specific patterns to cure photopolymer resin in a 3D volume."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Light engine",
+        "role": "floods the resin with patterned light from one or more directions.",
+        "parts": [
+          "DLP projector or laser",
+          "high-power LED or laser diode",
+          "beam-shaping optics"
+        ]
+      },
+      {
+        "name": "Resin chemistry",
+        "role": "turns light dose into solid, but only past a threshold so unwanted light does nothing.",
+        "parts": [
+          "monomer and crosslinker",
+          "photoinitiator",
+          "inhibitor (often dissolved oxygen) or a photo-switchable initiator pair"
+        ]
+      },
+      {
+        "name": "Container and stage",
+        "role": "holds the liquid and moves it through the beam.",
+        "parts": [
+          "transparent glass or plastic vial",
+          "index-matching fluid",
+          "rotation stage or translation stage"
+        ]
+      },
+      {
+        "name": "Dose-modelling software",
+        "role": "solves the inverse problem: which projection patterns add up to the intended shape.",
+        "parts": [
+          "ray-trace or Radon-transform model",
+          "tomographic reconstruction (filtered back projection or iterative optimiser)",
+          "calibration of non-linear cure response"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "removes unpolymerised liquid and finishes the part.",
+        "parts": [
+          "drain and wash station",
+          "post-cure light oven",
+          "solvent or water rinse"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target shape",
+        "detail": "A 3D model is converted into a target dose map — the amount of light energy every point in the volume should receive."
+      },
+      {
+        "title": "Solve the projection set",
+        "detail": "Software computes the family of 2D images whose overlap reproduces that dose map, the same inverse problem used to reconstruct CT scans, run backwards."
+      },
+      {
+        "title": "Formulate the resin",
+        "detail": "A liquid monomer is mixed with a photoinitiator and an inhibitor. The inhibitor soaks up the first photons so that only points crossed by many beams — above the threshold dose — actually set."
+      },
+      {
+        "title": "Fill and index-match",
+        "detail": "The resin fills a transparent cylindrical vial; the vial sits in a matching fluid so light enters without distortion."
+      },
+      {
+        "title": "Expose the volume",
+        "detail": "Patterned light is projected through the spinning vial for tens of seconds, or in some designs a moving patterned beam and a perpendicular light sheet cross inside the resin. All points cure at once."
+      },
+      {
+        "title": "Drain and clean",
+        "detail": "The gelled part is lifted out, uncured liquid drains away, and the part is rinsed. Because the surrounding resin holds it in place, no support structures are needed."
+      },
+      {
+        "title": "Post-cure",
+        "detail": "A final flood of light hardens the part fully and sets its mechanical properties."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Computational tomography and inverse-problem solvers",
+        "status": "exists",
+        "why": "the projection patterns are essentially a radiotherapy treatment plan computed for a volume of resin."
+      },
+      {
+        "tech": "Dose-threshold photopolymer chemistry",
+        "status": "partial",
+        "why": "without a sharp threshold between cured and uncured, gentle stray light smears the part."
+      },
+      {
+        "tech": "Transparent, low-scattering resins",
+        "status": "partial",
+        "why": "pigments, ceramic particles or living cells scatter and blur the projected beams, limiting resolution and loading."
+      },
+      {
+        "tech": "High-brightness projectors and lasers",
+        "status": "exists",
+        "why": "the whole volume must absorb enough energy in seconds, so light output sets the print time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations printing centimetre-scale parts in tens of seconds, mainly in clear acrylate resins",
+        "unlocks": "a genuinely new speed class in additive manufacturing, and printing without support structures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "finer resolution and larger build volumes, with loaded resins (ceramic, composite)",
+        "unlocks": "lenses, dental and hearing-aid parts, small precision components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cell-laden and biocompatible resins",
+        "unlocks": "tissue scaffolds and implants printed around living cells in one shot."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "reliable industrial machines with calibrated process control",
+        "unlocks": "production use alongside established vat photopolymerisation, where speed or smooth surfaces matter more than fine detail."
+      }
+    ]
   }
 }

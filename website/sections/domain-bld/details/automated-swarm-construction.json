@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Swarm robots",
+        "role": "small mobile units that deposit material layer by layer",
+        "parts": [
+          "mobile base",
+          "extruder or depositor",
+          "onboard controller",
+          "battery"
+        ]
+      },
+      {
+        "name": "Coordination and communication",
+        "role": "lets thousands of robots work together without a central controller",
+        "parts": [
+          "ad-hoc wireless network",
+          "swarm algorithms (stigmergy, ant-colony inspired)",
+          "localisation beacons"
+        ]
+      },
+      {
+        "name": "Material supply",
+        "role": "delivers concrete or other build material to the robots",
+        "parts": [
+          "central pump or depot",
+          "hoses or refillable cartridges",
+          "material conditioning"
+        ]
+      },
+      {
+        "name": "Positioning and sensing",
+        "role": "keeps each robot in the right place and aware of its neighbours",
+        "parts": [
+          "UWB or laser localisation",
+          "cameras and LiDAR",
+          "collision avoidance"
+        ]
+      },
+      {
+        "name": "Power and maintenance",
+        "role": "keeps the swarm running for long builds",
+        "parts": [
+          "battery packs",
+          "charging stations",
+          "automated refilling"
+        ]
+      },
+      {
+        "name": "Build planning software",
+        "role": "turns a design into a swarm build sequence",
+        "parts": [
+          "CAD decomposition",
+          "task allocation algorithms",
+          "simulation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for swarming",
+        "detail": "The structure is divided into small, overlapping tasks that many robots can attempt in parallel, such as filling a wall section or laying a beam."
+      },
+      {
+        "title": "Set up the site",
+        "detail": "A base station is placed on site with material storage, power and a localisation reference."
+      },
+      {
+        "title": "Deploy and calibrate",
+        "detail": "Robots are positioned and their localisation is calibrated against the base station and surveyed markers."
+      },
+      {
+        "title": "Start the build",
+        "detail": "Robots move to their assigned areas and begin depositing material, following the shared plan but adjusting to neighbours."
+      },
+      {
+        "title": "Coordinate continuously",
+        "detail": "Each robot broadcasts its status; algorithms reassign tasks as robots finish, fail or need refilling."
+      },
+      {
+        "title": "Layer by layer",
+        "detail": "The swarm adds successive layers, with material setting fast enough to support the next pass."
+      },
+      {
+        "title": "Refill and recharge",
+        "detail": "Robots automatically return to the base station for material and power, then rejoin the swarm."
+      },
+      {
+        "title": "Finish and cure",
+        "detail": "Once the structure is complete, robots withdraw and the material is left to cure or is finished by other machines."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Swarm robotics coordination",
+        "status": "partial",
+        "why": "algorithms exist in lab demos but not for thousands of robots on a construction site."
+      },
+      {
+        "tech": "Mobile 3D printing robots",
+        "status": "partial",
+        "why": "single mobile robots can print concrete; coordinating many to print one structure is still research."
+      },
+      {
+        "tech": "Localisation in cluttered sites",
+        "status": "partial",
+        "why": "centimetre accuracy is needed for structural printing, and GPS is not enough indoors or between floors."
+      },
+      {
+        "tech": "Fast-setting printable materials",
+        "status": "exists",
+        "why": "concrete mixes for gantry 3D printing are already commercial, though they must be adapted for robot swarms."
+      },
+      {
+        "tech": "High-density power and refilling",
+        "status": "partial",
+        "why": "batteries and automated material refilling must work reliably for days of continuous building."
+      },
+      {
+        "tech": "Robust ad-hoc networks",
+        "status": "exists",
+        "why": "mesh networking works, but scaling to thousands of nodes with low latency is untested on sites."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab demos of a few robots printing small structures or assembling blocks",
+        "unlocks": "proof that decentralised construction is possible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot projects with dozens of robots printing simple walls or shelters",
+        "unlocks": "real-world data on reliability, speed and material handling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial systems for rapid deployment of small buildings in remote or disaster areas",
+        "unlocks": "a market and supply chain for swarm construction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands-strong swarms building multi-storey structures in cities",
+        "unlocks": "construction that is faster, cheaper and uses less labour."
+      }
+    ]
+  }
+}

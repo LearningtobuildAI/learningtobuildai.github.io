@@ -29,5 +29,157 @@
         "def": "Cytokine Release Syndrome, a severe side effect of CAR-T therapies"
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Antigen-sensing receptor",
+        "role": "the engineered CAR that lets a T cell recognise a tumour antigen without needing the usual antigen-presentation machinery.",
+        "parts": [
+          "binder (single-chain antibody fragment or nanobody)",
+          "hinge and transmembrane region",
+          "co-stimulatory domain (CD28 or 4-1BB)",
+          "CD3-zeta signalling tail"
+        ]
+      },
+      {
+        "name": "T-cell source and editing module",
+        "role": "decides whether cells come from the patient or a donor, and which genes are rewritten.",
+        "parts": [
+          "apheresis product or healthy-donor T cells",
+          "CRISPR-Cas9 or base-editing reagents",
+          "knockouts to remove the native T-cell receptor",
+          "targeted knock-in of the CAR gene"
+        ]
+      },
+      {
+        "name": "Gene-delivery vehicle",
+        "role": "gets the CAR instructions into the cell.",
+        "parts": [
+          "lentiviral or gammaretroviral vector",
+          "transposon plasmid system",
+          "mRNA in a lipid nanoparticle"
+        ]
+      },
+      {
+        "name": "Safety and control circuits",
+        "role": "lets clinicians switch the therapy off or restrict it to tumour tissue only.",
+        "parts": [
+          "suicide switch (e.g. inducible caspase-9 or a truncated EGFR tag)",
+          "AND / NOT logic gates",
+          "remote on-off switches",
+          "dose-limiting self-regulation"
+        ]
+      },
+      {
+        "name": "Manufacturing and release",
+        "role": "turns a bag of cells into a sterile, dose-controlled medicine.",
+        "parts": [
+          "closed automated culture bioreactor",
+          "magnetic or column-based cell selection",
+          "cryopreservation",
+          "sterility, identity and potency assays"
+        ]
+      },
+      {
+        "name": "Microenvironment payload",
+        "role": "helps the cell survive inside a solid tumour.",
+        "parts": [
+          "armouring cytokines (e.g. IL-12 or IL-18)",
+          "checkpoint knockouts",
+          "TGF-beta trap"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target and binder",
+        "detail": "Select one or more surface antigens that are common on the cancer but rare on healthy tissue, then screen binders that grip them tightly and specifically."
+      },
+      {
+        "title": "Design the signalling architecture",
+        "detail": "Assemble binder, hinge, co-stimulatory domain and signalling tail in the order that gives the best expansion and persistence, and add any safety or logic elements."
+      },
+      {
+        "title": "Collect the starting cells",
+        "detail": "For an autologous product, the patient's own T cells are collected by apheresis; for an allogeneic product, cells come from a healthy donor and must be edited so they do not attack the recipient."
+      },
+      {
+        "title": "Activate and edit",
+        "detail": "Cells are stimulated to divide, then CRISPR-Cas9 or base editors are delivered by electroporation to cut or rewrite chosen genes."
+      },
+      {
+        "title": "Deliver the CAR gene",
+        "detail": "A viral vector inserts the CAR at random, or a nuclease plus template inserts it at a chosen safe locus; an mRNA route expresses it only temporarily and can be given directly to the patient."
+      },
+      {
+        "title": "Expand to dose",
+        "detail": "The edited cells grow for roughly one to two weeks in a closed bioreactor until the target cell number is reached."
+      },
+      {
+        "title": "Purify, formulate and freeze",
+        "detail": "CAR-positive cells are selected, washed, concentrated into patient doses and cryopreserved at around -150 °C."
+      },
+      {
+        "title": "Test and release",
+        "detail": "Each batch must pass sterility, identity, potency, vector-copy-number and residual-nuclease checks before it can be infused."
+      },
+      {
+        "title": "Infuse and monitor",
+        "detail": "The patient receives short-course lymphodepleting chemotherapy, then the cells; cytokine release syndrome and neurological toxicity are watched for and treated with anti-IL-6 drugs or steroids."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Clinical-grade gene delivery",
+        "status": "exists",
+        "why": "viral and transposon vectors already carry CAR genes into patient cells in approved products."
+      },
+      {
+        "tech": "Precise editing of primary human T cells",
+        "status": "partial",
+        "why": "CRISPR-edited cell therapies are now approved in other diseases, but multiplex editing of T cells is still being tuned."
+      },
+      {
+        "tech": "Targets that distinguish solid tumours from healthy tissue",
+        "status": "missing",
+        "why": "most solid-tumour antigens also appear on normal organs, which is why CAR-T still struggles there."
+      },
+      {
+        "tech": "Direct in-vivo programming of T cells",
+        "status": "partial",
+        "why": "mRNA delivered in lipid nanoparticles has generated CAR-T cells inside animals without removing cells; human data are still early."
+      },
+      {
+        "tech": "Scalable, low-cost manufacturing",
+        "status": "partial",
+        "why": "today's autologous process takes weeks per patient; off-the-shelf and automated routes are the main focus of development."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "approved autologous CAR-T therapies against CD19 and BCMA for certain blood cancers",
+        "unlocks": "a proven template for engineered cell therapy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "allogeneic, gene-edited products that are frozen and ready to ship",
+        "unlocks": "treatment without waiting weeks for a personalised batch."
+      },
+      {
+        "stage": "Next",
+        "milestone": "logic-gated and dual-targeted CARs entering later-stage trials for solid tumours",
+        "unlocks": "less antigen escape and less damage to healthy tissue."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "in-vivo CAR-T generated by an injected delivery vehicle",
+        "unlocks": "a simple infusion instead of apheresis, cell culture and a dedicated factory."
+      }
+    ]
   }
 }

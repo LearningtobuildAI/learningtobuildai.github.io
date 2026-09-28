@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural signal acquisition",
+        "role": "records the electrical activity the key will be derived from.",
+        "parts": [
+          "scalp electrodes or an implanted microelectrode array",
+          "low-noise amplifier",
+          "analogue-to-digital converter",
+          "shielding from mains and muscle noise"
+        ]
+      },
+      {
+        "name": "Challenge protocol",
+        "role": "presents a repeatable stimulus or mental task so the brain produces a comparable response each time.",
+        "parts": [
+          "visual or auditory stimulus delivery",
+          "precise timing synchronisation",
+          "cognitive-task instructions"
+        ]
+      },
+      {
+        "name": "Feature extraction",
+        "role": "turns raw waveforms into numbers that are stable for one person and different between people.",
+        "parts": [
+          "frequency-band power",
+          "evoked-response components such as the P300",
+          "cross-channel connectivity measures",
+          "artefact rejection (blinks, jaw clench, movement)"
+        ]
+      },
+      {
+        "name": "Key derivation core",
+        "role": "converts a noisy biometric reading into an exactly reproducible cryptographic key.",
+        "parts": [
+          "fuzzy extractor or secure sketch",
+          "error-correcting code (e.g. BCH or Reed–Solomon)",
+          "helper data",
+          "key-derivation function and hash (e.g. SHA-3, HKDF)"
+        ]
+      },
+      {
+        "name": "Protected template store",
+        "role": "keeps the enrolment reference without storing a usable brainprint.",
+        "parts": [
+          "encrypted template database",
+          "revocation and re-enrolment records",
+          "access-control policy"
+        ]
+      },
+      {
+        "name": "Liveness and anti-spoofing",
+        "role": "checks a live, willing person is present rather than a recording or a coerced user.",
+        "parts": [
+          "randomised challenge sequences",
+          "conscious-response checks",
+          "replay and deepfake-signal detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the signal source",
+        "detail": "Decide between scalp electroencephalography (safe, cheap, noisy) and an implanted array (stable, high-bandwidth, requires surgery). This choice limits everything downstream."
+      },
+      {
+        "title": "Build a recording rig",
+        "detail": "Use shielded, low-noise amplification and precise stimulus timing, because the features being hashed are microvolt-scale and timing-sensitive."
+      },
+      {
+        "title": "Design the challenge",
+        "detail": "Pick a task that reliably evokes a subject-specific response — for example an oddball stimulus producing a P300 wave, or imagined movement — and randomise it so it cannot be recorded and replayed."
+      },
+      {
+        "title": "Collect enrolment data",
+        "detail": "Record the same person across several sessions, days apart, to measure how much their own signal drifts (electrode placement, alertness, caffeine)."
+      },
+      {
+        "title": "Select stable features",
+        "detail": "Keep only features that vary little within a person and a lot between people, discarding the rest; this is the difference between identification research and key generation."
+      },
+      {
+        "title": "Apply error correction",
+        "detail": "A key must come out bit-for-bit identical every time, so a fuzzy extractor uses an error-correcting code plus helper data to absorb the natural variation in each reading."
+      },
+      {
+        "title": "Derive and bind the key",
+        "detail": "Hash the corrected feature vector into a key and use it to unlock a disk, credential or hardware secure element. No raw brain data is stored with the ciphertext."
+      },
+      {
+        "title": "Test against attacks",
+        "detail": "Measure false-accept and false-reject rates, then attempt spoofing with recorded signals, cross-subject substitution, and coercion scenarios."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Non-invasive neural recording (EEG)",
+        "status": "exists",
+        "why": "commercial headsets exist, but scalp signals blur millions of neurons together and carry far less detail than the tile's wording implies — they reflect summed field potentials, not individual synaptic firings."
+      },
+      {
+        "tech": "Stable person-specific neural signatures",
+        "status": "partial",
+        "why": "academic studies show EEG can identify individuals, but accuracy falls across sessions and electrode placements."
+      },
+      {
+        "tech": "High-bandwidth implanted brain–computer interfaces",
+        "status": "partial",
+        "why": "clinical trials show richer, more stable signals, but they need surgery and long-term biocompatibility."
+      },
+      {
+        "tech": "Fuzzy extractors for noisy biometrics",
+        "status": "exists",
+        "why": "the mathematics of turning an inexact reading into an exact key is established for fingerprints and iris, though brain signals are noisier."
+      },
+      {
+        "tech": "Liveness detection for neural signals",
+        "status": "missing",
+        "why": "nothing reliably distinguishes a live, consenting brain from a high-quality recording or a coerced user."
+      },
+      {
+        "tech": "Secure key storage hardware",
+        "status": "exists",
+        "why": "tamper-resistant elements to hold or wrap the derived key are a mature technology."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory studies using EEG for identification, not key generation",
+        "unlocks": "evidence that a brainprint is distinctive enough to be worth using."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-corrected key derivation demonstrated over repeated sessions in small cohorts",
+        "unlocks": "the first genuine brain-derived cryptographic keys, still with a fallback login."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-modal systems pairing neural signals with another biometric and a liveness challenge",
+        "unlocks": "resistance to replay and coercion, enough for high-security access control."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine use of implanted interfaces in medicine",
+        "unlocks": "a plausible path to practical neural keys — but the unsolved problem is revocation, since unlike a password or a fingerprint, a person's neural signature cannot be changed if it leaks."
+      }
+    ]
+  }
+}

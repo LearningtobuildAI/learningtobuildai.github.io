@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Analyte sensing layer",
+        "role": "detects glucose, cortisol and other markers without drawing blood.",
+        "parts": [
+          "optical emitters and photodetectors (near-infrared, Raman) for glucose",
+          "electrochemical or affinity-based sensors for cortisol",
+          "reference electrodes and temperature sensors"
+        ]
+      },
+      {
+        "name": "Interstitial fluid access",
+        "role": "brings the fluid being measured into contact with the sensors.",
+        "parts": [
+          "microneedle array (under 1 mm) or microfluidic channels",
+          "wicking or suction elements",
+          "biocompatible skin interface"
+        ]
+      },
+      {
+        "name": "Electronics and signal chain",
+        "role": "amplifies tiny sensor currents and voltages and sends them wirelessly.",
+        "parts": [
+          "low-noise analog front end",
+          "microcontroller or ASIC",
+          "Bluetooth Low Energy radio",
+          "flexible printed circuit board"
+        ]
+      },
+      {
+        "name": "Power and housing",
+        "role": "keeps the device running for days on a ring or patch form factor.",
+        "parts": [
+          "rechargeable or thin-film battery",
+          "energy-harvesting option (body heat, motion)",
+          "hypoallergenic enclosure and adhesive"
+        ]
+      },
+      {
+        "name": "Algorithms and calibration",
+        "role": "turns raw signals into reliable glucose, cortisol and sleep metrics.",
+        "parts": [
+          "signal processing to remove motion and temperature artefacts",
+          "machine-learning models trained against blood or lab references",
+          "individual calibration routines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose sensing chemistry",
+        "detail": "For glucose, pick an enzyme or optical absorption band; for cortisol, select an antibody, aptamer or molecularly imprinted polymer that binds it selectively."
+      },
+      {
+        "title": "Fabricate the sensor array",
+        "detail": "Print or deposit electrodes on a flexible substrate for electrochemical sensing, or make waveguides and photodiodes for optical sensing."
+      },
+      {
+        "title": "Make the fluid interface",
+        "detail": "Etch or mould microneedles short enough to reach interstitial fluid without hitting nerves, or pattern microchannels that collect sweat."
+      },
+      {
+        "title": "Assemble electronics",
+        "detail": "Solder the analog front end, microcontroller and radio onto a flexible circuit, then connect the sensors and battery."
+      },
+      {
+        "title": "Develop algorithms",
+        "detail": "Collect paired readings (device versus blood draws) from many people, then train models to separate overlapping analyte signals."
+      },
+      {
+        "title": "Package the wearable",
+        "detail": "Encapsulate the electronics in a biocompatible ring or patch, test skin adhesion and ensure it survives washing and sweating."
+      },
+      {
+        "title": "Validate and seek approval",
+        "detail": "Run clinical studies comparing the device with laboratory standards, then apply for medical-device clearance where the output affects treatment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Continuous glucose monitoring via interstitial fluid",
+        "status": "exists",
+        "why": "commercial patches already use a tiny filament in interstitial fluid, proving the body-fluid route works for one analyte."
+      },
+      {
+        "tech": "Non-invasive optical glucose sensing",
+        "status": "missing",
+        "why": "near-infrared and Raman signals from glucose are weak and swamped by water, skin and motion; no consumer device has solved this."
+      },
+      {
+        "tech": "Continuous cortisol sensing",
+        "status": "partial",
+        "why": "lab prototypes measure cortisol in sweat and interstitial fluid, but they drift, need frequent calibration and are not yet wearable for days."
+      },
+      {
+        "tech": "Flexible, low-power electronics",
+        "status": "exists",
+        "why": "smartwatches and rings already integrate radios, batteries and sensors in small packages."
+      },
+      {
+        "tech": "Biocompatible long-wear microneedles",
+        "status": "partial",
+        "why": "dissolving microneedles exist for drug delivery, but a robust array that stays sterile and unclogged for weeks is still research."
+      },
+      {
+        "tech": "Multi-analyte signal separation",
+        "status": "missing",
+        "why": "sensors respond to several substances at once; untangling glucose from cortisol and other interferents in real time is unsolved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "separate wearables track heart rate, sleep and—via invasive patches—glucose",
+        "unlocks": "continuous data streams and user habits, but not a single multi-analyte device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "research prototypes measure cortisol and glucose together in sweat or interstitial fluid over hours",
+        "unlocks": "proof that two analytes can be read from one wearable site."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinical-grade patch integrates glucose, cortisol and sleep algorithms with minimal calibration",
+        "unlocks": "monitoring for diabetes, stress and sleep disorders without blood draws."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully non-invasive ring with multi-analyte sensing and closed-loop feedback",
+        "unlocks": "personalised dosing or lifestyle advice in real time, if accuracy and biocompatibility hold up."
+      }
+    ]
+  }
+}

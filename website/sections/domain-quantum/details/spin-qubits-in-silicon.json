@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Isotopically purified silicon host",
+        "role": "the material the spins live in; removing silicon-29 nuclear spins greatly extends coherence.",
+        "parts": [
+          "silicon-28 enriched wafer or Si/SiGe heterostructure",
+          "strained silicon quantum well"
+        ]
+      },
+      {
+        "name": "Gate-defined quantum dots",
+        "role": "electrostatic cages that trap one or a few electrons each.",
+        "parts": [
+          "plunger and barrier gates",
+          "tunnel barriers to an electron reservoir",
+          "oxide or SiGe insulating layers"
+        ]
+      },
+      {
+        "name": "Spin control structures",
+        "role": "let the spin be rotated electrically rather than by a bulky microwave coil.",
+        "parts": [
+          "micromagnet or stripline for a magnetic field gradient",
+          "exchange-coupling regions between neighbouring dots"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "senses whether a spin is up or down.",
+        "parts": [
+          "single-electron transistor",
+          "radio-frequency reflectometry circuit",
+          "Pauli spin-blockade sensor dot"
+        ]
+      },
+      {
+        "name": "Cryogenic environment",
+        "role": "keeps the device at millikelvin temperatures so the spins stay coherent.",
+        "parts": [
+          "dilution refrigerator",
+          "filtered and shielded wiring"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "delivers precise nanosecond voltage pulses to many gates without cooking the fridge.",
+        "parts": [
+          "room-temperature pulse generators",
+          "cryogenic CMOS multiplexers",
+          "high-density cabling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Enrich the silicon",
+        "detail": "Natural silicon is about 5% silicon-29; isotopic separation raises the silicon-28 fraction above 99%, so far fewer nuclear spins disturb the qubits."
+      },
+      {
+        "title": "Grow the wafer stack",
+        "detail": "On a silicon wafer, layers of silicon germanium and a thin strained silicon well are grown by epitaxy, or a gate oxide is grown for a silicon-MOS style device."
+      },
+      {
+        "title": "Pattern the gates",
+        "detail": "Semiconductor lithography defines nanometre-scale metal gate electrodes; this is the step that could in principle run on existing CMOS production lines."
+      },
+      {
+        "title": "Cool and load electrons",
+        "detail": "The chip is mounted in a dilution refrigerator at around 0.1 K, and gate voltages are tuned so single electrons tunnel in from a reservoir and are held in place."
+      },
+      {
+        "title": "Tune to the single-electron regime",
+        "detail": "Automated tuning sweeps gate voltages until each dot holds exactly one electron and its charge state is stable."
+      },
+      {
+        "title": "Calibrate spin control and readout",
+        "detail": "Microwave bursts on the gates flip spins; the sensor dot detects the resulting charge change, and gate fidelities are measured."
+      },
+      {
+        "title": "Build small arrays",
+        "detail": "Two, four or more dots are coupled in a line or grid so neighbouring spins can interact for two-qubit gates."
+      },
+      {
+        "title": "Multiplex the wiring",
+        "detail": "Cryogenic control chips and crossbar addressing reduce the number of wires running from room temperature, which is the main obstacle to larger arrays."
+      },
+      {
+        "title": "Operate error-corrected logical qubits",
+        "detail": "Many physical spins are combined into one protected logical qubit — a milestone not yet reached in silicon."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced CMOS fabrication",
+        "status": "exists",
+        "why": "the key promise is that these qubits are made with the same lithography, oxides and metal gates as ordinary microchips."
+      },
+      {
+        "tech": "Isotopically enriched silicon-28",
+        "status": "partial",
+        "why": "it is produced in small quantities at high cost; large, uniform wafers would be needed for manufacturing."
+      },
+      {
+        "tech": "Millikelvin refrigeration",
+        "status": "exists",
+        "why": "dilution refrigerators are standard laboratory equipment, but each one supports only a limited number of qubits and wires."
+      },
+      {
+        "tech": "Cryogenic control electronics",
+        "status": "partial",
+        "why": "cryo-CMOS multiplexers have been demonstrated at a few kelvin, but addressing thousands of gates is unsolved."
+      },
+      {
+        "tech": "Quantum error correction at scale",
+        "status": "missing",
+        "why": "no platform, including silicon, has yet run enough qubits with low enough error rates to make a reliably protected logical qubit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory devices with a handful of spins; single-qubit gate fidelities above 99.9% in purified silicon",
+        "unlocks": "confidence that spins are a viable qubit, and that some devices work near 1 K."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tens to hundreds of qubits with integrated cryogenic control and automated tuning",
+        "unlocks": "system-level tests of wiring, calibration and reliability on a chip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a demonstrated error-corrected logical qubit in silicon",
+        "unlocks": "the first credible route to scaling by adding more dots rather than more fridges."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fab-compatible production of many-qubit chips, with modules linked by spin shuttling or microwave cavities",
+        "unlocks": "large quantum processors built on existing semiconductor supply chains."
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Unit module",
+        "role": "the repeating building block: a small self-contained robot that can act alone or lock together with others.",
+        "parts": [
+          "microcontroller and sensors",
+          "actuator or internal flywheel",
+          "battery",
+          "rugged housing",
+          "docking face"
+        ]
+      },
+      {
+        "name": "Docking and connection system",
+        "role": "lets modules grip each other rigidly and pass power and data across the joint.",
+        "parts": [
+          "alignment features",
+          "latch or magnetic clamp",
+          "electrical contacts",
+          "release mechanism"
+        ]
+      },
+      {
+        "name": "Actuation and locomotion",
+        "role": "how a single module moves, and how an assembled structure crawls, rolls or walks.",
+        "parts": [
+          "motors or flywheels",
+          "joints between connected modules",
+          "gait controller"
+        ]
+      },
+      {
+        "name": "Distributed control and communication",
+        "role": "no central brain: modules sense neighbours and agree locally on what shape to form.",
+        "parts": [
+          "short-range radio or infrared links",
+          "localisation (camera, magnetic, or beacon)",
+          "consensus and task-allocation algorithms"
+        ]
+      },
+      {
+        "name": "Power and energy management",
+        "role": "keeps hundreds or thousands of small batteries charged and shares power through the structure.",
+        "parts": [
+          "battery cells",
+          "charging dock or contact",
+          "load balancing across connected modules"
+        ]
+      },
+      {
+        "name": "Reconfiguration planner",
+        "role": "decides which shape is needed for a job and which module moves where — the part that today exists only in simulation.",
+        "parts": [
+          "task-to-shape reasoning",
+          "motion planning",
+          "simulation environment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the module specification",
+        "detail": "Pick the trade-off between module size, force it can exert, power it can carry and cost. Smaller modules give finer shapes but weaker joints."
+      },
+      {
+        "title": "Fabricate the module",
+        "detail": "Assemble microcontroller boards, actuator or flywheel, battery and housing into a unit typically a few centimetres across."
+      },
+      {
+        "title": "Make the docking face",
+        "detail": "Machine alignment cones and a latch with electrical contacts, then cycle it thousands of times to check it still engages reliably."
+      },
+      {
+        "title": "Write the firmware",
+        "detail": "Each module gets code for sensing its neighbours, aligning itself, latching on, and reporting its position in the structure."
+      },
+      {
+        "title": "Write the swarm controller",
+        "detail": "Local rules let modules self-assemble into a target shape without any unit knowing the whole plan."
+      },
+      {
+        "title": "Test at scale",
+        "detail": "Run tens to hundreds of units in the lab, then thousands of very simple ones to check that self-assembly still works as numbers grow."
+      },
+      {
+        "title": "Add real work capability",
+        "detail": "Give an assembled structure the strength, sensors and control to lift, carry or manipulate something useful — mostly still a research goal."
+      },
+      {
+        "title": "Layer on the general-intelligence layer",
+        "detail": "Train controllers that take an arbitrary task in an unstructured setting and choose a configuration for it. No such system exists today; this step is a research programme, not an engineering task."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Modular self-reconfiguring robots",
+        "status": "partial",
+        "why": "labs have demonstrated cubes and swarms that link and reshape, but only at small scale and light loads."
+      },
+      {
+        "tech": "Swarm and self-assembly algorithms",
+        "status": "partial",
+        "why": "thousands of simple robots have self-assembled into shapes in controlled lab conditions."
+      },
+      {
+        "tech": "Miniature high-torque actuators",
+        "status": "partial",
+        "why": "the force a module can apply at a joint limits what an assembled structure can ever lift."
+      },
+      {
+        "tech": "Cross-module power and data transfer",
+        "status": "partial",
+        "why": "power has to flow through connected modules, or every unit must carry enough battery for the whole job."
+      },
+      {
+        "tech": "General-purpose embodied AI",
+        "status": "missing",
+        "why": "nothing today can look at an unfamiliar physical task and decide how to reshape a robot swarm to do it."
+      },
+      {
+        "tech": "Durable docking mechanisms",
+        "status": "missing",
+        "why": "joints must survive millions of connect and release cycles in dirt, water and vibration; no field-proven design exists."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab swarms of simple modules that self-assemble into predetermined shapes",
+        "unlocks": "proof that local rules scale to many units."
+      },
+      {
+        "stage": "Next",
+        "milestone": "stronger modules that carry real loads and perform simple manipulation in a workshop",
+        "unlocks": "first economically useful reconfigurable tasks, such as inspection or handling in tight spaces."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous swarms with learned controllers working in unstructured environments",
+        "unlocks": "robots that adapt their own shape to a job instead of needing a bespoke machine."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose reconfigurable labour",
+        "unlocks": "flexible automation without purpose-built hardware — contingent on breakthroughs in embodied AI, actuator power density and durable joints that no current research programme has achieved."
+      }
+    ]
+  }
+}

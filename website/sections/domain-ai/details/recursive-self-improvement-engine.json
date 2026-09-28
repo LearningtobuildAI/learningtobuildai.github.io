@@ -33,5 +33,152 @@
         "def": "The autonomous enhancement of an AI system's capabilities through continuous analysis and optimization without external intervention."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Proposal engine",
+        "role": "generates candidate changes to the system itself — code, training recipes, prompts, tool definitions, evaluation suites.",
+        "parts": [
+          "a capable base model",
+          "code-writing and code-execution tools",
+          "search strategy (evolutionary, tree search, learned proposals)"
+        ]
+      },
+      {
+        "name": "Evaluation harness",
+        "role": "decides whether a proposed change is actually an improvement, which is the hardest part.",
+        "parts": [
+          "held-out benchmark suites",
+          "task-level and end-to-end metrics",
+          "regression and adversarial tests",
+          "statistical significance checks"
+        ]
+      },
+      {
+        "name": "Sandbox and verification layer",
+        "role": "runs every candidate in isolation before it can touch the live system.",
+        "parts": [
+          "container or virtual-machine isolation",
+          "resource and network limits",
+          "behavioural and safety checks",
+          "rollback snapshots"
+        ]
+      },
+      {
+        "name": "Self-modification layer",
+        "role": "applies accepted changes to the running platform and its own pipeline.",
+        "parts": [
+          "version control and config management",
+          "canary and staged rollout",
+          "automatic revert on degradation"
+        ]
+      },
+      {
+        "name": "Memory and meta-learning store",
+        "role": "remembers what worked, avoids repeating dead ends, and learns better ways to search.",
+        "parts": [
+          "experiment database",
+          "credit assignment across changes",
+          "learned priors over edits"
+        ]
+      },
+      {
+        "name": "Oversight and containment",
+        "role": "keeps the loop inside limits a human has deliberately set.",
+        "parts": [
+          "capability-threshold monitors",
+          "tamper-evident logs",
+          "human approval gates",
+          "interpretability probes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build a competent base",
+        "detail": "Start from a strong model plus a scaffold that lets it read, write and execute code and call tools — self-improvement is bounded by the ability to make and test real changes."
+      },
+      {
+        "title": "Instrument the whole stack",
+        "detail": "Every training run, evaluation and deployment must be reproducible, versioned and logged, or improvement cannot be measured."
+      },
+      {
+        "title": "Define an honest objective",
+        "detail": "Build a benchmark that is broad, held out, and hard to game, covering capability, reliability, cost and safety — a single narrow metric will be optimised into meaninglessness."
+      },
+      {
+        "title": "Give the system a writable mirror",
+        "detail": "The agent gets write access to a copy of its own code, data pipelines and configuration, but never directly to the live system."
+      },
+      {
+        "title": "Close the propose–test–adopt loop",
+        "detail": "Each cycle: propose an edit, run it in the sandbox, measure it, and adopt only changes that pass. This is the step that already exists in miniature as automated machine learning and neural architecture search."
+      },
+      {
+        "title": "Let it improve its own search",
+        "detail": "Once edits to artifacts work, allow the system to modify the search procedure itself — the recursive part — using the same propose, test, adopt discipline."
+      },
+      {
+        "title": "Add hard safety gates",
+        "detail": "Capability thresholds, independent monitoring, human sign-off for high-impact changes, and logs that cannot be edited by the system being improved."
+      },
+      {
+        "title": "Increase autonomy gradually",
+        "detail": "Widen the scope of what the loop may change only as reliability and oversight hold up over many cycles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Automated machine learning and architecture search",
+        "status": "exists",
+        "why": "proves machines can propose and tune their own models, but only within a human-defined search space."
+      },
+      {
+        "tech": "Large-scale compute and experiment infrastructure",
+        "status": "exists",
+        "why": "thousands of evaluated candidates per idea are needed for a loop to make real progress."
+      },
+      {
+        "tech": "Evaluation resistant to reward hacking",
+        "status": "partial",
+        "why": "a self-improving system will find and exploit flaws in whatever it is scored on."
+      },
+      {
+        "tech": "Interpretability and control methods",
+        "status": "partial",
+        "why": "operators need to detect when a change alters behaviour in ways the tests did not cover."
+      },
+      {
+        "tech": "Verified safe self-modifying software",
+        "status": "missing",
+        "why": "no proven method exists to guarantee that arbitrary self-edits stay within intended limits."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated tuning and code generation inside fixed human-designed pipelines",
+        "unlocks": "faster iteration and cheaper model development."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that edit their own scaffolds, prompts and tool code, gated by evaluation",
+        "unlocks": "compounding improvement in a bounded, auditable domain."
+      },
+      {
+        "stage": "Next",
+        "milestone": "loops that also search over their own training and evaluation procedures",
+        "unlocks": "improvement that is no longer limited to human-chosen knobs."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "recursive self-improvement with formal oversight, if proof methods for self-modifying systems mature",
+        "unlocks": "the theoretical payoff — and the reason the field treats this as a safety-critical goal rather than just an engineering one."
+      }
+    ]
   }
 }

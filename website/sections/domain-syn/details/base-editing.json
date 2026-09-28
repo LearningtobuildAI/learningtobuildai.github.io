@@ -34,5 +34,154 @@
         "def": "Unintended changes made by an editing tool at unintended locations within the genome, which can lead to unpredictable consequences."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Targeting module",
+        "role": "finds the exact DNA address to be edited.",
+        "parts": [
+          "Cas9 nickase (a cut-disabled nuclease)",
+          "guide RNA matching the target site",
+          "PAM variant chosen to fit the sequence"
+        ]
+      },
+      {
+        "name": "Deaminase module",
+        "role": "chemically converts one DNA letter into another without cutting the helix.",
+        "parts": [
+          "cytidine deaminase for C-to-T changes",
+          "engineered adenine deaminase for A-to-G changes",
+          "linker tethering it to the nuclease"
+        ]
+      },
+      {
+        "name": "Regulation elements",
+        "role": "keep the editor under control inside the cell.",
+        "parts": [
+          "uracil glycosylase inhibitor",
+          "nuclear localisation signals",
+          "codon-optimised mRNA or DNA sequence"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor into the right cells and no others.",
+        "parts": [
+          "lipid nanoparticle with mRNA and guide",
+          "electroporation for cells removed from the body",
+          "engineered virus for some tissues"
+        ]
+      },
+      {
+        "name": "Target cells",
+        "role": "the tissue whose genome is actually rewritten.",
+        "parts": [
+          "patient blood stem cells in sickle cell disease",
+          "liver hepatocytes for cholesterol targets",
+          "immune T cells for cell therapies"
+        ]
+      },
+      {
+        "name": "Analytics and quality control",
+        "role": "measures whether the intended edit, and only it, was made.",
+        "parts": [
+          "amplicon deep sequencing",
+          "whole-genome and RNA sequencing",
+          "digital PCR for edit purity"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the mutation",
+        "detail": "Identify a disease-causing single-letter DNA variant, or a control region whose edit would compensate for it, and confirm the change is reachable by a base editor rather than needing a cut."
+      },
+      {
+        "title": "Design the editor and guide",
+        "detail": "Select a cytidine or adenine deaminase, pair it with a nickase and a guide RNA whose editing window (roughly bases 4 to 8 of the target sequence) sits over the base to be changed."
+      },
+      {
+        "title": "Benchmark in cultured cells",
+        "detail": "Deliver the editor to human cells, then sequence the target to measure how many copies receive the intended edit, how many get unintended bystander edits nearby, and how many small insertions or deletions appear."
+      },
+      {
+        "title": "Profile off-targets",
+        "detail": "Genome-wide assays and whole-genome sequencing look for edits at similar-looking sites elsewhere, and separate tests check whether the deaminase is modifying RNA as well as DNA."
+      },
+      {
+        "title": "Choose the delivery route",
+        "detail": "Cells can be taken out, edited by electroporation and returned — common for blood disorders — or the editor can be packaged as mRNA in a lipid nanoparticle and infused to reach the liver directly."
+      },
+      {
+        "title": "Manufacture to clinical grade",
+        "detail": "Guide RNA and editor mRNA are synthesised under pharmaceutical quality rules, lipid nanoparticles are formulated, and the guide-to-editor ratio is fixed and released against specifications."
+      },
+      {
+        "title": "Test in animals, then humans",
+        "detail": "Animal studies check where the editor goes, how long it persists and what toxicity it causes; the first human trials dose small numbers of patients and watch for both benefit and unexpected edits."
+      },
+      {
+        "title": "Scale and licence",
+        "detail": "Manufacturing is scaled to serve a patient population, long-term follow-up looks for late effects, and regulators review the evidence before the therapy can be prescribed routinely."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Programmable CRISPR targeting",
+        "status": "exists",
+        "why": "a guide RNA plus a Cas protein gives the addressable targeting that base editors borrow from."
+      },
+      {
+        "tech": "DNA deaminase enzymes",
+        "status": "exists",
+        "why": "cytidine deaminases from nature and engineered adenine deaminases are the chemistry that performs the letter swap."
+      },
+      {
+        "tech": "Ex vivo blood stem cell handling",
+        "status": "exists",
+        "why": "collecting, editing and re-implanting a patient's own stem cells is established clinical practice."
+      },
+      {
+        "tech": "Liver-targeted mRNA lipid nanoparticles",
+        "status": "partial",
+        "why": "injectable mRNA in lipid nanoparticles is proven, but reliable delivery to a chosen organ beyond the liver is still limited."
+      },
+      {
+        "tech": "Genome-wide off-target assays",
+        "status": "partial",
+        "why": "no single test yet proves an edited genome is free of undesired changes, so evidence has to be assembled from several methods."
+      },
+      {
+        "tech": "Delivery beyond liver and blood",
+        "status": "missing",
+        "why": "most tissues — muscle, lung, brain, heart — cannot yet be edited in the body, which caps how many diseases are reachable."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "first human trials of base-edited cell therapies and of direct infusion for a liver target",
+        "unlocks": "real safety and efficacy data for the whole class, not just for one disease."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pivotal trials and first approvals, most likely for blood disorders where cells are edited outside the body",
+        "unlocks": "a template manufacturing and regulatory route that other programmes can copy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in-body editing of the liver for cardiovascular and metabolic conditions",
+        "unlocks": "a repeatable one-shot treatment model instead of lifelong medication."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "delivery to additional organs and precise multiplex editing",
+        "unlocks": "correction of diseases of muscle, nerve and immune cells, and engineered cell therapies made with several simultaneous edits."
+      }
+    ]
   }
 }

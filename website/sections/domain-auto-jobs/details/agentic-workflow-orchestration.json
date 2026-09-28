@@ -35,5 +35,165 @@
         "def": "A programming technique where a function calls itself repeatedly until a specific condition is met, often used in breaking down complex tasks into smaller sub-tasks."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Reasoning core",
+        "role": "the language model that decides what to do next; it is the planner, not a fixed rule engine.",
+        "parts": [
+          "base or fine-tuned LLM",
+          "prompt/context assembly",
+          "plan-act-observe loop",
+          "reflection and self-critique step"
+        ]
+      },
+      {
+        "name": "Orchestration engine",
+        "role": "holds the workflow state and drives it forward, surviving crashes and long waits.",
+        "parts": [
+          "task graph or state machine",
+          "durable execution / checkpointing",
+          "retry, timeout and compensation logic",
+          "scheduler for parallel branches"
+        ]
+      },
+      {
+        "name": "Tool layer",
+        "role": "lets the agent actually do things outside its own text.",
+        "parts": [
+          "typed function/tool schemas",
+          "API and database connectors",
+          "credentials and permission scopes",
+          "sandboxed code execution"
+        ]
+      },
+      {
+        "name": "Memory and retrieval",
+        "role": "keeps the agent grounded in documents and earlier steps.",
+        "parts": [
+          "vector index over enterprise content",
+          "episodic run log",
+          "working scratchpad",
+          "context-window compaction"
+        ]
+      },
+      {
+        "name": "Guardrails and evaluation",
+        "role": "stops the agent doing harmful or expensive things and measures whether it works.",
+        "parts": [
+          "policy and allow-list checks",
+          "spend, token and latency budgets",
+          "human approval gates",
+          "offline task suites and regression tests",
+          "tracing and replay"
+        ]
+      },
+      {
+        "name": "Serving infrastructure",
+        "role": "runs the models and the loop at production latency.",
+        "parts": [
+          "inference servers (often GPU)",
+          "queues and rate limiting",
+          "caching of prompts and tool results",
+          "per-tenant isolation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process",
+        "detail": "Write down the human workflow as explicit steps, decisions and exceptions, and define what 'done' means for each run."
+      },
+      {
+        "title": "Split fixed from open-ended work",
+        "detail": "Anything deterministic (arithmetic, lookups, transfers) becomes ordinary code; only judgement calls are handed to the model."
+      },
+      {
+        "title": "Define tool contracts",
+        "detail": "Every API the agent may call gets a typed schema, narrow permission scope and a description that states exactly when to use it."
+      },
+      {
+        "title": "Build the loop",
+        "detail": "The engine assembles context, asks the model for the next action, executes it, feeds the result back, and repeats until the goal test passes or a budget runs out."
+      },
+      {
+        "title": "Add durable state",
+        "detail": "Each step is checkpointed so a run can pause for hours — waiting on a human or an external system — and resume without repeating side effects."
+      },
+      {
+        "title": "Layer guardrails",
+        "detail": "Side-effecting actions are gated: allow-lists, spend caps, dry-run first, and human sign-off above a threshold."
+      },
+      {
+        "title": "Instrument and evaluate",
+        "detail": "Every model call, tool call and token cost is traced; a suite of representative tasks is scored after each prompt, model or tool change."
+      },
+      {
+        "title": "Launch in shadow mode",
+        "detail": "The agent proposes actions while a human still executes them; its output is compared against the real decision before it is trusted."
+      },
+      {
+        "title": "Tune the economics",
+        "detail": "Route easy steps to small cheap models, cache repeated context, and reserve the largest models for planning and hard exceptions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "LLMs with reliable tool/function calling",
+        "status": "exists",
+        "why": "structured calls to outside APIs are what turn a chatbot into a workflow actor."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "enterprise tasks need the agent grounded in current, private documents rather than its training data."
+      },
+      {
+        "tech": "Sandboxed code execution",
+        "status": "exists",
+        "why": "letting a model write and run code is powerful, but only safe inside an isolated container."
+      },
+      {
+        "tech": "Durable workflow engines",
+        "status": "exists",
+        "why": "multi-step runs that span hours or days need persistence, retries and idempotency, which decades of workflow software already solved."
+      },
+      {
+        "tech": "Standard tool-interoperability protocols",
+        "status": "partial",
+        "why": "agents currently need custom glue per service; open protocols and registries are still maturing."
+      },
+      {
+        "tech": "Trustworthy evaluation of long-horizon tasks",
+        "status": "missing",
+        "why": "it is hard to prove a 40-step run was correct, and errors compound with every step."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single agents with tool use in narrow domains, human approval on any side-effecting action",
+        "unlocks": "automation of research, triage, coding and back-office steps where a human still checks the output."
+      },
+      {
+        "stage": "Next",
+        "milestone": "durable multi-agent pipelines with checkpointing, tracing and standard tool protocols",
+        "unlocks": "long-running processes such as claims handling or procurement that survive failures and audits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "verifier models and graded autonomy, where the agent is trusted with money or infrastructure under hard limits",
+        "unlocks": "genuine unattended operation and measurable cost reduction per task."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "learned routing and self-improving orchestration across model tiers and specialised sub-agents",
+        "unlocks": "agent systems that get cheaper and more reliable as they run, and that negotiate with other agents."
+      }
+    ]
   }
 }

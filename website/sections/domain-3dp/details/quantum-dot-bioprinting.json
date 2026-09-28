@@ -30,5 +30,151 @@
         "def": "Semiconductor nanocrystals that emit light at specific wavelengths, useful for high-resolution imaging and real-time monitoring."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Bioink",
+        "role": "the printable carrier that holds living cells and keeps them alive through the printing process.",
+        "parts": [
+          "hydrogel precursor (alginate, gelatin-methacryloyl, collagen, hyaluronic acid)",
+          "suspended cells or cell aggregates",
+          "quantum dots dispersed in the gel",
+          "nutrients and crosslinking agents"
+        ]
+      },
+      {
+        "name": "Quantum dot labels",
+        "role": "semiconductor nanocrystals a few nanometres across whose fluorescence colour is set by particle size, used to tag cells, gel or scaffold.",
+        "parts": [
+          "core nanocrystal (e.g. cadmium selenide)",
+          "shell (e.g. zinc sulfide) for brightness and stability",
+          "surface ligands for water solubility and biocompatibility",
+          "targeting molecules such as antibodies or peptides"
+        ]
+      },
+      {
+        "name": "Print head",
+        "role": "deposits bioink in controlled volumes without killing the cells in it.",
+        "parts": [
+          "extrusion nozzle, inkjet or laser-assisted head",
+          "temperature control (often 4–37 °C)",
+          "crosslinking source (UV light, ionic bath)"
+        ]
+      },
+      {
+        "name": "Motion and control system",
+        "role": "positions the print head and builds the construct layer by layer from a digital model.",
+        "parts": [
+          "multi-axis stage",
+          "software that slices medical images into print paths",
+          "in-line pressure and flow sensors"
+        ]
+      },
+      {
+        "name": "Imaging readout",
+        "role": "excites the quantum dots and separates their signals from the tissue's own glow.",
+        "parts": [
+          "fluorescence microscope or fluorescence imaging system",
+          "spectral filters or unmixing optics",
+          "camera and analysis software"
+        ]
+      },
+      {
+        "name": "Maturation and perfusion system",
+        "role": "keeps the printed tissue fed and mechanically stimulated until it behaves like real tissue.",
+        "parts": [
+          "bioreactor",
+          "perfusion pump and tubing",
+          "oxygen and pH sensors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Synthesise the quantum dots",
+        "detail": "Precursor chemicals are heated in a coordinating solvent so nanocrystals nucleate and grow to a chosen size; a wider shell is grown over the core to boost brightness and shield the core from oxidation. Size, not chemistry, sets the emission wavelength."
+      },
+      {
+        "title": "Make them water-compatible",
+        "detail": "The organic ligands from synthesis are exchanged for water-soluble ones such as thiols or polyethylene glycol, or the particles are encapsulated in silica. Cadmium-free cores such as indium phosphide are chosen where heavy-metal toxicity matters."
+      },
+      {
+        "title": "Check toxicity and brightness",
+        "detail": "Labels are tested on the intended cell type: cadmium-containing dots can release toxic ions and can generate reactive oxygen species under illumination, and uncoated particles clump and dim."
+      },
+      {
+        "title": "Formulate the bioink",
+        "detail": "Cells are mixed into the hydrogel precursor gently and at low temperature. Quantum dots are added at low concentration and dispersed well, because aggregation causes quenching and uneven imaging."
+      },
+      {
+        "title": "Print the construct",
+        "detail": "The bioink is deposited layer by layer from a nozzle wider than a cell, under shear and temperature conditions that keep most cells viable, then crosslinked — for example with UV light for a methacryloyl gel or with calcium ions for alginate."
+      },
+      {
+        "title": "Image and verify",
+        "detail": "The construct is illuminated and the quantum dot signal is separated spectrally from the tissue's own fluorescence and any unbound label, giving a map of where cells are and how they behave over time."
+      },
+      {
+        "title": "Mature in a bioreactor",
+        "detail": "Perfusion delivers oxygen and nutrients and removes waste; mechanical or electrical stimulation encourages the cells to organise. Thickness is limited by how far oxygen can diffuse from the nearest channel."
+      },
+      {
+        "title": "Add vasculature and any scaffold support",
+        "detail": "Channels or sacrificial inks are used to create a blood-vessel network — the step that decides whether anything thicker than a few hundred micrometres survives."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Colloidal quantum dot synthesis and surface chemistry",
+        "status": "exists",
+        "why": "bright, size-tunable, photostable fluorophores are made routinely at laboratory scale (recognised by the 2023 Nobel Prize in Chemistry)."
+      },
+      {
+        "tech": "3D bioprinting hardware and bioinks",
+        "status": "partial",
+        "why": "extrusion and light-based printers build viable cell-laden structures, but at low throughput and mostly in research settings."
+      },
+      {
+        "tech": "Heavy-metal-free, cell-safe quantum dots",
+        "status": "partial",
+        "why": "cadmium is toxic, so indium-phosphide and other cadmium-free dots are needed before anything goes near a patient."
+      },
+      {
+        "tech": "Vascularisation of thick tissue",
+        "status": "missing",
+        "why": "without a real capillary network, printed tissue beyond a fraction of a millimetre starves and dies."
+      },
+      {
+        "tech": "Regulatory and manufacturing route for cell-based implants",
+        "status": "partial",
+        "why": "printed living products face sterility, batch-consistency and long-term safety requirements that few processes yet meet."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quantum-dot-labelled cells tracked inside printed hydrogel constructs in the lab",
+        "unlocks": "a way to watch how printed cells behave over days rather than fixing and staining them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "perfused, instrumented tissue models for drug testing with continuous optical readout",
+        "unlocks": "better prediction of drug toxicity than animal tests or flat cell cultures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop printing, where live quantum dot signals correct the print while it is happening",
+        "unlocks": "more consistent constructs and less reliance on destructive testing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "vascularised printed tissue patches and simple organs for transplant",
+        "unlocks": "replacement tissue grown from a patient's own cells — the goal the tile calls organ synthesis, and the part that is still theory."
+      }
+    ]
   }
 }

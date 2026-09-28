@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Corpus pipeline",
+        "role": "turns statutes into structured, versioned machine-readable text.",
+        "parts": [
+          "XML/HTML schemas such as Akoma Ntoso",
+          "PDF and gazette parsers",
+          "commencement and amendment metadata"
+        ]
+      },
+      {
+        "name": "Citation and amendment graph",
+        "role": "models every provision as a node linked to what it references, amends or repeals.",
+        "parts": [
+          "provision-level graph database",
+          "temporal versioning",
+          "cross-reference resolver"
+        ]
+      },
+      {
+        "name": "Norm formalisation layer",
+        "role": "restates selected clauses as rules: who must, may or must not do what, and when.",
+        "parts": [
+          "deontic logic or rule templates",
+          "standards such as OASIS LegalRuleML",
+          "domain glossaries"
+        ]
+      },
+      {
+        "name": "Conflict engine",
+        "role": "flags contradictions, duplications and gaps between a draft and existing law.",
+        "parts": [
+          "retrieval over the corpus",
+          "satisfiability/logic solvers",
+          "similarity and entailment scoring"
+        ]
+      },
+      {
+        "name": "Drafting assistant",
+        "role": "proposes clause wording and explains each flag in plain language.",
+        "parts": [
+          "large language model with retrieval augmentation",
+          "citation generator",
+          "drafting-convention style guide"
+        ]
+      },
+      {
+        "name": "Review and audit layer",
+        "role": "keeps a named human accountable and records why each suggestion was accepted or rejected.",
+        "parts": [
+          "redline interface",
+          "decision log",
+          "access controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Digitise the statute book",
+        "detail": "Convert the body of law into a structured format that records each section, its in-force dates and its amendment history."
+      },
+      {
+        "title": "Build the reference graph",
+        "detail": "Parse every cross-reference, amendment and repeal so the system knows which provisions depend on which others."
+      },
+      {
+        "title": "Formalise a narrow domain first",
+        "detail": "Encode obligations, permissions and prohibitions into machine-readable rules for one tractable area, such as benefit eligibility, rather than the whole code."
+      },
+      {
+        "title": "Assemble the retrieval layer",
+        "detail": "Index the corpus so that when a new clause is drafted, the most relevant existing provisions and precedents are surfaced with citations."
+      },
+      {
+        "title": "Train and prompt the model",
+        "detail": "Adapt a language model to legislative vocabulary and drafting conventions, testing it on past amendments whose conflicts were found later."
+      },
+      {
+        "title": "Run conflict checks",
+        "detail": "For each draft clause, combine textual overlap search, semantic contradiction detection and formal satisfiability testing on the formalised rules."
+      },
+      {
+        "title": "Integrate into the drafting editor",
+        "detail": "Embed the checks in the tool drafters already use, so warnings appear inline with links to the offending provisions."
+      },
+      {
+        "title": "Calibrate against expert review",
+        "detail": "Measure false positives and false negatives using committees of lawyers, and tune thresholds so alerts stay trustworthy."
+      },
+      {
+        "title": "Deploy with human sign-off",
+        "detail": "Drafters remain responsible; the system logs every suggestion, its reasoning and the decision taken."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Machine-readable, versioned legislation",
+        "status": "partial",
+        "why": "some jurisdictions publish structured, dated statute books, but many still publish only PDFs or scanned gazettes."
+      },
+      {
+        "tech": "Legal knowledge representation standards",
+        "status": "partial",
+        "why": "schemas for rules and norms exist and have been trialled, but coverage of real codes is thin."
+      },
+      {
+        "tech": "Long-context retrieval over large corpora",
+        "status": "exists",
+        "why": "finding the relevant few provisions among hundreds of thousands is the core enabling capability."
+      },
+      {
+        "tech": "Automated reasoning about norms",
+        "status": "partial",
+        "why": "detecting genuine logical conflict, not just similarity, remains research-grade outside narrow domains."
+      },
+      {
+        "tech": "Legal evaluation benchmarks",
+        "status": "missing",
+        "why": "without agreed tests, claims of accurate conflict detection cannot be verified."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI assistants that summarise, search and suggest wording inside legislative editing tools",
+        "unlocks": "faster research and drafting, with alerts limited to obvious duplicate or missing references."
+      },
+      {
+        "stage": "Next",
+        "milestone": "rules-as-code pilots in a few narrow domains, with published formalisations",
+        "unlocks": "automatic checks of eligibility and procedural logic against the source statutes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "graph-backed consistency checking across a whole jurisdiction's in-force law",
+        "unlocks": "reviewers see contradictions and orphaned provisions before a bill is tabled."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cross-jurisdiction and treaty-level checking, with auditable reasoning",
+        "unlocks": "fewer conflicts between national and supranational law — provided accountability stays with human drafters."
+      }
+    ]
+  }
+}

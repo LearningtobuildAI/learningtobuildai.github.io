@@ -30,5 +30,151 @@
         "def": "Computational resources designed to perform intensive computing tasks, often used for training and inference of AI models."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Tokenizer and embeddings",
+        "role": "turns raw text into the integer tokens the network actually processes.",
+        "parts": [
+          "byte-level tokenizer",
+          "large vocabulary lookup",
+          "embedding matrix"
+        ]
+      },
+      {
+        "name": "Attention layers",
+        "role": "let every token weigh every other token in the context.",
+        "parts": [
+          "multi-head latent attention with a compressed key-value cache",
+          "rotary position encoding"
+        ]
+      },
+      {
+        "name": "Mixture-of-experts feedforward layers",
+        "role": "provide most of the model's stored knowledge while only activating a slice per token.",
+        "parts": [
+          "bank of expert subnetworks",
+          "router that picks a few experts per token",
+          "load-balancing scheme"
+        ]
+      },
+      {
+        "name": "Training stack",
+        "role": "runs the pretraining job across thousands of accelerators.",
+        "parts": [
+          "distributed training framework",
+          "8-bit floating point kernels",
+          "data pipeline",
+          "checkpointing and failure recovery"
+        ]
+      },
+      {
+        "name": "Post-training and reasoning",
+        "role": "turns a text predictor into something that reasons and follows instructions.",
+        "parts": [
+          "supervised fine-tuning data",
+          "reinforcement learning with rule-checkable rewards",
+          "reward models and verifiers",
+          "distillation into smaller models"
+        ]
+      },
+      {
+        "name": "Inference and serving",
+        "role": "delivers the model cheaply enough to be used at scale.",
+        "parts": [
+          "quantised weights",
+          "key-value cache management",
+          "batching and scheduling",
+          "API and chat front end"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble the training corpus",
+        "detail": "Crawl and licence text and code, then filter, deduplicate and quality-score it — the published pretraining run consumed on the order of 15 trillion tokens."
+      },
+      {
+        "title": "Train the tokenizer",
+        "detail": "Fit a byte-level vocabulary of roughly 128,000 tokens so common words and code fragments become single units."
+      },
+      {
+        "title": "Pretrain the base model",
+        "detail": "Predict the next token over the corpus on a large cluster of accelerators, training in 8-bit floating point and routing each token to a few experts out of many, in a model with about 671 billion parameters of which roughly 37 billion are active per token."
+      },
+      {
+        "title": "Supervised fine-tuning",
+        "detail": "Train on curated instruction-and-answer pairs so the model responds usefully rather than just continuing text."
+      },
+      {
+        "title": "Reinforcement learning for reasoning",
+        "detail": "Generate many candidate solutions to maths, code and logic problems, automatically check which answers are correct, and reinforce the paths that got there — letting a reasoning mode emerge without human-written chain-of-thought examples."
+      },
+      {
+        "title": "Distil smaller models",
+        "detail": "Use the large model's outputs to train compact dense models that run on modest hardware."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Benchmark reasoning, coding and multilingual ability, and probe for harmful or unsafe outputs."
+      },
+      {
+        "title": "Serve and iterate",
+        "detail": "Quantise the weights, run them behind an API or release them openly, and collect feedback for the next training round."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-performance GPU accelerators and fast interconnect",
+        "status": "exists",
+        "why": "pretraining is limited by how many chips can be kept busy at once; export controls have shaped which chips are available."
+      },
+      {
+        "tech": "Large-scale distributed training software",
+        "status": "exists",
+        "why": "a single model cannot fit on one device, so parallelism and fault recovery are essential."
+      },
+      {
+        "tech": "Web-scale, well-filtered text and code corpora",
+        "status": "exists",
+        "why": "capability scales with the quality and diversity of the pretraining data."
+      },
+      {
+        "tech": "Low-precision (8-bit) training",
+        "status": "exists",
+        "why": "halves memory and speeds up arithmetic relative to 16-bit training."
+      },
+      {
+        "tech": "Automatically verifiable rewards",
+        "status": "partial",
+        "why": "reinforcement learning works well where answers can be checked by a program or formula, and poorly where quality is subjective."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "open-weight mixture-of-experts chat and reasoning models released under permissive licences",
+        "unlocks": "strong reasoning available to any organisation that can host or call the model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longer context, cheaper inference and more reliable tool use",
+        "unlocks": "agents that work through multi-step tasks rather than answering single questions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small distilled models running on phones and laptops",
+        "unlocks": "private, low-latency assistants that need no data centre."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "domain adapters for finance, healthcare and logistics with audit and verification built in",
+        "unlocks": "use in regulated work — only where accuracy, provenance and accountability can be demonstrated."
+      }
+    ]
   }
 }

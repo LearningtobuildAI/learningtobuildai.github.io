@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "converts grid AC to DC to charge the battery, and DC back to AC to feed the grid.",
+        "parts": [
+          "power electronics (inverter/rectifier)",
+          "DC connector",
+          "cooling",
+          "isolation transformer"
+        ]
+      },
+      {
+        "name": "Vehicle battery and management",
+        "role": "stores and releases energy while protecting battery health.",
+        "parts": [
+          "lithium-ion pack",
+          "battery management system (BMS)",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Communication and control",
+        "role": "lets the vehicle, charger, aggregator and grid operator agree on power flows.",
+        "parts": [
+          "vehicle-to-charger protocol (e.g. ISO 15118-20)",
+          "charger-to-backend protocol (e.g. OCPP)",
+          "grid signals"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "bundles many vehicles into a single controllable resource.",
+        "parts": [
+          "cloud software",
+          "forecasting",
+          "dispatch logic"
+        ]
+      },
+      {
+        "name": "Grid interface and protection",
+        "role": "connects safely to the local distribution network.",
+        "parts": [
+          "protection relays",
+          "islanding detection",
+          "metering"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design bidirectional power electronics",
+        "detail": "The charger must handle power in both directions efficiently and safely, with isolation between vehicle and grid."
+      },
+      {
+        "title": "Integrate vehicle-side controls",
+        "detail": "The BMS must accept external commands, manage state of charge limits and monitor cell temperatures during discharge."
+      },
+      {
+        "title": "Implement communication standards",
+        "detail": "The vehicle, charger and back-end systems are programmed to a common protocol so they can exchange power limits and schedules."
+      },
+      {
+        "title": "Build the aggregation platform",
+        "detail": "Software registers vehicles, predicts availability, and translates grid requests into charging or discharging commands."
+      },
+      {
+        "title": "Install grid connection and protection",
+        "detail": "An electrician wires the charger to the local network with relays that disconnect it if the grid fails, preventing back-feed onto dead lines."
+      },
+      {
+        "title": "Run controlled pilots",
+        "detail": "A fleet of vehicles is enrolled to test response times, battery wear and driver acceptance under real grid conditions."
+      },
+      {
+        "title": "Qualify for grid markets",
+        "detail": "The aggregator meets the rules of frequency-response or capacity markets so it can be paid for its service."
+      },
+      {
+        "title": "Scale deployment",
+        "detail": "Cheaper bidirectional chargers and standardised vehicles allow wider rollout in homes, depots and workplaces."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional on-board or off-board chargers",
+        "status": "partial",
+        "why": "only some vehicle models and charger types support reverse power flow today."
+      },
+      {
+        "tech": "Common communication standards",
+        "status": "partial",
+        "why": "protocols such as ISO 15118-20 and OCPP are still being widely implemented."
+      },
+      {
+        "tech": "Smart meters and grid sensors",
+        "status": "exists",
+        "why": "the grid must measure and manage many small, dispersed power flows."
+      },
+      {
+        "tech": "Aggregation and market rules",
+        "status": "partial",
+        "why": "most electricity markets are not yet fully open to small, mobile storage."
+      },
+      {
+        "tech": "Battery degradation management",
+        "status": "exists",
+        "why": "frequent cycling must be limited to avoid shortening pack life."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot projects and early commercial chargers demonstrating vehicle-to-grid and vehicle-to-home",
+        "unlocks": "proof that batteries can support the grid without harming drivers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised bidirectional vehicles and chargers on sale",
+        "unlocks": "wider adoption beyond demonstration fleets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "aggregators competing in frequency and capacity markets",
+        "unlocks": "a new revenue stream for EV owners and a flexible grid buffer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale V2G as routine grid infrastructure",
+        "unlocks": "cheaper integration of variable renewables and deferred network upgrades."
+      }
+    ]
+  }
+}

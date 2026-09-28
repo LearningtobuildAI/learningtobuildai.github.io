@@ -34,5 +34,160 @@
         "def": "A strategy for maintaining equipment by performing repairs or replacements before a failure occurs, based on data analysis and modeling."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing and metering layer",
+        "role": "measures the real grid's state continuously.",
+        "parts": [
+          "smart meters at customer premises",
+          "phasor measurement units (PMUs) on transmission lines",
+          "current and voltage transformers in substations",
+          "weather stations and asset sensors"
+        ]
+      },
+      {
+        "name": "Data transport and integration",
+        "role": "moves measurements to a central platform in real time.",
+        "parts": [
+          "fibre, cellular or power-line communications",
+          "gateways speaking IEC 61850, DNP3 or MQTT",
+          "data lake and time-series database",
+          "cybersecurity and access control"
+        ]
+      },
+      {
+        "name": "Simulation and state estimation engine",
+        "role": "maintains a live, physics-based model of the grid.",
+        "parts": [
+          "power-flow and state-estimation solvers",
+          "dynamic and transient stability models",
+          "machine-learning models for forecasting",
+          "model calibration and validation tools"
+        ]
+      },
+      {
+        "name": "Analytics and optimisation",
+        "role": "turns the model into decisions: predict faults, reroute power, schedule maintenance.",
+        "parts": [
+          "predictive maintenance algorithms",
+          "anomaly and fault detection",
+          "optimal dispatch and voltage control",
+          "scenario and contingency analysis"
+        ]
+      },
+      {
+        "name": "Visualisation and operator interface",
+        "role": "lets engineers see and interact with the twin.",
+        "parts": [
+          "geographic information system (GIS) maps",
+          "single-line and 3D asset views",
+          "alarms and dashboards",
+          "what-if simulation controls"
+        ]
+      },
+      {
+        "name": "Control and actuation",
+        "role": "closes the loop by sending commands back to the physical grid.",
+        "parts": [
+          "SCADA and energy management system (EMS) integration",
+          "automated switching and tap-changer commands",
+          "demand-response signals",
+          "distributed energy resource management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define scope and objectives",
+        "detail": "Choose which part of the grid to twin — a single substation, a feeder, a region — and what the twin must do: predict failures, host more renewables, or cut losses."
+      },
+      {
+        "title": "Instrument the physical grid",
+        "detail": "Install sensors, smart meters and PMUs on the chosen assets, or connect to existing SCADA and metering systems."
+      },
+      {
+        "title": "Build data pipelines",
+        "detail": "Set up communications and a time-series database so measurements arrive continuously and are time-stamped and cleaned."
+      },
+      {
+        "title": "Create the base model",
+        "detail": "Enter network topology, line and transformer impedances, generator data and load profiles into power-system simulation software."
+      },
+      {
+        "title": "Calibrate and validate",
+        "detail": "Compare model outputs with real measurements and tune parameters until the twin matches the physical grid closely enough for the intended use."
+      },
+      {
+        "title": "Connect live data",
+        "detail": "Stream real-time measurements into the model so state estimation runs every few seconds, keeping the twin synchronised."
+      },
+      {
+        "title": "Add analytics and interfaces",
+        "detail": "Develop predictive maintenance, optimisation and visualisation tools on top of the live model, with clear alarms for operators."
+      },
+      {
+        "title": "Deploy and iterate",
+        "detail": "Run the twin in parallel with the real grid, verify its advice against actual events, and expand its scope as confidence grows."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ubiquitous grid sensing",
+        "status": "partial",
+        "why": "smart meters are widespread in some regions, but PMUs and asset sensors are not yet everywhere, so the twin sees only part of the grid."
+      },
+      {
+        "tech": "Low-latency, high-bandwidth communications",
+        "status": "partial",
+        "why": "fibre and 5G can carry the data, but many substations still rely on slow or intermittent links."
+      },
+      {
+        "tech": "Power-system simulation and state estimation software",
+        "status": "exists",
+        "why": "decades of transmission-grid software provide the mathematical core the twin reuses."
+      },
+      {
+        "tech": "Interoperability standards",
+        "status": "partial",
+        "why": "IEC 61850 and the common information model (CIM) exist, but legacy equipment often needs translation layers."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "exists",
+        "why": "the twin needs computing power to run thousands of simulations quickly, close to the data or in a data centre."
+      },
+      {
+        "tech": "Cybersecurity for operational technology",
+        "status": "partial",
+        "why": "connecting a live model to control systems widens the attack surface, and protections are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "asset-level digital twins for transformers, cables and wind turbines",
+        "unlocks": "condition-based maintenance that can delay or avoid costly replacements."
+      },
+      {
+        "stage": "Next",
+        "milestone": "substation and feeder twins that simulate local outages and distributed energy resources",
+        "unlocks": "faster fault location and better hosting of rooftop solar and electric-vehicle charging."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regional transmission and distribution twins running in real time",
+        "unlocks": "predictive congestion management and coordinated voltage control across the whole network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully coupled twins that span generation, transmission, distribution and markets",
+        "unlocks": "autonomous or highly automated grid operation with fewer blackouts and lower costs."
+      }
+    ]
   }
 }

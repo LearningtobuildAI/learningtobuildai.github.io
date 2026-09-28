@@ -31,5 +31,151 @@
         "def": "A method for secure communication where a secret key is shared between two parties using a pair or sequence of entangled photons to ensure that any eavesdropping can be detected."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the fragile quantum states — either entangled photon pairs or faint, randomly modulated laser pulses.",
+        "parts": [
+          "pump laser",
+          "nonlinear crystal for spontaneous parametric down-conversion",
+          "or a strongly attenuated laser with decoy pulses"
+        ]
+      },
+      {
+        "name": "Space payload",
+        "role": "emits or receives photons over the link from orbit.",
+        "parts": [
+          "small optical telescope (often 100–300 mm aperture)",
+          "fine pointing and tracking mirrors",
+          "single-photon detectors (radiation-hardened if on board)",
+          "electronics for timestamping"
+        ]
+      },
+      {
+        "name": "Optical ground station",
+        "role": "the terrestrial end of the link, catching or sending single photons through the atmosphere.",
+        "parts": [
+          "telescope",
+          "single-photon detector (e.g. superconducting nanowire or avalanche photodiode)",
+          "GPS/GNSS timing",
+          "adaptive optics or narrow filters to reject sunlight"
+        ]
+      },
+      {
+        "name": "Acquisition, pointing and tracking",
+        "role": "keeps a micron-scale beam aligned across hundreds to thousands of kilometres while both ends move.",
+        "parts": [
+          "beacon laser",
+          "fast steering mirrors",
+          "closed-loop control"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "carries the reconciliation data needed to turn raw detections into a usable key.",
+        "parts": [
+          "radio or optical link",
+          "authentication",
+          "post-processing software (error correction, privacy amplification)"
+        ]
+      },
+      {
+        "name": "Key management and crypto layer",
+        "role": "delivers finished keys to whatever encrypts the actual traffic.",
+        "parts": [
+          "key store",
+          "interfaces to one-time-pad or AES encryption",
+          "trusted-node relays between ground stations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the protocol",
+        "detail": "Choose between entanglement-based schemes and prepare-and-measure schemes with decoy states, and set the expected key rate over the link budget."
+      },
+      {
+        "title": "Build the source",
+        "detail": "A pump laser is aimed through a nonlinear crystal to create photon pairs, or pulses are attenuated until they average well under one photon each."
+      },
+      {
+        "title": "Space-qualify the payload",
+        "detail": "Optics are mounted to survive launch vibration, vacuum and the wide temperature swings of orbit, and detectors are shielded against radiation."
+      },
+      {
+        "title": "Launch and orbit",
+        "detail": "The satellite goes to low Earth orbit, typically around 500 km, passing over each ground station for a few minutes at a time."
+      },
+      {
+        "title": "Acquire the link",
+        "detail": "Beacon lasers bring the two telescopes onto each other, then fine steering holds alignment while atmospheric turbulence bends the beam."
+      },
+      {
+        "title": "Exchange and detect photons",
+        "detail": "The satellite sends photons to the ground station, or acts as a relay, and every detection is timestamped against a shared clock."
+      },
+      {
+        "title": "Sift and distil the key",
+        "detail": "The two sides publicly compare a subset of detections to estimate the eavesdropper's information, correct errors, and compress what remains into a secret key."
+      },
+      {
+        "title": "Relay across the globe",
+        "detail": "Because photons cannot be amplified, keys are chained through trusted ground nodes, or in future through quantum repeaters, to reach users far apart."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Entangled-photon sources and single-photon detectors",
+        "status": "exists",
+        "why": "the raw physics has been demonstrated in labs and in orbit for years."
+      },
+      {
+        "tech": "Free-space optical pointing and tracking",
+        "status": "exists",
+        "why": "laser communication terminals already achieve the arcsecond-level alignment that quantum links need."
+      },
+      {
+        "tech": "Low-noise, radiation-tolerant detectors and optics",
+        "status": "partial",
+        "why": "space radiation and sunlight background degrade detector performance over a mission."
+      },
+      {
+        "tech": "Quantum repeaters and quantum memories",
+        "status": "missing",
+        "why": "without them, long-distance entanglement cannot be extended, so networks must rely on trusted nodes that are themselves a security assumption."
+      },
+      {
+        "tech": "Standardisation and certification",
+        "status": "partial",
+        "why": "operators need agreed interfaces and assurance before trusting keys for critical traffic."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "low-orbit demonstrations of satellite-to-ground key distribution and entanglement distribution, including the Chinese Micius mission launched in 2016",
+        "unlocks": "proof that quantum links work through the atmosphere and over intercontinental distances with ground relays."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated commercial QKD satellites and coordinated ground-station networks offering keys as a service",
+        "unlocks": "quantum-safe key delivery for governments, banks and critical infrastructure without new fibre."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite-to-satellite entanglement links and early quantum memories",
+        "unlocks": "removing some trusted nodes and extending reach beyond single-overpass contacts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a repeater-based quantum network, coexisting with post-quantum cryptography software",
+        "unlocks": "end-to-end quantum-secure communication between any two points on Earth — though entanglement itself can never carry a faster-than-light message."
+      }
+    ]
   }
 }

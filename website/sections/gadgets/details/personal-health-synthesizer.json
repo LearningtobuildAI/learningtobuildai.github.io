@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing front end",
+        "role": "measures what the body actually needs, continuously.",
+        "parts": [
+          "microneedle or interstitial-fluid sensor array",
+          "sweat or ISF sampling wick",
+          "reference electrode",
+          "signal conditioning"
+        ]
+      },
+      {
+        "name": "Fluid handling",
+        "role": "moves microlitre volumes of sample and reagents without clogging or leaking.",
+        "parts": [
+          "microfluidic channels and valves",
+          "micropumps",
+          "reagent and precursor reservoirs",
+          "bubble traps"
+        ]
+      },
+      {
+        "name": "Synthesis reactor",
+        "role": "converts a stored precursor into the target molecule.",
+        "parts": [
+          "immobilised enzyme or catalyst bed",
+          "temperature control",
+          "mixing stages",
+          "waste or by-product trap"
+        ]
+      },
+      {
+        "name": "Purification and dosing",
+        "role": "makes sure what is delivered is the right molecule, in the right amount, at the right time.",
+        "parts": [
+          "separation membrane or capture column",
+          "in-line concentration sensor",
+          "metered microneedle or cannula delivery"
+        ]
+      },
+      {
+        "name": "Control and power",
+        "role": "runs the closed loop and keeps the device alive on a small battery.",
+        "parts": [
+          "microcontroller running control algorithms",
+          "battery and power management",
+          "encrypted radio link to a phone"
+        ]
+      },
+      {
+        "name": "Safety layer",
+        "role": "prevents overdose, contamination and tampering.",
+        "parts": [
+          "redundant dose sensors",
+          "watchdog shut-off",
+          "sterile consumable cartridge",
+          "clinician-override interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a target you can actually make",
+        "detail": "Only molecules reachable in one or two enzymatic or catalytic steps from a stable, stored precursor are candidates. Most vitamins and most peptide hormones need many steps and are not realistic first targets. Skin already makes vitamin D3 photochemically from a precursor, which is the closest natural precedent for on-body synthesis."
+      },
+      {
+        "title": "Build the sensing layer",
+        "detail": "Microneedle arrays that reach interstitial fluid are fabricated, coated with selective chemistries, and calibrated against blood samples. Multiple analytes on one patch is the hard part."
+      },
+      {
+        "title": "Fabricate the fluidic cartridge",
+        "detail": "Channels, valves and pumps are moulded or etched in polymer and bonded into a sealed, sterile, replaceable card holding the precursor and reagents."
+      },
+      {
+        "title": "Immobilise the catalyst",
+        "detail": "Enzymes or catalysts are fixed onto beads or a membrane inside the reactor so they are not consumed and do not enter the body. Stability over days at skin temperature must be demonstrated."
+      },
+      {
+        "title": "Add separation and dosing",
+        "detail": "A capture or membrane step removes by-products, then an in-line sensor verifies the product before it passes through microneedles into the skin."
+      },
+      {
+        "title": "Write the closed loop",
+        "detail": "Control software reads the sensor, predicts the need, and commands a dose — the same control problem already solved for automated insulin delivery, but with synthesis in the loop instead of a reservoir."
+      },
+      {
+        "title": "Engineer fail-safes",
+        "detail": "Redundant measurement, a watchdog that stops the reactor, limits on total daily dose, and a way for a clinician to see and override every action."
+      },
+      {
+        "title": "Validate clinically",
+        "detail": "Bench accuracy, animal studies, then tightly monitored human trials measuring whether the loop actually improves outcomes rather than just producing plausible numbers."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Continuous minimally invasive sensing",
+        "status": "partial",
+        "why": "continuous glucose monitors prove the principle for one analyte; reliable, calibration-free sensing of hormones and vitamins is not there yet."
+      },
+      {
+        "tech": "Closed-loop physiological control",
+        "status": "partial",
+        "why": "commercially available hybrid closed-loop insulin systems show automated dosing works, but they deliver a pre-made drug from a reservoir — they do not synthesise it."
+      },
+      {
+        "tech": "Microfluidic flow chemistry",
+        "status": "partial",
+        "why": "continuous synthesis on a chip is routine in laboratories, but doing it in a sealed wearable for days is unproven."
+      },
+      {
+        "tech": "Stable immobilised enzymes",
+        "status": "missing",
+        "why": "biological catalysts must survive body temperature and constant flow for a week or more without losing activity."
+      },
+      {
+        "tech": "Regulatory route for an on-body reactor",
+        "status": "missing",
+        "why": "no framework exists for a device that manufactures a regulated drug inside a patient."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wearable multi-analyte sensing in research and early products, alongside reservoir-based closed-loop insulin delivery",
+        "unlocks": "proof that a body-worn closed loop can be safe and useful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a wearable that synthesises one simple molecule from a stored precursor, verified by an independent sensor",
+        "unlocks": "the core feasibility question — can on-body chemistry be trusted?"
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinician-supervised trials in a narrow, well-monitored deficiency condition",
+        "unlocks": "evidence for benefit and a regulatory precedent."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-molecule devices with validated safety layers",
+        "unlocks": "preventative use at scale — only if the chemistry, stability and oversight problems are all solved together."
+      }
+    ]
+  }
+}

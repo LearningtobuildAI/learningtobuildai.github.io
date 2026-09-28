@@ -35,5 +35,164 @@
         "def": "Artificial intelligence techniques used to analyze health data, detect patterns, and provide personalized recommendations."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensors",
+        "role": "capture physiological signals from the body.",
+        "parts": [
+          "optical photoplethysmography (PPG) LEDs and photodiodes",
+          "ECG electrodes",
+          "accelerometer and gyroscope",
+          "temperature sensors",
+          "bioimpedance electrodes"
+        ]
+      },
+      {
+        "name": "Signal processing and compute",
+        "role": "filter noise and extract meaningful health metrics.",
+        "parts": [
+          "low-power microcontroller or system-on-chip",
+          "analog front end",
+          "algorithms for heart rate, arrhythmia detection, sleep staging"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keep the device running between charges.",
+        "parts": [
+          "lithium-polymer battery",
+          "power management integrated circuit",
+          "charging circuit",
+          "optional energy harvesting"
+        ]
+      },
+      {
+        "name": "Connectivity",
+        "role": "send data to a phone or cloud for storage and analysis.",
+        "parts": [
+          "Bluetooth Low Energy",
+          "Wi-Fi",
+          "NFC for pairing or payments",
+          "cellular modem in standalone devices"
+        ]
+      },
+      {
+        "name": "Data platform and analytics",
+        "role": "store, analyse and present health data to users and clinicians.",
+        "parts": [
+          "smartphone app",
+          "cloud backend",
+          "machine learning models for risk detection",
+          "clinician dashboard"
+        ]
+      },
+      {
+        "name": "Enclosure and user interface",
+        "role": "make the device comfortable to wear and easy to interact with.",
+        "parts": [
+          "housing and strap",
+          "display or touch surface",
+          "haptic feedback",
+          "buttons"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the use case and accuracy targets",
+        "detail": "Decide whether the device is for wellness, screening or clinical diagnosis, which sets the required sensor accuracy and regulatory path."
+      },
+      {
+        "title": "Select and integrate sensors",
+        "detail": "Choose PPG, ECG, temperature and motion sensors, then design the analog front end to capture clean signals from the skin."
+      },
+      {
+        "title": "Design the electronics",
+        "detail": "Lay out the printed circuit board with a low-power microcontroller, wireless module and power management, keeping the package small."
+      },
+      {
+        "title": "Develop firmware and algorithms",
+        "detail": "Write software that filters motion artifacts, computes heart rate variability or sleep stages, and detects irregular rhythms."
+      },
+      {
+        "title": "Design the enclosure and ergonomics",
+        "detail": "Create a housing that stays in skin contact, resists sweat and water, and is comfortable for continuous wear."
+      },
+      {
+        "title": "Manufacture and assemble",
+        "detail": "Use pick-and-place machines to mount components, solder the board, insert the battery, and seal the device."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Bench-test sensors and run human trials to compare readings against medical-grade reference devices."
+      },
+      {
+        "title": "Obtain regulatory clearance",
+        "detail": "If clinical claims are made, submit evidence to regulators such as the FDA or EU notified bodies for approval as a medical device."
+      },
+      {
+        "title": "Deploy and integrate",
+        "detail": "Release the app, connect to cloud services, and link with electronic health records or clinician workflows for remote monitoring."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power microelectronics and MEMS sensors",
+        "status": "exists",
+        "why": "they allow a wrist-worn device to measure motion, heart rate and temperature without draining the battery."
+      },
+      {
+        "tech": "Bluetooth Low Energy",
+        "status": "exists",
+        "why": "it provides a low-energy link between the wearable and a phone or gateway."
+      },
+      {
+        "tech": "Lithium-polymer batteries",
+        "status": "exists",
+        "why": "they store enough energy in a small, flexible package for days of use, though capacity still limits continuous high-rate sensing."
+      },
+      {
+        "tech": "Machine learning for physiological signals",
+        "status": "partial",
+        "why": "algorithms can detect atrial fibrillation or sleep apnea from wearable data, but clinical validation and generalisation across populations are ongoing."
+      },
+      {
+        "tech": "Regulatory pathways for software as a medical device",
+        "status": "partial",
+        "why": "regulators are still adapting approval processes for continuously updating wearable algorithms and cloud-based diagnostics."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer wearables with single-lead ECG and pulse oximetry, and continuous glucose monitors for diabetes",
+        "unlocks": "widespread personal tracking of heart rhythm, oxygen saturation and glucose."
+      },
+      {
+        "stage": "Next",
+        "milestone": "more clinical validation and reimbursement for remote patient monitoring",
+        "unlocks": "wearables used routinely by doctors to manage chronic conditions between visits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with electronic health records and clinician dashboards",
+        "unlocks": "seamless flow of wearable data into care decisions and alerts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop systems such as automated insulin delivery",
+        "unlocks": "wearables that not only monitor but also treat, starting with diabetes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "preventive medicine driven by continuous multi-parameter monitoring",
+        "unlocks": "early detection of disease from long-term trends, shifting care toward prevention."
+      }
+    ]
   }
 }

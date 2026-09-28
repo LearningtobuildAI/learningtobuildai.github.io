@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Light source",
+        "role": "supplies the laser light the chip carries and modulates.",
+        "parts": [
+          "indium phosphide laser dies",
+          "external laser modules",
+          "edge or grating coupling into the chip"
+        ]
+      },
+      {
+        "name": "Waveguides and passive optics",
+        "role": "guide and split light on-chip with very low loss.",
+        "parts": [
+          "silicon-on-insulator rib and ridge waveguides",
+          "multimode interferometers and directional couplers",
+          "ring resonators and arrayed waveguide gratings"
+        ]
+      },
+      {
+        "name": "Modulators",
+        "role": "imprint an electrical data signal onto the light.",
+        "parts": [
+          "Mach-Zehnder modulators",
+          "ring modulators",
+          "doping and electrodes for the free-carrier effect"
+        ]
+      },
+      {
+        "name": "Photodetectors",
+        "role": "convert incoming light back into an electrical signal.",
+        "parts": [
+          "germanium photodiodes",
+          "transimpedance amplifier interface"
+        ]
+      },
+      {
+        "name": "Packaging and fibre attach",
+        "role": "gets light in and out of the chip and keeps it thermally stable.",
+        "parts": [
+          "fibre arrays and V-grooves",
+          "edge couplers or grating couplers",
+          "thermoelectric cooler",
+          "electrical interposer"
+        ]
+      },
+      {
+        "name": "Electronic control",
+        "role": "drives, amplifies and stabilises the photonic circuits.",
+        "parts": [
+          "modulator drivers",
+          "digital signal processor",
+          "wavelength-locking control loops"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and tape-out",
+        "detail": "Photonic components are laid out alongside control electronics using a foundry process design kit, with optical simulation to set waveguide widths and ring radii."
+      },
+      {
+        "title": "Fabricate the waveguides",
+        "detail": "The circuit is patterned on a silicon-on-insulator wafer using deep-ultraviolet lithography; etching leaves silicon ridges roughly 200–500 nm across that confine light at near-infrared wavelengths around 1310 and 1550 nm."
+      },
+      {
+        "title": "Dope and metallise",
+        "detail": "Regions of the silicon are doped to form diodes and heaters, then metal layers are deposited for electrodes and wiring."
+      },
+      {
+        "title": "Grow the detectors",
+        "detail": "Germanium is epitaxially grown on selected areas and processed into photodiodes, because silicon itself is transparent at telecom wavelengths."
+      },
+      {
+        "title": "Add the lasers",
+        "detail": "Indium phosphide laser dies are flip-chip bonded or wafer-bonded onto the silicon, since silicon cannot emit light efficiently."
+      },
+      {
+        "title": "Dice and package",
+        "detail": "The wafer is diced; fibres are actively aligned to couplers and fixed in place, and the chip is assembled with driver and amplifier dies into a module."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Optical probe stations check every circuit on the wafer; packaged modules are tuned for wavelength, biased for best modulation efficiency and burned in."
+      },
+      {
+        "title": "Build the system",
+        "detail": "Modules become pluggable transceivers or are mounted next to switch and accelerator chips as co-packaged optics."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CMOS-compatible photonic foundries",
+        "status": "exists",
+        "why": "silicon photonics can only scale if it reuses existing wafer fabs and their lithography."
+      },
+      {
+        "tech": "III-V on silicon integration",
+        "status": "partial",
+        "why": "lasers must be bonded or grown on silicon, and this is still the hardest step to make high-yield."
+      },
+      {
+        "tech": "Advanced packaging and co-packaging",
+        "status": "partial",
+        "why": "getting fibres aligned to many parallel channels cheaply is often the limiting cost."
+      },
+      {
+        "tech": "Electronic-photonic design tools",
+        "status": "partial",
+        "why": "designers need one workflow that simulates light and electrons together."
+      },
+      {
+        "tech": "Optical fibre networks and standards",
+        "status": "exists",
+        "why": "photonic chips are only useful where fibre already reaches."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "silicon photonics inside pluggable 400 and 800 Gbit/s data-centre transceivers",
+        "unlocks": "cheap, high-volume optical links between racks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-packaged optics, with the photonic engine beside the switch chip instead of in a pluggable module",
+        "unlocks": "lower power per bit and far more bandwidth per switch."
+      },
+      {
+        "stage": "Next",
+        "milestone": "optical input/output between chips within a system",
+        "unlocks": "accelerators linked by light without leaving the board."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "photonic circuits that compute, not just transmit",
+        "unlocks": "matrix multiplication or signal processing at the speed of light, if on-chip memory and control catch up."
+      }
+    ]
+  }
+}

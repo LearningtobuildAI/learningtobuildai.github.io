@@ -31,5 +31,156 @@
         "def": "A process where artificial intelligence algorithms analyze data from sensors to determine the precise amount and type of nutrients needed by individual plants, which are then delivered directly via drones."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "sees the field at centimetre scale, plant by plant.",
+        "parts": [
+          "hyperspectral and thermal cameras on drones and satellites",
+          "soil probes for moisture and nutrients",
+          "ground-level cameras on robots"
+        ]
+      },
+      {
+        "name": "Mobile platforms",
+        "role": "carry sensors and tools to every plant without compacting the soil.",
+        "parts": [
+          "multirotor and fixed-wing drones",
+          "lightweight ground robots",
+          "autonomous tractors as carriers"
+        ]
+      },
+      {
+        "name": "Decision layer",
+        "role": "turns imagery into a per-plant prescription.",
+        "parts": [
+          "plant-detection and species models",
+          "yield and stress prediction",
+          "soil-zone maps",
+          "weather and growth models"
+        ]
+      },
+      {
+        "name": "Delivery and actuation",
+        "role": "applies the smallest useful amount of input to one plant.",
+        "parts": [
+          "micro-dose sprayers and granular applicators",
+          "targeted seeders for mixed species",
+          "mechanical weeders",
+          "precision irrigation emitters"
+        ]
+      },
+      {
+        "name": "Energy and connectivity",
+        "role": "keeps thousands of machines working in remote fields.",
+        "parts": [
+          "battery or hybrid power",
+          "field charging or swap stations",
+          "low-latency rural networks and edge computers"
+        ]
+      },
+      {
+        "name": "Agronomic base",
+        "role": "the biology that makes per-plant management worth doing.",
+        "parts": [
+          "crop varieties bred for variable conditions",
+          "seed mixes and intercrops",
+          "microbial and organic soil amendments"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the ground",
+        "detail": "Drive or fly the field with sensors that record soil type, organic matter, moisture and compaction at sub-metre resolution, building a permanent map of patches."
+      },
+      {
+        "title": "Identify every plant",
+        "detail": "Train vision models to find individual plants — crop, weed, or volunteer — in drone and robot imagery, even when leaves overlap."
+      },
+      {
+        "title": "Build per-plant records",
+        "detail": "Link each plant's position to its soil patch and to its own history of imagery, so stress or nutrient shortage is visible early."
+      },
+      {
+        "title": "Decide the intervention",
+        "detail": "Models weigh the cost of acting against the likely yield gain and choose: nothing, a millilitre of nutrient, a targeted spray, or a mechanical weed."
+      },
+      {
+        "title": "Deliver at plant level",
+        "detail": "Robots and drones act on single plants with micro-doses, sharp spray shut-off, or a seed placed by a machine rather than a whole field being treated."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Yield monitors on the harvester feed results back, so next season's prescriptions are based on what actually worked in each patch."
+      },
+      {
+        "title": "Diversify the planting",
+        "detail": "Instead of one crop per field, sow mixtures matched to patches — a legume where nitrogen is short, a deep-rooted species where the soil is compacted."
+      },
+      {
+        "title": "Coordinate across the landscape",
+        "detail": "Farms share weather, pest and soil data so that sowing, spraying and harvesting are scheduled regionally, avoiding pest build-up and overlapping passes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap hyperspectral imaging",
+        "status": "partial",
+        "why": "the sensors exist, but affordable, field-rugged versions with the calibration needed for plant chemistry are still scarce."
+      },
+      {
+        "tech": "Autonomous field robotics",
+        "status": "partial",
+        "why": "weeding and thinning robots work in high-value crops such as vegetables; broadacre reliability and cost are unsolved."
+      },
+      {
+        "tech": "Per-plant perception models",
+        "status": "partial",
+        "why": "separating crop from weed at leaf level is demonstrated but degrades in dense canopies and poor light."
+      },
+      {
+        "tech": "Rural connectivity and edge compute",
+        "status": "partial",
+        "why": "thousands of machines per farm need low-latency links and on-board processing where signal is weak."
+      },
+      {
+        "tech": "Soil biology knowledge",
+        "status": "missing",
+        "why": "we cannot yet predict how a specific soil microbiome responds to a specific intervention."
+      },
+      {
+        "tech": "Economics of micro-management",
+        "status": "missing",
+        "why": "per-plant care only pays in expensive crops today; cheap staples need far cheaper machines."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "variable-rate application by field zone, plus camera-guided spraying and mechanical weeding in row crops",
+        "unlocks": "large cuts in herbicide and fertiliser use without losing yield."
+      },
+      {
+        "stage": "Next",
+        "milestone": "per-plant robots in vegetables, orchards and vineyards",
+        "unlocks": "a commercial market that drives down sensor and robot costs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mixed-species sowing managed plant by plant on broadacre farms",
+        "unlocks": "fields that hold soil, need less nitrogen and tolerate drought better."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regional networks of autonomous machines sharing one live model of soils, crops and weather",
+        "unlocks": "food production tuned to each patch of land rather than to the average field."
+      }
+    ]
   }
 }

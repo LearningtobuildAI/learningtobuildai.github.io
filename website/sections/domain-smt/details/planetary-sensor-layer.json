@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing nodes",
+        "role": "the sensing skin itself — enormous numbers of tiny, self-powered units measuring temperature, pressure, motion, chemistry or magnetism.",
+        "parts": [
+          "microelectromechanical (MEMS) sensor elements",
+          "microcontroller and radio or optical transceiver",
+          "energy harvester and storage",
+          "protective package"
+        ]
+      },
+      {
+        "name": "Backhaul constellation",
+        "role": "carries readings from anywhere on Earth to data centres without ground infrastructure.",
+        "parts": [
+          "low-Earth-orbit satellites with optical inter-satellite links",
+          "ground gateways",
+          "store-and-forward buffers"
+        ]
+      },
+      {
+        "name": "Quantum-secure link layer",
+        "role": "makes the network's keys tamper-evident, so readings and commands cannot be silently altered.",
+        "parts": [
+          "quantum key distribution (QKD) terminals",
+          "trusted relay nodes",
+          "quantum repeaters",
+          "key management"
+        ]
+      },
+      {
+        "name": "Localisation and timing",
+        "role": "every reading needs a place and a time or it is useless.",
+        "parts": [
+          "GNSS receivers",
+          "chip-scale atomic clocks",
+          "acoustic or radio ranging"
+        ]
+      },
+      {
+        "name": "Edge compute and fusion",
+        "role": "turns raw counts into usable state estimates without shipping everything to a data centre.",
+        "parts": [
+          "on-node anomaly detection",
+          "regional aggregation nodes",
+          "physics-based models and digital twins"
+        ]
+      },
+      {
+        "name": "Deployment and maintenance",
+        "role": "gets millions to billions of nodes into position and replaces the ones that fail.",
+        "parts": [
+          "aerial dispensers and drones",
+          "ground and marine robots",
+          "self-healing mesh routing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what to measure",
+        "detail": "Choose physical quantities, spatial density, accuracy and update rate for each region, since these set size, power and cost per node."
+      },
+      {
+        "title": "Design the node chipset",
+        "detail": "Integrate sensing elements, a low-power processor, memory, timing and a radio onto as few silicon dies as possible, targeting millimetre-scale packages."
+      },
+      {
+        "title": "Solve the power budget",
+        "detail": "Harvest from vibration, temperature gradients, light or radio waves and store in a thin-film battery or supercapacitor, because a node must survive years untended."
+      },
+      {
+        "title": "Mass-produce nodes",
+        "detail": "Use semiconductor wafer fabs and roll-to-roll printing so unit cost falls to cents, which is what makes planetary numbers affordable."
+      },
+      {
+        "title": "Build the backhaul",
+        "detail": "Launch a satellite constellation with laser cross-links and simple ground terminals so nodes only need short-range, low-power radios."
+      },
+      {
+        "title": "Layer in quantum-secure keys",
+        "detail": "Add QKD terminals at aggregation points and, where needed, quantum repeaters to extend entanglement or key distribution over long distances."
+      },
+      {
+        "title": "Distribute the nodes",
+        "detail": "Scatter them from aircraft and drones, embed them in roads, buildings and farm soil, and drift them across oceans as floating sensors."
+      },
+      {
+        "title": "Bring the mesh online",
+        "detail": "Nodes discover neighbours, synchronise clocks, resolve their positions by ranging and route data around failures."
+      },
+      {
+        "title": "Fuse and use the data",
+        "detail": "Calibrate against reference instruments, run large-scale physics models, and issue warnings or feed control systems."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultra-low-power microelectronics and energy harvesting",
+        "status": "partial",
+        "why": "millimetre-scale nodes that run for years on harvested energy have been demonstrated in labs but not at planetary numbers."
+      },
+      {
+        "tech": "Dense satellite communications",
+        "status": "exists",
+        "why": "constellations in low Earth orbit already provide global backhaul, though not yet cheap enough for trillions of endpoints."
+      },
+      {
+        "tech": "Miniaturised multi-quantity sensors",
+        "status": "partial",
+        "why": "temperature, pressure, acceleration and magnetic sensing are easily miniaturised; chemical and biological sensing is not."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "key distribution works over fibre and satellite links today, but extending quantum links across a planet needs repeaters that remain laboratory demonstrations."
+      },
+      {
+        "tech": "Distributed data fusion at scale",
+        "status": "partial",
+        "why": "ingesting and calibrating billions of independent streams is a computing and standards problem that is only partly solved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "regional dense networks: seismic arrays, air-quality monitors, ocean buoys and radar satellites such as InSAR imagers",
+        "unlocks": "proof that wide-area, continuous sensing produces useful forecasts and early warnings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city- and catchment-scale self-powered wireless mesh demonstrations",
+        "unlocks": "experience with millions, not thousands, of nodes: addressing, power, calibration and repair."
+      },
+      {
+        "stage": "Next",
+        "milestone": "global backhaul with optical-linked satellite constellations and open data standards",
+        "unlocks": "sensing in oceans, deserts and polar regions where no ground network exists."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum-secure links between aggregation nodes via working repeaters",
+        "unlocks": "trustworthy readings for critical systems such as disaster warning and infrastructure control."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a continuously updated planetary digital twin",
+        "unlocks": "better prediction and management of climate, hazards and resources — monitoring rather than any attempt to steer the climate directly."
+      }
+    ]
+  }
+}

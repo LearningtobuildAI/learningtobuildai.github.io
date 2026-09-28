@@ -30,5 +30,149 @@
         "def": "A distributed computing paradigm that brings data processing closer to the devices generating the data, reducing latency and bandwidth requirements."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute array",
+        "role": "performs the massive parallel multiply-accumulate operations that dominate neural networks.",
+        "parts": [
+          "multiplier–accumulator (MAC) units",
+          "systolic or dataflow array",
+          "activation and pooling units"
+        ]
+      },
+      {
+        "name": "On-chip memory hierarchy",
+        "role": "keeps weights and activations close to the compute units so the array is not starved.",
+        "parts": [
+          "register files",
+          "SRAM scratchpad or cache",
+          "weight buffer"
+        ]
+      },
+      {
+        "name": "Data movement and interconnect",
+        "role": "moves tensors between memory, compute and the host without consuming too much energy.",
+        "parts": [
+          "network-on-chip (NoC)",
+          "DMA engines",
+          "AXI or similar on-chip bus"
+        ]
+      },
+      {
+        "name": "Control and scheduling",
+        "role": "sequences operations and decides what runs when.",
+        "parts": [
+          "instruction sequencer",
+          "microcode or compiler-generated schedule",
+          "power and clock management"
+        ]
+      },
+      {
+        "name": "Precision and sparsity support",
+        "role": "trades numerical accuracy for throughput and energy efficiency.",
+        "parts": [
+          "INT8 and FP16/bfloat16 datapaths",
+          "zero-skipping logic",
+          "mixed-precision accumulation"
+        ]
+      },
+      {
+        "name": "Host integration",
+        "role": "connects the accelerator to the CPU, memory and external interfaces.",
+        "parts": [
+          "coherent or non-coherent CPU interface",
+          "DRAM controller interface",
+          "PCIe or chip-to-chip link (for discrete use)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the architecture",
+        "detail": "Engineers choose the dataflow (e.g. systolic, weight-stationary), supported precisions and target throughput in operations per second per watt, then model performance in software."
+      },
+      {
+        "title": "Write the register-transfer-level design",
+        "detail": "The microarchitecture is described in a hardware description language such as Verilog or VHDL and simulated at the cycle level."
+      },
+      {
+        "title": "Verify the design",
+        "detail": "Testbenches, formal methods and emulation on large FPGA arrays check that the accelerator computes correctly for millions of random and real neural-network inputs."
+      },
+      {
+        "title": "Implement the physical layout",
+        "detail": "Logic synthesis, place-and-route and timing closure map the design onto standard cells and SRAM blocks in a chosen CMOS node, balancing area, frequency and power."
+      },
+      {
+        "title": "Tape out and make masks",
+        "detail": "The final layout is sent to a foundry, which writes a set of photomasks — one per layer — for the lithography process."
+      },
+      {
+        "title": "Fabricate the wafers",
+        "detail": "Silicon wafers are processed through hundreds of steps: deposition, photolithography, etching, doping and chemical-mechanical polishing, layer by layer."
+      },
+      {
+        "title": "Package and test",
+        "detail": "Wafers are diced, known-good dies are packaged (often with DRAM in the same package), and parts are screened for speed, power and defects."
+      },
+      {
+        "title": "Enable the software stack",
+        "detail": "Compilers, runtimes and drivers map trained models onto the accelerator, scheduling layers and quantising weights so that real applications run at the promised speed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced CMOS logic nodes",
+        "status": "exists",
+        "why": "smaller transistors pack more MAC units into a given area and cut switching energy."
+      },
+      {
+        "tech": "Dense on-chip SRAM",
+        "status": "exists",
+        "why": "the array needs fast local storage for weights and activations to avoid expensive off-chip memory traffic."
+      },
+      {
+        "tech": "Quantisation and pruning methods",
+        "status": "exists",
+        "why": "8-bit and lower precision lets the same silicon deliver far more inferences per second."
+      },
+      {
+        "tech": "Electronic design automation and verification tools",
+        "status": "exists",
+        "why": "no team can hand-place billions of transistors or prove correctness without them."
+      },
+      {
+        "tech": "Chiplet and 3D integration",
+        "status": "partial",
+        "why": "stacking or tiling accelerator chiplets with high-bandwidth memory is the main route to larger on-package models."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "neural processing units integrated into smartphone, PC and embedded processors",
+        "unlocks": "real-time speech, camera and sensor inference at a few watts or less."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chiplet-based accelerators and compute-in-memory macros",
+        "unlocks": "larger models on device and much lower energy per operation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "analog in-memory computing in commercial silicon",
+        "unlocks": "matrix multiplication performed where the weights are stored, removing most data movement."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "neuromorphic and photonic co-processors",
+        "unlocks": "event-driven and light-speed interconnects for always-on and very large models."
+      }
+    ]
   }
 }

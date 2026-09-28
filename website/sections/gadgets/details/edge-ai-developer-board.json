@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute engine",
+        "role": "runs the neural network's tensor operations.",
+        "parts": [
+          "system-on-chip with CPU cores",
+          "GPU or NPU for matrix multiplication",
+          "digital signal processors",
+          "memory controller"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "holds model weights and the key-value cache during inference.",
+        "parts": [
+          "LPDDR5 or LPDDR5X packages",
+          "high-bandwidth memory stacks (on higher-end boards)",
+          "on-package or board-level routing"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "supplies stable voltage and removes heat within a small enclosure.",
+        "parts": [
+          "multi-phase voltage regulators",
+          "heat spreader and heatsink",
+          "fan or fanless thermal solution",
+          "thermal interface materials"
+        ]
+      },
+      {
+        "name": "Storage and I/O",
+        "role": "loads models quickly and connects to sensors, networks and displays.",
+        "parts": [
+          "NVMe flash or eMMC",
+          "PCIe lanes",
+          "USB, Ethernet, Wi-Fi",
+          "camera and display interfaces"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "lets developers compile, quantize and run models on the hardware.",
+        "parts": [
+          "drivers and firmware",
+          "inference runtime and graph compiler",
+          "quantization and pruning tools",
+          "model zoo and examples"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target",
+        "detail": "Set the maximum model size (in billions of parameters), token throughput, power budget (often 10–60 W) and required ports."
+      },
+      {
+        "title": "Select or design the SoC",
+        "detail": "Choose a chip with an NPU or GPU that accelerates matrix math, or design one with enough on-chip memory to avoid bottlenecks."
+      },
+      {
+        "title": "Integrate memory",
+        "detail": "Solder LPDDR5 packages close to the SoC for high bandwidth, or use on-package high-bandwidth memory where the design allows."
+      },
+      {
+        "title": "Fabricate the PCB",
+        "detail": "Lay out high-speed differential pairs for memory and PCIe, manage power planes and impedance, then manufacture the multi-layer board."
+      },
+      {
+        "title": "Assemble the board",
+        "detail": "Pick-and-place the SoC, memory, power stages and connectors, reflow-solder them, and underfill the largest chips for reliability."
+      },
+      {
+        "title": "Test and bin",
+        "detail": "Run functional tests, measure memory bandwidth and thermal performance under sustained load, and sort boards by stable clock speed."
+      },
+      {
+        "title": "Write firmware and drivers",
+        "detail": "Bring up the bootloader, power management and accelerator drivers so the operating system can use the NPU and memory correctly."
+      },
+      {
+        "title": "Build the software stack",
+        "detail": "Port an inference runtime, add quantization support (e.g., 4-bit and 8-bit), and provide tools to convert popular model formats."
+      },
+      {
+        "title": "Validate real workloads",
+        "detail": "Run representative language models, measure tokens per second and power draw, and tune scheduling so the board stays within its thermal limit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "NPUs or GPUs with matrix-multiply acceleration",
+        "status": "exists",
+        "why": "general-purpose CPUs are far too slow for real-time language model inference."
+      },
+      {
+        "tech": "High-capacity, high-bandwidth memory",
+        "status": "partial",
+        "why": "holding billions of parameters needs tens of gigabytes and hundreds of gigabytes per second; LPDDR5 is affordable but HBM remains costly and power-hungry."
+      },
+      {
+        "tech": "Model quantization and compression",
+        "status": "exists",
+        "why": "reducing weights to 4 or 8 bits shrinks models enough to fit in edge memory with modest quality loss."
+      },
+      {
+        "tech": "Efficient inference runtimes and compilers",
+        "status": "exists",
+        "why": "they map model graphs onto the available accelerators and manage the key-value cache to avoid recomputation."
+      },
+      {
+        "tech": "Compact power delivery and cooling",
+        "status": "exists",
+        "why": "sustained inference produces heat that must be removed from a small, often fanless enclosure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "developer boards with 8–32 GB of memory run quantized 7–13 billion parameter models at a few tokens per second",
+        "unlocks": "local chatbots, document search and private inference without cloud calls."
+      },
+      {
+        "stage": "Next",
+        "milestone": "unified memory of 64–128 GB on a single board",
+        "unlocks": "running 70 billion parameter models locally for more capable assistants and coding tools."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chiplet designs with on-package high-bandwidth memory exceeding 1 TB/s",
+        "unlocks": "faster token generation and support for larger context windows."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device fine-tuning and multimodal models",
+        "unlocks": "personalized AI that adapts to a user's data without sending it to a data centre."
+      }
+    ]
+  }
+}

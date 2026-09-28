@@ -38,5 +38,150 @@
         "def": "The scientific study of the composition, structure, properties, and reactions of matter, particularly at the atomic and molecular level."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data layer",
+        "role": "provides the raw material: chemical structures, protein sequences and structures, gene expression, patient records and trial results.",
+        "parts": [
+          "chemical libraries",
+          "protein structure databases",
+          "genomic and clinical datasets",
+          "published literature"
+        ]
+      },
+      {
+        "name": "Molecular representation models",
+        "role": "turn molecules, proteins and cells into numerical form a model can reason over.",
+        "parts": [
+          "molecular graph encoders",
+          "protein structure predictors",
+          "embeddings from large biological datasets"
+        ]
+      },
+      {
+        "name": "Generative design models",
+        "role": "propose brand-new molecules or biologics that could hit a chosen target.",
+        "parts": [
+          "generative neural networks",
+          "reinforcement-learning optimisers",
+          "structure-based design tools"
+        ]
+      },
+      {
+        "name": "Property and safety predictors",
+        "role": "estimate whether a candidate will be absorbed, reach its target, work, and avoid toxicity.",
+        "parts": [
+          "ADMET models",
+          "toxicity classifiers",
+          "binding-affinity predictors"
+        ]
+      },
+      {
+        "name": "Experimental validation loop",
+        "role": "tests predictions in real chemistry and biology, then feeds results back to the models.",
+        "parts": [
+          "automated synthesis platforms",
+          "high-throughput assays",
+          "organoids and cell models"
+        ]
+      },
+      {
+        "name": "Clinical and biomarker layer",
+        "role": "links candidate drugs to the patients most likely to respond.",
+        "parts": [
+          "biomarker assays",
+          "genomic patient stratification",
+          "trial data pipelines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble and clean the data",
+        "detail": "Pull together chemical, protein, genomic and clinical datasets; standardise formats and remove errors, because model quality is capped by data quality."
+      },
+      {
+        "title": "Choose a target",
+        "detail": "Use network analysis, genetics and literature mining to pick a protein or pathway plausibly central to the disease."
+      },
+      {
+        "title": "Train and validate models",
+        "detail": "Train predictors on known compounds and test them on held-out data, so the model is judged on molecules it has never seen."
+      },
+      {
+        "title": "Generate candidate molecules",
+        "detail": "Run generative models to propose structures that fit the target, then rank them by predicted potency, selectivity and safety."
+      },
+      {
+        "title": "Synthesise and assay",
+        "detail": "Chemists or automated platforms make the top candidates and test them in biochemical and cell assays; every result improves the next round."
+      },
+      {
+        "title": "Optimise and test in animals",
+        "detail": "Iterate on the best series to fix stability, dosing and toxicity, then move to animal studies of efficacy and safety."
+      },
+      {
+        "title": "Run human trials",
+        "detail": "Test in volunteers and patients, measuring both safety and whether the drug changes the disease."
+      },
+      {
+        "title": "Stratify patients",
+        "detail": "For personalised use, match the drug to patients carrying the relevant biomarker rather than treating everyone the same way."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large, well-annotated biological and chemical datasets",
+        "status": "partial",
+        "why": "models can only learn patterns that are recorded; much clinical and negative-result data remains siloed or unpublished."
+      },
+      {
+        "tech": "Accurate protein structure prediction",
+        "status": "exists",
+        "why": "tools such as AlphaFold, demonstrated in 2020, let designers see target shapes without years of lab work."
+      },
+      {
+        "tech": "High-performance computing and specialised accelerators",
+        "status": "exists",
+        "why": "training large models over millions of molecules needs substantial compute."
+      },
+      {
+        "tech": "Automated wet-lab testing",
+        "status": "partial",
+        "why": "predictions must be checked experimentally, and manual testing cannot keep pace with machine-generated candidates."
+      },
+      {
+        "tech": "Clinical genomics and biomarker assays",
+        "status": "partial",
+        "why": "personalised efficacy prediction depends on knowing each patient's molecular profile."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI widely used for target discovery, protein structure prediction and molecule generation",
+        "unlocks": "faster, cheaper early-stage discovery."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small number of AI-designed molecules reaching mid-stage human trials",
+        "unlocks": "evidence on whether AI-designed drugs succeed more often than conventional ones."
+      },
+      {
+        "stage": "Next",
+        "milestone": "biomarker-guided trials that select responsive patients up front",
+        "unlocks": "smaller, faster trials and better odds of approval."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "models that predict individual response and side effects from a patient's own data",
+        "unlocks": "truly personalised prescribing, if data sharing, validation and regulation keep pace."
+      }
+    ]
   }
 }

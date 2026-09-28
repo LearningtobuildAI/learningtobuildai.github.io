@@ -33,5 +33,149 @@
         "def": "Materials that can conduct electricity with zero resistance at very low temperatures, often used in the fabrication of quantum processors due to their ability to maintain qubit coherence."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the physical qubits that store and manipulate quantum states.",
+        "parts": [
+          "superconducting transmons, trapped ions or neutral atoms",
+          "microwave or laser control lines",
+          "dilution refrigerator or vacuum chamber"
+        ]
+      },
+      {
+        "name": "Error correction layer",
+        "role": "combines many noisy physical qubits into a smaller number of reliable logical qubits.",
+        "parts": [
+          "surface or other error-correcting codes",
+          "syndrome measurement circuits",
+          "decoders running in real time"
+        ]
+      },
+      {
+        "name": "Data-encoding stage",
+        "role": "loads classical data into quantum states in a form an algorithm can use.",
+        "parts": [
+          "feature-map circuits",
+          "amplitude encoding",
+          "quantum random-access memory (largely theoretical)"
+        ]
+      },
+      {
+        "name": "Parameterised circuit and training loop",
+        "role": "the quantum part of the model, with tunable angles adjusted by a classical optimiser.",
+        "parts": [
+          "ansatz circuits",
+          "gradient estimation",
+          "classical optimiser"
+        ]
+      },
+      {
+        "name": "Readout and sampling",
+        "role": "measures the output; usually thousands of repeated runs are needed to estimate a result.",
+        "parts": [
+          "measurement circuits",
+          "statistical estimator",
+          "error mitigation"
+        ]
+      },
+      {
+        "name": "Classical orchestration",
+        "role": "compiles circuits, schedules jobs and couples the quantum device to conventional GPU/CPU training.",
+        "parts": [
+          "compiler and transpiler",
+          "job scheduler",
+          "classical neural networks for hybrid models"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate and calibrate qubits",
+        "detail": "Josephson-junction circuits on silicon, or trapped ions in a vacuum, are tuned so each qubit holds its state long enough to run gates."
+      },
+      {
+        "title": "Demonstrate reliable gates",
+        "detail": "Two-qubit gate fidelities are measured and pushed high enough that error correction becomes worthwhile rather than hopeless."
+      },
+      {
+        "title": "Encode the problem",
+        "detail": "Classical data or a molecule's Hamiltonian is mapped into a quantum circuit. Data loading is often the hidden bottleneck: reading in N numbers can erase the speed-up."
+      },
+      {
+        "title": "Choose a circuit architecture",
+        "detail": "A parameterised ansatz (for variational algorithms) or a fixed algorithm such as phase estimation is chosen for the task."
+      },
+      {
+        "title": "Train the hybrid loop",
+        "detail": "The quantum device estimates a cost function; a classical computer updates circuit parameters and repeats. Gradients can vanish ('barren plateaus') as circuits grow."
+      },
+      {
+        "title": "Benchmark honestly against classical methods",
+        "detail": "Results are compared with the best classical algorithm and GPU baselines on the same problem — many proposed quantum speed-ups have been matched or beaten classically."
+      },
+      {
+        "title": "Add error correction",
+        "detail": "Logical qubits are built from many physical ones and decoders run fast enough to keep errors falling as the code grows."
+      },
+      {
+        "title": "Scale and integrate",
+        "detail": "An error-corrected machine is wired into real chemistry, materials or optimisation workflows as an accelerator beside classical hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Qubits with high gate fidelity and long coherence",
+        "status": "partial",
+        "why": "today's devices lose their state too quickly for deep circuits."
+      },
+      {
+        "tech": "Fault-tolerant error correction",
+        "status": "partial",
+        "why": "logical qubits now beat their physical parts at small scale, but thousands are needed for useful work."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "without fast access to classical data, most machine-learning speed-ups disappear."
+      },
+      {
+        "tech": "Algorithms with proven advantage",
+        "status": "partial",
+        "why": "several claimed exponential speed-ups have been 'dequantised' by classical algorithms under realistic assumptions."
+      },
+      {
+        "tech": "Classical AI and GPU compute",
+        "status": "exists",
+        "why": "the baseline any quantum method must beat, and the partner it runs alongside."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "noisy intermediate-scale devices with tens to hundreds of physical qubits; small quantum-kernel and variational experiments",
+        "unlocks": "hands-on learning about what these machines are actually good at."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error-corrected machines run quantum chemistry and materials simulations beyond exact classical reach",
+        "unlocks": "the first credible, narrow advantages — likely in simulating quantum systems, not generic AI."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid quantum-classical training demonstrated on problems where classical AI is genuinely stuck",
+        "unlocks": "optimisation and simulation pipelines that use a quantum accelerator for a defined sub-step."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large fault-tolerant machines coupled to classical AI systems",
+        "unlocks": "a possible new computing layer for drug and catalyst discovery, if the economics hold."
+      }
+    ]
   }
 }

@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Airframe and propulsion",
+        "role": "carries a few kilograms of payload and hovers or cruises to the drop point.",
+        "parts": [
+          "carbon-fibre or composite frame",
+          "brushless motors and folding propellers",
+          "lithium-ion battery pack",
+          "redundant power and motor channels",
+          "parachute or tether release"
+        ]
+      },
+      {
+        "name": "Autonomy stack",
+        "role": "flies the route and avoids other aircraft and obstacles without a human at the controls.",
+        "parts": [
+          "flight controller with redundant inertial sensors",
+          "GNSS plus barometer and magnetometer",
+          "lidar, radar and cameras for detect-and-avoid",
+          "onboard computer running routing and contingency logic"
+        ]
+      },
+      {
+        "name": "Communications mesh",
+        "role": "keeps each aircraft linked to the fleet and to air-traffic systems.",
+        "parts": [
+          "command-and-control radio datalink",
+          "cellular or 5G modem for beyond-line-of-sight links",
+          "direct drone-to-drone links",
+          "network slicing and failover"
+        ]
+      },
+      {
+        "name": "Traffic management layer",
+        "role": "keeps many aircraft separated from each other and from crewed aviation.",
+        "parts": [
+          "unmanned traffic management (UTM) software",
+          "geofencing and digital airspace maps",
+          "remote identification broadcast",
+          "weather and NOTAM feeds"
+        ]
+      },
+      {
+        "name": "Ground infrastructure",
+        "role": "launches, recovers, charges and reloads aircraft.",
+        "parts": [
+          "docking and charging nests",
+          "payload handling and cold-chain storage",
+          "vertiports or rooftop pads",
+          "maintenance and battery-swap stations"
+        ]
+      },
+      {
+        "name": "Fleet orchestration",
+        "role": "assigns each job to an aircraft and re-plans when wind, demand or airspace closures change.",
+        "parts": [
+          "order and dispatch system",
+          "route and altitude planner",
+          "telemetry and health monitoring",
+          "human supervisors for exceptions"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the corridor and clear the regulation",
+        "detail": "Survey the route, model obstacles and population density, and obtain the airspace authorisation that allows flight beyond the pilot's line of sight."
+      },
+      {
+        "title": "Design the airframe for the payload",
+        "detail": "Choose multirotor for hover-and-lower delivery or a fixed-wing or hybrid design for longer range; size the battery around the required payload, range and headwind margin."
+      },
+      {
+        "title": "Build the flight controller and sense-and-avoid",
+        "detail": "Fuse inertial, GNSS and barometric data for state estimation, then add lidar, radar or stereo cameras so the aircraft can detect conflicting traffic and self-separate."
+      },
+      {
+        "title": "Integrate communications and identity",
+        "detail": "Install redundant command links, a cellular or 5G modem, and a remote-identification broadcast so the aircraft is visible to authorities and other airspace users."
+      },
+      {
+        "title": "Connect to the traffic-management layer",
+        "detail": "Register the fleet with the UTM or U-space service, load geofences, and test conflict detection against simulated traffic."
+      },
+      {
+        "title": "Set up ground nests",
+        "detail": "Place docks with charging, payload handling and weather covers along the route, sized so turnaround is minutes and battery cycling is within limits."
+      },
+      {
+        "title": "Test incrementally, then certify",
+        "detail": "Fly line-of-sight, then extended visual line-of-sight, then beyond-line-of-sight, accumulating reliability data needed for operational approval."
+      },
+      {
+        "title": "Operate as a mesh",
+        "detail": "Run many aircraft under one supervising team, with dynamic re-routing and shared separation so density, not range, becomes the limit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Beyond-visual-line-of-sight flight rules",
+        "status": "partial",
+        "why": "most regulators only allow it case by case or in approved corridors, which caps fleet scale."
+      },
+      {
+        "tech": "Detect-and-avoid sensors and standards",
+        "status": "partial",
+        "why": "reliable, certified avoidance of uncooperative aircraft is still maturing and is the main safety barrier."
+      },
+      {
+        "tech": "Low-latency wide-area networks",
+        "status": "exists",
+        "why": "4G and 5G give command-and-control coverage in cities; 6G is not needed for today's operations."
+      },
+      {
+        "tech": "Energy-dense, fast-charging batteries",
+        "status": "partial",
+        "why": "today's packs give a few kilograms over tens of kilometres; range and cold-weather performance remain limiting."
+      },
+      {
+        "tech": "Digital airspace services (UTM/U-space)",
+        "status": "partial",
+        "why": "these are being deployed region by region and their rules are not yet globally harmonised."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "beyond-line-of-sight medical and parcel routes in approved corridors — blood and vaccine delivery in Rwanda began in 2016, and suburban parcel delivery in Australia followed in 2019",
+        "unlocks": "operational experience and safety data for routine remote flight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "certified detect-and-avoid and remote identification in routine urban operations",
+        "unlocks": "operations that no longer need a visual observer or a segregated corridor."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one supervisor managing many aircraft in a shared mesh, with automatic conflict resolution",
+        "unlocks": "density: more deliveries per hour from the same airspace and ground infrastructure."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "full integration with crewed aviation, and urban monitoring and emergency response sharing the same airspace",
+        "unlocks": "drone logistics treated as ordinary infrastructure rather than an experiment."
+      }
+    ]
+  }
+}

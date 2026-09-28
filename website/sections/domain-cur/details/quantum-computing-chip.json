@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Qubit array",
+        "role": "stores and processes quantum information in superconducting circuits.",
+        "parts": [
+          "transmon qubits",
+          "Josephson junctions",
+          "shunt capacitors",
+          "coupling resonators"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "manipulates qubit states and measures the result.",
+        "parts": [
+          "microwave drive lines",
+          "readout resonators",
+          "parametric amplifiers",
+          "circulators"
+        ]
+      },
+      {
+        "name": "Cryogenic system",
+        "role": "cools the chip to millikelvin temperatures so superconductivity and quantum coherence survive.",
+        "parts": [
+          "dilution refrigerator",
+          "cryogenic wiring",
+          "radiation shielding",
+          "attenuators and filters"
+        ]
+      },
+      {
+        "name": "Classical control electronics",
+        "role": "generates the microwave pulses and digitises the readout signals.",
+        "parts": [
+          "arbitrary waveform generators",
+          "field-programmable gate arrays",
+          "mixers and amplifiers"
+        ]
+      },
+      {
+        "name": "Error correction and decoding",
+        "role": "combines many physical qubits into a smaller number of reliable logical qubits.",
+        "parts": [
+          "surface code or other quantum codes",
+          "real-time decoders",
+          "classical feedback"
+        ]
+      },
+      {
+        "name": "Packaging and interconnects",
+        "role": "connects the chip to control lines and cooling while preserving signal integrity.",
+        "parts": [
+          "flip-chip bonding",
+          "through-silicon vias",
+          "superconducting bump bonds"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the qubit layout",
+        "detail": "Electromagnetic simulation determines qubit frequencies, coupling strengths and control-line routing on the chip."
+      },
+      {
+        "title": "Fabricate the circuit",
+        "detail": "Niobium films are deposited on a silicon or sapphire wafer, patterned by lithography, and etched to form capacitors and resonators."
+      },
+      {
+        "title": "Form Josephson junctions",
+        "detail": "Aluminium is deposited and oxidised to create a thin tunnel barrier; junction area sets the qubit's nonlinearity."
+      },
+      {
+        "title": "Package the chip",
+        "detail": "The die is flip-chip bonded or wire-bonded to a carrier that carries readout resonators and control lines."
+      },
+      {
+        "title": "Cool to millikelvin",
+        "detail": "The package is mounted in a dilution refrigerator and cooled to about 10 mK, with attenuated and filtered microwave lines."
+      },
+      {
+        "title": "Calibrate the qubits",
+        "detail": "Frequencies, coherence times and single- and two-qubit gate fidelities are measured and tuned."
+      },
+      {
+        "title": "Run error correction",
+        "detail": "Repeated syndrome measurements detect errors; a real-time decoder identifies and corrects them."
+      },
+      {
+        "title": "Scale and integrate",
+        "detail": "Qubit count and connectivity are increased while maintaining coherence, and the processor is linked to classical high-performance computers as an accelerator."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting Josephson junction fabrication",
+        "status": "exists",
+        "why": "provides the nonlinear element that makes a controllable qubit."
+      },
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "superconducting qubits only operate near absolute zero, in the millikelvin range."
+      },
+      {
+        "tech": "Microwave control and readout electronics",
+        "status": "exists",
+        "why": "qubits are driven and measured with signals at a few gigahertz."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "small codes have been demonstrated, but not yet at the scale needed for useful computation."
+      },
+      {
+        "tech": "Materials with long coherence times",
+        "status": "partial",
+        "why": "surface defects and two-level systems limit how long a qubit holds its state."
+      },
+      {
+        "tech": "Scalable cryogenic interconnects",
+        "status": "missing",
+        "why": "wiring thousands of qubits without overheating the refrigerator or corrupting signals is unsolved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "noisy intermediate-scale processors with tens to hundreds of physical qubits, accessible via cloud services",
+        "unlocks": "algorithm research and early error-correction experiments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "logical qubits with error rates below the fault-tolerance threshold in small systems",
+        "unlocks": "reliable small-scale quantum operations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fault-tolerant machines with hundreds of logical qubits",
+        "unlocks": "quantum chemistry and materials simulations beyond classical reach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale quantum computers integrated with classical high-performance computing",
+        "unlocks": "cryptographic and optimisation tasks, if error rates and qubit counts improve by many orders of magnitude."
+      }
+    ]
+  }
+}

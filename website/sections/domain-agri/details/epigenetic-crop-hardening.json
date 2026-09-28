@@ -30,5 +30,158 @@
         "def": "Changes in gene expression that do not involve alterations to the DNA sequence itself, such as through chemical modifications or protein interactions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Target discovery and methylome mapping",
+        "role": "finds which genes control drought and salt tolerance and how their DNA methylation is set.",
+        "parts": [
+          "reference genomes and pangenomes",
+          "whole-genome bisulfite sequencing",
+          "transcriptomics under stress",
+          "glasshouse stress phenotyping"
+        ]
+      },
+      {
+        "name": "Epigenome editing machinery",
+        "role": "rewrites methylation or chromatin state at a chosen gene without changing its sequence.",
+        "parts": [
+          "dead Cas9 or Cas12 fused to methyltransferases (e.g. DRM, DNMT3A/3L)",
+          "demethylases such as TET or ROS1",
+          "repressor domains (KRAB-type) as in CRISPRoff",
+          "guide RNAs and promoter-targeting design"
+        ]
+      },
+      {
+        "name": "Delivery and regeneration",
+        "role": "gets the editing machinery into cells that can still grow into a whole plant.",
+        "parts": [
+          "Agrobacterium-mediated transformation",
+          "biolistic bombardment",
+          "virus-based transient delivery",
+          "tissue-culture regeneration and marker removal"
+        ]
+      },
+      {
+        "name": "Chemical priming",
+        "role": "a non-transgenic route that nudges methylation using small molecules.",
+        "parts": [
+          "DNA methyltransferase inhibitors (5-azacytidine, zebularine)",
+          "histone deacetylase inhibitors",
+          "controlled seed or seedling soaking",
+          "repeated mild stress pre-treatment"
+        ]
+      },
+      {
+        "name": "Screening and phenotyping",
+        "role": "measures whether the epigenetic change actually improves yield under stress.",
+        "parts": [
+          "glasshouse drought and salinity trials",
+          "lysimeters and soil-moisture control",
+          "yield and water-use measurements",
+          "methylome resequencing to confirm the mark"
+        ]
+      },
+      {
+        "name": "Field validation and seed increase",
+        "role": "checks that the effect survives real weather, soil and generations.",
+        "parts": [
+          "multi-site, multi-year field trials",
+          "generational stability testing",
+          "seed multiplication and quality control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the targets",
+        "detail": "Screen tolerant and sensitive varieties to find genes that switch on under drought or salinity, and note the methylation state of their promoters."
+      },
+      {
+        "title": "Map the methylome",
+        "detail": "Compare whole-genome methylation maps of tolerant and sensitive lines to identify marks worth copying."
+      },
+      {
+        "title": "Design the edit",
+        "detail": "Choose whether to strip a silencing mark with a demethylase fusion or add one with a methyltransferase or repressor fusion, then design guide RNAs to that promoter."
+      },
+      {
+        "title": "Deliver into regenerable tissue",
+        "detail": "Introduce the machinery into callus or embryos by Agrobacterium or biolistics; alternatively treat seed or seedlings with a chemical modifier."
+      },
+      {
+        "title": "Regenerate and verify",
+        "detail": "Grow whole plants from the treated tissue, then confirm the new methylation and the expected change in gene expression by sequencing."
+      },
+      {
+        "title": "Screen under stress",
+        "detail": "Grow the plants in controlled drought and salt regimes and measure survival, biomass, water use and grain yield against untreated controls."
+      },
+      {
+        "title": "Check inheritance",
+        "detail": "Test whether the mark and the trait pass through seed to the next generation, since plants often reset epigenetic marks in gametes."
+      },
+      {
+        "title": "Trial in the field",
+        "detail": "Run multi-site, multi-year trials to see whether the gain holds under real rainfall, soil salinity and temperature swings."
+      },
+      {
+        "title": "Scale the winning route",
+        "detail": "Commercialise either as a bred line carrying a stable epigenetic variant, or as a seed-priming treatment that can be applied to existing varieties."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Plant transformation and tissue-culture regeneration",
+        "status": "exists",
+        "why": "the editing machinery must reach cells that can still be grown into a whole plant."
+      },
+      {
+        "tech": "CRISPR-based epigenome editors for plants",
+        "status": "partial",
+        "why": "demonstrated mainly in model species and a few crops; efficiency and specificity vary by species and target."
+      },
+      {
+        "tech": "Knowledge of plant methylation and stress memory",
+        "status": "partial",
+        "why": "which marks are causal and which are consequences is still being worked out for most stress genes."
+      },
+      {
+        "tech": "Transgenerational stability of epigenetic marks",
+        "status": "missing",
+        "why": "if the change is erased in the next generation it is useless as a seed product, though it may still work as a treatment."
+      },
+      {
+        "tech": "Field phenotyping and salinity/drought trial networks",
+        "status": "exists",
+        "why": "small glasshouse gains routinely disappear in real fields, so disciplined testing is essential."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab and glasshouse proof of concept in model plants and rice",
+        "unlocks": "evidence that editing methylation can change stress response at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reproducible yield gains in multi-year field trials of major cereals",
+        "unlocks": "confidence that the effect is real and economically worthwhile."
+      },
+      {
+        "stage": "Next",
+        "milestone": "validated seed-priming treatments and clearer rules on whether edited-methylation plants count as genetically modified",
+        "unlocks": "a route to market that does not depend on transformation of every variety."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "epigenetic variants bred into elite lines and stacked with conventional drought-tolerance genes",
+        "unlocks": "crops that hold yield on salt-affected and drought-prone farmland as the climate shifts."
+      }
+    ]
   }
 }

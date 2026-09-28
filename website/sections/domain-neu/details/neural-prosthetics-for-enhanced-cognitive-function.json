@@ -38,5 +38,155 @@
         "def": "Systematic investigations involving human participants to assess the safety and efficacy of medical interventions or technologies."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "the sensor — reads the firing of individual neurons or the summed field around them.",
+        "parts": [
+          "penetrating microelectrode shanks (silicon or thin-film)",
+          "surface ECoG grids",
+          "flexible polymer threads"
+        ]
+      },
+      {
+        "name": "Implant electronics",
+        "role": "amplifies, digitises and telemeters neural signals from inside the skull.",
+        "parts": [
+          "low-noise amplifiers",
+          "analogue-to-digital converters",
+          "radio or inductive link",
+          "hermetic titanium can"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns raw spike and field data into a usable signal — a memory pattern, an intended movement, a decoded word.",
+        "parts": [
+          "feature extraction",
+          "machine-learning model",
+          "calibration to the individual"
+        ]
+      },
+      {
+        "name": "Stimulator",
+        "role": "delivers patterned current back into tissue to nudge or replay activity.",
+        "parts": [
+          "current sources",
+          "electrode contacts",
+          "safety limits on charge per pulse"
+        ]
+      },
+      {
+        "name": "External compute and power",
+        "role": "runs the heavy computation and, in most designs, powers the implant through the skin.",
+        "parts": [
+          "wearable transceiver",
+          "battery",
+          "real-time processor"
+        ]
+      },
+      {
+        "name": "Biocompatible interface",
+        "role": "keeps the device alive and the tissue healthy for years.",
+        "parts": [
+          "soft coatings",
+          "anti-inflammatory drug elution",
+          "sealed feedthroughs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target circuit",
+        "detail": "You must first know which region encodes the function you want to support — for memory, the hippocampus and its input pathways."
+      },
+      {
+        "title": "Design the array",
+        "detail": "Electrode count, spacing and stiffness are chosen so the device reaches the right cells with acceptable tissue damage."
+      },
+      {
+        "title": "Fabricate in a cleanroom",
+        "detail": "Thin films of metal and insulator are deposited and etched onto a substrate, giving dozens to hundreds of recording and stimulating sites on one shank."
+      },
+      {
+        "title": "Package and seal",
+        "detail": "The array is bonded to a hermetic can with a wireless link; every seam must survive warm, salty body fluid for years."
+      },
+      {
+        "title": "Implant surgically",
+        "detail": "A neurosurgeon places the array through a small opening in the skull, aiming for the target using imaging and electrophysiological mapping."
+      },
+      {
+        "title": "Record and train the model",
+        "detail": "The system logs activity while the person performs a task and learns the neural code that predicts correct performance."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "When the decoder detects a weak or failing pattern, the stimulator delivers a matching micro-pattern — mimicking the missing signal rather than just exciting tissue."
+      },
+      {
+        "title": "Validate and de-risk",
+        "detail": "Trials must show benefit beyond placebo, stable signal quality over years, and safe charge limits — the failures that stopped earlier memory-stimulation trials."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-channel-count, long-lasting brain electrodes",
+        "status": "partial",
+        "why": "existing arrays lose signal over months to years as scar tissue forms."
+      },
+      {
+        "tech": "Real-time neural decoding",
+        "status": "partial",
+        "why": "speech and movement prosthetics now decode well in small trials, but memory codes are far less understood."
+      },
+      {
+        "tech": "Wireless power and data through skin",
+        "status": "partial",
+        "why": "a fully implanted, cable-free device is needed for everyday use."
+      },
+      {
+        "tech": "Biocompatible, hermetic packaging",
+        "status": "partial",
+        "why": "the implant must survive a decade in the body without leaking or triggering rejection."
+      },
+      {
+        "tech": "Evidence that stimulation improves cognition in healthy people",
+        "status": "missing",
+        "why": "reported gains from non-invasive stimulation are small and inconsistent; enhancement evidence is essentially absent."
+      },
+      {
+        "tech": "Regulatory and ethical framework for enhancement",
+        "status": "missing",
+        "why": "medical regulators approve treatments for disease, not boosting normal ability."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "restorative memory prosthetics tested in small human pilots under DARPA's Restoring Active Memory programme",
+        "unlocks": "a proof that decoding and re-stimulating a memory code can measurably help recall."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop deep brain stimulation for memory disorders that beats sham stimulation in controlled trials",
+        "unlocks": "reliable targets and parameters — the foundation for anything beyond therapy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "high-bandwidth, decade-long implants proven in speech and movement prosthetics",
+        "unlocks": "hardware that could plausibly support cognitive functions too."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cognitive augmentation in healthy users",
+        "unlocks": "an entirely new class of device — and unresolved questions about consent, identity and fairness."
+      }
+    ]
   }
 }

@@ -34,5 +34,158 @@
         "def": "The ability of a material or device to perform its intended function without causing adverse effects in the body."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Electrode interface",
+        "role": "reads the electrical activity of individual neurons, or writes current into them.",
+        "parts": [
+          "penetrating microelectrode arrays (e.g. the 100-electrode Utah array)",
+          "flexible thin-film polymer probes",
+          "surface electrode grids (ECoG)",
+          "intravascular electrodes (e.g. the Stentrode)"
+        ]
+      },
+      {
+        "name": "Implant electronics",
+        "role": "amplifies, digitises and transmits neural signals without wires through the skin.",
+        "parts": [
+          "low-power amplifier/digitising chip",
+          "wireless data link",
+          "inductive power coil",
+          "hermetically sealed titanium can",
+          "on-implant AI accelerator"
+        ]
+      },
+      {
+        "name": "Decoding AI",
+        "role": "turns thousands of noisy spike trains into intent — a cursor movement, a spoken word, a grasp.",
+        "parts": [
+          "recurrent neural network decoders",
+          "per-user calibration models",
+          "online/adaptive learning",
+          "language models for speech synthesis"
+        ]
+      },
+      {
+        "name": "Stimulation and feedback channel",
+        "role": "writes information back into the nervous system so control feels and behaves like the user's own body.",
+        "parts": [
+          "current-driver circuits",
+          "pulse pattern generators",
+          "sensory encoder models (touch, proprioception)"
+        ]
+      },
+      {
+        "name": "Surgical delivery and biocompatibility",
+        "role": "gets the device into the right tissue with minimal damage and keeps it working for years.",
+        "parts": [
+          "insertion tools and robotic placements",
+          "anti-inflammatory electrode coatings",
+          "chronic stability engineering"
+        ]
+      },
+      {
+        "name": "External compute and power",
+        "role": "the wearable or bedside hardware that runs heavy AI workloads and recharges the implant.",
+        "parts": [
+          "real-time inference unit",
+          "battery and wireless charger",
+          "clinician-facing tuning software",
+          "user app for calibration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the neural target",
+        "detail": "Decide which population of neurons carries the signal to be read or written — motor cortex for movement, speech cortex for language, or deeper structures for stimulation."
+      },
+      {
+        "title": "Fabricate the electrodes",
+        "detail": "Microfabrication etches hundreds of conductive sites onto a silicon or polymer shank, each site small enough to sit beside a single neuron."
+      },
+      {
+        "title": "Package the implant",
+        "detail": "Electronics are sealed in a hermetic case; everything that touches tissue is coated to reduce scarring, and power/data are delivered wirelessly through the skin."
+      },
+      {
+        "title": "Record a baseline",
+        "detail": "Before surgery, or in early sessions, the system captures the person's neural activity during imagined or attempted actions."
+      },
+      {
+        "title": "Calibrate the AI decoder",
+        "detail": "A model is trained to map that activity onto the intended output — moving a cursor, a robotic arm, or a synthesised voice. This is per-person and takes repeated sessions."
+      },
+      {
+        "title": "Implant surgically",
+        "detail": "For penetrating arrays, a small craniotomy places the electrodes in cortex; intravascular designs are threaded through a blood vessel in the neck instead."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "AI and user adapt to each other: the decoder updates as firing patterns drift, and the user learns to produce cleaner control signals. Feedback stimulation may restore a sense of touch."
+      },
+      {
+        "title": "Sustain and recalibrate",
+        "detail": "Over months to years the signal degrades as electrodes scar over. The system must compensate automatically, retrain quickly, or be re-implanted."
+      },
+      {
+        "title": "Extend beyond restoration",
+        "detail": "Turning a working neuroprosthetic into genuine augmentation of a healthy brain would require decoding higher cognitive functions such as memory and attention — a target that remains theoretical."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-lived, high-channel-count neural electrodes",
+        "status": "partial",
+        "why": "arrays in clinical trials record useful signals for years in some participants, but signal loss and scarring remain unsolved."
+      },
+      {
+        "tech": "Real-time, low-power AI inference",
+        "status": "exists",
+        "why": "edge inference chips already run the small recurrent models these decoders need."
+      },
+      {
+        "tech": "Wireless power and data through skin",
+        "status": "partial",
+        "why": "fully implanted, cable-free systems are in early clinical use but at lower channel counts than laboratory rigs."
+      },
+      {
+        "tech": "Neural coding of cognitive functions",
+        "status": "missing",
+        "why": "we can decode intended movement and speech reasonably well, but not memory, reasoning or attention in a way that could be augmented."
+      },
+      {
+        "tech": "Chronic biocompatibility",
+        "status": "missing",
+        "why": "the body's immune response slowly isolates any foreign object in the brain, and no coating has yet stopped it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "clinical trials restoring communication and movement in severe paralysis, with AI decoders translating attempted speech into text or synthesised voice",
+        "unlocks": "proof that adaptive decoding works in real daily life, not just in the lab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully wireless, higher-channel implants with on-implant AI and automatic recalibration",
+        "unlocks": "devices that need no technician present and last years rather than months."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bidirectional systems with sensory feedback, and early closed-loop stimulation research into mood and memory",
+        "unlocks": "prosthetics that feel like part of the body, plus the first evidence on modulating higher brain function."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cognitive augmentation in healthy people",
+        "unlocks": "unknown — it depends on decoding abilities we do not yet have, and raises hard questions about consent, identity and equity."
+      }
+    ]
   }
 }

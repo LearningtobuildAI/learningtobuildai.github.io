@@ -30,5 +30,155 @@
         "def": "A communication channel based on principles of quantum mechanics used to transmit information securely through QKD."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the quantum states (single photons or weak coherent pulses) that carry the key.",
+        "parts": [
+          "laser",
+          "attenuator",
+          "phase modulator"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "transmits photons with minimal loss and disturbance between the two parties.",
+        "parts": [
+          "optical fibre",
+          "free-space telescope",
+          "satellite link"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "measures incoming photons and records their quantum state.",
+        "parts": [
+          "single-photon avalanche diode",
+          "superconducting nanowire detector"
+        ]
+      },
+      {
+        "name": "Classical authenticated channel",
+        "role": "public link used for basis reconciliation, error correction and authentication.",
+        "parts": [
+          "internet connection",
+          "message authentication code"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns raw detection events into a shared secret key and estimates eavesdropping.",
+        "parts": [
+          "sifting",
+          "error correction",
+          "privacy amplification"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "stores keys and supplies them to encryption devices on demand.",
+        "parts": [
+          "key store",
+          "interface to encryptor"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Survey the link",
+        "detail": "Measure distance and loss; choose optical fibre for metropolitan links or free-space/satellite for longer or mobile paths."
+      },
+      {
+        "title": "Install endpoints",
+        "detail": "Set up photon sources and single-photon detectors at each end, with precise timing and alignment."
+      },
+      {
+        "title": "Establish classical authentication",
+        "detail": "Set up an authenticated public channel so an eavesdropper cannot impersonate either party."
+      },
+      {
+        "title": "Transmit quantum signals",
+        "detail": "Send photons one by one (or as weak pulses) and record which detector fires and at what time."
+      },
+      {
+        "title": "Sift the raw key",
+        "detail": "Compare measurement bases over the classical channel and keep only the events where both sides used the same basis."
+      },
+      {
+        "title": "Correct errors and check security",
+        "detail": "Run error correction to reconcile differences; estimate the error rate to bound how much an eavesdropper might know."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "Compress the corrected key into a shorter string that is provably secret except with negligible probability."
+      },
+      {
+        "title": "Integrate with encryption",
+        "detail": "Feed the key into a classical encryptor (one-time pad or AES) for data transmission."
+      },
+      {
+        "title": "Operate and monitor",
+        "detail": "Continuously generate fresh keys and watch for anomalies that could indicate an attack or hardware fault."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "they must detect individual photons with low noise and high timing resolution."
+      },
+      {
+        "tech": "Low-loss optical fibre or free-space links",
+        "status": "partial",
+        "why": "fibre loss limits range to a few hundred kilometres without repeaters; free-space needs clear line of sight."
+      },
+      {
+        "tech": "Quantum random number generators",
+        "status": "exists",
+        "why": "keys must be based on true randomness, not pseudo-random algorithms."
+      },
+      {
+        "tech": "Information-theoretic authentication",
+        "status": "exists",
+        "why": "the classical channel must be authenticated without relying on unproven computational assumptions."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "they would extend entanglement-based QKD beyond the reach of direct fibre or trusted-node networks."
+      },
+      {
+        "tech": "Standardisation and certification",
+        "status": "partial",
+        "why": "interoperability and security certification are still maturing, slowing large-scale deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Metropolitan point-to-point QKD links and small trusted-node networks",
+        "unlocks": "high-security key exchange for banks, data centres and government links over tens to hundreds of kilometres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "National trusted-node backbones and satellite QKD for intercontinental key exchange",
+        "unlocks": "wider coverage without quantum repeaters, though each trusted node must be physically secure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Quantum repeaters and entanglement distribution",
+        "unlocks": "long-distance QKD without trusted nodes, plus building blocks for a quantum internet."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Integration with quantum-safe cryptography and quantum networks",
+        "unlocks": "hybrid systems that combine physics-based key distribution with post-quantum algorithms for defence in depth."
+      }
+    ]
   }
 }

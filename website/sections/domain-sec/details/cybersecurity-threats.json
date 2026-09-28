@@ -37,5 +37,173 @@
         "def": "An attack on software, hardware, or firmware using a previously unknown vulnerability before a patch is available."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Cryptographic core",
+        "role": "keeps data unreadable to anyone without keys, in transit and at rest.",
+        "parts": [
+          "symmetric ciphers for bulk data",
+          "public-key algorithms for key exchange and signatures",
+          "key management and rotation",
+          "hardware security modules and trusted platform modules"
+        ]
+      },
+      {
+        "name": "Identity and access",
+        "role": "decides who and what may reach a system, and proves it.",
+        "parts": [
+          "directory or identity provider",
+          "multi-factor and phishing-resistant authenticators",
+          "certificate authority and device certificates",
+          "authorisation policy engine"
+        ]
+      },
+      {
+        "name": "Network defence",
+        "role": "filters, segments and inspects traffic so one breach does not become many.",
+        "parts": [
+          "firewalls and microsegmentation",
+          "intrusion detection and prevention sensors",
+          "DNS and web filtering",
+          "traffic inspection appliances"
+        ]
+      },
+      {
+        "name": "Endpoint telemetry and control",
+        "role": "watches each device closely enough to spot and stop an attacker on it.",
+        "parts": [
+          "kernel-level sensors (for example eBPF on Linux)",
+          "behavioural detection rules",
+          "sandbox detonation of suspicious files",
+          "isolation and quarantine functions"
+        ]
+      },
+      {
+        "name": "Detection and analytics",
+        "role": "turns millions of raw events into a short list of things worth a human looking at.",
+        "parts": [
+          "log collection and normalisation pipeline",
+          "detection rules mapped to attacker tactics (e.g. MITRE ATT&CK)",
+          "statistical and machine-learning anomaly models",
+          "threat-intelligence feeds"
+        ]
+      },
+      {
+        "name": "Response orchestration",
+        "role": "acts on a detection quickly and repeatably.",
+        "parts": [
+          "playbook engine",
+          "integrations into firewalls, identity and endpoint tools",
+          "evidence capture and case tracking",
+          "backup and recovery tooling"
+        ]
+      },
+      {
+        "name": "Software and supply-chain integrity",
+        "role": "stops trusted software channels being used against you.",
+        "parts": [
+          "dependency and vulnerability scanning",
+          "software bills of materials",
+          "code signing and build provenance"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map what you are defending",
+        "detail": "Inventory devices, services, data stores and the flows between them; you cannot protect or instrument what you have not recorded."
+      },
+      {
+        "title": "Establish trust anchors",
+        "detail": "Stand up certificate authorities and hardware key stores; issue device and service identities; retire shared passwords and unmanaged keys."
+      },
+      {
+        "title": "Harden and segment",
+        "detail": "Remove unused services, apply least-privilege permissions, and cut the network into zones so lateral movement is slow and noisy."
+      },
+      {
+        "title": "Instrument everywhere",
+        "detail": "Deploy endpoint sensors and central log collection; synchronise clocks and standardise event fields so records can be correlated."
+      },
+      {
+        "title": "Write detections, then try to beat them",
+        "detail": "Encode known attack patterns as rules, map them to tactics, and have a red team attempt those same techniques to see what is missed."
+      },
+      {
+        "title": "Add behavioural analytics",
+        "detail": "Train models on normal activity baselines, add them alongside rules, and tune thresholds until alert volumes are workable."
+      },
+      {
+        "title": "Automate the first response",
+        "detail": "Build playbooks that isolate a host, revoke a token or block an address automatically, with human approval for disruptive actions."
+      },
+      {
+        "title": "Rehearse failure",
+        "detail": "Test backups by restoring them, run incident exercises, and write post-incident reviews that change the rules."
+      },
+      {
+        "title": "Iterate continuously",
+        "detail": "Patch on a schedule, refresh threat intelligence, and re-run detection tests as infrastructure changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Well-reviewed public-key cryptography",
+        "status": "exists",
+        "why": "everything else — identity, encryption, code signing — rests on ciphers and protocols that have survived decades of attack."
+      },
+      {
+        "tech": "Reliable logging and time synchronisation",
+        "status": "exists",
+        "why": "correlating events across systems is impossible if clocks or record formats disagree."
+      },
+      {
+        "tech": "Labelled attack data and threat intelligence",
+        "status": "partial",
+        "why": "models and rules need examples of real intrusions, which defenders rarely have in quantity."
+      },
+      {
+        "tech": "Machine learning with tolerable false-positive rates",
+        "status": "partial",
+        "why": "detection models work, but noisy alerts make analysts ignore real incidents."
+      },
+      {
+        "tech": "Memory-safe systems software",
+        "status": "partial",
+        "why": "most severe exploitable bugs are memory-safety errors, still pervasive in operating systems and network stacks."
+      },
+      {
+        "tech": "Hardware roots of trust",
+        "status": "exists",
+        "why": "secure boot and sealed key storage let a device prove it has not been tampered with."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "layered perimeter, endpoint and log monitoring with multi-factor authentication",
+        "unlocks": "detection of common intrusion techniques and quick containment of known threats."
+      },
+      {
+        "stage": "Next",
+        "milestone": "zero-trust architectures with strong device identity and phishing-resistant authentication",
+        "unlocks": "damage limitation even after credentials are stolen."
+      },
+      {
+        "stage": "Next",
+        "milestone": "memory-safe rewrites of exposed services and software bills of materials across supply chains",
+        "unlocks": "far fewer remotely exploitable flaws to patch."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "migration to post-quantum cryptography as standards settle and hardware supports it",
+        "unlocks": "protection against adversaries recording encrypted traffic now to decrypt later."
+      }
+    ]
   }
 }

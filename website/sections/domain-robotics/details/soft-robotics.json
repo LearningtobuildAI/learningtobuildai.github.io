@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Compliant body",
+        "role": "the structural material that bends instead of breaking, and sets the robot's range of motion.",
+        "parts": [
+          "silicone or polyurethane elastomer",
+          "woven fibre reinforcement",
+          "multi-material moulded layers"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "makes the body move without rigid joints.",
+        "parts": [
+          "pneumatic chambers or bellows",
+          "McKibben-type artificial muscles",
+          "dielectric elastomer actuators",
+          "tendons and shape-memory elements"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "lets the robot feel what it is touching, because it cannot see its own deformation easily.",
+        "parts": [
+          "stretchable strain sensors",
+          "embedded pressure and curvature sensors",
+          "liquid-metal or conductive-elastomer tracks",
+          "external cameras for shape estimation"
+        ]
+      },
+      {
+        "name": "Fluid and power supply",
+        "role": "usually the bulkiest part, and often kept off the robot.",
+        "parts": [
+          "compressor or pump",
+          "pressure regulators and valves",
+          "battery or tether",
+          "high-voltage driver for electroactive polymers"
+        ]
+      },
+      {
+        "name": "Control",
+        "role": "commands soft structures whose exact shape is hard to model.",
+        "parts": [
+          "continuum-kinematics models",
+          "machine-learning controllers",
+          "closed-loop valve control"
+        ]
+      },
+      {
+        "name": "Interface",
+        "role": "the part that touches the world or the patient.",
+        "parts": [
+          "soft grippers and suction cups",
+          "wearable cuffs and exosuit straps",
+          "biocompatible contact surfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the deformation",
+        "detail": "Engineers decide how the body should bend, stretch or squeeze, then place internal channels, fibres and stiffening patches so pressurising a chamber produces that motion."
+      },
+      {
+        "title": "Make a mould",
+        "detail": "A mould is 3D-printed or machined, often in several pieces, so the finished part can be pulled out without tearing."
+      },
+      {
+        "title": "Cast the elastomer",
+        "detail": "Silicone or polyurethane is mixed, degassed to remove bubbles, poured into the mould and cured in an oven."
+      },
+      {
+        "title": "Add reinforcement and channels",
+        "detail": "Fibre sheets limit expansion in chosen directions; soluble or printed cores create the hollow pneumatic channels, which are then cleared out."
+      },
+      {
+        "title": "Bond and embed sensors",
+        "detail": "Layers are glued or co-cast together, and stretchable sensors, wiring or conductive tracks are embedded before the final cure."
+      },
+      {
+        "title": "Add fittings and valves",
+        "detail": "Tubing, connectors and miniature valves are attached, and the robot is leak-tested at working pressure — typically a few hundred kilopascals."
+      },
+      {
+        "title": "Calibrate and control",
+        "detail": "A model or learned controller maps pressure, voltage or tendon tension to actual shape, and the behaviour is tuned against measurements."
+      },
+      {
+        "title": "Qualify it for use",
+        "detail": "For medical or food-contact duties the device is cleaned, sterilised and tested for biocompatibility and fatigue over many thousands of cycles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Soft elastomer and fibre composites",
+        "status": "exists",
+        "why": "they provide the stretch, toughness and tear resistance the whole approach depends on."
+      },
+      {
+        "tech": "Miniature valves and pumps",
+        "status": "partial",
+        "why": "compressed air is still the best actuator, but the supply hardware is heavy and hard to wear."
+      },
+      {
+        "tech": "Stretchable electronics and sensors",
+        "status": "partial",
+        "why": "rigid wiring cracks when a soft body bends millions of times."
+      },
+      {
+        "tech": "Electroactive polymers with practical lifetimes",
+        "status": "missing",
+        "why": "dielectric elastomers need kilovolts and degrade, so they are mostly lab devices."
+      },
+      {
+        "tech": "Models for continuum mechanics",
+        "status": "partial",
+        "why": "controlling a body with infinite degrees of freedom is harder than controlling a jointed arm."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "soft grippers handling delicate food and produce in factories, and flexible endoscopic tools in surgery",
+        "unlocks": "automation of tasks that rigid metal hands crush or cannot reach."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable soft exosuits that assist walking and lifting in rehabilitation",
+        "unlocks": "help for people with mobility loss, without a rigid frame."
+      },
+      {
+        "stage": "Next",
+        "milestone": "soft implants such as conforming cardiac assist sleeves",
+        "unlocks": "devices that move with living tissue instead of damaging it."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-contained soft robots with on-board power, sensing and control",
+        "unlocks": "field, inspection and home applications where a tether or compressor is impractical."
+      }
+    ]
+  }
+}

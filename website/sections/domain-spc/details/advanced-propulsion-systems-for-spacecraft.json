@@ -33,5 +33,151 @@
         "def": "An electric propulsion system that accelerates ions using an electric field, producing thrust through the expulsion of charged particles."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Power source",
+        "role": "supplies the energy the thruster turns into motion — sunlight for electric drives, a fission reactor for nuclear ones.",
+        "parts": [
+          "solar arrays",
+          "fission reactor and shielding",
+          "radioisotope source (small probes)"
+        ]
+      },
+      {
+        "name": "Thrust generation",
+        "role": "accelerates propellant to very high exhaust speeds, far beyond chemical rockets.",
+        "parts": [
+          "discharge chamber and magnetic circuit (Hall thruster)",
+          "acceleration grids and hollow cathode (gridded ion engine)",
+          "reactor core and nozzle (nuclear thermal)",
+          "electrodes (pulsed plasma, electrospray)"
+        ]
+      },
+      {
+        "name": "Propellant storage and feed",
+        "role": "meters the working fluid into the thruster.",
+        "parts": [
+          "pressure vessels",
+          "flow controllers",
+          "liquid-hydrogen turbopump (nuclear thermal)",
+          "xenon, krypton, argon or iodine supply (electric)"
+        ]
+      },
+      {
+        "name": "Power processing and control",
+        "role": "converts and regulates electrical power at the voltages the thruster needs.",
+        "parts": [
+          "power processing unit",
+          "throttle and pointing logic",
+          "thrust and health sensors"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "dumps waste heat, the binding constraint on high-power engines.",
+        "parts": [
+          "radiators",
+          "heat pipes",
+          "regenerative cooling channels (nuclear thermal)"
+        ]
+      },
+      {
+        "name": "Structure and gimbal",
+        "role": "mounts and aims the engine without leaking thrust or cracking under vibration.",
+        "parts": [
+          "thrust structure",
+          "gimbal actuators",
+          "propellant lines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the power and propellant",
+        "detail": "A solar-electric mission needs kilowatts of array area and a storable gas such as xenon or krypton; a nuclear thermal engine needs a reactor and liquid hydrogen."
+      },
+      {
+        "title": "Build the thruster core",
+        "detail": "For ion engines, machine the discharge chamber, magnetic circuit and closely spaced grids; for nuclear thermal, fabricate uranium fuel elements with channels for hydrogen coolant and assemble them into a core with control drums."
+      },
+      {
+        "title": "Assemble the feed system",
+        "detail": "Fit tanks, valves and flow controllers — or, for nuclear thermal, a turbopump that pushes hydrogen through the core without melting it."
+      },
+      {
+        "title": "Add power processing or nozzle hardware",
+        "detail": "Electrical engines get a power processing unit that turns spacecraft bus voltage into the thousands of volts the grids need; thermal engines get a nozzle and pressure vessel built for hydrogen at high temperature."
+      },
+      {
+        "title": "Engineer the thermal path",
+        "detail": "Size radiators to reject waste heat, or design regenerative cooling so cold hydrogen absorbs heat on its way to the core."
+      },
+      {
+        "title": "Test in vacuum",
+        "detail": "Fire the engine in a large vacuum chamber, measuring thrust, exhaust speed and erosion over thousands of hours for electric drives."
+      },
+      {
+        "title": "Integrate and launch",
+        "detail": "Bolt the engine to the spacecraft, verify thrust alignment, then launch and commission it in space."
+      },
+      {
+        "title": "Operate over years",
+        "detail": "Throttle continuously for months or years; the usable life is set by how slowly grids, cathodes or fuel elements wear out."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "In-space electrical power at kilowatt to megawatt scale",
+        "status": "partial",
+        "why": "solar arrays reach the tens of kilowatts; megawatt-class fission reactors have been ground-tested but not flown at that scale."
+      },
+      {
+        "tech": "Long-life cathodes and erosion-resistant grids",
+        "status": "partial",
+        "why": "thruster lifetime in thousands of hours limits how much total impulse a spacecraft can buy."
+      },
+      {
+        "tech": "Compact space fission reactors and shielding",
+        "status": "partial",
+        "why": "a nuclear thermal or nuclear electric engine only works with a reactor light enough to launch and safe enough to fly."
+      },
+      {
+        "tech": "High-temperature refractory materials",
+        "status": "partial",
+        "why": "hydrogen at thousands of degrees attacks most metals; only a few alloys and coatings survive."
+      },
+      {
+        "tech": "Cryogenic hydrogen storage and transfer",
+        "status": "exists",
+        "why": "needed as fuel for nuclear thermal engines, but keeping it liquid for long missions remains hard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Hall and gridded ion thrusters flying routinely on communications satellites and science missions",
+        "unlocks": "station-keeping and deep-space cruising on a fraction of the propellant chemical rockets need."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher-power solar electric propulsion in the tens to hundreds of kilowatts",
+        "unlocks": "moving heavy cargo and crew vehicles between orbits without huge fuel loads."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a flight demonstration of a nuclear thermal engine",
+        "unlocks": "roughly twice the exhaust speed of the best chemical engines, cutting Mars trip times."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "megawatt-class nuclear electric propulsion",
+        "unlocks": "fast, flexible deep-space transport — if reactors, radiators and shielding can be made light enough."
+      }
+    ]
   }
 }

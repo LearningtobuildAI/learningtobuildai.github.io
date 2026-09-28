@@ -29,5 +29,151 @@
         "def": "A single layer of atoms or molecules on a surface."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Precursor delivery",
+        "role": "turns solid or liquid chemicals into a controlled vapour and carries them to the chamber.",
+        "parts": [
+          "heated bubblers and vaporisers",
+          "heated gas lines and fast-acting valves",
+          "inert carrier gas supply",
+          "precursors such as trimethylaluminium, titanium tetrachloride, water or ozone"
+        ]
+      },
+      {
+        "name": "Reaction chamber",
+        "role": "where the surface chemistry happens — either a vacuum chamber for wafers, or a fluidised bed and rotating drum for powders and particles.",
+        "parts": [
+          "vacuum vessel",
+          "heated substrate stage or particle bed",
+          "gas-distribution showerhead"
+        ]
+      },
+      {
+        "name": "Purge and pumping",
+        "role": "separates the two half-reactions so the film can only grow one atomic layer at a time.",
+        "parts": [
+          "dry pumps and vacuum gauges",
+          "inert purge gas",
+          "exhaust abatement"
+        ]
+      },
+      {
+        "name": "Patterning or inhibitor stage",
+        "role": "the 'printing' part — defines where film is allowed to grow.",
+        "parts": [
+          "self-assembled monolayer or small-molecule inhibitor dosing",
+          "micro-contact or inkjet printed blocking layers",
+          "mask removal step"
+        ]
+      },
+      {
+        "name": "Spatial gas head",
+        "role": "for high-throughput printing, moves the substrate past alternating precursor and purge zones instead of pulsing gases in time.",
+        "parts": [
+          "gas curtains",
+          "moving stage or roll-to-roll web",
+          "inert separation zones"
+        ]
+      },
+      {
+        "name": "Process control",
+        "role": "keeps thickness and composition within a fraction of a nanometre.",
+        "parts": [
+          "in-situ ellipsometry",
+          "mass spectrometry",
+          "quartz crystal microbalance",
+          "film-thickness and release-rate testing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Clean and activate the surface",
+        "detail": "Contaminants and native oxide are removed so the surface carries a known density of reactive sites, usually hydroxyl groups. Without them, the first precursor has nothing to bond to and growth is patchy."
+      },
+      {
+        "title": "Print the mask",
+        "detail": "Inhibitor molecules — typically a self-assembled monolayer or a printed polymer — are applied only where no film should grow. This is what makes the process a printing method rather than blanket coating: the pattern is defined by surface chemistry, not by etching afterwards."
+      },
+      {
+        "title": "Pulse the first precursor",
+        "detail": "A vapour such as trimethylaluminium is admitted for a fraction of a second. It reacts with the exposed surface sites and then stops, because all available sites are occupied — the reaction is self-limiting."
+      },
+      {
+        "title": "Purge",
+        "detail": "Inert gas sweeps out unreacted precursor. If any is left behind, it meets the co-reactant in the gas phase and deposits dust instead of a smooth film."
+      },
+      {
+        "title": "Pulse the co-reactant",
+        "detail": "Water, ozone or a plasma of oxygen or nitrogen is admitted. It reacts with the bound precursor layer, completes one atomic layer of oxide or nitride and restores reactive sites for the next cycle."
+      },
+      {
+        "title": "Purge and repeat",
+        "detail": "Each complete cycle adds roughly a tenth of a nanometre. Thousands of cycles build a film of a chosen thickness; in a spatial head the substrate instead travels continuously past alternating gas zones, which is far faster than pulsing."
+      },
+      {
+        "title": "Strip the mask and densify",
+        "detail": "The inhibitor layer is removed and the film may be annealed to crystallise it or tune its stress. With area-selective deposition this step must not damage the patterned film."
+      },
+      {
+        "title": "Verify, and for medicines test release",
+        "detail": "Thickness and composition are measured by ellipsometry or X-ray techniques. For drug particles, dissolution and release-kinetics tests confirm the coating dissolves at the intended rate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "UHV-grade gas delivery and pumping",
+        "status": "exists",
+        "why": "trace water or oxygen reacts with precursors and breaks the self-limiting behaviour the whole method depends on."
+      },
+      {
+        "tech": "Volatile, thermally stable precursors",
+        "status": "partial",
+        "why": "good chemistries exist for aluminium, titanium, hafnium and a few others, but many elements still lack precursors that vaporise cleanly without decomposing."
+      },
+      {
+        "tech": "Area-selective inhibitor chemistry",
+        "status": "partial",
+        "why": "monolayers that block growth on one material but not its neighbour have been shown for a limited set of surface pairs, mainly in semiconductor research."
+      },
+      {
+        "tech": "Spatial ALD gas heads",
+        "status": "partial",
+        "why": "separating the half-reactions in space rather than time lifts throughput from wafer-scale to square-metre-scale continuous coating."
+      },
+      {
+        "tech": "Low-temperature deposition",
+        "status": "partial",
+        "why": "drug particles, polymers and biological material cannot survive the 150–300 °C window used for standard thermal ALD, so plasma or specially designed chemistries are needed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "conventional ALD coating wafers, solar cells and display panels in factories",
+        "unlocks": "atomic-scale films as a routine industrial process."
+      },
+      {
+        "stage": "Next",
+        "milestone": "area-selective ALD adopted in semiconductor pilot lines",
+        "unlocks": "self-aligned features with fewer lithography and etch steps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous spatial ALD at square-metre scale",
+        "unlocks": "cheap large-area and flexible coatings, including on printed electronics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "low-temperature ALD printing onto drug particles and 3D-printed implants",
+        "unlocks": "precision dosing, controlled drug release and antibacterial or biocompatible surfaces on complex shapes."
+      }
+    ]
   }
 }

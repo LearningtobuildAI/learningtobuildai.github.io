@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Robot units",
+        "role": "small mobile machines that each carry a little material and know how to place it.",
+        "parts": [
+          "wheels, tracks or rotors for movement",
+          "gripper or printing nozzle",
+          "onboard battery",
+          "local processor"
+        ]
+      },
+      {
+        "name": "Localisation and sensing",
+        "role": "lets every robot know where it is and where the structure edge currently is, without GPS indoors.",
+        "parts": [
+          "cameras and laser or depth sensors",
+          "fiducial markers on placed material",
+          "onboard coordinate estimation"
+        ]
+      },
+      {
+        "name": "Coordination layer",
+        "role": "decides who builds what next using only local rules and neighbour messages, so no central controller is needed.",
+        "parts": [
+          "stigmergy-based task assignment",
+          "wireless mesh radio",
+          "collision avoidance"
+        ]
+      },
+      {
+        "name": "Material and deposition",
+        "role": "delivers concrete, mortar or interlocking bricks to the build face.",
+        "parts": [
+          "brick hopper or concrete pump and hose",
+          "extruder or gripper end effector",
+          "curing or adhesive control"
+        ]
+      },
+      {
+        "name": "Structure and interface design",
+        "role": "shapes the building so that small robots can build it without scaffolding.",
+        "parts": [
+          "interlocking or snap-fit blocks",
+          "printable geometry with no overhangs",
+          "build-order rules baked into the design"
+        ]
+      },
+      {
+        "name": "Site supervision and safety",
+        "role": "keeps people out of the swarm's working zone and gives a human an overview.",
+        "parts": [
+          "geofenced exclusion zone",
+          "progress monitoring dashboard",
+          "emergency stop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for swarm assembly",
+        "detail": "The building is decomposed into units weighing a few kilograms to tens of kilograms, with a build order that never needs temporary supports and never lets one robot block another."
+      },
+      {
+        "title": "Build the robots",
+        "detail": "Small wheeled or tracked bases are fitted with a manipulator or print head, a battery and a radio; each carries the same coordination software so any unit can be swapped in."
+      },
+      {
+        "title": "Establish a shared coordinate frame",
+        "detail": "Markers or a surveyed reference grid are set up on site; robots start from known positions and then track each other visually to stay aligned to a few millimetres."
+      },
+      {
+        "title": "Stock and stage material",
+        "detail": "Bricks, mortar or printing feedstock are placed at depots robots can reach, since each robot carries only enough for a few placements before returning."
+      },
+      {
+        "title": "Build up the structure",
+        "detail": "Robots claim the next free placement from local information, deposit material, and move on, like termites adding to a mound with no foreman."
+      },
+      {
+        "title": "Verify each other's work",
+        "detail": "Neighbouring robots scan completed sections and flag or redo a block that is out of tolerance before the layer above is placed."
+      },
+      {
+        "title": "Hand over to human trades",
+        "detail": "Robots complete the repetitive shell; electricians, plumbers and roofers follow on behind, working to the as-built geometry the swarm has recorded."
+      },
+      {
+        "title": "Scale the swarm",
+        "detail": "More units and more depots allow bigger structures, with throughput limited by the slowest step, not by the number of robots."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Relative localisation without GPS",
+        "status": "partial",
+        "why": "swarms must hold millimetre accuracy indoors and among moving machines; marker-based and visual methods work only in controlled settings."
+      },
+      {
+        "tech": "Decentralised construction algorithms",
+        "status": "partial",
+        "why": "researchers have shown robots building block structures with no central controller, but only for small, simple shapes."
+      },
+      {
+        "tech": "Robust small manipulators",
+        "status": "partial",
+        "why": "placement accuracy and payload must survive dust, vibration and weather on a real site."
+      },
+      {
+        "tech": "Deposition and adhesion of structural material",
+        "status": "partial",
+        "why": "printed or glued joints must reach the strength of conventional construction reliably."
+      },
+      {
+        "tech": "Battery energy density and wireless mesh networking",
+        "status": "exists",
+        "why": "they set how long a robot can work and how reliably the swarm can talk."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory swarms laying foam blocks and flying robots assembling small towers",
+        "unlocks": "proof that coordination without a central controller can produce a real structure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "drone-based additive manufacturing demonstrated on a tall freeform print",
+        "unlocks": "repair and building in places people cannot easily reach, such as bridges, towers and remote sites."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervised swarms on live sites handling repetitive shell work",
+        "unlocks": "faster, more predictable construction with fewer workers in hazardous positions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous site teams mixing ground and aerial robots",
+        "unlocks": "rapid housing and disaster recovery at a speed human crews cannot match."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "swarms building structures where no human crew can go",
+        "unlocks": "habitats and infrastructure in extreme environments, including in space."
+      }
+    ]
+  }
+}

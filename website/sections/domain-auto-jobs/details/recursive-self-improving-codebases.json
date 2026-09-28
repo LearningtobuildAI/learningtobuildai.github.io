@@ -34,5 +34,154 @@
         "def": "A method for comparing the performance of software or hardware against a standard or set of standards."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Evaluation harness",
+        "role": "the fitness signal — defines what 'better' means, and must sit outside the code being improved.",
+        "parts": [
+          "held-out task suite and scoring functions",
+          "regression tests",
+          "contamination checks"
+        ]
+      },
+      {
+        "name": "Proposal engine",
+        "role": "generates candidate modifications to the codebase.",
+        "parts": [
+          "a code-writing model",
+          "mutation and recombination operators",
+          "population manager"
+        ]
+      },
+      {
+        "name": "Sandbox and runtime",
+        "role": "runs candidates safely and cheaply, with the ability to roll back.",
+        "parts": [
+          "container isolation",
+          "resource and time limits",
+          "versioned snapshots"
+        ]
+      },
+      {
+        "name": "Safety and verification layer",
+        "role": "checks a change is correct and has not disabled safeguards.",
+        "parts": [
+          "property and type tests",
+          "immutable kernel the loop cannot edit",
+          "human approval gate for the evaluator"
+        ]
+      },
+      {
+        "name": "Experience archive",
+        "role": "remembers which edits worked, so the system does not rediscover them.",
+        "parts": [
+          "lineage graph of variants",
+          "scored result store",
+          "retrieval index"
+        ]
+      },
+      {
+        "name": "Weight-update pipeline",
+        "role": "the outer loop — retraining the model itself, not just its code.",
+        "parts": [
+          "training data assembly",
+          "distributed training run",
+          "evaluation gate"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the objective",
+        "detail": "Choose a task suite and metric that track real reasoning ability, and accept that anything measured will eventually be gamed."
+      },
+      {
+        "title": "Build the harness outside the loop",
+        "detail": "Write the evaluator as code the agent cannot modify, so it cannot redefine success. This is the single most important design decision."
+      },
+      {
+        "title": "Sandbox and snapshot",
+        "detail": "Give the agent an isolated copy of its own codebase, with rollback so a bad rewrite costs only compute."
+      },
+      {
+        "title": "Close the inner loop",
+        "detail": "Let it rewrite only peripheral modules — prompts, tool-use wrappers, retrieval and planning code — while the model weights stay frozen."
+      },
+      {
+        "title": "Add evolutionary search",
+        "detail": "Keep a population of variants and a lineage archive, keeping branches that fail now but look promising later, rather than only hill-climbing the best score."
+      },
+      {
+        "title": "Extend to the outer loop",
+        "detail": "Allow retraining on data the system itself generates and filters, so weights as well as code can change."
+      },
+      {
+        "title": "Freeze a safety kernel",
+        "detail": "Capability limits, shutdown paths and the evaluator itself are excluded from the editable surface."
+      },
+      {
+        "title": "Run continuously with oversight",
+        "detail": "Monitor for score drift, reward hacking and capability jumps; require human sign-off before any change to the objective or the editable surface."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable program synthesis by models",
+        "status": "partial",
+        "why": "models write working short programs well, but multi-file changes to a large codebase still need heavy testing."
+      },
+      {
+        "tech": "Automated benchmarks that resist gaming",
+        "status": "partial",
+        "why": "an improver optimises the benchmark itself unless the test set is hidden and rotated."
+      },
+      {
+        "tech": "Cheap parallel compute for thousands of evaluations",
+        "status": "exists",
+        "why": "evolutionary self-improvement needs far more rollouts than conventional training."
+      },
+      {
+        "tech": "Sandboxing and rollback infrastructure",
+        "status": "exists",
+        "why": "self-modification is only tolerable if changes can be reverted instantly."
+      },
+      {
+        "tech": "Verification of arbitrary learned code",
+        "status": "missing",
+        "why": "there is no practical way today to prove a self-written module preserves the properties you care about."
+      },
+      {
+        "tech": "Interpretability of the improved system",
+        "status": "missing",
+        "why": "without it, a capability jump or a hidden objective cannot be distinguished from ordinary progress."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "evolutionary coding agents that improve algorithms inside a fixed search space",
+        "unlocks": "faster kernels, schedulers and numerical routines, with humans still owning the objective."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that rewrite their own scaffolding — memory, tool use, planning — in a sandbox",
+        "unlocks": "measurable compounding gains on narrow task suites without retraining weights."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-adapted code and weights under a frozen evaluator",
+        "unlocks": "the first systems whose improvement rate clearly outpaces their designers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "open-ended improvement with human oversight only at the objective level",
+        "unlocks": "compounding research and engineering capacity — conditional on solving verification and interpretability first."
+      }
+    ]
   }
 }

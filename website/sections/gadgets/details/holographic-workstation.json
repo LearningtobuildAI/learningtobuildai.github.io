@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Light-field panel",
+        "role": "shows a dense set of views at once so several people can see 3D without glasses.",
+        "parts": [
+          "high-resolution LCD or OLED",
+          "lenslet array or diffractive backlight",
+          "per-pixel view steering"
+        ]
+      },
+      {
+        "name": "Aerial voxel engine",
+        "role": "draws the floating part of the image — bright points in empty air.",
+        "parts": [
+          "infrared or visible laser",
+          "scanning mirrors or spatial light modulator",
+          "focusing optics"
+        ]
+      },
+      {
+        "name": "Eye and hand tracking",
+        "role": "finds where each eye is and what the hands are doing, many times a second.",
+        "parts": [
+          "infrared cameras",
+          "depth sensor",
+          "gaze-estimation software"
+        ]
+      },
+      {
+        "name": "Haptic layer",
+        "role": "lets the user feel invisible controls.",
+        "parts": [
+          "ultrasonic phased array",
+          "modulation controller"
+        ]
+      },
+      {
+        "name": "Render and warp pipeline",
+        "role": "draws the right view for the right eye fast enough that it feels solid.",
+        "parts": [
+          "GPU",
+          "low-latency reprojection",
+          "scene graph"
+        ]
+      },
+      {
+        "name": "Safety envelope",
+        "role": "keeps laser and ultrasound exposure inside legal limits.",
+        "parts": [
+          "wavelength choice and beam enclosure",
+          "power interlocks",
+          "shielding and exposure monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the image method",
+        "detail": "Decide how much of the picture is a light-field panel and how much is drawn as points in air. Aerial voxels are the hard, bright, risky part; the panel can carry the rest."
+      },
+      {
+        "title": "Build the panel",
+        "detail": "A high-resolution screen is covered with a lenslet array or given a directional backlight, so each pixel emits many narrow beams and a viewer sees a different image from each position."
+      },
+      {
+        "title": "Add eye tracking",
+        "detail": "Infrared cameras watch the face and eyes; software estimates gaze in a few milliseconds. This steers extra view resolution toward each pupil instead of spreading it over all directions."
+      },
+      {
+        "title": "Assemble the aerial voxel engine",
+        "detail": "A laser is focused to a tiny point; scanning mirrors sweep that point through a volume. Air plasma glows briefly at the focus, or a trapped light-absorbing particle is moved and lit. Brighter, larger volumes need faster scanning and more laser power."
+      },
+      {
+        "title": "Design the safety envelope",
+        "detail": "Choose wavelengths that are strongly absorbed by water in the eye, keep scattered exposure under laser-safety limits, enclose stray beams, and interlock the laser so it stops if anything enters the volume. Ultrasound haptics must stay inside accepted exposure limits too."
+      },
+      {
+        "title": "Fuse tracking, haptics and interaction",
+        "detail": "Hand and finger positions drive objects; a phased array of ultrasound emitters focuses pressure at the fingertips; clicks, drags and gestures get visual and tactile feedback."
+      },
+      {
+        "title": "Tune the render loop",
+        "detail": "The GPU renders per-eye views at high frame rate and reprojects them at the last instant using fresh eye data, so head movement does not break the illusion of a solid object."
+      },
+      {
+        "title": "Calibrate everything",
+        "detail": "Eye tracker, panel and laser volume are aligned into one coordinate frame and re-checked as the user moves around the desk."
+      },
+      {
+        "title": "Validate with users and regulators",
+        "detail": "Depth-accuracy, comfort, fatigue and multi-user tests, plus laser and ultrasound certification, before anything can be sold."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Light-field and multi-view displays",
+        "status": "partial",
+        "why": "desktop 3D panels exist, but resolution per view is far below what a full workspace needs."
+      },
+      {
+        "tech": "Aerial voxel generation",
+        "status": "partial",
+        "why": "plasma and trapped-particle displays have been shown in labs; they are small, dim and slow."
+      },
+      {
+        "tech": "Ultrasonic mid-air haptics",
+        "status": "partial",
+        "why": "demonstrated in prototypes; limited force and small working volume."
+      },
+      {
+        "tech": "Low-latency eye and hand tracking",
+        "status": "exists",
+        "why": "shipped in headsets and phones; provides the gaze data the display needs."
+      },
+      {
+        "tech": "Real-time rendering hardware",
+        "status": "exists",
+        "why": "GPUs can render many views per frame, which was impossible a decade ago."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "eye-tracked light-field desktops and stereo AR/VR headsets",
+        "unlocks": "glasses-free 3D at a desk for one or two viewers, without the floating image."
+      },
+      {
+        "stage": "Next",
+        "milestone": "brighter, larger eye-safe aerial voxel volumes plus fused hand tracking and haptics",
+        "unlocks": "reaching into a 3D scene and feeling it respond — the core of the concept."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid workstations that combine a light-field panel with sparse aerial highlights",
+        "unlocks": "practical desks where only the objects you touch are drawn in mid-air."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "certified, full-parallax, multi-user volumetric workspaces at usable resolution and colour",
+        "unlocks": "shared 3D design and control rooms replacing walls of 2D screens."
+      }
+    ]
+  }
+}

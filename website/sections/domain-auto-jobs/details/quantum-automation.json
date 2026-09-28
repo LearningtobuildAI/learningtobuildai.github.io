@@ -34,5 +34,154 @@
         "def": "Materials that can conduct electricity with zero resistance at very low temperatures, often used in quantum computing for maintaining qubits in a stable state."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the qubits that do the computation — today a few hundred noisy physical qubits.",
+        "parts": [
+          "superconducting circuits in a dilution refrigerator, or trapped ions in a vacuum with lasers",
+          "microwave or laser control lines",
+          "shielding from heat and vibration"
+        ]
+      },
+      {
+        "name": "Classical control and readout",
+        "role": "generates the pulse sequences and reads back qubit states many times per second.",
+        "parts": [
+          "room-temperature electronics",
+          "signal generators",
+          "fast digitisers"
+        ]
+      },
+      {
+        "name": "Error handling layer",
+        "role": "fights decoherence, which destroys quantum states in microseconds.",
+        "parts": [
+          "error-mitigation techniques for today's hardware",
+          "error-correcting codes (e.g. surface codes) and logical qubits for future machines",
+          "magic-state distillation"
+        ]
+      },
+      {
+        "name": "Hybrid algorithm layer",
+        "role": "runs short quantum circuits inside a classical optimisation loop.",
+        "parts": [
+          "variational algorithms such as QAOA and VQE",
+          "problem encoding into cost Hamiltonians or QUBO form",
+          "classical optimiser"
+        ]
+      },
+      {
+        "name": "Data interface",
+        "role": "encodes industrial time-series and event data into quantum states, and results back out.",
+        "parts": [
+          "feature-map circuits for small, low-dimensional inputs",
+          "buffering and batching",
+          "links to plant databases and digital twins"
+        ]
+      },
+      {
+        "name": "Automation integration",
+        "role": "plugs the quantum routine into a control or maintenance system without breaking it.",
+        "parts": [
+          "API between the quantum service and the plant historian or maintenance planner",
+          "fallback classical solver",
+          "logging and monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Find a genuinely quantum-shaped problem",
+        "detail": "Restrict attention to tasks where the best classical algorithms struggle: combinatorial scheduling, sampling and some simulation. Most predictive-maintenance statistics are not in this category."
+      },
+      {
+        "title": "Reduce the data to a small input",
+        "detail": "Sensor histories are compressed into a handful of features or a cost function. This bottleneck, not the quantum hardware, usually limits the result."
+      },
+      {
+        "title": "Formulate it as a circuit or an Ising problem",
+        "detail": "The task becomes a shallow parametrised circuit for a gate-based machine, or a matrix of couplings for a quantum annealer."
+      },
+      {
+        "title": "Pick the hardware",
+        "detail": "Superconducting or trapped-ion machines suit variational circuits; annealers suit large optimisation problems with many variables but weaker guarantees."
+      },
+      {
+        "title": "Run the hybrid loop",
+        "detail": "A classical computer tunes the circuit parameters, the quantum processor samples, and the loop repeats until the result converges."
+      },
+      {
+        "title": "Apply error mitigation, then error correction",
+        "detail": "Near-term runs use statistical mitigation to get useful estimates from noisy hardware; a future machine adds logical qubits that survive longer than their parts."
+      },
+      {
+        "title": "Benchmark honestly against classical solvers",
+        "detail": "The same problem is run on tuned classical optimisation and machine-learning baselines. If the quantum route does not win on time, cost or accuracy, it is not deployed."
+      },
+      {
+        "title": "Embed in the plant control stack",
+        "detail": "The routine becomes a cloud-accessed service, with a classical fallback, behind the plant's historian and maintenance or scheduling software."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant logical qubits",
+        "status": "missing",
+        "why": "error correction has been demonstrated only on small codes; useful algorithms need many logical qubits, each built from thousands of physical ones."
+      },
+      {
+        "tech": "Quantum error mitigation",
+        "status": "partial",
+        "why": "it extends what noisy devices can do, but at a steep cost in repeated runs and without a scaling guarantee."
+      },
+      {
+        "tech": "Provable quantum advantage for machine learning",
+        "status": "missing",
+        "why": "no quantum algorithm has yet shown a practical speed-up on real industrial datasets."
+      },
+      {
+        "tech": "Fast, high-throughput quantum-classical data links",
+        "status": "partial",
+        "why": "feeding plant data in and results out quickly is a live engineering problem, not a solved one."
+      },
+      {
+        "tech": "Industrial control integration and certification",
+        "status": "missing",
+        "why": "control systems demand deterministic timing and long-term support; quantum services currently offer neither."
+      },
+      {
+        "tech": "Ruggedised quantum hardware",
+        "status": "missing",
+        "why": "dilution refrigerators and laser systems suit a laboratory, not a factory floor, so access will stay remote for now."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small demonstrations of scheduling, sampling and classification on noisy devices",
+        "unlocks": "a clearer picture of which problem classes might benefit — and which clearly will not."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation matures and benchmark studies settle the advantage question for narrow tasks",
+        "unlocks": "a defensible shortlist of automation subroutines worth trying on quantum hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant machines with tens to hundreds of logical qubits",
+        "unlocks": "larger optimisation and simulation problems beyond the reach of today's devices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum coprocessors called over the network by maintenance and scheduling software",
+        "unlocks": "routine use of quantum routines as one solver option among several, chosen by the software when it actually pays off."
+      }
+    ]
   }
 }

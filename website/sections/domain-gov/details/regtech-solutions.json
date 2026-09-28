@@ -42,5 +42,151 @@
         "def": "The process of examining large and complex data sets to discover patterns, correlations, and insights for making better decisions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Regulatory rule library",
+        "role": "turns legal text into versioned, checkable rules tied to their source clauses.",
+        "parts": [
+          "obligation database",
+          "rule engine",
+          "effective-date and jurisdiction metadata"
+        ]
+      },
+      {
+        "name": "Customer onboarding and screening",
+        "role": "establishes who a customer is and whether dealing with them is allowed.",
+        "parts": [
+          "identity document checks",
+          "sanctions and politically-exposed-person list matching",
+          "beneficial-ownership (KYB) resolution",
+          "customer risk scoring"
+        ]
+      },
+      {
+        "name": "Transaction monitoring",
+        "role": "flags payments and trades that look like money laundering, fraud or market abuse.",
+        "parts": [
+          "streaming transaction feed",
+          "threshold and pattern rules",
+          "anomaly-detection models",
+          "alert queue"
+        ]
+      },
+      {
+        "name": "Reporting and filing engine",
+        "role": "produces mandatory returns in the format each regulator demands.",
+        "parts": [
+          "data mapping to reporting schemas",
+          "XBRL or ISO 20022 message builders",
+          "submission and acknowledgement tracking"
+        ]
+      },
+      {
+        "name": "Case management and audit trail",
+        "role": "gives human reviewers the evidence, decision and immutable record.",
+        "parts": [
+          "investigation workflow",
+          "evidence storage",
+          "append-only logs and model versioning"
+        ]
+      },
+      {
+        "name": "Change management",
+        "role": "keeps the whole stack aligned as rules and lists change.",
+        "parts": [
+          "regulatory-horizon scanning",
+          "impact analysis",
+          "regression test suite"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory the obligations",
+        "detail": "Compliance lawyers and analysts read the applicable rules — for example an anti-money-laundering regime such as the FATF recommendations and the national laws implementing them, or the EU's GDPR for personal data — and break each into discrete, testable obligations with a citation."
+      },
+      {
+        "title": "Map the data",
+        "detail": "Internal customer, account, payment and trade records are profiled and mapped into one canonical schema, because the same customer may exist under several identifiers across systems."
+      },
+      {
+        "title": "Encode the rules",
+        "detail": "Each obligation becomes a rule with inputs, thresholds and an effective date, stored in version control so a 2024 rule and a 2026 rule can both be replayed correctly."
+      },
+      {
+        "title": "Build the detection models",
+        "detail": "Name-matching uses fuzzy string and transliteration matching, entity resolution links related parties into graphs, and anomaly models learn normal behaviour so unusual patterns stand out; thresholds are tuned against labelled historical cases."
+      },
+      {
+        "title": "Validate and backtest",
+        "detail": "The system is replayed over past transactions and filings, false-positive and false-negative rates are measured, and an independent function reviews the logic before go-live."
+      },
+      {
+        "title": "Integrate with core systems",
+        "detail": "APIs and streaming feeds connect the platform to core banking, trading and HR systems, with batch extracts only where real-time access is impossible."
+      },
+      {
+        "title": "Deploy with explainability",
+        "detail": "Every alert carries the rule or model version and the data that triggered it; decisions, overrides and reviewer identities are logged so an examiner can reconstruct the case."
+      },
+      {
+        "title": "Operate and update",
+        "detail": "A standing process watches for new rules and list changes, tests their impact in a sandbox, and releases updated logic without breaking historical audit trails."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Well-governed transaction and customer data",
+        "status": "partial",
+        "why": "the logic is only as good as the underlying records, which are often fragmented across legacy systems and jurisdictions."
+      },
+      {
+        "tech": "Cloud data platforms and compute",
+        "status": "exists",
+        "why": "screening entire customer bases nightly and monitoring payments in real time needs elastic processing."
+      },
+      {
+        "tech": "Natural-language processing over legal text",
+        "status": "partial",
+        "why": "extracting obligations and mapping them to controls still needs heavy human review to be reliable."
+      },
+      {
+        "tech": "Official sanctions and watchlists",
+        "status": "exists",
+        "why": "screening depends on authoritative lists published by bodies such as the United Nations and national treasuries."
+      },
+      {
+        "tech": "Machine-readable reporting standards",
+        "status": "exists",
+        "why": "formats such as XBRL and ISO 20022 let filings be generated and validated automatically."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rule-based screening and reporting embedded inside individual institutions",
+        "unlocks": "faster onboarding and fewer manual filings, but duplicated effort across the industry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared reporting utilities and standard data models",
+        "unlocks": "firms report once to a common channel rather than rebuilding the same returns per jurisdiction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI-assisted regulatory change management",
+        "unlocks": "new rules are automatically compared with existing controls, showing the gaps to close."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "supervisory technology and 'rules as code' shared with regulators",
+        "unlocks": "continuous assurance, where supervisor and supervised run the same logic on the same data and compliance becomes a live signal rather than an annual review."
+      }
+    ]
   }
 }

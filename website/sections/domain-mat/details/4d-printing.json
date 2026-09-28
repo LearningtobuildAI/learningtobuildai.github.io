@@ -37,5 +37,144 @@
         "def": "Water-based gels that can absorb and retain large amounts of water, often used in 4D printing for their responsive properties."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Stimuli-responsive feedstock",
+        "role": "the material that stores a programmed shape and changes when triggered.",
+        "parts": [
+          "shape-memory polymers",
+          "hydrogels that swell with water",
+          "shape-memory alloys",
+          "magnetic-particle composites"
+        ]
+      },
+      {
+        "name": "Multi-material printer",
+        "role": "deposits stiff and soft phases, or pre-strained layers, in one build.",
+        "parts": [
+          "multi-nozzle extrusion head",
+          "inkjet or polyjet head",
+          "vat photopolymerisation (SLA/DLP)",
+          "direct ink writing"
+        ]
+      },
+      {
+        "name": "Programmed architecture",
+        "role": "the internal layout — fibre direction, material gradients, residual stress — that encodes the shape change.",
+        "parts": [
+          "anisotropic fibre paths",
+          "layered swelling gradients",
+          "hinge and lattice geometry"
+        ]
+      },
+      {
+        "name": "Activation system",
+        "role": "delivers the trigger that makes the part move.",
+        "parts": [
+          "heaters or warm fluid",
+          "moisture",
+          "light",
+          "magnetic field coils",
+          "electric current"
+        ]
+      },
+      {
+        "name": "Modelling and control software",
+        "role": "predicts and inverts the transformation so a flat print becomes a target 3D shape.",
+        "parts": [
+          "finite-element simulation of swelling and shape memory",
+          "inverse-design algorithms",
+          "build-file generation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target transformation",
+        "detail": "Decide the final shape, the sequence of movements and the trigger — typically heat above a transition temperature, water, light or a magnetic field."
+      },
+      {
+        "title": "Formulate the material",
+        "detail": "Mix a shape-memory polymer or hydrogel with the right transition temperature, or load a polymer with magnetic particles; tune stiffness and swelling."
+      },
+      {
+        "title": "Design the internal architecture",
+        "detail": "Use simulation to place rigid and soft regions, fibre orientations or pre-stretch so the printed part folds, curls or expands in a chosen order."
+      },
+      {
+        "title": "Print the part",
+        "detail": "A multi-material printer lays down the different phases; some processes stretch or pre-strain fibres as they are deposited."
+      },
+      {
+        "title": "Program the temporary shape",
+        "detail": "For shape-memory materials, heat the part, deform it, then cool it under load so the strained shape is locked in."
+      },
+      {
+        "title": "Cure and finish",
+        "detail": "UV-cure, anneal, dissolve supports and trim, then measure the actual transition temperature and stiffness."
+      },
+      {
+        "title": "Trigger and characterise",
+        "detail": "Apply the stimulus and record how accurately and how fast the part reaches its target shape, and whether it survives repeated cycles."
+      },
+      {
+        "title": "Scale and qualify",
+        "detail": "Test fatigue over thousands of cycles and, for structural use, embed a self-healing chemistry so damage can be repaired — the least mature step."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Shape-memory and stimuli-responsive polymers",
+        "status": "partial",
+        "why": "shape-memory polymers are commercial, but few combine large reversible strain with structural strength."
+      },
+      {
+        "tech": "Multi-material additive manufacturing",
+        "status": "exists",
+        "why": "printers that jet or extrude several materials in one build are what allow rigid and soft phases to be patterned together."
+      },
+      {
+        "tech": "Computational inverse-design tools",
+        "status": "partial",
+        "why": "predicting and inverting swelling and shape-memory behaviour is still mostly bespoke research code."
+      },
+      {
+        "tech": "Self-healing polymers with load-bearing strength",
+        "status": "missing",
+        "why": "self-repairing structures need healed joints as strong as the parent material, which current chemistries do not deliver."
+      },
+      {
+        "tech": "Reliable actuation energy",
+        "status": "partial",
+        "why": "thermal and moisture triggers are easy in the lab but hard to supply and control inside a bridge, pipe or implant."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab demonstrations of single-trigger folding and unfolding, including self-folding origami and simple soft actuators",
+        "unlocks": "proof that printed geometry and material can encode a shape change."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-material, multi-stimulus parts with predictable, reversible motion",
+        "unlocks": "deployable medical devices such as expanding stents and soft robotic components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "qualification standards for cyclic life and fatigue",
+        "unlocks": "use in products that must work thousands of times, not in demonstrations."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "printed components that sense damage and repair themselves in service",
+        "unlocks": "self-maintaining infrastructure, pipes and implants — the goal the tile describes, still distant."
+      }
+    ]
   }
 }

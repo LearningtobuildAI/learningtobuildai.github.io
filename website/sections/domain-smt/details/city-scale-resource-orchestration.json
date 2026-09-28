@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is actually using, street by street.",
+        "parts": [
+          "smart electricity and water meters",
+          "pressure, flow and temperature sensors",
+          "acoustic leak sensors on water mains",
+          "substation and pumping-station instrumentation"
+        ]
+      },
+      {
+        "name": "Communications and edge",
+        "role": "carries the measurements back and runs simple control locally so it survives a network outage.",
+        "parts": [
+          "fibre backhaul",
+          "low-power wide-area radio (NB-IoT, LoRaWAN)",
+          "edge gateways and controllers"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "turns many utilities' data into one consistent, time-stamped picture.",
+        "parts": [
+          "streaming time-series database",
+          "asset registry / GIS map",
+          "common data model and APIs"
+        ]
+      },
+      {
+        "name": "Digital twin and forecasting",
+        "role": "a live model of the city's power and water networks that predicts the next few hours.",
+        "parts": [
+          "hydraulic network model",
+          "electrical load-flow model",
+          "weather and demand forecasting",
+          "anomaly detection"
+        ]
+      },
+      {
+        "name": "Optimisation and control",
+        "role": "decides what to do: shift load, change pressure, charge storage.",
+        "parts": [
+          "model predictive control",
+          "demand-response signals",
+          "battery and thermal storage dispatch",
+          "pump and valve scheduling"
+        ]
+      },
+      {
+        "name": "Actuation and operations",
+        "role": "physically changes the network and keeps humans in charge.",
+        "parts": [
+          "remote-operated valves, pumps and breakers",
+          "building HVAC and EV charge control",
+          "control room with operator override",
+          "cyber-physical security"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the network",
+        "detail": "Survey every pipe, cable, substation and valve into an accurate GIS model, recording age, diameter and capacity. Legacy records are usually the hardest part."
+      },
+      {
+        "title": "Instrument the critical nodes",
+        "detail": "Start where it pays: substations, pumping stations, district meters and the largest consumers. Whole-city per-building sensing comes later."
+      },
+      {
+        "title": "Connect and add edge compute",
+        "detail": "Build the radio and fibre links, and put local controllers at pumps and substations so they keep working if the central system is unreachable."
+      },
+      {
+        "title": "Calibrate the twin",
+        "detail": "Run the hydraulic and load-flow models against measured pressures and currents until the simulated city matches the real one within a few percent."
+      },
+      {
+        "title": "Add forecasting",
+        "detail": "Train models on weather, calendar and occupancy data to predict demand hours ahead, and to flag leaks or losses as unusual flow patterns."
+      },
+      {
+        "title": "Close the loop on one sector",
+        "detail": "Automate a proven win, such as night-time pressure management to cut water losses, or voltage optimisation and demand response on the power side."
+      },
+      {
+        "title": "Couple the sectors",
+        "detail": "Feed both twins into one optimiser so water pumping, heating, cooling and EV charging use the same cheap, low-carbon hours."
+      },
+      {
+        "title": "Harden and govern",
+        "detail": "Define fail-safe defaults, segment the network against cyber attack, agree who owns the data, and train operators to trust and override the system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ubiquitous cheap metering and sensing",
+        "status": "exists",
+        "why": "without continuous measurement there is nothing to optimise."
+      },
+      {
+        "tech": "Low-power wide-area IoT networks",
+        "status": "exists",
+        "why": "burying sensors citywide is only affordable with long-life, low-bandwidth radio."
+      },
+      {
+        "tech": "Water network and grid automation hardware",
+        "status": "exists",
+        "why": "remote valves, pumps and breakers are the muscles the software commands."
+      },
+      {
+        "tech": "City-scale digital twins",
+        "status": "partial",
+        "why": "district and single-utility twins are demonstrated, but whole-city coupled twins are not."
+      },
+      {
+        "tech": "Common cross-utility data standards",
+        "status": "missing",
+        "why": "power, water, waste and transport are modelled in incompatible formats and owned by different bodies."
+      },
+      {
+        "tech": "Critical-infrastructure cybersecurity",
+        "status": "partial",
+        "why": "centralising control of power and water creates a single high-value target."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "smart meters, SCADA and district-level leak detection in individual utilities",
+        "unlocks": "billions of litres of water and percent-level energy savings in well-run cities."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated sector optimisation: pressure management, voltage control, large-customer demand response",
+        "unlocks": "flexible load that helps absorb variable renewables."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coupled power–water–heat digital twin running one pilot district in near real time",
+        "unlocks": "proof that cross-sector optimisation beats managing each network alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "city-wide orchestration with guaranteed fail-safe operation",
+        "unlocks": "much lower losses and a genuine path toward waste-zero operation — though heat and water still cannot be moved cheaply across a whole city."
+      }
+    ]
+  }
+}

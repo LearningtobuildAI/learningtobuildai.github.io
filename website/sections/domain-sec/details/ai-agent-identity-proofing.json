@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Identifier layer",
+        "role": "assigns and resolves unique, cryptographically controlled identifiers to agents.",
+        "parts": [
+          "DID method",
+          "DID document",
+          "resolver"
+        ]
+      },
+      {
+        "name": "Credential layer",
+        "role": "issues tamper-evident claims about an agent's provenance, capabilities, and permissions.",
+        "parts": [
+          "issuer service",
+          "credential schema",
+          "digital signature suite"
+        ]
+      },
+      {
+        "name": "Agent-side wallet",
+        "role": "holds the agent's private keys and presents credentials when challenged.",
+        "parts": [
+          "secure key store",
+          "credential wallet",
+          "authentication client"
+        ]
+      },
+      {
+        "name": "Verification and policy",
+        "role": "checks presented credentials and applies access rules before letting an agent act.",
+        "parts": [
+          "verifier",
+          "policy engine",
+          "risk scoring"
+        ]
+      },
+      {
+        "name": "Trust registry",
+        "role": "lists trusted issuers and tracks revoked credentials.",
+        "parts": [
+          "trust registry",
+          "revocation list",
+          "governance rules"
+        ]
+      },
+      {
+        "name": "Audit trail",
+        "role": "records which agent did what, with proof, for accountability.",
+        "parts": [
+          "immutable log",
+          "monitoring dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define credential schemas",
+        "detail": "Decide what an agent identity credential must contain: who created it, what it is allowed to do, under whose authority, and when it expires."
+      },
+      {
+        "title": "Establish governance",
+        "detail": "Agree on a trust framework: which entities may issue credentials, how disputes are handled, and how issuers are held accountable."
+      },
+      {
+        "title": "Implement a DID method",
+        "detail": "Choose or create a decentralized identifier method suited to agents and build a resolver that maps identifiers to public keys and service endpoints."
+      },
+      {
+        "title": "Build issuance service",
+        "detail": "Create software for trusted authorities to sign and issue verifiable credentials to agents, with revocation hooks."
+      },
+      {
+        "title": "Build agent wallet",
+        "detail": "Integrate secure key storage and credential presentation into agent runtimes, so an agent can prove its identity without a human in the loop."
+      },
+      {
+        "title": "Add verification hooks",
+        "detail": "Embed credential verification into API gateways, message brokers, and agent-to-agent communication protocols."
+      },
+      {
+        "title": "Deploy trust registry and revocation",
+        "detail": "Run a live service that lets verifiers check whether an issuer is trusted and whether a credential has been revoked."
+      },
+      {
+        "title": "Pilot and iterate",
+        "detail": "Run agents through real workflows, test interoperability and attack resistance, then feed results back into standards."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "W3C Decentralized Identifiers (DIDs)",
+        "status": "exists",
+        "why": "provides a standard way to give agents self-owned identifiers that do not depend on a single platform."
+      },
+      {
+        "tech": "W3C Verifiable Credentials (VCs)",
+        "status": "exists",
+        "why": "standard data model for signed, tamper-evident claims that can be checked without contacting the issuer."
+      },
+      {
+        "tech": "Public key infrastructure and secure key management",
+        "status": "exists",
+        "why": "agents need hardware-backed or software-protected keys to sign and prove possession."
+      },
+      {
+        "tech": "Agent communication protocols with identity hooks",
+        "status": "partial",
+        "why": "most agent protocols today lack native identity and authentication layers, so proofing must be bolted on."
+      },
+      {
+        "tech": "Privacy-preserving proofs (e.g. zero-knowledge)",
+        "status": "partial",
+        "why": "needed to prove authority or provenance without revealing sensitive agent internals or user data."
+      },
+      {
+        "tech": "Standardized capability and permission ontologies",
+        "status": "missing",
+        "why": "without common schemas, credentials cannot be interpreted consistently across different systems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "DIDs and VCs are standardized for people and organisations; first experiments apply them to AI agents.",
+        "unlocks": "a cryptographic basis for machine identity that does not rely on shared secrets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Enterprise pilots where agents present verifiable credentials to APIs and other agents.",
+        "unlocks": "auditable, least-privilege access for autonomous workflows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Cross-vendor trust registries and revocation lists become interoperable.",
+        "unlocks": "agents from different providers can trust each other without bilateral contracts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Autonomous agents negotiate and prove identity and authority without human setup.",
+        "unlocks": "safe multi-agent economies and delegated workflows at scale."
+      }
+    ]
+  }
+}

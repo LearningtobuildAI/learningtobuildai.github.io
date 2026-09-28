@@ -34,5 +34,146 @@
         "def": "Application Programming Interfaces allowing the autonomous agent to interact with external tools and services."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Model backbone",
+        "role": "the language model that reads context and decides the next action.",
+        "parts": [
+          "transformer neural network",
+          "context window",
+          "optional fine-tuning or preference tuning"
+        ]
+      },
+      {
+        "name": "Control loop",
+        "role": "repeatedly plans, acts and observes until the task is done.",
+        "parts": [
+          "planner / task decomposition",
+          "reason-and-act prompting loop",
+          "stop and retry logic"
+        ]
+      },
+      {
+        "name": "Tool layer",
+        "role": "lets the agent actually change things outside the model.",
+        "parts": [
+          "tool-calling or function-calling API",
+          "sandboxed code execution",
+          "browser and file access",
+          "connectors to business systems"
+        ]
+      },
+      {
+        "name": "Memory and retrieval",
+        "role": "stores what happened and fetches relevant knowledge.",
+        "parts": [
+          "vector database with embeddings",
+          "summarisation of past turns",
+          "structured scratchpad or state store"
+        ]
+      },
+      {
+        "name": "Guardrails and permissions",
+        "role": "bounds what the agent may do without a human.",
+        "parts": [
+          "allow-lists and scoped credentials",
+          "human approval checkpoints",
+          "input/output filters"
+        ]
+      },
+      {
+        "name": "Evaluation and observability",
+        "role": "measures whether runs succeed and why they fail.",
+        "parts": [
+          "task benchmarks",
+          "trajectory logging and tracing",
+          "cost and latency meters"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose and test the base model",
+        "detail": "Pick a model whose context window, tool-calling ability and cost fit the job; benchmark it on the real tasks, not generic chat tests."
+      },
+      {
+        "title": "Define the tools",
+        "detail": "Write a small, well-documented set of callable functions — search, read file, send message, query database — each with typed inputs and outputs, since vague tool descriptions are a main cause of wrong actions."
+      },
+      {
+        "title": "Write the loop and prompt",
+        "detail": "Specify the system prompt, the reason-act-observe cycle, and the rules for when to stop, retry or ask a human."
+      },
+      {
+        "title": "Add memory",
+        "detail": "Embed past interactions and documents into a vector store so the agent can retrieve relevant facts instead of relying on the whole history fitting in context."
+      },
+      {
+        "title": "Sandbox execution",
+        "detail": "Run generated code and network calls in an isolated environment with narrowly scoped credentials, so a mistake cannot delete production data or leak secrets."
+      },
+      {
+        "title": "Build the evaluation harness",
+        "detail": "Create a test set of representative tasks with pass/fail checks, then run every prompt or model change against it to catch regressions."
+      },
+      {
+        "title": "Deploy with human checkpoints",
+        "detail": "Start in a supervised mode where irreversible actions need approval, log every step, and widen autonomy only as measured success rates justify it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with tool use",
+        "status": "exists",
+        "why": "the reasoning and structured output that an action loop depends on."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "supplies task-relevant knowledge beyond what the model memorised."
+      },
+      {
+        "tech": "Vector databases and embeddings",
+        "status": "exists",
+        "why": "the usual way to store and search long-term memory cheaply."
+      },
+      {
+        "tech": "Reliable long-horizon planning",
+        "status": "partial",
+        "why": "error rates compound over many steps, so agents drift or loop on tasks that take dozens of actions."
+      },
+      {
+        "tech": "Robust evaluation and sandboxing",
+        "status": "partial",
+        "why": "without it, autonomy is unsafe and improvements cannot be measured."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-domain agents that draft, code, search and file tickets under supervision",
+        "unlocks": "real time savings on bounded, reversible tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standard tool and permission protocols so agents can cross between systems",
+        "unlocks": "agents that finish a workflow end to end instead of one step."
+      },
+      {
+        "stage": "Next",
+        "milestone": "verifiable planning, where the agent checks its own intermediate results",
+        "unlocks": "longer, less supervised runs with fewer compounding errors."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "organisations running many cooperating agents with audited permissions",
+        "unlocks": "autonomous business processes — contingent on solving reliability, security and accountability."
+      }
+    ]
   }
 }

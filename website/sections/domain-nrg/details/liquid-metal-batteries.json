@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Liquid metal cell",
+        "role": "the core electrochemistry: three molten layers that separate themselves by density and immiscibility, so there is no solid membrane to wear out.",
+        "parts": [
+          "light-metal anode (calcium, magnesium, sodium or lithium) floating on top",
+          "molten salt electrolyte in the middle",
+          "dense heavy-metal alloy cathode (antimony, bismuth or lead) at the bottom"
+        ]
+      },
+      {
+        "name": "Hermetic enclosure and seals",
+        "role": "keeps oxygen and moisture away from highly reactive molten metals at several hundred degrees.",
+        "parts": [
+          "ceramic-metal seals",
+          "corrosion-resistant current collectors (often tungsten or molybdenum)",
+          "steel or alloy can",
+          "electrical feedthroughs"
+        ]
+      },
+      {
+        "name": "Thermal system",
+        "role": "holds every cell above its melting point, and handles the heat generated during charging and discharging.",
+        "parts": [
+          "electric heaters and start-up power",
+          "high-temperature insulation",
+          "thermal management control"
+        ]
+      },
+      {
+        "name": "Module and container",
+        "role": "groups cells into a transportable, serviceable unit.",
+        "parts": [
+          "cell racks",
+          "interconnect busbars",
+          "enclosure and fire protection"
+        ]
+      },
+      {
+        "name": "Power conversion and controls",
+        "role": "converts DC to grid AC and manages state of charge, temperature and grid signals.",
+        "parts": [
+          "bidirectional inverter",
+          "battery management system",
+          "site controller"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose and purify the chemistry",
+        "detail": "Specific grades of the light anode metal, the heavy cathode metal and the halide salt are selected; trace impurities can raise melting points or corrode the cell."
+      },
+      {
+        "title": "Assemble the cell layers",
+        "detail": "Measured amounts of the metals and salt are placed into the can in the correct order, so that once molten they settle into anode, electrolyte and cathode."
+      },
+      {
+        "title": "Seal the cell",
+        "detail": "Ceramic-metal seals and welded lids close the can. This is the hardest step: the seal must survive hundreds of degrees, thermal cycling and attack by molten salt."
+      },
+      {
+        "title": "Insulate and instrument",
+        "detail": "The sealed cell is wrapped in high-temperature insulation and fitted with heaters and temperature sensors."
+      },
+      {
+        "title": "Rack into modules",
+        "detail": "Cells are stacked into racks with busbars and thermal control to form a container-scale unit."
+      },
+      {
+        "title": "Commission",
+        "detail": "Heat-up power melts the layers. The first charge confirms the stack is working and that no cell is leaking or shorted."
+      },
+      {
+        "title": "Operate",
+        "detail": "During discharge, anode metal gives up electrons and alloys into the cathode; charging reverses this. Heating and pumping parasitics are continuously managed, and the plant must avoid letting cells freeze solid."
+      },
+      {
+        "title": "End of life",
+        "detail": "Cells are drained and the metals and salt are recovered and re-refined, which suits a chemistry built from commodity metals."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost reactive and heavy metals",
+        "status": "exists",
+        "why": "calcium, magnesium, antimony and lead are abundant and cheap, but antimony supply is small and concentrated."
+      },
+      {
+        "tech": "High-temperature hermetic sealing",
+        "status": "partial",
+        "why": "long-lived ceramic-metal seals against molten salt remain a reliability challenge."
+      },
+      {
+        "tech": "Corrosion-resistant current collectors",
+        "status": "exists",
+        "why": "tungsten and molybdenum resist molten metals and salts, but add cost."
+      },
+      {
+        "tech": "Cheap high-temperature insulation and heating",
+        "status": "exists",
+        "why": "the battery must be kept molten whether or not it is cycling, and that parasitic load cuts round-trip efficiency."
+      },
+      {
+        "tech": "Low-cost manufacturing at scale",
+        "status": "missing",
+        "why": "no one has yet built liquid metal cells on automated lines at the volume grid storage needs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cell and container-scale demonstrations of roughly tens to a few hundred kilowatt-hours",
+        "unlocks": "the operating data needed to judge calendar life and freeze-thaw survival."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-megawatt-hour installations with several hours of duration, competing with lithium-ion on cost per cycle rather than efficiency",
+        "unlocks": "a durable, non-flammable option for daily cycling on the grid."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated cell production and a secured metals supply chain",
+        "unlocks": "falling capital cost and the ability to build many projects at once — the point at which a developer fell short."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "very long duration storage, days rather than hours, using inexpensive abundant metals",
+        "unlocks": "firming high shares of wind and solar without gas turbines."
+      }
+    ]
+  }
+}

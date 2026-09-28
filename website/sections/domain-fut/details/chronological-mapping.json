@@ -28,5 +28,148 @@
         "def": "The delayed arrival of light that has been reflected or refracted by a massive object, allowing for the observation of past events in space and time."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Target scene",
+        "role": "the thing to be viewed: the Earth at some past date, seen only by the light it has already emitted and that has since travelled outward.",
+        "parts": [
+          "reflected sunlight in visible and near-infrared",
+          "thermal infrared emission",
+          "artificial light and radio leakage"
+        ]
+      },
+      {
+        "name": "Gravitational lens",
+        "role": "bends light travelling past a massive object so that several different paths reach one observer, each with a different travel time.",
+        "parts": [
+          "a galaxy, cluster or black hole on the line of sight",
+          "multiple-image paths",
+          "time delays between them"
+        ]
+      },
+      {
+        "name": "Light-path and timing model",
+        "role": "works out which past epoch arrives along which path and when.",
+        "parts": [
+          "general-relativistic ray tracing",
+          "mass model of the lens",
+          "time-delay equations"
+        ]
+      },
+      {
+        "name": "Collector",
+        "role": "gathers an almost unimaginably faint signal.",
+        "parts": [
+          "large-aperture telescope or interferometer array",
+          "coronagraph or starlight suppression",
+          "photon-counting detectors",
+          "very long integration times"
+        ]
+      },
+      {
+        "name": "Reconstruction and timing",
+        "role": "turns raw photons into a dated image and anchors the delay to a real clock.",
+        "parts": [
+          "foreground subtraction",
+          "deconvolution through the lens model",
+          "atomic clocks",
+          "calibration sources such as lensed supernovae or pulsars"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Search for a usable alignment",
+        "detail": "Scan catalogues of galaxies, clusters and black holes for a geometry where a line of sight from a chosen observing point grazes a massive lens and continues on to the Earth's past position. No such configuration is known."
+      },
+      {
+        "title": "Model the light paths",
+        "detail": "General-relativistic ray tracing through a mass model of the lens yields the magnification, the number of images and the time delay of each, so the past epoch each path carries can be labelled."
+      },
+      {
+        "title": "Build the collector",
+        "detail": "Assemble a large-aperture instrument, probably a space interferometer, at the point the geometry requires — which would be at interstellar distance, far beyond any spacecraft flown so far."
+      },
+      {
+        "title": "Suppress the lens",
+        "detail": "The lens object is itself bright; coronagraphy and nulling interferometry must remove its glow before the faint Earth signal can be counted."
+      },
+      {
+        "title": "Integrate and detect",
+        "detail": "Photon-counting detectors stare for very long exposures; the Earth is a tiny, dim, non-coherent source at these distances, so the required collecting area is larger than anything yet built."
+      },
+      {
+        "title": "Calibrate the delay",
+        "detail": "Variable sources seen through the same lens — a lensed supernova appearing again in a second image, or a repeating pulsar — pin down the travel-time difference so the epochs can be dated."
+      },
+      {
+        "title": "Reconstruct the scene",
+        "detail": "Invert the lens model to recover an image of the Earth at a known past date, accepting that the result is smeared, faint and mixed with foreground light."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Gravitational lensing theory and time-delay measurement",
+        "status": "exists",
+        "why": "General relativity predicts multiple images with measurable delays, and astronomers already observe the same supernova in several images at predicted times."
+      },
+      {
+        "tech": "Time-delay cosmography",
+        "status": "exists",
+        "why": "Programmes that use lensed quasars to measure the expansion rate already build and fit the lens and delay models this idea depends on."
+      },
+      {
+        "tech": "Space-based coronagraphy and interferometry",
+        "status": "partial",
+        "why": "the Earth signal would be buried under the lens galaxy's glare and needs starlight suppression far beyond current flight instruments."
+      },
+      {
+        "tech": "Very large aperture at interstellar distance",
+        "status": "missing",
+        "why": "the collector would have to be placed many light-years out, which is beyond present propulsion and communications."
+      },
+      {
+        "tech": "A suitable lens and geometry",
+        "status": "missing",
+        "why": "the alignment needed to fold the Earth's own escaping light back toward an observer is not known to occur anywhere."
+      },
+      {
+        "tech": "Extremely sensitive photon counting",
+        "status": "partial",
+        "why": "detectors can count single photons, but not at the signal-to-noise this geometry implies."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine multi-image and time-delay astronomy of lensed supernovae and quasars",
+        "unlocks": "confident lens models and delay measurements, the mathematical core of any past-viewing scheme."
+      },
+      {
+        "stage": "Next",
+        "milestone": "active exoplanet imaging, including concepts for using the Sun's own gravity focus about 550 astronomical units out",
+        "unlocks": "real experience of focusing and reconstructing images from light bent by gravity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a spacecraft reaching the solar gravitational lens region and returning a resolved image",
+        "unlocks": "proof that lens-based reconstruction works and that a distant observatory can be operated at all."
+      },
+      {
+        "stage": "Further out",
+        "milestone": "an interstellar observatory at a known light-time from Earth",
+        "unlocks": "a view of the Earth as it was years or decades earlier — but only by ordinary light-travel delay, no lens required."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "a dedicated collector positioned behind a massive lens aligned with the Earth's past light",
+        "unlocks": "a true mirrored look into the past, if the geometry, sensitivity and foreground problems can ever be solved."
+      }
+    ]
   }
 }

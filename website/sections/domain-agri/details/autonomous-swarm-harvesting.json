@@ -30,5 +30,147 @@
         "def": "A field of study that focuses on enabling computers to interpret and understand visual information from the world, often involving image or video data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mobile platform",
+        "role": "carries the robot through crop rows without damaging plants.",
+        "parts": [
+          "lightweight chassis",
+          "electric motors",
+          "wheels or tracks",
+          "suspension"
+        ]
+      },
+      {
+        "name": "Perception system",
+        "role": "sees the crop, weeds and obstacles in real time.",
+        "parts": [
+          "RGB and depth cameras",
+          "LiDAR",
+          "GPS/RTK",
+          "onboard computer"
+        ]
+      },
+      {
+        "name": "End-effector",
+        "role": "performs the delicate task — picking fruit or cutting weeds.",
+        "parts": [
+          "soft gripper or cutting tool",
+          "force sensors",
+          "actuators"
+        ]
+      },
+      {
+        "name": "Swarm coordination",
+        "role": "lets many robots share a field and work as a team.",
+        "parts": [
+          "wireless mesh radios",
+          "task-allocation software",
+          "cloud or edge controller"
+        ]
+      },
+      {
+        "name": "Power and energy",
+        "role": "keeps robots running through a working day.",
+        "parts": [
+          "lithium-ion battery pack",
+          "battery management system",
+          "charging dock or swap system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for the crop",
+        "detail": "Choose row spacing, height and payload based on the target crop (e.g., lettuce, strawberries, vines). Size the robot to pass between rows without touching plants."
+      },
+      {
+        "title": "Build the chassis and drivetrain",
+        "detail": "Weld or mould a light frame, fit hub motors or geared motors to wheels or tracks, and add suspension to ride over uneven soil."
+      },
+      {
+        "title": "Integrate sensors and compute",
+        "detail": "Mount cameras and LiDAR at the right height and angle, connect GPS/RTK for row-level positioning, and install an onboard computer for vision and control."
+      },
+      {
+        "title": "Develop perception and control software",
+        "detail": "Implement SLAM to map rows, train computer-vision models to distinguish crop from weed or ripe from unripe fruit, and write motion-planning code to reach targets without collisions."
+      },
+      {
+        "title": "Prototype end-effectors",
+        "detail": "Build soft grippers or cutting tools, test them on real plants, and tune force and speed to avoid bruising or uprooting."
+      },
+      {
+        "title": "Implement swarm coordination",
+        "detail": "Set up wireless mesh communication, write algorithms that assign rows and tasks to robots, and handle recharging or hand-offs when a robot's battery runs low."
+      },
+      {
+        "title": "Field trials and iteration",
+        "detail": "Run fleets in commercial fields across a season, collect failure data, and refine hardware and models."
+      },
+      {
+        "title": "Scale manufacturing",
+        "detail": "Move from hand-built prototypes to assembly lines, standardise parts, and set up service and charging infrastructure for farms."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Computer vision for plant-level tasks",
+        "status": "partial",
+        "why": "distinguishing a weed from a crop seedling, or a ripe fruit from a leaf, is still unreliable in dense foliage and changing light."
+      },
+      {
+        "tech": "Robust SLAM and localisation in fields",
+        "status": "exists",
+        "why": "GPS/RTK gives row-level accuracy, and vision-based SLAM handles the rest, but tall crops can block signals."
+      },
+      {
+        "tech": "Soft and adaptive grippers",
+        "status": "partial",
+        "why": "grippers exist for some fruits (e.g., strawberries) but not for all; they must handle different shapes and firmness without damage."
+      },
+      {
+        "tech": "Swarm communication and task allocation",
+        "status": "partial",
+        "why": "mesh networking works, but coordinating dozens of robots in real time in a field is still research-stage."
+      },
+      {
+        "tech": "Sufficient battery energy and fast charging",
+        "status": "partial",
+        "why": "small robots have limited runtime; battery swapping or fast charging must be practical in a farm setting."
+      },
+      {
+        "tech": "Affordable sensors and compute",
+        "status": "exists",
+        "why": "cameras, LiDAR and embedded GPUs are now cheap enough for commercial robots."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-task robots (e.g., autonomous weeders) commercially deployed in some crops",
+        "unlocks": "reduced herbicide use and labour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-robot fleets for weeding on broad-acre and vegetable farms",
+        "unlocks": "24-hour operation and lower cost per hectare."
+      },
+      {
+        "stage": "Next",
+        "milestone": "delicate fruit picking at commercial speed",
+        "unlocks": "harvest labour relief for high-value crops like berries and apples."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous swarm farms where robots plant, tend and harvest with minimal human oversight",
+        "unlocks": "precision agriculture at scale and new farming models."
+      }
+    ]
   }
 }

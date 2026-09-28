@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Optical terminal",
+        "role": "sends or receives the actual signal through the lens; the Sun's 1.4 million km width sets an enormous effective aperture, so even a modest telescope can be collimated to a very narrow beam.",
+        "parts": [
+          "large-aperture telescope or phased array",
+          "high-power laser and amplifier",
+          "fine pointing and vibration isolation",
+          "low-noise photon-counting detector"
+        ]
+      },
+      {
+        "name": "Beamline (the Sun as lens)",
+        "role": "the lens itself — not hardware, but a geometry that must be modelled and exploited, with the solar disc blocking the line of sight unless occulted.",
+        "parts": [
+          "focal-line geometry models",
+          "coronal turbulence and noise models",
+          "coronagraph or external occulter"
+        ]
+      },
+      {
+        "name": "Station-keeping and navigation",
+        "role": "holds the terminal on the anti-stellar axis, where lateral excursions of even a few kilometres degrade the gain.",
+        "parts": [
+          "precise ranging beacons",
+          "low-thrust thrusters",
+          "star trackers and autonomous navigation"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "sunlight is negligible past 550 AU, so the terminal needs its own reactor or radioisotope source.",
+        "parts": [
+          "fission reactor or radioisotope generators",
+          "radiators",
+          "power conditioning"
+        ]
+      },
+      {
+        "name": "Relay and backhaul",
+        "role": "the terminal must talk to Earth across 550 AU while simultaneously pointing at a distant star, so a separate high-power link is needed.",
+        "parts": [
+          "downlink laser",
+          "intermediate relay spacecraft",
+          "Earth-based or orbital receiving telescopes",
+          "deep-space atomic clocks"
+        ]
+      },
+      {
+        "name": "Delivery and propulsion",
+        "role": "getting mass to the focal region in decades rather than centuries.",
+        "parts": [
+          "heavy-lift launcher",
+          "solar flyby heat shield for an Oberth manoeuvre",
+          "nuclear-electric or beamed-energy sail stage"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the geometry",
+        "detail": "Choose the target star, then compute the narrow anti-stellar line where the Sun focuses its light; the useful lateral offset from that line is small, so the operating point must be defined before any hardware is built."
+      },
+      {
+        "title": "Design the optical terminal",
+        "detail": "Work out aperture, wavelength and transmit power needed to close the link against the Sun's own brightness and coronal noise, and whether a coronagraph is required to hide the solar disc."
+      },
+      {
+        "title": "Build the spacecraft",
+        "detail": "Assemble telescope, laser, reactor, radiators, thrusters and an ultra-stable clock into a package light enough to launch and hardy enough to survive a close solar pass."
+      },
+      {
+        "title": "Launch and dive past the Sun",
+        "detail": "Fly a heat-shielded probe very close to the Sun, where a small burn buys a large velocity change, converting a centuries-long cruise into roughly two to three decades."
+      },
+      {
+        "title": "Cruise",
+        "detail": "Spend 20 to 30 years coasting outward with periodic ranging and autonomous navigation, keeping the spacecraft healthy and its clock stable."
+      },
+      {
+        "title": "Arrive and calibrate",
+        "detail": "Use known background radio sources and stars to find the exact focal line; the corona distorts the lens, so the terminal must map and correct for that noise before it is useful."
+      },
+      {
+        "title": "Deploy the terminal",
+        "detail": "Point the optics at the target star and separately establish a high-power optical link back toward the inner solar system."
+      },
+      {
+        "title": "Operate",
+        "detail": "Send the coded signal; reception at the far end would require a counterpart station sitting on that star's own focal line, built to the same principles."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep-space optical communication",
+        "status": "partial",
+        "why": "laser links have been demonstrated across hundreds of millions of kilometres, but not across hundreds of astronomical units."
+      },
+      {
+        "tech": "Space fission power",
+        "status": "partial",
+        "why": "solar panels are useless at 550 AU; reactors have been ground-tested but not flown for this kind of decades-long mission."
+      },
+      {
+        "tech": "Propulsion above roughly 100 km/s",
+        "status": "missing",
+        "why": "at Voyager-like speeds the trip takes many centuries, so a close solar flyby, nuclear-electric stage or beamed sail is essential."
+      },
+      {
+        "tech": "Ultra-stable clocks and frequency references",
+        "status": "exists",
+        "why": "coherent detection over these distances demands oscillators that drift very little over years."
+      },
+      {
+        "tech": "Solar corona as a lens",
+        "status": "partial",
+        "why": "the bending is well understood, but coronal turbulence and noise must be characterised before gain can be realised."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "theory and mission-concept studies, mostly aimed at using the lens to image exoplanets rather than to transmit",
+        "unlocks": "a quantitative link budget showing what a terminal would need."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small robotic precursor reaches the focal region with a telescope and measures the lens and its noise directly",
+        "unlocks": "real data on gain and turbulence instead of models."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a relay chain of high-power optical links between the focal region and Earth",
+        "unlocks": "a genuine transmit-and-receive station rather than a one-way beacon."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a deliberate transmission to a nearby star, and a two-way link if a counterpart station is built there",
+        "unlocks": "interstellar communication at data rates no ordinary transmitter could reach."
+      }
+    ]
+  }
+}

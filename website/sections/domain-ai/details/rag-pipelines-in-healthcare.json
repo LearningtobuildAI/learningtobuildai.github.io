@@ -29,5 +29,158 @@
         "def": "Machine learning models trained on vast amounts of text data, capable of generating human-like language in various contexts."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Clinical data ingestion",
+        "role": "Collects and standardises patient records, notes and medical literature into a machine-readable form.",
+        "parts": [
+          "EHR connectors (HL7 FHIR)",
+          "document and PDF parsers",
+          "de-identification and anonymisation tools"
+        ]
+      },
+      {
+        "name": "Knowledge index",
+        "role": "Stores embedded representations of clinical text for fast semantic search.",
+        "parts": [
+          "embedding model",
+          "vector database",
+          "metadata filters (e.g., by date, specialty)"
+        ]
+      },
+      {
+        "name": "Retriever",
+        "role": "Fetches the most relevant passages from the index when a clinician asks a question.",
+        "parts": [
+          "dense retriever",
+          "sparse/BM25 retriever",
+          "re-ranker"
+        ]
+      },
+      {
+        "name": "Generator",
+        "role": "Produces a grounded answer by combining the query with retrieved evidence.",
+        "parts": [
+          "medical large language model",
+          "prompt template with citation instructions",
+          "output formatter"
+        ]
+      },
+      {
+        "name": "Clinical validation layer",
+        "role": "Checks the generated answer for safety, accuracy and consistency with guidelines.",
+        "parts": [
+          "rule-based clinical checks",
+          "hallucination detector",
+          "uncertainty quantification"
+        ]
+      },
+      {
+        "name": "Security and compliance",
+        "role": "Protects patient privacy and provides audit trails for every query and answer.",
+        "parts": [
+          "access control",
+          "encryption",
+          "logging and audit"
+        ]
+      },
+      {
+        "name": "Clinician interface",
+        "role": "Presents answers, citations and confidence to the user within their workflow.",
+        "parts": [
+          "EHR integration",
+          "chat or search box",
+          "feedback mechanism"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the clinical question and data sources",
+        "detail": "Choose a narrow task, such as answering questions about drug interactions, and identify which records, guidelines and literature the system may use."
+      },
+      {
+        "title": "Collect and de-identify data",
+        "detail": "Gather EHR notes, lab results and published papers; strip names, dates and other identifiers to meet privacy rules."
+      },
+      {
+        "title": "Chunk and embed documents",
+        "detail": "Split text into passages of a few hundred words, convert each into a vector using an embedding model trained on medical text."
+      },
+      {
+        "title": "Build the retrieval index",
+        "detail": "Load vectors and metadata into a vector database, and configure filters so retrieval can be restricted by specialty or date."
+      },
+      {
+        "title": "Select and adapt the generator model",
+        "detail": "Choose a large language model, optionally fine-tune it on clinical question-answer pairs, and design prompts that force it to cite retrieved evidence."
+      },
+      {
+        "title": "Assemble the RAG pipeline",
+        "detail": "Connect retriever and generator so that each query triggers a search, and the model answers only from the retrieved passages."
+      },
+      {
+        "title": "Add validation and safety checks",
+        "detail": "Insert a layer that flags answers lacking citations, contradicts guidelines, or falls below a confidence threshold for clinician review."
+      },
+      {
+        "title": "Integrate with clinical workflow and test",
+        "detail": "Embed the tool in the EHR, run silent-mode trials alongside clinicians, and monitor for errors before any live use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with medical knowledge",
+        "status": "exists",
+        "why": "general-purpose models can answer clinical questions but may hallucinate without retrieval."
+      },
+      {
+        "tech": "Vector databases and embedding models",
+        "status": "exists",
+        "why": "they enable fast semantic search over large clinical text collections."
+      },
+      {
+        "tech": "Clinical data interoperability (HL7 FHIR)",
+        "status": "partial",
+        "why": "many hospitals still lack complete, real-time access to structured patient data."
+      },
+      {
+        "tech": "De-identification and privacy-preserving techniques",
+        "status": "partial",
+        "why": "removing all identifiers reliably from free-text notes remains difficult."
+      },
+      {
+        "tech": "Regulatory frameworks for AI in clinical use",
+        "status": "partial",
+        "why": "clearances exist for narrow tasks, but not for open-ended diagnostic advice."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes and pilot projects in academic hospitals",
+        "unlocks": "proof that RAG can improve retrieval of clinical evidence."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory clearance for narrow, well-defined tasks (e.g., drug interaction checks)",
+        "unlocks": "first clinical deployments as an assistive tool."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration into EHR systems for real-time decision support",
+        "unlocks": "clinicians receive evidence-based answers at the point of care."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous learning systems that update from new literature and patient outcomes",
+        "unlocks": "adaptive, personalised decision support — if privacy and validation are maintained."
+      }
+    ]
   }
 }

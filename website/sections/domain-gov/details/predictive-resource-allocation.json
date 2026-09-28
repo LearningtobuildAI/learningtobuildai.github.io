@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Earth observation",
+        "role": "measures the conditions that drive shortages — rainfall, vegetation, soil moisture, crop area — from orbit.",
+        "parts": [
+          "optical satellites (e.g. Sentinel-2 imagery, 10 m pixels)",
+          "radar satellites that see through cloud",
+          "weather and rainfall reanalysis data",
+          "ground weather stations"
+        ]
+      },
+      {
+        "name": "Ground telemetry",
+        "role": "tracks what is actually moving through warehouses, trucks and grids.",
+        "parts": [
+          "IoT sensors and RFID tags",
+          "GPS trackers on vehicles and shipments",
+          "inventory and ERP records",
+          "market price feeds"
+        ]
+      },
+      {
+        "name": "Data fusion layer",
+        "role": "turns messy, differently-formatted streams into one analysis-ready picture.",
+        "parts": [
+          "ingestion pipelines",
+          "geospatial processing (vegetation and rainfall indices)",
+          "cloud compute and storage",
+          "quality control and gap filling"
+        ]
+      },
+      {
+        "name": "Forecasting models",
+        "role": "predict where and when a shortage will appear, weeks to months ahead.",
+        "parts": [
+          "statistical baselines",
+          "gradient-boosting and neural demand models",
+          "anomaly detection",
+          "scenario simulation"
+        ]
+      },
+      {
+        "name": "Optimization engine",
+        "role": "converts predictions into a plan: what to send, from where, by which route.",
+        "parts": [
+          "mixed-integer and linear programming solvers",
+          "network routing",
+          "pre-positioning rules",
+          "what-if simulator"
+        ]
+      },
+      {
+        "name": "Alerting and decision layer",
+        "role": "puts the forecast in front of someone with the authority and budget to act.",
+        "parts": [
+          "dashboards",
+          "threshold-triggered bulletins",
+          "field verification",
+          "audit trail"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the decision",
+        "detail": "Start from a specific choice — how much grain to pre-position, where to send water trucks — and the lead time needed to make it useful."
+      },
+      {
+        "title": "Instrument the pipeline",
+        "detail": "Deploy sensors and trackers, and agree data-sharing terms with suppliers, utilities and agencies. Data rights are usually the hardest part."
+      },
+      {
+        "title": "Assemble the historical record",
+        "detail": "Line up years of observations against logged shortage events so the model has something to learn from. Where records are thin, use surveys and field reports."
+      },
+      {
+        "title": "Train and validate the forecast",
+        "detail": "Fit models on past seasons, then test them only on data they have never seen, and check performance region by region — a model that works nationally can fail in one district."
+      },
+      {
+        "title": "Quantify uncertainty",
+        "detail": "Produce a probability, not a single number, so a 60% chance of a shortfall can be told apart from a 95% one."
+      },
+      {
+        "title": "Set trigger thresholds",
+        "detail": "Agree in advance which forecast values release which pre-planned actions, so the response is not negotiated after the crisis starts."
+      },
+      {
+        "title": "Build the optimizer",
+        "detail": "Encode warehouses, vehicle capacity, road conditions and budget as constraints, and solve for the allocation that best covers predicted need."
+      },
+      {
+        "title": "Run in shadow mode",
+        "detail": "Operate the system alongside existing practice for a season, comparing its recommendations with what humans decided, before trusting it."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "Connect outputs to procurement, pre-positioning and routing systems — with a human sign-off, because the cost of a false alarm is real money and the cost of a miss is lives."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Free, open satellite Earth observation",
+        "status": "exists",
+        "why": "public optical and radar imagery is what makes crop and rainfall monitoring affordable at continental scale."
+      },
+      {
+        "tech": "Cheap IoT tracking and connectivity",
+        "status": "exists",
+        "why": "supply chains are only forecastable if you can see stock and shipments in near real time."
+      },
+      {
+        "tech": "Machine learning for time-series forecasting",
+        "status": "exists",
+        "why": "it handles many noisy inputs and non-linear seasonal patterns better than fixed rules."
+      },
+      {
+        "tech": "Large-scale optimization solvers",
+        "status": "exists",
+        "why": "allocation across hundreds of depots and routes is a combinatorial problem no human can solve well."
+      },
+      {
+        "tech": "Reliable ground-truth data and statistics",
+        "status": "partial",
+        "why": "the regions most at risk are usually the ones with the weakest reporting, so models train on the least data."
+      },
+      {
+        "tech": "Institutional readiness to act on a forecast",
+        "status": "partial",
+        "why": "pre-arranged finance and authority are what turn a prediction into a delivery; without them the system only warns."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "seasonal early-warning bulletins and food-security classifications inform appeals and planning",
+        "unlocks": "weeks of extra lead time compared with reacting to visible crisis."
+      },
+      {
+        "stage": "Next",
+        "milestone": "forecast-based financing: money released automatically when an agreed threshold is crossed",
+        "unlocks": "action before a crisis peaks, which is far cheaper than response after it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pre-positioning and dynamic routing driven by model output across whole regions",
+        "unlocks": "stock placed where it will be needed rather than where it was last time."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integrated allocation across food, water, energy and health logistics",
+        "unlocks": "one coherent plan instead of competing agency-by-agency supply chains — with the risk that a shared model becomes a single point of failure."
+      }
+    ]
+  }
+}

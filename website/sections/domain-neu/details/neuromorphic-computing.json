@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neuron circuits",
+        "role": "mimic biological neurons by integrating incoming signals and emitting a spike when a threshold is crossed, then leaking back down.",
+        "parts": [
+          "leaky integrate-and-fire circuit",
+          "threshold comparator",
+          "refractory reset"
+        ]
+      },
+      {
+        "name": "Synapse array",
+        "role": "stores the weights that scale each connection.",
+        "parts": [
+          "memristor/ReRAM crossbar or SRAM cells",
+          "weight read/write circuitry"
+        ]
+      },
+      {
+        "name": "Spike routing network",
+        "role": "delivers sparse events only where and when they are needed, rather than clocking every wire.",
+        "parts": [
+          "asynchronous network-on-chip",
+          "address-event representation encoder/decoder"
+        ]
+      },
+      {
+        "name": "Learning engine",
+        "role": "adjusts weights on the chip using local rules instead of a separate training pass.",
+        "parts": [
+          "spike-timing-dependent plasticity (STDP) circuits",
+          "reward or modulation signals"
+        ]
+      },
+      {
+        "name": "Event-based I/O",
+        "role": "connects to sensors that output changes rather than full frames.",
+        "parts": [
+          "dynamic vision sensor interface",
+          "spike encoders",
+          "low-latency output drivers"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "maps a trained spiking network onto the hardware and controls it.",
+        "parts": [
+          "compiler and mapper",
+          "simulator",
+          "Python/C++ APIs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the neuron model",
+        "detail": "Choose a simple integrate-and-fire model and a learning rule such as STDP that can be built in silicon."
+      },
+      {
+        "title": "Design the synapse fabric",
+        "detail": "Lay out a crossbar of resistive memory cells or an SRAM array, sized so weights fit on-chip and are read at low energy."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Standard CMOS wafers are processed at a foundry; memristor layers may be deposited on top in a back-end step that must not damage the transistors below."
+      },
+      {
+        "title": "Build the event network",
+        "detail": "Wire neurons together with an asynchronous, clockless interconnect that routes spikes by address, so idle parts draw almost no power."
+      },
+      {
+        "title": "Add learning circuitry",
+        "detail": "Place local circuits that compare spike timing at each synapse and nudge the weight up or down."
+      },
+      {
+        "title": "Test and characterise",
+        "detail": "Measure energy per spike, latency and accuracy against conventional neural networks; device-to-device variation in analog weights is a major issue."
+      },
+      {
+        "title": "Package and integrate",
+        "detail": "Combine the chip with event cameras, microphones or prosthetic sensors in a low-power module."
+      },
+      {
+        "title": "Program with a compiler",
+        "detail": "A software tool converts a trained spiking network into a hardware configuration, then the device runs and adapts in the field."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Spiking neural network theory",
+        "status": "exists",
+        "why": "gives the mathematical neurons and learning rules the hardware implements."
+      },
+      {
+        "tech": "Resistive memory (memristor/ReRAM) devices",
+        "status": "partial",
+        "why": "provide compact, non-volatile analog weights, but are still noisy and variable."
+      },
+      {
+        "tech": "Asynchronous, low-power CMOS design",
+        "status": "exists",
+        "why": "lets the chip consume energy only when spikes occur."
+      },
+      {
+        "tech": "Event-based sensors",
+        "status": "exists",
+        "why": "dynamic vision sensors produce sparse spike streams that suit this hardware."
+      },
+      {
+        "tech": "Neuromorphic software toolchains",
+        "status": "partial",
+        "why": "without mature compilers, mapping real workloads onto the chips is difficult."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research chips and early commercial edge processors running spiking networks",
+        "unlocks": "ultra-low-power always-on sensing in cameras, wearables and industrial monitoring."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-chip learning combined with event sensors in products",
+        "unlocks": "devices that adapt to a user or environment without cloud training."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid analog-digital systems with reliable memristor weights",
+        "unlocks": "dense, brain-like processors that can run larger models at milliwatt budgets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "brain-scale, fault-tolerant architectures",
+        "unlocks": "real-time prosthetics control and cognitive edge computing, if device variability and toolchains are solved."
+      }
+    ]
+  }
+}

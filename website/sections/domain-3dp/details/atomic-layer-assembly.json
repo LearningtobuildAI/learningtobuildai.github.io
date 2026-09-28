@@ -34,5 +34,155 @@
         "def": "A family of techniques that use a physical probe to scan the surface of a sample and measure its properties."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Probe tip assembly",
+        "role": "the print head — an atomically sharp tip that picks up and releases single atoms.",
+        "parts": [
+          "tungsten or platinum–iridium tips",
+          "cantilever/probe holder",
+          "in-situ tip preparation and sharpening"
+        ]
+      },
+      {
+        "name": "Positioning stage",
+        "role": "moves tip and workpiece against each other with picometre precision over millimetres of travel.",
+        "parts": [
+          "piezoelectric nanopositioners",
+          "coarse-to-fine stages",
+          "capacitive displacement feedback"
+        ]
+      },
+      {
+        "name": "Environment enclosure",
+        "role": "keeps surfaces clean and holds atoms in place while they are moved.",
+        "parts": [
+          "ultra-high-vacuum chamber",
+          "cryostat or helium cooling",
+          "vibration and acoustic isolation"
+        ]
+      },
+      {
+        "name": "Sensing and control",
+        "role": "detects the atom, guides placement and verifies the result.",
+        "parts": [
+          "tunnelling-current amplifier",
+          "scanning imaging electronics",
+          "real-time feedback loop",
+          "automation and error-correction software"
+        ]
+      },
+      {
+        "name": "Feedstock and substrate",
+        "role": "supplies the atoms and the atomically ordered surface they are built on.",
+        "parts": [
+          "evaporation or atom sources",
+          "single-crystal substrate (silicon, metal)",
+          "hydrogen-passivation or resist-based patterning"
+        ]
+      },
+      {
+        "name": "Build planner",
+        "role": "decides what order to place atoms and molecules in, and how the structure holds itself together during assembly.",
+        "parts": [
+          "tip–molecule mechanics simulation",
+          "bond-formation chemistry models",
+          "error-tolerance rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare an atomically clean surface",
+        "detail": "A single crystal is cleaved or annealed in ultra-high vacuum, then chemically passivated (often with hydrogen) so atoms sit only at defined lattice sites."
+      },
+      {
+        "title": "Map the surface",
+        "detail": "The tip is scanned across the surface to build a picture of where every site and defect is, and where the structure should go."
+      },
+      {
+        "title": "Deposit feedstock",
+        "detail": "A tiny amount of the working material — metal atoms, or small molecules — is evaporated onto the surface as a reservoir."
+      },
+      {
+        "title": "Pick up an atom",
+        "detail": "The tip is brought within a fraction of a nanometre so a tunnelling current flows; a voltage pulse or gentle contact makes the atom attach to the tip."
+      },
+      {
+        "title": "Place and release",
+        "detail": "The tip is retracted and translated to the target site, lowered, and a voltage pulse breaks the bond so the atom stays behind."
+      },
+      {
+        "title": "Verify and correct",
+        "detail": "The area is rescanned to confirm the atom landed where intended; a misplaced atom is picked up and repositioned."
+      },
+      {
+        "title": "Build in three dimensions",
+        "detail": "This is where the method is unproven: layers must bond to the layer below. Candidate routes are stepwise chemical reactions between deposited molecules, or building rigid molecular blocks and cross-linking them."
+      },
+      {
+        "title": "Repeat and scale",
+        "detail": "For anything bigger than a device, placement must be automated and run in parallel across many tips, because single-tip assembly of even a gram of material is many orders of magnitude out of reach — a gram holds on the order of 10²² atoms."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Scanning probe atom manipulation",
+        "status": "exists",
+        "why": "the underlying physics is proven: individual atoms have been positioned with tunnelling and force microscopes since the late 1980s."
+      },
+      {
+        "tech": "Sub-nanometre positioning and metrology",
+        "status": "partial",
+        "why": "picometre stages exist, but holding that precision quickly, repeatedly and over large areas is still hard."
+      },
+      {
+        "tech": "Tip-driven bond chemistry",
+        "status": "partial",
+        "why": "simple pick-up and drop-off of atoms is understood; reliably forming the strong covalent bonds needed for structural material is not."
+      },
+      {
+        "tech": "Atomically precise building blocks",
+        "status": "partial",
+        "why": "DNA origami and designed molecular units show that programmable atomic-scale assembly is possible by other routes."
+      },
+      {
+        "tech": "Parallel automated probe arrays",
+        "status": "missing",
+        "why": "one tip doing one atom at a time cannot make a macroscopic object in practical time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-atom manipulation used as a physics and prototyping tool — atomic-scale markers, quantum corrals, and few-atom devices",
+        "unlocks": "direct measurement of how matter behaves at the atomic limit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lithographic patterning of atomically precise structures on silicon",
+        "unlocks": "few-atom electronic and quantum devices with no statistical variation between them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "parallel, automated probe arrays that build useful atomically precise components",
+        "unlocks": "sensors, catalysts and quantum bits made to atomic specification rather than by chance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mechanosynthesis of rigid molecular structures guided by design software",
+        "unlocks": "materials with strength and function engineered atom by atom — the long-standing goal of atomically precise manufacturing."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "macroscale production by massively parallel assembly",
+        "unlocks": "general-purpose atomic manufacturing, if the throughput and mechanical-chemistry problems can be solved at all; this remains actively disputed among chemists, with the case for assemblers argued since the 1980s and challenged on grounds of tip chemistry and reaction control."
+      }
+    ]
   }
 }

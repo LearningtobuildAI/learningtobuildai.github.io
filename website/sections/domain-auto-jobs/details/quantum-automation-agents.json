@@ -38,5 +38,149 @@
         "def": "Systems required to maintain the ultra-low temperature environments needed for some types of qubits."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "executes quantum circuits that represent the agent's policy or value function.",
+        "parts": [
+          "qubits (superconducting, trapped-ion or photonic)",
+          "control electronics",
+          "dilution refrigerator or laser systems"
+        ]
+      },
+      {
+        "name": "Classical controller",
+        "role": "runs the outer learning loop, reads out qubit states and sends new parameters each iteration.",
+        "parts": [
+          "FPGA or CPU cluster",
+          "microwave or optical pulse generators",
+          "real-time feedback"
+        ]
+      },
+      {
+        "name": "Quantum algorithm layer",
+        "role": "encodes decision problems as quantum operations that may offer speed-ups.",
+        "parts": [
+          "variational circuits",
+          "quantum amplitude estimation",
+          "quantum reinforcement-learning routines"
+        ]
+      },
+      {
+        "name": "Data encoding and quantum memory",
+        "role": "loads classical observations into quantum states and stores them coherently.",
+        "parts": [
+          "state-preparation circuits",
+          "quantum random-access memory (theoretical)",
+          "quantum registers"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "keeps the computation reliable long enough to be useful.",
+        "parts": [
+          "surface-code or repetition-code logical qubits",
+          "decoders",
+          "noise-characterisation routines"
+        ]
+      },
+      {
+        "name": "Agent interface",
+        "role": "connects the quantum decision core to sensors and actuators in the real system.",
+        "parts": [
+          "application programming interfaces",
+          "classical safety monitors",
+          "actuator drivers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formulate the decision problem",
+        "detail": "Model the task as a Markov decision process and decide which parts — perception, planning or action selection — might benefit from quantum operations."
+      },
+      {
+        "title": "Choose a quantum representation",
+        "detail": "Encode states, actions and rewards into qubit registers, for example as amplitudes in a quantum circuit or as parameters in a variational ansatz."
+      },
+      {
+        "title": "Design the quantum circuit",
+        "detail": "Build a parameterised circuit whose measurement statistics approximate a policy or value function, keeping depth within what the hardware can run before decoherence."
+      },
+      {
+        "title": "Implement on hardware or simulator",
+        "detail": "Run the circuit on a quantum processor at millikelvin temperatures (for superconducting qubits) or on a classical simulator to test logic."
+      },
+      {
+        "title": "Close the hybrid loop",
+        "detail": "Use a classical optimiser to update circuit parameters from measured rewards, repeating many times — the agent 'learns' through this classical-quantum cycle."
+      },
+      {
+        "title": "Add error handling",
+        "detail": "Apply error mitigation for noisy devices, or encode logical qubits in error-correcting codes as fault-tolerant machines become available."
+      },
+      {
+        "title": "Integrate and test",
+        "detail": "Connect the quantum core to a classical control system, benchmark it against classical agents on the same task, and verify that any speed-up is real."
+      },
+      {
+        "title": "Scale and deploy",
+        "detail": "Increase qubit count and coherence time, then embed the agent in an automated system where its decisions can be validated safely."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "most quantum algorithms with proven advantages need logical qubits that today's noisy devices cannot yet provide at scale."
+      },
+      {
+        "tech": "Quantum machine-learning algorithms with proven advantage",
+        "status": "partial",
+        "why": "many proposals exist but few have demonstrated a practical speed-up over classical methods for realistic agent tasks."
+      },
+      {
+        "tech": "Quantum random-access memory",
+        "status": "missing",
+        "why": "efficiently loading classical data into quantum states remains a major bottleneck for data-heavy agents."
+      },
+      {
+        "tech": "Real-time classical-quantum control",
+        "status": "partial",
+        "why": "agents must act on millisecond timescales, while quantum readout and feedback are still relatively slow."
+      },
+      {
+        "tech": "Error correction and mitigation",
+        "status": "partial",
+        "why": "today's qubits decohere quickly, limiting circuit depth and therefore the complexity of any agent."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small quantum machine-learning experiments on noisy intermediate-scale quantum processors",
+        "unlocks": "understanding which learning tasks might benefit from quantum routines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "narrow demonstrations of quantum advantage in optimisation or reinforcement-learning benchmarks",
+        "unlocks": "confidence that specific agent subroutines are worth accelerating."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant processors with hundreds of logical qubits",
+        "unlocks": "running deeper quantum agent circuits with error correction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid quantum-classical agents embedded in industrial control systems",
+        "unlocks": "faster or more capable automated decision-making in selected domains — if the advantages hold up in practice."
+      }
+    ]
   }
 }

@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Crypto abstraction layer",
+        "role": "the single place where an algorithm is chosen and invoked, so applications never call crypto primitives directly.",
+        "parts": [
+          "narrow internal API",
+          "algorithm/provider registry",
+          "explicit algorithm and parameter identifiers"
+        ]
+      },
+      {
+        "name": "Cryptographic inventory and discovery",
+        "role": "find every place crypto is used, including firmware, configs and certificates, so you know what must change.",
+        "parts": [
+          "static and binary scanners",
+          "network and certificate scanners",
+          "cryptographic bill of materials (CBOM) records",
+          "owner and dependency mapping"
+        ]
+      },
+      {
+        "name": "Key and certificate management",
+        "role": "issue, rotate and revoke keys without editing application code.",
+        "parts": [
+          "hardware security modules or key management service",
+          "certificate authority and automation",
+          "rotation and expiry policy"
+        ]
+      },
+      {
+        "name": "Negotiation and policy engine",
+        "role": "pick an algorithm at run time and allow old and new peers to talk during a migration.",
+        "parts": [
+          "cipher-suite and signature policy",
+          "central configuration service",
+          "hybrid modes offering classical and post-quantum algorithms together",
+          "version negotiation"
+        ]
+      },
+      {
+        "name": "Protocol and data-format layer",
+        "role": "carry algorithm identifiers and dual signatures so stored and transmitted data stays readable across a change.",
+        "parts": [
+          "protocol versioning",
+          "algorithm identifiers in message and file formats",
+          "hybrid key exchange",
+          "dual or composite signatures",
+          "re-encryption and re-signing paths for archived data"
+        ]
+      },
+      {
+        "name": "Test and verification harness",
+        "role": "prove a swap works, is fast enough and still meets compliance rules before it reaches production.",
+        "parts": [
+          "interoperability test suites",
+          "published test vectors",
+          "performance benchmarks",
+          "canary deployment and rollback switches"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Discover and inventory",
+        "detail": "Scan source code, build artefacts, appliances, embedded devices and certificates for algorithms, key lengths, protocols and expiry. Record who owns each use."
+      },
+      {
+        "title": "Classify data and set policy",
+        "detail": "Decide which data must stay confidential for how long, since long-lived secrets are the ones quantum computers threaten first. Write down which algorithms are acceptable and until when."
+      },
+      {
+        "title": "Define a stable interface",
+        "detail": "Wrap every cryptographic operation behind a narrow internal API that takes the algorithm as an explicit parameter, and remove hardcoded algorithm choices from business logic."
+      },
+      {
+        "title": "Centralise keys and certificates",
+        "detail": "Move keys into hardware security modules or a managed key service, and automate issuance, rotation and revocation so a change of algorithm is a configuration change."
+      },
+      {
+        "title": "Add negotiation and hybrid modes",
+        "detail": "Make each endpoint offer several algorithm suites at once, including hybrids that combine a classical and a post-quantum algorithm, so peers running different versions still interoperate."
+      },
+      {
+        "title": "Build the test harness",
+        "detail": "Assemble test vectors, interoperability tests and benchmarks, plus canary deployments and a switch that reverts to the previous algorithm within minutes."
+      },
+      {
+        "title": "Rehearse a real swap",
+        "detail": "Run an actual algorithm change on a live but non-critical service, measure how long it takes and what breaks, then fix the process rather than just the service."
+      },
+      {
+        "title": "Keep it continuous",
+        "detail": "Re-scan on every build, alert when inventory drifts, and review policy whenever standards or threat estimates change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "you need agreed, vetted replacements before any swap is worth rehearsing; NIST published ML-KEM, ML-DSA and SLH-DSA in 2024."
+      },
+      {
+        "tech": "Hybrid key exchange in mainstream protocols",
+        "status": "partial",
+        "why": "large web browsers and some servers already negotiate a classical plus post-quantum key exchange, but support is uneven across the rest of the stack."
+      },
+      {
+        "tech": "Hardware security modules and key services with post-quantum support",
+        "status": "partial",
+        "why": "many deployed modules cannot generate or store the new key types, so agility stalls at the hardware boundary until firmware or appliances are replaced."
+      },
+      {
+        "tech": "Cryptographic discovery and CBOM tooling",
+        "status": "partial",
+        "why": "without an accurate inventory you cannot know how large the migration is; scanners and the cryptographic bill of materials format are still maturing."
+      },
+      {
+        "tech": "Certificate and protocol formats that carry new signature types",
+        "status": "partial",
+        "why": "a swap that is invisible to applications still needs chains, signatures and identifiers that peers can parse."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "inventory cryptographic assets and put keys under central, automated management",
+        "unlocks": "a map of what must change and a way to rotate anything without a code release."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid key exchange and composite signatures in production on internet-facing services",
+        "unlocks": "protection against store-now-decrypt-later attacks while the newer algorithms prove themselves."
+      },
+      {
+        "stage": "Next",
+        "milestone": "rehearsed, routine algorithm swaps on live systems",
+        "unlocks": "migration times measured in weeks rather than years, and confidence that a future break can be answered quickly."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cryptography treated as a versioned, continuously updated dependency",
+        "unlocks": "systems that survive the next algorithm change — and whatever comes after it — without re-architecting."
+      }
+    ]
+  }
+}

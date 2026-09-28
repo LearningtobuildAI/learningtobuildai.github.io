@@ -33,5 +33,169 @@
         "def": "Real-Time Operating System, designed to manage real-time computing demands with predictable determinism."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute accelerators",
+        "role": "run neural network operations quickly and efficiently at low power.",
+        "parts": [
+          "neural processing unit (NPU)",
+          "digital signal processor (DSP)",
+          "integrated GPU",
+          "CPU cores"
+        ]
+      },
+      {
+        "name": "Memory and storage",
+        "role": "hold model weights and intermediate activations during inference.",
+        "parts": [
+          "on-chip SRAM",
+          "external DRAM",
+          "flash storage"
+        ]
+      },
+      {
+        "name": "Runtime and compiler",
+        "role": "translate a trained model into optimized code for the target chip.",
+        "parts": [
+          "inference runtime (e.g. TensorFlow Lite, ONNX Runtime)",
+          "graph compiler",
+          "hand-tuned kernel libraries"
+        ]
+      },
+      {
+        "name": "Model optimization toolchain",
+        "role": "shrink and speed up models without losing unacceptable accuracy.",
+        "parts": [
+          "quantization tools (8-bit and 4-bit integer)",
+          "pruning and sparsity",
+          "knowledge distillation"
+        ]
+      },
+      {
+        "name": "Sensor and input pipeline",
+        "role": "capture and preprocess raw data from the physical world.",
+        "parts": [
+          "image signal processor",
+          "audio front-end",
+          "inertial measurement unit (IMU)",
+          "sensor fusion"
+        ]
+      },
+      {
+        "name": "Power management",
+        "role": "keep the device within its energy budget, often on a small battery.",
+        "parts": [
+          "dynamic voltage and frequency scaling",
+          "power gating",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Security and privacy",
+        "role": "protect the model and any user data kept on the device.",
+        "parts": [
+          "secure enclave",
+          "encrypted model storage",
+          "differential privacy techniques"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and constraints",
+        "detail": "State exactly what the model must do (e.g. detect people in a camera feed) and set hard limits on latency, power, memory and cost. These limits drive every later choice."
+      },
+      {
+        "title": "Collect and label data",
+        "detail": "Gather representative data from the real operating environment, label it, and split it into training, validation and test sets."
+      },
+      {
+        "title": "Train the model",
+        "detail": "Train a neural network on desktop or cloud GPUs using frameworks such as PyTorch or TensorFlow until it meets the accuracy target."
+      },
+      {
+        "title": "Optimize for the edge",
+        "detail": "Apply quantization (often to 8-bit integers), pruning and knowledge distillation to cut model size and compute while keeping accuracy within tolerance."
+      },
+      {
+        "title": "Select target hardware and runtime",
+        "detail": "Choose a chip with an NPU, DSP or GPU that meets the power and speed budget, and pick a compatible inference runtime."
+      },
+      {
+        "title": "Compile and package",
+        "detail": "Convert the optimized model into the runtime's format, compile it for the specific chip, and bundle it into the device firmware or app."
+      },
+      {
+        "title": "Integrate with sensors and application",
+        "detail": "Wire the model into the data pipeline: capture sensor data, preprocess it, run inference, and post-process results for the application."
+      },
+      {
+        "title": "Test and validate on device",
+        "detail": "Measure real-world accuracy, latency, power draw and thermal behaviour. Iterate on the model or hardware until all constraints are met."
+      },
+      {
+        "title": "Update and maintain",
+        "detail": "Support over-the-air model updates where connectivity allows, and monitor for data drift or degraded performance in the field."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power AI accelerators",
+        "status": "exists",
+        "why": "NPUs and DSPs in smartphones, cameras and microcontrollers are commercially available and make real-time inference feasible."
+      },
+      {
+        "tech": "Model compression techniques",
+        "status": "exists",
+        "why": "Quantization, pruning and distillation are standard and widely supported by open-source and vendor toolchains."
+      },
+      {
+        "tech": "Inference runtimes and compilers",
+        "status": "exists",
+        "why": "Mature runtimes such as TensorFlow Lite and ONNX Runtime can execute models on many edge chips."
+      },
+      {
+        "tech": "Sufficient on-device memory and storage",
+        "status": "partial",
+        "why": "Small and medium models fit comfortably, but very large models (e.g. large language models) still exceed the memory of most edge devices."
+      },
+      {
+        "tech": "Energy-efficient sensors",
+        "status": "exists",
+        "why": "Cameras, microphones and inertial sensors are low power and can run continuously on small batteries."
+      },
+      {
+        "tech": "Connectivity for updates",
+        "status": "partial",
+        "why": "Many edge devices have intermittent or no network access, which complicates remote model updates and monitoring."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "on-device AI in smartphones for face unlock, photo enhancement and voice assistants",
+        "unlocks": "low-latency, privacy-preserving features that work without a network connection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "more powerful NPUs and on-device training or federated learning",
+        "unlocks": "personalized models that improve from local data without sending raw data to the cloud."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time perception for autonomous vehicles and robots",
+        "unlocks": "safety-critical decisions made locally, free of network latency and outages."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "ubiquitous tinyML in IoT, wearables and environmental sensors",
+        "unlocks": "intelligent, battery-powered devices that can run for months or years on a single charge."
+      }
+    ]
   }
 }

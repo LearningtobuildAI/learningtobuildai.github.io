@@ -34,5 +34,149 @@
         "def": "A type of neural network that incorporates probabilistic methods to handle uncertainty in predictions and decision-making."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neural model",
+        "role": "extracts meaning from messy input — text, images, tables — where rules alone cannot cope.",
+        "parts": [
+          "transformer or other deep network",
+          "fine-tuning or adaptation layer",
+          "confidence estimates"
+        ]
+      },
+      {
+        "name": "Knowledge base and ontology",
+        "role": "the symbolic half: facts, entities and their relationships written in a formal, machine-checkable language.",
+        "parts": [
+          "ontology or schema",
+          "knowledge graph or rule store",
+          "provenance metadata"
+        ]
+      },
+      {
+        "name": "Grounding layer",
+        "role": "translates the neural model's fuzzy output into precise symbols the reasoner can use, and back again.",
+        "parts": [
+          "entity and relation linker",
+          "query generator",
+          "answer verbaliser"
+        ]
+      },
+      {
+        "name": "Reasoning engine",
+        "role": "applies logic — deduction, constraint solving, planning — deterministically and repeatably.",
+        "parts": [
+          "rule engine or logic program",
+          "SAT/SMT solver",
+          "theorem prover"
+        ]
+      },
+      {
+        "name": "Verification layer",
+        "role": "checks each conclusion against the rules and the source evidence before it is released.",
+        "parts": [
+          "consistency checker",
+          "proof or trace recorder",
+          "abstention and escalation trigger"
+        ]
+      },
+      {
+        "name": "Runtime and data plumbing",
+        "role": "moves data between the neural and symbolic parts, logs everything, and enforces access control.",
+        "parts": [
+          "orchestration service",
+          "audit log",
+          "domain data connectors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formalise the domain",
+        "detail": "Domain experts and engineers write an ontology and a rule set stating what is true, what may be inferred, and what is forbidden — the part that gives deterministic guarantees."
+      },
+      {
+        "title": "Assemble and curate knowledge",
+        "detail": "Existing databases, manuals or case law are loaded into the graph, each fact tagged with its source and date so conclusions can be traced."
+      },
+      {
+        "title": "Train or adapt the neural model",
+        "detail": "A language or vision model is fine-tuned on the domain vocabulary and on examples of mapping sentences to structured symbols."
+      },
+      {
+        "title": "Build the grounding interface",
+        "detail": "A parser converts each query or document into logical statements, with a confidence score. Low-confidence parses are rejected rather than guessed at."
+      },
+      {
+        "title": "Connect the solver",
+        "detail": "The statements are passed to a rule engine or SMT solver, which derives an answer and, where possible, a checkable proof trace."
+      },
+      {
+        "title": "Add the verification loop",
+        "detail": "The solver's output is re-checked against the rules and the original text; anything unverifiable or contradictory is flagged instead of answered."
+      },
+      {
+        "title": "Evaluate adversarially",
+        "detail": "The system is tested on held-out and deliberately tricky cases, measuring not just accuracy but the rate at which it correctly refuses to answer."
+      },
+      {
+        "title": "Deploy with human escalation",
+        "detail": "The pipeline runs in production with a defined boundary: high-confidence, fully verified results are automated; the rest go to a person."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models and other deep learning",
+        "status": "exists",
+        "why": "they handle the unstructured text and images that no rule set can cover."
+      },
+      {
+        "tech": "Formal logic solvers (SAT/SMT, theorem provers)",
+        "status": "exists",
+        "why": "they provide the deterministic, checkable reasoning step."
+      },
+      {
+        "tech": "Knowledge graphs and ontologies",
+        "status": "exists",
+        "why": "they hold the domain facts the reasoner operates on."
+      },
+      {
+        "tech": "Reliable neural-to-symbol grounding",
+        "status": "partial",
+        "why": "converting free text into correct logical form remains error-prone, and those errors defeat the guarantees downstream."
+      },
+      {
+        "tech": "Differentiable and probabilistic logic",
+        "status": "partial",
+        "why": "methods that train neural and symbolic parts together are researched but not yet mature."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "narrow systems pairing a language model with a solver, such as geometry provers that emit machine-checkable proofs",
+        "unlocks": "verified answers inside tightly bounded domains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "verifier-in-the-loop pipelines for compliance, coding and document review, with mandatory abstention when a proof cannot be produced",
+        "unlocks": "auditable automation where mistakes carry legal or safety cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared ontologies and benchmarks that measure reliability and refusal rates, not just average accuracy",
+        "unlocks": "comparable, certifiable components."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "jointly trained architectures where learning and logic are one system rather than two stitched together",
+        "unlocks": "broader automation without losing the guarantee of a checkable answer."
+      }
+    ]
   }
 }

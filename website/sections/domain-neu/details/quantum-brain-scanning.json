@@ -39,5 +39,141 @@
         "def": "A process involving extremely low temperatures to enhance the performance and stability of certain materials or devices, particularly quantum sensors."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum sensor array",
+        "role": "measures the tiny magnetic fields the brain makes, without needing liquid-helium cooling.",
+        "parts": [
+          "glass vapour cells holding rubidium or caesium",
+          "heating elements",
+          "miniature optics and photodetectors",
+          "sensor electronics"
+        ]
+      },
+      {
+        "name": "Laser and optics",
+        "role": "pumps the atoms into a spin state where their response to magnetic fields is sharpest.",
+        "parts": [
+          "diode laser",
+          "beam-shaping optics",
+          "polarisation control"
+        ]
+      },
+      {
+        "name": "Magnetic shielding and field control",
+        "role": "suppresses Earth's field — roughly 50 µT — by about a million times so brain signals a billionth of that can be seen.",
+        "parts": [
+          "mu-metal shielded room",
+          "active compensation coils",
+          "reference magnetometers"
+        ]
+      },
+      {
+        "name": "Sensor helmet",
+        "role": "holds sensors millimetres from the scalp, where the signal is strongest.",
+        "parts": [
+          "3D-printed scalp-conforming shell",
+          "adjustable sensor mounts",
+          "head-position tracking"
+        ]
+      },
+      {
+        "name": "Data acquisition and reconstruction",
+        "role": "turns sensor readings into a picture of where in the brain activity arose.",
+        "parts": [
+          "low-noise amplifiers and digitisers",
+          "head-model and forward-model software",
+          "inverse source-localisation algorithms"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the vapour cells",
+        "detail": "A glass cell is filled with an alkali metal and buffer gases, sealed, and on a bench-scale line its inner walls are coated so atoms keep their spin when they hit the glass."
+      },
+      {
+        "title": "Build the sensor heads",
+        "detail": "A small laser, lenses, a heater and a photodiode are packaged together, with optical fibres often carrying light in and out so the electronics sit away from the head."
+      },
+      {
+        "title": "Shield the room",
+        "detail": "A chamber of high-permeability mu-metal is built and demagnetised, then active coils are added to cancel the residual field down to a few nanotesla."
+      },
+      {
+        "title": "Fit the helmet to a head",
+        "detail": "The subject's scalp is scanned, a rigid shell is 3D-printed, and sensors are mounted at fixed positions on it so their locations are known."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Each sensor's response is measured against known fields; the array is zeroed and cross-talk between neighbouring sensors is characterised."
+      },
+      {
+        "title": "Record",
+        "detail": "The subject performs a task or rests while the array logs magnetic activity, with head movement tracked continuously."
+      },
+      {
+        "title": "Reconstruct",
+        "detail": "The sensor time series are combined with a model of the head to estimate the location and time course of current dipoles in the cortex."
+      },
+      {
+        "title": "Interpret",
+        "detail": "Results are compared against structural MRI so clinicians or researchers can see which anatomy generated the signal."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Optically pumped magnetometry in the spin-exchange-relaxation-free regime",
+        "status": "partial",
+        "why": "the sensitivity per sensor now rivals cryogenic SQUIDs, but arrays of dozens to hundreds of channels are still being engineered."
+      },
+      {
+        "tech": "Compact, stable lasers and low-noise optics",
+        "status": "exists",
+        "why": "each sensor needs its own light source and detector that do not drift or add noise."
+      },
+      {
+        "tech": "High-performance magnetic shielding",
+        "status": "exists",
+        "why": "without roughly six orders of magnitude of suppression, ambient fields swamp the brain signal."
+      },
+      {
+        "tech": "Accurate head modelling and source reconstruction",
+        "status": "exists",
+        "why": "turning fields measured outside the head into a 3D map of neural currents is an ill-posed problem solved by software."
+      },
+      {
+        "tech": "Room-temperature quantum magnetometers beyond vapour cells",
+        "status": "missing",
+        "why": "nitrogen-vacancy diamond and similar sensors work in the lab but are not yet sensitive enough in arrays for human brain imaging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wearable OPM-MEG systems operating in a few dozen research labs and early clinical pilots",
+        "unlocks": "brain imaging during movement, in children, and with the subject sitting up."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinical validation for pre-surgical epilepsy mapping and other focal disorders",
+        "unlocks": "a helium-free alternative to SQUID MEG that fits the patient rather than the patient fitting the machine."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger, denser arrays with simultaneous stimulation and long-duration recording",
+        "unlocks": "measuring brain networks and fast dynamics that fixed scanners miss."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum-enhanced magnetic resonance and room-temperature sensor arrays combined with MEG",
+        "unlocks": "structural, functional and connectivity information from one non-invasive session."
+      }
+    ]
   }
 }

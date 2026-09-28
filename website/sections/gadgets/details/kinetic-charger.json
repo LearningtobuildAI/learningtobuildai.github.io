@@ -1,0 +1,134 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Motion coupling",
+        "role": "converts body movement into relative motion inside the device.",
+        "parts": [
+          "eccentric rotor or sliding mass",
+          "springs or flexures",
+          "end stops"
+        ]
+      },
+      {
+        "name": "Transducer",
+        "role": "turns that motion into electricity.",
+        "parts": [
+          "permanent magnets",
+          "coil windings (electromagnetic)",
+          "piezoelectric beam (alternative)",
+          "electrostatic/capacitive plates (alternative)"
+        ]
+      },
+      {
+        "name": "Power conditioning",
+        "role": "turns the ragged, low-voltage output into something a circuit can use.",
+        "parts": [
+          "rectifier",
+          "DC-DC converter",
+          "maximum-power-point tracking",
+          "cold-start circuit"
+        ]
+      },
+      {
+        "name": "Energy storage",
+        "role": "buffers power so the load sees a steady supply.",
+        "parts": [
+          "thin-film or coin cell",
+          "supercapacitor"
+        ]
+      },
+      {
+        "name": "Load and management",
+        "role": "spends the harvested energy where it matters.",
+        "parts": [
+          "low-power radio",
+          "microcontroller with deep sleep",
+          "sensor front end"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Measure the motion",
+        "detail": "Accelerometers record how fast and how forcefully the target body part moves — a heel strikes at roughly 1–2 steps per second, a wrist swings at similar low frequencies."
+      },
+      {
+        "title": "Design the coupling",
+        "detail": "Because human motion is slow and irregular, resonant spring-mass harvesters are hard to tune. Most working designs use an eccentric weighted rotor (as in a self-winding watch) or magnetic plucking that snaps a piezoelectric beam at a higher, more efficient frequency."
+      },
+      {
+        "title": "Choose the transducer",
+        "detail": "Electromagnetic coils give more power for a given volume at watch-and-shoe scale; piezoelectric beams suit very small MEMS devices; electrostatic types need an external pre-charge, which limits them."
+      },
+      {
+        "title": "Optimise magnetics",
+        "detail": "Magnet grade, air gap, pole geometry and coil turns are tuned together, since induced voltage scales with the rate of change of magnetic flux through the coil."
+      },
+      {
+        "title": "Fabricate",
+        "detail": "Coils are wound and potted, magnets and rotors are assembled to tight tolerances, and the mechanism is sealed against sweat, dust and shock."
+      },
+      {
+        "title": "Condition the power",
+        "detail": "A rectifier converts the alternating output to DC; a switched converter steps it to the voltage the load needs, and a cold-start circuit lets the device boot from a completely empty storage capacitor."
+      },
+      {
+        "title": "Store and test",
+        "detail": "A supercapacitor or thin-film cell smooths the bursts, and the whole unit is cycled on a shaker rig or a walking volunteer to confirm it keeps the load alive."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Strong permanent magnets",
+        "status": "exists",
+        "why": "neodymium-iron-boron magnets make small harvesters possible at all."
+      },
+      {
+        "tech": "Ultra-low-power electronics",
+        "status": "exists",
+        "why": "microcontrollers and radios that run on microwatts are what make harvesting worthwhile."
+      },
+      {
+        "tech": "Energy-harvesting power management ICs",
+        "status": "exists",
+        "why": "they extract usable power from millivolt-level inputs and start up from cold."
+      },
+      {
+        "tech": "Micro-machining and coil winding",
+        "status": "exists",
+        "why": "needed to pack a transducer into a wristwatch-sized volume."
+      },
+      {
+        "tech": "Compact energy storage",
+        "status": "exists",
+        "why": "thin-film batteries and supercapacitors absorb intermittent bursts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "self-powered watches and battery-free wall switches",
+        "unlocks": "small consumer devices that never need a battery change."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable harvesters paired with duty-cycled radios",
+        "unlocks": "body sensors for fitness and health that need no charging at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "textile and shoe-integrated harvesters",
+        "unlocks": "power for medical monitors and location beacons worn all day."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid harvesters combining motion, body heat and light",
+        "unlocks": "genuinely battery-free wearables and industrial sensors — though motion alone will never charge a phone at useful speed."
+      }
+    ]
+  }
+}

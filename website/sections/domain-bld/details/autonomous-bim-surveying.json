@@ -34,5 +34,155 @@
         "def": "An unmanned aircraft used for various applications such as photography, videography, and now in construction site monitoring, equipped with advanced sensors like LiDAR for precise data collection."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Aerial capture platform",
+        "role": "carries sensors over the site to collect 3D data.",
+        "parts": [
+          "multirotor or fixed-wing drone",
+          "LiDAR scanner",
+          "RGB camera",
+          "RTK GNSS receiver"
+        ]
+      },
+      {
+        "name": "Positioning and navigation",
+        "role": "ensures every measurement is tied to real-world coordinates.",
+        "parts": [
+          "GNSS/RTK corrections",
+          "inertial measurement unit",
+          "ground control points"
+        ]
+      },
+      {
+        "name": "Point cloud processing",
+        "role": "turns raw scans into a clean, georeferenced 3D model of the site.",
+        "parts": [
+          "registration software",
+          "noise and outlier filters",
+          "mesh or surface generation"
+        ]
+      },
+      {
+        "name": "BIM reference model",
+        "role": "the as-designed digital representation used as the baseline.",
+        "parts": [
+          "IFC or native 3D model",
+          "schedule and phasing data",
+          "component metadata"
+        ]
+      },
+      {
+        "name": "Deviation analysis engine",
+        "role": "compares the as-built point cloud against the design and flags differences.",
+        "parts": [
+          "alignment algorithms",
+          "change-detection routines",
+          "AI classifiers for element recognition"
+        ]
+      },
+      {
+        "name": "Reporting and dashboard",
+        "role": "makes progress and issues visible to project teams.",
+        "parts": [
+          "web dashboard",
+          "deviation heatmaps",
+          "automated issue lists"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the survey scope",
+        "detail": "Decide which parts of the site need checking, the accuracy required (often 1–3 cm) and how often surveys will repeat."
+      },
+      {
+        "title": "Establish ground control",
+        "detail": "Place and precisely survey fixed ground control points, or use RTK corrections, so the drone data is tied to site coordinates."
+      },
+      {
+        "title": "Fly the capture mission",
+        "detail": "A drone flies a planned path over the site, scanning with LiDAR and photographing with a camera to fill gaps."
+      },
+      {
+        "title": "Process the raw data",
+        "detail": "Scans are registered together, georeferenced, and cleaned of noise to produce a single point cloud of the site."
+      },
+      {
+        "title": "Align to the BIM model",
+        "detail": "The point cloud is registered to the design model using common features or coordinates, so both share one frame of reference."
+      },
+      {
+        "title": "Detect deviations",
+        "detail": "Algorithms compare surfaces and components, flagging missing elements, misplaced work or out-of-tolerance geometry."
+      },
+      {
+        "title": "Generate reports and dashboards",
+        "detail": "Results are visualised as heatmaps and issue lists, showing progress against schedule and highlighting problem areas."
+      },
+      {
+        "title": "Integrate and repeat",
+        "detail": "Findings feed into project management systems; flights are repeated at intervals to keep the digital twin current."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Drone-mounted LiDAR",
+        "status": "exists",
+        "why": "provides dense, accurate 3D measurements even in poor lighting."
+      },
+      {
+        "tech": "BIM standards and models",
+        "status": "exists",
+        "why": "a reliable as-designed model is needed as the comparison baseline."
+      },
+      {
+        "tech": "Point cloud registration software",
+        "status": "exists",
+        "why": "turns separate scans into one georeferenced model aligned to the design."
+      },
+      {
+        "tech": "Automated deviation detection",
+        "status": "partial",
+        "why": "some comparison is automated, but complex elements still need human review."
+      },
+      {
+        "tech": "High-precision GNSS/RTK",
+        "status": "exists",
+        "why": "keeps drone positions accurate to centimetres without heavy ground control."
+      },
+      {
+        "tech": "Cloud computing and storage",
+        "status": "exists",
+        "why": "point clouds are large and need processing power to compare quickly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "periodic drone LiDAR surveys compared to BIM with mostly manual processing",
+        "unlocks": "regular, accurate progress checks on construction sites."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated flight and processing pipelines that update the digital twin daily",
+        "unlocks": "faster feedback for site teams and fewer surprises."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with IoT sensors and 4D schedules for continuous, near-real-time synchronisation",
+        "unlocks": "a live digital twin that reflects both space and time."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous drone fleets with AI-driven predictive analytics",
+        "unlocks": "self-monitoring sites that can predict delays and safety risks."
+      }
+    ]
   }
 }

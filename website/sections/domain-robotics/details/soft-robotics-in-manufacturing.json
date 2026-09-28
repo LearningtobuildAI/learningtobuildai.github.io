@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Compliant body",
+        "role": "the part that bends, stretches or inflates instead of using rigid joints.",
+        "parts": [
+          "moulded silicone or polyurethane chambers",
+          "fibre reinforcement to steer bending",
+          "bellows or pleated sections"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "supplies the force without metal gears.",
+        "parts": [
+          "pneumatic supply and miniature proportional valves",
+          "tendon cables and motors",
+          "dielectric elastomer or shape-memory actuation (emerging)"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "lets the controller know how hard it is squeezing and where the object is.",
+        "parts": [
+          "embedded strain or conductive-elastomer sensors",
+          "air-pressure sensing in pneumatic chambers",
+          "camera or depth vision",
+          "force/torque sensor at the wrist"
+        ]
+      },
+      {
+        "name": "Control",
+        "role": "soft bodies are hard to model, so control leans on feedback and learning.",
+        "parts": [
+          "hyperelastic material models",
+          "impedance or force control",
+          "teach-by-demonstration and learned grasp policies"
+        ]
+      },
+      {
+        "name": "Mounting and tooling",
+        "role": "connects the soft effector to a standard industrial arm.",
+        "parts": [
+          "wrist interface or tool changer",
+          "tubing and cabling routing",
+          "quick-swap finger cassettes"
+        ]
+      },
+      {
+        "name": "Safety layer",
+        "role": "allows close work with people.",
+        "parts": [
+          "power and force limits",
+          "rounded, pinch-free geometry",
+          "light curtains or speed-and-separation monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the compliance principle",
+        "detail": "Decide whether the part should inflate (pneumatic chambers), bend (fibre-reinforced fingers, including fin-ray-style designs that curl around an object), stiffen on demand (granular jamming), or be cable-driven through a soft core."
+      },
+      {
+        "title": "Model and simulate",
+        "detail": "Because silicone does not behave like steel, the design is checked with hyperelastic material models and large-deformation simulation rather than simple rigid-body analysis, and the mould is designed at the same time."
+      },
+      {
+        "title": "Make the mould",
+        "detail": "A mould is machined, or 3D-printed for small runs, sometimes as a lost-core or two-part tool that can be pulled out of undercut chambers."
+      },
+      {
+        "title": "Cast the elastomer",
+        "detail": "Two-part platinum-cure silicone is mixed, degassed under vacuum to remove bubbles, poured or injected, and cured in an oven; multi-material parts are cast in successive pours with surface treatment or overmoulding between layers so the layers bond."
+      },
+      {
+        "title": "Add reinforcement and sensors",
+        "detail": "Fibre wraps, fabric plies or a stiffer second elastomer are laid in to control the direction of bending, and conductive elastomer channels or flexible strain gauges are cast into the body."
+      },
+      {
+        "title": "Assemble and plumb",
+        "detail": "Fingers are bonded to a rigid base, tubing and valves are connected, and the effector is fitted to the robot wrist."
+      },
+      {
+        "title": "Characterise",
+        "detail": "The gripper is tested for force-versus-displacement, grip on different shapes and surfaces, cycle life, tear resistance and creep, and the results are written into the controller."
+      },
+      {
+        "title": "Integrate the control loop",
+        "detail": "Grasp policies are tuned by demonstration or learning, with vision and pressure feedback closing the loop on a standard industrial arm."
+      },
+      {
+        "title": "Validate in production",
+        "detail": "The cell is qualified for the real line — cycle time, contamination, washdown or cleanroom compatibility, and human-robot safety limits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Elastomer materials and multi-material moulding",
+        "status": "exists",
+        "why": "the whole approach depends on tough, fatigue-resistant silicone and polyurethane that bond reliably in layers."
+      },
+      {
+        "tech": "Miniature proportional pneumatics",
+        "status": "exists",
+        "why": "inflatable grippers need fast, precise pressure control, not just on/off air."
+      },
+      {
+        "tech": "Flexible and stretchable electronics",
+        "status": "partial",
+        "why": "sensors that survive millions of stretch cycles are still the weak point of most soft machines."
+      },
+      {
+        "tech": "Soft-body simulation and control",
+        "status": "partial",
+        "why": "infinite degrees of freedom make classic robot control inadequate; learning-based methods help but need data."
+      },
+      {
+        "tech": "Collaborative-robot safety standards and practice",
+        "status": "exists",
+        "why": "force and pressure limits for contact with people set the rules that let soft effectors work alongside workers."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial soft and compliant grippers handling food, glass, fabric and packed goods",
+        "unlocks": "automation of pick-and-place tasks that rigid jaws bruise or crush."
+      },
+      {
+        "stage": "Next",
+        "milestone": "soft arms and hands with integrated sensing working in shared cells",
+        "unlocks": "assembly and inspection steps that mix human judgement with machine repeatability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-demand stiffening (jamming, fibre or fluid) so one effector can be soft for gripping and rigid for pushing",
+        "unlocks": "fewer tool changes and wider task range per robot."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-modelling soft robots that learn their own shape and adapt through wear",
+        "unlocks": "durable, general-purpose soft manipulators rather than single-task grippers."
+      }
+    ]
+  }
+}

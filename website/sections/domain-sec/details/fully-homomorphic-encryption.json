@@ -32,5 +32,151 @@
         "def": "A process within FHE that refreshes ciphertexts to reduce noise accumulation and enable long chains of computations without decryption."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Lattice cryptosystem core",
+        "role": "provides the mathematical hardness that keeps ciphertexts secure while still allowing computation.",
+        "parts": [
+          "learning-with-errors (LWE) or ring-LWE problem",
+          "polynomial ring arithmetic",
+          "noise distribution"
+        ]
+      },
+      {
+        "name": "Encoding and packing",
+        "role": "maps ordinary data into polynomials that the scheme can operate on.",
+        "parts": [
+          "integer encoders",
+          "approximate real-number encoders",
+          "batching into slots"
+        ]
+      },
+      {
+        "name": "Homomorphic evaluator",
+        "role": "performs addition and multiplication directly on encrypted values.",
+        "parts": [
+          "ciphertext addition",
+          "ciphertext multiplication",
+          "relinearisation",
+          "rotation and permutation"
+        ]
+      },
+      {
+        "name": "Bootstrapping module",
+        "role": "refreshes a noisy ciphertext so that long computations remain possible.",
+        "parts": [
+          "homomorphic decryption circuit",
+          "key switching",
+          "noise-budget monitor"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "generates and distributes the keys needed to encrypt, evaluate and decrypt.",
+        "parts": [
+          "secret key",
+          "public key",
+          "evaluation keys",
+          "rotation keys"
+        ]
+      },
+      {
+        "name": "Application compiler and runtime",
+        "role": "turns a program into a homomorphic circuit and selects practical parameters.",
+        "parts": [
+          "circuit optimiser",
+          "parameter selector",
+          "programming interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a scheme family",
+        "detail": "Pick a construction suited to the data: exact integers, approximate real numbers, or boolean circuits."
+      },
+      {
+        "title": "Select parameters",
+        "detail": "Choose polynomial degree and noise distribution to meet a target security level and the depth of the intended computation."
+      },
+      {
+        "title": "Generate keys",
+        "detail": "Create the secret key, public key and the evaluation and rotation keys that let a server compute without decrypting."
+      },
+      {
+        "title": "Encode and encrypt",
+        "detail": "Pack the data into polynomials and encrypt them into ciphertexts under the public key."
+      },
+      {
+        "title": "Evaluate the circuit",
+        "detail": "The server performs additions and multiplications on ciphertexts; additions are cheap, but multiplications grow the noise."
+      },
+      {
+        "title": "Control noise",
+        "detail": "Relinearise after multiplications, rescale where the scheme allows, and bootstrap when the noise budget nears its limit."
+      },
+      {
+        "title": "Decrypt and decode",
+        "detail": "The data owner decrypts the result with the secret key and converts the polynomial back into useful data."
+      },
+      {
+        "title": "Integrate into an application",
+        "detail": "Wrap the encrypted computation in a service that handles key exchange, parameter negotiation and result delivery."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice-based cryptography",
+        "status": "exists",
+        "why": "it supplies the hard problems that remain secure even when an adversary sees many encrypted computations."
+      },
+      {
+        "tech": "Bootstrapping",
+        "status": "partial",
+        "why": "it makes arbitrary-depth computation possible, but current implementations are far too slow for many workloads."
+      },
+      {
+        "tech": "Fast polynomial arithmetic",
+        "status": "exists",
+        "why": "the number-theoretic transform and related methods make the large polynomial operations practical."
+      },
+      {
+        "tech": "Hardware acceleration",
+        "status": "missing",
+        "why": "general-purpose CPUs and GPUs are inefficient for the huge integer and polynomial arithmetic that FHE requires."
+      },
+      {
+        "tech": "Standardised parameter sets and APIs",
+        "status": "partial",
+        "why": "without agreed security levels and interfaces, deployments are hard to audit and compare."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research libraries and early pilots performing small encrypted computations",
+        "unlocks": "privacy-preserving demonstrations in cloud analytics and machine learning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised parameter sets and mature compiler toolchains",
+        "unlocks": "portable, auditable applications that developers can build without deep cryptographic expertise."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware accelerators for polynomial arithmetic and bootstrapping",
+        "unlocks": "encrypted computation fast enough for interactive services."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "widespread encrypted cloud and machine-learning services",
+        "unlocks": "users can outsource computation without revealing their data to the provider."
+      }
+    ]
   }
 }

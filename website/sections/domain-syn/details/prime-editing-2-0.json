@@ -34,5 +34,153 @@
         "def": "DNA molecules containing the desired genetic sequence to be inserted or corrected in the target cell's genome during prime editing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Editor protein",
+        "role": "does the search-and-replace chemistry: nicks one DNA strand and writes a new sequence using a built-in reverse transcriptase.",
+        "parts": [
+          "Cas9 nickase (H840A) that cuts only one strand",
+          "engineered reverse transcriptase domain",
+          "peptide linker joining the two"
+        ]
+      },
+      {
+        "name": "Prime editing guide RNA (pegRNA)",
+        "role": "both finds the target site and carries the template for the new sequence.",
+        "parts": [
+          "spacer that matches the target DNA",
+          "sgRNA scaffold",
+          "3' extension containing a primer binding site and the desired edit template"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "gets the editor and guide into the right cells without triggering immunity or toxicity.",
+        "parts": [
+          "lipid nanoparticles for RNA or ribonucleoprotein",
+          "engineered adeno-associated virus vectors",
+          "virus-like particles for transient delivery"
+        ]
+      },
+      {
+        "name": "Cellular repair machinery",
+        "role": "the cell's own enzymes resolve the flap and seal the edit into the genome.",
+        "parts": [
+          "flap endonuclease",
+          "DNA ligase",
+          "mismatch repair proteins (sometimes inhibited to raise efficiency)"
+        ]
+      },
+      {
+        "name": "Target cells and tissue",
+        "role": "the biological context where the edit must work — often stem cells, liver or eye.",
+        "parts": [
+          "haematopoietic stem cells for blood disorders",
+          "hepatocytes for liver-targeted delivery",
+          "retinal cells for inherited blindness"
+        ]
+      },
+      {
+        "name": "Manufacturing and analytics",
+        "role": "produces pure, consistent editor and guide, and measures how precisely the edit was made.",
+        "parts": [
+          "enzymatic synthesis of guide RNA",
+          "protein purification and formulation",
+          "amplicon sequencing and off-target assays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the edit",
+        "detail": "Identify the exact DNA change needed — a single letter swap, a small insertion or a deletion — and confirm it is within reach of a nick-and-write strategy."
+      },
+      {
+        "title": "Design the pegRNA",
+        "detail": "Software picks a spacer next to the target site and designs the 3' extension: a primer binding site that matches the nicked strand and a template that encodes the new sequence."
+      },
+      {
+        "title": "Engineer the editor protein",
+        "detail": "The Cas9 nickase and reverse transcriptase genes are fused with a flexible linker, codon-optimised for human cells, and sometimes mutated to improve processivity or reduce off-target nicking."
+      },
+      {
+        "title": "Produce the components",
+        "detail": "The editor is expressed in cells or synthesised, purified, and the pegRNA is made by in vitro transcription or chemical synthesis."
+      },
+      {
+        "title": "Package for delivery",
+        "detail": "Editor and guide are encapsulated in lipid nanoparticles, loaded into AAV vectors, or assembled into virus-like particles, depending on the target organ."
+      },
+      {
+        "title": "Test in cells",
+        "detail": "The package is applied to patient-derived cells or cell lines; sequencing measures the fraction of alleles correctly edited and any unintended changes."
+      },
+      {
+        "title": "Optimise second-generation features",
+        "detail": "Engineered pegRNAs with protective motifs, added mismatch-repair inhibitors, and improved reverse transcriptases are tested to raise efficiency in hard-to-edit cells."
+      },
+      {
+        "title": "Preclinical safety and dosing",
+        "detail": "Animal studies check whether the edit reaches the right tissue, persists, and avoids immune reactions or off-target edits before any human trial."
+      },
+      {
+        "title": "Clinical manufacturing",
+        "detail": "For patient trials, the therapeutic is produced under clinical-grade conditions, dosed, and monitored with sensitive sequencing of blood or tissue samples."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR-Cas9 nickase",
+        "status": "exists",
+        "why": "provides the programmable DNA-binding and single-strand nicking that starts the edit without a double-strand break."
+      },
+      {
+        "tech": "Reverse transcriptases that work on an RNA template inside cells",
+        "status": "partial",
+        "why": "the enzyme must copy the pegRNA extension accurately and efficiently; natural and engineered versions are improving but not yet ideal."
+      },
+      {
+        "tech": "Targeted delivery to specific organs",
+        "status": "partial",
+        "why": "lipid nanoparticles reach liver well, but delivering to other tissues such as blood stem cells or brain remains difficult."
+      },
+      {
+        "tech": "Detailed understanding of DNA repair",
+        "status": "partial",
+        "why": "the cell decides whether to keep the edit or reverse it; controlling mismatch repair and flap resolution is still being worked out."
+      },
+      {
+        "tech": "Scalable, affordable manufacturing",
+        "status": "partial",
+        "why": "making clinical-grade editor protein and long guide RNA at scale, especially for personalised edits, is costly and slow."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prime editing demonstrated in human cells and animal models, with first clinical trials for blood disorders and liver diseases under way or cleared",
+        "unlocks": "proof that the approach is safe enough to test in patients."
+      },
+      {
+        "stage": "Next",
+        "milestone": "second-generation editors (engineered pegRNAs, improved reverse transcriptases, mismatch-repair tuning) raise efficiency in stem cells and other hard targets",
+        "unlocks": "reliable correction for a wider set of mutations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in vivo delivery to organs beyond the liver, such as eye, muscle or lung",
+        "unlocks": "treatments that do not require removing and editing cells outside the body."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "off-the-shelf and personalised therapies for many single-gene diseases",
+        "unlocks": "routine correction of inherited mutations, if long-term safety and manufacturing costs are solved."
+      }
+    ]
   }
 }

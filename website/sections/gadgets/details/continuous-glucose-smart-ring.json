@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Optical sensing head",
+        "role": "shines light into the finger and measures what comes back, looking for glucose's faint spectral fingerprint.",
+        "parts": [
+          "near-infrared laser or LED",
+          "Raman or mid-infrared path",
+          "photodetector and filters",
+          "reference wavelength channel"
+        ]
+      },
+      {
+        "name": "Skin-contact optics",
+        "role": "couples light into tissue reproducibly, despite the fact that every finger is different.",
+        "parts": [
+          "ring inner surface",
+          "optical window and light guides",
+          "pressure and contact sensor",
+          "thermistor"
+        ]
+      },
+      {
+        "name": "Signal and chemometrics engine",
+        "role": "separates a glucose signal thousands of times weaker than the water, fat and protein around it.",
+        "parts": [
+          "on-board low-power processor",
+          "multivariate calibration model",
+          "drift and baseline correction",
+          "per-user calibration profile"
+        ]
+      },
+      {
+        "name": "Motion and confounder sensing",
+        "role": "flags the many things that corrupt an optical reading.",
+        "parts": [
+          "accelerometer",
+          "perfusion/temperature sensing",
+          "ambient light rejection"
+        ]
+      },
+      {
+        "name": "Physiology model",
+        "role": "converts a tissue measurement into a blood-glucose estimate.",
+        "parts": [
+          "interstitial-fluid lag model",
+          "trend and rate-of-change estimator"
+        ]
+      },
+      {
+        "name": "Power, radio and app",
+        "role": "fits computation and wireless into a ring, and shows trends and alerts.",
+        "parts": [
+          "coin or curved battery",
+          "Bluetooth radio",
+          "phone app with alerts"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prove the physics in the lab",
+        "detail": "Measure glucose in tissue phantoms, then in skin, against blood reference samples, to see whether the signal is detectable at safe light intensities. This is the step that has defeated most attempts."
+      },
+      {
+        "title": "Build the optical bench",
+        "detail": "Assemble laser or LED, optics and detector on a rig and run glucose-clamp studies, where blood glucose is deliberately held at known levels while optical data is recorded."
+      },
+      {
+        "title": "Shrink it into a ring",
+        "detail": "Miniaturise source, optics and detector, stabilise temperature, and design a skin interface that presses the same way on every wearer."
+      },
+      {
+        "title": "Train the calibration model",
+        "detail": "Feed paired optical and blood-glucose data into a chemometric or machine-learning model, then test it on people who were not in the training set — the hardest test."
+      },
+      {
+        "title": "Combat confounders",
+        "detail": "Correct for motion, perfusion changes, ambient light, skin tone, finger pressure and temperature, and decide how often a user must recalibrate."
+      },
+      {
+        "title": "Run clinical validation",
+        "detail": "Measure accuracy against the accepted standards for glucose monitors, including performance in the low range where errors are dangerous, and report a mean absolute relative difference figure."
+      },
+      {
+        "title": "Clear regulation",
+        "detail": "Seek medical-device clearance, and demonstrate that laser or light exposure stays within eye and skin safety limits."
+      },
+      {
+        "title": "Scale manufacture",
+        "detail": "Make thousands of units with sensor-to-sensor consistency, in biocompatible materials that survive sweat, soap and daily wear."
+      },
+      {
+        "title": "Monitor after launch",
+        "detail": "Track drift, recalibration frequency and any harms, since a plausible-but-wrong reading can lead to a wrong insulin dose."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniaturised spectroscopy",
+        "status": "partial",
+        "why": "laboratory Raman and near-infrared instruments work, but shrinking the light path into a ring while keeping signal quality is unsolved."
+      },
+      {
+        "tech": "Weak-signal chemometrics",
+        "status": "partial",
+        "why": "statistical methods exist, but they need large sets of accurately paired optical and blood data that nobody has yet collected at scale."
+      },
+      {
+        "tech": "Accurate blood-glucose reference data",
+        "status": "exists",
+        "why": "fingerstick and existing sensor-based monitors provide the labels any model must be trained and judged against."
+      },
+      {
+        "tech": "Interstitial-fluid physiology models",
+        "status": "partial",
+        "why": "the relationship and time lag between tissue and blood glucose is understood in outline but varies between people and conditions."
+      },
+      {
+        "tech": "Optical skin-tone and perfusion fairness",
+        "status": "missing",
+        "why": "optical readings are known to vary with skin pigmentation and blood flow, and no validated correction exists for glucose sensing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "smart rings measure pulse, temperature and sleep, and some market vague 'metabolic' scores, while fingerstick and implantable or wearable enzymatic sensors remain the only accurate glucose route",
+        "unlocks": "a form factor people will actually wear, waiting for a sensor that works."
+      },
+      {
+        "stage": "Next",
+        "milestone": "research-grade Raman or near-infrared devices reach usable accuracy in supervised studies with daily calibration",
+        "unlocks": "non-invasive trend tracking, with confirmatory fingersticks before any treatment decision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems pair a non-invasive optical sensor with an occasional minimally invasive element for re-calibration",
+        "unlocks": "fewer needle events per week while keeping clinical accuracy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a ring-grade sensor that stays accurate for months without calibration and passes the standards required for dosing decisions",
+        "unlocks": "needle-free monitoring for the hundreds of millions of people with diabetes and for general metabolic health."
+      }
+    ]
+  }
+}

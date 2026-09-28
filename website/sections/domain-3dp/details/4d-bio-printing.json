@@ -34,5 +34,143 @@
         "def": "Polymers that can be programmed to remember a certain shape and return to it upon exposure to stimuli such as heat or light."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bioink",
+        "role": "the printable, cell-laden material that will later change shape.",
+        "parts": [
+          "stimuli-responsive hydrogel (for example a thermoresponsive polymer such as PNIPAM, or gelatin methacryloyl)",
+          "living cells",
+          "photoinitiator and crosslinker",
+          "growth factors or drugs"
+        ]
+      },
+      {
+        "name": "Printer",
+        "role": "deposits the bioink in programmed patterns without killing the cells.",
+        "parts": [
+          "extrusion or inkjet or digital light projection print head",
+          "multi-material nozzles",
+          "light or UV source",
+          "high-precision motion stage",
+          "temperature-controlled print bed"
+        ]
+      },
+      {
+        "name": "Architecture design",
+        "role": "encodes the shape change into the printed geometry rather than into electronics.",
+        "parts": [
+          "CAD model with graded crosslink density",
+          "anisotropic fibre orientation",
+          "internal stress mismatches between layers"
+        ]
+      },
+      {
+        "name": "Stimulus control",
+        "role": "applies the trigger that makes the construct fold, swell or stiffen.",
+        "parts": [
+          "temperature or pH control",
+          "light source",
+          "enzyme or magnetic trigger"
+        ]
+      },
+      {
+        "name": "Maturation system",
+        "role": "keeps the construct alive and lets the cells build real tissue.",
+        "parts": [
+          "perfusion bioreactor",
+          "oxygen and nutrient supply",
+          "mechanical or electrical conditioning"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the trigger and the change",
+        "detail": "Decide what the stimulus will be — body temperature, a pH shift, light, or an enzyme — and what shape or stiffness change it should cause, such as a flat patch curling into a tube."
+      },
+      {
+        "title": "Formulate the bioink",
+        "detail": "Hydrogel polymer, water, photoinitiator and cells are mixed to a printable viscosity. Cell density, shear during printing and light exposure must all stay within limits the cells can survive."
+      },
+      {
+        "title": "Design the geometry",
+        "detail": "Software lays out layers with different crosslink densities or fibre directions. Because layers swell by different amounts, the flat print folds along a designed line when triggered."
+      },
+      {
+        "title": "Print the construct",
+        "detail": "The printer deposits filament by filament, or cures whole layers with projected light, crosslinking each layer just enough to hold the next one. Structures are typically millimetres to a few centimetres across, with filaments tens to hundreds of micrometres wide."
+      },
+      {
+        "title": "Clean up and set the shape",
+        "detail": "Support material is washed away and a second crosslinking step locks the temporary flat shape in place."
+      },
+      {
+        "title": "Trigger the shape change",
+        "detail": "The construct is warmed, bathed in a different solution or illuminated, and the stored stresses are released. Shape change is measured against the design."
+      },
+      {
+        "title": "Mature the tissue",
+        "detail": "The construct lives in a bioreactor where perfused nutrients and mechanical loading push the cells to lay down their own matrix over days to weeks."
+      },
+      {
+        "title": "Test for safety and integration",
+        "detail": "Animal studies check immune reaction, how the implant degrades, and whether it keeps working once embedded in living tissue."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "3D bioprinting of cell-laden hydrogels",
+        "status": "exists",
+        "why": "provides the deposition hardware and inks that 4D printing modifies."
+      },
+      {
+        "tech": "Stimuli-responsive hydrogels and shape-memory polymers",
+        "status": "partial",
+        "why": "temperature- and pH-sensitive materials work in the lab; few are approved for implantation."
+      },
+      {
+        "tech": "Stem cell expansion and differentiation control",
+        "status": "exists",
+        "why": "the printed cells must become the right tissue, not scar."
+      },
+      {
+        "tech": "Vascularisation of thick tissue",
+        "status": "missing",
+        "why": "cells more than roughly 200 micrometres from a blood supply starve, so anything bigger than a thin sheet needs printed vessels."
+      },
+      {
+        "tech": "Predictive modelling of shape change",
+        "status": "partial",
+        "why": "software that reliably predicts how a swollen, cell-filled structure will fold is still being built and validated."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations of self-folding, cell-laden constructs",
+        "unlocks": "proof that shape change and living cells can coexist."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-expanding implants such as stents and cartilage or vascular patches tested in animals",
+        "unlocks": "simple 4D-printed devices whose value comes from being implanted flat and opening in place."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first clinical trials for small, avascular implants",
+        "unlocks": "regulatory experience with a material that changes after implantation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "vascularised, patient-specific tissue at organ scale",
+        "unlocks": "replacement tissue grown from a scan, if printed blood vessels and maturation are solved."
+      }
+    ]
   }
 }

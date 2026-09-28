@@ -29,5 +29,148 @@
         "def": "Orbits within 2,000 kilometers of the Earth's surface, where space-based solar power stations would likely be deployed."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "collects sunlight continuously in orbit, where there is no night, cloud or atmosphere.",
+        "parts": [
+          "thin-film or lightweight photovoltaic blanket",
+          "supporting truss",
+          "deployment mechanism"
+        ]
+      },
+      {
+        "name": "Power conversion and transmitter",
+        "role": "converts the direct current into microwaves at a chosen frequency and radiates it as a beam.",
+        "parts": [
+          "DC-to-RF converters",
+          "solid-state amplifiers",
+          "phased-array antenna elements"
+        ]
+      },
+      {
+        "name": "Beam pointing and control",
+        "role": "keeps the microwave beam locked onto the ground receiver with electronic steering rather than moving parts.",
+        "parts": [
+          "phase control electronics",
+          "pilot-beam receiver",
+          "retrodirective control loop"
+        ]
+      },
+      {
+        "name": "Structure and in-orbit assembly",
+        "role": "holds a structure kilometres across rigid and flat enough for the array to work.",
+        "parts": [
+          "modular frame segments",
+          "docking and robotic assembly interfaces",
+          "station-keeping thrusters"
+        ]
+      },
+      {
+        "name": "Thermal control",
+        "role": "dumps waste heat in vacuum, where only radiation works.",
+        "parts": [
+          "radiator panels",
+          "heat pipes"
+        ]
+      },
+      {
+        "name": "Ground rectenna",
+        "role": "receives the beam and converts it back to electricity for the grid.",
+        "parts": [
+          "antenna elements with rectifying diodes",
+          "supporting lattice",
+          "connection to a substation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design in modular units",
+        "detail": "The station is broken into identical sandwich modules — photovoltaics on one face, transmitting antenna on the other — so it can be mass-produced and self-assembled."
+      },
+      {
+        "title": "Make the components on Earth",
+        "detail": "Lightweight solar cells, solid-state microwave amplifiers and phased-array tiles are manufactured with high efficiency and low mass, since every kilogram must be launched."
+      },
+      {
+        "title": "Launch to orbit",
+        "detail": "Components fly to geostationary orbit or a suitable assembly orbit across many heavy-lift launches; the total mass for a gigawatt station would run to thousands of tonnes."
+      },
+      {
+        "title": "Assemble robotically in space",
+        "detail": "Robot arms and free-flying robots dock module to module, joining electrical connections and holding the array flat to a fraction of the microwave wavelength."
+      },
+      {
+        "title": "Test beam pointing",
+        "detail": "Low-power operation uses a pilot signal from the ground rectenna so the phased array can lock onto it and steer the beam electronically."
+      },
+      {
+        "title": "Ramp up the beam",
+        "detail": "Power is raised gradually while beam shape and spillover are monitored; the ground array is built out to match the beam footprint."
+      },
+      {
+        "title": "Connect to the grid",
+        "detail": "Rectenna output feeds an inverter and substation, delivering power day and night apart from short eclipse periods around the equinoxes."
+      },
+      {
+        "title": "Maintain and replace",
+        "detail": "Modules are swapped by robots over decades, since the station is far too large and high to service from the ground."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Very low-cost heavy-lift launch",
+        "status": "partial",
+        "why": "reusable super-heavy launchers have started flying, but the cost per kilogram is still far above what a station massing thousands of tonnes per gigawatt would need."
+      },
+      {
+        "tech": "Robotic in-orbit assembly",
+        "status": "partial",
+        "why": "robots have assembled structures on the ISS and free-flying demonstrators exist, but nothing kilometre-scale has been built unattended."
+      },
+      {
+        "tech": "Wireless power transmission",
+        "status": "partial",
+        "why": "microwave beaming has been demonstrated between points on the ground and, at very low power, from a satellite to Earth; kilowatt-to-megawatt orbital beaming is unproven."
+      },
+      {
+        "tech": "Lightweight high-efficiency photovoltaics and RF amplifiers",
+        "status": "exists",
+        "why": "efficiency determines how much of the collected sunlight reaches the grid, and mass determines launch cost."
+      },
+      {
+        "tech": "Beam-safety rules and spectrum allocation",
+        "status": "missing",
+        "why": "an international framework is needed for a continuously transmitted high-power microwave beam crossing airspace and populated areas."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "component and small-scale demonstrations — a satellite experiment beamed detectable power to Earth in 2023, and space agencies have completed feasibility assessments",
+        "unlocks": "confidence that the individual links in the chain can work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "kilowatt-scale beaming from orbit to a ground rectenna, plus robotic assembly trials of large flat structures",
+        "unlocks": "measured end-to-end efficiency instead of modelled values."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a megawatt-class pilot station",
+        "unlocks": "real data on beam control, thermal load and grid interface at useful scale."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt stations built by robot fleets from mass-produced modules",
+        "unlocks": "firm, weather-independent power for regions with poor ground-based solar resources — viable only if launch and assembly costs fall by more than an order of magnitude."
+      }
+    ]
   }
 }

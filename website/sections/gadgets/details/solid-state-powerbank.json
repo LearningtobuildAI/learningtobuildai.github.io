@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Anode",
+        "role": "stores lithium and sets much of the cell's capacity; a solid electrolyte allows lithium metal here instead of graphite.",
+        "parts": [
+          "lithium-metal foil or silicon-based composite",
+          "copper current collector"
+        ]
+      },
+      {
+        "name": "Solid electrolyte",
+        "role": "conducts lithium ions between the electrodes while physically blocking the dendrites that cause fires in liquid cells.",
+        "parts": [
+          "sulfide or oxide ceramic (e.g. garnet-type) powder",
+          "polymer binder or composite layer",
+          "thin sintered membrane"
+        ]
+      },
+      {
+        "name": "Cathode",
+        "role": "the lithium source on first charge; must be mixed with solid electrolyte rather than soaked in liquid.",
+        "parts": [
+          "nickel-rich layered oxide",
+          "conductive carbon",
+          "aluminium current collector"
+        ]
+      },
+      {
+        "name": "Cell stack and interfaces",
+        "role": "intimate contact between rigid layers, kept under pressure so ions can cross every boundary.",
+        "parts": [
+          "calendered electrode sheets",
+          "interface coatings",
+          "stack pressure hardware"
+        ]
+      },
+      {
+        "name": "Battery management and conversion",
+        "role": "a single cell outputs roughly 3–4 V, so electronics must regulate charging and boost to the 5 V USB output.",
+        "parts": [
+          "charge controller and protection IC",
+          "DC-DC boost converter",
+          "USB-C power-delivery controller",
+          "temperature sensors"
+        ]
+      },
+      {
+        "name": "Pack and enclosure",
+        "role": "holds the cells, spreads heat and provides the pocket-sized case and ports.",
+        "parts": [
+          "aluminium or plastic shell",
+          "insulating and thermal pad",
+          "USB-C ports and status indicator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Synthesise the electrolyte",
+        "detail": "Sulfide glass-ceramic is milled from raw powders and heat-treated; oxide versions are sintered at over 1000 °C. Both are processed in dry rooms or inert gas, because sulfides react with moisture."
+      },
+      {
+        "title": "Form the membrane",
+        "detail": "The electrolyte is pressed or cast into a dense sheet tens of micrometres thick — thin enough for low resistance, thick enough to stop dendrites."
+      },
+      {
+        "title": "Make the cathode composite",
+        "detail": "Cathode powder is mixed with electrolyte particles and carbon, then coated onto aluminium foil and rolled flat."
+      },
+      {
+        "title": "Stack and densify",
+        "detail": "Cathode, electrolyte and anode are laminated and pressed, sometimes warm-pressed or sintered, to close the microscopic gaps between layers."
+      },
+      {
+        "title": "Package the cells",
+        "detail": "Cells are cut and sealed into laminated pouches or ceramic packages with welded tabs; sealing quality decides life and safety."
+      },
+      {
+        "title": "Form and test",
+        "detail": "The first slow charge forms the interfaces; cells are then tested for capacity, resistance and self-discharge, and aged at elevated temperature."
+      },
+      {
+        "title": "Build the pack",
+        "detail": "Cells are connected in series-parallel, bonded to a circuit board with the charge controller, boost converter and USB-C port."
+      },
+      {
+        "title": "Enclose and certify",
+        "detail": "The pack goes into the shell with thermal padding and is drop-tested and safety-tested, including the UN 38.3 transport standard for lithium batteries."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Solid electrolytes with high room-temperature ionic conductivity",
+        "status": "partial",
+        "why": "sulfide ceramics can reach ionic conductivities comparable to liquid electrolytes in the lab; keeping that performance in a manufactured sheet is harder."
+      },
+      {
+        "tech": "Stable lithium-metal interfaces",
+        "status": "partial",
+        "why": "without a liquid to wet the surfaces, contact is poor and resistance grows, shortening life."
+      },
+      {
+        "tech": "Dry-room or inert-atmosphere manufacturing",
+        "status": "partial",
+        "why": "many promising electrolytes degrade in ordinary humid air, so existing lithium-ion factories cannot simply be reused."
+      },
+      {
+        "tech": "Low-cost thin ceramic membranes",
+        "status": "missing",
+        "why": "sintering large, defect-free ceramic sheets cheaply is not yet a proven mass-production process."
+      },
+      {
+        "tech": "Stack-pressure management in a pocket device",
+        "status": "partial",
+        "why": "cells need sustained mechanical pressure; doing that in a thin, drop-tested consumer product is an engineering compromise."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tiny ceramic and thin-film solid-state cells shipping in wearables and sensors",
+        "unlocks": "real-world data on solid-state lifetime in small formats."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot production lines for larger sulfide-based cells, initially for electric vehicles",
+        "unlocks": "falling cell costs and evidence that the chemistry scales beyond button size."
+      },
+      {
+        "stage": "Next",
+        "milestone": "solid-state power banks and phones using the same cells",
+        "unlocks": "thinner, faster-charging gadgets that are far less likely to catch fire."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "solid-state cells become the default in premium devices",
+        "unlocks": "higher energy density per kilogram and per litre across portable electronics — if ceramic manufacturing and cost targets are met."
+      }
+    ]
+  }
+}

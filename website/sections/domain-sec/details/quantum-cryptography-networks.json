@@ -34,5 +34,152 @@
         "def": "A phenomenon in which pairs or groups of particles interact in such a way that the state of one (no matter how far apart) is directly related to the state of another."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "creates the quantum states that carry the key, either as weak laser pulses or entangled photon pairs.",
+        "parts": [
+          "attenuated laser",
+          "nonlinear crystal for spontaneous parametric down-conversion",
+          "polarisation or phase modulators"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "transmits single photons with minimal loss and disturbance.",
+        "parts": [
+          "optical fibre",
+          "free-space telescopes",
+          "satellite links"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "detect individual photons, often at cryogenic temperatures.",
+        "parts": [
+          "avalanche photodiodes",
+          "superconducting nanowire single-photon detectors",
+          "cryocoolers"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "carries basis and error-correction information, authenticated to block man-in-the-middle attacks.",
+        "parts": [
+          "standard internet link",
+          "authentication hardware or pre-shared keys"
+        ]
+      },
+      {
+        "name": "Post-processing and key management",
+        "role": "turns raw detections into a secret key and stores it for use.",
+        "parts": [
+          "error-correction software",
+          "privacy amplification",
+          "key store"
+        ]
+      },
+      {
+        "name": "Nodes and repeaters",
+        "role": "extend range beyond a single point-to-point link.",
+        "parts": [
+          "trusted node servers",
+          "quantum memories",
+          "entanglement-swapping hardware"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate quantum states",
+        "detail": "A laser produces very weak pulses (or a nonlinear crystal produces entangled photon pairs) encoded in polarisation or phase."
+      },
+      {
+        "title": "Transmit through the quantum channel",
+        "detail": "Photons travel through optical fibre or free space to the receiving station."
+      },
+      {
+        "title": "Measure at the receiver",
+        "detail": "The receiver randomly chooses a measurement basis and detects the arriving photons."
+      },
+      {
+        "title": "Sift and reconcile",
+        "detail": "Sender and receiver compare bases over the classical channel and keep only the bits where they used the same basis."
+      },
+      {
+        "title": "Error correct",
+        "detail": "Algorithms correct bit errors caused by noise in the channel or detectors."
+      },
+      {
+        "title": "Privacy amplify",
+        "detail": "The key is compressed so that any information an eavesdropper might have is reduced to negligible levels."
+      },
+      {
+        "title": "Authenticate the classical channel",
+        "detail": "A pre-shared secret or classical public-key cryptography ensures the classical messages cannot be altered by an attacker."
+      },
+      {
+        "title": "Use the key",
+        "detail": "The resulting symmetric key feeds standard encryption, such as a one-time pad or AES, for secure communication."
+      },
+      {
+        "title": "Scale the network",
+        "detail": "Trusted nodes or, in the future, quantum repeaters link multiple point-to-point segments to cover longer distances."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "Needed to detect individual photons; current devices are bulky and often require cryogenic cooling, limiting practical deployment."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "Required to extend quantum key distribution beyond a few hundred kilometres without relying on trusted nodes."
+      },
+      {
+        "tech": "Quantum memories",
+        "status": "missing",
+        "why": "Needed to store quantum states inside repeaters long enough to perform entanglement swapping."
+      },
+      {
+        "tech": "Classical authentication",
+        "status": "exists",
+        "why": "Prevents an eavesdropper from impersonating the sender or receiver on the classical channel."
+      },
+      {
+        "tech": "Standardisation",
+        "status": "partial",
+        "why": "Emerging standards aim to ensure interoperability between different vendors and network operators."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Point-to-point QKD links and trusted-node metro networks, such as the Beijing–Shanghai backbone in China.",
+        "unlocks": "Secure key exchange for government, financial and critical-infrastructure links in metropolitan areas."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Satellite QKD, demonstrated by China's Micius satellite, and longer fibre links.",
+        "unlocks": "Intercontinental key distribution where fibre is impractical."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Functional quantum repeaters and memories in the laboratory.",
+        "unlocks": "Scalable long-distance quantum networks without trusted nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Entanglement-based quantum internet with end-to-end entanglement distribution.",
+        "unlocks": "Device-independent QKD and distributed quantum computing."
+      }
+    ]
   }
 }

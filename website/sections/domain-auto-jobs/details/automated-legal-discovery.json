@@ -30,5 +30,151 @@
         "def": "Advanced AI models capable of generating human-like text across a wide range of topics."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and parsing",
+        "role": "brings documents from email, file shares, and case systems, and turns scans and PDFs into text.",
+        "parts": [
+          "connectors",
+          "OCR engine",
+          "metadata extractor",
+          "de-duplication"
+        ]
+      },
+      {
+        "name": "Enrichment and indexing",
+        "role": "extracts entities, dates, and relationships, and builds a searchable semantic index.",
+        "parts": [
+          "named entity recognition",
+          "language detection",
+          "embedding model",
+          "vector database"
+        ]
+      },
+      {
+        "name": "Query and ranking",
+        "role": "translates a legal question into a search and ranks documents by likely relevance.",
+        "parts": [
+          "query parser",
+          "hybrid search (keyword + vector)",
+          "relevance model",
+          "active learning loop"
+        ]
+      },
+      {
+        "name": "LLM synthesis",
+        "role": "summarizes documents, answers questions, and flags anomalies, grounded in retrieved passages.",
+        "parts": [
+          "large language model",
+          "retrieval-augmented generation",
+          "prompt templates",
+          "citation grounding"
+        ]
+      },
+      {
+        "name": "Review interface",
+        "role": "where lawyers read, tag, redact, and export documents.",
+        "parts": [
+          "document viewer",
+          "tagging and coding",
+          "redaction tools",
+          "privilege log"
+        ]
+      },
+      {
+        "name": "Security and audit",
+        "role": "keeps data confidential, controls access, and records every action for defensibility.",
+        "parts": [
+          "encryption",
+          "role-based access",
+          "audit trail",
+          "data residency controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the discovery protocol",
+        "detail": "lawyers specify the legal questions, date ranges, custodians, and what counts as relevant or anomalous."
+      },
+      {
+        "title": "Ingest and clean documents",
+        "detail": "connectors pull data from email, shared drives, and case management systems; OCR converts scans; duplicates and system files are removed."
+      },
+      {
+        "title": "Build the semantic index",
+        "detail": "every passage is converted into a vector embedding and stored alongside keyword indexes for hybrid retrieval."
+      },
+      {
+        "title": "Configure relevance ranking",
+        "detail": "a seed set of documents is manually coded; the ranking model learns to prioritize similar material, and thresholds are set for review."
+      },
+      {
+        "title": "Integrate LLM synthesis",
+        "detail": "retrieval is connected to a large language model with prompts that require citations; outputs are constrained to the retrieved text to reduce hallucination."
+      },
+      {
+        "title": "Test and validate",
+        "detail": "performance is measured against a manually reviewed sample, checking recall, precision, and consistency across document types and languages."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "the system is rolled out to the review team; logs and feedback are used to retrain models and catch drift or bias."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Optical character recognition (OCR) and document parsing",
+        "status": "exists",
+        "why": "many legal documents are scanned images or complex PDFs that must be converted to text before any AI can read them."
+      },
+      {
+        "tech": "Vector databases and semantic search",
+        "status": "exists",
+        "why": "they let a system find passages by meaning rather than exact keywords across millions of documents."
+      },
+      {
+        "tech": "Large language models and retrieval-augmented generation",
+        "status": "partial",
+        "why": "they can synthesize and summarize, but without careful grounding they hallucinate and may mishandle privileged or confidential material."
+      },
+      {
+        "tech": "Technology-assisted review (predictive coding)",
+        "status": "exists",
+        "why": "it is a proven method to prioritize documents for human review and is accepted in several legal systems."
+      },
+      {
+        "tech": "Legal-domain knowledge bases and ontologies",
+        "status": "partial",
+        "why": "understanding precedents, privileges, and anomalies requires domain-specific training or curated legal concepts, which are still being built."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted review with human oversight: systems flag relevant documents, summarize them with citations, and draft privilege logs.",
+        "unlocks": "faster and cheaper discovery for large document sets, letting lawyers focus on judgment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "proactive anomaly detection across entire document sets without explicit queries, such as spotting inconsistent statements or missing dates.",
+        "unlocks": "earlier case strategy, compliance risk detection, and investigation leads."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal and multi-jurisdictional reasoning, handling audio, video, and legal concepts across different countries.",
+        "unlocks": "global compliance and cross-border investigations in one workflow."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "end-to-end discovery agents that conduct review, draft privilege logs, and produce defensible outputs with minimal human intervention.",
+        "unlocks": "near-instant discovery for routine matters, freeing legal teams for complex judgment and negotiation."
+      }
+    ]
   }
 }

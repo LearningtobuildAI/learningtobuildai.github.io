@@ -1,0 +1,136 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Rectenna",
+        "role": "catches ambient radio waves and turns their alternating current into direct current.",
+        "parts": [
+          "printed broadband antenna",
+          "impedance-matching network",
+          "Schottky diode rectifier"
+        ]
+      },
+      {
+        "name": "Thermoelectric layer",
+        "role": "converts a temperature difference between the skin or a warm surface and the cooler air into a small voltage.",
+        "parts": [
+          "bismuth telluride p-n legs",
+          "flexible heat spreader",
+          "thermal insulation on the cold side"
+        ]
+      },
+      {
+        "name": "Power management",
+        "role": "makes usable power from inputs of microwatts, which ordinary circuits cannot start on.",
+        "parts": [
+          "cold-start circuit",
+          "boost converter",
+          "maximum power point tracking"
+        ]
+      },
+      {
+        "name": "Storage",
+        "role": "buffers trickles of energy so the radio can transmit in short bursts.",
+        "parts": [
+          "thin-film or solid-state battery",
+          "supercapacitor"
+        ]
+      },
+      {
+        "name": "Flexible substrate and encapsulation",
+        "role": "holds the layers together and keeps them working against sweat, bending and washing.",
+        "parts": [
+          "adhesive polymer film",
+          "barrier encapsulation",
+          "interconnect traces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the harvest targets",
+        "detail": "The design is matched to whatever is actually present: common mobile and Wi-Fi bands, or a body-to-air temperature difference of a few kelvin."
+      },
+      {
+        "title": "Print the antenna",
+        "detail": "Conductive silver or copper ink is screen-printed onto a flexible polymer film and cured, so the antenna bends without cracking."
+      },
+      {
+        "title": "Build the rectifier",
+        "detail": "A Schottky diode and matching network are tuned so that even a few microwatts at the antenna produce a usable DC voltage."
+      },
+      {
+        "title": "Fabricate the thermoelectric legs",
+        "detail": "Bismuth telluride or printed thermoelectric inks are patterned into many tiny p-n couples connected in series on a flexible sheet."
+      },
+      {
+        "title": "Integrate power management",
+        "detail": "A cold-start boost converter and storage capacitor are mounted as bare dies to keep the package thin."
+      },
+      {
+        "title": "Laminate the patch",
+        "detail": "Layers are stacked and sealed so the hot side faces the source of heat and the cold side faces still air, maximising the gradient."
+      },
+      {
+        "title": "Characterise and calibrate",
+        "detail": "Each patch is tested under realistic light, RF and thermal conditions to map its output and set the duty cycle."
+      },
+      {
+        "title": "Pair with a radio",
+        "detail": "The firmware is set to sense and transmit in bursts only when the storage has enough charge, then sleep."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power RF-to-DC rectification",
+        "status": "partial",
+        "why": "usable power needs input densities well above typical ambient levels, so it works only near transmitters or in strong signal areas."
+      },
+      {
+        "tech": "Flexible thermoelectric materials",
+        "status": "partial",
+        "why": "printed and thin-film thermoelectrics exist but produce only tens of microwatts per square centimetre from body heat."
+      },
+      {
+        "tech": "Ultra-low-power microcontrollers and radios",
+        "status": "exists",
+        "why": "standards such as Bluetooth Low Energy and LoRa let a sensor work on average power in the microwatt range."
+      },
+      {
+        "tech": "Cold-start power management integrated circuits",
+        "status": "exists",
+        "why": "they let a circuit begin boosting from a few tens of millivolts."
+      },
+      {
+        "tech": "Thin-film energy storage",
+        "status": "partial",
+        "why": "solid-state cells and supercapacitors are small and safe but store limited energy per unit area."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "harvesting-powered sensors in industrial monitoring and building controls",
+        "unlocks": "maintenance-free sensors where wiring or battery changes are impractical."
+      },
+      {
+        "stage": "Next",
+        "milestone": "patches that run a low-rate radio purely from light, vibration or a temperature difference",
+        "unlocks": "stick-on sensing on machinery and infrastructure with no batteries to replace."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combined harvesters that sum several sources on one flexible film",
+        "unlocks": "more reliable output, since no single ambient source is always available."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "dense ambient RF harvesting near transmitters",
+        "unlocks": "battery-free tags and sensors wherever deliberate power beaming is allowed — though physics caps this at small distances and low power."
+      }
+    ]
+  }
+}

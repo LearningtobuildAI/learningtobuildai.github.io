@@ -29,5 +29,161 @@
         "def": "A field that uses engineering principles to design and construct new biological parts, devices, and systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Generative design engine",
+        "role": "invents new protein backbones and sequences that do not exist in nature.",
+        "parts": [
+          "diffusion-based backbone generators",
+          "sequence-design models",
+          "structure-prediction filters"
+        ]
+      },
+      {
+        "name": "Active-site and binding spec",
+        "role": "defines what the protein must do: which molecule it grabs or splits, and where.",
+        "parts": [
+          "catalytic residue placement",
+          "binding-pocket geometry",
+          "substrate-docking scoring"
+        ]
+      },
+      {
+        "name": "Expression host",
+        "role": "the cell factory that actually makes the designed protein.",
+        "parts": [
+          "E. coli or yeast strains",
+          "secretion and folding pathways",
+          "fermentation"
+        ]
+      },
+      {
+        "name": "Screening and assay",
+        "role": "tests thousands of designs for real activity, not just predicted shape.",
+        "parts": [
+          "high-throughput microfluidics or plate assays",
+          "mass spectrometry and spectroscopy",
+          "machine-learning activity models"
+        ]
+      },
+      {
+        "name": "Stability engineering",
+        "role": "makes the protein survive heat, salt, solvents or extreme pH.",
+        "parts": [
+          "directed evolution",
+          "thermostability mutations",
+          "cross-linking or pegylation"
+        ]
+      },
+      {
+        "name": "Immobilisation and contactor",
+        "role": "fixes the enzyme so it can be reused in an industrial column or reactor.",
+        "parts": [
+          "supports and beads",
+          "membranes or hollow-fibre modules",
+          "gas-liquid contactors for CO2"
+        ]
+      },
+      {
+        "name": "Downstream product handling",
+        "role": "deals with what the enzyme makes.",
+        "parts": [
+          "product separation",
+          "carbonate or monomer recovery"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the reaction",
+        "detail": "Choose a target chemistry — splitting a plastic polymer, hydrating CO2 to bicarbonate, or oxidising methane — and the conditions it must work in."
+      },
+      {
+        "title": "Specify the fold and active site",
+        "detail": "Decide the geometry: where the catalytic residues sit and how the substrate binds."
+      },
+      {
+        "title": "Generate candidate backbones",
+        "detail": "Diffusion models such as RFdiffusion propose thousands of new protein scaffolds that already hold the active site in the right shape."
+      },
+      {
+        "title": "Design sequences",
+        "detail": "An inverse-folding model fills each backbone with amino acids that will fold into it and pack stably."
+      },
+      {
+        "title": "Filter by prediction",
+        "detail": "AlphaFold-style predictors and physics scoring throw out designs whose predicted structure or energy does not match the intent."
+      },
+      {
+        "title": "Make the proteins",
+        "detail": "Synthesise the DNA, clone it into a host, and express and purify the proteins."
+      },
+      {
+        "title": "Measure real activity",
+        "detail": "Assay the designs against the target substrate and keep the few that work better than chance."
+      },
+      {
+        "title": "Evolve and stabilise",
+        "detail": "Round after round of mutation, selection and machine-learning guidance raises activity, then thermostability and solvent tolerance."
+      },
+      {
+        "title": "Immobilise and scale",
+        "detail": "Bind or entrap the best variants on a support and fit them into a reactor or capture contactor, then test at pilot scale."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Accurate protein structure prediction",
+        "status": "exists",
+        "why": "design depends on knowing what a sequence will actually fold into; AlphaFold2 in 2020 made this routine."
+      },
+      {
+        "tech": "Generative backbone design",
+        "status": "partial",
+        "why": "RFdiffusion and similar models design new folds, but hit rates on hard chemistries remain low."
+      },
+      {
+        "tech": "Cheap, fast DNA synthesis and high-throughput screening",
+        "status": "exists",
+        "why": "you must build and test thousands of designs to find one that works."
+      },
+      {
+        "tech": "Enzymes that tolerate industrial conditions",
+        "status": "partial",
+        "why": "natural enzymes often denature in hot, salty or solvent-laden process streams."
+      },
+      {
+        "tech": "Immobilisation at industrial scale",
+        "status": "partial",
+        "why": "reusable, stable biocatalysts are needed to make the economics work outside the lab."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "designed binders and simple catalysts proven in the lab, plus engineered PET-degrading enzymes such as FAST-PETase",
+        "unlocks": "confidence that de novo design can produce working, useful proteins."
+      },
+      {
+        "stage": "Next",
+        "milestone": "designed enzymes for plastic depolymerisation reaching pilot recycling plants",
+        "unlocks": "a route to recycle mixed or coloured plastics that mechanical recycling rejects."
+      },
+      {
+        "stage": "Next",
+        "milestone": "carbonic-anhydrase-based CO2 capture tested in industrial flue-gas streams",
+        "unlocks": "lower-energy capture of CO2 from cement, steel and power plants."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "biocatalysts for methane oxidation and other hard reactions at scale",
+        "unlocks": "new routes to turn waste carbon into fuels and chemicals."
+      }
+    ]
   }
 }

@@ -30,5 +30,171 @@
         "def": "Robotic Process Automation: Software technology that automates routine, rule-based business processes by mimicking human interactions with software applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Orchestrator",
+        "role": "schedules and supervises bots, manages work queues and credentials, and records what every bot did.",
+        "parts": [
+          "job scheduler",
+          "queue manager",
+          "credential vault",
+          "audit log"
+        ]
+      },
+      {
+        "name": "Bot runtime",
+        "role": "executes the actual actions on a desktop, server or browser session.",
+        "parts": [
+          "browser automation driver",
+          "operating-system input hooks",
+          "session manager"
+        ]
+      },
+      {
+        "name": "Screen understanding",
+        "role": "finds and identifies interface elements by meaning rather than by fixed pixel coordinates.",
+        "parts": [
+          "accessibility-tree parser",
+          "object detection / computer vision",
+          "optical character recognition",
+          "layout model"
+        ]
+      },
+      {
+        "name": "Document understanding",
+        "role": "turns unstructured files — invoices, emails, contracts, scans — into structured fields.",
+        "parts": [
+          "OCR and table extraction",
+          "large language model extractor with a target schema",
+          "confidence scoring"
+        ]
+      },
+      {
+        "name": "Reasoning and action layer",
+        "role": "decides what to do next, handles exceptions and drafts outputs.",
+        "parts": [
+          "context and prompt builder",
+          "tool/function calling",
+          "retrieval over policy and procedure documents",
+          "guardrails and allow-lists"
+        ]
+      },
+      {
+        "name": "Human-in-the-loop and governance",
+        "role": "keeps a person in charge of low-confidence or high-impact decisions and monitors quality over time.",
+        "parts": [
+          "review queue interface",
+          "correction capture",
+          "accuracy and drift monitoring",
+          "access control"
+        ]
+      },
+      {
+        "name": "Integration connectors",
+        "role": "talks to systems of record through their APIs wherever possible.",
+        "parts": [
+          "API connectors",
+          "message queues",
+          "legacy terminal or UI adapters"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process",
+        "detail": "Record how the work is actually done, collect sample documents and screen states, and write down every exception and the success measure."
+      },
+      {
+        "title": "Build the deterministic spine",
+        "detail": "Automate the stable steps first. Prefer API calls over screen clicks; use the interface only where no API exists."
+      },
+      {
+        "title": "Add document ingestion",
+        "detail": "Run OCR and layout analysis on incoming files, then extract fields with a language model constrained to a fixed schema."
+      },
+      {
+        "title": "Replace coordinate targeting",
+        "detail": "Identify buttons and fields from the accessibility tree where possible, falling back to vision models that recognise elements by appearance across different layouts and resolutions."
+      },
+      {
+        "title": "Insert the reasoning layer",
+        "detail": "Let the model plan the next action, call permitted tools and draft text, but only within an allow-list of actions it is authorised to take."
+      },
+      {
+        "title": "Set confidence thresholds",
+        "detail": "Route anything below a per-field confidence threshold, or above a risk threshold, to a human reviewer rather than letting the bot proceed."
+      },
+      {
+        "title": "Test against variation",
+        "detail": "Replay historical cases and deliberately messy documents, and measure accuracy field by field, not just end to end."
+      },
+      {
+        "title": "Deploy with monitoring",
+        "detail": "Log every decision and source element, track the share of cases completed without human help, and alert on accuracy drift."
+      },
+      {
+        "title": "Feed corrections back",
+        "detail": "Turn reviewer corrections into examples that improve prompts and extraction rules, then widen the scope of the process."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mature RPA platforms",
+        "status": "exists",
+        "why": "they provide the scheduling, credentials and execution machinery that the cognitive layer sits on top of."
+      },
+      {
+        "tech": "Large language models with reliable tool use and structured output",
+        "status": "exists",
+        "why": "they do the reading, judging and drafting that fixed rules cannot; enterprise accuracy still needs guardrails and review."
+      },
+      {
+        "tech": "High-accuracy OCR and document layout models",
+        "status": "exists",
+        "why": "scanned and photographed paperwork must become text and tables before a model can reason about it."
+      },
+      {
+        "tech": "Computer vision for interface elements",
+        "status": "partial",
+        "why": "identifying controls visually across many applications and resolutions works but is still brittle."
+      },
+      {
+        "tech": "Identity, access control and audit for AI-initiated actions",
+        "status": "partial",
+        "why": "a bot acting on a real account needs permissions and traceability that satisfy auditors and regulators."
+      },
+      {
+        "tech": "Benchmarks and evaluation methods for agentic workflows",
+        "status": "missing",
+        "why": "without agreed ways to measure multi-step task success, buyers cannot tell whether a system is safe to run unattended."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "language-model features bolted onto established RPA tools for document extraction and draft generation",
+        "unlocks": "handling of unstructured inputs that previously needed a person, with review queues catching errors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "semantic screen automation plus model-driven exception handling",
+        "unlocks": "automations that survive interface changes and clear more cases without human help."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic orchestration across several systems, with policy retrieval and tool permissions as controls",
+        "unlocks": "whole processes rather than single tasks, spanning email, ERP and case management."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "systems that observe work, propose their own automations and are measured continuously",
+        "unlocks": "rapid expansion into long-tail processes once safety and evaluation are trustworthy."
+      }
+    ]
   }
 }

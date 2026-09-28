@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Tissue preparation",
+        "role": "preserves the brain's wiring at the moment of death or biopsy, then makes it electron-dense.",
+        "parts": [
+          "perfusion or immersion fixation",
+          "heavy-metal staining (osmium, uranium, lead)",
+          "resin embedding"
+        ]
+      },
+      {
+        "name": "Sectioning",
+        "role": "cuts or exposes the block in tens-of-nanometre steps.",
+        "parts": [
+          "ultramicrotome",
+          "tape or wafer collection of thousands of serial sections",
+          "focused-ion-beam milling (block-face imaging)"
+        ]
+      },
+      {
+        "name": "Imaging",
+        "role": "scans every section into a digital image stack.",
+        "parts": [
+          "scanning electron microscope",
+          "multi-beam or fast detectors",
+          "vibration isolation and automation"
+        ]
+      },
+      {
+        "name": "Alignment and stitching",
+        "role": "registers thousands of images into one coherent volume.",
+        "parts": [
+          "cross-section registration software",
+          "tile stitching",
+          "distortion correction"
+        ]
+      },
+      {
+        "name": "Segmentation",
+        "role": "traces the boundary of every neuron and process.",
+        "parts": [
+          "machine-learning segmentation models",
+          "human proofreading interfaces"
+        ]
+      },
+      {
+        "name": "Synapse annotation",
+        "role": "finds the actual connections and their direction.",
+        "parts": [
+          "synaptic-cleft detection",
+          "vesicle and spine classifiers"
+        ]
+      },
+      {
+        "name": "Data and compute",
+        "role": "stores and serves datasets far larger than the source tissue.",
+        "parts": [
+          "petabyte-scale object storage",
+          "GPU clusters",
+          "visualisation and query tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Obtain and fix tissue",
+        "detail": "Consented surgical or post-mortem human tissue is chemically fixed within minutes so structures do not degrade; only small blocks can be handled today, typically around a cubic millimetre."
+      },
+      {
+        "title": "Stain and embed",
+        "detail": "Heavy-metal stains bind to membranes and vesicles, making them scatter electrons differently; the tissue is then infiltrated with resin and hardened."
+      },
+      {
+        "title": "Cut into serial sections",
+        "detail": "A diamond knife shaves sections roughly 30 nanometres thick, which are collected on tape or wafers. A block-face alternative mills away a thin layer and images the fresh surface, avoiding handling thousands of fragile sections."
+      },
+      {
+        "title": "Image every section",
+        "detail": "A scanning electron microscope rasterises each section at a few nanometres per pixel. This resolves membranes and synaptic vesicles, but not molecules or atoms — 'atomic resolution' is not what this method delivers."
+      },
+      {
+        "title": "Align the stack",
+        "detail": "Software registers each image to its neighbour, correcting for stretching, folding and cutting artefacts, so a single neuron can be followed from top to bottom."
+      },
+      {
+        "title": "Segment the cells",
+        "detail": "Trained neural networks propose boundaries for every axon, dendrite and glial process; human proofreaders then fix the errors, which is the largest labour cost."
+      },
+      {
+        "title": "Identify synapses",
+        "detail": "Regions where two processes touch and vesicles cluster are marked as connections, with direction inferred from which side holds the vesicles."
+      },
+      {
+        "title": "Build the graph and analyse",
+        "detail": "The result is a directed wiring diagram that can be searched for cell types and motifs. Most projects map neurons only; glia, neuromodulators and the brain's electrical dynamics are largely absent."
+      },
+      {
+        "title": "Scale up",
+        "detail": "Reaching a whole human brain would multiply the data volume by roughly a million — an order of a zettabyte of image data by simple extrapolation from published cubic-millimetre datasets — and would require imaging, storage and proofreading throughput that do not exist."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Automated serial-section electron microscopy",
+        "status": "exists",
+        "why": "without reliable automation, millions of images per sample cannot be collected."
+      },
+      {
+        "tech": "Machine-learning segmentation",
+        "status": "partial",
+        "why": "models are good but still need heavy human proofreading; that labour, not imaging, is the scaling wall."
+      },
+      {
+        "tech": "Petabyte-scale data infrastructure",
+        "status": "exists",
+        "why": "a single cubic millimetre already produces petabytes, so storage and serving are proven at that size but not a million times larger."
+      },
+      {
+        "tech": "Expansion microscopy",
+        "status": "partial",
+        "why": "swelling tissue inside a polymer gel lets ordinary microscopes resolve finer detail and can be combined with electron imaging, but it is not yet the backbone of large connectomes."
+      },
+      {
+        "tech": "Ethical access to human brain tissue",
+        "status": "partial",
+        "why": "whole-brain preservation requires donation and consent pathways at a scale that does not yet exist."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "complete wiring diagrams of small nervous systems and small volumes of mammalian cortex",
+        "unlocks": "proof that structure can be recovered at synapse level, plus public datasets and tooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-brain connectome of a small mammal such as a mouse",
+        "unlocks": "the first complete wiring diagram of a mammalian brain and much faster automated pipelines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "many human regions, and cross-referencing with non-invasive imaging and physiology",
+        "unlocks": "structure–function links, and comparison of healthy and diseased tissue."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a full human brain connectome",
+        "unlocks": "a static structural reference for the brain — a constraint on theories of how experience and cognition arise, not an explanation of consciousness, which also depends on dynamics, chemistry and glia that such a map would miss."
+      }
+    ]
+  }
+}

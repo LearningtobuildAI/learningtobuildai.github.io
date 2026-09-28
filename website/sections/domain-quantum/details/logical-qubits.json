@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Physical qubit layer",
+        "role": "the raw quantum elements — superconducting circuits, trapped ions or neutral atoms — that store and process quantum states and inevitably make errors.",
+        "parts": [
+          "qubit devices",
+          "control electrodes or microwave lines",
+          "readout resonators or optical detection"
+        ]
+      },
+      {
+        "name": "Encoding layer",
+        "role": "spreads one logical qubit's information across many physical qubits using an error-correcting code.",
+        "parts": [
+          "surface or colour code layout",
+          "data qubits",
+          "ancilla (measurement) qubits"
+        ]
+      },
+      {
+        "name": "Syndrome extraction",
+        "role": "repeatedly measures parity checks between neighbours without collapsing the encoded information.",
+        "parts": [
+          "mid-circuit measurement",
+          "qubit reset",
+          "repeat-until-success schedules"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "reads the stream of syndrome bits and infers the most likely error pattern in real time.",
+        "parts": [
+          "matching or tensor-network decoder",
+          "low-latency control hardware (FPGA/ASIC)"
+        ]
+      },
+      {
+        "name": "Fault-tolerant operation layer",
+        "role": "performs logical gates on encoded qubits while keeping errors correctable.",
+        "parts": [
+          "lattice surgery or transversal gate logic",
+          "magic-state distillation for non-Clifford gates",
+          "Pauli-frame tracking"
+        ]
+      },
+      {
+        "name": "Cryogenics and infrastructure",
+        "role": "keeps superconducting qubits near absolute zero and shields them from noise.",
+        "parts": [
+          "dilution refrigerator",
+          "shielding",
+          "wiring and cryogenic amplifiers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate physical qubits",
+        "detail": "Superconducting circuits are patterned on a chip with lithography; trapped-ion or neutral-atom systems load ions or atoms into a trap or array instead."
+      },
+      {
+        "title": "Calibrate the machine",
+        "detail": "Each qubit's frequency, readout and one- and two-qubit gates are tuned until single-qubit and two-qubit error rates are low and stable."
+      },
+      {
+        "title": "Choose the code and layout",
+        "detail": "Qubits are arranged on a grid matching the code, typically a surface code where each data qubit is checked by four neighbouring ancillas."
+      },
+      {
+        "title": "Initialise and encode",
+        "detail": "The array is prepared in a known state and the logical qubit is written into it by entangling the physical qubits."
+      },
+      {
+        "title": "Extract syndromes in cycles",
+        "detail": "Ancilla qubits are entangled with their neighbours, measured, and reset; this repeats every few microseconds to catch errors faster than they accumulate."
+      },
+      {
+        "title": "Decode and correct",
+        "detail": "The classical decoder turns repeated syndrome patterns into a correction, which is applied as a Pauli frame update rather than a physical pulse, so the logical state stays intact."
+      },
+      {
+        "title": "Grow and benchmark the logical qubit",
+        "detail": "Larger-distance codes are built (distance 3, then 5, then 7) and measured to confirm that error rates fall as physical qubit count rises."
+      },
+      {
+        "title": "Run logical gates",
+        "detail": "Logical operations such as lattice surgery merge and split encoded patches, building a fault-tolerant instruction set."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Physical qubit fidelities above the code threshold",
+        "status": "partial",
+        "why": "error correction only suppresses errors if physical error rates sit below a threshold set by the code."
+      },
+      {
+        "tech": "Mid-circuit measurement and fast reset",
+        "status": "partial",
+        "why": "syndromes must be read and ancillas reused many times within the qubit coherence time."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "corrections are needed faster than the next syndrome cycle, which forces dedicated hardware."
+      },
+      {
+        "tech": "Cryogenic and control scaling",
+        "status": "partial",
+        "why": "thousands of wires and control channels must be squeezed into a fridge without adding heat or noise."
+      },
+      {
+        "tech": "Fault-tolerant logical gate schemes",
+        "status": "partial",
+        "why": "Clifford gates alone are not enough; non-Clifford gates need distillation or special code structures."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small logical qubits of a few dozen physical qubits showing error suppression as code distance grows (demonstrated on superconducting hardware in 2024)",
+        "unlocks": "confidence that scaling the code, not just the chip, reduces logical error."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sustained logical qubits with thousands of physical qubits and logical error rates around one in a million",
+        "unlocks": "early fault-tolerant demonstrations of small but genuinely useful quantum circuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tens to hundreds of high-quality logical qubits with full fault-tolerant gate sets",
+        "unlocks": "chemistry and materials simulation beyond classical reach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands of logical qubits at very low error rates",
+        "unlocks": "cryptographically relevant algorithms and large-scale optimisation."
+      }
+    ]
+  }
+}

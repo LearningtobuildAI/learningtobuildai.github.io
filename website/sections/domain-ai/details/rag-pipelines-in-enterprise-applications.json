@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data ingestion and preprocessing",
+        "role": "pulls documents from enterprise systems and turns them into clean, chunked text.",
+        "parts": [
+          "connectors for databases, wikis, file shares, email",
+          "document parsers (PDF, HTML, Office)",
+          "OCR for scanned files",
+          "chunking logic",
+          "metadata extraction"
+        ]
+      },
+      {
+        "name": "Embedding and indexing",
+        "role": "converts text chunks into vectors and stores them for fast similarity search.",
+        "parts": [
+          "embedding model",
+          "vector database",
+          "incremental index updates",
+          "hybrid index (vector + keyword)"
+        ]
+      },
+      {
+        "name": "Retrieval and ranking",
+        "role": "finds the most relevant chunks for a user query.",
+        "parts": [
+          "query understanding and rewriting",
+          "hybrid search (BM25 + vector)",
+          "re-ranking model",
+          "metadata filters for access control"
+        ]
+      },
+      {
+        "name": "Generation and orchestration",
+        "role": "feeds retrieved context to an LLM and produces a grounded answer.",
+        "parts": [
+          "prompt template",
+          "LLM API or self-hosted model",
+          "context window management",
+          "orchestration framework",
+          "caching"
+        ]
+      },
+      {
+        "name": "Guardrails and evaluation",
+        "role": "ensures answers are accurate, safe and compliant.",
+        "parts": [
+          "hallucination detection",
+          "PII redaction",
+          "toxicity filters",
+          "groundedness checks",
+          "offline and online evaluation"
+        ]
+      },
+      {
+        "name": "Monitoring and feedback",
+        "role": "tracks performance and improves the pipeline over time.",
+        "parts": [
+          "logging and tracing",
+          "latency and cost metrics",
+          "user feedback capture",
+          "A/B testing",
+          "retraining triggers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the use case and data sources",
+        "detail": "Identify the decision or question the system must support, and list the enterprise repositories (wikis, tickets, contracts) that hold the answers."
+      },
+      {
+        "title": "Connect and ingest data",
+        "detail": "Use APIs or connectors to pull documents, extract text with parsers and OCR, and attach metadata such as source, date and access level."
+      },
+      {
+        "title": "Chunk and preprocess",
+        "detail": "Split documents into passages of a few hundred tokens, preserving headings and tables, and remove boilerplate or duplicates."
+      },
+      {
+        "title": "Generate embeddings and build the index",
+        "detail": "Run each chunk through an embedding model and store the resulting vectors in a vector database, alongside keyword indexes for hybrid search."
+      },
+      {
+        "title": "Implement retrieval and ranking",
+        "detail": "For each query, rewrite it, fetch candidates via hybrid search, apply metadata filters for permissions, and re-rank with a cross-encoder."
+      },
+      {
+        "title": "Integrate the language model",
+        "detail": "Build a prompt that includes the user's question and the top-ranked chunks, and call an LLM to generate an answer with citations."
+      },
+      {
+        "title": "Add guardrails and access control",
+        "detail": "Enforce user permissions at retrieval time, redact sensitive data, and validate answers against retrieved sources before showing them."
+      },
+      {
+        "title": "Deploy, monitor and iterate",
+        "detail": "Run the pipeline behind an API, log queries and responses, collect user feedback, and retrain or adjust chunking and ranking based on evaluation metrics."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with long context windows",
+        "status": "exists",
+        "why": "they generate fluent answers from retrieved passages; context windows of 128k tokens or more are now common."
+      },
+      {
+        "tech": "Vector databases and approximate nearest neighbour search",
+        "status": "exists",
+        "why": "they allow millisecond-scale similarity search over millions of chunks."
+      },
+      {
+        "tech": "High-quality text embedding models",
+        "status": "exists",
+        "why": "they map semantically similar passages to nearby vectors, which is the core of retrieval."
+      },
+      {
+        "tech": "Enterprise data connectors and ETL",
+        "status": "partial",
+        "why": "many systems offer APIs, but unifying permissions and formats across legacy software remains labour-intensive."
+      },
+      {
+        "tech": "Access control and data governance",
+        "status": "partial",
+        "why": "the pipeline must not leak documents a user cannot see, requiring tight integration with identity providers."
+      },
+      {
+        "tech": "Evaluation frameworks for retrieval and generation",
+        "status": "partial",
+        "why": "measuring hallucination and relevance is still an active area, with no universal standard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "basic RAG for internal knowledge search and customer support",
+        "unlocks": "faster answers from existing documents, with citations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "advanced RAG with hybrid search, re-ranking and query decomposition",
+        "unlocks": "higher accuracy on complex, multi-part questions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic RAG that plans, calls tools and iterates",
+        "unlocks": "decision support that goes beyond simple lookup."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-improving pipelines that learn from feedback and update indexes automatically",
+        "unlocks": "enterprise knowledge systems that stay current with minimal manual tuning."
+      }
+    ]
+  }
+}

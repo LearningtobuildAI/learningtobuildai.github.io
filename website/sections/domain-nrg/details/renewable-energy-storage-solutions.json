@@ -33,5 +33,150 @@
         "def": "Batteries that use a solid electrolyte instead of liquid or gel-based electrolytes, enhancing safety and potentially improving performance metrics like stability and energy density."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Battery cells and DC blocks",
+        "role": "store charge chemically; cells are grouped into modules and then into container-sized DC blocks.",
+        "parts": [
+          "lithium-iron-phosphate (LFP) cells today",
+          "sodium-ion cells (emerging)",
+          "cells for lithium-sulfur, solid-state designs (lab/pilot)",
+          "modules and racks"
+        ]
+      },
+      {
+        "name": "Power conversion system",
+        "role": "converts DC to grid AC and back, and increasingly helps stabilise the grid rather than just follow it.",
+        "parts": [
+          "bidirectional inverters",
+          "transformers",
+          "grid-forming control"
+        ]
+      },
+      {
+        "name": "Battery and energy management",
+        "role": "keeps every cell within safe voltage and temperature limits and estimates state of charge and health.",
+        "parts": [
+          "cell monitoring boards",
+          "state-estimation software",
+          "protection and disconnection"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "removes heat from dense racks and stops a failing cell from spreading fire.",
+        "parts": [
+          "liquid cooling loops or air handling",
+          "fire detection and suppression",
+          "gas venting"
+        ]
+      },
+      {
+        "name": "Site infrastructure",
+        "role": "orients the plant to the grid.",
+        "parts": [
+          "concrete pads or containers",
+          "HV cabling",
+          "substation and interconnection"
+        ]
+      },
+      {
+        "name": "Long-duration store",
+        "role": "stores energy for days to seasons, where batteries are too expensive per kilowatt-hour.",
+        "parts": [
+          "pumped-hydro reservoirs and turbines",
+          "flow-battery tanks and stacks",
+          "thermal or hydrogen storage"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the cells",
+        "detail": "Electrode slurries are coated onto foil, dried, calendered and wound or stacked, then sealed with electrolyte and formed through charge-discharge cycles."
+      },
+      {
+        "title": "Assemble modules and racks",
+        "detail": "Cells are connected in series and parallel, fitted with voltage and temperature sensors, and clamped under controlled pressure."
+      },
+      {
+        "title": "Build DC containers",
+        "detail": "Racks go into weatherproof enclosures with cooling, fire suppression and DC disconnects, pre-tested at the factory."
+      },
+      {
+        "title": "Install the power conversion",
+        "detail": "Inverters, transformers and switchgear are installed at the site and matched to the local grid voltage."
+      },
+      {
+        "title": "Prepare the site and interconnect",
+        "detail": "Groundworks, foundations, HV cabling and the grid connection are built to the operator's rules."
+      },
+      {
+        "title": "Commission",
+        "detail": "The plant is charged and discharged against the grid, protection settings are verified and safety systems are tested."
+      },
+      {
+        "title": "Operate with market software",
+        "detail": "Forecasting and dispatch software trades energy, frequency response and reserve services, deciding when to charge and discharge."
+      },
+      {
+        "title": "Add long-duration storage",
+        "detail": "For multi-day or seasonal need, pumped hydro, flow batteries or hydrogen are built alongside the battery."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost lithium, iron and sodium cell manufacturing",
+        "status": "exists",
+        "why": "grid batteries only make sense when cells cost far less per kilowatt-hour than vehicle batteries."
+      },
+      {
+        "tech": "Power electronics and grid-forming inverters",
+        "status": "partial",
+        "why": "a grid dominated by inverters needs them to provide inertia and voltage support, which is only now being proven at scale."
+      },
+      {
+        "tech": "Cheap surplus renewable generation",
+        "status": "exists",
+        "why": "storage earns its money by absorbing power that would otherwise be curtailed or sold cheaply."
+      },
+      {
+        "tech": "Chemistries beyond lithium-ion (sodium-ion, solid-state, lithium-sulfur)",
+        "status": "partial",
+        "why": "they promise lower cost and longer life, but most are at pilot or early production."
+      },
+      {
+        "tech": "Long-duration technologies (flow, iron-air, pumped hydro, hydrogen)",
+        "status": "partial",
+        "why": "the economics of multi-day storage are not settled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "large lithium-ion plants providing two to four hours of shifting plus frequency services",
+        "unlocks": "firm solar and wind output over an evening peak."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sodium-ion and improved flow batteries entering grid service",
+        "unlocks": "lower dependence on scarce lithium and cobalt."
+      },
+      {
+        "stage": "Next",
+        "milestone": "solid-state and lithium-sulfur cells at grid scale",
+        "unlocks": "higher energy density and longer life in the same footprint."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cheap multi-day and seasonal storage",
+        "unlocks": "a grid run mostly on renewables through windless, cloudy weeks, not just hours."
+      }
+    ]
   }
 }

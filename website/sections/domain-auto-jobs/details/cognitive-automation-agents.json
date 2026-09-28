@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Foundation model",
+        "role": "provides the language understanding and reasoning that drives the agent.",
+        "parts": [
+          "transformer neural network",
+          "pretrained weights",
+          "context window"
+        ]
+      },
+      {
+        "name": "Agent loop",
+        "role": "plans and acts step by step, deciding what to do next.",
+        "parts": [
+          "prompt templates",
+          "ReAct-style reasoning traces",
+          "tool-calling interface"
+        ]
+      },
+      {
+        "name": "Tool layer",
+        "role": "lets the agent affect real systems rather than just produce text.",
+        "parts": [
+          "API connectors",
+          "code interpreter",
+          "database queries",
+          "email and calendar actions"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "remembers past interactions and retrieves relevant knowledge.",
+        "parts": [
+          "vector store",
+          "retrieval-augmented generation",
+          "summarisation of long histories"
+        ]
+      },
+      {
+        "name": "Orchestration",
+        "role": "coordinates multiple steps or multiple agents working together.",
+        "parts": [
+          "workflow engine",
+          "state machine",
+          "retry and error handling"
+        ]
+      },
+      {
+        "name": "Guardrails and evaluation",
+        "role": "keeps actions safe, correct and within limits.",
+        "parts": [
+          "permission scopes",
+          "human approval gates",
+          "test suites",
+          "audit logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the workflow",
+        "detail": "Break a business process into discrete steps, decide which can be automated, and set success metrics."
+      },
+      {
+        "title": "Choose a base model",
+        "detail": "Select a large language model with strong reasoning and tool-use ability, then adapt it by prompting or fine-tuning."
+      },
+      {
+        "title": "Expose tools",
+        "detail": "Wrap each software system (CRM, email, database) as a function the agent can call, with clear inputs and outputs."
+      },
+      {
+        "title": "Implement the agent loop",
+        "detail": "Build a ReAct-style cycle: the model reasons about the next step, calls a tool, observes the result, and repeats until the task is done."
+      },
+      {
+        "title": "Add memory",
+        "detail": "Store past interactions and documents in a vector database so the agent can retrieve relevant context instead of relying only on the prompt."
+      },
+      {
+        "title": "Insert guardrails",
+        "detail": "Limit permissions, require human approval for sensitive actions, and log every decision for audit."
+      },
+      {
+        "title": "Test in simulation",
+        "detail": "Run the agent on historical cases and in shadow mode alongside humans, comparing its output to what people did."
+      },
+      {
+        "title": "Deploy with oversight",
+        "detail": "Start with a human reviewing each completed task, then gradually widen autonomy as reliability is proven."
+      },
+      {
+        "title": "Monitor and iterate",
+        "detail": "Track failures, retrain or re-prompt, and expand the agent's scope as the toolset and confidence grow."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with chain-of-thought reasoning",
+        "status": "exists",
+        "why": "the agent needs to decompose tasks and explain its steps."
+      },
+      {
+        "tech": "Function-calling and tool-use APIs",
+        "status": "exists",
+        "why": "the agent must reliably invoke external software, not just generate text."
+      },
+      {
+        "tech": "Vector databases and retrieval-augmented generation",
+        "status": "exists",
+        "why": "long-term memory depends on storing and fetching relevant context quickly."
+      },
+      {
+        "tech": "Benchmarks for multi-step agent reliability",
+        "status": "partial",
+        "why": "measuring whether an agent completed a real task correctly is still an open problem."
+      },
+      {
+        "tech": "Robust long-term memory without drift",
+        "status": "partial",
+        "why": "agents can forget, hallucinate or contradict earlier decisions over long workflows."
+      },
+      {
+        "tech": "Open enterprise system APIs",
+        "status": "exists",
+        "why": "the agent can only act where software exposes a programmable interface."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "copilots that assist with single steps, such as drafting an email or writing code",
+        "unlocks": "productivity gains where a human remains in the loop."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that complete well-scoped multi-step tasks in one domain, like reconciling invoices",
+        "unlocks": "automation of routine back-office work with human review."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems that run entire processes end to end",
+        "unlocks": "faster cycle times and fewer handoffs between people."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agents that learn from feedback and improve across domains",
+        "unlocks": "broad autonomy, if reliability, safety and accountability are solved."
+      }
+    ]
+  }
+}

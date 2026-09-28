@@ -1,0 +1,164 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Prospect data layer",
+        "role": "holds the accounts and people the agent is allowed to contact, and the signals that make them worth contacting now.",
+        "parts": [
+          "CRM records",
+          "enrichment data (firmographics, tech stack, hiring and funding signals)",
+          "email verification and de-duplication"
+        ]
+      },
+      {
+        "name": "Agent core",
+        "role": "decides what to do next: which account, which person, what to say, when to stop.",
+        "parts": [
+          "large language model with tool use",
+          "planner and task loop",
+          "short-term memory of the current thread",
+          "long-term store of past conversations"
+        ]
+      },
+      {
+        "name": "Grounding and knowledge",
+        "role": "keeps claims tied to something true about the product and the buyer.",
+        "parts": [
+          "retrieval index over product docs and case studies",
+          "prior email threads and CRM notes",
+          "style and tone guidelines"
+        ]
+      },
+      {
+        "name": "Outreach delivery",
+        "role": "actually gets messages into inboxes and reads what comes back.",
+        "parts": [
+          "sending domains with SPF, DKIM and DMARC records",
+          "sequencing and throttling logic",
+          "bounce and reply classification",
+          "unsubscribe handling"
+        ]
+      },
+      {
+        "name": "Scheduling",
+        "role": "turns a positive reply into a confirmed meeting without a human.",
+        "parts": [
+          "calendar availability APIs",
+          "time-zone and duration rules",
+          "invite creation and reminders"
+        ]
+      },
+      {
+        "name": "Guardrails and compliance",
+        "role": "prevents illegal, dishonest or brand-damaging messages and caps the damage when the model errs.",
+        "parts": [
+          "suppression and consent lists",
+          "per-law rules (opt-in regimes, unsubscribe deadlines, disclosure of automated contact)",
+          "rate limits and content filters",
+          "mandatory human-approval thresholds"
+        ]
+      },
+      {
+        "name": "Evaluation and oversight",
+        "role": "measures whether the agent is helping and hands off when it shouldn't continue.",
+        "parts": [
+          "logged transcripts and outcomes",
+          "quality scoring",
+          "human review queue",
+          "alerting on anomalies"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target and the outcome",
+        "detail": "Write down exactly which accounts and roles the agent may contact, and what counts as success — a reply, a booked meeting, a qualified opportunity."
+      },
+      {
+        "title": "Connect and clean the data",
+        "detail": "Sync the CRM through its API, enrich each account, verify that addresses are deliverable, and de-duplicate against existing contacts and customers."
+      },
+      {
+        "title": "Ground the model",
+        "detail": "Build a retrieval index over product documentation, pricing rules, case studies and past winning threads, so the agent quotes real facts rather than inventing them."
+      },
+      {
+        "title": "Define the tool set",
+        "detail": "Give the agent callable functions with strict schemas: search accounts, fetch a contact, draft a message, check calendar availability, create a booking, write back to the CRM."
+      },
+      {
+        "title": "Wire the control loop",
+        "detail": "The agent plans a step, calls a tool, drafts a message, critiques it against the guardrails, then either sends it or queues it for a human."
+      },
+      {
+        "title": "Build compliant sending infrastructure",
+        "detail": "Register dedicated sending subdomains, publish authentication records, warm the domains gradually over weeks, and enforce unsubscribe and suppression checks on every send."
+      },
+      {
+        "title": "Add measurement and gating",
+        "detail": "Score replies and meetings automatically, compare against a human baseline, and route anything below a confidence threshold to a person instead of sending."
+      },
+      {
+        "title": "Run, audit and retune",
+        "detail": "Feed reply outcomes back into prompts and retrieval, review a sample of transcripts weekly, and adjust volume, tone and targeting as deliverability or quality drifts."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable tool use",
+        "status": "exists",
+        "why": "the agent must decide and act through APIs, not just produce text."
+      },
+      {
+        "tech": "Open CRM and calendar APIs",
+        "status": "exists",
+        "why": "the agent reads and writes records and books time through them."
+      },
+      {
+        "tech": "Email authentication standards (SPF, DKIM, DMARC)",
+        "status": "exists",
+        "why": "without them bulk automated mail is filtered or blocked outright."
+      },
+      {
+        "tech": "Anti-spam and data-protection rules",
+        "status": "exists",
+        "why": "consent, disclosure and unsubscribe obligations are legally binding in many markets."
+      },
+      {
+        "tech": "Robust evaluation of open-ended writing",
+        "status": "partial",
+        "why": "judging whether a message is accurate, on-brand and welcome is still hard to automate."
+      },
+      {
+        "tech": "Reliable reply and intent classification",
+        "status": "partial",
+        "why": "misreading a 'not now' as a 'yes' wastes the very time the agent was meant to save."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-channel email agents that draft and send within tight guardrails, with humans approving first contact",
+        "unlocks": "less manual list-building and follow-up for sales teams."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-channel agents handling voice, messaging and social outreach with shared memory",
+        "unlocks": "consistent follow-up across whichever channel a buyer uses."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop optimisation against CRM outcomes rather than reply rates",
+        "unlocks": "targeting and messaging tuned to revenue, not vanity metrics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "buyer-side agents filtering and negotiating inbound offers",
+        "unlocks": "a shift toward agent-to-agent prospecting, which will force new norms on disclosure and consent."
+      }
+    ]
+  }
+}

@@ -34,5 +34,163 @@
         "def": "A security process in which a user provides two or more verification factors to prove their identity before accessing a service or resource."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Enrollment and identity proofing",
+        "role": "establishes a person's legal identity from documents and biometrics before any credential is issued.",
+        "parts": [
+          "document scanner and NFC chip reader",
+          "biometric capture (face, fingerprint, iris)",
+          "document authenticity and fraud checks"
+        ]
+      },
+      {
+        "name": "Biometric matching engine",
+        "role": "compares a live sample against a stored template to confirm the person is who they claim.",
+        "parts": [
+          "face, fingerprint or iris algorithms",
+          "encrypted template store",
+          "matching and decision service"
+        ]
+      },
+      {
+        "name": "Presentation-attack detection (liveness)",
+        "role": "ensures a real, present person is being captured rather than a photo, mask or deepfake.",
+        "parts": [
+          "depth or infrared sensors",
+          "challenge-response prompts",
+          "AI spoof and injection detection"
+        ]
+      },
+      {
+        "name": "Authentication and credential layer",
+        "role": "issues and verifies cryptographic credentials that replace passwords.",
+        "parts": [
+          "FIDO2/WebAuthn authenticator",
+          "passkeys or hardware security key",
+          "verifiable credential wallet"
+        ]
+      },
+      {
+        "name": "Distributed registry",
+        "role": "anchors identifiers and revocation information so no single party controls all identities.",
+        "parts": [
+          "blockchain or distributed ledger node",
+          "smart contracts for credential status",
+          "decentralized identifier (DID) resolver"
+        ]
+      },
+      {
+        "name": "Privacy and consent layer",
+        "role": "lets users prove only what is needed without revealing extra personal data.",
+        "parts": [
+          "zero-knowledge proof circuits",
+          "selective disclosure rules",
+          "consent and audit log"
+        ]
+      },
+      {
+        "name": "AI risk and fraud engine",
+        "role": "monitors sessions in real time and flags account takeover or synthetic identities.",
+        "parts": [
+          "behavioural biometrics",
+          "anomaly detection models",
+          "risk scoring and step-up authentication"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose assurance levels and standards",
+        "detail": "Decide how much identity proofing is needed for each use case, following frameworks such as NIST SP 800-63 for digital identity guidelines."
+      },
+      {
+        "title": "Build the enrollment flow",
+        "detail": "Capture an identity document, read its embedded chip where present, take a live biometric sample, and check the document's security features."
+      },
+      {
+        "title": "Implement liveness and anti-spoofing",
+        "detail": "Add sensors and challenge-response steps so a photograph, video replay or mask cannot pass as the real person."
+      },
+      {
+        "title": "Generate keys and bind the credential",
+        "detail": "Create a public-private key pair on the user's device and bind it to the verified identity, so the private key never leaves the device."
+      },
+      {
+        "title": "Issue a verifiable credential",
+        "detail": "Encode the attested attributes into a W3C-style verifiable credential and anchor its status and revocation list to a distributed registry."
+      },
+      {
+        "title": "Deploy verification APIs",
+        "detail": "Give relying parties a standard way to request proofs and check credential signatures without contacting the issuer each time."
+      },
+      {
+        "title": "Layer in AI fraud detection",
+        "detail": "Run behavioural analytics and anomaly models during sessions, escalating to re-verification when risk rises."
+      },
+      {
+        "title": "Audit privacy and security",
+        "detail": "Test against injection attacks, deepfakes and template theft, and confirm that only the minimum data is disclosed and stored."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Biometric capture and matching algorithms",
+        "status": "exists",
+        "why": "face and fingerprint recognition are already accurate enough for everyday authentication."
+      },
+      {
+        "tech": "Liveness and deepfake detection",
+        "status": "partial",
+        "why": "attacks improve constantly, so detection is an arms race rather than a solved problem."
+      },
+      {
+        "tech": "Public-key cryptography and FIDO2/WebAuthn",
+        "status": "exists",
+        "why": "these standards provide phishing-resistant passwordless login on many devices."
+      },
+      {
+        "tech": "Decentralized identifiers and verifiable credentials",
+        "status": "partial",
+        "why": "standards exist and pilots are running, but cross-border interoperability is immature."
+      },
+      {
+        "tech": "Zero-knowledge proofs for selective disclosure",
+        "status": "partial",
+        "why": "they work in research and niche pilots but are not yet fast and simple enough for mass consumer use."
+      },
+      {
+        "tech": "Adversarially robust AI",
+        "status": "partial",
+        "why": "fraud models can be fooled by deliberately crafted inputs, so human review remains necessary."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "passkeys and biometric login become common on phones and laptops",
+        "unlocks": "phishing-resistant authentication for mainstream accounts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "government-backed digital identity wallets with selective disclosure (for example, the EU Digital Identity Wallet programme)",
+        "unlocks": "reusable, privacy-preserving identity for public and private services."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-border recognition of verifiable credentials and reusable KYC checks",
+        "unlocks": "faster onboarding and less duplication of sensitive data."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous, device-embedded authentication that proves identity without a central honeypot of personal data",
+        "unlocks": "fraud-resistant digital transactions with less friction and fewer breaches to worry about."
+      }
+    ]
   }
 }

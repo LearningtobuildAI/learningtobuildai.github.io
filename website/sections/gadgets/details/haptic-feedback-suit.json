@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Base garment",
+        "role": "a close-fitting, stretchable shell that carries everything else without restricting movement.",
+        "parts": [
+          "elastane-rich knit fabric",
+          "stretchable conductive traces",
+          "connector hubs at the waist and spine",
+          "abrasion-resistant outer layer"
+        ]
+      },
+      {
+        "name": "Actuator array",
+        "role": "produces touch and pressure sensations at chosen points on the body.",
+        "parts": [
+          "vibrotactile motors (linear resonant or eccentric-mass)",
+          "dielectric elastomer or pneumatic bladders for pressure",
+          "microfluidic channels",
+          "shape-memory alloy or tendon-driven elements for force cues"
+        ]
+      },
+      {
+        "name": "Thermal layer",
+        "role": "adds warm and cool sensations.",
+        "parts": [
+          "Peltier thermoelectric pads",
+          "thermal insulation between pad and skin",
+          "temperature sensors for safety limits"
+        ]
+      },
+      {
+        "name": "Sensing layer",
+        "role": "measures the wearer's posture and how the suit is being pressed, so feedback can be closed-loop.",
+        "parts": [
+          "inertial measurement units",
+          "strain and capacitive sensors",
+          "pressure sensors at contact zones"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "translates digital commands into drive signals for hundreds of channels.",
+        "parts": [
+          "microcontroller or FPGA",
+          "motor and high-voltage driver boards",
+          "wireless radio",
+          "sensor front-end"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "supplies peak currents for actuators while staying light enough to wear.",
+        "parts": [
+          "lithium-ion cell pack",
+          "voltage conversion",
+          "heat spreader"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "decides which actuators fire, how hard and when.",
+        "parts": [
+          "physics and collision engine",
+          "haptic rendering and mapping",
+          "latency budget manager",
+          "calibration profiles"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the body and the haptic vocabulary",
+        "detail": "Decide which sensations matter — contact, vibration, sustained pressure, stretch, temperature — and where they should be felt. Spatial acuity varies hugely: a few millimetres on the fingertips, several centimetres on the back, so actuator spacing follows the body's own resolution."
+      },
+      {
+        "title": "Make the stretchable substrate",
+        "detail": "Knit or laminate a fabric with conductive yarns, or screen-print stretchable silver or carbon-loaded silicone traces onto an elastic film, then test them through repeated stretching."
+      },
+      {
+        "title": "Build the actuators",
+        "detail": "Cast thin dielectric elastomer films with compliant electrodes, mould microfluidic bladders and channels, or wind small electromagnetic motors — each chosen for the force, stroke and speed a given body zone needs."
+      },
+      {
+        "title": "Laminate the layers",
+        "detail": "Stack substrate, actuator layer, thermal pads and sensors, bonding them so the composite still bends with the elbow and knee, and route every trace to a small number of hubs."
+      },
+      {
+        "title": "Wire the electronics",
+        "detail": "Connect hubs to driver boards, microcontroller and battery, keeping high-voltage actuator lines separated from sensitive sensor lines."
+      },
+      {
+        "title": "Write firmware and calibrate",
+        "detail": "Measure each actuator's response and each wearer's sensitivity, then build per-user lookup tables so a given command feels the same on different bodies."
+      },
+      {
+        "title": "Render haptics in software",
+        "detail": "Feed physics-engine contacts, distances and temperatures into a mapping layer that decides intensity, timing and spatial pattern, all inside a latency budget of tens of milliseconds."
+      },
+      {
+        "title": "Test and certify safety",
+        "detail": "Cap skin temperature, pressure and electrical exposure, then run wear trials for comfort, sweat, washing and hundreds of hours of flexing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Soft, high-bandwidth actuators",
+        "status": "partial",
+        "why": "existing actuators are either strong or fast or light — rarely all three at wearable size and voltage."
+      },
+      {
+        "tech": "Stretchable conductors and connectors",
+        "status": "partial",
+        "why": "wiring must survive thousands of flex cycles and repeated washing without cracking."
+      },
+      {
+        "tech": "Low-latency wireless with many channels",
+        "status": "partial",
+        "why": "haptic realism collapses if feedback arrives after the visual scene has moved on."
+      },
+      {
+        "tech": "Battery energy density",
+        "status": "partial",
+        "why": "hundreds of actuators draw peak currents that a comfortable pack struggles to supply for hours."
+      },
+      {
+        "tech": "Models of human touch perception",
+        "status": "partial",
+        "why": "without knowing how the skin integrates vibration, pressure and temperature, suits waste actuators on the wrong places."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "gloves and vests with vibration and limited force feedback in research and niche products",
+        "unlocks": "training, teleoperation and immersive entertainment where hands and torso matter most."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regional pressure suits with dense actuator arrays and modest temperature control",
+        "unlocks": "believable contact with virtual objects across arms, torso and legs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full-body suits with closed-loop sensing and lightweight, multi-hour power",
+        "unlocks": "comfortable all-day use, from remote surgery support to rehabilitation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration with body tracking and, speculatively, direct neural stimulation",
+        "unlocks": "sensation that no longer depends on how densely we can pack actuators against the skin."
+      }
+    ]
+  }
+}

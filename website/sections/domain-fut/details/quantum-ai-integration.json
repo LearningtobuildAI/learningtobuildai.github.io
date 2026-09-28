@@ -37,5 +37,143 @@
         "def": "A series of quantum logic gates used to perform operations on qubits, analogous to classical circuits in digital electronics."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the qubit chip that runs the quantum parts of an algorithm.",
+        "parts": [
+          "superconducting transmons or trapped ions",
+          "couplers and resonators",
+          "dilution refrigerator"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "shapes microwave or laser pulses and reads back qubit states.",
+        "parts": [
+          "signal generators",
+          "cryogenic wiring and amplifiers",
+          "FPGA/GPU controllers"
+        ]
+      },
+      {
+        "name": "Error handling",
+        "role": "keeps results usable despite noise.",
+        "parts": [
+          "error-mitigation routines",
+          "error-correcting code and decoder",
+          "calibration and benchmarking"
+        ]
+      },
+      {
+        "name": "Data-encoding layer",
+        "role": "loads classical data into quantum states; usually the bottleneck.",
+        "parts": [
+          "angle or amplitude encoding circuits",
+          "state-preparation routines"
+        ]
+      },
+      {
+        "name": "Hybrid algorithm layer",
+        "role": "runs short quantum circuits with a classical optimiser in the loop.",
+        "parts": [
+          "variational ansatz",
+          "parameter-update loop",
+          "measurement and statistics"
+        ]
+      },
+      {
+        "name": "Classical ML stack",
+        "role": "does the training, preprocessing and comparison to conventional models.",
+        "parts": [
+          "GPUs",
+          "datasets and feature pipelines",
+          "classical baselines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a learning task with the right structure",
+        "detail": "Quantum speedups only appear for problems matching what the hardware does well: linear algebra, sampling, or kernel evaluation over high-dimensional spaces."
+      },
+      {
+        "title": "Build and calibrate the qubits",
+        "detail": "Fabricate the chip, cool it to millikelvin temperatures, and characterise every gate so errors are known."
+      },
+      {
+        "title": "Encode the data",
+        "detail": "Map classical inputs (features, images, vectors) into qubit states — a step that can cost more than the algorithm saves."
+      },
+      {
+        "title": "Run parametrised circuits",
+        "detail": "Apply a trainable circuit, then measure expectation values many times to estimate outputs."
+      },
+      {
+        "title": "Close the training loop",
+        "detail": "Feed measurements to a classical optimiser, which adjusts the circuit parameters — the equivalent of gradient descent."
+      },
+      {
+        "title": "Mitigate or correct errors",
+        "detail": "Use extrapolation and noise-aware techniques, or bundle many physical qubits into one reliable logical qubit."
+      },
+      {
+        "title": "Benchmark honestly",
+        "detail": "Compare against strong classical models on the same data; treat any claimed advantage as unproven until reproduced."
+      },
+      {
+        "title": "Scale up",
+        "detail": "Add qubits and reduce error rates until the machine can solve a useful problem faster than a classical computer."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant logical qubits",
+        "status": "missing",
+        "why": "most speedup proofs assume error-corrected qubits; today's hardware is noisy and shallow-circuited."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "loading large classical datasets can erase the theoretical advantage."
+      },
+      {
+        "tech": "Algorithms with provable, robust speedups",
+        "status": "partial",
+        "why": "several early machine-learning speedups were later shown to be matchable by classical algorithms."
+      },
+      {
+        "tech": "High-performance classical AI hardware",
+        "status": "exists",
+        "why": "the classical bar keeps rising, so an advantage must hold against GPUs, not just textbooks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small noisy quantum processors running toy hybrid models",
+        "unlocks": "tooling and a realistic picture of where noise dominates."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation plus better qubits make wider circuits runnable",
+        "unlocks": "serious tests of quantum kernel and linear-algebra methods on real data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reproducible advantage over classical models on a well-defined task",
+        "unlocks": "the first credible claim that quantum hardware helps AI."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "logical qubits at scale with error correction",
+        "unlocks": "a possible practical role in optimisation, simulation and machine learning — still not guaranteed."
+      }
+    ]
   }
 }

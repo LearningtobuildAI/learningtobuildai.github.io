@@ -34,5 +34,145 @@
         "def": "A form of post-quantum cryptography that uses isogenies between elliptic curves to provide secure key exchange and encryption schemes."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Mathematical primitives",
+        "role": "provide the hard problems that quantum computers cannot solve efficiently",
+        "parts": [
+          "lattice problems (LWE, SIS)",
+          "hash functions",
+          "error-correcting codes"
+        ]
+      },
+      {
+        "name": "Key encapsulation mechanism (KEM)",
+        "role": "securely exchange symmetric keys over a public channel",
+        "parts": [
+          "ML-KEM (formerly CRYSTALS-Kyber)",
+          "other lattice-based KEMs"
+        ]
+      },
+      {
+        "name": "Digital signature schemes",
+        "role": "authenticate messages and verify identity",
+        "parts": [
+          "ML-DSA (formerly CRYSTALS-Dilithium)",
+          "SLH-DSA (formerly SPHINCS+)",
+          "Falcon"
+        ]
+      },
+      {
+        "name": "Implementation and key management",
+        "role": "make the algorithms fast, secure, and usable in real systems",
+        "parts": [
+          "optimized software libraries",
+          "constant-time implementations",
+          "hardware security modules (HSMs)",
+          "secure key storage"
+        ]
+      },
+      {
+        "name": "Migration and inventory tooling",
+        "role": "find and replace vulnerable cryptography across an organisation",
+        "parts": [
+          "cryptographic discovery tools",
+          "protocol upgrades (TLS, SSH, VPN)",
+          "certificate management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Identify hard problems",
+        "detail": "Cryptographers study lattice problems and other candidates that resist known quantum algorithms such as Shor's."
+      },
+      {
+        "title": "Design algorithms",
+        "detail": "Researchers construct key encapsulation and signature schemes with security proofs and practical performance targets."
+      },
+      {
+        "title": "Public competition and cryptanalysis",
+        "detail": "Algorithms are submitted to open standardisation processes where global experts try to break them."
+      },
+      {
+        "title": "Select and standardise",
+        "detail": "The US National Institute of Standards and Technology (NIST) selected algorithms and published the first post-quantum standards in 2024."
+      },
+      {
+        "title": "Implement in software",
+        "detail": "Libraries such as OpenSSL and BoringSSL add support; hardware vendors develop acceleration for larger keys."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "TLS, SSH, VPNs, and messaging apps adopt hybrid modes that combine classical and post-quantum algorithms."
+      },
+      {
+        "title": "Migrate systems",
+        "detail": "Organisations inventory their cryptography, replace vulnerable algorithms, and manage larger keys and certificates."
+      },
+      {
+        "title": "Monitor and update",
+        "detail": "Cryptanalysis continues; if weaknesses are found, new algorithms and standards are developed and deployed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lattice-based cryptography research",
+        "status": "exists",
+        "why": "provides the mathematical hardness assumptions that underpin the leading standards."
+      },
+      {
+        "tech": "Open standardisation process",
+        "status": "exists",
+        "why": "ensures algorithms are peer-reviewed, interoperable, and widely trusted."
+      },
+      {
+        "tech": "Efficient software implementations",
+        "status": "partial",
+        "why": "many libraries now support post-quantum algorithms, but performance and side-channel resistance need more work."
+      },
+      {
+        "tech": "Hardware acceleration for post-quantum crypto",
+        "status": "partial",
+        "why": "larger keys and signatures increase computational load, so dedicated hardware is being developed."
+      },
+      {
+        "tech": "Public-key infrastructure (PKI) that handles larger keys",
+        "status": "partial",
+        "why": "certificates and protocols must be updated to carry bigger post-quantum keys and signatures."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "First post-quantum standards published and early implementations in browsers and libraries",
+        "unlocks": "the ability to test and deploy quantum-resistant algorithms in real systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid deployment in TLS, VPNs, and messaging; inventory tools mature",
+        "unlocks": "protection against store-now-decrypt-later attacks for data in transit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Full migration of critical infrastructure such as finance, government, and energy",
+        "unlocks": "quantum-resistant critical systems that can withstand future quantum computers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Post-quantum algorithms become the default; classical algorithms deprecated",
+        "unlocks": "seamless security in a post-quantum world without user intervention."
+      },
+      {
+        "stage": "Ongoing",
+        "milestone": "Continuous cryptanalysis and periodic updates to standards",
+        "unlocks": "resilience against advances in both quantum computing and classical cryptanalysis."
+      }
+    ]
   }
 }

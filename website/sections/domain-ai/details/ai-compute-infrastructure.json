@@ -37,5 +37,165 @@
         "def": "A high-performance computer networking standard used in data centers for connecting servers and storage systems, known for its low latency and high bandwidth."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Accelerator chip",
+        "role": "performs the massive matrix multiplications that dominate neural-network training and inference.",
+        "parts": [
+          "compute die(s)",
+          "high-bandwidth memory stacks",
+          "on-package interconnect"
+        ]
+      },
+      {
+        "name": "Host node",
+        "role": "feeds data and manages the accelerator.",
+        "parts": [
+          "CPU",
+          "system memory",
+          "PCIe or NVLink switch",
+          "network interface card",
+          "local solid-state storage"
+        ]
+      },
+      {
+        "name": "Intra-node fabric",
+        "role": "lets accelerators inside one server share memory at very high bandwidth.",
+        "parts": [
+          "NVLink/NVSwitch or equivalent",
+          "cables",
+          "transceivers"
+        ]
+      },
+      {
+        "name": "Cluster network",
+        "role": "connects thousands of nodes so they act as one machine.",
+        "parts": [
+          "InfiniBand or Ethernet switches",
+          "optical transceivers",
+          "fibre cabling"
+        ]
+      },
+      {
+        "name": "Storage and data pipeline",
+        "role": "stores and streams training data and model checkpoints fast enough to keep accelerators busy.",
+        "parts": [
+          "parallel file system",
+          "object storage",
+          "caching tier",
+          "data loaders"
+        ]
+      },
+      {
+        "name": "Power and cooling",
+        "role": "delivers hundreds of kilowatts per rack and removes the heat.",
+        "parts": [
+          "high-voltage distribution",
+          "busway",
+          "liquid-cooling loops",
+          "coolant distribution units",
+          "backup generators"
+        ]
+      },
+      {
+        "name": "Software stack and orchestration",
+        "role": "schedules jobs and makes the whole cluster usable as one system.",
+        "parts": [
+          "drivers",
+          "CUDA/ROCm or TPU runtime",
+          "collective-communication libraries",
+          "job scheduler",
+          "monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the accelerator",
+        "detail": "Architects define the matrix-multiply units, memory bandwidth and interconnect, then simulate and verify the design."
+      },
+      {
+        "title": "Fabricate the silicon",
+        "detail": "Wafers are made at an advanced logic node in a semiconductor fab, then tested and binned for speed and power."
+      },
+      {
+        "title": "Package memory and die",
+        "detail": "High-bandwidth memory stacks are bonded to the logic die on an interposer using advanced packaging."
+      },
+      {
+        "title": "Build the server node",
+        "detail": "Accelerator modules are mounted on boards with voltage regulators, then assembled into a server with CPUs, memory, network cards and an intra-node switch."
+      },
+      {
+        "title": "Network the cluster",
+        "detail": "A leaf-spine fabric of switches and optical links is installed to connect every node with high bandwidth and low latency."
+      },
+      {
+        "title": "Build the data hall",
+        "detail": "High-density racks, liquid-cooling manifolds, power distribution and backup systems are installed in the building."
+      },
+      {
+        "title": "Provision software",
+        "detail": "Operating systems, drivers, communication libraries, container runtimes and a job scheduler are loaded and tested."
+      },
+      {
+        "title": "Train and serve",
+        "detail": "Distributed training jobs run with periodic checkpointing; models are then deployed for inference, and failing parts are replaced."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced logic fabrication",
+        "status": "exists",
+        "why": "only a few foundries can make the most advanced chips at high yield."
+      },
+      {
+        "tech": "High-bandwidth memory",
+        "status": "exists",
+        "why": "stacks of memory on the package provide the terabytes per second needed to keep accelerators fed."
+      },
+      {
+        "tech": "High-speed serial links and optics",
+        "status": "exists",
+        "why": "fast Ethernet and InfiniBand, plus optical transceivers, connect thousands of nodes without crippling latency."
+      },
+      {
+        "tech": "High-density power and liquid cooling",
+        "status": "partial",
+        "why": "accelerator racks now exceed what air cooling can handle, so direct-to-chip liquid cooling is being deployed."
+      },
+      {
+        "tech": "Parallel training software",
+        "status": "exists",
+        "why": "collective libraries and distributed-training frameworks make multi-node, multi-thousand-chip training possible."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "clusters of thousands to tens of thousands of accelerators train frontier models",
+        "unlocks": "large language and multimodal models at today's scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clusters with more than 100,000 accelerators, more optical interconnects and liquid cooling as standard",
+        "unlocks": "larger models and faster training runs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "disaggregated memory and specialised inference chips; co-packaged optics",
+        "unlocks": "lower power per operation and cheaper serving of models."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "wafer-scale engines and 3D-stacked compute-memory layers, possibly with on-package photonics",
+        "unlocks": "continued scaling of performance per watt as conventional chip gains slow."
+      }
+    ]
   }
 }

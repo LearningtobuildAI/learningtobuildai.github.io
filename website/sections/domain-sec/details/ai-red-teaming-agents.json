@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Environment model",
+        "role": "represents the target network: hosts, services, vulnerabilities and connections.",
+        "parts": [
+          "topology graph",
+          "vulnerability and configuration database",
+          "reachability and trust relationships"
+        ]
+      },
+      {
+        "name": "Agent or planner",
+        "role": "decides the next action — scan, exploit, pivot, escalate — to reach a goal.",
+        "parts": [
+          "policy network (reinforcement learning) or language model",
+          "action space definition",
+          "reward or objective function"
+        ]
+      },
+      {
+        "name": "Action execution layer",
+        "role": "carries out chosen actions using real security tools.",
+        "parts": [
+          "scanners (e.g. Nmap)",
+          "exploitation frameworks (e.g. Metasploit)",
+          "remote access and lateral movement tools"
+        ]
+      },
+      {
+        "name": "Observation and state updater",
+        "role": "collects results from actions and updates the environment model.",
+        "parts": [
+          "log and session parsers",
+          "graph update logic",
+          "uncertainty tracking"
+        ]
+      },
+      {
+        "name": "Safe execution sandbox",
+        "role": "keeps the agent contained so it cannot damage real systems.",
+        "parts": [
+          "isolated virtual network",
+          "snapshot and rollback",
+          "scope enforcement and kill switch"
+        ]
+      },
+      {
+        "name": "Reporting and remediation",
+        "role": "turns discovered attack paths into findings for defenders.",
+        "parts": [
+          "attack graph visualisation",
+          "severity scoring (e.g. CVSS)",
+          "patch and hardening recommendations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build a target environment",
+        "detail": "Create a realistic network — either a digital twin of the real one or a cyber range — with hosts, services, users and known weaknesses."
+      },
+      {
+        "title": "Define the agent interface",
+        "detail": "Specify the observation space (what the agent sees) and action space (what it can try), using tactics from frameworks such as MITRE ATT&CK."
+      },
+      {
+        "title": "Generate or collect experience",
+        "detail": "Run human red-team playbooks, scripted attacks, or millions of simulated episodes to give the agent examples of successful and failed paths."
+      },
+      {
+        "title": "Train the decision maker",
+        "detail": "Use reinforcement learning with rewards for reaching goals and penalties for noise, or fine-tune a language model to reason over tool outputs and pick actions."
+      },
+      {
+        "title": "Validate against a baseline",
+        "detail": "Compare the agent's findings, speed and false-positive rate with a human red team on the same range."
+      },
+      {
+        "title": "Connect to real tools under guardrails",
+        "detail": "Integrate scanners and exploitation frameworks, but enforce scope limits, human approval for risky actions, and full logging."
+      },
+      {
+        "title": "Deploy for continuous testing",
+        "detail": "Run the agent on a schedule against production-like environments, feeding results to defenders and retraining as the network changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reinforcement learning and planning algorithms",
+        "status": "exists",
+        "why": "they let an agent learn sequences of actions toward a distant goal."
+      },
+      {
+        "tech": "Mature offensive security tooling with APIs",
+        "status": "exists",
+        "why": "scanners, exploitation frameworks and remote access tools are the agent's hands."
+      },
+      {
+        "tech": "Realistic network simulation and cyber ranges",
+        "status": "partial",
+        "why": "training and safe testing require environments that behave like real enterprise networks."
+      },
+      {
+        "tech": "Large language models for tool use",
+        "status": "partial",
+        "why": "they help interpret unstructured outputs and plan, but can hallucinate or take unsafe actions."
+      },
+      {
+        "tech": "Containment and safety controls",
+        "status": "partial",
+        "why": "an autonomous attacker must be impossible to leak beyond its authorised scope."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated scanners and scripted exploitation in lab environments",
+        "unlocks": "faster, repeatable discovery of known vulnerabilities."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that chain multiple exploits and move laterally in cyber ranges",
+        "unlocks": "testing of defence-in-depth against realistic multi-step attacks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid teams where a human red-teamer directs several AI agents",
+        "unlocks": "scaled continuous testing without losing human judgement."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous red teaming inside strict guardrails",
+        "unlocks": "round-the-clock adversarial testing of live networks — if safety and control problems are solved."
+      }
+    ]
+  }
+}

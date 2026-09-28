@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Unit cell (catom / module)",
+        "role": "the building block: a small robot that can attach to neighbours, then detach and crawl to a new position to reshape the whole object.",
+        "parts": [
+          "electrostatic or magnetic actuator",
+          "latching faces",
+          "on-board chip for logic and communication",
+          "power and data contacts"
+        ]
+      },
+      {
+        "name": "Actuation and latching",
+        "role": "moves each module relative to its neighbours one step at a time, and holds the assembled shape rigidly afterwards.",
+        "parts": [
+          "electrodes for electrostatic grip",
+          "magnet or electro-permanent magnet latch",
+          "micro-motion mechanism"
+        ]
+      },
+      {
+        "name": "Power and data distribution",
+        "role": "delivers energy and commands into a dense lattice without wiring every module individually.",
+        "parts": [
+          "conductive bus running through the lattice contacts",
+          "inductive or capacitive power coupling",
+          "local energy storage"
+        ]
+      },
+      {
+        "name": "Control software",
+        "role": "converts a wanted shape into millions of safe, collision-free module moves.",
+        "parts": [
+          "top-level shape planner",
+          "distributed self-reconfiguration algorithm",
+          "deadlock and jam avoidance"
+        ]
+      },
+      {
+        "name": "Sensing and user interface",
+        "role": "lets the surface know what the user needs and stop before hurting them.",
+        "parts": [
+          "force and proximity sensors in the skin",
+          "pose tracking",
+          "load and pinch detection"
+        ]
+      },
+      {
+        "name": "Deformable skin",
+        "role": "the visible, comfortable surface over the lattice.",
+        "parts": [
+          "flexible elastomer sheet",
+          "cushioning layer",
+          "wear-resistant finish"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the unit size",
+        "detail": "Small modules give finer shapes but weaker force and absurd part counts: a sofa-sized volume built from 1 mm cubes is on the order of a billion modules, against roughly ten million for 5 mm cubes."
+      },
+      {
+        "title": "Batch-fabricate the modules",
+        "detail": "Micro-machining or MEMS-style wafer processes would produce electrostatic actuators, electrodes, latch faces and a small chip in one flow, then singulate them into individual units."
+      },
+      {
+        "title": "Give each module power and a voice",
+        "detail": "Contacts on the faces pass both electricity and data so that a module is powered as soon as it docks; each carries enough stored energy to make its next move."
+      },
+      {
+        "title": "Write the distributed control",
+        "detail": "A planner breaks a desired shape into module moves, and local rules let each module decide when to detach without deadlocking the lattice or dropping unloaded sections."
+      },
+      {
+        "title": "Assemble a lattice and scale it up",
+        "detail": "Modules are packed into a self-supporting block; making enough of them cheaply, and getting yield high enough that faulty cells can be tolerated, is the manufacturing wall."
+      },
+      {
+        "title": "Apply the skin",
+        "detail": "A stretchable sheet is bonded over the lattice so the object reads as a smooth surface rather than a stack of robots."
+      },
+      {
+        "title": "Add sensing and safety rules",
+        "detail": "Force limits, jam detection and fail-safe rigid modes are programmed in so the furniture cannot crush a limb or collapse when power fails."
+      },
+      {
+        "title": "Commission for one room",
+        "detail": "The unit learns its lattice layout, then is taught a small library of shapes — seat, bed, table — rather than free-form metamorphosis."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Millimetre-scale electrostatic actuators",
+        "status": "partial",
+        "why": "they have been built in planar arrays, but force falls steeply with size, so a module can move itself rather than lift a load — structural strength must come from the whole lattice."
+      },
+      {
+        "tech": "Micro-fabrication with on-board logic and power",
+        "status": "partial",
+        "why": "MEMS devices with integrated circuits exist, but no free-moving particle yet combines actuator, chip, latch and energy storage in one cheap unit."
+      },
+      {
+        "tech": "Power and data delivery through a dense lattice",
+        "status": "partial",
+        "why": "contact buses and inductive coupling work at small scale; distributing watts through millions of sliding contacts reliably is unsolved."
+      },
+      {
+        "tech": "Self-reconfiguration and shape-planning algorithms",
+        "status": "partial",
+        "why": "demonstrated in simulation and on small modular-robot chains of tens of units, not on millions of independent cells."
+      },
+      {
+        "tech": "Ultra-low-cost mass production",
+        "status": "missing",
+        "why": "furniture-scale objects need billions of modules, so unit cost must fall far below anything micro-robotics achieves today."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tabletop shape displays and modular robots: pin-array surfaces that raise and lower rods, and centimetre-scale modules that dock into small structures such as a stool",
+        "unlocks": "proof that reconfigurable matter is physically possible at small scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "centimetre-scale modules in the thousands, with magnetic latching, forming metre-sized surfaces",
+        "unlocks": "a bench or wall panel that genuinely changes shape, at high cost and low load."
+      },
+      {
+        "stage": "Next",
+        "milestone": "specialist applications before furniture: reconfigurable jigs and tooling, adaptive seats for people who cannot reposition themselves, and inspection robots",
+        "unlocks": "a market that pays for the technology while reliability improves."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a room-scale lattice of millimetre catoms under a stretchable skin, mimicking the claytronics concept pursued in early research programmes on programmable matter",
+        "unlocks": "interiors that morph between furniture types on demand — only if power, cost, strength and safety are all solved together."
+      }
+    ]
+  }
+}

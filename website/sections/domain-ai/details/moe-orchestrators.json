@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Expert networks",
+        "role": "specialised sub-networks, usually feed-forward layers, that process only the tokens routed to them.",
+        "parts": [
+          "feed-forward layers",
+          "activation functions",
+          "expert-specific parameters"
+        ]
+      },
+      {
+        "name": "Gating network (router)",
+        "role": "scores each token for every expert and selects the top-k experts to activate.",
+        "parts": [
+          "linear layer",
+          "softmax",
+          "optional noise injection"
+        ]
+      },
+      {
+        "name": "Token dispatch and combination",
+        "role": "moves tokens to the selected experts and merges their outputs weighted by the gate scores.",
+        "parts": [
+          "permutation and sorting",
+          "all-to-all communication",
+          "weighted sum"
+        ]
+      },
+      {
+        "name": "Load balancing and auxiliary losses",
+        "role": "encourages even expert usage so that a few experts do not dominate or collapse.",
+        "parts": [
+          "load balancing loss",
+          "router z-loss",
+          "capacity factor"
+        ]
+      },
+      {
+        "name": "Expert parallelism and communication",
+        "role": "distributes experts across devices and coordinates token exchange between them.",
+        "parts": [
+          "expert sharding",
+          "all-to-all collectives",
+          "overlapping communication and computation"
+        ]
+      },
+      {
+        "name": "Training and inference orchestration",
+        "role": "manages the conditional computation pipeline, batching, and scheduling.",
+        "parts": [
+          "dynamic batching",
+          "capacity-based token dropping",
+          "gradient synchronisation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose MoE placement",
+        "detail": "Decide which layers to replace with a mixture of experts, typically every other feed-forward layer, and set the number of experts and how many are active per token (top-k)."
+      },
+      {
+        "title": "Implement the gating network",
+        "detail": "Add a small linear layer that outputs a score for each expert per token, apply softmax, and select the top-k experts."
+      },
+      {
+        "title": "Set capacity factor",
+        "detail": "Define a maximum number of tokens each expert can process per batch to bound compute; tokens beyond capacity are dropped or passed through a residual path."
+      },
+      {
+        "title": "Add auxiliary losses",
+        "detail": "Introduce a load balancing loss to encourage uniform expert usage and a router z-loss to stabilise training."
+      },
+      {
+        "title": "Distribute experts",
+        "detail": "Shard experts across accelerators and implement all-to-all communication so tokens can reach their assigned experts."
+      },
+      {
+        "title": "Train with conditional computation",
+        "detail": "In the forward pass, route tokens, compute only the selected experts, and combine their outputs; in the backward pass, update only those experts and the router."
+      },
+      {
+        "title": "Tune routing and capacity",
+        "detail": "Adjust top-k, capacity factor, and the weight of the load balancing loss to balance model quality against throughput."
+      },
+      {
+        "title": "Deploy for inference",
+        "detail": "Optimise kernels for sparse activation, handle dynamic batching, and perform expert selection on the fly with minimal latency."
+      },
+      {
+        "title": "Monitor and iterate",
+        "detail": "Watch for expert collapse or underutilisation, then retrain or adjust the load balancing scheme as needed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale distributed training infrastructure",
+        "status": "exists",
+        "why": "Training many experts requires sharding both model and data across many accelerators."
+      },
+      {
+        "tech": "High-bandwidth interconnects",
+        "status": "exists",
+        "why": "All-to-all communication between experts is bandwidth-intensive and can bottleneck training."
+      },
+      {
+        "tech": "Sparse tensor operations and efficient kernels",
+        "status": "exists",
+        "why": "Conditional computation relies on fast gather, scatter, and grouped matrix multiplications."
+      },
+      {
+        "tech": "Load balancing algorithms",
+        "status": "exists",
+        "why": "Without them, a few experts receive most tokens, wasting capacity and degrading quality."
+      },
+      {
+        "tech": "Model parallelism frameworks",
+        "status": "exists",
+        "why": "Expert parallelism is a form of model parallelism that must be orchestrated alongside data parallelism."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Very large language models use MoE to scale parameters without a proportional increase in compute.",
+        "unlocks": "Cheaper scaling of model capacity for training and inference."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Improved routing algorithms that reduce token dropping and encourage better expert specialisation.",
+        "unlocks": "Higher quality per unit of compute and more stable training."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hardware and software co-design for all-to-all communication.",
+        "unlocks": "Faster training and inference, enabling more experts and larger models."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Conditional computation beyond MoE, such as adaptive depth and width per token.",
+        "unlocks": "Models that spend compute only where needed, further improving efficiency."
+      }
+    ]
+  }
+}

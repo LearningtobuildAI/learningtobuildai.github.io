@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural signal acquisition",
+        "role": "captures the electrical activity that the key would be derived from.",
+        "parts": [
+          "EEG electrodes (wet, dry or implanted arrays)",
+          "low-noise amplifiers",
+          "analogue-to-digital converter",
+          "shielding against mains and muscle artefact"
+        ]
+      },
+      {
+        "name": "Feature extraction",
+        "role": "turns raw microvolt-scale waveforms into stable numbers that differ between people.",
+        "parts": [
+          "spectral power bands",
+          "event-related potentials",
+          "cross-electrode connectivity measures",
+          "artefact rejection"
+        ]
+      },
+      {
+        "name": "Entropy and stability analysis",
+        "role": "asks the decisive question — how many unpredictable bits does a recording actually contain, and can they be reproduced?",
+        "parts": [
+          "entropy estimators",
+          "within-person repeatability testing across days and sessions",
+          "across-person discriminability testing"
+        ]
+      },
+      {
+        "name": "Key derivation",
+        "role": "converts noisy, non-identical measurements into an exactly reproducible key.",
+        "parts": [
+          "error-correcting code",
+          "fuzzy extractor or secure sketch",
+          "helper data store",
+          "cryptographic hash to a fixed-length key"
+        ]
+      },
+      {
+        "name": "Authentication protocol",
+        "role": "uses the derived key for a real security purpose.",
+        "parts": [
+          "challenge task presented to the user",
+          "session key agreement",
+          "integration with standard ciphers such as AES"
+        ]
+      },
+      {
+        "name": "Spoofing defence",
+        "role": "stops an attacker recording or synthesising the signal.",
+        "parts": [
+          "liveness and randomness challenges",
+          "template protection",
+          "replay detection"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the signal and the task",
+        "detail": "Choose between scalp EEG, which is non-invasive but coarse, and implanted electrodes, which are sharp but surgical. Then choose a repeatable mental task — imagined movement, a mental arithmetic challenge, or a visual stimulus — so the response is comparable between sessions."
+      },
+      {
+        "title": "Collect longitudinal data",
+        "detail": "Record the same person many times over weeks, in different moods and states, and record many other people. Single-session results are meaningless here; the whole problem is reproducibility."
+      },
+      {
+        "title": "Extract candidate features",
+        "detail": "Filter the signal, remove eye-blink and muscle artefact, and compute features such as band power or evoked-response shape at specific electrodes and time windows."
+      },
+      {
+        "title": "Select features that are personal and stable",
+        "detail": "Keep only features that stay close to the same value for one person over time yet differ clearly between people. In practice the candidate pool shrinks a lot at this step."
+      },
+      {
+        "title": "Measure real entropy",
+        "detail": "Estimate how many genuinely unpredictable bits a recording provides. This is the step that decides whether the idea can work at all, and results so far are modest compared with the length of the recording."
+      },
+      {
+        "title": "Build the error-correcting layer",
+        "detail": "Because two recordings are never bit-identical, wrap the features in a fuzzy extractor or secure sketch: enrolment produces helper data, and each later reading is corrected back to the same value."
+      },
+      {
+        "title": "Derive a key with a standard cipher",
+        "detail": "Hash the corrected value into an AES key or similar, and use it inside an ordinary authentication protocol rather than inventing a new cipher."
+      },
+      {
+        "title": "Attack your own system",
+        "detail": "Attempt replay from a prior recording, synthetic signal generation, coercion of the user, and cross-session drift. Any of these breaks the scheme in real use."
+      },
+      {
+        "title": "Decide what it is actually for",
+        "detail": "Realistically the outcome is a second or third authentication factor for a narrow setting, not a replacement for public-key cryptography."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable, comfortable neural sensing",
+        "status": "partial",
+        "why": "research-grade EEG exists; consumer headsets are noisy, and implanted arrays need surgery and degrade over time."
+      },
+      {
+        "tech": "Biometric key derivation (fuzzy extractors, secure sketches)",
+        "status": "exists",
+        "why": "the mathematics for turning noisy biometric readings into reproducible keys is already established, and would be reused here."
+      },
+      {
+        "tech": "Demonstrated signal repeatability",
+        "status": "missing",
+        "why": "keys require bit-exact reproduction, but neural activity varies with attention, fatigue, caffeine and time of day — the central unsolved problem."
+      },
+      {
+        "tech": "Demonstrated high entropy per recording",
+        "status": "missing",
+        "why": "a key is only as strong as its unpredictable content, and most of an EEG trace is either predictable or shared across people."
+      },
+      {
+        "tech": "Anti-spoofing for neural signals",
+        "status": "partial",
+        "why": "recordings can be captured and replayed, so liveness tests are essential for any security claim."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research on EEG-based person identification and, separately, on neural-information security",
+        "unlocks": "evidence about how distinguishable and how stable individual brain signals are."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lab prototype that derives a reproducible key with published entropy estimates and a defined threat model",
+        "unlocks": "an honest answer to whether the entropy is enough to be worth using."
+      },
+      {
+        "stage": "Next",
+        "milestone": "challenge–response authentication demonstrated against replay and synthesis attacks",
+        "unlocks": "possible use as a supplementary factor in high-assurance settings, alongside a password or hardware token."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "if stable, high-capacity neural interfaces become routine, key material drawn from brain activity could become a niche factor",
+        "unlocks": "a convenience layer for implanted-device users — but ordinary cryptographic keys do the real work, and are far cheaper and faster."
+      }
+    ]
+  }
+}

@@ -38,5 +38,161 @@
         "def": "A technique where knowledge from larger models is transferred into smaller ones, resulting in a model that can run efficiently on edge devices."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compact model architecture",
+        "role": "a transformer small enough to fit a phone's memory budget, usually 1–8 billion parameters.",
+        "parts": [
+          "grouped-query attention layers",
+          "feed-forward blocks",
+          "tokenizer and embedding table"
+        ]
+      },
+      {
+        "name": "Compression pipeline",
+        "role": "shrinks a big model's knowledge into weights the device can hold and move quickly.",
+        "parts": [
+          "distillation from a larger teacher",
+          "int8/int4 quantization",
+          "pruning",
+          "low-rank adapters"
+        ]
+      },
+      {
+        "name": "On-device runtime",
+        "role": "turns a prompt into streamed tokens using as little power as possible.",
+        "parts": [
+          "tokenizer",
+          "KV-cache manager",
+          "sampling and decoding",
+          "batching/scheduler"
+        ]
+      },
+      {
+        "name": "NPU and accelerators",
+        "role": "the silicon that does the matrix maths.",
+        "parts": [
+          "INT8/INT4 multiply-accumulate arrays",
+          "on-chip SRAM",
+          "vector/SIMD units",
+          "CPU and GPU fallback"
+        ]
+      },
+      {
+        "name": "Memory and storage",
+        "role": "feeds weights to the NPU fast enough to matter.",
+        "parts": [
+          "shared LPDDR memory",
+          "flash storage for model files",
+          "memory-mapped weight loading"
+        ]
+      },
+      {
+        "name": "OS integration and privacy layer",
+        "role": "exposes the model to apps without sending data anywhere.",
+        "parts": [
+          "system model API",
+          "model manager and updates",
+          "per-app policies and telemetry opt-outs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the memory budget",
+        "detail": "Decide the target device class, then work backwards from how much RAM and bandwidth the model may use, since that caps parameter count."
+      },
+      {
+        "title": "Distil from a larger teacher",
+        "detail": "Train the small model to imitate the outputs and internal distributions of a much bigger frontier model, using the teacher to label or rank data."
+      },
+      {
+        "title": "Post-train for instruction and safety",
+        "detail": "Fine-tune on curated instructions and preference data, and add refusal behaviour so the model behaves predictably in a consumer product."
+      },
+      {
+        "title": "Quantize the weights",
+        "detail": "Calibrate activations on representative prompts, then compress weights to 8 or 4 bits; quantization-aware training recovers accuracy lost at very low bit widths."
+      },
+      {
+        "title": "Lower the graph to the NPU",
+        "detail": "A compiler fuses operations, tiles them to the accelerator's on-chip memory, and emits kernels; unsupported operations fall back to CPU or GPU."
+      },
+      {
+        "title": "Build the runtime",
+        "detail": "Add a tokenizer, a KV cache that grows and is reused across turns, streaming output, and memory-mapped loading so the model starts without a long copy."
+      },
+      {
+        "title": "Package for the platform",
+        "detail": "Ship the model as an OS component or app library with versioning, so it can be updated and rolled back independently of the app."
+      },
+      {
+        "title": "Evaluate on real hardware",
+        "detail": "Measure time to first token, tokens per second, peak memory, accuracy regression against the unquantized model, and battery/thermal behaviour over long sessions."
+      },
+      {
+        "title": "Ship and keep measuring",
+        "detail": "Deploy to devices, watch for failures on old or low-memory hardware, and retrain when the next NPU generation arrives."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture and attention",
+        "status": "exists",
+        "why": "small models are scaled-down versions of the same design, so all the scaling tricks apply directly."
+      },
+      {
+        "tech": "Quantization and quantization-aware training",
+        "status": "exists",
+        "why": "without 4-bit weights a useful model will not fit in a phone's memory alongside the operating system."
+      },
+      {
+        "tech": "Knowledge distillation",
+        "status": "exists",
+        "why": "it is how a tiny model inherits capability from a much larger one rather than learning everything from scratch."
+      },
+      {
+        "tech": "NPUs with low-precision matrix units",
+        "status": "exists",
+        "why": "dedicated INT8/INT4 hardware runs inference several times more efficiently than a CPU or GPU."
+      },
+      {
+        "tech": "Mobile memory bandwidth",
+        "status": "partial",
+        "why": "phones move data at tens of gigabytes per second, so decode is memory-bound and bandwidth, not compute, is often the real limit."
+      },
+      {
+        "tech": "Efficient inference runtimes and compilers",
+        "status": "exists",
+        "why": "they translate trained models into kernels each vendor's accelerator can actually execute."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "1–8 billion parameter models running on flagship phones and laptops for summarisation, dictation and notification triage",
+        "unlocks": "useful language features that work offline and never leave the device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device personalisation through small adapters trained or selected locally",
+        "unlocks": "assistants that adapt to a person's writing and habits without uploading their data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-modal small models and local retrieval over the user's own files",
+        "unlocks": "question answering over photos, documents and messages entirely on the device."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agentic on-device assistants that call local tools under a strict power budget",
+        "unlocks": "task automation with privacy as a default rather than a setting."
+      }
+    ]
   }
 }

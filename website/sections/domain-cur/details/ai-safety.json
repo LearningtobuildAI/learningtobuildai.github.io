@@ -33,5 +33,175 @@
         "def": "Ongoing processes to track and assess the behavior and outcomes of AI systems in real-time."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Threat modelling and requirements",
+        "role": "defines what failure looks like for a given system and which failures are unacceptable.",
+        "parts": [
+          "misuse and capability analysis",
+          "risk register",
+          "acceptable-risk thresholds"
+        ]
+      },
+      {
+        "name": "Evaluation and benchmarking",
+        "role": "measures both capability and harmful behaviour in a repeatable way.",
+        "parts": [
+          "benchmark suites",
+          "automated graders",
+          "human evaluation protocols",
+          "capability elicitation"
+        ]
+      },
+      {
+        "name": "Red-teaming",
+        "role": "deliberately attacks the system to find failures before users do.",
+        "parts": [
+          "expert human teams",
+          "automated adversarial prompt generation",
+          "jailbreak and prompt-injection tests",
+          "dangerous-capability probes"
+        ]
+      },
+      {
+        "name": "Alignment training",
+        "role": "shapes model behaviour during training rather than filtering it afterwards.",
+        "parts": [
+          "human preference data",
+          "reward models",
+          "preference optimisation such as RLHF",
+          "rule-based and constitutional training methods",
+          "refusal and honesty training"
+        ]
+      },
+      {
+        "name": "Interpretability and monitoring",
+        "role": "looks inside the model and watches its behaviour over time.",
+        "parts": [
+          "probing classifiers",
+          "feature and circuit analysis",
+          "reasoning-trace monitoring",
+          "anomaly detection"
+        ]
+      },
+      {
+        "name": "Inference-time guardrails",
+        "role": "catches harmful inputs and outputs while the system is running.",
+        "parts": [
+          "input classifiers",
+          "output filters",
+          "tool-use permissions",
+          "sandboxing",
+          "rate limits and access control"
+        ]
+      },
+      {
+        "name": "Governance and assurance",
+        "role": "makes safety claims checkable by people outside the developer.",
+        "parts": [
+          "model and system cards",
+          "risk-management frameworks such as the NIST AI RMF",
+          "conformity assessment under the EU AI Act",
+          "incident reporting and audits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the threat model",
+        "detail": "For the specific deployment, list plausible misuse, accident and failure modes, and set which outcomes are unacceptable rather than merely undesirable."
+      },
+      {
+        "title": "Build data and feedback pipelines",
+        "detail": "Assemble evaluation datasets and a workforce that can label harmful, helpful and borderline outputs consistently, with quality control on the annotators."
+      },
+      {
+        "title": "Train with an alignment objective",
+        "detail": "Fine-tune the base model on demonstrations and preference comparisons so it refuses clearly harmful requests and explains uncertainty, then check that this did not degrade capability."
+      },
+      {
+        "title": "Construct the evaluation suite",
+        "detail": "Combine public benchmarks with private held-out tests, including automated graders and human review, and freeze a version so results are comparable across model releases."
+      },
+      {
+        "title": "Red-team iteratively",
+        "detail": "Expert teams and automated attack tools try jailbreaks, prompt injection and capability elicitation; every failure found is patched and re-tested until the suite is stable."
+      },
+      {
+        "title": "Add inference-time guardrails",
+        "detail": "Wrap the model in input and output classifiers, restrict which tools and data it can reach, and sandbox any code execution."
+      },
+      {
+        "title": "Probe the internals",
+        "detail": "Use interpretability tools to check whether the model represents and uses concepts the way its outputs suggest, rather than relying on behaviour alone."
+      },
+      {
+        "title": "Document and audit",
+        "detail": "Publish or file system cards, evaluation results and residual risks; submit to external review or conformity assessment where regulation requires it."
+      },
+      {
+        "title": "Monitor after deployment",
+        "detail": "Log real-world usage for new failure modes, feed incidents back into the evaluation suite, and retrain or withdraw the system when thresholds are crossed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale training and serving infrastructure",
+        "status": "exists",
+        "why": "evaluations, red-teaming and guardrails all need repeated access to the model at production scale."
+      },
+      {
+        "tech": "Human preference and annotation pipelines",
+        "status": "exists",
+        "why": "alignment training depends on large volumes of consistent human judgements, often from contract workforces."
+      },
+      {
+        "tech": "Interpretability methods that scale to large models",
+        "status": "partial",
+        "why": "feature-level analysis works on small models and selected layers, not yet as a full audit of a frontier system."
+      },
+      {
+        "tech": "Evaluation for capabilities beyond human expertise",
+        "status": "missing",
+        "why": "if a model can do something no human can verify, benchmarks and human graders cannot confirm whether it did it safely or correctly."
+      },
+      {
+        "tech": "Formal verification of neural networks",
+        "status": "partial",
+        "why": "proving properties holds for small networks and narrow input ranges, and does not currently scale to frontier models."
+      },
+      {
+        "tech": "Regulatory and standards infrastructure",
+        "status": "partial",
+        "why": "the EU AI Act and the NIST AI Risk Management Framework provide structure, but enforcement and technical standards are still being written."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "frontier developers run internal red teams, publish system cards and apply runtime filters; general-purpose AI obligations begin applying under the EU AI Act",
+        "unlocks": "a baseline of documented practice and incident reporting."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised third-party evaluations and repeatable audits",
+        "unlocks": "safety claims that buyers, regulators and insurers can compare across developers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interpretability mature enough to check properties directly instead of sampling behaviour",
+        "unlocks": "assurance that does not depend on the model failing in a test first."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "scalable oversight methods for systems that outperform their overseers",
+        "unlocks": "a credible path to deploying very capable systems under meaningful human control."
+      }
+    ]
   }
 }

@@ -34,5 +34,168 @@
         "def": "A self-executing contract with the terms of the agreement directly written into code, used for automating and enforcing contractual obligations."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Intake and structuring layer",
+        "role": "turns messy filings, contracts and evidence into machine-readable facts.",
+        "parts": [
+          "document upload and OCR",
+          "entity and date extraction",
+          "claim classification by dispute type"
+        ]
+      },
+      {
+        "name": "Legal knowledge base",
+        "role": "stores the statute, regulation, contract terms and prior decisions the system is allowed to rely on.",
+        "parts": [
+          "digitised statute corpus",
+          "anonymised decision database",
+          "citation graph linking later cases to earlier ones"
+        ]
+      },
+      {
+        "name": "Reasoning engine",
+        "role": "applies the rules to the facts and drafts a proposed finding.",
+        "parts": [
+          "retrieval-augmented language model",
+          "deterministic rule engine for jurisdiction-specific constraints",
+          "outcome templates"
+        ]
+      },
+      {
+        "name": "Guardrail layer",
+        "role": "stops the system acting outside its legal authority.",
+        "parts": [
+          "monetary and subject-matter caps",
+          "jurisdiction and limitation checks",
+          "citation verification against the source database",
+          "refusal and escalation rules"
+        ]
+      },
+      {
+        "name": "Explanation and audit trail",
+        "role": "makes every decision contestable.",
+        "parts": [
+          "plain-language reasoning trace",
+          "linked sources",
+          "versioned logs of inputs, model and rules"
+        ]
+      },
+      {
+        "name": "Smart-contract interface",
+        "role": "links on-chain events to off-chain claims and back.",
+        "parts": [
+          "oracle feeds of contract state",
+          "escrow state machine",
+          "award execution hooks"
+        ]
+      },
+      {
+        "name": "Human review and appeal",
+        "role": "lets a registrar, arbitrator or judge override or take over.",
+        "parts": [
+          "reviewer console",
+          "appeal intake",
+          "escalation thresholds"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a narrow, high-volume dispute class",
+        "detail": "Start where facts are structured and stakes are low — unpaid invoices, small claims, penalty notices, simple insurance claims — rather than open-ended civil litigation."
+      },
+      {
+        "title": "Codify the rules of that jurisdiction",
+        "detail": "Reduce statutes, court rules and procedural deadlines into an explicit decision model; write down what the system may never decide."
+      },
+      {
+        "title": "Build the corpus",
+        "detail": "Digitise and anonymise prior decisions, tag them by facts and outcome, and settle licensing for any proprietary case-law databases."
+      },
+      {
+        "title": "Measure accuracy per dispute type",
+        "detail": "Test against held-out real decisions adjudicated by humans, reporting results for each dispute class separately rather than one headline number."
+      },
+      {
+        "title": "Design the guardrails",
+        "detail": "Set hard caps on claim value, forbid categories requiring credibility judgements, and define when a human must take over."
+      },
+      {
+        "title": "Integrate with court or platform systems",
+        "detail": "Connect e-filing, identity verification, notifications and deadlines so the whole path runs without paper."
+      },
+      {
+        "title": "Run in shadow mode",
+        "detail": "The system proposes an outcome but the human decides; compare the two over years, stratified by claimant demographics, to detect systematic bias."
+      },
+      {
+        "title": "Open an appeal route",
+        "detail": "Every automated outcome must be explainable to the losing party and reviewable de novo by a human decision-maker."
+      },
+      {
+        "title": "Certify, then widen scope",
+        "detail": "Independent audit plus a change to court rules before the decisions become binding, then extend to the next dispute class."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Language models with grounded citation",
+        "status": "partial",
+        "why": "general models invent case citations; retrieval plus verification reduces this but does not remove it."
+      },
+      {
+        "tech": "Machine-readable legislation and case law",
+        "status": "partial",
+        "why": "much law exists only as text; a system needs structured, versioned rules and linked decisions."
+      },
+      {
+        "tech": "Online dispute resolution platforms",
+        "status": "exists",
+        "why": "negotiation and mediation systems for e-commerce and small claims are already in routine use."
+      },
+      {
+        "tech": "Deterministic rule and decision engines",
+        "status": "exists",
+        "why": "governments already encode benefits and tax rules this way; the same approach supplies the hard constraints."
+      },
+      {
+        "tech": "Bias, fairness and explainability auditing",
+        "status": "partial",
+        "why": "methods exist, but there is little legal-specific validation and no settled standard for what counts as an explanation of a legal decision."
+      },
+      {
+        "tech": "Binding legal authority for non-human adjudication",
+        "status": "missing",
+        "why": "in most jurisdictions only a human judge or arbitrator can issue an enforceable decision, and the rules would have to change."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assisted tools used by lawyers, registrars and tribunals, plus online negotiation for small claims",
+        "unlocks": "faster case processing and cheaper access for low-value disputes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shadow-mode adjudication in a few tightly defined dispute classes",
+        "unlocks": "evidence on accuracy and bias, and the audit machinery needed for anything binding."
+      },
+      {
+        "stage": "Next",
+        "milestone": "binding automated decisions for low-stakes, high-volume claims with a guaranteed human appeal",
+        "unlocks": "courts clearing backlogs; the model becomes a first-instance decision-maker of record."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standardised smart-contract arbitration with reciprocal cross-border enforcement",
+        "unlocks": "machine-speed resolution of commercial disputes, if treaty and procedural frameworks adapt."
+      }
+    ]
   }
 }

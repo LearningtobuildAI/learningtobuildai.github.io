@@ -29,5 +29,161 @@
         "def": "A method of authentication and data protection using biometric signals to create unique hashes for secure access."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural interface",
+        "role": "the electrode array and electronics that read neural activity — and, in a few devices, write it back by stimulation.",
+        "parts": [
+          "penetrating microelectrode array or surface electrode grid",
+          "low-noise amplifier and digitiser",
+          "wireless transceiver"
+        ]
+      },
+      {
+        "name": "Hardware root of trust",
+        "role": "a tamper-resistant chip that stores keys and proves the implant is genuine.",
+        "parts": [
+          "secure element or physically unclonable function",
+          "key storage",
+          "tamper and glitch sensors"
+        ]
+      },
+      {
+        "name": "Neural signature module",
+        "role": "derives a stable, individual identifier from the user's own brain activity patterns.",
+        "parts": [
+          "baseline recording profile",
+          "feature extractor",
+          "matcher with tolerance for natural drift"
+        ]
+      },
+      {
+        "name": "Link security layer",
+        "role": "encrypts and authenticates everything crossing the skin.",
+        "parts": [
+          "lightweight cipher and key exchange",
+          "replay protection",
+          "pairing and session management"
+        ]
+      },
+      {
+        "name": "Command mediation engine",
+        "role": "decides which decoded intentions may become actions, and blocks the rest.",
+        "parts": [
+          "intent decoder output filter",
+          "policy rules for read, write and stimulation commands",
+          "safe stimulation limits"
+        ]
+      },
+      {
+        "name": "Anomaly monitor",
+        "role": "flags activity that does not look like the user's normal patterns or the device's normal behaviour.",
+        "parts": [
+          "on-device or companion-device detector",
+          "alerting and session termination"
+        ]
+      },
+      {
+        "name": "Audit and consent layer",
+        "role": "keeps privacy-preserving records of access and gives the user control over them.",
+        "parts": [
+          "encrypted log",
+          "consent and revocation interface",
+          "fail-safe shutdown path"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the threat",
+        "detail": "List what an attacker could do: read decoded thoughts, inject stimulation, replay a recorded session, relay a remote attacker into the link via a nearby phone, or simply drain the battery to force a reboot into an unsafe state."
+      },
+      {
+        "title": "Characterise the user's neural baseline",
+        "detail": "Record resting and task activity over weeks so the system knows what is normal for this person and how much it drifts with sleep, medication and time."
+      },
+      {
+        "title": "Build the identity primitive",
+        "detail": "Extract features that are stable and hard to copy from someone else's recordings, then turn them into a key or verification score rather than storing raw brain data."
+      },
+      {
+        "title": "Put trust in hardware",
+        "detail": "Add a secure element that holds keys, measures the device's own state, and refuses to transmit if the enclosure, supply voltage or clock looks tampered with."
+      },
+      {
+        "title": "Secure the wireless link",
+        "detail": "Adapt proven lightweight cryptography — the kind used for constrained radios — so that encryption, authentication and replay protection fit inside a milliwatt and a few kilobits per second."
+      },
+      {
+        "title": "Insert the mediation layer",
+        "detail": "Place a policy engine between the decoder and any actuator or external device: it checks identity, command type, rate and stimulation limits before anything is executed."
+      },
+      {
+        "title": "Train the anomaly monitor",
+        "detail": "Teach a detector on the user's own data to spot injected signals, unusual command sequences or a second party on the link, and to cut the session when it is unsure."
+      },
+      {
+        "title": "Adversarially test the whole stack",
+        "detail": "Red-team with magnet fields, radio jamming, spoofed pairing devices and recorded-signal replay, first in animals and then in implanted volunteers, under ethics and regulatory oversight."
+      },
+      {
+        "title": "Plan updates and failure",
+        "detail": "Provide signed firmware updates, key revocation, and a documented behaviour for when the implant fails — the default must be to stop, not to keep stimulating."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bi-directional brain-computer interfaces",
+        "status": "partial",
+        "why": "high-channel recording exists in research and limited clinical use, but reliable, safe writing of information back into neural tissue is far less mature."
+      },
+      {
+        "tech": "Neural decoding good enough to define a command",
+        "status": "partial",
+        "why": "you can only firewall an intention if the system can turn it into an explicit, checkable action such as 'send message'."
+      },
+      {
+        "tech": "Secure low-power computing on an implant",
+        "status": "partial",
+        "why": "cryptography and anomaly detection must run on a device with a tiny power and heat budget inside the body."
+      },
+      {
+        "tech": "Evidence on neural side channels",
+        "status": "partial",
+        "why": "a 2012 study showed a consumer EEG headset could be used to infer sensitive information such as PINs, so the attack surface is real but only partly mapped."
+      },
+      {
+        "tech": "Rules for neural data privacy and device security",
+        "status": "missing",
+        "why": "without agreed standards for access, consent and breach reporting, a firewall has nothing to enforce."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "academic attacks and defences demonstrated on EEG headsets and research implants",
+        "unlocks": "a shared vocabulary of neural privacy threats."
+      },
+      {
+        "stage": "Next",
+        "milestone": "authenticated, encrypted links inside clinical implants such as hearing and motor prostheses",
+        "unlocks": "regulators and manufacturers treating neurodata like other sensitive medical data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a proven neural-signature or user-verification method that survives daily drift",
+        "unlocks": "continuous identity checks without a password or a phone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a co-designed security architecture shipped with consumer-grade implanted devices",
+        "unlocks": "using a BCI for payments, messages or control of equipment without handing an attacker a direct line to the brain."
+      }
+    ]
   }
 }

@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon source",
+        "role": "generates the quantum states that carry the key.",
+        "parts": [
+          "laser",
+          "nonlinear crystal for entangled pairs",
+          "attenuator for weak coherent pulses"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "transmits single photons or entangled pairs with minimal loss and disturbance.",
+        "parts": [
+          "optical fibre at telecom wavelengths",
+          "free-space telescope for satellite links",
+          "vacuum or low-pressure tube"
+        ]
+      },
+      {
+        "name": "Detection",
+        "role": "measures the received quantum states.",
+        "parts": [
+          "single-photon detectors (avalanche photodiode or superconducting nanowire)",
+          "cryogenic cooler for some detector types",
+          "optical filters and polarisation controllers"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "carries basis reconciliation, error correction and authentication data.",
+        "parts": [
+          "conventional network link",
+          "message authentication codes"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "turns raw detection events into a secret key and stores it.",
+        "parts": [
+          "classical computers",
+          "hardware random number generator",
+          "key store and interface to encryptors"
+        ]
+      },
+      {
+        "name": "Network nodes",
+        "role": "extend range beyond a single link.",
+        "parts": [
+          "trusted node servers",
+          "quantum memories (in research)",
+          "optical switches"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate quantum states",
+        "detail": "A laser produces either weak coherent pulses or entangled photon pairs in a nonlinear crystal."
+      },
+      {
+        "title": "Encode the key",
+        "detail": "Each photon is prepared in one of several bases, for example polarisation or phase, representing a random bit."
+      },
+      {
+        "title": "Transmit through the channel",
+        "detail": "Photons travel through optical fibre or free space to the receiver; losses and noise must stay low enough for detection."
+      },
+      {
+        "title": "Detect and record",
+        "detail": "Single-photon detectors at the receiver measure each photon and log the time and basis used."
+      },
+      {
+        "title": "Sift the raw key",
+        "detail": "Sender and receiver compare, over an authenticated classical channel, which bases matched, discarding the rest."
+      },
+      {
+        "title": "Correct errors",
+        "detail": "Classical error-correction algorithms reconcile the remaining discrepancies without revealing the key."
+      },
+      {
+        "title": "Amplify privacy",
+        "detail": "The reconciled string is compressed to remove any information an eavesdropper might have gained, producing a shorter secret key."
+      },
+      {
+        "title": "Integrate with encryption",
+        "detail": "The key is delivered to encryptors or key-management systems that use it for one-time pad or symmetric encryption."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "they must reliably register individual photons with low noise and high timing resolution."
+      },
+      {
+        "tech": "Low-loss optical fibre",
+        "status": "exists",
+        "why": "fibre at telecom wavelengths keeps photon loss low enough for links over tens of kilometres."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "partial",
+        "why": "they would extend range without trusted nodes, but are still at laboratory-demonstration stage."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "without authentication, an eavesdropper could impersonate the receiver and break the protocol."
+      },
+      {
+        "tech": "Entanglement sources",
+        "status": "exists",
+        "why": "entanglement-based protocols need reliable sources of correlated photon pairs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point-to-point quantum key distribution links in metro networks and dedicated fibres",
+        "unlocks": "high-security links for government, finance and critical infrastructure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "trusted-node networks and satellite-based links",
+        "unlocks": "key distribution over city-to-city and intercontinental distances."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters and memories",
+        "unlocks": "long-distance links without trusting intermediate nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "device-independent and quantum-internet architectures",
+        "unlocks": "security based on minimal assumptions about the hardware."
+      }
+    ]
+  }
+}

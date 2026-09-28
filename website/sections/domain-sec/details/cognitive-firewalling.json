@@ -30,5 +30,156 @@
         "def": "The process of identifying unusual patterns in data that do not conform to expected behavior. In cognitive firewalling, this involves detecting deviations from normal neural activity to prevent unauthorized access."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Signal acquisition",
+        "role": "reads the brain's electrical activity well enough to decode intent.",
+        "parts": [
+          "electrode array or ECoG strip",
+          "implanted or wearable amplifier",
+          "analogue-to-digital converter",
+          "wireless link or percutaneous cable"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "turns firing patterns into signals a computer can act on, in tens of milliseconds.",
+        "parts": [
+          "spike sorting or feature extraction",
+          "machine-learning classifier",
+          "intent mapping"
+        ]
+      },
+      {
+        "name": "Anomaly detector",
+        "role": "compares live neural activity against the user's normal baseline and flags deviations.",
+        "parts": [
+          "per-user baseline model",
+          "one-class or autoencoder detector",
+          "artifact and stimulation-artefact filter"
+        ]
+      },
+      {
+        "name": "Command authentication",
+        "role": "ensures a decoded command really came from the user's own intent, not an injected signal.",
+        "parts": [
+          "intent confirmation step",
+          "cryptographic command tokens",
+          "permission tiers for actions"
+        ]
+      },
+      {
+        "name": "Hardware root of trust",
+        "role": "protects the implant's firmware, keys and telemetry from tampering.",
+        "parts": [
+          "secure element",
+          "secure boot and signed firmware",
+          "tamper and side-channel shielding"
+        ]
+      },
+      {
+        "name": "Fail-safe response layer",
+        "role": "limits harm when an anomaly is detected.",
+        "parts": [
+          "current limits and galvanic isolation",
+          "watchdog and stimulation cut-off",
+          "alert to clinician and user",
+          "encrypted audit log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise an individual baseline",
+        "detail": "Record the person's neural activity across weeks of ordinary tasks to learn the normal distribution of signals for that specific brain and electrode placement."
+      },
+      {
+        "title": "Define the threat model",
+        "detail": "Enumerate what an attacker could actually do: read decoded signals, spoof or replay a wireless command, jam the link, or drive stimulation currents through the implant itself."
+      },
+      {
+        "title": "Generate attack data",
+        "detail": "Simulate attacks in computational models, in cultured neural tissue and in animals — for example injected stimulation artefacts or adversarial perturbations to the input signal — to build a labelled attack set."
+      },
+      {
+        "title": "Train the anomaly detector",
+        "detail": "Fit models that flag deviations from baseline, including adversarial inputs engineered to be misclassified. Because attacks are rare, use one-class and out-of-distribution methods, not only supervised classifiers."
+      },
+      {
+        "title": "Add intent authentication",
+        "detail": "Require an independent confirmation signal — a second, harder-to-forge pattern, a deliberate dwell time, or a spoken or physical confirmation — before any high-consequence command executes."
+      },
+      {
+        "title": "Build the fail-safe hardware",
+        "detail": "Add current-limiting circuits, galvanic isolation and a watchdog that drops stimulation to zero if firmware or signal behaviour looks wrong, all inside a conformally coated, hermetically sealed case."
+      },
+      {
+        "title": "Test in closed loop",
+        "detail": "Red-team the whole chain in animal and, later, human trials, injecting faults and attacks live and measuring detection latency and false-alarm rate — the two numbers that define whether it is usable."
+      },
+      {
+        "title": "Deploy with monitoring",
+        "detail": "Ship with signed updates, encrypted logs and clinician oversight so that detectors can be retrained as the person's neural signals drift over months and years."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chronic, high-channel-count neural interfaces",
+        "status": "partial",
+        "why": "arrays of roughly a hundred or more electrodes work for limited periods; decades-long stability is unproven."
+      },
+      {
+        "tech": "Real-time decoding of intent",
+        "status": "partial",
+        "why": "typing and cursor control have been demonstrated, but arbitrary memory content is not decodable."
+      },
+      {
+        "tech": "A working model of how memories are encoded",
+        "status": "missing",
+        "why": "without knowing the code, 'unauthorized memory access' cannot be defined precisely enough to defend against."
+      },
+      {
+        "tech": "Robust machine learning against adversarial input",
+        "status": "partial",
+        "why": "neural decoders are vulnerable to small crafted perturbations, and defences are an open research problem."
+      },
+      {
+        "tech": "Secure hardware for implanted devices",
+        "status": "partial",
+        "why": "secure elements and signed firmware exist, but power, heat and size budgets inside an implant are severe."
+      },
+      {
+        "tech": "Wireless stimulation control with safety interlocks",
+        "status": "partial",
+        "why": "responsive neurostimulation devices already run closed loops; adversarial and fail-safe hardening is not standard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "documented research showing that neural signals leak private information and that BCI classifiers can be fooled",
+        "unlocks": "a credible threat model and funding for defences."
+      },
+      {
+        "stage": "Next",
+        "milestone": "implanted devices with encrypted links, signed firmware and per-user baseline monitoring as standard",
+        "unlocks": "basic integrity guarantees for clinical BCIs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "validated anomaly detection benchmarked on shared attack datasets, with published false-alarm and detection-latency figures",
+        "unlocks": "regulators and clinicians can specify a minimum security performance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "layered protection integrated into the implant itself rather than added on a host computer",
+        "unlocks": "read-write neural interfaces that could plausibly be used beyond the clinic."
+      }
+    ]
   }
 }

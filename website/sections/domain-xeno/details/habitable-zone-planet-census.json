@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Detection surveys",
+        "role": "find the planets in the first place, by watching stars for repeating dips or wobbles.",
+        "parts": [
+          "space transit photometers",
+          "ground-based transit surveys",
+          "high-resolution radial-velocity spectrographs"
+        ]
+      },
+      {
+        "name": "Stellar characterisation",
+        "role": "you cannot place a planet in a habitable zone without knowing its star precisely.",
+        "parts": [
+          "astrometric distance measurements",
+          "spectroscopy for temperature, gravity and composition",
+          "activity monitoring to separate starspots from planets"
+        ]
+      },
+      {
+        "name": "Habitable-zone modelling",
+        "role": "converts stellar output and orbit into a temperature, and marks where liquid water could persist.",
+        "parts": [
+          "luminosity and orbital-distance calculation",
+          "conservative and optimistic inner/outer boundaries",
+          "equilibrium-temperature model with assumed reflectivity"
+        ]
+      },
+      {
+        "name": "Vetting and false-positive rejection",
+        "role": "most candidate signals are not planets; this stage throws out the impostors.",
+        "parts": [
+          "transit-shape and odd/even tests",
+          "centroid and imaging checks for blended background stars",
+          "radial-velocity or transit-timing confirmation"
+        ]
+      },
+      {
+        "name": "Catalogue and archive",
+        "role": "one maintained database with consistent parameters, flags and version history.",
+        "parts": [
+          "cross-matched planet and host-star tables",
+          "uncertainty and provenance tracking",
+          "target-ranking and query tools"
+        ]
+      },
+      {
+        "name": "Follow-up spectroscopy",
+        "role": "examines the handful of best targets in detail.",
+        "parts": [
+          "space telescope transmission spectroscopy",
+          "ground-based high-resolution spectrographs",
+          "extremely large telescope instruments in development"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Stare at stars",
+        "detail": "A space telescope monitors a field of bright stars for months to years, recording brightness every few minutes to catch the small, periodic dimming of a planet crossing the disc."
+      },
+      {
+        "title": "Find periodic dips",
+        "detail": "Software searches the light curves for repeating signals and flags them as candidates, along with their period and depth."
+      },
+      {
+        "title": "Measure the host star",
+        "detail": "Distance comes from parallax, and spectroscopy gives temperature, surface gravity and radius — the inputs that set how bright the star really is."
+      },
+      {
+        "title": "Compute incident flux",
+        "detail": "Luminosity divided by the square of orbital distance gives the energy the planet receives, measured against Earth's roughly 1360 W per square metre at the top of its atmosphere."
+      },
+      {
+        "title": "Estimate the temperature",
+        "detail": "Incident flux, an assumed reflectivity and heat redistribution give an equilibrium temperature in kelvin — a rough stand-in for surface conditions."
+      },
+      {
+        "title": "Apply the zone boundaries",
+        "detail": "The flux is compared with modelled inner and outer limits: a conservative zone where liquid water is nearly certain, and an optimistic zone that stretches further out."
+      },
+      {
+        "title": "Reject false positives",
+        "detail": "Eclipsing binary stars, background blends and starspot signals are eliminated using transit shape, imaging and radial-velocity checks."
+      },
+      {
+        "title": "Confirm and weigh",
+        "detail": "A radial-velocity measurement or transit-timing analysis supplies a mass, which separates a rocky world from a small gas envelope."
+      },
+      {
+        "title": "Publish and rank",
+        "detail": "The surviving planet enters the catalogue with its parameters, uncertainties and flags, and is scored so scarce telescope time goes to the most promising targets."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-based transit photometry",
+        "status": "exists",
+        "why": "only a platform above the atmosphere can measure the tiny, sustained brightness dips of small planets."
+      },
+      {
+        "tech": "Precision radial velocity",
+        "status": "partial",
+        "why": "current spectrographs reach about 1 m/s; an Earth-like planet tugs its Sun-like star at roughly 9 cm/s."
+      },
+      {
+        "tech": "Accurate stellar parameters",
+        "status": "exists",
+        "why": "habitable-zone distance scales with stellar luminosity, so a poor stellar radius or temperature gives the wrong answer."
+      },
+      {
+        "tech": "Transmission spectroscopy of small planets",
+        "status": "partial",
+        "why": "needed to check whether a temperate world actually has an atmosphere, let alone a habitable one."
+      },
+      {
+        "tech": "Automated vetting pipelines",
+        "status": "exists",
+        "why": "surveys produce tens of thousands of signals and human inspection cannot keep up."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "thousands of confirmed planets, with a few dozen inside habitable zones, maintained in public archives",
+        "unlocks": "statistical hints and a ranked target list for atmospheric study."
+      },
+      {
+        "stage": "Next",
+        "milestone": "PLATO and other bright-star surveys designed to find temperate planets around Sun-like stars",
+        "unlocks": "targets bright enough for detailed atmospheric measurement."
+      },
+      {
+        "stage": "Next",
+        "milestone": "atmospheric spectroscopy searching for water, carbon dioxide and possible biosignature gases",
+        "unlocks": "the first real tests of whether any nearby temperate world is habitable."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "direct imaging of habitable-zone planets and a measured occurrence rate for temperate rocky worlds",
+        "unlocks": "a firm answer to how common potentially habitable planets actually are."
+      }
+    ]
+  }
+}

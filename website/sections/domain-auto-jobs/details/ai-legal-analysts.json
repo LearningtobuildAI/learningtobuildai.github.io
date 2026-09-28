@@ -30,5 +30,159 @@
         "def": "Retrieval-Augmented Generation, an approach where models use external knowledge sources to enhance their responses."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and parsing",
+        "role": "turns a messy document set into machine-readable text that keeps page and paragraph anchors.",
+        "parts": [
+          "OCR for scans",
+          "layout and table parsing",
+          "format normalisation",
+          "de-duplication across versions"
+        ]
+      },
+      {
+        "name": "Retrieval layer",
+        "role": "finds the right passages across thousands of pages instead of trusting the model's memory.",
+        "parts": [
+          "text chunking",
+          "embedding model",
+          "vector index",
+          "keyword/BM25 index",
+          "hybrid ranking",
+          "defined-term and cross-reference graph"
+        ]
+      },
+      {
+        "name": "Reasoning model",
+        "role": "reads retrieved passages and produces structured answers: clauses, dates, obligations, risks.",
+        "parts": [
+          "long-context language model",
+          "task prompts and schemas",
+          "tool calls for date and threshold arithmetic"
+        ]
+      },
+      {
+        "name": "Verification and citation",
+        "role": "forces every claim back to a span of source text, and flags contradictions between documents.",
+        "parts": [
+          "span-level citation",
+          "clause-to-playbook comparison",
+          "cross-document contradiction checks",
+          "abstention when unsupported"
+        ]
+      },
+      {
+        "name": "Playbook and rules layer",
+        "role": "encodes the firm's or company's own standard positions rather than generic legal knowledge.",
+        "parts": [
+          "fallback clause library",
+          "jurisdictional checklists",
+          "severity and escalation rules"
+        ]
+      },
+      {
+        "name": "Review interface and audit trail",
+        "role": "lets a lawyer accept, reject or escalate, and records why.",
+        "parts": [
+          "redline and diff view",
+          "confidence and provenance display",
+          "review queue",
+          "immutable logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble a ground-truth corpus",
+        "detail": "Collect contracts, precedents and matter files, then have qualified lawyers label the clauses, discrepancies and issues that matter. This labelled set is the only way to know whether the system works."
+      },
+      {
+        "title": "Build the parsing pipeline",
+        "detail": "Convert PDFs, Word files and scans into structured text, preserving headings, tables and defined terms, with stable identifiers for every paragraph so citations survive."
+      },
+      {
+        "title": "Adapt the model",
+        "detail": "Either prompt a general long-context model with strict output schemas, or fine-tune a smaller model on the labelled corpus for high-volume extraction tasks."
+      },
+      {
+        "title": "Wire up retrieval",
+        "detail": "Split documents into overlapping chunks, embed them, and combine vector search with keyword search so that exact defined terms and clause numbers are not missed."
+      },
+      {
+        "title": "Add tools and cross-referencing",
+        "detail": "Give the agent date arithmetic, obligation extraction, defined-term resolution and the ability to compare two clauses directly, since language models are unreliable at these alone."
+      },
+      {
+        "title": "Enforce citation and abstention",
+        "detail": "Require every output to point at the exact source span; if no span supports a claim, the system must say so rather than guess."
+      },
+      {
+        "title": "Evaluate against lawyer review",
+        "detail": "Measure recall of the issues lawyers found, not just overall accuracy, because a missed indemnity or change-of-control clause is the expensive failure mode."
+      },
+      {
+        "title": "Deploy in tiers",
+        "detail": "Start with first-pass extraction and issue-spotting on low-risk, high-volume documents, with a lawyer signing off; expand autonomy only where measured performance supports it."
+      },
+      {
+        "title": "Monitor and update",
+        "detail": "Track disagreements between the agent and reviewers, and re-test whenever the model, the playbook or the law changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer language models with long context",
+        "status": "exists",
+        "why": "context windows of hundreds of thousands of tokens are now commercially available, enough for a single agreement plus supporting documents."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "grounds answers in retrieved passages, which is what makes citation and contradiction-checking possible."
+      },
+      {
+        "tech": "Robust document parsing and OCR",
+        "status": "exists",
+        "why": "legal files arrive as scans, tracked changes and complex tables; bad text in means bad analysis out."
+      },
+      {
+        "tech": "Evaluation methods for legal correctness",
+        "status": "partial",
+        "why": "benchmarks exist but do not yet capture jurisdiction-specific nuance, so firms still need private labelled test sets."
+      },
+      {
+        "tech": "Confidentiality and privilege-preserving deployment",
+        "status": "partial",
+        "why": "client material cannot leave a controlled environment, which constrains which models can be used."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistive review: extraction, summarisation and issue-spotting on large document sets, with a lawyer accountable for the output",
+        "unlocks": "faster due diligence and lower cost per document, without changing who signs the advice."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bounded agentic negotiation: the system drafts redlines against a client playbook and prepares negotiation notes",
+        "unlocks": "routine, high-volume matters handled largely by software under supervision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "persistent matter memory across a portfolio, so obligations, renewal dates and change-of-control triggers are tracked continuously",
+        "unlocks": "compliance monitoring rather than one-off review."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "accountability frameworks that assign liability for autonomous legal work, plus auditing of agent decisions",
+        "unlocks": "unsupervised practice in defined, low-risk categories."
+      }
+    ]
   }
 }

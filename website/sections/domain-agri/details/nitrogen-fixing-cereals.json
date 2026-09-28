@@ -33,5 +33,157 @@
         "def": "Microorganisms capable of converting atmospheric nitrogen into a form that can be used by plants, typically found in the roots of legumes and now being engineered for cereal crops."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Nitrogenase enzyme complex",
+        "role": "the catalyst that splits the very stable N≡N bond of dinitrogen into two ammonium ions; it consumes 16 molecules of ATP and 8 electrons per N₂, making it one of biology's most energy-hungry reactions.",
+        "parts": [
+          "Fe protein (NifH)",
+          "MoFe protein (NifDK)",
+          "iron-molybdenum cofactor (FeMo-co)",
+          "ferredoxin or flavodoxin electron donors"
+        ]
+      },
+      {
+        "name": "Oxygen protection",
+        "role": "nitrogenase is irreversibly destroyed by oxygen, yet the plant needs oxygen for respiration — the two must be kept apart.",
+        "parts": [
+          "microaerobic compartment (root nodule, or apoplast, or organelle)",
+          "leghaemoglobin-like oxygen buffer where a nodule is used",
+          "possible protein shell encapsulating the enzyme"
+        ]
+      },
+      {
+        "name": "Energy and electron supply",
+        "role": "fixation competes with the plant's own growth for carbon and reducing power, so the supply must be large and well timed.",
+        "parts": [
+          "photosynthate (sucrose) import",
+          "ATP regeneration",
+          "reduced ferredoxin pool"
+        ]
+      },
+      {
+        "name": "Plant–microbe interface",
+        "role": "the host must let the bacterium in and feed it without triggering a defence response, which is what legumes evolved and cereals did not.",
+        "parts": [
+          "Nod-factor perception (where a symbiosis is engineered)",
+          "common symbiosis signalling pathway, already partly present in cereals for mycorrhizal fungi",
+          "infection structures or root-surface colonisation",
+          "nutrient exchange and ammonium export"
+        ]
+      },
+      {
+        "name": "Ammonium assimilation and transport",
+        "role": "the fixed nitrogen must be built into amino acids and moved to the grain, not left in the root.",
+        "parts": [
+          "glutamine synthetase / GOGAT",
+          "amino acid transporters",
+          "xylem and phloem loading",
+          "grain protein deposition"
+        ]
+      },
+      {
+        "name": "Regulation and fail-safes",
+        "role": "fixation is expensive, so the plant should switch it off when soil nitrogen is plentiful, and the trait must not spread to weeds.",
+        "parts": [
+          "nitrogen-sensing promoters",
+          "tissue- and stage-specific expression",
+          "genetic containment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the host and the route",
+        "detail": "Researchers pick a cereal — maize, sorghum, wheat or rice — and decide between putting the full nif machinery into the plant itself, or engineering a bacterium that lives on or inside its roots. The microbial route is far shorter but supplies less nitrogen."
+      },
+      {
+        "title": "Assemble and recode the nif cluster",
+        "detail": "Around twenty genes are needed, not just the three that make the enzyme: the scaffold and maturation proteins that build FeMo-co, plus regulatory genes. These are synthesised with plant-appropriate codon usage, appropriate promoters, and targeting signals."
+      },
+      {
+        "title": "Solve the oxygen problem",
+        "detail": "Either place the enzyme where oxygen is already low — inside mitochondria or in a root apoplast — or wrap it in a protein shell, or build nodule-like tissue. Legumes solve this with a nodule plus leghaemoglobin, which holds oxygen at a very low free concentration."
+      },
+      {
+        "title": "Wire up the energy supply",
+        "detail": "The plant's own ferredoxin and NADPH pools must be diverted to the enzyme, which means accepting a carbon and yield cost. Because fixation needs 16 ATP per N₂, the trait is only worthwhile if the plant receives enough light and water."
+      },
+      {
+        "title": "Install host recognition, if using a symbiont",
+        "detail": "Cereals already run part of the signalling pathway that legumes use for mycorrhizal fungi. Adding Nod-factor receptors and tuning the downstream pathway aims to let a rhizobium or engineered diazotroph enter root tissue and be fed rather than rejected."
+      },
+      {
+        "title": "Add regulation and containment",
+        "detail": "Expression is tied to nitrogen status so the plant does not pay for fixation when fertiliser is available, and containment measures keep the genes or the microbe from moving off-farm."
+      },
+      {
+        "title": "Verify fixation in the glasshouse",
+        "detail": "Plants are grown with the heavy isotope ¹⁵N and with nitrogen-free media; only isotope dilution and acetylene-reduction assays can prove the nitrogen genuinely came from the air rather than from residual soil or fertiliser."
+      },
+      {
+        "title": "Test in the field over several seasons",
+        "detail": "Field trials must show that fixation holds up across soils, climates and rotations, and that grain yield and protein are not reduced. This is the step where most biofertiliser claims have historically collapsed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cereal transformation and regeneration",
+        "status": "exists",
+        "why": "maize, rice, wheat and sorghum can all be transformed and regenerated, though efficiency varies strongly by variety."
+      },
+      {
+        "tech": "Understanding of FeMo-co biosynthesis and nitrogenase maturation",
+        "status": "partial",
+        "why": "the pathway is known in bacteria, but reconstituting it in a plant cell has not been achieved."
+      },
+      {
+        "tech": "Working associative nitrogen fixation",
+        "status": "partial",
+        "why": "inoculants are already used on maize and wheat in Brazil, but nitrogen gains are modest, variable and often contested."
+      },
+      {
+        "tech": "Field measurement of biological nitrogen fixation",
+        "status": "exists",
+        "why": "¹⁵N isotope methods can quantify exactly how much nitrogen a plant obtained from the air."
+      },
+      {
+        "tech": "A low-oxygen compartment in a cereal plant",
+        "status": "missing",
+        "why": "no cereal has evolved the nodule plus oxygen-buffer system that makes legume nitrogenase work."
+      },
+      {
+        "tech": "Regulation for genetically modified microbes and crops",
+        "status": "partial",
+        "why": "rules differ between countries and slow the field testing a trait like this needs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single nif genes expressed in plant cells in the lab, and engineered root bacteria sold as fertiliser supplements",
+        "unlocks": "proof that parts of the pathway can function outside bacteria."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a complete, oxygen-protected nitrogenase producing measurable ammonium in a cereal root in the glasshouse",
+        "unlocks": "the first credible claim of plant-side fixation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-season field trials showing a stable share of the crop's nitrogen fixed from the air without yield loss",
+        "unlocks": "regulatory review and agronomic integration."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "nitrogen-fixing cereal varieties in farmers' fields, bred back into high-yielding lines",
+        "unlocks": "a real reduction in synthetic fertiliser use, with the associated energy, emissions and water-quality benefits."
+      }
+    ]
   }
 }

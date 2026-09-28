@@ -29,5 +29,154 @@
         "def": "Nuclear fuel that has been used in a reactor and is no longer capable of sustaining a chain reaction due to depletion of fissile material."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Partitioning plant",
+        "role": "separates spent fuel into streams so only the long-lived fraction is transmuted.",
+        "parts": [
+          "reprocessing line (uranium and plutonium recovery)",
+          "minor-actinide separation (americium, curium, neptunium)",
+          "long-lived fission product separation (technetium-99, iodine-129)"
+        ]
+      },
+      {
+        "name": "Target and fuel fabrication",
+        "role": "turns the separated actinides into ceramic or metal pins that can survive intense irradiation.",
+        "parts": [
+          "inert-matrix or oxide fuel pins",
+          "remote hot cells with shielding",
+          "pellet pressing and pin welding"
+        ]
+      },
+      {
+        "name": "Neutron source",
+        "role": "supplies the neutrons that convert long-lived nuclei.",
+        "parts": [
+          "fast reactor core, or",
+          "high-power proton accelerator",
+          "spallation target (liquid lead-bismuth or lead)"
+        ]
+      },
+      {
+        "name": "Transmutation core",
+        "role": "where neutrons are captured and the actinides largely fission.",
+        "parts": [
+          "subcritical core (ADS) or critical fast core",
+          "fuel assemblies with actinide targets",
+          "neutron reflectors and absorbers"
+        ]
+      },
+      {
+        "name": "Cooling and heat removal",
+        "role": "carries away the high power density from a compact core.",
+        "parts": [
+          "liquid-metal coolant loop",
+          "intermediate heat exchanger",
+          "steam generator or turbine"
+        ]
+      },
+      {
+        "name": "Shielding, remote handling and safeguards",
+        "role": "handles material that is intensely radioactive and weapons-usable.",
+        "parts": [
+          "biological shielding",
+          "remote manipulators",
+          "nuclear material accountancy"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Separate the spent fuel",
+        "detail": "Used fuel is reprocessed to recover uranium and plutonium, then the minor actinides and long-lived fission products are isolated in a second, harder separation step."
+      },
+      {
+        "title": "Fabricate targets remotely",
+        "detail": "Americium and curium emit strong gamma and neutron radiation, so pins must be made and inspected behind shielding with remote manipulators."
+      },
+      {
+        "title": "Build the neutron source",
+        "detail": "Either a fast reactor core is assembled, or a megawatt-class proton accelerator and a liquid-metal spallation target are built to generate neutrons without criticality."
+      },
+      {
+        "title": "Load the core",
+        "detail": "Actinide-bearing assemblies are loaded alongside driver fuel, arranged so the neutron flux reaches every target pin."
+      },
+      {
+        "title": "Irradiate",
+        "detail": "Neutrons are captured; most minor actinides fission into shorter-lived products, while technetium-99 and iodine-129 capture neutrons to become stable ruthenium and xenon."
+      },
+      {
+        "title": "Cool the core",
+        "detail": "Liquid metal carries heat to heat exchangers, which can raise steam for electricity."
+      },
+      {
+        "title": "Reprocess and repeat",
+        "detail": "Targets are unloaded, cooled, reprocessed and re-irradiated several times to reach high destruction rates."
+      },
+      {
+        "title": "Condition the residue",
+        "detail": "What remains is far shorter-lived; it is vitrified and destined for geological disposal, with much less long-term heat and radiotoxicity."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Industrial reprocessing and advanced partitioning",
+        "status": "exists",
+        "why": "the PUREX process is mature, but cleanly separating americium and curium from each other and from fission products is not yet routine."
+      },
+      {
+        "tech": "Fast-spectrum reactors",
+        "status": "partial",
+        "why": "only fast neutrons can fission minor actinides efficiently; a handful of fast reactors operate, mostly for power and research rather than waste burning."
+      },
+      {
+        "tech": "Accelerator-driven systems",
+        "status": "missing",
+        "why": "a subcritical core needs a very reliable continuous megawatt proton beam; Belgium's MYRRHA is a long-running attempt to build one."
+      },
+      {
+        "tech": "Actinide fuel fabrication",
+        "status": "partial",
+        "why": "americium-bearing fuels have been irradiated in experiments, but not manufactured at industrial throughput."
+      },
+      {
+        "tech": "Liquid-metal coolant handling",
+        "status": "partial",
+        "why": "sodium and lead-bismuth loops exist but demand careful chemistry control and freeze protection."
+      },
+      {
+        "tech": "Safeguards and disposal policy",
+        "status": "exists",
+        "why": "separated plutonium and americium raise proliferation concerns that must be managed alongside geological disposal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research irradiations of minor-actinide targets in test and fast reactors",
+        "unlocks": "evidence that transmutation works and how fast."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a dedicated accelerator-driven pilot facility",
+        "unlocks": "demonstration of subcritical waste burning with a reliable accelerator."
+      },
+      {
+        "stage": "Next",
+        "milestone": "an industrial-scale transmutation plant coupled to a reprocessing centre",
+        "unlocks": "multi-recycling of actinides and a real reduction in long-lived waste."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed fuel cycles where only short-lived fission products go to disposal",
+        "unlocks": "smaller disposal burden and wider public acceptance of nuclear power."
+      }
+    ]
   }
 }

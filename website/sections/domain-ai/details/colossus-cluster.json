@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "GPU compute nodes",
+        "role": "the actual number-crunching — dense servers each holding several GPUs wired tightly together.",
+        "parts": [
+          "8-GPU baseboards",
+          "NVLink/NVSwitch fabric",
+          "host CPUs and memory",
+          "network interface cards",
+          "NVMe local storage"
+        ]
+      },
+      {
+        "name": "Cluster interconnect",
+        "role": "lets tens of thousands of GPUs act as one machine during a training run.",
+        "parts": [
+          "InfiniBand or RoCE switching",
+          "multi-tier leaf-spine topology",
+          "optical transceivers and fibre",
+          "collective-communication libraries"
+        ]
+      },
+      {
+        "name": "Liquid cooling",
+        "role": "removes heat directly from chips, which air alone cannot do at this density.",
+        "parts": [
+          "cold plates on GPUs and CPUs",
+          "coolant distribution units",
+          "manifolds and quick-disconnects",
+          "facility water loop and dry coolers or cooling towers"
+        ]
+      },
+      {
+        "name": "Power delivery",
+        "role": "delivers hundreds of megawatts to racks without a voltage sag.",
+        "parts": [
+          "on-site substation and transformers",
+          "busway or busbar to the row",
+          "UPS and battery buffer",
+          "backup generators"
+        ]
+      },
+      {
+        "name": "Storage and data pipeline",
+        "role": "feeds training data in fast enough and saves checkpoints before failures.",
+        "parts": [
+          "parallel filesystem",
+          "high-speed storage network",
+          "checkpoint and dataset staging"
+        ]
+      },
+      {
+        "name": "Orchestration software",
+        "role": "schedules jobs, detects failed GPUs and restarts training from the last checkpoint.",
+        "parts": [
+          "job scheduler",
+          "container runtime",
+          "health monitoring and telemetry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Secure power and a site",
+        "detail": "A cluster of this size needs hundreds of megawatts. Developers negotiate grid interconnection, and where the grid cannot deliver fast enough, install on-site gas turbines and battery storage."
+      },
+      {
+        "title": "Prepare the hall",
+        "detail": "Existing or new buildings are fitted out with reinforced floors, overhead cable trays, fire suppression and space for water-cooling plant."
+      },
+      {
+        "title": "Install electrical and cooling plant",
+        "detail": "Substations, transformers, busway, coolant distribution units and the external water loop are commissioned before any hardware arrives."
+      },
+      {
+        "title": "Rack and cable the nodes",
+        "detail": "GPU servers are rolled in, connected to power and network, and their cold plates linked to the coolant manifolds with quick-disconnects that allow a server to be pulled without draining the loop."
+      },
+      {
+        "title": "Build the network fabric",
+        "detail": "Tens of thousands of cables and optical links are dressed into a multi-tier topology, then tested link by link and end to end."
+      },
+      {
+        "title": "Load the software stack",
+        "detail": "Drivers, communication libraries, the scheduler and monitoring are installed and version-locked across the whole cluster."
+      },
+      {
+        "title": "Burn in and benchmark",
+        "detail": "Synthetic and collective tests — all-reduce and all-to-all — run for days to find weak links, thermally marginal racks and dead GPUs."
+      },
+      {
+        "title": "Hand over to training",
+        "detail": "Production training jobs start, alongside continuous fault handling: at this scale, hardware failures are routine rather than exceptional."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-bandwidth GPU interconnect",
+        "status": "exists",
+        "why": "training large models is limited by how fast GPUs can exchange gradients, not by raw compute alone."
+      },
+      {
+        "tech": "Direct-to-chip liquid cooling",
+        "status": "exists",
+        "why": "racks drawing tens of kilowatts cannot be cooled by air alone."
+      },
+      {
+        "tech": "Very large electrical supply",
+        "status": "partial",
+        "why": "grid connections of hundreds of megawatts take years to secure; on-site generation is a workaround."
+      },
+      {
+        "tech": "Distributed training software",
+        "status": "exists",
+        "why": "frameworks and collective libraries must split a model across thousands of GPUs."
+      },
+      {
+        "tech": "Fast checkpointing storage",
+        "status": "exists",
+        "why": "with failures every few hours, training must resume quickly rather than restart."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-site clusters of roughly 100,000 GPUs, such as xAI's Colossus in Memphis brought online in 2024",
+        "unlocks": "training runs that were previously impossible at any budget."
+      },
+      {
+        "stage": "Next",
+        "milestone": "refresh to newer GPU generations and denser liquid-cooled racks at the same site",
+        "unlocks": "more effective compute without a new grid connection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-site clusters joined by long-haul optical links, presented as one logical machine",
+        "unlocks": "scaling past what any single power grid can supply."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt campuses with high-voltage DC rack power and on-site generation",
+        "unlocks": "frontier training at a scale that reshapes grid planning and siting rules."
+      }
+    ]
+  }
+}

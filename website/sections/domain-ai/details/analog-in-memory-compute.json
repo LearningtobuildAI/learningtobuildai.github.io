@@ -36,5 +36,141 @@
         "def": "Memory devices based on the resistance changes of materials when subjected to voltage or current pulses, commonly used in Analog IMC."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Crossbar memory array",
+        "role": "the compute fabric: one resistive cell at each crossing of a row and column wire, so applied voltages produce currents that sum to a matrix-vector product.",
+        "parts": [
+          "phase-change, oxide resistive or charge-trap cells",
+          "word lines and bit lines",
+          "select devices per cell"
+        ]
+      },
+      {
+        "name": "Peripheral analog circuits",
+        "role": "convert digital inputs to voltages and read out summed currents.",
+        "parts": [
+          "digital-to-analog converters per row",
+          "sample-and-hold stages",
+          "analog-to-digital converters per column",
+          "transimpedance and sense amplifiers"
+        ]
+      },
+      {
+        "name": "Digital control and accumulation",
+        "role": "handles everything analog does badly — non-linearities, activations, accumulation across tiles, precision.",
+        "parts": [
+          "microcontroller or RISC-V core",
+          "local SRAM buffers",
+          "activation and pooling units"
+        ]
+      },
+      {
+        "name": "Programming and calibration engine",
+        "role": "writes and continuously corrects each cell's conductance to hold the trained weight.",
+        "parts": [
+          "write-verify loop",
+          "drift and temperature compensation",
+          "redundancy/spare columns"
+        ]
+      },
+      {
+        "name": "Software stack and compiler",
+        "role": "maps a neural network onto physical arrays and simulates their imperfections during training.",
+        "parts": [
+          "array-aware placement and tiling",
+          "noise and non-ideality models",
+          "quantisation tooling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the memory device",
+        "detail": "Candidates are phase-change (chalcogenide), oxide resistive RAM, conductive-bridge, or charge-trap flash. Each trades conductance range, linearity, endurance and how well it can be made in a standard back-end process."
+      },
+      {
+        "title": "Fabricate the crossbar",
+        "detail": "The array is built above the silicon in the interconnect layers: parallel word lines, a resistive cell at each crossing, then perpendicular bit lines, with a transistor or selector to isolate each cell."
+      },
+      {
+        "title": "Line up the peripheral circuits",
+        "detail": "Row drivers and DACs on one side, column ADCs on the other, all designed so their power and area does not swamp the savings the array was supposed to give."
+      },
+      {
+        "title": "Program the weights",
+        "detail": "Each cell is written with iterative write-verify pulses, reading back the conductance after each one until it matches the target value — because cells vary from one another."
+      },
+      {
+        "title": "Calibrate out the physics",
+        "detail": "Measured IR drop along wires, sneak-path leakage, conductance drift and temperature dependence are characterised and corrected, in hardware where possible and in the compiler otherwise."
+      },
+      {
+        "title": "Wire up the mixed-signal tile",
+        "detail": "The analog matvec core is bonded to a digital tile that handles activations, accumulation, and control — the practical design is mixed-signal, not purely analog."
+      },
+      {
+        "title": "Train through the hardware model",
+        "detail": "The network is trained in digital hardware with the array's noise and non-linearity modelled in, so that the weights survive being written to real cells."
+      },
+      {
+        "title": "Verify on real tasks",
+        "detail": "Accuracy, energy per inference and lifetime are measured on networks such as small vision or keyword models — the regime where analog in-memory currently makes sense."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Non-volatile resistive memory cells in CMOS back-end lines",
+        "status": "exists",
+        "why": "the compute element is just a memory cell that can be deposited over logic."
+      },
+      {
+        "tech": "Charge-trap flash arrays",
+        "status": "exists",
+        "why": "the most mature analog weight storage, already made in huge volume, though it needs higher voltages."
+      },
+      {
+        "tech": "Low-power, high-resolution data converters",
+        "status": "partial",
+        "why": "conversion is often the dominant energy cost, so array gains can vanish without better ADCs."
+      },
+      {
+        "tech": "Device variability and drift models",
+        "status": "partial",
+        "why": "analog weights shift with time, temperature and history, so accuracy depends on predicting and correcting this."
+      },
+      {
+        "tech": "Hardware-aware training and quantisation",
+        "status": "partial",
+        "why": "networks must be trained to tolerate the low precision and noise the arrays impose."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prototype mixed-signal chips showing accurate inference on small networks, and early commercial accelerators using flash-based analog arrays",
+        "unlocks": "evidence that in-array analog matvec can beat digital accelerators on energy per inference."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid analog-digital tiles with on-chip calibration and error correction",
+        "unlocks": "usable accuracy at low precision for always-on sensing and audio."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration into sensors, wearables and automotive edge devices",
+        "unlocks": "inference where there is no room for a battery and no reliable network link."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "in-array learning rather than inference only",
+        "unlocks": "devices that adapt on-site — but this needs much better device linearity and endurance."
+      }
+    ]
   }
 }

@@ -33,5 +33,155 @@
         "def": "A network of physical devices, vehicles, appliances, and other items embedded with sensors, software, and connectivity to exchange data and perform actions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensing and instrumentation",
+        "role": "measures what the process is actually doing — flow, temperature, pressure, position, vibration, energy draw.",
+        "parts": [
+          "analogue and digital sensors",
+          "smart transmitters",
+          "machine vision cameras",
+          "edge data loggers"
+        ]
+      },
+      {
+        "name": "Controllers",
+        "role": "runs the fast closed loop that keeps the machine or process inside safe operating limits.",
+        "parts": [
+          "programmable logic controllers (PLCs)",
+          "distributed control systems (DCS)",
+          "safety instrumented systems",
+          "edge computers"
+        ]
+      },
+      {
+        "name": "Industrial network",
+        "role": "carries measurements up and setpoints down with predictable timing.",
+        "parts": [
+          "industrial Ethernet and fieldbus",
+          "time-sensitive networking",
+          "wireless and private cellular links",
+          "protocol gateways (OPC UA)"
+        ]
+      },
+      {
+        "name": "Supervisory and data layer",
+        "role": "gives operators a live picture and stores history for analysis.",
+        "parts": [
+          "SCADA / HMI",
+          "historian and time-series database",
+          "manufacturing execution system",
+          "asset management"
+        ]
+      },
+      {
+        "name": "Optimisation and models",
+        "role": "decides the better setpoints — the layer that makes it 'smart' rather than merely automated.",
+        "parts": [
+          "model-predictive control (MPC)",
+          "digital twin / process model",
+          "machine-learning models for prediction and anomaly detection",
+          "scheduling and energy-optimisation algorithms"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "turns decisions into physical change.",
+        "parts": [
+          "variable-speed drives",
+          "valves and servos",
+          "industrial robots and cobots",
+          "automated guided vehicles"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process",
+        "detail": "Document every measurement, actuator and constraint, and decide which variables are safe to move automatically."
+      },
+      {
+        "title": "Instrument it",
+        "detail": "Fit sensors and, where needed, upgrade actuators and drives so the system can actually be steered."
+      },
+      {
+        "title": "Connect it",
+        "detail": "Build the control network and the data path upward, so the same measurements serve both the fast loop and the analytics."
+      },
+      {
+        "title": "Automate the loop",
+        "detail": "Write control logic — classic PID loops first, then sequences — and tune it against real disturbances."
+      },
+      {
+        "title": "Build the model",
+        "detail": "Create a digital twin or fitted data model of the process, calibrated on logged history."
+      },
+      {
+        "title": "Add the optimiser",
+        "detail": "Layer model-predictive or learning-based control on top, generating setpoints for the loops beneath."
+      },
+      {
+        "title": "Run in shadow mode",
+        "detail": "Let the optimiser propose actions while humans still decide, and compare its choices with what operators do."
+      },
+      {
+        "title": "Close the loop with limits",
+        "detail": "Hand over increasing authority, with hard safety envelopes, fallback to base control, and continuous monitoring for drift."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, reliable industrial sensors and IIoT",
+        "status": "exists",
+        "why": "optimisation is only as good as the data feeding it."
+      },
+      {
+        "tech": "Deterministic industrial networking",
+        "status": "exists",
+        "why": "control decisions must arrive on time; jitter causes instability."
+      },
+      {
+        "tech": "Edge and cloud compute",
+        "status": "exists",
+        "why": "models and optimisers need processing close to the plant and capacity for training."
+      },
+      {
+        "tech": "Validated process models and control theory",
+        "status": "partial",
+        "why": "model-predictive control works well on well-understood processes, less so on poorly characterised ones."
+      },
+      {
+        "tech": "Industrial cybersecurity",
+        "status": "partial",
+        "why": "connecting operational technology to networks creates attack paths that must be defended."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "closed-loop automation and model-predictive control in refineries, power plants, mines and factories",
+        "unlocks": "steadier output, lower energy use per unit, fewer manual interventions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "learning-based optimisation layered on top of existing control, supervised by operators",
+        "unlocks": "gains in processes too complex to model from first principles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-optimising plant sections that retune themselves as equipment wears and feedstocks change",
+        "unlocks": "fewer engineers needed per unit of output, and faster response to disturbances."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "supervised autonomous operation across whole sites, with human oversight",
+        "unlocks": "round-the-clock operation in remote or hazardous locations — bounded by safety cases and regulation."
+      }
+    ]
   }
 }

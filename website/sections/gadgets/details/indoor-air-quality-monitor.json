@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Particle sensor",
+        "role": "counts and sizes airborne particles, giving PM1, PM2.5 and PM10 concentrations.",
+        "parts": [
+          "laser diode",
+          "photodiode",
+          "optical chamber",
+          "small fan"
+        ]
+      },
+      {
+        "name": "Gas sensors",
+        "role": "measure carbon dioxide and total volatile organic compounds.",
+        "parts": [
+          "NDIR CO2 sensor",
+          "metal oxide VOC sensor",
+          "signal conditioning"
+        ]
+      },
+      {
+        "name": "Climate sensors",
+        "role": "measure temperature and relative humidity, which affect comfort, mould risk and sensor readings.",
+        "parts": [
+          "thermistor or digital temperature sensor",
+          "capacitive humidity sensor"
+        ]
+      },
+      {
+        "name": "Processing and firmware",
+        "role": "converts raw signals into calibrated readings, applies corrections and manages sampling.",
+        "parts": [
+          "microcontroller",
+          "firmware with calibration coefficients",
+          "data logging"
+        ]
+      },
+      {
+        "name": "User interface and connectivity",
+        "role": "shows readings and sends data to apps or smart home systems.",
+        "parts": [
+          "display or LED indicator",
+          "Wi-Fi or Bluetooth module",
+          "mobile app or cloud service"
+        ]
+      },
+      {
+        "name": "Power and enclosure",
+        "role": "houses and powers the device while allowing air to flow past the sensors.",
+        "parts": [
+          "USB or battery power",
+          "vented enclosure",
+          "mounting bracket"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the airflow and optical chamber",
+        "detail": "Arrange the fan, laser and photodiode so that sampled air crosses the beam without dead spots, and separate the gas sensors from the particle sensor to avoid contamination."
+      },
+      {
+        "title": "Assemble the particle counter",
+        "detail": "Mount the laser diode and photodiode at a fixed angle, align the optics, and fit the fan; test with known test dust to check counting."
+      },
+      {
+        "title": "Integrate the gas sensors",
+        "detail": "Place the NDIR CO2 sensor with its infrared source and detector, and the metal oxide VOC sensor, on the board; allow for warm-up and baseline calibration."
+      },
+      {
+        "title": "Build the circuit board",
+        "detail": "Solder the microcontroller, sensors, power management, display and wireless module onto a printed circuit board; program initial firmware."
+      },
+      {
+        "title": "Write the firmware",
+        "detail": "Implement sampling schedules, convert raw signals to PM, CO2, TVOC, temperature and humidity, apply temperature and humidity corrections, and set thresholds for alerts."
+      },
+      {
+        "title": "Assemble the enclosure",
+        "detail": "Fit the board into a vented case, add light guides for the display or LEDs, and ensure the airflow path matches the design."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Compare particle readings against a gravimetric reference or a calibrated optical counter, and CO2 against a reference NDIR instrument; adjust coefficients."
+      },
+      {
+        "title": "Final quality control",
+        "detail": "Run each unit for several hours, check sensor drift, verify connectivity and accuracy, then package."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost optical particle counters",
+        "status": "exists",
+        "why": "they make it practical to measure PM2.5 continuously in a small device."
+      },
+      {
+        "tech": "NDIR CO2 sensors",
+        "status": "exists",
+        "why": "they give a reliable proxy for ventilation rate, which is the key metric for airborne transmission risk."
+      },
+      {
+        "tech": "Metal oxide VOC sensors",
+        "status": "exists",
+        "why": "they respond to many volatile organic compounds, though they need baseline correction and cannot identify specific gases."
+      },
+      {
+        "tech": "Low-power microcontrollers and wireless",
+        "status": "exists",
+        "why": "they process sensor data and connect to phones or home networks without draining power."
+      },
+      {
+        "tech": "Calibration standards and reference instruments",
+        "status": "exists",
+        "why": "without them, readings drift and cannot be trusted for decisions like opening windows."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer monitors with PM2.5, CO2, TVOC, temperature and humidity widely available",
+        "unlocks": "people can see ventilation and pollution levels in real time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "better calibration and sensor fusion, plus standardised indices for indoor air quality",
+        "unlocks": "more reliable comparisons and actionable advice."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with HVAC, air purifiers and smart home systems to automate ventilation",
+        "unlocks": "automatic response to poor air, reducing exposure without user effort."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "dense networks of monitors in buildings and wearable personal exposure trackers",
+        "unlocks": "fine-scale mapping of indoor air quality and personalised health insights."
+      }
+    ]
+  }
+}

@@ -33,5 +33,150 @@
         "def": "The initial step where an individual’s biometric data is captured and stored as a template for future verification."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Capture sensor",
+        "role": "acquires the raw biometric signal from the person.",
+        "parts": [
+          "camera (face, iris)",
+          "capacitive or ultrasonic fingerprint sensor",
+          "microphone (voice)",
+          "depth sensor"
+        ]
+      },
+      {
+        "name": "Feature extractor",
+        "role": "converts the raw signal into a compact mathematical template.",
+        "parts": [
+          "image or signal preprocessing",
+          "neural network or classical algorithm",
+          "minutiae or embedding extraction"
+        ]
+      },
+      {
+        "name": "Matcher",
+        "role": "compares the live template with the stored reference and returns a score.",
+        "parts": [
+          "similarity metric",
+          "decision threshold",
+          "score normalisation"
+        ]
+      },
+      {
+        "name": "Secure storage",
+        "role": "protects enrolled templates from theft or tampering.",
+        "parts": [
+          "secure element or trusted execution environment",
+          "encrypted database",
+          "template protection scheme"
+        ]
+      },
+      {
+        "name": "Liveness and anti-spoofing",
+        "role": "ensures the sample comes from a live person, not a photo, mask or recording.",
+        "parts": [
+          "depth or texture analysis",
+          "challenge-response actions",
+          "physiological signal detection"
+        ]
+      },
+      {
+        "name": "Integration layer",
+        "role": "connects the biometric result to authentication protocols and identity systems.",
+        "parts": [
+          "FIDO or OAuth APIs",
+          "device binding",
+          "fallback authentication"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the threat model and user group",
+        "detail": "Decide what attacks matter (spoofing, replay, template theft) and who will use the system, because accuracy varies across demographics."
+      },
+      {
+        "title": "Choose modality and sensor",
+        "detail": "Select fingerprint, face, iris, voice or a combination, and pick a sensor that fits the device and environment."
+      },
+      {
+        "title": "Collect a representative dataset",
+        "detail": "Gather samples from a diverse population under realistic lighting, noise and angle conditions, with informed consent."
+      },
+      {
+        "title": "Train and tune matching algorithms",
+        "detail": "Develop feature extraction and comparison models, then optimise thresholds for the required false-accept and false-reject rates."
+      },
+      {
+        "title": "Add liveness and anti-spoofing",
+        "detail": "Implement checks that reject presentation attacks without making legitimate use too slow or awkward."
+      },
+      {
+        "title": "Integrate with secure hardware and protocols",
+        "detail": "Store templates in a secure element or trusted execution environment and expose authentication through standard APIs."
+      },
+      {
+        "title": "Test accuracy, fairness and privacy",
+        "detail": "Measure error rates across groups, audit for bias, and verify that templates cannot be reversed into the original biometric."
+      },
+      {
+        "title": "Deploy and monitor continuously",
+        "detail": "Update models as spoofing techniques evolve, and log only what is needed for security without invading privacy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-quality, low-cost sensors",
+        "status": "exists",
+        "why": "cameras and fingerprint sensors in mass-market devices made biometrics practical for everyday use."
+      },
+      {
+        "tech": "Machine learning for pattern recognition",
+        "status": "exists",
+        "why": "deep learning dramatically improved face and voice recognition accuracy."
+      },
+      {
+        "tech": "Secure hardware roots of trust",
+        "status": "exists",
+        "why": "templates must be stored where malware cannot read or alter them."
+      },
+      {
+        "tech": "Interoperability standards",
+        "status": "exists",
+        "why": "standards such as those from FIDO Alliance and ISO allow different systems to work together."
+      },
+      {
+        "tech": "Privacy-preserving template protection",
+        "status": "partial",
+        "why": "techniques like homomorphic encryption or cancelable biometrics are promising but not yet widely deployed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "fingerprint and face unlock on billions of phones; biometric passports and border gates",
+        "unlocks": "convenient, frequent authentication for consumers and travellers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal and continuous authentication that checks identity in the background",
+        "unlocks": "stronger security without repeated explicit logins."
+      },
+      {
+        "stage": "Next",
+        "milestone": "decentralised identity wallets where biometrics unlock a user-held credential",
+        "unlocks": "less reliance on centralised biometric databases."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully private biometric matching that never exposes a raw template",
+        "unlocks": "biometric authentication that resists both spoofing and mass surveillance."
+      }
+    ]
   }
 }

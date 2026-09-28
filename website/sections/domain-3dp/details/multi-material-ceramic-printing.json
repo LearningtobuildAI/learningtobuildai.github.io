@@ -29,5 +29,153 @@
         "def": "Arrays of multiple inkjet-like nozzles used in DIW printing to deposit different ceramic materials simultaneously, enabling the creation of multi-material parts."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ceramic feedstock system",
+        "role": "supplies multiple ceramic slurries with controlled composition, particle size and viscosity.",
+        "parts": [
+          "ceramic powders (e.g. alumina, zirconia)",
+          "binders and dispersants",
+          "syringes or reservoirs",
+          "mixing and degassing equipment"
+        ]
+      },
+      {
+        "name": "Multi-nozzle printhead",
+        "role": "deposits different slurries within a single layer, switching or blending materials.",
+        "parts": [
+          "nozzles of varying diameters",
+          "individual pumps or valves",
+          "mixing chamber for gradients"
+        ]
+      },
+      {
+        "name": "Motion platform",
+        "role": "moves the printhead or build stage with micrometre precision.",
+        "parts": [
+          "gantry or robotic arm",
+          "linear motors",
+          "position feedback sensors"
+        ]
+      },
+      {
+        "name": "Control and slicing software",
+        "role": "translates a multi-material design into toolpaths and material assignments.",
+        "parts": [
+          "CAD import",
+          "slicing engine",
+          "porosity and infill algorithms",
+          "machine control"
+        ]
+      },
+      {
+        "name": "Solidification and curing",
+        "role": "stabilises the printed shape before high-temperature processing.",
+        "parts": [
+          "UV or thermal curing unit",
+          "drying oven"
+        ]
+      },
+      {
+        "name": "Post-processing furnace",
+        "role": "removes organic binders and densifies the ceramic.",
+        "parts": [
+          "debinding furnace",
+          "sintering furnace (up to 1600 °C or more)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the part",
+        "detail": "Create a CAD model that specifies where each ceramic composition and porosity level goes, using features like graded walls or infill patterns."
+      },
+      {
+        "title": "Formulate slurries",
+        "detail": "Prepare ceramic inks with different powders, binders and solids loading, adjusting rheology so each flows reliably through its nozzle."
+      },
+      {
+        "title": "Load and calibrate",
+        "detail": "Fill reservoirs, prime nozzles, and calibrate extrusion rates for each material to ensure accurate deposition."
+      },
+      {
+        "title": "Slice and plan",
+        "detail": "Use software to slice the model and assign materials to each region, including porous infill patterns for stiffness gradients."
+      },
+      {
+        "title": "Print layer by layer",
+        "detail": "The multi-nozzle head deposits the slurries, switching or mixing materials as the toolpath demands."
+      },
+      {
+        "title": "Cure or dry",
+        "detail": "Apply UV light or heat to set the binder so the green part holds its shape."
+      },
+      {
+        "title": "Debind",
+        "detail": "Heat slowly to burn out organic binders without cracking or distorting the part."
+      },
+      {
+        "title": "Sinter",
+        "detail": "Heat to high temperature to fuse ceramic particles into a dense solid; compatible shrinkage between materials is critical."
+      },
+      {
+        "title": "Finish",
+        "detail": "Machine, grind or polish if tight tolerances or surface finishes are required."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ceramic slurry formulation",
+        "status": "exists",
+        "why": "each material must flow through a nozzle and then sinter without defects."
+      },
+      {
+        "tech": "Multi-material extrusion hardware",
+        "status": "partial",
+        "why": "commercial systems exist but are limited in material count, resolution and build size."
+      },
+      {
+        "tech": "Slicing software for graded materials",
+        "status": "partial",
+        "why": "needs to handle composition and porosity changes within a single part."
+      },
+      {
+        "tech": "High-temperature sintering furnaces",
+        "status": "exists",
+        "why": "densification of technical ceramics requires precise temperature profiles."
+      },
+      {
+        "tech": "Shrinkage compatibility between materials",
+        "status": "missing",
+        "why": "different ceramics shrink at different rates during sintering, causing cracks or warping."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-material ceramic printing for implants and aerospace parts",
+        "unlocks": "custom, complex ceramic components that are hard to mould."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-material parts with graded porosity at commercial scale",
+        "unlocks": "implants that match bone stiffness, or thermal barrier coatings with tailored properties."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with other printing processes (metals, electronics) in one build",
+        "unlocks": "multifunctional ceramic devices with embedded sensors or conductors."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "4D printing of ceramics that change shape or function over time",
+        "unlocks": "self-assembling or adaptive components for extreme environments."
+      }
+    ]
   }
 }

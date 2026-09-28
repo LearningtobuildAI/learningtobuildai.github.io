@@ -43,5 +43,158 @@
         "def": "The ability of a system to take pre-defined actions in response to detected threats without human intervention. This includes containment, isolation, or other measures aimed at mitigating the impact of an attack."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Telemetry pipeline",
+        "role": "collects and normalises logs, network flows and endpoint events from across the estate.",
+        "parts": [
+          "connectors for firewalls, endpoints and cloud services",
+          "parsers and schema mapping",
+          "time-series and graph databases"
+        ]
+      },
+      {
+        "name": "Detection models",
+        "role": "flag behaviour that deviates from normal, using both known attack patterns and anomaly detection.",
+        "parts": [
+          "supervised classifiers trained on labelled attacks",
+          "unsupervised anomaly detectors",
+          "behavioural baselines per user and device"
+        ]
+      },
+      {
+        "name": "Threat intelligence fusion",
+        "role": "enriches events with external indicators and context.",
+        "parts": [
+          "feeds in standard formats (e.g. STIX/TAXII)",
+          "indicator matching engine",
+          "reputation scoring"
+        ]
+      },
+      {
+        "name": "Incident correlation and scoring",
+        "role": "groups related alerts into incidents and ranks them by risk.",
+        "parts": [
+          "clustering algorithms",
+          "risk scoring engine",
+          "case management"
+        ]
+      },
+      {
+        "name": "Automated response",
+        "role": "contains threats by executing playbooks, with human oversight.",
+        "parts": [
+          "orchestration engine",
+          "API integrations with firewalls, identity systems and endpoints",
+          "playbook library (e.g. isolate host, disable account)"
+        ]
+      },
+      {
+        "name": "Analyst feedback loop",
+        "role": "lets humans label false positives and confirm true positives to retrain models.",
+        "parts": [
+          "dashboards",
+          "label store",
+          "retraining pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the environment and threat model",
+        "detail": "Inventory assets, data sources and likely attack paths so the system knows what to protect and where to look."
+      },
+      {
+        "title": "Ingest and normalise data",
+        "detail": "Connect to logs, flows and endpoints; parse and map them into a common schema for analysis."
+      },
+      {
+        "title": "Build behavioural baselines",
+        "detail": "Learn normal patterns per user, device and service over weeks, so deviations can be spotted."
+      },
+      {
+        "title": "Train detection models",
+        "detail": "Use labelled attacks where available and anomaly detection where not; validate on held-out data to measure false positives."
+      },
+      {
+        "title": "Develop response playbooks",
+        "detail": "Define actions for each alert type, with approval gates for high-impact steps such as disabling an account."
+      },
+      {
+        "title": "Integrate with the security stack",
+        "detail": "Connect to firewalls, endpoint tools and identity providers through APIs so detections can trigger actions."
+      },
+      {
+        "title": "Deploy in shadow mode",
+        "detail": "Run alongside existing tools without acting, comparing alerts to analyst decisions to tune thresholds."
+      },
+      {
+        "title": "Enable assisted response",
+        "detail": "Let analysts approve suggested actions, gathering feedback that improves the playbooks and models."
+      },
+      {
+        "title": "Move to autonomous response for low-risk cases",
+        "detail": "Automate containment only where confidence is high and impact is low; keep humans in the loop for the rest."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale log collection and storage",
+        "status": "exists",
+        "why": "without centralised telemetry, models have nothing to learn from."
+      },
+      {
+        "tech": "Machine learning frameworks",
+        "status": "exists",
+        "why": "provide the algorithms and tooling to train and deploy detection models."
+      },
+      {
+        "tech": "Endpoint detection and response (EDR)",
+        "status": "exists",
+        "why": "gives deep visibility and a way to isolate compromised machines."
+      },
+      {
+        "tech": "Threat intelligence sharing standards",
+        "status": "partial",
+        "why": "formats like STIX/TAXII exist but adoption is uneven, limiting enrichment."
+      },
+      {
+        "tech": "Adversarially robust AI",
+        "status": "missing",
+        "why": "attackers can craft inputs to evade detection; robust defences are still research."
+      },
+      {
+        "tech": "Standardised response APIs",
+        "status": "partial",
+        "why": "many security tools lack APIs for automated actions, forcing manual work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted detection and triage in security operations centres",
+        "unlocks": "faster response to known threats and reduced analyst workload."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous containment of high-confidence, low-impact threats",
+        "unlocks": "minute-scale response without human delay."
+      },
+      {
+        "stage": "Next",
+        "milestone": "predictive defence that anticipates attacker moves from partial signals",
+        "unlocks": "proactive hardening before an attack completes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-healing networks that reconfigure automatically after an intrusion",
+        "unlocks": "resilience with minimal downtime."
+      }
+    ]
   }
 }

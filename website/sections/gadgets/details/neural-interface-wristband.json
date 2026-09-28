@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "picks up the tiny voltages that motor nerves trigger in forearm muscles; typically 8–64 dry electrodes around the wrist.",
+        "parts": [
+          "dry metal or conductive-polymer electrodes",
+          "flexible band and spring contacts",
+          "skin-impedance sensing"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies microvolt-level signals before they are digitised, without drowning them in mains hum.",
+        "parts": [
+          "instrumentation amplifiers",
+          "band-pass filters (roughly 20–450 Hz)",
+          "common-mode rejection and shielding",
+          "analog-to-digital converter sampling at 1–2 kHz or more"
+        ]
+      },
+      {
+        "name": "Motion and context sensing",
+        "role": "separates intended gestures from arm movement and changing skin contact.",
+        "parts": [
+          "inertial measurement unit",
+          "contact-pressure or impedance tracking"
+        ]
+      },
+      {
+        "name": "On-device decoding",
+        "role": "turns raw waveforms into finger positions or discrete commands.",
+        "parts": [
+          "low-power microcontroller or accelerator",
+          "feature extraction",
+          "trained neural network"
+        ]
+      },
+      {
+        "name": "Wireless link and power",
+        "role": "sends commands to a phone, headset or computer and runs all day.",
+        "parts": [
+          "Bluetooth or similar radio",
+          "battery and charger",
+          "power management"
+        ]
+      },
+      {
+        "name": "Calibration and training pipeline",
+        "role": "personalises the decoder, since every forearm's signal pattern differs.",
+        "parts": [
+          "guided gesture prompts",
+          "paired ground-truth capture (cameras or sensor gloves)",
+          "model updates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the signal source",
+        "detail": "Researchers measure where hand and finger motor-unit activity appears around the wrist to choose electrode positions. This is muscle electrical activity driven by motor neurons, not raw nerve impulses — true nerve signals need implanted electrodes."
+      },
+      {
+        "title": "Design the band",
+        "detail": "Electrodes are arranged in a ring so that contact stays stable as the wrist flexes, with dry materials that work without gel."
+      },
+      {
+        "title": "Build the front end",
+        "detail": "Instrumentation amplifiers with high common-mode rejection and tight band-pass filtering are laid out to keep noise below the few-microvolt signals of interest."
+      },
+      {
+        "title": "Write firmware",
+        "detail": "The device samples continuously, tracks electrode contact quality, and streams windows of data over a low-power radio."
+      },
+      {
+        "title": "Collect labelled data",
+        "detail": "A wearer performs prompted gestures and finger movements while cameras or gloves record the ground truth, building a paired dataset."
+      },
+      {
+        "title": "Train the decoder",
+        "detail": "A neural network learns to map signal windows to intended hand poses or commands, then is compressed to run on the band itself."
+      },
+      {
+        "title": "Calibrate per user",
+        "detail": "A short guided routine adapts the model to the wearer's anatomy, sweat and session; much research targets making this step unnecessary."
+      },
+      {
+        "title": "Validate in daily use",
+        "detail": "Testing across sessions, arm positions, temperature and sweat shows how often the decoder is wrong — the main barrier to shipping."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-noise biopotential sensing",
+        "status": "exists",
+        "why": "decades of ECG and EMG hardware already deliver amplifiers and electrodes sensitive enough for the wrist."
+      },
+      {
+        "tech": "Machine-learning gesture decoding",
+        "status": "partial",
+        "why": "research prototypes decode hand intent, but accuracy often degrades between sessions and users."
+      },
+      {
+        "tech": "Calibration-free generalisation",
+        "status": "missing",
+        "why": "most systems need user-specific training data; a consumer product needs it to work out of the box."
+      },
+      {
+        "tech": "Low-power edge compute and radio",
+        "status": "exists",
+        "why": "phones and earbuds have driven down the size and power needed to run a small model all day."
+      },
+      {
+        "tech": "Non-invasive sensory feedback",
+        "status": "missing",
+        "why": "without a way to send touch back to the user, commands are one-way only."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research wristbands decoding simple gestures and finger movements with per-user calibration",
+        "unlocks": "hands-free control of glasses, phones and computers in lab and demo settings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous finger-level tracking that holds up across sessions, sweat and arm posture",
+        "unlocks": "typing-free text entry and precise cursor control without cameras."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated bands built into consumer wearables and AR glasses",
+        "unlocks": "mass-market input that works where keyboards and touchscreens cannot."
+      },
+      {
+        "stage": "Next",
+        "milestone": "medical and accessibility use, such as intuitive prosthetic and assistive control",
+        "unlocks": "restored function for people with limb loss or motor impairment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "bidirectional bands combining sensing with non-invasive stimulation, or fusion with wrist ultrasound imaging",
+        "unlocks": "higher-bandwidth, two-way neural interfaces without surgery."
+      }
+    ]
+  }
+}

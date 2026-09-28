@@ -1,0 +1,131 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Fuel and reaction chamber",
+        "role": "holds the fusion fuel — deuterium–tritium or, for a low-neutron design, proton–boron-11 — in a vacuum.",
+        "parts": [
+          "sealed vacuum vessel",
+          "fuel injector",
+          "target or plasma region"
+        ]
+      },
+      {
+        "name": "Driver",
+        "role": "supplies the particles or energy that start the reaction.",
+        "parts": [
+          "compact accelerator and pion-production target (muon route)",
+          "high-intensity laser or ion beam (aneutronic route)"
+        ]
+      },
+      {
+        "name": "Confinement and heating",
+        "role": "for aneutronic fuel, holds a plasma of around a billion kelvin long enough for nuclei to fuse.",
+        "parts": [
+          "superconducting or pulsed magnets",
+          "electrostatic confinement electrodes",
+          "radio-frequency or beam heating"
+        ]
+      },
+      {
+        "name": "Energy conversion",
+        "role": "turns fusion products straight into electricity without a steam cycle, so the device can stay small.",
+        "parts": [
+          "direct charge collectors",
+          "rectifier and power conditioning"
+        ]
+      },
+      {
+        "name": "Shielding and thermal management",
+        "role": "protects the casing and the user from neutrons and X-rays and removes waste heat.",
+        "parts": [
+          "neutron and gamma shielding",
+          "bremsstrahlung X-ray shielding",
+          "radiator or heat sink"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the reaction",
+        "detail": "Deuterium–tritium is the easiest mixture to fuse but produces neutrons and so needs heavy shielding; proton–boron-11 is far cleaner but needs much higher temperatures. A portable cell would have to trade these off."
+      },
+      {
+        "title": "Build a compact driver",
+        "detail": "For the muon-catalysed route this means a small accelerator that makes pions, which decay into muons, plus a target where they are produced. Machines of this kind today fill buildings and draw megawatts, so shrinking one to pocket size is the central unsolved problem."
+      },
+      {
+        "title": "Fabricate the chamber",
+        "detail": "A vacuum vessel with fuel injection is welded and sealed to run for decades without servicing, since refuelling is exactly what the device is meant to avoid."
+      },
+      {
+        "title": "Start and sustain the reaction",
+        "detail": "In muon catalysis each muon must catalyse a few hundred fusions before it sticks to a helium nucleus and is lost; today it manages roughly half that number, so the reaction dies out before it returns the energy spent making the muon. For proton–boron-11 the plasma must reach around a billion kelvin."
+      },
+      {
+        "title": "Capture the energy directly",
+        "detail": "Charged fusion products are slowed in an electrostatic field and their energy drawn off as direct current, avoiding a turbine and generator that would be far too bulky to carry."
+      },
+      {
+        "title": "Shield and cool",
+        "detail": "The casing is lined with neutron and X-ray shielding and fitted with a radiator or heat sink to dump waste heat. Shielding that is both effective and light enough to carry does not currently exist."
+      },
+      {
+        "title": "Close the fuel cycle and test life",
+        "detail": "Any tritium must be bred or stored inside the device, and the unit would then be run for years to show it really delivers power without recharging. No such test has ever been attempted."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Compact high-energy accelerators",
+        "status": "partial",
+        "why": "making muons needs particles of several GeV, and accelerators at that energy are large facilities today, not portable units."
+      },
+      {
+        "tech": "Muon-catalysed fusion above break-even",
+        "status": "missing",
+        "why": "alpha sticking caps each muon at roughly a hundred reactions, about half the number needed to repay the energy of producing the muon."
+      },
+      {
+        "tech": "Aneutronic fusion at net gain",
+        "status": "missing",
+        "why": "proton–boron-11 burns at extreme temperature and radiates X-rays (bremsstrahlung) that, at achievable densities, carry away more energy than the fusion releases."
+      },
+      {
+        "tech": "Direct energy conversion",
+        "status": "partial",
+        "why": "converting charged fusion products to electricity electrostatically has been shown at small scale, but never at useful power in a compact package."
+      },
+      {
+        "tech": "Low-mass neutron and X-ray shielding",
+        "status": "missing",
+        "why": "shielding thick enough to protect a user from fusion radiation yet light enough to carry does not exist."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "muon-catalysed fusion studied as a laboratory phenomenon since the 1950s, and aneutronic reactions studied in larger experiments",
+        "unlocks": "understanding of the two physics routes, both far short of net energy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "raise the number of fusions per muon and cut the accelerator energy per muon, or demonstrate net gain from an aneutronic reaction in a large device",
+        "unlocks": "a credible physics basis for a small reactor."
+      },
+      {
+        "stage": "Next",
+        "milestone": "direct energy conversion at useful power, with shielding light enough to carry",
+        "unlocks": "an engineering basis for something portable."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a sealed cell that runs for decades without refuelling",
+        "unlocks": "permanent power for devices where recharging is impossible — credible only if every step above is solved."
+      }
+    ]
+  }
+}

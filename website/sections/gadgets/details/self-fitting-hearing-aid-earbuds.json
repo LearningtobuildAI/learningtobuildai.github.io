@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Acoustic output driver",
+        "role": "converts amplified electrical signal into sound inside the ear canal; must deliver large gain without distortion in a device the size of an earbud.",
+        "parts": [
+          "miniature balanced-armature or dynamic receiver",
+          "acoustic tubing or nozzle",
+          "output-limiting circuitry"
+        ]
+      },
+      {
+        "name": "Seal and coupling",
+        "role": "how the bud sits in the ear canal determines bass response and how much sound leaks out and feeds back.",
+        "parts": [
+          "silicone or foam ear tips in several sizes",
+          "vent or leak path",
+          "retention wing"
+        ]
+      },
+      {
+        "name": "Self-fit test",
+        "role": "replaces the clinic booth with a phone-based tone test, estimating hearing thresholds per frequency.",
+        "parts": [
+          "phone or bud playback of test tones",
+          "self-calibrated level (in-situ)",
+          "threshold tracking algorithm",
+          "audiogram profile"
+        ]
+      },
+      {
+        "name": "DSP and fitting engine",
+        "role": "turns the audiogram into a gain curve per frequency band and keeps speech intelligible in noise.",
+        "parts": [
+          "multi-band dynamic-range compressor",
+          "feedback canceller",
+          "noise reduction and speech enhancement",
+          "directional/beamforming microphones"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "runs all-day hearing processing, which costs more energy than music playback.",
+        "parts": [
+          "lithium-ion or zinc-air cell",
+          "charging case",
+          "power management"
+        ]
+      },
+      {
+        "name": "App and connectivity",
+        "role": "lets the wearer re-test, adjust, and stream audio or calls.",
+        "parts": [
+          "Bluetooth Low Energy radio",
+          "phone app",
+          "firmware update path"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the acoustics",
+        "detail": "Engineers model the ear canal and the bud's sealing and venting so the driver's output curve is predictable across ear sizes before any electronics are chosen."
+      },
+      {
+        "title": "Make the drivers",
+        "detail": "Micro-receivers are wound and assembled under magnification, then tested for output and distortion at full gain."
+      },
+      {
+        "title": "Build the electronics",
+        "detail": "A low-power audio DSP chip is programmed with the compressor, feedback canceller and beamformer, and combined with microphones and radio on a small rigid-flex board."
+      },
+      {
+        "title": "Write the fitting algorithm",
+        "detail": "An audiogram-to-gain rule (based on established prescriptions such as NAL-NL2 or DSL, adapted for a sealed earbud) is coded, with limits so output never becomes uncomfortably loud."
+      },
+      {
+        "title": "Develop the self-test",
+        "detail": "A tone test is validated against clinic audiometry, accounting for the fact that the bud itself plays the test tone, so no external calibration is needed."
+      },
+      {
+        "title": "Close the feedback loop",
+        "detail": "Acoustic leakage paths are measured and the canceller tuned so the device can supply high gain without squealing — the hardest engineering problem in a self-fit bud."
+      },
+      {
+        "title": "Assemble and test",
+        "detail": "Units are built and measured on a head-and-torso simulator with a coupler, checking frequency response, gain, distortion and maximum output against the applicable standard."
+      },
+      {
+        "title": "Clear and ship",
+        "detail": "Devices are validated in studies and sold over the counter, with the wearer running the test and tuning themselves."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature low-distortion receivers",
+        "status": "exists",
+        "why": "squeezing clinic-grade gain into a bud depends on small, efficient drivers."
+      },
+      {
+        "tech": "Low-power audio DSP",
+        "status": "exists",
+        "why": "hearing processing, noise reduction and feedback cancellation must run for a full day on a tiny battery."
+      },
+      {
+        "tech": "In-situ self-audiometry",
+        "status": "exists",
+        "why": "an on-phone test must be accurate enough that a self-made audiogram is usable."
+      },
+      {
+        "tech": "Reliable speech separation from noise",
+        "status": "partial",
+        "why": "machine-learning enhancement helps, but the noisy-restaurant case is still the limit of what earbuds achieve."
+      },
+      {
+        "tech": "An over-the-counter regulatory route",
+        "status": "exists",
+        "why": "a self-fitting category is what allows direct sale without a clinic visit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "direct-to-consumer self-fitting aids for mild-to-moderate loss",
+        "unlocks": "cheaper access for people who never go to a clinic."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mainstream consumer earbuds gaining regulated hearing-aid modes",
+        "unlocks": "hearing help built into devices people already own and wear."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-device AI scene analysis that adapts automatically to each room",
+        "unlocks": "performance approaching clinic-fitted devices without a fitting appointment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-fitting extended to greater degrees of loss, linked to remote audiology support",
+        "unlocks": "most hearing loss managed without a physical clinic visit."
+      }
+    ]
+  }
+}

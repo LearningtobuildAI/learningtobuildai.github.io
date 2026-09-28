@@ -38,5 +38,148 @@
         "def": "A database of transactions shared across multiple computers in a network, where no single entity has control over the entire ledger."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Decentralized identifier (DID) registry",
+        "role": "A tamper-resistant place to register identifiers and public keys, so anyone can resolve them without a central authority.",
+        "parts": [
+          "DID method specification",
+          "DID document (public keys, service endpoints)",
+          "blockchain or distributed ledger (or non-ledger alternative like did:web)",
+          "resolver software"
+        ]
+      },
+      {
+        "name": "Verifiable credential (VC) layer",
+        "role": "The signed digital claims that issuers give to holders and verifiers can check.",
+        "parts": [
+          "issuer software",
+          "VC data model",
+          "cryptographic signatures (e.g. Ed25519, BBS+)",
+          "schemas and revocation lists"
+        ]
+      },
+      {
+        "name": "Holder wallet",
+        "role": "Stores the user's private keys and credentials, and presents proofs on request.",
+        "parts": [
+          "secure key storage (hardware element or secure enclave)",
+          "credential database",
+          "presentation protocol (e.g. OpenID for Verifiable Credentials)",
+          "user interface"
+        ]
+      },
+      {
+        "name": "Proof and privacy engine",
+        "role": "Lets a holder prove only what is needed — for example, that they are over 18 without revealing a birth date.",
+        "parts": [
+          "zero-knowledge proof systems",
+          "selective disclosure algorithms",
+          "challenge–response protocols"
+        ]
+      },
+      {
+        "name": "Trust and governance framework",
+        "role": "Defines who may issue which credentials, how disputes are handled, and what is legally recognised.",
+        "parts": [
+          "trust registries",
+          "accreditation rules",
+          "legal recognition (e.g. EU eIDAS 2.0)",
+          "privacy and data-protection policies"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the identity model and governance",
+        "detail": "Decide which claims (age, licence, degree) are needed, who can issue them, and how privacy and liability are handled."
+      },
+      {
+        "title": "Choose a DID method and registry",
+        "detail": "Select a blockchain or other verifiable data registry — for example did:ion on Bitcoin, did:ethr on Ethereum, or a non-ledger method such as did:web. Specify how DIDs are created, updated and deactivated."
+      },
+      {
+        "title": "Deploy issuer infrastructure",
+        "detail": "Each issuer runs a node, creates its own DID, and publishes its public keys and a revocation mechanism to the registry."
+      },
+      {
+        "title": "Issue verifiable credentials",
+        "detail": "The issuer signs a credential containing the holder's DID and the claims, then delivers it to the holder's wallet."
+      },
+      {
+        "title": "Store credentials in a wallet",
+        "detail": "The wallet generates and protects the holder's private keys, encrypts credentials, and keeps them under the user's control."
+      },
+      {
+        "title": "Present a proof",
+        "detail": "When a verifier asks, the wallet creates a verifiable presentation — optionally using a zero-knowledge proof to reveal only the required fact."
+      },
+      {
+        "title": "Verify and check revocation",
+        "detail": "The verifier resolves the issuer's DID, validates the signature, and checks the current revocation list or accumulator."
+      },
+      {
+        "title": "Support key rotation and recovery",
+        "detail": "Provide ways to update keys, revoke a lost wallet, and recover an identity without a central administrator."
+      },
+      {
+        "title": "Integrate with existing systems",
+        "detail": "Connect the wallet to login flows, payment systems and physical access control so the credential is actually useful."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "W3C standards for DIDs and verifiable credentials",
+        "status": "exists",
+        "why": "They give a common data model so wallets and issuers from different vendors can interoperate. DID 1.0 became a W3C Recommendation in 2022."
+      },
+      {
+        "tech": "Public blockchain or distributed ledger",
+        "status": "exists",
+        "why": "Provides a censorship-resistant registry for DIDs and revocation data. Some designs use non-ledger registries instead."
+      },
+      {
+        "tech": "Efficient zero-knowledge proofs",
+        "status": "partial",
+        "why": "They enable selective disclosure and unlinkable presentations, but are still complex and costly for some devices."
+      },
+      {
+        "tech": "Secure hardware for key storage",
+        "status": "exists",
+        "why": "Phones and dedicated wallets can protect private keys in a secure element, reducing theft risk."
+      },
+      {
+        "tech": "Legal recognition of digital identity wallets",
+        "status": "partial",
+        "why": "The EU's eIDAS 2.0 regulation requires member states to offer wallets, but most countries lack equivalent rules."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Pilots and sandboxes by governments, banks and universities using verifiable credentials",
+        "unlocks": "Practical experience with issuance, wallets and revocation at small scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "EU member states deploy eIDAS 2.0 digital identity wallets under the 2026 deadline",
+        "unlocks": "Millions of users get a government-recognised wallet, driving issuer adoption."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Cross-border and cross-ledger interoperability profiles mature",
+        "unlocks": "A credential issued in one country or system can be verified in another."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Mainstream replacement of passwords and physical ID cards for everyday transactions",
+        "unlocks": "Lower identity theft, less data sharing, and user-controlled digital identities."
+      }
+    ]
   }
 }

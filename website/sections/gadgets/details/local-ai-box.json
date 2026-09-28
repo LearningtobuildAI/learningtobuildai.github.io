@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Accelerator",
+        "role": "does the matrix maths that makes a language model respond in a reasonable time.",
+        "parts": [
+          "GPU or neural processing unit",
+          "high-bandwidth memory",
+          "PCIe or unified memory link"
+        ]
+      },
+      {
+        "name": "Memory and storage",
+        "role": "holds the model weights in fast memory and stores model files when idle.",
+        "parts": [
+          "fast RAM or unified memory",
+          "NVMe solid-state drive"
+        ]
+      },
+      {
+        "name": "Host compute",
+        "role": "runs the operating system, queues requests and moves data to the accelerator.",
+        "parts": [
+          "multi-core CPU",
+          "motherboard and power delivery"
+        ]
+      },
+      {
+        "name": "Thermal and power",
+        "role": "keeps a continuously busy chip cool and quiet enough to live in a home.",
+        "parts": [
+          "heatsink and fans",
+          "power supply",
+          "compact chassis"
+        ]
+      },
+      {
+        "name": "Inference software stack",
+        "role": "turns stored weights into a responsive service.",
+        "parts": [
+          "runtime such as llama.cpp or vLLM",
+          "quantised model files",
+          "request queue and API server"
+        ]
+      },
+      {
+        "name": "Home integration",
+        "role": "lets phones, speakers and smart-home software use the model over the local network.",
+        "parts": [
+          "local HTTP API",
+          "voice-to-text and text-to-speech engines",
+          "automation platform integration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the target model",
+        "detail": "Pick the largest model the box should serve and at what precision. A 70-billion-parameter model at 4-bit precision needs roughly 40 GB of memory before any conversation cache."
+      },
+      {
+        "title": "Size the compute and memory",
+        "detail": "Token generation is limited by memory bandwidth, not raw compute, so choose a chip with wide, fast memory — a unified-memory system or a GPU with enough dedicated video memory to hold the whole model."
+      },
+      {
+        "title": "Assemble the hardware",
+        "detail": "Fit the accelerator, storage and power supply into a small case with airflow sized for sustained load, not short bursts."
+      },
+      {
+        "title": "Install the runtime",
+        "detail": "Install a Linux or appliance operating system plus an inference engine, then download open-weight models already converted to a quantised format."
+      },
+      {
+        "title": "Tune for the hardware",
+        "detail": "Adjust the number of layers offloaded to the accelerator, context length and batch size until answers arrive fast enough for conversation."
+      },
+      {
+        "title": "Expose it on the network",
+        "detail": "Run the API server on a fixed local address so every device on the home network can reach it without any traffic leaving the house."
+      },
+      {
+        "title": "Connect the home",
+        "detail": "Wire the API into automation and voice pipelines for spoken queries and device control."
+      },
+      {
+        "title": "Maintain and update",
+        "detail": "Refresh models as better open weights appear, and keep a small fallback model for when the main one is too slow."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Open-weight language models",
+        "status": "exists",
+        "why": "without freely downloadable weights there is nothing for a private box to run."
+      },
+      {
+        "tech": "Quantisation to 4- and 8-bit precision",
+        "status": "exists",
+        "why": "it shrinks models by roughly four to eight times so they fit in affordable memory."
+      },
+      {
+        "tech": "Wide, fast consumer memory",
+        "status": "partial",
+        "why": "token speed is bound by memory bandwidth, and only some consumer systems have both the capacity and the bandwidth."
+      },
+      {
+        "tech": "Efficient inference runtimes",
+        "status": "exists",
+        "why": "they make CPU and mixed CPU/GPU execution practical on small machines."
+      },
+      {
+        "tech": "Home automation platforms with local APIs",
+        "status": "exists",
+        "why": "they give the model something useful to control and a place to receive requests."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "enthusiasts run open models on workstations and compact unified-memory computers",
+        "unlocks": "private chat and transcription for technically confident users."
+      },
+      {
+        "stage": "Next",
+        "milestone": "purpose-built appliances with model management, updates and voice built in",
+        "unlocks": "a box a non-specialist can plug in and forget."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chips with much higher memory bandwidth and dedicated neural units",
+        "unlocks": "larger models and longer context at conversational speed."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "personalised, multimodal local assistants that learn from household data",
+        "unlocks": "useful automation without sending private audio, video or documents to a cloud service."
+      }
+    ]
+  }
+}

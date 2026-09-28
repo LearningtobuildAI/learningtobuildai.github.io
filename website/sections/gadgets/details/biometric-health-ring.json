@@ -1,0 +1,140 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Optical sensor module",
+        "role": "shines light into the finger and measures how much comes back, which rises and falls with each heartbeat.",
+        "parts": [
+          "green, red and infrared LEDs",
+          "photodiodes",
+          "light-blocking gaskets"
+        ]
+      },
+      {
+        "name": "Motion sensors",
+        "role": "detect movement and body position for step counts, sleep staging and activity recognition.",
+        "parts": [
+          "3-axis accelerometer",
+          "gyroscope (on some models)",
+          "temperature sensor",
+          "magnetometer"
+        ]
+      },
+      {
+        "name": "Compute and radio",
+        "role": "filters the raw signals, runs on-device algorithms and sends results to a phone.",
+        "parts": [
+          "low-power microcontroller or sensor-hub chip",
+          "Bluetooth Low Energy radio",
+          "flash memory",
+          "antenna"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "fits days of continuous sensing into a package weighing a few grams.",
+        "parts": [
+          "small lithium-polymer cell",
+          "charging contacts or induction coil",
+          "power-management IC"
+        ]
+      },
+      {
+        "name": "Enclosure and fit",
+        "role": "holds the electronics against the artery-rich underside of the finger without pinching it.",
+        "parts": [
+          "moulded shell (titanium, ceramic or plastic)",
+          "inner moulding",
+          "sizing set",
+          "water-resistant sealing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the sensing site",
+        "detail": "Engineers model light paths and pressure at the finger base, then fix the LED–photodiode spacing and angles so the signal is strong but the ring stays comfortable."
+      },
+      {
+        "title": "Design the electronics stack",
+        "detail": "A flexible or rigid-flex printed circuit board is laid out to wrap the finger, with the optical parts on the inner face and the radio and battery elsewhere."
+      },
+      {
+        "title": "Make the optical module",
+        "detail": "LEDs and photodiodes are mounted with opaque barriers between them so emitted light cannot leak straight to the detector."
+      },
+      {
+        "title": "Fabricate the shell",
+        "detail": "The outer shell and inner moulding are produced — often by metal injection moulding, machining or ceramic moulding — then polished and sealed."
+      },
+      {
+        "title": "Assemble in a cleanroom",
+        "detail": "Electronics are folded into the shell, the battery bonded in, the sensor window sealed and the whole unit pressure-tested for water resistance."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Every ring is characterised so differences in LED brightness and detector sensitivity do not distort the readings."
+      },
+      {
+        "title": "Develop the algorithms",
+        "detail": "Signal-processing pipelines turn noisy light traces into heart rate, heart-rate variability, breathing rate and sleep stages, validated against lab-grade equipment."
+      },
+      {
+        "title": "Test on people",
+        "detail": "Wear trials across skin tones, finger sizes, temperatures and activity levels check accuracy and comfort before shipping."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Light-emitting diodes and photodiodes",
+        "status": "exists",
+        "why": "cheap, tiny, efficient light sources and detectors make finger-worn sensing possible."
+      },
+      {
+        "tech": "Low-power Bluetooth chips",
+        "status": "exists",
+        "why": "they let a coin-sized device run for days while syncing continuously."
+      },
+      {
+        "tech": "Tiny lithium-polymer cells and wireless charging",
+        "status": "exists",
+        "why": "energy density and recharging convenience are what make a ring form factor practical."
+      },
+      {
+        "tech": "MEMS accelerometers",
+        "status": "exists",
+        "why": "motion data is needed to separate real pulse signals from movement noise and to stage sleep."
+      },
+      {
+        "tech": "Validated algorithms",
+        "status": "partial",
+        "why": "optical readings are easily disturbed by motion, cold fingers, tattoos and skin tone, so accuracy remains the hard part."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rings that track sleep, heart rate, heart-rate variability, temperature and activity",
+        "unlocks": "continuous, low-friction health monitoring people actually keep wearing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clinically validated detection of conditions such as sleep apnoea and atrial fibrillation",
+        "unlocks": "wearables becoming regulated screening tools rather than lifestyle gadgets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "non-invasive blood-pressure and blood-oxygen trends",
+        "unlocks": "better management of cardiovascular and respiratory disease at home."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "rings linked into medical workflows and remote care",
+        "unlocks": "early warning of illness and fewer hospital visits."
+      }
+    ]
+  }
+}

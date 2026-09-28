@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mutation engine",
+        "role": "generates functionally equivalent variants of code, memory layout or configuration.",
+        "parts": [
+          "source-to-source transformer",
+          "binary rewriter",
+          "configuration randomiser"
+        ]
+      },
+      {
+        "name": "Genetic optimiser",
+        "role": "evolves a population of variants toward those that best resist known attack techniques.",
+        "parts": [
+          "fitness function",
+          "selection and crossover logic",
+          "attack simulation harness"
+        ]
+      },
+      {
+        "name": "Attack sensing and feedback",
+        "role": "detects live intrusion attempts and anomalies, feeding real-world data back to the optimiser.",
+        "parts": [
+          "intrusion detection sensors",
+          "telemetry pipeline",
+          "anomaly scoring"
+        ]
+      },
+      {
+        "name": "Deployment orchestrator",
+        "role": "rolls out new variants quickly and safely across many machines.",
+        "parts": [
+          "update scheduler",
+          "canary and rollback controls",
+          "version tracking"
+        ]
+      },
+      {
+        "name": "Compatibility and safety layer",
+        "role": "ensures mutations preserve intended function and do not introduce new weaknesses.",
+        "parts": [
+          "automated regression tests",
+          "equivalence checks",
+          "policy constraints"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the mutable surface",
+        "detail": "Identify which parts of the system — code sections, memory addresses, API call orders, configuration values — can be changed without breaking functionality."
+      },
+      {
+        "title": "Implement program transformation",
+        "detail": "Build tools that automatically rewrite those parts into equivalent but structurally different forms, such as reordering instructions, changing data layouts or inserting harmless noise."
+      },
+      {
+        "title": "Define the fitness function",
+        "detail": "Specify measurable goals, such as how much a variant raises the cost of a known exploit, how little it slows performance, and how well it preserves behaviour."
+      },
+      {
+        "title": "Build the genetic algorithm",
+        "detail": "Create a population of candidate variants, mutate and combine them, and select the best performers according to the fitness function over many generations."
+      },
+      {
+        "title": "Instrument live monitoring",
+        "detail": "Add sensors that detect real attacks and anomalies, then feed that data back so the optimiser learns which mutations actually disrupt adversaries in the field."
+      },
+      {
+        "title": "Create a fast deployment pipeline",
+        "detail": "Set up systems to push new variants to thousands of endpoints within minutes, with canary testing and automatic rollback if something breaks."
+      },
+      {
+        "title": "Validate with red teams",
+        "detail": "Run controlled attack exercises against mutated and unmutated versions to confirm that the changes measurably hinder exploitation."
+      },
+      {
+        "title": "Operate continuously",
+        "detail": "Keep evolving variants as new attack techniques appear, balancing mutation rate against stability and performance overhead."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Automated program transformation",
+        "status": "exists",
+        "why": "compilers, obfuscators and binary rewriters already change code structure, but doing so safely and at scale is harder."
+      },
+      {
+        "tech": "Genetic and evolutionary algorithms",
+        "status": "exists",
+        "why": "they provide the search method for exploring huge spaces of possible mutations."
+      },
+      {
+        "tech": "Real-time intrusion detection and telemetry",
+        "status": "exists",
+        "why": "the system needs live signals about what attackers are doing to guide evolution."
+      },
+      {
+        "tech": "Secure, rapid update mechanisms",
+        "status": "exists",
+        "why": "frequent legitimate changes must not themselves become an attack vector."
+      },
+      {
+        "tech": "Formal equivalence checking at scale",
+        "status": "missing",
+        "why": "proving that every mutated variant behaves exactly like the original is impractical for large programs today."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "moving target defence research prototypes and limited commercial tools, such as address space layout randomisation (ASLR), already randomise one layer.",
+        "unlocks": "proof that changing the attack surface can break exploits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "enterprise pilots for web applications and endpoint software that mutate code or configuration frequently.",
+        "unlocks": "real-world data on performance cost and attacker adaptation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with CI/CD pipelines so that every build produces a unique, hardened variant.",
+        "unlocks": "continuous, automatic defence without manual intervention."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous systems that evolve their own defences in response to live attacks, guided by genetic algorithms.",
+        "unlocks": "defence that adapts faster than human attackers can reverse-engineer."
+      }
+    ]
+  }
+}

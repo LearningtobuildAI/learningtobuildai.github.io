@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Agent layer",
+        "role": "each vehicle, driver or delivery slot runs a software agent that senses its state and makes local decisions.",
+        "parts": [
+          "local decision policy",
+          "state estimator",
+          "communication module"
+        ]
+      },
+      {
+        "name": "Communication mesh",
+        "role": "lets agents exchange offers and updates without a central server.",
+        "parts": [
+          "peer-to-peer messaging",
+          "gossip or consensus protocol",
+          "latency and loss handling"
+        ]
+      },
+      {
+        "name": "Negotiation and auction engine",
+        "role": "agents bid for delivery windows, routes and loads, resolving conflicts by agreed rules.",
+        "parts": [
+          "bidding rules",
+          "contract net protocol",
+          "conflict resolution"
+        ]
+      },
+      {
+        "name": "Multi-agent learning system",
+        "role": "trains agent policies to improve global fleet efficiency over time.",
+        "parts": [
+          "policy networks",
+          "reward shaping",
+          "centralized training with decentralized execution",
+          "experience replay"
+        ]
+      },
+      {
+        "name": "Simulation and digital twin",
+        "role": "a safe, fast environment to train and test before real-world deployment.",
+        "parts": [
+          "traffic and demand models",
+          "fleet simulator",
+          "scenario generator"
+        ]
+      },
+      {
+        "name": "Integration layer",
+        "role": "connects the mesh to existing order management, telematics and mapping systems.",
+        "parts": [
+          "APIs to order systems",
+          "vehicle telemetry feed",
+          "map and routing services"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define objectives and constraints",
+        "detail": "set clear goals (e.g. minimise empty kilometres, meet time windows) and hard constraints (driver hours, vehicle capacity)."
+      },
+      {
+        "title": "Build the simulation",
+        "detail": "create a digital twin of the fleet, roads and demand, using real historical data where available."
+      },
+      {
+        "title": "Design agent architecture",
+        "detail": "decide what each agent senses, what it controls, and how it communicates; choose between fully decentralised and hybrid designs."
+      },
+      {
+        "title": "Implement negotiation rules",
+        "detail": "code the bidding, acceptance and conflict-resolution protocols so agents can reach agreements quickly."
+      },
+      {
+        "title": "Train the learning system",
+        "detail": "run multi-agent reinforcement learning in simulation, shaping rewards so individual incentives align with fleet-wide efficiency."
+      },
+      {
+        "title": "Validate in simulation",
+        "detail": "test on held-out scenarios, stress-test with disruptions (road closures, demand spikes), and check safety and fairness."
+      },
+      {
+        "title": "Pilot on a limited real route",
+        "detail": "deploy on a small number of vehicles with human oversight, comparing performance to the existing centralised scheduler."
+      },
+      {
+        "title": "Scale and harden",
+        "detail": "expand coverage, add fail-safes for communication loss, and integrate with legacy systems."
+      },
+      {
+        "title": "Operate and update",
+        "detail": "continuously retrain and monitor for drift, ensuring the mesh remains robust and fair."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Multi-agent reinforcement learning",
+        "status": "partial",
+        "why": "algorithms can learn cooperative behaviour in simulation, but transferring to noisy real-world logistics is not yet reliable."
+      },
+      {
+        "tech": "Real-time vehicle telemetry and connectivity",
+        "status": "exists",
+        "why": "GPS, cellular and satellite links already report location and status at second-scale intervals."
+      },
+      {
+        "tech": "Edge computing for on-vehicle agents",
+        "status": "exists",
+        "why": "small computers can run decision policies locally without waiting for a central server."
+      },
+      {
+        "tech": "Standard protocols for decentralised negotiation",
+        "status": "partial",
+        "why": "academic standards exist (e.g. contract net), but industry-wide adoption in logistics is limited."
+      },
+      {
+        "tech": "High-fidelity logistics simulation",
+        "status": "partial",
+        "why": "simulators exist for traffic and warehouses, but open, multi-company fleet simulations are rare."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes and single-company pilots (e.g. warehouse robots, last-mile delivery)",
+        "unlocks": "proof that decentralised agents can beat centralised dispatch on narrow tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems where a central planner sets goals and agents negotiate locally",
+        "unlocks": "gradual adoption without replacing existing fleet software."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-company negotiation using shared standards",
+        "unlocks": "load sharing and fewer empty runs across carriers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous mesh spanning many carriers, with dynamic pricing and real-time replanning",
+        "unlocks": "system-wide efficiency gains and resilience to disruptions."
+      }
+    ]
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Motor",
+        "role": "converts electrical current into high-speed rotary motion with high torque density.",
+        "parts": [
+          "stator with copper windings",
+          "rotor with permanent magnets",
+          "laminated steel core"
+        ]
+      },
+      {
+        "name": "Gearbox",
+        "role": "reduces motor speed and multiplies torque while preserving backdrivability.",
+        "parts": [
+          "sun gear",
+          "planet gears",
+          "ring gear",
+          "output carrier"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "measures joint position and motor current for closed-loop control.",
+        "parts": [
+          "magnetic or optical encoders",
+          "current sensors"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "drives the motor with field-oriented control and implements torque, velocity and impedance loops.",
+        "parts": [
+          "power MOSFETs or IGBTs",
+          "microcontroller",
+          "gate drivers"
+        ]
+      },
+      {
+        "name": "Housing and bearings",
+        "role": "provides structural support, heat dissipation and precise alignment.",
+        "parts": [
+          "aluminium or steel housing",
+          "cross-roller or deep-groove bearings",
+          "thermal interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the motor",
+        "detail": "Choose pole count, winding pattern and air gap to balance torque density against iron losses and heat."
+      },
+      {
+        "title": "Wind the stator",
+        "detail": "Copper wire is wound into slots, then impregnated with varnish to hold it in place and improve heat transfer."
+      },
+      {
+        "title": "Assemble the rotor",
+        "detail": "Permanent magnets are glued or sleeved onto the rotor, which is then balanced for high-speed operation."
+      },
+      {
+        "title": "Cut and harden gears",
+        "detail": "Planetary gears are machined from alloy steel, heat-treated, and ground to precise tolerances."
+      },
+      {
+        "title": "Assemble the gearbox",
+        "detail": "The motor shaft is coupled to the sun gear, planets are placed in the carrier, and backlash is set with shims."
+      },
+      {
+        "title": "Install sensors",
+        "detail": "Encoders are mounted on motor and output shafts to measure position and allow torque estimation."
+      },
+      {
+        "title": "Integrate electronics",
+        "detail": "A driver board is attached or connected remotely, flashed with firmware that runs current, velocity and impedance loops."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "The actuator is run on a dynamometer to map torque, efficiency, backdrivability and thermal limits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Rare-earth permanent magnets",
+        "status": "exists",
+        "why": "high torque density requires strong neodymium-iron-boron magnets."
+      },
+      {
+        "tech": "Precision gear manufacturing",
+        "status": "exists",
+        "why": "low-ratio planetary gears must be accurate to minimise vibration, backlash and wear."
+      },
+      {
+        "tech": "High-performance motor control",
+        "status": "exists",
+        "why": "field-oriented control at high frequency is needed for smooth, responsive torque."
+      },
+      {
+        "tech": "Torque sensing and estimation",
+        "status": "partial",
+        "why": "joint torque is often inferred from current or strain gauges, but accurate low-cost sensors are still improving."
+      },
+      {
+        "tech": "Thermal management",
+        "status": "exists",
+        "why": "motors can overheat during continuous high-torque work, so cooling paths must be designed in."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quasi-direct drive actuators are used in research quadrupeds and some commercial humanoids",
+        "unlocks": "dynamic running, jumping and compliant interaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated joint modules combine motor, gearbox, encoder and driver in one sealed unit",
+        "unlocks": "faster robot assembly and lower cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher torque density through advanced cooling and magnet materials",
+        "unlocks": "stronger limbs for heavy lifting and more powerful locomotion."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "mass-produced actuators with lifetime and safety certification",
+        "unlocks": "affordable general-purpose humanoids."
+      }
+    ]
+  }
+}

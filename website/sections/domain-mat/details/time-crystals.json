@@ -28,5 +28,140 @@
         "def": "A physical system described by the laws of quantum mechanics, typically involving subatomic particles."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Many-body quantum system",
+        "role": "the 'crystal' itself — a set of coupled quantum objects whose collective state oscillates in time.",
+        "parts": [
+          "trapped ion chain",
+          "ensemble of nitrogen-vacancy spins in diamond",
+          "array of superconducting qubits"
+        ]
+      },
+      {
+        "name": "Periodic drive",
+        "role": "supplies the rhythm; the crystal answers at a fraction of this frequency.",
+        "parts": [
+          "microwave or radio-frequency pulses",
+          "laser pulse trains",
+          "programmable control electronics"
+        ]
+      },
+      {
+        "name": "Interaction network",
+        "role": "couples the elements so the oscillation is a collective, rigid phase rather than independent clocks.",
+        "parts": [
+          "Coulomb repulsion in an ion chain",
+          "dipolar couplings between spins",
+          "tunable couplers between qubits"
+        ]
+      },
+      {
+        "name": "Isolation and control environment",
+        "role": "keeps the system coherent long enough to observe a phase, not just noise.",
+        "parts": [
+          "ultra-high vacuum chamber and ion trap",
+          "dilution refrigerator",
+          "magnetic shielding",
+          "laser cooling and state preparation"
+        ]
+      },
+      {
+        "name": "Readout and analysis",
+        "role": "measures each element repeatedly to prove the pattern repeats in time.",
+        "parts": [
+          "site-resolved fluorescence or dispersive readout",
+          "Fourier analysis of correlation data"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a platform",
+        "detail": "Choose a system with long coherence, controllable interactions and addressable elements — trapped ions, diamond spins or superconducting circuits all qualify."
+      },
+      {
+        "title": "Fabricate the device",
+        "detail": "Etch a surface ion trap with segmented electrodes, or pattern a chip of qubits and tunable couplers, or prepare diamond with engineered spin defects."
+      },
+      {
+        "title": "Cool and isolate",
+        "detail": "Laser-cool the ions in ultra-high vacuum, or cool a superconducting chip to millikelvin temperatures; shield against stray fields and vibration."
+      },
+      {
+        "title": "Characterise and calibrate",
+        "detail": "Measure each element's frequency and the coupling between neighbours, then benchmark the gate or pulse fidelities before trusting any phase behaviour."
+      },
+      {
+        "title": "Apply the drive",
+        "detail": "Run a repeating pulse sequence whose period is short compared with decoherence and incommensurate with the natural interaction frequencies."
+      },
+      {
+        "title": "Tune into the phase",
+        "detail": "Vary drive strength and interaction range while watching for a subharmonic response — a signal that returns every two or more drive cycles instead of every one."
+      },
+      {
+        "title": "Confirm it is a real phase",
+        "detail": "Check that the subharmonic peak survives perturbations to the drive and lasts many cycles, and rule out trivial synchronisation or slow thermal drift."
+      },
+      {
+        "title": "Map the boundary",
+        "detail": "Sweep parameters to locate the transition between the time-crystal phase and an ordinary thermalising state."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-coherence quantum platforms (trapped ions, superconducting qubits, spin defects)",
+        "status": "exists",
+        "why": "the oscillation must outlive decoherence for many periods to count as a phase."
+      },
+      {
+        "tech": "Precise, programmable quantum control and readout",
+        "status": "exists",
+        "why": "the drive and the measurement of every element must be timed far more finely than the drive period."
+      },
+      {
+        "tech": "Theory of driven and many-body-localised systems",
+        "status": "exists",
+        "why": "equilibrium time crystals are forbidden by a no-go theorem; only driven, disordered or dissipative systems can host the phase."
+      },
+      {
+        "tech": "Low-decoherence operation at scale",
+        "status": "partial",
+        "why": "demonstrations involve roughly ten to a few hundred elements; lifetimes are short and shrink as systems grow."
+      },
+      {
+        "tech": "Dissipation engineering",
+        "status": "missing",
+        "why": "continuous versions need deliberately controlled loss, which is hard to stabilise rather than merely tolerate."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "discrete time crystals demonstrated in trapped ions, diamond spin ensembles and superconducting qubit processors in the 2017–2022 period",
+        "unlocks": "a reproducible lab bench for studying non-equilibrium phases of matter."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longer-lived and continuous versions, plus clearer theory linking them to many-body localisation and dissipation",
+        "unlocks": "confidence that the phase is robust rather than a transient artefact."
+      },
+      {
+        "stage": "Next",
+        "milestone": "use as a testbed for quantum memory and error-resilient dynamics",
+        "unlocks": "design rules for quantum phases that hold their state against perturbation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "possible frequency references or sensing schemes exploiting a stable, self-sustaining oscillation",
+        "unlocks": "speculative; no device has been built and no application is demonstrated."
+      }
+    ]
   }
 }

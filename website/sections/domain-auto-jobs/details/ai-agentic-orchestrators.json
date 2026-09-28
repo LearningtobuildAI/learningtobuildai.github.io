@@ -30,5 +30,149 @@
         "def": "Reasoning and Acting loop, an approach used in AI orchestrators where the system reasons about a task, acts by using external tools, observes outcomes, and adjusts its plans based on new information."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Goal decomposition and planning",
+        "role": "breaks a high-level goal into an ordered set of actionable steps.",
+        "parts": [
+          "LLM-based planner",
+          "task graph",
+          "priority queue"
+        ]
+      },
+      {
+        "name": "Reasoning loop",
+        "role": "iteratively reasons, acts and observes results to steer toward the goal.",
+        "parts": [
+          "prompt template (e.g. ReAct)",
+          "LLM inference",
+          "scratchpad for intermediate thoughts"
+        ]
+      },
+      {
+        "name": "Tool interface",
+        "role": "lets the agent call external APIs, databases and functions.",
+        "parts": [
+          "function-calling schema",
+          "API clients",
+          "authentication and rate limiting"
+        ]
+      },
+      {
+        "name": "Memory",
+        "role": "maintains state across steps and sessions.",
+        "parts": [
+          "short-term context buffer",
+          "long-term vector store",
+          "summarisation and retrieval"
+        ]
+      },
+      {
+        "name": "Execution engine",
+        "role": "runs the chosen tool, parses output and decides the next action.",
+        "parts": [
+          "tool dispatcher",
+          "output parser",
+          "error handling and retry logic"
+        ]
+      },
+      {
+        "name": "Guardrails and observability",
+        "role": "keeps the agent safe, auditable and within bounds.",
+        "parts": [
+          "input/output filters",
+          "logging and tracing",
+          "human approval hooks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the goal and success criteria",
+        "detail": "Pick a narrow, well-specified task with clear success metrics, such as resolving a support ticket or drafting a report from a database."
+      },
+      {
+        "title": "Inventory available tools",
+        "detail": "List the APIs, databases and actions the agent may use, and write a function-calling schema for each."
+      },
+      {
+        "title": "Choose an LLM and set up inference",
+        "detail": "Select a model with strong reasoning and tool-use ability; configure context window and temperature; set up API access."
+      },
+      {
+        "title": "Implement the reasoning loop",
+        "detail": "Build a prompt that instructs the model to alternate between thought, action and observation (the ReAct pattern), then parse its outputs."
+      },
+      {
+        "title": "Add memory",
+        "detail": "Keep a rolling context of recent steps; store facts and past interactions in a vector database for retrieval when needed."
+      },
+      {
+        "title": "Wire up the execution engine",
+        "detail": "When the model requests a tool, call it, capture the result and feed it back into the loop; handle timeouts and errors."
+      },
+      {
+        "title": "Add guardrails and monitoring",
+        "detail": "Restrict tools to safe operations, log every step, and insert human approval for high-risk actions."
+      },
+      {
+        "title": "Test and iterate",
+        "detail": "Run the agent on representative tasks, measure success rate and cost, then refine prompts, tools and memory."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reasoning and tool use",
+        "status": "exists",
+        "why": "they provide the core planning, language understanding and decision-making."
+      },
+      {
+        "tech": "Function calling / tool APIs",
+        "status": "exists",
+        "why": "they give the agent a standard way to interact with external systems."
+      },
+      {
+        "tech": "Vector databases for memory",
+        "status": "exists",
+        "why": "they enable retrieval of relevant past information beyond the context window."
+      },
+      {
+        "tech": "Agent evaluation benchmarks",
+        "status": "partial",
+        "why": "measuring reliability across long, open-ended tasks is still immature."
+      },
+      {
+        "tech": "Secure sandboxing and permissions",
+        "status": "partial",
+        "why": "agents that act on real systems need strong isolation to prevent damage."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-agent assistants that automate well-scoped tasks with human review",
+        "unlocks": "time savings in repetitive knowledge work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems that divide roles (planner, researcher, executor) and collaborate",
+        "unlocks": "handling complex workflows that span multiple tools and data sources."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that learn from feedback and improve over time using long-term memory",
+        "unlocks": "reduced supervision and higher autonomy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-orchestrating enterprise systems that run end-to-end processes",
+        "unlocks": "near-autonomous operations, with humans setting goals and handling exceptions."
+      }
+    ]
   }
 }

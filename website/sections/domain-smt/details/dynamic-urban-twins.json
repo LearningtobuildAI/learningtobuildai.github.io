@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "continuously measures what is happening in the city.",
+        "parts": [
+          "traffic loop detectors and camera-based counting",
+          "vehicle and transit GPS feeds",
+          "smart energy and water meters",
+          "air-quality and weather stations",
+          "fill-level sensors in waste bins"
+        ]
+      },
+      {
+        "name": "Data integration layer",
+        "role": "turns many incompatible feeds and static datasets into one consistent, queryable model.",
+        "parts": [
+          "streaming ingestion",
+          "semantic data model (e.g. NGSI-LD)",
+          "geospatial database",
+          "identity and access management",
+          "quality and provenance checks"
+        ]
+      },
+      {
+        "name": "City model repository",
+        "role": "stores the 3D geometry and attributes of buildings, streets, networks and terrain.",
+        "parts": [
+          "terrain and surface model",
+          "building models (BIM/IFC, CityGML levels of detail)",
+          "utility and transport network graphs",
+          "change history"
+        ]
+      },
+      {
+        "name": "Simulation and analytics engine",
+        "role": "replays and predicts how the city behaves.",
+        "parts": [
+          "traffic microsimulation",
+          "building-stock energy models",
+          "hydraulic and flood models",
+          "microclimate/CFD models",
+          "scenario and optimisation tools"
+        ]
+      },
+      {
+        "name": "Visualisation and decision interface",
+        "role": "makes the model usable by planners, operators and the public.",
+        "parts": [
+          "web 3D viewer",
+          "dashboards and alerts",
+          "VR/AR review tools",
+          "public consultation portals"
+        ]
+      },
+      {
+        "name": "Governance and actuation layer",
+        "role": "decides what the twin is allowed to see, keep and change.",
+        "parts": [
+          "privacy and anonymisation rules",
+          "data-sharing agreements",
+          "control-system interfaces (signals, district energy)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what decisions the twin must support",
+        "detail": "A twin is built backwards from questions — a congestion scheme, a heatwave plan, a new tram line — not from a wish for a pretty model."
+      },
+      {
+        "title": "Build the static 3D city",
+        "detail": "Aerial LiDAR and photogrammetry flights capture rooftops and terrain; cadastral records give parcels; BIM models give new and large buildings. These are merged into a standards-based city model at an agreed level of detail."
+      },
+      {
+        "title": "Instrument the city",
+        "detail": "Traffic counts, transit feeds, meters, air-quality stations and waste sensors are installed or, more often, existing ones are connected under data-sharing agreements."
+      },
+      {
+        "title": "Pipe the data in",
+        "detail": "Feeds are streamed into a platform, cleaned, time-stamped and linked to the right building, road segment or substation using a common semantic model."
+      },
+      {
+        "title": "Calibrate the models",
+        "detail": "Traffic, energy and water models are tuned until replaying last year reproduces last year's measurements within an acceptable error."
+      },
+      {
+        "title": "Couple the domains",
+        "detail": "Traffic affects air quality, which affects health, which affects energy demand. Interfaces let one model's output feed another, with agreed time steps."
+      },
+      {
+        "title": "Run scenarios and compare options",
+        "detail": "Planners change one variable — a bus lane, a heat pump rollout, a new district — and read the modelled consequences across domains."
+      },
+      {
+        "title": "Move from what-if to operations",
+        "detail": "The twin is connected to control rooms and real-time dashboards, with alerts when live conditions diverge from prediction."
+      },
+      {
+        "title": "Keep it alive",
+        "detail": "Cities change constantly: re-survey, detect change automatically, retrain models and retire data that is no longer valid."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, dense IoT sensing and low-power networks",
+        "status": "exists",
+        "why": "a twin is only as good as the data flowing into it; LoRaWAN, NB-IoT and 5G make widespread metering and counting affordable."
+      },
+      {
+        "tech": "Open geospatial and BIM standards",
+        "status": "exists",
+        "why": "CityGML, IFC and 3D Tiles let geometry from surveyors, architects and utilities coexist — though city data remains fragmented in practice."
+      },
+      {
+        "tech": "Cloud streaming and GPU compute",
+        "status": "exists",
+        "why": "continuous ingestion plus 3D rendering at city scale needs elastic compute that did not exist affordably a decade ago."
+      },
+      {
+        "tech": "Validated city-scale simulation models",
+        "status": "partial",
+        "why": "traffic and energy models work well individually, but coupled multi-domain models still carry large uncertainties."
+      },
+      {
+        "tech": "Privacy-preserving analytics for mobility data",
+        "status": "partial",
+        "why": "twinning movement data risks surveillance; anonymisation and aggregation are improving but not standardised."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "static and semi-live 3D city models used for planning and consultation",
+        "unlocks": "shared visual understanding between engineers, officials and residents."
+      },
+      {
+        "stage": "Next",
+        "milestone": "operational twins with live traffic, energy and environmental feeds in control rooms",
+        "unlocks": "faster incident response and evidence-based day-to-day management."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coupled scenario twins, where planners test a policy across transport, energy and climate together",
+        "unlocks": "fewer costly surprises from single-domain decisions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "federated twins linking neighbouring cities and regions under common standards",
+        "unlocks": "regional planning for grids, floods and transport that no single city can do alone."
+      }
+    ]
+  }
+}

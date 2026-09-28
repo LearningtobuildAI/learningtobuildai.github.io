@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Design space",
+        "role": "the parametric geometry the agent is allowed to search — parts, features, materials and joining methods.",
+        "parts": [
+          "parametric CAD kernel",
+          "feature and joint library",
+          "material and tolerance database"
+        ]
+      },
+      {
+        "name": "Performance simulators",
+        "role": "predict whether a candidate design actually works before anything is made.",
+        "parts": [
+          "structural and thermal solvers",
+          "surrogate or differentiable models",
+          "cost and mass estimators"
+        ]
+      },
+      {
+        "name": "Manufacturing simulator",
+        "role": "works out how the part would be made and how long it would take.",
+        "parts": [
+          "robot reach and collision checking",
+          "toolpath and cycle-time model",
+          "fixture and gripper model"
+        ]
+      },
+      {
+        "name": "Robot co-design module",
+        "role": "given the product, searches for an arm, gantry or cell layout that can build it.",
+        "parts": [
+          "kinematics and workspace generator",
+          "actuator and stiffness sizing",
+          "controller tuning loop"
+        ]
+      },
+      {
+        "name": "Search controller",
+        "role": "the agent that proposes, scores, prunes and re-proposes across both loops.",
+        "parts": [
+          "optimisation or evolutionary outer loop",
+          "budget and constraint manager",
+          "provenance log of every candidate"
+        ]
+      },
+      {
+        "name": "Physical validation rig",
+        "role": "closes the loop against reality rather than a model.",
+        "parts": [
+          "test cell with a robot and sensors",
+          "metrology and inspection",
+          "calibration data feed back to simulators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write the requirement envelope",
+        "detail": "Fix the loads the product must carry, allowable mass, materials, tolerances, the factory floor space and the budget. Everything the agent is allowed to change is declared here, and nothing else."
+      },
+      {
+        "title": "Build the design space",
+        "detail": "Encode the product as parameters in a CAD kernel, with a library of features that are known to be manufacturable, so the search cannot wander into shapes no machine could make."
+      },
+      {
+        "title": "Wire up the simulators",
+        "detail": "Attach structural, thermal and cost models to the geometry, using fast surrogate models trained on slower high-fidelity runs so thousands of candidates can be scored per hour."
+      },
+      {
+        "title": "Close the inner loop",
+        "detail": "The agent iterates on the product alone — topology optimisation to strip mass, then sizing — keeping the best candidates in a population rather than a single answer."
+      },
+      {
+        "title": "Close the outer loop",
+        "detail": "For a shortlisted product, the agent searches cell configurations: robot type, number of axes, reach, payload, tooling and fixture layout, and re-times the assembly."
+      },
+      {
+        "title": "Feed manufacturability back",
+        "detail": "The outer loop changes what the inner loop may propose — a part that needs five setups is penalised if the co-designed cell can only do three. Iterate the two loops jointly, since neither is optimal alone."
+      },
+      {
+        "title": "Resolve the trade-off",
+        "detail": "Run a bilevel search in which the outer loop optimises the cell and the inner loop re-optimises the product for that cell, repeating until the pair stops improving."
+      },
+      {
+        "title": "Validate physically",
+        "detail": "Machine or print one instance, build the cell in simulation against a digital twin of the real installation, then build it for real and measure."
+      },
+      {
+        "title": "Calibrate and freeze",
+        "detail": "Compare measured cycle times, deflections and defects with predictions, correct the simulators, and iterate once or twice before the design and cell are certified and released."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Topology optimisation and generative CAD",
+        "status": "exists",
+        "why": "decades old and now commercial; it produces single parts, not whole products plus their factory."
+      },
+      {
+        "tech": "Fast differentiable or surrogate physics simulation",
+        "status": "partial",
+        "why": "the search needs answers in seconds, not hours, and no general-purpose solver does that reliably yet."
+      },
+      {
+        "tech": "Robot morphological co-design",
+        "status": "partial",
+        "why": "optimising a robot's body and its controller together is demonstrated in research, rarely beyond it."
+      },
+      {
+        "tech": "Automated assembly and process planning",
+        "status": "partial",
+        "why": "deciding the sequence of operations and fixtures is still largely done by human manufacturing engineers."
+      },
+      {
+        "tech": "Agent planners that drive engineering tools",
+        "status": "partial",
+        "why": "language-model agents can call CAD and solver APIs, but cannot yet be trusted to run a search unattended."
+      },
+      {
+        "tech": "Verification and certification of machine-generated designs",
+        "status": "missing",
+        "why": "regulators and customers need to know why a design is safe when no engineer chose it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "generative design used for individual brackets and housings, with humans choosing and validating",
+        "unlocks": "proof that optimisation can beat hand design on mass and stiffness."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that propose a part and its tooling and fixture together, checked by an engineer",
+        "unlocks": "shorter design-to-manufacture cycles for low-volume and bespoke parts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-designed robot cells: the arm and the product optimised as one system, validated in a real cell",
+        "unlocks": "cells built around one product family, cheaply reconfigurable when the product changes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed loop where a validated search output goes straight to production with sampled human audit",
+        "unlocks": "design cycles measured in days for parts nobody has made before — the real prize."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "agents that design their own successors' hardware",
+        "unlocks": "faster iteration, but also the hardest questions about verification and control."
+      }
+    ]
+  }
+}

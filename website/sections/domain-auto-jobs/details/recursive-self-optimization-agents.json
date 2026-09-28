@@ -34,5 +34,151 @@
         "def": "The process of altering an AI’s core logic using principles similar to genetic evolution, where successful configurations are retained and less effective ones discarded."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Self-model and introspection",
+        "role": "lets the agent represent, read and reason about its own code and behaviour.",
+        "parts": [
+          "source-code representation",
+          "performance and resource metrics",
+          "goal and utility representation"
+        ]
+      },
+      {
+        "name": "Code synthesis and mutation",
+        "role": "proposes changes to the agent's own logic.",
+        "parts": [
+          "program synthesis",
+          "neural architecture search",
+          "genetic programming",
+          "large language model code generation"
+        ]
+      },
+      {
+        "name": "Verification and safety layer",
+        "role": "checks that proposed changes are correct, safe and aligned.",
+        "parts": [
+          "formal verification",
+          "unit and integration tests",
+          "simulation sandbox",
+          "constraint solvers"
+        ]
+      },
+      {
+        "name": "Execution and rollback",
+        "role": "runs modified code safely and can revert failures.",
+        "parts": [
+          "container or virtual machine sandbox",
+          "version control",
+          "kill switch"
+        ]
+      },
+      {
+        "name": "Memory and experience store",
+        "role": "records past modifications and outcomes so the agent learns from them.",
+        "parts": [
+          "experience replay buffer",
+          "modification history",
+          "meta-learning data"
+        ]
+      },
+      {
+        "name": "Objective and alignment system",
+        "role": "defines what the agent optimises and keeps it within human intent.",
+        "parts": [
+          "reward model",
+          "utility function",
+          "oversight interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix an initial architecture and objective",
+        "detail": "Start with a hand-designed agent and a clearly specified task, so improvements can be measured against a baseline."
+      },
+      {
+        "title": "Give the agent a self-model",
+        "detail": "Equip it with a machine-readable representation of its own code, parameters and runtime behaviour."
+      },
+      {
+        "title": "Build a mutation engine",
+        "detail": "Implement methods that generate candidate code changes — for example genetic programming that mutates source, or a language model that rewrites modules."
+      },
+      {
+        "title": "Add verification",
+        "detail": "Every candidate must pass formal proofs where possible, plus tests and simulations, before it can run."
+      },
+      {
+        "title": "Create a sandbox",
+        "detail": "Execute candidates in an isolated environment with resource limits and automatic rollback if anything fails."
+      },
+      {
+        "title": "Run the optimisation loop",
+        "detail": "Evaluate candidates on the task, keep improvements, discard failures, and repeat — the core recursive cycle."
+      },
+      {
+        "title": "Add meta-optimisation",
+        "detail": "Let the agent also improve the mutation and verification processes themselves, so the loop gets better at improving."
+      },
+      {
+        "title": "Insert human oversight",
+        "detail": "Keep a human in the loop for major changes, with interpretability tools and a shutdown path."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Program synthesis and neural architecture search",
+        "status": "partial",
+        "why": "automated search already tunes models and hyperparameters, but not yet whole-agent logic."
+      },
+      {
+        "tech": "Scalable formal verification",
+        "status": "partial",
+        "why": "proving properties of large neural or symbolic systems remains very hard."
+      },
+      {
+        "tech": "AI alignment and interpretability",
+        "status": "missing",
+        "why": "without reliable ways to specify and check goals, self-modification could optimise the wrong objective."
+      },
+      {
+        "tech": "Safe sandboxing and containment",
+        "status": "partial",
+        "why": "isolating powerful code is possible in principle but not proven for open-ended agents."
+      },
+      {
+        "tech": "Large-scale compute for self-modification",
+        "status": "exists",
+        "why": "training and searching over code require substantial but available computing resources."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AutoML and neural architecture search optimise fixed pipelines",
+        "unlocks": "better models and hyperparameters without changing core logic."
+      },
+      {
+        "stage": "Next",
+        "milestone": "LLM agents that rewrite parts of their own code under human review",
+        "unlocks": "faster software development and limited self-repair."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Closed-loop self-modification with formal safety checks in narrow domains",
+        "unlocks": "agents that improve their own algorithms for specific tasks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Open-ended recursive self-optimisation with robust alignment",
+        "unlocks": "potential intelligence explosion, but also existential risk."
+      }
+    ]
   }
 }

@@ -34,5 +34,158 @@
         "def": "A type of care service designed to support individuals who require help with daily activities but do not need full-time nursing care."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mobile base",
+        "role": "moves the robot through wards and corridors, partly autonomously.",
+        "parts": [
+          "wheels or two/four legs with actuators",
+          "suspension and brakes",
+          "battery pack",
+          "docking sensors"
+        ]
+      },
+      {
+        "name": "Torso and arms",
+        "role": "reach, lift and hand objects to a person.",
+        "parts": [
+          "shoulder, elbow and wrist joints",
+          "harmonic or strain-wave gearboxes",
+          "grippers or hands",
+          "joint torque sensors"
+        ]
+      },
+      {
+        "name": "Head and perception",
+        "role": "sees people and obstacles and lets a patient recognise and address it.",
+        "parts": [
+          "stereo or depth cameras",
+          "lidar",
+          "microphone array",
+          "speaker and display/touchscreen"
+        ]
+      },
+      {
+        "name": "Compute and control",
+        "role": "runs navigation, manipulation and conversation models in real time.",
+        "parts": [
+          "on-board GPU/CPU board",
+          "safety controller",
+          "wireless link to hospital network"
+        ]
+      },
+      {
+        "name": "Interaction and safety layer",
+        "role": "keeps contact with frail people gentle and predictable.",
+        "parts": [
+          "force and touch sensing",
+          "compliant or torque-limited joints",
+          "emergency stop and handrail",
+          "fall and collision detection"
+        ]
+      },
+      {
+        "name": "Power and charging",
+        "role": "supports a full shift.",
+        "parts": [
+          "lithium-ion battery",
+          "charging dock",
+          "battery management electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the clinical task",
+        "detail": "Teams narrow the goal to one bounded job — fetching supplies, guiding a patient, telepresence for a remote clinician — rather than 'caring' in general."
+      },
+      {
+        "title": "Set the safety envelope",
+        "detail": "Maximum speed, force and reach are fixed from standards for personal-care and collaborative robots (ISO 13482 and ISO/TS 15066 type requirements), which shapes the whole design."
+      },
+      {
+        "title": "Build the frame and actuators",
+        "detail": "Legs or a wheeled base, arms and torso are assembled from lightweight links, torque-controlled joints and compliant transmissions so a bump cannot injure a person."
+      },
+      {
+        "title": "Develop perception",
+        "detail": "Cameras, lidar and microphones are calibrated, then trained on data of hospital corridors, beds, wheelchairs and people, including crowds and poor lighting."
+      },
+      {
+        "title": "Train manipulation and speech",
+        "detail": "Picking up a cup or opening a door is learned largely by imitation from human teleoperation and by reinforcement learning in physics simulation, then fine-tuned on the real robot."
+      },
+      {
+        "title": "Integrate and safety-test",
+        "detail": "Software is layered with a certified safety controller, redundant stops and watchdog functions, then tested against fault scenarios: lost network, low battery, a person stepping into the arm's path."
+      },
+      {
+        "title": "Pilot under supervision",
+        "detail": "The robot works beside staff in a care facility with a human always present, and logs every failure for redesign."
+      },
+      {
+        "title": "Manufacture and service",
+        "detail": "Units are built with cleanable, wipe-down surfaces and sealed electronics, then supported with spares, software updates and staff training."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Safe collaborative robot arms",
+        "status": "exists",
+        "why": "torque-limited arms that stop on contact are the basis for any robot working near people."
+      },
+      {
+        "tech": "Mobile navigation in crowded buildings",
+        "status": "partial",
+        "why": "hospital corridors, moving beds and unpredictable people are harder than warehouses."
+      },
+      {
+        "tech": "Dexterous general-purpose hands",
+        "status": "partial",
+        "why": "most care tasks need fine, adaptive gripping that today's grippers handle poorly."
+      },
+      {
+        "tech": "Large vision-language and speech models",
+        "status": "exists",
+        "why": "they allow natural spoken interaction and understanding of spoken requests."
+      },
+      {
+        "tech": "Regulatory and liability frameworks for care robots",
+        "status": "partial",
+        "why": "it is still unclear who is responsible when an autonomous machine assists a patient."
+      },
+      {
+        "tech": "Batteries and actuators light enough for long shifts",
+        "status": "partial",
+        "why": "heavy robots are unsafe and tiring on batteries; lighter ones struggle to lift patients."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wheeled service robots handle delivery, disinfection and telepresence in hospitals; a few humanoid platforms are used in research and pilot care studies",
+        "unlocks": "evidence that staff accept robot help for logistics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "humanoid or dual-arm robots perform supervised fetch-and-carry tasks in care homes and clinics",
+        "unlocks": "real-world data on safety, uptime and human reaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robots assist with mobility support and simple manipulation under nurse oversight",
+        "unlocks": "relief of routine workload rather than replacement of care."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulated, insurable care robots working routinely alongside staff",
+        "unlocks": "help with ageing populations and staff shortages — bound by what safety certification and trust allow, not by mechanical capability alone."
+      }
+    ]
   }
 }

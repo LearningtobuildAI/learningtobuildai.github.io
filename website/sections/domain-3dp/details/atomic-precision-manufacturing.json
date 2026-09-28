@@ -29,5 +29,158 @@
         "def": "A manufacturing technique allowing for the precise placement of atoms to create materials or devices with atomic-level precision."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Probe head",
+        "role": "the 'print nozzle' — a sharp metal tip that both images and modifies a surface one atom at a time.",
+        "parts": [
+          "tungsten or platinum-iridium tip",
+          "scanning tunneling microscope (STM) or atomic force microscope (AFM) cantilever",
+          "tunnel-current or force feedback loop"
+        ]
+      },
+      {
+        "name": "Nanopositioner",
+        "role": "moves the tip by fractions of an atomic diameter, repeatably.",
+        "parts": [
+          "piezoelectric tube or stack actuators",
+          "flexure stages",
+          "vibration and acoustic isolation"
+        ]
+      },
+      {
+        "name": "Precursor delivery",
+        "role": "brings the atoms or molecules to be placed to the exact spot.",
+        "parts": [
+          "gas dosing lines for precursors such as phosphine",
+          "effusion or molecular sources for metals",
+          "localised electron or voltage pulses to trigger bonding"
+        ]
+      },
+      {
+        "name": "Substrate preparation",
+        "role": "provides a surface clean and ordered enough that every atomic site is known.",
+        "parts": [
+          "ultra-high-vacuum chamber",
+          "flash-heating and annealing stages",
+          "hydrogen-passivated silicon or metal single crystals"
+        ]
+      },
+      {
+        "name": "Environment control",
+        "role": "keeps contamination away and, in many experiments, freezes motion into place.",
+        "parts": [
+          "cryogenic stage",
+          "magnetic and acoustic shielding",
+          "vacuum pumps holding pressures far below a billionth of an atmosphere"
+        ]
+      },
+      {
+        "name": "Metrology and control",
+        "role": "decides where atoms actually are and whether the placement worked.",
+        "parts": [
+          "image acquisition electronics",
+          "automated pattern recognition",
+          "feedback software that re-images after each step"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make an atomically clean surface",
+        "detail": "A silicon or metal crystal is heated in ultra-high vacuum until its native oxide and contamination leave, exposing a regular grid of atoms whose positions are known."
+      },
+      {
+        "title": "Passivate or pattern the surface",
+        "detail": "For silicon, hydrogen atoms are bonded across the surface so it is chemically inert except where it is deliberately disturbed."
+      },
+      {
+        "title": "Position the tip",
+        "detail": "Piezoelectric actuators bring the tip within a fraction of a nanometre of the surface, and a feedback loop holds it there using the tunnel current that flows between tip and sample."
+      },
+      {
+        "title": "Image to find the sites",
+        "detail": "A raster scan maps the surface and the control software identifies the exact atoms or bonds to be changed."
+      },
+      {
+        "title": "Remove single atoms or bonds",
+        "detail": "A voltage pulse from the tip desorbs chosen hydrogen atoms, leaving reactive 'dangling bonds' — this is hydrogen depassivation lithography, the closest working analogue of atomic printing."
+      },
+      {
+        "title": "Deliver the building atoms",
+        "detail": "Precursor gas is dosed over the surface; molecules stick only at the reactive sites, and heating or an electron pulse incorporates them so they occupy precise lattice positions."
+      },
+      {
+        "title": "Verify and correct",
+        "detail": "The surface is re-imaged; misplacements are picked up and reworked before the next layer is added."
+      },
+      {
+        "title": "Stack and connect",
+        "detail": "Repeating the cycle builds up patterned layers of dopants, metals or molecules, which are then encapsulated and wired into a device."
+      },
+      {
+        "title": "Scale the writing",
+        "detail": "Because one tip is far too slow, arrays of hundreds or thousands of parallel cantilevers, each writing its own region, would be needed for any industrial output."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Atomic-resolution scanning probe microscopy",
+        "status": "exists",
+        "why": "nothing can be placed atom by atom unless the tip can also see atom by atom."
+      },
+      {
+        "tech": "Sub-atomic piezoelectric positioning in ultra-high vacuum",
+        "status": "exists",
+        "why": "delivers the nanometre-scale placement accuracy with picometre stability."
+      },
+      {
+        "tech": "Surface chemistry that self-limits to one atomic site",
+        "status": "partial",
+        "why": "hydrogen-passivated silicon works well for a few dopant atoms but not yet for arbitrary materials."
+      },
+      {
+        "tech": "Parallel probe arrays with automated control",
+        "status": "partial",
+        "why": "throughput is the gap between laboratory demonstration and manufacturing."
+      },
+      {
+        "tech": "Reliable metrology and error correction at atomic scale",
+        "status": "missing",
+        "why": "a useful product needs near-perfect patterns, and re-work at this scale is still manual and slow."
+      },
+      {
+        "tech": "Three-dimensional atomic assembly inside a solid",
+        "status": "missing",
+        "why": "today's methods mostly modify a surface or grow near-perfect crystals; true 3D printing with atoms is theory."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Today",
+        "milestone": "single atoms and molecules positioned in laboratories, as in the quantum corral and single-molecule films made with a scanning tunnelling microscope",
+        "unlocks": "proof that matter can be arranged one atom at a time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated hydrogen depassivation lithography patterning a handful of dopant atoms into a working device",
+        "unlocks": "atomically exact transistors and material for silicon quantum bits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "parallel probe arrays writing wafers at usable speed",
+        "unlocks": "atom-precise doping and lithography as a real manufacturing step alongside conventional chipmaking."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "layered, error-corrected atomic assembly reaching beyond surfaces",
+        "unlocks": "materials and machines with every atom specified — the long-sought general-purpose atomic manufacturing route."
+      }
+    ]
   }
 }

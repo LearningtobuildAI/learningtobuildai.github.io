@@ -34,5 +34,154 @@
         "def": "The process of creating functional blood vessel-like structures within a printed tissue construct to enable nutrient transport and cell survival."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Cell source",
+        "role": "supplies the organ's own cells so the immune system will accept them.",
+        "parts": [
+          "patient biopsy",
+          "induced pluripotent stem cells (iPSCs)",
+          "differentiation protocols per organ"
+        ]
+      },
+      {
+        "name": "Bioink",
+        "role": "a printable carrier that holds cells alive and later sets or dissolves.",
+        "parts": [
+          "hydrogel base (alginate, gelatin, hyaluronic acid)",
+          "extracellular-matrix proteins",
+          "living cells at high density"
+        ]
+      },
+      {
+        "name": "Printer",
+        "role": "deposits multiple materials at once with micrometre-scale accuracy.",
+        "parts": [
+          "extrusion printheads (one per material)",
+          "coaxial nozzles",
+          "light-projection or laser module",
+          "temperature-controlled stage"
+        ]
+      },
+      {
+        "name": "Vascular network",
+        "role": "the printed channels that feed every cell.",
+        "parts": [
+          "sacrificial channel ink",
+          "endothelial lining cells",
+          "inlets, outlets and capillary-scale branches"
+        ]
+      },
+      {
+        "name": "Support and scaffold",
+        "role": "holds the soft printed shape up while it matures.",
+        "parts": [
+          "sacrificial support bath or dissolvable frame",
+          "structural filaments"
+        ]
+      },
+      {
+        "name": "Maturation bioreactor",
+        "role": "perfuses the organ with oxygen and nutrients until it is strong and mature.",
+        "parts": [
+          "pump and perfusion loop",
+          "oxygenator",
+          "sensors for pH, oxygen and pressure"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Take and reprogram cells",
+        "detail": "A small tissue sample is turned into iPSCs, then coaxed into the organ's working cell types — muscle, lining, support cells — over weeks."
+      },
+      {
+        "title": "Design the architecture",
+        "detail": "Medical scans and anatomical data define where every vessel and structure must sit, down to channels a few tens of micrometres wide."
+      },
+      {
+        "title": "Mix the inks",
+        "detail": "One ink carries the organ cells in a soft gel; a second is a sacrificial ink that can be washed out later to leave empty tubes for vessels."
+      },
+      {
+        "title": "Print the organ",
+        "detail": "Printheads lay down cells, sacrificial channels, structural filaments and support material layer by layer, often inside a support bath that stops the soft gel from collapsing."
+      },
+      {
+        "title": "Clear the vessels",
+        "detail": "The organ is warmed or cooled so the sacrificial ink liquefies or dissolves, and it is flushed out to leave an open branching network."
+      },
+      {
+        "title": "Line the channels",
+        "detail": "Endothelial cells are perfused through the open network so they stick to the walls and form a blood-compatible lining."
+      },
+      {
+        "title": "Mature under perfusion",
+        "detail": "The organ sits in a bioreactor for weeks with fluid flowing through its vessels, letting cells organise into working tissue."
+      },
+      {
+        "title": "Implant and connect",
+        "detail": "Surgeons sew the largest printed vessels to the patient's own arteries and veins — the step that has never been done for a full organ."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Induced pluripotent stem cells and differentiation",
+        "status": "exists",
+        "why": "without patient-matched cells, any printed organ would be rejected; making mature organ-specific cells at scale is still hard."
+      },
+      {
+        "tech": "Extrusion and light-based bioprinters",
+        "status": "exists",
+        "why": "they set the achievable feature size — but cells need spacing tighter than most printers deliver."
+      },
+      {
+        "tech": "Sacrificial and support inks",
+        "status": "partial",
+        "why": "wash-out channel inks work in small samples; keeping a whole organ's channel tree open and unclogged is unsolved."
+      },
+      {
+        "tech": "Capillary-scale vascularisation",
+        "status": "missing",
+        "why": "oxygen only diffuses about 100–200 µm through tissue, so every cell needs a vessel within that distance — far denser than anything printed so far."
+      },
+      {
+        "tech": "Perfusion bioreactors at organ scale",
+        "status": "partial",
+        "why": "a maturing organ must be kept fed for weeks without clotting or contaminating."
+      },
+      {
+        "tech": "Large-animal and human implant studies",
+        "status": "missing",
+        "why": "no full printed organ has been transplanted and kept working long term."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "printed vascularised tissue chips and organoids used for drug testing",
+        "unlocks": "faster, cheaper safety testing and a place to learn how printed vessels behave."
+      },
+      {
+        "stage": "Next",
+        "milestone": "printed vascularised patches for heart or kidney repair entering first human trials",
+        "unlocks": "evidence that printed tissue survives surgery and connects to a patient's blood supply."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole organs of transplant size matured in bioreactors and tested in large animals",
+        "unlocks": "proof that printed vessels can carry a whole organ's blood flow."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "patient-matched printed organs implanted in humans",
+        "unlocks": "an alternative to donor waiting lists — dependent on solving capillary density, maturation and regulation."
+      }
+    ]
   }
 }

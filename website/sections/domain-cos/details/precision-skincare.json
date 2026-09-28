@@ -38,5 +38,168 @@
         "def": "Active ingredients in skincare products that are designed to address specific skin concerns or conditions, such as antioxidants, exfoliants, or moisturizers."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Skin measurement suite",
+        "role": "turns skin into numbers that a formulation can be matched to.",
+        "parts": [
+          "standardised facial imaging rig",
+          "corneometer for hydration",
+          "evaporimeter for water loss (barrier function)",
+          "sebum meter",
+          "microbiome swab",
+          "reflectance confocal microscopy or Raman spectroscopy for depth-resolved readings"
+        ]
+      },
+      {
+        "name": "Data and matching model",
+        "role": "links measured features to a formulation choice.",
+        "parts": [
+          "skin-data schema",
+          "machine-learning model",
+          "library of labelled outcomes (what changed on whom)"
+        ]
+      },
+      {
+        "name": "Active-ingredient library",
+        "role": "the set of proven actives and the rules for using them.",
+        "parts": [
+          "retinoids",
+          "niacinamide",
+          "vitamin C and other antioxidants",
+          "exfoliating acids",
+          "ceramides and humectants",
+          "sunscreen filters"
+        ]
+      },
+      {
+        "name": "Formulation and vehicle",
+        "role": "carries actives into skin without destabilising them.",
+        "parts": [
+          "emulsion base (oil phase, water phase)",
+          "emulsifiers and thickeners",
+          "preservative system",
+          "pH buffer",
+          "airless or single-dose packaging"
+        ]
+      },
+      {
+        "name": "Small-batch production",
+        "role": "makes one person's blend at a time, at consumer prices.",
+        "parts": [
+          "automated dosing pumps",
+          "mixing and homogenising",
+          "filling and sealing",
+          "serialisation and expiry labelling"
+        ]
+      },
+      {
+        "name": "Safety and stability testing",
+        "role": "proves the mix is stable, uncontaminated and unlikely to irritate.",
+        "parts": [
+          "preservative challenge test",
+          "accelerated stability testing at elevated temperature and humidity",
+          "patch test",
+          "ingredient-conflict checker"
+        ]
+      },
+      {
+        "name": "Feedback loop",
+        "role": "re-measures skin after weeks of use and adjusts the next batch.",
+        "parts": [
+          "follow-up imaging",
+          "adherence tracking",
+          "reformulation rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Measure the skin",
+        "detail": "Photograph the face under standardised lighting, then read hydration with a corneometer, water loss with an evaporimeter, sebum with a sebum meter, and take a swab or tape-strip sample for microbiome or barrier analysis."
+      },
+      {
+        "title": "Score and classify",
+        "detail": "The readings are turned into features such as oiliness, barrier damage, pigmentation, redness and sensitivity, often compared with a reference population."
+      },
+      {
+        "title": "Match actives to the profile",
+        "detail": "A model or a clinician picks a small set of actives and concentrations from the validated library, avoiding combinations that cancel each other out or that conflict with prescription treatment."
+      },
+      {
+        "title": "Design the base",
+        "detail": "A chemist builds the emulsion around those actives: correct pH (vitamin C needs an acidic environment, retinoids generally do not), compatible preservative, and a texture the person will actually use daily."
+      },
+      {
+        "title": "Test stability and preservative efficacy",
+        "detail": "Samples are held at elevated temperature and humidity for weeks to stand in for two years on a shelf, and deliberately inoculated to confirm the preservative works."
+      },
+      {
+        "title": "Blend and fill the batch",
+        "detail": "Automated pumps dose the chosen actives into a base, the mix is homogenised, filled into airless or single-dose packaging and labelled with a batch code and expiry date."
+      },
+      {
+        "title": "Check on skin and dispense",
+        "detail": "A patch test on the inner forearm screens for irritation before the first full application; the product is then released with usage instructions."
+      },
+      {
+        "title": "Re-measure and revise",
+        "detail": "After roughly two to three months the same measurements are repeated, and the formulation is adjusted — this closed loop, not the initial match, is what makes the approach 'precision'."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Instrumented skin measurement",
+        "status": "exists",
+        "why": "corneometry, evaporimetry and imaging are decades old and reproducible enough to compare a person with themselves over time."
+      },
+      {
+        "tech": "Clinically validated actives",
+        "status": "exists",
+        "why": "retinoids, niacinamide, vitamin C, exfoliating acids and sunscreen filters have real trial evidence; without them there is nothing to personalise."
+      },
+      {
+        "tech": "Labelling data linking measurements to outcomes",
+        "status": "missing",
+        "why": "the model needs thousands of cases where a measured skin profile was matched to a formulation and the result was re-measured — this data barely exists outside a few large studies."
+      },
+      {
+        "tech": "Trials of personalisation versus standard care",
+        "status": "missing",
+        "why": "almost no controlled studies show that a matched regimen beats a well-chosen off-the-shelf one, so the core claim is unproven."
+      },
+      {
+        "tech": "Flexible small-batch manufacturing",
+        "status": "exists",
+        "why": "automated blending and filling already make one-off batches economically viable, even if the clinical value is uncertain."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "questionnaire- or photo-based recommendations sold as personalised",
+        "unlocks": "consumer familiarity and large, if noisy, datasets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "instrument-grade measurement in clinics and calibrated smartphone imaging at home",
+        "unlocks": "inputs good enough to test whether matching actually helps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "randomised trials comparing matched regimens with standardised ones",
+        "unlocks": "evidence that separates real personalisation from marketing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop care integrated with dermatology, including prescription actives and monitoring",
+        "unlocks": "treatments that adapt as skin changes with season, medication or age, with adverse effects caught early."
+      }
+    ]
   }
 }

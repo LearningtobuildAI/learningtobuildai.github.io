@@ -29,5 +29,154 @@
         "def": "A process for making three-dimensional objects from a digital file by laying down successive layers of material until the object is created. Commonly known as 3D printing."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Deposition head",
+        "role": "melts and lays down material layer by layer.",
+        "parts": [
+          "heated nozzle or laser/wire head",
+          "feed mechanism",
+          "temperature sensors"
+        ]
+      },
+      {
+        "name": "Feedstock handling",
+        "role": "stores and feeds the raw material — plastic filament, metal wire or regolith simulant.",
+        "parts": [
+          "sealed spools or cartridges",
+          "feed rollers",
+          "moisture and contamination control"
+        ]
+      },
+      {
+        "name": "Motion system",
+        "role": "moves the head precisely in three axes inside the printer.",
+        "parts": [
+          "gantry or robotic arm",
+          "stepper motors",
+          "position feedback"
+        ]
+      },
+      {
+        "name": "Process chamber",
+        "role": "keeps the print clean and captures fumes and stray particles.",
+        "parts": [
+          "sealed enclosure",
+          "filter and debris trap",
+          "active cooling (no buoyancy-driven convection in microgravity)"
+        ]
+      },
+      {
+        "name": "Monitoring and control",
+        "role": "watches the print without a human present and adjusts it.",
+        "parts": [
+          "cameras",
+          "thermal and strain sensors",
+          "closed-loop software"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "finishes the part after printing.",
+        "parts": [
+          "support removal",
+          "sintering or heat treatment for metal",
+          "surface finishing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for microgravity",
+        "detail": "The part is modelled on the ground and the print path simulated, accounting for the fact that molten material will not sag or settle the way it does on Earth."
+      },
+      {
+        "title": "Prepare feedstock",
+        "detail": "Filament or wire is wound onto sealed spools, weighed and checked, then packed for launch."
+      },
+      {
+        "title": "Launch and install",
+        "detail": "The printer and its feedstock travel to orbit as a payload and are installed in a rack or, later, on a free-flying platform."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "The machine is levelled (in the sense of alignment, not gravity) and test-printed so the operator can verify extrusion and layer bonding."
+      },
+      {
+        "title": "Print the part",
+        "detail": "The head traces the design layer by layer; in microgravity, surface tension holds the melt in place and cooling relies on conduction and radiation to the chamber."
+      },
+      {
+        "title": "Monitor the build",
+        "detail": "Cameras and thermal sensors check each layer; software can pause or adjust if the print drifts."
+      },
+      {
+        "title": "Post-process",
+        "detail": "Supports are removed and, for metal parts, the green shape is sintered or heat-treated to full density."
+      },
+      {
+        "title": "Test and use",
+        "detail": "The part is measured and, where safety-critical, tested before it goes into service — often replacing a spare that would otherwise wait months for a resupply flight."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Additive manufacturing processes that work without gravity",
+        "status": "partial",
+        "why": "polymer extrusion has run on the ISS since 2014; metal printing is much newer and less proven."
+      },
+      {
+        "tech": "Reliable launch and resupply",
+        "status": "exists",
+        "why": "printers and feedstock still have to get to orbit, and early machines depend on Earth-made material."
+      },
+      {
+        "tech": "Space-qualified feedstock",
+        "status": "partial",
+        "why": "materials must not outgas, catch fire or degrade in vacuum and radiation."
+      },
+      {
+        "tech": "Automation and remote operation",
+        "status": "partial",
+        "why": "a printer in orbit must largely run itself, with the crew as occasional helpers."
+      },
+      {
+        "tech": "In-orbit power and thermal control",
+        "status": "exists",
+        "why": "printing needs steady electricity and a way to dump heat in a vacuum."
+      },
+      {
+        "tech": "In-orbit assembly and servicing",
+        "status": "partial",
+        "why": "building larger items in orbit requires joining and repair beyond a single printer."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "plastic tools and replacement parts printed aboard the ISS (first printer installed in 2014)",
+        "unlocks": "on-demand spares and fast iteration on designs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "metal printing and recycling in orbit (ESA's metal 3D printer reached the ISS in 2024)",
+        "unlocks": "stronger parts and less dependence on Earth-supplied stock."
+      },
+      {
+        "stage": "Next",
+        "milestone": "free-flying manufacturing platforms making high-value materials such as fluoride glass optical fibre, which crystallises under gravity",
+        "unlocks": "products that cannot be made well on Earth."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "orbital factories building large structures and using lunar or asteroid material",
+        "unlocks": "spacecraft and habitats assembled where they are needed."
+      }
+    ]
   }
 }

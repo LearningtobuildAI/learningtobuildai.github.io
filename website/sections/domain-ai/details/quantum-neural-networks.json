@@ -37,5 +37,163 @@
         "def": "Traditional artificial neural networks that operate on classical computers and are limited by their computational capabilities."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Qubit hardware",
+        "role": "physically stores and manipulates quantum information; the processor that runs the quantum circuit.",
+        "parts": [
+          "qubit array (superconducting circuits, trapped ions, or photonic qubits)",
+          "control electronics",
+          "cryogenics or vacuum chamber"
+        ]
+      },
+      {
+        "name": "Quantum circuit ansatz",
+        "role": "defines the trainable quantum operations, analogous to layers in a classical neural network.",
+        "parts": [
+          "parameterized rotation gates",
+          "entangling gates",
+          "measurement bases"
+        ]
+      },
+      {
+        "name": "Data encoder",
+        "role": "maps classical data into quantum states so the circuit can process it.",
+        "parts": [
+          "basis encoding",
+          "amplitude encoding",
+          "angle encoding"
+        ]
+      },
+      {
+        "name": "Hybrid training loop",
+        "role": "classical optimizer adjusts the quantum gate parameters to minimise a loss function.",
+        "parts": [
+          "loss function",
+          "gradient estimator",
+          "classical CPU or GPU"
+        ]
+      },
+      {
+        "name": "Measurement and readout",
+        "role": "extracts results from the quantum state after computation.",
+        "parts": [
+          "readout resonators",
+          "signal amplifiers",
+          "quantum state tomography"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "suppresses noise that corrupts quantum computations.",
+        "parts": [
+          "error-correcting codes (e.g. surface codes)",
+          "zero-noise extrapolation",
+          "dynamical decoupling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Identify a candidate problem",
+        "detail": "Choose a task where quantum algorithms might offer an advantage, such as simulating quantum systems or certain optimisation and sampling problems. Classical simulation estimates the resources needed."
+      },
+      {
+        "title": "Design the parameterized quantum circuit",
+        "detail": "Create an ansatz: a sequence of quantum gates with tunable parameters, often alternating rotation layers and entangling layers, inspired by classical neural network architectures."
+      },
+      {
+        "title": "Encode classical data",
+        "detail": "Map inputs into quantum states using angle, amplitude, or basis encoding. The cost of loading data can dominate the computation and is a major bottleneck."
+      },
+      {
+        "title": "Prepare and calibrate hardware",
+        "detail": "Cool superconducting qubits to millikelvin temperatures or load trapped ions, then calibrate gate fidelities and readout errors."
+      },
+      {
+        "title": "Execute the quantum circuit",
+        "detail": "Run the circuit on a quantum processor or simulator, repeating the experiment many times to gather statistics from measurements."
+      },
+      {
+        "title": "Measure and compute the loss",
+        "detail": "Read out qubit states, then compute a cost function on a classical computer that compares the output to the desired result."
+      },
+      {
+        "title": "Update parameters",
+        "detail": "Use a classical optimiser, such as gradient descent or simultaneous perturbation stochastic approximation (SPSA), to adjust the gate angles, then repeat the execution loop."
+      },
+      {
+        "title": "Apply error mitigation",
+        "detail": "Use techniques like zero-noise extrapolation or dynamical decoupling to reduce the impact of noise on the results."
+      },
+      {
+        "title": "Validate and scale",
+        "detail": "Compare performance against classical machine learning baselines. Scale up circuit depth and qubit count as hardware improves, aiming for fault-tolerant operation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "reliable, large-scale quantum neural networks require error-corrected logical qubits that do not yet exist."
+      },
+      {
+        "tech": "High-fidelity qubits and gates",
+        "status": "partial",
+        "why": "current physical qubits have error rates that limit circuit depth and accuracy."
+      },
+      {
+        "tech": "Efficient quantum data encoding",
+        "status": "missing",
+        "why": "loading classical data into quantum states without exponential overhead remains an unsolved problem."
+      },
+      {
+        "tech": "Hybrid quantum-classical software stack",
+        "status": "partial",
+        "why": "frameworks exist for programming and running variational algorithms, but they are early-stage and hardware-specific."
+      },
+      {
+        "tech": "Scalable error mitigation",
+        "status": "partial",
+        "why": "some mitigation methods work on small circuits but do not scale to the deep circuits needed for practical machine learning."
+      },
+      {
+        "tech": "Demonstrated quantum advantage for machine learning",
+        "status": "missing",
+        "why": "no practical speedup over classical machine learning has been shown for real-world tasks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NISQ-era experiments on small datasets, such as classifying tiny images or simple patterns",
+        "unlocks": "understanding of noise, expressivity, and training challenges in parameterized quantum circuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved error mitigation and small-scale demonstrations of quantum advantage on narrow tasks",
+        "unlocks": "confidence in hybrid quantum-classical approaches for specific problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant devices with tens to hundreds of logical qubits",
+        "unlocks": "deeper circuits and larger data encodings, enabling more realistic quantum neural network experiments."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant quantum machine learning at scale",
+        "unlocks": "potential speedups for chemistry, materials science, and optimisation, though general machine learning advantages remain uncertain."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration with classical AI infrastructure",
+        "unlocks": "hybrid systems where quantum processors accelerate specific subroutines within larger classical AI pipelines."
+      }
+    ]
   }
 }

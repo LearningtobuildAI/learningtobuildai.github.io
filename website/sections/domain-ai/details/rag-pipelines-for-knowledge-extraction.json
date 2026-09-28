@@ -29,5 +29,150 @@
         "def": "A structured collection of data used to provide context and factual support for AI-generated content."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ingestion and chunking",
+        "role": "turns raw documents into clean, searchable passages.",
+        "parts": [
+          "document loaders for PDFs, HTML, databases",
+          "text cleaners",
+          "chunkers that split by length or structure"
+        ]
+      },
+      {
+        "name": "Embedding model",
+        "role": "converts each passage into a vector that captures its meaning.",
+        "parts": [
+          "tokenizer",
+          "transformer-based encoder",
+          "pooling layer"
+        ]
+      },
+      {
+        "name": "Vector index",
+        "role": "stores vectors and finds the closest matches to a query quickly.",
+        "parts": [
+          "vector database",
+          "approximate nearest-neighbour index",
+          "metadata store"
+        ]
+      },
+      {
+        "name": "Retriever and reranker",
+        "role": "selects the most relevant passages for a given question.",
+        "parts": [
+          "query encoder",
+          "similarity search",
+          "cross-encoder reranker",
+          "query expansion"
+        ]
+      },
+      {
+        "name": "Generator",
+        "role": "writes an answer using the retrieved passages as context.",
+        "parts": [
+          "large language model",
+          "prompt template",
+          "context window manager"
+        ]
+      },
+      {
+        "name": "Orchestration and evaluation",
+        "role": "runs the pipeline and measures whether answers are correct and grounded.",
+        "parts": [
+          "pipeline framework",
+          "evaluation metrics",
+          "logging and monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect source documents",
+        "detail": "Gather the knowledge base: PDFs, web pages, databases, tickets. Clean formatting and remove boilerplate."
+      },
+      {
+        "title": "Split into chunks",
+        "detail": "Break documents into passages of a few hundred tokens, with overlap so meaning is not cut off at the edges."
+      },
+      {
+        "title": "Generate embeddings",
+        "detail": "Run every chunk through an embedding model to produce a vector, typically hundreds of dimensions."
+      },
+      {
+        "title": "Build the vector index",
+        "detail": "Load vectors into a vector database and build an approximate nearest-neighbour index for fast search."
+      },
+      {
+        "title": "Implement retrieval",
+        "detail": "Encode the user query with the same embedding model, search the index, and return the top passages. Add metadata filters or a reranker to improve precision."
+      },
+      {
+        "title": "Connect the generator",
+        "detail": "Design a prompt that inserts the retrieved passages and the question into a large language model, and instruct it to answer only from that context."
+      },
+      {
+        "title": "Evaluate and tune",
+        "detail": "Measure retrieval hit rate and answer faithfulness on a test set. Adjust chunk size, embedding model, number of passages retrieved, and prompt wording."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Serve the pipeline as an API or application. Monitor latency, cost and answer quality; re-index when source documents change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they generate fluent answers from the retrieved context."
+      },
+      {
+        "tech": "Embedding models",
+        "status": "exists",
+        "why": "they map text to vectors so semantically similar passages can be found."
+      },
+      {
+        "tech": "Vector databases with approximate nearest-neighbour search",
+        "status": "exists",
+        "why": "they make similarity search over millions of chunks fast enough for interactive use."
+      },
+      {
+        "tech": "Robust document parsing",
+        "status": "partial",
+        "why": "many documents are scanned, poorly formatted or in complex layouts, which still trips up automated extraction."
+      },
+      {
+        "tech": "Evaluation frameworks for grounded generation",
+        "status": "partial",
+        "why": "measuring whether an answer is faithful to sources is improving but not yet a solved standard."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "basic RAG with a single vector store and simple top-k retrieval",
+        "unlocks": "chat assistants that can answer questions over a company's private documents."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid retrieval combining keyword and vector search, plus reranking and query expansion",
+        "unlocks": "higher accuracy and fewer missed passages in technical or legal domains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-step or agentic retrieval that breaks a question into sub-queries and iterates",
+        "unlocks": "answering complex questions that need facts from several documents."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-improving pipelines that learn from user feedback and combine vector stores with knowledge graphs",
+        "unlocks": "knowledge systems that stay current and explain their reasoning."
+      }
+    ]
   }
 }

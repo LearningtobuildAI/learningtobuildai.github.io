@@ -37,5 +37,137 @@
         "def": "Materials within a programmable metamaterial that can alter their physical state (e.g., from solid to liquid) under specific conditions, affecting the material's properties."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Unit-cell lattice",
+        "role": "the repeating sub-wavelength geometry that gives the bulk material its unusual properties.",
+        "parts": [
+          "resonators or beams",
+          "matrix or substrate",
+          "flexible hinges or joints"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "reconfigures each unit cell on demand, changing the bulk response.",
+        "parts": [
+          "piezoelectric patches",
+          "MEMS electrostatic actuators",
+          "shape-memory alloy elements",
+          "thermal or magnetic drivers"
+        ]
+      },
+      {
+        "name": "Control and drive electronics",
+        "role": "applies the signals that set each cell to the desired state.",
+        "parts": [
+          "microcontroller or FPGA",
+          "amplifier and driver circuits",
+          "flexible interconnects"
+        ]
+      },
+      {
+        "name": "Sensing and feedback",
+        "role": "detects the environment or the material's own response to close the control loop.",
+        "parts": [
+          "strain sensors",
+          "accelerometers",
+          "electromagnetic field probes"
+        ]
+      },
+      {
+        "name": "Fabrication platform",
+        "role": "the process used to build the structure at the required scale.",
+        "parts": [
+          "photolithography masks",
+          "3D printers or lamination presses",
+          "bonding and packaging equipment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the unit cell",
+        "detail": "Choose a geometry and materials that produce the target property, such as a negative Poisson's ratio, an acoustic band gap or a negative refractive index."
+      },
+      {
+        "title": "Simulate and optimise",
+        "detail": "Finite-element and electromagnetic solvers iterate on cell shape, actuator placement and the range over which the property can be tuned."
+      },
+      {
+        "title": "Fabricate the passive structure",
+        "detail": "Make the lattice or resonator array: lithography and etching for micrometre-scale cells, or 3D printing and laser cutting for larger ones."
+      },
+      {
+        "title": "Integrate actuators",
+        "detail": "Attach or embed piezoelectric, MEMS or shape-memory elements at hinges or nodes so each cell can change shape or state."
+      },
+      {
+        "title": "Wire and assemble",
+        "detail": "Connect every actuator to the control electronics and package the array so it survives handling and its working environment."
+      },
+      {
+        "title": "Calibrate and test",
+        "detail": "Measure the bulk response as a function of the actuation signal, then build a lookup table or model for the controller."
+      },
+      {
+        "title": "Program and demonstrate",
+        "detail": "Run control algorithms that switch the material between states — changing stiffness, shifting a frequency band or steering an antenna beam."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Micro- and nanofabrication",
+        "status": "exists",
+        "why": "sub-wavelength unit cells for electromagnetic and acoustic metamaterials often need micrometre-scale features."
+      },
+      {
+        "tech": "Miniature actuators",
+        "status": "partial",
+        "why": "piezoelectric and MEMS devices exist, but integrating thousands of them with low power and high reliability is not yet mature."
+      },
+      {
+        "tech": "Computational design and simulation",
+        "status": "exists",
+        "why": "the behaviour of complex unit cells is too intricate to predict without numerical solvers."
+      },
+      {
+        "tech": "Tunable materials",
+        "status": "partial",
+        "why": "phase-change, liquid-crystal and shape-memory materials offer non-mechanical tuning but can be slow or prone to fatigue."
+      },
+      {
+        "tech": "Distributed control algorithms",
+        "status": "partial",
+        "why": "coordinating many cells in real time to produce a smooth bulk response remains a research challenge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations of reconfigurable acoustic and electromagnetic metamaterials",
+        "unlocks": "proof that a material's properties can be tuned on demand."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated arrays with embedded control for specific functions such as adaptive antennas or tunable vibration isolators",
+        "unlocks": "practical devices for communications, sensing and noise control."
+      },
+      {
+        "stage": "Next",
+        "milestone": "scalable manufacturing of large-area programmable sheets",
+        "unlocks": "building-scale acoustic insulation or adaptive thermal management."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-adaptive materials that sense and respond autonomously",
+        "unlocks": "smart structures that change their properties without human input."
+      }
+    ]
   }
 }

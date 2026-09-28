@@ -34,5 +34,167 @@
         "def": "Precision manufacturing techniques used to create structures at the nanoscale level (typically 1-100 nm) for meta-materials."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Meta-atom resonators",
+        "role": "subwavelength structures that each imprint a chosen phase, amplitude or polarization on the light passing through.",
+        "parts": [
+          "high-index nanopillars or fins",
+          "plasmonic nanoantennas",
+          "gap-surface and slot resonators"
+        ]
+      },
+      {
+        "name": "Substrate and cladding",
+        "role": "mechanical support and the refractive-index contrast that makes the resonators work.",
+        "parts": [
+          "fused silica or glass wafer",
+          "silicon or polymer film",
+          "protective oxide or polymer cladding"
+        ]
+      },
+      {
+        "name": "Design and inverse-design stack",
+        "role": "computes which geometry produces the required wavefront.",
+        "parts": [
+          "full-wave electromagnetic solvers",
+          "optimisation and machine-learning routines",
+          "library of unit-cell geometries versus phase"
+        ]
+      },
+      {
+        "name": "Nanopatterning",
+        "role": "defines features tens of nanometres wide over the whole optic.",
+        "parts": [
+          "electron-beam lithography for prototypes",
+          "deep-UV or immersion lithography",
+          "nanoimprint stamps"
+        ]
+      },
+      {
+        "name": "Deposition and etching",
+        "role": "builds the high-index film and carves it into resonators.",
+        "parts": [
+          "atomic layer deposition",
+          "plasma-enhanced chemical vapour deposition",
+          "reactive-ion etching"
+        ]
+      },
+      {
+        "name": "Tuning layer",
+        "role": "lets the optic change its response after manufacture.",
+        "parts": [
+          "liquid-crystal layer",
+          "phase-change material",
+          "transparent heater or MEMS actuator"
+        ]
+      },
+      {
+        "name": "Metrology",
+        "role": "verifies that the fabricated structure behaves as designed.",
+        "parts": [
+          "spectrophotometer",
+          "ellipsometer",
+          "scanning electron microscope"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the optical function",
+        "detail": "Choose the wavefront to be produced — focusing, beam steering, polarisation splitting — and the wavelength band, since metamaterials are usually narrowband."
+      },
+      {
+        "title": "Inverse-design the unit cells",
+        "detail": "Run full-wave simulations to find the nanopillar or antenna geometry that gives the required phase at each point, building a lookup table of geometry versus phase."
+      },
+      {
+        "title": "Choose materials",
+        "detail": "Silicon works well in the near-infrared; titanium dioxide and silicon nitride are used in the visible because they are transparent and low-loss, unlike metals."
+      },
+      {
+        "title": "Deposit the high-index film",
+        "detail": "Atomic layer deposition or plasma deposition grows a film of exactly the thickness the resonators need, with roughness below a few nanometres."
+      },
+      {
+        "title": "Pattern the array",
+        "detail": "Electron-beam lithography writes the nanopillar pattern for prototypes; deep-UV lithography or nanoimprint is used for larger areas and volume production."
+      },
+      {
+        "title": "Etch and clean",
+        "detail": "Reactive-ion etching cuts the film into pillars with near-vertical sidewalls, and residue is removed, since any roughness scatters light and costs efficiency."
+      },
+      {
+        "title": "Add cladding or a tuning layer",
+        "detail": "The array is encapsulated for durability, or a liquid-crystal or phase-change layer is added if the optic must be switchable."
+      },
+      {
+        "title": "Measure and iterate",
+        "detail": "Efficiency, chromatic behaviour and off-angle performance are measured; small geometry errors usually force a redesign pass."
+      },
+      {
+        "title": "Package and align",
+        "detail": "The optic is diced, mounted over a sensor, laser or waveguide, and aligned to sub-micrometre tolerance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sub-100 nm semiconductor lithography",
+        "status": "exists",
+        "why": "optical meta-atoms are smaller than the wavelength of light, so the chip industry's patterning tools are needed to make them."
+      },
+      {
+        "tech": "Low-loss high-index optical materials",
+        "status": "exists",
+        "why": "metals absorb light badly at visible wavelengths, so dielectric resonators replaced plasmonic ones for most applications."
+      },
+      {
+        "tech": "Full-wave electromagnetic simulation",
+        "status": "exists",
+        "why": "the behaviour cannot be calculated by hand; design is entirely computational."
+      },
+      {
+        "tech": "Actively tunable optical materials",
+        "status": "partial",
+        "why": "liquid crystals and phase-change films switch slowly or over narrow bands, limiting reconfigurable optics."
+      },
+      {
+        "tech": "Large-area, low-cost nanopatterning",
+        "status": "partial",
+        "why": "solar-cell and display applications need square metres patterned cheaply, which today's tools do not do well."
+      },
+      {
+        "tech": "Broadband visible-light cloaking",
+        "status": "missing",
+        "why": "demonstrations work only for microwaves or for tiny objects over narrow colours; a true optical cloak is not available."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metasurface flat lenses and waveguides in early commercial optical products such as compact depth sensors",
+        "unlocks": "far thinner camera and augmented-reality optics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tunable metasurfaces for solid-state LiDAR beam steering and switchable displays",
+        "unlocks": "no moving parts in 3D sensing and richer head-mounted displays."
+      },
+      {
+        "stage": "Next",
+        "milestone": "metasurface light-trapping and spectral-splitting layers on solar cells",
+        "unlocks": "higher conversion efficiency from thinner, cheaper photovoltaic material."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-area, reconfigurable and broadband optical metamaterials",
+        "unlocks": "wavefront control across the whole visible spectrum, and cloaking that works outside the laboratory — still unproven."
+      }
+    ]
   }
 }

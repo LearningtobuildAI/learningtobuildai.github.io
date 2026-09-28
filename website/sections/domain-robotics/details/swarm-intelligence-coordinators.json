@@ -30,5 +30,145 @@
         "def": "Complex behaviors that arise from simple local interactions between entities without centralized control. Commonly observed in natural swarms and now applied to artificial systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Robot platform",
+        "role": "the individual unit: small, low-cost, mobile and wirelessly connected.",
+        "parts": [
+          "drive or flight system",
+          "proximity and ranging sensors",
+          "onboard microcontroller",
+          "battery"
+        ]
+      },
+      {
+        "name": "Local communication network",
+        "role": "lets each robot exchange information with nearby robots.",
+        "parts": [
+          "wireless mesh radios",
+          "gossip or flooding protocols",
+          "time synchronisation"
+        ]
+      },
+      {
+        "name": "Coordination algorithms",
+        "role": "the swarm's collective brain: simple local rules that produce global behaviour.",
+        "parts": [
+          "flocking and formation control",
+          "task allocation (market-based or threshold-based)",
+          "consensus algorithms"
+        ]
+      },
+      {
+        "name": "Stigmergic memory",
+        "role": "virtual pheromones or a shared map that persists and guides the swarm.",
+        "parts": [
+          "digital pheromone grid",
+          "shared occupancy map",
+          "decay and diffusion models"
+        ]
+      },
+      {
+        "name": "Human–swarm interface",
+        "role": "allows an operator to set goals, monitor the swarm and intervene.",
+        "parts": [
+          "command and control software",
+          "visualisation of swarm state",
+          "override controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and environment",
+        "detail": "Decide what the swarm must do — for example search a collapsed building or move packages in a warehouse — and how structured or cluttered the space is."
+      },
+      {
+        "title": "Design the individual robot",
+        "detail": "Make it small, cheap and sturdy, with the minimum sensors (proximity, ranging, camera) and wireless radio needed for the task."
+      },
+      {
+        "title": "Write local interaction rules",
+        "detail": "Program simple behaviours such as separation, alignment and cohesion that, when followed by every robot, produce flocking or coverage patterns."
+      },
+      {
+        "title": "Implement stigmergy",
+        "detail": "Give robots a way to deposit and sense virtual pheromones in a shared digital map, so that trails and hotspots emerge without central control."
+      },
+      {
+        "title": "Build the communication layer",
+        "detail": "Use a robust mesh network where messages hop from robot to robot, with protocols that tolerate dropped links and changing neighbours."
+      },
+      {
+        "title": "Develop decentralised task allocation",
+        "detail": "Add algorithms that let robots claim and hand off tasks by local negotiation, so no single robot or ground station is a bottleneck."
+      },
+      {
+        "title": "Simulate at scale",
+        "detail": "Test with thousands of simulated robots to tune parameters and find failure modes before touching hardware."
+      },
+      {
+        "title": "Run field trials",
+        "detail": "Deploy tens to hundreds of real robots in controlled settings such as warehouses, farms or mock disaster sites."
+      },
+      {
+        "title": "Scale and harden",
+        "detail": "Improve energy endurance, localisation without GPS, and fault tolerance until thousands of robots can work reliably in unpredictable places."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost embedded computing and sensors",
+        "status": "exists",
+        "why": "small robots need cheap, power-efficient chips and sensors to be fielded in large numbers."
+      },
+      {
+        "tech": "Reliable wireless mesh networking",
+        "status": "partial",
+        "why": "works for tens of nodes, but scaling to thousands with low latency and high reliability is still hard."
+      },
+      {
+        "tech": "Swarm control algorithms",
+        "status": "partial",
+        "why": "extensively simulated, but field validation in messy, real-world conditions is limited."
+      },
+      {
+        "tech": "Energy storage for small robots",
+        "status": "exists",
+        "why": "lithium batteries power small robots, but endurance is often only tens of minutes."
+      },
+      {
+        "tech": "Localisation without GPS",
+        "status": "partial",
+        "why": "indoor and underground swarms need relative positioning or shared maps, which remain error-prone."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small swarms of tens of robots in controlled environments such as drone light shows and warehouse fleets",
+        "unlocks": "proof that simple local rules can coordinate many units safely."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hundreds of robots working in structured settings like warehouses, farms and inspection sites",
+        "unlocks": "commercial productivity gains and richer operational data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "thousands of robots in unstructured environments such as disaster search and rescue",
+        "unlocks": "rapid coverage of large, dangerous areas without risking people."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-organising swarms for logistics, construction and environmental monitoring",
+        "unlocks": "flexible, scalable automation that adapts to change without central control."
+      }
+    ]
   }
 }

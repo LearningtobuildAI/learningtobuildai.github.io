@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Post-quantum signature scheme",
+        "role": "authenticates transactions so they cannot be forged by a quantum computer.",
+        "parts": [
+          "lattice-based signatures (e.g. ML-DSA)",
+          "hash-based signatures (e.g. SLH-DSA, XMSS)",
+          "key generation, signing and verification routines"
+        ]
+      },
+      {
+        "name": "Ledger protocol",
+        "role": "defines how transactions and blocks are structured and validated.",
+        "parts": [
+          "transaction serialization",
+          "block validation rules",
+          "consensus mechanism"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "generates, stores and uses the much larger private keys safely.",
+        "parts": [
+          "wallet software",
+          "hardware security modules",
+          "key derivation and backup"
+        ]
+      },
+      {
+        "name": "Network layer",
+        "role": "propagates transactions and blocks between nodes.",
+        "parts": [
+          "peer-to-peer protocol",
+          "mempool",
+          "block and transaction relay"
+        ]
+      },
+      {
+        "name": "Migration and interoperability",
+        "role": "lets a ledger move from classical to post-quantum cryptography without splitting the network.",
+        "parts": [
+          "hybrid signature verification",
+          "dual-format addresses",
+          "cross-chain bridges"
+        ]
+      },
+      {
+        "name": "Cryptographic agility",
+        "role": "allows algorithms to be swapped if weaknesses are later found.",
+        "parts": [
+          "algorithm identifiers",
+          "versioning",
+          "upgrade and activation mechanisms"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select algorithms",
+        "detail": "Choose standardised post-quantum signature schemes (for example ML-DSA or SLH-DSA) based on security level, key and signature size, and verification speed."
+      },
+      {
+        "title": "Design the transaction format",
+        "detail": "Extend the transaction structure to carry public keys and signatures that are kilobytes in size, versus tens of bytes for elliptic-curve signatures."
+      },
+      {
+        "title": "Implement verification",
+        "detail": "Rewrite node software to verify the new signatures, optimising code so validation does not slow block processing too much."
+      },
+      {
+        "title": "Integrate with consensus",
+        "detail": "Modify block validation rules to accept the new signature types, while keeping the chain consistent for nodes that have not yet upgraded."
+      },
+      {
+        "title": "Rework addresses",
+        "detail": "Derive addresses from the new public keys, typically by hashing, so users keep short, collision-resistant identifiers."
+      },
+      {
+        "title": "Update wallets",
+        "detail": "Add key generation, secure storage and signing for the larger keys into desktop, mobile and hardware wallets."
+      },
+      {
+        "title": "Plan the migration",
+        "detail": "Run a hybrid mode where transactions must carry both a classical and a post-quantum signature, then schedule a cut-over height."
+      },
+      {
+        "title": "Test and audit",
+        "detail": "Operate testnets, commission independent security audits, and benchmark throughput under realistic load."
+      },
+      {
+        "title": "Activate on the network",
+        "detail": "Coordinate a software upgrade across miners, validators, exchanges and node operators, then monitor for forks or failures."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "NIST finalised its first post-quantum standards in 2024, giving ledgers proven algorithms to build on."
+      },
+      {
+        "tech": "Efficient hardware for post-quantum cryptography",
+        "status": "partial",
+        "why": "post-quantum operations are slower and produce larger data, so hardware acceleration and bigger blocks may be needed."
+      },
+      {
+        "tech": "Secure storage for larger keys",
+        "status": "partial",
+        "why": "hardware wallets and secure enclaves have limited space and must be updated to hold multi-kilobyte keys."
+      },
+      {
+        "tech": "Cryptographic agility in existing ledgers",
+        "status": "partial",
+        "why": "most ledgers hard-code their signature scheme, so adding a new one requires a carefully managed protocol change."
+      },
+      {
+        "tech": "Consensus that tolerates larger transactions",
+        "status": "partial",
+        "why": "bigger signatures reduce the number of transactions per block, which may require layer-2 solutions or parameter changes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NIST post-quantum standards published; niche ledgers such as the Quantum Resistant Ledger already use hash-based signatures like XMSS",
+        "unlocks": "real, audited building blocks for quantum-resistant systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "major ledgers deploy hybrid classical-plus-post-quantum signatures on testnets and then mainnet",
+        "unlocks": "protection against quantum attack without forcing every user to switch at once."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full post-quantum migration for wallets, exchanges and smart contracts",
+        "unlocks": "a ledger where no part of the transaction flow relies on breakable cryptography."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum-resistant consensus and cross-chain communication, possibly with quantum key distribution for high-value links",
+        "unlocks": "end-to-end security even if large-scale quantum computers arrive."
+      }
+    ]
+  }
+}

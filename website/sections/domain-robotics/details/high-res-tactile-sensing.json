@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Skin and contact surface",
+        "role": "the deformable outer layer that touches objects and converts contact into a measurable change.",
+        "parts": [
+          "silicone elastomer",
+          "embedded markers or reflective layer",
+          "protective coating"
+        ]
+      },
+      {
+        "name": "Transduction layer",
+        "role": "turns mechanical deformation into an electronic signal.",
+        "parts": [
+          "camera and lens (optical)",
+          "LED illumination",
+          "capacitive electrode array (alternative)"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "captures and digitises the raw sensor signal.",
+        "parts": [
+          "image sensor board",
+          "flexible printed circuit",
+          "microcontroller"
+        ]
+      },
+      {
+        "name": "Signal processing and models",
+        "role": "reconstructs contact geometry, normal and shear forces, and texture.",
+        "parts": [
+          "computer vision algorithms",
+          "machine learning models",
+          "calibration data"
+        ]
+      },
+      {
+        "name": "Mechanical integration",
+        "role": "mounts the sensor on a robot finger or hand and protects it.",
+        "parts": [
+          "housing",
+          "compliant mounting",
+          "cable routing"
+        ]
+      },
+      {
+        "name": "Calibration and control interface",
+        "role": "maps sensor output to physical units and feeds it to the robot controller.",
+        "parts": [
+          "calibration rig",
+          "real-time control loop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the elastomer skin",
+        "detail": "Choose a silicone with the right stiffness and durability; cast it in a mould and cure. For optical sensors, add a pattern of markers or a reflective membrane on the inner face."
+      },
+      {
+        "title": "Fabricate the sensing surface",
+        "detail": "For capacitive arrays, deposit and pattern electrodes on a flexible substrate. For optical sensors, polish the gel to an even thickness and bond it to a transparent window."
+      },
+      {
+        "title": "Assemble the optical or electronic stack",
+        "detail": "Place a small camera and LEDs beneath the gel, or connect the electrode array to readout chips. Align precisely so the field of view covers the whole contact area."
+      },
+      {
+        "title": "Integrate readout electronics",
+        "detail": "Connect the sensor to a microcontroller and data interface on a flexible circuit board that fits inside a fingertip."
+      },
+      {
+        "title": "Calibrate with known forces",
+        "detail": "Press the sensor with controlled weights and indenters, record the response, and fit a model that converts raw signals into force and position."
+      },
+      {
+        "title": "Train perception models",
+        "detail": "Use the calibrated data to train machine learning models that estimate shear, slip and texture from the sensor output."
+      },
+      {
+        "title": "Package and mount",
+        "detail": "Seal the sensor in a robust housing, attach it to a robot finger, and route cables without restricting motion."
+      },
+      {
+        "title": "Validate in manipulation tasks",
+        "detail": "Test the sensor by having a robot grasp, rotate and identify objects; measure resolution, repeatability and durability."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature high-resolution cameras",
+        "status": "exists",
+        "why": "optical tactile sensors image a deformable surface at close range, so they need small, sharp cameras."
+      },
+      {
+        "tech": "Flexible electronics",
+        "status": "partial",
+        "why": "dense sensor arrays must be wired and read out without stiff, bulky cables that limit finger motion."
+      },
+      {
+        "tech": "Machine learning for tactile data",
+        "status": "partial",
+        "why": "raw tactile images are high-dimensional; models are needed to extract force, slip and texture in real time."
+      },
+      {
+        "tech": "Durable elastomers",
+        "status": "exists",
+        "why": "the skin must survive thousands of contacts without tearing or losing sensitivity."
+      },
+      {
+        "tech": "High-bandwidth, low-latency data links",
+        "status": "exists",
+        "why": "a camera-based sensor produces video-rate data that must reach the controller fast enough for feedback."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab and early commercial optical tactile sensors (such as GelSight) used in research grippers",
+        "unlocks": "proven ability to measure fine contact geometry and texture."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sensors integrated into commercial robot hands for grasping and assembly",
+        "unlocks": "reliable pick-and-place of delicate or unknown objects."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full-hand or arm-covering tactile skin with onboard processing",
+        "unlocks": "safe physical interaction and richer manipulation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "human-level resolution and durability in a thin, cheap skin",
+        "unlocks": "general-purpose dexterous robots in homes, farms and factories."
+      }
+    ]
+  }
+}

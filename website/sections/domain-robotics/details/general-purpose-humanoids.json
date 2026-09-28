@@ -30,5 +30,166 @@
         "def": "Robots with two legs designed to walk, run, or perform tasks in a manner similar to humans."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Actuated joints",
+        "role": "move each limb with enough torque and speed to handle real loads.",
+        "parts": [
+          "brushless electric motors",
+          "harmonic or planetary gearboxes",
+          "joint torque sensors",
+          "motor drivers"
+        ]
+      },
+      {
+        "name": "Structure",
+        "role": "a light, stiff body that keeps the mass low enough to walk and carry.",
+        "parts": [
+          "machined aluminium or carbon-fibre links",
+          "torso frame",
+          "battery enclosure"
+        ]
+      },
+      {
+        "name": "Hands and end effectors",
+        "role": "grasp and manipulate objects of unknown shape.",
+        "parts": [
+          "multi-finger hands",
+          "underactuated grippers",
+          "tactile and force sensing"
+        ]
+      },
+      {
+        "name": "Perception",
+        "role": "build a picture of the surroundings and the robot's own body.",
+        "parts": [
+          "head and wrist cameras",
+          "depth sensors",
+          "inertial measurement units",
+          "joint encoders"
+        ]
+      },
+      {
+        "name": "Onboard compute",
+        "role": "run the control neural network in real time.",
+        "parts": [
+          "GPU or AI accelerator module",
+          "real-time control board",
+          "network links"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "carry enough energy for a useful working period.",
+        "parts": [
+          "lithium-ion battery pack",
+          "battery management system",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Control policy",
+        "role": "the learned software that turns goals and sensor data into joint commands.",
+        "parts": [
+          "whole-body controller",
+          "reinforcement-learning policy trained in simulation",
+          "teleoperation and imitation data pipeline",
+          "safety monitor"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the requirements",
+        "detail": "Decide what the robot must lift, reach and how long it must run; this fixes limb lengths, joint torques and battery size."
+      },
+      {
+        "title": "Build the actuators",
+        "detail": "Brushless motors are wound, geared down with harmonic or planetary reducers, fitted with torque sensors and driver electronics, then bench-tested for torque and heat."
+      },
+      {
+        "title": "Fabricate the frame",
+        "detail": "Limb links and the torso are machined or moulded from aluminium and carbon fibre, keeping mass down and stiffness up."
+      },
+      {
+        "title": "Wire and power it",
+        "detail": "Battery pack, harnesses, cooling and emergency-stop circuits are routed through the joints without snagging."
+      },
+      {
+        "title": "Assemble and calibrate",
+        "detail": "Joints are fitted, encoders zeroed, and each actuator characterised so the controller knows its real behaviour."
+      },
+      {
+        "title": "Train the control policy",
+        "detail": "Millions of simulated trials with randomised physics teach walking and manipulation; human teleoperation footage fine-tunes the harder hand skills."
+      },
+      {
+        "title": "Test safely",
+        "detail": "The robot is run behind barriers and with a tether or gantry before working near people."
+      },
+      {
+        "title": "Pilot in a real workplace",
+        "detail": "It performs one repetitive task, such as moving containers, under human supervision, while failures are logged and fixed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-torque-density electric actuators",
+        "status": "exists",
+        "why": "electric joints must be strong enough to lift loads yet light enough to be carried by the robot itself."
+      },
+      {
+        "tech": "Sim-to-real reinforcement learning",
+        "status": "exists",
+        "why": "training in simulation is the only practical way to learn balance and whole-body control."
+      },
+      {
+        "tech": "Battery energy density",
+        "status": "partial",
+        "why": "runtime is measured in hours rather than full shifts, so most deployments need charging breaks."
+      },
+      {
+        "tech": "Dexterous hands with touch sensing",
+        "status": "partial",
+        "why": "grasping unfamiliar objects without crushing or dropping them remains unreliable."
+      },
+      {
+        "tech": "Shared-workspace safety standards and practice",
+        "status": "partial",
+        "why": "rules for robots working beside people are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilots moving containers in warehouses and logistics sites, usually one task per robot, often with a human supervising several machines",
+        "unlocks": "real operating data and evidence on reliability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-task reliability over a full shift",
+        "unlocks": "a robot that can be reassigned between jobs instead of retrained for one."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one operator supervising many robots remotely",
+        "unlocks": "labour economics where a person directs a small fleet rather than one machine."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "use in homes and small businesses",
+        "unlocks": "help with chores and care tasks in places built for human bodies."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "general-purpose manipulation that transfers between settings",
+        "unlocks": "robots that learn new tasks quickly rather than being programmed per task."
+      }
+    ]
   }
 }

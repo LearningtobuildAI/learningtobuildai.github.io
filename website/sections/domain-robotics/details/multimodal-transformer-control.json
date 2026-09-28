@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Vision backbone",
+        "role": "turns camera images into features the policy can reason over.",
+        "parts": [
+          "image encoder (often a pretrained vision transformer)",
+          "tokeniser that splits frames into patches"
+        ]
+      },
+      {
+        "name": "Language encoder",
+        "role": "makes a spoken or typed instruction a usable conditioning signal.",
+        "parts": [
+          "text tokeniser",
+          "instruction embedding",
+          "cross-attention into the policy"
+        ]
+      },
+      {
+        "name": "Policy transformer",
+        "role": "maps fused vision and language features to a sequence of motor commands.",
+        "parts": [
+          "attention layers",
+          "action head",
+          "action-chunking module that predicts several steps at once"
+        ]
+      },
+      {
+        "name": "Action representation",
+        "role": "decides the output format — joint angles, end-effector poses, or discrete action tokens.",
+        "parts": [
+          "normalisation and scaling",
+          "temporal chunking",
+          "optional action token vocabulary"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "collects, cleans and labels the demonstrations the model learns from.",
+        "parts": [
+          "teleoperation rigs and gloves",
+          "camera and proprioception logging",
+          "language annotation",
+          "storage and versioning"
+        ]
+      },
+      {
+        "name": "Runtime",
+        "role": "runs inference fast enough to control real hardware.",
+        "parts": [
+          "onboard GPU or edge accelerator",
+          "quantised or distilled model",
+          "real-time scheduler feeding the motor controllers"
+        ]
+      },
+      {
+        "name": "Safety layer",
+        "role": "stops a wrong action before it damages anything.",
+        "parts": [
+          "workspace limits",
+          "torque and force caps",
+          "watchdog and human e-stop"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build a demonstration rig",
+        "detail": "Cameras, joint encoders and a teleoperation interface so a person can drive the robot while every image, command and motion is recorded."
+      },
+      {
+        "title": "Collect a large, varied dataset",
+        "detail": "Hundreds to thousands of episodes per task, across rooms, lighting, object positions and robot types, so the policy does not just memorise one setup."
+      },
+      {
+        "title": "Annotate with language",
+        "detail": "Each episode or segment gets a plain instruction, which is what lets one model follow new phrasings instead of a fixed button."
+      },
+      {
+        "title": "Start from a pretrained vision-language model",
+        "detail": "Reuse a model already trained on internet images and text, so the robot does not have to learn what a cup or a drawer looks like from scratch."
+      },
+      {
+        "title": "Fine-tune on robot actions",
+        "detail": "Co-train the network to emit actions, keeping some vision-language data in the mix so the model does not forget general concepts."
+      },
+      {
+        "title": "Add preference or reward learning",
+        "detail": "Human judgements of which attempt was better, or a learned reward model, refine behaviour beyond simply copying the demonstrations."
+      },
+      {
+        "title": "Evaluate in simulation, then on hardware",
+        "detail": "Test many randomised scenes in simulation, then run closed-loop trials on the real robot and log every failure mode."
+      },
+      {
+        "title": "Deploy with action chunking and guardrails",
+        "detail": "Run the model at the robot's control rate, predicting short bursts of motion, with hard limits that override the network."
+      },
+      {
+        "title": "Keep learning from deployment",
+        "detail": "Successful and failed runs are fed back into the dataset, and the model is retrained on a regular cycle."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Pretrained large vision-language models",
+        "status": "exists",
+        "why": "they supply the general scene and instruction understanding the policy builds on."
+      },
+      {
+        "tech": "Large robot demonstration datasets",
+        "status": "partial",
+        "why": "cross-robot datasets such as Open X-Embodiment exist, but they are small and uneven next to text or image corpora."
+      },
+      {
+        "tech": "Reliable, backdrivable robot hardware",
+        "status": "partial",
+        "why": "a learned policy is only as good as the actuators and controllers executing its commands."
+      },
+      {
+        "tech": "Cheap onboard compute for transformer inference",
+        "status": "partial",
+        "why": "the model must respond in tens of milliseconds, which constrains size and precision."
+      },
+      {
+        "tech": "Standard benchmarks and safety practice",
+        "status": "partial",
+        "why": "without shared tests and accepted limits, results are hard to compare and hard to trust near people."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-arm vision-language-action models doing tabletop tasks after fine-tuning",
+        "unlocks": "one network handling many tasks instead of one program per task."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-robot generalist policies and whole-body control on humanoids",
+        "unlocks": "rapid transfer to new hardware, so a new robot does not start from zero."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-robot learning from its own experience with human feedback",
+        "unlocks": "steady improvement in unstructured places such as homes and warehouses."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "long-horizon reliability over hours with certified safety limits",
+        "unlocks": "general-purpose labour, doing multi-step jobs unattended."
+      }
+    ]
+  }
+}

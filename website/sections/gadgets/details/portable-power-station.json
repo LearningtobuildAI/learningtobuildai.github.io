@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Battery pack",
+        "role": "stores energy in rechargeable lithium cells.",
+        "parts": [
+          "LiFePO4 or NMC cells",
+          "nickel busbars",
+          "cell holders"
+        ]
+      },
+      {
+        "name": "Battery management system",
+        "role": "keeps every cell within safe voltage, current and temperature limits.",
+        "parts": [
+          "monitoring ICs",
+          "balancing resistors",
+          "current sensor",
+          "cutoff FETs"
+        ]
+      },
+      {
+        "name": "Inverter and charger",
+        "role": "converts battery DC into mains AC, and charges the battery from a wall socket.",
+        "parts": [
+          "DC-AC inverter stage",
+          "AC-DC charger",
+          "transformer",
+          "cooling fan"
+        ]
+      },
+      {
+        "name": "Solar charge controller",
+        "role": "accepts DC from solar panels and charges the battery efficiently.",
+        "parts": [
+          "MPPT tracker",
+          "DC-DC converter",
+          "solar input connectors"
+        ]
+      },
+      {
+        "name": "DC outputs",
+        "role": "supplies 12 V, USB-A and USB-C for small devices.",
+        "parts": [
+          "buck and boost converters",
+          "USB Power Delivery controllers",
+          "cigarette-lighter socket"
+        ]
+      },
+      {
+        "name": "Enclosure and thermal management",
+        "role": "protects the electronics and removes heat.",
+        "parts": [
+          "aluminium or plastic case",
+          "heatsinks",
+          "vents",
+          "temperature sensors"
+        ]
+      },
+      {
+        "name": "User interface",
+        "role": "shows state of charge and lets the user switch outputs.",
+        "parts": [
+          "display",
+          "buttons",
+          "firmware"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the pack",
+        "detail": "Choose cell chemistry, voltage and capacity to match the intended AC output power and runtime."
+      },
+      {
+        "title": "Assemble cells",
+        "detail": "Cells are sorted, placed in holders, then connected with spot-welded nickel strips or bolted busbars."
+      },
+      {
+        "title": "Wire the BMS",
+        "detail": "Sense leads are attached to each cell group, and the main negative and positive leads are routed through the BMS cutoff."
+      },
+      {
+        "title": "Build the power electronics",
+        "detail": "Inverter, charger, MPPT and DC-DC boards are assembled and tested separately."
+      },
+      {
+        "title": "Fit into the enclosure",
+        "detail": "The battery, circuit boards, fan, display and sockets are mounted in the case with insulation and strain relief."
+      },
+      {
+        "title": "Wire and test",
+        "detail": "All connections are made, then continuity, insulation and basic function are checked."
+      },
+      {
+        "title": "Cycle and burn in",
+        "detail": "The unit is charged and discharged several times to catch weak cells or overheating before shipping."
+      },
+      {
+        "title": "Certify and package",
+        "detail": "Safety, electromagnetic compatibility and transport tests are completed, then the unit is boxed with cables."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Lithium-ion cells (LiFePO4 or NMC)",
+        "status": "exists",
+        "why": "they give high energy density and long cycle life in a light package."
+      },
+      {
+        "tech": "Battery management ICs",
+        "status": "exists",
+        "why": "they make per-cell protection and balancing small and cheap enough for portable devices."
+      },
+      {
+        "tech": "Pure sine wave inverter",
+        "status": "exists",
+        "why": "most electronics need clean AC, not a square wave."
+      },
+      {
+        "tech": "MPPT solar charge controller",
+        "status": "exists",
+        "why": "it extracts more power from panels than a simple controller."
+      },
+      {
+        "tech": "High-efficiency DC-DC converters",
+        "status": "exists",
+        "why": "they provide stable USB and 12 V outputs from a varying battery voltage."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "portable stations with LiFePO4 cells, solar input and pure sine wave output",
+        "unlocks": "reliable backup power for camping, emergencies and small off-grid systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher capacity and faster charging in the same size",
+        "unlocks": "longer runtime for medical devices, tools and appliances."
+      },
+      {
+        "stage": "Next",
+        "milestone": "seamless integration with home energy management and rooftop solar",
+        "unlocks": "a portable unit that also shaves peaks or backs up a house automatically."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "solid-state or alternative chemistries with greater energy density",
+        "unlocks": "lighter, smaller stations that can run heavier loads for longer."
+      }
+    ]
+  }
+}

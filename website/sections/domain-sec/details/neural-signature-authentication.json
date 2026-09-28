@@ -30,5 +30,166 @@
         "def": "A method for recording electrical activity along the scalp using electrodes. Used to capture neural signatures non-invasively."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural sensor array",
+        "role": "captures the brain's electrical activity, either from the scalp or from inside the skull.",
+        "parts": [
+          "dry or gel EEG electrodes",
+          "implanted microelectrode arrays (for invasive variants)",
+          "reference electrodes"
+        ]
+      },
+      {
+        "name": "Signal acquisition",
+        "role": "amplifies and digitises the tiny voltages (microvolts) coming from the brain.",
+        "parts": [
+          "low-noise amplifiers",
+          "analogue filters",
+          "analogue-to-digital converters",
+          "shielding"
+        ]
+      },
+      {
+        "name": "Feature extractor",
+        "role": "turns the raw waveform into stable, discriminative numbers that describe an individual's pattern.",
+        "parts": [
+          "spectral analysis",
+          "connectivity measures",
+          "event-related potential detectors"
+        ]
+      },
+      {
+        "name": "Template engine",
+        "role": "builds and stores a reference neural signature for each enrolled user.",
+        "parts": [
+          "enrolment routine",
+          "template database",
+          "encryption"
+        ]
+      },
+      {
+        "name": "Matching engine",
+        "role": "compares a fresh recording with the stored template and returns a confidence score.",
+        "parts": [
+          "classifier (e.g. machine-learning model)",
+          "threshold logic"
+        ]
+      },
+      {
+        "name": "Liveness and anti-spoofing",
+        "role": "ensures the signal comes from a living person, not a recording or synthetic replay.",
+        "parts": [
+          "challenge-response tasks",
+          "artefact detectors"
+        ]
+      },
+      {
+        "name": "Secure access interface",
+        "role": "integrates the authentication decision into a zero-trust access system.",
+        "parts": [
+          "API",
+          "hardware security module",
+          "policy engine"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the sensor array",
+        "detail": "Choose between non-invasive dry electrodes for convenience or implanted arrays for signal quality; optimise placement and contact."
+      },
+      {
+        "title": "Build the acquisition electronics",
+        "detail": "Develop low-noise amplifiers and shielding to capture microvolt signals in electrically noisy environments."
+      },
+      {
+        "title": "Collect a large enrolment dataset",
+        "detail": "Record brain activity from many volunteers across sessions, tasks and mental states to learn what is stable and what varies."
+      },
+      {
+        "title": "Extract candidate features",
+        "detail": "Compute spectral power, coherence and time-domain patterns, then select those that differ most between people and least within a person over time."
+      },
+      {
+        "title": "Train the matching model",
+        "detail": "Use machine learning to map features to identities, tuning for low false-accept and false-reject rates."
+      },
+      {
+        "title": "Add liveness checks",
+        "detail": "Introduce mental tasks or stimuli that only a live brain can produce the expected response to."
+      },
+      {
+        "title": "Integrate into a prototype",
+        "detail": "Combine sensors, electronics, software and encrypted storage into a working authentication device."
+      },
+      {
+        "title": "Test under realistic conditions",
+        "detail": "Measure accuracy when users are tired, stressed or moving, and attempt spoofing attacks."
+      },
+      {
+        "title": "Pilot deployment",
+        "detail": "Trial the system for high-security access, starting with controlled environments and informed consent."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-resolution non-invasive EEG",
+        "status": "partial",
+        "why": "current consumer headsets capture coarse signals; higher spatial and temporal resolution is needed for reliable individual signatures."
+      },
+      {
+        "tech": "Implanted brain-computer interfaces",
+        "status": "partial",
+        "why": "they give clearer signals but require surgery and carry long-term risks."
+      },
+      {
+        "tech": "Machine learning for biometric pattern recognition",
+        "status": "exists",
+        "why": "modern classifiers can find subtle patterns in noisy time-series data."
+      },
+      {
+        "tech": "Neural liveness detection",
+        "status": "missing",
+        "why": "without it, a recorded or synthesised brain signal could be replayed to fool the system."
+      },
+      {
+        "tech": "Secure, privacy-preserving template storage",
+        "status": "partial",
+        "why": "neural data is sensitive and irreversible; templates must be protected and revocable."
+      },
+      {
+        "tech": "Standards and ethical frameworks",
+        "status": "missing",
+        "why": "neural data raises questions of consent, mental privacy and legal admissibility that are not yet settled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research demonstrations of EEG-based identification in controlled lab studies",
+        "unlocks": "evidence that individuals have distinguishable brain patterns."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot systems using dedicated EEG headsets for continuous authentication in high-security settings",
+        "unlocks": "real-world data on stability and user acceptance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "miniaturised, comfortable, high-resolution non-invasive sensors",
+        "unlocks": "practical use in everyday zero-trust access without inconvenient hardware."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optional implanted interfaces for the highest-assurance authentication",
+        "unlocks": "a very strong factor, but only where surgery and privacy trade-offs are acceptable."
+      }
+    ]
   }
 }

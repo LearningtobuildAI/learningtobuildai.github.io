@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Identity provider",
+        "role": "proves who a user or machine is before anything else happens.",
+        "parts": [
+          "directory of identities",
+          "multi-factor authentication",
+          "OpenID Connect and SAML federation",
+          "short-lived tokens"
+        ]
+      },
+      {
+        "name": "Policy engine and administrator",
+        "role": "decides, per request, whether this identity on this device may reach this resource now.",
+        "parts": [
+          "policy language and rules",
+          "risk signals",
+          "central administration"
+        ]
+      },
+      {
+        "name": "Policy enforcement points",
+        "role": "sit in front of each resource and allow or block traffic on the policy engine's verdict.",
+        "parts": [
+          "identity-aware proxy",
+          "API gateway",
+          "load balancer"
+        ]
+      },
+      {
+        "name": "Device posture and inventory",
+        "role": "only known, patched, managed devices are treated as trustworthy.",
+        "parts": [
+          "endpoint management agent",
+          "device certificates",
+          "attestation"
+        ]
+      },
+      {
+        "name": "Microsegmentation fabric",
+        "role": "splits the internal network so a compromise in one service cannot move freely.",
+        "parts": [
+          "per-workload firewalls",
+          "service identity and mutual TLS",
+          "software-defined network policy"
+        ]
+      },
+      {
+        "name": "Telemetry and analytics",
+        "role": "gives the policy engine live evidence and catches behaviour that policy missed.",
+        "parts": [
+          "log collection",
+          "behavioural baselines",
+          "alerting and response"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory assets and data flows",
+        "detail": "Map every user, service, device and the data they touch. Policy cannot be written for systems nobody has catalogued."
+      },
+      {
+        "title": "Give every actor a strong identity",
+        "detail": "Enrol staff in single sign-on with multi-factor authentication, and issue cryptographic identities to servers, containers and workloads as well as people."
+      },
+      {
+        "title": "Register and assess devices",
+        "detail": "Enrol laptops and phones in management, install device certificates, and define the minimum patch level and configuration a device needs."
+      },
+      {
+        "title": "Stand up the policy decision point",
+        "detail": "Deploy a central engine that evaluates identity, device posture and context, and writes rules such as 'finance staff on managed devices, during work hours, for these applications'."
+      },
+      {
+        "title": "Insert enforcement points",
+        "detail": "Put identity-aware proxies or gateways in front of each application so every request is checked, rather than trusting anything already inside the network."
+      },
+      {
+        "title": "Microsegment the internal network",
+        "detail": "Replace flat internal routing with per-workload rules and mutual TLS, so east-west traffic is authenticated too."
+      },
+      {
+        "title": "Retire perimeter-only access",
+        "detail": "Move users off blanket VPN access to per-application, least-privilege, just-in-time connections, keeping break-glass accounts for outages."
+      },
+      {
+        "title": "Instrument and tune continuously",
+        "detail": "Feed logs and alerts back into policy, tighten rules that prove unnecessary, and rehearse what happens when the identity system itself fails."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Public-key cryptography and hardware-backed credentials",
+        "status": "exists",
+        "why": "phishing-resistant factors and device certificates are the root of every trust decision."
+      },
+      {
+        "tech": "Open standards for identity and federation",
+        "status": "exists",
+        "why": "OpenID Connect, SAML and FIDO2/WebAuthn let many vendors' components interoperate."
+      },
+      {
+        "tech": "Identity-aware proxies and gateways",
+        "status": "exists",
+        "why": "they are the enforcement points that make per-request checking practical."
+      },
+      {
+        "tech": "Certificate and key lifecycle automation",
+        "status": "partial",
+        "why": "short-lived credentials only work if issuance and renewal are automatic."
+      },
+      {
+        "tech": "Legacy and industrial systems that support modern authentication",
+        "status": "missing",
+        "why": "many industrial control, medical and mainframe systems cannot present a modern identity, forcing exceptions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "identity-first deployments: single sign-on, universal MFA, per-application access replacing blanket VPN",
+        "unlocks": "a big reduction in credential theft and lateral movement."
+      },
+      {
+        "stage": "Next",
+        "milestone": "phishing-resistant authentication such as passkeys and hardware security keys as the default, plus device attestation",
+        "unlocks": "defence against credential phishing and stolen-session attacks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "workload identity and mutual TLS across data centres and clouds",
+        "unlocks": "microsegmentation that does not depend on network location."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous, risk-adaptive policy with automated containment, extended to operational technology",
+        "unlocks": "access decisions that tighten in real time when behaviour looks wrong, across factories and critical infrastructure as well as offices."
+      }
+    ]
+  }
+}

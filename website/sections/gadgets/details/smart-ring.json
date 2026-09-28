@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Optical pulse sensor",
+        "role": "reads heart rate and its beat-to-beat variation from blood flow under the skin.",
+        "parts": [
+          "green, red and infrared LEDs",
+          "photodiodes",
+          "light-blocking baffles"
+        ]
+      },
+      {
+        "name": "Temperature sensor",
+        "role": "tracks skin temperature through the night; the finger gives a steadier reading than the wrist.",
+        "parts": [
+          "negative-temperature-coefficient thermistor",
+          "reference sensor for ambient correction"
+        ]
+      },
+      {
+        "name": "Motion sensor",
+        "role": "detects movement and orientation so sleep and activity can be separated.",
+        "parts": [
+          "3-axis accelerometer",
+          "sometimes a gyroscope"
+        ]
+      },
+      {
+        "name": "Electronics and battery",
+        "role": "runs the sensors and stores or streams the data.",
+        "parts": [
+          "low-power microcontroller",
+          "Bluetooth Low Energy radio",
+          "tiny lithium-polymer cell",
+          "charging contacts or wireless charging coil"
+        ]
+      },
+      {
+        "name": "Shell and seal",
+        "role": "keeps water and sweat out while staying comfortable for weeks on end.",
+        "parts": [
+          "biocompatible inner moulding",
+          "titanium or ceramic outer shell",
+          "sealing gaskets"
+        ]
+      },
+      {
+        "name": "Algorithms and app",
+        "role": "turn raw signals into sleep stages, readiness and illness alerts.",
+        "parts": [
+          "on-device signal processing",
+          "cloud or phone scoring models",
+          "companion app"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the form",
+        "detail": "The ring must fit fingers from size 6 to 13 while holding LEDs, battery and antennas in a few cubic centimetres."
+      },
+      {
+        "title": "Build the sensor module",
+        "detail": "LEDs, photodiodes and thermistors are mounted on a flexible circuit that curves around the inner band."
+      },
+      {
+        "title": "Assemble the electronics",
+        "detail": "Microcontroller, radio and battery are stacked inside the shell and connected to the sensor flex."
+      },
+      {
+        "title": "Seal and finish",
+        "detail": "The shell is bonded and sealed so the ring survives showers, swimming and daily wear."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Each unit's optical readings are checked against reference signals so measurements are comparable between rings."
+      },
+      {
+        "title": "Train the models",
+        "detail": "Sleep and recovery algorithms are fitted to data from users wearing the ring alongside lab sleep studies; this is the most expensive part."
+      },
+      {
+        "title": "Validate and ship",
+        "detail": "Accuracy is tested against reference instruments, then the ring is paired with its app and released."
+      },
+      {
+        "title": "Update over the air",
+        "detail": "Firmware and scoring models are refined for years after purchase, as the device is worn every night."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature optical pulse sensors",
+        "status": "exists",
+        "why": "commercial LEDs and photodiodes are now small and efficient enough to run in a ring."
+      },
+      {
+        "tech": "Very low-power Bluetooth chips",
+        "status": "exists",
+        "why": "sensors must run for several days between charges from a very small battery."
+      },
+      {
+        "tech": "Tiny rechargeable cells",
+        "status": "exists",
+        "why": "the battery sets how small the ring can be and how long it lasts."
+      },
+      {
+        "tech": "Validated sleep-staging algorithms",
+        "status": "partial",
+        "why": "scoring agrees reasonably with lab sleep studies but is not a clinical measurement."
+      },
+      {
+        "tech": "Biocompatible, waterproof materials",
+        "status": "exists",
+        "why": "the ring is worn 24 hours a day against skin."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mass-market rings scoring sleep, heart rate variability and temperature trends",
+        "unlocks": "continuous personal health data without a screen or daily charging routine."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory clearance for specific clinical claims such as irregular-rhythm notification",
+        "unlocks": "ring data becoming usable in medical care rather than only wellness."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cuffless blood-pressure trending",
+        "unlocks": "long-term cardiovascular monitoring from a finger."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "non-invasive sensing of blood analytes such as glucose",
+        "unlocks": "continuous metabolic monitoring without skin pricks, if accuracy can be proven."
+      }
+    ]
+  }
+}

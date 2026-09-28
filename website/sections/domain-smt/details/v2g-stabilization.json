@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "moves DC power either way between car battery and grid.",
+        "parts": [
+          "AC-to-DC and DC-to-AC power stages",
+          "isolated transformer stage",
+          "cooling",
+          "charge port"
+        ]
+      },
+      {
+        "name": "Onboard battery and management",
+        "role": "supplies the energy; must accept extra cycles without undue wear.",
+        "parts": [
+          "traction battery pack",
+          "battery management system",
+          "DC contactors"
+        ]
+      },
+      {
+        "name": "Communication and control protocol",
+        "role": "lets car and charger agree on power, timing and safety.",
+        "parts": [
+          "digital signalling over the connector",
+          "vehicle-to-charger controller",
+          "safety interlock"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "bundles hundreds or thousands of parked cars into one controllable block.",
+        "parts": [
+          "fleet telemetry",
+          "forecasting and dispatch software",
+          "user app and opt-in settings"
+        ]
+      },
+      {
+        "name": "Grid interface",
+        "role": "connects the aggregated fleet to the distribution network legally and safely.",
+        "parts": [
+          "site switchgear and protection",
+          "metering",
+          "utility control link"
+        ]
+      },
+      {
+        "name": "Monitoring and settlement",
+        "role": "tracks energy and payments and protects batteries.",
+        "parts": [
+          "data logging",
+          "degradation accounting",
+          "billing system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Install the charging hardware",
+        "detail": "Fit bidirectional chargers at homes, depots or car parks, each with its own protection and metering."
+      },
+      {
+        "title": "Connect the vehicle",
+        "detail": "Plug in and complete the handshake: the car and charger confirm voltage, current limits, state of charge and that the connector is locked."
+      },
+      {
+        "title": "Set driver permissions",
+        "detail": "The owner specifies a minimum charge to keep and the hours the car may be used by the grid."
+      },
+      {
+        "title": "Register with an aggregator",
+        "detail": "Software pools many vehicles so the fleet looks big enough for grid markets to accept."
+      },
+      {
+        "title": "Forecast and contract",
+        "detail": "The aggregator predicts how much capacity will be plugged in and bids it into grid or balancing markets."
+      },
+      {
+        "title": "Dispatch a signal",
+        "detail": "When the grid needs power, the aggregator sends a setpoint; chargers reverse the power flow."
+      },
+      {
+        "title": "Discharge and recharge",
+        "detail": "Energy flows out of the batteries, then the cars are recharged within the time the driver allowed."
+      },
+      {
+        "title": "Settle and log",
+        "detail": "Energy is metered and paid for, and the cycle count is recorded so battery wear can be compensated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging standards",
+        "status": "exists",
+        "why": "an agreed protocol is what lets any car and charger trade power safely; published standards now cover it."
+      },
+      {
+        "tech": "Capable vehicles and chargers",
+        "status": "partial",
+        "why": "most EVs and home chargers sold today are one-way only."
+      },
+      {
+        "tech": "Smart metering and settlement",
+        "status": "partial",
+        "why": "someone must measure and pay for the energy, or owners won't plug in."
+      },
+      {
+        "tech": "Distribution-grid monitoring",
+        "status": "partial",
+        "why": "local transformers and cables can be overloaded if many cars export at once."
+      },
+      {
+        "tech": "Market access for small units",
+        "status": "partial",
+        "why": "rules have historically kept households and fleets out of frequency and capacity markets."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilots and fleet depots where buses and vans provide grid services",
+        "unlocks": "proof that aggregated vehicles can respond reliably."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standards-based home bidirectional charging on sale in volume",
+        "unlocks": "millions of parked cars becoming a routine flexibility resource at peak times."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory frameworks that let aggregators bid in national markets",
+        "unlocks": "payment streams that make V2G hardware worth its extra cost to buyers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "V2G treated as normal grid infrastructure",
+        "unlocks": "less need for peaking plants and grid batteries, and cheaper integration of solar and wind."
+      }
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Vulnerable public-key crypto",
+        "role": "the RSA and elliptic-curve keys that secure payments, sessions and signatures today — and that a large quantum computer running Shor's algorithm could break.",
+        "parts": [
+          "RSA and ECDSA keys in servers",
+          "TLS/SSH/IPsec handshakes",
+          "legacy hardware without upgrade paths"
+        ]
+      },
+      {
+        "name": "Post-quantum key establishment",
+        "role": "replaces key exchange with lattice- or code-based schemes.",
+        "parts": [
+          "ML-KEM (FIPS 203)",
+          "code-based backup KEM (HQC)",
+          "hybrid mode combined with X25519"
+        ]
+      },
+      {
+        "name": "Post-quantum signatures",
+        "role": "authenticates servers, documents, software and instructions.",
+        "parts": [
+          "ML-DSA (FIPS 204)",
+          "SLH-DSA (FIPS 205) hash-based signatures",
+          "larger keys and signatures to accommodate"
+        ]
+      },
+      {
+        "name": "Cryptographic inventory and policy",
+        "role": "you cannot migrate what you cannot see; tracks every algorithm and key in the estate.",
+        "parts": [
+          "cryptographic bill of materials (CBOM)",
+          "dependency and protocol scanners",
+          "policy engine for approved algorithms"
+        ]
+      },
+      {
+        "name": "Hardware roots of trust",
+        "role": "keys must be generated and used inside tamper-resistant silicon.",
+        "parts": [
+          "hardware security modules (HSMs)",
+          "payment terminals and smart cards",
+          "secure elements in phones"
+        ]
+      },
+      {
+        "name": "Public key infrastructure",
+        "role": "long-lived certificate authorities and trust chains must be re-issued without breaking anything.",
+        "parts": [
+          "root and intermediate CAs",
+          "certificate lifecycle management",
+          "code-signing and document-signing services"
+        ]
+      },
+      {
+        "name": "Optional quantum links",
+        "role": "for the highest-value links, quantum key distribution plus quantum random number generators supply keys no algorithm can compute.",
+        "parts": [
+          "fibre QKD hardware",
+          "trusted nodes",
+          "quantum random number generators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory the cryptography",
+        "detail": "Scan servers, mainframes, network gear, terminals and third-party libraries to build a cryptographic bill of materials: which algorithm, which key length, which lifetime."
+      },
+      {
+        "title": "Rank by exposure",
+        "detail": "Flag anything whose secrets must stay confidential for years, because traffic recorded today could be decrypted later once a quantum computer exists."
+      },
+      {
+        "title": "Choose algorithm profiles",
+        "detail": "Adopt the NIST standards — ML-KEM for key establishment, ML-DSA or SLH-DSA for signatures — and specify hybrid modes so a break in either half is survivable."
+      },
+      {
+        "title": "Rebuild the transport layer",
+        "detail": "Upgrade TLS, SSH, IPsec and messaging stacks to negotiate hybrid post-quantum key exchange, keeping classical fallback for older peers."
+      },
+      {
+        "title": "Re-issue the PKI",
+        "detail": "Generate new root and intermediate certificate authorities, publish post-quantum certificates, and run old and new chains in parallel through the transition."
+      },
+      {
+        "title": "Update hardware",
+        "detail": "Firmware-update or replace HSMs, payment terminals and smart cards whose chips cannot hold larger keys or run the new maths."
+      },
+      {
+        "title": "Migrate signing workflows",
+        "detail": "Move code signing, document signing and payment authorisation to dual signatures so a verifier can check both old and new."
+      },
+      {
+        "title": "Test interoperability and performance",
+        "detail": "Measure handshake sizes, latency and packet fragmentation — larger keys can break middleboxes — then run chaos and rollback drills."
+      },
+      {
+        "title": "Roll out, monitor and retire",
+        "detail": "Turn the new algorithms on by default, watch for negotiation failures, and finally disable RSA and elliptic-curve modes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "NIST published ML-KEM, ML-DSA and SLH-DSA in August 2024, with a code-based backup KEM selected in 2025."
+      },
+      {
+        "tech": "Quantum computers that break RSA and ECC",
+        "status": "missing",
+        "why": "no such machine exists; the threat is the reason to migrate early, not a precondition."
+      },
+      {
+        "tech": "Post-quantum capable HSMs and secure chips",
+        "status": "partial",
+        "why": "some modules support the new algorithms, but much installed payment and smart-card hardware cannot be upgraded in place."
+      },
+      {
+        "tech": "Hybrid protocol support in mainstream software",
+        "status": "partial",
+        "why": "browsers and some TLS stacks ship hybrid key exchange, but mainframes, older VPNs and embedded systems lag."
+      },
+      {
+        "tech": "Cryptographic visibility across supply chains",
+        "status": "partial",
+        "why": "most institutions still do not know every place a vulnerable key is used, including in third-party software."
+      },
+      {
+        "tech": "Skilled cryptography engineers",
+        "status": "partial",
+        "why": "migration touches every team, and misconfiguration is more likely than algorithm failure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "standards published; hybrid key exchange running in browsers and early bank pilots",
+        "unlocks": "a proven, interoperable toolkit to build on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulators and central banks set migration deadlines, and national-security timelines push suppliers to ship post-quantum products",
+        "unlocks": "procurement pressure that forces hardware vendors to update."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full production migration of public-key infrastructure, signing and payment hardware",
+        "unlocks": "end-to-end quantum-resistant transactions rather than just protected web sessions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "legacy RSA and elliptic-curve modes switched off, with quantum key distribution confined to a few high-value links",
+        "unlocks": "resilience against both future quantum attack and today's recorded-traffic harvesting."
+      }
+    ]
+  }
+}

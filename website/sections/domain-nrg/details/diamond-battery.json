@@ -32,5 +32,139 @@
         "def": "An atom of an element with an unstable nucleus that emits radiation as it decays to a more stable form."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Beta source (fuel)",
+        "role": "a radioactive isotope that emits electrons. Carbon-14 is attractive because it comes from reactor graphite and has a half-life of about 5,700 years; nickel-63 and tritium are alternatives.",
+        "parts": [
+          "carbon-14 recovered from irradiated graphite moderator",
+          "or nickel-63 / tritium in other designs"
+        ]
+      },
+      {
+        "name": "Diamond semiconductor",
+        "role": "the converter. Incoming beta particles knock electrons loose in the diamond, and the junction's built-in electric field pushes them out as current. Diamond's wide bandgap (about 5.5 eV) and radiation hardness let it survive decades next to its own fuel.",
+        "parts": [
+          "carbon-14-loaded diamond layer",
+          "doped p-type and n-type regions (boron, nitrogen or phosphorus) or a Schottky metal contact",
+          "electrodes and contacts"
+        ]
+      },
+      {
+        "name": "Encapsulation",
+        "role": "the diamond itself absorbs the low-energy betas, so the finished cell emits almost nothing externally; a sealed casing adds mechanical and chemical protection.",
+        "parts": [
+          "overgrown non-radioactive diamond capping layer",
+          "metal or ceramic housing"
+        ]
+      },
+      {
+        "name": "Power conditioning",
+        "role": "output is tiny and at low voltage, so cells are stacked and buffered.",
+        "parts": [
+          "series/parallel stacks of cells",
+          "storage capacitor",
+          "ultra-low-power DC-DC converter"
+        ]
+      },
+      {
+        "name": "Feedstock processing",
+        "role": "turns solid radioactive waste into a gas pure enough to grow diamond from.",
+        "parts": [
+          "graphite oxidation or heating",
+          "gas purification",
+          "methane synthesis (Sabatier reaction)",
+          "optional carbon-14 enrichment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Recover the carbon",
+        "detail": "Irradiated graphite moderator blocks from retired reactors are heated or oxidised, releasing carbon as carbon dioxide. This is the step that simultaneously treats a long-lived waste stream."
+      },
+      {
+        "title": "Make the growth gas",
+        "detail": "The captured carbon dioxide is reacted with hydrogen to form methane, the usual feedstock for diamond growth. If the carbon-14 has been enriched, power density improves, but separating carbon-14 from carbon-12 is difficult because they are chemically identical."
+      },
+      {
+        "title": "Grow diamond",
+        "detail": "Microwave plasma chemical vapour deposition at roughly 800–1,000 °C breaks the methane apart and builds diamond atom by atom on a seed substrate, so the growing crystal is made largely of carbon-14."
+      },
+      {
+        "title": "Form the junction",
+        "detail": "The layer is doped or capped with a metal contact to create the internal field that separates the beta-generated charge carriers."
+      },
+      {
+        "title": "Overgrow and encapsulate",
+        "detail": "A further layer of ordinary carbon-12 diamond is grown on top, trapping the betas inside and shielding the outside world."
+      },
+      {
+        "title": "Cut and contact",
+        "detail": "Cells a few square millimetres to a few square centimetres are separated, electrodes attached, and the unit sealed."
+      },
+      {
+        "title": "Stack and condition",
+        "detail": "Many cells are wired in series and parallel to reach a usable voltage, with a capacitor and converter to smooth the microwatt output for pulsed loads."
+      },
+      {
+        "title": "Qualify",
+        "detail": "Cells are tested for output, temperature range and radiation containment over the decades-long lifetimes expected in sensors and implants."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Diamond chemical vapour deposition and doping",
+        "status": "partial",
+        "why": "diamond can be grown and doped today, but making reliable, efficient junctions at low cost is still hard."
+      },
+      {
+        "tech": "Carbon-14 feedstock from irradiated graphite",
+        "status": "partial",
+        "why": "large stockpiles of radioactive graphite exist, but turning them into a clean, usable gas stream is not yet routine."
+      },
+      {
+        "tech": "Isotope enrichment of carbon-14",
+        "status": "missing",
+        "why": "without enrichment most of the diamond is ordinary carbon and contributes no current."
+      },
+      {
+        "tech": "Ultra-low-power electronics",
+        "status": "exists",
+        "why": "sensors, energy-harvesting chips and converters can now run on microwatts, which is what makes the concept useful at all."
+      },
+      {
+        "tech": "Nuclear materials handling and licensing",
+        "status": "exists",
+        "why": "radioactive sources are already regulated for medical and industrial use, so a pathway exists for sealed-cell approval."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "prototype diamond betavoltaic cells demonstrated in university and national-laboratory work; tritium betavoltaics already sold for niche industrial and military uses",
+        "unlocks": "proof that a sealed cell can deliver steady microwatts for years."
+      },
+      {
+        "stage": "Next",
+        "milestone": "carbon-14 diamond cells with better junctions and stacked cells reaching useful milliwatt levels",
+        "unlocks": "batteries for sensors sealed inside bridges, pipelines, space probes or nuclear stores where changing a battery is impossible."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot production fed by graphite-waste recovery",
+        "unlocks": "a route to shrink and stabilise a difficult radioactive waste stream while producing a product."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standardised, licensed cells for medical implants and remote infrastructure",
+        "unlocks": "devices that outlive their owners with no maintenance. Grid power is not on this path — the output is microwatts to milliwatts, not megawatts."
+      }
+    ]
   }
 }

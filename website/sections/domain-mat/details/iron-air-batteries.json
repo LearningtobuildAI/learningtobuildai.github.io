@@ -34,5 +34,151 @@
         "def": "The electrode in a battery to which current flows into during discharge. In iron-air batteries, this is where atmospheric oxygen reacts with the electrolyte."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Iron anode",
+        "role": "the fuel electrode; it rusts to iron hydroxide while discharging and is reduced back to iron while charging.",
+        "parts": [
+          "porous iron powder",
+          "binder and conductive carbon",
+          "current-collector mesh"
+        ]
+      },
+      {
+        "name": "Air cathode",
+        "role": "a porous electrode where oxygen from the air is reduced during discharge.",
+        "parts": [
+          "carbon gas-diffusion layer",
+          "catalyst coating",
+          "nickel or steel mesh",
+          "PTFE wetproofing"
+        ]
+      },
+      {
+        "name": "Electrolyte and separator",
+        "role": "an alkaline solution (typically potassium hydroxide) that carries hydroxide ions between the electrodes.",
+        "parts": [
+          "KOH solution",
+          "separator membrane",
+          "electrolyte reservoir and pumps"
+        ]
+      },
+      {
+        "name": "Air handling",
+        "role": "supplies oxygen and, critically, keeps carbon dioxide out of the alkaline electrolyte.",
+        "parts": [
+          "blower or fan",
+          "CO2 scrubber",
+          "humidity control",
+          "exhaust vents"
+        ]
+      },
+      {
+        "name": "Cell stack and enclosure",
+        "role": "repeats the anode–separator–cathode sandwich into a compact module.",
+        "parts": [
+          "bipolar or frame plates",
+          "gaskets and seals",
+          "module housing"
+        ]
+      },
+      {
+        "name": "Power conversion and controls",
+        "role": "charges and discharges the stack and reports state of charge.",
+        "parts": [
+          "bidirectional inverter",
+          "battery management electronics",
+          "control software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the iron powder",
+        "detail": "Iron ore is reduced to sponge iron, then milled to a fine powder; small amounts of additives such as sulfur or bismuth are blended in to suppress unwanted hydrogen formation."
+      },
+      {
+        "title": "Form the anode",
+        "detail": "The powder is mixed with a binder and conductive carbon and rolled or pressed onto a metal mesh to make a thick, porous plate."
+      },
+      {
+        "title": "Make the air electrode",
+        "detail": "A carbon layer is coated with catalyst and laminated to a metal mesh, then treated so it repels liquid electrolyte but lets oxygen reach the reaction sites."
+      },
+      {
+        "title": "Stack the cells",
+        "detail": "Anode, separator and air cathode are layered into frames with gaskets and electrolyte channels, then clamped into a repeating stack."
+      },
+      {
+        "title": "Fill and seal the module",
+        "detail": "The stack is filled with alkaline electrolyte and enclosed, with manifolds left open to the air path."
+      },
+      {
+        "title": "Add air and safety systems",
+        "detail": "A blower and scrubber are fitted to feed air while keeping carbon dioxide away from the electrolyte, alongside vents for the small amounts of hydrogen and oxygen produced."
+      },
+      {
+        "title": "Connect power electronics",
+        "detail": "Inverters and control software are wired in and the module is cycled for many hours to prove capacity and efficiency."
+      },
+      {
+        "title": "Install and site the plant",
+        "detail": "Modules are trucked to a substation site, laid out in blocks and connected to the grid — these batteries are heavy and low-power, so they stay on the ground."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, abundant iron and steel-making capacity",
+        "status": "exists",
+        "why": "the whole appeal is using one of the cheapest and most widespread metals instead of lithium, cobalt or nickel."
+      },
+      {
+        "tech": "Alkaline electrolyte chemistry",
+        "status": "exists",
+        "why": "the chemistry is mature from nickel-iron and alkaline cells, though recharging iron cleanly is harder."
+      },
+      {
+        "tech": "Bifunctional oxygen electrodes",
+        "status": "partial",
+        "why": "the air electrode must both reduce oxygen on discharge and release it on charge without wearing out — still the main lifetime limit."
+      },
+      {
+        "tech": "Very low-cost power conversion and controls",
+        "status": "exists",
+        "why": "with round-trip efficiency far below lithium-ion, the economics depend on cheap hardware and very cheap charging electricity."
+      },
+      {
+        "tech": "Grid and market rules that value multi-day storage",
+        "status": "partial",
+        "why": "most markets reward fast, short bursts of power rather than several days of steady discharge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot modules and field demonstrations of multi-day storage, including a utility pilot in Minnesota announced in 2021 by Form Energy",
+        "unlocks": "real-world data on efficiency, degradation and lifetime."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first commercial plants rated for roughly 100 hours of discharge, built beside existing substations",
+        "unlocks": "a replacement for gas peaking plants that run only a few days a year."
+      },
+      {
+        "stage": "Next",
+        "milestone": "factory-scale module production",
+        "unlocks": "cost per kilowatt-hour falling far enough to compete with lithium-ion on long-duration duties."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "seasonal or multi-week storage, and iron powder used as a transportable fuel",
+        "unlocks": "shifting summer solar output into winter demand."
+      }
+    ]
   }
 }

@@ -35,5 +35,145 @@
         "def": "Components designed to produce laser light for specific applications, such as cutting, welding, or in this case, targeted destruction of weeds through thermal ablation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Perception system",
+        "role": "tells a crop plant from a weed in the fraction of a second before the tool reaches it.",
+        "parts": [
+          "colour and multispectral cameras",
+          "LED illumination for uniform light",
+          "embedded GPU running a species classifier"
+        ]
+      },
+      {
+        "name": "Navigation and positioning",
+        "role": "keeps a small machine on the row to a few centimetres.",
+        "parts": [
+          "RTK-GNSS receiver",
+          "inertial measurement unit",
+          "row-following camera or mechanical feeler"
+        ]
+      },
+      {
+        "name": "Kill mechanism",
+        "role": "destroys the weed without pulling up the crop.",
+        "parts": [
+          "high-power diode or fibre laser on a steering mirror",
+          "or reciprocating tines, finger weeders, rotary hoes",
+          "depth and height control"
+        ]
+      },
+      {
+        "name": "Platform and drive",
+        "role": "carries the tools through the field while staying light enough not to compact soil.",
+        "parts": [
+          "narrow steel or aluminium frame sized to the row spacing",
+          "electric hub motors",
+          "lithium-ion battery pack or on-board generator"
+        ]
+      },
+      {
+        "name": "Fleet software",
+        "role": "turns single machines into a coordinated crew.",
+        "parts": [
+          "task allocation and route planning",
+          "telemetry and remote monitoring",
+          "geofencing and emergency stop"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "keeps the weed-detection models improving as fields and seasons change.",
+        "parts": [
+          "on-machine image logging",
+          "annotation tools",
+          "retraining and over-the-air model updates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and label field imagery",
+        "detail": "Cameras on trial machines photograph crop and weed seedlings at many growth stages, on different soils and in different light. Agronomists mark every plant to build a labelled training set."
+      },
+      {
+        "title": "Train the species classifier",
+        "detail": "A vision model learns to separate crop from weed species, including seedlings that look almost identical. It is then compressed to run on an embedded GPU and return a decision in tens of milliseconds."
+      },
+      {
+        "title": "Design the platform",
+        "detail": "The chassis is sized to the crop's row spacing and kept deliberately light — a few hundred kilograms — so that many small passes replace one heavy tractor pass and soil compaction is reduced."
+      },
+      {
+        "title": "Fit the kill mechanism",
+        "detail": "Laser units steer a beam onto each weed's growing tip for a brief burst, heating the meristem enough to kill the seedling. Mechanical units use tines, finger weeders or small rotary hoes to uproot or bury weeds inside the crop row."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "The camera sits ahead of the tool, so the system must act in the time it takes to travel that distance at working speed, typically a few kilometres per hour. RTK-GNSS plus row sensing holds the tool on the row to a few centimetres."
+      },
+      {
+        "title": "Coordinate the fleet",
+        "detail": "Dispatch software divides a field into strips, assigns each robot a strip, schedules battery swaps or recharging, and streams position and progress back to the operator."
+      },
+      {
+        "title": "Validate over whole seasons",
+        "detail": "Multi-season trials measure weed kill rate, crop damage, yield and the hand-weeding hours avoided. Only then is the machine built at volume and backed by dealer service."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Real-time deep-learning vision on embedded hardware",
+        "status": "exists",
+        "why": "species-level detection must run on the machine, not in the cloud, and frame by frame."
+      },
+      {
+        "tech": "Centimetre-level satellite positioning (RTK-GNSS)",
+        "status": "exists",
+        "why": "targeting a single seedling inside a crop row needs better accuracy than ordinary GNSS."
+      },
+      {
+        "tech": "Compact high-power lasers and beam steering",
+        "status": "partial",
+        "why": "laser weeding works commercially in high-value vegetable crops but remains costly per hectare."
+      },
+      {
+        "tech": "Long-endurance electric drivetrains",
+        "status": "partial",
+        "why": "a machine must cover a field for most of a day without frequent returns to charge."
+      },
+      {
+        "tech": "Safe autonomous operation around farm workers",
+        "status": "partial",
+        "why": "unattended robots share fields with people, animals and machinery and must reliably detect and stop."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial laser and mechanical weeders working specific high-value crops such as onions and vegetables",
+        "unlocks": "herbicide-free weed control where hand-weeding crews are expensive or unavailable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-robot fleets managed by one operator on a single field",
+        "unlocks": "throughput approaching that of a tractor-mounted implement."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable broadacre row crops at cost parity with spraying",
+        "unlocks": "adoption on the largest crop areas, where the chemical savings matter most."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "light robots handling seeding, weeding and scouting across a whole farm",
+        "unlocks": "a shift away from heavy tractors, with less soil compaction and fewer chemical inputs."
+      }
+    ]
   }
 }

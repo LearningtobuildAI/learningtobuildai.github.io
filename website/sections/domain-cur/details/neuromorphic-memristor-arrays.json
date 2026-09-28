@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Memristor crossbar array",
+        "role": "stores each synaptic weight as a cell's resistance and computes sums in place, using Ohm's law for multiplication and Kirchhoff's law for addition.",
+        "parts": [
+          "metal-oxide switching layer (e.g. hafnium or tantalum oxide)",
+          "top and bottom electrodes",
+          "row (word) and column (bit) lines"
+        ]
+      },
+      {
+        "name": "Selector or access transistor",
+        "role": "isolates each cell so neighbours are not disturbed during reading and writing.",
+        "parts": [
+          "transistor in a 1T1R cell",
+          "or a two-terminal selector diode"
+        ]
+      },
+      {
+        "name": "CMOS periphery",
+        "role": "drives rows, reads tiny currents and converts them back to digital.",
+        "parts": [
+          "row drivers and pulse generators",
+          "sense amplifiers",
+          "analog-to-digital converters",
+          "digital control logic"
+        ]
+      },
+      {
+        "name": "Neuron circuits",
+        "role": "reproduce the soma: accumulate input, fire when a threshold is crossed, then reset.",
+        "parts": [
+          "integrate-and-fire capacitor",
+          "threshold comparator",
+          "refractory timer"
+        ]
+      },
+      {
+        "name": "Programming and calibration layer",
+        "role": "maps trained weights onto imperfect, drifting conductances.",
+        "parts": [
+          "write-verify pulse engine",
+          "conductance drift model",
+          "compiler that maps a neural network onto the array"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the device stack",
+        "detail": "Engineers pick the oxide, electrode metals and cell size so that resistance switches reliably at low voltage and holds many distinguishable levels."
+      },
+      {
+        "title": "Fabricate the crossbar",
+        "detail": "Rows and columns of metal lines are patterned at nanometre scale, with the switching oxide deposited between them by atomic layer deposition or sputtering."
+      },
+      {
+        "title": "Integrate on top of CMOS",
+        "detail": "The array is built in the back-end-of-line above finished CMOS, so drivers and sense amplifiers sit directly beneath the cells without competing for silicon area."
+      },
+      {
+        "title": "Form the filaments",
+        "detail": "A controlled voltage is applied to each fresh cell to create the conductive filament that makes it switchable — a one-time 'electroforming' step."
+      },
+      {
+        "title": "Tune each weight",
+        "detail": "Write-verify loops pulse cells and re-read them until each conductance lands close to its target, because cells vary from one another."
+      },
+      {
+        "title": "Train or map the network",
+        "detail": "Either a network is trained in software and its weights transferred, or the array learns on-chip by strengthening and weakening cells with timed pulses — the hardware version of long-term potentiation."
+      },
+      {
+        "title": "Connect neurons and routing",
+        "detail": "Neuron circuits and an on-chip network link the crossbar layers into a full network."
+      },
+      {
+        "title": "Test drift and temperature",
+        "detail": "Engineers measure how conductance wanders over hours and with heat, then build compensation into the compiler."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CMOS fabrication at advanced nodes",
+        "status": "exists",
+        "why": "the periphery and access transistors must be small and low-power enough for edge use."
+      },
+      {
+        "tech": "Reliable multi-level resistive switching",
+        "status": "partial",
+        "why": "cells work, but pinning a cell to one of dozens of stable levels is still the central difficulty."
+      },
+      {
+        "tech": "Variability and drift control",
+        "status": "partial",
+        "why": "two identical cells never behave identically, and conductances creep after programming."
+      },
+      {
+        "tech": "Low-power analog-to-digital conversion",
+        "status": "exists",
+        "why": "conversion can outweigh the savings from computing in analog if it is inefficient."
+      },
+      {
+        "tech": "Training methods tolerant of hardware noise",
+        "status": "partial",
+        "why": "algorithms must accept approximate weights and still hit target accuracy."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "embedded resistive memory in commercial microcontrollers, plus research crossbars up to megabit class",
+        "unlocks": "non-volatile memory on chip and small in-memory computing demonstrations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid analog-digital accelerator chips that run inference at milliwatt power",
+        "unlocks": "always-on sensing in battery-powered devices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-chip learning demonstrated in a product-like robot",
+        "unlocks": "machines that adapt to their environment without cloud training."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "3D-stacked arrays hundreds of layers deep",
+        "unlocks": "brain-scale connectivity with far less energy spent moving data."
+      }
+    ]
+  }
+}

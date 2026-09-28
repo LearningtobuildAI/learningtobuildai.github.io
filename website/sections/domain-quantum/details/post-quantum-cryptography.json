@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Key encapsulation mechanism",
+        "role": "lets two parties agree on a shared secret key over a public channel, replacing RSA or elliptic-curve key exchange.",
+        "parts": [
+          "ML-KEM (lattice-based, standardised as FIPS 203)",
+          "a code-based backup scheme selected for future standardisation",
+          "constant-time arithmetic code"
+        ]
+      },
+      {
+        "name": "Digital signature schemes",
+        "role": "proves authenticity and integrity of messages, software and certificates.",
+        "parts": [
+          "ML-DSA (lattice, FIPS 204)",
+          "SLH-DSA (hash-based, FIPS 205)",
+          "a further lattice signature still in preparation"
+        ]
+      },
+      {
+        "name": "Hybrid modes",
+        "role": "combines a post-quantum exchange with a classical one so security holds unless both break.",
+        "parts": [
+          "X25519 or ECDH combined with ML-KEM",
+          "concatenated key derivation"
+        ]
+      },
+      {
+        "name": "Symmetric primitives",
+        "role": "bulk encryption and hashing, which quantum computers weaken only modestly.",
+        "parts": [
+          "AES-256",
+          "SHA-384 or SHA-512",
+          "SHA-3 family"
+        ]
+      },
+      {
+        "name": "Protocol and PKI integration",
+        "role": "where the algorithms actually get used by the world.",
+        "parts": [
+          "TLS 1.3 key shares and signatures",
+          "SSH, IPsec and VPN stacks",
+          "X.509 certificate authorities and root programmes",
+          "hardware security modules and secure elements"
+        ]
+      },
+      {
+        "name": "Migration tooling",
+        "role": "finding and changing every place cryptography is used.",
+        "parts": [
+          "cryptographic inventory and software bill of materials for crypto",
+          "crypto-agility interfaces",
+          "interoperability test suites"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assume the threat is already present",
+        "detail": "Traffic recorded today can be stored and decrypted once a quantum computer exists — the 'harvest now, decrypt later' problem — so migration starts before the attacker arrives."
+      },
+      {
+        "title": "Inventory existing cryptography",
+        "detail": "Scan code, firmware, protocols, certificates and hardware to find every RSA, Diffie-Hellman and elliptic-curve use, and record how long each secret must stay safe."
+      },
+      {
+        "title": "Pick algorithms from the standards",
+        "detail": "Use the NIST-standardised schemes: ML-KEM for key establishment, ML-DSA or SLH-DSA for signatures, with hash-based signatures preferred where conservative, long-lived security matters."
+      },
+      {
+        "title": "Implement them safely",
+        "detail": "Lattice and hash-based maths are turned into code that runs in constant time, avoids secret-dependent branching and resists timing and side-channel attacks; some libraries undergo formal verification of these properties."
+      },
+      {
+        "title": "Test against reference vectors",
+        "detail": "Known-answer tests and cross-implementation checks confirm each scheme produces exactly the specified output before it goes anywhere near production."
+      },
+      {
+        "title": "Deploy in hybrid mode first",
+        "detail": "Protocol stacks negotiate a classical plus post-quantum key exchange, so a flaw in either one alone does not expose the session — this is how browsers, messengers and VPNs have rolled it out."
+      },
+      {
+        "title": "Migrate signatures and certificates",
+        "detail": "The harder half: replacing long-lived code-signing, firmware-signing and TLS certificates, which requires certificate authorities, trust stores and hardware modules to support larger keys and signatures."
+      },
+      {
+        "title": "Build in crypto-agility",
+        "detail": "Interfaces and update paths are designed so algorithms can be swapped again, because the parameter sets and schemes may change after further cryptanalysis."
+      },
+      {
+        "title": "Retire the old algorithms",
+        "detail": "Legacy RSA and elliptic-curve modes are switched off once dependents have moved, on a schedule set by how long data must remain confidential."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Hardness of lattice and coding problems",
+        "status": "partial",
+        "why": "these problems resist all known classical and quantum attacks, but that is an assumption, not a proof — which is why hybrids and hash-based options exist."
+      },
+      {
+        "tech": "Standardised parameter sets",
+        "status": "exists",
+        "why": "public standards published in 2024 define exact key and ciphertext sizes, so independent implementations interoperate."
+      },
+      {
+        "tech": "Side-channel-resistant implementations",
+        "status": "partial",
+        "why": "a mathematically sound scheme can still leak keys through timing or power use; hardened and formally verified code is still maturing."
+      },
+      {
+        "tech": "Protocols that can carry larger keys",
+        "status": "exists",
+        "why": "post-quantum public keys and signatures are kilobytes rather than bytes, so handshakes must be adapted and sometimes fragmented across records."
+      },
+      {
+        "tech": "Crypto-agility in hardware and firmware",
+        "status": "partial",
+        "why": "keys burned into smartcards, industrial devices and old appliances cannot be updated easily or at all."
+      },
+      {
+        "tech": "A credible quantum threat timeline",
+        "status": "partial",
+        "why": "no cryptographically relevant quantum computer exists yet, so budgets and deadlines depend on informed estimates rather than demonstrated machines."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "hybrid post-quantum key exchange running by default in major browsers and messaging apps",
+        "unlocks": "protection for session traffic against future decryption of recorded data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum signatures and certificates issued at scale by certificate authorities and trust stores",
+        "unlocks": "authenticated connections that no longer depend on RSA or elliptic curves end to end."
+      },
+      {
+        "stage": "Next",
+        "milestone": "migration of long-lived secrets: code signing, firmware, VPNs and hardware security modules",
+        "unlocks": "protecting software supply chains and devices that must stay trusted for a decade or more."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "crypto-agility treated as a standing design requirement, with national-security guidance targeting a full transition by the early 2030s",
+        "unlocks": "the ability to change algorithms again quickly if a chosen scheme is broken."
+      }
+    ]
+  }
+}

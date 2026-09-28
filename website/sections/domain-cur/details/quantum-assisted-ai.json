@@ -41,5 +41,148 @@
         "def": "A quantum algorithm that approximates solutions to combinatorial optimization problems by using variational methods."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "the qubit chip that runs the quantum parts of an algorithm.",
+        "parts": [
+          "superconducting transmon qubits or trapped ions",
+          "dilution refrigerator",
+          "room-temperature control electronics"
+        ]
+      },
+      {
+        "name": "Data-encoding layer",
+        "role": "loads classical data (images, text, features) into quantum states — the hardest step.",
+        "parts": [
+          "angle or amplitude encoding circuits",
+          "quantum random-access memory (largely theoretical)",
+          "feature-map design"
+        ]
+      },
+      {
+        "name": "Hybrid algorithm layer",
+        "role": "the circuit that is actually run: variational ansatz or quantum kernel.",
+        "parts": [
+          "parameterised gates",
+          "measurement and sampling",
+          "quantum kernel estimation"
+        ]
+      },
+      {
+        "name": "Classical optimiser",
+        "role": "updates circuit parameters from measured results.",
+        "parts": [
+          "gradient-free or gradient-based optimiser",
+          "tensor-network simulator for validation"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "compensates for noisy qubits so results mean something.",
+        "parts": [
+          "zero-noise extrapolation",
+          "probabilistic error cancellation",
+          "logical qubit encoding (early stage)"
+        ]
+      },
+      {
+        "name": "Classical AI stack",
+        "role": "the neural networks that still do the real work today.",
+        "parts": [
+          "GPU clusters",
+          "training frameworks",
+          "datasets and benchmarks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a problem where quantum help is plausible",
+        "detail": "Candidates are sampling, kernel-based classification and small combinatorial optimisation — not the training of large language models, where no advantage has been shown."
+      },
+      {
+        "title": "Reduce the problem to a circuit",
+        "detail": "The mathematical task is expressed as a sequence of gates, keeping depth low because today's qubits lose coherence quickly."
+      },
+      {
+        "title": "Encode the data",
+        "detail": "Classical numbers are written into qubit states. Each encoding step costs gates and errors, so data loading can erase any theoretical speed-up."
+      },
+      {
+        "title": "Run the circuit many times",
+        "detail": "The chip is cooled to millikelvin temperatures, pulses are applied, and the output is sampled over thousands of repeated shots."
+      },
+      {
+        "title": "Mitigate errors",
+        "detail": "Results are corrected statistically, or the same circuit is run on a classical simulator for comparison."
+      },
+      {
+        "title": "Update parameters in a loop",
+        "detail": "A classical computer adjusts the circuit's angles and repeats the run — the 'quantum-assisted' part is often a small subroutine inside a classical training loop."
+      },
+      {
+        "title": "Benchmark honestly against classical methods",
+        "detail": "The result must beat a well-tuned classical algorithm on the same task, including the cost of encoding and repeated runs."
+      },
+      {
+        "title": "Scale to fault-tolerant hardware",
+        "detail": "Real gains for large models would require error-corrected qubits, fast data loading and deeper circuits than exist today."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-corrected (fault-tolerant) qubits",
+        "status": "missing",
+        "why": "current devices are too noisy for deep circuits; useful quantum linear algebra needs thousands of logical qubits."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "without cheap QRAM-style loading, reading classical data into a quantum computer costs more than the speed-up it offers."
+      },
+      {
+        "tech": "Provable quantum advantage for learning tasks",
+        "status": "partial",
+        "why": "a few contrived problems show a theoretical edge, but many claimed speed-ups have been 'dequantised' by better classical algorithms."
+      },
+      {
+        "tech": "Large-scale classical accelerators",
+        "status": "exists",
+        "why": "GPUs and specialised AI chips are the baseline any quantum approach must beat on cost and time."
+      },
+      {
+        "tech": "Cryogenic control and interconnect",
+        "status": "partial",
+        "why": "scaling to many qubits needs control electronics that work inside or beside the fridge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small experiments with tens of noisy qubits, mostly on toy datasets and sampling tasks",
+        "unlocks": "experience with hybrid quantum-classical loops and error mitigation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early error correction and rigorous benchmark suites against classical AI",
+        "unlocks": "a clear answer on whether any learning task gets a genuine, reproducible edge."
+      },
+      {
+        "stage": "Next",
+        "milestone": "narrow quantum subroutines inside otherwise classical pipelines",
+        "unlocks": "possible use in optimisation, simulation and sampling within scientific computing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant machines with fast data loading",
+        "unlocks": "only then could anything resembling quantum-assisted training of large models be tested — and it may still lose to classical hardware."
+      }
+    ]
   }
 }

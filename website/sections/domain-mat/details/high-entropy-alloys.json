@@ -32,5 +32,151 @@
         "def": "A homogeneous mixture of two or more elements in which the components are completely soluble within each other."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Composition design",
+        "role": "chooses which five or more metals to mix and in what proportions.",
+        "parts": [
+          "element palette (often Co, Cr, Fe, Ni, Mn, or refractory metals such as Nb, Mo, Ta, W)",
+          "CALPHAD thermodynamic databases",
+          "machine-learning screening models"
+        ]
+      },
+      {
+        "name": "Microstructure",
+        "role": "the microscopic arrangement that gives the alloy its strength and toughness.",
+        "parts": [
+          "solid-solution matrix (face-centred or body-centred cubic)",
+          "secondary and ordered phases",
+          "grain boundaries",
+          "lattice distortion from mismatched atom sizes"
+        ]
+      },
+      {
+        "name": "Melt and powder production",
+        "role": "turns separate metals into one homogeneous material.",
+        "parts": [
+          "vacuum arc or induction furnace",
+          "gas atomiser for spherical powder",
+          "mechanical alloying mills"
+        ]
+      },
+      {
+        "name": "Shaping",
+        "role": "forms the alloy into a usable part.",
+        "parts": [
+          "casting moulds",
+          "hot forging and rolling mills",
+          "laser powder-bed fusion printers"
+        ]
+      },
+      {
+        "name": "Joining and surface engineering",
+        "role": "attaches the alloy to other components or applies it as a coating.",
+        "parts": [
+          "welding and brazing consumables",
+          "cladding and thermal-spray equipment",
+          "sputtering targets"
+        ]
+      },
+      {
+        "name": "Characterisation and qualification",
+        "role": "proves the part will survive real service.",
+        "parts": [
+          "electron microscopes",
+          "tensile, creep and fatigue rigs",
+          "corrosion cells",
+          "irradiation and high-temperature test facilities"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Shortlist the elements",
+        "detail": "Thermodynamic calculations and machine-learning models predict which five-or-more-element mixtures will form a single solid solution rather than brittle intermetallic compounds. The composition space is enormous, so most candidates are rejected on paper."
+      },
+      {
+        "title": "Source the feedstock",
+        "detail": "High-purity ingots of each metal are bought, or pre-alloyed powder is made directly, since the mix must be exact to within a fraction of a percent."
+      },
+      {
+        "title": "Melt the mix",
+        "detail": "The metals are melted together under vacuum or inert gas, often several times and flipped between melts, because the elements segregate while freezing and repeated remelting is the only cheap way to even them out."
+      },
+      {
+        "title": "Cast or atomise",
+        "detail": "The liquid alloy is either poured into a mould to make an ingot, or blasted with high-pressure gas into fine spherical powder for additive manufacturing or powder metallurgy."
+      },
+      {
+        "title": "Homogenise and shape",
+        "detail": "A long high-temperature anneal, typically many hours above 1000 °C, removes the remaining chemical gradients. The blank is then hot-forged, rolled, extruded or printed layer by layer into a near-final shape."
+      },
+      {
+        "title": "Heat treat",
+        "detail": "Controlled heating and cooling cycles set the grain size and grow whatever secondary phases the designer wants, trading strength against ductility."
+      },
+      {
+        "title": "Machine and finish",
+        "detail": "The part is cut and ground to tolerance, or coated onto a cheaper substrate by sputtering or cladding."
+      },
+      {
+        "title": "Test and qualify",
+        "detail": "Tensile, creep, fatigue, corrosion and, for nuclear use, irradiation tests are run, then compared against the conventional alloy the part is meant to replace. Qualification in safety-critical service takes years."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CALPHAD databases covering five-or-more-element systems",
+        "status": "partial",
+        "why": "existing thermodynamic databases were built for one- or two-element alloys; extrapolating them to complex mixtures is unreliable."
+      },
+      {
+        "tech": "Vacuum melting and gas atomisation",
+        "status": "exists",
+        "why": "reactive elements such as chromium and aluminium oxidise in air, and powder feedstock needs to be spherical and clean."
+      },
+      {
+        "tech": "Metal additive manufacturing",
+        "status": "exists",
+        "why": "printing suits alloys that are hard to cast and machine, and lets designers vary composition point by point."
+      },
+      {
+        "tech": "Predictive theory of multi-component phase stability",
+        "status": "missing",
+        "why": "without it, discovery is trial-and-error across a near-infinite composition space."
+      },
+      {
+        "tech": "Long-term creep, corrosion and irradiation data",
+        "status": "missing",
+        "why": "no alloy can enter a reactor or a jet engine hot section without decades-scale evidence of how it ages."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "niche commercial parts and coatings, such as wear-resistant tooling and candidate nuclear cladding",
+        "unlocks": "real service data from a handful of demanding applications."
+      },
+      {
+        "stage": "Next",
+        "milestone": "design rules and machine-learning screens that reliably hit a target property",
+        "unlocks": "shortening the trial-and-error loop, which is the main cost of the field."
+      },
+      {
+        "stage": "Next",
+        "milestone": "eutectic and duplex high-entropy alloys that combine high strength with room-temperature ductility",
+        "unlocks": "use in structural parts rather than only coatings."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "qualified substitution for nickel superalloys and steels in turbine hot sections and reactor cores",
+        "unlocks": "higher operating temperatures, meaning more efficient engines and reactors."
+      }
+    ]
   }
 }

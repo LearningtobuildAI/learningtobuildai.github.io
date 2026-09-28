@@ -30,5 +30,157 @@
         "def": "A decentralized wireless network where each node can communicate with its neighboring nodes, allowing for robust and flexible communication paths."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "gathers raw signals about people and the space without asking anyone to press a button.",
+        "parts": [
+          "millimetre-wave radar presence modules",
+          "Wi-Fi channel-state-information receivers",
+          "microphone arrays",
+          "cameras with on-device privacy filtering",
+          "wearable biometric sensors",
+          "temperature, humidity, light and door sensors"
+        ]
+      },
+      {
+        "name": "Connectivity mesh",
+        "role": "moves that data between devices with low latency and local fallback when the internet is down.",
+        "parts": [
+          "Thread, Zigbee and Matter radios",
+          "Wi-Fi and Bluetooth Low Energy links",
+          "border routers and repeaters",
+          "mesh routing firmware"
+        ]
+      },
+      {
+        "name": "Edge inference compute",
+        "role": "runs recognition models next to the sensors so raw data need not leave the building.",
+        "parts": [
+          "neural accelerators and microcontrollers",
+          "quantised on-device model runtime",
+          "memory and thermal budget management"
+        ]
+      },
+      {
+        "name": "Context fusion engine",
+        "role": "turns separate streams into one model of who is present, where, and what they are doing.",
+        "parts": [
+          "person tracking and re-identification",
+          "gait and voice recognition models",
+          "activity and room-state classifiers",
+          "a live digital model of the space"
+        ]
+      },
+      {
+        "name": "Personalisation and policy layer",
+        "role": "learns routines and enforces the rules about what may be sensed, stored or shared.",
+        "parts": [
+          "on-device learning",
+          "federated aggregation across homes",
+          "consent and permission store",
+          "automation rule engine",
+          "audit log"
+        ]
+      },
+      {
+        "name": "Actuation and feedback",
+        "role": "changes the environment and quietly tells people what it has done.",
+        "parts": [
+          "lighting, HVAC and shading controllers",
+          "voice and ambient display output",
+          "notification channels",
+          "manual override"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the space",
+        "detail": "Fit radar and microphone modules in ceilings and walls, add door, window and environmental sensors, and reuse existing Wi-Fi access points as sensing radios."
+      },
+      {
+        "title": "Commission the mesh",
+        "detail": "Join every device to a local network with a border router, assign stable addresses and confirm each one still works if the internet link drops."
+      },
+      {
+        "title": "Collect consented data",
+        "detail": "With explicit agreement, record labelled examples of daily activities, plus synthetic and simulated data to cover rare events."
+      },
+      {
+        "title": "Train and compress models",
+        "detail": "Train activity, occupancy and gait models on the labelled set, then quantise and prune them until they fit the memory and power budget of the edge hardware."
+      },
+      {
+        "title": "Deploy inference locally",
+        "detail": "Run the models on a home hub or on the devices themselves, and tune confidence thresholds so the system stays silent rather than acting wrongly."
+      },
+      {
+        "title": "Fuse streams into context",
+        "detail": "Combine the separate detections into a single state — room, person, activity, confidence — and resolve conflicts between sensors."
+      },
+      {
+        "title": "Set the policy layer",
+        "detail": "Define what is sensed, what is kept, how long it is kept and what may be shared, defaulting to local-only processing with a visible override."
+      },
+      {
+        "title": "Close the loop and retrain",
+        "detail": "Let actuators respond, record whether each action was wanted, and periodically retrain without exporting raw personal data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power edge AI accelerators",
+        "status": "exists",
+        "why": "recognition has to run continuously on small devices within a few watts."
+      },
+      {
+        "tech": "Radio-based sensing without cameras",
+        "status": "partial",
+        "why": "Wi-Fi channel-state and radar sensing can detect presence and movement through walls, but reliability varies between rooms and furniture layouts."
+      },
+      {
+        "tech": "Interoperable device standards",
+        "status": "partial",
+        "why": "a common application layer lets devices from different makers share context instead of each running an isolated app."
+      },
+      {
+        "tech": "Privacy-preserving on-device and federated learning",
+        "status": "partial",
+        "why": "personalisation must improve from many users without pooling their raw sensor data centrally."
+      },
+      {
+        "tech": "Reliable always-on power and network",
+        "status": "exists",
+        "why": "a system that predicts needs cannot go blind when a battery or router fails."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-purpose ambient products — voice assistants, occupancy-aware heating, automatic fall alerts",
+        "unlocks": "proves individual sensing tasks work in ordinary homes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "room-level multimodal context running on a local hub using a common device standard",
+        "unlocks": "fewer false triggers, so automation becomes trustworthy enough to leave switched on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "federated personalisation across homes and buildings",
+        "unlocks": "routines learned from many users while raw data stays on site."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "building- and district-scale coordination of energy, lighting and access",
+        "unlocks": "demand that follows people, cutting wasted energy in cities."
+      }
+    ]
   }
 }

@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Vacuum system",
+        "role": "creates the low-pressure environment so vaporized atoms travel to the substrate without colliding with air molecules.",
+        "parts": [
+          "stainless steel chamber",
+          "turbomolecular pump",
+          "cryopump",
+          "vacuum gauges"
+        ]
+      },
+      {
+        "name": "Precursor and source delivery",
+        "role": "supplies the elements to be deposited as vapor or gas.",
+        "parts": [
+          "thermal evaporation boats",
+          "electron-beam evaporators",
+          "sputter targets",
+          "ALD precursor bubblers",
+          "mass flow controllers"
+        ]
+      },
+      {
+        "name": "Substrate stage",
+        "role": "holds and positions the wafer or part, often heated to promote surface reactions.",
+        "parts": [
+          "heated chuck",
+          "load-lock",
+          "rotation mechanism"
+        ]
+      },
+      {
+        "name": "Activation and patterning",
+        "role": "provides energy to break chemical bonds or direct deposition to precise locations.",
+        "parts": [
+          "focused ion beam column",
+          "plasma source",
+          "shadow masks",
+          "laser"
+        ]
+      },
+      {
+        "name": "Process control",
+        "role": "monitors thickness and composition in real time to stop at the atomic layer.",
+        "parts": [
+          "quartz crystal microbalance",
+          "spectroscopic ellipsometer",
+          "residual gas analyzer",
+          "in-situ reflectometry"
+        ]
+      },
+      {
+        "name": "Cleanroom and handling",
+        "role": "keeps contamination away from the atomic-scale process.",
+        "parts": [
+          "cleanroom environment",
+          "wafer handling robots",
+          "ultrapure gas lines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the layer stack",
+        "detail": "Decide which materials and thicknesses are needed, sometimes down to single atomic layers, for the device."
+      },
+      {
+        "title": "Clean and load the substrate",
+        "detail": "Remove organic and particle contamination, then transfer the substrate into the vacuum chamber through a load-lock."
+      },
+      {
+        "title": "Pump to high vacuum",
+        "detail": "Evacuate the chamber to below 10^-6 pascal (ultra-high vacuum) so residual gas does not disrupt the beam or film."
+      },
+      {
+        "title": "Generate vapor",
+        "detail": "Heat a solid source until it evaporates, sputter atoms off a target with ions, or introduce a chemical precursor gas."
+      },
+      {
+        "title": "Direct the vapor",
+        "detail": "Guide the atoms to the substrate, either broadly or through a focused ion beam or mask for patterned deposition."
+      },
+      {
+        "title": "Deposit the film",
+        "detail": "Atoms land on the surface and bond, forming a thin layer; in ALD, the surface reaction self-limits to one atomic layer per cycle."
+      },
+      {
+        "title": "Repeat cycles",
+        "detail": "Purge excess precursor and repeat the cycle to build up the desired thickness layer by layer."
+      },
+      {
+        "title": "Anneal or activate",
+        "detail": "Heat or plasma-treat the film to improve crystal quality or activate dopants."
+      },
+      {
+        "title": "Measure and finish",
+        "detail": "Use in-situ or ex-situ metrology to confirm thickness and composition, then package the device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultra-high vacuum technology",
+        "status": "exists",
+        "why": "needed to keep the deposition environment free of contaminants that would disrupt atomic layers."
+      },
+      {
+        "tech": "Atomic layer deposition (ALD) chemistry",
+        "status": "exists",
+        "why": "self-limiting surface reactions that enable true one-atom-layer control."
+      },
+      {
+        "tech": "Focused ion beam (FIB) systems",
+        "status": "partial",
+        "why": "available for nanoscale deposition and etching, but sub-nanometer precision and high throughput are not yet routine."
+      },
+      {
+        "tech": "Precursor molecules for many elements",
+        "status": "partial",
+        "why": "many metals and oxides have volatile precursors, but others lack suitable chemistry for ALD or CVD."
+      },
+      {
+        "tech": "In-situ atomic-scale metrology",
+        "status": "partial",
+        "why": "tools like STM and TEM can image atoms, but integrating them into production deposition is challenging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ALD is used in high-volume semiconductor manufacturing for gate dielectrics and barriers",
+        "unlocks": "reliable, uniform films only a few atoms thick in mass-produced chips."
+      },
+      {
+        "stage": "Next",
+        "milestone": "area-selective deposition to place material only where needed",
+        "unlocks": "fewer lithography steps and lower-cost nanoscale patterning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "direct-write focused ion beam deposition for prototyping quantum and nanoscale devices",
+        "unlocks": "rapid iteration on exotic material combinations without masks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "atomic-precision manufacturing of 3D structures with multiple materials",
+        "unlocks": "new classes of electronics, sensors and quantum devices built atom by atom."
+      }
+    ]
+  }
+}

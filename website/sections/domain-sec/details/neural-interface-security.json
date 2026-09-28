@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Neural front end",
+        "role": "senses the tiny voltages from neurons and digitises them without leaking information.",
+        "parts": [
+          "electrode array",
+          "low-noise amplifier",
+          "analog-to-digital converter",
+          "on-chip secure element"
+        ]
+      },
+      {
+        "name": "Wireless telemetry link",
+        "role": "carries decoded commands and raw neural data between implant and external device.",
+        "parts": [
+          "radio or inductive transceiver",
+          "link-layer encryption",
+          "anti-replay counters"
+        ]
+      },
+      {
+        "name": "On-device decoder",
+        "role": "turns neural activity into intent before it leaves the body.",
+        "parts": [
+          "feature extraction",
+          "machine-learning model",
+          "inference accelerator"
+        ]
+      },
+      {
+        "name": "Identity and authentication layer",
+        "role": "confirms that the person using the interface is the enrolled user.",
+        "parts": [
+          "neural-signal template",
+          "challenge-response protocol",
+          "fallback credential"
+        ]
+      },
+      {
+        "name": "Cryptographic core",
+        "role": "generates, stores and rotates keys, including quantum-resistant ones.",
+        "parts": [
+          "hardware root of trust",
+          "key store",
+          "post-quantum key exchange and signature algorithms"
+        ]
+      },
+      {
+        "name": "Lifecycle management",
+        "role": "lets the device be updated, audited and shut down safely over its decade-long life.",
+        "parts": [
+          "secure boot",
+          "signed firmware updates",
+          "remote revocation"
+        ]
+      },
+      {
+        "name": "Privacy and audit",
+        "role": "governs neural data, which can reveal intent, mood and health.",
+        "parts": [
+          "encryption at rest",
+          "de-identification",
+          "access logs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write the threat model",
+        "detail": "List what an attacker could do: eavesdrop on the radio link, replay a recorded signal, impersonate a user, tamper with firmware or coerce the implant into unsafe stimulation."
+      },
+      {
+        "title": "Create a hardware root of trust",
+        "detail": "A small secure element generates keys inside the chip and never exports them; it is the anchor for every other check."
+      },
+      {
+        "title": "Enrol the user",
+        "detail": "Record a stable baseline of the person's own neural signatures and store it as a protected template, not raw recordings, so it cannot be replayed if stolen."
+      },
+      {
+        "title": "Secure the radio link",
+        "detail": "Pair the implant and external device with authenticated key exchange, rotate session keys, and add sequence numbers so an old transmission cannot be replayed."
+      },
+      {
+        "title": "Push decoding on-device",
+        "detail": "Run the decoder inside the implant or headset so raw neural data is not streamed continuously; only the minimum necessary result leaves the device."
+      },
+      {
+        "title": "Protect updates and revocation",
+        "detail": "Firmware is signed by the manufacturer and verified before flashing; each device holds a revocable identity so a lost or compromised unit can be shut out."
+      },
+      {
+        "title": "Add anomaly detection",
+        "detail": "Monitor the neural stream and the radio traffic for patterns that look like tampering, electrode drift or an unusual stimulation command, and fail safe rather than fail open."
+      },
+      {
+        "title": "Test adversarially",
+        "detail": "Red teams attempt side-channel, replay, impersonation and stimulation attacks on bench hardware before any human trial."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Implantable or wearable neural interfaces",
+        "status": "partial",
+        "why": "some electrode arrays are in clinical trials and consumer headsets are sold, but the security architecture is an afterthought rather than a design input."
+      },
+      {
+        "tech": "Low-power secure microcontrollers",
+        "status": "exists",
+        "why": "implanted electronics have tight power and heat budgets; cryptography must fit inside a few milliwatts."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "partial",
+        "why": "quantum-resistant standards were published in 2024, but their footprint on tiny, battery-limited medical devices is still being worked out."
+      },
+      {
+        "tech": "Stable neural biometrics",
+        "status": "missing",
+        "why": "a usable identifier must stay recognisable across days, electrode drift and changing mental state — this is not yet demonstrated."
+      },
+      {
+        "tech": "Neural-data privacy rules",
+        "status": "missing",
+        "why": "without clear legal treatment of brain data, engineers lack a defined standard for consent, retention and breach reporting."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "academic neurosecurity research showing that consumer EEG and implanted links can be eavesdropped or manipulated",
+        "unlocks": "a shared vocabulary of threats and a case for designing security in from the start."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reference security architectures for medical BCIs: hardware root of trust, authenticated pairing, signed updates",
+        "unlocks": "regulators and manufacturers can test against something concrete rather than ad hoc."
+      },
+      {
+        "stage": "Next",
+        "milestone": "demonstrated neural biometrics and privacy-preserving on-device decoding",
+        "unlocks": "interfaces that can be used in public or clinical settings without streaming a person's brain activity to the cloud."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "certification schemes and standards for neural devices, covering key management and lifetime support",
+        "unlocks": "implanted interfaces that can be trusted for decades and safely decommissioned at end of life."
+      }
+    ]
+  }
+}

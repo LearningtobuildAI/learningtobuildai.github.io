@@ -33,5 +33,150 @@
         "def": "a method where components communicate only when necessary, reducing power consumption compared to continuous clocked pipelines"
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Neuron cores",
+        "role": "emulate spiking neuron dynamics — accumulating input, firing when a threshold is crossed, then resetting.",
+        "parts": [
+          "membrane potential capacitor",
+          "threshold comparator",
+          "refractory circuit",
+          "local weight memory"
+        ]
+      },
+      {
+        "name": "Synapse crossbar",
+        "role": "store synaptic weights and compute the weighted sum of incoming spikes.",
+        "parts": [
+          "resistive memory cells or SRAM cells",
+          "wordlines and bitlines",
+          "current-summing circuits"
+        ]
+      },
+      {
+        "name": "Asynchronous router",
+        "role": "deliver spikes between cores only when they occur, with no global clock.",
+        "parts": [
+          "network-on-chip",
+          "address-event representation (AER) links",
+          "arbiters and handshaking logic"
+        ]
+      },
+      {
+        "name": "Learning engine",
+        "role": "adjust weights locally according to spike timing, so the chip can adapt without a central controller.",
+        "parts": [
+          "spike trace circuits",
+          "spike-timing-dependent plasticity (STDP) update logic",
+          "learning-rate registers"
+        ]
+      },
+      {
+        "name": "Sensor interface",
+        "role": "convert real-world signals into spike trains and send decisions back out.",
+        "parts": [
+          "event-based camera interface",
+          "analog-to-digital converters",
+          "serial I/O links"
+        ]
+      },
+      {
+        "name": "Power management",
+        "role": "keep idle circuits effectively off, so power scales with activity rather than clock speed.",
+        "parts": [
+          "clock gating cells",
+          "power domains",
+          "bias generators"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the neuron model and network",
+        "detail": "Choose the spiking neuron equations, connectivity and learning rule, then validate them in software simulation."
+      },
+      {
+        "title": "Map the network to hardware",
+        "detail": "Assign neurons to cores and synapses to crossbar rows and columns, balancing fan-out against routing resources."
+      },
+      {
+        "title": "Fabricate the silicon",
+        "detail": "Use a standard CMOS process, often with extra metal layers for dense spike routing and, in some designs, integrated non-volatile memory for weights."
+      },
+      {
+        "title": "Build the synapse arrays",
+        "detail": "Deposit and pattern resistive memory cells or SRAM cells, then form the crossbars that multiply spikes by weights and sum the currents."
+      },
+      {
+        "title": "Lay out the asynchronous router",
+        "detail": "Design a network-on-chip with request-acknowledge handshaking so packets move at their own pace without a clock."
+      },
+      {
+        "title": "Add learning circuits",
+        "detail": "Place local circuits that detect the relative timing of pre- and post-synaptic spikes and nudge the weight up or down."
+      },
+      {
+        "title": "Package and test",
+        "detail": "Probe the chip for spike timing, power draw and cell-to-cell variability, then bin parts by how closely they match the simulated model."
+      },
+      {
+        "title": "Write the software stack",
+        "detail": "Provide compilers, libraries and simulators that take a trained spiking network and map it onto the chip's cores and crossbars."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Event-based vision and audio sensors",
+        "status": "exists",
+        "why": "they output spikes directly, matching the processor's native input and avoiding a power-hungry conversion stage."
+      },
+      {
+        "tech": "Analog in-memory computing",
+        "status": "partial",
+        "why": "multiplying inside the memory array saves energy, but resistive memory cells still suffer from variability and drift."
+      },
+      {
+        "tech": "Sparse asynchronous interconnect",
+        "status": "partial",
+        "why": "event-driven networks-on-chip work in research chips but are not yet a standard, well-supported design block."
+      },
+      {
+        "tech": "On-chip plasticity (STDP)",
+        "status": "partial",
+        "why": "demonstrated in several research chips, but reliable long-term learning in commercial silicon remains hard."
+      },
+      {
+        "tech": "Mature compilers and benchmarks",
+        "status": "partial",
+        "why": "frameworks exist, yet mapping real applications onto spiking hardware still needs expert tuning."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research chips and first commercial edge products, such as always-on keyword spotting in hearables.",
+        "unlocks": "ultra-low-power sensing that runs for weeks on a coin cell."
+      },
+      {
+        "stage": "Next",
+        "milestone": "open-source toolchains and common benchmarks, so developers can compare designs fairly.",
+        "unlocks": "faster adoption in wearables, industrial monitoring and automotive sensing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid chips that combine neuromorphic cores with conventional digital accelerators on one die.",
+        "unlocks": "real-time robotics and adaptive control, where low latency matters as much as low power."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commercial chips that learn continuously on-device using local plasticity.",
+        "unlocks": "always-adaptive edge intelligence that personalises without sending data to the cloud."
+      }
+    ]
   }
 }

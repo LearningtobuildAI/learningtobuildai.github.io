@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum sensing element",
+        "role": "the part whose quantum state shifts in response to a physical quantity — magnetic field, temperature or strain.",
+        "parts": [
+          "nitrogen-vacancy centres in diamond",
+          "alkali-metal vapour cell (rubidium or caesium)",
+          "superconducting loop with Josephson junctions (SQUID)",
+          "trapped ions or cold atoms"
+        ]
+      },
+      {
+        "name": "Excitation and control",
+        "role": "prepares and manipulates the quantum state so the tiny signal can be read out.",
+        "parts": [
+          "narrow-linewidth laser",
+          "microwave or radio-frequency drive",
+          "bias field coils"
+        ]
+      },
+      {
+        "name": "Shielding and environment control",
+        "role": "keeps the sensor isolated from the Earth's field and from thermal noise that would drown the signal.",
+        "parts": [
+          "mu-metal and eddy-current shields",
+          "active field-nulling coils",
+          "cryostat or heated vapour cell (depending on sensor)"
+        ]
+      },
+      {
+        "name": "Readout chain",
+        "role": "converts the optical or electrical response into a usable measurement.",
+        "parts": [
+          "photodetectors",
+          "low-noise amplifiers",
+          "SQUID readout electronics",
+          "lock-in detection"
+        ]
+      },
+      {
+        "name": "Signal reconstruction",
+        "role": "turns a set of sensor readings into an image or a physiological trace.",
+        "parts": [
+          "inverse-problem solvers",
+          "beamformers and source-localisation algorithms",
+          "motion-tracking and artefact correction"
+        ]
+      },
+      {
+        "name": "Clinical interface",
+        "role": "the patient-facing form factor that makes the sensor usable in a hospital.",
+        "parts": [
+          "wearable helmet or vest with sensor array",
+          "catheter or needle probe (for internal use)",
+          "microscope stage and microfluidic cell (for lab work)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the quantum degree of freedom",
+        "detail": "A design must choose what to exploit — electron spin in a diamond defect, atomic spin in a vapour, or flux quantisation in a superconducting loop — and what to measure: magnetic field, temperature, strain or chemical environment."
+      },
+      {
+        "title": "Fabricate the sensor material",
+        "detail": "Diamond sensors are grown by chemical vapour deposition with controlled nitrogen doping, then annealed so that vacancies migrate to form stable nitrogen-vacancy centres. Vapour cells are filled with an alkali metal and buffer gas and sealed. SQUID loops are patterned from thin superconducting films in a cleanroom."
+      },
+      {
+        "title": "Package with optics and drive",
+        "detail": "A fibre-coupled laser, micro-optics and a microwave antenna are assembled around the sensing element so the spin state can be polarised, manipulated and read optically."
+      },
+      {
+        "title": "Engineer the magnetic environment",
+        "detail": "Because the signals are orders of magnitude weaker than the Earth's field, the sensor sits inside mu-metal shielding with coils that cancel the residual background to a few nanotesla or better."
+      },
+      {
+        "title": "Calibrate the sensor",
+        "detail": "Each sensor is characterised against a known field or temperature reference and its response, noise floor and bandwidth recorded — a magnetometer should reach femtotesla-per-root-hertz sensitivity for biomagnetic work."
+      },
+      {
+        "title": "Scale into an array",
+        "detail": "Many sensors are packed at a few centimetres spacing into a helmet or vest shape so that the field pattern across the head or chest can be sampled simultaneously without gaps."
+      },
+      {
+        "title": "Integrate with anatomical imaging",
+        "detail": "The functional data is co-registered with an MRI or CT scan taken in the same position, so a clinician can see which anatomy produced the signal."
+      },
+      {
+        "title": "Validate clinically",
+        "detail": "Performance is compared against the existing standard — usually SQUID-based scanners — in patient studies before any diagnostic claim is made."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Defect engineering in diamond and vapour cells",
+        "status": "partial",
+        "why": "nitrogen-vacancy centres can be made reliably, but yield, coherence time and reproducibility vary between batches."
+      },
+      {
+        "tech": "Narrow-linewidth, compact lasers",
+        "status": "exists",
+        "why": "optical pumping and readout require stable diode or fibre lasers at the right wavelength."
+      },
+      {
+        "tech": "Room-temperature quantum sensing",
+        "status": "partial",
+        "why": "vapour and diamond sensors work without cryogenics, which is what makes wearable devices possible, but sensitivity still trails SQUIDs."
+      },
+      {
+        "tech": "Magnetic shielding and field control",
+        "status": "exists",
+        "why": "without it, ambient fields swamp the picotesla to femtotesla signals produced by nerve and heart activity."
+      },
+      {
+        "tech": "Clinical validation and regulation",
+        "status": "partial",
+        "why": "regulators need evidence that a new modality changes patient outcomes, not just that it produces a prettier signal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "superconducting (SQUID) magnetoencephalography and hyperpolarised-gas lung MRI in specialist clinical use",
+        "unlocks": "a proven, if bulky and expensive, benchmark for quantum-enhanced diagnostics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wearable optically pumped magnetometer arrays for brain imaging in research hospitals",
+        "unlocks": "brain scanning that tolerates movement, so children and epilepsy patients can be measured in natural postures rather than fixed helmets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "patient trials of quantum magnetocardiography and portable low-field MRI",
+        "unlocks": "cheaper, cryogen-free cardiac and neuro diagnostics moving out of specialist centres."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "nanoscale diamond magnetometers and thermometers used inside cells and during surgery",
+        "unlocks": "single-cell metabolic measurement, intraoperative tumour-margin detection and real-time monitoring of therapies at microscopic scale."
+      }
+    ]
+  }
+}

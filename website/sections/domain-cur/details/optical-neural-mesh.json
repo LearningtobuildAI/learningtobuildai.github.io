@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Light source and modulators",
+        "role": "generate and encode optical signals that represent input data and weights.",
+        "parts": [
+          "lasers (off-chip or heterogeneous on-chip)",
+          "electro-optic modulators",
+          "waveguides"
+        ]
+      },
+      {
+        "name": "Photonic matrix multiplier",
+        "role": "performs the core multiply-accumulate operation in the optical domain.",
+        "parts": [
+          "Mach-Zehnder interferometer mesh",
+          "micro-ring resonator arrays",
+          "phase shifters"
+        ]
+      },
+      {
+        "name": "Nonlinear activation",
+        "role": "applies the nonlinear function needed between neural network layers.",
+        "parts": [
+          "saturable absorbers",
+          "semiconductor optical amplifiers",
+          "optoelectronic conversion and digital nonlinearity"
+        ]
+      },
+      {
+        "name": "Photodetection and readout",
+        "role": "converts the optical output back into electrical signals for further processing or output.",
+        "parts": [
+          "photodiodes",
+          "transimpedance amplifiers",
+          "analog-to-digital converters"
+        ]
+      },
+      {
+        "name": "Electronic control and memory",
+        "role": "programs the weights, controls the photonic circuit, and stores intermediate results.",
+        "parts": [
+          "digital control logic",
+          "digital-to-analog converters",
+          "memory (SRAM/DRAM)"
+        ]
+      },
+      {
+        "name": "Packaging and thermal stabilization",
+        "role": "couples light into and out of the chip and keeps the photonic devices at a stable temperature.",
+        "parts": [
+          "fiber-to-chip couplers",
+          "thermoelectric coolers",
+          "temperature sensors",
+          "package substrate"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the photonic circuit",
+        "detail": "Use electronic-photonic design automation tools to lay out waveguides, interferometers, modulators and detectors on a photonic integrated circuit."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Pattern the circuit on a silicon-on-insulator wafer using CMOS-compatible lithography and etching, often in a commercial foundry."
+      },
+      {
+        "title": "Integrate light sources",
+        "detail": "Bond lasers to the chip (heterogeneous integration) or couple external lasers via fibers, since silicon does not emit light efficiently."
+      },
+      {
+        "title": "Package and couple fibers",
+        "detail": "Attach fiber arrays to the chip edges or surface using grating couplers, and mount the chip on a package with electrical connections."
+      },
+      {
+        "title": "Calibrate and program weights",
+        "detail": "Tune phase shifters to set the interferometer mesh to the desired matrix, compensating for fabrication variations and thermal drift."
+      },
+      {
+        "title": "Test neural network inference",
+        "detail": "Feed optical inputs through the mesh, read outputs with photodetectors, and compare against digital reference results for simple tasks."
+      },
+      {
+        "title": "Integrate with electronic host",
+        "detail": "Connect the photonic accelerator to a conventional processor and memory to handle nonlinearities, data movement and overall control."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics fabrication",
+        "status": "exists",
+        "why": "CMOS-compatible processes already make optical transceivers for data centers, providing a manufacturing base."
+      },
+      {
+        "tech": "On-chip lasers",
+        "status": "partial",
+        "why": "Heterogeneous integration of III-V lasers on silicon is demonstrated but not yet high-volume or low-cost."
+      },
+      {
+        "tech": "Efficient optical nonlinear materials",
+        "status": "missing",
+        "why": "Most optical nonlinearities are weak or require high power, making all-optical activation functions difficult."
+      },
+      {
+        "tech": "High-speed electro-optic modulators",
+        "status": "exists",
+        "why": "Modulators in silicon photonics can encode data at tens of gigabits per second, fast enough for neural network inputs."
+      },
+      {
+        "tech": "Electronic-photonic design automation",
+        "status": "partial",
+        "why": "Tools for co-designing photonic and electronic circuits are emerging but not as mature as electronic EDA."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Lab demonstrations of small-scale optical matrix multiplication and simple neural networks",
+        "unlocks": "proof that photonic circuits can perform core neural network operations with low latency."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Hybrid accelerators that combine photonic matrix multiplication with electronic nonlinearity for inference in data centers",
+        "unlocks": "energy-efficient acceleration for specific AI workloads where optical multiply-accumulate shines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Monolithic integration of lasers, nonlinear elements and control electronics on a single photonic chip",
+        "unlocks": "scaling to larger networks and reducing packaging complexity and cost."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "All-optical neural networks for ultra-low-latency and energy-efficient AI at the edge and in data centers",
+        "unlocks": "new computing architectures that break the bandwidth and energy limits of electronics."
+      }
+    ]
+  }
+}

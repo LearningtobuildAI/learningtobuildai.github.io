@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Power supply",
+        "role": "converts mains electricity into a high-current, low-voltage DC arc.",
+        "parts": [
+          "inverter stage (switching transistors)",
+          "step-down transformer",
+          "rectifier",
+          "high-frequency start circuit"
+        ]
+      },
+      {
+        "name": "Torch head",
+        "role": "constrains the arc and gas into a precise cutting jet.",
+        "parts": [
+          "copper electrode with hafnium insert",
+          "nozzle (copper or copper-tungsten)",
+          "swirl ring",
+          "shield cup"
+        ]
+      },
+      {
+        "name": "Gas delivery",
+        "role": "supplies the plasma gas and cools the torch.",
+        "parts": [
+          "compressed air or nitrogen supply",
+          "regulator and filter",
+          "solenoid valve",
+          "internal hoses"
+        ]
+      },
+      {
+        "name": "Cooling",
+        "role": "removes heat from the torch and power supply.",
+        "parts": [
+          "air cooling (most handheld units)",
+          "liquid cooling for higher duty cycles",
+          "heat sinks and fans"
+        ]
+      },
+      {
+        "name": "Control and safety",
+        "role": "sets current, manages gas flow and prevents electric shock.",
+        "parts": [
+          "current control dial or digital interface",
+          "torch trigger switch",
+          "safety interlocks and thermal cutout"
+        ]
+      },
+      {
+        "name": "Work lead",
+        "role": "completes the electrical circuit through the metal being cut.",
+        "parts": [
+          "heavy-duty cable",
+          "ground clamp"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the power stage",
+        "detail": "Engineers choose an inverter topology so a small, light unit can deliver 20–50 A at around 100 V DC to the arc."
+      },
+      {
+        "title": "Wind the transformer and inductors",
+        "detail": "Copper windings are wound on ferrite or iron cores to step voltage down and smooth the current."
+      },
+      {
+        "title": "Make the torch consumables",
+        "detail": "Electrodes are machined from copper and fitted with a hafnium insert; nozzles are turned from copper or copper-tungsten to a precise bore."
+      },
+      {
+        "title": "Assemble the torch head",
+        "detail": "Electrode, swirl ring, nozzle and shield cup are stacked with O-rings so gas swirls around the arc and exits as a tight jet."
+      },
+      {
+        "title": "Integrate gas and cooling paths",
+        "detail": "Internal hoses, valves and heat sinks are fitted so air or coolant reaches the torch and returns without leaks."
+      },
+      {
+        "title": "Wire the control electronics",
+        "detail": "The trigger, current control, high-frequency start circuit and safety interlocks are connected to the power board."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Each unit is run on scrap steel, its current and gas pressure checked, and the arc stability verified before shipping."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-current power electronics",
+        "status": "exists",
+        "why": "compact inverters are needed to make a handheld unit light enough to carry."
+      },
+      {
+        "tech": "Compressed air supply",
+        "status": "exists",
+        "why": "air is the usual plasma gas and also cools the torch in low-cost units."
+      },
+      {
+        "tech": "Hafnium-insert electrodes",
+        "status": "exists",
+        "why": "hafnium survives the arc and emits electrons reliably, giving long consumable life."
+      },
+      {
+        "tech": "Precision nozzle manufacturing",
+        "status": "exists",
+        "why": "the bore diameter and concentricity determine cut quality and kerf width."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "handheld inverter plasma cutters running on mains power cut steel up to about 12–25 mm thick in workshops.",
+        "unlocks": "affordable, portable cutting that replaces angle grinders for many tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "battery-powered or higher-efficiency units with longer consumable life.",
+        "unlocks": "cutting in remote locations without a generator."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated digital controls that automatically set current and gas flow for the material thickness.",
+        "unlocks": "easier, more repeatable cuts for less experienced users."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "robotic or CNC-guided personal plasma tables become common in small workshops.",
+        "unlocks": "factory-grade precision at a hobbyist scale."
+      }
+    ]
+  }
+}

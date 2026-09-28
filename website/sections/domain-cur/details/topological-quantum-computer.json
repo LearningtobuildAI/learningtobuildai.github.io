@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Host material",
+        "role": "the physical system that can host non-abelian quasiparticles.",
+        "parts": [
+          "semiconductor quantum wells (gallium arsenide or indium arsenide)",
+          "semiconductor–superconductor hybrids (indium arsenide nanowires with an aluminium shell)",
+          "fractional quantum Hall states in a two-dimensional electron gas"
+        ]
+      },
+      {
+        "name": "Nanoscale device",
+        "role": "geometry that lets quasiparticles be created, moved and brought together.",
+        "parts": [
+          "epitaxial nanowire networks or planar hybrid islands",
+          "tunnel junctions",
+          "superconducting loops and interferometer arms"
+        ]
+      },
+      {
+        "name": "Gate control",
+        "role": "electrostatic gates tune the local potential so quasiparticle modes appear and shift position.",
+        "parts": [
+          "metal gate electrodes",
+          "thin dielectric layers",
+          "bias wiring"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "detects the parity (whether a mode pair is occupied) without destroying the state.",
+        "parts": [
+          "quantum dots or charge sensors",
+          "radio-frequency reflectometry",
+          "signal amplifiers"
+        ]
+      },
+      {
+        "name": "Cryogenic environment",
+        "role": "keeps the device cold enough and shielded from interference.",
+        "parts": [
+          "dilution refrigerator stages (tens of millikelvin)",
+          "superconducting magnet",
+          "filtering and shielding"
+        ]
+      },
+      {
+        "name": "Classical control stack",
+        "role": "compiles algorithms into braiding or measurement sequences and interprets the results.",
+        "parts": [
+          "pulse and timing electronics",
+          "decoder software",
+          "error-correction layer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the material",
+        "detail": "Crystalline layers are built atom by atom with molecular beam epitaxy — either quantum-well heterostructures or semiconductor nanowires with a thin superconducting shell grown without breaking vacuum."
+      },
+      {
+        "title": "Pattern the device",
+        "detail": "Electron-beam lithography and shadow evaporation define superconducting islands, tunnel barriers and contacts with nanometre precision."
+      },
+      {
+        "title": "Add gates and wiring",
+        "detail": "Dielectric layers and metal gate electrodes are deposited so each segment of the device can be tuned individually."
+      },
+      {
+        "title": "Cool and apply magnetic field",
+        "detail": "The chip is mounted in a dilution refrigerator at tens of millikelvin, with a magnetic field along the wire and heavy filtering on every line."
+      },
+      {
+        "title": "Look for the signature",
+        "detail": "Tunnelling spectroscopy searches for a conductance peak pinned at zero bias — the standard, and famously ambiguous, hint of a protected mode."
+      },
+      {
+        "title": "Prove the particles are non-abelian",
+        "detail": "The decisive test is interferometry or braiding: swapping two quasiparticles must change the state in a way ordinary particles cannot. This has not been achieved in a solid-state device."
+      },
+      {
+        "title": "Form one qubit",
+        "detail": "Two or more protected modes are combined so their joint parity stores a qubit, and the parity lifetime is measured."
+      },
+      {
+        "title": "Scale into an array",
+        "detail": "Many such devices are wired into a network, with gates implemented by measurements rather than by physically dragging particles around."
+      },
+      {
+        "title": "Add error correction",
+        "detail": "A surface-code-style layer of many physical qubits builds logical qubits and tolerates the residual errors."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Non-abelian anyons in a controllable device",
+        "status": "missing",
+        "why": "without them there is no topological qubit — only candidate signatures that are hard to distinguish from disorder."
+      },
+      {
+        "tech": "Disorder-free semiconductor–superconductor interfaces",
+        "status": "partial",
+        "why": "defects and unwanted subgap states mimic the signal being sought and can destroy protection."
+      },
+      {
+        "tech": "Millikelvin cryogenics and low-noise electronics",
+        "status": "exists",
+        "why": "dilution refrigerators and filtered wiring are standard, though wiring thousands of gates into one fridge is unsolved."
+      },
+      {
+        "tech": "Fabrication at atomic-scale precision",
+        "status": "partial",
+        "why": "epitaxy and lithography are good enough to build single devices but not yet uniform arrays."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "codes exist and are being demonstrated on other qubit types; applying them to topological hardware is untested."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single nanowire and quantum-well devices showing candidate signatures, with a 2025 interferometric parity measurement reported and still debated by the community",
+        "unlocks": "a narrowing of which material systems are worth pursuing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "an unambiguous demonstration of non-abelian exchange in a solid-state device",
+        "unlocks": "confidence that the underlying physics is real and not noise."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one topological qubit whose stored parity clearly outlives the equivalent in conventional qubits",
+        "unlocks": "the claimed hardware advantage of the approach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "small arrays with a working error-correction decoder",
+        "unlocks": "scaling from tens of qubits to hundreds."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant machines running cryptographic and materials-simulation workloads",
+        "unlocks": "the same applications as other quantum computers, but with far lower error-correction overhead if the protection holds."
+      }
+    ]
+  }
+}

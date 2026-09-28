@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum source",
+        "role": "generates the quantum states that carry the key — either very weak laser pulses or entangled photon pairs.",
+        "parts": [
+          "attenuated laser diode",
+          "spontaneous parametric down-conversion crystal (for entanglement)",
+          "polarisation or phase modulators"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "transmits single photons from sender to receiver with as little loss and disturbance as possible.",
+        "parts": [
+          "low-loss optical fibre (telecom wavelengths near 1550 nm)",
+          "free-space telescope for line-of-sight links",
+          "satellite downlink for global reach"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "register individual photons arriving at the receiver.",
+        "parts": [
+          "avalanche photodiodes",
+          "superconducting nanowire single-photon detectors",
+          "cryocooler and timing electronics"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "carries the public discussion needed to turn raw detections into a shared secret key.",
+        "parts": [
+          "conventional network link",
+          "authenticated encryption to prevent man-in-the-middle attacks"
+        ]
+      },
+      {
+        "name": "Post-processing unit",
+        "role": "converts noisy detection events into a shorter, provably secret key.",
+        "parts": [
+          "sifting software",
+          "error-correction algorithm",
+          "privacy-amplification hash",
+          "key management system"
+        ]
+      },
+      {
+        "name": "Range extenders",
+        "role": "bridge distances beyond what a single direct link can cover.",
+        "parts": [
+          "trusted nodes that store and relay keys",
+          "quantum repeaters (research stage)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the protocol and platform",
+        "detail": "Decide between prepare-and-measure schemes (e.g. BB84) or entanglement-based schemes (e.g. E91), and whether the link will be fibre, free-space, or satellite."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "Assemble a laser, modulator and attenuator to produce weak coherent pulses, or a nonlinear crystal to generate entangled photon pairs. Align optics to sub-micron precision."
+      },
+      {
+        "title": "Install the quantum channel",
+        "detail": "Lay optical fibre with low loss and controlled polarisation, or set up a telescope for free-space links. Keep the channel as short as practical because loss rises exponentially with distance."
+      },
+      {
+        "title": "Set up detection",
+        "detail": "Mount single-photon detectors, cool them to reduce noise, and connect fast timing electronics to record arrival times."
+      },
+      {
+        "title": "Implement the classical channel",
+        "detail": "Establish a conventional network link for basis reconciliation, error correction and authentication. Synchronise clocks to nanosecond accuracy."
+      },
+      {
+        "title": "Develop post-processing software",
+        "detail": "Write software to sift raw bits, correct errors, and apply privacy amplification to distill a shorter key whose secrecy is guaranteed by quantum mechanics."
+      },
+      {
+        "title": "Integrate with encryption",
+        "detail": "Feed the distilled key into a one-time pad or a symmetric cipher, and link it to the application that needs secure communication."
+      },
+      {
+        "title": "Test and calibrate",
+        "detail": "Measure the quantum bit error rate, secure key rate and maximum distance. Verify that any eavesdropping attempt raises the error rate detectably."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon sources and detectors",
+        "status": "exists",
+        "why": "the key is encoded in individual photons, so they must be emitted and detected reliably."
+      },
+      {
+        "tech": "Low-loss optical fibre and components",
+        "status": "exists",
+        "why": "fibre spans of tens to a few hundred kilometres are needed for realistic metro and intercity links."
+      },
+      {
+        "tech": "Entangled photon sources",
+        "status": "partial",
+        "why": "entanglement-based protocols offer stronger security proofs but are harder to build and scale."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "without them, key rates fall to zero beyond a few hundred kilometres of fibre."
+      },
+      {
+        "tech": "Standardisation and certification",
+        "status": "partial",
+        "why": "interoperability and security evaluation are still maturing, which slows wide deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point-to-point QKD links in metro networks and dedicated fibre",
+        "unlocks": "information-theoretically secure key exchange over short distances for banks, data centres and government users."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite QKD and trusted-node networks spanning cities",
+        "unlocks": "intercity and intercontinental key distribution, as demonstrated by the Micius satellite."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters that extend entanglement over long fibre",
+        "unlocks": "direct quantum links without trusted intermediate nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a quantum internet linking many nodes",
+        "unlocks": "end-to-end quantum-secure communication, distributed quantum computing and sensing."
+      }
+    ]
+  }
+}

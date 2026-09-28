@@ -29,5 +29,161 @@
         "def": "Artificial Intelligence - the development of computer systems to perform tasks that typically require human intelligence, such as learning, problem-solving, and decision-making."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what is happening across the city in near real time.",
+        "parts": [
+          "inductive loops and radar at junctions",
+          "cameras and computer-vision counts",
+          "air-quality and noise sensors",
+          "smart electricity, water and gas meters",
+          "vehicle telemetry"
+        ]
+      },
+      {
+        "name": "Connectivity layer",
+        "role": "carries those measurements and the control signals back and forth.",
+        "parts": [
+          "fibre backbone",
+          "low-power wide-area networks (LoRaWAN, NB-IoT)",
+          "private 4G/5G cells",
+          "public-network fallback"
+        ]
+      },
+      {
+        "name": "Data platform and digital twin",
+        "role": "stores the data in shared formats and builds a working 3D model of the city that can be simulated.",
+        "parts": [
+          "data catalogue and APIs",
+          "geospatial model of buildings, roads, pipes",
+          "simulation engine for traffic, energy, flooding"
+        ]
+      },
+      {
+        "name": "Controller and optimisation layer",
+        "role": "decides what to change, from seconds to seasons ahead.",
+        "parts": [
+          "adaptive traffic-signal control",
+          "building energy management",
+          "grid demand response",
+          "waste-collection and transit scheduling"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "the physical things that move, dim, open or charge.",
+        "parts": [
+          "signal heads",
+          "street lighting",
+          "dynamic kerbside and parking signs",
+          "EV charge points",
+          "district heating valves and pumps"
+        ]
+      },
+      {
+        "name": "Governance and security layer",
+        "role": "keeps the system lawful, private and hard to attack.",
+        "parts": [
+          "identity and access control",
+          "encryption and network segmentation",
+          "data-sharing agreements",
+          "privacy controls on camera feeds"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument a single domain",
+        "detail": "Most cities start narrow: upgrade street lighting to LED with controls, or fit smart meters, or put sensors on the busiest junctions. Each gives an immediate saving, which is what funds the next step."
+      },
+      {
+        "title": "Build the network",
+        "detail": "Lay fibre along key corridors and add low-power radio coverage so devices can report without expensive cellular contracts."
+      },
+      {
+        "title": "Standardise the data",
+        "detail": "Agree common formats and open APIs so data from transport, water, energy and buildings can be joined. This is usually the slowest step, because each department owns its own systems."
+      },
+      {
+        "title": "Build the digital twin",
+        "detail": "Import maps, building models, utility records and live sensor feeds into one geospatial model that can be queried and simulated. It does not need to be photorealistic; it needs to be current."
+      },
+      {
+        "title": "Close the loop in one domain",
+        "detail": "Turn measurement into action where the risk is low and the payoff clear, such as dimming street lights at 3 a.m. or extending green time for a queueing bus."
+      },
+      {
+        "title": "Optimise across domains",
+        "detail": "Use the twin to trade off between systems — for example shifting EV charging and heat-pump load to match solar output rather than reinforcing the local substation."
+      },
+      {
+        "title": "Automate with hard limits",
+        "detail": "Only now let software act without a person in the loop, and only inside defined boundaries with fallback to safe defaults if data or comms fail."
+      },
+      {
+        "title": "Operate, audit and retrofit",
+        "detail": "A city is never finished. Sensors fail, models drift, and new districts add new devices, so commissioning, calibration and cybersecurity become permanent functions."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap sensors and low-power radio networks",
+        "status": "exists",
+        "why": "city-wide measurement only became affordable once battery-powered devices could run for years on a coin cell."
+      },
+      {
+        "tech": "Broadband and mobile connectivity",
+        "status": "exists",
+        "why": "control loops depend on low, predictable latency; where coverage is poor, automation is not safe."
+      },
+      {
+        "tech": "Cloud and edge compute for optimisation",
+        "status": "exists",
+        "why": "traffic and energy optimisation need thousands of variables solved every few seconds."
+      },
+      {
+        "tech": "Open data models and interoperability standards",
+        "status": "partial",
+        "why": "without shared schemas, each department's data stays in a silo and cross-domain optimisation is impossible."
+      },
+      {
+        "tech": "Privacy-preserving analytics and cybersecurity",
+        "status": "partial",
+        "why": "a city that senses everything is also a city that can be watched or switched off by an attacker."
+      },
+      {
+        "tech": "Reliable actuation hardware and backup power",
+        "status": "exists",
+        "why": "software decisions are worthless if a signal or valve cannot actually move during a power cut."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "domain-level systems in thousands of cities: adaptive traffic control, smart metering, LED lighting with telemetry",
+        "unlocks": "proven savings and the sensor coverage that later steps need."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-scale digital twins fed by live data, with open interfaces between transport, energy and water",
+        "unlocks": "simulation before construction, and cross-department decisions based on one shared picture."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop automation in bounded zones — automated shuttles on fixed routes, self-balancing local energy districts",
+        "unlocks": "evidence that autonomy works safely at district scale before it is trusted city-wide."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "city-wide coordination where infrastructure responds continuously to demand, under human-set limits and public audit",
+        "unlocks": "lower energy and road capacity needs from the same built environment."
+      }
+    ]
   }
 }

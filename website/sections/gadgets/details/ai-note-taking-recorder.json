@@ -1,0 +1,169 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Microphone array",
+        "role": "captures speech from several metres away rather than only the person holding the device.",
+        "parts": [
+          "several MEMS microphones spaced a few centimetres apart",
+          "analogue front end and codec",
+          "beamforming and noise-suppression firmware",
+          "vibration and wind-noise damping"
+        ]
+      },
+      {
+        "name": "Capture electronics",
+        "role": "keeps listening for hours on a small battery while buffering audio safely.",
+        "parts": [
+          "low-power system-on-chip with a voice-activity detector",
+          "flash storage for several gigabytes of audio",
+          "rechargeable battery and charging circuit"
+        ]
+      },
+      {
+        "name": "Connectivity and sync",
+        "role": "moves recordings to a phone or cloud without losing them.",
+        "parts": [
+          "Bluetooth low-energy link",
+          "Wi-Fi radio",
+          "retry and resume logic",
+          "companion app"
+        ]
+      },
+      {
+        "name": "Speech recognition",
+        "role": "turns the audio stream into text with timestamps.",
+        "parts": [
+          "voice-activity segmentation",
+          "acoustic and language model (often a transformer)",
+          "punctuation and capitalisation",
+          "domain vocabulary list"
+        ]
+      },
+      {
+        "name": "Speaker attribution",
+        "role": "marks who said what in a multi-person conversation.",
+        "parts": [
+          "speaker-embedding model",
+          "clustering across the recording",
+          "optional enrolment of known voices"
+        ]
+      },
+      {
+        "name": "Summarisation layer",
+        "role": "condenses the transcript into notes, decisions and action items.",
+        "parts": [
+          "large language model",
+          "chunking and prompt templates",
+          "structured output schema",
+          "optional retrieval of prior meetings"
+        ]
+      },
+      {
+        "name": "Privacy and consent controls",
+        "role": "lets people know they are being recorded and limits what is kept.",
+        "parts": [
+          "recording indicator and spoken notice",
+          "encryption in transit and at rest",
+          "retention and deletion settings",
+          "access control and audit log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the acoustic front end",
+        "detail": "Choose microphone count and spacing for the intended pickup distance, and simulate how the array performs in a reverberant room."
+      },
+      {
+        "title": "Engineer the power budget",
+        "detail": "Decide how much processing runs continuously on the device versus being batched and uploaded, since always-on capture dominates battery life and heat."
+      },
+      {
+        "title": "Write the firmware",
+        "detail": "Implement voice detection, ring buffering, audio compression, secure storage and sync with retry so a dropped connection never loses a meeting."
+      },
+      {
+        "title": "Select and adapt speech models",
+        "detail": "Test recognition accuracy on far-field, noisy, accented audio; add names and jargon as a custom vocabulary; measure word error rate, not just vibes."
+      },
+      {
+        "title": "Add speaker diarisation",
+        "detail": "Cluster voice embeddings across the recording and align them with the transcript so each line is attributed."
+      },
+      {
+        "title": "Build the summarisation pipeline",
+        "detail": "Chunk long transcripts, prompt the model for summary, decisions and action items, and validate the output against a fixed schema before showing it."
+      },
+      {
+        "title": "Harden the cloud and app",
+        "detail": "Encrypt audio and transcripts, define retention defaults, and give users one-tap deletion and export."
+      },
+      {
+        "title": "Field-test the consent workflow",
+        "detail": "Trial the device in real meetings and lectures to confirm the recording notice and indicator are clear and that accuracy holds up."
+      },
+      {
+        "title": "Calibrate and manufacture",
+        "detail": "Test each unit's microphones acoustically on the line so array performance is consistent, then write OTA update and model-refresh plans."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Far-field automatic speech recognition",
+        "status": "exists",
+        "why": "without accurate transcription in real rooms the rest of the pipeline has nothing to work on."
+      },
+      {
+        "tech": "Large language models for summarisation",
+        "status": "exists",
+        "why": "they convert raw transcripts into short, readable notes and action items."
+      },
+      {
+        "tech": "Low-power always-on audio silicon",
+        "status": "exists",
+        "why": "continuous listening for a full day on a pocket-sized battery depends on it."
+      },
+      {
+        "tech": "Speaker diarisation",
+        "status": "partial",
+        "why": "works well for two speakers but degrades with overlap, crosstalk and many voices."
+      },
+      {
+        "tech": "On-device neural inference",
+        "status": "partial",
+        "why": "needed for offline use and stronger privacy, but small devices still can't run the largest models."
+      },
+      {
+        "tech": "Cloud sync and encryption infrastructure",
+        "status": "exists",
+        "why": "recordings must survive dead zones and be stored safely to be trusted."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cloud transcription with summaries and speaker labels, delivered within minutes",
+        "unlocks": "meetings and lectures captured without anyone typing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "most recognition and summarisation running on the device, offline",
+        "unlocks": "use in secure, remote or privacy-sensitive settings."
+      },
+      {
+        "stage": "Next",
+        "milestone": "notes wired into calendars and task tools so action items are filed automatically",
+        "unlocks": "the recorder becomes part of a workflow rather than a standalone gadget."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "consent-aware long-term memory across many recordings, searchable by speaker and topic",
+        "unlocks": "project histories and personal knowledge bases, provided retention stays under user control."
+      }
+    ]
+  }
+}

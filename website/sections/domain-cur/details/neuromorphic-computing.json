@@ -28,5 +28,147 @@
         "def": "A type of two-terminal passive circuit element that 'remembers' the amount of charge that has flowed through it, making them useful for both memory and processing in neuromorphic systems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Silicon neurons",
+        "role": "generate spikes — the electrical pulses that carry information, instead of continuous numbers.",
+        "parts": [
+          "membrane capacitor or digital accumulator",
+          "leak and threshold circuits",
+          "refractory logic"
+        ]
+      },
+      {
+        "name": "Synapse array",
+        "role": "stores connection strengths and multiplies each incoming spike by its weight.",
+        "parts": [
+          "crossbar or SRAM weight banks",
+          "analog conductance cells (memristors, in research)",
+          "read/write circuitry"
+        ]
+      },
+      {
+        "name": "Spike routing fabric",
+        "role": "delivers each spike only to the neurons it connects to.",
+        "parts": [
+          "network-on-chip",
+          "address-event packet encoder",
+          "routers"
+        ]
+      },
+      {
+        "name": "Local learning engine",
+        "role": "adjusts weights on the chip itself, using timing of spikes rather than a separate training pass.",
+        "parts": [
+          "spike-timing plasticity circuits",
+          "weight-update accumulators"
+        ]
+      },
+      {
+        "name": "Event-based sensors",
+        "role": "front ends that output spikes or pixel-change events rather than 30–60 whole frames a second.",
+        "parts": [
+          "event camera pixels",
+          "silicon cochlea or touch sensors"
+        ]
+      },
+      {
+        "name": "Software and mapping stack",
+        "role": "turns a trained spiking network into a physical layout of neurons and synapses.",
+        "parts": [
+          "compiler and mapper",
+          "simulator",
+          "host interface"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the neuron model",
+        "detail": "Designers choose an analog circuit that mimics membrane physics or a digital leaky-integrate-and-fire unit — the analog version is far more efficient per spike but harder to control."
+      },
+      {
+        "title": "Design the neuron and synapse cells",
+        "detail": "Sub-threshold transistor circuits are drawn so tiny currents integrate on a capacitor; synapses are current sources whose strength sets the weight."
+      },
+      {
+        "title": "Fabricate the die",
+        "detail": "The chip is made on a standard CMOS line. Some research adds memristor devices in the upper metal layers to store weights as resistance instead of in capacitors."
+      },
+      {
+        "title": "Build the spike network",
+        "detail": "A mesh of routers lets any neuron send a short address packet to thousands of others, so no central clock has to move every number."
+      },
+      {
+        "title": "Add on-chip plasticity",
+        "detail": "Circuits watch the relative timing of pre- and post-synaptic spikes and nudge weights up or down, giving learning without a separate training chip."
+      },
+      {
+        "title": "Bring up and calibrate",
+        "detail": "Analog circuits vary from die to die, so each chip is tested and its weights calibrated; digital designs skip most of this."
+      },
+      {
+        "title": "Build the toolchain",
+        "detail": "A compiler maps a spiking network onto available cores, and frameworks train it — often with surrogate-gradient methods that approximate a spike's derivative."
+      },
+      {
+        "title": "Package and deploy",
+        "detail": "The chip is paired with an event camera or sensor, powered up in a robot or camera, and tuned for latency and energy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mature low-power CMOS",
+        "status": "exists",
+        "why": "the whole efficiency claim rests on transistor scaling and leak-tight design."
+      },
+      {
+        "tech": "Analog memory devices (memristors/ReRAM)",
+        "status": "partial",
+        "why": "they would store weights in place, but conductance drift and variability remain unresolved."
+      },
+      {
+        "tech": "Spiking network training methods",
+        "status": "partial",
+        "why": "spikes are not differentiable, so training relies on approximations that still lag conventional deep learning."
+      },
+      {
+        "tech": "Event-based sensors",
+        "status": "partial",
+        "why": "they supply the sparse, timing-rich input these chips are built to consume."
+      },
+      {
+        "tech": "Benchmarks and spike-exchange standards",
+        "status": "missing",
+        "why": "without common measures, comparing a neuromorphic chip with a GPU is guesswork."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research platforms and early commercial edge chips — Intel's Loihi series, IBM's TrueNorth, Manchester's SpiNNaker, BrainChip's Akida, plus event cameras and SynSense products",
+        "unlocks": "real workloads in always-on sensing, gesture and keyword detection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "memristor crossbars that learn in place",
+        "unlocks": "dense, low-energy adaptation without moving weights to and from memory."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems where a neuromorphic core handles always-on sensing and a conventional accelerator handles reasoning",
+        "unlocks": "practical products that keep the efficiency where it pays."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale adaptive machines that keep learning after deployment",
+        "unlocks": "robots and edge devices that cope with changing surroundings without retraining in a data centre."
+      }
+    ]
   }
 }

@@ -34,5 +34,160 @@
         "def": "The process by which pluripotent stem cells are induced to become specialized cell types, such as neurons or glial cells."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cell source",
+        "role": "provides the starting cells that will become brain tissue.",
+        "parts": [
+          "induced pluripotent stem cell lines (from a skin or blood sample)",
+          "donor consent and cell banking",
+          "gene-editing tools to add a disease mutation"
+        ]
+      },
+      {
+        "name": "Culture environment",
+        "role": "keeps the tissue alive and supplied with nutrients for months.",
+        "parts": [
+          "low-adhesion plates for forming cell aggregates",
+          "extracellular matrix gel (laminin-rich) for embedding",
+          "agitated or perfused bioreactors",
+          "defined growth media and small-molecule cocktails"
+        ]
+      },
+      {
+        "name": "Patterning and self-organisation",
+        "role": "steers the stem cells into specific brain regions and layers.",
+        "parts": [
+          "morphogen gradients that set region identity (forebrain, midbrain, etc.)",
+          "timed chemical inhibitors of competing lineages",
+          "signals that drive neural progenitor expansion"
+        ]
+      },
+      {
+        "name": "Vascular and support tissue",
+        "role": "delivers oxygen to the core of the tissue and speeds maturation.",
+        "parts": [
+          "endothelial cells forming vessel-like channels",
+          "microfluidic chips that perfuse the tissue",
+          "optional microglia for immune behaviour"
+        ]
+      },
+      {
+        "name": "Readout and screening instruments",
+        "role": "turns the living tissue into data.",
+        "parts": [
+          "light-sheet and confocal microscopes",
+          "multi-electrode arrays for neural activity",
+          "single-cell RNA sequencing",
+          "automated compound dispensers"
+        ]
+      },
+      {
+        "name": "Quality control and ethics oversight",
+        "role": "ensures the model is reproducible and the work is acceptable.",
+        "parts": [
+          "genomic and karyotype checks of cell lines",
+          "batch-to-batch marker staining",
+          "ethics review of donation and of neural tissue research"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Derive the stem cells",
+        "detail": "A small skin or blood sample under consent is reprogrammed into induced pluripotent stem cells, then expanded and frozen in batches."
+      },
+      {
+        "title": "Introduce the disease",
+        "detail": "Either the donor already carries the disease mutation, or gene editing adds one — alongside an isogenic control line with the same genome but no mutation."
+      },
+      {
+        "title": "Form the aggregates",
+        "detail": "Cells are lifted into low-adhesion wells where they clump into spherical embryoid bodies roughly a quarter of a millimetre across."
+      },
+      {
+        "title": "Induce neural fate",
+        "detail": "Small molecules block the signals that would make skin or gut, pushing the cells down the neural lineage into neuroectoderm."
+      },
+      {
+        "title": "Embed and pattern",
+        "detail": "Aggregates are moved into an extracellular matrix gel or a bioreactor, and timed morphogen signals tell them to become cortex, midbrain or another region."
+      },
+      {
+        "title": "Mature for months",
+        "detail": "Weeks to over a year of agitation and media changes lets the tissue layer itself, grow progenitor zones and fire spontaneous electrical activity."
+      },
+      {
+        "title": "Prevent the dead core",
+        "detail": "Because oxygen only diffuses about half a millimetre, thick organoids must be sliced, perfused on a chip, or given vessel-forming cells so the centre does not die."
+      },
+      {
+        "title": "Characterise and compare",
+        "detail": "Staining, sequencing and electrical recording confirm the tissue is what it claims to be, and disease lines are compared with controls."
+      },
+      {
+        "title": "Test interventions",
+        "detail": "Drugs, viruses or gene therapies are applied, and the resulting changes in cell survival, layering or electrical firing are measured."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Induced pluripotent stem cell reprogramming",
+        "status": "exists",
+        "why": "it gives human neurons that carry a patient's exact genetics without taking brain tissue."
+      },
+      {
+        "tech": "Defined media and small-molecule neural induction",
+        "status": "exists",
+        "why": "self-organisation only works if the chemical environment can be steered precisely."
+      },
+      {
+        "tech": "Single-cell sequencing and long-term imaging",
+        "status": "exists",
+        "why": "an organoid is a mixture of cell types, so it can only be understood cell by cell."
+      },
+      {
+        "tech": "Vascularisation of tissue thicker than about 1 mm",
+        "status": "partial",
+        "why": "without blood vessels the interior dies, capping how long and how realistic a model can become."
+      },
+      {
+        "tech": "Standardised, reproducible protocols",
+        "status": "partial",
+        "why": "two labs using the same recipe still get different organoids, which weakens comparisons."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cortical organoids reproducing human-specific features of brain development",
+        "unlocks": "study of conditions that cannot be modelled in mice."
+      },
+      {
+        "stage": "Next",
+        "milestone": "assembloids that fuse two or more brain regions, and vascularised organoids on chips",
+        "unlocks": "circuits and cell-to-cell interactions rather than isolated regions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "patient-derived organoid panels used to pick drugs before treatment",
+        "unlocks": "a human test bed that sits between cell lines and animal studies."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regulators accepting organoid data in place of some animal tests",
+        "unlocks": "faster, cheaper safety screening — a path opened in principle by the 2022 change in US law removing the blanket animal-testing requirement."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "engineered tissue with immune cells, vessels and sensory input",
+        "unlocks": "models of neurodegenerative and psychiatric disease closer to the real human brain."
+      }
+    ]
   }
 }

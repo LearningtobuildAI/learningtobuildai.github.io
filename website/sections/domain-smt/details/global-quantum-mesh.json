@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Entanglement sources",
+        "role": "produce pairs of photons whose quantum states are linked, no matter how far apart they end up.",
+        "parts": [
+          "nonlinear crystals for spontaneous parametric down-conversion",
+          "quantum-dot emitters",
+          "pump lasers"
+        ]
+      },
+      {
+        "name": "Quantum memories",
+        "role": "hold a quantum state long enough for the next link to be ready.",
+        "parts": [
+          "trapped ions or neutral atoms",
+          "rare-earth-doped crystals",
+          "optical cavities"
+        ]
+      },
+      {
+        "name": "Repeater nodes",
+        "role": "extend range by swapping entanglement from one segment to the next.",
+        "parts": [
+          "Bell-state measurement optics",
+          "heralding detectors",
+          "local memory pair"
+        ]
+      },
+      {
+        "name": "Transmission links",
+        "role": "carry single photons without losing them.",
+        "parts": [
+          "low-loss telecom fibre (around 1550 nm)",
+          "free-space telescopes",
+          "satellite terminals"
+        ]
+      },
+      {
+        "name": "Classical control plane",
+        "role": "synchronises clocks, routes keys and reports which attempts succeeded.",
+        "parts": [
+          "time distribution",
+          "classical data channels",
+          "key management software"
+        ]
+      },
+      {
+        "name": "End nodes",
+        "role": "the users: quantum key distribution devices today, small quantum processors later.",
+        "parts": [
+          "single-photon detectors",
+          "interface optics",
+          "processor or key appliance"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate entangled photons",
+        "detail": "A laser pumps a nonlinear crystal or a quantum dot, which occasionally emits a pair of photons entangled in polarisation or time-bin."
+      },
+      {
+        "title": "Send them down a link",
+        "detail": "One photon travels through telecom fibre, or through free space to a satellite and back down. Loss rises steeply with distance, so links stay short — tens to a few hundred kilometres at best."
+      },
+      {
+        "title": "Store the state in memory",
+        "detail": "At the receiving node, the photon's state is mapped into an atomic ensemble or ion, which must keep it coherent for milliseconds or longer."
+      },
+      {
+        "title": "Swap at the middle",
+        "detail": "Two neighbouring segments each hold half an entangled pair. A joint measurement at the middle node entangles the far ends, stretching the link past the direct-loss limit."
+      },
+      {
+        "title": "Purify and correct",
+        "detail": "Repeated swapping degrades fidelity, so entanglement distillation and error correction are used to recover a clean link."
+      },
+      {
+        "title": "Chain the segments",
+        "detail": "Many repeater hops, each with memories, are concatenated until a link spans a continent."
+      },
+      {
+        "title": "Synchronise the network",
+        "detail": "Ultra-stable clocks and classical signalling tell every node when to measure, so the quantum and classical layers stay in step."
+      },
+      {
+        "title": "Hand off to applications",
+        "detail": "End nodes use the entanglement for key distribution, clock comparison, or — much further off — to link quantum processors."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-loss optical fibre and single-photon detectors",
+        "status": "exists",
+        "why": "every quantum link is built from ordinary telecom hardware plus very sensitive detectors."
+      },
+      {
+        "tech": "Entangled photon sources",
+        "status": "exists",
+        "why": "routinely made in laboratories, though not yet bright and pure enough for a network."
+      },
+      {
+        "tech": "Quantum memories with long coherence",
+        "status": "partial",
+        "why": "demonstrated in several systems, but storage times and efficiencies are still far below what a repeater needs."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "partial",
+        "why": "two- and three-node experiments exist; no repeater chain has operated outside the lab."
+      },
+      {
+        "tech": "Satellite quantum links",
+        "status": "partial",
+        "why": "entanglement and key distribution have been demonstrated from orbit, but only for short passes and small key volumes."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "needed to stop errors accumulating over many hops, and still costly in qubits and hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metropolitan quantum key distribution networks using trusted nodes, and satellite-to-ground key distribution demonstrated",
+        "unlocks": "point-to-point secret keys over city and country scales, but not end-to-end entanglement."
+      },
+      {
+        "stage": "Next",
+        "milestone": "laboratory repeater chains of several memory nodes with entanglement swapping",
+        "unlocks": "distance beyond the direct-fibre limit without trusting intermediate nodes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite entanglement links combined with ground fibre segments",
+        "unlocks": "intercontinental entanglement distribution and a genuinely global key layer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "entanglement shared between small quantum processors",
+        "unlocks": "distributed quantum computing and networked sensing — note this is not 'instant computation'; entanglement cannot send information faster than light."
+      }
+    ]
+  }
+}

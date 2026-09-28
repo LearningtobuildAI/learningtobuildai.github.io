@@ -30,5 +30,159 @@
         "def": "A technique involving the change in electrical resistance due to mechanical stress, used for detecting pressure and force."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensor array",
+        "role": "detects pressure and shear across the skin surface.",
+        "parts": [
+          "flexible polymer substrate",
+          "capacitive or piezoresistive sensing elements",
+          "electrode grid"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "scans the array and converts analog signals to digital.",
+        "parts": [
+          "multiplexers",
+          "analog-to-digital converters",
+          "amplifiers"
+        ]
+      },
+      {
+        "name": "Interconnects",
+        "role": "route signals from the skin to the electronics without breaking under bending.",
+        "parts": [
+          "stretchable conductive traces",
+          "flexible printed circuits",
+          "bonding pads"
+        ]
+      },
+      {
+        "name": "Encapsulation",
+        "role": "protects the sensor from moisture, wear and chemicals while staying flexible.",
+        "parts": [
+          "elastomer overcoat",
+          "barrier layers",
+          "adhesive"
+        ]
+      },
+      {
+        "name": "Signal processing",
+        "role": "turns raw pressure maps into useful information like force, contact location and object properties.",
+        "parts": [
+          "microcontroller or FPGA",
+          "machine-learning models",
+          "calibration algorithms"
+        ]
+      },
+      {
+        "name": "Integration interface",
+        "role": "attaches the e-skin to a robot finger, hand or prosthetic limb.",
+        "parts": [
+          "mechanical mounts",
+          "compliant layers",
+          "wiring harness"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the array",
+        "detail": "Choose capacitive or piezoresistive sensing and lay out a grid of sensor elements at the desired resolution."
+      },
+      {
+        "title": "Fabricate the substrate",
+        "detail": "Pattern electrodes on a flexible polymer film using photolithography, screen printing or laser ablation."
+      },
+      {
+        "title": "Deposit the sensing layer",
+        "detail": "Apply or pattern the pressure-sensitive material — for example a conductive polymer or carbon-loaded elastomer."
+      },
+      {
+        "title": "Laminate and encapsulate",
+        "detail": "Stack the layers and seal them with a stretchable overcoat that keeps out moisture and dirt."
+      },
+      {
+        "title": "Bond to electronics",
+        "detail": "Connect the array to readout chips and stretchable interconnects, often on a flexible printed circuit."
+      },
+      {
+        "title": "Calibrate",
+        "detail": "Apply known forces to each element and record its response to build a calibration map."
+      },
+      {
+        "title": "Train models",
+        "detail": "Collect tactile data from grasping and touching tasks, then train machine-learning models for object recognition or slip detection."
+      },
+      {
+        "title": "Integrate and test",
+        "detail": "Mount the e-skin on a robotic gripper or prosthetic hand and test it in real manipulation tasks."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Flexible electronics manufacturing",
+        "status": "exists",
+        "why": "circuits must bend and flex without breaking."
+      },
+      {
+        "tech": "High-resolution micro-fabrication",
+        "status": "exists",
+        "why": "dense sensor arrays need micron-scale patterning."
+      },
+      {
+        "tech": "Stretchable conductors",
+        "status": "partial",
+        "why": "repeated bending and stretching can crack metal traces and cause signal loss."
+      },
+      {
+        "tech": "Machine learning for tactile data",
+        "status": "partial",
+        "why": "interpreting complex pressure patterns for object recognition is still an active research area."
+      },
+      {
+        "tech": "Low-power, high-channel-count readout chips",
+        "status": "partial",
+        "why": "scanning hundreds of sensors requires compact, efficient electronics."
+      },
+      {
+        "tech": "Robust shear sensing",
+        "status": "partial",
+        "why": "detecting slip and friction is essential for dexterous manipulation but remains difficult."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "reliable pressure mapping at roughly 1 mm resolution in research prototypes and early commercial grippers",
+        "unlocks": "simple grasp control and basic object detection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal e-skin that senses shear and temperature alongside pressure",
+        "unlocks": "robust manipulation of unknown objects and slip prevention."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full-hand coverage with high channel counts and low-latency processing",
+        "unlocks": "human-like dexterity and safer human-robot interaction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-healing and self-powered e-skin materials",
+        "unlocks": "long-lived prosthetics and autonomous robots that can work for years without maintenance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-area, low-cost manufacturing for whole-body robot skin",
+        "unlocks": "robots that operate safely alongside humans in unstructured environments."
+      }
+    ]
   }
 }

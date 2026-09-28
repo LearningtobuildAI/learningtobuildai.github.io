@@ -30,5 +30,174 @@
         "def": "A type of deep learning algorithm designed to process data with a grid-like topology, such as images. CNNs are used in AI phenotyping to detect patterns indicative of specific genetic traits."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensor suite",
+        "role": "turns plant appearance into measurable numbers.",
+        "parts": [
+          "RGB cameras",
+          "multispectral and hyperspectral imagers",
+          "thermal infrared",
+          "chlorophyll fluorescence",
+          "LiDAR or stereo for 3D shape"
+        ]
+      },
+      {
+        "name": "Imaging platform",
+        "role": "moves sensors to the plants at a consistent height and angle.",
+        "parts": [
+          "greenhouse gantry or conveyor belt",
+          "field gantry or tractor-mounted boom",
+          "unmanned aircraft",
+          "fixed towers or cable-suspended rigs"
+        ]
+      },
+      {
+        "name": "Controlled environment and metadata",
+        "role": "keeps conditions comparable so differences reflect genetics, not weather.",
+        "parts": [
+          "supplemental lighting",
+          "irrigation and weighing systems",
+          "environmental sensors",
+          "barcodes tying each image to a genotype"
+        ]
+      },
+      {
+        "name": "Image pipeline",
+        "role": "turns raw frames into clean, comparable measurements.",
+        "parts": [
+          "colour and exposure calibration",
+          "orthomosaic stitching",
+          "soil and background removal",
+          "plant segmentation and counting"
+        ]
+      },
+      {
+        "name": "Trait models",
+        "role": "predicts agronomic traits from images.",
+        "parts": [
+          "convolutional neural networks",
+          "time-series growth curves",
+          "stress and disease classifiers",
+          "uncertainty estimates"
+        ]
+      },
+      {
+        "name": "Genotype linkage",
+        "role": "connects measured traits to the genes behind them.",
+        "parts": [
+          "marker or sequence genotype data",
+          "genome-wide association analysis",
+          "genomic prediction models"
+        ]
+      },
+      {
+        "name": "Ground truth",
+        "role": "supplies the trusted numbers the models are trained and checked against.",
+        "parts": [
+          "destructive harvest and weighing",
+          "manual disease scoring",
+          "multi-site and multi-year trial design"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the trait and the decision",
+        "detail": "Start from what breeders actually need to rank — yield, maturity date, disease resistance — and the stage at which it can be seen."
+      },
+      {
+        "title": "Build the imaging station or flight plan",
+        "detail": "Fix camera height, angles and lighting so that every plant is photographed the same way; in the field, plan flight lines and image overlap over small plots."
+      },
+      {
+        "title": "Collect images with identity attached",
+        "detail": "Each capture is tagged to a plant or plot barcode, together with date, time and environmental readings, so images never lose their genotype."
+      },
+      {
+        "title": "Create labelled training data",
+        "detail": "Humans annotate leaf counts, panicles or disease lesions on thousands of images, and these labels are paired with destructive harvest results."
+      },
+      {
+        "title": "Train and validate the models",
+        "detail": "Networks are trained with augmentation and checked on genotypes and sites held out entirely, which exposes overfitting to one location or season."
+      },
+      {
+        "title": "Run the trial at scale",
+        "detail": "The pipeline runs across the whole nursery or field trial, producing a trait value for every plot within days instead of months."
+      },
+      {
+        "title": "Quality-control and correct",
+        "detail": "Outliers, occlusion by neighbours, wind movement and cloud shadows are flagged; suspect plots are re-imaged or measured by hand."
+      },
+      {
+        "title": "Feed breeding decisions",
+        "detail": "Image-derived traits are combined with genotype data in prediction models that rank which plants to cross or advance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep-learning vision models and affordable GPUs",
+        "status": "exists",
+        "why": "segmentation and counting from noisy field images only became practical with trained convolutional networks."
+      },
+      {
+        "tech": "Cheap multispectral sensors and small drones",
+        "status": "exists",
+        "why": "they make it feasible to image thousands of plots repeatedly through a season."
+      },
+      {
+        "tech": "High-throughput genotyping",
+        "status": "exists",
+        "why": "phenotypes only create breeding value once they can be linked to dense genetic markers."
+      },
+      {
+        "tech": "Precise positioning and plot georeferencing",
+        "status": "exists",
+        "why": "field images are useless unless each pixel is tied to the correct plot."
+      },
+      {
+        "tech": "Shared reference datasets and trait standards",
+        "status": "partial",
+        "why": "models do not transfer well between crops, sensors and sites without common definitions and open benchmarks."
+      },
+      {
+        "tech": "Below-ground and internal phenotyping",
+        "status": "partial",
+        "why": "roots, water use and grain chemistry remain hard to measure non-destructively at scale."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "conveyor and gantry systems in greenhouses plus drone imaging of field plots for major cereals",
+        "unlocks": "thousands of plants screened per day for size, vigour, colour and maturity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-modal platforms adding roots, canopy temperature and gas exchange",
+        "unlocks": "traits closer to drought and heat tolerance rather than just appearance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "models that transfer across sites, seasons and sensors",
+        "unlocks": "phenotyping as a routine service rather than a bespoke research exercise."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "tight integration of phenomics with genomic prediction and speed breeding",
+        "unlocks": "shorter breeding cycles and faster delivery of climate-resilient varieties."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous field robots measuring and treating individual plants",
+        "unlocks": "on-farm decisions at plant resolution, feeding data back into breeding."
+      }
+    ]
   }
 }

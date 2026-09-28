@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "the physical qubits that run the sampling circuit.",
+        "parts": [
+          "superconducting transmons, trapped ions or photonic circuits",
+          "couplers and readout resonators"
+        ]
+      },
+      {
+        "name": "Control and readout stack",
+        "role": "shapes the microwave or optical pulses that drive gates and reads out results.",
+        "parts": [
+          "arbitrary-waveform generators",
+          "cryogenic amplifiers and circulators",
+          "FPGA control electronics",
+          "room-temperature racks"
+        ]
+      },
+      {
+        "name": "Cryogenics (solid-state platforms)",
+        "role": "keeps superconducting qubits at millikelvin temperatures.",
+        "parts": [
+          "dilution refrigerator",
+          "cryostat wiring and shielding",
+          "vacuum can"
+        ]
+      },
+      {
+        "name": "Classical simulation stack",
+        "role": "the benchmark the quantum machine must beat.",
+        "parts": [
+          "tensor-network and Schrödinger–Feynman simulators",
+          "high-performance computing clusters",
+          "optimised linear algebra libraries"
+        ]
+      },
+      {
+        "name": "Verification and fidelity tools",
+        "role": "produce a number that says how close the machine's output is to the ideal distribution.",
+        "parts": [
+          "cross-entropy benchmarking",
+          "XEB fidelity estimator",
+          "error-mitigation routines"
+        ]
+      },
+      {
+        "name": "Benchmark suites and reporting",
+        "role": "make claims comparable across machines and vendors.",
+        "parts": [
+          "random circuit sampling circuits",
+          "boson-sampling interferometers",
+          "quantum volume circuits",
+          "published datasets and code"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a task that is hard to simulate",
+        "detail": "Random circuit sampling and boson sampling are chosen because their output distributions are believed costly for classical computers, while being easy to define and check statistically."
+      },
+      {
+        "title": "Design the circuit or interferometer",
+        "detail": "A circuit of a defined depth on a defined qubit connectivity is fixed in advance, so the classical world can attempt exactly the same task."
+      },
+      {
+        "title": "Calibrate the hardware",
+        "detail": "Gate fidelities, crosstalk and readout errors are measured and tuned; the run is only worth doing when two-qubit gate errors are low enough."
+      },
+      {
+        "title": "Sample many times",
+        "detail": "The machine is run for millions of shots to build up the output bitstring distribution."
+      },
+      {
+        "title": "Estimate fidelity",
+        "detail": "Cross-entropy benchmarking compares the observed distribution with the ideal one, giving a single number for how much of the signal is real."
+      },
+      {
+        "title": "Run the best classical algorithms",
+        "detail": "Tensor-network, sparse-simulation and improved sampling methods are applied to the same circuit, often taking weeks on supercomputers."
+      },
+      {
+        "title": "Compare and publish with caveats",
+        "detail": "A claim is made only if the classical runtime estimate is far longer than the quantum one, and the assumptions (memory, hardware, algorithm) are stated explicitly."
+      },
+      {
+        "title": "Watch for classical counter-attacks",
+        "detail": "Follow-up papers frequently shrink or erase the gap, so the claim is treated as provisional until it survives them."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-fidelity multi-qubit gates",
+        "status": "exists",
+        "why": "advantage claims need tens of qubits with two-qubit error rates low enough that the output is not dominated by noise."
+      },
+      {
+        "tech": "Large-scale cryogenics and control electronics",
+        "status": "exists",
+        "why": "solid-state processors only work at millikelvin temperatures and need thousands of control lines."
+      },
+      {
+        "tech": "Classical simulation algorithms and supercomputers",
+        "status": "exists",
+        "why": "the claim is defined relative to the best known classical method, so that method must be genuinely state of the art."
+      },
+      {
+        "tech": "Verifiable, application-relevant problems",
+        "status": "missing",
+        "why": "sampling tasks have no known practical use, so beating a classical simulator is not the same as solving a useful problem."
+      },
+      {
+        "tech": "Logical qubits with error correction",
+        "status": "partial",
+        "why": "below-threshold error correction has been demonstrated in small experiments, but not at the scale a useful quantum computation needs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "random circuit sampling and boson sampling executed on tens to a few hundred physical qubits",
+        "unlocks": "a moving frontier that forces classical simulation methods to improve too."
+      },
+      {
+        "stage": "Next",
+        "milestone": "benchmarks whose answer can be checked independently, without trusting the quantum device",
+        "unlocks": "claims that do not hinge on runtime estimates and assumptions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant logical qubits running verifiable circuits",
+        "unlocks": "a route from sampling stunts to problems with scientific or industrial value."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "economic advantage on real workloads such as chemistry, materials or optimisation",
+        "unlocks": "justification for commercial quantum computing rather than benchmark records."
+      }
+    ]
+  }
+}

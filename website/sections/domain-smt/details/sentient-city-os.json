@@ -1,0 +1,165 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is doing, continuously.",
+        "parts": [
+          "smart electricity and water meters",
+          "traffic and pedestrian counters",
+          "air-quality and weather stations",
+          "vehicle and transit telemetry",
+          "municipal feeds (works, incidents, waste)"
+        ]
+      },
+      {
+        "name": "Communications and edge compute",
+        "role": "moves data and runs control logic close to where it is needed.",
+        "parts": [
+          "fibre backhaul to district nodes",
+          "public or private 5G radio",
+          "edge servers in substations and signal cabinets"
+        ]
+      },
+      {
+        "name": "City state model",
+        "role": "a single shared, continuously updated estimate of what is happening, backed by a simulated twin of the city.",
+        "parts": [
+          "digital-twin geometry and network models",
+          "time-series store and data pipeline",
+          "state estimation and calibration"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "interfaces to the physical equipment that can actually be commanded.",
+        "parts": [
+          "traffic signal controllers",
+          "grid dispatch and demand-response links",
+          "building-management systems",
+          "pumps, valves and lighting controllers"
+        ]
+      },
+      {
+        "name": "Agent orchestration",
+        "role": "software that proposes or takes actions in bounded domains, with negotiation between domains.",
+        "parts": [
+          "domain controllers (energy, mobility, water)",
+          "optimisation and forecasting models",
+          "safety and constraint checkers",
+          "human-in-the-loop consoles"
+        ]
+      },
+      {
+        "name": "Security and governance",
+        "role": "keeps a city-scale control system from being hijacked or misused.",
+        "parts": [
+          "identity and access management",
+          "privacy-preserving data sharing",
+          "audit logging",
+          "fail-safe manual overrides"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument a district",
+        "detail": "Smart meters, counters, environmental sensors and cabinets are installed across a few square kilometres, with clear rules on what is collected and what is not."
+      },
+      {
+        "title": "Build the data platform",
+        "detail": "Municipal departments, utilities and transit agencies agree on shared schemas and publish real-time feeds through APIs instead of keeping them in silos."
+      },
+      {
+        "title": "Build a calibrated twin",
+        "detail": "A simulated version of the district — road network, electrical feeders, water mains — is tuned until its outputs match measured behaviour from the past year."
+      },
+      {
+        "title": "Close one control loop",
+        "detail": "A single function, such as traffic-signal timing or building demand response, is optimised automatically within narrow limits, with an operator able to overrule it. Safety limits are baked into the software, not left to the model."
+      },
+      {
+        "title": "Add forecasting and simulation",
+        "detail": "The twin is run ahead of real time to predict congestion, peak load or flooding, and to test a policy change on the model before applying it on the street."
+      },
+      {
+        "title": "Introduce scoped agents",
+        "detail": "Each domain gets a software agent with a tight objective and hard constraints — for example, re-timing signals to cut queue length while keeping pedestrian green time above a minimum. These are narrow controllers, not general intelligences."
+      },
+      {
+        "title": "Federate the domains",
+        "detail": "Energy, transport and water agents share one state estimate and negotiate trade-offs, such as charging a bus fleet when grid capacity is spare, with a rule set for resolving conflicts."
+      },
+      {
+        "title": "Scale out and harden",
+        "detail": "Redundancy, offline fallback modes and cyber-security reviews are extended as coverage grows; every automated decision is logged and reversible."
+      },
+      {
+        "title": "Attempt general autonomy",
+        "detail": "A city-scale system that sets its own goals and rewrites its own objectives across all domains would require general artificial intelligence, which does not exist and is not on any verified timetable."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense urban IoT sensing",
+        "status": "exists",
+        "why": "cities already deploy metering, counting and environmental sensors at district scale."
+      },
+      {
+        "tech": "City digital twins",
+        "status": "partial",
+        "why": "several cities run twins for planning and flood or traffic modelling, but few close a real-time control loop."
+      },
+      {
+        "tech": "Reliable low-latency municipal networking",
+        "status": "exists",
+        "why": "control decisions in the tens of milliseconds need fibre or private cellular, not consumer links."
+      },
+      {
+        "tech": "Constrained AI control of infrastructure",
+        "status": "partial",
+        "why": "reinforcement learning and model predictive control have been demonstrated on cooling, dispatch and signal timing, but never over a whole city."
+      },
+      {
+        "tech": "General-purpose autonomous agents",
+        "status": "missing",
+        "why": "the 'sentient' part assumes an AGI that can set its own goals; this does not exist and cannot be engineered from today's tooling."
+      },
+      {
+        "tech": "Cybersecurity and privacy at civic scale",
+        "status": "partial",
+        "why": "a single system that can steer traffic and power is also a single point of failure and a high-value target."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "districts with instrumented assets and dashboards",
+        "unlocks": "visibility — operators see problems sooner, but the city still acts manually."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop control of one or two domains with human oversight",
+        "unlocks": "measurable savings in energy peak load and intersection delays."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a shared twin and state estimate across departments",
+        "unlocks": "cross-domain trade-offs, such as aligning electric fleet charging with grid headroom."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "federated multi-domain agents under a regulator-approved rulebook",
+        "unlocks": "city-wide optimisation with provable safety limits."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "self-directed city governance by a general AI",
+        "unlocks": "nothing that can currently be engineered; this remains a design fiction, not a roadmap."
+      }
+    ]
+  }
+}

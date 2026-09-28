@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Optical pulse sensor",
+        "role": "detects blood volume changes in the wrist artery with each heartbeat.",
+        "parts": [
+          "green and infrared LEDs",
+          "photodiodes",
+          "analog front end"
+        ]
+      },
+      {
+        "name": "Contact pressure sensor",
+        "role": "measures how firmly the device presses on the wrist, because contact force changes the optical signal.",
+        "parts": [
+          "force sensor",
+          "skin interface"
+        ]
+      },
+      {
+        "name": "Motion sensors",
+        "role": "detect movement and arm position so those effects can be filtered out.",
+        "parts": [
+          "accelerometer",
+          "gyroscope"
+        ]
+      },
+      {
+        "name": "Signal processing and algorithm unit",
+        "role": "turns raw pulse waveforms into a blood pressure estimate.",
+        "parts": [
+          "low-power microcontroller",
+          "memory",
+          "machine-learning model"
+        ]
+      },
+      {
+        "name": "Calibration and reference interface",
+        "role": "anchors the estimate to a trusted measurement from a standard cuff.",
+        "parts": [
+          "Bluetooth link",
+          "companion app",
+          "cuff reference"
+        ]
+      },
+      {
+        "name": "Power and housing",
+        "role": "keeps the device running all day and in stable contact with the skin.",
+        "parts": [
+          "battery",
+          "charging circuit",
+          "wrist strap",
+          "water-resistant enclosure"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the sensor layout",
+        "detail": "Position LEDs and photodiodes so they get a strong pulse signal from the radial artery at the wrist."
+      },
+      {
+        "title": "Build the analog front end",
+        "detail": "Amplify and filter the tiny optical signal before it is digitised, keeping noise low."
+      },
+      {
+        "title": "Develop the algorithm",
+        "detail": "Extract features such as pulse shape, timing and pulse wave velocity, then train a model on many paired cuff and sensor recordings."
+      },
+      {
+        "title": "Define the calibration method",
+        "detail": "Decide how often the user must take a standard cuff reading to keep estimates accurate for their body."
+      },
+      {
+        "title": "Validate clinically",
+        "detail": "Compare device readings against a standard cuff in diverse people, postures and conditions, following a recognised test protocol."
+      },
+      {
+        "title": "Obtain regulatory clearance",
+        "detail": "Submit evidence to a medical device regulator for the intended use, such as monitoring trends rather than diagnosing."
+      },
+      {
+        "title": "Manufacture and test",
+        "detail": "Assemble sensors, electronics and battery into a wrist-worn housing, then test each unit for signal quality and safety."
+      },
+      {
+        "title": "Deploy with software",
+        "detail": "Provide an app that guides calibration, displays trends over time and flags readings that need medical attention."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Photoplethysmography (PPG) sensors",
+        "status": "exists",
+        "why": "they provide the pulse waveform from which blood pressure is inferred."
+      },
+      {
+        "tech": "Low-power microcontrollers and Bluetooth",
+        "status": "exists",
+        "why": "needed for all-day wear and for sending data to a phone."
+      },
+      {
+        "tech": "Machine learning for waveform analysis",
+        "status": "partial",
+        "why": "models must generalise across people, skin tones, ages and activity levels."
+      },
+      {
+        "tech": "Clinical validation standards for cuffless devices",
+        "status": "partial",
+        "why": "standards exist but are still evolving, and regulators demand strong evidence before approval."
+      },
+      {
+        "tech": "Accurate reference cuffs",
+        "status": "exists",
+        "why": "the device needs periodic calibration against a trusted measurement to stay accurate."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cuff-calibrated wrist devices that give trends, not diagnoses",
+        "unlocks": "better awareness of blood pressure patterns between clinic visits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved sensors and algorithms that reduce how often calibration is needed",
+        "unlocks": "limited clinical use for monitoring hypertension."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-sensor fusion (optical, electrical and pressure signals) with personalised models",
+        "unlocks": "more reliable readings across daily life and different activities."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "calibration-free continuous blood pressure monitoring built into everyday wearables",
+        "unlocks": "earlier detection and tighter management of hypertension."
+      }
+    ]
+  }
+}

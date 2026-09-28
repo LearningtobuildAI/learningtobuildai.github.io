@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Optical sensor module",
+        "role": "shines light through the skin and reads how much comes back, which tracks the pulse.",
+        "parts": [
+          "green, red and infrared LEDs",
+          "photodiodes",
+          "optical barriers"
+        ]
+      },
+      {
+        "name": "Motion and temperature sensors",
+        "role": "separate true physiology from hand movement and track skin temperature overnight.",
+        "parts": [
+          "3-axis accelerometer",
+          "negative-temperature-coefficient thermistor"
+        ]
+      },
+      {
+        "name": "Electronics core",
+        "role": "runs the sensors and stores or sends the data.",
+        "parts": [
+          "microcontroller",
+          "analogue front end",
+          "flash memory",
+          "Bluetooth Low Energy radio",
+          "antenna"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "fits a battery into a few cubic centimetres.",
+        "parts": [
+          "curved lithium-polymer cell",
+          "inductive charging coil or contacts"
+        ]
+      },
+      {
+        "name": "Mechanical body",
+        "role": "holds everything against the finger without pinching it.",
+        "parts": [
+          "titanium, tungsten-carbide or moulded shell",
+          "transparent optical windows",
+          "biocompatible inner coating"
+        ]
+      },
+      {
+        "name": "Algorithms and app",
+        "role": "turn raw light and motion signals into sleep, heart-rate and recovery metrics.",
+        "parts": [
+          "signal-processing pipeline",
+          "on-device or cloud models",
+          "phone app"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the optical geometry",
+        "detail": "The LED-to-photodiode spacing, usually a few millimetres, is chosen so light reaches the artery-rich tissue of the finger rather than bouncing along the surface."
+      },
+      {
+        "title": "Design the ring body",
+        "detail": "The shell is machined or moulded in sizes spanning roughly 15–23 mm inner diameter, with opaque walls between emitters and detectors to block light piping."
+      },
+      {
+        "title": "Make the flexible circuit",
+        "detail": "A rigid-flex printed circuit board carrying the LEDs, photodiodes, chip and antenna is formed into a cylinder small enough to fit the band."
+      },
+      {
+        "title": "Assemble power and electronics",
+        "detail": "A thin curved battery and inductive coil are placed against the board and the assembly is fitted into the shell."
+      },
+      {
+        "title": "Encapsulate and seal",
+        "detail": "The optics are potted in a clear, skin-safe resin that transmits infrared light and survives daily water and sweat exposure."
+      },
+      {
+        "title": "Calibrate each unit",
+        "detail": "Because finger size and skin tone change how much light returns, optical output is tuned per unit and per wearer."
+      },
+      {
+        "title": "Train the algorithms",
+        "detail": "Models are developed by recording ring signals alongside reference measurements such as laboratory sleep studies, ECG and finger-cuff blood pressure."
+      },
+      {
+        "title": "Validate and ship",
+        "detail": "Performance is tested against reference devices and the device is released with firmware updates over the air."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature photoplethysmography sensors",
+        "status": "exists",
+        "why": "the whole product depends on cheap, tiny LEDs and photodiodes sensitive enough for a finger."
+      },
+      {
+        "tech": "Ultra-low-power microcontrollers and BLE",
+        "status": "exists",
+        "why": "the battery is far too small for anything that draws milliamps continuously."
+      },
+      {
+        "tech": "Wrist and finger sleep-staging algorithms",
+        "status": "exists",
+        "why": "raw pulse and motion signals are meaningless to users until they become sleep stages and heart-rate variability."
+      },
+      {
+        "tech": "Cuffless blood-pressure estimation",
+        "status": "missing",
+        "why": "estimates from pulse timing drift with posture, temperature and exercise, so no consumer ring yet offers clinically reliable blood pressure; the tile's claim is aspirational."
+      },
+      {
+        "tech": "Regulatory clearance for medical claims",
+        "status": "partial",
+        "why": "some rings have clearance for atrial-fibrillation notification; general diagnostic use is mostly not approved."
+      },
+      {
+        "tech": "Non-invasive biochemical sensing",
+        "status": "missing",
+        "why": "measuring glucose or hydration through skin optics has not been shown to work reliably."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rings that reliably track sleep, heart rate, heart-rate variability, skin temperature and activity",
+        "unlocks": "all-day, all-night monitoring in a form factor people actually keep on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cleared detection of irregular rhythms and better oxygen-saturation accuracy across skin tones",
+        "unlocks": "early warning of conditions that currently go unnoticed."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cuffless blood pressure with periodic cuff calibration and regulatory clearance",
+        "unlocks": "the metric the tile promises, and the one most likely to change clinical care."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "non-invasive chemical sensing",
+        "unlocks": "continuous monitoring of blood glucose or hydration — still laboratory research."
+      }
+    ]
+  }
+}

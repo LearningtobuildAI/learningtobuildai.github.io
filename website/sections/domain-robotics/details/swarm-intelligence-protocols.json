@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Local sensing and perception",
+        "role": "lets each robot know its own position and what is immediately around it.",
+        "parts": [
+          "proximity and distance sensors",
+          "cameras or LiDAR",
+          "inertial measurement unit",
+          "onboard processor"
+        ]
+      },
+      {
+        "name": "Peer-to-peer communication",
+        "role": "exchanges short messages between nearby robots without a central hub.",
+        "parts": [
+          "radio mesh (Wi-Fi, Zigbee, or similar)",
+          "neighbour discovery protocol",
+          "message routing"
+        ]
+      },
+      {
+        "name": "Coordination rules",
+        "role": "the local decision rules that produce global swarm behaviour.",
+        "parts": [
+          "stigmergy (virtual pheromone maps)",
+          "flocking rules (separation, alignment, cohesion)",
+          "response thresholds"
+        ]
+      },
+      {
+        "name": "Task allocation",
+        "role": "divides work among robots using only local information.",
+        "parts": [
+          "market-based bidding",
+          "threshold-based activation",
+          "dynamic role switching"
+        ]
+      },
+      {
+        "name": "Human–swarm interface",
+        "role": "lets an operator set goals, monitor progress and intervene.",
+        "parts": [
+          "goal specification",
+          "real-time dashboard",
+          "override and recall commands"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the global goal",
+        "detail": "Specify what the swarm must achieve, such as covering an area or moving goods, and the constraints like time, energy and safety."
+      },
+      {
+        "title": "Design local rules",
+        "detail": "Write simple rules for each robot using only local sensing and neighbour messages, often inspired by ant colonies or bird flocks."
+      },
+      {
+        "title": "Simulate at scale",
+        "detail": "Run thousands of virtual robots to see whether the rules produce the desired collective behaviour and to tune parameters."
+      },
+      {
+        "title": "Implement on robot hardware",
+        "detail": "Port the rules to embedded controllers on real robots, respecting limited compute, memory and battery."
+      },
+      {
+        "title": "Test with small groups",
+        "detail": "Run a few robots in a controlled arena to check communication, collision avoidance and basic coordination."
+      },
+      {
+        "title": "Scale up and field trial",
+        "detail": "Increase the number of robots and move to realistic environments such as warehouses or disaster sites."
+      },
+      {
+        "title": "Deploy with oversight",
+        "detail": "Operate the swarm with human monitoring, logging and the ability to pause or recall robots."
+      },
+      {
+        "title": "Iterate and harden",
+        "detail": "Fix failure modes like communication dropouts or stuck robots, and improve robustness over many runs."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mesh networking",
+        "status": "exists",
+        "why": "robots need to talk to neighbours without a central access point."
+      },
+      {
+        "tech": "Low-cost sensors and embedded processors",
+        "status": "exists",
+        "why": "each robot must be simple and cheap enough to field in large numbers."
+      },
+      {
+        "tech": "Swarm simulation tools",
+        "status": "exists",
+        "why": "emergent behaviour is hard to predict, so testing in software first is essential."
+      },
+      {
+        "tech": "Standardised robot platforms",
+        "status": "partial",
+        "why": "mixing different robot types makes protocol design and testing harder."
+      },
+      {
+        "tech": "Energy management",
+        "status": "exists",
+        "why": "simple robots have limited battery life, so coordination must be energy-aware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small swarms with centralised or hybrid control in warehouses and drone light shows",
+        "unlocks": "proven hardware and basic coordination."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully decentralised protocols for tens to hundreds of robots in logistics and inspection",
+        "unlocks": "scalable fleets that do not rely on a single point of failure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous swarms for search and rescue, agriculture and environmental monitoring",
+        "unlocks": "teams of air, ground and water robots working together."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands of micro-robots for precision tasks",
+        "unlocks": "collective construction, pollution cleanup or infrastructure repair."
+      }
+    ]
+  }
+}

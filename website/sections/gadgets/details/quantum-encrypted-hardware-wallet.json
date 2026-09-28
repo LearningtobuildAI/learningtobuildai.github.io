@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum key distribution link",
+        "role": "exchanges a secret key between the wallet and a trusted node, using single photons so any eavesdropping shows up as errors.",
+        "parts": [
+          "attenuated-laser or single-photon source",
+          "fibre or free-space optical channel",
+          "single-photon detectors",
+          "timing and coincidence electronics"
+        ]
+      },
+      {
+        "name": "Key-distillation software",
+        "role": "turns the raw detected photon events into a shared, verified key.",
+        "parts": [
+          "sifting",
+          "error correction",
+          "privacy amplification",
+          "authenticated classical channel"
+        ]
+      },
+      {
+        "name": "Wallet secure element",
+        "role": "stores the seed and signs transactions inside a tamper-resistant chip.",
+        "parts": [
+          "hardened microcontroller",
+          "encrypted key store",
+          "PIN or biometric gate",
+          "firmware attestation"
+        ]
+      },
+      {
+        "name": "Post-quantum cryptography engine",
+        "role": "protects everything QKD cannot: signatures, firmware updates and the wallet-to-host link.",
+        "parts": [
+          "lattice-based key encapsulation (ML-KEM)",
+          "lattice-based signatures (ML-DSA)",
+          "hybrid classical-plus-PQ handshake"
+        ]
+      },
+      {
+        "name": "Entropy source",
+        "role": "feeds the seed generator with randomness that cannot be predicted.",
+        "parts": [
+          "quantum random number generator chip",
+          "continuous health tests",
+          "seed backup and recovery path"
+        ]
+      },
+      {
+        "name": "Tamper and power hardware",
+        "role": "keeps the device usable while resisting physical probing.",
+        "parts": [
+          "shield mesh and sensors",
+          "battery or optical connector",
+          "enclosure with optical feed-through"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the threat model first",
+        "detail": "A quantum-encrypted wallet is only worth building if the attack it blocks is real. QKD stops an eavesdropper copying a key in transit; it does nothing against brute-forcing a weak PIN, a stolen seed phrase or a corrupted firmware update."
+      },
+      {
+        "title": "Choose the optical architecture",
+        "detail": "Decide whether the wallet talks to a home base station over a short free-space or fibre link, or is only ever programmed by a QKD link and then goes air-gapped. Cold storage and a live optical port pull in opposite directions."
+      },
+      {
+        "title": "Build the detector module",
+        "detail": "Single-photon detectors — superconducting nanowire or cooled InGaAs avalanche photodiodes — are integrated with timing circuits that timestamp photon arrivals to sub-nanosecond precision."
+      },
+      {
+        "title": "Write the protocol stack",
+        "detail": "Implement a prepare-and-measure protocol such as BB84: the sender encodes bits in photon polarisation or phase, the receiver measures in a randomly chosen basis, and the two sides compare bases over an authenticated channel."
+      },
+      {
+        "title": "Distil and authenticate the key",
+        "detail": "Sift matching events, correct errors, compress the key by privacy amplification, and authenticate the classical channel with post-quantum signatures so a man-in-the-middle cannot substitute keys."
+      },
+      {
+        "title": "Integrate the secure element",
+        "detail": "Bind the distilled key into the wallet's key hierarchy so transaction signing requires both the device secret and keys only obtainable over the quantum link."
+      },
+      {
+        "title": "Harden the physical package",
+        "detail": "Add mesh shielding, voltage and temperature sensors, and response circuitry that wipes keys on intrusion, then evaluate against a formal protection profile."
+      },
+      {
+        "title": "Test against a real adversary",
+        "detail": "Run detector-blinding, Trojan-horse and timing attacks in the lab and confirm the error rate rises detectably — the whole security argument rests on that."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum key distribution hardware",
+        "status": "exists",
+        "why": "fibre QKD links are commercially deployed in metro networks and by banks and governments, though not at consumer cost or size."
+      },
+      {
+        "tech": "Single-photon detectors",
+        "status": "partial",
+        "why": "efficient detectors exist but are bulky, costly or need cryogenic cooling, which fights with a pocket-sized device."
+      },
+      {
+        "tech": "Post-quantum cryptography standards",
+        "status": "exists",
+        "why": "NIST finalised lattice-based key encapsulation and signature standards in 2024; these, not QKD, carry most of the practical quantum-resistance."
+      },
+      {
+        "tech": "Quantum random number generators",
+        "status": "exists",
+        "why": "QRNG chips are sold commercially and already suit a small hardware device."
+      },
+      {
+        "tech": "Chip-scale integrated photonics",
+        "status": "partial",
+        "why": "putting sources, interferometers and detectors on one photonic chip is the only plausible route to an affordable consumer unit."
+      },
+      {
+        "tech": "Quantum repeaters or trusted-node networks",
+        "status": "missing",
+        "why": "QKD keys cannot travel beyond roughly a hundred kilometres of fibre without intermediate trusted nodes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "QKD deployed in metro fibre networks and dedicated government and banking links",
+        "unlocks": "proof that quantum key exchange works operationally, if not cheaply."
+      },
+      {
+        "stage": "Next",
+        "milestone": "photonic-chip QKD transmitters and receivers",
+        "unlocks": "small, low-power modules that could fit in a handheld device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid post-quantum and QKD custody systems for high-value institutional holdings",
+        "unlocks": "layered defence where the cost of a link is justified by the assets protected."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "consumer quantum-encrypted wallets, only if QKD hardware becomes a cheap commodity",
+        "unlocks": "a niche product; for most users, post-quantum cryptography in an ordinary secure element solves the same problem more simply."
+      }
+    ]
+  }
+}

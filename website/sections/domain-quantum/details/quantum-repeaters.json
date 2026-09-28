@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Entangled photon source",
+        "role": "creates pairs of photons whose states are correlated, the raw material of every link.",
+        "parts": [
+          "nonlinear crystal for spontaneous parametric down-conversion, or semiconductor quantum dot",
+          "pump laser",
+          "filters and fibre coupling"
+        ]
+      },
+      {
+        "name": "Quantum memory",
+        "role": "stores a photon's quantum state and releases it later on demand, so links can be joined.",
+        "parts": [
+          "diamond nitrogen-vacancy centre, trapped ion, cold atom cloud or rare-earth-doped crystal",
+          "optical cavity to boost light-matter coupling",
+          "control lasers"
+        ]
+      },
+      {
+        "name": "Wavelength interface",
+        "role": "matches the emitter's wavelength to the 1550 nm band where fibre loss is lowest.",
+        "parts": [
+          "quantum frequency converter",
+          "low-loss fibre components"
+        ]
+      },
+      {
+        "name": "Bell-state measurement station",
+        "role": "the swapping operation — entangles two memories that never interacted by measuring two photons jointly.",
+        "parts": [
+          "beamsplitter and interferometer",
+          "single-photon detectors",
+          "coincidence timing electronics"
+        ]
+      },
+      {
+        "name": "Purification and error handling",
+        "role": "trades many lower-fidelity links for fewer better ones.",
+        "parts": [
+          "entanglement distillation optics",
+          "classical feedback channel"
+        ]
+      },
+      {
+        "name": "Control and synchronisation",
+        "role": "keeps distant nodes phase-locked and timed to picoseconds.",
+        "parts": [
+          "atomic clocks or GPS-disciplined clocks",
+          "classical telecom links"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a memory platform",
+        "detail": "Each candidate — diamond colour centres, rare-earth crystals, cold atoms, trapped ions — trades coherence time against bandwidth and ease of fibre coupling."
+      },
+      {
+        "title": "Make efficient single photons",
+        "detail": "A pumped nonlinear crystal or an electrically driven quantum dot emits photon pairs on demand with high purity and near-unity collection into fibre."
+      },
+      {
+        "title": "Store and retrieve",
+        "detail": "A photon is absorbed into the memory's collective excitation, held for microseconds to milliseconds, and read out on command as a photon with the original state."
+      },
+      {
+        "title": "Link two nodes",
+        "detail": "Photons from two memories interfere on a beamsplitter; a successful joint detection signals that the memories are now entangled."
+      },
+      {
+        "title": "Swap and extend",
+        "detail": "At the midpoint of a longer span, a Bell-state measurement on photons from two adjacent links joins them into one longer entangled link."
+      },
+      {
+        "title": "Purify",
+        "detail": "Because each swap adds noise, several copies of a link are combined so that the surviving one has higher fidelity than any input."
+      },
+      {
+        "title": "Multiplex",
+        "detail": "Many memory modes and wavelength channels are operated in parallel so that the low probability of success per attempt still yields a usable rate."
+      },
+      {
+        "title": "Deploy in fibre",
+        "detail": "Nodes, detectors and timing hardware are installed in real ducts with classical synchronisation traffic sharing the same cable."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting nanowire single-photon detectors",
+        "status": "exists",
+        "why": "near-unity efficiency and low dark counts are needed to catch the fragile photons, and these are commercially supplied today."
+      },
+      {
+        "tech": "Low-loss telecom fibre and QKD hardware",
+        "status": "exists",
+        "why": "the transmission medium and much of the optics already exist and are deployed for quantum key distribution."
+      },
+      {
+        "tech": "Long-coherence quantum memories with efficient light interfaces",
+        "status": "partial",
+        "why": "laboratory memories reach useful coherence times, but combining that with high retrieval efficiency and telecom compatibility is unsolved."
+      },
+      {
+        "tech": "Entanglement swapping and purification at high fidelity",
+        "status": "partial",
+        "why": "swapping between two memory nodes has been demonstrated, but fidelity and rates remain far below what a network needs."
+      },
+      {
+        "tech": "Quantum frequency conversion",
+        "status": "partial",
+        "why": "visible-band emitters must be shifted to 1550 nm without destroying entanglement; shown in labs with added noise to control."
+      },
+      {
+        "tech": "Integrated photonic and cryogenic engineering",
+        "status": "partial",
+        "why": "thousands of stable interferometers and detectors must fit into field-deployable, serviceable hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "two-node entanglement across installed metro fibre and small multi-node laboratory networks",
+        "unlocks": "proof that memories, photons and swapping work together outside a bench."
+      },
+      {
+        "stage": "Next",
+        "milestone": "three-to-five-node chains with swapping at one or two intermediate stations and memory multiplexing",
+        "unlocks": "rates high enough for device-independent cryptography and early quantum-network services."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field-deployed repeater segments operating at the distances where direct fibre transmission fails",
+        "unlocks": "city-to-city entanglement without trusted intermediate nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "repeater chains combined with free-space satellite links (as demonstrated by the Micius mission)",
+        "unlocks": "continental-scale entanglement distribution and, eventually, a quantum internet linking processors."
+      }
+    ]
+  }
+}

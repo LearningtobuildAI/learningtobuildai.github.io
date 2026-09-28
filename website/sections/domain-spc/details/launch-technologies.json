@@ -33,5 +33,157 @@
         "def": "The capability to recover and reuse parts of a launch vehicle after it has completed a mission, thereby reducing costs associated with space launches."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Propulsion",
+        "role": "produces the thrust to lift the vehicle off the pad and accelerate it to orbital velocity of about 7.8 km/s.",
+        "parts": [
+          "main engines (kerosene, methane or hydrogen with liquid oxygen)",
+          "turbopumps and combustion chambers",
+          "higher-stage vacuum engine",
+          "thrust vector actuators"
+        ]
+      },
+      {
+        "name": "Structures and tanks",
+        "role": "holds propellant — by far most of the vehicle's mass — while surviving launch loads.",
+        "parts": [
+          "propellant tanks in aluminium-lithium alloy, stainless steel or composites",
+          "interstage and thrust structure",
+          "payload fairing"
+        ]
+      },
+      {
+        "name": "Avionics and guidance",
+        "role": "flies the ascent trajectory and keeps the vehicle stable.",
+        "parts": [
+          "flight computers",
+          "inertial and GPS navigation",
+          "gimbal and grid-fin control",
+          "telemetry and flight-termination system"
+        ]
+      },
+      {
+        "name": "Thermal protection and recovery",
+        "role": "lets a reusable stage survive re-entry and land for another flight.",
+        "parts": [
+          "heat-shield tiles or ablative material",
+          "landing legs or launch-catch points",
+          "retro-propulsion or parachutes"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "the launch pad, tank farm and range infrastructure without which nothing flies.",
+        "parts": [
+          "launch pad and flame trench",
+          "propellant storage and loading lines",
+          "strongback and transporter-erector",
+          "radar, telemetry and downrange tracking stations"
+        ]
+      },
+      {
+        "name": "Payload integration",
+        "role": "mates the satellite or cargo to the rocket and releases it in orbit.",
+        "parts": [
+          "payload adapter",
+          "separation system",
+          "fairing jettison mechanism"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design and engine test",
+        "detail": "Engines are designed for a target thrust and specific impulse, then fired repeatedly on test stands to find combustion instabilities and certify thrust levels."
+      },
+      {
+        "title": "Fabricate tanks",
+        "detail": "Large sheets of aluminium-lithium or stainless steel are rolled or friction-stir-welded into cylindrical barrel sections and domes, then welded into tank assemblies that are pressure-tested."
+      },
+      {
+        "title": "Manufacture engines",
+        "detail": "Turbopumps, injectors and nozzles are machined and assembled; many parts are made by additive manufacturing to cut part counts."
+      },
+      {
+        "title": "Integrate the stages",
+        "detail": "Engines, tanks, avionics and plumbing are stacked into a first and upper stage, with harnesses routed through the structure."
+      },
+      {
+        "title": "Static fire",
+        "detail": "The fully assembled stage is clamped to the pad and its engines fired at full thrust to verify the integrated system."
+      },
+      {
+        "title": "Integrate the payload",
+        "detail": "The satellite is encapsulated in the fairing and mated to the upper stage inside a clean room."
+      },
+      {
+        "title": "Launch and ascent",
+        "detail": "The rocket lifts off, stages separate once the first stage's propellant is spent, and the upper stage burns to insert the payload into orbit."
+      },
+      {
+        "title": "Recover and refurbish",
+        "detail": "A reusable first stage re-enters, lands propulsively or under parachutes, and is inspected and re-flown — the step that drives down cost per kilogram."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large liquid-propellant rocket engines",
+        "status": "exists",
+        "why": "high chamber pressure and efficient turbopumps set how much payload can be lifted."
+      },
+      {
+        "tech": "Lightweight high-strength tank structures",
+        "status": "exists",
+        "why": "every kilogram saved in dry mass becomes payload or propellant margin."
+      },
+      {
+        "tech": "Precise guidance and navigation",
+        "status": "exists",
+        "why": "small trajectory errors compound into large orbital insertion errors."
+      },
+      {
+        "tech": "Reusable re-entry and landing",
+        "status": "partial",
+        "why": "propulsive landing of first stages is routine today, but full-vehicle reuse is still being demonstrated."
+      },
+      {
+        "tech": "Cryogenic propellant production and handling",
+        "status": "exists",
+        "why": "liquid oxygen and methane or hydrogen must be produced, stored and loaded safely at scale."
+      },
+      {
+        "tech": "Global launch range and tracking",
+        "status": "exists",
+        "why": "flights need cleared airspace, downrange tracking and safe overflight corridors."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "high-cadence partly reusable launch with frequent first-stage landings",
+        "unlocks": "much cheaper access to orbit for satellites and cargo."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully reusable super-heavy vehicles flying repeatedly",
+        "unlocks": "payload costs low enough for very large constellations and orbital platforms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "orbital propellant transfer and refuelling",
+        "unlocks": "beyond-low-Earth-orbit missions without one giant rocket."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine heavy cargo to the Moon and crewed deep-space transport",
+        "unlocks": "off-world manufacturing, bases and resource use."
+      }
+    ]
   }
 }

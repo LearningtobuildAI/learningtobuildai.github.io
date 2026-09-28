@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Wide-field infrared telescope",
+        "role": "images a large patch of the Galactic bulge at once, in infrared so dust in the galactic plane does not hide the stars.",
+        "parts": [
+          "large primary mirror",
+          "wide-field corrector",
+          "infrared filter wheels"
+        ]
+      },
+      {
+        "name": "Focal plane",
+        "role": "converts the crowded star field into digital images fast enough for short cadence.",
+        "parts": [
+          "mosaic of near-infrared detector arrays",
+          "readout electronics",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Observatory bus",
+        "role": "keeps the telescope thermally stable and pointed at the bulge for long stretches.",
+        "parts": [
+          "sunshade",
+          "attitude control",
+          "power and communications"
+        ]
+      },
+      {
+        "name": "Survey scheduling",
+        "role": "sets which fields are watched, how often, and in which filters.",
+        "parts": [
+          "cadence planner",
+          "data storage"
+        ]
+      },
+      {
+        "name": "Event detection pipeline",
+        "role": "flags a brightening star within minutes so the event can be followed from the ground.",
+        "parts": [
+          "image subtraction against reference frames",
+          "photometry",
+          "alert system"
+        ]
+      },
+      {
+        "name": "Modelling and archive",
+        "role": "turns light curves into planet masses and separations.",
+        "parts": [
+          "light-curve fitting code",
+          "parallax and finite-source models",
+          "public data archive"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose fields and cadence",
+        "detail": "Designers pick bulge fields where stars are densest and set a repeat interval of roughly 15 minutes: short enough to catch planet signals that last only hours."
+      },
+      {
+        "title": "Fabricate the optics",
+        "detail": "A large lightweight mirror is ground, polished and coated, then mounted with a wide-field corrector that delivers a sharp image across a field of view of about a quarter of a square degree."
+      },
+      {
+        "title": "Assemble the focal plane",
+        "detail": "Many near-infrared detector arrays — each a few thousand pixels on a side — are butted together into a mosaic of hundreds of megapixels, then tested for sensitivity and dark current."
+      },
+      {
+        "title": "Integrate and test the observatory",
+        "detail": "Telescope, detectors, sunshade and spacecraft are assembled and shaken, heated and chilled in a thermal-vacuum chamber to prove they survive launch and space."
+      },
+      {
+        "title": "Launch, cool and commission",
+        "detail": "After launch the detectors are cooled and the optics aligned, and the telescope takes calibration images before the survey begins."
+      },
+      {
+        "title": "Run the high-cadence survey",
+        "detail": "The telescope stares at the bulge for months at a time, re-imaging the same fields thousands of times and subtracting each new frame from a reference image to find stars that have brightened."
+      },
+      {
+        "title": "Alert, then model",
+        "detail": "Bright events trigger alerts so ground telescopes can observe the same star simultaneously; the combined space and ground light curve yields the planet-to-star mass ratio and, with parallax, the actual masses."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large near-infrared detector mosaics",
+        "status": "exists",
+        "why": "microlensing signals are faint, reddened and crowded; only big infrared arrays give the needed field and sensitivity."
+      },
+      {
+        "tech": "High-cadence automated photometry",
+        "status": "exists",
+        "why": "a planet shows up as a bump lasting hours, so frames must be compared and measured continuously."
+      },
+      {
+        "tech": "Ground-based microlensing networks",
+        "status": "exists",
+        "why": "surveys that watch the bulge every clear night supply the event alerts and the simultaneous coverage needed for parallax."
+      },
+      {
+        "tech": "Space-based parallax observations",
+        "status": "exists",
+        "why": "measuring the same event from two widely separated viewpoints breaks the degeneracy that otherwise hides the lens mass."
+      },
+      {
+        "tech": "Heavy computation",
+        "status": "partial",
+        "why": "millions of light curves must be searched and fitted; this is routine but data-hungry."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ground surveys watch the bulge nightly and find thousands of magnified stars a year, including dozens of planets and short events that hint at free-floating worlds",
+        "unlocks": "a working alert network and a first statistical sample."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a dedicated space survey with a wide infrared field and rapid cadence, such as the Galactic Bulge Time-Domain Survey planned for NASA's Roman Space Telescope, which is now being assembled and tested",
+        "unlocks": "thousands of bound planets and a real census of worlds drifting free of any star."
+      },
+      {
+        "stage": "Then",
+        "milestone": "planet demographics spanning masses from gas giants down to Mars-mass and separations from a fraction of an astronomical unit out to infinity",
+        "unlocks": "tests of how planets form and get ejected, compared against the populations found by transits and radial velocity."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "astrometric follow-up and joint analysis with other surveys to fix individual lens masses",
+        "unlocks": "a three-dimensional picture of where planets sit in the galaxy."
+      }
+    ]
+  }
+}

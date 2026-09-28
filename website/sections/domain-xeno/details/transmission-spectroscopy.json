@@ -1,0 +1,138 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Telescope and optics",
+        "role": "collects enough starlight to spread across many wavelengths at once.",
+        "parts": [
+          "primary mirror",
+          "secondary mirror",
+          "guidance and pointing system"
+        ]
+      },
+      {
+        "name": "Spectrograph",
+        "role": "separates the light into a spectrum fine enough to resolve narrow absorption bands.",
+        "parts": [
+          "slit or fibre feed",
+          "dispersion element such as a grating or prism",
+          "detector array"
+        ]
+      },
+      {
+        "name": "Calibration and stability",
+        "role": "holds the instrument's wavelength scale and response steady while the star is observed.",
+        "parts": [
+          "reference lamps or laser frequency combs",
+          "thermal enclosure",
+          "detector linearity monitors"
+        ]
+      },
+      {
+        "name": "Data reduction pipeline",
+        "role": "turns raw detector frames into calibrated spectra and removes instrument systematics.",
+        "parts": [
+          "bias and flat-field correction",
+          "wavelength calibration",
+          "light-curve extraction",
+          "systematics models"
+        ]
+      },
+      {
+        "name": "Atmospheric retrieval",
+        "role": "interprets measured transit depths as molecules, clouds and temperature structure.",
+        "parts": [
+          "radiative transfer code",
+          "molecular line lists",
+          "Bayesian fitting framework"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target and predict its transit",
+        "detail": "Select a planet whose orbit crosses the face of its star as seen from Earth, and calculate when the crossing occurs and how long it lasts."
+      },
+      {
+        "title": "Design or configure the spectrograph",
+        "detail": "Build an instrument that covers the needed visible or infrared bands, with a stable optical bench and a detector able to record the star and the planet's limb together."
+      },
+      {
+        "title": "Integrate with a telescope",
+        "detail": "Mount the spectrograph on a space telescope or a large ground-based telescope, and verify that pointing drifts or atmospheric turbulence stay below the size of the signal sought."
+      },
+      {
+        "title": "Calibrate the instrument",
+        "detail": "Measure detector response, wavelength scale and throughput using reference sources, then track how they change over time."
+      },
+      {
+        "title": "Observe the transit",
+        "detail": "Record spectra continuously before, during and after the planet crosses the star, so the out-of-transit data provides a baseline."
+      },
+      {
+        "title": "Reduce and correct the data",
+        "detail": "Extract spectra, correct for detector and pointing systematics, and model stellar activity such as spots and faculae that can mimic an atmosphere."
+      },
+      {
+        "title": "Measure wavelength-dependent transit depths",
+        "detail": "Compare in-transit and out-of-transit flux in each wavelength bin to find where the planet blocks a slightly larger fraction of the star's light."
+      },
+      {
+        "title": "Fit atmospheric models",
+        "detail": "Use retrieval codes to test which molecules, clouds and hazes best explain the measured spectrum, and report confidence limits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-precision stable spectrographs",
+        "status": "exists",
+        "why": "the atmospheric signal is a tiny change in the star's apparent size, far smaller than the star itself."
+      },
+      {
+        "tech": "Low-noise, wide-dynamic-range detectors",
+        "status": "exists",
+        "why": "the instrument must record bright starlight and very small absorption features without saturating or adding noise."
+      },
+      {
+        "tech": "Space telescopes with coverage across key infrared bands",
+        "status": "exists",
+        "why": "Earth's atmosphere absorbs many infrared wavelengths that carry important molecular signatures."
+      },
+      {
+        "tech": "Stellar activity correction methods",
+        "status": "partial",
+        "why": "spots, faculae and plages can create signals larger than the planet's atmosphere."
+      },
+      {
+        "tech": "Complete molecular line lists and cloud models",
+        "status": "partial",
+        "why": "some molecules and cloud properties are poorly known, limiting how confidently a detection can be interpreted."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "JWST and Hubble are measuring transmission spectra of gas giants and some rocky planets",
+        "unlocks": "detections of water, carbon dioxide and other molecules in exoplanet atmospheres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated exoplanet-atmosphere missions and extreme-precision ground spectrographs enlarge the sample",
+        "unlocks": "comparative planetology: how atmospheres differ with planet size, temperature and host star."
+      },
+      {
+        "stage": "Next",
+        "milestone": "combining transmission with emission and phase-curve measurements",
+        "unlocks": "three-dimensional views of weather, heat transport and clouds."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "searching habitable-zone rocky planets for biosignature gases",
+        "unlocks": "candidate signs of life, though stellar contamination and false positives must first be ruled out."
+      }
+    ]
+  }
+}

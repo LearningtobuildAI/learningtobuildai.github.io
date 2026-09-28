@@ -38,5 +38,163 @@
         "def": "Computer systems designed to capture, store, manipulate, analyze, manage, and present all types of geographical data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Geometric base model",
+        "role": "a 3D representation of the city's shape — terrain, buildings, roads, bridges, trees.",
+        "parts": [
+          "aerial and drone photogrammetry",
+          "airborne and mobile LiDAR point clouds",
+          "existing CAD and BIM files",
+          "digital elevation model"
+        ]
+      },
+      {
+        "name": "Semantic layer",
+        "role": "turns geometry into meaningful objects with attributes and relationships.",
+        "parts": [
+          "CityGML building and utility objects",
+          "IFC imports for individual buildings",
+          "asset registers and land records",
+          "unique IDs linking objects across datasets"
+        ]
+      },
+      {
+        "name": "Live data ingestion",
+        "role": "keeps the twin current by streaming measurements from the physical city.",
+        "parts": [
+          "IoT sensor networks",
+          "traffic and transit feeds",
+          "weather and river gauges",
+          "utility metering and SCADA"
+        ]
+      },
+      {
+        "name": "Simulation and analytics",
+        "role": "runs models on the replica to answer 'what if' questions.",
+        "parts": [
+          "hydraulic flood models",
+          "traffic microsimulation",
+          "building energy models",
+          "machine-learning and optimisation jobs"
+        ]
+      },
+      {
+        "name": "Integration and compute platform",
+        "role": "hosts the data model, APIs and computing power that hold the twin together.",
+        "parts": [
+          "spatial database",
+          "streaming and message brokers",
+          "cloud or edge compute",
+          "APIs to external city systems"
+        ]
+      },
+      {
+        "name": "Visualisation and engagement",
+        "role": "presents the twin to planners, operators and the public.",
+        "parts": [
+          "3D web viewer",
+          "dashboards and alerting",
+          "scenario comparison tools"
+        ]
+      },
+      {
+        "name": "Governance and security",
+        "role": "decides who may see and use which data.",
+        "parts": [
+          "access control",
+          "privacy handling for personal data",
+          "data-sharing agreements"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the decisions",
+        "detail": "Start from real questions — flood risk, congestion, energy demand — because these determine the required resolution, data and models."
+      },
+      {
+        "title": "Capture the shape of the city",
+        "detail": "Aerial and drone surveys plus LiDAR produce a point cloud accurate to a few centimetres, which is processed into terrain and building surfaces."
+      },
+      {
+        "title": "Add building detail",
+        "detail": "Where they exist, BIM and CAD files are imported; elsewhere roofs, heights and footprints are inferred from imagery and records."
+      },
+      {
+        "title": "Attach meaning",
+        "detail": "Each object is tagged with attributes — use, age, materials, capacity — following geospatial standards such as CityGML so different systems can read the same model."
+      },
+      {
+        "title": "Connect live feeds",
+        "detail": "Sensors, transit systems and utility telemetry are streamed into a spatial database through APIs and message brokers."
+      },
+      {
+        "title": "Build the simulation models",
+        "detail": "Domain models for water, traffic and energy are coupled to the geometry and calibrated against measured events."
+      },
+      {
+        "title": "Validate against reality",
+        "detail": "The twin is tested by replaying past events — a storm, a road closure — and tuning it until outputs match what actually happened."
+      },
+      {
+        "title": "Operate and keep it current",
+        "detail": "A standing team updates geometry after construction, monitors sensor health and manages access, because a stale twin is worse than none."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "City-scale 3D capture (LiDAR and photogrammetry)",
+        "status": "exists",
+        "why": "without accurate geometry there is nothing to simulate on."
+      },
+      {
+        "tech": "Open geospatial and BIM standards",
+        "status": "exists",
+        "why": "CityGML, IFC and 3D Tiles let many agencies and vendors contribute to one model."
+      },
+      {
+        "tech": "Cheap IoT sensing and connectivity",
+        "status": "partial",
+        "why": "coverage is dense in some districts and absent in others, so the twin sees only part of the city."
+      },
+      {
+        "tech": "Cloud and GPU computing",
+        "status": "exists",
+        "why": "rendering and simulating a whole city in near-real time needs elastic compute."
+      },
+      {
+        "tech": "Data-sharing and privacy governance",
+        "status": "partial",
+        "why": "utilities, transport agencies and private operators rarely share live data freely."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "static 3D city models and planning dashboards in many cities, plus national programmes such as Singapore's",
+        "unlocks": "better visual communication and coordinated planning."
+      },
+      {
+        "stage": "Next",
+        "milestone": "district and city twins with live sensor integration",
+        "unlocks": "real-time monitoring of flooding, air quality and traffic."
+      },
+      {
+        "stage": "Next",
+        "milestone": "validated predictive twins used in operational decisions",
+        "unlocks": "forecasting and scenario testing before investment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop twins that feed control systems directly",
+        "unlocks": "automatic responses — signal timing, pumping, demand shifting — under human oversight."
+      }
+    ]
   }
 }

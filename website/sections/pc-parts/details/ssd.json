@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "NAND flash memory",
+        "role": "stores data as electrical charge in microscopic cells.",
+        "parts": [
+          "3D NAND cell strings",
+          "wordlines and bitlines",
+          "page buffers"
+        ]
+      },
+      {
+        "name": "Controller",
+        "role": "the brain that manages every read, write and erase.",
+        "parts": [
+          "processor cores",
+          "error-correction engine",
+          "flash channel controllers",
+          "PCIe host interface"
+        ]
+      },
+      {
+        "name": "Firmware",
+        "role": "decides where data goes and keeps the drive healthy.",
+        "parts": [
+          "flash translation layer",
+          "wear levelling",
+          "garbage collection",
+          "TRIM support"
+        ]
+      },
+      {
+        "name": "PCB and power delivery",
+        "role": "the physical board that connects all chips and feeds them stable power.",
+        "parts": [
+          "M.2 or U.2 printed circuit board",
+          "power management IC",
+          "capacitors"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "keeps the controller and NAND cool enough to run at full speed.",
+        "parts": [
+          "thermal pad or heat spreader",
+          "temperature sensors",
+          "throttling logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate NAND wafers",
+        "detail": "Alternating layers of oxide and nitride are deposited, deep holes are etched, and charge-trap material and vertical channels are formed; metal wiring is added on top."
+      },
+      {
+        "title": "Test and dice wafers",
+        "detail": "Every die is probed electrically; good ones are cut from the wafer."
+      },
+      {
+        "title": "Stack and package NAND dies",
+        "detail": "Multiple dies are stacked vertically, connected by wire bonds or through-silicon vias, then encapsulated in a protective package."
+      },
+      {
+        "title": "Fabricate controller chip",
+        "detail": "The controller is designed on an advanced logic process, fabricated on wafers, tested and diced."
+      },
+      {
+        "title": "Assemble the SSD",
+        "detail": "Controller, NAND packages, optional DRAM and passive components are surface-mounted onto a printed circuit board."
+      },
+      {
+        "title": "Load firmware and test",
+        "detail": "Firmware is flashed, the drive is calibrated, and full read/write tests are run across its capacity."
+      },
+      {
+        "title": "Final assembly and labelling",
+        "detail": "A heat spreader or label is attached, and the drive is tested again before packing."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "3D NAND fabrication",
+        "status": "exists",
+        "why": "stacks hundreds of layers so capacity grows without shrinking cells to unreliable sizes."
+      },
+      {
+        "tech": "Advanced logic nodes for controllers",
+        "status": "exists",
+        "why": "controllers need fast, low-power logic to handle PCIe speeds and error correction."
+      },
+      {
+        "tech": "PCIe and NVMe standards",
+        "status": "exists",
+        "why": "they define the physical link and the command protocol between host and SSD."
+      },
+      {
+        "tech": "Error-correction codes (LDPC)",
+        "status": "exists",
+        "why": "flash cells wear out and produce errors; LDPC corrects them to keep data readable."
+      },
+      {
+        "tech": "Host operating system support",
+        "status": "exists",
+        "why": "drivers and file systems must issue NVMe commands and manage TRIM for long life."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "PCIe 4.0/5.0 NVMe SSDs using 3D NAND with over 200 layers",
+        "unlocks": "fast boot and application loading for most computers."
+      },
+      {
+        "stage": "Next",
+        "milestone": "PCIe 6.0 links and higher layer counts (300+), plus QLC and PLC storage",
+        "unlocks": "cheaper, denser storage for data centres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Computational storage and CXL-attached SSDs",
+        "unlocks": "offloading data processing and expanding memory pools."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "New non-volatile memories such as MRAM or ReRAM complementing NAND",
+        "unlocks": "faster, more durable storage tiers in the memory hierarchy."
+      }
+    ]
+  }
+}

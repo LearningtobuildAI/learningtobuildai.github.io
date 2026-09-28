@@ -33,5 +33,167 @@
         "def": "The maximum mass or volume that a spacecraft can carry into orbit or beyond."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Propulsion",
+        "role": "generates thrust and steers the rocket by gimballing the engines.",
+        "parts": [
+          "main engines (kerosene, methane or hydrogen with liquid oxygen)",
+          "turbopumps",
+          "regeneratively cooled combustion chamber and nozzle",
+          "thrust structure"
+        ]
+      },
+      {
+        "name": "Structures and propellant tanks",
+        "role": "a lightweight shell strong enough to hold hundreds of tonnes of cryogenic propellant.",
+        "parts": [
+          "aluminium–lithium or stainless-steel tank barrels",
+          "domes and common bulkheads",
+          "interstage",
+          "friction-stir welds"
+        ]
+      },
+      {
+        "name": "Avionics and guidance",
+        "role": "flies the ascent trajectory and keeps the vehicle stable through Max-Q.",
+        "parts": [
+          "redundant flight computers",
+          "inertial measurement units",
+          "GNSS receivers",
+          "gimbal and grid-fin actuators",
+          "autonomous flight-safety system"
+        ]
+      },
+      {
+        "name": "Stage separation",
+        "role": "jettisons the spent lower stage cleanly at high speed.",
+        "parts": [
+          "separation springs or pneumatic pushers",
+          "retro-rockets or ullage motors"
+        ]
+      },
+      {
+        "name": "Payload accommodation",
+        "role": "protects the satellite and releases it in the right orbit.",
+        "parts": [
+          "composite payload fairing",
+          "acoustic and thermal blankets",
+          "payload adapter and separation clamps"
+        ]
+      },
+      {
+        "name": "Recovery system (reusable vehicles)",
+        "role": "brings the first stage back for refurbishment and reuse.",
+        "parts": [
+          "grid fins",
+          "landing legs",
+          "reserve propellant for a landing burn",
+          "drone ship or landing pad"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "everything needed before the countdown reaches zero.",
+        "parts": [
+          "launch pad and flame trench",
+          "strongback and umbilical arms",
+          "propellant loading and chilldown systems",
+          "tracking and range assets"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Set the mission requirements",
+        "detail": "Target orbit and payload mass dictate how many stages, which propellants and roughly how large the vehicle must be."
+      },
+      {
+        "title": "Design stage by stage",
+        "detail": "Engineers trade propellant type, mass ratio and engine count; the rocket equation decides how much of the launch mass must be propellant."
+      },
+      {
+        "title": "Build the engines",
+        "detail": "Turbopump impellers, injectors, chambers and nozzles are machined and welded, then each engine is fired on a test stand to measure thrust and specific impulse."
+      },
+      {
+        "title": "Make the tanks",
+        "detail": "Thin-gauge metal panels are formed, friction-stir welded into barrels and domes, and pressure-tested. Methane-fuelled vehicles use stainless steel; others use aluminium–lithium or composites."
+      },
+      {
+        "title": "Integrate and test a stage",
+        "detail": "Engines, tanks, plumbing, avionics and wiring are mated; the stage then undergoes cryogenic proof and static-fire testing."
+      },
+      {
+        "title": "Stack the vehicle",
+        "detail": "Stages are stacked vertically in an assembly building or on the pad, and the encapsulated payload is added on top."
+      },
+      {
+        "title": "Rehearse the countdown",
+        "detail": "Propellant loading, hold-down tests and software rehearsals exercise every system before launch day."
+      },
+      {
+        "title": "Launch and ascend",
+        "detail": "The vehicle lifts off, performs a gravity turn, throttles through maximum aerodynamic pressure, then separates stages and coasts to orbit."
+      },
+      {
+        "title": "Recover or expend",
+        "detail": "A reusable booster re-enters, steers with grid fins and lands under engine power; expendable stages burn up or are left in a graveyard orbit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Liquid-propellant rocket engines with turbopumps",
+        "status": "exists",
+        "why": "the only propulsion with enough thrust-to-weight and efficiency to reach orbit."
+      },
+      {
+        "tech": "Lightweight high-strength structures",
+        "status": "exists",
+        "why": "every kilogram of dry mass is a kilogram of payload lost."
+      },
+      {
+        "tech": "Guidance, navigation and control",
+        "status": "exists",
+        "why": "the vehicle must fly a precise trajectory and stay stable in a constantly changing atmosphere."
+      },
+      {
+        "tech": "Reusable thermal protection and propulsive landing",
+        "status": "partial",
+        "why": "booster reuse is routine for some medium-lift vehicles, but full-vehicle reuse is still in flight testing."
+      },
+      {
+        "tech": "Launch range and propellant infrastructure",
+        "status": "exists",
+        "why": "cryogenic propellants and range safety require purpose-built, remotely located sites."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine first-stage propulsive landing and reflight",
+        "unlocks": "lower cost per kilogram and much higher launch cadence."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully reusable super-heavy vehicles reaching orbit and returning both stages",
+        "unlocks": "aircraft-like turnaround and a further step-change in launch cost."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable high-cadence launch to low Earth orbit",
+        "unlocks": "large satellite constellations and cheap science missions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "orbital propellant transfer and refuelling",
+        "unlocks": "heavy payloads beyond low Earth orbit and crewed deep-space missions without expending whole vehicles."
+      }
+    ]
   }
 }

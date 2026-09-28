@@ -34,5 +34,151 @@
         "def": "Materials that change their physical state in response to environmental conditions such as temperature or pH, often used for thermal regulation and energy storage applications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Responsive material",
+        "role": "the material that stores a temporary shape and returns to its programmed shape when triggered.",
+        "parts": [
+          "shape-memory polymer",
+          "hydrogel",
+          "liquid-crystal elastomer",
+          "shape-memory alloy (e.g. nitinol)"
+        ]
+      },
+      {
+        "name": "Rigid-and-soft architecture",
+        "role": "combines stiff panels with compliant hinges so the printed object folds in a controlled way.",
+        "parts": [
+          "rigid segments",
+          "thin compliant joints",
+          "fibre or print-path reinforcement"
+        ]
+      },
+      {
+        "name": "Fabrication system",
+        "role": "prints several materials in one pass, with the print path setting local stiffness and strain direction.",
+        "parts": [
+          "multi-material extruder or polyjet head",
+          "resin vat and light projector (for DLP)",
+          "build platform"
+        ]
+      },
+      {
+        "name": "Programming and trigger",
+        "role": "sets the temporary shape and supplies the stimulus that releases it.",
+        "parts": [
+          "heat (glass-transition or melting)",
+          "moisture or pH change",
+          "light, electric current or magnetic field",
+          "heater or electrode layer"
+        ]
+      },
+      {
+        "name": "Computational design",
+        "role": "predicts how a flat printed sheet will fold into a target 3D form.",
+        "parts": [
+          "folding and origami solvers",
+          "soft-mechanics simulation",
+          "print-path generation"
+        ]
+      },
+      {
+        "name": "Sensing and control (for closed-loop versions)",
+        "role": "lets the object measure its own state and re-trigger or hold a shape.",
+        "parts": [
+          "printed strain sensors",
+          "temperature sensors",
+          "control electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the transformation",
+        "detail": "Start from the target shape over time, then work backwards to a flat or simple printed form: which faces fold, in what order, at what temperature or humidity."
+      },
+      {
+        "title": "Simulate the folding",
+        "detail": "A mechanics model predicts how hinge thickness, material stiffness and fibre orientation map to fold angles, so the sequence can be tuned before printing."
+      },
+      {
+        "title": "Formulate the feedstock",
+        "detail": "The polymer is synthesised with a chosen transition temperature — often 40–80 °C for shape-memory polymers — and mixed with crosslinkers; for light- or magnetically triggered versions, nanoparticles are added so the material absorbs the stimulus and heats itself."
+      },
+      {
+        "title": "Print in multiple materials",
+        "detail": "Rigid and soft materials are deposited side by side, layer by layer. The toolpath matters: filaments printed along a fold line stiffen it, filaments across it let it bend."
+      },
+      {
+        "title": "Program the temporary shape",
+        "detail": "The printed part is heated above its transition temperature, mechanically deformed into a compact or flat 'stored' shape, then cooled while held, freezing the strain in place."
+      },
+      {
+        "title": "Cure and finish",
+        "detail": "Supports are removed and the part is cured or annealed so the network is stable over many cycles."
+      },
+      {
+        "title": "Trigger and characterise",
+        "detail": "The object is exposed to its stimulus — warm water, hot air, a current, light — and recovery angle, speed and force are measured, then cycled to check fatigue."
+      },
+      {
+        "title": "Integrate",
+        "detail": "The moving part is built into a real assembly with its heat source or electrode layer, wiring and any control loop."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Multi-material additive manufacturing",
+        "status": "exists",
+        "why": "you cannot make a folding object without printing stiff and soft materials together in one build."
+      },
+      {
+        "tech": "Shape-memory polymers",
+        "status": "partial",
+        "why": "well demonstrated in laboratories and some medical devices, but limited to modest forces and repeat counts."
+      },
+      {
+        "tech": "Shape-memory alloys",
+        "status": "exists",
+        "why": "nitinol already actuates stents and aerospace mechanisms — the metallic precedent for the same idea."
+      },
+      {
+        "tech": "Soft-mechanics and folding simulation",
+        "status": "partial",
+        "why": "predicting large, non-linear deformations accurately enough for design is still hard."
+      },
+      {
+        "tech": "Fatigue-resistant responsive materials",
+        "status": "missing",
+        "why": "most printed 4D parts lose shape fidelity after relatively few actuation cycles."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "one-shot and few-cycle printed actuators, plus commercial shape-memory alloy parts such as self-expanding stents",
+        "unlocks": "deployable medical and space hardware where a part must change shape once, reliably."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-cycle printed hinges and self-deploying structures tested in aerospace and soft robotics",
+        "unlocks": "lighter mechanisms that replace motors and hinges."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop printed parts that sense their own deformation and re-trigger",
+        "unlocks": "genuinely adaptive components that hold a shape under changing load."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-adjusting infrastructure elements — vents, dampers, seals — that react to heat or moisture with no power",
+        "unlocks": "buildings and pipelines that respond passively to their environment."
+      }
+    ]
   }
 }

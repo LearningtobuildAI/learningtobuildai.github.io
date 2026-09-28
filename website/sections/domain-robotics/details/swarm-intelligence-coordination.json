@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Agent platform",
+        "role": "the individual robot or drone that senses, moves and communicates.",
+        "parts": [
+          "microcontroller or single-board computer",
+          "motors and actuators",
+          "battery or power source",
+          "sensors (camera, LiDAR, GPS, proximity)"
+        ]
+      },
+      {
+        "name": "Local communication",
+        "role": "lets nearby agents share state without a central server.",
+        "parts": [
+          "radio mesh (Wi-Fi, Zigbee, LoRa)",
+          "line-of-sight optical links",
+          "stigmergic markers (digital or physical)"
+        ]
+      },
+      {
+        "name": "Coordination algorithm",
+        "role": "turns simple local rules into complex collective behaviour.",
+        "parts": [
+          "flocking and consensus rules",
+          "ant colony optimisation / pheromone models",
+          "task allocation and auction protocols",
+          "failure detection and re-planning"
+        ]
+      },
+      {
+        "name": "Perception and localisation",
+        "role": "each agent must know where it is and what its neighbours are doing.",
+        "parts": [
+          "relative positioning (UWB, visual odometry)",
+          "obstacle detection",
+          "neighbour tracking"
+        ]
+      },
+      {
+        "name": "Human–swarm interface",
+        "role": "lets an operator set goals, monitor progress and intervene.",
+        "parts": [
+          "mission planning software",
+          "real-time telemetry dashboard",
+          "override and recall commands"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the collective goal",
+        "detail": "Specify the mission (e.g. area search, package relay, environmental sampling) and the constraints on time, energy and safety."
+      },
+      {
+        "title": "Design the agent",
+        "detail": "Choose or build a robot with the sensing, mobility and communication needed for that mission; keep it simple and cheap so many can be fielded."
+      },
+      {
+        "title": "Write local interaction rules",
+        "detail": "Each agent gets rules for how to respond to nearby agents and to the environment — for example move toward neighbours but keep a set distance, or leave a digital mark when a area is searched."
+      },
+      {
+        "title": "Implement the communication layer",
+        "detail": "Set up a mesh network or stigmergic medium so agents can exchange only local information; avoid any single point of failure."
+      },
+      {
+        "title": "Simulate at scale",
+        "detail": "Run thousands of virtual agents to test emergence, robustness and failure modes before touching hardware."
+      },
+      {
+        "title": "Validate with a small physical swarm",
+        "detail": "Test with a handful of real robots in a controlled space to calibrate sensors, timing and communication range."
+      },
+      {
+        "title": "Scale up incrementally",
+        "detail": "Add agents in stages, checking that the collective behaviour remains stable and that failures degrade gracefully."
+      },
+      {
+        "title": "Deploy with human oversight",
+        "detail": "Operate the swarm under an operator who sets high-level goals, monitors the swarm and can recall it if needed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wireless mesh networking",
+        "status": "exists",
+        "why": "agents must communicate peer-to-peer without relying on fixed infrastructure."
+      },
+      {
+        "tech": "Miniaturised sensors and actuators",
+        "status": "exists",
+        "why": "small, cheap robots are needed to make large swarms practical."
+      },
+      {
+        "tech": "Edge computing",
+        "status": "partial",
+        "why": "onboard processing lets agents react quickly without sending data to a central server."
+      },
+      {
+        "tech": "Robust multi-agent algorithms",
+        "status": "partial",
+        "why": "rules that work in simulation often break when real robots face noise, delays and failures."
+      },
+      {
+        "tech": "Energy-dense power sources",
+        "status": "partial",
+        "why": "flight time and run time limit how long a swarm can operate."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "centralised fleets of warehouse robots and pre-programmed drone light shows",
+        "unlocks": "commercial experience with many robots at once, though coordination is still largely centralised."
+      },
+      {
+        "stage": "Next",
+        "milestone": "decentralised swarms for inspection, agriculture and delivery in controlled areas",
+        "unlocks": "lower cost and greater resilience because no single controller directs every agent."
+      },
+      {
+        "stage": "Next",
+        "milestone": "search-and-rescue swarms that map disaster zones and locate survivors with human oversight",
+        "unlocks": "faster response in places too dangerous or too large for individual robots."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fully autonomous swarms for logistics and environmental monitoring",
+        "unlocks": "scalable, self-organising systems that adapt to changing conditions without constant human input."
+      }
+    ]
+  }
+}

@@ -34,5 +34,155 @@
         "def": "The process of using statistical algorithms and machine learning techniques to identify the likelihood of future outcomes based on historical data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "instruments embedded in roads, pipes, poles and buildings that turn physical state into data.",
+        "parts": [
+          "smart electricity and water meters",
+          "traffic and pedestrian counters",
+          "air-quality and noise sensors",
+          "pipe pressure and flow sensors",
+          "fill-level sensors on bins"
+        ]
+      },
+      {
+        "name": "Connectivity layer",
+        "role": "moves small packets of data cheaply from thousands of dispersed points.",
+        "parts": [
+          "low-power wide-area radio (LoRaWAN, NB-IoT)",
+          "cellular backhaul",
+          "fibre to cabinets",
+          "gateways and edge nodes"
+        ]
+      },
+      {
+        "name": "Edge computing",
+        "role": "filters and pre-processes data locally so only useful events travel to the centre.",
+        "parts": [
+          "ruggedised controllers",
+          "local storage",
+          "rule engines"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "stores and normalises feeds from many departments and vendors.",
+        "parts": [
+          "time-series database",
+          "data model and APIs",
+          "identity and access control",
+          "cybersecurity monitoring"
+        ]
+      },
+      {
+        "name": "Analytics and control",
+        "role": "turns streams into decisions — forecasts, anomaly alerts, signal timing, load shifting.",
+        "parts": [
+          "forecasting and anomaly detection models",
+          "optimisation of traffic signals or pumping",
+          "operator dashboards"
+        ]
+      },
+      {
+        "name": "Actuation and field maintenance",
+        "role": "the physical things that change in response, plus the people who keep sensors alive.",
+        "parts": [
+          "signal controllers and dimmable streetlights",
+          "remote valves and switches",
+          "battery or mains power for nodes",
+          "field crews and calibration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the outcome, not the sensor",
+        "detail": "Decide what the city wants to change — congestion, leakage, outage length, emissions — and choose the measurements that show it."
+      },
+      {
+        "title": "Instrument a pilot corridor",
+        "detail": "Fit meters, counters and air sensors on one street, one substation or one water district to test real conditions and radio coverage."
+      },
+      {
+        "title": "Build the communications layer",
+        "detail": "Install gateways on poles and buildings, check signal in streets and basements, and settle on a data standard and payload format."
+      },
+      {
+        "title": "Stand up the data platform",
+        "detail": "Create a secure store with a common data model so feeds from transport, water and energy can be combined and shared."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "Connect analytics to actuators — adaptive signal timing, pressure management, demand response — inside human-approved limits."
+      },
+      {
+        "title": "Harden and govern",
+        "detail": "Add encryption, device authentication, update paths and privacy rules, since every sensor is also a potential entry point."
+      },
+      {
+        "title": "Scale district by district",
+        "detail": "Extend to new areas once reliability and maintenance cost per device are known, reusing the same platform."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power wide-area networks",
+        "status": "exists",
+        "why": "battery-powered sensors need cheap, long-range radio with years of life."
+      },
+      {
+        "tech": "Smart metering infrastructure",
+        "status": "exists",
+        "why": "granular energy and water data is the foundation of most city optimisation."
+      },
+      {
+        "tech": "Cloud and time-series data platforms",
+        "status": "exists",
+        "why": "millions of readings per day must be ingested, stored and queried affordably."
+      },
+      {
+        "tech": "Interoperable data standards and open APIs",
+        "status": "partial",
+        "why": "city systems are bought from many vendors and must exchange data to be useful."
+      },
+      {
+        "tech": "Cybersecurity for constrained devices",
+        "status": "partial",
+        "why": "thousands of cheap, long-lived nodes are hard to patch and attractive to attackers."
+      },
+      {
+        "tech": "Digital twins with validated models",
+        "status": "partial",
+        "why": "useful prediction needs a calibrated model of the real network, not just dashboards."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "smart meters, adaptive traffic signals and leak detection deployed in many cities",
+        "unlocks": "measurable savings in energy, water and travel time where systems are maintained."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-wide platforms joining energy, water and transport data",
+        "unlocks": "cross-sector decisions, such as timing EV charging around grid and traffic conditions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop, partly autonomous operation of networks",
+        "unlocks": "faster response to faults and peaks than human operators can manage."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "digital twins used for planning and investment",
+        "unlocks": "testing new districts, tariffs or transit routes in simulation before building them."
+      }
+    ]
   }
 }

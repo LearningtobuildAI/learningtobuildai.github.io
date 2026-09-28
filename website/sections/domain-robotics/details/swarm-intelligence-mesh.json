@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Agent platform",
+        "role": "the individual robot — small, cheap and expendable enough that losing some does not stop the mission.",
+        "parts": [
+          "drive or flight system",
+          "onboard computer",
+          "sensors (camera, LiDAR, gas, acoustic)",
+          "battery or power source"
+        ]
+      },
+      {
+        "name": "Local sensing and ranging",
+        "role": "lets each agent know a little about its neighbours and surroundings without a global map.",
+        "parts": [
+          "short-range radio or optical ranging",
+          "camera or depth sensor",
+          "inertial measurement"
+        ]
+      },
+      {
+        "name": "Mesh communication",
+        "role": "passes messages agent-to-agent so information spreads across the swarm as a relay network.",
+        "parts": [
+          "radio mesh nodes",
+          "routing and gossip protocols",
+          "time synchronisation"
+        ]
+      },
+      {
+        "name": "Coordination layer",
+        "role": "runs the simple local rules whose interactions produce useful group behaviour.",
+        "parts": [
+          "stigmergic markers (virtual pheromone fields)",
+          "flocking, coverage and task-allocation rules",
+          "consensus or auction algorithms",
+          "collision avoidance"
+        ]
+      },
+      {
+        "name": "Human–swarm interface",
+        "role": "lets operators set intent and constraints rather than steering each robot.",
+        "parts": [
+          "mission planning tools",
+          "live situational display",
+          "override and recall controls"
+        ]
+      },
+      {
+        "name": "Logistics and recovery",
+        "role": "gets the swarm to the site, charges it and takes it home.",
+        "parts": [
+          "launch and docking stations",
+          "charging or battery swap",
+          "data offload"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the agent",
+        "detail": "Pick a body — ground rover, quadcopter or micro-drone — balancing cost, endurance and payload, because cheap agents are what make large numbers possible."
+      },
+      {
+        "title": "Decide what each agent can sense",
+        "detail": "Only a handful of onboard sensors and short-range neighbour detection are assumed; anything global must be inferred by the group."
+      },
+      {
+        "title": "Design the local rules",
+        "detail": "Write rules that use only local information — move away from close neighbours, move toward the average heading, mark a spot as visited — and simulate them."
+      },
+      {
+        "title": "Build the communication layer",
+        "detail": "Implement a mesh radio protocol with gossip-style message passing, tolerant of agents dropping in and out."
+      },
+      {
+        "title": "Test in simulation at scale",
+        "detail": "Run tens of thousands of simulated agents to check that the rules scale, do not oscillate and degrade gracefully as agents fail."
+      },
+      {
+        "title": "Trial with real hardware",
+        "detail": "Fly or drive tens to low hundreds of units in a controlled area, comparing real behaviour with the simulation."
+      },
+      {
+        "title": "Add the human layer",
+        "detail": "Give operators a way to state goals and forbidden zones, plus a single command that recalls every agent."
+      },
+      {
+        "title": "Deploy on a real task",
+        "detail": "Run supervised missions such as mapping a disaster site or sampling a plume, then analyse where global behaviour diverged from intent."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap embedded compute and sensors",
+        "status": "exists",
+        "why": "swarm behaviour only pays off when agents cost little enough that many can be fielded."
+      },
+      {
+        "tech": "Wireless mesh networking",
+        "status": "exists",
+        "why": "the swarm needs a network that still works when nodes move, fail or leave range."
+      },
+      {
+        "tech": "Distributed control algorithms",
+        "status": "partial",
+        "why": "flocking, coverage and task allocation are well studied in simulation but less proven with hundreds of real, noisy robots."
+      },
+      {
+        "tech": "Localisation without GPS",
+        "status": "partial",
+        "why": "indoors, underground, underwater and under jamming, agents must agree on where they are using only each other and local sensing."
+      },
+      {
+        "tech": "Energy storage for endurance",
+        "status": "partial",
+        "why": "small agents fly or drive for tens of minutes, which caps how long a swarm can act independently."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "supervised swarms for inspection, mapping and drone shows",
+        "unlocks": "practical experience operating many vehicles at once."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully decentralised field trials, such as DARPA's OFFSET programme",
+        "unlocks": "confidence that emergent control works under real radio and terrain conditions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous teams of air and ground robots sharing tasks",
+        "unlocks": "disaster response and environmental sensing at a coverage no single robot can reach."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large, self-organising meshes with minimal human input on long missions",
+        "unlocks": "cheap, resilient monitoring of forests, oceans and infrastructure — provided localisation, energy and safety are solved."
+      }
+    ]
+  }
+}

@@ -33,5 +33,161 @@
         "def": "Artificial intelligence technologies that enable machines to perform tasks requiring human-like decision-making and problem-solving abilities."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Digital model layer",
+        "role": "the machine-readable description of what is to be built, which every automated tool reads from and writes back to.",
+        "parts": [
+          "design model (BIM)",
+          "common data environment",
+          "schedule and quantity data"
+        ]
+      },
+      {
+        "name": "Reality capture",
+        "role": "measures the site as it actually is, before and during work.",
+        "parts": [
+          "survey drones with photogrammetry or LiDAR",
+          "terrestrial laser scanners",
+          "GNSS rovers",
+          "point-cloud processing software"
+        ]
+      },
+      {
+        "name": "Machine control",
+        "role": "lets excavators, dozers and graders follow a digital design surface instead of stakes and stringlines.",
+        "parts": [
+          "GNSS receivers on the machine",
+          "total-station or base-station correction",
+          "hydraulic control interface",
+          "in-cab display"
+        ]
+      },
+      {
+        "name": "Task robots",
+        "role": "automate one repetitive trade at a time (masonry, rebar tying, drilling, welding, painting, drywall).",
+        "parts": [
+          "mobile base or gantry",
+          "robot arm or dedicated end effector",
+          "local sensing for alignment"
+        ]
+      },
+      {
+        "name": "Off-site production",
+        "role": "moves repetitive work into a factory where automation is far easier than on a messy site.",
+        "parts": [
+          "automated panel and volumetric module lines",
+          "robotic cutting and welding",
+          "CNC timber and steel fabrication"
+        ]
+      },
+      {
+        "name": "Site logistics",
+        "role": "keeps machines and robots supplied with material in the right order.",
+        "parts": [
+          "tagging and tracking of components",
+          "teleoperated or autonomous haulage",
+          "just-in-time delivery scheduling"
+        ]
+      },
+      {
+        "name": "Safety and monitoring",
+        "role": "watches people, plant and progress continuously.",
+        "parts": [
+          "site cameras with computer-vision safety analytics",
+          "wearable proximity and fatigue sensors",
+          "exoskeletons for manual handling",
+          "progress dashboards"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model the design digitally",
+        "detail": "The building or road is authored as a 3D model with quantities and a construction sequence; clashes are resolved on screen, not on site."
+      },
+      {
+        "title": "Survey the real site",
+        "detail": "Drones and laser scanners capture existing ground, structures and services, producing a point cloud that is compared with the design model."
+      },
+      {
+        "title": "Set up positioning and connectivity",
+        "detail": "Base stations or a local correction service give centimetre-level positioning; a site network carries data between machines, robots and the office."
+      },
+      {
+        "title": "Fit machine control",
+        "detail": "Excavators, dozers and graders get GNSS receivers, angle sensors and hydraulic interfaces, then the design surface is loaded and the machine is calibrated."
+      },
+      {
+        "title": "Automate the repeatable tasks",
+        "detail": "Whatever repeats — a masonry layout, a bolt pattern, a panel size — is either moved into a factory for robotic production or given a dedicated on-site robot."
+      },
+      {
+        "title": "Automate material flow",
+        "detail": "Components are tagged, tracked and delivered in the exact order the machines and robots consume them, because an idle robot costs as much as an idle crew."
+      },
+      {
+        "title": "Close the feedback loop",
+        "detail": "Regular drone flights and scans compare as-built against design; deviations feed straight back into the schedule and the next machine task file."
+      },
+      {
+        "title": "Hand over a digital twin",
+        "detail": "The accumulated model, sensor history and as-built records are passed to the operator so the asset can be maintained with the same data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Building information modelling and machine-readable design data",
+        "status": "exists",
+        "why": "automation cannot begin without geometry and tasks expressed as data a machine can consume."
+      },
+      {
+        "tech": "GNSS and total-station positioning with local correction",
+        "status": "exists",
+        "why": "outdoor plant needs centimetre-level position to follow a design surface."
+      },
+      {
+        "tech": "Robust perception (LiDAR, cameras, SLAM)",
+        "status": "partial",
+        "why": "a construction site is unstructured, cluttered and constantly changing, unlike a factory floor."
+      },
+      {
+        "tech": "Dexterous manipulation of varied components",
+        "status": "partial",
+        "why": "picking up and placing irregular, heavy or flexible parts reliably is still hard."
+      },
+      {
+        "tech": "Reliable site-wide connectivity",
+        "status": "partial",
+        "why": "teleoperation, fleet coordination and live data need coverage that many sites lack."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point solutions already deployed: drone surveying, GNSS machine control, off-site prefabrication, and autonomous haulage fleets that mines have run for years",
+        "unlocks": "measurable savings on earthworks, surveying and repetitive factory work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "task-level autonomy with a human supervising — semi-autonomous earthmoving fleets and one robot per trade on repetitive layouts",
+        "unlocks": "fewer operators per machine and safer work near live plant."
+      },
+      {
+        "stage": "Next",
+        "milestone": "an integrated site where the digital twin drives the schedule and machines, robots and logistics share one model",
+        "unlocks": "shorter programmes and less rework, because deviations are caught within hours."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "largely unmanned execution of repetitive works, with remote operators supervising fleets",
+        "unlocks": "construction in remote locations and a partial answer to skilled-labour shortages — though one-off, bespoke buildings will still need people."
+      }
+    ]
   }
 }

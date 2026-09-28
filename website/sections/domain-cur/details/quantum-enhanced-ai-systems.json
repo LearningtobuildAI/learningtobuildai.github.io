@@ -33,5 +33,158 @@
         "def": "A phenomenon where particles become interconnected such that the state of one can instantly affect the state of another, regardless of distance."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit (QPU)",
+        "role": "performs quantum operations on qubits that represent and manipulate data.",
+        "parts": [
+          "qubits (superconducting, trapped ion, photonic or neutral atom)",
+          "couplers and gates",
+          "readout resonators or detectors"
+        ]
+      },
+      {
+        "name": "Cryogenic and control hardware",
+        "role": "keeps qubits at their operating temperature and applies precise control signals.",
+        "parts": [
+          "dilution refrigerator or vacuum and laser systems",
+          "microwave or laser control electronics",
+          "signal generators and filters"
+        ]
+      },
+      {
+        "name": "Quantum-classical interface",
+        "role": "translates classical data into quantum states and reads out measurement results.",
+        "parts": [
+          "digital-to-analog and analog-to-digital converters",
+          "FPGA controllers",
+          "data-embedding circuits"
+        ]
+      },
+      {
+        "name": "Software stack and compiler",
+        "role": "maps machine-learning algorithms to quantum circuits and optimizes them for the hardware.",
+        "parts": [
+          "quantum compilers and schedulers",
+          "error-mitigation routines",
+          "hybrid algorithm libraries (e.g. QAOA, VQE, quantum kernels)"
+        ]
+      },
+      {
+        "name": "Error correction and mitigation",
+        "role": "reduces noise so that results are meaningful.",
+        "parts": [
+          "quantum error-correcting codes (e.g. surface code)",
+          "decoders",
+          "zero-noise extrapolation and other mitigation techniques"
+        ]
+      },
+      {
+        "name": "Application integration",
+        "role": "connects quantum routines to classical machine-learning pipelines.",
+        "parts": [
+          "APIs and SDKs",
+          "data preprocessing",
+          "classical optimizers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select a qubit platform",
+        "detail": "Choose a modality such as superconducting circuits, trapped ions, photonics or neutral atoms, based on connectivity, gate speed and coherence time."
+      },
+      {
+        "title": "Fabricate qubits and couplers",
+        "detail": "For superconducting qubits, deposit and pattern thin films and Josephson junctions on a chip; for other platforms, trap ions or atoms or build photonic circuits."
+      },
+      {
+        "title": "Build control and readout",
+        "detail": "Install cryogenics, lasers or microwave lines and calibrate the electronics that manipulate and measure each qubit."
+      },
+      {
+        "title": "Develop the quantum software stack",
+        "detail": "Implement compilers, error-mitigation methods and hybrid algorithms that combine quantum circuits with classical optimizers."
+      },
+      {
+        "title": "Encode classical data",
+        "detail": "Design quantum circuits that embed classical inputs into quantum states, using angle encoding, amplitude encoding or other schemes."
+      },
+      {
+        "title": "Run the hybrid loop",
+        "detail": "Execute the quantum circuit, measure outcomes, and use a classical optimizer to update circuit parameters iteratively."
+      },
+      {
+        "title": "Benchmark against classical baselines",
+        "detail": "Compare performance with classical machine-learning methods on the same task; claim an advantage only when it is rigorously demonstrated."
+      },
+      {
+        "title": "Scale and improve fidelity",
+        "detail": "Increase qubit count, connectivity and gate fidelity, and add error correction to move from noisy prototypes toward reliable machines."
+      },
+      {
+        "title": "Integrate into applications",
+        "detail": "Deploy the quantum routine as an accelerator inside a classical machine-learning workflow, if and when a practical advantage is found."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "reliable, large-scale quantum machine learning needs error-corrected logical qubits that do not yet exist."
+      },
+      {
+        "tech": "High-fidelity qubits and gates",
+        "status": "partial",
+        "why": "current noisy intermediate-scale quantum (NISQ) devices have limited fidelity and coherence times."
+      },
+      {
+        "tech": "Efficient quantum data encoding",
+        "status": "missing",
+        "why": "loading large classical datasets into a quantum state without losing the advantage is an unsolved problem."
+      },
+      {
+        "tech": "Quantum algorithms with proven advantage for machine learning",
+        "status": "missing",
+        "why": "no practical machine-learning task has yet been shown to be solved faster or better on a quantum computer."
+      },
+      {
+        "tech": "Classical machine-learning and high-performance computing infrastructure",
+        "status": "exists",
+        "why": "hybrid quantum-classical workflows and fair benchmarking depend on mature classical systems."
+      },
+      {
+        "tech": "Error mitigation and correction",
+        "status": "partial",
+        "why": "mitigation techniques exist but are costly, and full error correction remains out of reach for large systems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NISQ-era demonstrations of quantum kernels and variational classifiers on small datasets",
+        "unlocks": "a clearer understanding of what quantum machine learning can and cannot do."
+      },
+      {
+        "stage": "Near term",
+        "milestone": "improved qubit fidelity and error mitigation, with quantum-assisted optimization for narrow problems",
+        "unlocks": "pilot studies in fields such as finance, chemistry and logistics."
+      },
+      {
+        "stage": "Mid term",
+        "milestone": "early fault-tolerant devices with hundreds of logical qubits",
+        "unlocks": "possible quantum advantage for specific machine-learning tasks and hybrid quantum-classical models."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale fault-tolerant quantum computers",
+        "unlocks": "practical quantum-enhanced AI with proven speedups for drug discovery, materials science and financial modeling."
+      }
+    ]
   }
 }

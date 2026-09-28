@@ -39,5 +39,158 @@
         "def": "A process that involves planning, implementing, and controlling the efficient flow and storage of goods, services, and related information from the point of origin to the point of consumption."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Mobile base",
+        "role": "carries the payload and moves it around the floor.",
+        "parts": [
+          "drive motors and gearboxes",
+          "wheels or mecanum/Mecanum-style omni wheels",
+          "suspension and chassis",
+          "electromagnetic brake"
+        ]
+      },
+      {
+        "name": "Perception and localisation",
+        "role": "works out where the robot is and what is in the way.",
+        "parts": [
+          "2D or 3D lidar",
+          "depth cameras",
+          "inertial measurement unit",
+          "wheel encoders",
+          "safety scanners"
+        ]
+      },
+      {
+        "name": "Manipulation",
+        "role": "picks goods up and puts them down where they are needed.",
+        "parts": [
+          "suction cup array",
+          "robot arm or gantry",
+          "gripper fingers",
+          "force/torque sensing"
+        ]
+      },
+      {
+        "name": "Power and charging",
+        "role": "keeps the robot running across shifts.",
+        "parts": [
+          "lithium-ion battery pack",
+          "battery management system",
+          "docking or opportunity-charging contacts"
+        ]
+      },
+      {
+        "name": "Fleet software",
+        "role": "coordinates hundreds of robots so they do not block each other.",
+        "parts": [
+          "task assignment engine",
+          "traffic and deadlock manager",
+          "map server",
+          "warehouse-management-system API"
+        ]
+      },
+      {
+        "name": "Safety and operator interface",
+        "role": "stops the machine safely around people and lets staff take over.",
+        "parts": [
+          "emergency stop buttons",
+          "muting and warning lights",
+          "remote teleoperation link"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task envelope",
+        "detail": "Fix the payload in kilograms, the travel speed in metres per second, the floor surface and the required throughput per hour before designing anything."
+      },
+      {
+        "title": "Build the drive unit",
+        "detail": "Motors, gearboxes and wheels are assembled onto a welded steel or aluminium chassis, sized so the robot can climb the ramps and cross the floor joints on site."
+      },
+      {
+        "title": "Fit the battery and charging",
+        "detail": "A lithium-ion pack of a few kilowatt-hours is installed with a battery management system that tracks state of charge and cuts off on over-temperature."
+      },
+      {
+        "title": "Integrate the sensors",
+        "detail": "Lidar, depth cameras, safety scanners and encoders are mounted at heights that see pallets, people's legs and overhanging loads, then calibrated against each other."
+      },
+      {
+        "title": "Write the navigation stack",
+        "detail": "The robot maps the building by driving it, builds a map, and runs localisation, path planning and obstacle avoidance; this is tuned for months of real-world edge cases."
+      },
+      {
+        "title": "Add the manipulator",
+        "detail": "Suction cups or a gripper are fitted and the grasp planner is trained to handle the actual range of cartons, totes and bags the site receives."
+      },
+      {
+        "title": "Write the fleet layer",
+        "detail": "The scheduler assigns jobs, reserves route segments so robots do not deadlock at narrow aisles, and exposes an API so the warehouse software can order a move."
+      },
+      {
+        "title": "Validate safety",
+        "detail": "The robot is tested against the relevant standard for driverless industrial trucks, including stopping distance, scanner fields and brake behaviour, before it is allowed near workers."
+      },
+      {
+        "title": "Deploy and commission",
+        "detail": "Engineers map the site, place charging docks, run trial shifts and gradually raise the fleet size as reliability is proven."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Solid-state lidar and depth cameras",
+        "status": "exists",
+        "why": "robots need cheap, reliable 3D sensing to see people and obstacles in real time."
+      },
+      {
+        "tech": "SLAM and path planning algorithms",
+        "status": "exists",
+        "why": "localising in a changing building and replanning around obstructions is the core capability."
+      },
+      {
+        "tech": "Lithium-ion cells and battery management",
+        "status": "exists",
+        "why": "energy density and cycle life set how long a robot can work between charges."
+      },
+      {
+        "tech": "Industrial wireless networking",
+        "status": "exists",
+        "why": "fleet coordination depends on low-latency, high-reliability coverage across a warehouse."
+      },
+      {
+        "tech": "General-purpose grasping",
+        "status": "partial",
+        "why": "picking arbitrary, unknown objects at human speed is still the main unsolved problem."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "autonomous mobile robots moving shelves, pallets and totes in warehouses and hospitals",
+        "unlocks": "large, proven fleets and a mature supplier base for navigation hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robotic piece-picking of mixed, unstructured goods at commercially useful rates",
+        "unlocks": "automation of the most labour-intensive part of order fulfilment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "sidewalk delivery robots and autonomous yard trucks operating routinely in cities and depots",
+        "unlocks": "automated movement between the warehouse and the customer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "legged and humanoid robots working in spaces built for people rather than for machines",
+        "unlocks": "service and logistics tasks where the environment cannot be redesigned."
+      }
+    ]
   }
 }

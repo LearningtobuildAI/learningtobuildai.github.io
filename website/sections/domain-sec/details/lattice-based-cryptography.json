@@ -34,5 +34,152 @@
         "def": "A quantum algorithm developed by Peter Shor in 1994, which can efficiently factor large integers and compute discrete logarithms. This poses a significant threat to current public-key cryptographic systems but is not applicable to lattice-based cryptography."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Hard problem and parameters",
+        "role": "the mathematical setting whose hardness the whole scheme rests on.",
+        "parts": [
+          "lattice dimension n",
+          "modulus q",
+          "error distribution (width and shape)",
+          "module or ring structure (LWE, module-LWE, NTRU)"
+        ]
+      },
+      {
+        "name": "Key generation",
+        "role": "produces a public key that hides a short secret vector.",
+        "parts": [
+          "public matrix or polynomial",
+          "short secret vector",
+          "small error term",
+          "seed and expansion of the public matrix"
+        ]
+      },
+      {
+        "name": "Encryption / key encapsulation",
+        "role": "lets two parties agree on a shared secret over an open channel.",
+        "parts": [
+          "ephemeral randomness",
+          "lattice arithmetic to form the ciphertext",
+          "shared-secret derivation"
+        ]
+      },
+      {
+        "name": "Decryption / decapsulation",
+        "role": "recovers the secret, tolerating the small error that encryption introduced.",
+        "parts": [
+          "error-tolerant rounding or reconciliation",
+          "Fujisaki–Okamoto style re-encryption check",
+          "implicit rejection of bad ciphertexts"
+        ]
+      },
+      {
+        "name": "Signature variant",
+        "role": "proves authenticity, where the scheme is a signature rather than an exchange.",
+        "parts": [
+          "Fiat–Shamir with aborts (rejection sampling)",
+          "hash-to-point",
+          "large signature blob"
+        ]
+      },
+      {
+        "name": "Implementation layer",
+        "role": "turns the maths into fast, safe code.",
+        "parts": [
+          "number-theoretic transform for polynomial multiplication",
+          "constant-time arithmetic",
+          "secure random sampling",
+          "masking against side-channel and fault attacks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the hard problem",
+        "detail": "Choose a lattice assumption — plain learning-with-errors, its ring or module version, or NTRU lattices — where no known classical or quantum algorithm solves the average case quickly."
+      },
+      {
+        "title": "Set the parameters",
+        "detail": "Choose dimension, modulus and error width so that lattice-reduction attacks and hybrid combinatorial attacks all fail, while keys and ciphertexts stay small enough to use."
+      },
+      {
+        "title": "Design the scheme",
+        "detail": "Build encryption on the Regev-style construction and wrap it in a transform that turns a passively secure scheme into one that resists chosen-ciphertext attacks; or build a signature from Fiat–Shamir with aborts."
+      },
+      {
+        "title": "Prove it",
+        "detail": "Show that breaking the scheme is at least as hard as solving worst-case lattice problems, then argue security in an idealised model of the hash function."
+      },
+      {
+        "title": "Implement it",
+        "detail": "Write fast polynomial arithmetic using the number-theoretic transform, plus constant-time sampling and comparison so timing and power traces leak nothing."
+      },
+      {
+        "title": "Attack your own design",
+        "detail": "Run lattice reduction, meet-in-the-middle and side-channel attacks against the parameters and the code, then tighten whatever breaks."
+      },
+      {
+        "title": "Standardise and publish",
+        "detail": "Submit to open competition and review, freeze test vectors, and publish formal specifications so independent implementations can interoperate."
+      },
+      {
+        "title": "Deploy and migrate",
+        "detail": "Integrate into transport protocols, usually alongside a classical algorithm so traffic stays safe if either is broken, and manage the larger keys and handshake sizes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Public-key cryptography and hardness assumptions",
+        "status": "exists",
+        "why": "the whole idea of security resting on an unsolved mathematical problem, rather than on secrecy of the method, comes from classical cryptography."
+      },
+      {
+        "tech": "Learning-with-errors and worst-case-to-average-case reductions",
+        "status": "exists",
+        "why": "these results are what let a random-looking key be as hard to break as the hardest lattice problem of the same size."
+      },
+      {
+        "tech": "Fast constant-time modular and polynomial arithmetic",
+        "status": "exists",
+        "why": "lattice schemes do heavy arithmetic on large vectors, and must do it without leaking secrets through timing."
+      },
+      {
+        "tech": "Standardised parameter sets and test vectors",
+        "status": "partial",
+        "why": "the main standards were finalised in 2024, but interoperable implementations and certification are still spreading."
+      },
+      {
+        "tech": "Protocol and certificate support for large keys",
+        "status": "partial",
+        "why": "post-quantum keys and signatures are kilobytes rather than tens of bytes, which strains handshakes and certificate chains."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NIST finalised its first post-quantum standards in 2024, and hybrid lattice key exchange is already switched on in major browsers and messaging apps",
+        "unlocks": "protection against 'harvest now, decrypt later' recording of today's traffic."
+      },
+      {
+        "stage": "Next",
+        "milestone": "protocols, VPNs and software-update signing migrate to post-quantum or hybrid schemes",
+        "unlocks": "end-to-end quantum resistance for new connections, not just key exchange."
+      },
+      {
+        "stage": "Next",
+        "milestone": "post-quantum certificates and public-key infrastructure at scale, with hash-based signatures for long-lived roots of trust",
+        "unlocks": "a browser can verify a site without any quantum-vulnerable step."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "crypto-agility becomes routine, and alternative families are kept in reserve against future breaks",
+        "unlocks": "the ability to swap algorithms quickly, as happened when an isogeny-based candidate was broken in 2022 — without another decade-long migration."
+      }
+    ]
   }
 }

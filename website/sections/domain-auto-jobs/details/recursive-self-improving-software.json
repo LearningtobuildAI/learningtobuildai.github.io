@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Runtime instrumentation and profiling",
+        "role": "collects data on how the software performs and where time or memory is spent.",
+        "parts": [
+          "logging and tracing agents",
+          "performance counters",
+          "profiling libraries"
+        ]
+      },
+      {
+        "name": "Code representation and manipulation",
+        "role": "provides a structured, modifiable form of the program that the system can rewrite.",
+        "parts": [
+          "abstract syntax trees (ASTs)",
+          "intermediate representations (IRs)",
+          "source-to-source transformation tools"
+        ]
+      },
+      {
+        "name": "Search and optimization engine",
+        "role": "generates candidate code changes and searches for better versions.",
+        "parts": [
+          "genetic programming operators (mutation, crossover)",
+          "reinforcement learning agents",
+          "fitness evaluation functions"
+        ]
+      },
+      {
+        "name": "Verification and validation",
+        "role": "checks that proposed changes are correct and do not break safety or functional requirements.",
+        "parts": [
+          "automated test generation",
+          "formal verification tools (model checkers, theorem provers)",
+          "static analysis"
+        ]
+      },
+      {
+        "name": "Deployment and rollback",
+        "role": "safely replaces running software with improved versions and can revert if problems appear.",
+        "parts": [
+          "blue-green deployment",
+          "canary releases",
+          "version control integration"
+        ]
+      },
+      {
+        "name": "Meta-level controller",
+        "role": "decides what to improve, when to run improvement cycles, and which methods to use.",
+        "parts": [
+          "strategy selection algorithms",
+          "resource scheduler",
+          "safety monitor"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the target software",
+        "detail": "Add logging, metrics and profiling hooks so the system can measure execution time, memory use, and correctness signals."
+      },
+      {
+        "title": "Build a manipulable code model",
+        "detail": "Parse the source into an abstract syntax tree or intermediate representation that can be programmatically edited and recompiled."
+      },
+      {
+        "title": "Define objectives and constraints",
+        "detail": "Specify what 'better' means (e.g., faster, less memory) and hard constraints (e.g., must pass all tests, must satisfy safety properties)."
+      },
+      {
+        "title": "Implement a search algorithm",
+        "detail": "Use genetic programming or reinforcement learning to propose code mutations and recombinations that explore the space of possible programs."
+      },
+      {
+        "title": "Integrate automated verification",
+        "detail": "For each candidate, run tests and formal checks; only changes that provably meet constraints are allowed forward."
+      },
+      {
+        "title": "Set up safe deployment",
+        "detail": "Create a pipeline that can deploy a verified version, monitor it, and automatically roll back if it fails in production."
+      },
+      {
+        "title": "Add meta-level control",
+        "detail": "Build a controller that chooses which modules to improve, allocates compute, and decides when human oversight is required."
+      },
+      {
+        "title": "Run iterative improvement cycles",
+        "detail": "Repeatedly profile, propose, verify, and deploy, gradually improving the software while maintaining safety."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Automated program repair and synthesis",
+        "status": "partial",
+        "why": "systems can fix simple bugs or generate small code snippets, but not rewrite complex architectures."
+      },
+      {
+        "tech": "Scalable formal verification",
+        "status": "partial",
+        "why": "formal methods work on small, critical kernels; verifying large, evolving systems is beyond current capability."
+      },
+      {
+        "tech": "Efficient search over program space",
+        "status": "partial",
+        "why": "genetic programming and neural program synthesis work on toy problems; searching real-world codebases is computationally prohibitive."
+      },
+      {
+        "tech": "Safe self-modification",
+        "status": "missing",
+        "why": "no proven way to guarantee that a self-rewriting system will not introduce subtle, dangerous flaws."
+      },
+      {
+        "tech": "High-performance computing infrastructure",
+        "status": "exists",
+        "why": "training and search require large amounts of compute, which is available but costly."
+      },
+      {
+        "tech": "Robust runtime monitoring and rollback",
+        "status": "exists",
+        "why": "modern DevOps provides blue-green deployments and canary releases, but not for fully autonomous code changes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Narrow automated program repair and genetic improvement in research and niche commercial tools",
+        "unlocks": "faster bug fixing and performance tuning for well-defined modules."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Supervised self-improvement of specific performance-critical components under human review",
+        "unlocks": "continuous optimization of isolated services without full autonomy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "End-to-end self-improvement of entire applications with formal safety guarantees",
+        "unlocks": "software that can adapt to new workloads and hardware without human intervention."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fully autonomous recursive self-improvement with open-ended capability growth",
+        "unlocks": "rapid, continuous software evolution, but with major safety and control challenges."
+      }
+    ]
+  }
+}

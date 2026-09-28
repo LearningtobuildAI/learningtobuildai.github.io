@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "performs quantum operations on qubits that encode energy-system variables.",
+        "parts": [
+          "qubits (superconducting, trapped-ion or photonic)",
+          "control lines and readout resonators"
+        ]
+      },
+      {
+        "name": "Cryogenic and control infrastructure",
+        "role": "keeps qubits at their operating temperature and delivers precise signals to manipulate them.",
+        "parts": [
+          "dilution refrigerator",
+          "microwave or optical control electronics",
+          "signal wiring and shielding"
+        ]
+      },
+      {
+        "name": "Error correction and mitigation",
+        "role": "reduces noise that would otherwise corrupt optimization results.",
+        "parts": [
+          "logical qubit encoding",
+          "syndrome measurement",
+          "classical decoders"
+        ]
+      },
+      {
+        "name": "Quantum algorithm and software stack",
+        "role": "translates grid problems into forms a quantum computer can process.",
+        "parts": [
+          "problem mapping (QUBO or Ising form)",
+          "variational algorithms such as QAOA",
+          "compilers and classical optimizers"
+        ]
+      },
+      {
+        "name": "Hybrid classical–quantum orchestration",
+        "role": "splits a problem between classical computers and the quantum processor.",
+        "parts": [
+          "classical solver",
+          "quantum processor interface",
+          "communication middleware and result validation"
+        ]
+      },
+      {
+        "name": "Energy system model and data interface",
+        "role": "supplies the grid model, forecasts and constraints that define the optimization.",
+        "parts": [
+          "power flow and unit commitment models",
+          "renewable generation and demand forecasts",
+          "SCADA or energy management system integration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a grid problem",
+        "detail": "Identify an energy optimization task that is classically hard, such as scheduling generators, managing congestion or smoothing variable renewable output."
+      },
+      {
+        "title": "Map the problem to quantum form",
+        "detail": "Convert the objective and constraints into a quadratic unconstrained binary optimization (QUBO) or Ising model, adding penalty terms for constraints."
+      },
+      {
+        "title": "Compile to hardware instructions",
+        "detail": "For gate-based machines, design a quantum circuit such as the quantum approximate optimization algorithm (QAOA); for annealers, set couplings and local fields."
+      },
+      {
+        "title": "Build and calibrate the quantum processor",
+        "detail": "Fabricate qubits and control wiring, cool the system to millikelvin temperatures, and tune qubit frequencies, couplings and readout."
+      },
+      {
+        "title": "Apply error mitigation or correction",
+        "detail": "Use techniques like zero-noise extrapolation on today's noisy devices, or logical qubits on future fault-tolerant machines, to obtain reliable samples."
+      },
+      {
+        "title": "Run a hybrid optimization loop",
+        "detail": "A classical optimizer adjusts quantum circuit parameters while the quantum processor samples candidate solutions, repeating until convergence."
+      },
+      {
+        "title": "Validate against classical solvers",
+        "detail": "Compare results with established classical optimization on small, well-understood cases to build confidence in the quantum approach."
+      },
+      {
+        "title": "Integrate with grid operations",
+        "detail": "Connect the hybrid system to energy management software for near-real-time use, always keeping a classical fallback for safety and reliability."
+      },
+      {
+        "title": "Scale to real-world size",
+        "detail": "Increase qubit count, connectivity and coherence, and improve algorithms until the system can handle full-scale grid constraints and uncertainty."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "current devices have too few qubits and too much noise to solve large energy optimization problems reliably."
+      },
+      {
+        "tech": "Scalable qubit technology",
+        "status": "partial",
+        "why": "qubit counts and coherence times are improving, but they remain orders of magnitude short of what full grid problems would require."
+      },
+      {
+        "tech": "Quantum algorithms for optimization",
+        "status": "partial",
+        "why": "methods like QAOA have been demonstrated on small problems, but none has yet shown a practical advantage over classical solvers for energy systems."
+      },
+      {
+        "tech": "Quantum–classical interfaces",
+        "status": "partial",
+        "why": "hybrid loops need low-latency, high-throughput communication between classical and quantum hardware, which is still being engineered."
+      },
+      {
+        "tech": "Energy system models and data",
+        "status": "exists",
+        "why": "classical power-flow models, forecasts and sensor data already exist and are needed to define the quantum problem."
+      },
+      {
+        "tech": "High-performance classical computing",
+        "status": "exists",
+        "why": "classical machines are required for problem preparation, hybrid optimization and validation against quantum results."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale experiments on quantum annealers and noisy gate-based devices solve toy grid optimization problems",
+        "unlocks": "understanding of which energy problems map well to quantum hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a demonstrated quantum advantage on a practically relevant energy optimization task",
+        "unlocks": "serious investment in hybrid quantum–classical energy applications."
+      },
+      {
+        "stage": "Next",
+        "milestone": "controlled pilots with grid operators testing quantum-assisted scheduling or renewable integration",
+        "unlocks": "real operational experience and confidence in quantum tools."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant quantum computers integrated into energy management systems",
+        "unlocks": "reliable, large-scale optimization for real-time grid control and market clearing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "widespread quantum acceleration of multi-energy system design and operation",
+        "unlocks": "deeper decarbonization through better integration of variable renewables and storage."
+      }
+    ]
+  }
+}

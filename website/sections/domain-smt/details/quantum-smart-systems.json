@@ -30,5 +30,148 @@
         "def": "The basic unit of quantum information, analogous to a classical bit but capable of existing in multiple states simultaneously."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Key-distribution layer",
+        "role": "uses single photons to agree secret keys between two points, so that eavesdropping is detectable by physics rather than by maths.",
+        "parts": [
+          "weak-pulse or entangled photon source",
+          "single-photon detectors",
+          "authenticated classical channel",
+          "key-management software"
+        ]
+      },
+      {
+        "name": "Range extension",
+        "role": "carries quantum states beyond the roughly 100–200 km reach of direct fibre links.",
+        "parts": [
+          "trusted relay nodes (used today)",
+          "quantum memories (lab stage)",
+          "entanglement sources and Bell-state measurement",
+          "frequency converters to match telecom wavelengths"
+        ]
+      },
+      {
+        "name": "Quantum sensing layer",
+        "role": "measures things a smart city cares about — gravity, magnetic field, time — far more precisely than classical instruments.",
+        "parts": [
+          "cold-atom or atomic vapour cell",
+          "laser and optics package",
+          "magnetic and thermal shielding",
+          "readout electronics"
+        ]
+      },
+      {
+        "name": "Timing and synchronisation",
+        "role": "every quantum link and sensor needs a shared, stable clock.",
+        "parts": [
+          "optical or microwave atomic clocks",
+          "fibre time-transfer",
+          "holdover oscillators"
+        ]
+      },
+      {
+        "name": "Classical integration and fallback",
+        "role": "connects quantum devices to ordinary networks and keeps traffic safe where quantum hardware cannot reach.",
+        "parts": [
+          "key-delivery interface to encryptors",
+          "post-quantum cryptography",
+          "edge compute and data fusion",
+          "network orchestration APIs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what the quantum layer is for",
+        "detail": "Identify which urban functions genuinely need quantum-grade security, timing or sensing, and which are served better by cheaper classical equipment."
+      },
+      {
+        "title": "Build the sensor head",
+        "detail": "Atoms are laser-cooled in a vacuum cell or held in a vapour cell, surrounded by magnetic shielding, with a compact laser and optics bench."
+      },
+      {
+        "title": "Lay the optical link",
+        "detail": "Dedicated dark fibre, or a free-space path, is installed with low-loss splices and repeater huts at intervals so photon loss stays workable."
+      },
+      {
+        "title": "Install detectors and sources",
+        "detail": "Single-photon detectors — often superconducting, and cryogenically cooled — are mounted at each end alongside the photon source."
+      },
+      {
+        "title": "Establish key exchange and calibrate",
+        "detail": "The two ends run the protocol, sift and error-correct the raw bits, and authenticate the classical channel, producing keys at kilobits to megabits per second."
+      },
+      {
+        "title": "Bridge the distance",
+        "detail": "Where a span exceeds fibre reach, a hardened trusted node re-encrypts and re-transmits keys; in future versions, quantum memories and entanglement swapping would replace trust with physics."
+      },
+      {
+        "title": "Wire keys into everyday encryption",
+        "detail": "Key-management software feeds the keys to standard encryptors so ordinary city traffic — SCADA, cameras, backhaul — is protected without modification."
+      },
+      {
+        "title": "Fuse sensor and timing data",
+        "detail": "Clock, gravimeter and magnetometer outputs are streamed with time stamps into the city's monitoring and control platforms."
+      },
+      {
+        "title": "Operate as a service",
+        "detail": "Continuous monitoring of key rates, detector noise and sensor drift, with classical post-quantum cryptography as a fallback whenever the quantum link drops."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon sources and detectors",
+        "status": "exists",
+        "why": "the key-distribution layer is impossible without devices that emit and count one photon at a time."
+      },
+      {
+        "tech": "Low-loss dark fibre or free-space optical paths",
+        "status": "exists",
+        "why": "photon loss sets the maximum span, so access to clean fibre or clear line-of-sight is decisive."
+      },
+      {
+        "tech": "Quantum memories and repeaters",
+        "status": "missing",
+        "why": "without them, long links need trusted nodes that are secure only by policy, not by physics."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "exists",
+        "why": "most endpoints in a city will never carry quantum hardware, so maths-based quantum-resistant algorithms must cover them."
+      },
+      {
+        "tech": "Miniaturised cold-atom instrumentation",
+        "status": "partial",
+        "why": "lab gravimeters and optical clocks are bulky and power-hungry; field-ready units are only emerging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro-scale quantum key distribution links and field quantum sensors",
+        "unlocks": "quantum-secured links between a few buildings, plus precise gravity and time measurement for surveying and timing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "national quantum communication infrastructures and satellite key distribution",
+        "unlocks": "key exchange between cities, with ground stations and trusted nodes filling the gaps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first practical quantum repeaters",
+        "unlocks": "genuinely device-independent long-distance links and the beginnings of an entanglement network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "entanglement-based networks carrying both keys and clock signals",
+        "unlocks": "city infrastructure whose security, timing and sensing all rest on the same quantum fabric — if the hardware can be made rugged and cheap enough."
+      }
+    ]
   }
 }

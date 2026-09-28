@@ -30,5 +30,150 @@
         "def": "A system architecture where each component operates independently but communicates with others to achieve a common goal without central oversight."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Communication mesh",
+        "role": "lets robots share state without a central hub.",
+        "parts": [
+          "radio transceivers",
+          "gossip protocols",
+          "time synchronization"
+        ]
+      },
+      {
+        "name": "Local perception and state estimation",
+        "role": "each robot senses neighbors and its environment.",
+        "parts": [
+          "proximity sensors",
+          "cameras",
+          "inertial measurement unit",
+          "onboard SLAM"
+        ]
+      },
+      {
+        "name": "Decentralized coordination algorithms",
+        "role": "local rules that produce global patterns.",
+        "parts": [
+          "flocking/boids rules",
+          "stigmergy (virtual pheromones)",
+          "consensus algorithms"
+        ]
+      },
+      {
+        "name": "Task allocation",
+        "role": "assigns roles such as search, relay or transport dynamically.",
+        "parts": [
+          "market-based bidding",
+          "response-threshold models"
+        ]
+      },
+      {
+        "name": "Simulation and digital twin",
+        "role": "test and tune algorithms before hardware deployment.",
+        "parts": [
+          "physics simulator",
+          "agent-based model",
+          "communication emulator"
+        ]
+      },
+      {
+        "name": "Human-swarm interface",
+        "role": "lets an operator set goals and monitor without micromanaging.",
+        "parts": [
+          "mission planning UI",
+          "real-time telemetry",
+          "anomaly alerts"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the mission and constraints",
+        "detail": "Specify what the swarm must achieve, the environment, expected number of robots and communication limits."
+      },
+      {
+        "title": "Model the desired collective behavior",
+        "detail": "Choose a biological metaphor — ant foraging, bee house-hunting, bird flocking — and express it as simple local rules."
+      },
+      {
+        "title": "Design the communication protocol",
+        "detail": "Decide how robots exchange information, and how to cope with delays, dropouts and limited bandwidth."
+      },
+      {
+        "title": "Implement local control logic",
+        "detail": "Write each robot's decision loop from its own sensors and messages from nearby neighbours."
+      },
+      {
+        "title": "Build a simulation",
+        "detail": "Use an agent-based model to test scalability, robustness and emergent behaviour across thousands of virtual units."
+      },
+      {
+        "title": "Deploy on physical robots",
+        "detail": "Port the code to hardware, calibrate sensors and radios, and run small-scale trials in the real environment."
+      },
+      {
+        "title": "Scale and harden",
+        "detail": "Add fault tolerance, test with hundreds or thousands of units, and refine rules against real-world noise."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wireless mesh networking",
+        "status": "exists",
+        "why": "robots must talk peer-to-peer without fixed infrastructure."
+      },
+      {
+        "tech": "Miniaturized sensors and actuators",
+        "status": "exists",
+        "why": "each unit has to be cheap, light and capable of local sensing and movement."
+      },
+      {
+        "tech": "Onboard computing",
+        "status": "exists",
+        "why": "local decisions require processing without relying on a central server."
+      },
+      {
+        "tech": "Robust distributed consensus algorithms",
+        "status": "partial",
+        "why": "keeping thousands of agents aligned under failures and delays is still hard."
+      },
+      {
+        "tech": "Energy storage and harvesting",
+        "status": "partial",
+        "why": "small robots need enough power for hours of operation."
+      },
+      {
+        "tech": "Regulatory and safety frameworks",
+        "status": "missing",
+        "why": "autonomous swarms raise airspace, liability and privacy questions that are unresolved."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "drone light shows, warehouse robot fleets and research testbeds coordinate hundreds of units in structured settings",
+        "unlocks": "entertainment, inventory management and controlled experiments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cooperative drone swarms for inspection, agriculture and disaster mapping in GPS-denied areas",
+        "unlocks": "faster search and rescue, precision agriculture."
+      },
+      {
+        "stage": "Next",
+        "milestone": "heterogeneous swarms mixing aerial, ground and water robots",
+        "unlocks": "complex logistics, environmental monitoring and infrastructure repair."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-sustaining swarms that harvest energy and repair themselves",
+        "unlocks": "large-scale construction and exploration in remote environments."
+      }
+    ]
   }
 }

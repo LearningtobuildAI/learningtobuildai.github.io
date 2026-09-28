@@ -34,5 +34,150 @@
         "def": "Waste materials left in orbit from space missions that can pose risks to operational satellites and future launches."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Solar array",
+        "role": "collects sunlight continuously, above weather and night.",
+        "parts": [
+          "lightweight or thin-film photovoltaic cells",
+          "deployable booms or panels",
+          "sun-tracking orientation"
+        ]
+      },
+      {
+        "name": "Power conversion and transmitter",
+        "role": "turns direct current into a microwave beam aimed at the ground.",
+        "parts": [
+          "solid-state amplifiers or magnetrons/klystrons",
+          "phased-array antenna (often around 2.45 or 5.8 GHz)",
+          "waste-heat radiators"
+        ]
+      },
+      {
+        "name": "Structure and deployment",
+        "role": "holds kilometres of array together at very low mass per watt.",
+        "parts": [
+          "graphite-composite truss",
+          "modular docking interfaces",
+          "robotic assembly joints"
+        ]
+      },
+      {
+        "name": "Beam pointing and control",
+        "role": "keeps the beam locked on the rectenna and steers it instantly if it drifts.",
+        "parts": [
+          "pilot-signal receiver",
+          "phase-control electronics",
+          "retroreflectors and safety interlocks"
+        ]
+      },
+      {
+        "name": "Rectenna",
+        "role": "ground array that catches the beam and converts it back to electricity.",
+        "parts": [
+          "dipole or patch receive elements",
+          "rectifying diodes",
+          "DC-to-grid converter",
+          "land, often shared with farming"
+        ]
+      },
+      {
+        "name": "Orbital logistics",
+        "role": "gets thousands of tonnes of hardware into the right orbit and keeps it there.",
+        "parts": [
+          "heavy-lift reusable launcher",
+          "electric-propulsion tugs",
+          "space tugs and servicing spacecraft"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for mass",
+        "detail": "Everything is driven by specific power — watts per kilogram. Every part is traded against the cost of lifting it."
+      },
+      {
+        "title": "Make the cells and panels",
+        "detail": "Thin, radiation-tolerant photovoltaic cells are laid onto flexible substrates and wired into rollable or foldable blankets."
+      },
+      {
+        "title": "Build the transmitter modules",
+        "detail": "Identical sandwich panels carrying amplifiers, antennas and radiators are mass-produced on the ground, since in-orbit repair is expensive."
+      },
+      {
+        "title": "Launch in pieces",
+        "detail": "A reusable heavy-lift rocket carries modules to low Earth orbit, one batch at a time; the station is far too large to launch whole."
+      },
+      {
+        "title": "Assemble in orbit",
+        "detail": "Robots or astronauts dock and bolt modules together — either at low orbit or after the stack is raised to geostationary altitude."
+      },
+      {
+        "title": "Raise and station-keep",
+        "detail": "Electric thrusters spiral the assembled station to its operating orbit and hold position with minimal propellant."
+      },
+      {
+        "title": "Close the beam loop",
+        "detail": "A low-power pilot signal is sent up from the rectenna; the transmitter uses it to phase its elements so the beam lands precisely on target."
+      },
+      {
+        "title": "Ramp to full power",
+        "detail": "Beam power is raised gradually to a few hundred watts per square metre at the ground, well below sunlight, then converted to alternating current and fed to the grid."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reusable heavy-lift launch",
+        "status": "partial",
+        "why": "the economics only work if launch cost falls by roughly an order of magnitude from today's prices."
+      },
+      {
+        "tech": "In-orbit robotic assembly",
+        "status": "partial",
+        "why": "a station may need thousands of modules joined to millimetre precision without people present."
+      },
+      {
+        "tech": "Wireless power transmission",
+        "status": "partial",
+        "why": "kilowatt-scale transfer over tens of metres has been shown on the ground, and small in-orbit beaming was demonstrated in 2023, but nothing at megawatt scale over thousands of kilometres."
+      },
+      {
+        "tech": "Lightweight high-efficiency photovoltaics and power electronics",
+        "status": "exists",
+        "why": "space solar cells already exceed 30% efficiency; the challenge is combining that with very low mass."
+      },
+      {
+        "tech": "Spectrum and beam-safety regulation",
+        "status": "missing",
+        "why": "no international framework yet governs continuous high-power microwave beams through airspace."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "component-level orbital demonstrations and ground beaming tests",
+        "unlocks": "real data on how hardware behaves in vacuum, thermal cycling and radiation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "kilowatt-class in-orbit beaming to a small rectenna",
+        "unlocks": "proof that a full end-to-end link works across the atmosphere."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a megawatt-scale pilot station feeding a local grid",
+        "unlocks": "realistic cost, safety and regulatory numbers."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt geostationary stations",
+        "unlocks": "firm, weather-independent power — but only if launch and assembly costs keep falling."
+      }
+    ]
   }
 }

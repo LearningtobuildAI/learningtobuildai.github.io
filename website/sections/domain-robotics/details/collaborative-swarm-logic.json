@@ -30,5 +30,156 @@
         "def": "A bio-inspired algorithm that models the foraging behavior of ants to solve optimization problems, often used in swarm robotics for pathfinding and task allocation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Communication mesh",
+        "role": "lets robots share state and coordinate without a central hub.",
+        "parts": [
+          "radio transceivers",
+          "ad-hoc routing protocols",
+          "time synchronization"
+        ]
+      },
+      {
+        "name": "Local perception",
+        "role": "each robot senses its immediate surroundings and nearby neighbours.",
+        "parts": [
+          "proximity sensors (infrared, ultrasonic)",
+          "cameras",
+          "LiDAR",
+          "inertial measurement unit"
+        ]
+      },
+      {
+        "name": "Decentralized decision engine",
+        "role": "simple local rules produce complex group behaviour.",
+        "parts": [
+          "stigmergy (virtual pheromone maps)",
+          "ant colony optimization",
+          "flocking/boids rules",
+          "consensus algorithms"
+        ]
+      },
+      {
+        "name": "Task allocation",
+        "role": "assigns jobs to robots dynamically as conditions change.",
+        "parts": [
+          "market-based auctions",
+          "response threshold models",
+          "role assignment"
+        ]
+      },
+      {
+        "name": "Simulation and validation",
+        "role": "tests swarm algorithms before any hardware is deployed.",
+        "parts": [
+          "physics simulators (e.g. Gazebo, ARGoS)",
+          "multi-agent frameworks",
+          "digital twins"
+        ]
+      },
+      {
+        "name": "Operator interface",
+        "role": "gives humans high-level command and oversight.",
+        "parts": [
+          "dashboard",
+          "waypoint or formation setting",
+          "health monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the mission",
+        "detail": "Specify the tasks (e.g. search and rescue), the environment, robot capabilities and communication range."
+      },
+      {
+        "title": "Design local interaction rules",
+        "detail": "Choose algorithms such as stigmergy and ant colony optimization that will produce the desired emergent behaviour."
+      },
+      {
+        "title": "Build a simulation",
+        "detail": "Implement the rules in a multi-agent simulator with realistic sensing and communication models."
+      },
+      {
+        "title": "Evolve and tune",
+        "detail": "Use evolutionary algorithms or reinforcement learning to optimise parameters for the mission."
+      },
+      {
+        "title": "Port to physical robots",
+        "detail": "Integrate the algorithms with robot middleware such as ROS 2, and connect to sensors and actuators."
+      },
+      {
+        "title": "Test with small groups",
+        "detail": "Run experiments with tens of robots in controlled indoor or outdoor arenas."
+      },
+      {
+        "title": "Scale up",
+        "detail": "Address communication bottlenecks, localisation drift and robustness to individual failures."
+      },
+      {
+        "title": "Deploy in the field",
+        "detail": "Integrate with logistics or search-and-rescue operations, with human operators supervising at a high level."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable wireless mesh networking",
+        "status": "partial",
+        "why": "mesh radios exist, but scaling to thousands of nodes with low latency and high reliability is not yet routine."
+      },
+      {
+        "tech": "Onboard compute and power",
+        "status": "exists",
+        "why": "microcontrollers and systems-on-chip are capable of running swarm algorithms on small robots."
+      },
+      {
+        "tech": "Miniaturised sensors",
+        "status": "exists",
+        "why": "cameras, LiDAR and proximity sensors are small and cheap enough for large numbers of robots."
+      },
+      {
+        "tech": "Decentralized control algorithms",
+        "status": "partial",
+        "why": "many algorithms are published, but few have been proven with thousands of physical robots."
+      },
+      {
+        "tech": "Simulation tools",
+        "status": "exists",
+        "why": "multi-agent simulators allow rapid iteration before hardware is built."
+      },
+      {
+        "tech": "Safety and certification standards",
+        "status": "missing",
+        "why": "no standards exist for certifying large, self-organising robot fleets in public spaces."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes and limited pilots with tens to hundreds of robots",
+        "unlocks": "proof of basic coordination in warehouses, agriculture and drone light shows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully decentralized swarms of hundreds in logistics and agriculture",
+        "unlocks": "flexible automation that adapts to changing tasks without a central controller."
+      },
+      {
+        "stage": "Next",
+        "milestone": "swarms of thousands for search and rescue and environmental monitoring",
+        "unlocks": "rapid area coverage and resilient operation after disasters."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "heterogeneous swarms mixing air, ground and water robots",
+        "unlocks": "complex missions that self-organise with minimal human intervention."
+      }
+    ]
   }
 }

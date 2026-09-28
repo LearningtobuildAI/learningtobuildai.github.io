@@ -30,5 +30,155 @@
         "def": "Small satellites typically measuring 10 cm x 10 cm x 10 cm, used in LEO for various applications including IoT communications."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Satellite payload",
+        "role": "receives very faint signals from small, low-power devices and relays or processes them.",
+        "parts": [
+          "large deployable phased-array antenna",
+          "software-defined radio",
+          "digital beamforming processor",
+          "regenerative or bent-pipe repeater"
+        ]
+      },
+      {
+        "name": "Spacecraft bus and constellation",
+        "role": "keeps the payload pointed and supplies power across a fleet of satellites.",
+        "parts": [
+          "solar arrays and batteries",
+          "electric or chemical propulsion",
+          "attitude control and star trackers",
+          "orbital planes in low Earth orbit"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "connects the satellites to terrestrial networks.",
+        "parts": [
+          "gateway earth stations",
+          "feeder-link antennas",
+          "telemetry and control centre"
+        ]
+      },
+      {
+        "name": "Device and radio link",
+        "role": "the sensor or handset at the far end of a very long, very lossy path.",
+        "parts": [
+          "narrowband modem (NB-IoT NTN or proprietary)",
+          "compact antenna",
+          "battery or energy harvester"
+        ]
+      },
+      {
+        "name": "Core network and service layer",
+        "role": "makes satellites look like a normal mobile network to apps and operators.",
+        "parts": [
+          "5G NTN core integration",
+          "roaming and billing",
+          "device and data management platform"
+        ]
+      },
+      {
+        "name": "Spectrum and regulatory layer",
+        "role": "lets satellites and terrestrial networks share scarce frequencies.",
+        "parts": [
+          "mobile-satellite service allocations",
+          "national licensing and coordination"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Plan the link budget",
+        "detail": "Engineers calculate whether a milliwatt transmitter in a sensor can be heard from 500–2,000 km away, which sets antenna size, altitude and data rate — usually just a few hundred bits per second per device."
+      },
+      {
+        "title": "Design the payload",
+        "detail": "A large flat phased-array antenna is built from many small radiating elements so the satellite can form and steer multiple narrow beams and track fast-moving ground devices."
+      },
+      {
+        "title": "Build and qualify the spacecraft",
+        "detail": "The bus and payload are integrated and shaken, baked in thermal vacuum and blasted with radio noise to prove they survive launch and the space environment."
+      },
+      {
+        "title": "Mass-produce the fleet",
+        "detail": "Satellites are assembled on production lines in flat, stackable form so dozens can launch on one rocket, driving unit cost down."
+      },
+      {
+        "title": "Launch and raise orbit",
+        "detail": "Rockets deploy the satellites into several orbital planes; propulsion spreads them out so coverage is continuous."
+      },
+      {
+        "title": "Deploy gateways and core network",
+        "detail": "Ground stations are built where licensed spectrum and fibre backhaul are available, then connected into a mobile core."
+      },
+      {
+        "title": "Integrate devices and handset firmware",
+        "detail": "Modems adopt the satellite standard and are tuned to pre-compensate for Doppler shift and the long round-trip delay."
+      },
+      {
+        "title": "Trial, then commercialise",
+        "detail": "Field trials with asset trackers, agricultural sensors and emergency-messaging handsets verify coverage before paid service begins."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "5G non-terrestrial-network standards",
+        "status": "exists",
+        "why": "3GPP Release 17 defined how satellites and terrestrial networks share a common air interface, so chipsets can serve both."
+      },
+      {
+        "tech": "Low-cost satellite manufacturing",
+        "status": "exists",
+        "why": "hundreds of satellites are needed for continuous coverage, which only works if each one costs far less than a traditional telecom satellite."
+      },
+      {
+        "tech": "Large deployable phased-array antennas",
+        "status": "partial",
+        "why": "the antenna gain is what closes the link to a phone or sensor; large arrays are demonstrated but still being scaled."
+      },
+      {
+        "tech": "Cheap, frequent launches",
+        "status": "exists",
+        "why": "constellations must be replenished; rideshare and reusable rockets make that affordable."
+      },
+      {
+        "tech": "Narrowband IoT chipsets",
+        "status": "exists",
+        "why": "terrestrial NB-IoT and LoRa silicon is the base that satellite variants build on."
+      },
+      {
+        "tech": "Spectrum access and landing rights",
+        "status": "partial",
+        "why": "a satellite footprint crosses many countries, and each national regulator must permit the service."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "established narrowband satellite messaging services alongside pilot direct-to-phone systems",
+        "unlocks": "tracking of ships, livestock, containers and pipelines where no cellular coverage exists."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial direct-to-handset messaging and emergency SOS from ordinary phones",
+        "unlocks": "coverage in dead zones for consumers and field workers without special hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "direct-to-device voice and low-rate data at scale through dedicated satellite fleets",
+        "unlocks": "a second path to connectivity that bypasses local towers entirely."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "satellite and terrestrial networks merged into one seamless core",
+        "unlocks": "devices that switch between tower and satellite without the user noticing, and truly global low-power sensing."
+      }
+    ]
   }
 }

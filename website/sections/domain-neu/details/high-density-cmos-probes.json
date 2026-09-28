@@ -29,5 +29,158 @@
         "def": "A system that enables direct communication between the brain and an external device, often used in neuroprosthetics or assistive technologies."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Shank and electrode array",
+        "role": "the penetrating silicon body that carries hundreds to thousands of recording sites into tissue.",
+        "parts": [
+          "silicon shank, tens of micrometres thick",
+          "doped-silicon or titanium-nitride electrode sites",
+          "tapered tip"
+        ]
+      },
+      {
+        "name": "On-shank CMOS electronics",
+        "role": "amplifies, multiplexes and digitises signals right at the electrode so that thin cables can carry the data out.",
+        "parts": [
+          "low-noise amplifiers",
+          "multiplexer",
+          "analog-to-digital converters",
+          "time-division bus"
+        ]
+      },
+      {
+        "name": "Interconnect and base",
+        "role": "routes power in and digital data out without stiffening the probe.",
+        "parts": [
+          "bond pads",
+          "flexible ribbon cable",
+          "base connector"
+        ]
+      },
+      {
+        "name": "Acquisition headstage",
+        "role": "powers the probe, formats the serial data stream and passes it to the host.",
+        "parts": [
+          "interface board",
+          "clock and power regulation",
+          "high-speed link"
+        ]
+      },
+      {
+        "name": "Encapsulation",
+        "role": "insulates everything except the electrode tips so only neurons, not tissue fluid, are sensed.",
+        "parts": [
+          "silicon dioxide and polymer coatings",
+          "selective opening of electrode sites"
+        ]
+      },
+      {
+        "name": "Software pipeline",
+        "role": "turns raw voltage traces into identified neurons and decoded intent.",
+        "parts": [
+          "spike sorting",
+          "real-time decoder",
+          "data storage"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the probe and circuit",
+        "detail": "Electrode positions and the amplifier/digitizer layout are drawn for one silicon die, then the design is sent to a foundry as a mask set."
+      },
+      {
+        "title": "Fabricate the CMOS layer",
+        "detail": "The electronics are built on a silicon-on-insulator wafer using standard commercial CMOS processing."
+      },
+      {
+        "title": "Define the shank shape",
+        "detail": "Deep reactive-ion etching cuts the outline of the thin shank and the base out of the wafer, so the probe is released as a single piece."
+      },
+      {
+        "title": "Form the electrodes",
+        "detail": "Metal is deposited and patterned into electrode sites, and the exposed surface is treated to lower impedance."
+      },
+      {
+        "title": "Encapsulate and open the sites",
+        "detail": "Insulating oxide and polymer layers cover the shank; small windows are etched only over the electrodes."
+      },
+      {
+        "title": "Dice and assemble",
+        "detail": "Individual probes are separated, bonded to a flexible cable and mounted on a connector or headstage."
+      },
+      {
+        "title": "Test and sort",
+        "detail": "Every channel is checked for impedance, noise and yield before the probe is released."
+      },
+      {
+        "title": "Sterilise and insert",
+        "detail": "The probe is sterilised, then driven into the target region with a micromanipulator or a stiff shuttle that dissolves or is withdrawn."
+      },
+      {
+        "title": "Record and decode",
+        "detail": "Signals stream to the acquisition system, where spikes are sorted into single neurons and fed to a decoder."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced CMOS foundry access",
+        "status": "exists",
+        "why": "thousands of amplifiers and digitizers must fit inside a shank thinner than a human hair."
+      },
+      {
+        "tech": "Silicon micromachining (deep reactive-ion etching)",
+        "status": "exists",
+        "why": "it carves the long, narrow, precisely shaped shank out of a wafer."
+      },
+      {
+        "tech": "Biocompatible chronic encapsulation",
+        "status": "partial",
+        "why": "the body's immune response and moisture creep degrade probes over months to years, which is the main barrier to human use."
+      },
+      {
+        "tech": "High-bandwidth, low-power data links",
+        "status": "exists",
+        "why": "thousands of channels generate data rates that must leave the head or body without heating tissue."
+      },
+      {
+        "tech": "Real-time spike sorting and decoding",
+        "status": "partial",
+        "why": "extracting useful intent from raw neural voltage is still compute-heavy and calibration-sensitive."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research probes such as the Neuropixels class, with thousands of sites on one shank, used in rodents and primates",
+        "unlocks": "dense, simultaneous mapping of brain circuits that older wire arrays could not reach."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chronic human-grade probes with hermetic packaging and stable recording over years",
+        "unlocks": "long-term implants for communication and movement restoration rather than short experiments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully wireless implants that compress data on the probe and need no through-skin cable",
+        "unlocks": "daily-life use outside a lab, with lower infection risk."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "bidirectional probes combining recording with precise stimulation",
+        "unlocks": "closed-loop restoration of sensation and finer control of prosthetics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "tens of thousands of channels delivered with minimally invasive insertion",
+        "unlocks": "whole-region interfaces without damaging large volumes of tissue."
+      }
+    ]
   }
 }

@@ -33,5 +33,149 @@
         "def": "Specialized neural network components within the MoE architecture designed to handle specific types of input tokens efficiently."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Expert networks",
+        "role": "independent feed-forward sub-networks that specialise in different patterns or token types.",
+        "parts": [
+          "feed-forward layers",
+          "activation functions",
+          "parameters"
+        ]
+      },
+      {
+        "name": "Router (gating network)",
+        "role": "scores each token and decides which experts should process it.",
+        "parts": [
+          "linear layer",
+          "softmax",
+          "top-k selection"
+        ]
+      },
+      {
+        "name": "Token dispatch and combine",
+        "role": "sends tokens to the chosen experts and merges their outputs into one representation.",
+        "parts": [
+          "permutation buffers",
+          "all-to-all communication",
+          "weighted sum"
+        ]
+      },
+      {
+        "name": "Load balancing",
+        "role": "keeps experts from collapsing to a few favourites, so all get trained.",
+        "parts": [
+          "auxiliary loss",
+          "capacity factor",
+          "token dropping or rerouting"
+        ]
+      },
+      {
+        "name": "Distributed execution",
+        "role": "spreads experts across many accelerators and keeps them fed with tokens.",
+        "parts": [
+          "expert parallelism",
+          "data parallelism",
+          "high-speed interconnect"
+        ]
+      },
+      {
+        "name": "Training system",
+        "role": "backpropagates through sparse routing and updates every expert and the router.",
+        "parts": [
+          "optimiser",
+          "gradient synchronisation",
+          "checkpointing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the transformer backbone",
+        "detail": "Decide the number of layers, attention heads, and hidden size; attention and residual connections stay dense and shared across all tokens."
+      },
+      {
+        "title": "Define the expert layers",
+        "detail": "Replace each dense feed-forward block with a set of several expert feed-forward networks (for example, 8 or more), each with the same input and output dimensions."
+      },
+      {
+        "title": "Add the router",
+        "detail": "Attach a small linear layer to every MoE layer that produces a score for each expert for every token."
+      },
+      {
+        "title": "Implement top-k routing",
+        "detail": "For each token, select the k highest-scoring experts (often k=1 or 2), normalise their gate values, and discard the rest."
+      },
+      {
+        "title": "Add a load-balancing loss",
+        "detail": "Include an auxiliary loss that encourages the router to spread tokens evenly, preventing a few experts from being overused while others are starved."
+      },
+      {
+        "title": "Distribute experts",
+        "detail": "Shard experts across devices using expert parallelism; tokens are sent to the relevant device via all-to-all communication and results are returned."
+      },
+      {
+        "title": "Train the model",
+        "detail": "Run forward and backward passes; gradients flow to the router and the selected experts. Use a capacity factor to cap how many tokens an expert may process per batch."
+      },
+      {
+        "title": "Fine-tune and deploy",
+        "detail": "Convert the trained model to inference-optimised kernels, fuse operations, and serve it with expert caching to reduce communication overhead."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "MoE replaces parts of a transformer; the attention and residual structure is needed for the token representations that the experts process."
+      },
+      {
+        "tech": "Large-scale distributed training",
+        "status": "exists",
+        "why": "experts are spread across many accelerators, so training requires fast interconnects and efficient gradient synchronisation."
+      },
+      {
+        "tech": "Sparse routing and gating algorithms",
+        "status": "exists",
+        "why": "top-k routing and load-balancing methods are well-studied and used in production models."
+      },
+      {
+        "tech": "Efficient all-to-all communication",
+        "status": "exists",
+        "why": "tokens must be shuffled between devices frequently, so low-latency, high-bandwidth communication is essential."
+      },
+      {
+        "tech": "Accelerators with high memory bandwidth",
+        "status": "exists",
+        "why": "MoE trades memory capacity for compute, so it needs many devices to hold all experts and their parameters."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "MoE used in frontier large language models to scale parameter count without proportional compute per token",
+        "unlocks": "larger, more capable models that remain affordable to run at inference time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "finer-grained experts and improved routing such as expert-choice or adaptive top-k",
+        "unlocks": "better quality per parameter and more stable training with less token dropping."
+      },
+      {
+        "stage": "Next",
+        "milestone": "MoE applied to multimodal models and on-device inference with expert offloading",
+        "unlocks": "efficient on-device AI and models that can reason across text, images and audio."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "adaptive computation where the model learns to allocate more experts to harder inputs",
+        "unlocks": "dynamic efficiency and potentially stronger reasoning by spending compute only where needed."
+      }
+    ]
   }
 }

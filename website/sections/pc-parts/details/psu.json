@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "EMI filter and rectifier",
+        "role": "cleans incoming mains power and turns alternating current into rough direct current.",
+        "parts": [
+          "common-mode chokes and X/Y capacitors",
+          "bridge rectifier",
+          "inrush-current limiter"
+        ]
+      },
+      {
+        "name": "Power-factor-correction stage",
+        "role": "draws current smoothly from the mains so the supply looks like a resistor to the grid.",
+        "parts": [
+          "boost inductor",
+          "boost diode",
+          "switching MOSFET",
+          "bulk capacitor (several hundred volts DC)"
+        ]
+      },
+      {
+        "name": "Primary switching stage",
+        "role": "chops the high-voltage DC at tens to hundreds of kilohertz.",
+        "parts": [
+          "controller IC",
+          "primary MOSFETs (half-bridge or LLC resonant)",
+          "high-frequency transformer"
+        ]
+      },
+      {
+        "name": "Secondary rectification and filtering",
+        "role": "converts the transformer's high-frequency AC back to the low DC rails the PC uses.",
+        "parts": [
+          "synchronous rectifier MOSFETs or Schottky diodes",
+          "output inductors",
+          "low-ESR electrolytic and polymer capacitors"
+        ]
+      },
+      {
+        "name": "Regulation and protection",
+        "role": "keeps 12 V, 5 V and 3.3 V accurate and shuts the unit down on fault.",
+        "parts": [
+          "optocoupler feedback",
+          "supervisor IC (over-voltage, over-current, over-temperature, short-circuit)",
+          "standby 5 V supply"
+        ]
+      },
+      {
+        "name": "Thermal and mechanical",
+        "role": "removes waste heat and delivers power to connectors.",
+        "parts": [
+          "fan and heatsinks",
+          "modular or fixed cable harness",
+          "ATX, EPS and PCIe connectors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the rails and topology",
+        "detail": "Engineer picks total wattage, the split between 12 V, 5 V and 3.3 V, and whether to use a double-forward or LLC resonant design."
+      },
+      {
+        "title": "Wind the transformer",
+        "detail": "Ferrite core, copper windings and insulation are assembled to a turns ratio that steps hundreds of volts down to about 12 V, with creepage distances meeting safety rules."
+      },
+      {
+        "title": "Fabricate the PCB",
+        "detail": "Surface-mount resistors, capacitors and control ICs are reflow-soldered; large parts like the bulk capacitor, transformer and heatsinks are placed by hand or wave-soldered."
+      },
+      {
+        "title": "Mount and wire",
+        "detail": "The board goes into the steel chassis, MOVs and fuses are fitted, the fan and cable harness are attached, and high-voltage joints are sleeved."
+      },
+      {
+        "title": "Burn in and characterise",
+        "detail": "Every unit runs under load on a test rack; efficiency, ripple, hold-up time (mains-loss ride-through, typically 16 ms at full load) and protections are checked."
+      },
+      {
+        "title": "Certify",
+        "detail": "Units are submitted for safety approval and for efficiency ratings, then labelled with the correct wattage and connector set."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Power MOSFETs and fast diodes",
+        "status": "exists",
+        "why": "the switching devices set how efficiently and how fast the supply can chop DC."
+      },
+      {
+        "tech": "Ferrite cores and magnet wire",
+        "status": "exists",
+        "why": "the transformer is the heart of the isolation and voltage step-down."
+      },
+      {
+        "tech": "Low-ESR electrolytic and polymer capacitors",
+        "status": "exists",
+        "why": "they smooth the rails and must survive years of heat."
+      },
+      {
+        "tech": "PWM and resonant controller ICs",
+        "status": "exists",
+        "why": "they regulate output and manage protection without analogue tuning."
+      },
+      {
+        "tech": "Wide-bandgap semiconductors (GaN, SiC)",
+        "status": "partial",
+        "why": "they allow smaller, cooler supplies, but cost keeps them out of most units."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ATX 3.x supplies with a single 12 V rail and the 12V-2x6 connector, rated for brief power spikes well above continuous rating",
+        "unlocks": "stable power for high-end graphics cards."
+      },
+      {
+        "stage": "Next",
+        "milestone": "digital control with telemetry over a data link",
+        "unlocks": "per-rail monitoring and firmware-tuned behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "GaN and SiC switching throughout",
+        "unlocks": "smaller, fanless or near-silent supplies at high efficiency."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "higher-voltage DC distribution inside the case",
+        "unlocks": "lower cable losses as component power keeps climbing."
+      }
+    ]
+  }
+}

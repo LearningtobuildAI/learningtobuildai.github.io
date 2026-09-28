@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Encoding and error-correction layer",
+        "role": "turns ordinary binary data into DNA sequences that can survive being written and read back.",
+        "parts": [
+          "constraint codes that avoid long runs of one base and extreme GC content",
+          "Reed–Solomon and fountain codes",
+          "address and primer tags for random access"
+        ]
+      },
+      {
+        "name": "DNA synthesis",
+        "role": "the writer — builds the strands base by base.",
+        "parts": [
+          "phosphoramidite chemistry",
+          "array-based synthesis chips producing many strands at once",
+          "enzymatic synthesis using template-independent polymerases"
+        ]
+      },
+      {
+        "name": "Molecular computing elements",
+        "role": "perform logic through molecular interactions instead of transistors.",
+        "parts": [
+          "toehold-mediated strand-displacement gates",
+          "DNAzymes",
+          "enzymes such as polymerases, nickases and restriction enzymes"
+        ]
+      },
+      {
+        "name": "Reaction environment",
+        "role": "keeps reactions separate, buffered and controllable.",
+        "parts": [
+          "test tubes and well plates",
+          "microfluidic droplets",
+          "living cells as a chassis"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "converts a molecular state back into readable data.",
+        "parts": [
+          "PCR amplification",
+          "fluorescent reporters",
+          "short-read sequencers",
+          "nanopore sequencers"
+        ]
+      },
+      {
+        "name": "Automation and fluidics",
+        "role": "makes writing and reading repeatable without constant human handling.",
+        "parts": [
+          "liquid-handling robots",
+          "microfluidic chips",
+          "cool, dry storage"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Encode the data",
+        "detail": "Software converts the file into nucleotide sequences, adding parity and constraint codes so errors can later be detected and repaired."
+      },
+      {
+        "title": "Design addressable blocks",
+        "detail": "The sequence is split into short strands, each flanked by primer tags so a single file or block can be pulled out of the pool without reading everything."
+      },
+      {
+        "title": "Synthesise the strands",
+        "detail": "Chemical synthesis builds each strand base by base on a solid support or an array chip; enzymatic synthesis is being developed to write longer strands with fewer errors."
+      },
+      {
+        "title": "Assemble and verify",
+        "detail": "Blocks are joined by ligation or overlap assembly, then sequenced to check them; failures are discarded or re-made."
+      },
+      {
+        "title": "Store the DNA",
+        "detail": "The pool is dried or encapsulated and kept cool, dark and away from moisture — the conditions under which DNA can persist for a very long time."
+      },
+      {
+        "title": "Retrieve a subset",
+        "detail": "PCR with the right primer pair amplifies only the addressed blocks, so recovering one file does not require sequencing the whole archive."
+      },
+      {
+        "title": "Sequence",
+        "detail": "The amplified DNA is read on a high-throughput sequencer, producing raw base calls with error scores."
+      },
+      {
+        "title": "Decode and repair",
+        "detail": "Software maps reads back to addresses, corrects errors with the parity codes and reconstructs the original file."
+      },
+      {
+        "title": "For computing: run the circuit",
+        "detail": "Where computation rather than storage is the goal, the strands are mixed so displacement reactions cascade through designed gates, with the output read as fluorescence or a new sequence."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, high-fidelity oligonucleotide synthesis",
+        "status": "partial",
+        "why": "array synthesis is inexpensive but error-prone, while accurate column synthesis is slow and costly; archival storage needs both cheap and clean."
+      },
+      {
+        "tech": "High-throughput DNA sequencing",
+        "status": "exists",
+        "why": "reading costs fell by orders of magnitude, which is what makes DNA readout practical at all."
+      },
+      {
+        "tech": "Error-correcting codes for the DNA channel",
+        "status": "exists",
+        "why": "synthesis and sequencing errors are well characterised, and coding schemes that tolerate them have been demonstrated."
+      },
+      {
+        "tech": "Molecular logic circuits",
+        "status": "partial",
+        "why": "DNA computation has been shown since Adleman's 1994 experiment, and strand-displacement circuits of hundreds of gates work in test tubes, but scaling and operation inside cells remain hard."
+      },
+      {
+        "tech": "Long-term DNA preservation",
+        "status": "partial",
+        "why": "dry, cool, sealed storage is understood in principle, but standardised archive engineering over decades is not established."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory systems that store megabyte-scale data in DNA and molecular circuits that compute in a test tube",
+        "unlocks": "proof that the write–store–read loop works end to end."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated write-and-read instruments running many cycles unattended, using enzymatic synthesis",
+        "unlocks": "a realistic cost per bit and a realistic throughput for real archives."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot archival deployments paired with conventional storage, where DNA holds the cold, rarely accessed copy",
+        "unlocks": "a role for DNA as a long-lived backup layer rather than a replacement for disks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "molecular computers that sense markers inside cells and compute a response",
+        "unlocks": "diagnostics and programmable therapeutics that act at the molecular level."
+      }
+    ]
+  }
+}

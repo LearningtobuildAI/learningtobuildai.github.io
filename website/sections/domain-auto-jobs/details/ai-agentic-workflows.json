@@ -29,5 +29,159 @@
         "def": "Autonomous processes where AI plans, executes, and critiques its own actions to solve complex tasks iteratively."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reasoning model",
+        "role": "the language model that reads the task, reasons step by step and decides what to do next.",
+        "parts": [
+          "foundation model or fine-tuned variant",
+          "context window",
+          "sampling and decoding settings"
+        ]
+      },
+      {
+        "name": "Orchestration loop",
+        "role": "runs the plan–act–observe cycle, tracks state and decides when the task is done.",
+        "parts": [
+          "task planner",
+          "state store",
+          "loop controller",
+          "termination checker"
+        ]
+      },
+      {
+        "name": "Tool layer",
+        "role": "lets the agent affect the outside world: call APIs, run code, search, send messages.",
+        "parts": [
+          "tool registry and schemas",
+          "function-calling interface",
+          "sandboxed code interpreter",
+          "credentials store"
+        ]
+      },
+      {
+        "name": "Memory and retrieval",
+        "role": "remembers past steps and brings in relevant documents or history.",
+        "parts": [
+          "scratchpad and working memory",
+          "vector database",
+          "summarisation",
+          "retrieval pipeline"
+        ]
+      },
+      {
+        "name": "Critic and verifier",
+        "role": "checks the agent's own output for errors, contradictions or policy violations.",
+        "parts": [
+          "self-critique prompt",
+          "separate evaluator model",
+          "rule-based validators",
+          "human-in-the-loop review"
+        ]
+      },
+      {
+        "name": "Observability and guardrails",
+        "role": "records what the agent did, limits its permissions and controls cost and risk.",
+        "parts": [
+          "tracing and logging",
+          "permission scopes",
+          "rate and budget limits",
+          "kill switch"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task and success criteria",
+        "detail": "Write down exactly what the agent must achieve, what tools it may use and how success will be measured before any prompt is written."
+      },
+      {
+        "title": "Choose and configure the model",
+        "detail": "Select a foundation model with strong reasoning and tool-calling ability, then set temperature and context limits for the task."
+      },
+      {
+        "title": "Build the tool interface",
+        "detail": "Wrap each external action as a typed function with a clear description so the model can call it correctly."
+      },
+      {
+        "title": "Implement the orchestration loop",
+        "detail": "Code the plan–act–observe cycle: the model proposes an action, the system executes it, feeds back the result and repeats until a stopping condition is met."
+      },
+      {
+        "title": "Add memory and retrieval",
+        "detail": "Store intermediate steps in a scratchpad and connect a vector database so the agent can recall facts or documents beyond its context window."
+      },
+      {
+        "title": "Insert a critic step",
+        "detail": "After each major output, run a separate check — either a second model call or deterministic rules — to catch mistakes before they propagate."
+      },
+      {
+        "title": "Test against a benchmark set",
+        "detail": "Run the agent on representative tasks, measure success rate, cost and latency, then iterate on prompts, tools and loop logic."
+      },
+      {
+        "title": "Deploy with guardrails",
+        "detail": "Restrict permissions, set spending caps, log every action and keep a human able to pause or take over."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models with reliable tool-calling",
+        "status": "exists",
+        "why": "the agent needs to translate intentions into exact function calls."
+      },
+      {
+        "tech": "Structured output and function schemas",
+        "status": "exists",
+        "why": "tools must be described in a machine-readable way the model can follow."
+      },
+      {
+        "tech": "Sandboxed code execution",
+        "status": "exists",
+        "why": "running generated code safely is often the agent's main way to act."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "gives the agent knowledge beyond its training data."
+      },
+      {
+        "tech": "Agent evaluation benchmarks",
+        "status": "partial",
+        "why": "measuring multi-step reliability is still an open problem; most benchmarks cover narrow tasks."
+      },
+      {
+        "tech": "Long-term memory and self-correction",
+        "status": "partial",
+        "why": "agents lose track over many steps and rarely detect their own compounding errors."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-agent copilots for coding, research and customer support",
+        "unlocks": "productivity gains in narrow, well-defined tasks with human oversight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-agent systems with specialised roles and shared memory",
+        "unlocks": "end-to-end automation of multi-step business processes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable long-horizon autonomy with robust self-critique",
+        "unlocks": "delegation of complex projects that run for hours or days."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "standardised agent-to-agent protocols and marketplaces",
+        "unlocks": "agents that discover, hire and coordinate other agents across organisations."
+      }
+    ]
   }
 }

@@ -29,5 +29,152 @@
         "def": "A remote sensing technology that uses light in the form of a pulsed laser to measure ranges (variable distances) to the Earth's surface, creating detailed three-dimensional images of the area under survey."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception",
+        "role": "senses the terrain, obstacles, people and other machines around the vehicle.",
+        "parts": [
+          "lidar",
+          "stereo or depth cameras",
+          "radar",
+          "ultrasonic sensors"
+        ]
+      },
+      {
+        "name": "Localisation",
+        "role": "works out where the machine is and how it is oriented, to centimetre accuracy.",
+        "parts": [
+          "GNSS receiver with RTK corrections",
+          "inertial measurement unit",
+          "wheel or track odometry"
+        ]
+      },
+      {
+        "name": "Machine control",
+        "role": "turns planned motions into precise movement of the bucket, blade or arm.",
+        "parts": [
+          "electrohydraulic valves",
+          "hydraulic actuators",
+          "embedded controller",
+          "angle and pressure sensors"
+        ]
+      },
+      {
+        "name": "Site model and task planner",
+        "role": "holds the digital design and decides what to dig, grade or mark out next.",
+        "parts": [
+          "BIM or CAD design file",
+          "terrain and cut-fill model",
+          "path and task planner"
+        ]
+      },
+      {
+        "name": "Safety and supervision",
+        "role": "keeps people out of harm's way and lets a human monitor or take over.",
+        "parts": [
+          "geofencing",
+          "emergency stop",
+          "remote supervisory console",
+          "audible and visual warnings"
+        ]
+      },
+      {
+        "name": "Power and drivetrain",
+        "role": "provides the energy and traction to move and work.",
+        "parts": [
+          "diesel or battery-electric power unit",
+          "hydraulic pump",
+          "tracks or wheels"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Create the digital site model",
+        "detail": "Drone or ground surveys build a 3D terrain model, which is merged with the design file (BIM) to define target surfaces and volumes."
+      },
+      {
+        "title": "Prepare the machine",
+        "detail": "A conventional excavator, dozer or skid-steer is either retrofitted or built new with electrohydraulic controls, a control computer and mounting points for sensors."
+      },
+      {
+        "title": "Fit and calibrate sensors",
+        "detail": "GNSS antennas, lidar, cameras and an inertial unit are mounted rigidly and calibrated so their measurements agree with the machine's own geometry."
+      },
+      {
+        "title": "Teach or program the task",
+        "detail": "An operator either demonstrates the motion, or the planner computes cut-and-fill passes directly from the site model."
+      },
+      {
+        "title": "Run in supervised autonomy",
+        "detail": "The machine executes the plan at low speed inside a fenced or empty area, with a human ready to hit the emergency stop."
+      },
+      {
+        "title": "Add perception and obstacle avoidance",
+        "detail": "Software is tuned so the machine stops for people, vehicles or unexpected obstacles, and resumes when the path is clear."
+      },
+      {
+        "title": "Scale to a working site",
+        "detail": "Multiple machines are coordinated, and a single remote supervisor oversees a fleet while other trades work nearby."
+      },
+      {
+        "title": "Validate and certify",
+        "detail": "The system is tested against safety standards and site rules, and its behaviour is logged for every autonomous action."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "RTK GNSS",
+        "status": "exists",
+        "why": "gives centimetre-level position outdoors, which is the basis for following a design surface."
+      },
+      {
+        "tech": "Lidar and computer vision",
+        "status": "partial",
+        "why": "works well in clear conditions but struggles with dust, heavy rain, glare and featureless ground."
+      },
+      {
+        "tech": "Electrohydraulic machine control",
+        "status": "exists",
+        "why": "lets a computer command the bucket or blade smoothly and precisely."
+      },
+      {
+        "tech": "Digital design and BIM workflows",
+        "status": "exists",
+        "why": "provides the target geometry that the robot must build to."
+      },
+      {
+        "tech": "Safety standards and regulation for autonomous heavy equipment",
+        "status": "partial",
+        "why": "rules for driverless machines on shared construction sites are still developing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "auto-grade and auto-stop features on excavators and dozers",
+        "unlocks": "faster, more accurate earthworks with an operator still in the cab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully autonomous earthmoving on fenced or segregated sites",
+        "unlocks": "repetitive groundwork without a driver, especially in remote or hazardous areas."
+      },
+      {
+        "stage": "Next",
+        "milestone": "supervised fleets of several machines working together",
+        "unlocks": "one operator overseeing many machines, cutting labour per cubic metre moved."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integrated autonomous site with layout, excavation and lifting robots sharing one model",
+        "unlocks": "round-the-clock construction with fewer people in dangerous zones."
+      }
+    ]
   }
 }

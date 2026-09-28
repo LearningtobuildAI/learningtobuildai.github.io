@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Biometric sensing",
+        "role": "measure the body signals the system would react to.",
+        "parts": [
+          "wearable heart-rate and heart-rate-variability sensors",
+          "skin conductance (electrodermal activity) electrodes",
+          "sweat or interstitial-fluid cortisol sensors",
+          "skin-temperature and motion sensors",
+          "optional ambient camera or microphone for behaviour"
+        ]
+      },
+      {
+        "name": "Stress inference",
+        "role": "turn noisy physiology into a usable estimate of arousal or stress.",
+        "parts": [
+          "personal baseline model (each person differs widely)",
+          "motion and context filters to reject artefacts",
+          "classifier trained on labelled stress data",
+          "uncertainty estimate, so the system knows when it is guessing"
+        ]
+      },
+      {
+        "name": "Environment actuators",
+        "role": "the things that can actually be changed in a room.",
+        "parts": [
+          "tunable LED lighting (colour temperature and brightness)",
+          "blinds and daylight control",
+          "active noise masking and soundscape speakers",
+          "zoned heating, cooling and ventilation",
+          "radiant panels or local heaters for fast response"
+        ]
+      },
+      {
+        "name": "Control loop",
+        "role": "decide what to change, by how much, and when to stop.",
+        "parts": [
+          "closed-loop or rule-based controller",
+          "comfort and energy constraints",
+          "rate limiting so the room does not flicker and swing",
+          "logging of what worked for whom"
+        ]
+      },
+      {
+        "name": "Data and privacy layer",
+        "role": "keep continuous physiological data safe and consented.",
+        "parts": [
+          "on-device or edge processing",
+          "encryption and retention limits",
+          "user controls and opt-out"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the stress signal",
+        "detail": "Cortisol is a hormone, not a mood: it follows a daily rhythm and rises over minutes to tens of minutes, so it cannot drive a fast control loop. A practical design leans on heart-rate variability and skin conductance for moment-to-moment arousal, and uses cortisol only as a slow trend."
+      },
+      {
+        "title": "Build the sensor",
+        "detail": "For a wearable, that means a skin-contact patch with electrodes and a small electrochemical cell that detects cortisol in sweat, plus standard optical heart-rate sensing. Calibration against blood or saliva samples is needed per person."
+      },
+      {
+        "title": "Collect labelled data",
+        "detail": "Volunteers are monitored during controlled stressful and calm tasks, indoors and outdoors, at different times of day, so the model learns what is stress and what is merely coffee, cold or exercise."
+      },
+      {
+        "title": "Train a personal model",
+        "detail": "Because absolute hormone and heart-rate values vary enormously between people, the system learns each user's baseline and flags deviations from it, rather than using one global threshold."
+      },
+      {
+        "title": "Instrument the room",
+        "detail": "Dimmable, colour-tunable lights, motorised blinds, masking speakers and zoned HVAC are fitted with a common control interface and given known response times."
+      },
+      {
+        "title": "Write the control policy",
+        "detail": "Rules or a learned controller map a stress estimate to small environmental changes - warmer colour temperature, quieter masking, a one-degree temperature nudge - with smoothing so the room changes gradually."
+      },
+      {
+        "title": "Run closed-loop trials",
+        "detail": "The system is tested against a sham control (identical room, no response) to check whether measured stress or reported comfort actually improves, not just whether the sensors fire."
+      },
+      {
+        "title": "Validate and constrain",
+        "detail": "Energy use, comfort for other occupants and failure modes are checked; the user can always override, and the system is disabled if its estimate is uncertain."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Continuous non-invasive cortisol sensing",
+        "status": "missing",
+        "why": "sweat and interstitial-fluid cortisol sensors work in the lab but drift, need calibration and have not been shown reliable for everyday wear."
+      },
+      {
+        "tech": "Wearable stress detection from heart-rate variability",
+        "status": "partial",
+        "why": "consumer devices estimate arousal reasonably well on average but are poor for individuals, which is what a personal control loop needs."
+      },
+      {
+        "tech": "Personal thermal and lighting comfort models",
+        "status": "partial",
+        "why": "comfort varies by person and activity; models that predict an individual's preference are improving but not yet dependable."
+      },
+      {
+        "tech": "Fast, low-energy building actuators",
+        "status": "exists",
+        "why": "tunable LEDs, variable-speed heat pumps and zoned ventilation already respond in seconds to minutes."
+      },
+      {
+        "tech": "Privacy-preserving edge computing",
+        "status": "exists",
+        "why": "physiological signals can be processed locally, which is the only credible way to deploy continuous monitoring."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wearables that flag likely stress and suggest a break or a breathing exercise",
+        "unlocks": "user-driven, not automated, stress management."
+      },
+      {
+        "stage": "Next",
+        "milestone": "rooms that adapt to occupancy and measured arousal, tested against sham controls in offices and classrooms",
+        "unlocks": "evidence on whether environmental change actually lowers stress."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable multi-signal stress estimation and calibrated wearable cortisol trend sensing",
+        "unlocks": "a trustworthy trigger signal for automation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "closed-loop personal environments that learn each occupant's preferences and share a room fairly",
+        "unlocks": "buildings that adjust themselves to the people inside, with energy use and privacy kept in check."
+      }
+    ]
+  }
+}

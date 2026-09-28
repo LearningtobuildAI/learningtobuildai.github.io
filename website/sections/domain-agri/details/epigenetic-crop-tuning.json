@@ -34,5 +34,159 @@
         "def": "An epigenetic modification where a methyl group is added to cytosine, typically at CpG dinucleotides, affecting gene expression."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Methylome map",
+        "role": "identifies which methylation marks sit on or near genes that control drought, salt and heat tolerance.",
+        "parts": [
+          "whole-genome bisulfite sequencing data",
+          "differentially methylated region analysis",
+          "stress-gene annotation"
+        ]
+      },
+      {
+        "name": "Editing machinery",
+        "role": "writes or erases methylation at one chosen site without changing the DNA sequence.",
+        "parts": [
+          "catalytically inactive Cas9 (dCas9)",
+          "guide RNA",
+          "demethylase domain (e.g. TET1) to erase marks",
+          "methyltransferase domain (e.g. DRM/DNMT) to add marks"
+        ]
+      },
+      {
+        "name": "Delivery",
+        "role": "gets the machinery into plant cells, ideally with no foreign DNA left behind.",
+        "parts": [
+          "Agrobacterium-mediated transformation of callus",
+          "protoplast transfection of pre-assembled protein–RNA complexes",
+          "particle bombardment"
+        ]
+      },
+      {
+        "name": "Regeneration and selection",
+        "role": "turns a single edited cell back into a whole plant and finds the rare correct events.",
+        "parts": [
+          "tissue culture and shoot induction",
+          "marker-assisted or marker-free selection",
+          "molecular screening"
+        ]
+      },
+      {
+        "name": "Verification",
+        "role": "confirms the mark changed where intended and nowhere else.",
+        "parts": [
+          "bisulfite or long-read methylation sequencing",
+          "off-target methylome checks",
+          "gene-expression assays"
+        ]
+      },
+      {
+        "name": "Trait and stability testing",
+        "role": "proves the new mark actually helps the plant and survives breeding.",
+        "parts": [
+          "glasshouse stress trials",
+          "multi-generation progeny testing",
+          "field plots"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the trait and the switch",
+        "detail": "Grow a stress-tolerant and a stress-sensitive variety of the same crop, sequence their methylomes, and look for a differentially methylated region controlling a known stress gene."
+      },
+      {
+        "title": "Design the guide RNAs",
+        "detail": "Guide RNAs are designed to take dCas9 to that exact region, so the fused enzyme lands only there."
+      },
+      {
+        "title": "Assemble the editing cassette",
+        "detail": "Genes for dCas9, the demethylase or methyltransferase domain and the guides are built into a plant transformation construct, or the protein and guide RNA are pre-assembled as a ribonucleoprotein complex."
+      },
+      {
+        "title": "Deliver into plant cells",
+        "detail": "Callus tissue is transformed with Agrobacterium, or protoplasts are transfected with the protein–RNA complex so no foreign DNA enters the genome."
+      },
+      {
+        "title": "Regenerate whole plants",
+        "detail": "Edited single cells are grown into shoots and rooted. Where a construct was used, it is crossed or segregated out so only the methylation change remains."
+      },
+      {
+        "title": "Verify the mark",
+        "detail": "Bisulfite or long-read sequencing confirms the target site lost or gained methylation, and checks the rest of the genome for unintended changes."
+      },
+      {
+        "title": "Test the phenotype",
+        "detail": "Plants are grown under drought, salinity or heat stress and compared with unedited controls for yield and survival."
+      },
+      {
+        "title": "Check inheritance",
+        "detail": "Progeny are sequenced across two or more generations to see whether the mark survives meiosis, or whether the plant's own pathways reset it."
+      },
+      {
+        "title": "Field evaluation",
+        "detail": "The line is trialled in real soils and weather, and its regulatory status is settled."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "CRISPR-based epigenome editing tools",
+        "status": "partial",
+        "why": "dCas9 fused to methylation or demethylation domains has been shown to alter marks in plants such as Arabidopsis and rice, but not routinely in crop breeding."
+      },
+      {
+        "tech": "Reference methylomes for major crops",
+        "status": "exists",
+        "why": "you cannot target a mark you have not mapped; methylomes are published for maize, rice, wheat, tomato and others."
+      },
+      {
+        "tech": "Efficient transformation and regeneration",
+        "status": "partial",
+        "why": "many crops and varieties remain hard or impossible to regenerate from single cells, which caps what can be edited."
+      },
+      {
+        "tech": "Knowledge of which marks control which traits",
+        "status": "missing",
+        "why": "the link between a specific methylation site and a useful field trait is known for only a handful of cases."
+      },
+      {
+        "tech": "Heritable, stable methylation changes",
+        "status": "missing",
+        "why": "engineered marks are often reset or drift, so a trait gained in the lab may not survive to the farmer's field."
+      },
+      {
+        "tech": "Regulatory treatment of epigenome-edited crops",
+        "status": "missing",
+        "why": "rules are written around DNA sequence changes and foreign DNA, and are unsettled for plants whose sequence is untouched."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "methylome mapping and proof-of-principle editing in model plants and a few crops",
+        "unlocks": "confidence that a chosen methylation site can be written or erased."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a heritable methylation change that measurably improves stress tolerance in a greenhouse crop",
+        "unlocks": "the first real candidate traits for breeding."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-generation and field trials showing the mark holds across environments",
+        "unlocks": "use of epigenetic variants as a breeding resource."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "epigenetic variation screened alongside genetic variation in commercial breeding pipelines",
+        "unlocks": "faster adaptation of existing elite varieties to hotter, drier, saltier conditions."
+      }
+    ]
   }
 }

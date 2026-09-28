@@ -33,5 +33,158 @@
         "def": "The percentage of material filled within the internal structure of a printed part, impacting strength and weight."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Feedstock",
+        "role": "the material that gets fused, layer by layer.",
+        "parts": [
+          "gas-atomised metal powder with a tight particle-size range",
+          "polymer filament or pellets",
+          "photopolymer resin",
+          "binder-jet powder plus liquid binder"
+        ]
+      },
+      {
+        "name": "Beam and motion system",
+        "role": "delivers energy exactly where each layer's cross-section needs it.",
+        "parts": [
+          "fibre laser with scanning mirrors, or electron beam with deflection coils",
+          "extruder and heated nozzle (material extrusion)",
+          "projector or laser (vat photopolymerisation)",
+          "recoater blade or roller",
+          "build platform that drops by one layer thickness"
+        ]
+      },
+      {
+        "name": "Atmosphere and thermal control",
+        "role": "keeps the melt clean and stops parts warping.",
+        "parts": [
+          "sealed chamber",
+          "argon or nitrogen supply",
+          "preheating of the platform or chamber",
+          "melt-pool and layer monitoring cameras"
+        ]
+      },
+      {
+        "name": "Software chain",
+        "role": "turns a design into machine instructions.",
+        "parts": [
+          "CAD and topology optimisation",
+          "support generation",
+          "slicing into layers",
+          "build nesting to pack many parts per run",
+          "distortion simulation"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns a rough, stress-laden part into a finished component.",
+        "parts": [
+          "powder recovery and sieving",
+          "support removal",
+          "stress-relief heat treatment and hot isostatic pressing",
+          "CNC machining of mating faces",
+          "surface finishing"
+        ]
+      },
+      {
+        "name": "Quality and qualification",
+        "role": "proves the part is as strong and accurate as the design assumes.",
+        "parts": [
+          "in-situ melt-pool monitoring",
+          "computed tomography scanning",
+          "coordinate measuring machines",
+          "test coupons printed in the same build"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for additive",
+        "detail": "Parts are rethought for layer-by-layer building: topology-optimised shapes, internal cooling channels, and dozens of separate components consolidated into one."
+      },
+      {
+        "title": "Prepare and nest the build",
+        "detail": "Software slices the part into layers typically 20–60 µm thick, generates supports to carry heat away and hold overhangs, and packs many parts across the build plate."
+      },
+      {
+        "title": "Set up the machine",
+        "detail": "Metal powder is spread and raked flat, or filament, resin or binder-jet powder is loaded. The chamber is filled with argon or nitrogen and brought to working temperature."
+      },
+      {
+        "title": "Fuse each layer",
+        "detail": "A laser, electron beam or extruder traces the cross-section, melting or curing the material. The platform drops by one layer and the recoater spreads the next. A tall build may run thousands of passes over many hours to days."
+      },
+      {
+        "title": "Unload and recover powder",
+        "detail": "The plate is removed and the loose powder cake is vacuumed out; unused powder is sieved and blended for re-use, with its condition tracked."
+      },
+      {
+        "title": "Remove supports and heat treat",
+        "detail": "Supports are cut away, then the part is stress-relief annealed — and often hot isostatically pressed to close internal porosity."
+      },
+      {
+        "title": "Machine and finish",
+        "detail": "Critical bores, flanges and sealing faces are CNC-machined to tolerance, and surfaces are polished or shot-peened."
+      },
+      {
+        "title": "Inspect and qualify",
+        "detail": "The part is measured, X-rayed or CT-scanned, and tested against coupons printed alongside it in the same build."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-power fibre lasers and fast scanning optics",
+        "status": "exists",
+        "why": "a metal part is built by melting millions of tiny track segments, so beam power and speed set the build rate."
+      },
+      {
+        "tech": "Gas-atomised metal powders",
+        "status": "exists",
+        "why": "spherical particles of consistent size flow and spread evenly; contamination ruins a build."
+      },
+      {
+        "tech": "Simulation and design software",
+        "status": "exists",
+        "why": "distortion, residual stress and support placement must be predicted before the machine runs."
+      },
+      {
+        "tech": "In-situ process monitoring and qualification standards",
+        "status": "partial",
+        "why": "regulated industries still need costly testing to certify each part and process route."
+      },
+      {
+        "tech": "Hot isostatic pressing and metal powder handling",
+        "status": "exists",
+        "why": "porosity and contamination are the main causes of fatigue failure in printed metal parts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "production parts in aircraft engines and medical implants, such as printed fuel-nozzle tips flying in commercial engines",
+        "unlocks": "complex geometries that casting and machining cannot produce, in modest volumes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger multi-laser machines and binder jetting for lower-cost metal parts",
+        "unlocks": "cost per part falling toward conventional casting for bigger components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "certified in-situ monitoring, so build data alone can qualify a part",
+        "unlocks": "faster approval of printed parts for safety-critical use."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multi-material and functionally graded printing, plus printing replacement parts near the point of use",
+        "unlocks": "parts with properties tuned locally, and shorter, more resilient supply chains."
+      }
+    ]
   }
 }

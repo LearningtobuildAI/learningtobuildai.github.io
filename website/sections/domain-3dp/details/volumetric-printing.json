@@ -29,5 +29,155 @@
         "def": "The liquid or paste-like material used in volumetric printing, which cures under specific wavelengths of light to form a 3D object."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Light engine",
+        "role": "projects 2D light patterns from many directions into the resin.",
+        "parts": [
+          "high-power visible-light projector or laser with a digital micromirror device",
+          "relay and beam-shaping optics",
+          "cylindrical lens to make a thin light sheet"
+        ]
+      },
+      {
+        "name": "Rotating vat",
+        "role": "holds the photopolymer and turns it through the projected light so the dose accumulates everywhere at once.",
+        "parts": [
+          "transparent cylindrical resin container",
+          "index-matching fluid bath to cut refraction at the walls",
+          "precision rotation stage"
+        ]
+      },
+      {
+        "name": "Resin",
+        "role": "a photopolymer that only solidifies once its accumulated light dose crosses a threshold.",
+        "parts": [
+          "monomer and crosslinker",
+          "photoinitiator tuned to the projector wavelength",
+          "light absorber to sharpen the dose threshold",
+          "oxygen-inhibited or inhibitor-doped chemistry"
+        ]
+      },
+      {
+        "name": "Dose computation",
+        "role": "works out the set of projections whose summed dose exceeds threshold only inside the target shape.",
+        "parts": [
+          "3D model voxelisation",
+          "tomographic / Radon-type solver",
+          "projection sequence"
+        ]
+      },
+      {
+        "name": "Control and metrology",
+        "role": "keeps rotation, exposure and light output synchronised and corrects for distortion.",
+        "parts": [
+          "motion controller",
+          "camera or photodiode feedback",
+          "calibration routines"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns the soft, partly cured object into a usable part.",
+        "parts": [
+          "drain and wash station",
+          "post-cure light oven",
+          "solvent removal and drying"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Formulate the resin",
+        "detail": "Monomer, crosslinker, photoinitiator and a light absorber are blended so that curing needs a minimum accumulated dose rather than merely any light at all."
+      },
+      {
+        "title": "Build the optical train",
+        "detail": "A projector or scanned laser is focused through relay optics and a cylindrical lens into a thin sheet that sweeps the build volume."
+      },
+      {
+        "title": "Build the rotating vat",
+        "detail": "A transparent cylinder is mounted on a precision stage inside a bath of index-matching fluid, so projected rays cross the wall without bending."
+      },
+      {
+        "title": "Calibrate the dose response",
+        "detail": "Small test exposures map how much light energy at each angle solidifies the resin, including oxygen inhibition near the surfaces."
+      },
+      {
+        "title": "Compute the projections",
+        "detail": "The target shape is voxelised and a tomographic solver searches for the set of 2D patterns whose combined dose is above threshold inside it and below threshold outside."
+      },
+      {
+        "title": "Expose the volume",
+        "detail": "The vat rotates while the projector fires the pattern sequence; within seconds to minutes the whole object gels together, with no layers and no support structures."
+      },
+      {
+        "title": "Drain and clean",
+        "detail": "Uncured liquid resin is drained away and the part is washed to remove trapped monomer."
+      },
+      {
+        "title": "Post-cure and inspect",
+        "detail": "A flood of light completes the polymerisation; the part is measured for shrinkage, cloudiness and dimensional accuracy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Threshold-behaviour photopolymer chemistry",
+        "status": "exists",
+        "why": "the method only works if resin stays liquid below a dose threshold and cures above it."
+      },
+      {
+        "tech": "Digital micromirror projectors and high-power visible light engines",
+        "status": "exists",
+        "why": "they supply the fast, patterned, high-intensity illumination the technique needs."
+      },
+      {
+        "tech": "Tomographic reconstruction algorithms",
+        "status": "exists",
+        "why": "the projection set must be solved backwards from the desired shape, as in medical CT."
+      },
+      {
+        "tech": "Optically clear, index-matched resins",
+        "status": "partial",
+        "why": "scattering and refraction blur the dose pattern, which currently limits size and resolution."
+      },
+      {
+        "tech": "Filled and composite resins",
+        "status": "missing",
+        "why": "pigments, fibres and ceramic fillers scatter light, so most engineering materials cannot yet be used."
+      },
+      {
+        "tech": "Fast in-situ dose measurement",
+        "status": "partial",
+        "why": "knowing the real dose inside the vat would allow correction of distortion and shrinkage during a print."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations of centimetre-scale parts printed in seconds, first shown in 2019",
+        "unlocks": "layer-free, support-free printing of delicate and smooth geometries."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger build volumes through better index matching and scattering-resistant resins",
+        "unlocks": "parts big enough to matter for industry rather than research samples."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-material and filled-resin volumetric printing",
+        "unlocks": "functional parts — lenses, lattices, implants — not just clear polymer shapes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "feedback-controlled production machines",
+        "unlocks": "volumetric printing as a fast manufacturing route for small, high-value parts."
+      }
+    ]
   }
 }

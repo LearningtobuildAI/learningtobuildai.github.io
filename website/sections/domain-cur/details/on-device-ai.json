@@ -29,5 +29,145 @@
         "def": "The protection of personal information from unauthorized access or use, ensuring user control over their data."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Model",
+        "role": "the compressed neural network that performs the actual task.",
+        "parts": [
+          "quantized weights",
+          "layer graph",
+          "activation functions"
+        ]
+      },
+      {
+        "name": "Inference runtime",
+        "role": "executes the model on the device and routes work to the best processor.",
+        "parts": [
+          "graph executor",
+          "operator kernels",
+          "hardware delegates (NPU, GPU, DSP)"
+        ]
+      },
+      {
+        "name": "Hardware accelerator",
+        "role": "runs the heavy matrix maths efficiently within a phone's power budget.",
+        "parts": [
+          "neural processing unit (NPU)",
+          "GPU",
+          "digital signal processor (DSP)"
+        ]
+      },
+      {
+        "name": "Memory and storage manager",
+        "role": "fits model weights and intermediate data into limited RAM.",
+        "parts": [
+          "weight streaming",
+          "cache",
+          "compression"
+        ]
+      },
+      {
+        "name": "OS integration and APIs",
+        "role": "standard interface for apps to request inference and manage power.",
+        "parts": [
+          "Android NNAPI",
+          "Apple Core ML",
+          "scheduling and thermal control"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "captures and preprocesses sensor input before inference.",
+        "parts": [
+          "camera and microphone",
+          "preprocessing (resize, normalize)",
+          "post-processing (decoding, filtering)"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Train a large model",
+        "detail": "Cloud GPUs train a neural network on massive datasets to reach high accuracy, without yet worrying about size."
+      },
+      {
+        "title": "Compress the model",
+        "detail": "Pruning removes weak connections, quantization reduces weight precision (for example from 32-bit to 8-bit), and knowledge distillation trains a smaller model to mimic the large one."
+      },
+      {
+        "title": "Convert to a device format",
+        "detail": "Tools such as TensorFlow Lite, Core ML or ONNX convert the trained graph into a compact file the phone can load."
+      },
+      {
+        "title": "Optimize for hardware",
+        "detail": "Operations are mapped to NPU, GPU or DSP kernels, memory layout is tuned, and the runtime chooses which delegate runs each part."
+      },
+      {
+        "title": "Integrate into the app",
+        "detail": "The app calls the runtime API, feeds in camera or microphone data, and receives the model's output."
+      },
+      {
+        "title": "Test on real devices",
+        "detail": "Engineers measure latency, power draw, thermal throttling and accuracy across many phone models."
+      },
+      {
+        "title": "Ship and update",
+        "detail": "The model is bundled with the app or downloaded over the air; some apps also fine-tune locally using federated learning so raw data never leaves the device."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mobile chips with NPUs",
+        "status": "exists",
+        "why": "dedicated neural accelerators run inference fast enough for real time without draining the battery."
+      },
+      {
+        "tech": "Model compression algorithms",
+        "status": "exists",
+        "why": "quantization, pruning and distillation shrink models so they fit in phone memory and run within power limits."
+      },
+      {
+        "tech": "Lightweight inference runtimes",
+        "status": "exists",
+        "why": "they provide the software layer that translates a model into operations the phone's hardware can execute."
+      },
+      {
+        "tech": "On-device privacy and security",
+        "status": "partial",
+        "why": "keeping data local protects users, but model theft and adversarial inputs remain active concerns."
+      },
+      {
+        "tech": "Battery and thermal management",
+        "status": "exists",
+        "why": "sustained AI workloads can overheat a phone and cut battery life, so scheduling and throttling are essential."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "specialized on-device models for vision, speech and translation, such as face unlock and offline captions",
+        "unlocks": "fast, private features that work without a network connection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small language models of a few billion parameters running locally for summarization and assistants",
+        "unlocks": "conversational AI that is always available and keeps text on the device."
+      },
+      {
+        "stage": "Next",
+        "milestone": "personalization through federated learning and on-device fine-tuning",
+        "unlocks": "models that adapt to each user without sending raw data to the cloud."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous, multimodal on-device agents that see, hear and reason locally",
+        "unlocks": "rich ambient computing with low latency and strong privacy."
+      }
+    ]
   }
 }

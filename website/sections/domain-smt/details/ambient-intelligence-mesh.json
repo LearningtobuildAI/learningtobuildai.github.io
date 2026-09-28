@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "detects people, air, sound and objects without anybody touching a device.",
+        "parts": [
+          "millimetre-wave radar and passive infrared occupancy sensors",
+          "temperature, humidity and CO₂ sensors",
+          "microphones and ambient-light sensors",
+          "camera modules (where privacy allows)"
+        ]
+      },
+      {
+        "name": "Compute and edge layer",
+        "role": "processes sensor data locally so raw footage and audio never leave the room.",
+        "parts": [
+          "microcontrollers and low-power AI accelerators",
+          "on-device inference models",
+          "federated or anonymising software"
+        ]
+      },
+      {
+        "name": "Networking",
+        "role": "connects hundreds of nodes per building without new cabling to each one.",
+        "parts": [
+          "low-power wireless mesh (Thread, Zigbee, Bluetooth mesh)",
+          "Wi-Fi and 5G/6G small cells",
+          "Power-over-Ethernet for wired nodes"
+        ]
+      },
+      {
+        "name": "Output layer",
+        "role": "presents information on surfaces, in the air or as sound.",
+        "parts": [
+          "laser projectors and waveguides embedded in glass",
+          "transparent and micro-LED panels",
+          "directional speakers",
+          "tunable and addressable lighting"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeps nodes alive for years without maintenance.",
+        "parts": [
+          "coin cells and thin-film batteries",
+          "indoor photovoltaic, thermal and radio-frequency energy harvesting",
+          "Power-over-Ethernet"
+        ]
+      },
+      {
+        "name": "Building integration and control",
+        "role": "ties the mesh to heating, lighting and access systems, and to a digital twin of the building.",
+        "parts": [
+          "building-management-system bridges",
+          "data model and naming standards",
+          "consent and access rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the interfaces",
+        "detail": "Agree on data models and radio standards first, so sensors from different makers can join one mesh; without this, the building becomes a set of islands."
+      },
+      {
+        "title": "Make the sensor nodes",
+        "detail": "Silicon chips with integrated radar or MEMS sensing elements are fabricated, packaged into millimetre-scale modules and tested in volume."
+      },
+      {
+        "title": "Embed them in materials",
+        "detail": "Nodes, antennas and conductive traces are laminated into ceiling tiles, wall panels, flooring and glass during manufacture, or printed onto flexible substrates that are glued behind finishes."
+      },
+      {
+        "title": "Provide power and backhaul",
+        "detail": "Each panel gets either a wired Power-over-Ethernet drop or a harvester plus battery sized for a ten-year life; mesh nodes relay to a few wired gateways."
+      },
+      {
+        "title": "Install edge compute",
+        "detail": "Small servers placed in service cupboards run the inference models and the middleware that turns raw signals into events such as 'room occupied' or 'filter due'."
+      },
+      {
+        "title": "Integrate the output layer",
+        "detail": "Projectors, waveguide glass and directional speakers are aligned with the surfaces they serve; light-field or true volumetric displays would be built as an array of phase modulators behind the glass — a step that remains laboratory work."
+      },
+      {
+        "title": "Calibrate each space",
+        "detail": "Every room is walked, measured and tuned so it knows its own geometry, noise floor and normal occupancy pattern."
+      },
+      {
+        "title": "Operate and update",
+        "detail": "The mesh runs alongside the building-management system, with models retrained as furniture, partitions and usage change over the building's life."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost MEMS sensors and radar-on-chip",
+        "status": "exists",
+        "why": "the mesh needs thousands of cheap, tiny, low-power detectors rather than a few expensive instruments."
+      },
+      {
+        "tech": "Low-power wireless mesh networking",
+        "status": "exists",
+        "why": "nodes must self-form a network and relay through each other without per-device cabling."
+      },
+      {
+        "tech": "Edge AI accelerators",
+        "status": "partial",
+        "why": "inference must run inside the room at a few watts, not in a distant data centre."
+      },
+      {
+        "tech": "Energy harvesting and battery-free electronics",
+        "status": "partial",
+        "why": "maintenance cost, not hardware cost, kills large sensor deployments."
+      },
+      {
+        "tech": "Light-field and waveguide projection",
+        "status": "missing",
+        "why": "free-space images that many people can see from any angle in a lit room do not yet exist outside the laboratory."
+      },
+      {
+        "tech": "Privacy-preserving sensing and consent",
+        "status": "partial",
+        "why": "a mesh that senses everyone continuously is only acceptable if it cannot be turned into surveillance."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "smart buildings with networked sensors, occupancy-driven lighting and heating, and voice interfaces in the home",
+        "unlocks": "the sensing and control groundwork, in partial form."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised, interoperable mesh at building scale, with most processing on-device",
+        "unlocks": "retrofits that work across vendors, and cheaper energy use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "displays and controls woven into glass and wall panels in commercial pilot buildings",
+        "unlocks": "interfaces that appear where they are needed instead of on a carried screen."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "true volumetric or light-field output embedded in building materials, with personalised services delivered per person",
+        "unlocks": "the screenless environment the concept describes — contingent on the display and privacy problems being solved."
+      }
+    ]
+  }
+}

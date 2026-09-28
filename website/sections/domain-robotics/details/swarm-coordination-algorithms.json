@@ -30,5 +30,149 @@
         "def": "Software systems enabling a group of autonomous entities to work together in a decentralized manner, achieving complex global behaviors through simple local rules and communication."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Local interaction rules",
+        "role": "each agent follows simple rules based only on nearby neighbours, producing flocking or foraging behaviour without a central controller.",
+        "parts": [
+          "separation, alignment and cohesion rules",
+          "task-trigger rules (e.g. return to base when battery low)",
+          "priority and conflict resolution"
+        ]
+      },
+      {
+        "name": "Communication layer",
+        "role": "lets agents share limited state — position, heading, task — or leave traces in the environment (stigmergy).",
+        "parts": [
+          "radio mesh or Wi-Fi broadcast",
+          "message formatting and rate limiting",
+          "delay and dropout handling"
+        ]
+      },
+      {
+        "name": "Localization and sensing",
+        "role": "gives each agent enough awareness of itself and its neighbours to apply the rules.",
+        "parts": [
+          "GPS or indoor positioning (ultra-wideband, cameras)",
+          "proximity sensors (LiDAR, ultrasound, infrared)",
+          "onboard compute for real-time processing"
+        ]
+      },
+      {
+        "name": "Task allocation and path planning",
+        "role": "divides work (pick, carry, survey) and finds routes without a single point of failure.",
+        "parts": [
+          "decentralized auction or threshold-based allocation",
+          "collision-free path generation",
+          "dynamic re-planning when an agent fails"
+        ]
+      },
+      {
+        "name": "Simulation and validation",
+        "role": "tests rules and parameters in software before risking physical robots.",
+        "parts": [
+          "agent-based simulation of physics and communication",
+          "scenario library (congestion, sensor noise, failures)",
+          "performance metrics (throughput, collisions, energy)"
+        ]
+      },
+      {
+        "name": "Safety and failsafe",
+        "role": "prevents collisions and brings the swarm to a safe state if communication or rules break down.",
+        "parts": [
+          "emergency stop and geofencing",
+          "degraded-mode behaviour (hold position, return home)",
+          "human override and monitoring dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the mission and agent limits",
+        "detail": "Specify what the swarm must do, the size, speed and battery life of each agent, and the range of its sensors and radio."
+      },
+      {
+        "title": "Choose a coordination paradigm",
+        "detail": "Pick stigmergy (traces in the environment), flocking, consensus or market-based bidding, based on whether the task is transport, coverage or formation."
+      },
+      {
+        "title": "Write the local rules",
+        "detail": "Encode simple distance-based rules — repel when too close, attract when too far, align heading — plus task triggers such as 'go to nearest free station'."
+      },
+      {
+        "title": "Implement the communication protocol",
+        "detail": "Decide what each agent broadcasts, how often, and how to handle lost messages and varying delays so the swarm stays stable."
+      },
+      {
+        "title": "Build a simulation",
+        "detail": "Model the robots, the environment and the radio channel to tune rule parameters and find deadlocks before hardware is used."
+      },
+      {
+        "title": "Test with a few physical agents",
+        "detail": "Run 3–10 robots in a controlled space, measure collisions and task completion, and adjust rules for real sensor noise."
+      },
+      {
+        "title": "Scale up and harden",
+        "detail": "Add collision avoidance, deadlock resolution and reallocation when an agent fails; test with dozens or hundreds of agents."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Integrate with fleet management and human oversight, and log behaviour so rules can be updated from real-world data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reliable low-latency wireless communication",
+        "status": "exists",
+        "why": "agents must exchange state fast enough to react to each other."
+      },
+      {
+        "tech": "Cheap embedded compute and sensors",
+        "status": "exists",
+        "why": "every agent needs onboard processing, proximity sensing and a radio."
+      },
+      {
+        "tech": "Decentralized algorithms (flocking, consensus, auctions)",
+        "status": "exists",
+        "why": "these provide the mathematical rules that turn local actions into global order."
+      },
+      {
+        "tech": "Accurate indoor and outdoor localization",
+        "status": "partial",
+        "why": "GPS works outdoors but degrades in cities and fails indoors; indoor systems need extra infrastructure."
+      },
+      {
+        "tech": "Formal verification of emergent safety",
+        "status": "missing",
+        "why": "it is still hard to prove that a swarm will never collide or deadlock under all conditions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "warehouse robots and drone light shows",
+        "unlocks": "commercial proof that many simple agents can coordinate without a central brain."
+      },
+      {
+        "stage": "Next",
+        "milestone": "outdoor swarms for crop monitoring, search and rescue, and environmental sensing",
+        "unlocks": "coverage of large areas faster than a single vehicle or human team."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mixed fleets of ground and aerial robots sharing tasks",
+        "unlocks": "more capable missions where one type of robot covers what the other cannot."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "self-organizing infrastructure such as adaptive sensor networks and autonomous construction",
+        "unlocks": "systems that scale and repair themselves without central control."
+      }
+    ]
   }
 }

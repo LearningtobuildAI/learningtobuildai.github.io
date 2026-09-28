@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Edge devices",
+        "role": "the machines producing data where it is created — cameras, vehicle computers, factory controllers, phones.",
+        "parts": [
+          "sensors and cameras",
+          "embedded controllers",
+          "wireless radios"
+        ]
+      },
+      {
+        "name": "Edge node",
+        "role": "a small server enclosure doing the computation near the devices, often one or a few racks.",
+        "parts": [
+          "compute blades or ruggedised servers",
+          "NVMe storage",
+          "top-of-rack switch",
+          "uninterruptible power supply",
+          "filtered or passive cooling"
+        ]
+      },
+      {
+        "name": "Connectivity and local breakout",
+        "role": "carries traffic between devices, the edge node and the central cloud.",
+        "parts": [
+          "fibre or 5G radio link",
+          "local traffic breakout so data need not travel to a distant core",
+          "encrypted backhaul"
+        ]
+      },
+      {
+        "name": "Runtime and application stack",
+        "role": "the software that actually runs workloads on constrained hardware.",
+        "parts": [
+          "container runtime",
+          "lightweight virtual machines",
+          "inference runtimes",
+          "message broker or stream processor"
+        ]
+      },
+      {
+        "name": "Orchestration and fleet management",
+        "role": "lets one team operate thousands of unattended sites reliably.",
+        "parts": [
+          "scheduler and agent",
+          "image registry",
+          "over-the-air update system with rollback",
+          "telemetry and alerting"
+        ]
+      },
+      {
+        "name": "Security and identity",
+        "role": "edge sites sit in physically reachable places, so trust must be hardware-anchored.",
+        "parts": [
+          "TPM or secure element",
+          "measured boot and attestation",
+          "disk encryption",
+          "mutual TLS certificates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Decide what must be local",
+        "detail": "Work out which processing genuinely needs low latency, high bandwidth, offline operation or data-residency — and leave everything else in the cloud."
+      },
+      {
+        "title": "Choose and prepare sites",
+        "detail": "Select locations with power, cooling capacity, physical security and a short, fast path to the devices — a telephone exchange, cell tower base, factory floor or retail back room."
+      },
+      {
+        "title": "Specify the hardware",
+        "detail": "Pick CPUs, GPUs or neural accelerators, memory and storage to fit the workload in an enclosure rated for heat, dust and vibration."
+      },
+      {
+        "title": "Build the software image",
+        "detail": "Assembly an operating system image with the container runtime, orchestrator agent and security stack, using read-only root and paired partitions so a failed update can roll back."
+      },
+      {
+        "title": "Install and connect",
+        "detail": "Rack the node, connect power and network, and configure either fibre backhaul or a 5G link with local traffic breakout."
+      },
+      {
+        "title": "Provision remotely",
+        "detail": "Enrol each node with a hardware-backed identity so it can fetch its configuration and workload images without anyone visiting the site."
+      },
+      {
+        "title": "Deploy workloads in stages",
+        "detail": "Roll applications out to a small pilot site first, watch latency, error rates and resource use, then widen the rollout."
+      },
+      {
+        "title": "Operate the fleet",
+        "detail": "Monitor from a central control plane, push model and software updates, and replace failed units — the hard part is doing this across thousands of unattended sites."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-power, cheap multicore and accelerator chips",
+        "status": "exists",
+        "why": "edge economics only work if the compute is small, quiet and inexpensive to replace."
+      },
+      {
+        "tech": "Containerisation and orchestration",
+        "status": "exists",
+        "why": "packaging workloads makes them portable between cloud and many kinds of edge node."
+      },
+      {
+        "tech": "Low-latency access networks",
+        "status": "partial",
+        "why": "fibre is widespread, but 5G with edge breakout is still being deployed and not yet ubiquitous."
+      },
+      {
+        "tech": "Remote fleet management and zero-touch provisioning",
+        "status": "partial",
+        "why": "tooling exists but is immature for many thousands of heterogeneous, physically scattered nodes."
+      },
+      {
+        "tech": "Edge-optimised AI inference",
+        "status": "exists",
+        "why": "quantised models and accelerator runtimes let useful inference run on modest hardware."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "content and function running in hundreds of distributed points of presence",
+        "unlocks": "faster web and media delivery, and simple request-handling close to users."
+      },
+      {
+        "stage": "Next",
+        "milestone": "telecom operators offering edge compute inside their access networks",
+        "unlocks": "single-digit-millisecond latency for industrial control, cloud gaming and AR."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised management across mixed cloud and carrier edge sites",
+        "unlocks": "one place to deploy and update workloads anywhere, without rewriting them."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a continuum of compute spanning device, edge and cloud with shared identity and data handling",
+        "unlocks": "autonomous vehicles, real-time robotics and privacy-preserving local AI at scale."
+      }
+    ]
+  }
+}

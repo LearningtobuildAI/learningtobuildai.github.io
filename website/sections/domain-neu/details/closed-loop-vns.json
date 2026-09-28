@@ -1,0 +1,140 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Stimulating lead",
+        "role": "delivers current to the vagus nerve in the neck.",
+        "parts": [
+          "helical cuff electrode",
+          "platinum-iridium contacts",
+          "silicone body and strain relief",
+          "anchor tether"
+        ]
+      },
+      {
+        "name": "Pulse generator",
+        "role": "implanted unit that stores energy and outputs controlled pulses.",
+        "parts": [
+          "titanium hermetic can",
+          "primary battery",
+          "pulse circuitry",
+          "telemetry coil"
+        ]
+      },
+      {
+        "name": "Sensing front end",
+        "role": "watches the body for a signal that a seizure or mood shift is starting.",
+        "parts": [
+          "ECG or heart-rate sensing electrodes",
+          "amplifier and filter",
+          "optional neural recording contacts on the lead"
+        ]
+      },
+      {
+        "name": "Detection and control loop",
+        "role": "decides when to trigger, and how much to deliver.",
+        "parts": [
+          "on-board microcontroller",
+          "detection algorithm",
+          "stimulation parameter table",
+          "safety limits"
+        ]
+      },
+      {
+        "name": "Clinician programmer",
+        "role": "lets a neurologist read stored events and tune the algorithm.",
+        "parts": [
+          "external programming wand",
+          "clinician software",
+          "patient magnet for manual activation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the cuff",
+        "detail": "The helical electrode is dimensioned so it wraps the nerve securely without strangling it, since the device must survive years of neck movement."
+      },
+      {
+        "title": "Fabricate the lead",
+        "detail": "Platinum-iridium contacts are welded to conductors, moulded into silicone and cured, then the lead is coiled and strain-tested."
+      },
+      {
+        "title": "Build the generator",
+        "detail": "A titanium case is laser-welded around the battery and electronics, with a hermetic feedthrough carrying the lead connection."
+      },
+      {
+        "title": "Write the detection firmware",
+        "detail": "The algorithm is trained on recordings so that it fires on the target biomarker and stays quiet otherwise; thresholds are set conservatively."
+      },
+      {
+        "title": "Test and sterilise",
+        "detail": "Units undergo accelerated ageing, electrical safety and biocompatibility testing, then are sterilised and sealed."
+      },
+      {
+        "title": "Implant",
+        "detail": "The cuff is placed around the left cervical vagus nerve, the lead tunneled under the skin to the chest, and the generator pocketed under the collarbone."
+      },
+      {
+        "title": "Program and titrate",
+        "detail": "Output current is increased over weeks to a tolerated dose, and detection sensitivity is adjusted using the event log."
+      },
+      {
+        "title": "Monitor and refine",
+        "detail": "Stored heart-rate and stimulation data are reviewed at clinic visits, and parameters are retuned as seizure patterns change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Implantable pulse generators",
+        "status": "exists",
+        "why": "decades of cardiac pacemaker engineering supply the battery, hermetic packaging and telemetry."
+      },
+      {
+        "tech": "Chronic nerve cuff electrodes",
+        "status": "exists",
+        "why": "the lead must stimulate the same nerve for years without damaging it."
+      },
+      {
+        "tech": "Reliable seizure biomarkers",
+        "status": "partial",
+        "why": "heart-rate rises precede some but not all seizures, so detection is sensitive to a subset of events; direct brain biomarkers need separate intracranial electrodes."
+      },
+      {
+        "tech": "Low-power on-implant signal processing",
+        "status": "partial",
+        "why": "continuous sensing drains a battery that must last years, and a replacement means another operation."
+      },
+      {
+        "tech": "Mapping of vagus-to-brain pathways",
+        "status": "partial",
+        "why": "we can stimulate the nerve but cannot yet predict precisely which brain circuits a given pulse pattern engages."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "generators that automatically stimulate when they detect a heart-rate rise (commercial since the mid-2010s)",
+        "unlocks": "some patients get stimulation at seizure onset rather than on a fixed schedule."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed loops driven by neural rather than cardiac signals, using recording contacts on the nerve or a separate brain electrode",
+        "unlocks": "faster, more specific triggering, including for seizures with no heart-rate change."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal loops that also track sleep, activity and mood",
+        "unlocks": "closed-loop use in treatment-resistant depression and possibly other conditions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "adaptive dosing that learns each patient's response over months, plus rechargeable or non-invasive closed-loop variants",
+        "unlocks": "fewer replacement surgeries and wider access beyond specialist centres."
+      }
+    ]
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is actually doing — flows of power, water, traffic and people.",
+        "parts": [
+          "smart electricity and water meters",
+          "air-quality and noise sensors",
+          "traffic counters and cameras",
+          "pipe pressure and leak sensors",
+          "building temperature and occupancy sensors"
+        ]
+      },
+      {
+        "name": "Communications layer",
+        "role": "carries many small, frequent readings cheaply and reliably.",
+        "parts": [
+          "low-power wide-area radio (LoRaWAN, NB-IoT)",
+          "fibre backhaul",
+          "cellular 4G/5G",
+          "private mesh for tunnels and basements"
+        ]
+      },
+      {
+        "name": "Data platform",
+        "role": "turns a flood of raw readings into a shared, trustworthy picture.",
+        "parts": [
+          "ingestion and time-series storage",
+          "common data model and APIs",
+          "identity and access control",
+          "cybersecurity monitoring for operational technology"
+        ]
+      },
+      {
+        "name": "Analytics and control",
+        "role": "decides what to do with the measurements.",
+        "parts": [
+          "demand and traffic forecasting",
+          "optimisation and scheduling",
+          "adaptive signal control",
+          "fault and leak detection"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "the part that actually changes the physical city.",
+        "parts": [
+          "traffic signal controllers",
+          "pressure-reducing valves and pumps",
+          "building management systems",
+          "managed EV chargers and batteries"
+        ]
+      },
+      {
+        "name": "Digital twin",
+        "role": "a 3D, updatable model of the city used to test changes before building them.",
+        "parts": [
+          "geospatial and building models",
+          "simulation of flows and heat",
+          "scenario comparison tools"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map what already exists",
+        "detail": "Inventory pipes, cables, roads and substations, and record who owns and operates each one — most cities fail here first."
+      },
+      {
+        "title": "Agree a data model and rules",
+        "detail": "Decide common formats, update rates and privacy rules before buying hardware, so systems can talk to each other for decades."
+      },
+      {
+        "title": "Instrument the priority systems",
+        "detail": "Fit meters, sensors and controllers where the money is largest: electricity distribution, water networks, arterial traffic."
+      },
+      {
+        "title": "Build the network",
+        "detail": "Lay fibre where capacity is needed and low-power radio where only small readings travel; keep safety-critical control off the public internet."
+      },
+      {
+        "title": "Stand up the data platform",
+        "detail": "Ingest, clean and time-stamp the data, and publish APIs so many teams and suppliers can build on it."
+      },
+      {
+        "title": "Add models and controls",
+        "detail": "Forecast demand, detect leaks and faults, and use adaptive signal control and demand response where trials show a real benefit."
+      },
+      {
+        "title": "Build the digital twin",
+        "detail": "A 3D model is kept current from sensor data and used to test a new tram line, district energy loop or flood defence before spending capital."
+      },
+      {
+        "title": "Fix the underlying infrastructure",
+        "detail": "Retrofit insulation, pipes and substations so that the savings the software finds can actually be delivered."
+      },
+      {
+        "title": "Operate and upgrade",
+        "detail": "Run it as permanent infrastructure with maintenance, spare parts and security patching, not a one-off project."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, low-power sensors and meters",
+        "status": "exists",
+        "why": "instrumenting a whole city is only affordable if each point costs little and runs for years on a battery."
+      },
+      {
+        "tech": "Low-power wide-area networks",
+        "status": "exists",
+        "why": "they carry thousands of tiny messages per square kilometre without wiring every sensor."
+      },
+      {
+        "tech": "Cloud and edge computing",
+        "status": "partial",
+        "why": "centralised analytics works, but some control must happen locally to survive network outages."
+      },
+      {
+        "tech": "Open data standards and interoperability",
+        "status": "partial",
+        "why": "without them each vendor's system is an island and integration costs swamp the savings."
+      },
+      {
+        "tech": "Secure operational technology",
+        "status": "partial",
+        "why": "connecting traffic, water and power controls to networks creates a target that cities have historically not defended well."
+      },
+      {
+        "tech": "Flexible physical assets",
+        "status": "partial",
+        "why": "software can only shift demand or reroute flows if the pipes, cables and chargers are capable of being controlled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "widely deployed single-purpose systems: smart electricity meters, adaptive traffic signals, district heating controls",
+        "unlocks": "real, measurable savings in one service at a time."
+      },
+      {
+        "stage": "Next",
+        "milestone": "city-wide data platforms and working digital twins",
+        "unlocks": "cross-service decisions, such as siting charging points using both grid and traffic data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coordinated demand response across power, heat, water and transport",
+        "unlocks": "cities that shave peak loads instead of building more capacity."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regionally and nationally linked city systems sharing energy and freight data",
+        "unlocks": "resource management at a genuinely large scale — if standards, security and funding keep up."
+      }
+    ]
+  }
+}

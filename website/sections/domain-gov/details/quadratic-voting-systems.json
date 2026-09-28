@@ -29,5 +29,144 @@
         "def": "The total amount of resources allocated to each voter for purchasing votes, ensuring a fair starting point."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Eligibility and identity",
+        "role": "ensures each participant gets exactly one budget of voice credits — the hardest problem, since the mechanism is only fair if one person cannot vote many times.",
+        "parts": [
+          "enrolment against a government ID, membership list or invite set",
+          "cryptographic credential (key pair) bound to that identity",
+          "uniqueness proof such as a nullifier so a credential can be used once without revealing who used it"
+        ]
+      },
+      {
+        "name": "Credit wallet",
+        "role": "holds the fixed budget of voice credits and stops anyone spending more than they have.",
+        "parts": [
+          "per-voter credit balance",
+          "transaction log of debits",
+          "recovery path if a key is lost"
+        ]
+      },
+      {
+        "name": "Ballot and cost engine",
+        "role": "implements the pricing rule — casting n votes on one option costs n² credits — and shows the voter the marginal cost of the next vote.",
+        "parts": [
+          "cost calculator in the client",
+          "integer arithmetic on credits to avoid rounding disputes",
+          "budget-left indicator across all options"
+        ]
+      },
+      {
+        "name": "Private submission",
+        "role": "lets people vote without their choices being linkable to their identity, which matters for coercible decisions.",
+        "parts": [
+          "encryption of the ballot to the tallier",
+          "zero-knowledge proof that the ballot is well-formed and affordable",
+          "signed receipt for later verification"
+        ]
+      },
+      {
+        "name": "Tallying and proof",
+        "role": "sums the votes, verifies every proof and publishes evidence that the arithmetic is correct.",
+        "parts": [
+          "verifier that checks proofs without seeing individual ballots",
+          "published credit totals per option",
+          "independent audit tool"
+        ]
+      },
+      {
+        "name": "Matching pool (quadratic funding variant)",
+        "role": "applies the same square-root logic to subsidy rather than votes: a shared pool is split in proportion to the square of the sum of square roots of contributions, so many small supporters count for more than one large one.",
+        "parts": [
+          "contribution ledger",
+          "square-root weighting calculation",
+          "pool allocation and payout"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the decision",
+        "detail": "Fix the question, the options and who is eligible, because the pricing rule only makes sense against a closed set of choices."
+      },
+      {
+        "title": "Choose the budget and price scale",
+        "detail": "Set the number of voice credits per voter and confirm the quadratic cost curve; this single parameter decides how strongly intensity of preference is rewarded versus breadth of support."
+      },
+      {
+        "title": "Issue credentials",
+        "detail": "Give each eligible participant a key tied to a verified identity, plus one uniqueness marker, so that re-enrolment or a second account is detectable."
+      },
+      {
+        "title": "Build the client",
+        "detail": "Ship a voting interface that shows credits spent and marginal cost live — voters routinely underestimate how fast the square grows."
+      },
+      {
+        "title": "Capture and encrypt ballots",
+        "detail": "The client computes the proofs locally and sends only encrypted, eligibility-proven ballots to the server."
+      },
+      {
+        "title": "Verify and tally",
+        "detail": "The tallier checks every proof, rejects over-budget ballots, and sums the votes; sums and proofs, not individual choices, are published."
+      },
+      {
+        "title": "Audit and publish",
+        "detail": "Independent auditors re-run the tally from the published data; results and the audit trail go out together."
+      },
+      {
+        "title": "Review the parameter set",
+        "detail": "After the vote, check whether turnout, concentration of credits and outcomes matched expectations, and adjust the budget for next time."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Practical sybil resistance",
+        "status": "partial",
+        "why": "without one-person-one-budget, a wealthy or organised group can simply buy extra wallets and the quadratic pricing collapses."
+      },
+      {
+        "tech": "Public-key cryptography and zero-knowledge proofs",
+        "status": "exists",
+        "why": "they let a voter prove eligibility and affordability without revealing the ballot itself."
+      },
+      {
+        "tech": "Accessible digital voting clients",
+        "status": "partial",
+        "why": "the interface must make the squared cost legible to non-experts, and must reach people without smartphones."
+      },
+      {
+        "tech": "Independent tallying and audit bodies",
+        "status": "partial",
+        "why": "the result is only trusted if someone other than the organiser can verify the arithmetic."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale deployments — community budgets, party and student ballots, online public-goods funding rounds",
+        "unlocks": "real data on how voters behave when votes are priced."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with national or state digital-identity wallets",
+        "unlocks": "eligibility at population scale without a central registrar watching every ballot."
+      },
+      {
+        "stage": "Next",
+        "milestone": "advisory or budget-allocation votes in municipalities and large organisations",
+        "unlocks": "evidence for whether intensity-weighted voting produces better decisions than one-person-one-vote."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid systems where quadratic voting is used for some questions and conventional voting for others",
+        "unlocks": "a realistic institutional role rather than a wholesale replacement for existing elections."
+      }
+    ]
   }
 }

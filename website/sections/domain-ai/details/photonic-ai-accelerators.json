@@ -29,5 +29,163 @@
         "def": "Optical components that can adjust the phase of light to control its interference patterns, enabling precise manipulation of optical signals for computation."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Light source",
+        "role": "supplies coherent light to carry and process signals.",
+        "parts": [
+          "external laser or laser array",
+          "edge or grating couplers",
+          "on-chip amplifiers"
+        ]
+      },
+      {
+        "name": "Input encoding",
+        "role": "converts electronic data into optical signals.",
+        "parts": [
+          "Mach-Zehnder modulators or microring modulators",
+          "driver electronics",
+          "bias control"
+        ]
+      },
+      {
+        "name": "Photonic compute mesh",
+        "role": "performs matrix multiplication as light interferes through a network of tunable elements.",
+        "parts": [
+          "interferometer mesh (Mach-Zehnder or microring arrays)",
+          "phase shifters",
+          "waveguides"
+        ]
+      },
+      {
+        "name": "Weight storage and programming",
+        "role": "sets the matrix values that the light sees.",
+        "parts": [
+          "thermo-optic or electro-optic phase tuners",
+          "non-volatile phase-change cells (lab stage)",
+          "calibration DACs"
+        ]
+      },
+      {
+        "name": "Detection and output",
+        "role": "turns the resulting optical intensities back into electronic signals.",
+        "parts": [
+          "germanium photodiodes",
+          "transimpedance amplifiers",
+          "analog-to-digital converters"
+        ]
+      },
+      {
+        "name": "Electronic control and calibration",
+        "role": "keeps the mesh stable against temperature drift and fabrication variation.",
+        "parts": [
+          "control loops",
+          "monitor photodiodes",
+          "digital interface"
+        ]
+      },
+      {
+        "name": "Packaging and thermal management",
+        "role": "brings fibre, electronics and cooling together in a usable module.",
+        "parts": [
+          "fibre arrays",
+          "flip-chip or co-packaged electronics",
+          "heat spreaders"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the mesh and map the network",
+        "detail": "A neural-network layer is factored into a sequence of matrix operations and mapped onto an interferometer or microring layout, with the required precision chosen."
+      },
+      {
+        "title": "Fabricate the photonic chip",
+        "detail": "Silicon-on-insulator wafers are patterned in a photonic foundry using deep-ultraviolet lithography and etching to form waveguides, splitters and interferometers."
+      },
+      {
+        "title": "Add tunable phase shifters",
+        "detail": "Heaters or doped silicon regions are deposited and patterned to change the refractive index; non-volatile phase-change materials are an alternative in research."
+      },
+      {
+        "title": "Integrate light sources",
+        "detail": "Lasers are attached by hybrid bonding, edge coupling or grating coupling, since silicon itself does not emit light efficiently."
+      },
+      {
+        "title": "Integrate photodetectors",
+        "detail": "Germanium is grown or bonded at the outputs, then connected to amplifiers and analog-to-digital converters."
+      },
+      {
+        "title": "Co-package with electronics",
+        "detail": "Driver, control and readout chips are flip-chipped or co-packaged close to the photonic die to keep electrical paths short."
+      },
+      {
+        "title": "Calibrate every element",
+        "detail": "Each interferometer is tuned while measuring its output, compensating for nanometre-scale fabrication errors and thermal crosstalk — the hardest step in practice."
+      },
+      {
+        "title": "Test inference accuracy",
+        "detail": "Real neural-network tasks are run and compared with a digital reference, checking that analog noise and drift do not break the result."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon photonics manufacturing",
+        "status": "exists",
+        "why": "the same foundries that make optical transceivers can pattern waveguides and modulators at scale."
+      },
+      {
+        "tech": "High-speed modulators and photodetectors",
+        "status": "exists",
+        "why": "they convert data into light and back at tens of gigabits per second."
+      },
+      {
+        "tech": "On-chip or hybrid lasers",
+        "status": "partial",
+        "why": "silicon cannot lase efficiently, so lasers must be bonded or coupled on, which adds cost and loss."
+      },
+      {
+        "tech": "Non-volatile optical weights",
+        "status": "missing",
+        "why": "today's phase shifters need constant power and drift; phase-change materials could hold weights without power but are not yet reliable."
+      },
+      {
+        "tech": "Electronic-photonic co-integration",
+        "status": "partial",
+        "why": "control and readout electronics must sit beside the photonics without disturbing the light."
+      },
+      {
+        "tech": "Optical nonlinearities and memory",
+        "status": "missing",
+        "why": "a fully optical neural network needs activation functions and storage in the optical domain, which remain laboratory curiosities."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory and startup prototypes multiply small matrices optically",
+        "unlocks": "proof that interference-based math can match digital results for narrow tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid accelerators that offload only linear layers while electronics handle nonlinearities",
+        "unlocks": "lower energy per inference for large language models in datacentres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "co-packaged photonic tiles with integrated lasers, detectors and control",
+        "unlocks": "deployment inside standard servers without exotic optics."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "non-volatile optical weights and on-chip optical nonlinearities",
+        "unlocks": "deeper all-optical networks with much lower power per operation."
+      }
+    ]
   }
 }

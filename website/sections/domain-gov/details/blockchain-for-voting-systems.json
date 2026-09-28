@@ -29,5 +29,164 @@
         "def": "A self-executing contract with the terms of the agreement directly written into code."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Eligibility and enrolment",
+        "role": "decides who is allowed to vote and issues each voter a one-time credential.",
+        "parts": [
+          "electoral roll database",
+          "identity verification",
+          "voter key or token issuance"
+        ]
+      },
+      {
+        "name": "Ballot client",
+        "role": "the device software that presents the ballot and encrypts the choice before anything leaves the voter's hands.",
+        "parts": [
+          "phone or kiosk app",
+          "ballot-marking interface",
+          "local vote encryption",
+          "verifiable receipt generator"
+        ]
+      },
+      {
+        "name": "Cryptographic protocol",
+        "role": "lets votes be counted without revealing individual choices.",
+        "parts": [
+          "homomorphic tallying or mix-net",
+          "zero-knowledge proofs of ballot validity",
+          "threshold key sharing"
+        ]
+      },
+      {
+        "name": "Distributed ledger",
+        "role": "an append-only, tamper-evident record of cast ballots, replicated across independent organisations.",
+        "parts": [
+          "permissioned validator nodes",
+          "consensus rules",
+          "transaction log"
+        ]
+      },
+      {
+        "name": "Public bulletin board",
+        "role": "a place where voters and observers can check that their ballot was recorded and included in the tally.",
+        "parts": [
+          "hash-anchored publication",
+          "verifier tools",
+          "audit logs"
+        ]
+      },
+      {
+        "name": "Tally and audit",
+        "role": "turns the sealed record into a published result with proofs.",
+        "parts": [
+          "tallying authorities",
+          "risk-limiting or cryptographic audits",
+          "result publication"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "protects the keys that decrypt the result; whoever holds them could break secrecy.",
+        "parts": [
+          "hardware security modules",
+          "key ceremony procedures",
+          "threshold custodians"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the trust model",
+        "detail": "Decide who runs the nodes, who holds decryption keys and what the system must survive — a corrupt official, a hacked phone, or a lying vendor."
+      },
+      {
+        "title": "Build the electoral roll and credentials",
+        "detail": "Link each eligible voter to a single-use credential without storing the link between identity and vote on the ledger."
+      },
+      {
+        "title": "Build the ballot client",
+        "detail": "Write software that encrypts the vote on the voter's own device and produces a receipt the voter can later check, and harden it against malware and screen capture."
+      },
+      {
+        "title": "Design the counting cryptography",
+        "detail": "Choose either homomorphic encryption, where encrypted votes are added without decrypting them, or a mix-net that shuffles and re-encrypts ballots; add proofs that every recorded ballot is well-formed."
+      },
+      {
+        "title": "Deploy the ledger",
+        "detail": "Stand up validator nodes at separate organisations, such as electoral commissions, parties and auditors, and write each cast ballot as a transaction with the voter's proof of eligibility."
+      },
+      {
+        "title": "Publish a verifiable record",
+        "detail": "Publish the ballot set, or a hash of it, so anyone can independently verify that the tally matches the recorded votes."
+      },
+      {
+        "title": "Tally and prove",
+        "detail": "Combine or decrypt the sealed votes under threshold keys, publish the proofs, and run audits that detect any mismatch."
+      },
+      {
+        "title": "Operate and rehearse",
+        "detail": "Run key ceremonies, penetration tests and full failed-election rehearsals, because a voting system must degrade to a paper fallback, not to no result."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "End-to-end verifiable voting cryptography",
+        "status": "partial",
+        "why": "mix-nets, homomorphic tallying and zero-knowledge proofs exist and have been used in small elections, but not at national scale."
+      },
+      {
+        "tech": "Verifiable digital identity",
+        "status": "partial",
+        "why": "the ledger is only as trustworthy as the enrolment step that stops one person voting twice."
+      },
+      {
+        "tech": "Malware-resistant voter devices",
+        "status": "missing",
+        "why": "a phone or home computer can silently alter a vote before it is encrypted, and no ledger can detect this."
+      },
+      {
+        "tech": "Coercion resistance",
+        "status": "missing",
+        "why": "remote voting from home cannot prevent a vote being bought or cast under pressure, which is why polling booths exist."
+      },
+      {
+        "tech": "High-throughput permissioned consensus",
+        "status": "partial",
+        "why": "election-night volumes and simultaneous national access stress systems that are proven mainly in small pilots."
+      },
+      {
+        "tech": "Paper trail and risk-limiting audits",
+        "status": "exists",
+        "why": "statistical audits of paper ballots catch errors that a purely digital record cannot."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "blockchain-anchored records alongside paper voting, plus pilots for low-risk groups such as overseas or military voters and corporate proxy voting",
+        "unlocks": "tamper-evident audit trails and real-world test data without risking a general election."
+      },
+      {
+        "stage": "Next",
+        "milestone": "end-to-end verifiable internet voting with in-person enrolment and single-use credentials, used in binding municipal or organisational elections",
+        "unlocks": "voters can check their own ballot was counted, while paper remains the legal record."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coercion-resistant remote voting designs tested in real elections",
+        "unlocks": "remote voting that does not create new ways to pressure voters."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "national general elections counted partly on distributed ledgers with independent node operators",
+        "unlocks": "transparent, observer-verifiable tallies — but only if device security, identity and privacy problems are solved first, and blockchain by itself solves none of them."
+      }
+    ]
   }
 }

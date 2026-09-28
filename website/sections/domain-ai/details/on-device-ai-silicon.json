@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Matrix compute array",
+        "role": "the arithmetic engine; multiplies and accumulates weight and activation matrices.",
+        "parts": [
+          "systolic or MAC arrays",
+          "INT8/INT4/FP16 pipelines",
+          "accumulators and activation functions"
+        ]
+      },
+      {
+        "name": "On-chip memory and buffering",
+        "role": "keeps weights and activations close to the arithmetic so the array is not starved.",
+        "parts": [
+          "large SRAM tiles",
+          "double buffering",
+          "direct memory access engines"
+        ]
+      },
+      {
+        "name": "System memory interface",
+        "role": "large language models are too big for on-chip SRAM, so weights stream from shared low-power DRAM.",
+        "parts": [
+          "LPDDR memory controller",
+          "package-on-package DRAM",
+          "unified memory shared with CPU and GPU"
+        ]
+      },
+      {
+        "name": "Quantisation and compiler stack",
+        "role": "shrinks a trained model to 4- or 8-bit weights and maps it onto the hardware.",
+        "parts": [
+          "model converters",
+          "graph optimiser and scheduler",
+          "hand-written kernel libraries"
+        ]
+      },
+      {
+        "name": "Heterogeneous SoC fabric",
+        "role": "lets the NPU hand work to CPU, GPU or DSP when a layer suits them better.",
+        "parts": [
+          "coherent interconnect",
+          "shared last-level cache",
+          "power domains"
+        ]
+      },
+      {
+        "name": "Runtime and OS integration",
+        "role": "apps call the accelerator through a stable driver rather than touching registers.",
+        "parts": [
+          "device driver",
+          "inference runtime APIs",
+          "model cache and scheduling policy"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Profile target models",
+        "detail": "Engineers measure the layer shapes, precision and memory traffic of the transformer models the chip must run, which sets array size and buffer depths."
+      },
+      {
+        "title": "Write and verify the RTL",
+        "detail": "The design is described in a hardware description language and checked in simulation against a software reference model, including quantisation rounding."
+      },
+      {
+        "title": "Synthesise and place-and-route",
+        "detail": "The logic is mapped to standard cells and a target foundry node, then timing, power and area are closed."
+      },
+      {
+        "title": "Fabricate the die",
+        "detail": "Photomasks are made and wafers are processed at a leading-edge node — the transistor density is what makes room for a large accelerator alongside CPU and GPU."
+      },
+      {
+        "title": "Test and bin",
+        "detail": "Dies are probed, defective blocks are disabled, and parts are sorted by the clock speed they can hold at a given voltage."
+      },
+      {
+        "title": "Package with memory",
+        "detail": "The SoC die is assembled with stacked low-power DRAM in one package, or as chiplets on a silicon interposer."
+      },
+      {
+        "title": "Bring up firmware",
+        "detail": "Boot code, clocking, thermal limits and power states are tuned on real silicon."
+      },
+      {
+        "title": "Ship kernels and tooling",
+        "detail": "Operators are hand-optimised, model conversion tools are released, and frameworks add backends so developers can target the accelerator."
+      },
+      {
+        "title": "Integrate into devices",
+        "detail": "Phone, laptop and embedded operating systems expose the NPU through their inference APIs and decide when to use it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced logic process nodes",
+        "status": "exists",
+        "why": "a dedicated accelerator only pays off when hundreds of millions of transistors fit in a small power budget."
+      },
+      {
+        "tech": "Low-power high-bandwidth DRAM",
+        "status": "exists",
+        "why": "generate one token requires reading essentially every weight, so memory bandwidth — not compute — is the usual limit."
+      },
+      {
+        "tech": "Neural network quantisation",
+        "status": "exists",
+        "why": "4-bit and 8-bit weights cut model size several-fold with modest quality loss, making local execution practical."
+      },
+      {
+        "tech": "Transformer inference runtimes",
+        "status": "exists",
+        "why": "optimised kernels, key-value caching and scheduling are needed to get usable token rates."
+      },
+      {
+        "tech": "Mature compiler backends for accelerators",
+        "status": "partial",
+        "why": "mapping arbitrary new model architectures onto fixed-function arrays still often requires manual work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tens of TOPS NPUs in phones and laptops running few-billion-parameter quantised models",
+        "unlocks": "private, offline assistants, live transcription and on-device image generation at a few tokens per second."
+      },
+      {
+        "stage": "Next",
+        "milestone": "unified memory pools of tens of gigabytes at hundreds of gigabytes per second",
+        "unlocks": "locally running larger models without cloud round-trips."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware support for mixture-of-experts routing, sparsity and speculative decoding",
+        "unlocks": "far higher effective speed because only part of the model is read per token."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "compute-in-memory and analogue weight arrays",
+        "unlocks": "breaking the bandwidth wall, since weights are read where they are stored."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "co-designed chips for specific model families",
+        "unlocks": "efficiency that general-purpose NPUs cannot match, at the cost of flexibility."
+      }
+    ]
+  }
+}

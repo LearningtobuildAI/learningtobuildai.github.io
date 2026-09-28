@@ -1,0 +1,166 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Design software",
+        "role": "chooses which protein shapes fit together into a repeating grid.",
+        "parts": [
+          "symmetry and lattice-geometry search",
+          "interface scoring",
+          "AlphaFold-style structure prediction",
+          "sequence-design models such as ProteinMPNN"
+        ]
+      },
+      {
+        "name": "Building blocks",
+        "role": "the repeat unit — a folded protein or small protein domain with sticky patches on its faces.",
+        "parts": [
+          "helical bundles or beta-sheet domains",
+          "designed hydrogen-bond and hydrophobic interfaces",
+          "flexible linkers"
+        ]
+      },
+      {
+        "name": "Assembly control",
+        "role": "decides whether units form a flat sheet, a tube, a cage or a 3D crystal.",
+        "parts": [
+          "symmetry operators (2-fold, 3-fold)",
+          "metal or disulfide staples",
+          "pH, salt and temperature switches"
+        ]
+      },
+      {
+        "name": "Production host",
+        "role": "makes the designed protein in quantity.",
+        "parts": [
+          "E. coli or yeast expression",
+          "cell-free synthesis",
+          "codon-optimised synthetic genes"
+        ]
+      },
+      {
+        "name": "Purification and formulation",
+        "role": "isolates clean protein and triggers assembly under controlled conditions.",
+        "parts": [
+          "affinity and size-exclusion chromatography",
+          "buffer exchange",
+          "slow annealing steps"
+        ]
+      },
+      {
+        "name": "Characterisation",
+        "role": "checks the real lattice matches the design.",
+        "parts": [
+          "cryo-electron microscopy",
+          "X-ray crystallography",
+          "atomic force microscopy",
+          "circular dichroism"
+        ]
+      },
+      {
+        "name": "Bulk consolidation",
+        "role": "turns nanoscale lattices into a usable solid.",
+        "parts": [
+          "crosslinking",
+          "dehydration or densification",
+          "mineral or polymer infiltration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target geometry",
+        "detail": "Decide the symmetry and spacing of the grid, for example a flat hexagonal sheet or a cubic lattice a few nanometres across."
+      },
+      {
+        "title": "Design the interface",
+        "detail": "Work out which surfaces could join two copies of the protein, using shape complementarity and buried hydrophobic area."
+      },
+      {
+        "title": "Specify the sequence",
+        "detail": "Generative models such as ProteinMPNN propose amino-acid sequences that fold to the intended shape and present the right sticky face."
+      },
+      {
+        "title": "Filter in silico",
+        "detail": "Structure predictors and physics-based scoring reject sequences that misfold, aggregate or assemble the wrong way; only a few per cent usually pass."
+      },
+      {
+        "title": "Synthesise the gene",
+        "detail": "Order a codon-optimised DNA sequence and clone it into an expression plasmid."
+      },
+      {
+        "title": "Express and purify",
+        "detail": "Grow the host organism, induce protein production, break the cells open and purify the protein to high purity."
+      },
+      {
+        "title": "Assemble and anneal",
+        "detail": "Adjust buffer, temperature and sometimes metal ions so the units slowly click into a regular lattice rather than a tangled aggregate."
+      },
+      {
+        "title": "Verify the structure",
+        "detail": "Image the lattice at atomic resolution to confirm the design matched the reality; failures feed back into the design loop."
+      },
+      {
+        "title": "Consolidate into a material",
+        "detail": "Crosslink or densify the lattice to make a self-standing film, fibre or composite, then measure stiffness and strength."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Accurate protein structure prediction",
+        "status": "exists",
+        "why": "designers need to know the shape a sequence will adopt before making it."
+      },
+      {
+        "tech": "Generative sequence-design models",
+        "status": "exists",
+        "why": "tools like ProteinMPNN generate workable sequences where manual design was hopeless."
+      },
+      {
+        "tech": "Cheap, fast DNA synthesis",
+        "status": "exists",
+        "why": "each design is a new gene, so hundreds of candidates must be ordered and tested."
+      },
+      {
+        "tech": "High-yield recombinant protein production",
+        "status": "exists",
+        "why": "gram-scale material needs far more protein than a typical lab prep yields."
+      },
+      {
+        "tech": "Scalable protein materials manufacturing",
+        "status": "missing",
+        "why": "no established route exists to spin or mould designed proteins into bulk structural parts."
+      },
+      {
+        "tech": "Predictive mechanics of protein solids",
+        "status": "missing",
+        "why": "strength and toughness of a lattice cannot yet be reliably predicted from its sequence."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "nanoscale designed lattices and 2D arrays built and imaged in the lab",
+        "unlocks": "proof that scratch-built proteins can self-assemble into ordered grids."
+      },
+      {
+        "stage": "Next",
+        "milestone": "lattices used as functional platforms — antigen display for vaccines, enzyme scaffolding, template for inorganic materials",
+        "unlocks": "a market that funds the design toolkit before structural use matures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "designed protein fibres and films with tunable stiffness, made at litre scale",
+        "unlocks": "competing with spider-silk-like materials in textiles and medical implants."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "consolidated protein composites as structural material",
+        "unlocks": "light, degradable alternatives to some plastics and composites — if strength, water resistance and cost can be solved."
+      }
+    ]
+  }
+}

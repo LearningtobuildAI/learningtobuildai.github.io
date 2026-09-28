@@ -30,5 +30,166 @@
         "def": "The process of overseeing the movement of goods from suppliers to end customers. It involves coordinating various activities including procurement, production, inventory control, and distribution."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Spend and supplier data layer",
+        "role": "gives the agent something to reason about — what was bought, from whom, at what price and on what terms.",
+        "parts": [
+          "ERP and accounts-payable connectors",
+          "cleaned spend history",
+          "item and supplier master data",
+          "contract repository"
+        ]
+      },
+      {
+        "name": "Negotiation agent",
+        "role": "decides what to offer, when to concede and when to walk away.",
+        "parts": [
+          "preference/utility model",
+          "reservation value estimates",
+          "concession strategy",
+          "counter-offer generator"
+        ]
+      },
+      {
+        "name": "Counterparty model",
+        "role": "estimates what the supplier actually wants and how it is likely to respond.",
+        "parts": [
+          "past bid analysis",
+          "supplier cost and capacity estimates",
+          "competitiveness and risk scoring"
+        ]
+      },
+      {
+        "name": "Language layer",
+        "role": "reads emailed quotes and writes messages a supplier will treat as serious.",
+        "parts": [
+          "document and clause extraction",
+          "retrieval over contract templates",
+          "drafting and reply generation",
+          "guardrails against unauthorised commitments"
+        ]
+      },
+      {
+        "name": "Policy and compliance engine",
+        "role": "keeps the machine inside the rules a human negotiator would follow.",
+        "parts": [
+          "negotiable-term definitions and limits",
+          "budget and approval thresholds",
+          "sanctions, conflict-of-interest and audit-log checks"
+        ]
+      },
+      {
+        "name": "Execution and contract management",
+        "role": "turns an agreed deal into a recorded, enforceable order.",
+        "parts": [
+          "RFQ and e-sourcing integration",
+          "e-signature",
+          "purchase order and ERP posting",
+          "delivery and invoice performance tracking"
+        ]
+      },
+      {
+        "name": "Oversight and audit",
+        "role": "lets humans see why a deal happened and override it.",
+        "parts": [
+          "decision logs and explanations",
+          "human review queue",
+          "exception and dispute handling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Digitise the spend and contract history",
+        "detail": "Pull purchase orders, invoices and signed contracts into one structured dataset so prices, terms and outcomes can be compared across suppliers and years."
+      },
+      {
+        "title": "Write down the negotiation playbook",
+        "detail": "Humans state what is negotiable (price, lead time, payment days, warranty, volume bands), the acceptable ranges, the walk-away point and the hard prohibitions."
+      },
+      {
+        "title": "Model the suppliers",
+        "detail": "From past bids and outcomes, build estimates of each supplier's cost structure, spare capacity and likely reaction to a given concession."
+      },
+      {
+        "title": "Train and simulate the strategy",
+        "detail": "Run the agent against these models and against historical bid data, then in real reverse auctions, scoring it on total cost of ownership and on how often the deal holds."
+      },
+      {
+        "title": "Add the language layer",
+        "detail": "Connect an LLM constrained by retrieval over approved templates and clause libraries so it can read a supplier's email and reply in a normal commercial register without inventing terms."
+      },
+      {
+        "title": "Integrate with procurement systems",
+        "detail": "Wire the agent into e-sourcing, ERP, supplier portals and e-signature so it can issue an RFQ, receive a bid, agree terms and record the award without re-keying."
+      },
+      {
+        "title": "Pilot under human sign-off",
+        "detail": "Start on low-value, high-volume, catalogue-like categories, with a buyer approving every outcome; measure savings and error rates against a human-run baseline."
+      },
+      {
+        "title": "Widen the mandate gradually",
+        "detail": "Move to multi-round, multi-attribute negotiations and larger values as the exception rate falls, keeping a full decision log and a human escalation path."
+      },
+      {
+        "title": "Operate and monitor",
+        "detail": "Watch continuously for model drift, suppliers gaming the agent, unintended collusion between negotiating bots, and changes in contract law."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Clean, integrated procurement and ERP data",
+        "status": "partial",
+        "why": "agents cannot optimise terms they cannot see; many buyers still hold this in spreadsheets and email."
+      },
+      {
+        "tech": "Automated negotiation algorithms (game theory and multi-attribute bargaining)",
+        "status": "exists",
+        "why": "decades of academic work gives the bidding and concession strategies a foundation."
+      },
+      {
+        "tech": "Large language models for unstructured supplier correspondence",
+        "status": "exists",
+        "why": "most supplier negotiation still happens as free-text email, not structured messages."
+      },
+      {
+        "tech": "E-sourcing, supplier portals and e-signature",
+        "status": "exists",
+        "why": "these give the agent hands — a channel to solicit, agree and record deals."
+      },
+      {
+        "tech": "Legal recognition and liability rules for machine-made commitments",
+        "status": "missing",
+        "why": "it is unsettled who is bound when an agent agrees a term outside its mandate or makes an error."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automation of RFQ distribution, bid tabulation and contract data extraction",
+        "unlocks": "faster cycles and cleaner data, with humans still making every decision."
+      },
+      {
+        "stage": "Near term",
+        "milestone": "agents negotiating low-value, catalogue-like contracts autonomously within a mandate, with human approval",
+        "unlocks": "labour released from repetitive sourcing and a measurable savings baseline versus human negotiators."
+      },
+      {
+        "stage": "Next",
+        "milestone": "autonomous multi-round, multi-attribute negotiation for a broad category range, humans handling exceptions and strategic suppliers",
+        "unlocks": "procurement that responds to demand and supply shocks in hours rather than quarters."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "buyer-agent to seller-agent negotiation using standard machine-readable contract terms, under clear liability rules",
+        "unlocks": "supply chains that re-plan and re-contract continuously across company boundaries."
+      }
+    ]
   }
 }

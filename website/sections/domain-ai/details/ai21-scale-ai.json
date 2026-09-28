@@ -29,5 +29,159 @@
         "def": "The field of AI that focuses on the interaction between computers and humans through natural language."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "collects and curates the text a model learns from.",
+        "parts": [
+          "web crawlers",
+          "quality and safety filters",
+          "deduplication",
+          "tokenizer"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "the neural network that predicts the next token in a sequence.",
+        "parts": [
+          "transformer layers",
+          "self-attention mechanism",
+          "feed-forward networks",
+          "token embeddings"
+        ]
+      },
+      {
+        "name": "Training infrastructure",
+        "role": "trains the model across thousands of accelerators for weeks.",
+        "parts": [
+          "GPU or TPU clusters",
+          "high-speed interconnects",
+          "distributed training software",
+          "checkpoint storage"
+        ]
+      },
+      {
+        "name": "Alignment and safety",
+        "role": "makes the model follow instructions and refuse harmful requests.",
+        "parts": [
+          "supervised fine-tuning",
+          "reinforcement learning from human feedback",
+          "red-teaming",
+          "guardrail filters"
+        ]
+      },
+      {
+        "name": "Inference serving",
+        "role": "runs the model for users with low latency and controlled cost.",
+        "parts": [
+          "serving engine",
+          "request batching",
+          "key-value cache",
+          "API gateway"
+        ]
+      },
+      {
+        "name": "Enterprise integration",
+        "role": "connects the model to business data and workflows.",
+        "parts": [
+          "retrieval-augmented generation",
+          "prompt templates",
+          "connectors to CRM and helpdesk systems",
+          "usage monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and clean text",
+        "detail": "Gather text from books, websites and licensed sources, then filter out low-quality or harmful content, remove duplicates and split into tokens."
+      },
+      {
+        "title": "Design the model",
+        "detail": "Choose the transformer size—number of parameters, layers and attention heads—balancing capability against training and serving cost."
+      },
+      {
+        "title": "Pretrain on raw text",
+        "detail": "Train the model to predict the next token across trillions of tokens using thousands of accelerators running in parallel for weeks."
+      },
+      {
+        "title": "Fine-tune on instructions",
+        "detail": "Feed human-written question-and-answer pairs so the model learns to follow prompts rather than just continue text."
+      },
+      {
+        "title": "Align with human feedback",
+        "detail": "Humans rank model outputs, a reward model is trained on those rankings, and the language model is optimised to produce preferred answers."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Test accuracy, bias, safety and resistance to jailbreaks; fix weaknesses before deployment."
+      },
+      {
+        "title": "Deploy for inference",
+        "detail": "Compress the model with quantisation or distillation, then serve it behind an API with batching and caching to keep latency and cost down."
+      },
+      {
+        "title": "Integrate into workflows",
+        "detail": "Connect the model to customer-support tickets, content tools and databases, using retrieval so answers are grounded in current enterprise documents."
+      },
+      {
+        "title": "Monitor and update",
+        "detail": "Track usage, collect feedback, watch for drift or misuse, and periodically retrain or fine-tune with new data."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "the attention-based design that makes large language models trainable and effective."
+      },
+      {
+        "tech": "Large-scale compute",
+        "status": "exists",
+        "why": "training requires thousands of GPUs or TPUs linked by fast interconnects for weeks."
+      },
+      {
+        "tech": "Massive text corpora",
+        "status": "exists",
+        "why": "models learn language patterns from billions of pages of diverse text."
+      },
+      {
+        "tech": "Alignment techniques",
+        "status": "partial",
+        "why": "making models reliably helpful, honest and safe is still an open research problem."
+      },
+      {
+        "tech": "Efficient inference",
+        "status": "partial",
+        "why": "serving very large models cheaply and quickly remains a engineering challenge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "instruction-tuned language models for text generation and customer support",
+        "unlocks": "automation of routine writing, summarisation and first-line query answering."
+      },
+      {
+        "stage": "Next",
+        "milestone": "retrieval-augmented and tool-using models",
+        "unlocks": "answers grounded in enterprise documents and the ability to take actions through software."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal and agentic models",
+        "unlocks": "handling images, voice and multi-step tasks with less human oversight."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "smaller specialised models running on-device",
+        "unlocks": "privacy, low latency and lower cost for many enterprise tasks."
+      }
+    ]
   }
 }

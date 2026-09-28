@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is doing, continuously and densely.",
+        "parts": [
+          "inductive loops and cameras at junctions",
+          "smart electricity and water meters",
+          "air-quality and noise sensors",
+          "GPS traces from vehicles and phones"
+        ]
+      },
+      {
+        "name": "Communications and data fabric",
+        "role": "moves those measurements to where they can be used, in a common format.",
+        "parts": [
+          "fibre and cellular backhaul",
+          "edge compute cabinets",
+          "open data standards and APIs",
+          "privacy-preserving aggregation"
+        ]
+      },
+      {
+        "name": "Digital twin",
+        "role": "a live model of the city's roads, pipes, wires and buildings that can be simulated forward.",
+        "parts": [
+          "GIS and 3D city model",
+          "asset registry",
+          "real-time state estimator"
+        ]
+      },
+      {
+        "name": "Prediction and control layer",
+        "role": "forecasts demand and decides what to change.",
+        "parts": [
+          "short-term demand forecasting",
+          "optimisation and model-predictive control",
+          "reinforcement-learning controllers",
+          "constraint and safety filters"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "the physical handles the system can turn.",
+        "parts": [
+          "traffic signal controllers",
+          "grid switches, batteries and flexible loads",
+          "pumps and pressure valves",
+          "waste collection routing"
+        ]
+      },
+      {
+        "name": "Governance and resilience",
+        "role": "keeps a city-wide controller safe, lawful and recoverable.",
+        "parts": [
+          "human override and fallback modes",
+          "cybersecurity monitoring",
+          "audit logging",
+          "privacy and equity review"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument one domain",
+        "detail": "Start with a single system — usually traffic signals or the distribution grid — and fit it with sensors, meters and remote control."
+      },
+      {
+        "title": "Standardise the data",
+        "detail": "Agree schemas and interfaces so that data from different departments and vendors can be joined without bespoke glue code."
+      },
+      {
+        "title": "Build the digital twin",
+        "detail": "Assemble a live model of assets and flows, calibrated against measured behaviour until its predictions match reality."
+      },
+      {
+        "title": "Forecast",
+        "detail": "Train models to predict demand minutes to days ahead — traffic volumes, electricity load, water draw, waste generation."
+      },
+      {
+        "title": "Close the loop on one domain",
+        "detail": "Let the model adjust signals or shift flexible load automatically, with tight limits and a human kill switch."
+      },
+      {
+        "title": "Couple domains",
+        "detail": "Link the models so an action in one domain is checked against the others — for example, shifting bus routes when a substation is constrained."
+      },
+      {
+        "title": "Add autonomous optimisation",
+        "detail": "Replace hand-tuned rules with learned controllers that continuously trade off travel time, energy cost, emissions and equity — validated in simulation before live use."
+      },
+      {
+        "title": "Harden and operate",
+        "detail": "Red-team the system, define degraded modes for network or sensor failure, and keep an auditable record of every automatic decision."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense, cheap urban sensing",
+        "status": "exists",
+        "why": "without continuous measurement there is nothing to control."
+      },
+      {
+        "tech": "Low-latency urban connectivity and edge compute",
+        "status": "exists",
+        "why": "control decisions must arrive faster than the traffic or load changes."
+      },
+      {
+        "tech": "City digital twins",
+        "status": "partial",
+        "why": "several cities run twins, but few are real-time or span more than one domain."
+      },
+      {
+        "tech": "Reliable multi-domain forecasting",
+        "status": "partial",
+        "why": "traffic and load forecasts work separately; coupled forecasts degrade quickly."
+      },
+      {
+        "tech": "General-purpose autonomous reasoning",
+        "status": "missing",
+        "why": "the 'city-level AGI' element does not exist; today's controllers are narrow and domain-specific."
+      },
+      {
+        "tech": "Cybersecurity and privacy frameworks for city data",
+        "status": "partial",
+        "why": "a system that can turn every signal and switch is a high-value target."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "domain-specific optimisation already in service: adaptive traffic signal control, grid demand response, leak detection in water networks",
+        "unlocks": "measurable savings without any city-wide intelligence."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-domain digital twins that share a common state model",
+        "unlocks": "city planners can test interventions before building them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closed-loop control across two or three coupled domains with strict safety envelopes and human oversight",
+        "unlocks": "coordination benefits, such as charging electric fleets when the grid is cleanest."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "learned city-wide control, if general-purpose AI with verifiable safety ever matures",
+        "unlocks": "the claimed autonomous urban optimisation — speculative, and gated on AI reliability and public consent, not on sensors."
+      }
+    ]
+  }
+}

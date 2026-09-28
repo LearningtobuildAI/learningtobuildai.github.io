@@ -33,5 +33,158 @@
         "def": "A cell structure responsible for translating mRNA into proteins during the process of protein synthesis."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "mRNA drug substance",
+        "role": "the working molecule: a strand of messenger RNA that encodes the therapeutic protein a cell should make.",
+        "parts": [
+          "linear DNA template",
+          "T7 RNA polymerase and nucleoside triphosphates",
+          "modified nucleosides such as N1-methylpseudouridine",
+          "5' cap and poly(A) tail"
+        ]
+      },
+      {
+        "name": "Delivery vehicle",
+        "role": "wraps the mRNA and carries it across the cell membrane, since naked RNA is destroyed quickly.",
+        "parts": [
+          "ionizable lipid",
+          "helper phospholipid",
+          "cholesterol",
+          "PEG-lipid",
+          "microfluidic mixing"
+        ]
+      },
+      {
+        "name": "Targeting and route",
+        "role": "decides which cells actually read the message — the central unsolved problem for non-vaccine uses.",
+        "parts": [
+          "tissue-selective lipid formulations",
+          "targeting ligands",
+          "local injection or ex vivo cell engineering"
+        ]
+      },
+      {
+        "name": "Manufacturing and purification",
+        "role": "turns a bench-scale synthesis into doses at high purity.",
+        "parts": [
+          "enzymatic in vitro transcription reactors",
+          "DNAse digestion and chromatography",
+          "tangential-flow filtration"
+        ]
+      },
+      {
+        "name": "Quality control",
+        "role": "proves each batch is the right sequence, the right length and free of immune-triggering by-products.",
+        "parts": [
+          "sequencing and capillary electrophoresis",
+          "double-stranded RNA assays",
+          "lipid particle-size measurement",
+          "potency assays in cells"
+        ]
+      },
+      {
+        "name": "Formulation and cold chain",
+        "role": "keeps fragile RNA stable from factory to patient.",
+        "parts": [
+          "sterile fill-finish",
+          "frozen or refrigerated storage",
+          "lyophilisation research"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the message",
+        "detail": "Choose the protein to be produced, then write an RNA sequence with optimised untranslated regions and a signal or targeting sequence."
+      },
+      {
+        "title": "Make a DNA template",
+        "detail": "The gene is carried on a plasmid or amplified by PCR, then cut or copied into a linear template for transcription."
+      },
+      {
+        "title": "Transcribe into mRNA",
+        "detail": "An RNA polymerase copies the DNA into RNA; a cap and a poly(A) tail are added, and modified nucleosides replace some natural ones so the cell does not treat the RNA as an intruder."
+      },
+      {
+        "title": "Purify",
+        "detail": "Enzymes and leftover DNA are digested or removed by chromatography and filtration, and double-stranded RNA contaminants are reduced."
+      },
+      {
+        "title": "Encapsulate in lipid nanoparticles",
+        "detail": "mRNA in water is mixed with lipids dissolved in ethanol inside a microfluidic device; the streams collide and particles roughly 80–100 nm across form around the RNA."
+      },
+      {
+        "title": "Fill and freeze",
+        "detail": "The formulation is sterilised by filtration, filled into vials and frozen for distribution."
+      },
+      {
+        "title": "Deliver and translate",
+        "detail": "The dose is injected — locally, into muscle, or into the bloodstream — and the patient's own ribosomes read the mRNA and build the protein."
+      },
+      {
+        "title": "Or engineer cells outside the body",
+        "detail": "For some cell therapies, a patient's immune cells are collected, loaded with mRNA by electroporation, and returned; the effect is temporary unless the cells are re-dosed."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Modified nucleoside chemistry",
+        "status": "exists",
+        "why": "replacing uridine with N1-methylpseudouridine suppresses innate immune reactions and greatly increases protein output — work recognised by the 2023 Nobel Prize in Physiology or Medicine."
+      },
+      {
+        "tech": "Lipid nanoparticle delivery",
+        "status": "exists",
+        "why": "without a carrier, mRNA never reaches the cell interior in useful amounts; this was proven at scale by COVID-19 vaccines."
+      },
+      {
+        "tech": "Cell-free enzymatic RNA synthesis",
+        "status": "exists",
+        "why": "allows fast redesign of the product without rebuilding a cell-culture plant."
+      },
+      {
+        "tech": "Organ-selective delivery",
+        "status": "partial",
+        "why": "today's particles mostly reach the injection site, liver or spleen; steering them to other tissues would open up most therapeutic uses."
+      },
+      {
+        "tech": "Repeat dosing without immune reactions",
+        "status": "missing",
+        "why": "the body can learn to attack the carrier, which is a barrier for chronic protein-replacement therapy."
+      },
+      {
+        "tech": "Stable, room-temperature formulations",
+        "status": "missing",
+        "why": "frozen cold chains limit deployment and cost."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mRNA vaccines authorised and given at scale, and personalised cancer vaccines in late-stage trials",
+        "unlocks": "proven manufacturing, safety data and regulatory experience."
+      },
+      {
+        "stage": "Next",
+        "milestone": "therapeutic mRNA given as a drug — replacement proteins, in vivo gene editing agents and mRNA-engineered cell therapies",
+        "unlocks": "treatments for inherited disease and cancer that do not require permanent DNA changes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "organ-selective lipid nanoparticles and self-amplifying RNA",
+        "unlocks": "lower doses, targeting tissues beyond liver and muscle, and cheaper courses."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "repeat-dosed, shelf-stable mRNA medicines",
+        "unlocks": "chronic conditions treated like ordinary drugs rather than one-off vaccines."
+      }
+    ]
   }
 }

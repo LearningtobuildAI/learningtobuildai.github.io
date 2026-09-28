@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon transmitter",
+        "role": "encodes each key bit into the quantum state of a very faint light pulse.",
+        "parts": [
+          "laser",
+          "intensity attenuator",
+          "phase or polarization modulator",
+          "quantum random number generator"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries single photons between the two parties, where any eavesdropping disturbs them.",
+        "parts": [
+          "dark optical fibre",
+          "free-space optical telescope",
+          "polarization controllers"
+        ]
+      },
+      {
+        "name": "Single-photon detectors",
+        "role": "register individual photons at the receiver.",
+        "parts": [
+          "avalanche photodiodes or superconducting nanowire detectors",
+          "cryogenic cooler for nanowire detectors"
+        ]
+      },
+      {
+        "name": "Classical channel",
+        "role": "public link used to compare measurement bases and correct errors, and it must be authenticated.",
+        "parts": [
+          "network connection",
+          "message authentication"
+        ]
+      },
+      {
+        "name": "Post-processing",
+        "role": "turns raw correlated detections into a short, provably secret key.",
+        "parts": [
+          "error-correction software",
+          "privacy-amplification software",
+          "key store"
+        ]
+      },
+      {
+        "name": "Trusted nodes",
+        "role": "extend reach beyond the range of a single link by decrypting and re-encrypting keys at secure intermediate sites.",
+        "parts": [
+          "hardened node hardware",
+          "tamper monitoring"
+        ]
+      },
+      {
+        "name": "Encryption integration",
+        "role": "feeds the fresh key to equipment that actually protects the data.",
+        "parts": [
+          "key management system",
+          "one-time-pad or AES encryptors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose protocol and encoding",
+        "detail": "Pick a scheme such as BB84 and decide whether bits are encoded in photon polarization or phase, matching it to the link."
+      },
+      {
+        "title": "Build the transmitter",
+        "detail": "Assemble laser, attenuator, random number generator and modulator so that pulses contain on average less than one photon."
+      },
+      {
+        "title": "Build the receiver",
+        "detail": "Install single-photon detectors, cooling if needed, and optics that preserve the chosen encoding."
+      },
+      {
+        "title": "Calibrate the link",
+        "detail": "Align polarization or phase drift, measure the quantum bit error rate and set a threshold above which the key is discarded."
+      },
+      {
+        "title": "Deploy the channel",
+        "detail": "Use dark fibre between sites, or a free-space telescope path, inserting trusted nodes where the distance is too great."
+      },
+      {
+        "title": "Run the key exchange",
+        "detail": "Detectors record clicks, the parties compare bases over the authenticated classical channel, then sift to shared bits."
+      },
+      {
+        "title": "Distil a secret key",
+        "detail": "Error correction reconciles mismatches; privacy amplification compresses the result so an eavesdropper's partial knowledge is useless."
+      },
+      {
+        "title": "Integrate and certify",
+        "detail": "Feed the key to encryptors, test against the operator and standards requirements, then monitor continuously for anomalies."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "the receiver must catch individual photons without adding noise."
+      },
+      {
+        "tech": "Low-loss optical fibre and dark-fibre access",
+        "status": "exists",
+        "why": "photons cannot be amplified, so loss directly limits range."
+      },
+      {
+        "tech": "Authenticated classical channel",
+        "status": "exists",
+        "why": "without authentication, an attacker could impersonate a party during basis comparison."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "they would extend entanglement-based QKD over continental distances instead of relying on trusted nodes."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "exists",
+        "why": "it is a complementary route to quantum-resistant security, since QKD only distributes keys and does not replace encryption."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro QKD networks linking government, banking and data-centre sites",
+        "unlocks": "key distribution that detects interception in real time, over tens to a few hundred kilometres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite QKD for intercontinental key exchange, following the Micius demonstration in 2016",
+        "unlocks": "key distribution between distant ground stations without a chain of trusted nodes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum repeaters and entanglement distribution",
+        "unlocks": "long-distance links whose security rests on quantum physics rather than on trusted intermediate sites."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a quantum internet with end-to-end quantum connections",
+        "unlocks": "distributed quantum computing and networking on top of secure key exchange."
+      }
+    ]
+  }
+}

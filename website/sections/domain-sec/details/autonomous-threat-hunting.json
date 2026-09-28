@@ -1,0 +1,165 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Telemetry collection",
+        "role": "gathers data from endpoints, network devices, cloud services and identity systems.",
+        "parts": [
+          "endpoint detection and response agents",
+          "network sensors",
+          "log forwarders",
+          "cloud API connectors"
+        ]
+      },
+      {
+        "name": "Data pipeline and storage",
+        "role": "normalises, enriches and stores security events so models can query them at speed.",
+        "parts": [
+          "security information and event management (SIEM)",
+          "data lake",
+          "threat intelligence enrichment",
+          "time-series database"
+        ]
+      },
+      {
+        "name": "Detection models",
+        "role": "flag anomalies and known malicious patterns across the telemetry.",
+        "parts": [
+          "supervised classifiers",
+          "unsupervised anomaly detection",
+          "user and entity behaviour analytics",
+          "signature rules"
+        ]
+      },
+      {
+        "name": "Attack simulation engine",
+        "role": "uses reinforcement learning to emulate attacker behaviour and discover exploitable paths.",
+        "parts": [
+          "reinforcement learning agents",
+          "attack graph model",
+          "vulnerability scanner",
+          "simulated network environment"
+        ]
+      },
+      {
+        "name": "Correlation and triage",
+        "role": "fuses alerts, scores risk and builds investigation cases.",
+        "parts": [
+          "alert correlation",
+          "risk scoring",
+          "case management",
+          "MITRE ATT&CK mapping"
+        ]
+      },
+      {
+        "name": "Response orchestration",
+        "role": "carries out containment actions automatically or with approval.",
+        "parts": [
+          "security orchestration, automation and response (SOAR) playbooks",
+          "EDR isolation commands",
+          "firewall and proxy APIs",
+          "identity revocation"
+        ]
+      },
+      {
+        "name": "Analyst interface",
+        "role": "keeps a human in the loop to review, guide and correct the system.",
+        "parts": [
+          "dashboards",
+          "natural-language query tools",
+          "feedback loop for model retraining"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Instrument the environment",
+        "detail": "Deploy endpoint agents, network taps and cloud log connectors to capture events from every layer of the enterprise."
+      },
+      {
+        "title": "Centralise and normalise data",
+        "detail": "Build a pipeline that parses, enriches with threat intelligence and stores events in a SIEM or data lake for fast querying."
+      },
+      {
+        "title": "Establish a behavioural baseline",
+        "detail": "Train unsupervised models on weeks of normal activity so that deviations — unusual logins, data transfers or process chains — stand out."
+      },
+      {
+        "title": "Encode adversary behaviour",
+        "detail": "Map known tactics and techniques (for example MITRE ATT&CK) into a simulated network model that the learning agents can explore."
+      },
+      {
+        "title": "Train reinforcement learning agents",
+        "detail": "Let agents attempt to reach high-value targets in the simulation, rewarding them for finding new attack paths and vulnerabilities."
+      },
+      {
+        "title": "Fuse detection with simulation findings",
+        "detail": "Combine real-time anomaly scores with patterns learned from simulated attacks to produce high-fidelity, context-rich alerts."
+      },
+      {
+        "title": "Connect to response tools",
+        "detail": "Integrate the detection layer with SOAR, EDR and network controls so that validated threats can be contained quickly."
+      },
+      {
+        "title": "Test and tune",
+        "detail": "Run red team / blue team exercises, measure false positives and false negatives, and adjust models and playbooks."
+      },
+      {
+        "title": "Deploy with human oversight",
+        "detail": "Start with AI-assisted triage, expand autonomy as trust grows, and keep analysts able to review and override every automated action."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Comprehensive security telemetry",
+        "status": "exists",
+        "why": "without logs and network flows from across the estate, no AI can spot anomalies."
+      },
+      {
+        "tech": "Machine learning for anomaly detection",
+        "status": "exists",
+        "why": "proven in fraud detection and network security, it provides the core ability to flag unusual behaviour."
+      },
+      {
+        "tech": "Reinforcement learning for cyber operations",
+        "status": "partial",
+        "why": "demonstrated in research and game-like simulations, but not yet robust enough for live production networks."
+      },
+      {
+        "tech": "Automated response tools (SOAR, EDR)",
+        "status": "exists",
+        "why": "they provide the hands to act on findings, turning detection into containment."
+      },
+      {
+        "tech": "Standardised threat intelligence (e.g. MITRE ATT&CK)",
+        "status": "exists",
+        "why": "sharing a common language for adversary behaviour lets learning systems generalise across environments."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted threat hunting: analysts use machine learning to prioritise alerts and surface suspicious activity",
+        "unlocks": "faster triage and reduced alert fatigue."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Autonomous detection and investigation: agents correlate alerts across sources and suggest next steps",
+        "unlocks": "analysts focus on complex cases while routine hunting runs continuously."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Closed-loop response with human approval: validated threats are contained automatically under supervision",
+        "unlocks": "containment in seconds rather than hours."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fully autonomous threat hunting and response: systems proactively seek and neutralise threats at machine speed",
+        "unlocks": "defence that keeps pace with automated attacks."
+      }
+    ]
+  }
+}

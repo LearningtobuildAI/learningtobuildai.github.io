@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Microphone array and front end",
+        "role": "captures your voice and your conversation partner's, and suppresses everything else.",
+        "parts": [
+          "2–4 microphones per earbud",
+          "beamforming and noise suppression",
+          "voice activity detection"
+        ]
+      },
+      {
+        "name": "Speech recognition",
+        "role": "turns the audio stream into text word by word, not waiting for the sentence to finish.",
+        "parts": [
+          "streaming acoustic model",
+          "language model / decoder",
+          "punctuation and speaker separation"
+        ]
+      },
+      {
+        "name": "Translation engine",
+        "role": "converts text in the source language into the target language.",
+        "parts": [
+          "neural machine translation model",
+          "on-device compact model or cloud service",
+          "language packs"
+        ]
+      },
+      {
+        "name": "Speech synthesis",
+        "role": "speaks the translation back in a natural voice.",
+        "parts": [
+          "neural text-to-speech",
+          "optional voice cloning to keep the speaker's timbre"
+        ]
+      },
+      {
+        "name": "Audio and radio link",
+        "role": "moves audio both ways with the least possible delay.",
+        "parts": [
+          "Bluetooth LE Audio with the LC3 codec",
+          "low-latency buffering and jitter control",
+          "phone or cloud relay"
+        ]
+      },
+      {
+        "name": "Compute and power",
+        "role": "runs the models within milliwatts and millimetres.",
+        "parts": [
+          "system-on-chip with a neural accelerator",
+          "battery and thermal management",
+          "phone or cloud offload when plugged in"
+        ]
+      },
+      {
+        "name": "Orchestration app",
+        "role": "decides who is speaking, when a turn ends and which language is which.",
+        "parts": [
+          "turn-taking logic",
+          "language selection",
+          "privacy and data-flow settings"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the acoustics",
+        "detail": "Microphone positions are chosen so beamforming can point at the wearer's mouth while rejecting wind and street noise."
+      },
+      {
+        "title": "Train the recogniser",
+        "detail": "Tens of thousands of hours of transcribed speech, including accents, code-switching and noisy rooms, train a model that emits words with a fraction of a second of context."
+      },
+      {
+        "title": "Train the translator",
+        "detail": "Parallel text in hundreds of language pairs trains a translation model; smaller distilled versions are prepared for on-device use."
+      },
+      {
+        "title": "Build the voice",
+        "detail": "A neural synthesiser is trained to produce intelligible speech quickly, ideally preserving the original speaker's tone and gender."
+      },
+      {
+        "title": "Squeeze it onto the device",
+        "detail": "Models are quantised and pruned so recognition and translation can run in the earbud or phone without a network round trip."
+      },
+      {
+        "title": "Tune the latency budget",
+        "detail": "Every stage is measured and trimmed; audio is sent in short frames so translation begins before the sentence ends."
+      },
+      {
+        "title": "Integrate radio and audio",
+        "detail": "Low-latency Bluetooth LE Audio is wired to the model pipeline, with buffer sizes balanced against dropouts."
+      },
+      {
+        "title": "Test in the real world",
+        "detail": "Pairs of speakers are recorded in cafés, cars and meetings to tune turn-taking, echo and interruption handling."
+      },
+      {
+        "title": "Ship with cloud fallback",
+        "detail": "Hard language pairs or accents are escalated to a larger cloud model, accepting extra delay for accuracy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Accurate streaming speech recognition",
+        "status": "exists",
+        "why": "without low error rates, translation errors compound and the conversation breaks down."
+      },
+      {
+        "tech": "Neural machine translation",
+        "status": "exists",
+        "why": "it is what converts one language into another fluently, including for pairs with little training data."
+      },
+      {
+        "tech": "On-device neural inference",
+        "status": "exists",
+        "why": "phone and earbud chips must run this within a small battery and thermal budget."
+      },
+      {
+        "tech": "Low-latency wireless audio",
+        "status": "exists",
+        "why": "Bluetooth LE Audio cut the delay that made earlier attempts feel like a walkie-talkie."
+      },
+      {
+        "tech": "Lightweight speech synthesis",
+        "status": "partial",
+        "why": "natural-sounding generated voices still mostly need a device or network with more compute than an earbud has."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "earbuds that translate one speaker at a time, mediated by a phone, with a noticeable lag",
+        "unlocks": "travel and simple service conversations across major languages."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fully on-device, near-simultaneous translation for dozens of languages",
+        "unlocks": "offline use, privacy and lower delay."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-party, multi-language meetings with each listener hearing their own language",
+        "unlocks": "everyday international teamwork."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "translation that carries emotion, humour and timing, with subtitles in lightweight glasses",
+        "unlocks": "conversation that feels natural rather than interpreted."
+      }
+    ]
+  }
+}

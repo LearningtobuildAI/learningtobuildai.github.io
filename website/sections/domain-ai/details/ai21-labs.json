@@ -29,5 +29,161 @@
         "def": "A field of AI concerned with the interaction between computers and human language, enabling machines to understand, interpret, and generate text or speech."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "assembles the trillions of words of text the model learns from.",
+        "parts": [
+          "web crawl",
+          "deduplication and near-duplicate filtering",
+          "quality and safety classifiers",
+          "licence and provenance tracking"
+        ]
+      },
+      {
+        "name": "Tokeniser and embeddings",
+        "role": "converts text into the integer tokens and vectors the network can process.",
+        "parts": [
+          "byte-pair or similar subword tokeniser",
+          "vocabulary",
+          "embedding matrix",
+          "positional encoding"
+        ]
+      },
+      {
+        "name": "Transformer network",
+        "role": "the core stack of layers that predicts the next token.",
+        "parts": [
+          "multi-head self-attention",
+          "feed-forward blocks",
+          "normalisation layers",
+          "residual connections"
+        ]
+      },
+      {
+        "name": "Training cluster",
+        "role": "provides the compute to train a model that may take months.",
+        "parts": [
+          "tens of thousands of accelerators",
+          "high-bandwidth interconnect between them",
+          "parallelism software (data, tensor and pipeline)",
+          "checkpointing and failure recovery"
+        ]
+      },
+      {
+        "name": "Post-training and alignment",
+        "role": "turns a raw next-token predictor into something that follows instructions safely.",
+        "parts": [
+          "instruction-tuning datasets",
+          "human preference comparisons",
+          "reward model or direct preference optimisation",
+          "safety filters and refusal behaviour"
+        ]
+      },
+      {
+        "name": "Serving stack",
+        "role": "runs the trained model for many users at once.",
+        "parts": [
+          "inference engine",
+          "key-value cache",
+          "request batching",
+          "quantisation",
+          "rate limits and guardrails"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble and clean the corpus",
+        "detail": "Text is crawled or licensed, filtered for quality, deduplicated at scale and stripped of personal data before training."
+      },
+      {
+        "title": "Train the tokeniser",
+        "detail": "A subword vocabulary is learned statistically from the corpus so common words become single tokens and rare ones are split."
+      },
+      {
+        "title": "Fix the architecture and scale",
+        "detail": "Engineers choose parameter count, depth, attention variant and context length — trade-offs between capability, cost and latency."
+      },
+      {
+        "title": "Pre-train",
+        "detail": "The model repeatedly predicts the next token across trillions of tokens, adjusting billions of weights over weeks or months on a large accelerator cluster."
+      },
+      {
+        "title": "Supervised fine-tuning",
+        "detail": "Curated question-and-answer pairs teach the model to respond to instructions rather than merely continue text."
+      },
+      {
+        "title": "Preference tuning",
+        "detail": "People rank pairs of answers; a reward model or direct optimisation method then nudges the model toward the preferred style and content."
+      },
+      {
+        "title": "Evaluate and red-team",
+        "detail": "Benchmarks and adversarial testing probe reasoning, factuality, bias and misuse before release."
+      },
+      {
+        "title": "Serve and monitor",
+        "detail": "The model is quantised and deployed behind an API with batching, caching and content filters, then monitored for drift and abuse."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architecture",
+        "status": "exists",
+        "why": "attention lets one model learn from vastly more data than earlier recurrent networks."
+      },
+      {
+        "tech": "Dense accelerator clusters",
+        "status": "exists",
+        "why": "training frontier models needs thousands of chips wired together with very fast links."
+      },
+      {
+        "tech": "Large-scale distributed training software",
+        "status": "exists",
+        "why": "without parallelism and checkpointing, runs of weeks would fail before finishing."
+      },
+      {
+        "tech": "Human preference and annotation data",
+        "status": "exists",
+        "why": "alignment and evaluation depend on large, well-managed pools of human judgements."
+      },
+      {
+        "tech": "Efficient long-context attention",
+        "status": "partial",
+        "why": "attention cost grows quickly with length, limiting how much a model can read at once."
+      },
+      {
+        "tech": "Verifiable reasoning and factuality",
+        "status": "missing",
+        "why": "models still generate confident errors, which limits use in high-stakes work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "API-served frontier models with billions of parameters; vendors such as AI21 Labs ship both dense and hybrid state-space/attention models",
+        "unlocks": "wide commercial use of text generation, summarisation and coding assistance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cheaper long-context and mixture-of-experts designs, plus small distilled models running on devices",
+        "unlocks": "lower cost per query and offline or privacy-preserving use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tool-using agents with memory and retrieval over private data",
+        "unlocks": "automation of multi-step knowledge work under human review."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "training methods that reward verifiable reasoning rather than fluent text",
+        "unlocks": "reliable use in science, engineering and regulated industries — the open problem."
+      }
+    ]
   }
 }

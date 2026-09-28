@@ -35,5 +35,160 @@
         "def": "Procedures and technologies designed to minimize the release of pollutants into the environment, relevant for ensuring safe operation of swarm weeding robots."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Perception",
+        "role": "finds plants and decides which are crops and which are weeds.",
+        "parts": [
+          "RGB and multispectral cameras",
+          "lighting",
+          "edge GPU",
+          "crop/weed classifier"
+        ]
+      },
+      {
+        "name": "Localisation",
+        "role": "knows where the robot is, to centimetres, without a driver.",
+        "parts": [
+          "RTK-GNSS receiver",
+          "inertial measurement unit",
+          "wheel odometry",
+          "row-following vision"
+        ]
+      },
+      {
+        "name": "End effector",
+        "role": "kills the weed — no soil disturbance, no broadcast chemical.",
+        "parts": [
+          "diode or CO2 laser module and steering optics",
+          "or high-voltage electrode that passes current through the plant and root",
+          "or precision spray nozzle",
+          "actuator to aim it"
+        ]
+      },
+      {
+        "name": "Chassis and drive",
+        "role": "a light machine that can work all day without compacting wet soil.",
+        "parts": [
+          "aluminium frame",
+          "electric hub motors",
+          "battery pack",
+          "adjustable track width to straddle rows"
+        ]
+      },
+      {
+        "name": "Autonomy and safety",
+        "role": "plans the route and stops safely around people.",
+        "parts": [
+          "path planner",
+          "obstacle sensors",
+          "emergency stop",
+          "remote supervisor link"
+        ]
+      },
+      {
+        "name": "Fleet coordination",
+        "role": "the 'swarm' layer — divides a field between many small robots.",
+        "parts": [
+          "mesh radio or cellular link",
+          "task allocation software",
+          "base station and charging dock",
+          "fleet dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the image dataset",
+        "detail": "Photograph crops and weeds at many growth stages, in different soils and light, and label each plant by hand."
+      },
+      {
+        "title": "Train the classifier",
+        "detail": "A convolutional neural network learns to segment plants from soil and separate crop from weed, including overlapping leaves."
+      },
+      {
+        "title": "Design the chassis",
+        "detail": "Decide the working width, ground clearance and weight; small and light beats big and heavy because soil compaction is the enemy."
+      },
+      {
+        "title": "Integrate the end effector",
+        "detail": "Fit a laser or electrode on a gimbal so it can be aimed at a single plant within a few centimetres of the crop."
+      },
+      {
+        "title": "Add positioning and safety",
+        "detail": "RTK-GNSS plus vision gives repeatable row following; ultrasonic and bumper sensors plus e-stop make it safe to run near workers."
+      },
+      {
+        "title": "Write the fleet software",
+        "detail": "Each robot reports position and battery state; the base station assigns blocks of the field so robots do not overlap or queue."
+      },
+      {
+        "title": "Field trials",
+        "detail": "Run the machines through full seasons, count weeds killed and crop damage, and retrain the model on failures."
+      },
+      {
+        "title": "Scale the fleet",
+        "detail": "Add charging docks, spare-parts logistics and remote operators so one person supervises several robots."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep-learning plant recognition",
+        "status": "exists",
+        "why": "distinguishing a crop seedling from a similar weed is the core problem, and it is solved well enough for high-value crops."
+      },
+      {
+        "tech": "RTK-GNSS positioning",
+        "status": "exists",
+        "why": "repeating a track to a few centimetres lets a robot cover ground it has already weeded without missing strips."
+      },
+      {
+        "tech": "Compact lasers and power electronics",
+        "status": "exists",
+        "why": "laser weeding machines and electrical weeders are on the market, though mostly tractor-mounted rather than swarm-scale."
+      },
+      {
+        "tech": "Lightweight batteries and efficient drives",
+        "status": "partial",
+        "why": "a small robot has to carry its own energy through a long working day."
+      },
+      {
+        "tech": "Rugged autonomy in unstructured fields",
+        "status": "partial",
+        "why": "mud, dust, wind and uneven ground still break machines that work fine in a test plot."
+      },
+      {
+        "tech": "Affordable per-plant agronomy data",
+        "status": "partial",
+        "why": "knowing the weed species and density before the robot arrives makes targeting far more effective."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercially sold single robots and tractor-mounted units doing laser or electrical weeding in vegetables and organic crops",
+        "unlocks": "herbicide-free weed control where chemicals are banned or costly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fleets of several small robots working one field under a single operator",
+        "unlocks": "coverage rates that compete with a tractor, without soil compaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "true swarm behaviour — robots sharing a live weed map and re-tasking each other",
+        "unlocks": "treating only the patches that need it, cutting energy use per hectare."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "per-plant farming where every seed and weed is known",
+        "unlocks": "a large reduction in herbicide use across broadacre crops, not just high-value ones."
+      }
+    ]
   }
 }

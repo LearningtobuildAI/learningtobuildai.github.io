@@ -32,5 +32,145 @@
         "def": "The medium (liquid or solid) that allows ions to move between the electrodes of an electrochemical cell"
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrodes",
+        "role": "store charge electrostatically in a thin double layer at the carbon surface.",
+        "parts": [
+          "high-surface-area carbon (activated carbon, graphene, carbon nanotubes)",
+          "conductive additive",
+          "binder",
+          "coated metal foil"
+        ]
+      },
+      {
+        "name": "Electrolyte",
+        "role": "supplies the ions that form the double layer; its voltage window sets the cell voltage.",
+        "parts": [
+          "organic solvent with dissolved salt",
+          "ionic liquid",
+          "aqueous electrolyte (for low-voltage cells)"
+        ]
+      },
+      {
+        "name": "Separator",
+        "role": "keeps the two electrodes apart so they cannot short, while letting ions pass.",
+        "parts": [
+          "porous polymer membrane",
+          "paper or ceramic-coated separator"
+        ]
+      },
+      {
+        "name": "Current collectors and packaging",
+        "role": "conduct current out of the cell and seal the electrolyte in.",
+        "parts": [
+          "aluminium foil",
+          "cell case (pouch, prismatic or cylindrical)",
+          "seals and terminals"
+        ]
+      },
+      {
+        "name": "Cell balancing and power electronics",
+        "role": "keep every cell inside its safe voltage and temperature range during very fast charge and discharge.",
+        "parts": [
+          "voltage monitoring",
+          "balancing circuits",
+          "DC-DC converter"
+        ]
+      },
+      {
+        "name": "Module assembly and thermal management",
+        "role": "combine cells into the voltage and energy needed by the application.",
+        "parts": [
+          "series and parallel busbars",
+          "cooling plates or air channels",
+          "structural housing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the carbon",
+        "detail": "Produce high-surface-area carbon from a precursor — for example activated carbon from coconut shell, reduced graphene oxide, or grown carbon nanotubes. Surface area per gram determines how much charge the electrode can hold."
+      },
+      {
+        "title": "Mix and coat",
+        "detail": "Blend the active carbon with a conductive additive and a binder into a slurry, then coat it onto metal foil."
+      },
+      {
+        "title": "Dry and calender",
+        "detail": "Evaporate the solvent and compress the coating to a uniform thickness and density."
+      },
+      {
+        "title": "Assemble cells",
+        "detail": "Cut the electrodes, stack or wind them with a separator between them, and insert the stack into a cell case."
+      },
+      {
+        "title": "Fill electrolyte",
+        "detail": "Seal the case after filling it with electrolyte under dry conditions, so no water or air contaminates the cell."
+      },
+      {
+        "title": "Formation and test",
+        "detail": "Run repeated charge and discharge cycles to form the double layer, then measure capacitance, internal resistance and leakage."
+      },
+      {
+        "title": "Build modules",
+        "detail": "Connect cells in series and parallel with balancing electronics and cooling, then test the complete module as a system."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-surface-area activated carbon",
+        "status": "exists",
+        "why": "already used in commercial supercapacitors; it provides the surface on which charge is stored."
+      },
+      {
+        "tech": "Graphene and carbon nanotube production at scale",
+        "status": "partial",
+        "why": "these can raise energy density, but consistent quality and low cost are not yet routine."
+      },
+      {
+        "tech": "Wide-voltage electrolytes",
+        "status": "partial",
+        "why": "organic electrolytes are commercial; ionic liquids allow higher voltage but are costly and less conductive."
+      },
+      {
+        "tech": "Power electronics for cell balancing",
+        "status": "exists",
+        "why": "each cell operates at only a few volts, so many cells must be balanced in series for useful voltages."
+      },
+      {
+        "tech": "Predictive models of self-discharge and aging",
+        "status": "partial",
+        "why": "grid and transport users need to know how performance fades over years, not just over cycles."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "supercapacitors in regenerative braking for buses, trams and cranes, and in short-term grid frequency support",
+        "unlocks": "very high power and million-cycle life, but only small amounts of energy per unit weight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid packs that pair supercapacitors with batteries in vehicles and on the grid",
+        "unlocks": "peak power is shaved off the battery, extending its life and allowing faster bursts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "graphene-enhanced electrodes that raise energy density without losing cycle life",
+        "unlocks": "smaller, lighter modules and faster charging for transport and industrial equipment."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "solid-state or ionic-liquid electrolytes that push voltage and temperature limits higher",
+        "unlocks": "grid-scale power buffering and inertia services that help stabilise renewable-heavy grids."
+      }
+    ]
   }
 }

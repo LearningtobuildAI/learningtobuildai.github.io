@@ -33,5 +33,148 @@
         "def": "The branch of medicine that deals with the skin, its diseases and surgical operations for its correction or improvement."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Capture hardware",
+        "role": "takes repeatable images of the face rather than a casual selfie.",
+        "parts": [
+          "smartphone camera or dedicated scanner",
+          "controlled LED lighting",
+          "cross-polarised filter to cut surface glare",
+          "sometimes multispectral or 3D sensors"
+        ]
+      },
+      {
+        "name": "Image-analysis models",
+        "role": "turn pixels into scores for wrinkles, redness, pigmentation, pores and blemishes.",
+        "parts": [
+          "face detection and landmark alignment",
+          "segmentation of skin regions",
+          "convolutional or transformer classifiers",
+          "severity regression against dermatologist scales"
+        ]
+      },
+      {
+        "name": "Context and questionnaire layer",
+        "role": "adds what a camera cannot see.",
+        "parts": [
+          "skin-type and sensitivity questions",
+          "current routine and medication inputs",
+          "local UV, humidity and pollution data"
+        ]
+      },
+      {
+        "name": "Recommendation engine",
+        "role": "maps concerns onto ingredients and a routine.",
+        "parts": [
+          "concern-to-ingredient knowledge base",
+          "irritation and interaction rules",
+          "product matching or formulation recipe"
+        ]
+      },
+      {
+        "name": "Formulation and blending hardware",
+        "role": "makes or dispenses the personalised product.",
+        "parts": [
+          "base serum or cream",
+          "concentrated active cartridges",
+          "micro-dosing pumps",
+          "single-use pods or mixers"
+        ]
+      },
+      {
+        "name": "Feedback and safety loop",
+        "role": "checks whether the product is stable, tolerable and working.",
+        "parts": [
+          "stability and preservative testing",
+          "re-imaging after weeks of use",
+          "adverse-reaction reporting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build an image dataset",
+        "detail": "Collect thousands of face photographs under standardised lighting and annotate them for each skin attribute."
+      },
+      {
+        "title": "Grade them to a clinical scale",
+        "detail": "Trained assessors or dermatologists score severity so the model learns against a consistent reference, not opinion."
+      },
+      {
+        "title": "Train the scoring models",
+        "detail": "Neural networks learn to predict those grades from raw images; the hard part is performance across skin tones, ages and camera types."
+      },
+      {
+        "title": "Define the ingredient rules",
+        "detail": "For each concern, list actives with evidence (retinoids, niacinamide, vitamin C, hydroxy acids, salicylic acid) plus concentration limits and known conflicts — for example a retinoid and a strong acid used the same night."
+      },
+      {
+        "title": "Design a stable formulation platform",
+        "detail": "A base formula must accept many different actives without separating, losing potency or growing microbes; pH and packaging compatibility are the constraints."
+      },
+      {
+        "title": "Build the dispensing hardware",
+        "detail": "Cartridges of concentrated actives and a calibrated pump blend them into the base, or a single-use pod holds one recipe, so each batch is fresh and correctly dosed."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The app schedules re-imaging after several weeks, compares results and adjusts the recipe — while flagging irritation for a human to review."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Smartphone cameras with controlled lighting",
+        "status": "exists",
+        "why": "without repeatable lighting and framing, week-to-week image comparisons are meaningless."
+      },
+      {
+        "tech": "Labelled, diverse clinical skin datasets",
+        "status": "partial",
+        "why": "public datasets are small and skewed towards lighter skin, so models can score darker tones poorly."
+      },
+      {
+        "tech": "Computer-vision models",
+        "status": "exists",
+        "why": "face alignment, segmentation and severity regression are mature enough to run on a phone."
+      },
+      {
+        "tech": "Cosmetic formulation science",
+        "status": "exists",
+        "why": "actives must stay stable, soluble and preservative-protected in whatever combination the algorithm chooses."
+      },
+      {
+        "tech": "Regulation for on-demand cosmetics",
+        "status": "missing",
+        "why": "most rules assume one fixed, labelled formula per product, which a per-user recipe breaks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "apps that scan the face and recommend off-the-shelf products",
+        "unlocks": "cheap, wide access to basic skin guidance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "at-home devices that blend a fresh serum from cartridges",
+        "unlocks": "genuinely per-person formulas rather than product selection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "outcome-tracked routines that adjust from re-imaging",
+        "unlocks": "evidence that the personalisation actually improves skin, not just the experience."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integration with dermatology and telehealth, with some functions regulated as diagnostics",
+        "unlocks": "earlier detection of conditions such as melanoma or rosacea, where accuracy must be clinically proven."
+      }
+    ]
   }
 }

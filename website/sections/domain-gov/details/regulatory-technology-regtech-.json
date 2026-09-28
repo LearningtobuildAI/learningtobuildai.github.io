@@ -38,5 +38,168 @@
         "def": "A field of study within AI focused on enabling computers to understand, interpret, and generate human language. NLP is used in various applications, including chatbots, sentiment analysis, and document classification."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data ingestion and normalisation",
+        "role": "pulls transaction, trade, customer and communication records out of core systems and turns them into one common format.",
+        "parts": [
+          "batch and streaming connectors",
+          "message parsers (payments formats)",
+          "schema mapping",
+          "deduplication"
+        ]
+      },
+      {
+        "name": "Customer and entity master",
+        "role": "knows who each party really is, so obligations can be attached to the right person or company.",
+        "parts": [
+          "identity records",
+          "ownership and control graph",
+          "sanctions and watchlist lists",
+          "periodic refresh jobs"
+        ]
+      },
+      {
+        "name": "Rules and policy engine",
+        "role": "expresses legal obligations as machine-checkable logic that can be versioned and tested.",
+        "parts": [
+          "rule authoring tool",
+          "version control",
+          "back-testing harness",
+          "threshold and limit tables"
+        ]
+      },
+      {
+        "name": "Detection models",
+        "role": "flag transactions, trades or behaviours that look unusual or prohibited.",
+        "parts": [
+          "supervised classifiers trained on past cases",
+          "unsupervised anomaly detection",
+          "name-matching and screening",
+          "model registry"
+        ]
+      },
+      {
+        "name": "Case management and workflow",
+        "role": "turns an alert into an investigated, decided and filed case with human sign-off.",
+        "parts": [
+          "alert queue and triage",
+          "investigation workspace",
+          "escalation and approval workflow",
+          "regulatory filing forms"
+        ]
+      },
+      {
+        "name": "Evidence and audit trail",
+        "role": "proves what the system saw, what it decided and why, years later.",
+        "parts": [
+          "append-only log with hash chaining",
+          "timestamps and input snapshots",
+          "decision and model-version records",
+          "retention rules"
+        ]
+      },
+      {
+        "name": "Reporting and submission",
+        "role": "produces the required reports and sends them to the regulator in the required format.",
+        "parts": [
+          "report generation (structured data formats)",
+          "validation against regulator schemas",
+          "submission channel and acknowledgements"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the obligations",
+        "detail": "Lawyers and compliance staff turn each applicable regulation into a numbered requirement, with the data and evidence each one needs."
+      },
+      {
+        "title": "Define the canonical data model",
+        "detail": "Agree one internal schema for customers, accounts, transactions and documents, so rules and models do not depend on any single source system."
+      },
+      {
+        "title": "Build the pipelines",
+        "detail": "Write connectors to each source system, land the data, reconcile counts against the source, and monitor for gaps and late arrivals."
+      },
+      {
+        "title": "Codify the rules",
+        "detail": "Encode requirements as explicit rules with thresholds, then back-test them against several years of historical data to check what they would have caught."
+      },
+      {
+        "title": "Train and tune the models",
+        "detail": "Label past alerts and cases, train screening and anomaly models, and measure precision and recall; treat false positives as a real cost because analysts must clear every one."
+      },
+      {
+        "title": "Build the case workflow",
+        "detail": "Design the alert-to-decision path: triage, investigation, evidence attachment, supervisor approval and generation of the regulatory filing."
+      },
+      {
+        "title": "Instrument the audit trail",
+        "detail": "Log every input, rule version, model version, score and human action to append-only storage so any decision can be reconstructed."
+      },
+      {
+        "title": "Wire up reporting",
+        "detail": "Generate reports, validate them against the regulator's schema, submit them, and handle rejections and corrections."
+      },
+      {
+        "title": "Govern and monitor continuously",
+        "detail": "Watch for model drift and data quality decay, run periodic independent validation, and update rules when regulations change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cloud data platforms and stream processing",
+        "status": "exists",
+        "why": "compliance runs over millions of events a day and needs storage and compute that scale."
+      },
+      {
+        "tech": "Machine learning and name matching",
+        "status": "exists",
+        "why": "screening and anomaly detection only work if translation, transliteration and fuzzy matching handle messy real-world records."
+      },
+      {
+        "tech": "Standard regulatory data formats",
+        "status": "exists",
+        "why": "structured reporting schemas and financial messaging standards let reports and transactions be exchanged without hand-built mappings."
+      },
+      {
+        "tech": "Explainable AI techniques",
+        "status": "partial",
+        "why": "regulators and courts require reasons for decisions; post-hoc explanation of complex models is still imperfect."
+      },
+      {
+        "tech": "Verified digital identity",
+        "status": "partial",
+        "why": "remote onboarding needs trustworthy identity proofing, which varies widely by country."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rule-driven monitoring with machine learning to rank and reduce false positives",
+        "unlocks": "lower compliance cost per transaction and faster investigations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared reporting utilities that many firms submit through",
+        "unlocks": "the same data reported once in one format rather than re-entered per jurisdiction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "machine-readable rulebooks published by regulators, replacing prose",
+        "unlocks": "firms test compliance automatically against the exact current rule text."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "continuous supervision, where regulators receive near-real-time data streams",
+        "unlocks": "problems detected as they emerge instead of years later in a review."
+      }
+    ]
   }
 }

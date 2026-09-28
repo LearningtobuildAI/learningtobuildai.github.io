@@ -34,5 +34,155 @@
         "def": "A method of growing crops in vertically stacked layers, often using controlled-environment agriculture techniques to maximize efficiency and yield per square meter."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sensor suite",
+        "role": "Detects plant stress and nutrient status non-invasively.",
+        "parts": [
+          "hyperspectral cameras",
+          "multispectral and RGB cameras",
+          "chlorophyll fluorescence sensors",
+          "environmental sensors (temperature, humidity, light)"
+        ]
+      },
+      {
+        "name": "AI analysis engine",
+        "role": "Turns sensor data into a diagnosis of which nutrient is deficient or in excess.",
+        "parts": [
+          "trained machine-learning models",
+          "image processing pipelines",
+          "reference spectral libraries",
+          "edge or cloud compute"
+        ]
+      },
+      {
+        "name": "Nutrient mixing and dosing",
+        "role": "Prepares a precisely tailored nutrient solution on demand.",
+        "parts": [
+          "stock tanks for individual nutrients",
+          "precision peristaltic or diaphragm pumps",
+          "inline EC and pH probes",
+          "mixing chamber"
+        ]
+      },
+      {
+        "name": "Irrigation and delivery",
+        "role": "Delivers the solution to the root zone in a controlled manner.",
+        "parts": [
+          "drip or micro-sprinkler emitters",
+          "NFT channels or aeroponic misters",
+          "return and recirculation lines",
+          "filtration"
+        ]
+      },
+      {
+        "name": "Control and feedback loop",
+        "role": "Closes the loop: compares actual plant response with the target and adjusts dosing.",
+        "parts": [
+          "industrial controller or PLC",
+          "software with control algorithms",
+          "user interface",
+          "data logging"
+        ]
+      },
+      {
+        "name": "Data and model pipeline",
+        "role": "Continuously improves the system by learning from outcomes.",
+        "parts": [
+          "historical growth and yield database",
+          "model retraining infrastructure",
+          "cloud storage",
+          "API for integration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the crop and growing system",
+        "detail": "Choose the crop and hydroponic method (NFT, drip, aeroponics) and establish a baseline nutrient recipe for that crop in the target environment."
+      },
+      {
+        "title": "Install sensors",
+        "detail": "Mount hyperspectral and other cameras to view plants without obstruction, and place environmental sensors and EC/pH probes in the nutrient solution and root zone."
+      },
+      {
+        "title": "Collect and label training data",
+        "detail": "Grow plants under varied nutrient conditions, capture images at intervals, and record actual deficiencies through lab tissue analysis to create a labeled dataset."
+      },
+      {
+        "title": "Train the AI model",
+        "detail": "Use machine learning to correlate spectral signatures and image features with specific nutrient deficiencies. Validate on held-out data and iterate until accuracy is sufficient."
+      },
+      {
+        "title": "Build the dosing system",
+        "detail": "Assemble stock tanks, pumps, and a mixing manifold. Calibrate each pump to deliver precise volumes of concentrated nutrients into the irrigation stream."
+      },
+      {
+        "title": "Integrate control software",
+        "detail": "Write software that reads sensor data, runs the model, and sends commands to pumps. Implement feedback rules: if a deficiency is detected, increase that nutrient; if excess, reduce it."
+      },
+      {
+        "title": "Test and tune the closed loop",
+        "detail": "Run trials where the system adjusts nutrients automatically. Compare plant health, growth rate, and yield against manual control, then tune thresholds and model parameters."
+      },
+      {
+        "title": "Deploy at scale",
+        "detail": "Replicate across growing zones, ensure sensor calibration schedules and fail-safes, and provide a user interface for oversight and manual override."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Hyperspectral imaging for plant phenotyping",
+        "status": "partial",
+        "why": "demonstrated in research and some commercial systems, but cost and data processing remain barriers to widespread use."
+      },
+      {
+        "tech": "Machine learning for image-based plant stress detection",
+        "status": "partial",
+        "why": "models exist for major nutrients in common crops, but accuracy varies with crop, growth stage, and environment."
+      },
+      {
+        "tech": "Precision fertigation systems",
+        "status": "exists",
+        "why": "computer-controlled dosing of individual nutrients is standard in commercial greenhouses and vertical farms."
+      },
+      {
+        "tech": "Controlled environment agriculture",
+        "status": "exists",
+        "why": "provides the stable, soilless setting where nutrient delivery can be tightly controlled and sensed."
+      },
+      {
+        "tech": "Low-cost, high-performance computing",
+        "status": "exists",
+        "why": "needed to run vision models in real time at the edge, close to the crop."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Closed-loop systems in high-value crops (leafy greens, herbs) in vertical farms",
+        "unlocks": "reduced fertilizer waste and more consistent yields."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Expansion to fruiting crops (tomatoes, strawberries) and broader sensor fusion",
+        "unlocks": "wider applicability and better resource efficiency."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Autonomous greenhouse management integrating nutrient delivery with climate and lighting",
+        "unlocks": "fully automated production with minimal human intervention."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Open-field precision agriculture using drones and satellites",
+        "unlocks": "sustainable farming at landscape scale."
+      }
+    ]
   }
 }

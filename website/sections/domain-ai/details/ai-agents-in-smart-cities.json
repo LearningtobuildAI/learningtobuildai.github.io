@@ -43,5 +43,154 @@
         "def": "Extremely large data sets that may be analyzed computationally to reveal patterns, trends, and associations, especially relating to human behavior and interactions."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is actually doing, in real time.",
+        "parts": [
+          "traffic cameras and radar",
+          "inductive loop detectors",
+          "smart electricity and water meters",
+          "air-quality and weather sensors",
+          "GPS traces from buses and delivery fleets"
+        ]
+      },
+      {
+        "name": "Communications and data platform",
+        "role": "moves the data and makes it usable.",
+        "parts": [
+          "fibre and cellular links",
+          "streaming data pipelines",
+          "time-series database",
+          "open data APIs"
+        ]
+      },
+      {
+        "name": "Digital twin",
+        "role": "a calibrated simulation of the network where control policies can be tested without risking real streets.",
+        "parts": [
+          "road or grid network model",
+          "demand and flow calibration",
+          "scenario runner"
+        ]
+      },
+      {
+        "name": "Agent / decision layer",
+        "role": "chooses actions — signal timings, charging schedules, setpoints — that optimise a chosen objective.",
+        "parts": [
+          "reinforcement-learning or optimisation policy",
+          "forecasting models",
+          "constraint and safety rules"
+        ]
+      },
+      {
+        "name": "Actuation layer",
+        "role": "turns decisions into physical changes.",
+        "parts": [
+          "traffic signal controllers",
+          "transit priority beacons",
+          "building management systems",
+          "utility demand-response signals",
+          "EV charge-point controllers"
+        ]
+      },
+      {
+        "name": "Human oversight",
+        "role": "operators who watch, override and stay accountable.",
+        "parts": [
+          "control-room dashboards",
+          "override and kill switches",
+          "logging and audit trail"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the objective",
+        "detail": "Decide what 'better' means — people moved per hour, energy used, emissions, wait times — because the agent optimises exactly what you ask for."
+      },
+      {
+        "title": "Inventory and instrument",
+        "detail": "Map every junction, meter and building in scope, then install or connect sensors to get live data."
+      },
+      {
+        "title": "Build and calibrate the digital twin",
+        "detail": "Construct a model of the network and tune it until its simulated flows match measured ones."
+      },
+      {
+        "title": "Train the policy",
+        "detail": "The agent learns control strategies in simulation, where millions of bad decisions cost nothing."
+      },
+      {
+        "title": "Run shadow mode",
+        "detail": "The agent makes predictions alongside the live system but humans still act; compare its choices with theirs."
+      },
+      {
+        "title": "Close the loop on a bounded area",
+        "detail": "Give the agent real authority over one corridor or district, with hard limits and a human override."
+      },
+      {
+        "title": "Coordinate across domains",
+        "detail": "Link traffic, transit, buildings and the grid so actions don't fight each other — a bus priority that jams cars helps nobody."
+      },
+      {
+        "title": "Monitor, audit and retrain",
+        "detail": "Track performance drift, privacy compliance and failure modes, and refresh the models as the city changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dense urban sensor networks and connectivity",
+        "status": "exists",
+        "why": "an agent is blind without continuous data from the streets it controls."
+      },
+      {
+        "tech": "Reinforcement learning and large-scale optimisation",
+        "status": "exists",
+        "why": "the methods exist and work in simulation; the difficulty is transferring them to messy reality."
+      },
+      {
+        "tech": "Calibrated digital twins of city networks",
+        "status": "partial",
+        "why": "some cities and utilities have them; most do not, and uncalibrated models give dangerous advice."
+      },
+      {
+        "tech": "Open, standardised control interfaces",
+        "status": "partial",
+        "why": "many signal controllers and building systems are closed, so an agent cannot actually act."
+      },
+      {
+        "tech": "Privacy-preserving sensing",
+        "status": "partial",
+        "why": "cameras and mobility traces are sensitive; on-device processing and anonymisation are needed for public consent."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "adaptive signal control on busy corridors and automated demand response on electricity grids",
+        "unlocks": "measurable cuts in delay and peak demand in the districts that have deployed them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "district-scale agents coordinating traffic, transit priority and EV charging",
+        "unlocks": "smoother journeys and cheaper grid operation, with the agent acting on vehicles and chargers as well as signals."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cross-domain city agents linking mobility, energy, water and waste",
+        "unlocks": "system-level savings that no single department could achieve alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "supervised city-scale autonomy",
+        "unlocks": "continuous optimisation of urban infrastructure — provided accountability, privacy and failure handling are solved first."
+      }
+    ]
   }
 }

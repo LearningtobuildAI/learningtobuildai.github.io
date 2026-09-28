@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Infrared optics",
+        "role": "focuses long-wave infrared radiation (8–14 µm) onto the detector.",
+        "parts": [
+          "germanium or chalcogenide lens elements",
+          "anti-reflective coatings",
+          "lens barrel",
+          "focus mechanism"
+        ]
+      },
+      {
+        "name": "Detector array",
+        "role": "converts infrared radiation into electrical signals using an uncooled microbolometer.",
+        "parts": [
+          "vanadium oxide or amorphous silicon pixels",
+          "suspended microbridges",
+          "readout integrated circuit (ROIC)",
+          "vacuum package",
+          "thermoelectric stabiliser"
+        ]
+      },
+      {
+        "name": "Signal processing and electronics",
+        "role": "reads out each pixel, applies calibration, and builds a thermal image.",
+        "parts": [
+          "microcontroller or FPGA",
+          "memory",
+          "non-uniformity correction algorithms",
+          "calibration data"
+        ]
+      },
+      {
+        "name": "Shutter and calibration",
+        "role": "provides a uniform temperature reference for offset correction.",
+        "parts": [
+          "mechanical shutter",
+          "actuator",
+          "temperature sensor"
+        ]
+      },
+      {
+        "name": "Display and user interface",
+        "role": "shows the thermal image and allows control of settings.",
+        "parts": [
+          "LCD or OLED screen",
+          "buttons or touchscreen",
+          "menu system",
+          "image storage"
+        ]
+      },
+      {
+        "name": "Power and housing",
+        "role": "powers the camera and protects it in the field.",
+        "parts": [
+          "rechargeable lithium-ion battery",
+          "power management circuit",
+          "rugged casing",
+          "tripod mount"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the optical system",
+        "detail": "Choose a lens material that transmits long-wave infrared (germanium, zinc selenide, or chalcogenide glass). Compute lens shapes and spacing to focus 8–14 µm radiation onto the detector."
+      },
+      {
+        "title": "Fabricate the lens",
+        "detail": "For germanium, use single-point diamond turning; for chalcogenide glass, use precision moulding. Apply anti-reflective coatings to reduce reflection losses at each surface."
+      },
+      {
+        "title": "Make the microbolometer wafer",
+        "detail": "Deposit a thin film of vanadium oxide or amorphous silicon on a silicon wafer. Use micromachining to create suspended pixels (microbridges) that absorb infrared and heat up. Pixel pitch is typically 12–17 µm."
+      },
+      {
+        "title": "Package the detector",
+        "detail": "Bond the detector wafer to a readout integrated circuit that measures each pixel's resistance. Seal it in a vacuum package to reduce heat loss. Add a thermoelectric stabiliser to hold a constant operating temperature."
+      },
+      {
+        "title": "Assemble electronics",
+        "detail": "Connect the detector to a processing board with a microcontroller or FPGA. Add memory, display, buttons, and battery. Write firmware to read the ROIC, apply calibration, and render images."
+      },
+      {
+        "title": "Calibrate the camera",
+        "detail": "Place the camera in front of blackbody sources at known temperatures (for example 20 °C and 50 °C). Record each pixel's response and compute calibration coefficients. Program non-uniformity correction."
+      },
+      {
+        "title": "Final assembly and test",
+        "detail": "Mount the lens, align it to the detector, install the shutter mechanism, and seal the housing. Test focus, temperature accuracy, and image quality."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Microbolometer detector technology",
+        "status": "exists",
+        "why": "uncooled thermal detectors work at room temperature, making handheld cameras possible."
+      },
+      {
+        "tech": "Infrared-transparent lens materials",
+        "status": "exists",
+        "why": "germanium and chalcogenide glasses transmit long-wave infrared and can be shaped into lenses."
+      },
+      {
+        "tech": "Vacuum packaging and micromachining",
+        "status": "exists",
+        "why": "pixels must be thermally isolated from their surroundings to sense small temperature changes."
+      },
+      {
+        "tech": "Low-power microelectronics",
+        "status": "exists",
+        "why": "handheld devices need processing, display, and battery life in a small package."
+      },
+      {
+        "tech": "Blackbody calibration sources",
+        "status": "exists",
+        "why": "accurate temperature measurement requires reference sources at known temperatures."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "handheld cameras with resolutions from about 160×120 to 640×480 pixels",
+        "unlocks": "routine building and electrical inspection for leaks and hot spots."
+      },
+      {
+        "stage": "Next",
+        "milestone": "smaller pixels and higher-resolution detectors at lower cost",
+        "unlocks": "wider use in maintenance, firefighting, and medical screening."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration into smartphones and drones with on-device AI",
+        "unlocks": "automatic fault detection and aerial thermal surveys without extra hardware."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "multispectral fusion with visible-light cameras and 3D thermal mapping",
+        "unlocks": "automated building audits and real-time structural analysis."
+      }
+    ]
+  }
+}

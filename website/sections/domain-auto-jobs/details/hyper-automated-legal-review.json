@@ -34,5 +34,149 @@
         "def": "Retrieval-Augmented Generation, an approach that combines the strengths of retrieval and generative models to improve the accuracy and relevance of generated text."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Document ingestion and parsing",
+        "role": "turns PDFs, scans, and emails into structured machine-readable text.",
+        "parts": [
+          "optical character recognition",
+          "layout analysis",
+          "document segmentation"
+        ]
+      },
+      {
+        "name": "Language model core",
+        "role": "understands legal language, extracts clauses and entities, and links them.",
+        "parts": [
+          "fine-tuned transformer models",
+          "tokenizer",
+          "embeddings"
+        ]
+      },
+      {
+        "name": "Knowledge retrieval",
+        "role": "fetches relevant statutes, case law, and precedent to ground the analysis.",
+        "parts": [
+          "vector database",
+          "retriever",
+          "legal corpus index"
+        ]
+      },
+      {
+        "name": "Risk and anomaly detection",
+        "role": "flags contradictions, missing clauses, and risky language.",
+        "parts": [
+          "rule engine",
+          "anomaly detection models",
+          "scoring algorithms"
+        ]
+      },
+      {
+        "name": "Human review interface",
+        "role": "presents findings to lawyers for verification and correction.",
+        "parts": [
+          "dashboard",
+          "annotation tools",
+          "audit trail"
+        ]
+      },
+      {
+        "name": "Integration and orchestration",
+        "role": "connects to document management, email, and workflow systems.",
+        "parts": [
+          "APIs",
+          "workflow engine",
+          "access control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble a legal corpus",
+        "detail": "Collect contracts, statutes, case law, and regulatory texts, together with expert annotations."
+      },
+      {
+        "title": "Preprocess and label data",
+        "detail": "Clean, structure, and annotate documents for tasks such as clause identification and risk labelling."
+      },
+      {
+        "title": "Fine-tune language models",
+        "detail": "Train transformer-based models on the legal corpus for classification, extraction, and summarisation."
+      },
+      {
+        "title": "Build retrieval pipeline",
+        "detail": "Index legal sources and set up vector search so the system can cite current law."
+      },
+      {
+        "title": "Develop risk detection logic",
+        "detail": "Combine model outputs with rules to flag contradictions, omissions, and unusual terms."
+      },
+      {
+        "title": "Integrate with workflows",
+        "detail": "Connect to document management systems, email, and practice-management software via APIs."
+      },
+      {
+        "title": "Validate and test",
+        "detail": "Run on held-out contracts, measure precision and recall, and check for bias or systematic errors."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Roll out to users, collect feedback, and update models as law and practice evolve."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer-based language models",
+        "status": "exists",
+        "why": "they provide the core ability to parse and understand long legal texts."
+      },
+      {
+        "tech": "Large annotated legal corpora",
+        "status": "partial",
+        "why": "high-quality, labelled legal data is scarce and often proprietary or confidential."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "partial",
+        "why": "grounding answers in retrieved sources reduces hallucination and keeps up with changing law."
+      },
+      {
+        "tech": "Cloud computing",
+        "status": "exists",
+        "why": "training and serving large models require scalable compute and storage."
+      },
+      {
+        "tech": "Data privacy and security",
+        "status": "partial",
+        "why": "legal documents are sensitive, and compliance with privilege and data-protection rules is demanding."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI assists lawyers by extracting clauses and flagging issues, with human review",
+        "unlocks": "faster due diligence and contract review on standard documents."
+      },
+      {
+        "stage": "Next",
+        "milestone": "models that draft and negotiate routine contracts with minimal supervision",
+        "unlocks": "lower-cost legal services for high-volume, low-complexity matters."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with court and regulatory databases for real-time compliance checks",
+        "unlocks": "continuous monitoring instead of periodic manual audits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous legal agents handling routine matters end-to-end, with human oversight for exceptions",
+        "unlocks": "widely accessible, always-on legal review for businesses and individuals."
+      }
+    ]
   }
 }

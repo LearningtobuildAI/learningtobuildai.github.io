@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Codec (encoder/decoder)",
+        "role": "translates binary files into DNA base sequences and back again.",
+        "parts": [
+          "bit-to-base mapping rules",
+          "error-correcting codes to survive lost or misread bases",
+          "index primers that label and locate each file"
+        ]
+      },
+      {
+        "name": "Synthesis (the writer)",
+        "role": "chemically builds each strand base by base in a chosen order.",
+        "parts": [
+          "array-based phosphoramidite synthesis",
+          "or enzymatic synthesis using a template-independent polymerase",
+          "microfluidic or chip-based reaction wells"
+        ]
+      },
+      {
+        "name": "Packaging and storage",
+        "role": "keeps the DNA intact for decades without refrigeration.",
+        "parts": [
+          "drying or precipitation",
+          "silica or polymer encapsulation",
+          "sealed vials or cartridges"
+        ]
+      },
+      {
+        "name": "Random-access retrieval",
+        "role": "pulls out one file without sequencing the whole archive.",
+        "parts": [
+          "specific primer pairs",
+          "polymerase chain reaction amplification",
+          "microfluidic selection"
+        ]
+      },
+      {
+        "name": "Sequencing (the reader)",
+        "role": "reads the base order back out of the retrieved strands.",
+        "parts": [
+          "sequencing-by-synthesis instruments",
+          "nanopore sequencers",
+          "base-calling software"
+        ]
+      },
+      {
+        "name": "Decoding pipeline",
+        "role": "clusters reads, corrects errors and reconstructs the original file byte-for-byte.",
+        "parts": [
+          "read alignment",
+          "consensus and error correction",
+          "file reassembly and checksum verification"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Encode the file",
+        "detail": "The binary file is converted to a base sequence using a codec that spreads information across many short strands and adds error-correcting redundancy."
+      },
+      {
+        "title": "Design the strands",
+        "detail": "Sequences are constrained to avoid long runs of one base and unbalanced GC content, and each strand gets a unique primer address at both ends."
+      },
+      {
+        "title": "Synthesise the DNA",
+        "detail": "An array synthesises millions of distinct short strands in parallel, adding one nucleotide at a time in the programmed order."
+      },
+      {
+        "title": "Pool and package",
+        "detail": "Strands are combined, dried or encapsulated, and stored at room temperature — no power, no cooling."
+      },
+      {
+        "title": "Archive and index",
+        "detail": "Metadata records what each pool contains and which primers retrieve it."
+      },
+      {
+        "title": "Retrieve a file",
+        "detail": "A primer pair matching the wanted file is added, and PCR copies out only those strands."
+      },
+      {
+        "title": "Sequence the strands",
+        "detail": "The retrieved DNA is read by a sequencer, producing many noisy reads of each strand."
+      },
+      {
+        "title": "Decode and verify",
+        "detail": "Software groups the reads, corrects errors, and rebuilds the file, checking it matches the original exactly."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-cost, high-fidelity DNA synthesis",
+        "status": "partial",
+        "why": "synthesis is the dominant cost and error source; writing a large archive is still far too expensive."
+      },
+      {
+        "tech": "High-throughput DNA sequencing",
+        "status": "exists",
+        "why": "reading is already cheap relative to writing, but still too slow for routine archive access."
+      },
+      {
+        "tech": "Strong error-correcting codes for DNA channels",
+        "status": "exists",
+        "why": "DNA loses and misreads bases, so coding theory must recover the file from damaged copies."
+      },
+      {
+        "tech": "Enzymatic synthesis on templates",
+        "status": "partial",
+        "why": "it could write much longer strands far more cheaply than chemical synthesis, but is not yet reliable at scale."
+      },
+      {
+        "tech": "Long-term DNA preservation methods",
+        "status": "partial",
+        "why": "encapsulation must keep strands readable for decades in ordinary conditions."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "kilobyte- to megabyte-scale demonstrations recovering files error-free",
+        "unlocks": "proof that encoding, synthesis, storage, retrieval and decoding can work end to end."
+      },
+      {
+        "stage": "Next",
+        "milestone": "enzymatic synthesis and cheaper array writing",
+        "unlocks": "cost per bit falling toward something an archive service could charge for."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated robotic write-read-archive systems for niche cold data",
+        "unlocks": "first real users for data that must sit untouched for decades."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "petabyte-scale DNA archives competing with tape and optical media",
+        "unlocks": "century-scale storage in a room-sized footprint, with no power to keep the data alive."
+      }
+    ]
+  }
+}

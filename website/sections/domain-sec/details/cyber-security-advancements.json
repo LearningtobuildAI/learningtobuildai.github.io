@@ -43,5 +43,169 @@
         "def": "The process of identifying potential security breaches or malicious activities within a network or system before they can cause harm."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Telemetry and logging",
+        "role": "gives the defender a record of what every endpoint, network and cloud account is doing.",
+        "parts": [
+          "endpoint agents",
+          "network flow records",
+          "cloud audit logs",
+          "identity and sign-in logs"
+        ]
+      },
+      {
+        "name": "Detection engine",
+        "role": "decides which of millions of daily events look like an attack.",
+        "parts": [
+          "signature and rule matching",
+          "machine-learning anomaly models",
+          "behavioural baselines per user and host",
+          "threat-intelligence matching"
+        ]
+      },
+      {
+        "name": "Correlation platform",
+        "role": "stores events centrally and links weak signals into a single incident story.",
+        "parts": [
+          "log store and search index",
+          "correlation rules",
+          "alert queue",
+          "case management"
+        ]
+      },
+      {
+        "name": "Automated response",
+        "role": "acts on a confirmed incident without waiting for an analyst.",
+        "parts": [
+          "playbook engine",
+          "API connectors to firewalls, identity and cloud",
+          "host isolation",
+          "credential revocation"
+        ]
+      },
+      {
+        "name": "Identity and access control",
+        "role": "makes stolen passwords far less useful to an attacker.",
+        "parts": [
+          "multi-factor authentication",
+          "hardware security keys",
+          "conditional access policies",
+          "privileged-access management"
+        ]
+      },
+      {
+        "name": "Cryptography and key management",
+        "role": "keeps data unreadable in transit and at rest, and keeps signing keys safe.",
+        "parts": [
+          "TLS for network traffic",
+          "hardware security modules",
+          "disk and database encryption",
+          "key rotation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map what you have",
+        "detail": "Build an asset and data-flow inventory: which systems hold sensitive data, who can reach them, and along which paths. You cannot defend what you have not listed."
+      },
+      {
+        "title": "Instrument everything",
+        "detail": "Deploy endpoint agents, enable cloud audit logging, and mirror network traffic so that authentication, process, file and connection events all reach one place."
+      },
+      {
+        "title": "Centralise and normalise",
+        "detail": "Ship those events into a central store and translate them into a common schema, so a login failure on a laptop and one in a cloud tenant look the same to the analyser."
+      },
+      {
+        "title": "Establish baselines",
+        "detail": "Run for weeks in observation-only mode so models learn what normal looks like for each user, server and service account before anything is flagged."
+      },
+      {
+        "title": "Encode known attacker behaviour",
+        "detail": "Add rules and intelligence feeds for documented techniques — credential dumping, lateral movement, data exfiltration — so the system catches known patterns fast and uses anomaly detection for the rest."
+      },
+      {
+        "title": "Tune for precision",
+        "detail": "Adjust thresholds until analysts can actually work the alert queue; a detector that cries wolf is worse than none, because real alerts get ignored."
+      },
+      {
+        "title": "Automate the safe responses",
+        "detail": "Write playbooks that isolate a host, revoke a session token or block an address automatically, starting with low-risk actions and always keeping a rollback."
+      },
+      {
+        "title": "Test adversarially",
+        "detail": "Red teams attack the live environment while defenders watch, so both the detection rules and the response playbooks are measured against real behaviour rather than assumptions."
+      },
+      {
+        "title": "Operate and retrain",
+        "detail": "Attackers change tactics, so models are retrained and rules rewritten continuously; this is a permanent process, not a project."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale log storage and streaming",
+        "status": "exists",
+        "why": "detection needs months of history and near-real-time ingestion across thousands of machines."
+      },
+      {
+        "tech": "Practical machine learning on tabular and sequence data",
+        "status": "exists",
+        "why": "anomaly and clustering models are what let defenders find novel behaviour that no rule anticipated."
+      },
+      {
+        "tech": "Shared threat-intelligence formats",
+        "status": "exists",
+        "why": "structured indicators and attacker-behaviour descriptions let one organisation's discovery protect others."
+      },
+      {
+        "tech": "Public-key cryptography with trusted implementations",
+        "status": "exists",
+        "why": "authentication, encrypted transport and software signing all rest on it."
+      },
+      {
+        "tech": "Post-quantum cryptography",
+        "status": "partial",
+        "why": "standards for quantum-resistant key exchange and signatures were published in 2024, but rolling them through existing systems takes years."
+      },
+      {
+        "tech": "Confidential computing",
+        "status": "partial",
+        "why": "processing data inside hardware-isolated enclaves shrinks the trust placed in the platform operator, but it is not yet universal."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "AI-assisted triage widely used in security operations centres",
+        "unlocks": "human analysts spending their time on investigation instead of sorting alerts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated containment with human approval and audit trails",
+        "unlocks": "response times measured in seconds rather than hours, which matters because intruders move fast."
+      },
+      {
+        "stage": "Next",
+        "milestone": "zero-trust network and identity architectures",
+        "unlocks": "limiting damage when a single credential or machine is compromised."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "organisation-wide migration to post-quantum cryptography",
+        "unlocks": "protection against an adversary recording encrypted traffic today to decrypt it later."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "verifiable software supply-chain provenance",
+        "unlocks": "catching tampering in build systems before compromised updates reach customers."
+      }
+    ]
   }
 }

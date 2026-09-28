@@ -34,5 +34,150 @@
         "def": "In quantum mechanics, the property of a physical system existing partly in all its theoretically possible quantum states simultaneously; only when measured or observed does such a system exhibit a single outcome, via a random process."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Transmitter",
+        "role": "encodes each bit of a key onto a single photon's quantum state.",
+        "parts": [
+          "faint-pulse laser or single-photon source",
+          "phase/polarisation/time-bin modulator",
+          "random number generator"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carries photons between two sites without measurement along the way.",
+        "parts": [
+          "dedicated dark optical fibre or free-space/satellite link",
+          "low-loss connectors and repeaters-free spans",
+          "trusted intermediate nodes for long routes"
+        ]
+      },
+      {
+        "name": "Receiver",
+        "role": "measures the photons in randomly chosen bases.",
+        "parts": [
+          "single-photon detectors (superconducting nanowire or InGaAs avalanche)",
+          "polarisation or interferometric optics",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Classical post-processing",
+        "role": "turns raw detections into a short, secret key.",
+        "parts": [
+          "key sifting",
+          "error correction",
+          "privacy amplification (hashing)",
+          "authenticated classical channel"
+        ]
+      },
+      {
+        "name": "Key management layer",
+        "role": "stores keys and hands them to encrypting applications.",
+        "parts": [
+          "key store",
+          "policy engine",
+          "integration with network encryptors or TLS"
+        ]
+      },
+      {
+        "name": "Post-quantum cryptography stack",
+        "role": "software algorithms that resist quantum attack and need no special hardware.",
+        "parts": [
+          "lattice-based key encapsulation and signatures",
+          "hash-based signatures",
+          "updated libraries and protocols"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the threat model",
+        "detail": "Decide whether the need is protecting data in transit today, or protecting traffic recorded now and decrypted later once a quantum computer exists."
+      },
+      {
+        "title": "Lay or secure the channel",
+        "detail": "QKD needs a dedicated fibre pair or a clear line of sight; sharing fibre with ordinary traffic adds noise that kills the key rate."
+      },
+      {
+        "title": "Prepare the source",
+        "detail": "A laser emits highly attenuated pulses, or a defect centre emits one photon at a time, and its state is modulated to encode a bit."
+      },
+      {
+        "title": "Transmit and detect",
+        "detail": "The receiver randomly picks a measurement basis for each photon; an eavesdropper measuring in between introduces errors the two sides can see."
+      },
+      {
+        "title": "Sift, correct and amplify",
+        "detail": "Matching-basis results are kept, errors are reconciled over an authenticated classical channel, and hashing shrinks the string so any leaked information is squeezed out."
+      },
+      {
+        "title": "Run classical authentication",
+        "detail": "The classical channel must itself be authenticated, typically with post-quantum signatures, or the whole exchange can be intercepted."
+      },
+      {
+        "title": "Deliver keys to applications",
+        "detail": "Keys are stored in a management system and consumed by encryptors or protocol libraries, refreshed continuously."
+      },
+      {
+        "title": "Deploy hybrid PQC alongside",
+        "detail": "Most organisations combine post-quantum algorithms with existing cryptography in software, since that covers stored data and long-lived secrets without new hardware."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors and sources",
+        "status": "exists",
+        "why": "QKD depends on counting individual photons reliably at telecom wavelengths."
+      },
+      {
+        "tech": "Dedicated low-loss fibre or satellite links",
+        "status": "exists",
+        "why": "photon loss limits QKD to roughly a few hundred kilometres of fibre before trusted nodes are needed."
+      },
+      {
+        "tech": "Standardised post-quantum algorithms",
+        "status": "exists",
+        "why": "national standards bodies published the first post-quantum encryption and signature standards in 2024, making software migration possible."
+      },
+      {
+        "tech": "Quantum repeaters",
+        "status": "missing",
+        "why": "without them, entanglement cannot be extended across continents without trusted relay nodes."
+      },
+      {
+        "tech": "A cryptographically relevant quantum computer",
+        "status": "missing",
+        "why": "no machine can yet run Shor's algorithm at the scale needed to break widely used public-key cryptography."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "post-quantum algorithms standardised and metro-scale QKD links running in trials",
+        "unlocks": "inventorying where long-lived secrets sit and starting software migration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid systems that combine post-quantum software with QKD hardware",
+        "unlocks": "protection of both stored data and keys in transit without betting on one approach."
+      },
+      {
+        "stage": "Next",
+        "milestone": "satellite QKD and quantum repeaters in the lab",
+        "unlocks": "intercity and intercontinental key distribution without trusting every intermediate node."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a network of entangled nodes with device-independent security proofs",
+        "unlocks": "communication whose security rests on physics rather than on trusting the equipment."
+      }
+    ]
   }
 }

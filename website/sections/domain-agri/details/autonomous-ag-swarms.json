@@ -30,5 +30,164 @@
         "def": "A collective behavior exhibited by decentralized, self-organized systems that can be found in nature or replicated in robotics, where simple rules lead to complex behaviors through interaction among individuals."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Lightweight mobile platform",
+        "role": "carries tools through the field without compacting soil.",
+        "parts": [
+          "electric drive",
+          "wheels or tracks",
+          "suspension",
+          "weatherproof chassis"
+        ]
+      },
+      {
+        "name": "Navigation and perception",
+        "role": "knows where it is and distinguishes crop from weed.",
+        "parts": [
+          "RTK-GNSS",
+          "cameras",
+          "LiDAR",
+          "inertial measurement unit",
+          "onboard computer running SLAM and vision models"
+        ]
+      },
+      {
+        "name": "Weeding and seeding end effectors",
+        "role": "acts on individual plants or seeds.",
+        "parts": [
+          "mechanical hoe or tine",
+          "laser or micro-spray",
+          "seed metering and placement mechanism"
+        ]
+      },
+      {
+        "name": "Power and docking",
+        "role": "keeps robots running through the day.",
+        "parts": [
+          "battery pack",
+          "charging contacts",
+          "base station with solar or grid connection",
+          "refill hoppers"
+        ]
+      },
+      {
+        "name": "Swarm coordination",
+        "role": "assigns tasks and prevents robots colliding or overlapping.",
+        "parts": [
+          "wireless mesh network",
+          "central or distributed task allocator",
+          "fleet management software",
+          "field map"
+        ]
+      },
+      {
+        "name": "Data and learning pipeline",
+        "role": "improves weed detection and field maps over time.",
+        "parts": [
+          "cloud or edge data storage",
+          "annotation tools",
+          "retraining pipeline",
+          "over-the-air updates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the small robot",
+        "detail": "Choose a lightweight chassis and electric drivetrain sized to carry tools and batteries but stay under the weight that compacts soil."
+      },
+      {
+        "title": "Integrate sensors and compute",
+        "detail": "Mount cameras, LiDAR, RTK-GNSS and an onboard computer, then calibrate them so SLAM can build a map of the field."
+      },
+      {
+        "title": "Train crop and weed models",
+        "detail": "Collect images across growth stages and lighting, label them, and train vision models to tell crop plants from weeds."
+      },
+      {
+        "title": "Build end effectors",
+        "detail": "Develop mechanical, laser or micro-spray tools that can act on a single plant without damaging the crop, plus a seeder for planting."
+      },
+      {
+        "title": "Write swarm software",
+        "detail": "Create task allocation and path planning so a fleet covers a field efficiently without collisions or gaps."
+      },
+      {
+        "title": "Test in fields",
+        "detail": "Run trials across soil types, weather and crop varieties; iterate on hardware and software from failures."
+      },
+      {
+        "title": "Set up base stations",
+        "detail": "Install docking, charging and refill stations at field edges so robots can work autonomously for long periods."
+      },
+      {
+        "title": "Manufacture at scale",
+        "detail": "Move from hand-built prototypes to a production line with reliable suppliers for sensors, motors and batteries."
+      },
+      {
+        "title": "Deploy and maintain",
+        "detail": "Deliver fleets to farms, train operators, and provide remote monitoring and over-the-air updates."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "RTK-GNSS",
+        "status": "exists",
+        "why": "gives centimetre-level position so robots can follow rows and return to exact spots."
+      },
+      {
+        "tech": "SLAM and computer vision",
+        "status": "partial",
+        "why": "works well in some crops but struggles with overlapping leaves, variable light and unseen weed species."
+      },
+      {
+        "tech": "Lightweight electric drivetrains",
+        "status": "exists",
+        "why": "small motors and batteries are available, though energy density limits runtime."
+      },
+      {
+        "tech": "Precision weeding end effectors",
+        "status": "partial",
+        "why": "mechanical and laser methods are demonstrated but not yet fast or cheap enough for all row crops."
+      },
+      {
+        "tech": "Swarm communication and coordination",
+        "status": "partial",
+        "why": "mesh networking and task allocation algorithms exist in labs but need to be robust in rural fields."
+      },
+      {
+        "tech": "Battery energy density",
+        "status": "partial",
+        "why": "current batteries give hours, not full days, so swarms need frequent docking or battery swaps."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial single-robot weeders in high-value crops",
+        "unlocks": "reduced herbicide use and proof that small robots can work in real fields."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coordinated teams of a few robots on one field with base stations",
+        "unlocks": "less downtime and coverage of larger areas without heavy machinery."
+      },
+      {
+        "stage": "Next",
+        "milestone": "swarms that seed and weed row crops autonomously through a season",
+        "unlocks": "a genuine alternative to tractors for some field operations."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "heterogeneous swarms working with drones and sensors across whole farms",
+        "unlocks": "continuous, targeted crop management with minimal soil compaction."
+      }
+    ]
   }
 }

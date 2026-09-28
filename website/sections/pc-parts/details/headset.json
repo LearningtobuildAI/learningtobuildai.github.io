@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Driver (transducer)",
+        "role": "converts the electrical audio signal into sound; almost all headsets use a moving-coil dynamic driver, with balanced-armature or planar-magnetic types in premium models.",
+        "parts": [
+          "diaphragm (PET, bio-cellulose or metal-coated film)",
+          "voice coil",
+          "neodymium magnet and steel pole pieces",
+          "surround and spider"
+        ]
+      },
+      {
+        "name": "Earcup and acoustic enclosure",
+        "role": "the sealed or vented cavity behind and in front of the driver shapes bass response and blocks outside noise.",
+        "parts": [
+          "moulded cup shell",
+          "damping foam and felt",
+          "back grille or bass port",
+          "ear pad sealing ring"
+        ]
+      },
+      {
+        "name": "Microphone",
+        "role": "captures the voice; a boom-mounted capsule on gaming headsets, or an array of tiny MEMS mics built into the cups for calls and noise cancellation.",
+        "parts": [
+          "diaphragm or MEMS sensor die",
+          "preamp",
+          "boom arm with flexible gooseneck",
+          "windscreen"
+        ]
+      },
+      {
+        "name": "Electronics and signal chain",
+        "role": "amplifies, converts and, for wireless models, encodes and decodes the audio.",
+        "parts": [
+          "DAC and headphone amplifier",
+          "ADC and mic preamp",
+          "Bluetooth radio and codec chip (or USB controller)",
+          "battery and power management"
+        ]
+      },
+      {
+        "name": "Active noise cancellation (optional)",
+        "role": "samples outside and inside noise with microphones and plays an inverted copy to cancel it.",
+        "parts": [
+          "feedforward reference mic",
+          "feedback error mic",
+          "DSP running the filter",
+          "firmware tuning per cup"
+        ]
+      },
+      {
+        "name": "Headband and mechanical structure",
+        "role": "holds the cups at a consistent seal against the ears, which the acoustics depend on.",
+        "parts": [
+          "headband",
+          "sliders and yokes",
+          "swivel joints",
+          "replaceable cable or charging port"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the acoustics",
+        "detail": "Engineers model the driver, cup volume and vents together, then set a target frequency-response curve for the intended use."
+      },
+      {
+        "title": "Build the drivers",
+        "detail": "A voice coil of fine enamelled copper wire is wound and bonded to the diaphragm; the magnet assembly, pole pieces and surround are assembled, and the coil is centred in the magnetic gap."
+      },
+      {
+        "title": "Mould the shell and headband",
+        "detail": "Cup shells and headband parts are injection moulded in ABS or polycarbonate; the headband spring is formed from steel or composite and cushioned."
+      },
+      {
+        "title": "Assemble the pads",
+        "detail": "Foam is cut or moulded, wrapped in protein leather, velour or fabric, and sewn or heat-sealed to a mounting ring."
+      },
+      {
+        "title": "Build the microphone",
+        "detail": "A MEMS die is soldered to a circuit board with its preamp, or an electret capsule is wired into the boom; the boom is assembled with its gooseneck and windscreen."
+      },
+      {
+        "title": "Populate the circuit boards",
+        "detail": "The DAC, amplifier, ADC, radio module and power circuitry are surface-mounted, and firmware is flashed."
+      },
+      {
+        "title": "Assemble and seal the headset",
+        "detail": "The driver is glued or clipped into the cup with its damping material, wires are routed, the mic is connected, and the cup is closed so the seal behaves as designed."
+      },
+      {
+        "title": "Test and tune",
+        "detail": "Each unit is measured on a head-and-torso simulator and in an anechoic chamber to check frequency response, left-right matching and mic sensitivity; noise-cancellation filters are tuned per model."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Moving-coil loudspeaker drivers",
+        "status": "exists",
+        "why": "the basic transducer physics and manufacturing have been mature for about a century."
+      },
+      {
+        "tech": "Neodymium permanent magnets",
+        "status": "exists",
+        "why": "small, light, strong magnets are what make headphone-sized drivers loud and efficient."
+      },
+      {
+        "tech": "MEMS microphone fabrication",
+        "status": "exists",
+        "why": "wafer-scale silicon mics are cheap, tiny and consistent enough for mic arrays."
+      },
+      {
+        "tech": "Low-power wireless audio (Bluetooth, LE Audio)",
+        "status": "exists",
+        "why": "wireless headsets need a codec and radio that can run for many hours on a small battery."
+      },
+      {
+        "tech": "Real-time digital signal processing for ANC",
+        "status": "exists",
+        "why": "cancellation needs a filter that reacts to noise within microseconds on a low-power chip."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "wired and Bluetooth headsets with active noise cancellation and multi-mic voice pickup",
+        "unlocks": "clear calls and immersive gaming in noisy rooms."
+      },
+      {
+        "stage": "Next",
+        "milestone": "LE Audio with the LC3 codec and Auracast broadcast, plus lower-latency game modes",
+        "unlocks": "better quality at lower bitrate and one transmitter feeding many headsets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "head-tracked spatial audio with personalised hearing profiles",
+        "unlocks": "sound that stays fixed in space as the head turns, and tuning to the listener's own ears."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "on-device AI speech enhancement and biometric sensing built into the headset",
+        "unlocks": "voice isolation in very loud environments and continuous health signals from the ear."
+      }
+    ]
+  }
+}

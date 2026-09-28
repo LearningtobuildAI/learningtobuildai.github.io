@@ -32,5 +32,157 @@
         "def": "The process of creating artificial DNA sequences in the laboratory using chemical methods."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Genome design layer",
+        "role": "software that specifies which genes stay, which go, and in what order.",
+        "parts": [
+          "annotation and essentiality datasets",
+          "codon-recoding tools",
+          "watermark sequences",
+          "assembly planning"
+        ]
+      },
+      {
+        "name": "DNA synthesis and assembly",
+        "role": "turns the design into physical DNA, from short pieces up to whole chromosomes.",
+        "parts": [
+          "oligonucleotide synthesisers",
+          "error correction",
+          "in-vitro assembly (Gibson-style)",
+          "yeast or bacterial hosts for stitching large fragments"
+        ]
+      },
+      {
+        "name": "Delivery and transplantation",
+        "role": "gets a genome-sized piece of DNA into a living cell.",
+        "parts": [
+          "spheroplast fusion / genome transplantation",
+          "chromosome-scale editing",
+          "selection markers"
+        ]
+      },
+      {
+        "name": "Minimisation analysis",
+        "role": "finds out which of the genes are genuinely needed.",
+        "parts": [
+          "transposon mutagenesis",
+          "growth-rate assays",
+          "single-cell screening",
+          "comparative genomics"
+        ]
+      },
+      {
+        "name": "Chassis cell",
+        "role": "the host organism whose genome is being rebuilt or trimmed.",
+        "parts": [
+          "fast-growing bacterium (e.g. Mycoplasma, E. coli)",
+          "budding yeast",
+          "growth media",
+          "containment provisions"
+        ]
+      },
+      {
+        "name": "Verification",
+        "role": "proves the written sequence matches the living cell.",
+        "parts": [
+          "whole-genome sequencing",
+          "phenotypic tests",
+          "proteomics and metabolomics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a chassis",
+        "detail": "Start with an organism that grows fast and has a naturally small genome, so the target is tractable."
+      },
+      {
+        "title": "Design the genome on a computer",
+        "detail": "Annotate every gene, mark the ones known to be essential, strip out the rest, rewrite codons to a chosen set, and insert harmless watermark sequences so the synthetic DNA can be told apart from natural DNA."
+      },
+      {
+        "title": "Synthesise short DNA",
+        "detail": "Build the sequence chemically as many thousands of short oligonucleotides, a few hundred bases each."
+      },
+      {
+        "title": "Assemble into longer pieces",
+        "detail": "Join the oligonucleotides in vitro into cassettes of a few thousand base pairs, then correct errors before scaling up further."
+      },
+      {
+        "title": "Stitch in a living carrier",
+        "detail": "Combine cassettes step by step inside yeast, which tolerates very large foreign DNA, until a complete genome of around half a million to several million base pairs is assembled."
+      },
+      {
+        "title": "Transplant or replace",
+        "detail": "Move the finished genome into a recipient cell that has had its own DNA removed, or swap it into a native chromosome segment by segment, as in the synthetic yeast projects."
+      },
+      {
+        "title": "Boot the cell",
+        "detail": "Select for cells in which the synthetic genome takes over and drives normal growth and division; sequence them to confirm nothing was lost."
+      },
+      {
+        "title": "Trim to the minimum",
+        "detail": "Scramble genes one at a time with transposons to test which can be deleted; the smallest bacterial cell built this way carried 473 genes, and roughly a third of those still have no known function."
+      },
+      {
+        "title": "Test as a chassis",
+        "detail": "Once the gene set is known and stable, add engineered pathways on top to see whether a minimal cell is a more predictable factory than a natural one."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Accurate large-scale DNA synthesis",
+        "status": "partial",
+        "why": "cost per base pair has fallen enormously, but assembling millions of error-free base pairs is still slow and expensive."
+      },
+      {
+        "tech": "Whole-genome sequencing",
+        "status": "exists",
+        "why": "without cheap, fast reading of DNA you cannot check that the synthesised genome is correct."
+      },
+      {
+        "tech": "Genome transplantation and large-DNA delivery",
+        "status": "partial",
+        "why": "moving a whole genome into a cell has been done in a few bacterial species, not routinely."
+      },
+      {
+        "tech": "Gene-essentiality data",
+        "status": "partial",
+        "why": "you can only delete what you know is dispensable; a large share of minimal-cell genes are still unexplained."
+      },
+      {
+        "tech": "Containment and biosecurity practice",
+        "status": "partial",
+        "why": "cells built from scratch remove natural barriers, so engineering controls must replace them."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "a viable bacterial cell running on a chemically synthesised genome of 473 genes; individual synthetic chromosomes running inside yeast",
+        "unlocks": "proof that a genome can be written rather than copied."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a wholly synthetic eukaryotic genome, with a yeast cell carrying entirely man-made chromosomes",
+        "unlocks": "design rules for larger, more complex cells."
+      },
+      {
+        "stage": "Next",
+        "milestone": "streamlined industrial chassis with no unexplained genes and built-in virus resistance through codon recoding",
+        "unlocks": "fermentation that is easier to control and harder to infect."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "genomes designed for specified functions, with robust safety and screening rules",
+        "unlocks": "predictable engineered cells — and a serious governance problem to solve alongside them."
+      }
+    ]
   }
 }

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Accelerator complex",
+        "role": "performs the matrix multiplications at the heart of transformer inference.",
+        "parts": [
+          "GPU or NPU modules",
+          "tensor cores",
+          "high-bandwidth memory (HBM) stacks"
+        ]
+      },
+      {
+        "name": "Memory and interconnect",
+        "role": "holds model weights and moves data between accelerators fast enough to keep them fed.",
+        "parts": [
+          "unified memory pool or discrete VRAM",
+          "NVLink or PCIe switches",
+          "memory controllers"
+        ]
+      },
+      {
+        "name": "Host and control",
+        "role": "runs the operating system, schedules inference requests and manages storage.",
+        "parts": [
+          "CPU",
+          "system RAM",
+          "motherboard chipset"
+        ]
+      },
+      {
+        "name": "Storage",
+        "role": "stores model files, which can run to hundreds of gigabytes.",
+        "parts": [
+          "NVMe solid-state drives",
+          "optional RAID array"
+        ]
+      },
+      {
+        "name": "Thermal and power",
+        "role": "removes heat from high-wattage accelerators and delivers stable power.",
+        "parts": [
+          "heatsinks and fans or liquid cooling loop",
+          "power supply unit",
+          "voltage regulators"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "runs the model efficiently on the hardware.",
+        "parts": [
+          "GPU drivers (CUDA, ROCm or Metal)",
+          "inference engine such as llama.cpp or vLLM",
+          "quantisation tools",
+          "model weight files"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Size the memory",
+        "detail": "Decide which model sizes must fit: this sets the number of GPUs or the amount of unified memory needed."
+      },
+      {
+        "title": "Design power and cooling",
+        "detail": "Add up the wattage of all accelerators and CPUs, then specify a power supply and a cooling loop or airflow path that can remove that heat."
+      },
+      {
+        "title": "Assemble the hardware",
+        "detail": "Mount the CPU, system memory, accelerators and NVMe drives into a chassis or rack, seating cards and connecting power cables."
+      },
+      {
+        "title": "Wire the high-speed links",
+        "detail": "Attach multiple accelerators with PCIe risers or NVLink bridges so they can share data directly rather than over the slow host bus."
+      },
+      {
+        "title": "Install the operating system",
+        "detail": "Load a Linux distribution or macOS, then install GPU drivers and the matching compute toolkit."
+      },
+      {
+        "title": "Set up the inference runtime",
+        "detail": "Install an inference engine, compile or download the appropriate kernels, and configure it to see all accelerators."
+      },
+      {
+        "title": "Quantise and load models",
+        "detail": "Convert model weights to lower precision — commonly 4-bit or 8-bit — so they fit in memory and run at usable speed."
+      },
+      {
+        "title": "Benchmark and tune",
+        "detail": "Measure tokens per second, adjust batch size and layer offloading between accelerators, and check temperatures under sustained load."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-bandwidth memory and advanced packaging",
+        "status": "exists",
+        "why": "accelerators need to read billions of weights quickly; HBM and 2.5D packaging put memory next to the compute."
+      },
+      {
+        "tech": "High-speed interconnects",
+        "status": "exists",
+        "why": "multiple accelerators must exchange activations and weights without stalling on a slow host bus."
+      },
+      {
+        "tech": "Efficient attention kernels",
+        "status": "exists",
+        "why": "techniques that avoid materialising the full attention matrix cut memory use and speed up inference."
+      },
+      {
+        "tech": "Model quantisation",
+        "status": "exists",
+        "why": "reducing weights to 4-bit or 8-bit shrinks models enough to fit in affordable memory."
+      },
+      {
+        "tech": "Low-power AI accelerators for home use",
+        "status": "partial",
+        "why": "most high-performance accelerators draw hundreds of watts and are costly, limiting home deployment."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-GPU or unified-memory systems running 7B–70B parameter models locally",
+        "unlocks": "private, offline chat and coding assistants on a desk."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-GPU home servers with 256 GB or more of unified memory running models with hundreds of billions of parameters",
+        "unlocks": "near-cloud quality locally, with no data leaving the home."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated low-power inference chips and standardised compute modules",
+        "unlocks": "quiet, affordable, always-on local AI."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "local agentic AI orchestrating home devices and personal data",
+        "unlocks": "privacy-preserving automation that works without a cloud connection."
+      }
+    ]
+  }
+}

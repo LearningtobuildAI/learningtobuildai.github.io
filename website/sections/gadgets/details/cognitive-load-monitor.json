@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Electrode array",
+        "role": "picks up tiny voltage fluctuations from the scalp without conductive gel.",
+        "parts": [
+          "dry conductive pins or polymer tips",
+          "spring-loaded contacts",
+          "headband frame"
+        ]
+      },
+      {
+        "name": "Analog front end",
+        "role": "amplifies and digitises microvolt-level EEG while rejecting noise.",
+        "parts": [
+          "instrumentation amplifier",
+          "band-pass filter",
+          "analog-to-digital converter"
+        ]
+      },
+      {
+        "name": "Signal processing",
+        "role": "cleans the signal and extracts frequency-band power.",
+        "parts": [
+          "artifact removal (eye blinks, muscle)",
+          "Fourier or wavelet transform",
+          "theta/beta ratio computation"
+        ]
+      },
+      {
+        "name": "Classification algorithm",
+        "role": "maps EEG features to a cognitive-load or exhaustion score.",
+        "parts": [
+          "trained model",
+          "calibration routine",
+          "threshold logic"
+        ]
+      },
+      {
+        "name": "Power and wireless",
+        "role": "runs the headband and sends data to a phone or computer.",
+        "parts": [
+          "battery",
+          "Bluetooth radio",
+          "charging circuit"
+        ]
+      },
+      {
+        "name": "User interface",
+        "role": "shows the user their mental state and alerts them.",
+        "parts": [
+          "mobile app",
+          "haptic or visual alert",
+          "data logging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose electrode sites",
+        "detail": "Place dry electrodes over the prefrontal cortex (e.g., Fp1, Fp2, Fz) where theta and beta rhythms are measurable."
+      },
+      {
+        "title": "Make dry electrodes",
+        "detail": "Fabricate pins or conductive polymer tips that part hair and maintain stable contact without gel."
+      },
+      {
+        "title": "Design the analog circuit",
+        "detail": "Build a low-noise amplifier with high common-mode rejection and a band-pass filter (about 0.5–45 Hz)."
+      },
+      {
+        "title": "Add digitisation and firmware",
+        "detail": "Sample at 250–500 Hz, digitise, and stream data over Bluetooth."
+      },
+      {
+        "title": "Clean the signal",
+        "detail": "Implement real-time removal of eye-blink and muscle artifacts using regression or independent component analysis."
+      },
+      {
+        "title": "Extract features",
+        "detail": "Compute power in theta (4–8 Hz) and beta (13–30 Hz) bands and form the theta/beta ratio."
+      },
+      {
+        "title": "Train the classifier",
+        "detail": "Collect EEG from volunteers performing tasks of varying difficulty, label with subjective or performance measures, and train a model to output a load score."
+      },
+      {
+        "title": "Validate against benchmarks",
+        "detail": "Compare the score with established cognitive-load measures such as the NASA-TLX questionnaire or task performance."
+      },
+      {
+        "title": "Integrate and test",
+        "detail": "Assemble the headband, app and alerts, then test for comfort, battery life and reliability in daily use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dry-electrode EEG",
+        "status": "exists",
+        "why": "allows long-term use without gel, though signal quality is lower than wet electrodes."
+      },
+      {
+        "tech": "Low-noise biosignal amplifiers",
+        "status": "exists",
+        "why": "EEG signals are only tens of microvolts and easily buried in noise."
+      },
+      {
+        "tech": "Real-time artifact removal",
+        "status": "partial",
+        "why": "eye blinks and jaw clenches strongly contaminate prefrontal EEG and are hard to remove perfectly."
+      },
+      {
+        "tech": "Validated cognitive-load biomarkers",
+        "status": "partial",
+        "why": "theta/beta ratio correlates with load in some studies but varies between people and tasks."
+      },
+      {
+        "tech": "Machine-learning classification",
+        "status": "exists",
+        "why": "turns features into a usable score, but needs individual calibration."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research-grade EEG systems measure cognitive load in labs and simulators",
+        "unlocks": "understanding of which EEG features track mental effort."
+      },
+      {
+        "stage": "Next",
+        "milestone": "consumer headbands with validated load detection for specific tasks (e.g., air-traffic control, driving)",
+        "unlocks": "fatigue alerts in safety-critical jobs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration into workplace productivity tools and adaptive interfaces",
+        "unlocks": "systems that adjust difficulty or schedule breaks automatically."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "clinical-grade monitoring for neurological conditions",
+        "unlocks": "objective measures of fatigue in medicine and research."
+      }
+    ]
+  }
+}

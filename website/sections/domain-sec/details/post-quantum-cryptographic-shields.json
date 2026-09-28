@@ -30,5 +30,160 @@
         "def": "A type of post-quantum cryptography based on the difficulty of decoding a general linear code."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Algorithm suite",
+        "role": "the mathematical core — encryption, key exchange and signatures that resist quantum attack.",
+        "parts": [
+          "lattice-based key encapsulation (ML-KEM)",
+          "lattice-based signatures (ML-DSA)",
+          "hash-based signatures (SLH-DSA)",
+          "code-based encryption"
+        ]
+      },
+      {
+        "name": "Key management",
+        "role": "generate, store, rotate and revoke keys, including hybrid keys.",
+        "parts": [
+          "cryptographically secure random number generators",
+          "hardware security modules",
+          "key stores",
+          "certificate authorities"
+        ]
+      },
+      {
+        "name": "Protocol integration",
+        "role": "slot the new algorithms into the internet's existing handshakes and tunnels.",
+        "parts": [
+          "TLS 1.3",
+          "SSH",
+          "IPsec/IKEv2",
+          "messaging protocols"
+        ]
+      },
+      {
+        "name": "Hardware and performance",
+        "role": "make the maths fast enough for real traffic, from servers to smart cards.",
+        "parts": [
+          "optimised software libraries",
+          "CPU instructions",
+          "secure enclaves",
+          "network accelerators"
+        ]
+      },
+      {
+        "name": "Migration and hybrid mode",
+        "role": "run classical and post-quantum algorithms together so that a break in either does not expose traffic.",
+        "parts": [
+          "hybrid key exchange",
+          "dual signatures",
+          "cryptographic agility",
+          "inventory of vulnerable systems"
+        ]
+      },
+      {
+        "name": "Assurance and testing",
+        "role": "prove implementations match the standard and are free of side channels.",
+        "parts": [
+          "test vectors",
+          "formal verification",
+          "side-channel testing",
+          "bug bounty"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick hard problems",
+        "detail": "Cryptographers identify mathematical problems believed hard even for quantum computers, such as finding short vectors in high-dimensional lattices or decoding random linear codes."
+      },
+      {
+        "title": "Design algorithms",
+        "detail": "From those problems, they build encryption, key-exchange and signature schemes with concrete parameter sizes."
+      },
+      {
+        "title": "Public cryptanalysis",
+        "detail": "The designs are published and attacked by the global research community for years to find weaknesses."
+      },
+      {
+        "title": "Standardise",
+        "detail": "Standards bodies such as NIST select algorithms and publish formal specifications; its first post-quantum standards (FIPS 203, 204 and 205) appeared in 2024."
+      },
+      {
+        "title": "Implement efficiently",
+        "detail": "Engineers write reference code, then optimise it for CPUs, GPUs and constrained devices, checking for timing leaks."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "The new primitives are added to TLS, SSH, VPNs and certificate systems, often as hybrid options alongside classical algorithms."
+      },
+      {
+        "title": "Test and validate",
+        "detail": "Implementations are checked against test vectors and formally verified where possible."
+      },
+      {
+        "title": "Deploy and migrate",
+        "detail": "Organisations inventory long-lived secrets, enable hybrid mode, then phase out RSA and elliptic-curve cryptography."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mathematical hardness assumptions",
+        "status": "exists",
+        "why": "lattice and code problems are believed hard for both classical and quantum computers, though not proven."
+      },
+      {
+        "tech": "Standardisation process",
+        "status": "exists",
+        "why": "NIST completed a multi-year competition and published the first standards in 2024."
+      },
+      {
+        "tech": "Efficient software implementations",
+        "status": "exists",
+        "why": "optimised libraries for lattice arithmetic already run on common CPUs."
+      },
+      {
+        "tech": "Hardware acceleration",
+        "status": "partial",
+        "why": "some CPUs and hardware security modules have added support, but many devices still run software only."
+      },
+      {
+        "tech": "Cryptographic agility",
+        "status": "partial",
+        "why": "many systems hard-code algorithms, making swaps slow and risky."
+      },
+      {
+        "tech": "Public-key infrastructure",
+        "status": "exists",
+        "why": "certificate authorities and key stores must issue and manage the new certificate types."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NIST standards published in 2024; browsers and cloud providers testing hybrid key exchange.",
+        "unlocks": "early protection for today's encrypted traffic against future quantum decryption."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Widespread hybrid deployment in TLS, VPNs and messaging; certificate authorities begin issuing post-quantum certificates.",
+        "unlocks": "confidence that no single algorithm failure breaks security."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Full migration for long-lived data and critical infrastructure; classical-only systems phased out.",
+        "unlocks": "protection of data that must stay secret for decades."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Cryptographic agility becomes routine, allowing quick swaps if weaknesses are found.",
+        "unlocks": "resilience against future cryptanalytic surprises."
+      }
+    ]
   }
 }

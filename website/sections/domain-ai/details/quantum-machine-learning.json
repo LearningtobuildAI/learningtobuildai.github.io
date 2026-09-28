@@ -38,5 +38,153 @@
         "def": "A family of algorithms in QML where a classical optimizer is used to adjust parameters of a quantum circuit, aiming to find optimal solutions for specific problems."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Quantum processing unit",
+        "role": "the qubits that store and transform quantum states.",
+        "parts": [
+          "superconducting transmon qubits or trapped ions or photonic modes",
+          "control lines and resonators",
+          "couplers between qubits"
+        ]
+      },
+      {
+        "name": "Cryogenic and control hardware",
+        "role": "keeps qubits cold and coherent, and shapes the microwave pulses that operate them.",
+        "parts": [
+          "dilution refrigerator (for superconducting qubits)",
+          "microwave and laser sources",
+          "room-temperature control electronics"
+        ]
+      },
+      {
+        "name": "Quantum error correction",
+        "role": "combines many noisy physical qubits into fewer reliable logical qubits.",
+        "parts": [
+          "surface-code or similar encoding",
+          "syndrome measurement",
+          "real-time decoder"
+        ]
+      },
+      {
+        "name": "Data-encoding interface",
+        "role": "converts classical data — images, vectors, graphs — into a quantum state.",
+        "parts": [
+          "amplitude or angle encoding circuits",
+          "quantum random-access memory (largely theoretical)",
+          "classical pre-processing"
+        ]
+      },
+      {
+        "name": "Algorithm layer",
+        "role": "the quantum routine that does the learning or inference.",
+        "parts": [
+          "parameterised (variational) circuits",
+          "quantum kernel estimation",
+          "quantum linear-algebra subroutines"
+        ]
+      },
+      {
+        "name": "Hybrid optimiser and readout",
+        "role": "measures the quantum state and updates classical parameters in a loop.",
+        "parts": [
+          "measurement and tomography",
+          "classical optimiser",
+          "error-mitigation routines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a problem and a classical baseline",
+        "detail": "Choose a task where quantum linear algebra might genuinely beat the best known classical algorithm — and measure that classical baseline carefully first."
+      },
+      {
+        "title": "Design the quantum model",
+        "detail": "Decide between a variational circuit trained by a classical optimiser, or a quantum kernel fed to a classical classifier."
+      },
+      {
+        "title": "Encode the data",
+        "detail": "Map each data point onto qubit rotations or amplitudes. This step is often the bottleneck, because a naive encoding can consume any speed-up the algorithm offers."
+      },
+      {
+        "title": "Compile the circuit",
+        "detail": "Translate the algorithm into native gates for the specific hardware, respecting its connectivity and coherence times."
+      },
+      {
+        "title": "Run on a simulator first",
+        "detail": "Test on a classical simulation of the quantum circuit to catch bugs and study trainability, such as whether gradients vanish."
+      },
+      {
+        "title": "Execute on hardware with many shots",
+        "detail": "Each run gives one sample; the same circuit must be repeated thousands of times to estimate expectation values."
+      },
+      {
+        "title": "Mitigate errors",
+        "detail": "Use error mitigation — or, in a fault-tolerant machine, error correction — to reduce the noise that corrupts results."
+      },
+      {
+        "title": "Optimise in a classical loop",
+        "detail": "Feed measurements back to update circuit parameters until the model converges."
+      },
+      {
+        "title": "Benchmark honestly",
+        "detail": "Compare against the strongest classical method at the same accuracy, and check whether the data-loading and readout costs cancel the quantum gain."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "the strongest proposed speed-ups assume logical qubits with very low error rates; today's machines are noisy and small."
+      },
+      {
+        "tech": "Enough qubits and connectivity",
+        "status": "partial",
+        "why": "current processors handle small problems, but useful machine-learning datasets need far more coherent qubits."
+      },
+      {
+        "tech": "Efficient quantum data loading",
+        "status": "missing",
+        "why": "loading a large classical dataset into a quantum state can take longer than the classical computation it is meant to beat."
+      },
+      {
+        "tech": "Trainable variational circuits",
+        "status": "partial",
+        "why": "deep parameterised circuits tend to hit 'barren plateaus' where gradients vanish, making training impractical."
+      },
+      {
+        "tech": "Proven quantum advantage for learning tasks",
+        "status": "missing",
+        "why": "'dequantisation' results have shown classical algorithms matching several proposed quantum speed-ups."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small proof-of-concept experiments on noisy intermediate-scale quantum (NISQ) hardware, plus quantum-inspired classical algorithms",
+        "unlocks": "hands-on understanding of encoding costs and noise limits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation and early logical qubits; quantum linear-algebra subroutines running at modest scale",
+        "unlocks": "testing whether quantum kernels and solvers beat classical ones on real data."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant machines",
+        "unlocks": "larger, verifiable speed-ups for simulation and optimisation problems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "full fault-tolerant quantum learning for chemistry, materials and logistics",
+        "unlocks": "practical advantage the classical world cannot match — and only then a general-purpose tool rather than a research programme."
+      }
+    ]
   }
 }

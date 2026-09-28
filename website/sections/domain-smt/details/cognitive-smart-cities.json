@@ -1,0 +1,167 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sensing layer",
+        "role": "measures what the city is actually doing, minute by minute.",
+        "parts": [
+          "traffic and pedestrian counters",
+          "air-quality and noise sensors",
+          "utility and energy meters",
+          "transit vehicle telemetry",
+          "weather stations"
+        ]
+      },
+      {
+        "name": "Connectivity and edge compute",
+        "role": "moves that data cheaply and processes it near where it is generated.",
+        "parts": [
+          "fibre backhaul",
+          "public cellular and low-power wide-area networks",
+          "edge servers in substations and cabinets",
+          "cloud data platform"
+        ]
+      },
+      {
+        "name": "Urban digital twin",
+        "role": "a live 3-D model of buildings, roads, pipes and people that can be simulated forward.",
+        "parts": [
+          "3-D city geometry",
+          "building information models",
+          "live data streams",
+          "simulation and forecasting engines"
+        ]
+      },
+      {
+        "name": "Control and actuation",
+        "role": "the part that actually changes the city's behaviour.",
+        "parts": [
+          "adaptive traffic signals",
+          "street lighting and building HVAC controls",
+          "district heating and cooling setpoints",
+          "transit and emergency dispatch",
+          "water and waste routing"
+        ]
+      },
+      {
+        "name": "Data governance layer",
+        "role": "decides who may see, combine and act on which data.",
+        "parts": [
+          "anonymisation and aggregation",
+          "access control and audit logs",
+          "open data interfaces",
+          "privacy impact assessments"
+        ]
+      },
+      {
+        "name": "Operations centre and interfaces",
+        "role": "where humans supervise the loop and where residents can see and challenge it.",
+        "parts": [
+          "control room dashboards",
+          "operator tools",
+          "public apps and displays"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory assets and data",
+        "detail": "Survey what the city owns, what sensors exist, who holds each dataset and how fresh it is."
+      },
+      {
+        "title": "Instrument the gaps",
+        "detail": "Add counting, air-quality and flow sensors where coverage is missing, favouring cheap devices in large numbers over a few expensive ones."
+      },
+      {
+        "title": "Standardise the data",
+        "detail": "Force every feed into shared schemas and open interfaces so systems from different vendors can be combined."
+      },
+      {
+        "title": "Build the static twin",
+        "detail": "Assemble 3-D city geometry — much of it converted from building information models — into one coherent model."
+      },
+      {
+        "title": "Make it live",
+        "detail": "Stream sensor and transit data into the model so it reflects the city now, not last year."
+      },
+      {
+        "title": "Add simulation",
+        "detail": "Model traffic, energy, water and pedestrian flow so the twin can predict the effect of a change before it is made."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "Connect forecasts to actuators — signals, setpoints, dispatch — first with a human approving every action, later within bounded rules."
+      },
+      {
+        "title": "Set the governance",
+        "detail": "Agree what is collected, how long it is kept, who can combine it, and publish the rules."
+      },
+      {
+        "title": "Operate and retrain",
+        "detail": "Run continuously, measure outcomes against the baseline, and correct the models when they drift."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cheap, networked environmental and flow sensors",
+        "status": "exists",
+        "why": "the twin is only as good as the density and reliability of its measurements."
+      },
+      {
+        "tech": "City-scale 3-D and building data models",
+        "status": "partial",
+        "why": "standards such as CityGML and IFC exist and city models such as Virtual Singapore have been built, but few cities hold complete, current geometry."
+      },
+      {
+        "tech": "Real-time edge compute and low-latency networks",
+        "status": "exists",
+        "why": "traffic and energy control must respond in seconds without shipping all data to a distant cloud."
+      },
+      {
+        "tech": "City-scale simulation and forecasting",
+        "status": "partial",
+        "why": "traffic and energy models work separately; coupling them across a whole city is largely unproven."
+      },
+      {
+        "tech": "Interoperable control interfaces",
+        "status": "missing",
+        "why": "most urban equipment is locked to a single vendor's protocol, so one system cannot safely command another."
+      },
+      {
+        "tech": "Privacy-preserving data governance",
+        "status": "partial",
+        "why": "continuous sensing of public space is legally and socially contested in most democracies."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "siloed smart systems: adaptive signals, smart meters, building management",
+        "unlocks": "measurable savings on single services."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shared city data platforms and 3-D twins fed by live feeds",
+        "unlocks": "cross-service analysis and public transparency."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coupled simulation across transport, energy and water",
+        "unlocks": "decisions assessed for side-effects before implementation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "bounded closed-loop control with human override",
+        "unlocks": "signals, setpoints and dispatch optimised continuously city-wide."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "self-optimising city responding to real-time human need",
+        "unlocks": "the 'single organism' vision — achievable only if governance and interoperability problems are solved first, and it may prove neither desirable nor safe."
+      }
+    ]
+  }
+}

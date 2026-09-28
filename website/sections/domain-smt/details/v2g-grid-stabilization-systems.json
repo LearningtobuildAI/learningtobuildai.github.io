@@ -34,5 +34,150 @@
         "def": "An advanced electrical grid that uses digital communication technology to manage electricity more efficiently."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bidirectional charger",
+        "role": "converts grid AC to DC for charging and DC back to AC for export, either on-board the vehicle or in an off-board unit.",
+        "parts": [
+          "four-quadrant power converter",
+          "grid filter",
+          "cooling",
+          "isolation transformer"
+        ]
+      },
+      {
+        "name": "Vehicle battery and management system",
+        "role": "stores energy and enforces safe limits on charge/discharge rates and depth.",
+        "parts": [
+          "lithium-ion cells",
+          "battery management system (BMS)",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Communication and control",
+        "role": "lets vehicle, charger, aggregator and grid operator exchange real-time signals.",
+        "parts": [
+          "vehicle-to-charger link (e.g. ISO 15118)",
+          "charger-to-network protocol (e.g. OCPP)",
+          "grid operator interface"
+        ]
+      },
+      {
+        "name": "Aggregation platform",
+        "role": "pools thousands of vehicles into a virtual power plant that can bid capacity and respond to grid needs.",
+        "parts": [
+          "forecasting and scheduling software",
+          "market bidding engine",
+          "dispatch controller"
+        ]
+      },
+      {
+        "name": "Grid interface and metering",
+        "role": "connects the aggregated resource to the distribution network safely and measures energy flows.",
+        "parts": [
+          "protection relays",
+          "bi-directional smart meter",
+          "interconnection switchgear"
+        ]
+      },
+      {
+        "name": "User interface and incentives",
+        "role": "gives drivers control over when their car is used and compensates them for participation.",
+        "parts": [
+          "mobile app",
+          "scheduling and override settings",
+          "payment and settlement system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design bidirectional power electronics",
+        "detail": "Develop a converter that can rectify AC to DC for charging and invert DC to AC for export, with efficiency and safety comparable to one-way chargers."
+      },
+      {
+        "title": "Integrate with vehicle battery",
+        "detail": "Ensure the BMS can accept external discharge commands, report state of charge and health, and enforce limits that avoid accelerated degradation."
+      },
+      {
+        "title": "Implement communication protocols",
+        "detail": "Use standards such as ISO 15118 for vehicle-to-charger negotiation and OCPP for charger-to-aggregator messaging, including authentication and metering."
+      },
+      {
+        "title": "Install charging infrastructure",
+        "detail": "Deploy AC or DC bidirectional chargers at homes, workplaces and depots, with wiring, protection and metering rated for reverse power flow."
+      },
+      {
+        "title": "Build aggregation software",
+        "detail": "Create a platform that forecasts vehicle availability, schedules charge and discharge, and bids aggregated capacity into grid markets."
+      },
+      {
+        "title": "Establish grid interconnection",
+        "detail": "Agree protection settings, communication links and market rules with the distribution network operator so exported power is accepted and paid for."
+      },
+      {
+        "title": "Pilot and validate",
+        "detail": "Run a fleet trial to measure response times, round-trip losses, battery wear and driver acceptance before scaling."
+      },
+      {
+        "title": "Scale enrollment",
+        "detail": "Offer incentives, simplify onboarding and expand to more regions as standards and regulations mature."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bidirectional charging hardware",
+        "status": "partial",
+        "why": "some vehicles and chargers support it today, but it is not yet standard across mass-market models."
+      },
+      {
+        "tech": "Interoperability standards",
+        "status": "partial",
+        "why": "ISO 15118-20 and OCPP cover V2G, yet implementation varies between manufacturers and networks."
+      },
+      {
+        "tech": "Grid market access for aggregated resources",
+        "status": "partial",
+        "why": "a few markets allow aggregated electric vehicles to bid services, while many regulatory frameworks still exclude them."
+      },
+      {
+        "tech": "Battery degradation data for cycling",
+        "status": "partial",
+        "why": "studies suggest managed V2G has modest impact, but long-term field data across chemistries and climates is still limited."
+      },
+      {
+        "tech": "Smart metering and communications",
+        "status": "exists",
+        "why": "widely deployed smart meters and cellular or powerline links provide the basic data and control channels."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "pilot projects and demonstration fleets in several countries",
+        "unlocks": "real-world data on technology performance, battery wear and user behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "finalisation and adoption of V2G standards in mass-market vehicles",
+        "unlocks": "interoperable charging, so any compliant car can plug into any compliant charger."
+      },
+      {
+        "stage": "Next",
+        "milestone": "commercial aggregation services in markets that permit them",
+        "unlocks": "a new revenue stream for vehicle owners and a flexible storage resource for grid operators."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "widespread default V2G capability integrated into grid planning",
+        "unlocks": "significant distributed storage that helps balance high shares of variable renewables."
+      }
+    ]
   }
 }

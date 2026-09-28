@@ -30,5 +30,174 @@
         "def": "Retrieval-Augmented Generation, an approach where LLMs use retrieved information from a database to enhance their responses."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Model layer",
+        "role": "the reasoning engine — one or more large language models, often with a router that sends easy steps to a small cheap model and hard steps to a large one.",
+        "parts": [
+          "hosted or self-hosted foundation models",
+          "prompt and context assembly",
+          "model router",
+          "token budget management"
+        ]
+      },
+      {
+        "name": "Planning and control loop",
+        "role": "decides what to do next, observes the result, and revises the plan until the goal is met or it gives up.",
+        "parts": [
+          "task decomposition",
+          "act-observe-replan cycle",
+          "stopping and escalation criteria",
+          "reflection and self-critique steps"
+        ]
+      },
+      {
+        "name": "Tool and action layer",
+        "role": "the agent's hands: typed interfaces to real systems.",
+        "parts": [
+          "tool schemas (names, parameters, descriptions)",
+          "connectors to internal and third-party APIs",
+          "authentication and credential injection",
+          "sandboxed code execution"
+        ]
+      },
+      {
+        "name": "Memory and retrieval",
+        "role": "gives the agent facts it was not trained on and a record of what it has already done.",
+        "parts": [
+          "document ingestion and chunking",
+          "embedding model and vector index",
+          "keyword or hybrid search",
+          "run history and scratchpad state"
+        ]
+      },
+      {
+        "name": "Orchestration and state",
+        "role": "keeps long, multi-step runs alive across failures, restarts and waits.",
+        "parts": [
+          "durable execution engine with persisted state",
+          "queueing and concurrency control",
+          "retries, timeouts and idempotency keys",
+          "human-approval checkpoints"
+        ]
+      },
+      {
+        "name": "Guardrails and permissions",
+        "role": "limits what the agent is allowed to touch.",
+        "parts": [
+          "scoped, short-lived identities per run",
+          "allow-lists and action policies",
+          "input/output filtering and redaction",
+          "spend and rate limits"
+        ]
+      },
+      {
+        "name": "Evaluation and observability",
+        "role": "makes the system measurable instead of a demo.",
+        "parts": [
+          "end-to-end traces of every model call and tool call",
+          "labelled task sets and regression suites",
+          "automatic scoring plus human review",
+          "cost, latency and success-rate dashboards"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the process and its decision points",
+        "detail": "Write down the current workflow step by step, mark where judgement is required and where a rule suffices, and define what a correct finished outcome looks like."
+      },
+      {
+        "title": "Expose the tools",
+        "detail": "Wrap each system the agent must touch in a narrow, well-described interface. Integration work is still done by hand — the agent chooses and sequences calls, it does not invent connectors."
+      },
+      {
+        "title": "Choose and benchmark models",
+        "detail": "Run candidate models on a sample of real tasks, measuring accuracy, latency and cost per run, and pick a router policy rather than a single model."
+      },
+      {
+        "title": "Build retrieval",
+        "detail": "Ingest the policies, tickets, contracts or records the agent must read; chunk them, embed them and index them so relevant passages can be fetched at run time."
+      },
+      {
+        "title": "Implement the control loop",
+        "detail": "Code the plan-act-observe-replan cycle with an explicit step limit, so the agent cannot loop forever or spend without bound."
+      },
+      {
+        "title": "Add durable state",
+        "detail": "Persist the run's state after each step so that a crash, a restart or a three-day wait for an approval does not lose the work or repeat a side effect."
+      },
+      {
+        "title": "Wire permissions and guardrails",
+        "detail": "Give each run its own scoped identity, restrict it to a list of permitted actions, and insert approval gates before anything irreversible such as payments or deletions."
+      },
+      {
+        "title": "Evaluate, then shadow-run",
+        "detail": "Score the agent against the labelled task set, then run it alongside humans in read-only mode and compare its proposed actions with what staff actually did."
+      },
+      {
+        "title": "Expand autonomy gradually",
+        "detail": "Enable write actions one at a time, starting with low-consequence ones, and keep humans in the loop until measured success rates justify removing them."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Language models with reliable tool calling",
+        "status": "exists",
+        "why": "the agent needs structured output naming a function and its arguments, not free prose."
+      },
+      {
+        "tech": "Retrieval-augmented generation",
+        "status": "exists",
+        "why": "enterprise facts are private and change, so they must be fetched rather than memorised in weights."
+      },
+      {
+        "tech": "Durable workflow execution",
+        "status": "exists",
+        "why": "business processes run for hours or weeks and must survive restarts without duplicating side effects."
+      },
+      {
+        "tech": "Sandboxed code execution",
+        "status": "exists",
+        "why": "agents that write and run code need isolation so a mistake cannot reach production systems."
+      },
+      {
+        "tech": "Standardised tool-integration protocols",
+        "status": "partial",
+        "why": "open schemas for exposing tools are young, so much integration remains bespoke per vendor."
+      },
+      {
+        "tech": "Trustworthy evaluation of multi-step agents",
+        "status": "partial",
+        "why": "a run can be right for the wrong reasons, and no widely accepted benchmark captures long-horizon enterprise work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-domain agents that draft or recommend, with a human approving every write",
+        "unlocks": "measurable time savings on document-heavy, rule-bounded work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agents that complete whole tasks in a narrow domain and escalate only the exceptions",
+        "unlocks": "headcount can be redirected from processing to review."
+      },
+      {
+        "stage": "Next",
+        "milestone": "long-running agents with persistent memory and replayable state across systems and weeks",
+        "unlocks": "processes too long for a single session, such as onboarding or procurement cycles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "agents from different organisations negotiating through shared tool protocols",
+        "unlocks": "automated transactions between companies, contingent on identity, liability and audit standards."
+      }
+    ]
   }
 }

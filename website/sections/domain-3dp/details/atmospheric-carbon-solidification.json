@@ -33,5 +33,156 @@
         "def": "Material used in 3D printers to construct objects layer by layer."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Air contactor",
+        "role": "pulls atmospheric CO2 onto a sorbent so it can be collected.",
+        "parts": [
+          "fans and large contactor surfaces",
+          "solid amine or hydroxide sorbent",
+          "regeneration heater",
+          "vacuum or steam desorption"
+        ]
+      },
+      {
+        "name": "Conversion reactor",
+        "role": "turns gaseous CO2 into solid carbon by electrochemistry rather than by plant photosynthesis.",
+        "parts": [
+          "electrolysis cell with molten carbonate or molten salt electrolyte",
+          "inert anodes and metal cathodes",
+          "power supply and temperature control",
+          "carbon harvesting and salt recovery"
+        ]
+      },
+      {
+        "name": "Carbon conditioning",
+        "role": "turns the harvested powder into a consistent feedstock.",
+        "parts": [
+          "washing and drying",
+          "milling and classification",
+          "surface treatment for bonding",
+          "quality testing"
+        ]
+      },
+      {
+        "name": "Feedstock compounding",
+        "role": "pure carbon does not melt like a thermoplastic, so it must be blended with a carrier.",
+        "parts": [
+          "binder polymer or resin (or a cementitious paste)",
+          "twin-screw compounder or slurry mixer",
+          "pelletiser or filament extrusion line"
+        ]
+      },
+      {
+        "name": "Large-scale printer",
+        "role": "deposits the carbon-rich material layer by layer into a structure.",
+        "parts": [
+          "gantry or robotic arm with a metre-scale reach",
+          "extruder or peristaltic pump and nozzle",
+          "motion control and slicing software",
+          "build platform and environmental enclosure"
+        ]
+      },
+      {
+        "name": "Power and heat supply",
+        "role": "both capture and electrolysis are energy-intensive, so the climate benefit depends entirely on this.",
+        "parts": [
+          "low-carbon electricity",
+          "waste-heat recovery between processes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Site the plant",
+        "detail": "Locate air contactors, electrolysis and printing where low-carbon electricity and heat are cheap, since the process is energy-dominated."
+      },
+      {
+        "title": "Capture CO2 from air",
+        "detail": "Fans draw air through contactors; the sorbent is heated or put under vacuum to release a concentrated CO2 stream. Atmospheric CO2 is only about 0.04%, so very large air volumes must be moved per tonne of carbon."
+      },
+      {
+        "title": "Purify and concentrate",
+        "detail": "Water and trace contaminants are removed so the gas fed to the cell is consistent."
+      },
+      {
+        "title": "Electrolyse to solid carbon",
+        "detail": "CO2 is dissolved in a molten carbonate electrolyte at high temperature; current splits it, and solid carbon grows on the cathode as nanotubes or flakes while oxygen leaves at the anode."
+      },
+      {
+        "title": "Harvest the carbon",
+        "detail": "The cathode deposit is removed, washed free of electrolyte salts and dried into a powder."
+      },
+      {
+        "title": "Compound into a printable mix",
+        "detail": "The powder is blended with a binder — a polymer for melt extrusion, or a resin or cement paste for slurry printing — at the highest carbon fraction the nozzle can still handle."
+      },
+      {
+        "title": "Print the structure",
+        "detail": "A gantry or robot arm lays down the mix in layers. Shrinkage, layer bonding and dimensional accuracy are the hard parts at building scale."
+      },
+      {
+        "title": "Cure, finish and test",
+        "detail": "The part is cured or cooled, then tested for strength, fire behaviour and carbon content before use."
+      },
+      {
+        "title": "Account for the carbon",
+        "detail": "Verify how much CO2 is durably locked in the product and for how long, because only the durable fraction counts as storage."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Direct air capture",
+        "status": "partial",
+        "why": "operating plants exist but at small scale and high cost per tonne of CO2."
+      },
+      {
+        "tech": "Electrochemical CO2 conversion to solid carbon",
+        "status": "partial",
+        "why": "molten-carbonate electrolysis has made carbon nanotubes from CO2 in laboratories, but only in grams to kilograms, not tonnes."
+      },
+      {
+        "tech": "Abundant low-carbon electricity and heat",
+        "status": "partial",
+        "why": "without it the process emits more than it stores."
+      },
+      {
+        "tech": "Binder chemistry for high-carbon printing",
+        "status": "missing",
+        "why": "structural strength currently comes mostly from the binder, which dilutes the carbon benefit."
+      },
+      {
+        "tech": "Standards for carbon-stored construction materials",
+        "status": "missing",
+        "why": "no widely accepted way to certify durability of stored carbon in a printed structure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory-scale air capture and CO2-to-carbon electrolysis, plus 3D printing of carbon-filled composites in construction",
+        "unlocks": "proof that the chemistry and the printing can work separately."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot plants coupling capture to electrolysis to produce carbon powder continuously",
+        "unlocks": "real cost and energy data, and a feedstock supply."
+      },
+      {
+        "stage": "Next",
+        "milestone": "printed non-structural products — panels, cladding, furniture, conductive parts",
+        "unlocks": "a market that pays for the material while structural grades are developed."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "load-bearing printed elements with certified carbon storage",
+        "unlocks": "buildings that act as long-lived carbon sinks — though the mass of carbon involved is small compared with annual emissions."
+      }
+    ]
   }
 }

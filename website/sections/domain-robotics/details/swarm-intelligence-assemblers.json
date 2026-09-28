@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Robot unit",
+        "role": "a small mobile robot that can move, sense and manipulate building material.",
+        "parts": [
+          "chassis",
+          "wheels or legs",
+          "gripper or end effector",
+          "microcontroller",
+          "wireless radio",
+          "battery"
+        ]
+      },
+      {
+        "name": "Local sensing and positioning",
+        "role": "lets each robot know where it is and what the structure looks like nearby.",
+        "parts": [
+          "camera",
+          "ultra-wideband or LiDAR rangefinder",
+          "inertial measurement unit",
+          "proximity sensors"
+        ]
+      },
+      {
+        "name": "Stigmergic coordination",
+        "role": "robots coordinate indirectly by changing the environment, such as placing a block or leaving a digital marker.",
+        "parts": [
+          "shared map or digital pheromone",
+          "RFID tags or visual markers",
+          "local rule set"
+        ]
+      },
+      {
+        "name": "Material handling",
+        "role": "picks up, carries and places building blocks or repair patches.",
+        "parts": [
+          "interlocking block design",
+          "feedstock storage",
+          "placement mechanism"
+        ]
+      },
+      {
+        "name": "Power and docking",
+        "role": "keeps small robots running without manual battery changes.",
+        "parts": [
+          "rechargeable battery",
+          "autonomous docking station",
+          "charging contacts"
+        ]
+      },
+      {
+        "name": "Supervisory interface",
+        "role": "allows a human to set high-level goals without controlling individual robots.",
+        "parts": [
+          "base station",
+          "goal specification software",
+          "monitoring display"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design blocks and robot morphology",
+        "detail": "Choose block shapes (e.g. 10–20 cm interlocking units) that a small robot can lift and place, and size the robot accordingly."
+      },
+      {
+        "title": "Fabricate robot units",
+        "detail": "Assemble chassis, motors, gripper, sensors, radio and battery into a robust unit, typically under 30 cm across."
+      },
+      {
+        "title": "Write local control rules",
+        "detail": "Program each robot with simple if–then rules: if a block is needed here, fetch one; if a gap exists, fill it. No central controller."
+      },
+      {
+        "title": "Simulate the swarm",
+        "detail": "Test thousands of virtual robots in software to tune rules, avoid deadlocks and check scalability before physical trials."
+      },
+      {
+        "title": "Build a testbed arena",
+        "detail": "Create a flat, bounded space with a few dozen robots and a supply of blocks to demonstrate basic construction like a wall or pyramid."
+      },
+      {
+        "title": "Scale up the swarm",
+        "detail": "Increase to hundreds of robots, improving communication range, collision avoidance and task allocation so the group stays coordinated."
+      },
+      {
+        "title": "Trial on infrastructure repair",
+        "detail": "Deploy the swarm to repair a simple structure, such as filling a crack or assembling a temporary support, in a controlled outdoor setting."
+      },
+      {
+        "title": "Integrate with real surfaces",
+        "detail": "Develop ways for robots to navigate and attach to vertical or uneven surfaces like bridge piers and building walls."
+      },
+      {
+        "title": "Certify safety and reliability",
+        "detail": "Test that robots can work safely near people and in public infrastructure, with fail-safes and emergency stop."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Swarm robotics",
+        "status": "partial",
+        "why": "labs have demonstrated tens of robots building simple structures, but scaling to thousands is unproven."
+      },
+      {
+        "tech": "Wireless communication",
+        "status": "exists",
+        "why": "Wi-Fi, Bluetooth and ultra-wideband let robots exchange local information."
+      },
+      {
+        "tech": "Miniaturised sensors and actuators",
+        "status": "exists",
+        "why": "small cameras, motors and microcontrollers are mass-produced and cheap."
+      },
+      {
+        "tech": "Autonomous navigation and localisation",
+        "status": "partial",
+        "why": "SLAM works in structured spaces, but robust operation in cluttered, changing construction sites is still hard."
+      },
+      {
+        "tech": "Stigmergic algorithms",
+        "status": "partial",
+        "why": "well studied in simulation, yet physical implementation with real materials is limited."
+      },
+      {
+        "tech": "Battery energy density",
+        "status": "exists",
+        "why": "current lithium-ion batteries give only a few hours of operation, limiting continuous work."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab demonstrations of tens of robots building simple structures (e.g. the TERMES project at Harvard, 2014)",
+        "unlocks": "proof that stigmergic construction works in the physical world."
+      },
+      {
+        "stage": "Next",
+        "milestone": "swarms of hundreds of robots building larger structures in controlled environments",
+        "unlocks": "scalability, robustness and faster build times."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field trials for infrastructure repair, such as crack sealing or scaffolding assembly",
+        "unlocks": "real-world application in construction and maintenance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "thousands of robots autonomously building or repairing large infrastructure with minimal human oversight",
+        "unlocks": "rapid, low-cost construction and repair of bridges, buildings and pipelines."
+      }
+    ]
+  }
+}

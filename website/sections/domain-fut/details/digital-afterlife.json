@@ -33,5 +33,148 @@
         "def": "A computer-generated simulation of a three-dimensional environment that can be interacted with in a seemingly real or physical way through specialized equipment like headsets or gloves."
       }
     ]
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Preservation",
+        "role": "stabilises a brain so its wiring survives long enough to be read.",
+        "parts": [
+          "fixative or cryoprotectant perfusion",
+          "vitrification and cold storage",
+          "embedding resin"
+        ]
+      },
+      {
+        "name": "Imaging",
+        "role": "captures every neuron, axon and synapse at nanometre resolution.",
+        "parts": [
+          "serial-section electron microscope",
+          "automated tape-collecting ultramicrotome",
+          "synchrotron or expansion-microscopy alternatives"
+        ]
+      },
+      {
+        "name": "Reconstruction",
+        "role": "turns petabytes of images into a wiring diagram.",
+        "parts": [
+          "machine-learning segmentation",
+          "human proofreading",
+          "synapse and cell-type annotation"
+        ]
+      },
+      {
+        "name": "Physiological model",
+        "role": "adds dynamics to the wiring — how each cell actually behaves.",
+        "parts": [
+          "ion-channel and receptor models",
+          "compartmental neuron models",
+          "plasticity rules"
+        ]
+      },
+      {
+        "name": "Simulation substrate",
+        "role": "runs the model fast enough to behave in real time.",
+        "parts": [
+          "accelerators and high-bandwidth memory",
+          "neuron-to-neuron communication network",
+          "power and cooling"
+        ]
+      },
+      {
+        "name": "Validation and interface",
+        "role": "checks the model against real brains and gives it senses and outputs.",
+        "parts": [
+          "comparison with electrode and imaging recordings",
+          "sensor and actuator interfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Preserve the tissue",
+        "detail": "A donor brain would be perfused with fixatives or cryoprotectants within minutes of death, then vitrified and stored cold to stop decay before imaging."
+      },
+      {
+        "title": "Cut and image",
+        "detail": "The brain is sliced into nanometre-thin sections and each is photographed by electron microscopy, producing petabytes of images over months to years."
+      },
+      {
+        "title": "Segment the images",
+        "detail": "Machine-learning models trace every cell membrane and process; human proofreaders fix errors, as done for small animal connectomes."
+      },
+      {
+        "title": "Map the synapses",
+        "detail": "Each junction is located and classified by type and strength, giving a directed graph of perhaps 10^14 to 10^15 connections in a human brain."
+      },
+      {
+        "title": "Assign cell types",
+        "detail": "Each neuron is matched to a known type with its ion channels, receptors and firing behaviour — much of this is still unknown for humans."
+      },
+      {
+        "title": "Build the simulation",
+        "detail": "The graph and cell models are loaded onto a supercomputer, with numerical integration of each neuron's electrical state."
+      },
+      {
+        "title": "Calibrate against real data",
+        "detail": "Simulated responses are tuned until they match recordings from living tissue; without this the model is a diagram, not a mind."
+      },
+      {
+        "title": "Run and interface",
+        "detail": "The emulation is run continuously and connected to sensors and actuators so it can interact with the world."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Whole-brain nanoscale imaging",
+        "status": "partial",
+        "why": "complete connectomes exist only for very small brains; a human brain is roughly a million times larger in volume."
+      },
+      {
+        "tech": "Automated connectome reconstruction",
+        "status": "partial",
+        "why": "segmentation still needs heavy human proofreading, which does not scale to a human brain."
+      },
+      {
+        "tech": "Exascale computing and memory",
+        "status": "partial",
+        "why": "real-time simulation of tens of billions of detailed neurons needs far more compute and bandwidth than any machine today."
+      },
+      {
+        "tech": "Human neuron and synapse physiology",
+        "status": "missing",
+        "why": "we lack a complete catalogue of human cell types, their channels and how synapses change with learning."
+      },
+      {
+        "tech": "A validated test of mind simulation",
+        "status": "missing",
+        "why": "there is no agreed way to show that a simulation is conscious or is the same person, not merely similar."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "complete wiring maps of tiny brains (the nematode in 1986, the adult fruit fly in 2024) and partial maps of mouse cortex",
+        "unlocks": "proof that connectomes can be read, plus tooling for segmentation and annotation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a whole mouse brain connectome and simulation of small circuits that reproduces real behaviour",
+        "unlocks": "methods that could be scaled, and evidence about how much detail behaviour requires."
+      },
+      {
+        "stage": "Next",
+        "milestone": "high-resolution maps of human brain tissue, or non-destructive scanning fine enough to resolve synapses",
+        "unlocks": "the raw data a human emulation would need — and raises consent and privacy questions."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a human-scale emulation running in real time and passing behavioural tests",
+        "unlocks": "only then could digital preservation be discussed as a technology rather than a hope."
+      }
+    ]
   }
 }
