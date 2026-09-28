@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Oscillator (bosonic mode)",
+        "role": "stores the logical qubit as a standing pattern of states in phase space rather than in a two-level system.",
+        "parts": [
+          "high-Q microwave cavity or superconducting resonator",
+          "or a trapped-ion motional mode",
+          "low-loss materials and shielding"
+        ]
+      },
+      {
+        "name": "Ancilla control qubit",
+        "role": "supplies the nonlinearity needed to create, squeeze and read the grid states.",
+        "parts": [
+          "transmon qubit with a Josephson junction",
+          "couplers to the oscillator",
+          "readout resonator and amplifier"
+        ]
+      },
+      {
+        "name": "Squeezing and displacement drives",
+        "role": "shape the lattice of states and control the spacing between its peaks.",
+        "parts": [
+          "phase-locked microwave sources",
+          "arbitrary waveform generators",
+          "parametric amplifier for squeezing",
+          "optical squeezers (photonic route)"
+        ]
+      },
+      {
+        "name": "Stabiliser measurement and feedback",
+        "role": "detects small displacements without collapsing the encoded logical information.",
+        "parts": [
+          "quantum-limited amplifiers",
+          "fast digitisers and FPGA feedback",
+          "conditional displacement pulses",
+          "Pauli-frame tracking software"
+        ]
+      },
+      {
+        "name": "Cryogenics and shielding",
+        "role": "keeps the oscillator cold, quiet and free of stray fields.",
+        "parts": [
+          "dilution refrigerator at roughly 10 millikelvin",
+          "magnetic and infrared shielding",
+          "microwave filters"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "decides whether a displacement drifted past the halfway point between lattice peaks.",
+        "parts": [
+          "real-time decoder on FPGA or GPU",
+          "outer-code decoder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the oscillator",
+        "detail": "Machine and polish a niobium or aluminium cavity, or pattern a superconducting resonator on a low-loss substrate, until it holds a microwave photon for milliseconds."
+      },
+      {
+        "title": "Build the ancilla qubit",
+        "detail": "Fabricate a transmon with a Josephson junction, wire up its readout, and measure how long it holds its state."
+      },
+      {
+        "title": "Assemble and cool down",
+        "detail": "Mount oscillator and qubit in a dilution refrigerator at about 10 millikelvin, shield them from magnetic fields, and install filtered microwave lines."
+      },
+      {
+        "title": "Calibrate the coupling",
+        "detail": "Tune the dispersive interaction between qubit and oscillator and verify the drives that will squeeze the oscillator's quantum noise."
+      },
+      {
+        "title": "Engineer the grid state",
+        "detail": "Drive the oscillator while repeatedly measuring the qubit so it settles into a superposition of squeezed states arranged on a square lattice, confirmed as a grid of peaks in the Wigner function."
+      },
+      {
+        "title": "Verify with tomography",
+        "detail": "Displace the state and measure it to map the lattice, and extract how narrow the peaks are relative to their spacing — the squeezing that sets the code's strength."
+      },
+      {
+        "title": "Run correction cycles",
+        "detail": "Repeatedly measure the displacement stabilisers; a photon-loss event shifts the lattice by less than half a cell and is detected, then cancelled by a conditional displacement or tracked in software as a frame update, without ever reading the logical qubit."
+      },
+      {
+        "title": "Concatenate and scale",
+        "detail": "Wrap the oscillator code inside an outer qubit code and inject non-Clifford magic states so the encoded qubit can be assembled into a processor."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-coherence oscillators",
+        "status": "exists",
+        "why": "the logical qubit can only be as good as the mode storing it; microwave cavities with quality factors in the millions are routine."
+      },
+      {
+        "tech": "Quantum-limited amplifiers",
+        "status": "exists",
+        "why": "stabiliser measurements must not inject more noise than the code can absorb."
+      },
+      {
+        "tech": "High-fidelity ancilla qubits and gates",
+        "status": "partial",
+        "why": "control errors during preparation and readout set a floor on how well errors can be corrected."
+      },
+      {
+        "tech": "Squeezing of the order of ten decibels",
+        "status": "partial",
+        "why": "fault-tolerant operation needs lattice peaks narrow compared with their spacing, and laboratory squeezing still falls short in the systems used."
+      },
+      {
+        "tech": "Real-time feedback and fast decoding",
+        "status": "partial",
+        "why": "corrections must land before the state decoheres, so latency in the measurement chain matters."
+      },
+      {
+        "tech": "Universal (non-Clifford) gate resource",
+        "status": "partial",
+        "why": "full computation needs magic states or equivalent operations that bosonic codes do not supply for free."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "the code, proposed by Gottesman, Kitaev and Preskill in 2001, has been engineered and error-corrected at the single-mode level in superconducting cavities and trapped-ion oscillators",
+        "unlocks": "proof that a continuum degree of freedom can hold a protected qubit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher squeezing and longer-lived logical qubits, alongside companion bosonic encodings such as cat codes",
+        "unlocks": "hardware-efficient logical qubits that beat any physical qubit with far fewer components."
+      },
+      {
+        "stage": "Next",
+        "milestone": "concatenation with an outer code and magic-state distillation",
+        "unlocks": "a genuinely fault-tolerant logical qubit and a route to universal computation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "modules of many such qubits, including photonic machines built from squeezed light",
+        "unlocks": "scalable quantum processors for simulation, chemistry and cryptography."
+      }
+    ]
+  }
+}

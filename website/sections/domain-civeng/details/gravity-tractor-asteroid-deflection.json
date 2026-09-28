@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Spacecraft bus and power",
+        "role": "keeps the tractor alive and running for years in deep space.",
+        "parts": [
+          "solar arrays or radioisotope generator",
+          "avionics and redundant computers",
+          "thermal control and radiators"
+        ]
+      },
+      {
+        "name": "Electric propulsion",
+        "role": "holds the hover and supplies the slow, continuous push that steers the asteroid.",
+        "parts": [
+          "gridded ion or Hall-effect thrusters",
+          "xenon or krypton propellant tanks",
+          "power-processing units"
+        ]
+      },
+      {
+        "name": "Guidance, navigation and control",
+        "role": "flies the station-keeping box without a pilot, since radio commands take minutes to arrive.",
+        "parts": [
+          "star trackers and inertial sensors",
+          "optical cameras and laser rangefinder",
+          "autonomous control loops",
+          "radio-science tracking"
+        ]
+      },
+      {
+        "name": "Asteroid characterisation",
+        "role": "measures the target's mass, shape, spin and gravity field — you cannot aim a tug you do not understand.",
+        "parts": [
+          "narrow- and wide-angle imagers",
+          "radio ranging and gravity-field mapping"
+        ]
+      },
+      {
+        "name": "Deep-space communications",
+        "role": "carries commands out and tracking data back over years.",
+        "parts": [
+          "high-gain antenna",
+          "transponder",
+          "ground-station network"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the target from Earth",
+        "detail": "Optical and radar observations give the orbit, size, reflectivity and a rough density — enough to decide whether a tractor is the right tool."
+      },
+      {
+        "title": "Size the hover",
+        "detail": "Designers calculate the stand-off distance that balances gravitational pull against thruster plume effects and sunlight pressure; a few hundred metres is the usual compromise between a stronger pull and a stable, controllable position."
+      },
+      {
+        "title": "Build the spacecraft",
+        "detail": "Propellant tanks, thrusters, antennas and avionics are assembled and tested for years of unattended operation."
+      },
+      {
+        "title": "Launch and cruise",
+        "detail": "The craft is launched to escape velocity, then spirals outward on low thrust over months or years — too slowly for a last-minute mission, which is why early warning matters."
+      },
+      {
+        "title": "Rendezvous and survey",
+        "detail": "It flies alongside the asteroid for weeks to months, mapping the shape, spin and gravity field with radio tracking and imaging until the mass is known well enough to predict the deflection."
+      },
+      {
+        "title": "Establish the station-keeping box",
+        "detail": "Thrusters fire continuously to hold a fixed offset from the asteroid's centre of mass, letting the mutual gravitational attraction do the work without touching the body."
+      },
+      {
+        "title": "Tow for years",
+        "detail": "Held in place, the spacecraft's tiny pull accumulates: on the order of a tenth to a few tenths of a newton on a 200-metre body, a few centimetres per second of velocity change over a decade or more."
+      },
+      {
+        "title": "Verify the new orbit",
+        "detail": "Ground radar and optical astrometry re-measure the trajectory over subsequent years to confirm the miss distance."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-specific-impulse electric propulsion",
+        "status": "exists",
+        "why": "ion thrusters have run for years on deep-space craft and are the only practical way to hover for so long on limited propellant."
+      },
+      {
+        "tech": "Autonomous deep-space navigation",
+        "status": "partial",
+        "why": "holding position metres-to-hundreds-of-metres from a tumbling, poorly modelled body with a multi-minute light-travel delay pushes beyond routine practice."
+      },
+      {
+        "tech": "Asteroid mass and gravity-field determination",
+        "status": "partial",
+        "why": "the pull scales with the asteroid's mass, and masses are often uncertain by tens of percent until a spacecraft measures them."
+      },
+      {
+        "tech": "Multi-year spacecraft reliability",
+        "status": "partial",
+        "why": "the mission only works if the tug keeps thrusting for a decade, far longer than most planetary spacecraft operate."
+      },
+      {
+        "tech": "Decades-ahead detection and orbit prediction",
+        "status": "partial",
+        "why": "the gentle push only helps if surveys find the object and its orbit is known decades in advance."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Survey telescopes and radar find and track near-Earth asteroids, and impact physics is tested in space — NASA's DART struck Dimorphos in 2022, with ESA's Hera spacecraft en route to survey the result",
+        "unlocks": "knowledge of orbits, densities and how bodies respond to deflection attempts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a dedicated small-scale demonstration: a spacecraft hovering beside a small asteroid for months and measuring the induced velocity change with radio tracking",
+        "unlocks": "proof that non-contact towing works in practice rather than on paper."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a full-scale rehearsal on a body of 50–100 m, towed over several years",
+        "unlocks": "an operational procedure with measured performance and known limits."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an operational planetary-defence capability pairing kinetic impactors for urgent threats with gravity tractors for slow, precise nudges",
+        "unlocks": "a choice of response matched to warning time — fragmentation-free deflection for objects detected early enough."
+      }
+    ]
+  }
+}

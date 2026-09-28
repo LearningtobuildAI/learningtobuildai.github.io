@@ -1,0 +1,133 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Oracle",
+        "role": "marks the solution state by flipping its sign, so the search knows what to look for.",
+        "parts": [
+          "reversible logic gates",
+          "ancilla qubits",
+          "multi-controlled phase gate"
+        ]
+      },
+      {
+        "name": "Diffusion operator",
+        "role": "reflects all amplitudes about their average, which amplifies the marked state's probability.",
+        "parts": [
+          "Hadamard gates",
+          "phase flip about the zero state",
+          "further Hadamard gates"
+        ]
+      },
+      {
+        "name": "Quantum register",
+        "role": "holds the equal superposition of all N candidates.",
+        "parts": [
+          "qubits",
+          "initial Hadamard layer",
+          "entanglement resources"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "runs the Grover iterations and measures the final state.",
+        "parts": [
+          "classical controller",
+          "microwave or laser pulse generators",
+          "readout resonators"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "keeps the quantum state coherent long enough for many iterations.",
+        "parts": [
+          "logical qubits",
+          "stabilizer measurements",
+          "decoders"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Encode the search problem",
+        "detail": "Express the problem as a Boolean function that returns true for the target state(s); this defines the search space size N."
+      },
+      {
+        "title": "Design the oracle circuit",
+        "detail": "Build a reversible quantum circuit that applies a phase flip to the target state(s) and leaves all others unchanged. This is often the hardest part."
+      },
+      {
+        "title": "Prepare the uniform superposition",
+        "detail": "Apply a Hadamard gate to every qubit in the register, creating an equal superposition of all 2^n states."
+      },
+      {
+        "title": "Apply Grover iterations",
+        "detail": "Repeat the oracle followed by the diffusion operator about √N times. Each iteration rotates the state vector slightly toward the target."
+      },
+      {
+        "title": "Measure the register",
+        "detail": "Read out the qubits; the target state appears with high probability."
+      },
+      {
+        "title": "Verify and repeat",
+        "detail": "Classically check the output; if incorrect, run again or adjust the number of iterations."
+      },
+      {
+        "title": "Integrate into a larger application",
+        "detail": "For constraint solving or cryptanalysis, embed the oracle in a classical-quantum loop that maps the problem and uses the result."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Scalable, low-error qubits",
+        "status": "partial",
+        "why": "current devices have tens to hundreds of noisy qubits; useful Grover tasks need many more and better fidelity."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "small logical qubits have been demonstrated, but a fault-tolerant machine with thousands of logical qubits does not exist."
+      },
+      {
+        "tech": "Efficient oracle compilation",
+        "status": "partial",
+        "why": "turning real-world problems into compact quantum circuits is an active research area and often dominates the cost."
+      },
+      {
+        "tech": "Coherent control and readout",
+        "status": "exists",
+        "why": "microwave and laser control of qubits works, but scaling to thousands of qubits with low crosstalk is hard."
+      },
+      {
+        "tech": "Classical co-processing",
+        "status": "exists",
+        "why": "classical computers define the problem, verify results and orchestrate repeated runs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "demonstrations on a handful of qubits for toy search problems",
+        "unlocks": "proof that amplitude amplification works on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant processors with tens of logical qubits",
+        "unlocks": "quantum advantage for small constraint-satisfaction or database-search problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fault-tolerant machines with hundreds to thousands of logical qubits",
+        "unlocks": "practical speedups for optimization and some symmetric-key attacks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "millions of logical qubits",
+        "unlocks": "cryptanalysis of widely used symmetric ciphers (e.g. AES-128 reduced from 2^128 to 2^64 operations) and large-scale search."
+      }
+    ]
+  }
+}

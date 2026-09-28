@@ -1,0 +1,162 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Ground antennas",
+        "role": "the large steerable dishes that both send commands and catch faint downlinks.",
+        "parts": [
+          "azimuth-elevation mount and pedestal",
+          "34 m and 70 m reflector dishes",
+          "precision surface panels",
+          "beam-waveguide optics"
+        ]
+      },
+      {
+        "name": "Receive chain",
+        "role": "amplifies signals that arrive with vanishingly little power.",
+        "parts": [
+          "feed horn",
+          "cryogenically cooled low-noise amplifier",
+          "downconverter",
+          "receiver"
+        ]
+      },
+      {
+        "name": "Transmit chain",
+        "role": "sends commands and ranging tones upward.",
+        "parts": [
+          "high-power klystron amplifier",
+          "waveguide runs",
+          "diplexer separating transmit from receive"
+        ]
+      },
+      {
+        "name": "Timing and navigation",
+        "role": "lets a spacecraft's position and velocity be measured from the radio signal itself.",
+        "parts": [
+          "hydrogen-maser frequency standards",
+          "coherent transponder on the spacecraft",
+          "ranging and Doppler processing",
+          "Delta-DOR very-long-baseline measurement"
+        ]
+      },
+      {
+        "name": "Signal processing and scheduling",
+        "role": "turns weak carriers into telemetry and plans who talks to whom when.",
+        "parts": [
+          "demodulators and decoders",
+          "command modulation and uplink security",
+          "pass-scheduling and configuration software"
+        ]
+      },
+      {
+        "name": "Optical communications segment",
+        "role": "the newer, much faster link using lasers instead of radio.",
+        "parts": [
+          "flight laser terminal with fine pointing",
+          "photon-counting ground detectors",
+          "adaptive-optics telescope to correct atmospheric blur"
+        ]
+      },
+      {
+        "name": "Relay spacecraft",
+        "role": "store-and-forward nodes that keep contact when a planet blocks the direct line of sight.",
+        "parts": [
+          "relay transponder and antenna",
+          "optical or radio relay payload",
+          "orbit and power subsystems"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick quiet sites spread in longitude",
+        "detail": "Radio observatories need protection from interference, and stations roughly a third of the world apart in longitude let at least one dish see a distant spacecraft as the Earth turns."
+      },
+      {
+        "title": "Build the dish and its mount",
+        "detail": "A reinforced concrete and steel pedestal carries a steerable mount that tracks a target moving against the stars at arcsecond precision."
+      },
+      {
+        "title": "Fit the precision reflector",
+        "detail": "Reflector panels are aligned so the dish surface departs from a perfect parabola by a small fraction of the shortest wavelength used; beam-waveguide optics route the signal to equipment rooms below."
+      },
+      {
+        "title": "Install the receive chain",
+        "detail": "Cryogenically cooled amplifiers are mounted as close to the feed as possible so that added noise stays below the noise of the sky itself."
+      },
+      {
+        "title": "Install the transmitters",
+        "detail": "High-power amplifiers feed uplink signals into the same dish through a diplexer, giving enough power at the spacecraft for command and ranging."
+      },
+      {
+        "title": "Wire in the clocks and back end",
+        "detail": "Hydrogen masers distribute a single reference frequency, and demodulators, decoders and command generators turn carriers into data and back."
+      },
+      {
+        "title": "Add optical ground terminals",
+        "detail": "Telescopes with adaptive optics and photon-counting detectors are built to catch a laser beam that may arrive as only a few photons per bit."
+      },
+      {
+        "title": "Deploy relay orbiters",
+        "detail": "Relay spacecraft are inserted around a planet or the Moon and linked to both the surface assets and the ground network."
+      },
+      {
+        "title": "Integrate and schedule the network",
+        "detail": "Stations, spacecraft teams and relay passes are coordinated so that coverage is handed from one longitude to the next without gaps."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large precision antenna engineering",
+        "status": "exists",
+        "why": "surface accuracy sets the shortest wavelength usable, and therefore how much data can be carried."
+      },
+      {
+        "tech": "Cryogenic low-noise amplifiers",
+        "status": "exists",
+        "why": "without them, receiver noise would swamp the extremely weak signals from distant spacecraft."
+      },
+      {
+        "tech": "Stable frequency standards and ranging",
+        "status": "exists",
+        "why": "coherent ranging and Doppler give navigation accuracy without carrying extra hardware."
+      },
+      {
+        "tech": "Optical laser communications",
+        "status": "partial",
+        "why": "demonstrated from deep space, but the narrow beam demands very precise pointing from both ends."
+      },
+      {
+        "tech": "Interplanetary relay orbiters",
+        "status": "partial",
+        "why": "routine at Mars and useful at the Moon, but not yet available at most other destinations."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "X-band and Ka-band ground networks with three longitudes, plus first deep-space optical demonstrations",
+        "unlocks": "command and telemetry for missions beyond the Moon."
+      },
+      {
+        "stage": "Next",
+        "milestone": "operational optical links and relay payloads on spacecraft near Earth and the Moon",
+        "unlocks": "gigabit-class returns for imaging and human exploration users."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated relay constellations at the Moon and Mars",
+        "unlocks": "near-continuous coverage through occultations and at the poles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical relay chains extended toward the outer planets",
+        "unlocks": "high-rate science from the outer solar system and precursors to interstellar probes."
+      }
+    ]
+  }
+}

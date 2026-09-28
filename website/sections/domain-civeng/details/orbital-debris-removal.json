@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Servicer spacecraft bus",
+        "role": "carries the capture hardware to the target and survives years in low Earth orbit.",
+        "parts": [
+          "solar arrays and batteries",
+          "propulsion (electric and chemical)",
+          "star trackers and reaction wheels",
+          "flight computer"
+        ]
+      },
+      {
+        "name": "Rendezvous and proximity navigation",
+        "role": "closes the gap from tens of kilometres to metres without ground intervention at the end.",
+        "parts": [
+          "ground radar tracking and orbit determination",
+          "optical cameras and LiDAR",
+          "relative navigation software",
+          "collision-avoidance logic"
+        ]
+      },
+      {
+        "name": "Capture mechanism",
+        "role": "grapples an object that was never designed to be caught.",
+        "parts": [
+          "robotic arm or tentacles",
+          "net or harpoon (single-shot)",
+          "magnetic or mechanical docking plate (only if the target carries one)"
+        ]
+      },
+      {
+        "name": "Target characterisation",
+        "role": "works out the object's shape, mass distribution and tumble before touching it.",
+        "parts": [
+          "onboard imaging and 3D reconstruction",
+          "spin-rate and axis estimation",
+          "thermal and lighting models"
+        ]
+      },
+      {
+        "name": "Deorbit or disposal module",
+        "role": "provides the velocity change that drops the object's perigee into the atmosphere.",
+        "parts": [
+          "high-thrust chemical engine and propellant tanks",
+          "drag sail or electrodynamic tether alternatives",
+          "separation and release mechanism"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "tracks everything in orbit, plans the approach and manages licensing and liability.",
+        "parts": [
+          "space-surveillance catalogues",
+          "conjunction-assessment tools",
+          "mission control and telemetry",
+          "regulatory and insurance interfaces"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick and track a target",
+        "detail": "Choose a large, high-risk object — typically a defunct satellite or a spent upper stage of several tonnes — and track it for months to build an accurate orbit and brightness curve."
+      },
+      {
+        "title": "Design the servicer around it",
+        "detail": "Mass, inertia, spin state and any usable attachment feature determine capture method, propellant load and structural strength."
+      },
+      {
+        "title": "Fabricate the spacecraft",
+        "detail": "Build the bus, install avionics, propulsion and sensors, and integrate the capture mechanism."
+      },
+      {
+        "title": "Test on the ground",
+        "detail": "Air-bearing tables and flat floors rehearse proximity manoeuvres; nets and harpoons are fired at representative targets; the whole spacecraft goes through thermal-vacuum and vibration testing."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "Ride-share to a nearby orbit, then deploy solar arrays and check sensors, typically over several weeks."
+      },
+      {
+        "title": "Far-range rendezvous",
+        "detail": "Ground navigation brings the servicer within a few tens of kilometres; onboard cameras take over and the distance is closed cautiously, with planned retreats if anything is uncertain."
+      },
+      {
+        "title": "Inspection and tumble matching",
+        "detail": "The servicer holds station a few tens of metres away, builds a 3D model, then slowly matches the target's rotation so the two are effectively still relative to each other."
+      },
+      {
+        "title": "Capture",
+        "detail": "A robotic arm grasps a structural feature, or a net or harpoon secures the body; the combined stack is then stabilised and its spin damped."
+      },
+      {
+        "title": "Disposal",
+        "detail": "The servicer burns to lower the target's perigee to roughly 200–300 km so it re-enters within about 25 years, then either rides down with it or releases it and moves to the next target — and itself disposes safely at end of life."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space surveillance and tracking catalogues",
+        "status": "exists",
+        "why": "you cannot remove what you cannot find and re-find; radar and optical networks already track objects down to about 10 cm in low Earth orbit."
+      },
+      {
+        "tech": "Autonomous relative navigation",
+        "status": "partial",
+        "why": "the final metres must be flown faster than ground commands can loop, and no servicer has yet docked with a large unprepared object unattended."
+      },
+      {
+        "tech": "Capture of unprepared tumbling bodies",
+        "status": "partial",
+        "why": "nets and harpoons have flown in demonstrations, but none has yet secured a multi-tonne derelict and deorbited it."
+      },
+      {
+        "tech": "High-delta-v, low-cost propulsion",
+        "status": "exists",
+        "why": "removing a heavy object from low Earth orbit costs hundreds of metres per second of velocity change; that drives the size and price of the servicer."
+      },
+      {
+        "tech": "Re-entry survivability modelling",
+        "status": "partial",
+        "why": "a large object released to re-enter may not burn up completely, so casualty risk has to be calculated and mitigated."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial servicers flying close-approach demonstrations against real derelicts",
+        "unlocks": "proof that rendezvous and inspection of an uncooperative object works."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first funded removal of a single large object — capturing it and lowering its orbit",
+        "unlocks": "a demonstrated unit cost per object removed."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-target 'sweeper' missions carrying several deorbit kits to successive objects, or magnetic docking plates fitted to new satellites before launch",
+        "unlocks": "removal at a cost per kilogram that operators could plausibly pay."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine removal funded by a fee on every satellite launched, targeting the largest derelicts first",
+        "unlocks": "stabilising the low-orbit population before collisions outpace the natural decay of debris."
+      }
+    ]
+  }
+}

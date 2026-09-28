@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Superinductance",
+        "role": "the defining element: a very large inductance with almost no capacitance, which makes the qubit's wavefunction heavy and localised in phase so charge noise barely moves it.",
+        "parts": [
+          "chain of many series Josephson junctions, or a disordered high-kinetic-inductance film"
+        ]
+      },
+      {
+        "name": "Josephson junction",
+        "role": "the nonlinear element that makes the circuit an artificial atom with unevenly spaced energy levels.",
+        "parts": [
+          "aluminium oxide tunnel barrier between two superconductors"
+        ]
+      },
+      {
+        "name": "Shunt capacitance",
+        "role": "sets the plasma frequency and tunes the ratio of charging to Josephson energy.",
+        "parts": [
+          "interdigitated or parallel-plate capacitor pads"
+        ]
+      },
+      {
+        "name": "Flux bias and drive lines",
+        "role": "fluxonium is operated at half a flux quantum, so a steady magnetic flux plus microwave pulses must be applied.",
+        "parts": [
+          "on-chip flux line",
+          "microwave drive line",
+          "filters"
+        ]
+      },
+      {
+        "name": "Readout chain",
+        "role": "detects the qubit state without destroying it, at the low frequencies fluxonium uses.",
+        "parts": [
+          "dispersive resonator",
+          "traveling-wave parametric amplifier",
+          "room-temperature electronics"
+        ]
+      },
+      {
+        "name": "Cryogenic package",
+        "role": "keeps the circuit superconducting and shielded from thermal noise and stray magnetic fields.",
+        "parts": [
+          "dilution refrigerator reaching about 10 mK",
+          "magnetic shielding",
+          "infrared filters"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the circuit parameters",
+        "detail": "Designers pick the Josephson energy, superinductance and capacitance so the qubit sits at a few hundred megahertz to a few gigahertz, away from unwanted resonances."
+      },
+      {
+        "title": "Fabricate the superinductance",
+        "detail": "Either a chain of roughly a hundred series Josephson junctions, each with a large critical current so no junction phase-slips, or a narrow strip of a disordered superconductor whose kinetic inductance reaches microhenries."
+      },
+      {
+        "title": "Fabricate the Josephson junction",
+        "detail": "Double-angle shadow evaporation deposits aluminium, is briefly oxidised to form the tunnel barrier, then deposits more aluminium — a process shared with transmon and RSFQ circuits."
+      },
+      {
+        "title": "Form the capacitors and wiring",
+        "detail": "Capacitor pads, flux lines, drive lines and the readout resonator are patterned in the same lithographic stack, with reactive ion etching for the fine gaps."
+      },
+      {
+        "title": "Dice, clean and package",
+        "detail": "Chips are cut, surface oxides and resist residue removed, then wire-bonded into a shielded sample box with well-filtered lines."
+      },
+      {
+        "title": "Cool down",
+        "detail": "The package goes into a dilution refrigerator and settles at around 10 mK, well below the superconducting gap of aluminium."
+      },
+      {
+        "title": "Calibrate at half flux",
+        "detail": "A steady flux is applied so the loop is frustrated at half a flux quantum, a point where the qubit is first-order insensitive to both charge and flux noise."
+      },
+      {
+        "title": "Benchmark and couple",
+        "detail": "Coherence times are measured by Ramsey and echo sequences, then two-qubit gates are tuned up and their fidelities and leakage measured."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Josephson junction fabrication",
+        "status": "exists",
+        "why": "fluxonium uses the same junction technology as transmons and superconducting logic, so it can borrow mature foundry processes."
+      },
+      {
+        "tech": "Superinductance devices",
+        "status": "partial",
+        "why": "junction arrays and kinetic-inductance nanowires both work, but arrays bring spurious modes and losses and nanowires are hard to make uniformly."
+      },
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "the circuit only superconducts and stays quantum below about 1 K, so millikelvin cooling is mandatory."
+      },
+      {
+        "tech": "Low-loss superconductors and interfaces",
+        "status": "partial",
+        "why": "coherence is limited by two-level defects at surfaces and interfaces; tantalum and other films have helped but are not fully solved."
+      },
+      {
+        "tech": "Microwave control and readout hardware",
+        "status": "exists",
+        "why": "arbitrary waveform generators, parametric amplifiers and dispersive readout are mature from transmon work."
+      },
+      {
+        "tech": "Benchmarking and error-correction tooling",
+        "status": "partial",
+        "why": "randomised benchmarking, gate set tomography and surface-code decoders are needed to show the promised fidelity advantage."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single fluxonium qubits in research labs with millisecond-scale coherence and large anharmonicity",
+        "unlocks": "a qubit whose levels are far apart, so drives leak less into unwanted states."
+      },
+      {
+        "stage": "Next",
+        "milestone": "two-qubit gates at fidelities competitive with the best transmons, with measured leakage rates",
+        "unlocks": "justifies using fluxonium as the building block rather than a curiosity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-qubit processors where every fluxonium and coupler is fabricated within tolerance",
+        "unlocks": "scaling to arrays big enough for error correction."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fluxonium-based logical qubits under surface-code or erasure-conversion schemes",
+        "unlocks": "a lower-overhead route to fault-tolerant machines, if fabrication uniformity and readout can keep pace."
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Market model",
+        "role": "describes how an asset, rate or portfolio value can move over the contract's life.",
+        "parts": [
+          "stochastic process (e.g. geometric Brownian motion, Heston)",
+          "discretisation grid in time and value",
+          "correlation model across assets"
+        ]
+      },
+      {
+        "name": "State preparation",
+        "role": "loads that probability distribution into the amplitudes of a quantum register, so measuring returns a value with the right odds.",
+        "parts": [
+          "piecewise or polynomial approximation of the distribution",
+          "controlled rotation gates",
+          "arithmetic or qRAM-style loading circuits"
+        ]
+      },
+      {
+        "name": "Objective oracle",
+        "role": "computes the quantity whose expectation is wanted — a payoff, a loss threshold, a portfolio value.",
+        "parts": [
+          "reversible adders and multipliers",
+          "comparators",
+          "ancilla and workspace qubits"
+        ]
+      },
+      {
+        "name": "Amplitude estimation core",
+        "role": "extracts the expectation with quadratically fewer samples than classical Monte Carlo.",
+        "parts": [
+          "Grover operator Q",
+          "quantum phase estimation, or low-depth variants (iterative and maximum-likelihood amplitude estimation)"
+        ]
+      },
+      {
+        "name": "Quantum processor",
+        "role": "runs the circuit — today a noisy machine, eventually an error-corrected one.",
+        "parts": [
+          "physical qubits and gate set",
+          "qubit connectivity and routing",
+          "readout and error mitigation"
+        ]
+      },
+      {
+        "name": "Classical orchestration",
+        "role": "compiles the circuit, calibrates it, runs repeated shots and turns the counts into a price with an error bar.",
+        "parts": [
+          "transpiler and resource estimator",
+          "shot statistics and confidence intervals",
+          "validation against classical Monte Carlo"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the financial question",
+        "detail": "Choose the contract or risk measure, e.g. the expected discounted payoff of a European or path-dependent option over a set horizon."
+      },
+      {
+        "title": "Discretise the model",
+        "detail": "Approximate the continuous stochastic process on a grid of time steps and values, giving a finite distribution over N = 2^n outcomes."
+      },
+      {
+        "title": "Load the distribution",
+        "detail": "Build operator A that maps a register of all-zero qubits to amplitudes whose squares equal the discretised probabilities."
+      },
+      {
+        "title": "Build the payoff circuit",
+        "detail": "Implement the payoff as reversible arithmetic: add, multiply and compare, writing a flag qubit that marks favourable outcomes."
+      },
+      {
+        "title": "Assemble the Grover operator",
+        "detail": "Combine A with reflections about the zero state and about the marked subspace to form Q = A S₀ A† S_χ, which rotates the state by a fixed angle each application."
+      },
+      {
+        "title": "Estimate the amplitude",
+        "detail": "Apply phase estimation to Q (or use iterative / maximum-likelihood variants that need fewer qubits) and read off the angle, which encodes the expectation to precision 1/N rather than 1/√N."
+      },
+      {
+        "title": "Run and mitigate",
+        "detail": "Execute on real hardware, applying error mitigation and measuring many shots; compare the result and its uncertainty against classical Monte Carlo."
+      },
+      {
+        "title": "Scale to production",
+        "detail": "Repeat on error-corrected hardware, embedding the routine inside the bank's existing pricing and risk pipelines."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-corrected quantum computers",
+        "status": "missing",
+        "why": "payoff circuits and phase estimation need far more qubits and far deeper circuits than today's noisy devices can hold."
+      },
+      {
+        "tech": "Efficient state preparation",
+        "status": "partial",
+        "why": "loading an arbitrary distribution is a major cost; only small, specially structured distributions have been prepared so far."
+      },
+      {
+        "tech": "Reversible arithmetic circuits",
+        "status": "partial",
+        "why": "adders and comparators exist and are tested, but at the size needed for realistic payoffs they are still impractical."
+      },
+      {
+        "tech": "Low-depth amplitude estimation variants",
+        "status": "partial",
+        "why": "iterative and maximum-likelihood amplitude estimation trade qubits for repetitions, making near-term runs possible at reduced precision."
+      },
+      {
+        "tech": "Classical Monte Carlo and market models",
+        "status": "exists",
+        "why": "they provide the benchmarks any quantum result must beat, and the risk systems it would eventually plug into."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proof-of-concept runs on small noisy devices, computing option prices or credit-risk measures for simplified models",
+        "unlocks": "practical know-how about circuit depth, state preparation and error mitigation in a financial setting."
+      },
+      {
+        "stage": "Next",
+        "milestone": "end-to-end resource estimates for realistic contracts on early error-corrected machines",
+        "unlocks": "a clear target for hardware roadmaps and for deciding which financial problems are worth attacking first."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a controlled demonstration that beats classical Monte Carlo on a task a bank actually cares about",
+        "unlocks": "the first genuine commercial pilots inside pricing and risk desks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "advantage at production scale across portfolios, not just single contracts",
+        "unlocks": "faster risk aggregation, more accurate pricing of complex derivatives, and better capital allocation."
+      }
+    ]
+  }
+}

@@ -1,7 +1,157 @@
 {
-  "engineeringSkip": {
-    "reason": "A speculative mash-up of brain-computer interface buzzwords ('shared consciousness', nanobot synaptic bridging between brains) with no engineering basis or research programme behind it.",
+  "factCheck": {
+    "verdict": "theory",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:19:17.798Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Recording front end",
+        "role": "senses the electrical spikes of individual neurons.",
+        "parts": [
+          "penetrating microelectrode arrays or flexible threads",
+          "on-site amplifiers",
+          "spike-sorting electronics"
+        ]
+      },
+      {
+        "name": "Stimulation front end",
+        "role": "writes activity back into tissue by driving neurons to fire in a chosen pattern.",
+        "parts": [
+          "microelectrode contacts",
+          "current drivers",
+          "light emitters if the cells have been made light-sensitive"
+        ]
+      },
+      {
+        "name": "Local mesh nodes",
+        "role": "the hypothetical micron-scale devices that would sit beside synapses and translate chemistry to data.",
+        "parts": [
+          "microscale CMOS or graphene transistor",
+          "ultrasonic or radio backscatter transducer",
+          "energy harvester",
+          "biocompatible coating"
+        ]
+      },
+      {
+        "name": "Power and data link",
+        "role": "feeds power to thousands of nodes deep in tissue and carries their data out.",
+        "parts": [
+          "ultrasound or RF transmitter",
+          "external relay patch",
+          "signal multiplexing"
+        ]
+      },
+      {
+        "name": "Neural codec",
+        "role": "software that translates spike patterns into meaning and back.",
+        "parts": [
+          "decoders",
+          "encoders",
+          "real-time inference hardware"
+        ]
+      },
+      {
+        "name": "Network layer",
+        "role": "routes signals between many brains.",
+        "parts": [
+          "addressing and identity",
+          "latency and bandwidth management",
+          "filtering and consent controls"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Record from many neurons at once",
+        "detail": "Arrays of electrodes or thread-like probes are placed in a brain region and their signals amplified and sorted into individual neurons' spikes."
+      },
+      {
+        "title": "Find what the activity means",
+        "detail": "Recordings are matched against what the animal or person is doing or seeing, so a decoder can guess intent from firing patterns. This is straightforward for arm movement, weak for language, and unsolved for abstract knowledge."
+      },
+      {
+        "title": "Write activity back",
+        "detail": "The same electrodes, or light delivered to genetically modified cells, are used to make chosen neurons fire — closing the loop within one brain."
+      },
+      {
+        "title": "Shrink the interface",
+        "detail": "To reach millions of neurons rather than hundreds, the alternative is thousands of free-floating microscale nodes. Closest precedent is 'neural dust': millimetre-scale devices that were powered and read by ultrasound in a rat's peripheral nerve. Nothing comparable yet works inside a brain, and no design exists at true nanometre scale."
+      },
+      {
+        "title": "Link two brains",
+        "detail": "A decoder in one brain is wired to a stimulator in another, so activity in the sender produces a signal the receiver perceives. This has been done at the level of a single motor decision; it is not thought transfer."
+      },
+      {
+        "title": "Scale the channel count",
+        "detail": "Bandwidth must rise from roughly a thousand channels to millions, with the tissue surviving years of implantation."
+      },
+      {
+        "title": "Handle memory specifically",
+        "detail": "Memory is stored as distributed changes in synapses, not as a file. Researchers can reactivate a mouse's fear memory by stimulating the cells that were active during learning, but there is no known way to read out a specific memory and write it into a different brain."
+      },
+      {
+        "title": "Add the network",
+        "detail": "Finally, routing, synchronisation, identity and consent layers would turn pair links into a mesh — a systems-engineering problem on top of an unsolved neuroscience one."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chronic high-channel-count neural interfaces",
+        "status": "partial",
+        "why": "implants with about a thousand electrodes are in early human trials, but long-term stability and immune response remain unsolved."
+      },
+      {
+        "tech": "A readable neural code for concepts and memories",
+        "status": "missing",
+        "why": "without it there is nothing to transmit; only simple motor and sensory signals have been decoded."
+      },
+      {
+        "tech": "Microscale devices that survive inside the brain",
+        "status": "missing",
+        "why": "power, data, biocompatibility and the sheer number of nodes required have no working solution."
+      },
+      {
+        "tech": "Brain-to-brain communication links",
+        "status": "partial",
+        "why": "demonstrated in the 2010s for single motor decisions between people and between animals using EEG and magnetic stimulation."
+      },
+      {
+        "tech": "Cell-type-precise stimulation",
+        "status": "partial",
+        "why": "optogenetics works in animals but requires genetic modification; electrical stimulation cannot target cell types."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-bit brain-to-brain links and early human implants with around a thousand electrodes",
+        "unlocks": "proof that signals can be passed between nervous systems at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bidirectional implants that read and write thousands of neurons stably for years",
+        "unlocks": "usable motor and speech prosthetics, and the first two-way links between people."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mesoscale recording across many brain regions and better theories of what the activity encodes",
+        "unlocks": "transmission of richer signals, such as images or simple intentions, over a network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "millions of wireless microscale nodes operating inside a living brain",
+        "unlocks": "the hardware a mesh would need — still without a known method for transferring a memory."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "a shared neural code that can be decoded in one person and re-encoded in another",
+        "unlocks": "the tile's promise of knowledge, memory and emotion transfer, which currently has no basis in known neuroscience."
+      }
+    ]
   }
 }

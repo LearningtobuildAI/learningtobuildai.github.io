@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Photometric monitor",
+        "role": "stares at the same patch of sky for months or years, recording the star's brightness every few minutes.",
+        "parts": [
+          "space telescope with a wide field of view",
+          "stable focal-plane detectors",
+          "onboard data storage"
+        ]
+      },
+      {
+        "name": "Timing extractor",
+        "role": "finds each transit and pins down its mid-point to within seconds.",
+        "parts": [
+          "detrending and stellar-variability removal",
+          "transit-shape fitting",
+          "uncertainty estimation"
+        ]
+      },
+      {
+        "name": "Residual analyser",
+        "role": "subtracts the expected clockwork and looks at what is left over.",
+        "parts": [
+          "linear ephemeris model",
+          "periodogram search",
+          "eccentricity and inclination terms"
+        ]
+      },
+      {
+        "name": "Dynamical fitter",
+        "role": "simulates the gravitational dance of the whole system and matches it to the data.",
+        "parts": [
+          "N-body integrator",
+          "Markov-chain Monte Carlo sampler",
+          "stability and chaos tests"
+        ]
+      },
+      {
+        "name": "Follow-up spectrograph",
+        "role": "measures the star's radial-velocity wobble to weigh the planets and break degeneracies in the timing fit.",
+        "parts": [
+          "high-resolution spectrograph",
+          "wavelength calibration source",
+          "instrument pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Stare at the star",
+        "detail": "A space telescope observes the target field almost continuously, so transits are never missed between observing seasons."
+      },
+      {
+        "title": "Clean the light curve",
+        "detail": "Instrumental drifts, telescope pointing changes and the star's own pulsations are removed without erasing real transits."
+      },
+      {
+        "title": "Measure transit times",
+        "detail": "For every transit, the dip's shape is fitted and its mid-point recorded, together with a realistic error bar."
+      },
+      {
+        "title": "Build the O−C diagram",
+        "detail": "Each measured time is compared with a perfect, constant-period prediction; the differences are the raw signal."
+      },
+      {
+        "title": "Search for a pattern",
+        "detail": "Periodograms and dynamical reasoning test whether the residuals are periodic, drifting, or chaotic."
+      },
+      {
+        "title": "Fit a full dynamical model",
+        "detail": "An N-body simulation of all planets is run many times and compared with the timings until the unseen companion's mass, period and eccentricity are pinned down."
+      },
+      {
+        "title": "Weigh and confirm",
+        "detail": "Radial-velocity measurements or additional transits from a second observatory confirm the companion is real and not a data artefact."
+      },
+      {
+        "title": "Test the architecture",
+        "detail": "The fitted system is integrated far into the future and past to check it is stable and that the solution is physically plausible."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Long-baseline space photometry",
+        "status": "exists",
+        "why": "the signal is subtle, so years of uninterrupted timing measurements are needed to build it up."
+      },
+      {
+        "tech": "Sub-minute photometric precision on bright stars",
+        "status": "exists",
+        "why": "timing errors of seconds translate into detectable mass limits only when the photometry is very clean."
+      },
+      {
+        "tech": "Fast N-body integrators and sampling algorithms",
+        "status": "exists",
+        "why": "millions of trial systems must be simulated to fit the timing residuals."
+      },
+      {
+        "tech": "Precise stellar masses and radii",
+        "status": "partial",
+        "why": "the size and orbit of the planets are scaled from the star, so its properties must be known accurately."
+      },
+      {
+        "tech": "Radial-velocity follow-up",
+        "status": "exists",
+        "why": "it independently confirms the hidden planet and breaks degeneracies that timing alone leaves open."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine use on Kepler, K2 and TESS light curves to reveal non-transiting and near-resonant planets",
+        "unlocks": "fuller pictures of planetary systems that looked single-planet in the raw photometry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "longer baselines and brighter targets from ground-based survey networks and extended space missions",
+        "unlocks": "lower-mass hidden planets and follow-up spectroscopy for many more systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "application to the brightest, nearest stars with dedicated transit surveys",
+        "unlocks": "mass measurements for small planets, including those in habitable zones."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "timing searches for moons, rings and slow orbital decay",
+        "unlocks": "probing the fine structure and long-term evolution of planetary systems."
+      }
+    ]
+  }
+}

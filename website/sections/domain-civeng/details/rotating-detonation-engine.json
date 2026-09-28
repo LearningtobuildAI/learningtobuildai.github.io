@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Annular combustor",
+        "role": "the ring-shaped channel where the detonation wave circulates continuously.",
+        "parts": [
+          "copper alloy or refractory liner",
+          "cooling channels",
+          "outer body"
+        ]
+      },
+      {
+        "name": "Injector plate",
+        "role": "feeds propellant fast enough and uniformly enough to sustain a wave that consumes mixture in microseconds.",
+        "parts": [
+          "thousands of small orifices",
+          "manifold partitioning",
+          "valving or fluidic barriers to stop back-flow"
+        ]
+      },
+      {
+        "name": "Ignition and initiation system",
+        "role": "creates the first detonation that then self-sustains.",
+        "parts": [
+          "pre-detonator tube",
+          "spark or pyrotechnic source"
+        ]
+      },
+      {
+        "name": "Cooling system",
+        "role": "removes heat from walls exposed to detonation pressures and temperatures.",
+        "parts": [
+          "regenerative coolant passages",
+          "film or transpiration cooling"
+        ]
+      },
+      {
+        "name": "Nozzle and exhaust",
+        "role": "turns the unsteady, high-pressure exhaust into useful thrust.",
+        "parts": [
+          "plug or annular nozzle",
+          "throat geometry"
+        ]
+      },
+      {
+        "name": "Instrumentation and control",
+        "role": "measures wave speed, pressure and temperature to detect mode changes and instability.",
+        "parts": [
+          "high-frequency pressure transducers",
+          "optical sensors",
+          "fast data acquisition"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose propellant pair",
+        "detail": "The mixture must detonate readily; hydrogen–oxygen and methane–oxygen are common choices, and some concepts add a liquid for density."
+      },
+      {
+        "title": "Design the annulus",
+        "detail": "The ring's diameter and gap are set so that one or more waves circulate at the intended frequency, typically a few kilohertz."
+      },
+      {
+        "title": "Make the chamber",
+        "detail": "The contoured inner and outer walls are often 3D-printed in copper alloy so the cooling passages can be printed inside the metal."
+      },
+      {
+        "title": "Build the injector",
+        "detail": "Hundreds or thousands of orifices are drilled or printed to inject propellant at the right angles and velocities; the hardest part is preventing the wave pressure from pushing hot gas back up the feed lines."
+      },
+      {
+        "title": "Fit ignition and diagnostics",
+        "detail": "A small pre-detonator initiates the wave; pressure transducers around the ring record its passage."
+      },
+      {
+        "title": "Fire in short bursts",
+        "detail": "Ground tests run for fractions of a second to a few seconds, capturing thrust, wave count and heat load before anything melts."
+      },
+      {
+        "title": "Close the cooling loop",
+        "detail": "Regenerative cooling using the propellant itself is tested until the chamber can run progressively longer."
+      },
+      {
+        "title": "Integrate a nozzle",
+        "detail": "The exhaust is expanded through a nozzle designed for unsteady, rotating flow rather than steady combustion."
+      },
+      {
+        "title": "Scale and flight-test",
+        "detail": "The engine is enlarged, then flown on a test vehicle to prove it works under real acceleration and vibration."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Detonation physics and wave-stability modelling",
+        "status": "partial",
+        "why": "predicting how many waves form, and keeping that number steady, is still largely empirical."
+      },
+      {
+        "tech": "Metal additive manufacturing",
+        "status": "exists",
+        "why": "only 3D printing can build the intricate internal cooling channels and injector geometries inside a copper chamber."
+      },
+      {
+        "tech": "High-speed injectors and propellant control",
+        "status": "partial",
+        "why": "feed systems must respond in microseconds and withstand detonation back-pressure."
+      },
+      {
+        "tech": "High-temperature materials and cooling",
+        "status": "partial",
+        "why": "walls face repeated detonation pressure spikes and heat fluxes that shorten hardware life."
+      },
+      {
+        "tech": "Detonation initiation at low power",
+        "status": "partial",
+        "why": "reliable ignition without a large pre-detonator remains a design constraint."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "bench tests of annular detonation chambers running for a few seconds; a 3D-printed rocket detonation chamber was test-fired by NASA around 2022",
+        "unlocks": "data on wave behaviour, thrust and cooling at realistic scale."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reusable upper-stage or in-space engine demonstrators with measured performance gain",
+        "unlocks": "a niche where mass and efficiency matter more than long burn life."
+      },
+      {
+        "stage": "Next",
+        "milestone": "air-breathing detonation concepts for high-speed flight",
+        "unlocks": "compact, high-efficiency propulsion for hypersonic vehicles."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "detonation-based first-stage or booster engines",
+        "unlocks": "lighter launch vehicles and more payload per kilogram of propellant, if cooling and lifetime are solved."
+      }
+    ]
+  }
+}

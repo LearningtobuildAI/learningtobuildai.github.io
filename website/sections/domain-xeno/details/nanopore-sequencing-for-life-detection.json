@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Nanopore sensor",
+        "role": "the transducer — a hole a few nanometres wide that a polymer threads through, one unit at a time.",
+        "parts": [
+          "protein pore (e.g. alpha-haemolysin, MspA) or solid-state pore in silicon nitride or graphene",
+          "insulating membrane or chip surface holding the pore",
+          "electrolyte on both sides"
+        ]
+      },
+      {
+        "name": "Capture and ratcheting",
+        "role": "gets a strand to the pore mouth and then moves it step by step rather than letting it shoot through.",
+        "parts": [
+          "processive motor enzyme",
+          "leader adaptor chemistry",
+          "electrokinetic capture electrodes"
+        ]
+      },
+      {
+        "name": "Sample preparation",
+        "role": "turns a soil, ice or brine sample into a clean polymer solution without assuming earthly biochemistry.",
+        "parts": [
+          "extraction and desalting",
+          "filtering of competing biopolymers",
+          "chemistry that binds adaptors to unknown backbone chemistries"
+        ]
+      },
+      {
+        "name": "Readout electronics",
+        "role": "applies the driving voltage and records the tiny current changes as each unit passes.",
+        "parts": [
+          "low-noise current amplifier",
+          "application-specific integrated circuit with one channel per pore",
+          "digitising and data compression"
+        ]
+      },
+      {
+        "name": "Decoding and autonomy",
+        "role": "turns raw current traces into sequences and decides what is worth keeping.",
+        "parts": [
+          "machine-learned signal models",
+          "adaptive sampling that rejects uninformative reads",
+          "onboard decision software"
+        ]
+      },
+      {
+        "name": "Flight enclosure",
+        "role": "keeps the chemistry alive through launch, vacuum, radiation and temperature swings.",
+        "parts": [
+          "sealed fluidic cartridge",
+          "reagent storage",
+          "thermal control and radiation shielding"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose or engineer the pore",
+        "detail": "Protein pores are tuned by directed evolution so that different chemical units produce distinguishable current blockades; solid-state pores are drilled by focused electron beams for robustness and for geometries a protein cannot provide."
+      },
+      {
+        "title": "Fabricate the sensor array",
+        "detail": "Pores are inserted into lipid membranes or droplet interfaces formed directly on top of a chip, so that each microwell holds one pore connected to one electronic channel."
+      },
+      {
+        "title": "Attach the motor and adaptors",
+        "detail": "A processive enzyme is coupled to the strand so that the polymer is pulled through at a controlled rate; because unknown polymers may not accept standard ligation chemistry, this step is the hardest to generalise."
+      },
+      {
+        "title": "Prepare the sample",
+        "detail": "Polymers are extracted, salts and small molecules removed, and the solution buffered so that the pore stays open — critical when the starting material is a few grams of Martian regolith or an ice-melt brine."
+      },
+      {
+        "title": "Assemble the instrument",
+        "detail": "Sensor chip, fluidics, reagent packs and readout board are integrated into a low-mass, low-power package comparable to a handheld sequencer."
+      },
+      {
+        "title": "Train the decoder",
+        "detail": "Known polymers of many lengths and chemistries are run to build signal models; candidate non-terrestrial alphabets are handled as unknown classes rather than forced into A, C, G and T."
+      },
+      {
+        "title": "Validate terrestrially",
+        "detail": "The instrument is tested on extreme environments — permafrost, hypersaline lakes, deep-sea sediments — and exposed to simulated Martian and icy-moon conditions."
+      },
+      {
+        "title": "Fly and prove",
+        "detail": "A flight unit would first run on orbit or on a small lander, with results compared against ground labs to show that reading works outside Earth's biosphere."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Commercial nanopore sequencing",
+        "status": "exists",
+        "why": "handheld devices already read DNA and RNA in the field and on the International Space Station, proving the sensing principle is spaceworthy."
+      },
+      {
+        "tech": "Solid-state nanopore fabrication",
+        "status": "partial",
+        "why": "inorganic pores survive conditions that destroy lipid bilayers, but making them with consistent sub-nanometre size is still laboratory work."
+      },
+      {
+        "tech": "Processive enzymes for non-DNA polymers",
+        "status": "missing",
+        "why": "every motor protein in use evolved for earthly nucleic acids; without an equivalent for another backbone, strands cross the pore too fast to read."
+      },
+      {
+        "tech": "Radiation-tolerant, low-noise electronics",
+        "status": "partial",
+        "why": "spacecraft electronics exist, but combining very low current noise with radiation hardness in one small chip is not routine."
+      },
+      {
+        "tech": "Decoding of unknown alphabets",
+        "status": "missing",
+        "why": "current basecallers are trained on four letters of one chemistry; a genuinely alien polymer would need unsupervised interpretation first."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "field sequencing on Earth and in orbit, plus instrument concepts such as MIT's nanopore-based life-detection programme",
+        "unlocks": "confidence that pore-based reading survives space conditions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bench demonstration of single-unit discrimination in a non-canonical nucleic acid or synthetic sequence-defined polymer",
+        "unlocks": "a credible claim that the method is not restricted to Earth biochemistry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a self-contained prototype tested in Mars and ocean-world analogues, with autonomous sample prep",
+        "unlocks": "readiness for a lander or plume-flyby payload."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an in-situ instrument on a planetary mission feeding sample-return triage",
+        "unlocks": "the ability to say whether a sample contains information-bearing polymers before deciding what to bring home."
+      }
+    ]
+  }
+}

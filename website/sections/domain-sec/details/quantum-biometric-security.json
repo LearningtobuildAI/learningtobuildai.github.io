@@ -31,9 +31,153 @@
       }
     ]
   },
-  "engineeringSkip": {
-    "reason": "Buzzword mash-up that pairs quantum key distribution with biometrics without a distinct technology or established research field behind it.",
+  "factCheck": {
+    "verdict": "theory",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:23:18.897Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Biometric capture",
+        "role": "turns a physical trait into a digital sample.",
+        "parts": [
+          "fingerprint, iris, face or vein sensor",
+          "optional quantum-enhanced imaging (entangled-photon illumination, ghost imaging) for liveness and depth",
+          "anti-spoofing hardware"
+        ]
+      },
+      {
+        "name": "Template and key extraction",
+        "role": "converts a noisy biometric sample into a stable secret.",
+        "parts": [
+          "feature extractor",
+          "fuzzy extractor (error-tolerant key derivation)",
+          "helper data"
+        ]
+      },
+      {
+        "name": "Quantum key distribution link",
+        "role": "distributes fresh symmetric keys whose interception is detectable.",
+        "parts": [
+          "single-photon or entangled-photon source",
+          "fibre or free-space channel",
+          "single-photon detectors",
+          "basis-sifting and error-correction software"
+        ]
+      },
+      {
+        "name": "Authentication of the quantum channel",
+        "role": "QKD alone says nothing about who is on the other end.",
+        "parts": [
+          "post-quantum signature or pre-shared key",
+          "message authentication codes"
+        ]
+      },
+      {
+        "name": "Protected template store",
+        "role": "keeps the enrolled biometric so it cannot be reused if stolen.",
+        "parts": [
+          "cancelable/renewable biometric transform",
+          "hardware security module or secure element",
+          "revocation records"
+        ]
+      },
+      {
+        "name": "Verifier and access control",
+        "role": "compares a live presentation against the stored, protected reference and grants or denies.",
+        "parts": [
+          "matching engine",
+          "policy engine",
+          "audit log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a trait and a capture method",
+        "detail": "Choose a trait that is stable, easy to present and hard to copy; pair an ordinary sensor with quantum-enhanced imaging only where liveness or distance is the problem."
+      },
+      {
+        "title": "Build the fuzzy extractor",
+        "detail": "Design an error-correction scheme so two scans of the same finger or iris produce the same cryptographic key, while different people produce unrelated keys. Publish only the helper data, never the key."
+      },
+      {
+        "title": "Install the QKD hardware",
+        "detail": "Lay fibre (or set up a free-space path), align the source with the detectors, and characterise the quantum bit error rate. Detector-blinding and photon-number-splitting countermeasures go in at this stage."
+      },
+      {
+        "title": "Authenticate the classical channel",
+        "detail": "Run the reconciliation and privacy-amplification traffic under post-quantum signatures, otherwise an attacker can sit in the middle of an unauthenticated QKD link."
+      },
+      {
+        "title": "Bind the two secrets",
+        "detail": "Derive a key from the biometric and combine it with the QKD key, so authentication fails if either the person or the quantum link is wrong."
+      },
+      {
+        "title": "Enrol users",
+        "detail": "Capture several samples per person, store only the transform plus helper data in a hardware security module, and record how to revoke and re-enrol."
+      },
+      {
+        "title": "Attack-test it",
+        "detail": "Try spoofs, replay, template substitution, detector blinding and denial of service; measure false accept and false reject rates under realistic conditions."
+      },
+      {
+        "title": "Integrate and operate",
+        "detail": "Connect the verifier to physical access gates or key servers, keep the optical link maintained, and rotate keys on a schedule."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum key distribution hardware",
+        "status": "partial",
+        "why": "fibre QKD runs in metro networks and a satellite link was demonstrated in 2016, but it needs dark fibre, trusted nodes and short range."
+      },
+      {
+        "tech": "Post-quantum cryptography for authentication",
+        "status": "exists",
+        "why": "without it, a quantum link can still be intercepted by an ordinary man-in-the-middle."
+      },
+      {
+        "tech": "Fuzzy extractors and cancelable biometrics",
+        "status": "partial",
+        "why": "the bridge between an imprecise body and an exact key is the least mature part of the idea."
+      },
+      {
+        "tech": "Biometric template protection standards",
+        "status": "exists",
+        "why": "irreversibility and renewability requirements are already specified for ordinary biometric systems."
+      },
+      {
+        "tech": "Quantum repeaters or memories",
+        "status": "missing",
+        "why": "they are needed to carry entanglement beyond a few hundred kilometres of fibre without trusted relays."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "conventional biometric authentication protected by post-quantum cryptography",
+        "unlocks": "systems that survive a future quantum computer without any new hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "laboratory demonstrations binding a biometric key to a QKD session",
+        "unlocks": "proof that the two key sources can be combined safely."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pilot deployments inside single buildings or campuses with dedicated dark fibre",
+        "unlocks": "real-world data on cost, reliability and user acceptance."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "quantum repeaters and networked QKD",
+        "unlocks": "quantum-protected biometric authentication across cities, rather than within one site."
+      }
+    ]
   }
 }

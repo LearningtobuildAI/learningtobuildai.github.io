@@ -1,0 +1,164 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Pulse synthesis",
+        "role": "generates the microwave and baseband waveforms that flip qubit states.",
+        "parts": [
+          "multi-gigabit-per-second digital-to-analogue converters",
+          "analogue up-conversion mixers",
+          "local oscillators",
+          "variable attenuators"
+        ]
+      },
+      {
+        "name": "Timing and synchronisation",
+        "role": "keeps every channel phase-locked to one shared reference so pulses across the machine align to picoseconds.",
+        "parts": [
+          "oven-controlled crystal or atomic clock reference",
+          "clock distribution tree",
+          "trigger and sync buses"
+        ]
+      },
+      {
+        "name": "Readout acquisition",
+        "role": "captures the faint microwave signal reflected from each qubit and extracts its state.",
+        "parts": [
+          "low-noise amplifiers",
+          "analogue-to-digital converters",
+          "digital down-conversion and demodulation"
+        ]
+      },
+      {
+        "name": "Real-time control core",
+        "role": "sequences pulses, applies corrections and closes feedback loops without software in the way.",
+        "parts": [
+          "field-programmable gate array or custom ASIC",
+          "waveform memory",
+          "numerically controlled oscillators",
+          "feedback logic"
+        ]
+      },
+      {
+        "name": "Cryogenic signal path",
+        "role": "carries signals from room temperature down to the qubit chip without adding noise.",
+        "parts": [
+          "shielded coaxial lines and twisted pairs",
+          "attenuators",
+          "low-pass and infrared filters",
+          "circulators and isolators",
+          "cryogenic amplifiers"
+        ]
+      },
+      {
+        "name": "Cryo-CMOS multiplexers",
+        "role": "operates inside the fridge at a few kelvin so one cable serves many qubits.",
+        "parts": [
+          "cryogenic CMOS ASIC",
+          "low-temperature packaging",
+          "on-chip multiplexing and memory"
+        ]
+      },
+      {
+        "name": "Control software",
+        "role": "turns gate sequences into calibrated waveforms and manages daily recalibration.",
+        "parts": [
+          "pulse-level compiler",
+          "device calibration and characterisation routines",
+          "experiment scheduling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Specify the signal chain",
+        "detail": "Set the channel count, bandwidth and noise budget. A transmon qubit near 5 GHz needs pulses tens of nanoseconds long, so each channel must carry hundreds of megahertz of clean instantaneous bandwidth."
+      },
+      {
+        "title": "Design the digital core",
+        "detail": "Define an FPGA or ASIC containing the pulse sequencer, oscillators, mixers and decimation filters, with enough waveform memory for long experiments."
+      },
+      {
+        "title": "Lay out the radio-frequency board",
+        "detail": "Route controlled-impedance traces, place converters next to the logic, shield aggressively and manage heat so channels do not drift into each other."
+      },
+      {
+        "title": "Assemble and skew-align",
+        "detail": "Build the units, then measure and correct the arrival-time difference between channels against a single clock until they agree to picoseconds."
+      },
+      {
+        "title": "Write the control stack",
+        "detail": "Compile gate sequences into sample-level waveforms, and build calibration routines that find the right amplitudes, frequencies and phases for each qubit."
+      },
+      {
+        "title": "Characterise the hardware",
+        "detail": "Measure phase noise, spurious tones, harmonic distortion, crosstalk and noise floor across temperature and time, since qubit fidelity tracks directly with these numbers."
+      },
+      {
+        "title": "Fabricate cryo-CMOS versions",
+        "detail": "Tape out the multiplexer chips at a CMOS foundry, package them for deep-cryogenic operation, and re-characterise at 4 K and below, because transistor thresholds and noise shift markedly when cold."
+      },
+      {
+        "title": "Integrate with the fridge",
+        "detail": "Wire the controller through attenuators, filters and circulators down the dilution refrigerator stages, then calibrate the whole chain end to end against the qubit chip."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting qubit fabrication",
+        "status": "exists",
+        "why": "microwave-driven qubits set the frequency, bandwidth and fidelity requirements the control hardware must meet."
+      },
+      {
+        "tech": "High-speed data converters",
+        "status": "exists",
+        "why": "pulse shaping needs multi-gigabit-per-second DACs and ADCs with enough resolution to keep quantisation noise below qubit error rates."
+      },
+      {
+        "tech": "Low-phase-noise clock references",
+        "status": "exists",
+        "why": "qubit phase coherence comes straight from the reference oscillator's stability, and channel alignment depends on one shared clock."
+      },
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "both the qubits and any in-fridge control chips need millikelvin and 4 K stages with limited cooling power."
+      },
+      {
+        "tech": "Cryogenic CMOS electronics",
+        "status": "partial",
+        "why": "moving multiplexing and memory into the fridge cuts the wiring bottleneck, but cold transistor behaviour is still being mapped."
+      },
+      {
+        "tech": "Real-time decoding logic",
+        "status": "partial",
+        "why": "error-corrected operation needs measurement and feedback within microseconds, faster than general-purpose software allows."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "room-temperature rack controllers with tens to hundreds of synchronised channels",
+        "unlocks": "hands-on control of machines in the hundreds-of-qubits range, with most effort going into calibration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cryo-CMOS multiplexers running at about 4 K, cutting cable count by roughly an order of magnitude",
+        "unlocks": "machines with thousands of qubits whose wiring and heat load stay manageable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "controllers co-designed and co-packaged with qubit chips, with microsecond-latency feedback loops",
+        "unlocks": "error-corrected logical qubits, where decoding happens before the quantum state decays."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "modular, networked control with optical links into the cryostat and standard interfaces between qubit and control vendors",
+        "unlocks": "fault-tolerant machines needing millions of physical qubits, where control cost and power, not qubit count alone, decide feasibility."
+      }
+    ]
+  }
+}

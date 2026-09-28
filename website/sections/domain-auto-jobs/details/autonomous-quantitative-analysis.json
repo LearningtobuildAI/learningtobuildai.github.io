@@ -31,9 +31,159 @@
       }
     ]
   },
-  "engineeringSkip": {
-    "reason": "This describes an investment-banking service workflow (automated modelling and memo generation) rather than a distinct technology with its own engineering and build process.",
+  "factCheck": {
+    "verdict": "real",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:07:25.121Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Data ingestion and normalisation",
+        "role": "pulls market prices, filings and reference data into one clean, queryable store.",
+        "parts": [
+          "market-data feed adapters",
+          "regulatory filing parsers (XBRL and PDF)",
+          "corporate-action and FX adjusters",
+          "point-in-time time-series database"
+        ]
+      },
+      {
+        "name": "Quantitative modelling engine",
+        "role": "computes valuation, risk and screening metrics from the clean data.",
+        "parts": [
+          "discounted-cash-flow and comparable-company models",
+          "factor and risk models",
+          "scenario and sensitivity engine",
+          "backtesting harness"
+        ]
+      },
+      {
+        "name": "Language-model reasoning layer",
+        "role": "turns numbers and retrieved documents into readable analysis.",
+        "parts": [
+          "document chunker and vector index",
+          "prompt and tool-use orchestration",
+          "citation enforcement",
+          "model fallback chain"
+        ]
+      },
+      {
+        "name": "Orchestration and scheduling",
+        "role": "runs the pipeline automatically when new data lands.",
+        "parts": [
+          "workflow engine",
+          "job queue",
+          "event triggers such as earnings releases",
+          "run versioning and replay"
+        ]
+      },
+      {
+        "name": "Verification and guardrails",
+        "role": "catches arithmetic, grounding and consistency errors before a human reads the output.",
+        "parts": [
+          "deterministic recalculation checks",
+          "numeric-consistency tests",
+          "source-citation validator",
+          "audit log"
+        ]
+      },
+      {
+        "name": "Delivery and workflow integration",
+        "role": "puts the finished output where analysts actually work.",
+        "parts": [
+          "document and slide rendering",
+          "internal API",
+          "desktop and terminal integration",
+          "access control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the analytical scope",
+        "detail": "Fix which statements, metrics and model templates are in scope — a narrow, well-specified mandate is far easier to automate than open-ended research."
+      },
+      {
+        "title": "Build the data pipeline",
+        "detail": "Connect to market-data and filing sources, standardise units and currencies, and store everything point-in-time so backtests cannot accidentally use data that was not yet published."
+      },
+      {
+        "title": "Encode the models as deterministic code",
+        "detail": "Write the valuation and ratio maths as ordinary tested software rather than asking a language model to do arithmetic, and reconcile it against independently built spreadsheets."
+      },
+      {
+        "title": "Add retrieval and language generation",
+        "detail": "Index filings, transcripts and prior notes so the model can quote them; give it tools that call the modelling engine so every figure comes from code, not from the model's memory."
+      },
+      {
+        "title": "Enforce grounding and traceability",
+        "detail": "Require each number and claim to carry a source pointer, and configure the system to omit an item and flag it rather than guess when data is missing."
+      },
+      {
+        "title": "Build an evaluation harness",
+        "detail": "Assemble a fixed set of analyst-written memos and filings with known answers, then measure numeric accuracy, citation correctness and error rate on every model or prompt change."
+      },
+      {
+        "title": "Insert human review gates",
+        "detail": "Route drafts to an analyst for approval, log edits, and feed those corrections back into the evaluation set."
+      },
+      {
+        "title": "Deploy with monitoring",
+        "detail": "Watch for broken feeds, data drift and silent model updates; pin model versions and re-benchmark on a schedule."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Machine-readable market and filing data",
+        "status": "exists",
+        "why": "structured filings and vendor price feeds are the raw material; without them nothing can be automated."
+      },
+      {
+        "tech": "Proven quantitative finance libraries and models",
+        "status": "exists",
+        "why": "valuation and risk maths is well established and cheap to run deterministically."
+      },
+      {
+        "tech": "Large language models with retrieval and tool use",
+        "status": "partial",
+        "why": "they write fluently but are unreliable at arithmetic and prone to confident fabrication without grounding."
+      },
+      {
+        "tech": "Evaluation and audit tooling for AI output",
+        "status": "partial",
+        "why": "financial text needs traceable provenance, and systematic scoring of generated analysis is still maturing."
+      },
+      {
+        "tech": "Regulatory and internal control framework for automated research",
+        "status": "exists",
+        "why": "research and personalised advice are regulated activities, so liability and review requirements shape what can be automated."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "automated earnings summaries, screening and monitoring dashboards with an analyst in the loop",
+        "unlocks": "large time savings on repetitive data gathering and first-pass screening."
+      },
+      {
+        "stage": "Next",
+        "milestone": "agentic pipelines producing cited, auditable first-draft memos end to end",
+        "unlocks": "analysts shift from writing to reviewing and challenging."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous monitoring that flags thesis-breaking changes in real time",
+        "unlocks": "coverage of far more companies than a human team could track."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "autonomous analysis for narrow, well-specified mandates under human supervision",
+        "unlocks": "cheap, always-on analysis — bounded by model reliability, audit and regulatory limits rather than by computing power."
+      }
+    ]
   }
 }

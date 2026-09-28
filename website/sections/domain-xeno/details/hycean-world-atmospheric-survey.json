@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Space observatory",
+        "role": "collects the starlight that has filtered through the planet's atmosphere, in wavelength channels fine enough to reveal molecules.",
+        "parts": [
+          "6.5 m segmented gold-coated mirror (JWST)",
+          "near-infrared spectrographs such as NIRSpec and NIRISS",
+          "precision pointing and guiding"
+        ]
+      },
+      {
+        "name": "Transit detection and ephemeris",
+        "role": "finds candidate planets and predicts exactly when each one crosses its star.",
+        "parts": [
+          "wide-field photometric survey (TESS)",
+          "transit-search algorithms",
+          "radial-velocity spectrographs for masses"
+        ]
+      },
+      {
+        "name": "Stellar characterisation",
+        "role": "establishes what the host star itself is doing, because a star's own spectrum can imitate or bury a planetary signal.",
+        "parts": [
+          "stellar parameter fitting",
+          "activity indicators and spot monitoring",
+          "out-of-transit baselines"
+        ]
+      },
+      {
+        "name": "Reduction pipeline",
+        "role": "turns raw detector counts into a calibrated transmission spectrum.",
+        "parts": [
+          "detector and flat-field calibration",
+          "drift and correlated-noise correction",
+          "limb-darkening models",
+          "light-curve fitting per wavelength bin"
+        ]
+      },
+      {
+        "name": "Atmospheric retrieval",
+        "role": "works out which mix of gases, clouds and temperatures could have produced the measured spectrum.",
+        "parts": [
+          "radiative-transfer forward model",
+          "molecular line lists (ExoMol, HITRAN)",
+          "Bayesian sampler such as nested sampling",
+          "cloud, haze and aerosol models"
+        ]
+      },
+      {
+        "name": "Classification framework",
+        "role": "decides whether a world is plausibly Hycean, a mini-Neptune with no ocean, or something else entirely.",
+        "parts": [
+          "mass–radius interior models",
+          "habitable-zone and irradiation criteria",
+          "biosignature candidate rules"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Find transiting candidates",
+        "detail": "Wide-field photometric surveys watch hundreds of thousands of stars for the small periodic dimming caused by a planet crossing in front."
+      },
+      {
+        "title": "Measure the planet's mass",
+        "detail": "Radial-velocity spectrographs track the star's tiny wobble; without a mass, a radius alone cannot tell a water world from a gas dwarf."
+      },
+      {
+        "title": "Characterise the host star",
+        "detail": "Temperature, radius and activity are measured, and the star is monitored outside transit so its own variability can later be separated from the planet's atmosphere."
+      },
+      {
+        "title": "Rank targets for telescope time",
+        "detail": "Temperate sub-Neptunes orbiting small, quiet stars are prioritised, because a small star makes the atmospheric signal comparatively large and a quiet star keeps the noise down."
+      },
+      {
+        "title": "Observe the transits",
+        "detail": "Telescope time is scheduled so that several transits are recorded; spectra are stacked to build the signal-to-noise ratio that a single transit cannot reach."
+      },
+      {
+        "title": "Reduce to a transmission spectrum",
+        "detail": "Instrument systematics are modelled and removed, and the extra absorption caused by the planet's atmosphere is extracted wavelength bin by wavelength bin."
+      },
+      {
+        "title": "Retrieve the atmosphere",
+        "detail": "Models are fitted to the spectrum to estimate molecular abundances and the temperature profile, with the sampler mapping how tightly each value is constrained."
+      },
+      {
+        "title": "Stress-test the result",
+        "detail": "Synthetic signals are injected into the real data to see what the pipeline would have recovered, and competing explanations such as unocculted starspots or high-altitude haze are fitted as alternatives."
+      },
+      {
+        "title": "Classify and follow up",
+        "detail": "The planet is placed in a category, then revisited at other wavelengths, across its orbit, or with ground-based high-resolution spectroscopy to see whether the classification holds."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Stable infrared spectroscopy from space",
+        "status": "exists",
+        "why": "the atmospheric signal is a few parts in ten thousand of the stellar flux and requires a cold, steady instrument above the atmosphere."
+      },
+      {
+        "tech": "Precise transit photometry and ephemerides",
+        "status": "exists",
+        "why": "the telescope must be pointing during a window of a few hours, years in advance."
+      },
+      {
+        "tech": "Planet masses from radial velocity",
+        "status": "partial",
+        "why": "small, cool planets give faint wobbles, so many candidates still have only a radius and no density."
+      },
+      {
+        "tech": "High-temperature molecular line lists",
+        "status": "exists",
+        "why": "retrieval can only identify a molecule if its absorption is known across the observed wavelengths."
+      },
+      {
+        "tech": "Models of stellar contamination",
+        "status": "partial",
+        "why": "spots and faculae on the host star can imitate water or methane and are a leading cause of contested detections."
+      },
+      {
+        "tech": "Instrument stability at the ten-parts-per-million level",
+        "status": "partial",
+        "why": "residual systematic noise, not photon statistics, currently sets the limit on what counts as a detection."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "JWST transmission spectra of a handful of temperate sub-Neptunes, with tentative carbon-bearing and sulphur-bearing detections",
+        "unlocks": "the first real test of whether hydrogen-rich envelopes over liquid water can be observed at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a uniform survey of a few tens of the best candidates analysed with one shared pipeline and shared stellar-contamination models",
+        "unlocks": "classification that survives independent reanalysis rather than resting on single contested spectra."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ESA's Ariel mission, planned to survey around a thousand planets from the late 2020s",
+        "unlocks": "statistics instead of anecdotes — how common each atmospheric type actually is."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "extremely large ground telescopes for high-resolution spectroscopy, and later direct imaging of temperate planets",
+        "unlocks": "the ability to check a candidate atmosphere without relying on a transit geometry, and eventually to look at non-transiting worlds."
+      }
+    ]
+  }
+}

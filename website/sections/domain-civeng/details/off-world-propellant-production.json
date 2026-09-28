@@ -1,0 +1,167 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Atmosphere intake",
+        "role": "supplies carbon dioxide from the thin Martian air.",
+        "parts": [
+          "dust filter",
+          "compressor",
+          "buffer tank",
+          "freeze-out gas purification"
+        ]
+      },
+      {
+        "name": "Water supply",
+        "role": "provides the hydrogen and part of the oxygen the plant needs.",
+        "parts": [
+          "ice drill or auger",
+          "sublimation or melting chamber",
+          "water purification",
+          "insulated water tank"
+        ]
+      },
+      {
+        "name": "Methanation reactor",
+        "role": "runs the Sabatier step, making methane and water from carbon dioxide and hydrogen.",
+        "parts": [
+          "nickel or ruthenium catalyst bed",
+          "heated pressure vessel",
+          "condenser to separate out water",
+          "recycle loop for unreacted gas"
+        ]
+      },
+      {
+        "name": "Electrolysis",
+        "role": "splits water into hydrogen and oxygen, and can also split carbon dioxide.",
+        "parts": [
+          "water electrolyser stack",
+          "solid-oxide CO2 electrolyser",
+          "gas separators",
+          "dryers"
+        ]
+      },
+      {
+        "name": "Liquefaction and storage",
+        "role": "chills methane and oxygen to liquid and keeps them liquid.",
+        "parts": [
+          "cryocoolers and heat exchangers",
+          "vacuum-insulated tanks",
+          "boil-off recovery",
+          "transfer lines to the vehicle"
+        ]
+      },
+      {
+        "name": "Power and thermal control",
+        "role": "the plant must run continuously for years without a crew.",
+        "parts": [
+          "fission surface power unit or solar arrays",
+          "radiators",
+          "batteries",
+          "thermal insulation"
+        ]
+      },
+      {
+        "name": "Autonomous control",
+        "role": "the plant must make propellant before anyone arrives to run it.",
+        "parts": [
+          "flight computer",
+          "pressure, temperature and composition sensors",
+          "fault detection and recovery software",
+          "communications link to Earth"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Send a robotic precursor",
+        "detail": "Land the power source and plant hardware years ahead of any crew, at a site with accessible ice and near the planned return vehicle."
+      },
+      {
+        "title": "Capture and clean carbon dioxide",
+        "detail": "Compress the thin atmosphere, filter out dust, and freeze out water vapour so the gas fed to the reactor is mostly CO2."
+      },
+      {
+        "title": "Mine and purify water ice",
+        "detail": "Drill or dig into subsurface ice, sublimate it to vapour, condense it, and remove salts and dust."
+      },
+      {
+        "title": "Make hydrogen and oxygen by electrolysis",
+        "detail": "Split purified water into hydrogen and oxygen; most hydrogen goes to the reactor and the oxygen is stored."
+      },
+      {
+        "title": "Run the Sabatier reactor",
+        "detail": "Pass carbon dioxide and hydrogen over a catalyst at a few hundred degrees Celsius and moderate pressure to make methane and water; recycle the water back to electrolysis."
+      },
+      {
+        "title": "Make extra oxygen from carbon dioxide",
+        "detail": "Run solid-oxide electrolysis of CO2 to produce carbon monoxide and more oxygen, topping up the oxygen supply."
+      },
+      {
+        "title": "Liquefy and store the propellant",
+        "detail": "Cool methane to about −162 °C and oxygen to about −183 °C and hold them in insulated tanks with boil-off recovery."
+      },
+      {
+        "title": "Prime the return vehicle",
+        "detail": "Transfer propellant to the ascent vehicle, verify purity against engine requirements, and keep the plant running autonomously through the launch window."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Sabatier reactor hardware",
+        "status": "exists",
+        "why": "carbon dioxide reduction units have run for years on the International Space Station, though at life-support rather than propellant scale."
+      },
+      {
+        "tech": "Water electrolysis in space",
+        "status": "exists",
+        "why": "oxygen generators on spacecraft and submarines already split water reliably."
+      },
+      {
+        "tech": "Solid-oxide CO2 electrolysis",
+        "status": "partial",
+        "why": "a small instrument on a Mars rover produced oxygen from atmospheric CO2 in 2021, proving the chemistry on site but at tiny scale."
+      },
+      {
+        "tech": "Subsurface ice extraction",
+        "status": "partial",
+        "why": "orbiters and landers have mapped shallow ice, but no mission has yet mined and processed it."
+      },
+      {
+        "tech": "Compact fission surface power",
+        "status": "partial",
+        "why": "small reactors have been ground-tested, but none has flown or operated on another planet."
+      },
+      {
+        "tech": "Long-duration autonomous operation",
+        "status": "partial",
+        "why": "a propellant plant must run for thousands of hours with no crew, handling dust, cold and faults on its own."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small flight demonstrations and laboratory rigs proving each step separately",
+        "unlocks": "confidence that the core chemistry works in the Martian environment."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a robotic lander that mines ice and runs an integrated plant at pilot scale",
+        "unlocks": "real numbers for yield, dust tolerance and reliability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a full-scale plant that fills a return vehicle's tanks before its crew leaves Earth",
+        "unlocks": "a far smaller mission mass, which is what makes crewed Mars missions practical."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "stored propellant depots and refuelling, including in orbit",
+        "unlocks": "reusable interplanetary transport and support for a permanent surface base."
+      }
+    ]
+  }
+}

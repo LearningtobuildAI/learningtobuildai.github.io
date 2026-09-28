@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Qubit chip",
+        "role": "the processor itself: a lattice of superconducting loops whose circulating currents represent problem variables, with couplers between them.",
+        "parts": [
+          "niobium/aluminium superconducting loops",
+          "Josephson junctions (Al-AlOx-Al)",
+          "inductive couplers between qubits",
+          "flux-bias lines"
+        ]
+      },
+      {
+        "name": "Cryogenic system",
+        "role": "keeps the chip at millikelvin temperatures so the circuits are superconducting and thermal noise is negligible.",
+        "parts": [
+          "dilution refrigerator",
+          "cryogenic wiring and attenuators",
+          "thermal shields"
+        ]
+      },
+      {
+        "name": "Magnetic shielding",
+        "role": "blocks Earth's field and external interference that would corrupt the qubits.",
+        "parts": [
+          "mu-metal enclosure",
+          "superconducting shield"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "sets the initial transverse field, the problem biases and couplers, then reads out each qubit's final state.",
+        "parts": [
+          "room-temperature digital-to-analog converters",
+          "SQUID readout amplifiers",
+          "multiplexing electronics"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "turns a user's optimisation problem into a schedule of magnetic fields the hardware can run.",
+        "parts": [
+          "problem mapping to quadratic unconstrained binary optimisation (QUBO)",
+          "minor embedding onto the chip's connectivity graph",
+          "anneal schedule control"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the qubit topology",
+        "detail": "Designers choose the layout of qubits and couplers — for example a chimera or pegasus graph — which sets how many variables a problem can hold and how easily it embeds."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Niobium and aluminium films are deposited on a silicon wafer and patterned by lithography; Josephson junctions are formed by oxidising a thin aluminium layer between two electrodes."
+      },
+      {
+        "title": "Package and wire-bond",
+        "detail": "The chip is mounted in a superconducting package and connected to control lines that carry magnetic flux to each qubit and coupler."
+      },
+      {
+        "title": "Cool and shield",
+        "detail": "The package is loaded into a dilution refrigerator, cooled to around 10–20 millikelvin, and enclosed in magnetic shielding."
+      },
+      {
+        "title": "Calibrate the qubits",
+        "detail": "Each qubit's persistent current, inductance and coupler strength are measured and tuned so that the intended problem Hamiltonian can be realised."
+      },
+      {
+        "title": "Characterise the anneal",
+        "detail": "Engineers run the transverse field down over a chosen time and map how often the system lands in the lowest-energy state, adjusting schedules to reduce errors."
+      },
+      {
+        "title": "Embed and run problems",
+        "detail": "A user's problem is mapped to the chip's graph, embedded in software, then submitted; the chip anneals once per sample and returns many readouts."
+      },
+      {
+        "title": "Interpret results",
+        "detail": "Readouts are corrected for bias and returned as candidate solutions; classical software then checks and refines them."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting Josephson junction fabrication",
+        "status": "exists",
+        "why": "qubits and couplers are superconducting loops broken by Josephson junctions; without reliable junctions there is no annealer."
+      },
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "the chip must stay at millikelvin temperatures to remain superconducting and resist thermal noise."
+      },
+      {
+        "tech": "Low-noise cryogenic control and readout",
+        "status": "exists",
+        "why": "setting and reading thousands of flux biases requires precise, low-noise electronics."
+      },
+      {
+        "tech": "Embedding algorithms for sparse connectivity",
+        "status": "partial",
+        "why": "chip graphs are not fully connected, so problems must be mapped onto them — often with large overhead that limits practical problem size."
+      },
+      {
+        "tech": "Error correction or error mitigation for annealing",
+        "status": "missing",
+        "why": "current devices can be trapped by noise or settle in excited states; no scalable error-correction scheme has been demonstrated for annealing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial annealers with thousands of qubits (for example D-Wave's Advantage systems) used in hybrid quantum-classical workflows",
+        "unlocks": "hands-on exploration of scheduling, portfolio and materials-search problems, though clear quantum speedup is still unproven."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher-connectivity topologies (such as D-Wave's Zephyr design) and longer coherence",
+        "unlocks": "less embedding overhead, so larger and more natural problems can be represented directly."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated error mitigation or logical qubits in annealing hardware",
+        "unlocks": "answers that are reliable enough to trust on hard, real-world instances."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "demonstrated quantum advantage on a commercially relevant optimisation task",
+        "unlocks": "adoption in logistics, finance, energy and materials discovery, and a clearer role alongside gate-based quantum computers."
+      }
+    ]
+  }
+}

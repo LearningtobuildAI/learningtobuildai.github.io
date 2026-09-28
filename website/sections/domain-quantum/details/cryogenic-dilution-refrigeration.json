@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Vacuum can and radiation shields",
+        "role": "insulates the cold stages from room-temperature heat.",
+        "parts": [
+          "outer vacuum chamber",
+          "copper shields at roughly 50 K and 4 K",
+          "multi-layer insulation",
+          "indium or O-ring seals"
+        ]
+      },
+      {
+        "name": "Pre-cooling stage",
+        "role": "gets the machine down to a few kelvin, where the helium mixture can condense.",
+        "parts": [
+          "pulse-tube cryocooler or liquid-helium bath",
+          "1 K pot (pumped helium-4)",
+          "condensing line"
+        ]
+      },
+      {
+        "name": "Still and heat exchangers",
+        "role": "distils helium-3 out of the mixture and pre-cools it on the way back down.",
+        "parts": [
+          "still at about 0.7 K",
+          "pumping line to room temperature",
+          "sintered copper or continuous heat exchangers",
+          "flow impedance"
+        ]
+      },
+      {
+        "name": "Mixing chamber",
+        "role": "the cold heart: heat is absorbed where concentrated and dilute helium-3 phases meet.",
+        "parts": [
+          "phase boundary",
+          "sintered silver or copper heat-exchange surface",
+          "sample mounting plate"
+        ]
+      },
+      {
+        "name": "Circulation system",
+        "role": "keeps helium-3 flowing so the cooling cycle is continuous.",
+        "parts": [
+          "room-temperature pumps",
+          "helium-3 gas store and purifier",
+          "return lines and needle valves"
+        ]
+      },
+      {
+        "name": "Wiring and signal chain",
+        "role": "carries control and readout signals down to the sample without dumping too much heat or noise.",
+        "parts": [
+          "coaxial and twisted-pair looms",
+          "attenuators and low-pass filters",
+          "thermal anchoring at each temperature plate",
+          "infrared-blocking filters"
+        ]
+      },
+      {
+        "name": "Vibration and magnetic isolation",
+        "role": "keeps mechanical noise and stray fields away from sensitive qubits.",
+        "parts": [
+          "rigid frame and acoustic decoupling",
+          "mu-metal or superconducting shields"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the heat budget",
+        "detail": "Every support strut, cable and connector is counted: heat conducted down, radiated in, and deposited by changing magnetic fields. The refrigerator is sized so the mixing chamber still has spare cooling power at its base temperature."
+      },
+      {
+        "title": "Fabricate the vacuum and shield stack",
+        "detail": "Stainless-steel vacuum cans and copper shields are machined, welded, polished to reduce emissivity, and assembled with seals that survive repeated cool-downs."
+      },
+      {
+        "title": "Build the pre-cooling stage",
+        "detail": "A pulse-tube cryocooler (or a liquid-helium bath) is mounted and coupled to the 4 K plate, and a pumped 1 K pot is fitted below it."
+      },
+      {
+        "title": "Assemble still, exchangers and mixing chamber",
+        "detail": "The still, a stack of heat exchangers and the mixing chamber are joined with leak-tight joints; the mixing chamber is packed with sintered metal to give the phase boundary a large area."
+      },
+      {
+        "title": "Install the gas handling system",
+        "detail": "Room-temperature pumps, valves, purifier and helium-3 storage are plumbed to the still and the return line, and the precise helium-3/helium-4 mixture is charged into the sealed circuit."
+      },
+      {
+        "title": "Wire and shield the sample stage",
+        "detail": "Cables are run from room temperature down through attenuators and filters, anchored at each plate so heat is intercepted before it reaches the millikelvin stage; magnetic shielding goes around the sample space."
+      },
+      {
+        "title": "Evacuate, bake and leak-check",
+        "detail": "The vacuum space is pumped and gently baked to remove water and helium contamination, then tested for leaks — a tiny leak ruins the insulation."
+      },
+      {
+        "title": "Cool down and condense",
+        "detail": "The cryocooler runs, the mixture condenses and collects in the mixing chamber, the still is pumped, and circulation begins, drawing the temperature down toward the base."
+      },
+      {
+        "title": "Commission and hold",
+        "detail": "Base temperature, cooling power and stability are measured with the sample wiring attached, then the unit is left running for weeks — long holds are the whole point."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Helium-3",
+        "status": "exists",
+        "why": "it is the working fluid; it is scarce and expensive because it comes mainly from tritium decay and stockpile processing, so recovery and leak-tightness matter."
+      },
+      {
+        "tech": "Pulse-tube cryocoolers",
+        "status": "exists",
+        "why": "they provide the 4 K pre-cooling without a liquid-helium supply, which is what makes cryogen-free refrigerators practical in labs."
+      },
+      {
+        "tech": "Cryogenic wiring, filtering and thermal anchoring",
+        "status": "exists",
+        "why": "a single poorly anchored cable can add more heat than the mixing chamber can remove."
+      },
+      {
+        "tech": "Vibration and electromagnetic isolation",
+        "status": "exists",
+        "why": "superconducting qubits lose coherence to mechanical noise and stray magnetic fields."
+      },
+      {
+        "tech": "Superconducting and spin qubit platforms",
+        "status": "partial",
+        "why": "they are the main demand driver, and their required qubit counts set how much cooling power and wiring the refrigerator must supply."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "cryogen-free dilution refrigerators hold samples below about 10 mK for weeks with hundreds of coaxial lines",
+        "unlocks": "today's small superconducting-qubit processors and low-temperature physics experiments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bigger mixing chambers and higher cooling power for thousands of qubits",
+        "unlocks": "larger processors, but cooling power falls steeply below 100 mK, so heat per qubit must drop too."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multiplexing and cryogenic control electronics inside the refrigerator",
+        "unlocks": "far fewer cables from room temperature, which is currently the dominant heat and cost problem."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "modular or higher-temperature qubit architectures that relax the millikelvin requirement",
+        "unlocks": "systems where dilution refrigeration is one stage rather than the whole constraint."
+      }
+    ]
+  }
+}

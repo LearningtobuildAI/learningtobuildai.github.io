@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Entangled-pair source",
+        "role": "creates the photon pairs whose quantum correlations are the sensing resource.",
+        "parts": [
+          "pump laser",
+          "nonlinear crystal (spontaneous parametric down-conversion)",
+          "spectral filters",
+          "coupling optics"
+        ]
+      },
+      {
+        "name": "Idler storage",
+        "role": "holds the twin photons intact for the signal's round-trip time.",
+        "parts": [
+          "quantum memory (atomic vapour or rare-earth crystal) or low-loss delay fibre",
+          "control lasers",
+          "read-out optics"
+        ]
+      },
+      {
+        "name": "Signal transmitter",
+        "role": "sends the probe photons towards the target.",
+        "parts": [
+          "telescope and beam expander",
+          "beam steering",
+          "polarisation control"
+        ]
+      },
+      {
+        "name": "Receiver and joint measurement",
+        "role": "collects the faint return and measures it together with the idler rather than on its own.",
+        "parts": [
+          "collecting telescope",
+          "narrowband and polarisation filters",
+          "single-photon detectors",
+          "optical joint-detection receiver (e.g. a sum-frequency generation stage)"
+        ]
+      },
+      {
+        "name": "Correlation processor",
+        "role": "turns photon time-stamps into a target-present or target-absent decision.",
+        "parts": [
+          "timing electronics and clock synchronisation",
+          "coincidence logic",
+          "detection-theory algorithms"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate the entanglement",
+        "detail": "A laser pumps a nonlinear crystal; spontaneous parametric down-conversion emits photon pairs that are entangled in photon number and phase."
+      },
+      {
+        "title": "Choose and verify the wavelengths",
+        "detail": "Signal and idler are split so the signal sits at a wavelength the atmosphere or target reflects well, then the correlations are measured to confirm the source is behaving."
+      },
+      {
+        "title": "Store the idler",
+        "detail": "The idler is routed into a quantum memory or low-loss delay line long enough to survive the signal's journey to the target and back."
+      },
+      {
+        "title": "Illuminate the target",
+        "detail": "The signal beam is aimed through a telescope; almost all photons are lost, and the few that return arrive buried in thermal background from the sun, sky and warm surroundings."
+      },
+      {
+        "title": "Collect the return",
+        "detail": "A receiving telescope with narrow spectral, spatial and timing filters picks out the small band where signal photons can be found."
+      },
+      {
+        "title": "Measure jointly",
+        "detail": "Return photons are measured together with their stored idlers — a joint-detection receiver, for example sum-frequency generation followed by photon counting, extracts correlations that no single-arm measurement can reveal."
+      },
+      {
+        "title": "Decide",
+        "detail": "The process is repeated over many pulses; coincidence statistics are tested against a threshold, and because the noise acts differently on the two arms the correlation stands out even when the return alone looks like pure noise."
+      },
+      {
+        "title": "Engineer for the field",
+        "detail": "Lasers, detectors, memory and timing are ruggedised and synchronised, then married to scanning optics. A radar version repeats all of this at microwave frequencies, where entanglement generation and memory are much harder."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Entangled photon sources (spontaneous parametric down-conversion)",
+        "status": "exists",
+        "why": "the whole protocol rests on a bright, well-characterised source of correlated pairs."
+      },
+      {
+        "tech": "Low-noise single-photon detectors",
+        "status": "exists",
+        "why": "the return is often a handful of photons, so detector dark counts set the floor."
+      },
+      {
+        "tech": "Quantum memories or low-loss delays at the operating wavelength",
+        "status": "partial",
+        "why": "the idler must survive microseconds to milliseconds without losing its correlation."
+      },
+      {
+        "tech": "Optical joint-detection receivers",
+        "status": "partial",
+        "why": "demonstrated in laboratories, but needed in a compact, efficient form before field use."
+      },
+      {
+        "tech": "Microwave entanglement and microwave quantum memories",
+        "status": "missing",
+        "why": "radar wavelengths are centimetres, where generating and storing entanglement is far harder than in optics."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations at optical wavelengths over short free-space paths, alongside theory showing an error-exponent advantage of up to roughly a factor of four at fixed transmitted energy",
+        "unlocks": "proof that correlations survive loss and noise, and a clear statement of the regime where they help."
+      },
+      {
+        "stage": "Next",
+        "milestone": "free-space trials at longer range against real daylight backgrounds, with idler storage that lasts long enough",
+        "unlocks": "realistic loss budgets and a first honest comparison against classical illumination at equal energy."
+      },
+      {
+        "stage": "Next",
+        "milestone": "compact, chip-scale joint-detection receivers and, separately, microwave entanglement sources",
+        "unlocks": "a path from optical detection towards an actual quantum radar."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "niche use where transmitted power must stay very low and the target reflects poorly",
+        "unlocks": "low-signature sensing — but only if the advantage is shown to persist outside the few-photon regime, since classical illumination with more pulses or higher power is predicted to match it."
+      }
+    ]
+  }
+}

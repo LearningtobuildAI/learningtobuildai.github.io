@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Entropy source",
+        "role": "the physical quantum process whose measurement outcome cannot be predicted even in principle.",
+        "parts": [
+          "laser or LED light source",
+          "beam splitter or optical interferometer",
+          "vacuum-fluctuation homodyne path (alternative)"
+        ]
+      },
+      {
+        "name": "Detector front end",
+        "role": "turns single photons or field quadratures into electrical pulses.",
+        "parts": [
+          "avalanche photodiode in Geiger mode (or superconducting nanowire detector)",
+          "quenching and bias circuit",
+          "low-noise amplifier"
+        ]
+      },
+      {
+        "name": "Digitisation and conditioning",
+        "role": "converts the analogue signal into raw bits and removes obvious bias.",
+        "parts": [
+          "high-speed comparator or ADC",
+          "clock and time-to-digital converter",
+          "bias-correction logic"
+        ]
+      },
+      {
+        "name": "Randomness extractor",
+        "role": "compresses partially random raw bits into output that is provably close to uniform.",
+        "parts": [
+          "Toeplitz-hash matrix engine",
+          "seeded cryptographic hash",
+          "seed source and matrix generation"
+        ]
+      },
+      {
+        "name": "Health monitoring",
+        "role": "detects a failing or tampered source before bad bits reach a key.",
+        "parts": [
+          "continuous entropy estimator",
+          "start-up and on-demand statistical tests",
+          "alarm and shutdown logic"
+        ]
+      },
+      {
+        "name": "Packaging and interface",
+        "role": "delivers bits to the system that needs them.",
+        "parts": [
+          "chip, PCIe card or module housing",
+          "hardware security module integration",
+          "API and driver"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the quantum process",
+        "detail": "Choose a source whose unpredictability rests on quantum mechanics rather than on assumed computational hardness — photon arrival time at a beam splitter, vacuum field fluctuations, or phase noise in an interferometer."
+      },
+      {
+        "title": "Build the optical front end",
+        "detail": "Fabricate the light path, either from discrete optical components or as an integrated photonic chip in silicon or similar material, aligning the source, splitter and detector paths."
+      },
+      {
+        "title": "Make the detector",
+        "detail": "Operate an avalanche photodiode above its breakdown voltage so a single photon triggers a detectable avalanche, with active quenching to reset it quickly; superconducting nanowire detectors are used where higher speed and efficiency justify cryogenics."
+      },
+      {
+        "title": "Digitise the signal",
+        "detail": "Amplify and compare or sample the detector output, converting each event into a raw bit, timestamp or multi-level value at rates from megabits to gigabits per second."
+      },
+      {
+        "title": "Condition the raw stream",
+        "detail": "Measure the source's min-entropy and strip out bias and correlations, avoiding the trap of hashing away the very quantum noise being measured."
+      },
+      {
+        "title": "Run the extractor",
+        "detail": "Apply a strong extractor such as Toeplitz hashing with a fresh random seed, so that even an adversary with partial knowledge of the raw output cannot predict the final bits."
+      },
+      {
+        "title": "Wrap in health testing",
+        "detail": "Add continuous entropy estimation and statistical tests that run at every start-up and during operation, halting output if the source drifts or is disturbed."
+      },
+      {
+        "title": "Package and integrate",
+        "detail": "Seal the unit as a chip, card or module, expose a clean interface, and embed it inside key-management hardware or a cloud service."
+      },
+      {
+        "title": "Validate independently",
+        "detail": "Send the finished device to an accredited laboratory for entropy-source assessment against public criteria and statistical test suites before it is sold for security use."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors",
+        "status": "exists",
+        "why": "avalanche photodiodes are a mature, mass-produced component; the whole device rests on detecting individual quantum events."
+      },
+      {
+        "tech": "Integrated photonics",
+        "status": "exists",
+        "why": "silicon and similar platforms allow the optics to shrink onto a chip, which is what turned QRNGs from lab benches into products."
+      },
+      {
+        "tech": "Randomness extractors",
+        "status": "exists",
+        "why": "decades of theoretical work on seeded extractors and hashing gives a proven way to turn noisy quantum data into uniform bits."
+      },
+      {
+        "tech": "Entropy-source standards and certification",
+        "status": "partial",
+        "why": "public criteria such as NIST SP 800-90B and Germany's AIS 31 exist, and ETSI has published a specification for quantum random number generators, but independent assessment of quantum sources is still maturing."
+      },
+      {
+        "tech": "Trustworthy fabrication",
+        "status": "partial",
+        "why": "a device can only be trusted if the chip was built and kept without a hidden backdoor or side channel."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "chip-scale generators sold inside hardware security modules, cloud key services and quantum key distribution equipment",
+        "unlocks": "certified randomness where a flawed seed would undermine every key derived from it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised, independently certified modules with published entropy evidence",
+        "unlocks": "regulators and auditors accepting quantum entropy in high-assurance systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tight coupling with quantum key distribution networks and with post-quantum cryptography for key and seed generation",
+        "unlocks": "end-to-end key material whose secrecy does not rest on an unproven hardness assumption."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "device-independent generation, where randomness is certified by a Bell-inequality violation with no trust in the hardware at all",
+        "unlocks": "randomness that can be trusted even if the device was built by an adversary."
+      }
+    ]
+  }
+}

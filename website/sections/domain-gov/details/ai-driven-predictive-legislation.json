@@ -1,7 +1,156 @@
 {
-  "engineeringSkip": {
-    "reason": "This is a policy and social-simulation concept rather than an engineered technology, with no physical build pathway.",
+  "factCheck": {
+    "verdict": "theory",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:15:03.296Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Policy encoder",
+        "role": "turns a draft law into machine-readable rules the simulation can apply.",
+        "parts": [
+          "legal-text parsing",
+          "parameterisation of eligibility, rates and thresholds",
+          "assumption log"
+        ]
+      },
+      {
+        "name": "Synthetic population",
+        "role": "a statistically representative set of simulated citizens, households and firms.",
+        "parts": [
+          "census and survey microdata",
+          "administrative records",
+          "household and firm synthesis"
+        ]
+      },
+      {
+        "name": "Agent behaviour layer",
+        "role": "gives each simulated person plausible reactions, decisions and limits.",
+        "parts": [
+          "language-model reasoning",
+          "rule-based and economic decision models",
+          "calibration to observed behaviour"
+        ]
+      },
+      {
+        "name": "Environment",
+        "role": "the world agents act in — labour markets, housing, social networks, public services.",
+        "parts": [
+          "market and matching modules",
+          "network graphs",
+          "institutional rules"
+        ]
+      },
+      {
+        "name": "Simulation engine",
+        "role": "runs millions of agents over years of simulated time.",
+        "parts": [
+          "distributed compute scheduler",
+          "scenario and intervention manager",
+          "random-seed and uncertainty handling"
+        ]
+      },
+      {
+        "name": "Outcome and validation suite",
+        "role": "measures results and checks them against reality.",
+        "parts": [
+          "indicator dashboard (income, health, employment, inequality)",
+          "back-testing against past reforms",
+          "bias and sensitivity audits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the policy question",
+        "detail": "State exactly which outcomes matter (cost, distributional impact, take-up) and over what horizon — typically 5–20 years."
+      },
+      {
+        "title": "Encode the law",
+        "detail": "Draft clauses are converted into explicit rules with every discretionary judgement written down, since hidden assumptions dominate results."
+      },
+      {
+        "title": "Build the synthetic population",
+        "detail": "Statistical methods generate millions of households and firms that reproduce the real joint distributions of age, income, location and employment."
+      },
+      {
+        "title": "Give agents behaviour",
+        "detail": "Each agent receives decision rules plus a language model that lets it react to unfamiliar situations in humanlike ways; behaviour is tuned until simulated survey answers match real ones."
+      },
+      {
+        "title": "Construct the environment",
+        "detail": "Labour markets, rent setting, school places and social networks are modelled so that one agent's choice changes what others face."
+      },
+      {
+        "title": "Run scenarios at scale",
+        "detail": "The policy is run against many randomised variants and counterfactuals to produce a distribution of outcomes rather than one number."
+      },
+      {
+        "title": "Validate against history",
+        "detail": "The same machinery is re-run on reforms that already happened, and its errors are measured before anyone trusts a forecast."
+      },
+      {
+        "title": "Publish with uncertainty",
+        "detail": "Results are released as ranges with the assumptions attached, and the model is audited by people outside the team that built it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "they supply flexible, humanlike reasoning for agents facing situations no rule covers."
+      },
+      {
+        "tech": "Population microdata",
+        "status": "partial",
+        "why": "accurate, linkable census, survey and tax records are needed, and privacy rules often block their use."
+      },
+      {
+        "tech": "Tax-benefit microsimulation and integrated assessment models",
+        "status": "exists",
+        "why": "decades of policy modelling already show how to turn rules into household outcomes."
+      },
+      {
+        "tech": "Causal validation methods",
+        "status": "partial",
+        "why": "natural experiments and pilot programmes are the only way to check whether simulated reactions match real ones."
+      },
+      {
+        "tech": "Cheap large-scale compute",
+        "status": "exists",
+        "why": "millions of language-model calls per scenario are the cost driver of the whole approach."
+      },
+      {
+        "tech": "Bias control in behavioural models",
+        "status": "missing",
+        "why": "agents trained on existing data can reproduce historical prejudice and herd behaviour, quietly distorting forecasts."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research prototypes in which small LLM agent societies reproduce opinion surveys and simple market behaviour",
+        "unlocks": "evidence that agent reactions can be calibrated at all."
+      },
+      {
+        "stage": "Next",
+        "milestone": "back-tested simulations of one or two finished reforms, reported with error bars",
+        "unlocks": "credibility as an advisory tool rather than a novelty."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid use alongside conventional regulatory impact assessment and microsimulation",
+        "unlocks": "routine adoption by analysts who already trust the older tools."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "openly audited, independently validated models used before major legislation",
+        "unlocks": "earlier warning of unintended effects — if accuracy and legitimacy are both proven."
+      }
+    ]
   }
 }

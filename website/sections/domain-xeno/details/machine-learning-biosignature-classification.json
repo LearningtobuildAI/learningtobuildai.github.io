@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Forward spectral models",
+        "role": "predict what an atmosphere would look like for a given mix of gases, clouds and temperature, so training data can be generated for worlds no telescope has yet measured.",
+        "parts": [
+          "radiative-transfer code (e.g. petitRADTRANS, Exo-Transmit)",
+          "thermochemical and photochemical equilibrium model",
+          "climate model for surface and vertical temperature structure"
+        ]
+      },
+      {
+        "name": "Biosignature library",
+        "role": "a labelled catalogue of plausible spectra, split into biotic and abiotic classes, spanning wavelengths from the visible into the thermal infrared.",
+        "parts": [
+          "modern-Earth analogue spectra",
+          "anoxic early-Earth analogues (methane-rich, oxygen-poor)",
+          "abiotic control cases: CO2 worlds, steam atmospheres, hazy and cloudy planets",
+          "stellar and planetary parameter sampling grid"
+        ]
+      },
+      {
+        "name": "Instrument simulator",
+        "role": "makes synthetic spectra look like real measurements, including their noise and artefacts.",
+        "parts": [
+          "spectral resolution and wavelength coverage model (JWST covers roughly 0.6–28 µm across its instruments)",
+          "photon and detector noise model",
+          "systematics: stellar contamination from spots and faculae, instrument drifts"
+        ]
+      },
+      {
+        "name": "Classifier",
+        "role": "learns the boundary between biotic and abiotic spectra and outputs a probability rather than a yes/no verdict.",
+        "parts": [
+          "neural network or ensemble architecture",
+          "training and validation loop",
+          "feature attribution to show which gas bands drove the decision"
+        ]
+      },
+      {
+        "name": "Calibration layer",
+        "role": "converts raw classifier output into honest probabilities, because a wrong 'yes' costs telescope time and credibility.",
+        "parts": [
+          "held-out and out-of-distribution test sets",
+          "receiver-operating-curve and false-positive-rate reporting",
+          "Bayesian evidence comparison against retrieval fits"
+        ]
+      },
+      {
+        "name": "Triage interface",
+        "role": "ranks candidate planets for scarce observing time and states the confidence behind each ranking.",
+        "parts": [
+          "scoring and ranking engine",
+          "uncertainty and prior-sensitivity report",
+          "hand-off to observatory time-allocation process"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the classes and the ground truth",
+        "detail": "Decide which spectra count as biotic and which as abiotic. Only Earth provides a real biotic example, so the biotic class must be built from Earth's own spectrum and from models of early Earth, while the abiotic class spans CO2-dominated, steam, Titan-like and heavily hazed worlds."
+      },
+      {
+        "title": "Generate forward-model spectra",
+        "detail": "Run radiative-transfer, chemistry and climate models across a wide grid of planet radius, surface pressure, stellar type, cloud coverage and haze. This yields tens of thousands to millions of synthetic spectra — the training set, because no labelled sample of inhabited exoplanets exists."
+      },
+      {
+        "title": "Inject instrument realism",
+        "detail": "Convolve each spectrum to the resolution of a real spectrograph, add photon and detector noise at the expected signal-to-noise, and add stellar-contamination and systematic effects. Without this, a classifier learns clean model differences that never survive real data."
+      },
+      {
+        "title": "Train the classifier",
+        "detail": "Split into training, validation and test sets, then train. Weight the sampling carefully: an unrepresentative prior will make the model report detections that reflect the training grid rather than the planet."
+      },
+      {
+        "title": "Calibrate the output",
+        "detail": "Test on held-out spectra, on planets outside the training distribution, and on known non-detections, then report performance as a false-positive rate at a fixed recall. Calibrated probabilities are the deliverable, not a verdict."
+      },
+      {
+        "title": "Validate against real measurements",
+        "detail": "Apply the pipeline to actual spectra — Solar System planets, Earthshine, and exoplanets already observed — and confirm it flags known hazy, cloudy or spot-contaminated cases as abiotic rather than mislabelling them as life."
+      },
+      {
+        "title": "Embed in target triage",
+        "detail": "Score candidate planets against the expected instrument, rank them for limited observing time, and publish the assumptions so a detection claim can be traced back to the models and priors that produced it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Exoplanet atmospheric spectroscopy",
+        "status": "exists",
+        "why": "transmission and emission spectra of rocky and sub-Neptune planets are now measured from space and from the ground; without spectra there is nothing to classify."
+      },
+      {
+        "tech": "Self-consistent forward models of planetary atmospheres",
+        "status": "partial",
+        "why": "the models are good for known chemistry but must extrapolate to biospheres nobody has seen, and to unknown metabolisms that could produce gases Earth life does not."
+      },
+      {
+        "tech": "Verified biosignature theory",
+        "status": "partial",
+        "why": "oxygen with methane in disequilibrium is the best-studied signal, but abiotic routes to oxygen exist, so the labels themselves carry uncertainty."
+      },
+      {
+        "tech": "Labelled biotic training data",
+        "status": "missing",
+        "why": "exactly one inhabited planet is known, so every biotic label is either Earth's own spectrum or a model — the core limitation of the whole approach."
+      },
+      {
+        "tech": "Direct-imaging spectroscopy of temperate rocky planets",
+        "status": "partial",
+        "why": "reflected-light spectra will test these classifiers on the planets they were designed for; a dedicated space telescope for that task is still a concept recommended by the 2020 astronomy decadal survey, not a built mission."
+      },
+      {
+        "tech": "Compute and open benchmark datasets",
+        "status": "exists",
+        "why": "training and running the models is cheap; the harder need is shared, blinded benchmarks so different groups' classifiers can be compared fairly."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "classifiers used in research to triage targets and speed up retrievals for JWST and ground-based observations",
+        "unlocks": "a first practical filter for which planets are worth scarce observing hours."
+      },
+      {
+        "stage": "Next",
+        "milestone": "community benchmark challenges and shared synthetic-plus-real test sets with published false-positive rates",
+        "unlocks": "claims from different teams become comparable instead of incomparable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "pipelines coupled to direct-imaging instruments, so target lists and detection thresholds are set before observations begin",
+        "unlocks": "observing time aimed at the worlds most likely to yield an interpretable answer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a biosignature claim presented as a calibrated probability with a stated false-positive rate, backed by independent atmospheric lines",
+        "unlocks": "the framework needed to argue credibly that a distant atmosphere contains life."
+      }
+    ]
+  }
+}

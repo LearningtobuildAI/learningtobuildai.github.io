@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Generation",
+        "role": "the source of electrical power — small nuclear fission or large sun-tracking solar.",
+        "parts": [
+          "fission reactor core with shielding",
+          "heat-to-electricity converter (Stirling or Brayton)",
+          "waste-heat radiator panels",
+          "alternative: tracking solar arrays on a tall mast"
+        ]
+      },
+      {
+        "name": "Storage",
+        "role": "carries the base load through lunar night and through peaks that generation alone cannot meet.",
+        "parts": [
+          "lithium-ion battery banks",
+          "regenerative fuel cells (electrolyser, tanks, stack)",
+          "charge controllers"
+        ]
+      },
+      {
+        "name": "Transmission network",
+        "role": "moves power from generators to every user without duplicating generators at each site.",
+        "parts": [
+          "high-voltage DC cable (buried, trenched or surface-laid on posts)",
+          "junction boxes and switchgear",
+          "connectors",
+          "ring topology for redundancy"
+        ]
+      },
+      {
+        "name": "Power conditioning",
+        "role": "matches generator output to user equipment and isolates faults.",
+        "parts": [
+          "DC-DC converters",
+          "inverters",
+          "current limiters",
+          "network controller with autonomous fault isolation"
+        ]
+      },
+      {
+        "name": "Thermal control",
+        "role": "keeps cables, electronics and batteries within limits across roughly 300 °C of day-night swing.",
+        "parts": [
+          "radiators and heat pipes for electronics",
+          "cable insulation and covers",
+          "radiothermal or resistive keep-warm heaters"
+        ]
+      },
+      {
+        "name": "User interfaces and mobile power",
+        "role": "lets habitats, landers, rovers and processing plants plug in or carry power with them.",
+        "parts": [
+          "docking power ports",
+          "rover tethers",
+          "mobile reactor sledge or battery trailer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the site and the loads",
+        "detail": "Survey sunlit ridges, permanently shadowed crater floors, terrain and thermal extremes, then size the network for the habitats and processing plants it must serve."
+      },
+      {
+        "title": "Land the generator",
+        "detail": "Set down a shielded fission unit at a safe distance, or erect solar arrays on a mast on a ridge where sunlight lasts almost the whole month."
+      },
+      {
+        "title": "Establish the main bus",
+        "detail": "Lay a primary high-voltage DC run between the generator and the first load centre, cable on posts or in a shallow trench to limit thermal and dust damage."
+      },
+      {
+        "title": "Close the ring",
+        "detail": "Wire a second route back to the source so any single cable break can be isolated without losing the whole grid; junction boxes with switchgear sit at each node."
+      },
+      {
+        "title": "Add storage at the nodes",
+        "detail": "Place batteries or regenerative fuel cells where loads concentrate, so short peaks and eclipse periods are covered without oversizing the generator."
+      },
+      {
+        "title": "Connect the users",
+        "detail": "Mate habitat, lander, rover and processing-plant connectors to the bus, robotically where crews are absent."
+      },
+      {
+        "title": "Commission and prove a lunar night",
+        "detail": "Run the network through a full day-night cycle with autonomous fault detection, since Earth-based joystick control has a round-trip light delay of about 2.6 seconds."
+      },
+      {
+        "title": "Expand incrementally",
+        "detail": "Add a second generator, more storage or a spur line to a new mining site as demand grows, rather than building one oversized plant up front."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fission surface power",
+        "status": "partial",
+        "why": "small reactors in the tens-of-kilowatts class have been designed and studied for the Moon but none has flown or operated there."
+      },
+      {
+        "tech": "Lunar-night energy storage",
+        "status": "missing",
+        "why": "a surface grid must hold up for roughly 14 Earth days of darkness unless it relies on nuclear heat."
+      },
+      {
+        "tech": "Cables and connectors for hard vacuum and thermal cycling",
+        "status": "missing",
+        "why": "insulation, seals and contacts must survive vacuum, abrasive regolith dust and repeated large temperature swings."
+      },
+      {
+        "tech": "Robotic cable deployment and connection",
+        "status": "partial",
+        "why": "laying and mating kilometres of conductor without crews on site has not been demonstrated on the lunar surface."
+      },
+      {
+        "tech": "Heavy lunar landing capacity",
+        "status": "partial",
+        "why": "reactors, radiators and cable mass all have to be delivered to the surface in useful payload sizes."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "crewed Artemis landing campaigns and small landers each carrying their own solar and battery power",
+        "unlocks": "site data and experience with dust, thermal extremes and lunar night."
+      },
+      {
+        "stage": "Next",
+        "milestone": "one fission unit in the tens-of-kilowatts class operated through a full lunar night, with a short cable run to a habitat",
+        "unlocks": "proof that a shared surface grid is more mass-efficient than per-user generation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a multi-user ring network at one polar site with storage nodes and an operating resource-processing plant on the bus",
+        "unlocks": "power for oxygen extraction and other high-peak industrial loads that no single lander can supply."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an expandable, replicated polar grid with mobile power units",
+        "unlocks": "interconnected habitats and industry, and a template that can be copied at other lunar sites."
+      }
+    ]
+  }
+}

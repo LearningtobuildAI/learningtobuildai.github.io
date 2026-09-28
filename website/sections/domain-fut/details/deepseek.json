@@ -29,9 +29,146 @@
       }
     ]
   },
-  "engineeringSkip": {
-    "reason": "DeepSeek is a company and AI service business, not a specific technology, and the description is a generic buzzword mash-up without concrete engineering substance.",
+  "factCheck": {
+    "verdict": "real",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:13:55.547Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Data pipeline",
+        "role": "collects and filters the massive text and code corpora used for training.",
+        "parts": [
+          "web crawlers",
+          "deduplication and quality filters",
+          "subword tokenizer"
+        ]
+      },
+      {
+        "name": "Training infrastructure",
+        "role": "runs distributed training across thousands of accelerators.",
+        "parts": [
+          "GPU or TPU clusters",
+          "high-speed interconnect",
+          "checkpointing and orchestration software"
+        ]
+      },
+      {
+        "name": "Model architecture",
+        "role": "defines how tokens are processed and combined.",
+        "parts": [
+          "transformer blocks",
+          "mixture-of-experts layers",
+          "attention variants that compress the key-value cache",
+          "normalisation layers"
+        ]
+      },
+      {
+        "name": "Optimisation and alignment",
+        "role": "tunes weights and behaviour for useful, safe outputs.",
+        "parts": [
+          "optimisers and learning-rate schedules",
+          "reinforcement learning from human feedback",
+          "safety filters"
+        ]
+      },
+      {
+        "name": "Inference serving",
+        "role": "serves the model to users efficiently and at low cost.",
+        "parts": [
+          "model parallelism",
+          "batching",
+          "quantisation",
+          "key-value cache management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect and clean data",
+        "detail": "Crawl web pages, books and code repositories, then deduplicate and filter for quality and safety."
+      },
+      {
+        "title": "Tokenise",
+        "detail": "Split text into subword tokens so the model can process it as sequences of integers."
+      },
+      {
+        "title": "Pre-train",
+        "detail": "Train the transformer to predict the next token across trillions of tokens, using a large cluster of accelerators."
+      },
+      {
+        "title": "Add mixture-of-experts routing",
+        "detail": "Insert expert sub-networks and train a router so each token activates only a small fraction of the model, cutting compute per token."
+      },
+      {
+        "title": "Fine-tune on instructions",
+        "detail": "Continue training on curated question-answer pairs so the model follows directions and formats answers usefully."
+      },
+      {
+        "title": "Align with human feedback",
+        "detail": "Use reinforcement learning or direct preference optimisation to improve helpfulness, honesty and safety."
+      },
+      {
+        "title": "Optimise for inference",
+        "detail": "Apply quantisation, distillation and cache compression so the model runs quickly and cheaply when serving users."
+      },
+      {
+        "title": "Deploy",
+        "detail": "Release the model through an API or as open weights, with monitoring and safety guardrails."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale accelerator clusters",
+        "status": "exists",
+        "why": "training a frontier model requires thousands of high-end GPUs or TPUs running for weeks."
+      },
+      {
+        "tech": "Distributed training software",
+        "status": "exists",
+        "why": "the model and data must be split across many devices without losing efficiency or stability."
+      },
+      {
+        "tech": "Massive high-quality text corpora",
+        "status": "exists",
+        "why": "language ability comes from learning patterns across a very large and diverse body of text."
+      },
+      {
+        "tech": "Efficient attention and mixture-of-experts implementations",
+        "status": "partial",
+        "why": "these reduce memory and compute so that models with hundreds of billions of parameters are affordable to run."
+      },
+      {
+        "tech": "Reinforcement learning from human feedback",
+        "status": "exists",
+        "why": "it turns a raw next-token predictor into a model that follows instructions and avoids harmful outputs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "dense and mixture-of-experts large language models with hundreds of billions of parameters, served via APIs and open weights",
+        "unlocks": "widespread use of AI for writing, coding, summarisation and question answering."
+      },
+      {
+        "stage": "Next",
+        "milestone": "further efficiency gains: longer context windows, sparser attention, better routing and smaller active parameter counts",
+        "unlocks": "cheaper inference and models that can process entire books or codebases at once."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multimodal and agentic models that combine text, images, audio and tool use",
+        "unlocks": "automation of complex workflows that require perception, reasoning and action."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "models that learn continuously from interaction and use external tools reliably",
+        "unlocks": "persistent assistants that adapt to a user or organisation over time."
+      }
+    ]
   }
 }

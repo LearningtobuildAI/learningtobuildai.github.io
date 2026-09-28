@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Input encoding",
+        "role": "turns the classical vector b and matrix A into quantum states.",
+        "parts": [
+          "amplitude-encoding routine",
+          "sparse matrix oracle",
+          "quantum RAM (proposed)"
+        ]
+      },
+      {
+        "name": "Hamiltonian simulation",
+        "role": "implements the time evolution e^(−iAt) that phase estimation relies on, using a sparse-matrix decomposition (e.g. Lie–Trotter or qubitisation).",
+        "parts": [
+          "Trotter/LCU circuits",
+          "ancilla registers"
+        ]
+      },
+      {
+        "name": "Phase estimation",
+        "role": "writes the eigenvalues of A into a register with enough bits to resolve them.",
+        "parts": [
+          "Hadamard layer",
+          "inverse quantum Fourier transform"
+        ]
+      },
+      {
+        "name": "Reciprocal rotation",
+        "role": "rotates an ancilla qubit by an angle proportional to 1/λ, inverting each eigenvalue.",
+        "parts": [
+          "controlled-Ry rotations",
+          "angle lookup"
+        ]
+      },
+      {
+        "name": "Uncompute and postselect",
+        "role": "undoes phase estimation and keeps only runs where the ancilla was measured in the right state.",
+        "parts": [
+          "inverse phase estimation",
+          "ancilla measurement"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "extracts useful information from the solution state, usually by sampling observables rather than reading amplitudes.",
+        "parts": [
+          "Hadamard/test circuits",
+          "repeated measurements"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map the problem",
+        "detail": "Write A as a sparse Hermitian matrix and b as a normalised vector, and check the condition number κ — runtime grows roughly linearly with κ."
+      },
+      {
+        "title": "Prepare b",
+        "detail": "Load the vector's amplitudes into the system register, a step whose cost can wipe out the speedup unless b has special structure."
+      },
+      {
+        "title": "Evolve under A",
+        "detail": "Run Hamiltonian simulation to apply e^(−iAt) for the time needed to resolve eigenvalues."
+      },
+      {
+        "title": "Estimate eigenvalues",
+        "detail": "Phase estimation writes each λ into an ancilla register as a binary fraction; the register needs about log(κ/ε) bits."
+      },
+      {
+        "title": "Invert and rotate",
+        "detail": "A controlled rotation maps λ to an ancilla amplitude of roughly C/λ, inverting small eigenvalues most strongly."
+      },
+      {
+        "title": "Uncompute",
+        "detail": "Reverse phase estimation so the eigenvalue register returns to its initial state and the solution stays in the system register."
+      },
+      {
+        "title": "Postselect",
+        "detail": "Measure the ancilla; keep only the successful outcomes, which occur with probability around 1/κ², and repeat until enough samples accumulate."
+      },
+      {
+        "title": "Read out",
+        "detail": "Use the state as input to further quantum routines, or measure chosen observables many times to estimate output properties."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computer with thousands of logical qubits",
+        "status": "missing",
+        "why": "HHL needs deep circuits and error correction; today's noisy machines cannot run it at useful size."
+      },
+      {
+        "tech": "Efficient Hamiltonian simulation",
+        "status": "partial",
+        "why": "algorithms exist and small instances have run, but cost at practical matrix sizes is not demonstrated."
+      },
+      {
+        "tech": "Efficient state preparation and qRAM",
+        "status": "missing",
+        "why": "loading arbitrary classical data can cost more than the classical solve it replaces."
+      },
+      {
+        "tech": "Quantum readout of the solution",
+        "status": "partial",
+        "why": "amplitudes cannot be read directly; only sampled properties are accessible, which limits which problems benefit."
+      },
+      {
+        "tech": "Well-conditioned sparse problems",
+        "status": "exists",
+        "why": "the algorithm's advantage requires sparse, low-condition-number matrices and the right output model."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proof-of-principle runs on a handful of qubits solving tiny 2×2 or 4×4 systems",
+        "unlocks": "confidence that the circuit blocks work, but no practical speedup."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant versions that avoid full phase estimation and use error mitigation",
+        "unlocks": "larger systems and cheaper circuits, still short of a proven advantage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "resource estimates for real problems (fluids, materials, machine learning) identifying where an advantage survives end-to-end costs",
+        "unlocks": "a clear list of target applications worth chasing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant demonstration on a problem where the whole pipeline beats the best classical solver on time or energy",
+        "unlocks": "a genuine quantum linear-solver tool, and a template for other algorithms."
+      }
+    ]
+  }
+}

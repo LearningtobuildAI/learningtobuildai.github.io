@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Ancilla (clock) register",
+        "role": "holds the phase as a binary fraction; each extra qubit buys one more bit of precision.",
+        "parts": [
+          "m ancilla qubits",
+          "Hadamard layer",
+          "computational-basis measurement"
+        ]
+      },
+      {
+        "name": "Controlled-unitary oracle",
+        "role": "applies the unitary U, raised to powers of two, conditioned on the ancilla.",
+        "parts": [
+          "gate decomposition of U",
+          "controlled-U^(2^k) ladder",
+          "arithmetic for modular exponentiation, or Trotterised time evolution"
+        ]
+      },
+      {
+        "name": "Inverse quantum Fourier transform",
+        "role": "converts accumulated phases into a readable binary number.",
+        "parts": [
+          "Hadamard gates",
+          "controlled phase rotations",
+          "swap network, or truncated approximate version"
+        ]
+      },
+      {
+        "name": "Target register and state preparation",
+        "role": "the eigenvector whose eigenvalue is being extracted.",
+        "parts": [
+          "state-preparation circuit",
+          "eigenstate or ground-state filtering",
+          "register initialisation"
+        ]
+      },
+      {
+        "name": "Fault-tolerant execution layer",
+        "role": "makes a deep circuit survive noise long enough to finish.",
+        "parts": [
+          "logical qubits in an error-correcting code",
+          "magic-state distillation for non-Clifford gates",
+          "real-time decoder and classical feedback"
+        ]
+      },
+      {
+        "name": "Readout and classical post-processing",
+        "role": "turns measured bits into a useful answer.",
+        "parts": [
+          "repeated sampling",
+          "continued-fraction expansion",
+          "statistical error estimation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the unitary and the question",
+        "detail": "Decide what operator U represents — modular multiplication for factoring, or a molecular Hamiltonian — and which eigenvalue you want from it."
+      },
+      {
+        "title": "Compile the operator into gates",
+        "detail": "Encode U as elementary gates, for example a modular-exponentiation circuit, or a sequence of short time-evolution steps for a Hamiltonian."
+      },
+      {
+        "title": "Prepare the target register",
+        "detail": "For simulation, prepare a good approximation to the ground state; for factoring, initialise the work register to 1 and put the rest in superposition."
+      },
+      {
+        "title": "Create the ancilla superposition",
+        "detail": "Hadamard gates on m ancilla qubits put them in an equal superposition of all 2^m values, setting the achievable precision to roughly 2^-m."
+      },
+      {
+        "title": "Apply the controlled-unitary ladder",
+        "detail": "Apply U, U², U⁴ … U^(2^(m-1)), each conditioned on one ancilla qubit. This ladder is the bulk of the circuit depth and the dominant cost."
+      },
+      {
+        "title": "Invert the quantum Fourier transform",
+        "detail": "Rotate the ancilla register so the accumulated phase becomes a binary fraction. Approximate it by dropping the smallest rotations, or use an iterative single-ancilla variant with classical feedback."
+      },
+      {
+        "title": "Measure and post-process",
+        "detail": "Read the ancilla in the computational basis and repeat. Continued fractions recover the answer in factoring; averaging gives an energy estimate in simulation."
+      },
+      {
+        "title": "Run fault-tolerantly",
+        "detail": "Encode everything into logical qubits, distil the magic states needed for the non-Clifford rotations, execute under a decoder, and tune the precision against the depth you can afford."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-corrected logical qubits",
+        "status": "partial",
+        "why": "the circuit is far too deep for physical qubits; experiments have shown logical qubits outperforming their physical parts, but only a few at a time."
+      },
+      {
+        "tech": "Low-error two-qubit gates and measurement",
+        "status": "partial",
+        "why": "every gate error is multiplied by the circuit length, so even small per-gate faults overwhelm a long phase-estimation run."
+      },
+      {
+        "tech": "Efficient block-encoding of operators",
+        "status": "partial",
+        "why": "determines how cheaply each controlled-U^(2^k) can be built, and therefore whether the algorithm is practical at all."
+      },
+      {
+        "tech": "Magic-state distillation",
+        "status": "partial",
+        "why": "the rotations and arithmetic inside the controlled unitaries need non-Clifford gates that cost many noisy ancilla qubits each."
+      },
+      {
+        "tech": "Classical continued-fraction arithmetic",
+        "status": "exists",
+        "why": "turns the measured phase bits into a factor on an ordinary computer — the easy half of Shor's algorithm, described in the mid-1990s."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "phase estimation and its iterative single-ancilla variant run on a handful of noisy qubits, mostly to read out energies in small demonstrations",
+        "unlocks": "proof that the primitive works end to end on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "enough logical qubits, each reliably better than its physical parts, to run a small fault-tolerant phase estimation",
+        "unlocks": "chemistry and materials results beyond exact classical simulation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "resource-optimised variants using qubitisation and better block-encodings to cut depth and non-Clifford gate count",
+        "unlocks": "the same precision on a much smaller machine."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cryptographically relevant factoring, with literature resource estimates running to millions of physical qubits",
+        "unlocks": "the headline application of Shor's algorithm and the main reason to build machines at that scale."
+      }
+    ]
+  }
+}

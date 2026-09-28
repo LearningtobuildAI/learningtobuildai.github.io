@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Telescope and adaptive optics",
+        "role": "delivers a stable, diffraction-limited image so faint planet light is not buried in atmospheric blur.",
+        "parts": [
+          "8–10 m class telescope",
+          "deformable mirror",
+          "wavefront sensor"
+        ]
+      },
+      {
+        "name": "Coronagraph and starlight suppression",
+        "role": "blocks the bulk of the host star's light before it reaches the polarimeter.",
+        "parts": [
+          "apodiser or vortex mask",
+          "Lyot stop",
+          "pointing and jitter control"
+        ]
+      },
+      {
+        "name": "Polarimetry module",
+        "role": "splits the beam into two orthogonal polarisation states and encodes the Stokes parameters.",
+        "parts": [
+          "achromatic half-wave plate on a precision rotation stage",
+          "Wollaston prism or polarising beam-splitter",
+          "calibration unit injecting known polarisation states"
+        ]
+      },
+      {
+        "name": "Spectrograph",
+        "role": "disperses the planet's light at a resolving power of a few hundred to a few thousand so cloud features are separable across wavelength.",
+        "parts": [
+          "grism or prism",
+          "slit or integral-field lenslets"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "records both polarisation beams simultaneously with low noise and short exposure times.",
+        "parts": [
+          "near-infrared or visible detector array",
+          "fast readout electronics"
+        ]
+      },
+      {
+        "name": "Data pipeline and scattering model",
+        "role": "converts raw frames into polarisation spectra and fits them to cloud physics.",
+        "parts": [
+          "Stokes reduction software",
+          "instrumental-polarisation calibration tables",
+          "radiative-transfer scattering code"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the target and bandpass",
+        "detail": "Choose a giant planet on a wide, well-separated orbit so it clears the inner working angle, and a wavelength range where reflected starlight competes least with the star's own colour."
+      },
+      {
+        "title": "Design the optical train",
+        "detail": "Lay out adaptive optics, coronagraph and polarimeter so the polarising optics sit downstream of the coronagraph, where scattered starlight is already reduced."
+      },
+      {
+        "title": "Fabricate the polarimeter",
+        "detail": "Build an achromatic retarder stack that keeps a half-wave shift across the whole bandpass, pair it with a beam-splitter, and mount both on a stage that can index accurately to a fraction of a degree."
+      },
+      {
+        "title": "Integrate with the high-contrast imager",
+        "detail": "Insert the module into an existing extreme-adaptive-optics instrument, keeping the two polarisation beams on the detector simultaneously so atmospheric and telescope fluctuations cancel."
+      },
+      {
+        "title": "Calibrate instrumental polarisation",
+        "detail": "Observe unpolarised standard stars to map the polarisation the telescope mirrors impose, and polarised standards to fix the angle offset and efficiency; repeat regularly because mirror coatings age."
+      },
+      {
+        "title": "Observe a polarisation sequence",
+        "detail": "Take rapid exposures with the waveplate stepped through several angles, nodding the star between the two beams, and repeat across the planet's orbital phase or across the transit."
+      },
+      {
+        "title": "Reduce to Stokes spectra",
+        "detail": "Subtract the two beams to cancel unpolarised starlight, combine waveplate angles into Stokes Q and U, then de-rotate by the parallactic angle and bin into a spectrum."
+      },
+      {
+        "title": "Fit cloud and haze parameters",
+        "detail": "Compare the polarisation spectrum and its phase dependence against radiative-transfer models that vary particle size, composition, shape and cloud-top pressure."
+      },
+      {
+        "title": "Cross-check against intensity spectra",
+        "detail": "Combine the polarimetric result with ordinary spectroscopy, since a liquid-surface glint and a thin haze can look similar in intensity alone but differ strongly in polarisation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Extreme adaptive optics and coronagraphy",
+        "status": "exists",
+        "why": "without roughly 10⁻⁵ starlight suppression the planet's few-percent polarisation is swamped."
+      },
+      {
+        "tech": "Achromatic retarders and high-extinction polarisers",
+        "status": "exists",
+        "why": "the polarisation state must stay accurately defined across the bandpass or the spectrum is corrupted."
+      },
+      {
+        "tech": "Instrumental-polarisation calibration at the 10⁻⁵ level",
+        "status": "partial",
+        "why": "mirror-induced polarisation currently limits how faint a polarised signal can be trusted."
+      },
+      {
+        "tech": "Polarised radiative-transfer models of planetary atmospheres",
+        "status": "partial",
+        "why": "Rayleigh and Mie scattering are well understood, but real haze particles are irregular and their scattering matrices are poorly constrained."
+      },
+      {
+        "tech": "Large filled-aperture telescopes with polarimetric modes",
+        "status": "partial",
+        "why": "collecting area sets how bright a target must be; only a handful of facilities offer the combination."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "polarimetric differential imaging routinely maps scattered light in circumstellar disks with current high-contrast instruments",
+        "unlocks": "proven hardware and reduction techniques that can be pointed at planets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated polarimetric modes with rigorous calibration reach the brightest hot Jupiters and young, widely separated giants",
+        "unlocks": "the first robust polarisation spectra of an exoplanet atmosphere."
+      },
+      {
+        "stage": "Next",
+        "milestone": "30 m class telescopes add collecting area and spectral resolution",
+        "unlocks": "polarisation phase curves for a small sample of planets, separating cloud decks from clear atmospheres."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "space-based coronagraphs combine high-resolution spectroscopy with polarimetry on temperate planets",
+        "unlocks": "discriminating hazes, clouds and specular glints from liquid surfaces, which sharpens the interpretation of any biosignature."
+      }
+    ]
+  }
+}

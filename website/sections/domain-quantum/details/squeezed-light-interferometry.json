@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Squeezing source",
+        "role": "generates squeezed vacuum by parametric down-conversion.",
+        "parts": [
+          "nonlinear crystal (periodically poled potassium titanyl phosphate)",
+          "optical parametric oscillator cavity with low-loss mirrors",
+          "temperature and phase control"
+        ]
+      },
+      {
+        "name": "Pump laser system",
+        "role": "supplies the coherent pump beam that drives the nonlinear process.",
+        "parts": [
+          "frequency-doubled laser (green, 532 nm)",
+          "intensity and phase stabilization servos",
+          "beam transport optics"
+        ]
+      },
+      {
+        "name": "Injection and mode-matching optics",
+        "role": "delivers the squeezed vacuum into the interferometer's dark port with minimal loss.",
+        "parts": [
+          "Faraday isolator",
+          "mode-matching lenses and mirrors",
+          "high-vacuum beam path"
+        ]
+      },
+      {
+        "name": "Filter cavity",
+        "role": "rotates the squeezing angle across frequency to reduce noise in both shot-noise and radiation-pressure-limited bands.",
+        "parts": [
+          "long low-loss optical cavity (hundreds of metres)",
+          "length and alignment control",
+          "input/output coupling optics"
+        ]
+      },
+      {
+        "name": "Control and readout electronics",
+        "role": "locks phases, monitors squeezing level and prevents degradation of the interferometer's sensitivity.",
+        "parts": [
+          "homodyne detector for offline squeezing measurement",
+          "digital and analog servo loops",
+          "data acquisition and diagnostics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate the pump beam",
+        "detail": "A stable infrared laser is frequency-doubled to green light, filtered and actively stabilized in power and phase."
+      },
+      {
+        "title": "Fabricate the nonlinear crystal",
+        "detail": "A periodically poled crystal is grown, cut and coated to achieve quasi-phase-matching at the pump and squeezed-light wavelengths."
+      },
+      {
+        "title": "Assemble the optical parametric oscillator",
+        "detail": "The crystal is placed in a low-loss cavity formed by highly reflective mirrors; the cavity length and temperature are tuned to resonance."
+      },
+      {
+        "title": "Characterize the squeezed vacuum",
+        "detail": "The output is measured with a homodyne detector to verify the noise reduction (typically several decibels) and its frequency dependence."
+      },
+      {
+        "title": "Mode-match into the interferometer",
+        "detail": "Lenses and mirrors shape the squeezed beam to match the interferometer's dark-port mode, with losses kept to a minimum."
+      },
+      {
+        "title": "Install and lock a filter cavity (optional)",
+        "detail": "For frequency-dependent squeezing, a long low-loss cavity is built, aligned and locked so its reflection imparts a frequency-dependent rotation."
+      },
+      {
+        "title": "Integrate with detector control",
+        "detail": "The squeezing injection is phased in while the interferometer remains locked, and the sensitivity improvement is verified across the detection band."
+      },
+      {
+        "title": "Operate and maintain",
+        "detail": "Continuous monitoring keeps the squeezing level stable; optical components and vacuum are serviced during maintenance periods."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-loss optical components and high-vacuum systems",
+        "status": "exists",
+        "why": "any optical loss, including absorption or scattering, converts squeezed vacuum back toward ordinary vacuum and erases the benefit."
+      },
+      {
+        "tech": "Stable high-power lasers and second-harmonic generation",
+        "status": "exists",
+        "why": "the parametric process needs a quiet, intense pump at exactly twice the squeezed-light frequency."
+      },
+      {
+        "tech": "Nonlinear crystals for parametric down-conversion",
+        "status": "exists",
+        "why": "periodically poled crystals provide the high nonlinearity needed to produce measurable squeezing."
+      },
+      {
+        "tech": "Gravitational-wave interferometers with dark-port access",
+        "status": "exists",
+        "why": "the squeezed vacuum is injected into an unused output port and must not disturb the main interferometer control."
+      },
+      {
+        "tech": "Frequency-dependent squeezing via filter cavities",
+        "status": "partial",
+        "why": "demonstrated and being commissioned in advanced detectors, but not yet standard across all observatories."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "squeezed-light injection in operating gravitational-wave detectors (LIGO, Virgo, GEO600, KAGRA)",
+        "unlocks": "improved shot-noise-limited sensitivity and a larger observable volume of the universe."
+      },
+      {
+        "stage": "Next",
+        "milestone": "frequency-dependent squeezing deployed in all advanced detectors",
+        "unlocks": "simultaneous reduction of shot noise and radiation-pressure noise across the full detection band."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher squeezing levels (above 10 dB) with lower optical loss",
+        "unlocks": "further reach for existing detectors and more stringent tests of general relativity."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "squeezed light in other precision instruments such as atomic clocks, magnetometers and future detectors",
+        "unlocks": "quantum-enhanced metrology beyond gravitational-wave astronomy."
+      }
+    ]
+  }
+}

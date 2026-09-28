@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cost Hamiltonian encoding",
+        "role": "Encodes the objective function of the optimisation problem into a quantum operator whose ground state represents the optimal solution.",
+        "parts": [
+          "problem graph or constraint list",
+          "Pauli operators and coefficients",
+          "offset and penalty terms"
+        ]
+      },
+      {
+        "name": "Mixer Hamiltonian",
+        "role": "Drives transitions between candidate solutions so the algorithm can explore the search space.",
+        "parts": [
+          "transverse-field Pauli-X operators",
+          "mixer coupling strengths"
+        ]
+      },
+      {
+        "name": "Parameterised quantum circuit",
+        "role": "Alternating layers of cost and mixer unitaries with adjustable angles that define the QAOA ansatz.",
+        "parts": [
+          "cost unitary layers",
+          "mixer unitary layers",
+          "parameter registers (β, γ)"
+        ]
+      },
+      {
+        "name": "Classical optimiser",
+        "role": "Tunes the circuit parameters by minimising the measured expectation value of the cost Hamiltonian.",
+        "parts": [
+          "optimisation algorithm (e.g., gradient-based, COBYLA)",
+          "convergence criteria",
+          "parameter update loop"
+        ]
+      },
+      {
+        "name": "Measurement and readout",
+        "role": "Extracts bitstring samples to estimate expectation values and candidate solutions.",
+        "parts": [
+          "projective measurements in the computational basis",
+          "shot repetition",
+          "readout error mitigation"
+        ]
+      },
+      {
+        "name": "Compilation and error mitigation",
+        "role": "Maps the abstract circuit to native hardware gates and reduces the impact of noise.",
+        "parts": [
+          "transpiler and scheduler",
+          "dynamical decoupling",
+          "zero-noise extrapolation or similar techniques"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Map problem to cost Hamiltonian",
+        "detail": "Formulate the combinatorial optimisation problem as a sum of Pauli terms; the ground state of this operator encodes the optimal solution."
+      },
+      {
+        "title": "Choose a mixer Hamiltonian",
+        "detail": "Select a mixer (typically a transverse field) that allows transitions between feasible states without violating constraints."
+      },
+      {
+        "title": "Construct the QAOA circuit",
+        "detail": "Build p layers of alternating cost and mixer unitaries, each with its own parameter angles β and γ."
+      },
+      {
+        "title": "Compile for hardware",
+        "detail": "Transpile the parameterised circuit into the native gate set of the target quantum processor and schedule operations to respect connectivity."
+      },
+      {
+        "title": "Execute and sample",
+        "detail": "Run the circuit on the quantum processor, measure the output state in the computational basis, and collect many shots."
+      },
+      {
+        "title": "Estimate the cost",
+        "detail": "Compute the expectation value of the cost Hamiltonian from the measured bitstring frequencies."
+      },
+      {
+        "title": "Optimise parameters",
+        "detail": "Feed the expectation value to a classical optimiser, which updates the circuit parameters to reduce the cost."
+      },
+      {
+        "title": "Iterate to convergence",
+        "detail": "Repeat execution and optimisation until the optimiser converges to a set of parameters that minimises the cost."
+      },
+      {
+        "title": "Decode solution",
+        "detail": "Measure the final circuit and decode the most frequent bitstring into the problem solution."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Gate-based quantum processors with sufficient qubits and coherence",
+        "status": "partial",
+        "why": "Current devices offer tens to hundreds of qubits, but limited coherence and connectivity restrict circuit depth."
+      },
+      {
+        "tech": "High-fidelity quantum gates",
+        "status": "partial",
+        "why": "Two-qubit gate errors must be low enough for the repeated layers of a QAOA circuit."
+      },
+      {
+        "tech": "Classical–quantum hybrid control",
+        "status": "exists",
+        "why": "Needed to run the variational loop that tunes parameters between quantum executions."
+      },
+      {
+        "tech": "Error mitigation techniques",
+        "status": "partial",
+        "why": "Essential because current hardware is noisy and full fault tolerance is not available."
+      },
+      {
+        "tech": "Quantum compilers and transpilers",
+        "status": "exists",
+        "why": "Map abstract circuits to hardware-native gates and optimise them for the device topology."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Small-scale QAOA demonstrations on 10–100 qubits for toy optimisation problems",
+        "unlocks": "Proof-of-principle results and algorithm development on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Improved error mitigation and higher-fidelity gates enable QAOA on problems with hundreds of variables",
+        "unlocks": "Potential quantum advantage for niche combinatorial optimisation tasks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Fault-tolerant quantum computers with logical qubits run deeper QAOA circuits",
+        "unlocks": "Solving practical combinatorial problems faster than classical methods."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Integration of QAOA with classical solvers in logistics, finance and materials",
+        "unlocks": "Commercial adoption of hybrid quantum–classical optimisation workflows."
+      }
+    ]
+  }
+}

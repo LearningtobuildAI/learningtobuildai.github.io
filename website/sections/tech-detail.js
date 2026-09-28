@@ -187,6 +187,13 @@
         ". Papers, references, costs and companies are <em>verify-yourself</em> " +
         "links — we do not fabricate citations, prices or company lists." +
       "</div>" +
+      // Fact-check banner (2026-09-29, tools/recheck-skipped.js): ideas that
+      // contradict established science stay listed under THEORY but say so.
+      // Keep in sync with tools/prerender-details.js.
+      (details && details.factCheck && details.factCheck.verdict === "pseudo"
+        ? '<div class="td-banner"><strong>Fact check.</strong> Listed under THEORY because established ' +
+          "science does not support it: " + esc(details.factCheck.reason) + "</div>"
+        : "") +
 
       grp(1, "Executive Overview") +
       num(1, "Definition") + aiBody("definition", t.what) +

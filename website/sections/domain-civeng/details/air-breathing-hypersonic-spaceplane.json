@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Airframe and thermal protection",
+        "role": "keeps a vehicle intact from sea-level takeoff to hypersonic speeds, where surface temperatures reach 1,000 °C or more.",
+        "parts": [
+          "sharp, slender fuselage and wings",
+          "ceramic-matrix composite leading edges",
+          "regeneratively cooled skin panels",
+          "insulation"
+        ]
+      },
+      {
+        "name": "Combined-cycle engine",
+        "role": "one flowpath that works as a turbine, then a ramjet, then a scramjet, then a rocket.",
+        "parts": [
+          "variable-geometry inlet",
+          "turbine and compressor stage",
+          "supersonic combustor",
+          "rocket combustion chamber",
+          "shared nozzle"
+        ]
+      },
+      {
+        "name": "Inlet precooler",
+        "role": "cools air arriving at over 1,000 °C down to temperatures a compressor can survive, which is what makes air-breathing flight at high Mach possible.",
+        "parts": [
+          "compact heat exchanger matrix",
+          "helium or fuel coolant loop",
+          "anti-icing and frost control"
+        ]
+      },
+      {
+        "name": "Fuel and thermal management",
+        "role": "the fuel doubles as the vehicle's coolant before it is burned.",
+        "parts": [
+          "deeply chilled hydrogen or hydrocarbon tanks",
+          "high-pressure pumps",
+          "endothermic fuel-cracking reactor",
+          "injectors"
+        ]
+      },
+      {
+        "name": "Control, guidance and avionics",
+        "role": "flies the vehicle through the awkward transition between engine modes, where aerodynamic control authority is weak.",
+        "parts": [
+          "air-data and combustor sensors",
+          "flight computers",
+          "reaction-control thrusters",
+          "body flaps"
+        ]
+      },
+      {
+        "name": "Test and support infrastructure",
+        "role": "most of the machine has to be proven on the ground and on a carrier aircraft before it ever flies itself.",
+        "parts": [
+          "high-enthalpy wind tunnels and arc jets",
+          "captive-carry carrier aircraft",
+          "rocket boosters for scramjet experiments",
+          "range tracking"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the engine cycle",
+        "detail": "Choose the Mach numbers at which the turbine hands over to the ramjet, the ramjet to the scramjet, and the scramjet to rocket mode. These breakpoints drive the entire vehicle shape."
+      },
+      {
+        "title": "Prove the inlet and precooler on the ground",
+        "detail": "High-enthalpy tunnels blast heated air through the inlet and heat exchanger to show the air can be captured, slowed and cooled without the matrix clogging with frost or cracking."
+      },
+      {
+        "title": "Build the airframe",
+        "detail": "Titanium and nickel superalloys are machined and welded into a slender body, with cooling channels milled into panels or bonded to the skin, then ceramic-matrix composite edges are attached to the hottest leading edges."
+      },
+      {
+        "title": "Integrate the propulsion flowpath",
+        "detail": "Inlet, combustor and nozzle are assembled into the fuselage so that the body itself forms part of the engine — the two cannot be separated or tested fully in isolation."
+      },
+      {
+        "title": "Fly uncrewed subscale demonstrators",
+        "detail": "A small vehicle is carried aloft and released, or boosted by rocket, to run a scramjet for a few minutes and measure whether it produces net thrust at Mach 5 to 10."
+      },
+      {
+        "title": "Demonstrate mode transition in flight",
+        "detail": "A combined-cycle engine is flown through the handover points during a single flight, which is the step that has never been completed end to end."
+      },
+      {
+        "title": "Close the thermal and reuse loop",
+        "detail": "The vehicle is flown, recovered and turned around repeatedly to show that cooling, insulation and engine life survive many cycles rather than one."
+      },
+      {
+        "title": "Rocket mode and ascent",
+        "detail": "At the air-breathing ceiling of roughly 30 km, the engine switches to stored oxidiser to complete the climb to orbital velocity, about 7.8 km/s."
+      },
+      {
+        "title": "Operate like an aircraft",
+        "detail": "Runway takeoff, flight, landing and rapid turnaround become routine, with ground crews rather than launch ranges handling the vehicle."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Scramjet propulsion producing net thrust",
+        "status": "partial",
+        "why": "small vehicles have flown under scramjet power for minutes at Mach 5 to 9.6, but not as part of an integrated reusable launcher."
+      },
+      {
+        "tech": "Full combined-cycle mode transition",
+        "status": "missing",
+        "why": "no air-breathing-to-rocket vehicle has flown through all the handover points in one mission."
+      },
+      {
+        "tech": "Lightweight high-temperature materials and active cooling",
+        "status": "partial",
+        "why": "cooled structures and composite leading edges exist, but must survive many flights, not one."
+      },
+      {
+        "tech": "Compact precoolers for hot inlet air",
+        "status": "partial",
+        "why": "a flight-weight pre-cooler has been demonstrated only in ground tests, not in an engine producing thrust in flight."
+      },
+      {
+        "tech": "Reusable hypersonic flight control",
+        "status": "partial",
+        "why": "hypersonic control laws have been flown on research gliders and boost-glide vehicles, but not across the engine-mode transitions a spaceplane needs."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "rocket-boosted and captive-carry scramjet experiments, plus ground tests of combined-cycle and pre-cooler hardware",
+        "unlocks": "measured thrust, cooling and materials data at Mach 5 to 10."
+      },
+      {
+        "stage": "Next",
+        "milestone": "uncrewed combined-cycle testbeds flying a complete air-breathing-to-rocket transition",
+        "unlocks": "confidence that a single engine can cover the whole ascent."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a reusable uncrewed spaceplane reaching orbit with air-breathing assistance",
+        "unlocks": "lower oxidiser mass and aircraft-like launch cadence."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "operational hypersonic point-to-point transport and crewed runway launch",
+        "unlocks": "fast intercontinental travel and routine access to the upper atmosphere — only if thermal management and turnaround costs are solved."
+      }
+    ]
+  }
+}

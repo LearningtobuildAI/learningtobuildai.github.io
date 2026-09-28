@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "OPM sensor",
+        "role": "converts femtotesla-scale magnetic fields from neuronal currents into an optical signal.",
+        "parts": [
+          "rubidium vapour cell",
+          "795 nm vertical-cavity or distributed-feedback laser",
+          "optics and polarisation filters",
+          "photodetector",
+          "heater and temperature controller",
+          "internal magnetic shields"
+        ]
+      },
+      {
+        "name": "Magnetic shielding and field control",
+        "role": "suppresses Earth's field and environmental noise so the sensors can work in the spin-exchange relaxation-free (SERF) regime.",
+        "parts": [
+          "multilayer mu-metal shielded room",
+          "active nulling coils",
+          "degaussing system",
+          "reference magnetometers"
+        ]
+      },
+      {
+        "name": "Sensor helmet and cabling",
+        "role": "holds dozens to hundreds of sensors close to the scalp in a wearable arrangement.",
+        "parts": [
+          "3D-printed or adjustable lightweight helmet",
+          "sensor mounts",
+          "flexible signal cables",
+          "optical fibres"
+        ]
+      },
+      {
+        "name": "Laser distribution",
+        "role": "delivers stabilised pump and probe light to every sensor.",
+        "parts": [
+          "narrow-linewidth laser source",
+          "polarisation-maintaining fibre splitters",
+          "beam splitters",
+          "optical power monitors"
+        ]
+      },
+      {
+        "name": "Data acquisition and real-time control",
+        "role": "digitises sensor outputs, keeps fields stable, and reconstructs brain sources.",
+        "parts": [
+          "low-noise amplifiers",
+          "analog-to-digital converters",
+          "real-time field controllers",
+          "source-reconstruction software"
+        ]
+      },
+      {
+        "name": "Subject interface and motion tracking",
+        "role": "presents stimuli, records responses, and tracks head position for movement-tolerant recordings.",
+        "parts": [
+          "stimulus presentation system",
+          "response devices",
+          "head-tracking markers and cameras"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the vapour cells",
+        "detail": "Glass cells a few millimetres across are filled with a droplet of rubidium and a buffer gas, then sealed. They must hold a controlled alkali-metal vapour for years."
+      },
+      {
+        "title": "Assemble the sensors",
+        "detail": "Each sensor packs a small laser, optics, a vapour cell, heaters and a photodetector into a housing roughly the size of a matchbox, with internal shields to reject stray fields."
+      },
+      {
+        "title": "Build the shielded room",
+        "detail": "Several layers of mu-metal and aluminium enclose the recording space. Active coils cancel the remaining static field down to a few nanotesla or less, and degaussing coils remove trapped magnetism."
+      },
+      {
+        "title": "Make the helmet",
+        "detail": "A participant's head is scanned to design a helmet that places each sensor within a few millimetres of the scalp. The helmet is 3D-printed in lightweight material with pockets for the sensors."
+      },
+      {
+        "title": "Install and cable the array",
+        "detail": "Sensors are fitted into the helmet and their optical fibres and electrical cables are routed so they do not tug on the head or add magnetic noise."
+      },
+      {
+        "title": "Calibrate the system",
+        "detail": "The room is degaussed, residual fields are nulled, and each sensor's noise floor (often around 5–15 fT/√Hz) and cross-talk are measured before use."
+      },
+      {
+        "title": "Commission acquisition and software",
+        "detail": "Real-time field control, head-motion tracking and source-reconstruction pipelines are set up and tested with a phantom — a known magnetic source placed at known positions."
+      },
+      {
+        "title": "Validate with human subjects",
+        "detail": "Recordings of evoked responses and spontaneous brain rhythms are compared against cryogenic SQUID MEG and EEG, followed by clinical validation for conditions such as epilepsy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Alkali-vapour cells and SERF physics",
+        "status": "exists",
+        "why": "the sensors only reach femtotesla sensitivity when operated near zero field and at high spin-exchange relaxation-free temperature."
+      },
+      {
+        "tech": "Narrow-linewidth lasers near 795 nm",
+        "status": "exists",
+        "why": "rubidium must be pumped and probed with light of a precise wavelength and very stable frequency."
+      },
+      {
+        "tech": "Magnetic shielding and active field cancellation",
+        "status": "exists",
+        "why": "Earth's field is about 50 µT, roughly a billion times stronger than the brain signals being measured."
+      },
+      {
+        "tech": "Low-noise electronics and real-time control",
+        "status": "exists",
+        "why": "signals at the femtotesla level must be digitised without adding noise and with active field stabilisation."
+      },
+      {
+        "tech": "Head-motion tracking and compensation",
+        "status": "partial",
+        "why": "wearable sensors allow movement, but software must track and correct for it so images stay sharp."
+      },
+      {
+        "tech": "Clinical validation and regulatory clearance",
+        "status": "partial",
+        "why": "systems are sold for research and used in pilot clinical studies, but widespread clinical adoption awaits formal approvals."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial OPM-MEG systems used in research and pilot clinical studies, including epilepsy mapping",
+        "unlocks": "wearable, cryogen-free brain imaging that can record subjects while they move."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulatory clearance for clinical use, especially pre-surgical epilepsy evaluation and paediatric imaging",
+        "unlocks": "routine hospital deployment where SQUID MEG is too costly or impractical."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration with EEG and fMRI, plus real-time neurofeedback and natural-movement paradigms",
+        "unlocks": "richer multimodal brain mapping and new neuroscience experiments."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "portable, lower-cost MEG helmets and long-duration monitoring",
+        "unlocks": "wider access to functional brain imaging in clinics and research settings."
+      }
+    ]
+  }
+}

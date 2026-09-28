@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Code definition",
+        "role": "specifies the sparse parity-check matrices that define which qubit errors are detected.",
+        "parts": [
+          "parity-check matrices Hx and Hz",
+          "code parameters (n, k, d)",
+          "logical operators"
+        ]
+      },
+      {
+        "name": "Qubit mapping and connectivity",
+        "role": "places code qubits on physical qubits so the required stabilizer measurements can be performed.",
+        "parts": [
+          "physical qubit layout",
+          "coupling map",
+          "routing and SWAP network"
+        ]
+      },
+      {
+        "name": "Syndrome extraction",
+        "role": "measures stabilizers repeatedly to detect errors without collapsing the encoded information.",
+        "parts": [
+          "ancilla qubits",
+          "two-qubit entangling gates",
+          "measurement and reset circuits"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "turns syndrome history into a predicted error correction.",
+        "parts": [
+          "belief propagation",
+          "ordered-statistics post-processing",
+          "parallel hardware (FPGA/GPU)"
+        ]
+      },
+      {
+        "name": "Logical operations",
+        "role": "performs gates on the encoded logical qubits while keeping them protected.",
+        "parts": [
+          "lattice surgery or code deformation",
+          "transversal gates",
+          "magic state injection"
+        ]
+      },
+      {
+        "name": "Hardware platform",
+        "role": "provides the physical qubits and control needed to run the code.",
+        "parts": [
+          "trapped-ion or superconducting qubits",
+          "laser or microwave control",
+          "vacuum or cryogenic environment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select code parameters",
+        "detail": "Choose a qLDPC family, such as hypergraph product or lifted product codes, and tune n, k and d for a target physical error rate."
+      },
+      {
+        "title": "Map to hardware",
+        "detail": "Assign code qubits to physical qubits, inserting SWAPs or using shuttling to realise the sparse but non-local stabilizer measurements."
+      },
+      {
+        "title": "Compile syndrome extraction",
+        "detail": "Schedule ancilla qubits and two-qubit gates into a fault-tolerant circuit, verifying that a single fault cannot spread into an uncorrectable error."
+      },
+      {
+        "title": "Implement the decoder",
+        "detail": "Build a classical decoder, for example belief propagation with ordered-statistics post-processing, and optimise it to process syndromes in real time."
+      },
+      {
+        "title": "Validate on small codes",
+        "detail": "Run the smallest instances on a handful of physical qubits to confirm that logical error rate falls as code distance grows."
+      },
+      {
+        "title": "Scale up distance",
+        "detail": "Increase code size and distance while improving gate fidelities and connectivity, aiming to operate below the code threshold."
+      },
+      {
+        "title": "Add logical gates",
+        "detail": "Demonstrate logical operations and error correction together, showing that encoded information outlives the physical qubits used to store it."
+      },
+      {
+        "title": "Demonstrate overhead advantage",
+        "detail": "Compare physical qubit counts per logical qubit against the surface code for the same logical error rate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-fidelity two-qubit gates and readout",
+        "status": "partial",
+        "why": "qLDPC codes need error rates well below 0.1% to beat the surface code, and current hardware is still improving."
+      },
+      {
+        "tech": "Qubit connectivity for sparse long-range interactions",
+        "status": "partial",
+        "why": "trapped ions can shuttle and superconducting circuits have limited coupling; qLDPC codes require a specific interaction graph."
+      },
+      {
+        "tech": "Real-time classical decoders",
+        "status": "exists",
+        "why": "belief propagation with ordered-statistics decoding is known, but must run fast enough for large codes."
+      },
+      {
+        "tech": "Fault-tolerant syndrome extraction",
+        "status": "partial",
+        "why": "circuits have been designed and tested on small codes, but not at the scale needed for a logical qubit."
+      },
+      {
+        "tech": "Sufficient physical qubit count and control",
+        "status": "partial",
+        "why": "current devices have tens to hundreds of qubits; useful qLDPC codes may need thousands."
+      },
+      {
+        "tech": "Error rates below the code threshold",
+        "status": "missing",
+        "why": "no experiment has yet shown a qLDPC code operating below threshold with increasing distance."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale syndrome extraction and decoding on trapped-ion hardware",
+        "unlocks": "proof that qLDPC codes work on real devices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a single logical qubit with lower error rate than its best physical qubit using a qLDPC code",
+        "unlocks": "evidence of an overhead advantage over the surface code."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multiple logical qubits with logical gates and real-time decoding",
+        "unlocks": "building blocks for a fault-tolerant processor."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant quantum computers using qLDPC codes with roughly tenfold fewer physical qubits",
+        "unlocks": "practical quantum algorithms for chemistry, materials and cryptography."
+      }
+    ]
+  }
+}

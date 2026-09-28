@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Storage cavity",
+        "role": "holds the quantum state as a superposition of two coherent microwave states of opposite phase.",
+        "parts": [
+          "superconducting λ/2 or lumped-element microwave resonator",
+          "coupling ports and drive lines"
+        ]
+      },
+      {
+        "name": "Nonlinear stabilising element",
+        "role": "supplies the two-photon drive and two-photon dissipation that pump the two coherent states apart and keep them apart.",
+        "parts": [
+          "Josephson junctions (often in a SNAIL or similar loop)",
+          "pump line at twice the cavity frequency"
+        ]
+      },
+      {
+        "name": "Ancilla and readout",
+        "role": "a separate superconducting qubit that measures the cavity's parity without destroying the encoded state.",
+        "parts": [
+          "transmon ancilla",
+          "readout resonator",
+          "dispersive coupling to the storage cavity"
+        ]
+      },
+      {
+        "name": "Cryogenic and microwave infrastructure",
+        "role": "keeps the chip cold and delivers clean, filtered signals.",
+        "parts": [
+          "dilution refrigerator",
+          "attenuators, filters and circulators",
+          "room-temperature microwave generators and digitisers"
+        ]
+      },
+      {
+        "name": "Bias-preserving logic",
+        "role": "gates that manipulate logical states without converting the rare bit flips into common phase flips.",
+        "parts": [
+          "bias-preserving two-qubit gate",
+          "parity-measurement circuits"
+        ]
+      },
+      {
+        "name": "Classical decoding",
+        "role": "reads the parity syndromes and tracks the phase errors they reveal.",
+        "parts": [
+          "repetition-code decoder",
+          "real-time control electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the circuit",
+        "detail": "Choose the cavity frequency, the strength of the nonlinear element and the two-photon drive amplitude. Larger coherent-state separation means exponentially rarer bit flips, but a more demanding resonator."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Deposit a niobium film on a sapphire or silicon wafer and pattern the resonators with lithography; build aluminium–aluminium oxide–aluminium Josephson junctions by shadow evaporation in a single vacuum step."
+      },
+      {
+        "title": "Cool the package",
+        "detail": "Mount the chip in a dilution refrigerator and cool it to around 10 millikelvin, below the superconducting transition and low enough to empty the microwave modes of thermal photons."
+      },
+      {
+        "title": "Characterise the bare hardware",
+        "detail": "Measure cavity resonance, photon lifetime and the ancilla qubit's frequency and dispersive coupling, then calibrate the pump line."
+      },
+      {
+        "title": "Stabilise a cat state",
+        "detail": "Drive the nonlinear element at twice the cavity frequency so the two-photon processes create and maintain the two-lobed state; tomograph its Wigner function to confirm the lobes."
+      },
+      {
+        "title": "Measure the error bias",
+        "detail": "Run the state over time and count bit flips versus phase flips to verify that bit flips are suppressed exponentially with the size of the coherent states."
+      },
+      {
+        "title": "Add error-correcting logic",
+        "detail": "Chain several cat qubits and repeatedly measure parity to detect phase flips, while gates are tuned to be bias-preserving."
+      },
+      {
+        "title": "Scale the processor",
+        "detail": "Wire many cavities together, route pumps and readout lines, and move control electronics into the fridge or into cryogenic integrated circuits to keep the wiring manageable."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting qubit fabrication",
+        "status": "exists",
+        "why": "the cavity, ancilla and nonlinear element all come from standard Josephson-junction processes."
+      },
+      {
+        "tech": "Reservoir engineering with two-photon dissipation",
+        "status": "partial",
+        "why": "stabilising coherent-state superpositions by driving a nonlinear cavity was demonstrated in the mid-2010s, but with modest lifetimes and few devices."
+      },
+      {
+        "tech": "Long-lived microwave resonators",
+        "status": "partial",
+        "why": "bit-flip protection grows with the number of photons the cavity can hold before one leaks away."
+      },
+      {
+        "tech": "Biased-noise quantum error correction theory",
+        "status": "exists",
+        "why": "repetition codes tailored to a one-sided error channel were worked out in the 2010s."
+      },
+      {
+        "tech": "Bias-preserving multi-qubit gates",
+        "status": "missing",
+        "why": "most two-qubit gates leak phase errors into bit errors, which would erase the hardware advantage."
+      },
+      {
+        "tech": "Low-loss, high-coherence ancilla qubits",
+        "status": "partial",
+        "why": "the ancilla's own errors set a floor on how well parity can be measured."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single cat qubits in dilution refrigerators with bit-flip lifetimes far longer than their phase-flip lifetimes, and small parity-measurement demonstrations",
+        "unlocks": "evidence that the bias is real and tunable in hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a few-qubit repetition code that corrects phase flips and shows a logical lifetime longer than its best physical component",
+        "unlocks": "first proof that the biased-error architecture saves hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bias-preserving entangling gates and a second, outer code layer for the residual bit flips",
+        "unlocks": "a fully protected logical qubit built from far fewer physical elements than an unbiased design would need."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "arrays of logical qubits with integrated cryogenic control",
+        "unlocks": "a route to fault-tolerant machines small enough to build and cool."
+      }
+    ]
+  }
+}

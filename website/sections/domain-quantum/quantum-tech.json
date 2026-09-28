@@ -410,5 +410,392 @@
       "QuantWare"
     ],
     "group": "infrastructure"
+  },
+  {
+    "id": "surface-code-error-correction",
+    "name": "Surface-Code Error Correction",
+    "etype": "fu",
+    "type": "Error correction",
+    "stage": "now",
+    "use": "Logical qubit protection, below-threshold operation",
+    "what": "Two-dimensional lattices of physical qubits encode one logical qubit and correct both bit-flip and phase-flip errors, and several groups have now demonstrated logical error rates falling as the code distance grows. This crossing point is the threshold condition for scalable fault tolerance.",
+    "how": "A square lattice of data and measure qubits is repeatedly interrogated by stabiliser measurements; a decoder infers the most likely error chain from the syndrome history and applies a correction.",
+    "companies": [
+      "Google Quantum AI",
+      "IBM",
+      "Riverlane"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T22:53:43.926Z"
+  },
+  {
+    "id": "quantum-low-density-parity-check-codes",
+    "name": "Quantum Low-Density Parity-Check Codes",
+    "etype": "fu",
+    "type": "Error correction",
+    "stage": "proto",
+    "use": "Reducing physical qubit overhead",
+    "what": "Quantum LDPC codes promise a tenfold or better reduction in the number of physical qubits needed per logical qubit compared with the surface code, by encoding information in highly connected high-rate codes. Small-scale demonstrations have already run on trapped-ion hardware.",
+    "how": "Sparse parity-check matrices define a code whose stabilisers are measured on a connectivity graph; belief-propagation and ordered-statistics decoders recover the error pattern in near-linear time.",
+    "companies": [
+      "IBM",
+      "Quantinuum",
+      "Riverlane"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T22:53:44.447Z"
+  },
+  {
+    "id": "quantum-error-mitigation",
+    "name": "Quantum Error Mitigation",
+    "etype": "fu",
+    "type": "Software",
+    "stage": "now",
+    "use": "Extracting useful results from noisy hardware",
+    "what": "Classical post-processing techniques suppress the effect of noise on near-term devices without full error correction, using zero-noise extrapolation, probabilistic error cancellation and symmetry verification. Mitigation buys usable accuracy today while correction matures.",
+    "how": "Circuits are run at several noise levels and the results extrapolated to the zero-noise limit, or known noise channels are inverted statistically across many sampled circuit variants.",
+    "companies": [
+      "IBM",
+      "Q-CTRL",
+      "Riverlane"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T22:53:45.393Z"
+  },
+  {
+    "id": "variational-quantum-eigensolver",
+    "name": "Variational Quantum Eigensolver",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "now",
+    "use": "Molecular ground states, optimisation",
+    "what": "A hybrid approach in which a shallow parameterised quantum circuit prepares a trial state and a classical optimiser minimises its measured energy. It is the leading candidate for extracting chemistry value from pre-fault-tolerant hardware.",
+    "how": "An ansatz circuit is executed on the quantum processor to measure expectation values of Pauli terms; a classical loop updates the parameters until the energy converges toward the ground state.",
+    "companies": [
+      "IBM",
+      "Google Quantum AI",
+      "Quantinuum"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T22:53:45.956Z"
+  },
+  {
+    "id": "quantum-phase-estimation",
+    "name": "Quantum Phase Estimation",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "near",
+    "use": "Eigenvalue extraction, factoring, simulation",
+    "what": "The canonical fault-tolerant primitive that reads out the eigenvalue of a unitary operator to arbitrary precision and underlies Shor factoring and quantum simulation. Its deep circuits make it the benchmark that error-corrected machines must clear.",
+    "how": "An ancilla register is placed into superposition and controls repeated applications of the unitary to a target register; inverse quantum Fourier transform on the ancilla yields the phase as a binary fraction.",
+    "companies": [
+      "IBM",
+      "Quantinuum"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T22:53:46.366Z"
+  },
+  {
+    "id": "quantum-amplitude-estimation-for-finance",
+    "name": "Quantum Amplitude Estimation for Finance",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "near",
+    "use": "Derivative pricing, risk analysis, portfolio optimisation",
+    "what": "Amplitude estimation delivers a quadratic speedup over Monte Carlo sampling for expectation values, the core computation behind derivative pricing and risk aggregation. Banks are running the proof-of-concept work that will define first commercial advantage.",
+    "how": "A state-preparation operator encodes the probability distribution and an objective operator marks favourable outcomes; amplitude estimation then extracts the expectation with quadratically fewer samples.",
+    "companies": [
+      "JPMorgan Chase",
+      "Goldman Sachs",
+      "IBM"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T22:53:46.757Z"
+  },
+  {
+    "id": "optically-pumped-magnetometer-meg",
+    "name": "Optically Pumped Magnetometer MEG",
+    "etype": "fu",
+    "type": "Quantum sensing",
+    "stage": "now",
+    "use": "Wearable brain imaging, epilepsy mapping, neuroscience",
+    "what": "Atomic-vapour magnetometers detect the femtotesla magnetic fields of neuronal currents without cryogenics, allowing a helmet the patient can wear and move in. This replaces room-sized cryogenic SQUID arrays in clinical magnetoencephalography.",
+    "how": "A rubidium vapour cell is optically pumped and probed by a detuned laser; the spin precession rate responds linearly to the ambient magnetic field, which is read optically.",
+    "companies": [
+      "QuSpin",
+      "Cerca Magnetics",
+      "MEGIN"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-28T22:53:47.179Z"
+  },
+  {
+    "id": "quantum-random-number-generator",
+    "name": "Quantum Random Number Generator",
+    "etype": "fu",
+    "type": "Hardware security",
+    "stage": "now",
+    "use": "Key generation, simulation, gaming, certified randomness",
+    "what": "Devices that derive random bits from the intrinsic indeterminacy of quantum measurement produce randomness that is certified rather than assumed, unlike pseudorandom generators. Chip-scale units are already integrated into security modules and cloud services.",
+    "how": "Single-photon detection events, vacuum fluctuations or phase noise in an optical interferometer are digitised and processed through a randomness extractor to yield unbiased output.",
+    "companies": [
+      "ID Quantique",
+      "Quside"
+    ],
+    "group": "security",
+    "addedAt": "2026-09-28T22:53:48.533Z"
+  },
+  {
+    "id": "cryogenic-dilution-refrigeration",
+    "name": "Cryogenic Dilution Refrigeration",
+    "etype": "fu",
+    "type": "Cryogenics",
+    "stage": "now",
+    "use": "Cooling superconducting and spin qubits to millikelvin temperatures",
+    "what": "Dilution refrigerators are the enabling plant for superconducting and many semiconductor qubit platforms, holding mixing chambers below ten millikelvin for weeks. Throughput, wiring density and vibration isolation are now system-level constraints on qubit count.",
+    "how": "Helium-3 and helium-4 are mixed and separated in a continuous cycle; the enthalpy of mixing across the phase boundary absorbs heat and cools the mixing chamber without moving parts in the cold stage.",
+    "companies": [
+      "Bluefors",
+      "Oxford Instruments",
+      "Maybell Quantum"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-28T22:53:48.999Z"
+  },
+  {
+    "id": "quantum-annealing",
+    "name": "Quantum Annealing",
+    "etype": "fu",
+    "type": "Quantum Hardware",
+    "stage": "now",
+    "use": "Optimisation problems",
+    "what": "Special-purpose quantum processors that settle a network of qubits into a low-energy state encoding the answer to an optimisation problem, rather than running gate-based circuits.",
+    "how": "Qubits start in superposition under a strong transverse field that is slowly reduced, letting the system settle toward the problem Hamiltonian ground state.",
+    "companies": [
+      "D-Wave"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:05:12.270Z"
+  },
+  {
+    "id": "grover-s-algorithm",
+    "name": "Grover's Algorithm",
+    "etype": "fu",
+    "type": "Quantum algorithm",
+    "stage": "now",
+    "use": "Search, constraint solving, cryptanalysis",
+    "what": "Grover's algorithm searches an unsorted space in square-root time, the canonical quadratic speedup underlying quantum approaches to unstructured search, constraint satisfaction and symmetric-key cryptanalysis.",
+    "how": "An oracle marks the target state with a phase flip; repeated Grover iterations rotate amplitude toward the marked state, and after roughly the square root of N iterations a measurement returns the answer with high probability.",
+    "companies": [
+      "IBM",
+      "Google Quantum AI"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:09:51.922Z"
+  },
+  {
+    "id": "hhl-linear-systems-algorithm",
+    "name": "HHL Linear Systems Algorithm",
+    "etype": "fu",
+    "type": "Quantum algorithm",
+    "stage": "near",
+    "use": "Machine learning, optimisation",
+    "what": "The Harrow-Hassidim-Lloyd algorithm solves sparse linear systems with exponential scaling advantage in the matrix dimension, the primitive behind many proposed quantum machine-learning and optimisation speedups.",
+    "how": "Quantum phase estimation writes the matrix eigenvalues into an ancilla register; a controlled rotation inverts each eigenvalue and the register is uncomputed, leaving the solution vector encoded in the amplitudes of the system qubits.",
+    "companies": [
+      "Google Quantum AI",
+      "IBM"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:09:55.871Z"
+  },
+  {
+    "id": "quantum-approximate-optimization-algorithm",
+    "name": "Quantum Approximate Optimization Algorithm",
+    "etype": "fu",
+    "type": "Quantum algorithm",
+    "stage": "now",
+    "use": "Combinatorial optimisation",
+    "what": "QAOA is a variational near-term algorithm that approximates combinatorial optimisation problems as alternating cost and mixer operations on a gate-based device, without requiring full fault tolerance.",
+    "how": "Parameters of the cost and mixer layers are tuned by a classical optimiser against measured expectation values; circuit depth and parameter choice trade solution quality against noise on the available hardware.",
+    "companies": [
+      "IBM",
+      "Google Quantum AI"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:10:04.178Z"
+  },
+  {
+    "id": "measurement-based-quantum-computing",
+    "name": "Measurement-Based Quantum Computing",
+    "etype": "fu",
+    "type": "Computing model",
+    "stage": "near",
+    "use": "Photonic architectures, modular scaling",
+    "what": "Instead of executing a gate sequence, this model prepares a large entangled cluster state and computes by measuring its qubits one at a time, making it attractive for photonic hardware where two-qubit gates are probabilistic.",
+    "how": "A cluster state is generated by entangling many qubits; adaptive single-qubit measurements with classical feed-forward of outcomes implement any circuit, consuming the entanglement as the computation proceeds.",
+    "companies": [
+      "PsiQuantum",
+      "Xanadu"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-28T23:10:08.194Z"
+  },
+  {
+    "id": "bosonic-cat-qubits",
+    "name": "Bosonic Cat Qubits",
+    "etype": "fu",
+    "type": "Qubit modality",
+    "stage": "near",
+    "use": "Hardware-efficient error correction",
+    "what": "Qubits encoded in superpositions of coherent states of a microwave resonator are intrinsically biased against bit-flip errors, giving a hardware-level advantage that simplifies the error-correction stack.",
+    "how": "A nonlinear element stabilises two coherent states of opposite phase inside the cavity; photon loss causes predominantly phase flips, so a cheap repetition code corrects the dominant error channel while bit flips remain exponentially suppressed.",
+    "companies": [
+      "Alice & Bob",
+      "Amazon Web Services"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-28T23:10:14.497Z"
+  },
+  {
+    "id": "fluxonium-qubits",
+    "name": "Fluxonium Qubits",
+    "etype": "fu",
+    "type": "Qubit modality",
+    "stage": "near",
+    "use": "High-fidelity gates, long coherence",
+    "what": "Fluxonium circuits trade the transmon's simple control scheme for much longer coherence times and larger anharmonicity, improving the fidelity of two-qubit gates and reducing leakage to higher levels.",
+    "how": "A Josephson junction shunted by a large superinductance produces a heavy, well-localised wavefunction insensitive to charge noise, with transitions driven at lower frequencies than a comparable transmon.",
+    "companies": [
+      "Google Quantum AI",
+      "Massachusetts Institute of Technology (MIT)"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-28T23:10:19.603Z"
+  },
+  {
+    "id": "gkp-bosonic-codes",
+    "name": "GKP Bosonic Codes",
+    "etype": "fu",
+    "type": "Error-correcting code",
+    "stage": "near",
+    "use": "Oscillator-encoded logical qubits",
+    "what": "Gottesman-Kitaev-Preskill codes encode a logical qubit in a periodic grid of oscillator states, correcting both bit and phase flips within a single bosonic mode and enabling hardware-efficient error correction.",
+    "how": "A microwave cavity is driven into a lattice of squeezed states; small displacement errors shift the lattice and are detected and corrected by measuring stabiliser displacements without collapsing the encoded logical information.",
+    "companies": [
+      "Yale University",
+      "Alice & Bob"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T23:10:38.264Z"
+  },
+  {
+    "id": "quantum-memory",
+    "name": "Quantum Memory",
+    "etype": "fu",
+    "type": "Component",
+    "stage": "near",
+    "use": "Network synchronisation, repeaters",
+    "what": "A quantum memory stores an unknown quantum state and releases it on demand with fidelity above the classical limit, the missing component for synchronising nodes in a quantum network.",
+    "how": "Rare-earth-doped crystals or cold atomic ensembles absorb a photon into a collective excitation, hold it using spin echoes or dynamical decoupling, and re-emit it after a controllable delay.",
+    "companies": [
+      "QuTech",
+      "Delft University of Technology"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-28T23:10:43.654Z"
+  },
+  {
+    "id": "microwave-to-optical-transduction",
+    "name": "Microwave-to-Optical Transduction",
+    "etype": "fu",
+    "type": "Component",
+    "stage": "near",
+    "use": "Quantum internet links",
+    "what": "Superconducting qubits operate at microwave frequencies that attenuate rapidly in optical fibre, so a device converting single photons between microwave and telecom wavelengths is essential for linking quantum processors over distance.",
+    "how": "Electro-optic or optomechanical devices couple a microwave cavity to an optical cavity so that a single microwave photon shifts the optical resonance, transferring the quantum state without adding thermal noise.",
+    "companies": [
+      "QphoX",
+      "National Institute of Standards and Technology (NIST)"
+    ],
+    "group": "networking",
+    "addedAt": "2026-09-28T23:10:48.518Z"
+  },
+  {
+    "id": "quantum-illumination",
+    "name": "Quantum Illumination",
+    "etype": "fu",
+    "type": "Sensing protocol",
+    "stage": "lab",
+    "use": "Low-signature radar, imaging",
+    "what": "Quantum illumination uses entangled photon pairs to detect a weakly reflecting target against a bright thermal background with fewer measurements than any classical radar operating at the same power.",
+    "how": "One photon of each pair probes the target while its twin is retained locally; coincidence measurements between the returned and retained photons reveal the target even when the idler-target correlation is too faint to detect in either arm alone.",
+    "companies": [
+      "MIT Lincoln Laboratory"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-28T23:10:53.605Z"
+  },
+  {
+    "id": "squeezed-light-interferometry",
+    "name": "Squeezed-Light Interferometry",
+    "etype": "fu",
+    "type": "Sensing technique",
+    "stage": "now",
+    "use": "Gravitational-wave detection, precision metrology",
+    "what": "Injecting squeezed vacuum into a laser interferometer suppresses photon shot noise below the vacuum limit, directly extending the reach of gravitational-wave detectors into a larger volume of the universe.",
+    "how": "A nonlinear optical parametric amplifier squeezes the phase-dependent uncertainty of the vacuum field; injecting it into the interferometer's dark port reduces noise in the measured quadrature at the cost of increased noise in the conjugate one.",
+    "companies": [
+      "LIGO (Caltech/MIT)",
+      "Virgo Collaboration"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-28T23:10:57.800Z"
+  },
+  {
+    "id": "quantum-enhanced-clock-networks",
+    "name": "Quantum-Enhanced Clock Networks",
+    "etype": "fu",
+    "type": "Metrology network",
+    "stage": "near",
+    "use": "Relativistic geodesy, fundamental physics",
+    "what": "Linking optical clocks through fibre networks enables relativistic geodesy, searches for dark-matter couplings and a future redefinition of the second based on an optical transition.",
+    "how": "Optical frequency combs convert clock signals to telecom wavelengths for fibre transport; comparing clocks at distant sites measures gravitational potential differences and slow drifts at centimetre and nanohertz sensitivity.",
+    "companies": [
+      "National Institute of Standards and Technology (NIST)",
+      "PTB (Physikalisch-Technische Bundesanstalt)"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-28T23:11:02.846Z"
+  },
+  {
+    "id": "quantum-control-electronics",
+    "name": "Quantum Control Electronics",
+    "etype": "fu",
+    "type": "Instrumentation",
+    "stage": "now",
+    "use": "Qubit pulse generation, readout, synchronisation",
+    "what": "Generating, timing and digitising the analogue signals that drive thousands of qubits is a scaling bottleneck second only to fabrication. Rack-mount and cryo-CMOS control stacks now target hundreds of channels per unit with picosecond synchronisation.",
+    "how": "Arbitrary waveform generators and FPGAs synthesise microwave and baseband pulses, while digitising channels capture readout signals, all phase-locked to a shared reference clock.",
+    "companies": [
+      "Zurich Instruments",
+      "Qblox",
+      "Keysight Technologies"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-28T22:53:49.453Z"
+  },
+  {
+    "id": "cold-atom-gravimetry-and-inertial-navigation",
+    "name": "Cold-Atom Gravimetry and Inertial Navigation",
+    "etype": "fu",
+    "type": "Quantum Sensor",
+    "stage": "near",
+    "use": "Navigation, geophysical survey",
+    "what": "Cold-atom interferometers measure gravity and acceleration without the drift that limits classical instruments, which matters most where satellite navigation is unavailable. Instruments are already deployed for geophysical survey and are being ruggedised for vehicle use.",
+    "how": "Atoms are cooled and launched, then split and recombined with laser pulses; the interference phase depends on the gravitational field difference along the two interferometer arms.",
+    "companies": [],
+    "group": "sensing",
+    "addedAt": "2026-09-28T22:59:32.343Z"
   }
 ]

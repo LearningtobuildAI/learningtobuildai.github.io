@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Hardware characterisation",
+        "role": "measures how badly each gate, qubit and readout actually behaves on a specific machine.",
+        "parts": [
+          "randomised benchmarking",
+          "gate-set tomography",
+          "readout-error calibration",
+          "crosstalk maps"
+        ]
+      },
+      {
+        "name": "Noise model",
+        "role": "a mathematical description of the errors the mitigation will try to undo.",
+        "parts": [
+          "Pauli/Lindblad channel estimates",
+          "correlated-error terms",
+          "drift tracking over time"
+        ]
+      },
+      {
+        "name": "Circuit transformation layer",
+        "role": "rewrites the intended circuit into forms the hardware can then be run in to expose or cancel noise.",
+        "parts": [
+          "gate-folding and pulse-stretching (to amplify noise)",
+          "quasi-probability decomposition into implementable channels",
+          "randomised compiling",
+          "symmetry or stabiliser checks"
+        ]
+      },
+      {
+        "name": "Execution and scheduling",
+        "role": "runs hundreds to millions of circuit variants on real hardware and collects the shot statistics.",
+        "parts": [
+          "batch compilation and queueing",
+          "shot budgeting",
+          "classical control electronics"
+        ]
+      },
+      {
+        "name": "Classical post-processing",
+        "role": "combines the noisy results into one corrected estimate.",
+        "parts": [
+          "extrapolation to the zero-noise limit",
+          "weighted quasi-probability combination with negative coefficients",
+          "error bars and uncertainty estimates"
+        ]
+      },
+      {
+        "name": "Validation",
+        "role": "checks whether the corrected answer is actually closer to the truth.",
+        "parts": [
+          "Clifford-circuit benchmarks with known answers",
+          "small-scale exact classical simulation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the device",
+        "detail": "Run standard benchmarking suites to obtain error rates per gate and per qubit, plus readout fidelities, on the exact machine that will be used."
+      },
+      {
+        "title": "Build a noise model",
+        "detail": "Turn those measurements into channel descriptions — depolarising, amplitude damping, dephasing, crosstalk — for each operation in the circuit."
+      },
+      {
+        "title": "Choose a mitigation strategy",
+        "detail": "Pick the method that fits the dominant error: extrapolation for smooth scaling behaviour, quasi-probability sampling when channel inverses are well known, symmetry checks when the ideal answer must obey a conservation law."
+      },
+      {
+        "title": "Transform the circuit",
+        "detail": "Insert extra gate pairs to amplify noise to known scale factors, split the circuit into many statistically weighted variants, or wrap it in randomised compiling so coherent errors scramble into simpler stochastic ones."
+      },
+      {
+        "title": "Run the batches",
+        "detail": "Submit every variant to the hardware, often thousands of shots each, and record raw bitstring counts."
+      },
+      {
+        "title": "Combine the results",
+        "detail": "Average each noise level separately, then either fit and extrapolate to zero noise, or sum the quasi-probability variants with positive and negative weights."
+      },
+      {
+        "title": "Validate and bound the error",
+        "detail": "Compare against classically simulable circuits of similar structure, and report an uncertainty range rather than a single number."
+      },
+      {
+        "title": "Feed back to the stack",
+        "detail": "Use the measured residual error to refine the noise model, then repeat for the next problem — mitigation is an iterative calibration loop, not a one-off fix."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Qubits with usable gate fidelities",
+        "status": "exists",
+        "why": "mitigation improves results only if the underlying gates are good enough that signals are not buried entirely in noise."
+      },
+      {
+        "tech": "Randomised benchmarking and tomography",
+        "status": "exists",
+        "why": "without calibrated error rates there is no model to invert or extrapolate against."
+      },
+      {
+        "tech": "Fast classical control and shot throughput",
+        "status": "exists",
+        "why": "quasi-probability methods need enormous numbers of circuit executions, so queue time and readout speed set the practical cost."
+      },
+      {
+        "tech": "High-level circuit compilers",
+        "status": "exists",
+        "why": "the same logical circuit must be recompiled into hundreds of physically different but statistically equivalent forms."
+      },
+      {
+        "tech": "Classical simulation of small circuits",
+        "status": "exists",
+        "why": "it supplies ground truth for validating that a mitigation method really helps."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "the long-term replacement for mitigation; until it works at scale, mitigation is the only practical accuracy tool."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "mitigation built into cloud quantum services and used in published chemistry, materials and optimisation experiments",
+        "unlocks": "results that are meaningfully better than raw noisy hardware on small problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid schemes that layer mitigation on top of a few logical qubits protected by early error correction",
+        "unlocks": "larger circuits than mitigation alone can rescue."
+      },
+      {
+        "stage": "Next",
+        "milestone": "mitigation used as a calibration and diagnostics layer inside fault-tolerant machines",
+        "unlocks": "faster identification of which physical errors dominate and where to spend correction overhead."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "full error correction dominates and mitigation shrinks to a benchmarking role",
+        "unlocks": "reliable deep circuits where accuracy no longer depends on exponential sampling overhead."
+      }
+    ]
+  }
+}

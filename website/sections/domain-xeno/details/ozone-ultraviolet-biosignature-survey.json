@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "UV-capable space telescope",
+        "role": "collects ultraviolet light, which the atmosphere blocks from the ground, so the instrument must be in orbit.",
+        "parts": [
+          "primary and secondary mirrors with UV-reflective coatings",
+          "light baffles",
+          "structural stability"
+        ]
+      },
+      {
+        "name": "Starlight suppression",
+        "role": "separates the faint planet signal from a star billions of times brighter.",
+        "parts": [
+          "coronagraph optics or an external starshade",
+          "deformable mirror",
+          "wavefront sensor (for reflected-light work)"
+        ]
+      },
+      {
+        "name": "UV spectrograph",
+        "role": "spreads light so the depth of the ozone Hartley absorption band (roughly 200-300 nm, strongest near 255 nm) can be measured.",
+        "parts": [
+          "entrance slit",
+          "diffraction grating",
+          "vacuum-ultraviolet optics",
+          "calibration lamps"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "counts individual ultraviolet photons with low noise.",
+        "parts": [
+          "photon-counting microchannel plate or UV-optimised CCD",
+          "readout electronics",
+          "sealed detector housing"
+        ]
+      },
+      {
+        "name": "Observatory operations",
+        "role": "keeps pointing and thermal conditions stable across dozens of repeated transits.",
+        "parts": [
+          "fine guidance sensors",
+          "star trackers",
+          "thermal control",
+          "scheduling software"
+        ]
+      },
+      {
+        "name": "Interpretation pipeline",
+        "role": "turns spectra into a judgement about an oxygen-rich atmosphere.",
+        "parts": [
+          "atmospheric retrieval code",
+          "photochemical and climate models",
+          "stellar activity databases"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the spectral window",
+        "detail": "Design the instrument around the ozone Hartley band near 250 nm, where absorption is strong but stellar noise and interstellar extinction must be modelled."
+      },
+      {
+        "title": "Make ultraviolet optics",
+        "detail": "Polish mirror blanks to nanometre smoothness and apply aluminium coatings protected by thin magnesium fluoride or lithium fluoride layers to preserve ultraviolet reflectivity."
+      },
+      {
+        "title": "Design starlight suppression",
+        "detail": "If the goal is reflected-light detection rather than transit spectroscopy, build a coronagraph or a precisely shaped starshade and show in a vacuum testbed that it reaches the contrast needed."
+      },
+      {
+        "title": "Build the spectrograph",
+        "detail": "Align the slit, grating and optics so the ozone band lands on the detector with enough resolving power to separate it from neighbouring molecular features."
+      },
+      {
+        "title": "Integrate a photon-counting detector",
+        "detail": "Assemble the sealed detector, verify its quantum efficiency in the ultraviolet and shield it from stray light."
+      },
+      {
+        "title": "Vacuum and thermal test",
+        "detail": "Run the whole payload in a space-environment chamber to confirm alignment, focus and background levels hold across the temperature swings of orbit."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "Deploy the observatory, then spend months calibrating wavelength scale, throughput and scattered light before science observations begin."
+      },
+      {
+        "title": "Observe and co-add",
+        "detail": "Record many transits or eclipse events of the same target, then stack the data to push noise down to the level of the faint ozone signal."
+      },
+      {
+        "title": "Interpret with a redox budget",
+        "detail": "Combine the measured ozone column with methane abundance, carbon dioxide and the planet's energy balance in models to weigh biological against abiotic explanations."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-based ultraviolet spectroscopy",
+        "status": "partial",
+        "why": "ultraviolet light does not reach the ground, and few space observatories with the needed spectrographs remain or are funded."
+      },
+      {
+        "tech": "High-contrast imaging at short wavelengths",
+        "status": "missing",
+        "why": "coronagraphy and starshade performance have not been demonstrated in space at the contrast ultraviolet observations would demand."
+      },
+      {
+        "tech": "Ultraviolet detectors and coatings",
+        "status": "exists",
+        "why": "photon-counting detectors and protected aluminium coatings are established technology, though efficiency remains modest."
+      },
+      {
+        "tech": "Ozone false-positive models",
+        "status": "partial",
+        "why": "abiotic routes such as runaway greenhouse water loss or carbon dioxide photolysis can build up oxygen, and the models are still being tested."
+      },
+      {
+        "tech": "Stable long-baseline photometry",
+        "status": "partial",
+        "why": "the signal is a fraction of a percent deep, so pointing and instrument drift must be controlled across many repeat visits."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ultraviolet transit spectroscopy of a handful of gas-rich planets, plus Earthshine spectra recorded during lunar eclipses as a known-life benchmark",
+        "unlocks": "proof that ozone and related features can be measured in a planetary spectrum."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated ultraviolet spectrographs on new space observatories with improved stability",
+        "unlocks": "ozone screening for small planets around quiet, cool stars where the band is relatively strong."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a large space telescope with an ultraviolet channel and a demonstrated coronagraph or starshade",
+        "unlocks": "reflected-light spectra of rocky planets, not just transiting ones."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a systematic survey of nearby rocky worlds combining ozone, methane and redox budgets",
+        "unlocks": "a statistical rather than anecdotal search for oxygen-rich atmospheres."
+      }
+    ]
+  }
+}

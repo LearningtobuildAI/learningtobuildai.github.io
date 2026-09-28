@@ -1,7 +1,166 @@
 {
-  "engineeringSkip": {
-    "reason": "This is a buzzword mash-up — no research programme exists for a real-time digital twin of the entire planetary biosphere and economy running on 'planetary-scale quantum compute clusters', and the idea has no engineering basis as described.",
+  "factCheck": {
+    "verdict": "theory",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:13:32.457Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Global observing system",
+        "role": "supplies the continuous stream of measurements any simulation needs.",
+        "parts": [
+          "Earth-observation satellites",
+          "ocean buoys and Argo floats",
+          "weather stations and flux towers",
+          "aircraft and radiosondes",
+          "groundwater and biodiversity sensors"
+        ]
+      },
+      {
+        "name": "Earth system model",
+        "role": "physically simulates atmosphere, ocean, ice, land and the carbon cycle.",
+        "parts": [
+          "atmosphere model",
+          "ocean and sea-ice model",
+          "land-surface and vegetation model",
+          "atmospheric chemistry and aerosols"
+        ]
+      },
+      {
+        "name": "Human economy model",
+        "role": "represents production, energy use, trade, land use and emissions.",
+        "parts": [
+          "integrated assessment model",
+          "sectoral energy and agriculture models",
+          "economic input–output data",
+          "population and policy scenarios"
+        ]
+      },
+      {
+        "name": "Data assimilation",
+        "role": "blends live observations with the model so the simulated state matches the real world.",
+        "parts": [
+          "ensemble Kalman or variational methods",
+          "observation operators",
+          "bias correction"
+        ]
+      },
+      {
+        "name": "Compute and software stack",
+        "role": "runs the coupled model fast enough to be useful.",
+        "parts": [
+          "exascale supercomputers and GPU clusters",
+          "parallel model coupling software",
+          "machine-learning emulators",
+          "petabyte data archives"
+        ]
+      },
+      {
+        "name": "Uncertainty and decision interface",
+        "role": "turns model output into advice a policymaker can act on.",
+        "parts": [
+          "large ensembles of runs",
+          "probabilistic forecasts",
+          "scenario comparison tools",
+          "open data portals"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build and maintain the observing network",
+        "detail": "Satellites, ocean floats, buoys, flux towers and biodiversity monitoring must report continuously and globally, including over oceans and forests where coverage is thinnest."
+      },
+      {
+        "title": "Standardise the data",
+        "detail": "Measurements from thousands of instruments are quality-controlled, given common metadata and shared under open formats so models can ingest them automatically."
+      },
+      {
+        "title": "Model each Earth component",
+        "detail": "Atmosphere, ocean, sea ice, land surface, vegetation and carbon-cycle models are each developed and tested separately."
+      },
+      {
+        "title": "Couple them into one Earth system model",
+        "detail": "Coupler software exchanges heat, water, carbon and momentum between components at every timestep, so the parts stay physically consistent."
+      },
+      {
+        "title": "Embed the human economy",
+        "detail": "Energy, agriculture, land-use and trade models are linked to the physical model so that emissions, land clearing and policy choices feed back into the climate."
+      },
+      {
+        "title": "Assimilate live observations",
+        "detail": "New satellite and ground data are folded into the running model each cycle to keep it anchored to reality rather than drifting."
+      },
+      {
+        "title": "Calibrate and validate",
+        "detail": "The system is replayed against past decades, and against palaeoclimate records, to check it reproduces known change before being used for the future."
+      },
+      {
+        "title": "Scale it to exascale machines",
+        "detail": "Resolution and ensemble size are increased on the fastest supercomputers; machine-learning emulators stand in for expensive sub-models."
+      },
+      {
+        "title": "Deliver an interactive interface",
+        "detail": "Users run scenarios and see results with honest uncertainty ranges, not single confident numbers."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Exascale supercomputing",
+        "status": "exists",
+        "why": "the first exascale machines ran in 2022; whole-planet simulation at useful resolution needs machines of this class."
+      },
+      {
+        "tech": "Global Earth observation from space",
+        "status": "exists",
+        "why": "satellites provide the routine global coverage that no ground network can."
+      },
+      {
+        "tech": "Coupled Earth system models",
+        "status": "exists",
+        "why": "the CMIP model intercomparison already couples atmosphere, ocean, ice and carbon cycle."
+      },
+      {
+        "tech": "Economy–climate integrated models",
+        "status": "partial",
+        "why": "existing models are coarse and treat the economy in aggregated sectors, not as a live system."
+      },
+      {
+        "tech": "Real-time global sensor and data infrastructure",
+        "status": "partial",
+        "why": "coverage of oceans, soils and biodiversity is sparse and data sharing is uneven."
+      },
+      {
+        "tech": "Quantum computers large enough to help",
+        "status": "missing",
+        "why": "today's quantum machines are far too small and error-prone for this workload; classical supercomputers are the realistic path."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "operational weather forecasting and the CMIP climate projections",
+        "unlocks": "seasonal forecasts and long-range climate scenarios, but not an interactive whole-planet twin."
+      },
+      {
+        "stage": "Next",
+        "milestone": "kilometre-scale digital twins of weather and climate, such as the EU's Destination Earth initiative",
+        "unlocks": "storm-resolving simulation and fast what-if experiments on climate extremes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "tight coupling of economy models to Earth system models at seasonal-to-decadal timescales",
+        "unlocks": "testing how energy, agriculture and land-use policies feed back into the biosphere."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an interactive planetary simulation with quantified uncertainty",
+        "unlocks": "policy testing before measures are enacted — if compute, observation coverage and model skill all keep improving."
+      }
+    ]
   }
 }

@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Physical qubit lattice",
+        "role": "a checkerboard of data qubits and measure qubits that together encode one logical qubit.",
+        "parts": [
+          "data qubits",
+          "measure (ancilla) qubits",
+          "couplers between neighbours"
+        ]
+      },
+      {
+        "name": "Qubit hardware platform",
+        "role": "holds and manipulates the qubits.",
+        "parts": [
+          "superconducting transmon circuits on silicon, or neutral atoms in optical tweezers",
+          "cryostat or vacuum cell",
+          "control lines and resonators"
+        ]
+      },
+      {
+        "name": "Stabiliser measurement cycle",
+        "role": "repeatedly interrogates the lattice to detect bit-flip and phase-flip errors without collapsing the encoded state.",
+        "parts": [
+          "CNOT/CZ gate sequences",
+          "ancilla readout",
+          "syndrome stream"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "turns the syndrome history into the most likely error chain and a correction.",
+        "parts": [
+          "matching or neural-network algorithm",
+          "real-time processor (FPGA or ASIC)"
+        ]
+      },
+      {
+        "name": "Feedback and logical operations",
+        "role": "applies corrections and performs gates on the encoded qubit.",
+        "parts": [
+          "low-latency control electronics",
+          "lattice-surgery routines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the qubit chip",
+        "detail": "Josephson junctions, resonators and couplers are patterned on a silicon wafer using lithography; neutral-atom versions instead load atoms into an optical tweezer array."
+      },
+      {
+        "title": "Lay out the lattice",
+        "detail": "Data and measure qubits are arranged in a 2D grid with couplers only between neighbours, so each stabiliser touches its four surrounding data qubits."
+      },
+      {
+        "title": "Cool, tune and calibrate",
+        "detail": "Superconducting chips are cooled to about 10 millikelvin; qubit frequencies, gate amplitudes and readout are calibrated one by one."
+      },
+      {
+        "title": "Benchmark physical errors",
+        "detail": "Randomised benchmarking and tomography measure single-qubit and two-qubit error rates; these must sit below the code's threshold."
+      },
+      {
+        "title": "Run repeated stabiliser cycles",
+        "detail": "A fixed sequence of gates and measurements extracts syndromes round after round, building a spacetime history of detection events."
+      },
+      {
+        "title": "Decode in real time",
+        "detail": "A matching or neural decoder processes each syndrome batch before the next arrives, inferring where and when errors occurred."
+      },
+      {
+        "title": "Apply corrections and compare distances",
+        "detail": "Logical error rate is measured for distance 3, then 5, then 7; success means it falls roughly by a constant factor each step — below-threshold behaviour."
+      },
+      {
+        "title": "Add logical gates",
+        "detail": "Lattice surgery merges and splits encoded patches; non-Clifford gates require magic states distilled from many noisy copies."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-correcting code theory",
+        "status": "exists",
+        "why": "the surface code and its threshold theorem, developed from the late 1990s, prove that sufficiently low physical error rates allow arbitrarily reliable logical qubits."
+      },
+      {
+        "tech": "High-fidelity physical qubits",
+        "status": "exists",
+        "why": "two-qubit gate fidelities above roughly 99% and fast, accurate readout are needed to sit under threshold; leading platforms now reach this in small systems."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "decoding must finish within a few microseconds; fast decoders are demonstrated but scaling to large lattices is unresolved."
+      },
+      {
+        "tech": "Scalable control and wiring",
+        "status": "partial",
+        "why": "each physical qubit needs control and readout lines, and thousands of them must be multiplexed without adding heat or noise."
+      },
+      {
+        "tech": "Magic state distillation",
+        "status": "partial",
+        "why": "universal computation needs non-Clifford gates, supplied by distilling many noisy magic states into a few clean ones at high overhead."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small surface-code lattices operating below threshold",
+        "unlocks": "logical error rates that shrink as the lattice grows — the core proof that scaling the hardware can beat scaling the errors. Google reported this on its Willow processor in 2024 for distances 3, 5 and 7."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger lattices with real-time decoding and encoded Clifford gates",
+        "unlocks": "logical qubits that stay correct for long enough to run multi-step circuits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "magic-state distillation and fault-tolerant non-Clifford gates",
+        "unlocks": "universal fault-tolerant computation, the point at which algorithms like Shor's can run at scale."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "many logical qubits with practical error rates",
+        "unlocks": "quantum computers able to outperform classical machines on chemistry, materials and cryptanalysis problems."
+      }
+    ]
+  }
+}

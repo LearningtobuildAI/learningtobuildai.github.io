@@ -1,7 +1,172 @@
 {
-  "engineeringSkip": {
-    "reason": "This is a speculative buzzword mash-up — a hypothetical planetary swarm of trillions of micro-bots acting as one organism — with no concrete research programme, engineering pathway or plausible near-term route behind it.",
+  "factCheck": {
+    "verdict": "theory",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:22:53.495Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Micro-bot unit",
+        "role": "the individual agent — a centimetre-scale or smaller device that senses, moves, computes and radios.",
+        "parts": [
+          "MEMS sensors (light, motion, chemical)",
+          "locomotion actuator (legs, rotors, vibrating motors)",
+          "microcontroller and memory",
+          "battery or energy harvester",
+          "short-range radio or optical transceiver"
+        ]
+      },
+      {
+        "name": "Local mesh layer",
+        "role": "lets nearby units find each other and pass messages hop by hop.",
+        "parts": [
+          "neighbour discovery",
+          "multi-hop routing",
+          "time synchronisation",
+          "spectrum sharing"
+        ]
+      },
+      {
+        "name": "Consensus and coordination layer",
+        "role": "turns thousands of local decisions into one coherent collective behaviour.",
+        "parts": [
+          "gossip / epidemic protocols",
+          "leader election and quorum rules",
+          "task allocation and auctioning",
+          "stigmergic signalling (markers others can read)"
+        ]
+      },
+      {
+        "name": "Localisation and timing",
+        "role": "every unit needs to know roughly where and 'when' it is without a global fix.",
+        "parts": [
+          "inertial measurement",
+          "ultra-wideband or acoustic ranging",
+          "clock drift correction",
+          "GNSS where it reaches"
+        ]
+      },
+      {
+        "name": "Aggregation backbone",
+        "role": "bridges local swarms to the wider world.",
+        "parts": [
+          "gateway nodes",
+          "satellite or terrestrial backhaul",
+          "edge and cloud compute",
+          "global state store"
+        ]
+      },
+      {
+        "name": "Fabrication and power supply",
+        "role": "making and fuelling units by the billion.",
+        "parts": [
+          "wafer-scale MEMS processes",
+          "chip-scale packaging",
+          "photovoltaic or RF harvesting",
+          "wireless charging pads"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the collective task",
+        "detail": "Decide what the swarm as a whole must achieve and what each unit must therefore sense, carry and do — this fixes size, power and cost per unit."
+      },
+      {
+        "title": "Design the unit",
+        "detail": "Balance actuator, radio, processor and power budget so a single device weighs a few grams at most and costs cents to make."
+      },
+      {
+        "title": "Fab the units",
+        "detail": "Use semiconductor-style batch processes for sensors and logic, then pick-and-place assembly for actuators and power, so millions come off a line."
+      },
+      {
+        "title": "Build the radio and mesh stack",
+        "detail": "Engineer neighbour discovery, hop-by-hop routing and spectrum sharing that still work when node density is extreme."
+      },
+      {
+        "title": "Write the swarm algorithms",
+        "detail": "Design purely local rules — follow neighbours, vote, claim a task — then prove emergent global behaviour in simulation with very large agent counts."
+      },
+      {
+        "title": "Validate in the lab",
+        "detail": "Run hundreds to a few thousand physical units in an arena, with tracking cameras providing ground truth, and close the gap between sim and reality."
+      },
+      {
+        "title": "Scale production",
+        "detail": "Reach billion-unit output; a planetary swarm implies trillions, which needs manufacturing and materials flows far beyond today's robotics industry."
+      },
+      {
+        "title": "Deploy and interconnect",
+        "detail": "Start with contained swarms in one site, then link gateways into regional then global networks."
+      },
+      {
+        "title": "Engineer control and safety",
+        "detail": "Add authentication, kill switches, containment zones and rollback so a planetary-scale collective can always be shut down."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chip-scale robotics and MEMS fabrication",
+        "status": "partial",
+        "why": "flying and walking micro-robots have been built in labs, but only in small numbers and short runs."
+      },
+      {
+        "tech": "Wireless mesh networking",
+        "status": "exists",
+        "why": "multi-hop radio networks are well understood and deployed, though not at trillions of nodes."
+      },
+      {
+        "tech": "Distributed consensus algorithms",
+        "status": "exists",
+        "why": "protocols for agreeing across many unreliable nodes exist; their behaviour at planetary scale is untested."
+      },
+      {
+        "tech": "Micro-scale energy autonomy",
+        "status": "missing",
+        "why": "a millimetre-to-centimetre device cannot carry enough fuel or battery for long unattended operation."
+      },
+      {
+        "tech": "Localisation without satellites",
+        "status": "partial",
+        "why": "ranging and inertial methods work indoors or underwater but drift; a planetary swarm has no single positioning service."
+      },
+      {
+        "tech": "Trillion-unit manufacturing",
+        "status": "missing",
+        "why": "no industry today produces robots, or even simple electronic nodes, at that volume and cost."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab swarms of tens to a few thousand simple robots",
+        "unlocks": "demonstrations that local rules produce collective behaviour such as clustering and shape formation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field swarms of thousands to millions for monitoring, agriculture or inspection",
+        "unlocks": "real autonomous operation outdoors over weeks, with reliable mesh links and battery swap or harvesting."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standards for inter-operating swarms and gateways",
+        "unlocks": "independent swarms from different makers joining one network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regional collectives of billions of units",
+        "unlocks": "sensing and acting at landscape scale, if energy, manufacturing and control problems are solved."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "planet-wide mesh of trillions of units",
+        "unlocks": "a single coordinated organism-like system — the tile's premise, and currently unproven at every layer."
+      }
+    ]
   }
 }

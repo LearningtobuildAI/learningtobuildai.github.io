@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Microwave resonator",
+        "role": "holds the qubit's microwave excitation in a superconducting circuit.",
+        "parts": [
+          "high-Q superconducting thin-film inductor and capacitor",
+          "coupling port to the qubit",
+          "ground-plane shielding"
+        ]
+      },
+      {
+        "name": "Coupling element",
+        "role": "the active medium that shifts optical behaviour in response to a microwave field.",
+        "parts": [
+          "thin-film lithium niobate waveguide or ring (electro-optic)",
+          "or a suspended nanobeam/membrane with a shared optical and mechanical mode",
+          "drive electrodes"
+        ]
+      },
+      {
+        "name": "Optical cavity",
+        "role": "enhances the interaction and defines the telecom wavelength mode.",
+        "parts": [
+          "photonic-crystal mirrors or ring resonator",
+          "fibre taper or grating coupler",
+          "on-chip filters"
+        ]
+      },
+      {
+        "name": "Cryogenic package",
+        "role": "keeps thermal photons far below one per mode and brings signals in and out.",
+        "parts": [
+          "dilution refrigerator stage",
+          "superconducting wiring to the qubit chip",
+          "optical fibre feedthroughs with low heat leak",
+          "radiation shielding"
+        ]
+      },
+      {
+        "name": "Pump and control",
+        "role": "supplies the laser pump and microwave tones that drive the conversion.",
+        "parts": [
+          "frequency-stabilised fibre laser",
+          "phase and amplitude modulators",
+          "circulators and optical filters"
+        ]
+      },
+      {
+        "name": "Verification chain",
+        "role": "proves the transfer is quantum, not classical.",
+        "parts": [
+          "single-photon detectors",
+          "qubit state readout",
+          "added-noise measurement"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design matched modes",
+        "detail": "Choose the microwave and optical cavity linewidths so the two decay rates are equal — the condition for impedance matching and the highest conversion efficiency."
+      },
+      {
+        "title": "Fabricate the microwave circuit",
+        "detail": "Superconducting niobium or aluminium films are deposited on a low-loss substrate and patterned into resonators with lithography."
+      },
+      {
+        "title": "Fabricate the photonic chip",
+        "detail": "Thin-film lithium niobate or silicon-on-insulator is patterned by electron-beam lithography and etched into waveguides and ring resonators."
+      },
+      {
+        "title": "Integrate the two",
+        "detail": "The photonic chip and superconducting circuit are aligned with sub-micron precision and bonded, so one optical mode and one microwave mode overlap in the same volume."
+      },
+      {
+        "title": "Package and fibre-couple",
+        "detail": "Optical fibres are attached to the chip and superconducting wiring run to the qubit, all inside a shielded enclosure."
+      },
+      {
+        "title": "Cool to millikelvin",
+        "detail": "The assembly goes into a dilution refrigerator so that thermal photons cannot swamp the single-photon signal."
+      },
+      {
+        "title": "Characterise",
+        "detail": "Laser light is sent in and microwave photons out (and vice versa); efficiency, bandwidth and added noise are measured."
+      },
+      {
+        "title": "Close the link",
+        "detail": "Two qubits are connected through optical fibre and entanglement between them is verified."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-Q superconducting microwave resonators",
+        "status": "exists",
+        "why": "they hold the microwave photon long enough to interact with the optical mode."
+      },
+      {
+        "tech": "Low-loss integrated photonics (thin-film lithium niobate, silicon)",
+        "status": "partial",
+        "why": "needed for strong electro-optic coupling and long optical storage times on a chip."
+      },
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "thermal noise must be well under one photon at microwave frequencies."
+      },
+      {
+        "tech": "Single-photon detection and qubit readout",
+        "status": "exists",
+        "why": "without them a quantum conversion cannot be distinguished from a classical one."
+      },
+      {
+        "tech": "Efficient, low-noise coupling at the single-photon level",
+        "status": "missing",
+        "why": "no device yet combines high efficiency with added noise below one photon at useful bandwidth."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "table-top demonstrations converting microwave and optical photons, mostly at efficiencies from a fraction of a per cent up to tens of per cent with narrow bandwidth",
+        "unlocks": "proof that the two frequency domains can be linked."
+      },
+      {
+        "stage": "Next",
+        "milestone": "devices with high efficiency, near-quantum-limited added noise and megahertz-scale bandwidth",
+        "unlocks": "faithful transfer of qubit states over metres of fibre."
+      },
+      {
+        "stage": "Next",
+        "milestone": "entanglement distributed between two superconducting qubits via optical fibre",
+        "unlocks": "modular quantum processors and the first quantum repeater nodes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "transducers integrated into repeater chains and networked quantum computers",
+        "unlocks": "a quantum internet in which microwave qubits talk over today's telecom fibre."
+      }
+    ]
+  }
+}

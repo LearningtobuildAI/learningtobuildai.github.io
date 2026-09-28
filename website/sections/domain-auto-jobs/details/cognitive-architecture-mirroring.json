@@ -35,9 +35,154 @@
       }
     ]
   },
-  "engineeringSkip": {
-    "reason": "A buzzword mash-up with no established research or engineering basis; not a concrete technology.",
+  "factCheck": {
+    "verdict": "theory",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:08:03.275Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Decision record",
+        "role": "captures what the person decided, the situation they faced and what happened next.",
+        "parts": [
+          "meeting transcripts and notes",
+          "messages and documents",
+          "decision logs",
+          "outcome records"
+        ]
+      },
+      {
+        "name": "Context encoder",
+        "role": "turns messy, unstructured situations into a structured state the model can compare.",
+        "parts": [
+          "text embeddings",
+          "entity and timeline extraction",
+          "retrieval index of past cases"
+        ]
+      },
+      {
+        "name": "Value and preference model",
+        "role": "estimates how much weight the person puts on competing goals — speed versus safety, cost versus reputation.",
+        "parts": [
+          "preference model trained on choices",
+          "inverse reinforcement learning",
+          "uncertainty estimates"
+        ]
+      },
+      {
+        "name": "Decision policy",
+        "role": "proposes an action when a comparable new situation arrives.",
+        "parts": [
+          "language model",
+          "case-based retrieval",
+          "option generation and scoring"
+        ]
+      },
+      {
+        "name": "Validation and audit layer",
+        "role": "checks the model against decisions it has never seen and flags weak calls.",
+        "parts": [
+          "backtesting harness",
+          "counterfactual tests",
+          "bias and drift monitors"
+        ]
+      },
+      {
+        "name": "Human review interface",
+        "role": "shows the recommendation with its reasons so a person can accept, edit or reject it.",
+        "parts": [
+          "review screen",
+          "feedback capture",
+          "provenance log"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect decision records",
+        "detail": "With consent and governance, assemble years of past decisions with the context available at the time and what followed."
+      },
+      {
+        "title": "Normalise into cases",
+        "detail": "Each record is structured as: situation, options on the table, choice made, stated reasoning, later outcome."
+      },
+      {
+        "title": "Learn preferences",
+        "detail": "Train a model to rank options the way the person did, using comparisons rather than a single 'correct' answer."
+      },
+      {
+        "title": "Fit a decision policy",
+        "detail": "Fine-tune a model to reproduce choices, retrieving similar past cases so its reasoning is grounded in real history."
+      },
+      {
+        "title": "Backtest",
+        "detail": "Replay held-out real decisions and measure agreement — and examine systematically where it disagrees."
+      },
+      {
+        "title": "Add uncertainty and limits",
+        "detail": "The system abstains or escalates when confidence is low or the decision falls outside an approved category."
+      },
+      {
+        "title": "Deploy narrowly",
+        "detail": "Start as an advisor on low-stakes, reversible choices that a human still signs off on."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "Track drift and disagreement, and update the model as the person's judgement and the business change."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large language models",
+        "status": "exists",
+        "why": "needed to read and reason over unstructured business context — documents, messages and meetings."
+      },
+      {
+        "tech": "Preference learning and reinforcement learning from human feedback",
+        "status": "exists",
+        "why": "the established machinery for turning human comparisons into a usable value model."
+      },
+      {
+        "tech": "Long-context memory and retrieval",
+        "status": "partial",
+        "why": "a person's judgement depends on years of accumulated context that must be recalled accurately."
+      },
+      {
+        "tech": "Clean longitudinal outcome data",
+        "status": "missing",
+        "why": "the consequences of strategic decisions unfold over years and are rarely recorded in a form a model can learn from."
+      },
+      {
+        "tech": "Causal inference from observational logs",
+        "status": "partial",
+        "why": "separating a person's policy from the circumstances they happened to face is the core statistical difficulty."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "assistants that draft, summarise and search in one person's style using their own documents",
+        "unlocks": "productivity gains without any claim of copying judgement."
+      },
+      {
+        "stage": "Next",
+        "milestone": "advisory models that predict a specific leader's likely call on bounded, repeatable decisions, with human sign-off",
+        "unlocks": "a useful check on bias and consistency, if accuracy is honestly measured."
+      },
+      {
+        "stage": "Next",
+        "milestone": "scenario and training simulators that ask 'what would this person do here?' with explicit uncertainty",
+        "unlocks": "faster succession and onboarding, and stress-testing strategy before committing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "narrowly delegated decisions in well-bounded domains under audit",
+        "unlocks": "limited autonomy — full automation of executive strategy is unlikely, because goals, context and stakes keep changing."
+      }
+    ]
   }
 }

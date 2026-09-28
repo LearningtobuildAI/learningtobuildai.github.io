@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photometric data source",
+        "role": "provides the ultra-precise, continuous light curves needed to see a moon or ring signal.",
+        "parts": [
+          "space telescope with stable pointing (e.g. Kepler, TESS)",
+          "CCD detectors",
+          "raw pixel data pipeline"
+        ]
+      },
+      {
+        "name": "Systematics correction",
+        "role": "removes instrumental drift and astrophysical noise that would otherwise mimic a weak signal.",
+        "parts": [
+          "detrending algorithms (e.g. cotrending bases, Gaussian processes)",
+          "auxiliary engineering and housekeeping data",
+          "starspot and variability models"
+        ]
+      },
+      {
+        "name": "Transit modelling",
+        "role": "establishes the planet's baseline transit shape and timing so anomalies can be measured.",
+        "parts": [
+          "transit shape models",
+          "limb-darkening coefficients",
+          "orbital parameter fitting"
+        ]
+      },
+      {
+        "name": "Anomaly search",
+        "role": "looks for timing shifts, depth changes, or out-of-transit dips caused by a moon or ring system.",
+        "parts": [
+          "transit timing variation (TTV) analysis",
+          "periodogram and wavelet tools",
+          "Bayesian model comparison"
+        ]
+      },
+      {
+        "name": "Follow-up and false-positive rejection",
+        "role": "checks that a candidate is not caused by a background eclipsing binary, starspot, or instrument glitch.",
+        "parts": [
+          "ground-based photometry",
+          "high-resolution imaging",
+          "spectroscopic vetting"
+        ]
+      },
+      {
+        "name": "Theoretical forward models",
+        "role": "predicts what a real exomoon or ring signal should look like for comparison with data.",
+        "parts": [
+          "N-body orbital dynamics",
+          "ring scattering and occultation models",
+          "instrument noise simulations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a high-signal target",
+        "detail": "Select a transiting planet with deep, frequent transits and low stellar noise, ideally from Kepler or TESS data."
+      },
+      {
+        "title": "Extract a clean light curve",
+        "detail": "Convert raw spacecraft pixels into a brightness time series, then correct for pointing drift and other systematic effects."
+      },
+      {
+        "title": "Measure precise transit times",
+        "detail": "Fit each individual transit to get its mid-time, depth, and duration, building a timeline of the planet's passages."
+      },
+      {
+        "title": "Search for timing variations",
+        "detail": "Look for periodic shifts in transit times that a moon's gravitational tug would impose on the planet."
+      },
+      {
+        "title": "Search for out-of-transit features",
+        "detail": "Examine the light curve between transits for shallow, repeating dips from a ring system or a moon crossing the star."
+      },
+      {
+        "title": "Fit competing models",
+        "detail": "Compare planet-only, planet-plus-moon, and planet-plus-ring models using Bayesian evidence to see which is favoured."
+      },
+      {
+        "title": "Rule out false positives",
+        "detail": "Test alternative explanations such as background eclipsing binaries, starspots, or instrumental artefacts."
+      },
+      {
+        "title": "Seek independent confirmation",
+        "detail": "Observe the target with other telescopes at predicted times to see if the signal repeats."
+      },
+      {
+        "title": "Publish and await replication",
+        "detail": "Report the candidate with full data and models; the field requires independent replication before a detection is accepted."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-based ultra-precise photometry",
+        "status": "partial",
+        "why": "Kepler and TESS provide the needed precision for planet transits, but the signal from a small exomoon sits at or below their noise floor."
+      },
+      {
+        "tech": "Long, uninterrupted observation baselines",
+        "status": "partial",
+        "why": "Kepler gave years of continuous data; TESS has gaps, and many TTV signals need many years to become clear."
+      },
+      {
+        "tech": "Bayesian inference and systematics modelling",
+        "status": "exists",
+        "why": "the statistical tools exist and are widely used, but they must be applied very carefully to avoid false detections."
+      },
+      {
+        "tech": "Follow-up observatories",
+        "status": "exists",
+        "why": "Hubble and JWST can confirm candidates, but available time is limited and scheduling is competitive."
+      },
+      {
+        "tech": "Next-generation transit surveys",
+        "status": "partial",
+        "why": "PLATO, planned for launch in 2026, will provide long, stable photometry of bright stars, improving the odds."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "continue searching Kepler and TESS data with improved systematics correction",
+        "unlocks": "a larger, cleaner sample of candidate signals and better limits on how common exomoons and rings are."
+      },
+      {
+        "stage": "Next",
+        "milestone": "targeted JWST follow-up of the best candidates",
+        "unlocks": "independent confirmation or rejection of specific signals at higher precision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "PLATO and other long-baseline surveys begin operation",
+        "unlocks": "many more bright, quiet stars with years of uninterrupted photometry, where small moons are easier to spot."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "dedicated exomoon and ring surveys, possibly with future large space telescopes",
+        "unlocks": "statistical understanding of how common moons and rings are around exoplanets, and their role in planetary system architecture."
+      }
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Optical frequency reference",
+        "role": "the clock itself — a narrow optical transition in a trapped ion or thousands of neutral atoms held in an optical lattice.",
+        "parts": [
+          "ultra-high-vacuum chamber",
+          "laser cooling and trapping optics",
+          "magnetic shielding",
+          "interrogation laser locked to a stable cavity"
+        ]
+      },
+      {
+        "name": "Optical frequency comb",
+        "role": "converts the ~10^15 Hz optical signal down to countable microwave or telecom rates so it can be counted and transported.",
+        "parts": [
+          "femtosecond mode-locked laser",
+          "nonlinear broadening fibre",
+          "self-referencing interferometer"
+        ]
+      },
+      {
+        "name": "Fibre transport link",
+        "role": "carries the signal phase-coherently hundreds or thousands of kilometres without the noise of free-space or satellite links.",
+        "parts": [
+          "dedicated dark fibre",
+          "bidirectional optical amplifiers",
+          "polarisation and dispersion control",
+          "phase-noise cancellation electronics"
+        ]
+      },
+      {
+        "name": "Comparison electronics",
+        "role": "measures the ratio between two clocks with fractional uncertainty near 10^-18.",
+        "parts": [
+          "deadbeat phase trackers",
+          "frequency counters",
+          "time-tagging and data acquisition"
+        ]
+      },
+      {
+        "name": "Modelling and geodesy layer",
+        "role": "turns frequency ratios into gravitational potential differences and geoid data.",
+        "parts": [
+          "tidal and atmospheric models",
+          "gravity field models",
+          "co-located gravimeters for validation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the clocks",
+        "detail": "Laser-cool atoms to microkelvin temperatures in an ultra-high vacuum, then trap them — in an optical lattice for neutral atoms or an electromagnetic trap for a single ion."
+      },
+      {
+        "title": "Narrow the probe laser",
+        "detail": "Lock a laser to a vibration-isolated optical cavity so its linewidth is well below the atomic transition, giving interrogation times of seconds."
+      },
+      {
+        "title": "Stabilise the comb",
+        "detail": "A femtosecond laser's pulse train is broadened to an octave and self-referenced, tying the optical frequency to the microwave domain and to the existing caesium standard."
+      },
+      {
+        "title": "Link the sites",
+        "detail": "Dedicated dark fibre is laid or leased between laboratories; bidirectional amplifiers and active phase-noise cancellation undo the fibre's thermal and acoustic jitter."
+      },
+      {
+        "title": "Validate the link",
+        "detail": "Two clocks at the same site are compared over the link path first, to prove the transport adds no measurable error."
+      },
+      {
+        "title": "Run continuously",
+        "detail": "Clocks are compared for days or weeks; statistical uncertainty falls with averaging time, reaching 10^-18 and below."
+      },
+      {
+        "title": "Interpret the ratio",
+        "detail": "A frequency difference is read as a gravitational redshift, which converts directly into a height difference — the inverse of levelling."
+      },
+      {
+        "title": "Cross-check and publish",
+        "detail": "Results are validated against GNSS, spirit levelling and gravimetry before entering the data pool for the SI second."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Laser cooling and trapping",
+        "status": "exists",
+        "why": "atoms must be nearly motionless for their transition frequency to be sharp."
+      },
+      {
+        "tech": "Optical frequency combs",
+        "status": "exists",
+        "why": "without them an optical frequency cannot be counted or transported alongside microwave standards."
+      },
+      {
+        "tech": "Ultra-stable, narrow-linewidth lasers",
+        "status": "exists",
+        "why": "the probe laser's stability sets the short-term precision of the comparison."
+      },
+      {
+        "tech": "Low-loss fibre with phase-noise cancellation",
+        "status": "exists",
+        "why": "long links must be actively corrected, or the fibre itself swamps the clock signal."
+      },
+      {
+        "tech": "Secondary representations of the second and an agreed redefinition path",
+        "status": "partial",
+        "why": "optical clocks cannot define the second until several independent types agree and uncertainty budgets are settled."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "continental fibre links between metrology laboratories — including a roughly 1400 km route between German and French institutes — routinely compare optical clocks",
+        "unlocks": "frequency transfer good enough for centimetre-level height measurement and tests of fundamental constants."
+      },
+      {
+        "stage": "Next",
+        "milestone": "national dark-fibre networks open to many institutions, as in the French research network",
+        "unlocks": "routine relativistic geodesy, monitoring of uplift, subsidence and groundwater loss."
+      },
+      {
+        "stage": "Next",
+        "milestone": "transportable optical clocks taken to the sites being measured",
+        "unlocks": "geodesy far from any dedicated fibre, and direct validation against classical levelling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "redefinition of the SI second on an optical transition",
+        "unlocks": "a global time and frequency infrastructure accurate enough to search for dark-matter couplings and drift in fundamental constants."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "operational clock networks combining fibre and space links",
+        "unlocks": "real-time height and gravity services, better sea-level and earthquake reference frames."
+      }
+    ]
+  }
+}

@@ -30,9 +30,147 @@
       }
     ]
   },
-  "engineeringSkip": {
-    "reason": "The entry conflates the company name xAI with a generic slogan about explainable AI and describes no specific technology, mechanism or research programme that could be engineered.",
+  "factCheck": {
+    "verdict": "real",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:06:55.731Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "The model under study",
+        "role": "the opaque machine-learning system whose behaviour must be explained.",
+        "parts": [
+          "trained neural network or ensemble",
+          "inference interface exposing outputs, and where possible gradients and internal activations"
+        ]
+      },
+      {
+        "name": "Attribution methods",
+        "role": "estimate how much each input feature contributed to a given output.",
+        "parts": [
+          "perturbation and sampling estimators",
+          "gradient and path-integral methods",
+          "surrogate models fitted locally around one prediction"
+        ]
+      },
+      {
+        "name": "Concept and representation probes",
+        "role": "look inside the network rather than only at its inputs and outputs.",
+        "parts": [
+          "probe classifiers trained on hidden activations",
+          "sparse dictionaries of interpretable directions",
+          "circuit analysis tracing which components drive a behaviour"
+        ]
+      },
+      {
+        "name": "Example-based explanations",
+        "role": "explain a decision by comparison with real or synthetic cases.",
+        "parts": [
+          "influence functions tracing training examples",
+          "counterfactual and contrastive generators"
+        ]
+      },
+      {
+        "name": "Faithfulness evaluation",
+        "role": "tests whether an explanation actually reflects the model, not just looks plausible.",
+        "parts": [
+          "deletion and insertion tests",
+          "randomisation and sanity checks",
+          "agreement across independent methods"
+        ]
+      },
+      {
+        "name": "Human interface and governance",
+        "role": "turns scores into something a person can act on and audit.",
+        "parts": [
+          "visualisation and summary dashboards",
+          "model cards and data documentation",
+          "logging for downstream review"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the question",
+        "detail": "Decide exactly what must be explained — one prediction, overall model behaviour, a subgroup, or a suspected failure mode — because the answer determines which method is valid."
+      },
+      {
+        "title": "Instrument the model",
+        "detail": "Expose outputs, gradients and selected internal activations through an inference wrapper so explanation code can query the model repeatedly without retraining it."
+      },
+      {
+        "title": "Pick a method class",
+        "detail": "Choose attribution, probe-based or example-based approaches according to whether inputs, internals or training data are accessible, and how much compute is acceptable."
+      },
+      {
+        "title": "Generate explanations",
+        "detail": "Run the chosen estimator over the model — often thousands of forward passes per explanation — and aggregate the results into per-feature, per-concept or per-example scores."
+      },
+      {
+        "title": "Validate faithfulness",
+        "detail": "Test explanations against the model itself: remove the features they mark as important and check the output actually moves, and confirm that randomising the model changes the explanation."
+      },
+      {
+        "title": "Check human usefulness",
+        "detail": "Have domain experts use the explanations on real decisions and measure whether they detect errors or change their judgement appropriately."
+      },
+      {
+        "title": "Deploy and monitor",
+        "detail": "Serve explanations alongside predictions, document the method's known limits, and re-run validation whenever the model or its data distribution changes."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Trained models with queryable internals",
+        "status": "exists",
+        "why": "explanation methods need repeated access to outputs, gradients or activations."
+      },
+      {
+        "tech": "Attribution and probing algorithms",
+        "status": "exists",
+        "why": "methods such as additive feature-attribution estimators and activation probes are mature and widely implemented."
+      },
+      {
+        "tech": "Ground-truth or causally valid test data",
+        "status": "partial",
+        "why": "faithfulness is easy to measure on synthetic tasks and much harder on real-world models."
+      },
+      {
+        "tech": "Benchmarks for explanation quality",
+        "status": "partial",
+        "why": "there is no settled standard for comparing explanations across models and tasks."
+      },
+      {
+        "tech": "Compute for repeated inference",
+        "status": "exists",
+        "why": "many methods require thousands of extra forward passes per explanation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "post-hoc attribution and documentation routinely shipped with models",
+        "unlocks": "debugging, regulatory reporting and basic user trust."
+      },
+      {
+        "stage": "Next",
+        "milestone": "concept-based and circuit-level interpretability on frontier models",
+        "unlocks": "explanations that describe internal features rather than only input importance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised faithfulness benchmarks and third-party audits",
+        "unlocks": "comparable, testable claims about model transparency."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "interpretability that reliably predicts behaviour before deployment",
+        "unlocks": "safety cases that rest on understanding a model, not only on testing it."
+      }
+    ]
   }
 }

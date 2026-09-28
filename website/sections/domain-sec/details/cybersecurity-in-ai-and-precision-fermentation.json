@@ -1,7 +1,154 @@
 {
-  "engineeringSkip": {
-    "reason": "This is a vague buzzword mash-up pairing two unrelated domains (AI and precision fermentation) under a generic security label, with no coherent technology or body of research behind it.",
+  "factCheck": {
+    "verdict": "real",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:23:48.717Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Segmented OT network",
+        "role": "keeps the plant's control layer reachable only through defined, monitored paths.",
+        "parts": [
+          "industrial firewalls",
+          "unidirectional gateways (data diodes)",
+          "demilitarised zone for data historians",
+          "zone-and-conduit design per IEC 62443"
+        ]
+      },
+      {
+        "name": "Hardened controllers and endpoints",
+        "role": "removes easy ways into programmable logic controllers, HMIs and engineering workstations.",
+        "parts": [
+          "signed firmware and secure boot",
+          "disabled unused ports and services",
+          "centralised patch management on plant outage windows"
+        ]
+      },
+      {
+        "name": "Identity and remote access",
+        "role": "lets operators and vendors work without exposing the plant.",
+        "parts": [
+          "multi-factor authentication",
+          "jump hosts",
+          "certificate and key management",
+          "time-boxed vendor access"
+        ]
+      },
+      {
+        "name": "Process-aware monitoring",
+        "role": "spots both network intrusions and physical setpoint manipulation.",
+        "parts": [
+          "network TAPs and traffic baselines",
+          "OT-aware intrusion detection for Modbus, OPC UA and PROFINET",
+          "physics checks comparing sensor readings against expected fermentation behaviour"
+        ]
+      },
+      {
+        "name": "AI model and data integrity",
+        "role": "stops a poisoned sensor or tampered model from quietly mis-optimising the process.",
+        "parts": [
+          "training-data provenance records",
+          "model signing and versioning",
+          "adversarial robustness testing",
+          "drift and outlier monitoring"
+        ]
+      },
+      {
+        "name": "Resilience and recovery",
+        "role": "keeps product safe when the digital layer cannot be trusted.",
+        "parts": [
+          "offline backups and known-good configuration copies",
+          "incident response playbooks",
+          "documented manual fallback operation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Inventory every device and link",
+        "detail": "Map each controller, sensor, historian, analyser and workstation, including undocumented remote links left by equipment vendors — most breaches start from assets nobody tracked."
+      },
+      {
+        "title": "Draw zones and conduits",
+        "detail": "Split the site into field, control, supervisory and enterprise zones, and define exactly which data may cross each boundary and in which direction."
+      },
+      {
+        "title": "Harden what you already have",
+        "detail": "Change default credentials, disable unused services, enforce signed firmware, and schedule patching into planned shutdowns so a security fix never forces an unplanned loss of a batch."
+      },
+      {
+        "title": "Insert monitored choke points",
+        "detail": "Install firewalls and, where data only needs to flow one way, unidirectional gateways; copy traffic to an intrusion-detection system tuned to the plant's industrial protocols."
+      },
+      {
+        "title": "Layer process-physics checks on top",
+        "detail": "Compare temperature, pH, dissolved oxygen and feed-rate readings against what the biological model says is possible, so an attacker changing a setpoint is caught even if the network traffic looks legitimate."
+      },
+      {
+        "title": "Secure the AI layer",
+        "detail": "Record where training data came from, sign and version each model, test it against deliberately corrupted inputs, and require human confirmation for changes to critical setpoints."
+      },
+      {
+        "title": "Lock down the supply chain",
+        "detail": "Require software and firmware bills of materials from vendors, verify signatures before installation, and restrict vendor access to scheduled windows through a monitored jump host."
+      },
+      {
+        "title": "Rehearse failure",
+        "detail": "Run tabletop and live exercises, restore from offline backups, and confirm operators can run the plant manually if the control network must be disconnected mid-batch."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Industrial network visibility and segmentation tooling",
+        "status": "exists",
+        "why": "you cannot defend devices and protocols you have never enumerated."
+      },
+      {
+        "tech": "Security standards for control systems",
+        "status": "exists",
+        "why": "IEC 62443 gives a common zone-and-conduit framework that vendors, operators and auditors can design against."
+      },
+      {
+        "tech": "Authenticated industrial protocols",
+        "status": "partial",
+        "why": "OPC UA can sign and encrypt traffic, but older protocols such as Modbus were designed with no authentication at all and remain widespread."
+      },
+      {
+        "tech": "Hardware root of trust in controllers",
+        "status": "partial",
+        "why": "secure boot and tamper-resistant key storage exist in newer equipment but not across installed fleets."
+      },
+      {
+        "tech": "AI assurance and model-provenance tooling",
+        "status": "partial",
+        "why": "practices such as signed models and data lineage are emerging rather than standard in industrial deployments."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "segmented control networks with intrusion detection at large biomanufacturing and AI data-centre sites",
+        "unlocks": "a plant can lose its enterprise network without losing control of the process."
+      },
+      {
+        "stage": "Next",
+        "milestone": "AI-assisted anomaly detection trained on process physics deployed plant-wide",
+        "unlocks": "detection of subtle setpoint manipulation, not just known malware signatures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware-rooted controllers and signed firmware as default, backed by certification schemes buyers and insurers require",
+        "unlocks": "supply-chain trust and easier regulatory sign-off."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "formally verified control policies with automatic safe-state fallback in largely autonomous plants",
+        "unlocks": "higher automation without accepting a single point of digital failure."
+      }
+    ]
   }
 }

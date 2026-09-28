@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Coronagraph optics",
+        "role": "blocks the star's light inside the telescope so a faint companion can survive next to it.",
+        "parts": [
+          "focal-plane mask (shaped or vortex)",
+          "Lyot stop",
+          "apodiser"
+        ]
+      },
+      {
+        "name": "Wavefront control",
+        "role": "measures and cancels the optical errors that leak starlight past the mask.",
+        "parts": [
+          "deformable mirror with thousands of actuators",
+          "wavefront sensor",
+          "real-time control computer"
+        ]
+      },
+      {
+        "name": "Telescope and thermal stability",
+        "role": "provides an aperture big enough to resolve the planet, and holds still for hours.",
+        "parts": [
+          "segmented or monolithic primary mirror",
+          "sunshade and thermal control",
+          "fine pointing and jitter suppression"
+        ]
+      },
+      {
+        "name": "Starshade and formation flying",
+        "role": "a separate petal-shaped occulter tens of thousands of kilometres ahead shadows the aperture, doing the suppression before light enters the optics.",
+        "parts": [
+          "petal-shaped occulter",
+          "thrusters",
+          "lateral metrology sensors"
+        ]
+      },
+      {
+        "name": "Spectrograph and post-processing",
+        "role": "turns a faint dot into an atmospheric measurement.",
+        "parts": [
+          "integral field spectrograph",
+          "data-reduction pipeline",
+          "reference-star subtraction"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Polish the mirror",
+        "detail": "The primary mirror is figured and polished to a smoothness measured in fractions of a nanometre, because any roughness scatters starlight exactly where the planet sits."
+      },
+      {
+        "title": "Build the coronagraph",
+        "detail": "Masks, stops and a deformable mirror with thousands of actuators are mounted in the optical train, all inside a vacuum enclosure."
+      },
+      {
+        "title": "Close the control loop",
+        "detail": "A wavefront sensor feeds the deformable mirror many times per second, shaping the mirror surface to cancel scattered starlight."
+      },
+      {
+        "title": "Prove the contrast on the ground",
+        "detail": "The whole chain is tested in a vacuum testbed with a fake star, until suppression reaches better than a billion to one at a fraction of an arcsecond."
+      },
+      {
+        "title": "Launch and stabilise",
+        "detail": "The telescope unfolds, its sunshade keeps it thermally still, and pointing is held to milliarcsecond precision for hours."
+      },
+      {
+        "title": "Fly the starshade",
+        "detail": "If one is used: the occulter is manufactured with a precisely shaped petal edge, separated from the telescope by tens of thousands of kilometres, and held there to metre-level alignment by thrusters and optical metrology."
+      },
+      {
+        "title": "Integrate and subtract",
+        "detail": "The star is pointed behind the mask, exposures are stacked for hours, and residual starlight is removed using the planet's orbital motion and reference images."
+      },
+      {
+        "title": "Take a spectrum",
+        "detail": "Planet light is dispersed to look for water, oxygen, methane and carbon dioxide — the signature of a temperate atmosphere."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deformable mirrors with thousands of actuators",
+        "status": "exists",
+        "why": "suppressing starlight demands shaping the wavefront with very fine control."
+      },
+      {
+        "tech": "Wavefront sensing at picometre precision",
+        "status": "partial",
+        "why": "demonstrated in laboratory vacuum testbeds, but not yet in a flight environment."
+      },
+      {
+        "tech": "Contrast of about one part in ten billion at small angular separation",
+        "status": "partial",
+        "why": "testbeds have demonstrated roughly a billion-fold suppression in vacuum; the ten-billion-fold level needed for an Earth-like planet is not yet achieved in space."
+      },
+      {
+        "tech": "Starshade formation flying",
+        "status": "missing",
+        "why": "holding an occulter to metre-level alignment tens of thousands of kilometres from a telescope has never been flown."
+      },
+      {
+        "tech": "Large, ultra-stable space telescope",
+        "status": "partial",
+        "why": "JWST's coronagraphs and ground-based extreme adaptive optics exist, but no facility is built for this contrast and stability."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "space coronagraphs such as JWST's, and ground-based extreme-adaptive-optics instruments, image young hot giant planets",
+        "unlocks": "proof that coronagraphy works, and the first spectra of directly imaged planets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a dedicated coronagraph technology demonstration in orbit (the Roman Space Telescope's Coronagraph Instrument)",
+        "unlocks": "flight validation of active wavefront control and post-processing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a large space telescope designed around a coronagraph, of the kind studied as the Habitable Worlds Observatory",
+        "unlocks": "contrast and stability good enough to reach temperate, rocky planets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a starshade flown in formation with a telescope",
+        "unlocks": "a wider band of wavelengths and easier access to planets close to their star."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine spectra of temperate rocky planets",
+        "unlocks": "the search for biosignature gases in other atmospheres."
+      }
+    ]
+  }
+}

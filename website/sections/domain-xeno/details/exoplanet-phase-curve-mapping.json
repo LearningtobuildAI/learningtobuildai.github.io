@@ -1,0 +1,133 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Space observatory",
+        "role": "provides a stable platform above the atmosphere for continuous monitoring of a star's brightness.",
+        "parts": [
+          "mirror",
+          "pointing and thermal control",
+          "power and communication"
+        ]
+      },
+      {
+        "name": "Photometric or spectroscopic instrument",
+        "role": "records the combined light of star and planet with low noise over time.",
+        "parts": [
+          "detector array",
+          "filters or dispersing element",
+          "optics"
+        ]
+      },
+      {
+        "name": "Time-series data pipeline",
+        "role": "turns raw detector counts into a calibrated light curve.",
+        "parts": [
+          "calibration",
+          "cosmic-ray and bad-pixel removal",
+          "aperture photometry"
+        ]
+      },
+      {
+        "name": "Orbital and phase model",
+        "role": "fits the periodic brightness variation to isolate the planet's signal.",
+        "parts": [
+          "ephemeris",
+          "phase function",
+          "instrumental noise model"
+        ]
+      },
+      {
+        "name": "Atmospheric retrieval",
+        "role": "infers temperature distribution, albedo, clouds and winds from the phase curve.",
+        "parts": [
+          "radiative transfer code",
+          "Bayesian inference",
+          "prior knowledge of planet and star"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select a target",
+        "detail": "Choose a short-period, highly irradiated planet so the planet's own light is a measurable fraction of the total."
+      },
+      {
+        "title": "Plan the observation",
+        "detail": "Schedule the telescope to stare at the star continuously for one or more full orbits, avoiding gaps that would blur the phase curve."
+      },
+      {
+        "title": "Acquire the light curve",
+        "detail": "Record total flux over time with a photometer or spectrograph, often across several wavelengths."
+      },
+      {
+        "title": "Remove systematics",
+        "detail": "Correct for detector drifts, pointing jitter and stellar variability such as starspots or faculae."
+      },
+      {
+        "title": "Fold and combine",
+        "detail": "Phase-fold the data on the known orbital period and merge multiple orbits into a single average curve."
+      },
+      {
+        "title": "Measure the shape",
+        "detail": "Extract the amplitude (day–night contrast), the phase offset (hot-spot shift from winds) and any asymmetries caused by clouds."
+      },
+      {
+        "title": "Interpret with models",
+        "detail": "Fit atmospheric models to infer heat redistribution efficiency, Bond albedo and wind-driven energy transport."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space telescopes with stable, long-duration pointing",
+        "status": "exists",
+        "why": "the signal is a tiny periodic variation that requires uninterrupted, precise photometry."
+      },
+      {
+        "tech": "Low-noise infrared detectors",
+        "status": "exists",
+        "why": "the planet's thermal emission peaks in the infrared for hot planets."
+      },
+      {
+        "tech": "Precise orbital ephemerides",
+        "status": "exists",
+        "why": "the phase must be referenced to a known orbital period to combine data correctly."
+      },
+      {
+        "tech": "Atmospheric models for irradiated planets",
+        "status": "exists",
+        "why": "they translate a phase curve into physical quantities like temperature contrast and winds."
+      },
+      {
+        "tech": "High signal-to-noise for small planets",
+        "status": "partial",
+        "why": "phase curves of Earth-sized or temperate planets remain at or beyond current sensitivity limits."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "phase curves of hot Jupiters and warm Neptunes measured by space telescopes such as Hubble, Spitzer, JWST and CHEOPS",
+        "unlocks": "a working picture of day–night heat transport and cloud behaviour in highly irradiated atmospheres."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-wavelength phase curves of smaller planets with JWST and future dedicated missions",
+        "unlocks": "separation of cloud, haze and gas contributions, and comparison across planet types."
+      },
+      {
+        "stage": "Next",
+        "milestone": "three-dimensional mapping of clouds and winds from phase-curve and eclipse data combined",
+        "unlocks": "direct constraints on atmospheric circulation and weather patterns."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "phase curves of temperate rocky planets from next-generation space telescopes",
+        "unlocks": "assessment of habitability through global energy balance and surface conditions."
+      }
+    ]
+  }
+}

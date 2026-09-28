@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Sampling and preparation",
+        "role": "gets a clean, representative sample into the instrument without contaminating or heating it.",
+        "parts": [
+          "drill, corer or scoop",
+          "sealed sample container",
+          "powdering and sieving",
+          "solvent extraction",
+          "derivatisation reagents"
+        ]
+      },
+      {
+        "name": "Chiral separation",
+        "role": "separates left- from right-handed molecules, which have identical mass and almost identical chemistry.",
+        "parts": [
+          "chiral gas-chromatography column (cyclodextrin-based phase)",
+          "chiral liquid-chromatography column",
+          "capillary electrophoresis"
+        ]
+      },
+      {
+        "name": "Detection and quantification",
+        "role": "measures how much of each enantiomer is present.",
+        "parts": [
+          "mass spectrometer",
+          "circular dichroism spectrometer",
+          "polarimeter",
+          "ultraviolet detector"
+        ]
+      },
+      {
+        "name": "Contamination control",
+        "role": "ensures any handedness excess came from the sample, not from Earth or from the hardware.",
+        "parts": [
+          "sterilised sampling tools",
+          "procedural blanks",
+          "sealed instrument enclosure"
+        ]
+      },
+      {
+        "name": "Reference standards and interpretation",
+        "role": "supplies the baseline against which an excess is judged.",
+        "parts": [
+          "racemic amino acid and sugar standards",
+          "abiotic synthesis reference data",
+          "statistical analysis software"
+        ]
+      },
+      {
+        "name": "Flight or field packaging",
+        "role": "turns a laboratory bench method into something that works remotely.",
+        "parts": [
+          "miniaturised valves and pumps",
+          "vacuum and carrier-gas supply",
+          "power and thermal control",
+          "onboard automation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect the sample",
+        "detail": "Drill or core into rock, ice or regolith and seal the material without heating it — heat slowly converts one hand into the other and destroys the signal. Keep it cold and away from terrestrial organics."
+      },
+      {
+        "title": "Extract the organics",
+        "detail": "Powder the sample, then wash with water and an organic solvent to pull out amino acids, sugars or other small molecules. Some compounds are derivatised to make them volatile enough for gas chromatography."
+      },
+      {
+        "title": "Separate the enantiomers",
+        "detail": "Pass the mixture through a chiral stationary phase, where one hand binds slightly more strongly and therefore exits later, or use the different way the two hands absorb circularly polarised light."
+      },
+      {
+        "title": "Detect both peaks",
+        "detail": "A mass spectrometer or ultraviolet detector measures the two separated peaks, and their ratio gives the enantiomeric excess — how far the sample departs from a 50/50 mix."
+      },
+      {
+        "title": "Run the controls",
+        "detail": "Process a blank and a known racemic standard through exactly the same instrument. This exposes any handedness bias introduced by the reagents, the column or the hardware itself."
+      },
+      {
+        "title": "Repeat and replicate",
+        "detail": "Analyse several sub-samples from different depths and locations. A biosignature claim needs a pattern that survives repetition, not a single odd reading."
+      },
+      {
+        "title": "Interpret against abiotic routes",
+        "detail": "Compare the excess with known non-biological ways of making one hand dominate — meteoritic amino acid chemistry, surface-catalysed synthesis, or circularly polarised light. Only an excess that no abiotic route explains becomes a candidate biosignature."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chiral separation chemistry",
+        "status": "exists",
+        "why": "chiral chromatography routinely resolves amino acid enantiomers in terrestrial laboratories, so the analytical core is proven."
+      },
+      {
+        "tech": "Miniaturised flight mass spectrometry",
+        "status": "partial",
+        "why": "space-qualified instruments with chiral columns have been built for Mars and Titan but have not yet flown and operated on a surface."
+      },
+      {
+        "tech": "Sample return or capable in-situ laboratories",
+        "status": "partial",
+        "why": "returned material allows the full laboratory toolkit, but the trip back is slow and risks contamination; in-situ instruments are smaller and less sensitive."
+      },
+      {
+        "tech": "A catalogue of abiotic enantiomeric excesses",
+        "status": "partial",
+        "why": "without knowing how non-living chemistry can skew handedness, a measured excess cannot be attributed to biology."
+      },
+      {
+        "tech": "Ultra-clean sample handling",
+        "status": "exists",
+        "why": "terrestrial life is overwhelmingly left-handed, so a trace of contamination could imitate exactly the signal being hunted."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "chiral analyses of returned asteroid material and terrestrial analogue samples",
+        "unlocks": "real baselines showing what abiotic chemistry can and cannot produce handedness-wise."
+      },
+      {
+        "stage": "Next",
+        "milestone": "the first chiral measurement made on another world, from instruments on Mars and Titan payloads",
+        "unlocks": "a test of homochirality that does not require bringing material home."
+      },
+      {
+        "stage": "Next",
+        "milestone": "systematic chiral surveys of returned cores and subsurface ice or brine",
+        "unlocks": "enough replicate data to tell a statistical anomaly from contamination or noise."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "chirality detection built into life-detection payloads for subsurface ocean worlds",
+        "unlocks": "a biosignature test that does not assume the aliens share our biochemistry."
+      }
+    ]
+  }
+}

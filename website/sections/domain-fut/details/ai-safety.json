@@ -35,9 +35,157 @@
       }
     ]
   },
-  "engineeringSkip": {
-    "reason": "AI Safety as described is a goal of ethical development and compliance rather than a specific technology with engineerable subsystems and build steps.",
+  "factCheck": {
+    "verdict": "real",
     "model": "deepseek-flash",
-    "at": "2026-09-28T22:13:42.429Z"
+    "at": "2026-09-28T22:56:18.582Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Specification and threat modelling",
+        "role": "defines what the system should and should not do, and which failures matter most.",
+        "parts": [
+          "usage policy",
+          "risk register",
+          "capability and misuse assessments"
+        ]
+      },
+      {
+        "name": "Alignment training",
+        "role": "shapes the model's behaviour toward the intended policy during training.",
+        "parts": [
+          "demonstration data",
+          "preference data",
+          "reward model",
+          "policy optimisation (e.g. reinforcement learning from human feedback)"
+        ]
+      },
+      {
+        "name": "Evaluation and red-teaming",
+        "role": "tries to make the system fail before release.",
+        "parts": [
+          "benchmark suites",
+          "adversarial prompt sets",
+          "automated attack generation",
+          "human expert red teams"
+        ]
+      },
+      {
+        "name": "Interpretability",
+        "role": "opens the model's internals to see what features and circuits drive an output.",
+        "parts": [
+          "probing classifiers",
+          "sparse autoencoders",
+          "activation and attribution analysis"
+        ]
+      },
+      {
+        "name": "Runtime guardrails",
+        "role": "filters and monitors the deployed system.",
+        "parts": [
+          "input and output classifiers",
+          "tool-use and permission limits",
+          "logging and anomaly alerts",
+          "human escalation"
+        ]
+      },
+      {
+        "name": "Governance and incident response",
+        "role": "makes safety repeatable and auditable across releases.",
+        "parts": [
+          "model and system cards",
+          "release gates",
+          "incident reporting",
+          "post-deployment monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write the specification",
+        "detail": "State the intended behaviour, forbidden behaviours and acceptable failure rates in plain, testable terms."
+      },
+      {
+        "title": "Collect demonstration data",
+        "detail": "People write the responses the model should give, including refusals and safe handling of sensitive requests."
+      },
+      {
+        "title": "Collect preference data",
+        "detail": "Annotators compare pairs of model outputs and say which is better, turning a vague goal into a ranking signal."
+      },
+      {
+        "title": "Train a reward model and tune the policy",
+        "detail": "The preference data trains a scorer, and the language model is optimised against it — with a penalty for drifting too far from the original model, which otherwise learns to game the scorer."
+      },
+      {
+        "title": "Red-team and evaluate",
+        "detail": "Attackers, human and automated, probe for jailbreaks, deception and dangerous capabilities; results are turned into new test cases."
+      },
+      {
+        "title": "Inspect the internals",
+        "detail": "Interpretability tools map which internal features activate on risky inputs, so a failure can be diagnosed rather than just patched."
+      },
+      {
+        "title": "Shield the deployed system",
+        "detail": "Wrap the model in input and output classifiers, restrict what tools and data it can reach, and log every interaction."
+      },
+      {
+        "title": "Monitor and retrain",
+        "detail": "Real-world misuse and errors are fed back into the next training round, and guardrail thresholds are retuned."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-scale human preference annotation",
+        "status": "exists",
+        "why": "alignment training needs millions of human comparisons, which is slow, costly and culturally biased."
+      },
+      {
+        "tech": "Mechanistic interpretability methods",
+        "status": "partial",
+        "why": "researchers can identify some features and circuits, but not yet read off a model's intentions reliably."
+      },
+      {
+        "tech": "Automated adversarial testing",
+        "status": "partial",
+        "why": "attack generation scales better than human red teams, but the strongest attacks are still found by people."
+      },
+      {
+        "tech": "Cheap, fast classifiers at inference",
+        "status": "exists",
+        "why": "a guardrail is useless if it adds more latency or cost than the product can bear."
+      },
+      {
+        "tech": "Neural network verification",
+        "status": "missing",
+        "why": "there is no general method to prove a trained network will never emit a forbidden output."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "frontier developers run internal pre-deployment evaluations and publish safety frameworks",
+        "unlocks": "a common vocabulary of risks, evaluations and mitigations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "independent third-party evaluation and standardised safety benchmarks",
+        "unlocks": "claims about a model's safety become checkable rather than self-reported."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regulation requiring evaluation of high-risk systems before release",
+        "unlocks": "safety work becomes a condition of market access, not a voluntary extra."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "scalable oversight and interpretability that work on systems whose reasoning we cannot fully check",
+        "unlocks": "the ability to keep supervising models that are more capable than the people auditing them."
+      }
+    ]
   }
 }

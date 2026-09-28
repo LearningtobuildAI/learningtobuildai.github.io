@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Storage medium",
+        "role": "holds the quantum state as a collective excitation rather than as a fragile single atom.",
+        "parts": [
+          "rare-earth-doped crystal (e.g. europium or praseodymium in a yttrium orthosilicate host)",
+          "or a laser-cooled cloud of neutral atoms",
+          "dopant isotope chosen for long spin coherence"
+        ]
+      },
+      {
+        "name": "Light–matter interface",
+        "role": "makes a single photon interact strongly enough with the medium to be absorbed and re-emitted efficiently.",
+        "parts": [
+          "high-finesse optical cavity or tight-focusing optics",
+          "impedance-matched mode shaping",
+          "fibre coupling"
+        ]
+      },
+      {
+        "name": "Control and pulse generation",
+        "role": "writes, holds and recalls the state with precisely shaped laser pulses.",
+        "parts": [
+          "frequency-stabilised lasers",
+          "acousto-optic modulators for pulse shaping",
+          "spin-echo and dynamical-decoupling sequencer",
+          "magnetic field coils"
+        ]
+      },
+      {
+        "name": "Cryogenic and shielding environment",
+        "role": "suppresses thermal noise and stray fields that destroy the stored coherence.",
+        "parts": [
+          "cryostat or magneto-optical trap vacuum system",
+          "magnetic and vibration shielding",
+          "temperature stabilisation"
+        ]
+      },
+      {
+        "name": "Readout and verification",
+        "role": "proves the released state really is quantum, not a classical copy.",
+        "parts": [
+          "single-photon detectors (superconducting nanowire)",
+          "interference and tomography setup",
+          "fidelity and efficiency measurement"
+        ]
+      },
+      {
+        "name": "Network interface",
+        "role": "connects the memory to a fibre link and to neighbouring nodes.",
+        "parts": [
+          "quantum frequency conversion to telecom wavelengths",
+          "synchronisation electronics",
+          "entanglement-swapping logic"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Prepare the medium",
+        "detail": "A rare-earth-doped crystal is grown with controlled dopant concentration and a single isotope to give narrow optical and spin transitions, or atoms are cooled and trapped in vacuum."
+      },
+      {
+        "title": "Engineer the absorption line",
+        "detail": "Optical pumping and tailored laser sequences carve a narrow, precisely spaced absorbing structure (such as an atomic frequency comb) into the broadened transition."
+      },
+      {
+        "title": "Build the optical interface",
+        "detail": "The medium is placed in a cryostat with field coils, shielding and a cavity or lens system that shrinks the optical mode volume onto it."
+      },
+      {
+        "title": "Calibrate write pulses",
+        "detail": "The laser is locked to the transition and the write pulse is shaped so the incoming photon is absorbed with near-unit probability."
+      },
+      {
+        "title": "Transfer and hold",
+        "detail": "The excitation is moved into a long-lived spin state and decoupled from its noisy surroundings with echo or dynamical-decoupling pulse trains."
+      },
+      {
+        "title": "Recall and detect",
+        "detail": "A read pulse converts the stored excitation back into a photon, which is collected and detected."
+      },
+      {
+        "title": "Measure fidelity and efficiency",
+        "detail": "The retrieved state is compared with the input, and fidelity must exceed what any classical measure-and-prepare device could achieve."
+      },
+      {
+        "title": "Link to a network",
+        "detail": "Photons are converted to telecom wavelengths, sent down fibre, and entangled with a second node through a heralded swapping protocol."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Narrow-line rare-earth materials and cold-atom traps",
+        "status": "exists",
+        "why": "narrow transitions are what allow long storage times and high-fidelity recall, and they are now routinely produced."
+      },
+      {
+        "tech": "Efficient single-photon detectors and sources",
+        "status": "exists",
+        "why": "heralded operation means every attempt hinges on detecting one photon without noise."
+      },
+      {
+        "tech": "Quantum frequency conversion",
+        "status": "partial",
+        "why": "memories work best at visible or near-infrared wavelengths, while fibres demand telecom wavelengths."
+      },
+      {
+        "tech": "Entanglement-swapping and repeater protocols",
+        "status": "partial",
+        "why": "memories are only useful in a network if two distant links can be joined into one."
+      },
+      {
+        "tech": "Low-noise cryogenics on demand",
+        "status": "exists",
+        "why": "most solid-state memories need cooling, and the equipment must eventually be deployable outside a laboratory."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory memories storing single photons with efficiencies above 90 percent and fidelity clear of the classical bound",
+        "unlocks": "the core component of a quantum repeater, verified in isolation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "two distant memories whose contents are entangled, beating direct photon transmission over the same fibre length",
+        "unlocks": "a working elementary link in a repeater chain."
+      },
+      {
+        "stage": "Next",
+        "milestone": "metropolitan testbeds with several memory nodes and multiplexed modes running in parallel",
+        "unlocks": "synchronised quantum networks and device-independent protocols between cities."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "repeater chains spanning hundreds of kilometres and memory buses inside modular quantum computers",
+        "unlocks": "entanglement distribution at continental scale and scalable quantum hardware."
+      }
+    ]
+  }
+}

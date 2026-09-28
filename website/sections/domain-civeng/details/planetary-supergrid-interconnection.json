@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Converter stations",
+        "role": "the AC/DC interface at each end of the link.",
+        "parts": [
+          "converter transformers",
+          "valve halls (thyristor or IGBT modules)",
+          "DC switchgear",
+          "AC filters and reactive compensation",
+          "cooling plant"
+        ]
+      },
+      {
+        "name": "Overhead line",
+        "role": "the cheap, high-capacity land portion of the route.",
+        "parts": [
+          "lattice towers or monopoles",
+          "aluminium conductor bundles",
+          "composite or glass insulators",
+          "earth wire"
+        ]
+      },
+      {
+        "name": "Submarine cable",
+        "role": "carries DC power under water, where overhead lines are impossible.",
+        "parts": [
+          "copper or aluminium conductor",
+          "extruded polymer insulation",
+          "lead or aluminium moisture barrier",
+          "steel armouring and factory joints"
+        ]
+      },
+      {
+        "name": "DC protection and switching",
+        "role": "clears faults on a network where current has no natural zero crossing.",
+        "parts": [
+          "hybrid DC circuit breakers",
+          "fault-current limiters",
+          "fast fault detection"
+        ]
+      },
+      {
+        "name": "Control and grid-forming systems",
+        "role": "keeps a converter-fed network stable without the inertia of spinning generators.",
+        "parts": [
+          "grid-forming converter controls",
+          "wide-area measurement and communications",
+          "black-start capability"
+        ]
+      },
+      {
+        "name": "Installation fleet",
+        "role": "lays and buries thousands of kilometres of cable.",
+        "parts": [
+          "cable-laying ships",
+          "sea ploughs",
+          "work-class ROVs",
+          "jointing and repair equipment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Plan the route",
+        "detail": "Map generation, demand and seabed bathymetry to pick corridors that balance cost, loss and environmental impact."
+      },
+      {
+        "title": "Survey the seabed",
+        "detail": "Multibeam sonar and sub-bottom profiling identify cables crossings, trenches, wrecks and protected habitats."
+      },
+      {
+        "title": "Manufacture cable",
+        "detail": "Conductor, insulation, moisture barrier and armour are built up in one continuous factory run, since a joint at sea is far more vulnerable than one on land."
+      },
+      {
+        "title": "Lay the submarine section",
+        "detail": "A cable ship pays cable out under controlled tension; near shore a plough or jetting tool buries it below the seabed for protection from anchors and trawls."
+      },
+      {
+        "title": "Build the overhead section",
+        "detail": "On land, towers and conductors are erected, or the route diverts underground through cable tunnels where land is scarce."
+      },
+      {
+        "title": "Construct converter stations",
+        "detail": "Valve halls, transformers and filters are built at each terminus and connected to the existing AC grid."
+      },
+      {
+        "title": "Commission and test",
+        "detail": "Power is ramped up, protection settings are proven, and converter controls are tuned to support the connected grids."
+      },
+      {
+        "title": "Operate as a network",
+        "detail": "Trading and dispatch schedules move power between time zones, while converters provide voltage and frequency support as well as bulk transfer."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-voltage direct current transmission",
+        "status": "exists",
+        "why": "the only practical way to move bulk power thousands of kilometres with acceptable losses."
+      },
+      {
+        "tech": "Ultra-high-voltage overhead lines",
+        "status": "exists",
+        "why": "overhead DC lines above 3,000 km at up to 1,100 kV are already operating in China."
+      },
+      {
+        "tech": "Long submarine DC cable",
+        "status": "exists",
+        "why": "the longest subsea links now run roughly 700–800 km at around 525 kV using extruded insulation."
+      },
+      {
+        "tech": "Multi-terminal DC grids and DC breakers",
+        "status": "partial",
+        "why": "point-to-point links dominate; switching faults on a meshed DC network is only now being proved at high voltage."
+      },
+      {
+        "tech": "Grid-forming inverters and inertia substitutes",
+        "status": "partial",
+        "why": "a converter-only grid has no rotating mass, so stability must be created electronically."
+      },
+      {
+        "tech": "Low-loss superconductive or advanced cables",
+        "status": "missing",
+        "why": "would be needed for links far longer than any submarine route currently built."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "point-to-point HVDC links of a few gigawatts, mostly within one continent",
+        "unlocks": "sharing power between neighbouring countries and moving offshore wind to shore."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-terminal DC hubs, such as the North Sea and Chinese meshed DC projects, connecting several countries at once",
+        "unlocks": "the building blocks of a regional supergrid."
+      },
+      {
+        "stage": "Next",
+        "milestone": "regional supergrids joining continents across short sea crossings",
+        "unlocks": "using evening demand in one region to absorb midday solar from another."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "intercontinental links carrying desert solar and high-latitude wind",
+        "unlocks": "near-continuous renewable supply without relying on long-duration storage alone."
+      },
+      {
+        "stage": "Far term",
+        "milestone": "a planetary network of interlinked continental grids",
+        "unlocks": "seasonal balancing across hemispheres — the technical limit is cable loss, not distance."
+      }
+    ]
+  }
+}

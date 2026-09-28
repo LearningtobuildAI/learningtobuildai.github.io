@@ -1,0 +1,166 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cold-atom source",
+        "role": "produces a cloud of ultra-cold atoms that can be manipulated coherently.",
+        "parts": [
+          "ultra-high-vacuum chamber",
+          "alkali metal dispenser (rubidium-87 or caesium-133)",
+          "magneto-optical trap coils"
+        ]
+      },
+      {
+        "name": "Laser and optical system",
+        "role": "cools, launches, splits and recombines the atoms.",
+        "parts": [
+          "frequency-stabilised diode lasers",
+          "acousto-optic modulators",
+          "optical fibre distribution",
+          "photodetectors"
+        ]
+      },
+      {
+        "name": "Interferometer and detection",
+        "role": "turns the atoms into a sensitive gravity or acceleration probe.",
+        "parts": [
+          "Raman or Bragg pulse optics",
+          "state-selective fluorescence detection",
+          "magnetic shielding"
+        ]
+      },
+      {
+        "name": "Vibration and environmental isolation",
+        "role": "keeps platform motion and field noise from swamping the atomic signal.",
+        "parts": [
+          "passive or active isolation mount",
+          "seismometer or classical accelerometer",
+          "tiltmeter",
+          "thermal enclosure"
+        ]
+      },
+      {
+        "name": "Control and signal processing",
+        "role": "runs the pulse sequence and extracts the phase shift.",
+        "parts": [
+          "field-programmable gate array timing controller",
+          "fringe-fitting algorithms",
+          "real-time data output"
+        ]
+      },
+      {
+        "name": "Navigation integration",
+        "role": "combines the drift-free atomic measurement with high-bandwidth classical sensors.",
+        "parts": [
+          "classical inertial measurement unit",
+          "Kalman or similar fusion filter",
+          "GNSS receiver where available"
+        ]
+      },
+      {
+        "name": "Ruggedised enclosure",
+        "role": "makes the laboratory instrument survive vehicles, ships and aircraft.",
+        "parts": [
+          "shock and vibration mounts",
+          "compact vacuum pumps and getters",
+          "laser and electronics packaging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make and hold the vacuum",
+        "detail": "The chamber is baked and sealed to ultra-high vacuum, then an alkali metal source is loaded so atoms can be trapped without collisions."
+      },
+      {
+        "title": "Cool and trap atoms",
+        "detail": "Six laser beams and a magnetic field form a magneto-optical trap, slowing atoms to microkelvin temperatures — a few millionths of a degree above absolute zero."
+      },
+      {
+        "title": "Launch the atoms",
+        "detail": "The cloud is thrown upwards or released in free fall, giving a clean vertical measurement path."
+      },
+      {
+        "title": "Split, redirect and recombine",
+        "detail": "Laser pulses act as beam splitters and mirrors, placing each atom in a superposition of two momentum states that travel along different paths before recombining."
+      },
+      {
+        "title": "Read out the interference",
+        "detail": "Laser light detects how many atoms ended in each state; the resulting fringe pattern carries the phase shift."
+      },
+      {
+        "title": "Convert phase to gravity or acceleration",
+        "detail": "The measured phase is compared with the known laser pulse timings to give an absolute value of gravitational acceleration or platform acceleration."
+      },
+      {
+        "title": "Fuse with classical sensors",
+        "detail": "Because the atomic measurement is absolute but slower and noisier at high frequency, it is blended with accelerometers and gyroscopes to give a drift-free navigation solution."
+      },
+      {
+        "title": "Ruggedise and calibrate",
+        "detail": "The instrument is shock-mounted, thermally stabilised, magnetically shielded and checked against a reference gravity site before field deployment."
+      },
+      {
+        "title": "Deploy and operate",
+        "detail": "It runs from a vehicle, ship or aircraft, either surveying gravity or feeding a navigation filter where satellite signals are degraded or unavailable."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Laser cooling and trapping of atoms",
+        "status": "exists",
+        "why": "without microkelvin atoms the interference time is too short to be useful."
+      },
+      {
+        "tech": "Frequency-stabilised, narrow-linewidth lasers",
+        "status": "exists",
+        "why": "the atomic phase depends on laser frequency and timing being controlled to extreme precision."
+      },
+      {
+        "tech": "Ultra-high-vacuum and compact atomic sources",
+        "status": "exists",
+        "why": "cold atoms must be isolated from background gas for the measurement to survive."
+      },
+      {
+        "tech": "Vibration isolation and classical inertial sensors",
+        "status": "exists",
+        "why": "platform motion is often larger than the gravity signal, so it must be measured and removed."
+      },
+      {
+        "tech": "Ruggedised, compact, low-power laser systems",
+        "status": "partial",
+        "why": "today's field instruments are still bulky and power-hungry compared with conventional sensors."
+      },
+      {
+        "tech": "Dynamic-environment operation and real-time fusion",
+        "status": "partial",
+        "why": "the hard step for navigation is keeping accuracy while the platform is accelerating and turning."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial cold-atom gravimeters used for geophysical survey, volcano and groundwater monitoring",
+        "unlocks": "absolute gravity measurements with no drift, which classical relative gravimeters cannot give over long surveys."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shipborne and airborne cold-atom gravimetry and gravity gradiometry",
+        "unlocks": "faster, cheaper mapping of mineral, oil and gas prospects under water and ice."
+      },
+      {
+        "stage": "Next",
+        "milestone": "compact quantum inertial measurement units tested for GNSS-denied navigation",
+        "unlocks": "drift-free position keeping for submarines, underground vehicles and urban operations where satellite signals are jammed or blocked."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hybrid quantum-classical navigation systems in routine use",
+        "unlocks": "resilient navigation that does not depend on external signals, plus precise geodetic reference data."
+      }
+    ]
+  }
+}

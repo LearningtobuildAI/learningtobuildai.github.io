@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Compute payload",
+        "role": "racks of processors and GPUs running jobs in orbit, either autonomously or on commands from the ground.",
+        "parts": [
+          "radiation-tolerant server boards",
+          "GPUs and accelerators",
+          "error-correcting memory and watchdogs",
+          "shielding and cold plates"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "generate electricity from sunlight, since there is no grid.",
+        "parts": [
+          "solar arrays with sun tracking",
+          "batteries for eclipse periods",
+          "power conditioning and distribution"
+        ]
+      },
+      {
+        "name": "Thermal control",
+        "role": "reject all waste heat by radiation, because vacuum has no air to carry it away.",
+        "parts": [
+          "deployable radiator panels",
+          "heat pipes or pumped fluid loops",
+          "surface coatings that emit well in infrared"
+        ]
+      },
+      {
+        "name": "Communications",
+        "role": "move data in and results out.",
+        "parts": [
+          "optical inter-satellite terminals",
+          "downlink to ground stations",
+          "radio command and telemetry"
+        ]
+      },
+      {
+        "name": "Spacecraft bus",
+        "role": "hold everything in the right attitude and keep the orbit stable.",
+        "parts": [
+          "structure and separation interface",
+          "attitude control (reaction wheels, thrusters)",
+          "star trackers and orbit determination"
+        ]
+      },
+      {
+        "name": "Ground segment",
+        "role": "schedule jobs, collect results, and keep the spacecraft healthy.",
+        "parts": [
+          "mission operations centre",
+          "ground station network",
+          "job scheduler and data pipeline"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose an orbit",
+        "detail": "A dawn-dusk Sun-synchronous orbit keeps the craft in near-continuous sunlight and holds the radiators permanently facing away from the Sun, which is what makes the physics work."
+      },
+      {
+        "title": "Size the power and thermal systems together",
+        "detail": "Sunlight at Earth is about 1,360 W/m²; at realistic array efficiency and packing, tens of kilowatts means hundreds of square metres of solar panel. Each kilowatt of that power becomes waste heat that must be radiated: at a few hundred kelvin a radiator emits roughly 400 W per square metre of surface, so radiator area ends up comparable to array area."
+      },
+      {
+        "title": "Select and harden the electronics",
+        "detail": "Low Earth orbit sits below the worst radiation belts, but cosmic rays and the South Atlantic Anomaly still cause single-event upsets. Parts are chosen for tolerance, shielded where mass allows, and paired with error-correcting memory, watchdogs and periodic reboots."
+      },
+      {
+        "title": "Build the spacecraft bus",
+        "detail": "Structure, attitude control, batteries and optical terminals are integrated and tested separately from the compute payload."
+      },
+      {
+        "title": "Integrate the racks",
+        "detail": "Servers are mounted with vibration isolation, wired for power and data, and their heat is coupled into the fluid loop that feeds the radiators."
+      },
+      {
+        "title": "Test on the ground",
+        "detail": "Thermal-vacuum chambers reproduce the vacuum and temperature swings, shake tables reproduce launch loads, and the whole system is run end-to-end against a ground station."
+      },
+      {
+        "title": "Launch and commission",
+        "detail": "The craft rideshares to orbit, deploys its arrays and radiators, and is checked out for weeks before taking real work."
+      },
+      {
+        "title": "Operate and dispose",
+        "detail": "Jobs are scheduled around downlink windows, software is updated in flight, and the satellite is deorbited or moved to a graveyard orbit at end of life rather than left as debris."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Radiation-tolerant high-performance computing",
+        "status": "partial",
+        "why": "commercial processors and GPUs fly today in experimental payloads, but error rates rise sharply with performance and time in orbit."
+      },
+      {
+        "tech": "High-bandwidth optical downlinks",
+        "status": "partial",
+        "why": "laser terminals have demonstrated hundreds of gigabits per second from small satellites; the bottleneck becomes the number and location of ground stations."
+      },
+      {
+        "tech": "Deployable radiators and two-phase cooling loops",
+        "status": "partial",
+        "why": "these are proven on crewed stations and large satellites, but scaling them into the hundreds of kilowatts a serious data centre would need is unproven."
+      },
+      {
+        "tech": "Cheap, frequent launch to low Earth orbit",
+        "status": "exists",
+        "why": "without low launch cost, the mass of radiators and solar arrays for each kilowatt of compute is prohibitive."
+      },
+      {
+        "tech": "Autonomous operation and job scheduling",
+        "status": "partial",
+        "why": "with only intermittent ground contact, the payload must manage failures and workloads without a human in the loop."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "GPU payloads flown on small satellites, with results returned to ground stations",
+        "unlocks": "proof that off-the-shelf compute can survive launch and run in orbit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dedicated compute satellites of tens of kilowatts with laser crosslinks",
+        "unlocks": "useful niches where the data is already in orbit — processing Earth-observation imagery before downlinking it instead of sending the raw pixels."
+      },
+      {
+        "stage": "Next",
+        "milestone": "clusters of compute satellites sharing work over an inter-satellite mesh",
+        "unlocks": "redundancy and the ability to run larger models than one spacecraft can host."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "orbital capacity large enough to compete with terrestrial data centres on cost per job",
+        "unlocks": "a genuine option for compute in regions where land, water or grid connection are the binding constraint — if launch and radiator mass fall far enough."
+      }
+    ]
+  }
+}

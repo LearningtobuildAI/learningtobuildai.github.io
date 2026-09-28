@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Reentry heat shield",
+        "role": "protects the stage as it comes back through the atmosphere at orbital speed.",
+        "parts": [
+          "ceramic tiles or metallic panels",
+          "leading-edge material",
+          "mechanical attachments that allow thermal expansion"
+        ]
+      },
+      {
+        "name": "Engine section",
+        "role": "performs the insertion burn and later the landing burn with the same engines.",
+        "parts": [
+          "restartable, deep-throttling engines",
+          "gimbal actuators",
+          "propellant feed lines"
+        ]
+      },
+      {
+        "name": "Propellant tanks and structure",
+        "role": "holds the propellant and carries launch and reentry loads.",
+        "parts": [
+          "thin-walled cryogenic tanks",
+          "common bulkhead",
+          "stainless-steel or aluminium-lithium skin"
+        ]
+      },
+      {
+        "name": "Attitude control and aerosurfaces",
+        "role": "keeps the stage pointed correctly while it is in the plasma and during the final descent.",
+        "parts": [
+          "body flaps or grid fins",
+          "reaction control thrusters",
+          "cold-gas tanks"
+        ]
+      },
+      {
+        "name": "Guidance, navigation and control",
+        "role": "flies the reentry and lands the stage on a target within metres.",
+        "parts": [
+          "flight computers",
+          "inertial navigation and GNSS",
+          "landing radar or optical guidance"
+        ]
+      },
+      {
+        "name": "Recovery and refurbishment infrastructure",
+        "role": "gets the stage back on a pad and ready to fly again.",
+        "parts": [
+          "catch tower, landing pad or parachute recovery",
+          "transport cradle",
+          "inspection and tile-replacement equipment"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the recovery architecture",
+        "detail": "Decide whether the whole stage comes back, only the engine section returns, and whether it lands on legs, is caught by a tower, or comes down under parachutes. Thermal protection is dead weight, so every kilogram of shield is a kilogram of lost payload."
+      },
+      {
+        "title": "Fabricate tanks and structure",
+        "detail": "Thin-gauge stainless steel or aluminium-lithium sheet is rolled, friction-stir welded into tanks, and stiffened so the stage survives both launch loads and the bending loads of reentry."
+      },
+      {
+        "title": "Fix the thermal protection",
+        "detail": "Thousands of tiles or metallic panels are bonded or bolted to the windward side, with gaps sized so the hot structure can expand without cracking the shield."
+      },
+      {
+        "title": "Integrate engines and control surfaces",
+        "detail": "Deep-throttling restartable engines are fitted along with flaps or grid fins and small thrusters that hold the stage at the right angle during reentry."
+      },
+      {
+        "title": "Launch and separate",
+        "detail": "The stage fires to place its payload in orbit, then reserves enough propellant for a deorbit burn and a landing burn — a reserve that directly cuts payload mass."
+      },
+      {
+        "title": "Deorbit and reenter",
+        "detail": "A short retro burn drops the perigee into the atmosphere, and the stage flies through the plasma sheath, shedding roughly 7.8 km/s of orbital velocity while the shield surface reaches around 1,500 °C."
+      },
+      {
+        "title": "Fly the terminal descent",
+        "detail": "Thrusters settle the propellant to the bottom of the tanks, guidance steers to the recovery point, and the engines relight at low throttle for a controlled touchdown or a mid-air catch."
+      },
+      {
+        "title": "Recover, inspect and refly",
+        "detail": "Engineers inspect tiles, engines and structure, replace what is damaged, and return the stage to the pad — the cost of this turnaround decides whether recovery pays."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Reusable high-temperature heat shields",
+        "status": "partial",
+        "why": "ablative shields survive one reentry only; a reusable shield must take many cycles with minimal repair, which has proven difficult since the Shuttle era."
+      },
+      {
+        "tech": "Propulsive landing of large rockets",
+        "status": "exists",
+        "why": "boosters have landed and refly routinely since 2015, but they reenter at far lower speed than an orbital stage."
+      },
+      {
+        "tech": "Restartable, deep-throttling cryogenic engines",
+        "status": "exists",
+        "why": "a landing burn needs multiple ignitions and precise low thrust."
+      },
+      {
+        "tech": "Cryogenic propellant management in orbit",
+        "status": "partial",
+        "why": "propellant must be settled and kept liquid during a long coast before the deorbit and landing burns."
+      },
+      {
+        "tech": "Fast inspection and refurbishment",
+        "status": "partial",
+        "why": "if a stage needs months of work between flights, the savings in hardware vanish."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "orbit-capable upper stages regularly reenter and make controlled soft splashdowns, while first-stage boosters land and refly",
+        "unlocks": "real flight data on reentry loads, tile performance and terminal guidance."
+      },
+      {
+        "stage": "Next",
+        "milestone": "subscale demonstrators prove vertical takeoff and landing of a second-stage-shaped vehicle",
+        "unlocks": "confidence that a full-size upper stage can be flown to a pinpoint landing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first intact recovery and reflight of an orbital-class upper stage",
+        "unlocks": "a genuine path to a fully reusable launch stack, cutting the hardware cost per flight."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine reuse with short turnaround and orbital refuelling",
+        "unlocks": "launch cost dominated by propellant and operations, supporting large-scale space infrastructure."
+      }
+    ]
+  }
+}

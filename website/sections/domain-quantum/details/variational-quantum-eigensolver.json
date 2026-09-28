@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Qubit encoding",
+        "role": "turns the chemistry problem into qubits, one orbital per qubit (or fewer with symmetries).",
+        "parts": [
+          "fermion-to-qubit mapping (Jordan–Wigner, Bravyi–Kitaev)",
+          "basis set choice",
+          "active-space reduction",
+          "symmetry tapering"
+        ]
+      },
+      {
+        "name": "Hamiltonian",
+        "role": "expresses the molecule's energy as a weighted sum of measurable Pauli terms.",
+        "parts": [
+          "second-quantised electronic Hamiltonian",
+          "one- and two-electron integrals from a classical chemistry package",
+          "Pauli-string decomposition",
+          "symmetry verification"
+        ]
+      },
+      {
+        "name": "Ansatz circuit",
+        "role": "a shallow parameterised circuit that prepares a trial wavefunction.",
+        "parts": [
+          "parameterised rotation layers",
+          "entangling gates",
+          "problem-inspired form (e.g. UCCSD) or hardware-efficient form",
+          "reference state (usually Hartree–Fock)"
+        ]
+      },
+      {
+        "name": "Measurement and expectation estimation",
+        "role": "estimates the energy of each Pauli term by repeated circuit execution.",
+        "parts": [
+          "Pauli grouping into commuting sets",
+          "shot budget allocation",
+          "readout-error correction",
+          "zero-noise extrapolation"
+        ]
+      },
+      {
+        "name": "Classical optimiser",
+        "role": "updates the circuit parameters to lower the measured energy.",
+        "parts": [
+          "gradient-free solvers (e.g. COBYLA)",
+          "parameter-shift gradients or SPSA",
+          "convergence criteria",
+          "restarts to escape local minima"
+        ]
+      },
+      {
+        "name": "Quantum processor and control",
+        "role": "executes the circuit many times per iteration.",
+        "parts": [
+          "superconducting transmons or trapped ions",
+          "microwave or laser control",
+          "coherent lifetimes and gate fidelities",
+          "repeated state preparation and measurement"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the target and trim the problem",
+        "detail": "Choose a molecule and the orbitals that matter chemically. Freeze core orbitals and discard high-energy virtual ones so the active space fits the available qubits — a 12-qubit calculation is already a squeeze on today's hardware."
+      },
+      {
+        "title": "Compute the integrals classically",
+        "detail": "A classical chemistry program calculates the one- and two-electron integrals in a chosen basis set (for example STO-3G), giving the numerical coefficients of the electronic Hamiltonian."
+      },
+      {
+        "title": "Map fermions onto qubits",
+        "detail": "Apply a fermion-to-qubit transform so each spin-orbital becomes a qubit. This expands a handful of terms into hundreds or thousands of Pauli strings, which is where measurement cost is decided."
+      },
+      {
+        "title": "Design the ansatz",
+        "detail": "Choose a circuit family and depth. It must be expressive enough to approach the true ground state, shallow enough to survive noise, and structured to avoid barren plateaus where gradients vanish exponentially."
+      },
+      {
+        "title": "Measure the terms on hardware",
+        "detail": "Group commuting Pauli strings so one circuit setting measures many terms, then run thousands of shots per setting. Error mitigation (readout correction, zero-noise extrapolation) nudges the expectation values back toward the noiseless answer."
+      },
+      {
+        "title": "Close the classical loop",
+        "detail": "Feed the estimated energy to a classical optimiser, which proposes new parameters. Repeat until the energy stops falling — typically hundreds to thousands of hardware executions per run."
+      },
+      {
+        "title": "Validate against a classical answer",
+        "detail": "Compare with exact diagonalisation or coupled-cluster results for the same active space. Chemical accuracy means about 1 kcal/mol (4.2 kJ/mol), or roughly 1.6 mHa; without this check a converged number proves nothing."
+      },
+      {
+        "title": "Scale or reach for fault tolerance",
+        "detail": "For molecules of industrial interest, deepen the circuit, add symmetry reduction and improve ansätze; ultimately move to error-corrected logical qubits, where phase estimation may replace the variational loop entirely."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum processors with tens to hundreds of physical qubits",
+        "status": "exists",
+        "why": "circuits can be run today, but coherence and connectivity still cap the achievable depth."
+      },
+      {
+        "tech": "High-fidelity gates and readout",
+        "status": "partial",
+        "why": "each layer of gates adds error, so ansatz depth is limited to shallow circuits that may miss the true ground state."
+      },
+      {
+        "tech": "Error mitigation and measurement-efficiency methods",
+        "status": "partial",
+        "why": "estimating thousands of Pauli terms to useful precision is expensive; grouping and mitigation reduce but do not remove the cost."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "logical qubits below the error threshold were reported in 2024, but nowhere near the scale needed for a useful chemistry problem."
+      },
+      {
+        "tech": "Classical simulation and chemistry baselines",
+        "status": "exists",
+        "why": "methods such as exact diagonalisation and coupled cluster set the accuracy bar — and often already match what variational algorithms deliver."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "ground-state energies of small molecules (hydrogen, lithium hydride, and similar) computed on 4–20 qubit devices",
+        "unlocks": "a working experimental pipeline and honest benchmarks against classical chemistry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error mitigation plus smarter ansätze push active-space calculations toward roughly 50–100 qubits",
+        "unlocks": "small transition-metal and catalyst fragments where classical methods strain."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid workflows that split a problem between a classical supercomputer and a quantum processor",
+        "unlocks": "embedding quantum subroutines in real chemistry pipelines rather than isolated demos."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "early fault-tolerant execution of chemistry circuits, likely with phase estimation rather than a variational loop",
+        "unlocks": "energies and reaction barriers beyond classical reach, if a genuine advantage is ever demonstrated."
+      }
+    ]
+  }
+}

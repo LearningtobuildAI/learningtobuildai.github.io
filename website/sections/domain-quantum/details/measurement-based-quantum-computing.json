@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Photon sources",
+        "role": "generate the individual photons or squeezed light pulses that act as qubits.",
+        "parts": [
+          "single-photon sources (quantum dots, spontaneous parametric down-conversion)",
+          "squeezed-light sources"
+        ]
+      },
+      {
+        "name": "Entanglement generation",
+        "role": "create the large entangled cluster state that defines the computation.",
+        "parts": [
+          "beam splitters",
+          "fusion gates",
+          "optical delay lines"
+        ]
+      },
+      {
+        "name": "Cluster state storage and routing",
+        "role": "hold and route the entangled state until each qubit is measured.",
+        "parts": [
+          "low-loss optical fiber or waveguides",
+          "free-space optics",
+          "switches and multiplexers"
+        ]
+      },
+      {
+        "name": "Measurement and detection",
+        "role": "perform single-qubit measurements in bases chosen by the algorithm.",
+        "parts": [
+          "single-photon detectors (superconducting nanowire, avalanche photodiode)",
+          "homodyne detectors",
+          "polarization or path encoders"
+        ]
+      },
+      {
+        "name": "Classical feed-forward and control",
+        "role": "interpret measurement outcomes and adapt later measurements in real time.",
+        "parts": [
+          "fast electronics (FPGA)",
+          "low-latency communication",
+          "control software"
+        ]
+      },
+      {
+        "name": "Error correction and fault tolerance",
+        "role": "detect and correct errors so that logical qubits survive long enough to compute.",
+        "parts": [
+          "topological codes",
+          "redundant encoding",
+          "syndrome measurement"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Generate photonic qubits",
+        "detail": "Create single photons or squeezed vacuum states with high purity and indistinguishability, typically at telecom wavelengths around 1550 nm to minimise fiber loss."
+      },
+      {
+        "title": "Entangle qubits into a cluster state",
+        "detail": "Use probabilistic fusion gates or beam splitters to entangle photons, with success heralded by detection events."
+      },
+      {
+        "title": "Build a large cluster state",
+        "detail": "Multiplex many probabilistic entangling operations, using optical delay lines to synchronise photons, and stitch together a 2D or 3D lattice of entanglement."
+      },
+      {
+        "title": "Store and route the cluster state",
+        "detail": "Keep the entangled photons in low-loss delay lines or waveguides until each qubit is due to be measured."
+      },
+      {
+        "title": "Measure qubits adaptively",
+        "detail": "Perform single-qubit measurements in bases determined by earlier outcomes, using fast feed-forward to implement any desired circuit."
+      },
+      {
+        "title": "Detect and process outcomes",
+        "detail": "Record measurement results and feed them forward within the coherence time to control subsequent measurements."
+      },
+      {
+        "title": "Implement error correction",
+        "detail": "Encode logical qubits into topological cluster states and repeatedly measure stabilisers to detect and correct errors."
+      },
+      {
+        "title": "Scale up",
+        "detail": "Integrate sources, waveguides, and detectors on photonic chips and connect modules via optical links to reach millions of qubits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-efficiency single-photon detectors",
+        "status": "exists",
+        "why": "detection inefficiency and loss look like errors, so fault tolerance requires efficiencies above 99%."
+      },
+      {
+        "tech": "Deterministic or near-deterministic photonic entangling gates",
+        "status": "partial",
+        "why": "probabilistic gates require many attempts and heavy multiplexing, which multiplies hardware and loss."
+      },
+      {
+        "tech": "Low-loss optical components and delay lines",
+        "status": "exists",
+        "why": "the cluster state must survive long enough for all measurements to be completed."
+      },
+      {
+        "tech": "Fast classical feed-forward electronics",
+        "status": "exists",
+        "why": "adaptive measurements must be applied within the coherence time of the photonic qubits."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "physical error rates must fall below a threshold for logical qubits to be reliable at scale."
+      },
+      {
+        "tech": "Scalable photonic integration",
+        "status": "missing",
+        "why": "millions of components must be integrated with low loss, high uniformity and manufacturable yield."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small cluster states of a few photons demonstrated; basic measurement-based operations performed",
+        "unlocks": "proof that the model works in the lab and guides component improvements."
+      },
+      {
+        "stage": "Next",
+        "milestone": "source and detector efficiencies improved to reach fault-tolerance thresholds; error correction demonstrated on a few logical qubits",
+        "unlocks": "reliable small-scale logical operations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "modular scaling using chip-based photonics and optical interconnects between modules",
+        "unlocks": "growth to hundreds or thousands of physical qubits without a single monolithic chip."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale fault-tolerant measurement-based quantum computers",
+        "unlocks": "practical quantum simulation, cryptography and optimisation beyond classical capability."
+      }
+    ]
+  }
+}
