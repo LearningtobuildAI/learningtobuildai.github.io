@@ -142,6 +142,11 @@
   }
   async function refreshStatus() {
     if (sending) return;
+    if (window.SITE_STATIC_EXPORT) {
+      online = false;
+      setStatus('offline', 'Static site · chat unavailable');
+      return;
+    }
     try {
       var r = await fetch("/api/chat-runtime-status", { headers: { Accept: "application/json" } });
       if (!r.ok) throw 0;
@@ -206,6 +211,10 @@
   }
 
   async function sendMsg() {
+    if (window.SITE_STATIC_EXPORT) {
+      bubble('bot', 'Chat is not connected on this static site. Please use the cited sources on the technology detail page.');
+      return;
+    }
     var text = String(input.value || "").trim();
     if (!text || sending) return;
     input.value = ""; input.style.height = "auto";
