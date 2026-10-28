@@ -9,6 +9,8 @@
  * A Formspree/Buttondown/Cloudflare-Worker URL all work. */
 (function () {
   var ENDPOINT = (typeof window !== "undefined" && window.DIGEST_ENDPOINT) || "";
+  // Do not promise a delivered newsletter when no subscription service exists.
+  if (!ENDPOINT) return;
   if (document.getElementById("digestCta")) return;
 
   if (!document.getElementById("digestCtaStyles")) {
@@ -38,7 +40,7 @@
   box.setAttribute("aria-label", "Weekly digest signup");
   box.innerHTML =
     "<h3>Get the weekly digest</h3>" +
-    "<p>One email a week across all 18 domains — the biggest moves from idea to shelf, " +
+    "<p>One email a week across the technology trackers — the biggest moves from idea to shelf, " +
     "no fluff. Free.</p>" +
     '<form novalidate><input type="email" required autocomplete="email" ' +
     'placeholder="you@example.com" aria-label="Email address" />' +

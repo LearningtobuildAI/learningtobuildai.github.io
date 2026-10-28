@@ -5,6 +5,15 @@
           data-tech-src="/website/sections/domain-nrg/energy-tech.json"
           data-tech-domain="nrg"></div> */
 (function () {
+  function evidenceReady() {
+    if (window.SiteEvidence) return window.SiteEvidence.load();
+    if (!window.__evidenceReady) window.__evidenceReady = new Promise(function(resolve, reject) {
+      var s = document.createElement('script'); s.src = '/website/evidence-policy.js';
+      s.onload = function() { window.SiteEvidence.load().then(resolve); }; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    return window.__evidenceReady;
+  }
   var STAGE_LABEL = {
     now: "NOW", near: "NEAR", far: "FAR",
     theory: "THEORY", lab: "LAB", trial: "TRIAL", proto: "PROTO", pilot: "PILOT",
@@ -193,7 +202,7 @@
     // Freshness (feed tiles carry pubDate): stories under 48h old wear a NEW
     // badge; every dated tile shows its date so "newest first" is checkable.
     var ts = Date.parse(t.pubDate || t.addedAt || "");
-    var fresh = !isNaN(ts) && Date.now() - ts < FRESH_MS;
+    var fresh = !isNaN(ts) && Date.now() >= ts && Date.now() - ts < FRESH_MS;
     var dateTxt = isNaN(ts) ? "" : new Date(ts).toLocaleDateString(undefined, { day: "numeric", month: "short" });
     if (fresh) stage = "NEW";
     var spec = SPEC_STAGES[String(t.stage || "").toLowerCase()] === 1;
@@ -207,9 +216,10 @@
       '<span class="pbadge ' + (fresh ? "now" : esc(t.stage)) + '">' + esc(stage) + "</span>" +
       "</div>" +
       '<div class="tech-tile-sum">' + esc(t.what || "") + "</div>" +
+      '<p class="tech-tile-evidence">' + (t.evidenceStatus === 'reviewed' ? 'Summary source-reviewed · ' + esc(t.evidenceCheckedAt) : 'UNVERIFIED · claims and company roles awaiting review') + '</p>' +
       '<div class="tech-tile-foot">' +
       '<span class="tech-tile-type">' + esc(t.type || "") + (dateTxt ? " · " + esc(dateTxt) : "") + "</span>" +
-      '<span class="tech-tile-arrow">' + (external ? "Read source →" : "View details →") + "</span>" +
+      '<span class="tech-tile-arrow">' + (t.explainer ? "Watch explainer →" : external ? "Read source →" : "View details →") + "</span>" +
       "</div></div></a>";
     // Buy/back links must sit OUTSIDE the tile anchor — a nested <a> is invalid
     // HTML and parse5 (npm run lint:website) rejects it. Only tiles that have
@@ -268,8 +278,9 @@
     Promise.all([
       fetch(src).then(function (r) { return r.ok ? r.json() : []; }),
       loadAffiliate(),
+      evidenceReady(),
     ])
-      .then(function (both) { return both[0]; })
+      .then(function (both) { return (both[0] || []).map(function(t) { return window.SiteEvidence.apply(t, src, both[2]); }); })
       .then(function (items) {
         items = (items || []).slice();
         if (!grouped) {
