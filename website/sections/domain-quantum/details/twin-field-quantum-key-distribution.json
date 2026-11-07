@@ -1,0 +1,144 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Transmitter modules (Alice and Bob)",
+        "role": "generate phase-randomised weak coherent pulses with randomly chosen basis and intensity.",
+        "parts": [
+          "narrow-linewidth laser",
+          "phase modulator",
+          "intensity modulator",
+          "decoy-state controller",
+          "quantum random number generator"
+        ]
+      },
+      {
+        "name": "Phase and frequency stabilisation",
+        "role": "keep the two independent lasers coherent so their photons can interfere at the midpoint.",
+        "parts": [
+          "optical phase-locked loop or reference laser",
+          "fibre interferometer",
+          "servo electronics",
+          "polarisation control"
+        ]
+      },
+      {
+        "name": "Quantum channel",
+        "role": "carry photons from each transmitter to the midpoint with minimal loss and polarisation drift.",
+        "parts": [
+          "ultra-low-loss optical fibre",
+          "polarisation-maintaining fibre or active polarisation compensation",
+          "optical isolators",
+          "fibre connectors and splices"
+        ]
+      },
+      {
+        "name": "Midpoint measurement station (Charlie)",
+        "role": "interfere the two incoming pulses and announce detection events.",
+        "parts": [
+          "50:50 beamsplitter",
+          "single-photon detectors, such as superconducting nanowire detectors",
+          "time-tagging electronics",
+          "temperature-controlled enclosure"
+        ]
+      },
+      {
+        "name": "Post-processing and key management",
+        "role": "turn detection announcements into a secret key.",
+        "parts": [
+          "classical authenticated channel",
+          "error-correction software",
+          "parameter-estimation and decoy-state analysis",
+          "privacy amplification",
+          "key management system"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose link topology and midpoint site",
+        "detail": "Measure fibre loss along the route and place the midpoint station so the two paths have comparable or well-characterised loss."
+      },
+      {
+        "title": "Build transmitter units",
+        "detail": "Integrate narrow-linewidth lasers, phase and intensity modulators, and random number generators for basis and intensity choices; test decoy-state modulation."
+      },
+      {
+        "title": "Implement phase locking",
+        "detail": "Connect a reference path or optical phase-locked loops between each transmitter and the midpoint, then demonstrate stable interference over minutes."
+      },
+      {
+        "title": "Install midpoint detector station",
+        "detail": "Mount the interferometer and single-photon detectors in a cryostat or cooled enclosure, and calibrate timing and detection efficiency."
+      },
+      {
+        "title": "Calibrate interference visibility",
+        "detail": "Send weak coherent pulses from both sides, scan their relative phase, and record coincidence counts to verify single-photon interference."
+      },
+      {
+        "title": "Run the protocol",
+        "detail": "Transmit pulses with randomised phases, bases and intensities; the midpoint announces detections; senders post-select on matching basis and intensity."
+      },
+      {
+        "title": "Post-process the detections",
+        "detail": "Sift the events, correct errors, bound eavesdropper information with decoy-state analysis, and apply privacy amplification to produce a key."
+      },
+      {
+        "title": "Integrate with encryptors",
+        "detail": "Feed the keys to optical encryptors for data traffic, while monitoring key rate and quantum bit error rate."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Single-photon detectors with high efficiency and low dark counts",
+        "status": "exists",
+        "why": "the midpoint must register individual photons from both senders with low noise."
+      },
+      {
+        "tech": "Phase-stabilised fibre interferometry over tens of kilometres",
+        "status": "exists",
+        "why": "independent photons only interfere if their relative phase is held steady."
+      },
+      {
+        "tech": "Decoy-state quantum key distribution",
+        "status": "exists",
+        "why": "it bounds how much information an eavesdropper could gain from weak coherent pulses."
+      },
+      {
+        "tech": "Independent laser phase locking",
+        "status": "partial",
+        "why": "demonstrated in laboratories and field trials, but not yet a routine off-the-shelf module."
+      },
+      {
+        "tech": "Classical authenticated channel and fast post-processing",
+        "status": "exists",
+        "why": "senders and the midpoint must exchange basis, intensity and detection information without being spoofed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory and field demonstrations over hundreds of kilometres of fibre without trusted nodes",
+        "unlocks": "proof that intercity quantum key distribution can avoid trusted intermediate nodes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "automated, rack-mounted twin-field systems with hands-off phase locking",
+        "unlocks": "pilot deployments on metropolitan and intercity fibre links."
+      },
+      {
+        "stage": "Next",
+        "milestone": "coexistence with classical data traffic and integration with key management",
+        "unlocks": "use inside existing telecom networks rather than dedicated dark fibre."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "photonic integrated circuits for transmitters and the midpoint, plus hybrid links with quantum repeaters",
+        "unlocks": "scalable, lower-cost wide-area quantum-secure networks."
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Propellant acquisition",
+        "role": "gathers nitrogen ice from the surface and turns it into gas.",
+        "parts": [
+          "scoop or low-force drill",
+          "heater elements",
+          "gas lines and filters"
+        ]
+      },
+      {
+        "name": "Storage and pressurisation",
+        "role": "holds propellant between hops as high-pressure gas.",
+        "parts": [
+          "pressure vessel",
+          "valves and regulator",
+          "temperature sensors"
+        ]
+      },
+      {
+        "name": "Propulsion",
+        "role": "provides the ballistic hop and steers the vehicle.",
+        "parts": [
+          "heater and nozzle",
+          "thrust-vector actuators",
+          "small attitude-control jets"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "runs the electronics and supplies the heat that gasifies the ice.",
+        "parts": [
+          "radioisotope power unit",
+          "waste-heat loop",
+          "insulation and a small radiator"
+        ]
+      },
+      {
+        "name": "Landing and uprighting",
+        "role": "survives touchdown in low gravity and resets the vehicle for the next hop.",
+        "parts": [
+          "landing legs with dampers",
+          "footpads",
+          "uprighting or self-righting mechanism"
+        ]
+      },
+      {
+        "name": "Guidance and autonomy",
+        "role": "picks safe landing sites without help from Earth.",
+        "parts": [
+          "cameras and lidar",
+          "inertial measurement unit",
+          "flight computer"
+        ]
+      },
+      {
+        "name": "Communications",
+        "role": "sends science data back across the outer solar system.",
+        "parts": [
+          "high-gain antenna",
+          "deep-space radio transponder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the hop budget",
+        "detail": "Triton's gravity is about 0.08 g, so a 1 km ballistic hop needs only roughly 30 m/s of velocity change — a few percent of escape velocity. That low number is what makes propellant harvested on site enough for a whole mission."
+      },
+      {
+        "title": "Design the collector",
+        "detail": "Engineers specify a scoop or light drill that can bite into nitrogen ice at about 38 K without welding itself shut, using a trickle of warm gas to loosen the surface."
+      },
+      {
+        "title": "Build the warm section",
+        "detail": "A radioisotope power source supplies electricity and, more importantly, waste heat. A loop carries that heat to a chamber where the ice sublimes and the gas is warmed and pressurised."
+      },
+      {
+        "title": "Make the thruster",
+        "detail": "Because the gas is heated nitrogen rather than a chemical propellant, exhaust velocity is modest and the tank must be strong. The nozzle and thrust-vector mechanism are sized for short, powerful impulses."
+      },
+      {
+        "title": "Engineer the lander",
+        "detail": "Legs, dampers and a self-righting arrangement are designed for a body with almost no atmosphere, where parachutes are useless and every hop ends in a hard, controlled touchdown."
+      },
+      {
+        "title": "Write the autonomy",
+        "detail": "Round-trip radio time to the Neptune system is several hours, so the vehicle must choose and reach landing sites by itself, using cameras and lidar to avoid crevasses and slopes."
+      },
+      {
+        "title": "Test in a cold vacuum chamber",
+        "detail": "A full-size unit is exercised in a chamber holding nitrogen ice at Triton-like temperature and pressure, cycling scoop, heater, valve and nozzle many times."
+      },
+      {
+        "title": "Fly a small demonstrator first",
+        "detail": "A reduced hopper would prove acquisition and hopping on a nearer icy body before a full Triton mission is attempted."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Radioisotope power for deep space",
+        "status": "exists",
+        "why": "the Sun is too faint at 30 AU for solar arrays, and the same unit's waste heat is the mission's energy source."
+      },
+      {
+        "tech": "Low-gravity hopping mobility",
+        "status": "partial",
+        "why": "small hopping robots have moved across a near-Earth asteroid, but nothing has hopped on a body of Triton's size, at its temperature, for years."
+      },
+      {
+        "tech": "Autonomous terrain-relative navigation",
+        "status": "partial",
+        "why": "landing site selection must happen on board, as it does on recent planetary landers, but not yet in this environment."
+      },
+      {
+        "tech": "Mechanisms and seals at 38 K",
+        "status": "missing",
+        "why": "valves, bearings and actuators that must work repeatedly for years at nitrogen-ice temperature are unproven."
+      },
+      {
+        "tech": "Deep-space communications from Neptune distance",
+        "status": "exists",
+        "why": "the ground network already tracks spacecraft at that range, though data rates are low."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "concept studies of nitrogen-propelled hoppers for Triton, alongside proposed Neptune-system flybys",
+        "unlocks": "a defined mission architecture and a list of the technologies it needs."
+      },
+      {
+        "stage": "Next",
+        "milestone": "bench and vacuum-chamber demonstrations of ice collection, gasification and repeat hopping",
+        "unlocks": "evidence that the propellant cycle closes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small hopping lander on a nearer icy moon or comet",
+        "unlocks": "flight heritage for low-gravity hop guidance and cold mechanisms."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a Triton hopper delivered by an orbiter or flyby carrier",
+        "unlocks": "sampling many separate terrains, including the plume regions, with one vehicle instead of many landers."
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Mode-locked laser",
+        "role": "generates the train of evenly spaced optical frequencies that form the comb.",
+        "parts": [
+          "gain medium",
+          "pump laser",
+          "mode-locking element",
+          "output coupler"
+        ]
+      },
+      {
+        "name": "Frequency stabilization",
+        "role": "locks the comb's spacing and offset to a stable reference so its absolute wavelengths are known.",
+        "parts": [
+          "atomic clock or GPS reference",
+          "cavity-stabilized laser",
+          "phase-locked loop electronics"
+        ]
+      },
+      {
+        "name": "Spectral broadening and filtering",
+        "role": "extends the comb across the spectrograph's band and matches line spacing to its resolution.",
+        "parts": [
+          "nonlinear optical fiber",
+          "optical amplifier",
+          "filter cavity or etalon"
+        ]
+      },
+      {
+        "name": "Delivery and scrambling",
+        "role": "brings the comb light to the spectrograph with the same beam geometry as starlight.",
+        "parts": [
+          "optical fiber",
+          "mode scrambler",
+          "beam-shaping optics"
+        ]
+      },
+      {
+        "name": "Calibration and analysis",
+        "role": "compares starlight positions with comb lines to measure wavelength shifts.",
+        "parts": [
+          "detector",
+          "calibration software",
+          "drift-correction algorithms"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Build the laser",
+        "detail": "Assemble a mode-locked laser — typically erbium fiber or titanium-sapphire — that emits a train of ultrashort pulses, producing thousands of evenly spaced optical frequencies."
+      },
+      {
+        "title": "Lock the repetition rate",
+        "detail": "Stabilize the pulse repetition rate to an atomic clock, GPS signal or stable cavity so the comb spacing is known."
+      },
+      {
+        "title": "Lock the carrier-envelope offset",
+        "detail": "Measure the offset frequency with an f-2f interferometer and feed it back to control electronics, anchoring every comb line absolutely."
+      },
+      {
+        "title": "Amplify and broaden",
+        "detail": "Boost the pulses and pass them through nonlinear optical fiber to spread the comb across the full wavelength range the spectrograph observes."
+      },
+      {
+        "title": "Filter the comb",
+        "detail": "Use a Fabry-Perot cavity or etalon to select lines at the spectrograph's resolution, preventing line blending."
+      },
+      {
+        "title": "Couple to the spectrograph",
+        "detail": "Inject the comb light through the same optical fiber as starlight, ensuring it takes the identical path so any instrumental drift affects both equally."
+      },
+      {
+        "title": "Calibrate and validate",
+        "detail": "Record the comb lines, compare them against known wavelengths, and then interleave comb exposures with starlight during observations."
+      },
+      {
+        "title": "Operate and monitor",
+        "detail": "Continuously track drift, correct the stellar spectrum against the comb, and flag any loss of lock."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mode-locked lasers",
+        "status": "exists",
+        "why": "they produce the stable, evenly spaced optical frequencies that form the comb."
+      },
+      {
+        "tech": "Optical frequency metrology",
+        "status": "exists",
+        "why": "techniques such as f-2f interferometry and phase locking are needed to anchor the comb to an absolute reference."
+      },
+      {
+        "tech": "High-resolution spectrographs",
+        "status": "exists",
+        "why": "they resolve individual comb lines and provide the dispersion needed for precise radial-velocity measurements."
+      },
+      {
+        "tech": "Nonlinear optical fibers",
+        "status": "exists",
+        "why": "they broaden the comb to cover the visible or near-infrared band of the spectrograph."
+      },
+      {
+        "tech": "Ultra-stable frequency references",
+        "status": "exists",
+        "why": "atomic clocks or GPS-disciplined oscillators keep the comb's absolute wavelengths stable over long campaigns."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "comb-calibrated spectrographs operating on a few flagship telescopes, mostly in visible light",
+        "unlocks": "radial-velocity precision approaching the few-centimetres-per-second level."
+      },
+      {
+        "stage": "Next",
+        "milestone": "near-infrared combs deployed for M-dwarf surveys",
+        "unlocks": "detection of low-mass planets in the habitable zones of nearby small stars."
+      },
+      {
+        "stage": "Next",
+        "milestone": "turnkey, automated comb systems needing minimal specialist operation",
+        "unlocks": "wider deployment across many observatories and longer monitoring campaigns."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "chip-scale or integrated photonic combs",
+        "unlocks": "affordable calibration for smaller telescopes and dedicated planet-hunting networks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "comb-calibrated spectrographs reaching one centimetre per second routinely",
+        "unlocks": "detection of true Earth-mass planets around Sun-like stars."
+      }
+    ]
+  }
+}

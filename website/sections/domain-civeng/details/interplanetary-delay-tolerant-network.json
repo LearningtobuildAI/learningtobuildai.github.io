@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Bundle layer",
+        "role": "stores and forwards whole messages, taking custody so data survives broken links.",
+        "parts": [
+          "bundle protocol agent",
+          "custody transfer logic",
+          "persistent storage queue"
+        ]
+      },
+      {
+        "name": "Contact scheduling and routing",
+        "role": "predicts when links exist and computes paths across the network.",
+        "parts": [
+          "contact plan",
+          "contact graph routing",
+          "schedule dissemination"
+        ]
+      },
+      {
+        "name": "Convergence layer adapters",
+        "role": "maps bundles onto specific radio or optical links.",
+        "parts": [
+          "Licklider Transmission Protocol over radio",
+          "IP-based transport",
+          "optical link framing"
+        ]
+      },
+      {
+        "name": "Security",
+        "role": "protects bundles while they sit on relay nodes and cross links.",
+        "parts": [
+          "Bundle Protocol Security",
+          "authentication and encryption",
+          "key management"
+        ]
+      },
+      {
+        "name": "Network management",
+        "role": "lets operators monitor, configure and diagnose nodes that cannot be reached in real time.",
+        "parts": [
+          "telemetry collection",
+          "command queueing",
+          "management information base"
+        ]
+      },
+      {
+        "name": "Application interface",
+        "role": "lets mission software send and receive data without managing links itself.",
+        "parts": [
+          "application programming interfaces",
+          "proxy services",
+          "priority queues"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Specify the protocol",
+        "detail": "Standards define the bundle format, custody transfer, routing, security and convergence layers so different agencies' nodes can interoperate."
+      },
+      {
+        "title": "Implement bundle agents",
+        "detail": "Software is written for each spacecraft, lander or relay to hold bundles in memory or flash and run routing logic."
+      },
+      {
+        "title": "Write convergence-layer drivers",
+        "detail": "Each physical link needs a driver that frames bundles for that radio or optical terminal and handles link-specific retransmission."
+      },
+      {
+        "title": "Build contact-plan tools",
+        "detail": "Orbital mechanics and link budgets are turned into schedules of when each pair of nodes can talk."
+      },
+      {
+        "title": "Integrate security",
+        "detail": "Bundle Protocol Security is added so bundles can be authenticated and encrypted even after passing through untrusted relays."
+      },
+      {
+        "title": "Test in emulation",
+        "detail": "A testbed simulates hours-long delays, intermittent contacts and node failures to verify store-and-forward behaviour."
+      },
+      {
+        "title": "Fly demonstrations",
+        "detail": "The stack is run on the International Space Station and on relay satellites to prove it works across real links."
+      },
+      {
+        "title": "Operate and extend",
+        "detail": "Deployed nodes are managed, contact plans updated, and the network grows as new relays are launched."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bundle Protocol standard",
+        "status": "exists",
+        "why": "it defines how bundles are formatted, stored and forwarded across disconnected nodes."
+      },
+      {
+        "tech": "Deep-space radio links",
+        "status": "exists",
+        "why": "they provide the physical transport over which bundles travel."
+      },
+      {
+        "tech": "Optical communications",
+        "status": "partial",
+        "why": "higher-rate laser links will let future DTN nodes move far more data per contact."
+      },
+      {
+        "tech": "Onboard storage and processing",
+        "status": "exists",
+        "why": "store-and-forward requires memory and computing on each node."
+      },
+      {
+        "tech": "Contact schedule prediction",
+        "status": "partial",
+        "why": "routing depends on knowing when links will exist; predictions must be accurate over long horizons."
+      },
+      {
+        "tech": "Security standards for DTN",
+        "status": "partial",
+        "why": "bundle security must work without real-time key exchange or online certificate checks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "BPv7 standardized and DTN experiments flown on the International Space Station",
+        "unlocks": "interoperable store-and-forward software across missions."
+      },
+      {
+        "stage": "Next",
+        "milestone": "operational lunar relay constellations",
+        "unlocks": "near-continuous communications for landers and rovers on the far side and poles."
+      },
+      {
+        "stage": "Next",
+        "milestone": "deep-space relay orbiters running DTN end to end",
+        "unlocks": "reliable Mars and outer-planet data return without a live path from Earth."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a solar-system internet of interoperable relays",
+        "unlocks": "human exploration and many robotic missions sharing one communications fabric."
+      }
+    ]
+  }
+}

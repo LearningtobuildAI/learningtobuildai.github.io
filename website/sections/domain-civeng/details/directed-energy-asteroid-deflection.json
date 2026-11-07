@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Beam source",
+        "role": "turns electrical power into a directed laser beam.",
+        "parts": [
+          "laser amplifier modules",
+          "beam-combining optics",
+          "cooling loop"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "supplies hundreds of kilowatts to megawatts of electricity in deep space.",
+        "parts": [
+          "large solar arrays or a fission reactor",
+          "radiators",
+          "power conditioning"
+        ]
+      },
+      {
+        "name": "Beam director",
+        "role": "points the beam at a chosen spot on a rotating body from millions of kilometres away.",
+        "parts": [
+          "large lightweight mirror or phased array",
+          "two-axis gimbal",
+          "wavefront sensor and adaptive optics",
+          "fine pointing loop"
+        ]
+      },
+      {
+        "name": "Spacecraft bus",
+        "role": "keeps the laser on station for years.",
+        "parts": [
+          "solar-electric or chemical propulsion",
+          "attitude control",
+          "avionics and deep-space radio"
+        ]
+      },
+      {
+        "name": "Target sensing",
+        "role": "chooses where to aim and watches the effect.",
+        "parts": [
+          "narrow-field cameras",
+          "laser rangefinder",
+          "infrared imager",
+          "tracking transponder or beacon"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Find and characterise the target",
+        "detail": "Survey telescopes and radar give an orbit; spectroscopy and thermal measurements give size, spin, shape and surface composition, since ablation behaves very differently on rock, metal and rubble."
+      },
+      {
+        "title": "Choose the architecture",
+        "detail": "A rendezvous spacecraft that flies alongside the asteroid needs far less beam power than a standoff array near Earth, because intensity falls with the square of distance. Most serious proposals assume the laser travels to the body."
+      },
+      {
+        "title": "Build and stack the beam source",
+        "detail": "Many identical laser modules are combined coherently, because no single laser reaches the required power with a clean enough beam. Ground work on beam combining and phase control sets the module design."
+      },
+      {
+        "title": "Test in vacuum on real material",
+        "detail": "Meteorite and asteroid-analogue samples are illuminated in vacuum chambers, and the recoil is measured on a thrust stand to establish the momentum delivered per joule for each material."
+      },
+      {
+        "title": "Assemble the spacecraft",
+        "detail": "Beam director, radiators and power source are integrated and tested end to end on the ground, including pointing stability at the arcsecond level."
+      },
+      {
+        "title": "Cruise and rendezvous",
+        "detail": "The craft is launched years or decades before a predicted close approach and matched to the asteroid's orbit, then holds a safe standoff distance while the body tumbles beneath it."
+      },
+      {
+        "title": "Illuminate and station-keep",
+        "detail": "The beam is focused on a spot and held there as the asteroid rotates, either by tracking the surface or by firing only on the same face each pass. Vapour and molten droplets must not foul the optics."
+      },
+      {
+        "title": "Measure the deflection",
+        "detail": "Ground radar and optical astrometry track the changed orbit; a beacon placed on the surface gives a direct, unambiguous velocity measurement rather than an inferred one."
+      },
+      {
+        "title": "Hold for years",
+        "detail": "The push continues over many orbital periods, with contingency margin in power, propellant and schedule in case the first estimate of the asteroid's mass was wrong."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-power lasers with good beam quality",
+        "status": "partial",
+        "why": "fibre and diode-pumped lasers combine to tens of kilowatts today; megawatt-class beams with the needed coherence do not yet fly in space."
+      },
+      {
+        "tech": "Large, lightweight space optics",
+        "status": "partial",
+        "why": "the spot size at the asteroid depends on aperture; deployable mirrors of the required size exist only in laboratory and concept studies."
+      },
+      {
+        "tech": "Megawatt-class in-space power and heat rejection",
+        "status": "partial",
+        "why": "solar arrays and radiators at this scale have not been flown; a reactor alternative adds mass and complexity."
+      },
+      {
+        "tech": "Asteroid physical characterisation",
+        "status": "partial",
+        "why": "ablation efficiency, porosity and spin are known for only a handful of bodies, and deflection depends on them."
+      },
+      {
+        "tech": "Deep-space precision pointing and autonomy",
+        "status": "exists",
+        "why": "spacecraft already hold arcsecond pointing and operate autonomously far from Earth, though not while carrying a multi-megawatt laser."
+      },
+      {
+        "tech": "Ablation physics validated at scale",
+        "status": "missing",
+        "why": "laboratory tests use millimetres of sample and seconds of exposure; years of continuous illumination on a real body are untested."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "kinetic impactor demonstrated on a real asteroid (DART, 2022) and a follow-up spacecraft on its way to survey the result",
+        "unlocks": "proof that altering an asteroid's orbit is possible at all, and a benchmark against which slower methods can be judged."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wide-field survey telescopes catalogue the population of hazardous near-Earth objects and give decades of warning",
+        "unlocks": "the lead time that any slow-push method such as laser ablation requires to be useful."
+      },
+      {
+        "stage": "Next",
+        "milestone": "vacuum ablation experiments on meteorite samples over long durations, with measured momentum coupling",
+        "unlocks": "engineering data to size a beam and predict a deflection reliably."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small rendezvous demonstration on a harmless near-Earth asteroid, illuminating it and measuring the velocity change directly",
+        "unlocks": "flight validation of pointing, station-keeping, thermal control and verification."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "an operational deflector able to move a body a few tens to a few hundreds of metres across, deployed decades ahead of a predicted impact",
+        "unlocks": "a reusable, verifiable planetary-defence capability that needs no nuclear devices and can be retargeted."
+      }
+    ]
+  }
+}

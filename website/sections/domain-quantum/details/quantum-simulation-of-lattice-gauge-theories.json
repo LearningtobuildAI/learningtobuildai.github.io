@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Quantum processor",
+        "role": "hosts the encoded gauge fields and matter as quantum states.",
+        "parts": [
+          "trapped-ion qubits",
+          "superconducting qubits",
+          "neutral-atom (Rydberg) arrays",
+          "laser and microwave control"
+        ]
+      },
+      {
+        "name": "Gauge-field encoding",
+        "role": "maps gauge links and matter onto qubits or qudits while respecting local constraints.",
+        "parts": [
+          "link variables",
+          "matter fields",
+          "Gauss-law constraint operators",
+          "truncation schemes"
+        ]
+      },
+      {
+        "name": "Time evolution",
+        "role": "drives real-time dynamics of the lattice gauge theory.",
+        "parts": [
+          "Trotterised quantum circuits",
+          "analog Hamiltonian evolution",
+          "native two-qubit gates"
+        ]
+      },
+      {
+        "name": "Measurement and readout",
+        "role": "extracts physical observables such as Wilson loops, string tension and particle masses.",
+        "parts": [
+          "single-shot readout",
+          "correlation measurements",
+          "quantum state tomography"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "reduces the effect of noise on simulation results.",
+        "parts": [
+          "symmetry verification",
+          "zero-noise extrapolation",
+          "future error-correcting codes"
+        ]
+      },
+      {
+        "name": "Classical co-processing and validation",
+        "role": "compares small-system results against exact classical methods.",
+        "parts": [
+          "exact diagonalisation",
+          "tensor network algorithms",
+          "parameter optimisation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the gauge theory and lattice",
+        "detail": "Select a model — for example U(1) or SU(2) — and discretise it on a 1D or 2D lattice using a Kogut-Susskind Hamiltonian."
+      },
+      {
+        "title": "Encode degrees of freedom",
+        "detail": "Map gauge links and matter fields onto qubits or qudits, truncating the infinite-dimensional link Hilbert space and imposing the Gauss law as constraints or penalty terms."
+      },
+      {
+        "title": "Design constraint-preserving circuits or analog Hamiltonian",
+        "detail": "Build Trotter steps or native interactions that keep the state within the gauge-invariant subspace throughout the evolution."
+      },
+      {
+        "title": "Implement on quantum hardware",
+        "detail": "Compile the sequence for a trapped-ion, superconducting or neutral-atom platform, calibrating gates and readout for the required fidelity."
+      },
+      {
+        "title": "Validate on small systems classically",
+        "detail": "Compare results for a few sites in 1D against exact diagonalisation or tensor network calculations to confirm the encoding and evolution are correct."
+      },
+      {
+        "title": "Run real-time dynamics",
+        "detail": "Prepare an initial state, quench the Hamiltonian and measure observables such as string breaking, hadron masses or thermalisation."
+      },
+      {
+        "title": "Apply error mitigation",
+        "detail": "Use symmetry verification, zero-noise extrapolation and other techniques to reduce noise and extrapolate to the ideal result."
+      },
+      {
+        "title": "Scale to larger lattices and higher dimensions",
+        "detail": "Increase qubit count and connectivity to move from 1D chains to 2D grids, and eventually toward 3D."
+      },
+      {
+        "title": "Integrate error correction",
+        "detail": "Replace physical qubits with fault-tolerant logical qubits to simulate real quantum chromodynamics over long times."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum computing hardware with high-fidelity gates",
+        "status": "partial",
+        "why": "current devices have limited qubit counts, connectivity and coherence times; better fidelity is needed for larger lattices."
+      },
+      {
+        "tech": "Qubit-efficient encodings of gauge fields",
+        "status": "partial",
+        "why": "gauge fields are infinite-dimensional, so truncation and encoding schemes are an active area of research."
+      },
+      {
+        "tech": "Error mitigation and correction",
+        "status": "partial",
+        "why": "near-term devices require mitigation, while large-scale simulations need fault-tolerant error correction that does not yet exist for this scale."
+      },
+      {
+        "tech": "Classical simulation methods for validation",
+        "status": "exists",
+        "why": "exact diagonalisation and tensor networks provide benchmarks for small systems and help design the quantum algorithm."
+      },
+      {
+        "tech": "Theory of lattice gauge theories and the sign problem",
+        "status": "exists",
+        "why": "the mathematical framework and the classical sign problem that motivates quantum simulation are well established."
+      },
+      {
+        "tech": "Scalable control and readout for many qubits",
+        "status": "partial",
+        "why": "2D and 3D lattices demand individual control and readout of hundreds to thousands of qubits with low crosstalk."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale simulations of 1D gauge theories on 10–20 qubits across trapped-ion, superconducting and Rydberg platforms",
+        "unlocks": "proof-of-principle for real-time dynamics such as string breaking and the Schwinger model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "2D simulations with tens of qubits and improved error mitigation",
+        "unlocks": "study of confinement, thermalisation and phase transitions beyond 1D."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant demonstrations for simple gauge models such as U(1) in 2D",
+        "unlocks": "longer time dynamics and larger lattices with reliable results."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "error-corrected quantum simulation of SU(3) quantum chromodynamics in 3+1 dimensions",
+        "unlocks": "first-principles calculations of nuclear and particle physics, including neutron-star matter and early-universe conditions."
+      }
+    ]
+  }
+}

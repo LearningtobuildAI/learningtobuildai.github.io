@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Flight laser transceiver",
+        "role": "generates a modulated near-infrared beam and receives the uplink.",
+        "parts": [
+          "1550 nm laser transmitter",
+          "modulator",
+          "telescope optics",
+          "uplink beacon detector",
+          "electronics and power conditioning"
+        ]
+      },
+      {
+        "name": "Precision pointing assembly",
+        "role": "holds the beam on a target thousands to hundreds of millions of kilometres away, where the beam has spread to hundreds of kilometres across.",
+        "parts": [
+          "fine steering mirror",
+          "coarse gimbal",
+          "inertial and star trackers",
+          "control loop"
+        ]
+      },
+      {
+        "name": "Ground receive station",
+        "role": "collects the faint photon stream and converts it to data.",
+        "parts": [
+          "large-aperture telescope (several metres)",
+          "superconducting nanowire single-photon detector array",
+          "cryogenic cooler",
+          "photon-counting and decoding electronics"
+        ]
+      },
+      {
+        "name": "Adaptive optics",
+        "role": "removes the smearing and fading that atmospheric turbulence imposes on a beam.",
+        "parts": [
+          "deformable mirror",
+          "wavefront sensor",
+          "real-time control computer"
+        ]
+      },
+      {
+        "name": "Ground beacon transmitter",
+        "role": "sends a laser reference the spacecraft can lock onto, and can carry uplink data.",
+        "parts": [
+          "1064 nm beacon laser",
+          "point-ahead controller",
+          "elevation/azimuth mount"
+        ]
+      },
+      {
+        "name": "Ground network and scheduling",
+        "role": "one station cannot see through clouds, so several sites share the pass.",
+        "parts": [
+          "geographically separated optical stations",
+          "weather forecasting and handover software",
+          "interface to radio deep-space network"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the link budget",
+        "detail": "Work out photons received per bit from laser power, aperture size, distance and background light, then pick wavelength, modulation and coding."
+      },
+      {
+        "title": "Build the flight laser and optics",
+        "detail": "A ruggedised near-infrared laser and telescope are assembled on a thermally stable optical bench."
+      },
+      {
+        "title": "Align the bench interferometrically",
+        "detail": "Optical elements are positioned to sub-micrometre tolerances and bonded so they stay aligned through launch vibration."
+      },
+      {
+        "title": "Qualify for space",
+        "detail": "Thermal-vacuum cycling, vibration and radiation testing prove the terminal survives launch and the space environment."
+      },
+      {
+        "title": "Build the ground station",
+        "detail": "A large telescope is fitted with adaptive optics and a cryogenically cooled single-photon detector array, plus a beacon laser."
+      },
+      {
+        "title": "Establish acquisition",
+        "detail": "The spacecraft scans its beacon over the expected ground-station position; the station detects it, and both sides close their tracking loops."
+      },
+      {
+        "title": "Run link tests at increasing range",
+        "detail": "Short-range tests near Earth, then progressively longer distances, log data rate against range, cloud cover and Sun angle."
+      },
+      {
+        "title": "Integrate with the mission",
+        "detail": "The optical terminal is handed over to the spacecraft's data system as one link option alongside radio, with automated fallback to radio when weather blocks the site."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space-qualified near-infrared lasers",
+        "status": "exists",
+        "why": "the transmitter must survive launch and run reliably for years without servicing."
+      },
+      {
+        "tech": "Superconducting nanowire single-photon detectors",
+        "status": "exists",
+        "why": "they count individual photons with low noise, which is what makes a faint deep-space signal readable; they need cryogenic cooling."
+      },
+      {
+        "tech": "Adaptive optics",
+        "status": "exists",
+        "why": "developed for astronomy, it corrects turbulence so the ground telescope can collect the beam efficiently."
+      },
+      {
+        "tech": "Sub-micro-radian pointing and stabilisation",
+        "status": "partial",
+        "why": "the beam is narrow enough that tiny attitude errors lose the link entirely, and pointing must be offset for the light travel time."
+      },
+      {
+        "tech": "Optical relay orbiters",
+        "status": "partial",
+        "why": "a relay near Earth or at a planet lets a distant spacecraft transmit at a convenient time and removes daylight background problems."
+      },
+      {
+        "tech": "Cloud-free ground station network",
+        "status": "partial",
+        "why": "a single site can be unusable for days; site diversity across continents is what turns a demonstration into a dependable service."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "NASA's Deep Space Optical Communications payload on the Psyche spacecraft, launched in 2023, demonstrated hundreds of megabits per second at tens of millions of kilometres and continued to operate far beyond the Moon's distance",
+        "unlocks": "confidence that deep-space laser links work in flight and that photon-counting ground stations can decode them."
+      },
+      {
+        "stage": "Next",
+        "milestone": "optical relay terminals on lunar and planetary orbiters linking to orbiting relays and to ground",
+        "unlocks": "removes dependence on a single ground station and gives a path to a continuous optical network rather than a single direct link."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a multi-continent optical ground station network with automated handover and weather routing",
+        "unlocks": "availability approaching the reliability of the radio deep-space network."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "integrated radio-optical deep-space backbone with a standard optical interface for spacecraft",
+        "unlocks": "high-definition and multi-instrument data from Mars and beyond, including the volume human missions would need."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "The quantum dot",
+        "role": "a semiconductor island a few tens of nanometres across that traps charge carriers in three dimensions so they recombine one at a time.",
+        "parts": [
+          "InAs or GaAs dot",
+          "GaAs or InP barrier and capping layers",
+          "wetting layer"
+        ]
+      },
+      {
+        "name": "Charge-control structure",
+        "role": "locks the dot into a chosen charge state so every emission event is identical.",
+        "parts": [
+          "p-i-n diode or gate electrodes",
+          "charge-stabilisation layers",
+          "bias supply"
+        ]
+      },
+      {
+        "name": "Optical cavity",
+        "role": "funnels emission into one spatial mode and speeds up the radiative transition.",
+        "parts": [
+          "micropillar, photonic-crystal or circular Bragg grating",
+          "Bragg mirrors or grating reflectors",
+          "waveguide coupler"
+        ]
+      },
+      {
+        "name": "Excitation and filtering",
+        "role": "drives the dot coherently and removes the pump light from the output.",
+        "parts": [
+          "narrow-linewidth tunable laser",
+          "polarisation optics",
+          "notch filters or etalons",
+          "spectral filter"
+        ]
+      },
+      {
+        "name": "Cryogenics and mounting",
+        "role": "many dots only behave well within a few tens of kelvin.",
+        "parts": [
+          "closed-cycle or helium cryostat",
+          "vibration isolation",
+          "sample stage with piezo positioning"
+        ]
+      },
+      {
+        "name": "Detection and verification",
+        "role": "proves one photon at a time and proves two photons are identical.",
+        "parts": [
+          "superconducting nanowire single-photon detectors",
+          "time-tagging electronics",
+          "Hong–Ou–Mandel interferometer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the wafer",
+        "detail": "Molecular beam epitaxy deposits indium arsenide on gallium arsenide. Above a critical coverage of roughly 1.7 monolayers the strain relief makes the film break into small islands — the dots — which are then capped."
+      },
+      {
+        "title": "Tune the emission wavelength",
+        "detail": "Dot size and composition set the energy. Indium arsenide dots in gallium arsenide emit near 900 nm; indium arsenide dots in indium phosphide shift emission into the 1300–1550 nm telecom bands."
+      },
+      {
+        "title": "Build the diode or gate structure",
+        "detail": "Layers are grown or deposited above and below the dot layer and contacts are patterned, so the charge state can be set electrically rather than left to chance."
+      },
+      {
+        "title": "Find a good dot and place the cavity around it",
+        "detail": "The wafer is cooled and mapped by photoluminescence to locate dots with the right wavelength and little charge noise. Lithography aligned to that position, sometimes written at cryogenic temperature, patterns the cavity around the chosen dot."
+      },
+      {
+        "title": "Etch the cavity",
+        "detail": "Electron-beam lithography and dry etching carve a micropillar, photonic-crystal membrane or bullseye grating that overlaps the dot's optical mode."
+      },
+      {
+        "title": "Bring dot and cavity into resonance",
+        "detail": "Temperature, applied electric field or gas condensation is used to shift the dot's emission line onto the cavity resonance, sacrificing some spectral purity for a large gain in collection efficiency."
+      },
+      {
+        "title": "Drive it resonantly",
+        "detail": "Instead of pumping above the bandgap, a laser is tuned exactly onto a transition of the charged dot. This suppresses timing jitter and charge noise, giving photons that are almost perfectly identical."
+      },
+      {
+        "title": "Characterise the photons",
+        "detail": "Photon correlation shows the probability of two photons at once falling far below the classical limit, and two-photon interference between successively emitted photons measures indistinguishability."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Self-assembled epitaxy of semiconductor quantum dots",
+        "status": "exists",
+        "why": "the dot itself must be grown with near-atomic control for every device to emit at the same wavelength."
+      },
+      {
+        "tech": "Cryogenic cooling to a few kelvin to a few tens of kelvin",
+        "status": "exists",
+        "why": "thermal energy otherwise washes out the sharp optical transitions that make the photons indistinguishable."
+      },
+      {
+        "tech": "Nanofabrication of optical cavities",
+        "status": "exists",
+        "why": "without a cavity most photons escape in the wrong direction and the source is far too dim to be useful."
+      },
+      {
+        "tech": "Narrow-linewidth stabilised lasers and spectral filtering",
+        "status": "exists",
+        "why": "resonant excitation gives the best photon quality but leaves a strong laser that must be separated from single photons."
+      },
+      {
+        "tech": "Deterministic, scalable integration with photonic circuits",
+        "status": "partial",
+        "why": "sources are still mostly individual devices aligned one at a time; a photonic processor needs many identical sources on one chip."
+      },
+      {
+        "tech": "Near-unity-efficiency single-photon detectors",
+        "status": "exists",
+        "why": "every claim about source quality is limited by how well the photons are counted."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory sources with strong antibunching and two-photon interference visibility above 0.9, best cases approaching 0.99, and entangled pairs from the biexciton cascade",
+        "unlocks": "small multi-photon experiments, quantum repeater testbeds and device-independent quantum key distribution demonstrations."
+      },
+      {
+        "stage": "Next",
+        "milestone": "electrically driven sources with telecom-wavelength emission and operation at higher temperature",
+        "unlocks": "rack-mountable, cryogenics-light transmitters for deployed fibre networks."
+      },
+      {
+        "stage": "Next",
+        "milestone": "arrays of dots positioned deterministically and coupled on-chip to waveguides and interferometers",
+        "unlocks": "photonic processors that fuse many single photons at once, and multi-node entanglement distribution."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "foundry-style wafers of identical sources with integrated detectors and switches",
+        "unlocks": "fault-tolerant photonic quantum computing and a scalable quantum internet, if photon loss and source uniformity can be solved."
+      }
+    ]
+  }
+}

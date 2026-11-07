@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Clean sample handling",
+        "role": "keeps ancient, biomarker-poor rock from being polluted by modern organic matter.",
+        "parts": [
+          "solvent-washed coring and crushing tools",
+          "procedural blanks",
+          "cleanroom benches"
+        ]
+      },
+      {
+        "name": "Extraction",
+        "role": "pulls free lipids out of powdered rock.",
+        "parts": [
+          "solvent (dichloromethane/methanol)",
+          "accelerated solvent extractor or Soxhlet apparatus",
+          "sulphur removal (copper)"
+        ]
+      },
+      {
+        "name": "Fractionation",
+        "role": "splits the extract into chemical classes so the mass spectrometer is not swamped.",
+        "parts": [
+          "silica or alumina column",
+          "saturate, aromatic and polar fractions",
+          "preparative HPLC"
+        ]
+      },
+      {
+        "name": "Derivatisation",
+        "role": "makes polar molecules like sterols and fatty acids volatile enough to travel through a gas chromatograph.",
+        "parts": [
+          "silylating and methylating reagents",
+          "heating block"
+        ]
+      },
+      {
+        "name": "Gas chromatography–mass spectrometry",
+        "role": "separates individual molecular fossils and gives each a diagnostic mass spectrum.",
+        "parts": [
+          "capillary column and oven",
+          "electron-impact ion source",
+          "quadrupole or time-of-flight analyser"
+        ]
+      },
+      {
+        "name": "Isotope ratio mass spectrometry",
+        "role": "measures the carbon-13 content of a single molecule, revealing which carbon fixation pathway made it.",
+        "parts": [
+          "combustion interface",
+          "isotope ratio mass spectrometer",
+          "reference gas standards"
+        ]
+      },
+      {
+        "name": "Reference library and interpretation",
+        "role": "matches spectra and retention times to known biomarkers and known ages.",
+        "parts": [
+          "hopane and sterane standard mixtures",
+          "retention-time and mass-spectral databases",
+          "blanks and contamination assessments"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect uncontaminated samples",
+        "detail": "Drill cores are preferred over surface outcrops; exposed faces and fissures that could carry younger oil or microbes are discarded, and samples are frozen or dried quickly."
+      },
+      {
+        "title": "Crush and extract",
+        "detail": "Tens to hundreds of grams of rock are ground in a solvent-cleaned mill and repeatedly extracted hot with organic solvent until the lipids are released."
+      },
+      {
+        "title": "Clean and fractionate",
+        "detail": "Elemental sulphur is removed with activated copper, then the extract is passed down a silica column and eluted into saturated hydrocarbon, aromatic and polar fractions."
+      },
+      {
+        "title": "Derivatise the polar fraction",
+        "detail": "Alcohols and acids are converted to silyl esters and methyl esters so they will vaporise in the chromatograph."
+      },
+      {
+        "title": "Separate and identify",
+        "detail": "Gas chromatography resolves the mixture; the mass spectrometer records spectra, and selected-ion monitoring at the hopane and sterane diagnostic masses picks out the molecular fossils."
+      },
+      {
+        "title": "Run blanks and standards",
+        "detail": "Every batch includes solvent blanks and known standard mixtures; any compound that also appears in the blank is treated as contamination, not as a biosignature."
+      },
+      {
+        "title": "Measure carbon isotopes",
+        "detail": "Individual peaks are routed through a combustion interface into an isotope ratio mass spectrometer to give a carbon-13 value per molecule."
+      },
+      {
+        "title": "Release bound biomarkers",
+        "detail": "For very old or heavily altered rocks, hydropyrolysis is used to crack biomarkers out of the kerogen that has held them since deposition."
+      },
+      {
+        "title": "Interpret against context",
+        "detail": "The biomarker assemblage and its isotopes are compared with the rock's age, thermal history and depositional setting before any claim about ancient life is made."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Gas chromatography–mass spectrometry",
+        "status": "exists",
+        "why": "the workhorse that separates and identifies compounds at nanogram levels."
+      },
+      {
+        "tech": "Compound-specific isotope ratio mass spectrometry",
+        "status": "exists",
+        "why": "ties each molecule to the metabolism that produced it, not just its identity."
+      },
+      {
+        "tech": "Ultra-clean sampling and contamination control",
+        "status": "partial",
+        "why": "ancient rocks contain so little lipid that a fingerprint of modern carbon can overwhelm the signal; several high-profile Archean biomarker claims were later challenged as contamination from younger oil."
+      },
+      {
+        "tech": "Hydropyrolysis and bound-biomarker release",
+        "status": "partial",
+        "why": "most biomarker carbon in very old rocks is bound in kerogen and only recoverable by catalytic cracking."
+      },
+      {
+        "tech": "Flight-capable miniaturised GC-MS",
+        "status": "partial",
+        "why": "in-situ use on other planets needs instruments that survive launch, vacuum and radiation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine GC-MS and GC-IRMS biomarker work in petroleum and geobiology laboratories",
+        "unlocks": "molecular records of bacteria and eukaryotes in rocks hundreds of millions of years old, and precise thermal-history models for oil exploration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in-situ analysis on Mars with a rover-mounted GC-MS such as the ExoMars Rosalind Franklin rover's MOMA instrument",
+        "unlocks": "screening of drilled samples for organic molecules before any sample is returned."
+      },
+      {
+        "stage": "Next",
+        "milestone": "returned-sample analysis under ultra-clean protocols in terrestrial laboratories",
+        "unlocks": "the contamination controls needed to make a convincing claim about extra-terrestrial lipids."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "microfluidic lab-on-chip separations and automated spectral interpretation",
+        "unlocks": "field-portable and ocean-world instruments that can search for biosignatures where no sample can be brought home."
+      }
+    ]
+  }
+}

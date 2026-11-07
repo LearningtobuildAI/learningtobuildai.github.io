@@ -1,0 +1,137 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Signal delivery lines",
+        "role": "carry microwave control and readout signals from room temperature to the mixing chamber with minimal loss and noise.",
+        "parts": [
+          "phosphor-bronze coaxial cables",
+          "attenuators",
+          "low-pass filters",
+          "infrared filters"
+        ]
+      },
+      {
+        "name": "Thermal anchoring",
+        "role": "intercept heat conducted down the cables at each cooling stage so the dilution unit is not overloaded.",
+        "parts": [
+          "copper clamps",
+          "heat-sinking blocks",
+          "thermal straps",
+          "vacuum feedthroughs"
+        ]
+      },
+      {
+        "name": "Superconducting flexible circuits",
+        "role": "replace bulky coax bundles with high-density ribbons that carry many signals through narrow apertures.",
+        "parts": [
+          "niobium or niobium-titanium traces",
+          "polyimide substrates",
+          "superconducting connectors"
+        ]
+      },
+      {
+        "name": "Noise isolation",
+        "role": "prevent room-temperature noise and back-action from reaching the qubits.",
+        "parts": [
+          "circulators",
+          "isolators",
+          "directional couplers",
+          "shielding enclosures"
+        ]
+      },
+      {
+        "name": "Multiplexing and control electronics",
+        "role": "reduce the number of physical lines by sharing control and readout across qubits.",
+        "parts": [
+          "cryogenic multiplexers",
+          "room-temperature waveform generators",
+          "digitizers",
+          "FPGA controllers"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the signal chain and heat budget",
+        "detail": "Each line's attenuation, filtering and thermal anchoring are chosen so the total heat load stays within the refrigerator's cooling power at every stage."
+      },
+      {
+        "title": "Select materials and components",
+        "detail": "Cables are chosen for low thermal conductivity and low loss; attenuators and filters must work at cryogenic temperatures."
+      },
+      {
+        "title": "Fabricate superconducting ribbons",
+        "detail": "Thin films of niobium or niobium-titanium are deposited on flexible polyimide, patterned into many parallel traces, and terminated with superconducting connectors."
+      },
+      {
+        "title": "Assemble the harness",
+        "detail": "Coaxial lines, attenuators, filters and circulators are soldered or clamped together into a loom that fits the refrigerator's internal space."
+      },
+      {
+        "title": "Thermally anchor at each stage",
+        "detail": "The harness is clamped to copper stages at 50 K, 4 K, the still, the cold plate and the mixing chamber, often with a deliberate length of cable to isolate heat."
+      },
+      {
+        "title": "Route and connect",
+        "detail": "The loom is threaded through the cryostat's narrow ports and connected to the qubit chip and to room-temperature electronics."
+      },
+      {
+        "title": "Test and characterise",
+        "detail": "Signal loss, noise temperature, crosstalk and heat load are measured; wiring is often the limiting factor on how many qubits can be operated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dilution refrigerators",
+        "status": "exists",
+        "why": "they provide the millikelvin temperatures superconducting qubits need."
+      },
+      {
+        "tech": "Superconducting materials and thin-film fabrication",
+        "status": "exists",
+        "why": "needed for low-loss flexible circuits and connectors."
+      },
+      {
+        "tech": "Low-noise room-temperature electronics",
+        "status": "exists",
+        "why": "generate and read the microwave pulses; their noise must be filtered out."
+      },
+      {
+        "tech": "Cryogenic multiplexers",
+        "status": "partial",
+        "why": "demonstrated but not yet standard, they are key to scaling beyond hundreds of qubits."
+      },
+      {
+        "tech": "High-density cryogenic connectors",
+        "status": "partial",
+        "why": "current connectors are bulky and add heat load; denser versions are under development."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "manual wiring of tens to hundreds of qubits",
+        "unlocks": "current noisy intermediate-scale quantum processors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated superconducting ribbons with on-board attenuators and filters",
+        "unlocks": "higher qubit counts in the same refrigerator."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cryogenic multiplexers and control electronics",
+        "unlocks": "thousands of qubits with manageable wiring."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "optical or wireless signal delivery inside the cryostat",
+        "unlocks": "further reduction in heat load and cabling complexity."
+      }
+    ]
+  }
+}

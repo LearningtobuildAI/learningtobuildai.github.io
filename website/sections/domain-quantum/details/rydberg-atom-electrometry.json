@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Atomic vapour cell",
+        "role": "holds the alkali metal vapour in which Rydberg atoms are created and probed.",
+        "parts": [
+          "glass cell",
+          "alkali metal reservoir (e.g. rubidium or caesium)",
+          "heater and temperature controller"
+        ]
+      },
+      {
+        "name": "Laser system",
+        "role": "excites atoms to high-lying Rydberg states via a two-photon electromagnetically induced transparency (EIT) scheme.",
+        "parts": [
+          "probe laser",
+          "coupling laser",
+          "frequency stabilisation optics",
+          "beam combining and steering optics"
+        ]
+      },
+      {
+        "name": "Optical detection",
+        "role": "measures the transmitted probe beam to record the EIT spectrum.",
+        "parts": [
+          "photodetector",
+          "transimpedance amplifier",
+          "data acquisition electronics"
+        ]
+      },
+      {
+        "name": "RF coupling",
+        "role": "delivers the radio-frequency field under test to the atoms.",
+        "parts": [
+          "waveguide or free-space coupling structure",
+          "optional reference field for phase measurement"
+        ]
+      },
+      {
+        "name": "Magnetic field control",
+        "role": "cancels stray magnetic fields that would shift Rydberg energy levels and broaden the EIT line.",
+        "parts": [
+          "mu-metal shield",
+          "Helmholtz coils",
+          "stable current supply"
+        ]
+      },
+      {
+        "name": "Signal processing and calibration",
+        "role": "extracts amplitude and phase from the EIT spectrum and converts them to field units using atomic constants.",
+        "parts": [
+          "computer",
+          "curve-fitting algorithms",
+          "atomic physics model"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the vapour cell",
+        "detail": "A glass cell is blown and loaded with a small amount of alkali metal, then sealed under vacuum; a heater and temperature sensor are attached to control vapour density."
+      },
+      {
+        "title": "Set up the laser system",
+        "detail": "Probe and coupling diode lasers are mounted, their frequencies locked to atomic transitions using saturation spectroscopy or similar techniques."
+      },
+      {
+        "title": "Align the optical path",
+        "detail": "The two laser beams are combined, directed through the vapour cell, and aligned to maximise the EIT transmission peak."
+      },
+      {
+        "title": "Integrate RF coupling",
+        "detail": "The cell is placed in a known RF environment — a waveguide, a horn, or free space — so the field to be measured interacts with the atoms."
+      },
+      {
+        "title": "Shield magnetic fields",
+        "detail": "A mu-metal enclosure and compensation coils reduce the ambient magnetic field to below the level that would disturb the Rydberg states."
+      },
+      {
+        "title": "Characterise EIT without RF",
+        "detail": "The transmitted probe power is recorded as the coupling laser frequency is scanned, establishing the baseline EIT line shape."
+      },
+      {
+        "title": "Apply RF and measure the spectrum",
+        "detail": "The RF field is switched on; it splits or shifts the EIT peak by an amount proportional to the field strength, and the new spectrum is recorded."
+      },
+      {
+        "title": "Calibrate and validate",
+        "detail": "The measured splitting is converted to electric field units using atomic dipole moments and fundamental constants, then compared with a conventional calibrated antenna in a known field."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Rydberg atoms and electromagnetically induced transparency",
+        "status": "exists",
+        "why": "the sensing mechanism relies on well-understood atomic physics and laser spectroscopy."
+      },
+      {
+        "tech": "Narrow-linewidth tunable lasers",
+        "status": "exists",
+        "why": "stable, narrow-line lasers are needed to resolve the EIT feature and lock to atomic transitions."
+      },
+      {
+        "tech": "Alkali vapour cells",
+        "status": "exists",
+        "why": "commercial cells provide a convenient, room-temperature medium for Rydberg excitation."
+      },
+      {
+        "tech": "Magnetic shielding",
+        "status": "exists",
+        "why": "Rydberg levels are highly sensitive to magnetic fields, so shielding is required for accurate measurements."
+      },
+      {
+        "tech": "Accurate atomic RF interaction models",
+        "status": "partial",
+        "why": "theory is well developed, but extending it to arbitrary field configurations and high accuracy is still an active area."
+      },
+      {
+        "tech": "Compact, field-deployable integration",
+        "status": "missing",
+        "why": "today's demonstrations are laboratory setups; shrinking them into portable, robust instruments remains to be done."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory demonstrations of self-calibrated RF field measurement using Rydberg EIT",
+        "unlocks": "a calibration-free alternative to conventional antennas for metrology."
+      },
+      {
+        "stage": "Next",
+        "milestone": "improved sensitivity, bandwidth and dynamic range through better lasers, cells and detection",
+        "unlocks": "measurement of weaker fields and broader frequency coverage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "field trials for antenna calibration, RF metrology and communications",
+        "unlocks": "practical validation against established standards in real environments."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commercial traceable RF field probes, possibly chip-scale",
+        "unlocks": "routine, portable, self-calibrating electric-field sensing."
+      }
+    ]
+  }
+}

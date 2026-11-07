@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Sample intake and fluidics",
+        "role": "takes in a few cubic centimetres of plume ice, brine or meltwater and moves it through the chip without contamination.",
+        "parts": [
+          "inlet and filter",
+          "micropumps and valves",
+          "sample loop",
+          "mixing channels",
+          "waste reservoir"
+        ]
+      },
+      {
+        "name": "Labelling reactor",
+        "role": "tags amino acids with a fluorescent dye so they can be seen at very low concentration.",
+        "parts": [
+          "reagent reservoirs",
+          "reaction channel held at controlled temperature",
+          "mixing serpentine"
+        ]
+      },
+      {
+        "name": "Separation channel",
+        "role": "capillary electrophoresis that separates amino acids by charge and size, and resolves D from L enantiomers.",
+        "parts": [
+          "fused-silica or glass capillary channel",
+          "background electrolyte and chiral selector (e.g. cyclodextrin)",
+          "high-voltage electrodes"
+        ]
+      },
+      {
+        "name": "Fluorescence detector",
+        "role": "measures the light emitted by labelled molecules as they pass a point on the channel.",
+        "parts": [
+          "laser diode or LED excitation source",
+          "optical filters and lenses",
+          "photomultiplier or avalanche photodiode",
+          "confocal detection region"
+        ]
+      },
+      {
+        "name": "Control and data electronics",
+        "role": "runs the separation sequence and turns detector counts into a chromatogram.",
+        "parts": [
+          "high-voltage supply",
+          "pump drivers",
+          "analogue-to-digital acquisition",
+          "onboard analysis software"
+        ]
+      },
+      {
+        "name": "Chip substrate",
+        "role": "the physical platform that holds all channels, ports and electrodes in one bonded stack.",
+        "parts": [
+          "glass, fused-silica or polymer layers",
+          "bonded fluidic vias",
+          "electrode pads"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the channel layout",
+        "detail": "A mask is drawn for the intake, reactor, injection cross and separation channel, sized so the separation length fits on a chip of a few centimetres."
+      },
+      {
+        "title": "Fabricate the chip",
+        "detail": "Channels tens of micrometres wide and deep are patterned by photolithography and etched or moulded into glass, fused silica or polymer."
+      },
+      {
+        "title": "Bond and integrate",
+        "detail": "Layers are bonded to close the channels; fluidic ports, electrodes and a detection window are aligned and sealed."
+      },
+      {
+        "title": "Build the optics",
+        "detail": "A laser or LED, filters and a photodetector are mounted and aligned to a fixed point on the separation channel."
+      },
+      {
+        "title": "Establish the chemistry",
+        "detail": "Labelling reagent, buffer and a chiral selector are chosen and tested against standard mixtures of amino acids to confirm the reaction works inside a chip."
+      },
+      {
+        "title": "Validate chiral separation",
+        "detail": "Mixtures of known D and L standards are run to show the enantiomers appear as separate peaks; detection limits and the smallest measurable enantiomeric excess are measured."
+      },
+      {
+        "title": "Harden for flight",
+        "detail": "The instrument is shrunk and tested against vibration, thermal vacuum, radiation and autonomous operation, because no operator can intervene on a spacecraft."
+      },
+      {
+        "title": "Test on analogue samples",
+        "detail": "The chip is run on terrestrial analogues such as glacier ice, sea ice brine and sulfate-rich spring deposits to prove it copes with real, messy samples."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chiral capillary electrophoresis and micellar electrokinetic chromatography",
+        "status": "exists",
+        "why": "this is the only routine way to resolve D and L amino acids in tiny liquid volumes."
+      },
+      {
+        "tech": "Fluorescent derivatisation of amino acids",
+        "status": "exists",
+        "why": "reagents such as fluorescamine or naphthalene-2,3-dicarboxaldehyde make amino acids detectable far below micromolar."
+      },
+      {
+        "tech": "Microfluidic chip fabrication and bonding",
+        "status": "exists",
+        "why": "channels, pumps, valves and reaction zones must be merged onto one sealed device."
+      },
+      {
+        "tech": "Miniature lasers and sensitive photodetectors",
+        "status": "exists",
+        "why": "single-molecule-level fluorescence needs compact, low-power optics."
+      },
+      {
+        "tech": "Flight-qualified wet-chemistry microfluidics",
+        "status": "partial",
+        "why": "microfluidic capillary-electrophoresis instruments such as the JPL 'Chemical Laptop' have been demonstrated in the lab, but no wet-chemistry lab-on-a-chip has yet operated on a planetary mission."
+      },
+      {
+        "tech": "Plume sample capture",
+        "status": "partial",
+        "why": "Enceladus' plume was sampled and analysed remotely by Cassini, but collecting ice grains intact on a fast flyby and delivering them to a chip is not yet demonstrated."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "bench prototypes separate amino acid standards and measure enantiomeric excess at sub-nanomolar levels",
+        "unlocks": "proof that chiral analysis can be squeezed onto a chip."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integrated, automated instrument tested on ocean-world analogue ices and brines",
+        "unlocks": "confidence that the chemistry survives real samples."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a flight-qualified package small enough to ride on a plume-flyby or lander mission",
+        "unlocks": "in-situ chirality measurements rather than remote sensing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "analysis of plume material at Enceladus or Europa",
+        "unlocks": "the first direct test for a non-racemic, potentially biological signature beyond Earth."
+      }
+    ]
+  }
+}

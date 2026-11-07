@@ -1,0 +1,165 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Antenna array",
+        "role": "collects faint 1–50 MHz signals; individual elements are simple, but many are needed and they must be physically spread out.",
+        "parts": [
+          "electrically short dipole or monopole elements",
+          "deployable or rover-laid feed lines",
+          "ground plane or lunar regolith as reflector"
+        ]
+      },
+      {
+        "name": "Low-frequency receiver",
+        "role": "amplifies and digitises a very weak sky signal without adding noise of its own.",
+        "parts": [
+          "wideband low-noise amplifiers",
+          "direct-sampling digitiser",
+          "onboard spectrometer",
+          "calibration source"
+        ]
+      },
+      {
+        "name": "Interference control",
+        "role": "keeps the instrument's own electronics from drowning the signal, since the Moon blocks Earth but not the spacecraft.",
+        "parts": [
+          "shielded and filtered electronics enclosure",
+          "battery-only operation during observations",
+          "solar panels switched off while observing"
+        ]
+      },
+      {
+        "name": "Deployment system",
+        "role": "puts antennas on the surface or unfolds them in orbit.",
+        "parts": [
+          "soft lander (for surface arrays)",
+          "rover or hopping deployer to lay out elements",
+          "hinged or inflatable booms (for orbiting arrays)"
+        ]
+      },
+      {
+        "name": "Power and thermal",
+        "role": "survives the roughly 14-Earth-day lunar night at about 100 kelvin, when solar power is unavailable.",
+        "parts": [
+          "batteries",
+          "radioisotope heater units",
+          "multi-layer insulation"
+        ]
+      },
+      {
+        "name": "Communications relay",
+        "role": "the lunar farside has no line of sight to Earth, so data must be bounced around the Moon.",
+        "parts": [
+          "relay satellite at a lunar libration point",
+          "store-and-forward data handling",
+          "ground station on Earth"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "separates the cosmological signal from overwhelmingly brighter foregrounds.",
+        "parts": [
+          "RFI flagging",
+          "foreground and ionospheric modelling",
+          "long-integration averaging"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the site or orbit",
+        "detail": "The location must have the Moon's bulk between it and Earth across the whole 1–50 MHz band, with clear sky for the target fields. A farside crater rim or a farside polar orbit both work; a low orbit only works while the Earth is occulted."
+      },
+      {
+        "title": "Design the elements",
+        "detail": "Dipoles are sized for the longest wavelength of interest, so a 30 MHz array needs elements metres across. They are made as lightweight metal or conductive-film structures that fold or roll for launch."
+      },
+      {
+        "title": "Build a quiet receiver",
+        "detail": "Amplifiers are chosen for low noise at these frequencies, digitised directly, and the whole chain is enclosed and filtered so that its own emissions fall below the sky noise in the same band."
+      },
+      {
+        "title": "Test on Earth in a radio-quiet place",
+        "detail": "Prototypes are characterised in shielded chambers and at remote sites away from broadcast transmitters; the ionosphere itself blocks most of this band from the ground, so only the electronics can be tested there, not the science."
+      },
+      {
+        "title": "Engineer for the lunar night",
+        "detail": "Batteries and radioisotope heater units keep the electronics within their temperature range through two weeks of darkness, and instruments are designed to observe only at night, when the Sun is below the horizon."
+      },
+      {
+        "title": "Land and deploy",
+        "detail": "For a surface array, a lander touches down on the farside and either hinges out masts or sends a rover to unreel antennas over tens to hundreds of metres. For an orbiting array, small satellites separate and extend their booms."
+      },
+      {
+        "title": "Commission and calibrate",
+        "detail": "The system observes known radio sources and its own calibration noise to establish gain and bandpass, and maps the local interference environment."
+      },
+      {
+        "title": "Observe and store through the night",
+        "detail": "The array integrates for weeks or months, recording spectra and storing them until the relay satellite is in view."
+      },
+      {
+        "title": "Relay and reduce the data",
+        "detail": "Data is forwarded to Earth, then foreground emission from our own galaxy is modelled and subtracted to isolate the faint redshifted 21 cm signature."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Farside landing and relay communications",
+        "status": "exists",
+        "why": "the first soft landing on the lunar farside was achieved in 2019 and a relay satellite has operated at a lunar libration point since 2018, so both the access and the data path are proven."
+      },
+      {
+        "tech": "Low-frequency receivers that fly",
+        "status": "partial",
+        "why": "a low-frequency instrument has operated from lunar orbit aboard a relay satellite, and a radio spectrometer made the first radio astronomy measurements from the lunar surface in 2024, but neither was an array."
+      },
+      {
+        "tech": "Ultra-quiet electronics",
+        "status": "partial",
+        "why": "the sought-after signal is many orders of magnitude weaker than the instrument's own digital noise unless the electronics are heavily shielded and powered down during observations."
+      },
+      {
+        "tech": "Long-duration lunar night survival",
+        "status": "partial",
+        "why": "radioisotope heater units and batteries exist, but keeping a multi-element array alive and functioning through repeated two-week nights has not yet been done at this scale."
+      },
+      {
+        "tech": "Foreground removal methods",
+        "status": "partial",
+        "why": "galactic synchrotron emission is thousands of times brighter than the cosmological signal, so the analysis depends on calibration and modelling that are still being validated on pathfinder data."
+      },
+      {
+        "tech": "Deployable large-aperture structures",
+        "status": "missing",
+        "why": "arrays spanning kilometres on the surface, or swarms of free-flying antennas, have been studied but not built."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-antenna pathfinders: a planned farside surface spectrometer, and instruments already flown in lunar orbit and on the surface",
+        "unlocks": "a measured map of the real radio environment, plus flight-qualified receivers and antenna technology."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small farside array or a dedicated farside-orbiting constellation of a few tens of elements",
+        "unlocks": "the first credible measurement of the global redshifted 21 cm spectrum from the cosmic dark ages."
+      },
+      {
+        "stage": "Next",
+        "milestone": "kilometre-scale surface arrays or a large dish built inside a farside crater, both studied as concepts",
+        "unlocks": "imaging and tomography of the dark ages, resolving structure rather than just an average signal."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "expanded interferometric arrays with hundreds to thousands of elements",
+        "unlocks": "deep surveys for narrowband artificial emission and precision cosmology, using the Moon as a permanent radio shield."
+      }
+    ]
+  }
+}

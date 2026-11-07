@@ -1,0 +1,166 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Quantum processing units",
+        "role": "the physical qubits on which every user job ultimately runs.",
+        "parts": [
+          "superconducting transmon chips",
+          "trapped-ion chains in vacuum",
+          "neutral atoms in optical tweezers",
+          "photonic interferometric circuits",
+          "annealer arrays"
+        ]
+      },
+      {
+        "name": "Cryogenic and vacuum plant",
+        "role": "keeps the qubits cold, clean and stable.",
+        "parts": [
+          "dilution refrigerators reaching ~10 millikelvin",
+          "helium recovery and liquefaction",
+          "ion pumps and vacuum chambers",
+          "vibration-isolated mounts"
+        ]
+      },
+      {
+        "name": "Control and readout hardware",
+        "role": "generates the microwave, radio-frequency or optical pulses that operate qubits and reads the faint signals back.",
+        "parts": [
+          "arbitrary waveform generators",
+          "microwave and RF sources, amplifiers, circulators",
+          "cryogenic low-noise amplifiers",
+          "laser systems with frequency locking and optical modulators"
+        ]
+      },
+      {
+        "name": "Shielding and isolation",
+        "role": "stops stray fields and heat from destroying quantum coherence.",
+        "parts": [
+          "RF-shielded rooms",
+          "cryoperm and superconducting magnetic shields",
+          "filtered and attenuated wiring looms",
+          "thermalised coaxial lines"
+        ]
+      },
+      {
+        "name": "Access layer",
+        "role": "lets outside groups submit work without being on site.",
+        "parts": [
+          "job queue and scheduler",
+          "cloud API and client libraries",
+          "transpilers and hardware-aware compilers",
+          "identity, quota and usage accounting"
+        ]
+      },
+      {
+        "name": "Calibration and benchmarking service",
+        "role": "keeps results comparable between users, hardware and facilities.",
+        "parts": [
+          "automated daily tune-up routines",
+          "gate-fidelity and connectivity measurement suites",
+          "emulators and noise models",
+          "published open datasets of device noise"
+        ]
+      },
+      {
+        "name": "Facility operations",
+        "role": "the people and processes that keep hardware running and users trained.",
+        "parts": [
+          "on-call instrument scientists",
+          "spares and repair workflows",
+          "workshops, documentation and training programmes"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the modality, host and site",
+        "detail": "A facility picks superconducting, trapped-ion, neutral-atom, photonic or annealing hardware and a building with stable power, low floor vibration and helium access — often alongside an existing national laboratory or supercomputing centre."
+      },
+      {
+        "title": "Prepare the lab environment",
+        "detail": "RF-shielded rooms, clean spaces, cryogen plumbing, helium recovery lines, filtered electrical supplies and grounding are installed before any qubit hardware arrives."
+      },
+      {
+        "title": "Install cryogenics or vacuum systems",
+        "detail": "Dilution refrigerators are assembled and leak-checked, or ion/atom vacuum chambers are baked and pumped down, and wiring looms are thermally anchored at every cooling stage."
+      },
+      {
+        "title": "Mount and wire the qubits",
+        "detail": "Chips are bonded into shielded sample packages, connected to filtered microwave lines, and aligned in optical setups where lasers rather than microwaves do the work."
+      },
+      {
+        "title": "Bring up control electronics",
+        "detail": "Racks of waveform generators, RF sources and digitizers are synchronised to nanosecond timing, and laser tables are locked to stable references."
+      },
+      {
+        "title": "Cool down and characterise",
+        "detail": "The system is taken to base temperature over several days; wiring attenuation, crosstalk and qubit spectroscopy are checked before any external user touches it."
+      },
+      {
+        "title": "Calibrate and benchmark",
+        "detail": "Single- and two-qubit gate fidelities, coherence times, readout error and connectivity are measured systematically and recorded as a machine-readable device profile."
+      },
+      {
+        "title": "Stand up the access layer",
+        "detail": "A scheduler, cloud API, compiler stack, user authentication and quota accounting are layered on top, so remote jobs land on the same queue as local ones."
+      },
+      {
+        "title": "Operate, re-calibrate and publish",
+        "detail": "Automated calibration runs daily, hardware is serviced on a cycle, and noise and benchmark datasets are released openly so outside groups can reproduce earlier claims."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Dilution refrigeration and cryogenics",
+        "status": "exists",
+        "why": "superconducting qubits only work within a few thousandths of a degree of absolute zero, and helium supply and recovery must be reliable."
+      },
+      {
+        "tech": "Precision microwave, RF and laser control",
+        "status": "exists",
+        "why": "qubit operations need phase-stable pulses with sub-nanosecond timing and readout of very weak signals."
+      },
+      {
+        "tech": "Cluster scheduling and cloud APIs",
+        "status": "exists",
+        "why": "shared access at scale is a solved pattern inherited from high-performance computing, once hardware is exposed as a service."
+      },
+      {
+        "tech": "Standardised benchmarking and noise characterisation",
+        "status": "partial",
+        "why": "randomised benchmarking and related methods exist, but metrics are not yet consistent across modalities or facilities."
+      },
+      {
+        "tech": "Logical qubits with error correction",
+        "status": "partial",
+        "why": "facilities today mostly rent out noisy physical qubits; only small error-corrected demonstrations have appeared."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "national labs and supercomputing centres offer scheduled cloud access to in-house and commercial quantum processors",
+        "unlocks": "startups and universities can test algorithms on real hardware and reproduce published performance claims."
+      },
+      {
+        "stage": "Next",
+        "milestone": "common benchmarking standards and shared noise datasets across sites",
+        "unlocks": "results become comparable across hardware generations and vendors rather than resting on self-reported figures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "quantum processors integrated directly into high-performance computing clusters with a single scheduler",
+        "unlocks": "hybrid classical-quantum workflows where a simulation hands off to a quantum unit mid-job."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "error-corrected processors and entanglement links between facilities",
+        "unlocks": "testbeds become nodes in a distributed quantum network, and users gain dependable logical qubits instead of raw noisy ones."
+      }
+    ]
+  }
+}

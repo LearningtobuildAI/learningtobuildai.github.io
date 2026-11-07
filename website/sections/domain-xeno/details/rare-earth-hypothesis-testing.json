@@ -1,0 +1,156 @@
+{
+  "factCheck": {
+    "verdict": "real",
+    "model": "deepseek-flash",
+    "at": "2026-09-28T23:40:05.333Z"
+  },
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Exoplanet surveys",
+        "role": "measure how common planets of each size and orbit actually are.",
+        "parts": [
+          "space transit photometers",
+          "radial-velocity spectrographs",
+          "microlensing survey telescopes"
+        ]
+      },
+      {
+        "name": "Stellar and galactic context catalogue",
+        "role": "places each planet system in its wider setting.",
+        "parts": [
+          "astrometric catalogues",
+          "stellar spectroscopy for composition and age",
+          "galactic-orbit and environment data"
+        ]
+      },
+      {
+        "name": "Orbital and tidal modelling",
+        "role": "tests whether a stabilising moon or a benign giant-planet arrangement can survive for billions of years.",
+        "parts": [
+          "N-body orbital integrators",
+          "tidal-evolution codes",
+          "giant-impact and moon-formation simulations"
+        ]
+      },
+      {
+        "name": "Interior and geodynamic modelling",
+        "role": "tests whether plate tectonics and a magnetic dynamo are likely outcomes for a given planet.",
+        "parts": [
+          "mantle-convection models",
+          "core-dynamo simulations",
+          "thermal-evolution codes"
+        ]
+      },
+      {
+        "name": "Climate and habitability modelling",
+        "role": "tests whether surface liquid water can persist.",
+        "parts": [
+          "radiative-convective models",
+          "general circulation models",
+          "atmospheric escape models"
+        ]
+      },
+      {
+        "name": "Statistical inference framework",
+        "role": "converts all of the above into frequency estimates and tests whether the proposed prerequisites are truly independent.",
+        "parts": [
+          "detection-bias correction",
+          "Bayesian hierarchical models",
+          "causal / dependency graphs"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "State the hypothesis as measurable quantities",
+        "detail": "Turn each claimed prerequisite — a large stabilising moon, plate tectonics, a magnetic dynamo, a Jupiter-class shield, a quiet galactic neighbourhood — into something with a number attached, so it can be counted or modelled."
+      },
+      {
+        "title": "Measure the baseline planet population",
+        "detail": "Transit and radial-velocity surveys give the occurrence rate of rocky planets in temperate orbits around different star types, after correcting for what each survey could and could not have detected."
+      },
+      {
+        "title": "Measure the secondary conditions",
+        "detail": "Attempt to observe the prerequisites themselves: moons around exoplanets, planetary axial tilt, auroral radio emission as a dynamo signal, atmospheric composition as a tectonics clue. Most of these are at or beyond today's detection limits."
+      },
+      {
+        "title": "Test whether the prerequisites are independent",
+        "detail": "Several proposed requirements may be consequences of the same event — a giant impact can produce a large moon and set the planet's spin — so the models check for shared causes before the requirements are multiplied together."
+      },
+      {
+        "title": "Build the joint probability model",
+        "detail": "Combine the measured rates and the modelled dependencies into one probability that a planet has all the required conditions at once, rather than treating each as a separate lucky draw."
+      },
+      {
+        "title": "Calibrate against the one known case",
+        "detail": "Earth is the only planet known to host complex life, so the model is checked against Earth's own history — its moon, tectonics, dynamo and impact record — and against null models that assume no special requirements at all."
+      },
+      {
+        "title": "Refine with better instruments",
+        "detail": "Each new survey or spectrograph narrows the uncertainty on one term in the model, so the exercise is repeated rather than run once."
+      },
+      {
+        "title": "Report as constraints, not verdicts",
+        "detail": "The output is a range for how common complex-life-capable planets may be, plus which prerequisites are doing the limiting — not a yes-or-no answer."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large exoplanet surveys",
+        "status": "exists",
+        "why": "without measured occurrence rates for planets, sizes and orbits, the whole calculation has no baseline."
+      },
+      {
+        "tech": "Precise stellar catalogues",
+        "status": "exists",
+        "why": "planet statistics only make sense when corrected for the star types, ages and environments actually surveyed."
+      },
+      {
+        "tech": "High-performance geodynamic and climate simulation",
+        "status": "exists",
+        "why": "plate tectonics, dynamos and long-term habitability cannot be measured directly, only modelled."
+      },
+      {
+        "tech": "Exomoon and planetary obliquity measurement",
+        "status": "missing",
+        "why": "the stabilising-moon argument cannot yet be tested, because almost no exomoons or planetary tilts have been measured."
+      },
+      {
+        "tech": "Atmospheric characterisation of temperate rocky planets",
+        "status": "partial",
+        "why": "it is the main indirect window onto tectonics and surface conditions on other worlds."
+      },
+      {
+        "tech": "Formal selection-effect statistics",
+        "status": "exists",
+        "why": "observing biases would otherwise masquerade as evidence that certain conditions are rare."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "well-measured occurrence rates for planets of different sizes and orbits",
+        "unlocks": "a quantitative baseline for how common the starting conditions are."
+      },
+      {
+        "stage": "Next",
+        "milestone": "atmosphere measurements for a handful of temperate rocky planets",
+        "unlocks": "first real evidence on whether such worlds are habitable or stripped bare."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable detections of exomoons and planetary axial tilts",
+        "unlocks": "direct tests of the stability arguments that currently rest on theory alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a survey of Earth-like planets around Sun-like stars",
+        "unlocks": "a statistical answer to whether complex life needs a rare combination of conditions or is common."
+      }
+    ]
+  }
+}

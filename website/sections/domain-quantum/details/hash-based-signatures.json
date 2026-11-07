@@ -1,0 +1,174 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Hash function core",
+        "role": "provides the one-way and collision-resistant primitives on which all security rests.",
+        "parts": [
+          "cryptographic hash such as SHA-256 or SHAKE",
+          "domain separation",
+          "output truncation to n bytes"
+        ]
+      },
+      {
+        "name": "One-time signature (OTS) scheme",
+        "role": "signs a single message (or a few) using a private key that must never be reused.",
+        "parts": [
+          "secret random values",
+          "public key derived by hashing",
+          "signature revealing preimages or hash-chain values",
+          "checksum to prevent forgery"
+        ]
+      },
+      {
+        "name": "Merkle tree layer",
+        "role": "compresses many OTS public keys into one short public key.",
+        "parts": [
+          "leaf nodes (hashed OTS public keys)",
+          "internal nodes",
+          "root as public key",
+          "authentication path"
+        ]
+      },
+      {
+        "name": "Hypertree / few-time layer",
+        "role": "allows a single public key to sign many messages without state.",
+        "parts": [
+          "multiple layers of Merkle trees",
+          "OTS signing of lower-layer roots",
+          "tree address and layer index"
+        ]
+      },
+      {
+        "name": "Key generation and management",
+        "role": "derives all secret values from a single seed and produces the public key.",
+        "parts": [
+          "pseudorandom key expansion",
+          "seed and address",
+          "public key root",
+          "secure storage"
+        ]
+      },
+      {
+        "name": "Signature generation and verification",
+        "role": "produces and checks signatures using the OTS and tree structures.",
+        "parts": [
+          "message digest",
+          "random or pseudorandom index selection",
+          "OTS signature and authentication paths",
+          "root recomputation and comparison"
+        ]
+      },
+      {
+        "name": "Integration and hardening",
+        "role": "makes the scheme usable in real protocols and resistant to side-channel attack.",
+        "parts": [
+          "encoding and key formats",
+          "API bindings",
+          "constant-time code",
+          "test vectors"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick hash function and security level",
+        "detail": "Choose a hash such as SHA-256 or SHAKE and set n to 16, 24 or 32 bytes for 128-, 192- or 256-bit security."
+      },
+      {
+        "title": "Implement the one-time signature",
+        "detail": "Build a Winternitz or Lamport scheme: derive secret values, hash them into public values, and define how a message digest plus checksum selects which secrets to reveal."
+      },
+      {
+        "title": "Build a Merkle tree over OTS keys",
+        "detail": "Generate many OTS key pairs, hash each public key into a leaf, and combine leaves pairwise up to a single root — the public key."
+      },
+      {
+        "title": "Add a hypertree for stateless operation",
+        "detail": "Stack several Merkle trees: the root of one layer is signed by an OTS in the layer above, so one key can sign many messages without tracking state."
+      },
+      {
+        "title": "Derive keys from a seed",
+        "detail": "Use a pseudorandom function with a secret seed and a tree address to generate every OTS secret on demand, so the private key is just a short seed."
+      },
+      {
+        "title": "Generate a signature",
+        "detail": "Hash the message, choose a random leaf index, produce the OTS signature for that leaf, and append the authentication path up to the root; repeat for each hypertree layer."
+      },
+      {
+        "title": "Verify a signature",
+        "detail": "Recompute the OTS public key from the signature, hash it up the tree using the authentication path, and compare the result with the public root; repeat for each layer."
+      },
+      {
+        "title": "Harden and test",
+        "detail": "Write constant-time code, avoid secret-dependent branches, and validate against published test vectors before deployment."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "Embed the scheme in firmware signing, code signing or transport protocols, accepting larger signatures in exchange for conservative security."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Collision-resistant cryptographic hash functions",
+        "status": "exists",
+        "why": "the entire security proof reduces to hash preimage and collision resistance."
+      },
+      {
+        "tech": "Post-quantum signature standardisation",
+        "status": "exists",
+        "why": "NIST finalised SLH-DSA as FIPS 205 in 2024, giving an interoperable stateless hash-based standard."
+      },
+      {
+        "tech": "Efficient Merkle tree and hypertree libraries",
+        "status": "exists",
+        "why": "tree hashing and authentication paths must be fast enough for signing and verification."
+      },
+      {
+        "tech": "Secure random number generation and seed storage",
+        "status": "exists",
+        "why": "a leaked or poorly generated seed compromises every signature."
+      },
+      {
+        "tech": "Side-channel resistant implementations",
+        "status": "partial",
+        "why": "hash-based schemes still leak through timing and power if not carefully coded."
+      },
+      {
+        "tech": "Tolerance for large signatures and keys",
+        "status": "exists",
+        "why": "hash-based signatures are much larger than classical ones, so storage and bandwidth must accommodate them."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "stateless hash-based signatures standardised and used in firmware and long-lived trust chains",
+        "unlocks": "quantum-resistant authentication where conservative assumptions matter most."
+      },
+      {
+        "stage": "Next",
+        "milestone": "support in hardware security modules, trusted platform modules and mainstream cryptographic libraries",
+        "unlocks": "easy deployment in existing systems without custom code."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid certificates and protocols combining classical and hash-based signatures",
+        "unlocks": "a safe transition path that remains secure if either scheme is broken."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hardware accelerators and optimised verification for constrained devices",
+        "unlocks": "wider use in embedded and high-volume verification settings."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hash-based signatures as a conservative fallback alongside lattice-based schemes",
+        "unlocks": "defence in depth for decades-long data and infrastructure."
+      }
+    ]
+  }
+}

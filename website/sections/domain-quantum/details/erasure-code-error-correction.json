@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Erasure-capable physical qubit",
+        "role": "a qubit engineered so that its dominant fault is a leak out of the computational space — a detectable event — rather than a silent phase flip.",
+        "parts": [
+          "laser and microwave control hardware",
+          "magnetic and optical shielding",
+          "leakage-aware pulse calibration"
+        ]
+      },
+      {
+        "name": "Conversion and flagging layer",
+        "role": "detects the leak and marks that qubit position as blank before it can spread as an unknown error.",
+        "parts": [
+          "state-selective fluorescence or photon-number readout",
+          "mid-circuit measurement and reset",
+          "leak-repair pulses that return the qubit to the computational space",
+          "per-round flag registers"
+        ]
+      },
+      {
+        "name": "Erasure-preserving gate set",
+        "role": "two-qubit and single-qubit operations that do not silently convert a known erasure into an unknown Pauli fault.",
+        "parts": [
+          "entangling gates with leakage-checking structure",
+          "heralded or repeat-until-success operations",
+          "calibrated pulse sequences",
+          "gate-level flag propagation logic"
+        ]
+      },
+      {
+        "name": "Code and erasure-aware decoder",
+        "role": "the classical and quantum recipe that repairs only the unknown positions, since flagged ones are already located.",
+        "parts": [
+          "erasure-tolerant code layout (surface-code patches with erased nodes, or an outer erasure code over modules)",
+          "graph construction using error correlations instead of random Pauli models",
+          "peeling or union-find decoder weighted by erasure probability",
+          "real-time classical processor, since decoding must keep pace with measurement rounds"
+        ]
+      },
+      {
+        "name": "Interconnect and loss accounting",
+        "role": "carries qubits or entanglement between modules, where loss is itself a natural erasure.",
+        "parts": [
+          "low-loss photonic links or optical fibres",
+          "heralded entanglement generation",
+          "photon-counting detectors that report loss by not clicking",
+          "synchronisation and clock distribution"
+        ]
+      },
+      {
+        "name": "Benchmark and control stack",
+        "role": "measures what fraction of faults actually become erasures and how the logical error rate responds.",
+        "parts": [
+          "error-injection experiments",
+          "logical-memory survival measurements versus erasure fraction",
+          "threshold-curve fitting tools",
+          "automated calibrator"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a dominant fault that announces itself",
+        "detail": "Choose a physical platform where the most likely failure is loss or leakage, not an arbitrary rotation. A photon that disappears, or an atom that decays out of the qubit subspace, is in principle impossible to miss; a small unwanted rotation is invisible."
+      },
+      {
+        "title": "Engineer the qubit for long life and narrow leaks",
+        "detail": "Cool, trap and shield the qubits so spontaneous decay and leakage are rare, and so the small residual errors are dominated by the detectable channel. In an atomic implementation this means encoding in metastable levels with carefully chosen laser detunings; in a photonic one it means encoding in dual-rail modes so that loss reads as vacuum."
+      },
+      {
+        "title": "Add the herald: measurement and detection",
+        "detail": "Install state-selective readout with enough photon collection efficiency to flag a leaked qubit reliably, and mid-circuit measurement and reset so a flag can be read and the qubit reused inside the same computation."
+      },
+      {
+        "title": "Build gates that keep erasures erasures",
+        "detail": "Design and calibrate entangling gates so a fault produces a flag rather than a quiet logical rotation. Sequence gates so that each flag is recorded and attached to the qubit it belongs to, and add repair pulses that return leaked qubits to the computational subspace."
+      },
+      {
+        "title": "Choose the code and its decoder model",
+        "detail": "Lay out logical qubits in a code that tolerates a high rate of located faults — a surface-code patch with erasure weights on erased nodes, or an outer erasure code across modules. The decoder must use the flags as known positions and correct only the unflagged errors, which is a matching or peeling problem rather than a general decoding problem."
+      },
+      {
+        "title": "Make the decoder fast enough",
+        "detail": "Move the decoder onto dedicated real-time hardware so that syndrome extraction, flag data and corrections keep step with measurement rounds. Slower decoding directly costs logical fidelity."
+      },
+      {
+        "title": "Scale to a repeating cycle",
+        "detail": "Run repeated rounds of flag, measure, decode and correct on a small register; measure the logical error rate as the number of physical qubits and rounds grows, and compare it with the same machine running without erasure conversion."
+      },
+      {
+        "title": "Extract the threshold curve",
+        "detail": "Sweep the erasure fraction and the residual unknown-error rate to find where the logical error rate falls as code distance rises. Only below that crossing point does adding qubits actually help."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-fidelity state-selective readout and mid-circuit measurement",
+        "status": "partial",
+        "why": "if the flag itself is misread, a located erasure becomes an unknown error and the whole advantage shrinks."
+      },
+      {
+        "tech": "Qubits with a single dominant, detectable error channel",
+        "status": "partial",
+        "why": "erasure conversion has been demonstrated in alkaline-earth neutral-atom experiments and is natural for photonic loss, but most platforms still fail mostly through silent dephasing."
+      },
+      {
+        "tech": "Erasure-aware codes and decoders",
+        "status": "exists",
+        "why": "theory already shows that a surface code can tolerate erasure rates approaching roughly half under ideal flagging, against only around one percent for unknown faults in a full circuit-level model; the gap is the whole point."
+      },
+      {
+        "tech": "Low-loss optical links and efficient photon counting",
+        "status": "partial",
+        "why": "a photonic route turns every lost photon into a located fault, but only if loss is low enough and detectors see nearly every surviving photon."
+      },
+      {
+        "tech": "Real-time classical decoding hardware",
+        "status": "partial",
+        "why": "erasure decoding is cheap per event, but it must run continuously at the speed of the quantum cycle."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "component demonstrations: erasure conversion shown in individual neutral atoms, and loss heralded in photonic circuits",
+        "unlocks": "confidence that a large majority of faults in some platforms can be made detectable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small logical qubit whose measured logical error rate beats its best physical qubit when erasure flags are used",
+        "unlocks": "the first real evidence that flagging, not just better hardware, is doing the work."
+      },
+      {
+        "stage": "Next",
+        "milestone": "distance scaling with realistic flags, including misread flags and residual unknown errors",
+        "unlocks": "a defensible threshold for building larger machines."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "erasure-aware modules linked by heralded photonic interconnects",
+        "unlocks": "a path to modular fault-tolerant machines where loss is treated as information rather than as noise."
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Tensor-network ansatz",
+        "role": "represents the many-qubit state as a network of small tensors connected by virtual bonds, instead of a full 2^n vector.",
+        "parts": [
+          "tensors for each qubit or site",
+          "virtual bonds carrying entanglement",
+          "graph topology (1D chain, 2D grid, tree)"
+        ]
+      },
+      {
+        "name": "Gate application layer",
+        "role": "updates the network when a quantum gate acts on one or two qubits.",
+        "parts": [
+          "single-qubit gate contraction",
+          "two-qubit gate contraction",
+          "singular value decomposition to split tensors back"
+        ]
+      },
+      {
+        "name": "Contraction engine",
+        "role": "computes amplitudes, expectation values or samples by contracting the network in an efficient order.",
+        "parts": [
+          "contraction-order optimiser",
+          "exact and approximate contractions",
+          "boundary or environment tensors"
+        ]
+      },
+      {
+        "name": "Truncation and error control",
+        "role": "keeps the bond dimension small enough to run, while tracking the resulting error.",
+        "parts": [
+          "singular value truncation",
+          "canonical form",
+          "discarded-weight monitor"
+        ]
+      },
+      {
+        "name": "Classical compute backend",
+        "role": "runs the tensor operations on CPUs, GPUs or distributed clusters.",
+        "parts": [
+          "linear algebra kernels",
+          "GPU acceleration",
+          "memory and communication management"
+        ]
+      },
+      {
+        "name": "Verification layer",
+        "role": "compares simulated output with quantum hardware or classically exact small cases.",
+        "parts": [
+          "sampled bitstring distributions",
+          "cross-entropy or fidelity metrics",
+          "reference circuits"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Encode the circuit",
+        "detail": "Start with every qubit in |0>. Represent each gate as a tensor and each qubit wire as a tensor leg."
+      },
+      {
+        "title": "Choose the network topology",
+        "detail": "Match the tensor graph to the circuit's locality: a 1D chain for linear circuits, a 2D grid for heavy 2D entanglement, or a custom graph."
+      },
+      {
+        "title": "Apply gates as tensor updates",
+        "detail": "Contract a gate tensor into the neighbouring tensors, then use singular value decomposition to restore the network shape."
+      },
+      {
+        "title": "Truncate to a bond dimension",
+        "detail": "Discard small singular values so the tensors stay tractable, and record how much weight was thrown away as an error estimate."
+      },
+      {
+        "title": "Optimise contraction order",
+        "detail": "Search for a pairwise contraction sequence that minimises the size of intermediate tensors, or use approximate contraction for 2D networks."
+      },
+      {
+        "title": "Run on classical hardware",
+        "detail": "Execute the contractions on CPUs, GPUs or a distributed cluster, parallelising over amplitudes or tensor blocks."
+      },
+      {
+        "title": "Sample or compute observables",
+        "detail": "Generate bitstrings or expectation values from the contracted network for comparison with a quantum device."
+      },
+      {
+        "title": "Validate and iterate",
+        "detail": "Check against small exact cases or hardware results, then increase bond dimension or refine the order until accuracy is sufficient."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum circuit model",
+        "status": "exists",
+        "why": "the simulation must mirror the gate sequence and measurement statistics of the hardware."
+      },
+      {
+        "tech": "Tensor algebra and singular value decomposition",
+        "status": "exists",
+        "why": "gates are contracted and tensors are split and truncated using these operations."
+      },
+      {
+        "tech": "Entanglement area laws",
+        "status": "exists",
+        "why": "tensor networks work because low-depth, locally connected circuits have limited entanglement across any cut."
+      },
+      {
+        "tech": "High-performance computing",
+        "status": "exists",
+        "why": "memory and runtime grow rapidly with bond dimension and circuit depth."
+      },
+      {
+        "tech": "Quantum hardware for benchmarking",
+        "status": "partial",
+        "why": "simulation is used to verify devices, but devices are needed to test where classical methods truly fail."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "simulating shallow random circuits and structured algorithms on supercomputers",
+        "unlocks": "a moving boundary for claims of quantum advantage, because any classically contractible circuit cannot demonstrate it."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger bond dimensions and better 2D or 3D contraction schemes on exascale machines",
+        "unlocks": "simulation of deeper circuits and stronger verification of near-term quantum processors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid methods that simulate part of a circuit classically and run the rest on quantum hardware",
+        "unlocks": "practical benchmarking of larger quantum devices than either approach can handle alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "real-time verification of error-corrected quantum circuits",
+        "unlocks": "a trustworthy standard for deciding when a quantum computation has genuinely exceeded classical simulation."
+      }
+    ]
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Entanglement sources",
+        "role": "generate the correlated photon pairs that links carry.",
+        "parts": [
+          "spontaneous parametric down-conversion crystals or waveguides",
+          "semiconductor quantum dots",
+          "heralding detectors to confirm a pair exists"
+        ]
+      },
+      {
+        "name": "Quantum channels",
+        "role": "move photons between nodes without losing them.",
+        "parts": [
+          "deployed telecom fibre at 1550 nm",
+          "free-space or satellite paths for hard-to-reach nodes",
+          "wavelength-division multiplexing to share fibre with classical traffic"
+        ]
+      },
+      {
+        "name": "Network nodes with memories",
+        "role": "hold one half of an entangled pair while the rest of the route is established.",
+        "parts": [
+          "matter qubits (trapped ions, neutral atoms, colour centres in diamond, rare-earth crystals)",
+          "optical interface for photon-to-qubit transfer",
+          "local logic for measurement and readout"
+        ]
+      },
+      {
+        "name": "Repeater and swap stations",
+        "role": "join two shorter links into one longer entangled connection, and purify noisy results.",
+        "parts": [
+          "linear-optics Bell-state measurement",
+          "heralded entanglement swapping",
+          "entanglement distillation (purification) stages"
+        ]
+      },
+      {
+        "name": "Synchronisation and classical control",
+        "role": "keep photon arrivals interfering correctly and coordinate requests.",
+        "parts": [
+          "picosecond-scale clock distribution and time tagging",
+          "classical signalling channel alongside the quantum one",
+          "scheduling and routing software"
+        ]
+      },
+      {
+        "name": "Detectors and cryogenics",
+        "role": "count individual photons reliably and quiet the qubits.",
+        "parts": [
+          "superconducting nanowire single-photon detectors",
+          "dilution refrigerators or solid-state cooling",
+          "shielding from stray light and heat"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the node stack",
+        "detail": "Decide which physical qubit each node uses and how a photon couples in and out — the choice fixes memory lifetime, fidelity and operating temperature."
+      },
+      {
+        "title": "Build and characterise sources",
+        "detail": "Fabricate pair sources, measure brightness and fidelity, and select pairs whose photons are indistinguishable enough to interfere with photons from other nodes."
+      },
+      {
+        "title": "Convert photons to telecom wavelengths",
+        "detail": "Many good sources and memories emit at visible wavelengths, where fibre loss is brutal; non-linear frequency conversion shifts them to 1310 or 1550 nm."
+      },
+      {
+        "title": "Lay and instrument the channels",
+        "detail": "Use existing fibre where possible, add wavelength multiplexing so the quantum signal coexists with normal data traffic, and compensate polarisation drift continuously."
+      },
+      {
+        "title": "Extract entanglement into memories",
+        "detail": "Detect one photon of a pair to herald success, then store its partner in a matter qubit so it survives while the neighbouring link is retried."
+      },
+      {
+        "title": "Swap to bridge links",
+        "detail": "At intermediate stations, perform a joint measurement on photons from two adjacent links; a successful result entangles the two end nodes without the photons ever meeting."
+      },
+      {
+        "title": "Purify the result",
+        "detail": "Consume several lower-fidelity entangled pairs to distil one better pair, trading rate for quality."
+      },
+      {
+        "title": "Synchronise and automate",
+        "detail": "Distribute a common clock, build the classical messaging layer, and let a control plane schedule who gets entangled with whom and when."
+      },
+      {
+        "title": "Demonstrate and scale",
+        "detail": "Operate a small multi-node testbed in a city, then add nodes and longer repeater chains, increasing rate and distance together."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Entangled photon sources",
+        "status": "exists",
+        "why": "parametric down-conversion is mature and produces high-fidelity pairs; brightness and indistinguishability still limit rate."
+      },
+      {
+        "tech": "Quantum memories",
+        "status": "partial",
+        "why": "storage has been shown in several platforms, but combining high efficiency, second-scale coherence and telecom compatibility in one device is not yet routine."
+      },
+      {
+        "tech": "Entanglement swapping",
+        "status": "partial",
+        "why": "demonstrated for a handful of nodes in the lab; it must work repeatedly and with high fidelity to build a network."
+      },
+      {
+        "tech": "Entanglement purification",
+        "status": "partial",
+        "why": "protocols work in experiments but cost many pairs per improved pair, so rates collapse at network scale."
+      },
+      {
+        "tech": "Telecom single-photon detection and frequency conversion",
+        "status": "partial",
+        "why": "detectors are excellent but need cryogenics; conversion efficiency to 1550 nm is around half and needs to rise."
+      },
+      {
+        "tech": "Quantum-grade time and frequency distribution",
+        "status": "partial",
+        "why": "independent photons only interfere if arrivals are aligned to picoseconds across the whole network."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "metro-scale point-to-point entanglement and QKD links, plus small lab testbeds",
+        "unlocks": "real fibre, real loss, real polarisation drift as engineering lessons."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-node entanglement routing with memories at each node, over tens of kilometres",
+        "unlocks": "entanglement available on demand rather than pre-arranged between a fixed pair."
+      },
+      {
+        "stage": "Next",
+        "milestone": "repeater chains spanning hundreds of kilometres, with purification keeping fidelity usable",
+        "unlocks": "entanglement between cities, and a basis for distributed quantum sensing and blind computation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "intercity networks offering entanglement as a routed service",
+        "unlocks": "applications that are not yet fully known, the way packet routing enabled the web."
+      }
+    ]
+  }
+}

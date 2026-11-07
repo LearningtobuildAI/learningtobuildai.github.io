@@ -797,5 +797,639 @@
     "companies": [],
     "group": "sensing",
     "addedAt": "2026-09-28T22:59:32.343Z"
+  },
+  {
+    "id": "quantum-fourier-transform",
+    "name": "Quantum Fourier Transform",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "lab",
+    "use": "Period finding and phase estimation",
+    "what": "The quantum analogue of the discrete Fourier transform, mapping amplitude from the computational basis into the phase basis in a circuit of depth quadratic in the number of qubits. It is the subroutine beneath Shor's algorithm, phase estimation and many algebraic speedups.",
+    "how": "Hadamard gates create superposition and controlled phase rotations imprint binary-weighted phases, followed by a swap network to reverse qubit order. Running it in reverse performs phase estimation on an encoded unitary.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:28:22.265Z"
+  },
+  {
+    "id": "quantum-signal-processing",
+    "name": "Quantum Signal Processing",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "theory",
+    "use": "Polynomial transformation of unitaries",
+    "what": "A framework that applies a chosen polynomial transformation to the eigenvalues of a unitary using a sequence of single-qubit rotations interleaved with controlled applications of that unitary. It unifies many known quantum speedups under one construction.",
+    "how": "A phase sequence is computed classically from the target polynomial, then realised as rotation angles in the circuit. The resulting block encoding produces a matrix whose singular values are the transformed values of the original.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:28:26.234Z"
+  },
+  {
+    "id": "quantum-singular-value-transformation",
+    "name": "Quantum Singular Value Transformation",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "theory",
+    "use": "Unified speedup construction",
+    "what": "A generalisation of quantum signal processing to non-unitary inputs supplied as block encodings, allowing arbitrary polynomial functions of a matrix's singular values to be computed coherently. It subsumes amplitude amplification, Hamiltonian simulation and matrix inversion as special cases.",
+    "how": "The target matrix is embedded in a larger unitary so it appears as a block. Quantum signal processing then applies the polynomial to that block, and measurement or amplitude amplification extracts the result with provable complexity bounds.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:28:34.082Z"
+  },
+  {
+    "id": "quantum-walk-algorithms",
+    "name": "Quantum Walk Algorithms",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "lab",
+    "use": "Graph search and traversal speedup",
+    "what": "Discrete and continuous time quantum walks that propagate amplitude across a graph and achieve polynomial or exponential speedups for spatial search, element distinctness and certain graph problems. They are the quantum counterpart of classical random walks.",
+    "how": "A coin operator and a shift operator alternate to move amplitude between connected vertices. Interference concentrates probability on target vertices far faster than classical diffusion on the same graph.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-28T23:28:38.726Z"
+  },
+  {
+    "id": "lattice-surgery",
+    "name": "Lattice Surgery",
+    "etype": "fu",
+    "type": "Technique",
+    "stage": "lab",
+    "use": "Logical gate execution on surface codes",
+    "what": "A method for performing logical operations between surface-code patches by merging and splitting them, requiring only local measurements along boundary qubits. It makes logical two-qubit gates compatible with planar nearest-neighbour hardware.",
+    "how": "Adjacent patches are merged by measuring a strip of boundary stabilisers, creating one larger patch, then split again by measuring in the complementary basis. The parity of the merge and split outcomes determines the logical operation applied.",
+    "companies": [
+      "Google Quantum AI",
+      "IBM Quantum"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T23:28:40.266Z"
+  },
+  {
+    "id": "color-codes",
+    "name": "Color Codes",
+    "etype": "fu",
+    "type": "Code Family",
+    "stage": "lab",
+    "use": "Transversal logical gates",
+    "what": "A family of topological stabiliser codes defined on three-colourable lattices that supports a transversal Clifford gate set, making certain logical operations cheaper to implement than in surface codes.",
+    "how": "Stabilisers act on faces and vertices of the lattice, and colourability allows a single-qubit logical operator to be applied qubit-by-qubit. The trade-off is higher stabiliser weight and more complex decoding.",
+    "companies": [],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T23:28:42.020Z"
+  },
+  {
+    "id": "erasure-code-error-correction",
+    "name": "Erasure-Code Error Correction",
+    "etype": "fu",
+    "type": "Technique",
+    "stage": "lab",
+    "use": "Heralded loss mitigation",
+    "what": "Error correction schemes that convert physical errors into detected erasures, where the location of the fault is known. Erasure decoding tolerates a far higher fault rate than unknown-location Pauli errors, relaxing hardware thresholds.",
+    "how": "Qubits are designed so dominant error channels, such as leakage or spontaneous emission, produce a detectable flag. The decoder then treats flagged positions as blanks and corrects only the surviving unknown errors.",
+    "companies": [
+      "AWS Center for Quantum Computing"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T23:28:46.780Z"
+  },
+  {
+    "id": "flag-qubit-protocols",
+    "name": "Flag Qubit Protocols",
+    "etype": "fu",
+    "type": "Protocol",
+    "stage": "theory",
+    "use": "Fault-tolerant syndrome extraction",
+    "what": "Circuits that add ancilla flag qubits to detect when a low-weight physical fault would otherwise propagate into an uncorrectable high-weight error during syndrome measurement.",
+    "how": "Flags are entangled with the ancilla used for stabiliser measurement so that dangerous fault paths flip a flag. If a flag fires, the syndrome is treated as unreliable and the measurement is repeated or corrected accordingly.",
+    "companies": [],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T23:28:51.132Z"
+  },
+  {
+    "id": "fault-tolerant-resource-estimation",
+    "name": "Fault-Tolerant Resource Estimation",
+    "etype": "fu",
+    "type": "Method",
+    "stage": "lab",
+    "use": "Costing practical quantum advantage",
+    "what": "The discipline of computing exactly how many physical qubits, gates and runtime a fault-tolerant algorithm needs under a stated hardware error model, including magic state factories, routing overhead and distillation. It is the honest bridge between algorithmic claims and hardware reality.",
+    "how": "A high-level circuit is compiled to a logical gate list, each gate is costed in surface-code cycles based on code distance, and code distance is chosen so logical error rate meets a target. The result is a floor on feasibility.",
+    "companies": [
+      "Microsoft Azure Quantum",
+      "Google Quantum AI"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-28T23:28:55.422Z"
+  },
+  {
+    "id": "atom-interferometry-for-dark-matter",
+    "name": "Atom Interferometry for Dark Matter",
+    "etype": "fu",
+    "type": "Facility",
+    "stage": "proto",
+    "use": "Ultralight field detection",
+    "what": "Long-baseline atom interferometers that search for ultralight dark matter and new forces by comparing phase accumulation in two spatially separated atom clouds. Proposed and funded instruments include MAGIS-100 and the AION programme.",
+    "how": "Atoms are put into superposition of two momentum states, separated over tens to hundreds of metres, then recombined. A passing scalar field would shift the interference phase in a characteristic oscillatory pattern versus the field frequency.",
+    "companies": [
+      "Fermilab",
+      "Imperial College London"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-28T23:28:59.142Z"
+  },
+  {
+    "id": "rydberg-atom-electrometry",
+    "name": "Rydberg Atom Electrometry",
+    "etype": "fu",
+    "type": "Device",
+    "stage": "lab",
+    "use": "Traceable radio-frequency field measurement",
+    "what": "Sensors that use electromagnetically induced transparency in Rydberg atoms to measure radio-frequency electric field strength and phase with self-calibration traceable to atomic constants, without a conventional antenna.",
+    "how": "A probe laser and coupling laser create transparency in a vapour cell; the radio-frequency field shifts Rydberg energy levels and alters the transparency peak. The shift maps directly to field amplitude and phase.",
+    "companies": [
+      "NIST",
+      "MIT Lincoln Laboratory"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-28T23:29:02.687Z"
+  },
+  {
+    "id": "quantum-diamond-microscope",
+    "name": "Quantum Diamond Microscope",
+    "etype": "fu",
+    "type": "Instrument",
+    "stage": "near",
+    "use": "Wide-field magnetic imaging",
+    "what": "A wide-field magnetometer that images magnetic fields from biological and material samples with micrometre resolution by reading nitrogen-vacancy spin states in a diamond chip placed against the specimen.",
+    "how": "Green laser light polarises the nitrogen-vacancy spins and microwave pulses manipulate them; the red fluorescence yield depends on local magnetic field. A camera records the fluorescence so an entire field of view is imaged in parallel.",
+    "companies": [
+      "Harvard University",
+      "MIT"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-28T23:29:06.515Z"
+  },
+  {
+    "id": "entanglement-distribution-networks",
+    "name": "Entanglement Distribution Networks",
+    "etype": "fu",
+    "type": "Network",
+    "stage": "lab",
+    "use": "Multi-node entanglement routing",
+    "what": "Metropolitan and intercity testbeds that establish and route entanglement between many nodes rather than a fixed pair, including the required switching, synchronisation and purification layers.",
+    "how": "Each link generates entangled pairs, entanglement swapping joins adjacent links into end-to-end connections, and purification improves fidelity. Control planes schedule requests the way classical networks route packets.",
+    "companies": [
+      "QuTech"
+    ],
+    "group": "networking",
+    "addedAt": "2026-09-28T23:29:18.552Z"
+  },
+  {
+    "id": "lattice-based-cryptography",
+    "name": "Lattice-Based Cryptography",
+    "etype": "fu",
+    "type": "Standard",
+    "stage": "now",
+    "use": "Post-quantum key establishment",
+    "what": "Key encapsulation and signature schemes whose hardness rests on the learning-with-errors and short-vector problems in high-dimensional lattices, standardised for post-quantum deployment. These are the primary replacements for Diffie-Hellman and RSA key transport.",
+    "how": "Security depends on the worst-case hardness of lattice problems, with parameters chosen so that no known classical or quantum algorithm solves them in feasible time. Implementations must also resist side-channel and fault attacks.",
+    "companies": [
+      "NIST",
+      "IBM Research"
+    ],
+    "group": "security",
+    "addedAt": "2026-09-28T23:29:22.397Z"
+  },
+  {
+    "id": "hash-based-signatures",
+    "name": "Hash-Based Signatures",
+    "etype": "fu",
+    "type": "Standard",
+    "stage": "now",
+    "use": "Post-quantum authentication",
+    "what": "Signature schemes built only from hash functions, whose security assumptions are the most conservative of any post-quantum family. They are stateless variants suitable for firmware signing and long-lived trust chains.",
+    "how": "A one-time signature scheme is combined with a Merkle tree or a few-time signature layer to sign many messages from one public key. Security reduces solely to hash preimage and collision resistance.",
+    "companies": [
+      "NIST"
+    ],
+    "group": "security",
+    "addedAt": "2026-09-28T23:29:25.850Z"
+  },
+  {
+    "id": "cryogenic-wafer-scale-testing",
+    "name": "Cryogenic Wafer-Scale Testing",
+    "etype": "fu",
+    "type": "Facility",
+    "stage": "now",
+    "use": "Qubit yield characterisation",
+    "what": "Automated probe stations that measure hundreds of qubit devices on a single wafer at dilution temperatures, providing statistical distributions of frequency, coherence and gate fidelity rather than heroic single-device results.",
+    "how": "Cryogenic wafer probers bring a cooled stage and high-density probe cards into contact with on-die pads, or use multiplexed on-chip readout so many devices are interrogated per cooldown. Yield maps then drive process control.",
+    "companies": [
+      "Intel",
+      "imec"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-28T23:29:28.993Z"
+  },
+  {
+    "id": "quantum-classical-hybrid-orchestration",
+    "name": "Quantum-Classical Hybrid Orchestration",
+    "etype": "fu",
+    "type": "Software",
+    "stage": "now",
+    "use": "Runtime integration of QPU and CPU",
+    "what": "Middleware that decouples quantum circuits from classical control loops so variational algorithms, error mitigation and calibration jobs can execute across cloud quantum processors and classical accelerators as one workload.",
+    "how": "Circuits are compiled to a target device, parameter updates are computed classically between shots, and results stream back through a scheduler that batches and prioritises jobs against device calibration state.",
+    "companies": [
+      "IBM Quantum",
+      "Amazon Web Services"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-28T23:29:32.245Z"
+  },
+  {
+    "id": "germanium-quantum-dots",
+    "name": "Germanium Quantum Dots",
+    "etype": "fu",
+    "type": "Qubit Modality",
+    "stage": "lab",
+    "use": "Fast all-electrical spin control",
+    "what": "Spin qubits hosted in germanium quantum wells, exploiting strong spin-orbit coupling for fast all-electrical control and compatibility with established semiconductor manufacturing, including integration with superconducting resonators.",
+    "how": "Gate-defined quantum dots confine single holes or electrons; microwave drive on a gate rotates the spin. Germanium's low nuclear spin noise and strong spin-orbit interaction give long coherence with fast gates.",
+    "companies": [
+      "QuTech",
+      "Intel"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-28T23:29:35.719Z"
+  },
+  {
+    "id": "andreev-bound-state-qubits",
+    "name": "Andreev Bound State Qubits",
+    "etype": "fu",
+    "type": "Qubit Modality",
+    "stage": "lab",
+    "use": "Superconductor-semiconductor hybrid qubits",
+    "what": "Qubits formed from Andreev bound states in a semiconductor weak link between superconductors, offering intrinsic protection against charge noise and built from the same hybrid materials stack as Majorana research.",
+    "how": "Two superconductors are bridged by a semiconducting channel, creating discrete Andreev levels whose spin and parity states form the qubit. Microwave drive manipulates the states and readout uses a nearby resonator.",
+    "companies": [
+      "Delft University of Technology"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-28T23:29:39.396Z"
+  },
+  {
+    "id": "trapped-ion-qccd-architecture",
+    "name": "Trapped-Ion QCCD Architecture",
+    "etype": "fu",
+    "type": "Hardware",
+    "stage": "now",
+    "use": "Fault-tolerant quantum computing, quantum cloud access",
+    "what": "A trapped-ion architecture in which ions are physically shuttled between dedicated storage, gate and measurement zones inside a microfabricated surface trap. Ion transport delivers all-to-all connectivity between any qubit pair without SWAP networks and permits mid-circuit measurement and qubit reuse, both of which cut the physical-qubit overhead of error correction.",
+    "how": "Segmented DC electrodes on the trap chip create moving potential wells; adiabatic voltage changes slide an ion chain between zones while shared laser or microwave beams address the gate region.",
+    "companies": [
+      "Quantinuum"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-29T00:27:09.191Z"
+  },
+  {
+    "id": "thin-film-lithium-niobate-quantum-photonics",
+    "name": "Thin-Film Lithium Niobate Quantum Photonics",
+    "etype": "fu",
+    "type": "Hardware",
+    "stage": "now",
+    "use": "Photonic quantum processors, microwave-to-optical transduction",
+    "what": "Lithium niobate on insulator patterned at sub-micron scale provides strong second-order nonlinearity, gigahertz electro-optic switching and low propagation loss on a single chip. It is the leading platform for squeezed-light generation, frequency conversion and the electro-optic modulators used to bridge superconducting qubits and telecom fibre.",
+    "how": "A thin lithium niobate film bonded to silica on silicon is etched into ridge waveguides; periodic poling and electrode overlays enable quasi-phase-matched parametric down-conversion and phase modulation.",
+    "companies": [
+      "HyperLight"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-29T00:27:10.280Z"
+  },
+  {
+    "id": "superconducting-nanowire-single-photon-detectors",
+    "name": "Superconducting Nanowire Single-Photon Detectors",
+    "etype": "fu",
+    "type": "Hardware",
+    "stage": "now",
+    "use": "Photonic quantum computing, quantum key distribution, quantum networking",
+    "what": "Nanometre-thin superconducting meanders biased just below critical current detect single photons at telecom wavelengths with system efficiencies above ninety percent, sub-twenty-picosecond timing jitter and dark counts in the millihertz range. They are the default detector for every photonic quantum link.",
+    "how": "A photon breaks Cooper pairs locally, creating a resistive hotspot that diverts the bias current and produces a measurable voltage pulse read out through cryogenic amplifiers.",
+    "companies": [
+      "Single Quantum"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-29T00:27:11.496Z"
+  },
+  {
+    "id": "quantum-dot-single-photon-sources",
+    "name": "Quantum Dot Single-Photon Sources",
+    "etype": "fu",
+    "type": "Hardware",
+    "stage": "near",
+    "use": "Photonic quantum computing, entanglement distribution",
+    "what": "Indium arsenide or gallium arsenide quantum dots in photonic structures emit indistinguishable single photons on demand with high purity and near-unity indistinguishability under resonant excitation. They are the leading route to deterministic entangled-photon sources for photonic processors.",
+    "how": "Carrier recombination inside a three-dimensionally confined semiconductor dot emits one photon at a time, and a micropillar or photonic-crystal cavity channels the emission into a single spatial mode.",
+    "companies": [
+      "Quandela"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-29T00:27:12.779Z"
+  },
+  {
+    "id": "honeycomb-floquet-codes",
+    "name": "Honeycomb Floquet Codes",
+    "etype": "fu",
+    "type": "Error Correction",
+    "stage": "theory",
+    "use": "Fault-tolerant logical qubits",
+    "what": "A measurement-only error-correcting code defined by a periodically varying sequence of two-qubit measurements on a hexagonal lattice. It reaches the encoding rate and distance scaling of the surface code while requiring fewer physical qubits and no stabiliser preparation, which suits hardware where measurement is cheaper than entangling gates.",
+    "how": "Each round of measurements changes the code space; logical information is preserved in the invariant subspace of the measurement cycle and errors are tracked with an automorphism decoder.",
+    "companies": [],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-29T00:27:14.206Z"
+  },
+  {
+    "id": "magic-state-cultivation",
+    "name": "Magic State Cultivation",
+    "etype": "fu",
+    "type": "Error Correction",
+    "stage": "theory",
+    "use": "Reducing non-Clifford overhead in fault-tolerant runtimes",
+    "what": "A protocol family that grows many high-fidelity magic states from a modest supply of noisy ones using Clifford operations and error detection rather than full distillation circuits. It attacks the non-Clifford resource that dominates the space-time volume of useful fault-tolerant algorithms.",
+    "how": "Encoded states are injected into a small code, grown by code deformation, and filtered by post-selection each round so failures are discarded rather than corrected.",
+    "companies": [],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-29T00:27:16.534Z"
+  },
+  {
+    "id": "quantum-simulation-of-lattice-gauge-theories",
+    "name": "Quantum Simulation of Lattice Gauge Theories",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "near",
+    "use": "Nuclear and particle physics, condensed-matter gauge models",
+    "what": "Digital and analogue simulation of gauge fields on a lattice, targeting real-time dynamics of quantum chromodynamics and gauge models that defeat classical Monte Carlo methods because of sign problems. Results have been demonstrated on trapped-ion, superconducting and Rydberg platforms in one and two dimensions.",
+    "how": "Gauge fields map onto qubits or qudits with constraint-preserving circuits; time evolution is Trotterised or realised through native analog interactions.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-29T00:27:17.251Z"
+  },
+  {
+    "id": "quantum-interior-point-optimisation",
+    "name": "Quantum Interior-Point Optimisation",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "near",
+    "use": "Linear and semidefinite programming, logistics, finance",
+    "what": "Quantum linear-algebra primitives applied to the Newton steps of interior-point methods for linear and semidefinite programming, giving polynomial speedups in problem dimension under block-encoding assumptions. Practical value depends on fast quantum random-access memory and efficient state preparation of the constraint matrix.",
+    "how": "Each iteration solves a linear system for the Newton direction with a quantum singular value transformation or HHL-type solver, then updates the barrier parameter classically.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-29T00:27:18.671Z"
+  },
+  {
+    "id": "quantum-cryptanalysis-resource-estimation",
+    "name": "Quantum Cryptanalysis Resource Estimation",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "now",
+    "use": "Post-quantum migration deadlines, security policy",
+    "what": "Rigorous accounting of the qubits, T-gates and runtime required for Shor's algorithm to break RSA-2048 and elliptic-curve cryptography, used to set realistic migration deadlines for post-quantum standards. Published estimates span roughly twenty million noisy physical qubits for RSA-2048 over eight hours down to well under a million when fast surface-code cycles and magic state cultivation are ass",
+    "how": "Circuit-level resource counts are compiled through lattice surgery and distillation models against a chosen physical error rate to yield space-time volume estimates.",
+    "companies": [
+      "Google Quantum AI"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-29T00:27:21.803Z"
+  },
+  {
+    "id": "topological-quantum-gravity-processors",
+    "name": "Topological Quantum Gravity Processors",
+    "etype": "fu",
+    "type": "Processor",
+    "stage": "theory",
+    "use": "Simulate quantum spacetime dynamics for fundamental physics and secure communications",
+    "what": "Combines topological qubits with emergent graviton modes to perform error‑free computation on curved‑space manifolds.",
+    "how": "Nanofabricated Majorana‑based qubit lattices are coupled to superconducting graviton resonators; error correction leverages braiding of space‑time defects.",
+    "companies": [],
+    "group": "hardware",
+    "addedAt": "2026-09-29T00:31:32.614Z"
+  },
+  {
+    "id": "concatenated-quantum-codes",
+    "name": "Concatenated Quantum Codes",
+    "etype": "fu",
+    "type": "Error Correction",
+    "stage": "near",
+    "use": "Logical qubit protection, high-error-rate hardware",
+    "what": "Nests an outer code around an inner code so the logical error rate falls exponentially with the number of levels, at the cost of more physical qubits per logical qubit. The approach suits hardware where physical error rates are high and qubit counts are the cheaper resource.",
+    "how": "Each level encodes a logical qubit into several lower-level qubits and error correction runs recursively, with innermost syndromes decoded first and corrected results passed upward, allowing a small number of fast decoders to service all outer levels.",
+    "companies": [
+      "IBM",
+      "Google Quantum AI"
+    ],
+    "group": "fault-tolerance",
+    "addedAt": "2026-09-30T12:31:50.990Z"
+  },
+  {
+    "id": "quantum-algorithms-for-differential-equations",
+    "name": "Quantum Algorithms for Differential Equations",
+    "etype": "fu",
+    "type": "Algorithm",
+    "stage": "near",
+    "use": "Fluid dynamics, electromagnetics, financial modelling",
+    "what": "Quantum routines that solve partial and ordinary differential equations through linear-system formulations, variational ansatze or quantum walks, targeting simulation of flow, fields and derivative pricing where classical discretisation becomes expensive in three dimensions.",
+    "how": "The equation is discretised into a large sparse linear system, the system matrix is embedded as a block encoding, and a quantum linear-systems or variational routine produces the solution, with a separate readout step extracting the physical quantities actually wanted.",
+    "companies": [
+      "IBM",
+      "Microsoft",
+      "Quantinuum"
+    ],
+    "group": "algorithms",
+    "addedAt": "2026-09-30T12:31:54.847Z"
+  },
+  {
+    "id": "qubit-foundry-and-process-design-kits",
+    "name": "Qubit Foundry and Process Design Kits",
+    "etype": "fu",
+    "type": "Semiconductor-style fabrication",
+    "stage": "near",
+    "use": "External chip design, multi-qubit wafer production",
+    "what": "Wafer-scale fabrication lines that build superconducting and silicon-spin qubit chips to a published process recipe, paired with process design kits that let university and startup teams design a chip without owning a fab. Recipes specify Josephson junction deposition, junction area uniformity, resonator geometry and flip-chip interconnect so that a design submitted as a layout file returns as a p",
+    "how": "Standard 200 mm and 300 mm CMOS-compatible tooling deposits niobium, tantalum and aluminium films, defines tunnel junctions by shadow evaporation or Dolan-bridge lithography, and uses airbridge and through-silicon-via routing for signal escape. Statistical process control tracks junction resistance to hold qubit frequency targeting within a few megahertz across the wafer.",
+    "companies": [
+      "IBM",
+      "Rigetti Computing",
+      "imec",
+      "IQM Quantum Computers"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-30T14:31:03.342Z"
+  },
+  {
+    "id": "kinetic-inductance-parametric-amplifiers",
+    "name": "Kinetic Inductance Parametric Amplifiers",
+    "etype": "fu",
+    "type": "Quantum-limited readout",
+    "stage": "lab",
+    "use": "Qubit readout, dark-matter and axion searches",
+    "what": "Broadband near-quantum-limited amplifiers built from high-kinetic-inductance superconducting transmission lines instead of Josephson junctions, so they tolerate magnetic fields and dissipate almost no heat at millikelvin temperatures. Their wide instantaneous bandwidth lets one amplifier read out many qubits at once rather than one narrow resonator band at a time.",
+    "how": "A long coplanar waveguide of disordered niobium titanium nitride or titanium nitride carries a nonlinear kinetic inductance that mixes a strong pump tone with the faint signal, producing four-wave-mixing gain near twenty decibels with added noise close to the quantum limit.",
+    "companies": [
+      "NASA Jet Propulsion Laboratory",
+      "NIST"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-30T14:31:05.026Z"
+  },
+  {
+    "id": "cryogenic-wiring-and-signal-distribution",
+    "name": "Cryogenic Wiring and Signal Distribution",
+    "etype": "fu",
+    "type": "Cryogenic interconnect",
+    "stage": "now",
+    "use": "Dilution refrigerator wiring, qubit control delivery",
+    "what": "The cabling, attenuators, filters, circulators and flexible superconducting ribbons that carry microwave and digital control signals from room temperature down to the mixing chamber while keeping heat load inside the cooling budget. Poor wiring design, not the qubits, is a common limit on how many qubits a refrigerator can actually operate.",
+    "how": "Phosphor-bronze coaxial lines are thermally anchored at each cooling stage and heavily attenuated to strip room-temperature noise, while superconducting flexible circuits replace bulky coax bundles so hundreds of control lines pass through narrow still and cold-plate apertures without saturating the dilution unit.",
+    "companies": [
+      "Delft Circuits",
+      "Bluefors"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-30T14:31:08.308Z"
+  },
+  {
+    "id": "tensor-network-simulation-of-quantum-circuits",
+    "name": "Tensor-Network Simulation of Quantum Circuits",
+    "etype": "fu",
+    "type": "Classical simulation",
+    "stage": "now",
+    "use": "Verifying quantum hardware, algorithm prototyping",
+    "what": "Classical methods that represent a many-qubit state as a network of low-rank tensors rather than a full exponential vector, giving faithful simulation of structured circuits that resist brute-force and Monte Carlo treatment. They define the moving boundary of verifiable quantum advantage, because any circuit a tensor network can contract is not demonstrating advantage.",
+    "how": "Matrix product states, projected entangled pair states and gate-fusion variants exploit limited entanglement, low circuit depth and geometric locality. Bond dimension growth controls accuracy and runtime, and contraction ordering is chosen to keep intermediate tensors tractable.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-30T14:31:10.489Z"
+  },
+  {
+    "id": "quantum-reservoir-computing",
+    "name": "Quantum Reservoir Computing",
+    "etype": "fu",
+    "type": "Quantum machine learning",
+    "stage": "theory",
+    "use": "Time-series forecasting, signal classification",
+    "what": "A learning scheme that fixes a quantum circuit or continuously driven quantum system as an untrained reservoir and trains only a simple classical readout on its measured observables. Because training touches only the readout, it avoids the barren-plateau and optimisation problems that cripple variational quantum machine learning.",
+    "how": "Input data is encoded into the reservoir through Hamiltonian parameters or drive amplitudes, the system evolves under its natural dynamics, short-time correlation functions are measured, and a linear regression maps those features to the target output. Performance depends on the fading memory and expressivity of the reservoir dynamics.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-30T14:31:12.552Z"
+  },
+  {
+    "id": "quantum-monte-carlo-on-quantum-hardware",
+    "name": "Quantum Monte Carlo on Quantum Hardware",
+    "etype": "fu",
+    "type": "Simulation algorithm",
+    "stage": "near",
+    "use": "Materials and molecular ground states",
+    "what": "Hybrid algorithms that use phase estimation or amplitude amplification to attack the sign problem and the long imaginary-time projection that limit classical quantum Monte Carlo for strongly correlated fermions and frustrated magnets. They target exactly the electronic-structure regime where classical methods become unreliable.",
+    "how": "Trial wavefunctions are prepared on the quantum register, imaginary-time or projector evolution is compiled into controlled unitaries, and amplitude estimation extracts ground-state energies and correlation functions with error scaling polynomially rather than exponentially in system size.",
+    "companies": [],
+    "group": "algorithms",
+    "addedAt": "2026-09-30T14:31:14.605Z"
+  },
+  {
+    "id": "nuclear-magnetic-resonance-gyroscopes",
+    "name": "Nuclear Magnetic Resonance Gyroscopes",
+    "etype": "fu",
+    "type": "Inertial sensor",
+    "stage": "now",
+    "use": "Navigation without GNSS, submersible and aerospace guidance",
+    "what": "Compact rotation sensors that measure the precession of spin-polarised noble-gas nuclei to report angular rate with high stability and no moving parts. They are the leading candidate for long-duration GNSS-free navigation because they can hold bias stability over many hours.",
+    "how": "Laser optical pumping aligns xenon and rubidium spins inside a microfabricated cell, an applied magnetic field sets the Larmor precession frequency, and sensor rotation shifts the precession phase differentially between two isotopes so that the difference cancels field drift.",
+    "companies": [
+      "Northrop Grumman"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-30T14:31:17.045Z"
+  },
+  {
+    "id": "nanoscale-magnetic-resonance-imaging",
+    "name": "Nanoscale Magnetic Resonance Imaging",
+    "etype": "fu",
+    "type": "Molecular imaging",
+    "stage": "lab",
+    "use": "Single-molecule structure, surface chemistry",
+    "what": "Magnetic resonance imaging pushed toward atomic resolution by detecting the tiny force or spin signal from a handful of nuclei instead of an ensemble. It offers non-destructive chemical identification with three-dimensional spatial resolution, complementing scanning probe and electron microscopy.",
+    "how": "A magnetic tip on a cantilever or a nitrogen-vacancy centre in diamond is brought within nanometres of the sample, nuclear spins are polarised, and their dipolar coupling to the sensor is read out as a frequency shift while gradients applied by the tip encode position along each axis.",
+    "companies": [
+      "IBM Research"
+    ],
+    "group": "sensing",
+    "addedAt": "2026-09-30T14:31:20.508Z"
+  },
+  {
+    "id": "twin-field-quantum-key-distribution",
+    "name": "Twin-Field Quantum Key Distribution",
+    "etype": "fu",
+    "type": "Quantum key distribution",
+    "stage": "proto",
+    "use": "Metropolitan and long-haul fibre links",
+    "what": "A protocol that removes the fundamental rate-versus-distance limit of standard quantum key distribution by interfering single photons sent from two distant transmitters to a midpoint detector, so key rate falls with the square root of channel transmittance instead of linearly. It extends secure key distribution toward intercity range without trusted nodes.",
+    "how": "Alice and Bob each send phase-randomised weak coherent pulses to Charlie, who performs single-photon interference and announces the detection. The senders post-select on matching basis and intensity, and decoy-state analysis bounds the information an eavesdropper could hold.",
+    "companies": [
+      "Toshiba"
+    ],
+    "group": "security",
+    "addedAt": "2026-09-30T14:31:22.563Z"
+  },
+  {
+    "id": "national-quantum-testbeds-and-user-facilities",
+    "name": "National Quantum Testbeds and User Facilities",
+    "etype": "fu",
+    "type": "Access infrastructure",
+    "stage": "now",
+    "use": "Algorithm trials, benchmarking, workforce training",
+    "what": "Shared, publicly funded hardware platforms that give researchers and startups scheduled access to real quantum processors, simulators and control stacks without building a laboratory. They function as the neutral benchmarking ground where performance claims can be reproduced by outside groups.",
+    "how": "Facilities integrate one or more qubit modalities behind a common job queue, cloud API and calibration service, with open datasets of device noise, connectivity and gate fidelities so results are comparable across submissions and hardware generations.",
+    "companies": [
+      "UK National Quantum Computing Centre",
+      "NIST"
+    ],
+    "group": "infrastructure",
+    "addedAt": "2026-09-30T14:31:24.370Z"
+  },
+  {
+    "id": "single-photon-detector-arrays",
+    "name": "Single-Photon Detector Arrays",
+    "etype": "fu",
+    "type": "Photodetection",
+    "stage": "now",
+    "use": "Quantum optics, QKD receivers, lidar, biological imaging",
+    "what": "Multipixel avalanche detectors that register individual photons with picosecond timing and position information across a large field of view, enabling photon-starved imaging and high-rate quantum communication receivers. Array scale, not per-pixel performance, is the current frontier.",
+    "how": "Arrays of superconducting nanowires or silicon photomultiplier cells are read out with cryogenic or CMOS multiplexing that timestamps which pixel fired and when, and time-tagging electronics correlate arrivals against a clock or pump pulse to reconstruct interference and ranging information.",
+    "companies": [
+      "Hamamatsu Photonics",
+      "ID Quantique"
+    ],
+    "group": "hardware",
+    "addedAt": "2026-09-30T14:31:26.279Z"
+  },
+  {
+    "id": "quantum-batteries",
+    "name": "Quantum Batteries",
+    "etype": "fu",
+    "type": "Energy Storage",
+    "stage": "lab",
+    "use": "Ultrafast charging and coherent energy storage",
+    "what": "Storage in which charging is a collective quantum effect rather than a classical electrochemical one: a set of absorbers coupled to a shared electromagnetic mode charges faster than the sum of its independent parts. Superabsorption and collective Dicke-type charging have been observed in molecular and microwave-cavity systems, but no device yet stores useful energy at useful efficiency.",
+    "how": "Absorber molecules or superconducting qubits sit in a common cavity so their transition dipoles couple collectively, and the collective absorption rate grows superlinearly with the number of units. Practical devices additionally need long coherence times and an extraction pathway that removes stored energy without destroying the coherence that made the fast charge possible.",
+    "companies": [],
+    "group": "hardware",
+    "addedAt": "2026-09-30T14:35:14.175Z"
   }
 ]

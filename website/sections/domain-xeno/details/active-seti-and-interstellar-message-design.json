@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Transmitter and antenna",
+        "role": "produces a narrow, powerful beam that stays detectable across light-years.",
+        "parts": [
+          "large parabolic dish",
+          "high-power amplifier (klystron, gyrotron or travelling-wave tube)",
+          "feed horn",
+          "liquid cooling"
+        ]
+      },
+      {
+        "name": "Carrier and modulation",
+        "role": "chooses the wavelength and how information is imprinted on it.",
+        "parts": [
+          "radio carrier (microwave) or optical laser",
+          "frequency choice in a quiet spectral band",
+          "amplitude, frequency or polarisation modulation",
+          "beacon versus data modes"
+        ]
+      },
+      {
+        "name": "Message encoding",
+        "role": "turns meaning into something decodable without a shared language.",
+        "parts": [
+          "counting and arithmetic primer",
+          "prime-factor framing to signal a grid",
+          "physical constants (hydrogen line, atomic numbers)",
+          "pixel grid image layer",
+          "redundancy and error correction"
+        ]
+      },
+      {
+        "name": "Target selection",
+        "role": "picks stars worth the cost of a decades-long wait.",
+        "parts": [
+          "stellar catalogues and astrometry",
+          "Sun-like and habitable-zone candidates",
+          "distance and travel-time calculation",
+          "beam dwell-time budget"
+        ]
+      },
+      {
+        "name": "Pointing and tracking",
+        "role": "keeps the beam on a moving target for the whole transmission.",
+        "parts": [
+          "ephemeris and coordinate transforms",
+          "drive and encoder systems",
+          "timing and clock synchronisation"
+        ]
+      },
+      {
+        "name": "Decision and risk framework",
+        "role": "settles who may transmit, to whom, and on what grounds.",
+        "parts": [
+          "transmission-risk rating scales",
+          "international consultation process",
+          "public transmission log and archive"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the target",
+        "detail": "Select nearby Sun-like stars, preferring systems with known planets. Calculate how long the signal takes to arrive and how long a reply would take to return — a distant cluster can mean tens of thousands of years each way, which makes the exercise largely symbolic."
+      },
+      {
+        "title": "Choose the carrier",
+        "detail": "Radio is cheaper per bit and passes through interstellar dust and gas; optical lasers give a much narrower beam but demand far more precise pointing. Pick a frequency in a quiet part of the spectrum, conventionally near the 1420 MHz hydrogen line that any radio astronomer would recognise."
+      },
+      {
+        "title": "Design the encoding",
+        "detail": "Build the message in layers that assume nothing about the receiver's language: a counting sequence, then arithmetic, then physical constants and atomic numbers, then images. Frame the whole thing as a bit string whose length factors into two primes, so a receiver can guess to fold it into a rectangle."
+      },
+      {
+        "title": "Add redundancy and framing",
+        "detail": "Repeat the message and include synchronisation headers so a receiver can find the frame start without being told where it is. Assume many bits will be lost to noise."
+      },
+      {
+        "title": "Secure the transmitter",
+        "detail": "Book time on a large dish or build a dedicated beacon. Detectability scales with dish aperture and transmit power together, so a small dish with a big amplifier rarely competes with a big dish with a modest one."
+      },
+      {
+        "title": "Transmit",
+        "detail": "Track the target across the sky and radiate repeatedly over a window while it is visible, logging frequency, power, beam direction and exact bit stream."
+      },
+      {
+        "title": "Archive and listen",
+        "detail": "Publish the transmission record so future generations know what was sent and where, and keep the receiving programme running, because any reply arrives decades to millennia later."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large-aperture radio telescopes and high-power amplifiers",
+        "status": "exists",
+        "why": "determines whether the signal is detectable at all at interstellar distances."
+      },
+      {
+        "tech": "Precision astrometry and exoplanet catalogues",
+        "status": "exists",
+        "why": "you need to know exactly where to point and whether the target has planets."
+      },
+      {
+        "tech": "Sensitive SETI receiving systems",
+        "status": "partial",
+        "why": "the same dishes verify a candidate band is quiet and would detect any reply."
+      },
+      {
+        "tech": "Language-independent encoding theory",
+        "status": "partial",
+        "why": "primer-then-payload schemes have been proposed and used symbolically, but nobody knows whether they would actually be understood."
+      },
+      {
+        "tech": "Agreed international governance and protocols",
+        "status": "missing",
+        "why": "there is no binding mechanism to decide who speaks for humanity or how transmission risk is weighed."
+      },
+      {
+        "tech": "Multi-decade institutional commitment",
+        "status": "missing",
+        "why": "a beacon only makes sense over timescales far longer than typical funding cycles."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "one-off symbolic transmissions from large dishes, plus continued open debate",
+        "unlocks": "practical experience with encoding, pointing and public reaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "international consultation producing agreed risk-rating and decision procedures",
+        "unlocks": "a legitimate basis for any deliberate, sustained transmission."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a purpose-built beacon with a documented, layered message and published target list",
+        "unlocks": "a signal that is repeatable and verifiable rather than a gesture."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a listening programme matched to the transmission, capable of recognising a reply",
+        "unlocks": "the only test of whether any of the message design actually worked."
+      }
+    ]
+  }
+}

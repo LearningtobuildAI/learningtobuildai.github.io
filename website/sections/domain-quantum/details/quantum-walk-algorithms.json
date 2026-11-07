@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Graph encoding",
+        "role": "maps the problem's states and allowed moves onto qubit registers and oracles.",
+        "parts": [
+          "vertex register",
+          "adjacency oracle",
+          "ancilla workspace"
+        ]
+      },
+      {
+        "name": "Coin register",
+        "role": "an internal state that gives the walker a direction to move in.",
+        "parts": [
+          "coin qubits",
+          "coin operator (Hadamard or Grover diffusion)",
+          "coin-conditioned shift logic"
+        ]
+      },
+      {
+        "name": "Shift (step) operator",
+        "role": "moves amplitude from each vertex to its neighbours along the graph's edges.",
+        "parts": [
+          "controlled increment/decrement gates",
+          "edge multiplexors",
+          "reversible arithmetic"
+        ]
+      },
+      {
+        "name": "Marking oracle",
+        "role": "phase-flips the vertices you are searching for.",
+        "parts": [
+          "comparator circuit",
+          "phase kickback gate"
+        ]
+      },
+      {
+        "name": "Amplification and readout",
+        "role": "repeats the walk with a reflection to concentrate probability on the answer, then measures it.",
+        "parts": [
+          "reflection about the uniform state",
+          "iteration counter",
+          "measurement and classical post-processing"
+        ]
+      },
+      {
+        "name": "Control and error mitigation",
+        "role": "compiles the abstract circuit into device-native pulses and keeps it coherent long enough to run.",
+        "parts": [
+          "gate synthesis and routing",
+          "dynamical decoupling",
+          "zero-noise extrapolation or similar mitigation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the problem and build its graph",
+        "detail": "Express the computational task as a graph: vertices are states, edges are transitions consistent with the problem's constraints. Element distinctness, triangle finding and spatial search on a lattice all take this form."
+      },
+      {
+        "title": "Choose discrete- or continuous-time walk",
+        "detail": "Discrete-time walks alternate a coin operator with a shift, which suits a gate-model machine. Continuous-time walks instead evolve under a graph Hamiltonian or Laplacian, which can be simulated with Hamiltonian-simulation techniques."
+      },
+      {
+        "title": "Design the coin and shift",
+        "detail": "Choose a coin that spreads amplitude evenly (Hadamard, or Grover diffusion to stay in the right subspace), then write the shift as controlled additions and subtractions of the vertex register along each edge."
+      },
+      {
+        "title": "Compile the adjacency oracle",
+        "detail": "Turn the graph into a reversible circuit: each vertex's neighbour list becomes a multiplexor or arithmetic subroutine, using ancillas that must be uncomputed to avoid garbage."
+      },
+      {
+        "title": "Build the marking oracle",
+        "detail": "Add a circuit that recognises target vertices and flips their phase — for a search problem this is often just a comparison against a known value; for a structured problem it encodes the property being tested."
+      },
+      {
+        "title": "Assemble one walk step and count resources",
+        "detail": "Combine coin, shift and marking into a single repeated block and estimate its width and depth in T gates; this determines whether the algorithm fits on near-term or only fault-tolerant hardware."
+      },
+      {
+        "title": "Wrap it in amplitude amplification",
+        "detail": "For spatial search, interleave walk steps with reflections so the marked vertex's amplitude grows; the optimal number of iterations scales as the square root of the number of vertices, the source of the speedup."
+      },
+      {
+        "title": "Simulate and debug",
+        "detail": "Run the circuit on a state-vector simulator, watch the probability distribution spread and re-converge, and compare the hit rate against a classical random walk on the same graph."
+      },
+      {
+        "title": "Run on hardware and post-process",
+        "detail": "Transpile to the device's native gate set, insert decoupling pulses, run many shots and correct readout errors; the measured vertex distribution gives the answer. Scaling the graph until classical simulation fails is the real demonstration."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Coherent qubit arrays with low gate error",
+        "status": "partial",
+        "why": "a walk needs many sequential gates; today's error rates of roughly 0.1–1% per gate cap the depth usable before the interference pattern is destroyed."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "small codes have recently operated below the threshold for correction, but a logically protected processor large enough for deep walks does not exist yet."
+      },
+      {
+        "tech": "Efficient graph oracles and quantum memory",
+        "status": "missing",
+        "why": "loading an adjacency structure coherently is a major hidden cost; quantum random-access memory remains largely theoretical and experimentally unproven."
+      },
+      {
+        "tech": "Reversible arithmetic and multiplexor synthesis",
+        "status": "partial",
+        "why": "circuits exist in theory and in software libraries but dominate the gate count, so efficient constructions decide whether a walk is feasible."
+      },
+      {
+        "tech": "Control electronics and readout",
+        "status": "exists",
+        "why": "microwave control, cryogenics and multiplexed readout are commercially available and already run quantum processors."
+      },
+      {
+        "tech": "Classical simulation and benchmarking tools",
+        "status": "exists",
+        "why": "needed to verify a walk's correctness on graphs small enough to check by brute force."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "quantum walks demonstrated on simulators and on small superconducting or trapped-ion devices for graphs of a handful of vertices",
+        "unlocks": "confidence that coin, shift and oracle circuits behave as the theory predicts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-mitigated walks on graphs beyond exact classical simulation, with a measured scaling advantage over the best classical walk",
+        "unlocks": "the first defensible claim of a walk-based speedup on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fault-tolerant implementations of walk-derived algorithms — element distinctness, triangle finding and the glued-tree traversal that gives an exponential separation",
+        "unlocks": "genuine algorithmic advantage on problems with practical graph structure."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "walks used as subroutines inside larger applications, such as Markov-chain acceleration and optimisation heuristics",
+        "unlocks": "many problems re-expressed as a walk, rather than one algorithm per problem."
+      }
+    ]
+  }
+}

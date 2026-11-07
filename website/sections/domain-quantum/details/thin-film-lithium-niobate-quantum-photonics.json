@@ -1,0 +1,161 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "LNOI wafer",
+        "role": "the starting material: a sub-micron lithium niobate film sitting on a buried oxide layer on a silicon handle.",
+        "parts": [
+          "single-crystal LiNbO3 film (few hundred nm thick)",
+          "buried SiO2 cladding",
+          "silicon handle wafer"
+        ]
+      },
+      {
+        "name": "Photonic circuit",
+        "role": "guides and routes light on chip at low loss.",
+        "parts": [
+          "ridge waveguides (sub-micron cross-section)",
+          "microring resonators",
+          "Mach-Zehnder interferometers",
+          "multimode interferometers"
+        ]
+      },
+      {
+        "name": "Electro-optic drive",
+        "role": "uses the Pockels effect to shift phase at gigahertz rates.",
+        "parts": [
+          "coplanar microwave electrodes",
+          "ground-signal-ground RF probes or wire bonds",
+          "capacitive or travelling-wave design"
+        ]
+      },
+      {
+        "name": "Nonlinear sections",
+        "role": "convert wavelength and generate photon pairs or squeezing.",
+        "parts": [
+          "periodically poled waveguide",
+          "quasi-phase-matching grating",
+          "pump filtering"
+        ]
+      },
+      {
+        "name": "Optical interface",
+        "role": "gets light in and out without killing the low on-chip loss.",
+        "parts": [
+          "inverse tapers or grating couplers",
+          "fibre arrays and adhesive or laser-welded joints",
+          "anti-reflection coatings"
+        ]
+      },
+      {
+        "name": "Quantum interface",
+        "role": "connects the chip to detectors, memories or superconducting qubits.",
+        "parts": [
+          "superconducting nanowire single-photon detectors",
+          "cryogenic fibre feedthroughs",
+          "piezo-optomechanical or direct electro-optic transducer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the film",
+        "detail": "A lithium niobate wafer is implanted with ions and bonded film-side down onto an oxidised silicon wafer; heating splits off a thin slab, leaving a sub-micron layer — a layer-transfer process commercialised for other materials."
+      },
+      {
+        "title": "Pattern the waveguides",
+        "detail": "Electron-beam or deep-UV lithography defines sub-micron ridges in a resist mask, which an argon-based plasma etch transfers into the lithium niobate."
+      },
+      {
+        "title": "Smooth the sidewalls",
+        "detail": "Thermal annealing or a sacrificial oxidation-and-etch step rounds off etch damage, since scattering from rough sidewalls dominates propagation loss."
+      },
+      {
+        "title": "Add the electrodes",
+        "detail": "Metal is deposited and lifted off or electroplated over the waveguides, with the gap to the optical mode set to hold a strong electric field while keeping microwave loss low."
+      },
+      {
+        "title": "Pole the nonlinear regions",
+        "detail": "Patterned electrodes apply a high field that flips the crystal domains at a period of a few micrometres, setting the wavelength at which quasi-phase matching occurs."
+      },
+      {
+        "title": "Clad and planarise",
+        "detail": "Silica is deposited and polished flat so that later metal layers and coupling structures can be added without disturbing the optical mode."
+      },
+      {
+        "title": "Couple and package",
+        "detail": "The chip is diced, fibre arrays are aligned to the on-chip tapers and fixed in place, and the package is sealed against moisture and drift."
+      },
+      {
+        "title": "Test and characterise",
+        "detail": "Loss, half-wave voltage, electro-optic bandwidth, conversion efficiency and, for quantum devices, squeezing and photon-pair statistics are measured — at room temperature first, then at cryogenic temperature for qubit-linked parts."
+      },
+      {
+        "title": "Integrate the quantum layer",
+        "detail": "Detectors, filters or a transducer are bonded or grown on the same chip or in the same package, and the whole assembly is wired into a dilution refrigerator."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wafer-scale thin-film bonding and ion slicing",
+        "status": "exists",
+        "why": "without a manufacturable low-defect LiNbO3 film on an oxide, none of the other steps scale."
+      },
+      {
+        "tech": "Sub-micron etching of lithium niobate",
+        "status": "exists",
+        "why": "lithium niobate is chemically inert, so ridge waveguides depend on physical plasma etching with careful sidewall control."
+      },
+      {
+        "tech": "Low-loss fibre-to-chip coupling",
+        "status": "partial",
+        "why": "sub-decibel coupling is needed so that chip loss is not swamped by the package."
+      },
+      {
+        "tech": "On-chip or packaged single-photon detection",
+        "status": "partial",
+        "why": "squeezed-light and photon-pair work needs efficient, low-noise counting at telecom wavelengths."
+      },
+      {
+        "tech": "Cryogenic, low-noise electro-optic transduction",
+        "status": "missing",
+        "why": "linking a superconducting qubit at millikelvin temperatures to fibre means converting single microwave photons to optical ones without adding thermal noise."
+      },
+      {
+        "tech": "Mature photonic foundry design kits",
+        "status": "partial",
+        "why": "quantum circuits need repeatable multi-project wafer runs with validated models, not one-off lab fabrication."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "thin-film lithium niobate modulators qualifying in datacom and telecom links, while lab chips show on-chip photon-pair sources and squeezed light",
+        "unlocks": "a proven high-speed, low-loss electro-optic platform with commercial supply chains."
+      },
+      {
+        "stage": "Next",
+        "milestone": "foundry process design kits and multi-project wafer runs for nonlinear and quantum circuits",
+        "unlocks": "designers outside a few specialist labs can build and compare devices on the same footing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "chip-scale continuous-variable sources with integrated detectors and pump rejection",
+        "unlocks": "compact squeezed-light sensors and cluster-state generation for photonic quantum computing."
+      },
+      {
+        "stage": "Next",
+        "milestone": "microwave-to-optical transducers with efficiency far above today's sub-percent demonstrations and noise near the quantum limit",
+        "unlocks": "a quantum interconnect that can network cryogenic processors over telecom fibre."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "heterogeneous integration of lithium niobate with superconducting circuits and III-V lasers on one wafer",
+        "unlocks": "monolithic quantum transceivers and repeater nodes rather than rack-sized experiments."
+      }
+    ]
+  }
+}

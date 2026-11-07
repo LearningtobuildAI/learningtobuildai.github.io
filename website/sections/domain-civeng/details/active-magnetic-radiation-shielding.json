@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Superconducting coil set",
+        "role": "creates the external magnetic field that bends incoming charged particles away from the crew volume.",
+        "parts": [
+          "high-temperature superconducting tape coils",
+          "coil support structure",
+          "quench-protection circuits",
+          "current leads"
+        ]
+      },
+      {
+        "name": "Cryogenic and thermal control",
+        "role": "keeps the coils at superconducting temperature and rejects their heat in vacuum.",
+        "parts": [
+          "cryocoolers or stored cryogen",
+          "multi-layer insulation and sunshade",
+          "radiators",
+          "thermal straps"
+        ]
+      },
+      {
+        "name": "Power system",
+        "role": "supplies continuous high current for the coils plus the cooling load.",
+        "parts": [
+          "solar arrays or fission reactor",
+          "power conditioning and converters",
+          "cabling"
+        ]
+      },
+      {
+        "name": "Plasma source",
+        "role": "for plasma-inflated variants, injects plasma that expands the magnetic bubble far beyond the physical coils.",
+        "parts": [
+          "radio-frequency or electron-cyclotron plasma generator",
+          "gas feed system",
+          "magnetic nozzle"
+        ]
+      },
+      {
+        "name": "Field shaping and control",
+        "role": "tunes the field topology so the weak cusp regions never sit over the crew volume, and keeps the field stable under changing solar wind.",
+        "parts": [
+          "magnetometer array",
+          "real-time control electronics",
+          "plasma diagnostics"
+        ]
+      },
+      {
+        "name": "Shielded habitat core",
+        "role": "the crew volume, positioned in the region of strongest deflection.",
+        "parts": [
+          "pressurised hull",
+          "secondary passive shielding for neutrons and secondary particles",
+          "dosimetry"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the threat",
+        "detail": "Set the mission trajectory and duration, then compute the galactic cosmic ray spectrum and worst-case solar particle event fluxes and energies the shield must deflect."
+      },
+      {
+        "title": "Model and optimise the field",
+        "detail": "Simulate charged-particle trajectories through proposed coil geometries, requiring the ion gyroradius to be smaller than the distance from the coil to the habitat, and iterating until coil mass, power and cooling are minimised for a target dose reduction."
+      },
+      {
+        "title": "Wind and test the coils",
+        "detail": "Wind high-temperature superconducting tape into coils, then test them at operating temperature and current, including deliberate quenches to prove the coil survives."
+      },
+      {
+        "title": "Build the cryogenic loop",
+        "detail": "Integrate cryocoolers, insulation and radiators sized so the coils stay cold in vacuum while carrying their full current."
+      },
+      {
+        "title": "Build the plasma source",
+        "detail": "For inflatable-magnetosphere variants, build a small plasma thruster-like source and characterise the bubble it inflates in a large vacuum chamber using magnetometers and probes."
+      },
+      {
+        "title": "Integrate a subscale test article",
+        "detail": "Combine coil, cryogenics, power and diagnostics into a flight-representative unit, then fire a proton or ion beam at it and measure the deflection and secondary particle field."
+      },
+      {
+        "title": "Fly a demonstrator",
+        "detail": "Fly the unit uncrewed through a harsh radiation environment with detectors placed where a crew would sit, comparing measured dose behind the field against an unshielded reference."
+      },
+      {
+        "title": "Scale to a habitat",
+        "detail": "Enlarge the coils to enclose a crew volume, close the mass and power budgets, and demonstrate it on an uncrewed deep-space platform before any crewed mission relies on it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-temperature superconducting tape and coils",
+        "status": "exists",
+        "why": "the field strength and coil mass depend entirely on current density in the superconductor."
+      },
+      {
+        "tech": "Space cryocooling at scale",
+        "status": "partial",
+        "why": "instrument-class cryocoolers exist, but a habitat shield needs far more cooling capacity and radiator area."
+      },
+      {
+        "tech": "High-power spacecraft power supplies",
+        "status": "partial",
+        "why": "continuous megawatt-class power would be needed to drive the coils and the cryogenic load."
+      },
+      {
+        "tech": "Validated plasma and radiation transport models",
+        "status": "partial",
+        "why": "designs rest on simulation; the field-particle interaction must be verified by measurement, not theory alone."
+      },
+      {
+        "tech": "In-space measurement of shielding performance",
+        "status": "missing",
+        "why": "no flight experiment has yet shown a field of this kind reducing dose behind it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "analytic design studies and vacuum-chamber experiments with small coils and plasma sources",
+        "unlocks": "a defensible model of how much a given field deflects a given particle, and what it costs in mass and power."
+      },
+      {
+        "stage": "Next",
+        "milestone": "an uncrewed free-flyer demonstrator carrying a coil and detectors through radiation belts or a solar event",
+        "unlocks": "the first measured dose reduction from an active shield in space."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a subscale shield integrated with habitat life support on a long uncrewed deep-space mission",
+        "unlocks": "operation of superconducting coils and cryogenics for years without servicing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a full-scale shielded habitat qualified for a crewed Mars-class mission",
+        "unlocks": "deep-space missions that do not have to carry the very large mass penalty of passive shielding alone."
+      }
+    ]
+  }
+}

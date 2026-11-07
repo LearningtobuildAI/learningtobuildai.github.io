@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Spin sensor",
+        "role": "a transducer that converts a tiny nuclear magnetic signal into a measurable electrical or optical one.",
+        "parts": [
+          "nanoscale magnetic tip",
+          "ultrasoft cantilever (microscope-force route)",
+          "nitrogen-vacancy centre in diamond (defect-spin route)"
+        ]
+      },
+      {
+        "name": "Polarisation and excitation",
+        "role": "makes the nuclear spins visible by aligning them, then flips them with resonant pulses.",
+        "parts": [
+          "microwave or radio-frequency coil",
+          "hyperpolarisation stage (dynamic nuclear polarisation or optical pumping)",
+          "pulse programmer"
+        ]
+      },
+      {
+        "name": "Encoding gradients",
+        "role": "turns position into a measurable frequency so the signal can be mapped in three dimensions.",
+        "parts": [
+          "magnetic field source",
+          "gradient coils or the field profile of the tip itself"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "extracts a signal from a single spin or a handful of spins.",
+        "parts": [
+          "optical interferometer or laser and photodetector",
+          "low-noise amplifier",
+          "lock-in detection"
+        ]
+      },
+      {
+        "name": "Environment",
+        "role": "silences thermal noise so weak signals survive.",
+        "parts": [
+          "high-vacuum chamber",
+          "sub-kelvin cryostat or refrigerator-free cooling",
+          "vibration isolation"
+        ]
+      },
+      {
+        "name": "Sample handling and control",
+        "role": "places nanometre-scale specimens or surfaces at the correct distance from the sensor.",
+        "parts": [
+          "piezo nanopositioner",
+          "scan controller",
+          "data reconstruction software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Make the sensor",
+        "detail": "A diamond is grown by chemical vapour deposition with a controlled density of nitrogen-vacancy centres a few nanometres below the surface, or silicon cantilevers a few hundred nanometres thick are patterned by lithography."
+      },
+      {
+        "title": "Attach the signal source",
+        "detail": "A magnetic particle or thin magnetic film tens of nanometres across is fixed to the cantilever tip, or a shallow nitrogen-vacancy centre is positioned within about 10 nm of the sample surface."
+      },
+      {
+        "title": "Cold-launch and evacuate",
+        "detail": "The assembly enters high vacuum and millikelvin temperatures, both to keep the cantilever from being damped by gas or to keep the diamond defect's spin coherence long."
+      },
+      {
+        "title": "Polarise the nuclear spins",
+        "detail": "Microwaves or laser light transfer order from electrons to nuclei, boosting the otherwise minuscule thermal polarisation by orders of magnitude."
+      },
+      {
+        "title": "Approach the sample",
+        "detail": "The sensor is brought within nanometres of the specimen while an interferometer or confocal microscope tracks its position and deflection."
+      },
+      {
+        "title": "Excite and encode",
+        "detail": "Radio-frequency pulses flip nuclei at a chosen resonance, and the magnetic field gradient makes that resonance depend on position along each axis."
+      },
+      {
+        "title": "Detect the resonance",
+        "detail": "The cantilever deflection or the defect's fluorescence is monitored while the excitation frequency sweeps; the resulting shift is the nuclear magnetic resonance signature."
+      },
+      {
+        "title": "Reconstruct the volume",
+        "detail": "Signals recorded at many sensor positions and frequencies are inverted by computer into a three-dimensional map of chemical species."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Ultrahigh vacuum and millikelvin cryogenics",
+        "status": "exists",
+        "why": "without them, thermal motion drowns out forces at the attonewton scale and shortens spin coherence."
+      },
+      {
+        "tech": "Nanoscale magnetic tips and field gradients",
+        "status": "partial",
+        "why": "spatial resolution scales with gradient strength, and practical tips reach only so far."
+      },
+      {
+        "tech": "Hyperpolarisation of nuclear spins",
+        "status": "partial",
+        "why": "thermal polarisation at these fields is far too weak to detect a few nuclei without it."
+      },
+      {
+        "tech": "Coherent control and readout of nitrogen-vacancy centres",
+        "status": "partial",
+        "why": "shallow defects lose coherence to surface noise, the main limit on sensitivity."
+      },
+      {
+        "tech": "Single-spin quantum metrology and noise suppression",
+        "status": "partial",
+        "why": "detecting one proton requires averaging and decoupling schemes still under development."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "proof-of-concept imaging of viruses and proteins with nanometre resolution",
+        "unlocks": "confidence that magnetic resonance can beat its conventional diffraction limit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine single-molecule nuclear magnetic resonance at surfaces",
+        "unlocks": "non-destructive chemical identification of individual molecules and surface species."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shallow defects with long coherence times and better hyperpolarised samples",
+        "unlocks": "shorter measurement times and chemical sensitivity approaching conventional spectroscopy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "commercial instruments for structural biology and materials science",
+        "unlocks": "routine atomic-scale structure determination without crystallisation or staining."
+      }
+    ]
+  }
+}

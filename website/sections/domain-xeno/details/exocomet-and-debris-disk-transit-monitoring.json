@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "High-resolution spectrograph",
+        "role": "spreads starlight finely enough to resolve narrow absorption lines from gas boiling off a comet.",
+        "parts": [
+          "echelle grating and cross-disperser",
+          "vacuum or thermally stabilised tank",
+          "CCD detector"
+        ]
+      },
+      {
+        "name": "Wavelength calibration and drift control",
+        "role": "keeps the wavelength scale steady to metres per second so a faint absorption feature is not confused with instrument drift.",
+        "parts": [
+          "laser frequency comb or thorium–argon lamp",
+          "simultaneous reference fibre"
+        ]
+      },
+      {
+        "name": "Telescope and fibre feed",
+        "role": "collects enough photons to measure a transit lasting only hours; a stable fibre scrambles the beam to the spectrograph.",
+        "parts": [
+          "1–8 m telescope",
+          "image slicer or fibre link",
+          "guider"
+        ]
+      },
+      {
+        "name": "Simultaneous photometric channel",
+        "role": "measures the broadband dimming that accompanies the gas, separating dust from pure gas release.",
+        "parts": [
+          "space photometer or fast-frame CCD camera",
+          "custom photometric filter"
+        ]
+      },
+      {
+        "name": "Observing scheduler",
+        "role": "because the events are unpredictable, the system needs high cadence, long baselines and target-of-opportunity triggers.",
+        "parts": [
+          "cadence plan",
+          "alert and override logic",
+          "weather and visibility constraints"
+        ]
+      },
+      {
+        "name": "Modelling and reduction pipeline",
+        "role": "turns a shifting line profile into orbital and outgassing parameters.",
+        "parts": [
+          "radial-velocity cross-correlation code",
+          "absorption-profile fitter",
+          "sublimation and dust-release model"
+        ]
+      },
+      {
+        "name": "Archive and follow-up network",
+        "role": "stores every spectrum so rare events can be correlated with other observatories later.",
+        "parts": [
+          "spectral archive",
+          "velocity and equivalent-width database"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Select host stars",
+        "detail": "Pick nearby, young stars with known debris disks and gas — systems where planet formation may still be delivering volatiles inward."
+      },
+      {
+        "title": "Assemble the spectrograph",
+        "detail": "Grind and align the echelle optics, then seal them in a vacuum tank on a vibration-isolated bench so the dispersion stays fixed over months."
+      },
+      {
+        "title": "Stabilise and calibrate",
+        "detail": "Fit a laser frequency comb or reference lamp and a second fibre so every exposure is calibrated simultaneously with the science light."
+      },
+      {
+        "title": "Couple the telescope",
+        "detail": "Run a fibre from the telescope focus to the spectrograph, with an image slicer and a guider that holds the star on the fibre as the atmosphere wobbles."
+      },
+      {
+        "title": "Add the photometric channel",
+        "detail": "Either negotiate observing time on a space photometer or install a fast-readout camera that can stare at the star with sub-minute cadence."
+      },
+      {
+        "title": "Plan the campaign",
+        "detail": "Write a cadence scheme that samples nights repeatedly over seasons; the events are aperiodic, so only long coverage catches them."
+      },
+      {
+        "title": "Reduce and detect",
+        "detail": "Subtract a stellar template, cross-correlate each exposure, and flag narrow absorption that appears redshifted relative to the star's lines."
+      },
+      {
+        "title": "Model and interpret",
+        "detail": "Fit the absorption profile and the photometric dip together to get gas velocity, column density, gas-to-dust ratio and a rough orbit for the evaporating body."
+      },
+      {
+        "title": "Archive and compare",
+        "detail": "Publish spectra so the same star can be re-examined when independent data, such as space photometry, later becomes available."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-resolution, high-stability spectroscopy",
+        "status": "exists",
+        "why": "the calcium lines tracing exocomet gas are narrow and faint, so resolving power and wavelength stability set the detection limit."
+      },
+      {
+        "tech": "Space-based time-series photometry",
+        "status": "exists",
+        "why": "uninterrupted, precise brightness monitoring catches the dimming from dust and puts a cadence floor under the ground-based spectra."
+      },
+      {
+        "tech": "Simultaneous wavelength calibration",
+        "status": "exists",
+        "why": "a transit signal of a few metres per second cannot be separated from instrumental drift without it."
+      },
+      {
+        "tech": "Cometary sublimation and dust models",
+        "status": "partial",
+        "why": "translating a line profile into a volatile delivery rate still relies on simplified physics."
+      },
+      {
+        "tech": "Long-baseline telescope time allocation",
+        "status": "partial",
+        "why": "monitoring programmes conflict with the short, competitive observing blocks most telescopes favour."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "dedicated spectrograph monitoring of nearby young stars, with Beta Pictoris as the archetype, running since the 1980s",
+        "unlocks": "the first measurements of individual disintegrating bodies and their gas composition."
+      },
+      {
+        "stage": "Next",
+        "milestone": "joint campaigns pairing high-cadence space photometry with ground-based spectroscopy",
+        "unlocks": "simultaneous gas and dust measurements, giving gas-to-dust ratios and mass-loss rates for many more systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "wider surveys of fainter, older stars with next-generation spectrographs",
+        "unlocks": "a statistical picture of how often volatiles are delivered late in planet formation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine volatile inventories tied to exoplanet atmosphere measurements",
+        "unlocks": "a way to test whether the water seen in a planet's atmosphere was delivered by comets or built in place."
+      }
+    ]
+  }
+}

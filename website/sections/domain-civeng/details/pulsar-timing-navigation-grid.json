@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "X-ray collector",
+        "role": "gathers enough X-ray photons from a faint pulsar to build a usable pulse profile.",
+        "parts": [
+          "nested grazing-incidence mirror shells or coded-mask aperture",
+          "thermal and stray-light shields",
+          "support structure"
+        ]
+      },
+      {
+        "name": "Photon-counting detector",
+        "role": "detects individual X-ray photons and stamps each one with an arrival time.",
+        "parts": [
+          "silicon drift detectors or microchannel plates",
+          "low-noise front-end electronics",
+          "event time-tagging chain"
+        ]
+      },
+      {
+        "name": "Time base",
+        "role": "the reference oscillator against which photon arrival times are measured.",
+        "parts": [
+          "ultra-stable oscillator or miniature atomic clock",
+          "counter and distribution electronics",
+          "drift characterisation models"
+        ]
+      },
+      {
+        "name": "Pulsar catalogue and barycentre model",
+        "role": "supplies the pulse 'beacons' and converts onboard times into a common reference frame.",
+        "parts": [
+          "stored timing and binary-orbit models",
+          "X-ray pulse-profile templates",
+          "solar-system ephemeris and barycentre transform"
+        ]
+      },
+      {
+        "name": "Navigation solver",
+        "role": "turns time-of-arrival residuals into position and clock corrections.",
+        "parts": [
+          "measurement model",
+          "recursive filter",
+          "clock-error estimator",
+          "pulsar observation scheduler"
+        ]
+      },
+      {
+        "name": "Attitude and pointing",
+        "role": "aims the detector at each pulsar in turn, since only one line of sight can be observed at a time.",
+        "parts": [
+          "star trackers",
+          "reaction wheels or thrusters",
+          "spacecraft slew planning"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the beacons",
+        "detail": "Millisecond pulsars are picked for sharp pulses and decades-long rotational stability; long radio timing campaigns establish their spin, proper motion and binary parameters."
+      },
+      {
+        "title": "Build the X-ray catalogue",
+        "detail": "Because X-ray and radio pulse shapes differ, the profile of each chosen pulsar must be measured in X-rays by an observatory-class telescope and stored as a template."
+      },
+      {
+        "title": "Size the detector",
+        "detail": "A photon budget calculation sets the collecting area and observing time needed for a target accuracy, since signal-to-noise improves roughly with the square root of observing time."
+      },
+      {
+        "title": "Build and qualify the payload",
+        "detail": "Detectors, concentrators and electronics are assembled to microsecond time resolution and put through vibration, thermal-vacuum and radiation testing."
+      },
+      {
+        "title": "Provide the clock",
+        "detail": "An ultra-stable oscillator is characterised so that its drift over hours is small enough for the pulsars themselves to correct over days."
+      },
+      {
+        "title": "Calibrate on the ground",
+        "detail": "A pulsed X-ray source simulates pulsar arrival times, verifying the whole chain from photon detection to time tag against a known input."
+      },
+      {
+        "title": "Demonstrate against known truth",
+        "detail": "In orbit, the instrument observes selected pulsars while the spacecraft's true position is known from GNSS or ground tracking, so measured arrival times can be compared with predicted ones."
+      },
+      {
+        "title": "Close the loop",
+        "detail": "The onboard filter is then fed only pulsar data and its autonomous position and clock solution is compared with the truth solution — the step that turns an instrument into a navigator."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Millisecond pulsar timing catalogue",
+        "status": "exists",
+        "why": "radio observatories have timed these pulsars for decades; their long-term rotational regularity rivals atomic clocks."
+      },
+      {
+        "tech": "Space-qualified X-ray optics and photon-counting detectors",
+        "status": "partial",
+        "why": "observatory-class X-ray telescopes fly today, but compact, low-mass navigator payloads are only now being demonstrated."
+      },
+      {
+        "tech": "Ultra-stable onboard clocks",
+        "status": "partial",
+        "why": "deep-space atomic clocks have flown, yet low-mass oscillators stable enough over multi-day arcs are still improving."
+      },
+      {
+        "tech": "Solar-system ephemerides and barycentre transform",
+        "status": "exists",
+        "why": "onboard arrival times must be referred to a common barycentric frame before they can be differenced against stored models."
+      },
+      {
+        "tech": "Autonomous onboard navigation software",
+        "status": "partial",
+        "why": "the solver, scheduler and fault handling must run on a spacecraft processor with no ground support."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "in-orbit demonstrations: an X-ray timing payload on the ISS achieved onboard position fixes from a few pulsars, and a dedicated Chinese test satellite flew in 2016",
+        "unlocks": "proof that the measurement chain works in space."
+      },
+      {
+        "stage": "Next",
+        "milestone": "purpose-built smallsat navigators with lighter concentrators and better clocks",
+        "unlocks": "regular kilometre-class fixes at mass and power a normal mission can carry."
+      },
+      {
+        "stage": "Next",
+        "milestone": "operational use as an adjunct on deep-space missions",
+        "unlocks": "less reliance on ground-station tracking for routine orbit determination and a fallback when tracking is unavailable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid navigation fusing pulsar timing with optical sightings of planets and asteroids plus inter-spacecraft links",
+        "unlocks": "faster convergence and better accuracy than any one method alone."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a maintained multi-pulsar catalogue and timing grid shared across spacecraft",
+        "unlocks": "absolute position and a common time standard anywhere in the galaxy, including for interstellar precursor missions."
+      }
+    ]
+  }
+}

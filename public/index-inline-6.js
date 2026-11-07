@@ -54,10 +54,12 @@
     function acceptCookies() {
       localStorage.setItem("tf247_cookies", "accepted");
       document.getElementById("cookieBanner").style.display = "none";
+      if (!localStorage.getItem("tf247_tour_v2")) startTour();
     }
     function declineCookies() {
       localStorage.setItem("tf247_cookies", "declined");
       document.getElementById("cookieBanner").style.display = "none";
+      if (!localStorage.getItem("tf247_tour_v2")) startTour();
     }
 
     /* ════════════════════════════════════
@@ -72,7 +74,7 @@
     const TOUR_STEPS = [
       {
         title: "Welcome to The Future 24/7",
-        text: "Technology intelligence across 29 live trackers — from what shipped this morning to what is still theory. Here is how to get around.",
+        text: "Explore the technology trackers. Evidence labels distinguish reviewed summaries from entries awaiting verification. Here is how to get around.",
         target: "#domainDirStrip",
         pos: "bottom",
       },
@@ -96,7 +98,7 @@
       },
       {
         title: "Ask the AI",
-        text: "Use the chat button for any technology question. It cross-references every domain on the site.",
+        text: "The chat panel shows whether an AI service is available. A published data snapshot does not mean a live AI engine is connected.",
         target: "#cmdFab",
         pos: "top",
       },
@@ -153,7 +155,7 @@
     }
     // Auto-start tour on first visit (after cookie decision or 2s)
     setTimeout(() => {
-      if (!localStorage.getItem("tf247_tour_v2")) startTour();
+      if (localStorage.getItem("tf247_cookies") && !localStorage.getItem("tf247_tour_v2")) startTour();
     }, 2500);
 
     /* ════════════════════════════════════
@@ -489,6 +491,7 @@
 
     // Auto-check on startup (60s delay so server is warm)
     setTimeout(() => {
+      if (window.SITE_STATIC_EXPORT) return;
       fetch("/api/system-updates")
         .then((r) => r.json())
         .then((d) => {
@@ -500,6 +503,7 @@
     // Re-check every 6 hours
     setInterval(
       () => {
+        if (window.SITE_STATIC_EXPORT) return;
         fetch("/api/system-updates")
           .then((r) => r.json())
           .then((d) => {
@@ -911,6 +915,7 @@
       eventType = "view",
       tileId = null,
     ) {
+      if (window.SITE_STATIC_EXPORT) return;
       try {
         await fetch("/api/monitoring/activity", {
           method: "POST",

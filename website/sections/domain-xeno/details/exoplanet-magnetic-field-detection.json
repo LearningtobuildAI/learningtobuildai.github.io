@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Low-frequency radio array",
+        "role": "catches the coherent radio emission that a planetary magnetic field should produce.",
+        "parts": [
+          "dipole or log-periodic antenna elements",
+          "low-noise analogue front ends",
+          "digital beamformer",
+          "correlator"
+        ]
+      },
+      {
+        "name": "Polarisation and dynamic-spectrum pipeline",
+        "role": "turns raw voltages into the signature of auroral emission.",
+        "parts": [
+          "Stokes V (circular polarisation) extraction",
+          "time-frequency dynamic spectra",
+          "drift-rate and periodicity search"
+        ]
+      },
+      {
+        "name": "Interference and ionosphere mitigation",
+        "role": "removes the human and terrestrial noise that drowns faint planetary signals.",
+        "parts": [
+          "radio-frequency interference flagging",
+          "ionospheric phase calibration",
+          "direction-dependent calibration"
+        ]
+      },
+      {
+        "name": "Ultraviolet spectrograph",
+        "role": "measures hydrogen escaping the planet, an indirect probe of its magnetic shielding.",
+        "parts": [
+          "space telescope",
+          "UV spectrograph",
+          "transit light-curve extraction"
+        ]
+      },
+      {
+        "name": "Magnetosphere and bow-shock models",
+        "role": "predicts what the radio and UV signals should look like, and rules out other explanations.",
+        "parts": [
+          "magnetohydrodynamic simulation",
+          "bow-shock geometry fit",
+          "stellar wind parameters"
+        ]
+      },
+      {
+        "name": "Stellar activity reference",
+        "role": "separates planetary signals from the star's own radio bursts and UV variability.",
+        "parts": [
+          "long out-of-transit monitoring",
+          "comparison targets",
+          "simultaneous multi-wavelength coverage"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick hot, close planets",
+        "detail": "Targets are gas giants on very short orbits, where the stellar wind is dense and the interaction should be strongest."
+      },
+      {
+        "title": "Estimate the emission frequency",
+        "detail": "A planet's auroral radio emission should appear near its electron cyclotron frequency — roughly 2.8 MHz per gauss of polar field, tens of MHz for plausible hot-Jupiter fields — so the search band can be narrowed."
+      },
+      {
+        "title": "Observe across the whole orbit",
+        "detail": "The array stares at the system for many hours, ideally covering a full orbital or rotation period, because the emission should be beamed and phase-modulated."
+      },
+      {
+        "title": "Strip the foreground",
+        "detail": "Interference from aircraft, satellites and transmitters is flagged, and the ionosphere is calibrated out; only then is the residual examined."
+      },
+      {
+        "title": "Search for drifting polarised features",
+        "detail": "The pipeline hunts narrowband, circularly polarised bursts that drift in frequency, and checks whether their timing matches the planet's orbit."
+      },
+      {
+        "title": "Measure the ultraviolet transit",
+        "detail": "A space telescope watches the host star through a transit; extra absorption in the hydrogen Lyman-alpha line reveals gas escaping far beyond the planet's atmosphere."
+      },
+      {
+        "title": "Test the bow-shock picture",
+        "detail": "Anomalously early absorption during ingress is compared with models of a magnetosphere standing off the stellar wind."
+      },
+      {
+        "title": "Confirm by consistency",
+        "detail": "A claimed field must reproduce the radio period, the polarisation sense and the UV absorption depth together; stellar activity and instrumental artefacts are excluded before publication."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Low-frequency radio arrays with polarimetry",
+        "status": "exists",
+        "why": "LOFAR and the Giant Metrewave Radio Telescope already operate in the needed tens-of-MHz band; the Square Kilometre Array's low-frequency array is under construction and will be far more sensitive."
+      },
+      {
+        "tech": "Radio-frequency interference mitigation",
+        "status": "exists",
+        "why": "planetary emission is faint and sits among far stronger terrestrial signals."
+      },
+      {
+        "tech": "Space ultraviolet spectroscopy",
+        "status": "partial",
+        "why": "Hubble remains the main facility capable of Lyman-alpha transit spectroscopy and is aging, so long campaigns are hard to schedule."
+      },
+      {
+        "tech": "Exoplanet magnetosphere theory",
+        "status": "partial",
+        "why": "the geometry of a hot Jupiter's magnetosphere and how the wind drives aurorae are still actively debated."
+      },
+      {
+        "tech": "A dedicated solar-and-stellar wind monitor",
+        "status": "missing",
+        "why": "without knowing the impinging wind, a measured field strength carries a large uncertainty."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "searches on individual hot Jupiters with existing radio arrays, plus ultraviolet transit campaigns",
+        "unlocks": "upper limits on magnetic fields and clear evidence that atmospheric escape is real, but no confirmed field detection."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a sensitive low-frequency array like SKA-Low surveying many systems",
+        "unlocks": "enough targets to tell whether strong fields are common or rare."
+      },
+      {
+        "stage": "Next",
+        "milestone": "simultaneous radio and ultraviolet observation of the same planet",
+        "unlocks": "a field strength and an escape rate for one object, tying magnetism to atmosphere loss."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "statistical surveys linked to stellar age and wind",
+        "unlocks": "a way to judge which rocky planets can hold onto atmospheres long enough to matter."
+      }
+    ]
+  }
+}

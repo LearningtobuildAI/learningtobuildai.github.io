@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Deep-ultraviolet laser source",
+        "role": "produces the deep-ultraviolet excitation light, near 248 nanometres, that makes molecules scatter Raman light while suppressing their fluorescence.",
+        "parts": [
+          "gain medium or excimer gas tube",
+          "frequency-conversion crystals",
+          "bandpass filters and beam shutter"
+        ]
+      },
+      {
+        "name": "Beam delivery and collection optics",
+        "role": "focuses the laser to a small spot on the sample and collects the very weak Raman-scattered light.",
+        "parts": [
+          "deep-UV mirrors and lenses",
+          "dichroic beam splitter",
+          "scanning mirror or translation stage",
+          "autofocus camera"
+        ]
+      },
+      {
+        "name": "Spectrograph",
+        "role": "separates the returning light by wavelength so individual Raman peaks can be measured.",
+        "parts": [
+          "entrance slit",
+          "diffraction grating",
+          "order-sorting filters",
+          "imaging optics"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "records the ultraviolet spectrum and must reject fluorescence and cosmic-ray hits.",
+        "parts": [
+          "cooled charge-coupled device or CMOS sensor",
+          "intensifier or gating electronics",
+          "readout electronics"
+        ]
+      },
+      {
+        "name": "Sample interface and scanning",
+        "role": "positions rock, powder or other samples and keeps the laser spot in focus.",
+        "parts": [
+          "translation stage",
+          "sample holder",
+          "context camera",
+          "surface preparation tool such as an abrasion bit"
+        ]
+      },
+      {
+        "name": "Control, calibration and reference library",
+        "role": "runs the measurement, calibrates wavelengths, and matches spectra to known minerals and organic compounds.",
+        "parts": [
+          "onboard computer and software",
+          "wavelength calibration source",
+          "reference spectral library",
+          "data compression and downlink"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the excitation wavelength and spectral range",
+        "detail": "Pick deep-ultraviolet excitation near 248 nanometres because it avoids most sample fluorescence and gives stronger Raman signals from organics, while still allowing a compact instrument."
+      },
+      {
+        "title": "Build or select the laser",
+        "detail": "Assemble a deep-ultraviolet laser that produces stable narrow-line light at the chosen wavelength, with filters to remove unwanted colours and a shutter for safe operation."
+      },
+      {
+        "title": "Design the deep-ultraviolet optics",
+        "detail": "Use reflective mirrors where possible and ultraviolet-transparent materials such as fused silica or calcium fluoride for lenses and windows. Design a dichroic to separate the strong laser light from the much weaker returning Raman light."
+      },
+      {
+        "title": "Build the spectrograph",
+        "detail": "Align a slit, a diffraction grating and imaging optics in a rigid housing. Deep-ultraviolet coatings and order-sorting filters keep stray light and unwanted diffraction orders away from the detector."
+      },
+      {
+        "title": "Integrate the detector",
+        "detail": "Mount a cooled ultraviolet-sensitive detector at the spectrograph focal plane, with shielding against radiation, vibration and thermal drift."
+      },
+      {
+        "title": "Assemble and align the instrument",
+        "detail": "In a cleanroom, align laser, optics, spectrograph and detector. Purge or evacuate air paths where deep-ultraviolet absorption and ozone formation would weaken the beam."
+      },
+      {
+        "title": "Calibrate and build a reference library",
+        "detail": "Record spectra of known minerals and organic compounds, calibrate wavelength and intensity response, and store the library so the instrument can match unknown spectra automatically."
+      },
+      {
+        "title": "Test and qualify",
+        "detail": "Run vibration, thermal-vacuum and radiation tests for spaceflight, or ruggedise for field use, and validate results on natural samples against established laboratory methods."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Deep-ultraviolet lasers",
+        "status": "exists",
+        "why": "248 nanometre light can be produced by excimer or frequency-converted solid-state lasers, though compact space-qualified versions are specialised."
+      },
+      {
+        "tech": "Ultraviolet-transparent optical materials",
+        "status": "exists",
+        "why": "fused silica and calcium fluoride transmit deep-ultraviolet light, whereas ordinary glass absorbs it."
+      },
+      {
+        "tech": "Ultraviolet-sensitive detectors",
+        "status": "exists",
+        "why": "cooled charge-coupled devices and CMOS sensors, sometimes intensified, can count the few Raman photons that return."
+      },
+      {
+        "tech": "Reference spectral libraries",
+        "status": "partial",
+        "why": "mineral spectra are well catalogued, but organic signatures are far more varied and mixtures remain hard to interpret."
+      },
+      {
+        "tech": "Spaceflight qualification of deep-ultraviolet instruments",
+        "status": "partial",
+        "why": "SHERLOC on NASA's Perseverance rover has demonstrated the approach on Mars, but few such instruments have flown."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "SHERLOC on the Perseverance rover maps organics and minerals in abraded Martian rock, and laboratory deep-ultraviolet Raman instruments are commercially available.",
+        "unlocks": "non-destructive identification at micrometre scale without sample preparation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Smaller, lighter deep-ultraviolet Raman systems with better fluorescence rejection and faster mapping.",
+        "unlocks": "wider use on rovers, landers and portable field instruments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Combining deep-ultraviolet Raman with other sensors such as laser-induced breakdown spectroscopy or mass spectrometry in one payload.",
+        "unlocks": "more confident identification of complex organic molecules and mineral mixtures."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Stand-off or remote deep-ultraviolet Raman for outcrops and contaminated sites.",
+        "unlocks": "detection without touching or preparing samples."
+      }
+    ]
+  }
+}

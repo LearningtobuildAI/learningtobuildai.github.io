@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Algorithmic circuit layer",
+        "role": "defines exactly which quantum circuit is being costed.",
+        "parts": [
+          "Shor's algorithm for factoring or discrete log",
+          "modular exponentiation and big-integer arithmetic",
+          "quantum Fourier transform",
+          "elliptic-curve point addition for ECC targets"
+        ]
+      },
+      {
+        "name": "Error-correction model",
+        "role": "turns a list of logical gates into a repeating physical cycle.",
+        "parts": [
+          "surface code or similar code family",
+          "code distance chosen against a physical error rate",
+          "lattice-surgery merge and split operations",
+          "decoder assumptions"
+        ]
+      },
+      {
+        "name": "Non-Clifford resource model",
+        "role": "accounts for the expensive T-gates that carry the arithmetic.",
+        "parts": [
+          "T-count and T-depth",
+          "magic state distillation or cultivation factories",
+          "factory throughput and footprint"
+        ]
+      },
+      {
+        "name": "Hardware assumption set",
+        "role": "the physical parameters the whole estimate is scaled to.",
+        "parts": [
+          "physical gate and measurement error rate",
+          "error-correction cycle time",
+          "qubit connectivity and readout",
+          "cryogenic and control overhead"
+        ]
+      },
+      {
+        "name": "Accounting engine",
+        "role": "combines circuit, code and hardware into a space-time volume.",
+        "parts": [
+          "data and ancilla qubit count",
+          "routing and factory area",
+          "wall-clock runtime model",
+          "yield and safety factors"
+        ]
+      },
+      {
+        "name": "Interpretation layer",
+        "role": "converts a number into a security conclusion.",
+        "parts": [
+          "attacker-model assumptions such as parallel speed-ups",
+          "margin added for unknown optimisations",
+          "mapping onto migration deadlines"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the target and attacker model",
+        "detail": "Choose the key size and scheme (for example RSA-2048 or a 256-bit elliptic-curve key), decide whether the attacker is a single machine, and state what classical pre- and post-processing is allowed."
+      },
+      {
+        "title": "Write the quantum circuit",
+        "detail": "Build the arithmetic explicitly — modular exponentiation with windowed multiplication and compressed registers, or windowed elliptic-curve addition — and minimise its gate and qubit counts on paper."
+      },
+      {
+        "title": "Pick the fault-tolerance scheme",
+        "detail": "Select a code such as the surface code, set lattice-surgery operations as the logical instruction set, and choose the code distance that suppresses logical errors below the target for the assumed physical error rate."
+      },
+      {
+        "title": "Count the non-Clifford cost",
+        "detail": "Tally how many T-gates the circuit needs and how many magic states per second a distillation or cultivation factory can supply, since this usually sets the machine's size and speed."
+      },
+      {
+        "title": "Lay out the machine",
+        "detail": "Place data-qubit patches, routing space and factories on a 2D grid, then trade qubit count against runtime — a bigger machine with more factories runs the same circuit faster."
+      },
+      {
+        "title": "Compute the space-time volume",
+        "detail": "Multiply qubits by cycle time by number of cycles to get physical qubits and wall-clock hours, and report the pair rather than a single figure."
+      },
+      {
+        "title": "Stress-test the assumptions",
+        "detail": "Re-run the model across a range of physical error rates, cycle times and algorithmic optimisations, and add margin for techniques not yet invented."
+      },
+      {
+        "title": "Translate into guidance",
+        "detail": "Turn the range into exposure windows — data encrypted today and stored can be decrypted later — and compare against the migration schedule implied by post-quantum standards."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Shor's algorithm and quantum arithmetic circuits",
+        "status": "exists",
+        "why": "the circuit being costed has to exist before anything can be counted."
+      },
+      {
+        "tech": "Quantum error correction theory (surface codes, lattice surgery)",
+        "status": "exists",
+        "why": "it is the factory model that converts noisy physical qubits into reliable logical ones."
+      },
+      {
+        "tech": "Magic state distillation and cultivation",
+        "status": "partial",
+        "why": "it supplies the non-Clifford gates and often dominates the estimate, but is not yet run at useful scale."
+      },
+      {
+        "tech": "Classical simulation and benchmarking of error-corrected circuits",
+        "status": "exists",
+        "why": "small instances are simulated to sanity-check the analytic models."
+      },
+      {
+        "tech": "A fault-tolerant quantum computer of the estimated size",
+        "status": "missing",
+        "why": "without one, the estimates remain predictions that cannot be validated end to end."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "published point estimates — for example roughly 20 million noisy qubits running for about eight hours for RSA-2048 (Gidney and Ekerå, 2021), with later work trading longer runtimes for fewer than a million qubits",
+        "unlocks": "concrete deadlines in post-quantum migration policy, alongside standards finalised in 2024."
+      },
+      {
+        "stage": "Next",
+        "milestone": "common reporting conventions and shared tooling, so competing estimates use the same attacker model and metrics",
+        "unlocks": "estimates that can be compared directly instead of argued over."
+      },
+      {
+        "stage": "Next",
+        "milestone": "estimates driven by measured hardware parameters rather than assumed ones",
+        "unlocks": "shrinking error bars and earlier, better-founded migration dates."
+      },
+      {
+        "stage": "Then",
+        "milestone": "a small cryptographic key broken on real error-corrected hardware",
+        "unlocks": "the endpoint of the analysis becomes an engineering problem rather than a research question."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routines folded into cryptographic-agility practice and standards cycles",
+        "unlocks": "key sizes and algorithms updated on a schedule, not in a panic."
+      }
+    ]
+  }
+}

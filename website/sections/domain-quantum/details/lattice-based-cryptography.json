@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Hardness assumptions",
+        "role": "the mathematical problems whose difficulty is the whole basis of security.",
+        "parts": [
+          "learning-with-errors (LWE) and its ring/module variants",
+          "short-vector problems in high-dimensional lattices",
+          "parameter sets sized against the best known lattice-reduction attacks"
+        ]
+      },
+      {
+        "name": "Polynomial arithmetic engine",
+        "role": "fast multiplication and reduction of long polynomials over a large finite field.",
+        "parts": [
+          "number-theoretic transform (NTT)",
+          "modular reduction",
+          "polynomial sampling"
+        ]
+      },
+      {
+        "name": "Key and ciphertext logic",
+        "role": "the actual key establishment and signature operations built on that arithmetic.",
+        "parts": [
+          "key generation",
+          "encapsulation and decapsulation (KEM)",
+          "signing and verification"
+        ]
+      },
+      {
+        "name": "Randomness and sampling",
+        "role": "turns random bytes into the structured small errors the schemes need.",
+        "parts": [
+          "cryptographically secure random number generator",
+          "centred-binomial or rejection sampling",
+          "nonce handling for signatures"
+        ]
+      },
+      {
+        "name": "Encoding and serialisation",
+        "role": "packing keys and ciphertexts into fixed byte strings that fit existing protocols.",
+        "parts": [
+          "byte-level key and ciphertext formats",
+          "X.509 and PKI encoding",
+          "protocol codepoints (TLS, IKEv2, SSH)"
+        ]
+      },
+      {
+        "name": "Side-channel hardening",
+        "role": "stops an attacker reading secrets from timing, power draw or a single injected fault.",
+        "parts": [
+          "constant-time code",
+          "masking and shuffling",
+          "re-encryption and consistency checks in decapsulation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the problem and parameters",
+        "detail": "Choose a lattice problem — module-LWE or NTRU-style — then set ring dimension and modulus so both classical and quantum attack estimates land far above the required security level, without making keys unusably large."
+      },
+      {
+        "title": "Write the ring arithmetic",
+        "detail": "Implement multiplication of polynomials of degree a few hundred in a ring modulus a prime, using a number-theoretic transform so the cost is close to n log n rather than n squared."
+      },
+      {
+        "title": "Sample the errors",
+        "detail": "Generate secret and error polynomials from a tight, carefully specified distribution — a wider or narrower distribution than specified weakens or breaks the scheme."
+      },
+      {
+        "title": "Build key exchange and signatures",
+        "detail": "Assemble key generation, encapsulation and decapsulation for the KEM; separately build the rejection-sampling loop that lattice signatures need, which must not leak through timing."
+      },
+      {
+        "title": "Encode and interop-test",
+        "detail": "Serialise keys and ciphertexts to exact byte lengths, fix them into certificate and handshake structures, and check against published known-answer test vectors."
+      },
+      {
+        "title": "Harden the implementation",
+        "detail": "Convert all secret-dependent code paths to constant time, mask arithmetic against power analysis, and add checks that catch a fault-injected ciphertext before it is decapsulated."
+      },
+      {
+        "title": "Validate",
+        "detail": "Run test vectors, independent implementations, formal verification where available, and side-channel evaluation on real hardware before any deployment."
+      },
+      {
+        "title": "Integrate into protocols",
+        "detail": "Add the scheme to TLS 1.3, IKEv2, SSH and certificate tooling, initially alongside classical elliptic-curve key exchange in a hybrid so security holds if either is broken."
+      },
+      {
+        "title": "Deploy with crypto-agility",
+        "detail": "Roll out hybrids, keep the ability to swap algorithms quickly, and retain classical algorithms in parallel until post-quantum schemes have survived years of public cryptanalysis."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum computers able to run Shor's algorithm at cryptographic scale",
+        "status": "partial",
+        "why": "it is the threat that motivates all of this; today's machines factor only tiny numbers, but a future one would break RSA and elliptic-curve key exchange."
+      },
+      {
+        "tech": "Worst-case-to-average-case reductions for lattice problems",
+        "status": "exists",
+        "why": "these reductions are what let a scheme's security rest on hard lattice problems rather than on unproven guesswork."
+      },
+      {
+        "tech": "Efficient modular arithmetic and transform libraries",
+        "status": "exists",
+        "why": "lattice schemes are only practical because fast polynomial multiplication over finite fields is a solved problem."
+      },
+      {
+        "tech": "Cryptographically secure random number generation",
+        "status": "exists",
+        "why": "sampling errors and generating secrets fails catastrophically with weak randomness."
+      },
+      {
+        "tech": "Constant-time execution and hardware support",
+        "status": "partial",
+        "why": "lattice schemes are more exposed to timing and fault attacks than the elliptic curves they replace, and not all processors or HSMs help avoid that."
+      },
+      {
+        "tech": "Standards and PKI support",
+        "status": "partial",
+        "why": "schemes are useless until browsers, servers, certificate authorities and hardware tokens carry them end to end."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "finalised standards for lattice key encapsulation and signatures, with hybrid key exchange already running in browsers, messaging apps and TLS test deployments",
+        "unlocks": "real-world data on performance, interoperability and attack surface."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware and firmware support — HSMs, secure elements, smart cards and low-power devices",
+        "unlocks": "post-quantum security for payments, identity documents and anything without a fast general-purpose CPU."
+      },
+      {
+        "stage": "Next",
+        "milestone": "retirement of classic RSA and elliptic-curve key transport where hybrid is already proven",
+        "unlocks": "protection against 'harvest now, decrypt later' collection of today's traffic."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "signature migration and periodic parameter review as cryptanalysis matures",
+        "unlocks": "a stable post-quantum public-key infrastructure that can absorb the next algorithmic break without another decade-long rebuild."
+      }
+    ]
+  }
+}

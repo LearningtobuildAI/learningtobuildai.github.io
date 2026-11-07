@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Code lattice",
+        "role": "the geometry that defines which qubits exist and which stabilisers are measured.",
+        "parts": [
+          "three-colourable tiling (e.g. the 6.6.6 triangular lattice)",
+          "data qubits on vertices",
+          "face and vertex stabiliser sets"
+        ]
+      },
+      {
+        "name": "Physical qubit layer",
+        "role": "the hardware holding the data and ancilla qubits.",
+        "parts": [
+          "superconducting transmons, trapped ions or neutral atoms",
+          "couplers and readout resonators",
+          "control electronics"
+        ]
+      },
+      {
+        "name": "Syndrome extraction",
+        "role": "measures each stabiliser without collapsing the encoded information.",
+        "parts": [
+          "ancilla qubits",
+          "entangling-gate schedules",
+          "flag qubits to catch ancilla faults"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "reads the error syndromes and infers the most likely correction.",
+        "parts": [
+          "matching on projected 2D lattices",
+          "tensor-network or neural-network decoders",
+          "real-time control hardware"
+        ]
+      },
+      {
+        "name": "Logical gate layer",
+        "role": "applies operations on encoded information.",
+        "parts": [
+          "transversal single-qubit Clifford gates",
+          "lattice surgery or code switching for entangling gates",
+          "magic-state injection for non-Clifford gates"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the tiling and distance",
+        "detail": "Choose a three-colourable lattice and code distance d; the number of physical qubits and the weight-6 face stabilisers follow from it."
+      },
+      {
+        "title": "Lay out the qubits",
+        "detail": "Assign data qubits to vertices and ancillas to stabiliser measurements, then map that graph onto the fixed connectivity of the hardware."
+      },
+      {
+        "title": "Schedule the entangling gates",
+        "detail": "Break each high-weight stabiliser into a sequence of two-qubit gates, adding flag qubits so a single ancilla fault cannot masquerade as a data error."
+      },
+      {
+        "title": "Calibrate syndrome extraction",
+        "detail": "Tune gate timings and readout so one round of measurement is fast, low-noise and repeatable."
+      },
+      {
+        "title": "Build and train the decoder",
+        "detail": "Implement a decoder that handles the heavier, more tangled error patterns of a colour code, ideally running within the measurement cycle."
+      },
+      {
+        "title": "Verify below-threshold behaviour",
+        "detail": "Run increasing distances and confirm that logical error rate falls as the code grows — the only real proof the code is working."
+      },
+      {
+        "title": "Demonstrate the transversal gates",
+        "detail": "Apply Hadamard and phase gates qubit-by-qubit across the block and check that logical information survives with no error spreading."
+      },
+      {
+        "title": "Add non-Clifford capability",
+        "detail": "Distil or inject magic states so the processor can run arbitrary algorithms, not just Clifford circuits."
+      },
+      {
+        "title": "Scale out",
+        "detail": "Combine blocks by lattice surgery or code switching to link many logical qubits into one machine."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Physical qubits with error rates near or below the code threshold",
+        "status": "partial",
+        "why": "if physical error rates exceed threshold, adding qubits makes the logical qubit worse, not better."
+      },
+      {
+        "tech": "High-fidelity two-qubit gates and mid-circuit measurement",
+        "status": "exists",
+        "why": "syndrome extraction is built entirely from these two operations."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "the decoder must keep up with measurement, and colour codes are harder to decode than surface codes."
+      },
+      {
+        "tech": "Flag-qubit techniques for high-weight stabilisers",
+        "status": "partial",
+        "why": "colour codes check six qubits at once, so a single ancilla fault can create a damaging correlated error."
+      },
+      {
+        "tech": "Magic-state distillation or injection",
+        "status": "partial",
+        "why": "a transversal gate set alone is not universal; a non-Clifford resource is needed for useful computation."
+      },
+      {
+        "tech": "Low-loss qubit routing and connectivity",
+        "status": "partial",
+        "why": "the lattice rarely matches hardware wiring, so qubits must be shuttled or swapped without adding errors."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "theory mature since Bombin and Martin-Delgado introduced colour codes in 2006; small-distance versions run on a handful of qubits",
+        "unlocks": "confidence that the lattice and gate scheme are self-consistent."
+      },
+      {
+        "stage": "Next",
+        "milestone": "distance-3 to distance-5 logical qubits showing error suppression with real-time decoding",
+        "unlocks": "evidence that colour codes are competitive with surface codes on real hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "end-to-end demonstration of the transversal Clifford gate set plus magic-state injection",
+        "unlocks": "a genuinely universal, fault-tolerant logical gate layer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "code switching between colour and surface codes inside one processor",
+        "unlocks": "cheap transversal gates where they help, and cheaper storage and layout where they do not."
+      }
+    ]
+  }
+}

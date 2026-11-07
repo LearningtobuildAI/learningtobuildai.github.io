@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Discretisation and system assembly",
+        "role": "turns a differential equation into the finite algebraic problem a quantum computer can actually act on.",
+        "parts": [
+          "finite-difference or finite-element stencil",
+          "linear or linearised ODE/PDE system Ax = b",
+          "condition-number and sparsity analysis"
+        ]
+      },
+      {
+        "name": "Block encoding",
+        "role": "exposes the system matrix to the quantum computer as a unitary it can call, without ever writing the whole matrix out.",
+        "parts": [
+          "sparse-access oracle or linear-combination-of-unitaries decomposition",
+          "Hamiltonian-simulation subroutine",
+          "ancilla qubits for post-selection"
+        ]
+      },
+      {
+        "name": "State preparation",
+        "role": "loads the initial and boundary data as a quantum state vector.",
+        "parts": [
+          "amplitude-encoding circuit or quantum random-access memory",
+          "approximate state-preparation routines"
+        ]
+      },
+      {
+        "name": "Solver core",
+        "role": "produces a state whose amplitudes encode the solution.",
+        "parts": [
+          "quantum linear-systems routine (HHL-type)",
+          "quantum linear-ODE integrators (Taylor or Chebyshev series)",
+          "or variational ansatz with a classical optimiser",
+          "or quantum walk formulation"
+        ]
+      },
+      {
+        "name": "Readout and post-processing",
+        "role": "extracts the handful of physical numbers a user actually wants from the solution state.",
+        "parts": [
+          "observable estimation by repeated sampling",
+          "amplitude estimation for expectation values",
+          "classical extrapolation of auxiliary quantities"
+        ]
+      },
+      {
+        "name": "Error mitigation and verification",
+        "role": "keeps shallow-circuit results meaningful and checks them against known classical answers.",
+        "parts": [
+          "zero-noise extrapolation, probabilistic error cancellation",
+          "classical reference solvers on small instances"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a regime where classical solvers hurt",
+        "detail": "Target three-dimensional, high-resolution or many-query problems where classical cost grows steeply, rather than problems a laptop already handles."
+      },
+      {
+        "title": "Discretise the equation",
+        "detail": "Apply finite differences or finite elements on a grid, obtaining a large sparse linear system, and record its condition number and dimension."
+      },
+      {
+        "title": "Estimate the resources honestly",
+        "detail": "Before building anything, count qubits, gate depth and readout shots against the best classical method for the same instance."
+      },
+      {
+        "title": "Block-encode the operator",
+        "detail": "Construct circuits that apply the system matrix as a unitary, using a sparse oracle or a sum of simple unitaries, at fault-tolerant precision."
+      },
+      {
+        "title": "Prepare the input state",
+        "detail": "Encode the source term or initial condition into amplitudes — typically the most expensive and least efficient part of the pipeline."
+      },
+      {
+        "title": "Run the solver",
+        "detail": "Either execute the deep linear-systems or time-stepping circuit on an error-corrected machine, or optimise a shallow variational circuit on today's hardware for toy sizes."
+      },
+      {
+        "title": "Extract physical quantities",
+        "detail": "Sample the output state to estimate the specific integrals, fluxes or prices wanted; a full solution field cannot be read out cheaply."
+      },
+      {
+        "title": "Verify and iterate",
+        "detail": "Compare against a classical solver on small grids, apply error mitigation, and only then scale the problem size."
+      },
+      {
+        "title": "Quantify the advantage",
+        "detail": "State clearly which quantity is faster, under what precision and conditioning assumptions, and check that a classical or 'dequantised' method cannot match it."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing with error correction",
+        "status": "missing",
+        "why": "the needed circuit depths and precisions are far beyond today's noisy devices."
+      },
+      {
+        "tech": "Block encoding and Hamiltonian simulation",
+        "status": "partial",
+        "why": "demonstrated on small systems; the cost still grows with matrix size and precision."
+      },
+      {
+        "tech": "Efficient quantum state preparation and quantum memory",
+        "status": "missing",
+        "why": "loading arbitrary initial data can be as costly as the problem being solved."
+      },
+      {
+        "tech": "Quantum observable estimation and amplitude estimation",
+        "status": "partial",
+        "why": "the solution exists as amplitudes; only aggregate quantities can be read out efficiently."
+      },
+      {
+        "tech": "Mature classical PDE and Monte Carlo solvers as the benchmark",
+        "status": "exists",
+        "why": "the bar to beat is high and improves every year, so any advantage must be measured against it."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Small demonstrations on tens of qubits: variational solvers for simple ODEs and low-dimensional PDEs, plus theory papers giving end-to-end complexity for linear equations",
+        "unlocks": "proof that the pipeline runs, and a clear list of bottlenecks — state preparation, conditioning and readout."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Fault-tolerant proof-of-concept solving an instance chosen so that a specific quantity is certifiably hard to compute classically",
+        "unlocks": "first credible claim of an equation-solving advantage on a narrow problem class."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Application-specific routines for electromagnetics, option pricing and linearised flow, exploiting structure such as low rank, sparsity or many repeated solves",
+        "unlocks": "early commercial use inside larger classical workflows, where only a small subproblem is quantum."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fault-tolerant machines with enough logical qubits for practical grids",
+        "unlocks": "nonlinear and turbulent flow simulation, where independent classical verification is hardest."
+      }
+    ]
+  }
+}

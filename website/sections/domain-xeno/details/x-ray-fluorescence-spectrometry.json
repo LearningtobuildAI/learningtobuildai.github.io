@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "X-ray source",
+        "role": "produces the primary beam that excites atoms in the rock.",
+        "parts": [
+          "miniature X-ray tube",
+          "high-voltage supply",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Focusing optic",
+        "role": "concentrates the beam to a spot roughly 100 µm across so individual mineral grains can be targeted.",
+        "parts": [
+          "polycapillary X-ray lens",
+          "mounting and alignment hardware"
+        ]
+      },
+      {
+        "name": "Positioning stage",
+        "role": "holds the instrument at a fixed standoff and scans the beam across the target in a raster.",
+        "parts": [
+          "hexapod actuator",
+          "instrument turret on a robotic arm",
+          "standoff sensors"
+        ]
+      },
+      {
+        "name": "Detector",
+        "role": "measures the energy and count rate of fluorescent X-rays coming back from the sample.",
+        "parts": [
+          "silicon drift detector",
+          "amplifier and pulse processor"
+        ]
+      },
+      {
+        "name": "Context imager",
+        "role": "photographs the exact patch being measured so the chemistry can be tied to visible texture.",
+        "parts": [
+          "micro camera",
+          "illumination"
+        ]
+      },
+      {
+        "name": "Calibration and software",
+        "role": "turns raw counts into element concentrations.",
+        "parts": [
+          "reference standards",
+          "spectral fitting and quantification code"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the geometry",
+        "detail": "Source, optic, detector and camera are laid out as a compact head that can face a rock without shadowing itself."
+      },
+      {
+        "title": "Build the X-ray tube",
+        "detail": "A miniature tube is assembled and evacuated, with a high-voltage supply small enough to fly."
+      },
+      {
+        "title": "Draw the capillary lens",
+        "detail": "Thousands of hollow glass capillaries are bundled and tapered so that X-rays glancing off their inner walls converge on one spot."
+      },
+      {
+        "title": "Assemble the detector",
+        "detail": "A silicon drift detector and its front-end electronics are packaged for vacuum, vibration and thermal cycling."
+      },
+      {
+        "title": "Integrate the head",
+        "detail": "Optic, tube, detector and camera are mounted on a hexapod that can scan the beam while holding standoff constant."
+      },
+      {
+        "title": "Calibrate on the ground",
+        "detail": "The finished instrument is tested against rock standards of known composition to build a quantification model."
+      },
+      {
+        "title": "Qualify for spaceflight",
+        "detail": "Vibration, thermal-vacuum and radiation testing prove it will survive launch and Mars."
+      },
+      {
+        "title": "Operate on the surface",
+        "detail": "The arm places the head against a rock and rasters the beam; software fits the spectra into an elemental map."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Miniature X-ray tubes",
+        "status": "exists",
+        "why": "a laboratory-scale source had to shrink to a few hundred grams."
+      },
+      {
+        "tech": "Polycapillary X-ray optics",
+        "status": "exists",
+        "why": "they make a micro-focus spot possible without lenses that would absorb X-rays."
+      },
+      {
+        "tech": "Silicon drift detectors",
+        "status": "exists",
+        "why": "they resolve the closely spaced X-ray energies of neighbouring elements at low count rates."
+      },
+      {
+        "tech": "Robotic arm and turret with fine positioning",
+        "status": "exists",
+        "why": "the instrument must sit within a fraction of a millimetre of the rock for hours."
+      },
+      {
+        "tech": "Radiation-tolerant, low-mass electronics",
+        "status": "exists",
+        "why": "the instrument must run on limited rover power and survive cosmic radiation."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "PIXL mapping rocks on Mars inside Jezero crater, alongside cameras and other spectrometers",
+        "unlocks": "element-by-element maps directly tied to visible rock texture."
+      },
+      {
+        "stage": "Next",
+        "milestone": "returned samples analysed in terrestrial laboratories",
+        "unlocks": "isotopic and trace-element detail far beyond what a rover can measure."
+      },
+      {
+        "stage": "Next",
+        "milestone": "shrunken XRF heads on small rovers, drones and landers",
+        "unlocks": "many more sites surveyed per mission."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "in-situ elemental mapping for resource use on the Moon or Mars",
+        "unlocks": "identifying ores, salts and water-bearing minerals where they will be needed."
+      }
+    ]
+  }
+}

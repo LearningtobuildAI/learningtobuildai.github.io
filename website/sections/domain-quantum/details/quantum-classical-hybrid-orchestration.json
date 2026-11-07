@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Program interface and IR",
+        "role": "expresses the workload as a parameterised circuit plus a classical update rule, in a portable form.",
+        "parts": [
+          "parameterised circuit representation",
+          "OpenQASM 3 / QIR-style intermediate representation",
+          "classical update function or cost function"
+        ]
+      },
+      {
+        "name": "Compiler and transpiler",
+        "role": "rewrites the abstract circuit into operations the chosen device can actually run.",
+        "parts": [
+          "gate decomposition to native gate set",
+          "qubit routing against the device coupling map",
+          "calibration-aware layout and scheduling"
+        ]
+      },
+      {
+        "name": "Classical optimiser loop",
+        "role": "computes the next set of circuit parameters from measured results.",
+        "parts": [
+          "gradient-free optimisers such as COBYLA or SPSA",
+          "gradient and natural-gradient methods",
+          "convergence and budget control"
+        ]
+      },
+      {
+        "name": "Runtime, session and scheduler",
+        "role": "turns a hybrid program into queued jobs against live hardware and reserves classical resources alongside.",
+        "parts": [
+          "job queue and priority policy",
+          "session/context persistence",
+          "calibration-state-aware placement",
+          "classical worker allocation"
+        ]
+      },
+      {
+        "name": "QPU control stack",
+        "role": "executes the compiled circuit as timed control signals and reads back the results.",
+        "parts": [
+          "microwave or laser pulse generation",
+          "mid-circuit measurement and feedforward",
+          "shot accumulation and readout discrimination"
+        ]
+      },
+      {
+        "name": "Error mitigation and correction",
+        "role": "improves the answer given today's noisy hardware, and later protects logical qubits.",
+        "parts": [
+          "zero-noise extrapolation and probabilistic error cancellation",
+          "readout and measurement-error mitigation",
+          "for error correction: syndrome extraction and a decoder"
+        ]
+      },
+      {
+        "name": "Results, provenance and telemetry",
+        "role": "streams values back, records what device and calibration produced them, and checkpoints the run.",
+        "parts": [
+          "low-latency result channel",
+          "calibration and version metadata",
+          "checkpointing and restart"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the hybrid program",
+        "detail": "Write the workload as a parameterised circuit plus a classical cost function, declaring how many shots each iteration needs and how parameters will be updated."
+      },
+      {
+        "title": "Lower to an intermediate representation",
+        "detail": "Compile the abstract description into a stable IR such as OpenQASM 3 or QIR so it can target more than one vendor's stack."
+      },
+      {
+        "title": "Compile for a specific device",
+        "detail": "Transpile to the native gate set, route two-qubit gates onto working couplers, and pick a qubit layout suited to the device's current error rates."
+      },
+      {
+        "title": "Open a session and schedule",
+        "detail": "Submit the program as a session or hybrid job so that repeated iterations keep priority on one machine and get classical workers reserved next to it."
+      },
+      {
+        "title": "Run the quantum inner step",
+        "detail": "The control stack plays out the circuit, performs mid-circuit measurement where needed, and returns measurement counts for each shot."
+      },
+      {
+        "title": "Compute classically between shots",
+        "detail": "Expectation values are formed from the counts, the optimiser proposes new parameters, and the next circuit is prepared — the loop that gives the approach its name."
+      },
+      {
+        "title": "Apply mitigation every iteration",
+        "detail": "Readout calibration, noise extrapolation or cancellation is applied per iteration, since a single mitigated number cannot be built from separately mitigated steps."
+      },
+      {
+        "title": "Iterate and checkpoint",
+        "detail": "Repeat until the optimiser converges or the shot/time budget is exhausted, checkpointing parameters and device state so a long run can survive a queue interruption."
+      },
+      {
+        "title": "Assemble and report results",
+        "detail": "Return estimates with error bars, tagging them with the device, calibration snapshot and software versions that produced them."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cloud-accessible quantum processors with stable job APIs",
+        "status": "exists",
+        "why": "orchestration only has something to orchestrate once hardware is reachable programmatically."
+      },
+      {
+        "tech": "Parameterised circuits and variational algorithms",
+        "status": "exists",
+        "why": "the split into a quantum circuit and a classical optimiser is what the middleware is built around."
+      },
+      {
+        "tech": "Error mitigation methods",
+        "status": "partial",
+        "why": "they make near-term results usable but cost extra shots and only hold for certain noise models."
+      },
+      {
+        "tech": "Standard intermediate representations and gate-model portability",
+        "status": "partial",
+        "why": "without a common IR every workload must be rewritten per vendor."
+      },
+      {
+        "tech": "Low-latency classical control of quantum hardware",
+        "status": "missing",
+        "why": "error-corrected logical qubits need feedback within roughly a microsecond, far faster than today's job-level scheduling."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "runtime services offering estimator/sampler primitives with built-in mitigation and session-based job batches",
+        "unlocks": "variational algorithms and chemistry or optimisation experiments run end-to-end without hand-written glue code."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised hybrid intermediate representations and pulse-level control APIs",
+        "unlocks": "the same program ported across vendors and across circuit-level versus pulse-level execution."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time feedback at scale: repeated mid-circuit measurement, reset and conditional operations inside one job",
+        "unlocks": "error correction experiments and deeper circuits than a single coherent run allows."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "microsecond-scale decoding and control planes coupled to error-corrected logical qubits",
+        "unlocks": "fault-tolerant workloads, where orchestration becomes a hard real-time control problem rather than a job queue."
+      }
+    ]
+  }
+}

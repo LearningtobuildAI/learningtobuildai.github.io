@@ -1,0 +1,158 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Telescope and spectrograph",
+        "role": "collects enough infrared light from the planet to split into a spectrum.",
+        "parts": [
+          "space telescope (JWST)",
+          "near- and mid-infrared spectrographs",
+          "guiding and stability control"
+        ]
+      },
+      {
+        "name": "Timing and ephemeris",
+        "role": "predicts exactly when the planet crosses in front of or behind its star.",
+        "parts": [
+          "transit photometry",
+          "ephemeris models",
+          "scheduling"
+        ]
+      },
+      {
+        "name": "Light-curve processing",
+        "role": "turns raw detector counts into a tiny planetary signal.",
+        "parts": [
+          "systematics correction",
+          "limb-darkening and instrument models",
+          "transit and eclipse fitting"
+        ]
+      },
+      {
+        "name": "Atmospheric retrieval",
+        "role": "infers which gases could produce the observed spectrum.",
+        "parts": [
+          "radiative-transfer models",
+          "molecular line lists",
+          "Bayesian fitting"
+        ]
+      },
+      {
+        "name": "Volcanic discriminants",
+        "role": "the specific signals that point to active outgassing rather than chemistry.",
+        "parts": [
+          "sulphur dioxide and sulphur monoxide bands",
+          "thermal emission excess",
+          "short-lived gas lifetimes"
+        ]
+      },
+      {
+        "name": "Interior and tidal models",
+        "role": "test whether tidal heating could plausibly drive the observed activity.",
+        "parts": [
+          "orbital eccentricity and dissipation models",
+          "mantle convection and outgassing models"
+        ]
+      },
+      {
+        "name": "False-positive control",
+        "role": "removes non-planetary explanations.",
+        "parts": [
+          "stellar activity and spot models",
+          "photochemistry models",
+          "star-planet contamination checks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a target",
+        "detail": "Pick a small rocky planet that transits a small, cool star, where a single transit blocks enough starlight to be measured, and where orbital eccentricity or resonance predicts real tidal heating."
+      },
+      {
+        "title": "Measure the star and the orbit",
+        "detail": "Radial-velocity observations give the planet's mass; long photometric baselines give its radius, period and eccentricity, which set how much tidal energy is dissipated inside it."
+      },
+      {
+        "title": "Observe transits",
+        "detail": "Record the star's light during transits, when starlight filters through any atmosphere, using near-infrared spectroscopy over many transits to build up signal-to-noise."
+      },
+      {
+        "title": "Observe eclipses",
+        "detail": "Record the dip when the planet passes behind the star; the size of that dip gives the dayside temperature, so an excess reveals hot, freshly erupted surface."
+      },
+      {
+        "title": "Clean the data",
+        "detail": "Fit and remove instrument drifts, detector systematics, stellar variability and unocculted starspots, which otherwise mimic a planetary signal."
+      },
+      {
+        "title": "Retrieve a composition",
+        "detail": "Compare the corrected spectrum against model atmospheres to estimate abundances of sulphur-bearing gases and their uncertainties."
+      },
+      {
+        "title": "Test alternative sources",
+        "detail": "Model ultraviolet-driven photochemistry: on a hydrogen-rich planet, sulphur dioxide can be made from hydrogen sulphide high in the atmosphere without any volcano."
+      },
+      {
+        "title": "Check replenishment",
+        "detail": "Sulphur dioxide is destroyed by ultraviolet light within years, so model whether the observed amount requires a continuous surface source."
+      },
+      {
+        "title": "Confirm with repeat observations",
+        "detail": "Only repeated, independent detections of the same species and a matching thermal excess justify calling a planet volcanically active."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space infrared spectroscopy at transit depth precision",
+        "status": "exists",
+        "why": "JWST can measure the roughly one-part-in-a-thousand signals involved and has already detected sulphur dioxide on a gas giant."
+      },
+      {
+        "tech": "Precise masses and radii for small planets",
+        "status": "partial",
+        "why": "mass, and therefore interior and tidal heating estimates, remain poorly constrained for most small planets."
+      },
+      {
+        "tech": "Sulphur chemistry and photochemical models",
+        "status": "partial",
+        "why": "sulphur reaction networks in hot, irradiated atmospheres are still uncertain, weakening the volcanic interpretation."
+      },
+      {
+        "tech": "Tidal heating and interior models",
+        "status": "partial",
+        "why": "predicting how much a given planet outgasses requires assumptions about mantle rheology that are hard to test."
+      },
+      {
+        "tech": "A sample of suitable small, bright, transiting rocky planets",
+        "status": "missing",
+        "why": "very few worlds combine small size, a small host star and an eccentric, tidally heated orbit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "tentative volcanic or outgassing signatures reported for a tidally heated Earth-sized world, alongside JWST spectra of hot lava worlds",
+        "unlocks": "a first, disputed foothold in comparative planetology of rocky worlds."
+      },
+      {
+        "stage": "Next",
+        "milestone": "repeat transit and eclipse observations confirming or refuting sulphur species on the best candidates",
+        "unlocks": "separation of genuine volcanism from photochemistry and stellar contamination."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small survey of rocky planets spanning a range of tidal heating rates",
+        "unlocks": "a relationship between orbit, heating and observed activity."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "larger space telescopes and extremely large ground telescopes resolving cooler, less irradiated rocky planets",
+        "unlocks": "volcanism as a probe of interior state and long-term habitability."
+      }
+    ]
+  }
+}

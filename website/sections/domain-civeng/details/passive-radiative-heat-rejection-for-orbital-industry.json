@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Heat transport loop",
+        "role": "collects waste heat from reactors, furnaces, smelters and habitats and carries it to the radiators.",
+        "parts": [
+          "pumps",
+          "pipes and manifolds",
+          "cold plates on heat sources",
+          "accumulators"
+        ]
+      },
+      {
+        "name": "Temperature-lift stage",
+        "role": "radiators shrink as the fourth power of temperature, so heat pumps may be worth their own power cost.",
+        "parts": [
+          "vapour-compression or absorption heat pump",
+          "compressor",
+          "expansion valve"
+        ]
+      },
+      {
+        "name": "Solid-surface radiators",
+        "role": "the conventional option: panels that emit infrared to space.",
+        "parts": [
+          "high-conductivity composite face sheet",
+          "embedded coolant channels",
+          "high-emissivity coating",
+          "deployment hinges"
+        ]
+      },
+      {
+        "name": "Droplet radiator",
+        "role": "sprays a sheet of droplets into the vacuum, exposing an enormous emitting area per kilogram, then recaptures them.",
+        "parts": [
+          "droplet generator",
+          "droplet sheet",
+          "magnetic or electrostatic collector",
+          "pump and reservoir"
+        ]
+      },
+      {
+        "name": "Working fluid and materials",
+        "role": "the fluid sets the temperature range; the panel sets the mass per watt rejected.",
+        "parts": [
+          "ammonia or HFE for moderate temperatures",
+          "liquid metals such as NaK or lithium for high temperatures",
+          "carbon-carbon and titanium structures"
+        ]
+      },
+      {
+        "name": "Assembly and protection",
+        "role": "kilometre-scale panels must be stowed, deployed or built in orbit, and survive debris.",
+        "parts": [
+          "robotic assembly arms",
+          "micrometeoroid shielding",
+          "isolation valves to bypass punctured panels"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the rejection temperature",
+        "detail": "Start from a Stefan-Boltzmann calculation: at 300 K an ideal surface radiates about 460 W per square metre, roughly 0.9 kW/m² for a two-sided panel. One gigawatt therefore needs on the order of a square kilometre, so every degree of extra temperature is fought for."
+      },
+      {
+        "title": "Choose the loop architecture",
+        "detail": "Single-phase liquid, two-phase (boiling and condensing), or liquid-metal. Two-phase loops move more heat per kilogram of pump; liquid metals carry heat out of very hot processes but demand careful materials compatibility."
+      },
+      {
+        "title": "Decide whether to pump the heat up",
+        "detail": "Running a heat pump raises the radiator temperature and can cut its area several-fold, at the cost of extra electrical power. For a gigawatt plant this trade is the central design decision."
+      },
+      {
+        "title": "Fabricate the panels",
+        "detail": "Coolant channels are formed in a composite or metal face sheet, bonded to a stiff backing, then coated with a high-emissivity finish so most of the infrared actually leaves."
+      },
+      {
+        "title": "Stow and deploy",
+        "detail": "Panels are folded, rolled or segmented so they fit inside a launch fairing, then unfolded and latched by hinges and robot arms once in orbit."
+      },
+      {
+        "title": "Or build a droplet radiator instead",
+        "detail": "A generator sprays a thin sheet of droplets that radiate directly to space, and a collector — magnetic for liquid metals, electrostatic for insulating fluids — gathers them back into the loop, so the structure carries almost none of the mass."
+      },
+      {
+        "title": "Connect, fill and leak-check",
+        "detail": "The loop is evacuated, charged with coolant, and tested for leaks, with isolation valves so one punctured panel does not drain the whole system."
+      },
+      {
+        "title": "Operate and protect",
+        "detail": "Freeze protection, dust and micrometeoroid damage, and slow degradation of the emissive coating set how much capacity must be held in reserve."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large deployable and robotically assembled structures",
+        "status": "partial",
+        "why": "orbiting stations have been assembled by robot arms, but nothing at the scale of a square-kilometre radiator array."
+      },
+      {
+        "tech": "Two-phase and liquid-metal cooling loops",
+        "status": "partial",
+        "why": "ammonia two-phase loops fly routinely on space stations; liquid-metal loops at megawatt scale remain laboratory and design work."
+      },
+      {
+        "tech": "High-emissivity, radiation-durable coatings",
+        "status": "partial",
+        "why": "emissivity degrades under ultraviolet and atomic oxygen exposure, and the panels cannot easily be repainted."
+      },
+      {
+        "tech": "Orbital power sources of comparable size",
+        "status": "missing",
+        "why": "a gigawatt of waste heat implies a gigawatt of process power, and no such orbital power or industrial plant exists."
+      },
+      {
+        "tech": "Droplet radiator flight demonstration",
+        "status": "missing",
+        "why": "the concept has been studied and bench-tested, but the droplet generator and collector have never run in orbit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "station-class active thermal control rejecting tens to hundreds of kilowatts through ammonia panels",
+        "unlocks": "crewed orbital laboratories and instruments that need steady cooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "megawatt-class radiators assembled or deployed robotically in orbit",
+        "unlocks": "orbital smelting, fuel depots and larger habitats."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first flight test of a droplet radiator and of high-temperature liquid-metal loops",
+        "unlocks": "a step change in kilograms per kilowatt rejected, which is what unlocks tens of megawatts."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "gigawatt-scale heat rejection built from in-space materials",
+        "unlocks": "the orbital industrial economy this tile is really about — until then, radiator area, not energy supply, is the ceiling."
+      }
+    ]
+  }
+}

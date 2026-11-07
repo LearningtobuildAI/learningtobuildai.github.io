@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Film deposition",
+        "role": "lays down the superconducting metal stack that carries currents and sets qubit coherence.",
+        "parts": [
+          "niobium and aluminium sputter targets",
+          "tantalum films for long-coherence devices",
+          "molecular-beam or atomic-layer deposition for the tunnel barrier",
+          "wafer cleaning and vacuum transfer"
+        ]
+      },
+      {
+        "name": "Junction definition",
+        "role": "creates the Josephson junction — the non-linear element that makes a qubit a qubit.",
+        "parts": [
+          "electron-beam lithography for the resist bridge",
+          "shadow evaporation of aluminium at two angles",
+          "controlled oxidation to form the AlOx barrier"
+        ]
+      },
+      {
+        "name": "Patterning and resonators",
+        "role": "shapes readout resonators, capacitors and control lines to tight dimensional tolerance.",
+        "parts": [
+          "deep-UV or stepper lithography",
+          "dry etching and resist stripping",
+          "critical-dimension metrology"
+        ]
+      },
+      {
+        "name": "Interconnect and routing",
+        "role": "gets many control and readout signals on and off a dense chip without crosstalk.",
+        "parts": [
+          "airbridge crossovers",
+          "through-silicon vias",
+          "flip-chip indium bump bonding to a carrier wafer"
+        ]
+      },
+      {
+        "name": "Wafer-scale test",
+        "role": "measures every device on the wafer so process drift can be caught and corrected.",
+        "parts": [
+          "room-temperature junction resistance probing",
+          "cryogenic wafer prober",
+          "automated data analysis"
+        ]
+      },
+      {
+        "name": "Process design kit",
+        "role": "the interface that lets an outside team design a chip without owning the line.",
+        "parts": [
+          "layer stack and design rules",
+          "device models and electromagnetic simulation decks",
+          "layout templates for qubits, resonators and wiring",
+          "submission and data-return workflow"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the stack and design rules",
+        "detail": "The foundry fixes which metals, thicknesses and minimum feature sizes designers may use, and publishes them as a kit."
+      },
+      {
+        "title": "Design and submit a layout",
+        "detail": "An external team places qubits, couplers and readout lines in a layout file, simulates the electromagnetics, and submits it for a scheduled multi-project wafer run."
+      },
+      {
+        "title": "Deposit base metallisation",
+        "detail": "Niobium or tantalum is sputtered onto a 200 mm or 300 mm silicon wafer, then patterned and etched into resonators, capacitors and wiring."
+      },
+      {
+        "title": "Write the junctions",
+        "detail": "Electron-beam lithography defines a resist bridge over each junction site; aluminium is evaporated from two angles with a controlled oxidation step in between, so an AlOx tunnel barrier forms."
+      },
+      {
+        "title": "Add airbridges and vias",
+        "detail": "Raised metal bridges cross over signal lines to suppress unwanted microwave modes, and through-silicon vias open paths to the back of the wafer."
+      },
+      {
+        "title": "Assemble the chip stack",
+        "detail": "The qubit wafer is flip-chip bonded to a carrier that holds readout and control routing, using indium bumps aligned to a few micrometres."
+      },
+      {
+        "title": "Test across the wafer",
+        "detail": "Junction resistances are mapped at room temperature to infer qubit frequencies; sample chips go into dilution refrigerators for coherence and gate-fidelity checks."
+      },
+      {
+        "title": "Feed statistics back into the kit",
+        "detail": "Wafer maps of junction resistance and frequency are used to tighten design rules and retarget the process, so the next run lands closer to specification."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting thin-film deposition at CMOS scale",
+        "status": "exists",
+        "why": "niobium, aluminium and tantalum films with low microwave loss are routine on 200 mm and 300 mm tooling."
+      },
+      {
+        "tech": "Sub-100 nm electron-beam lithography with precise overlay",
+        "status": "exists",
+        "why": "junction area directly sets qubit frequency, so placement errors translate into device failure."
+      },
+      {
+        "tech": "Cryogenic wafer-scale or high-throughput testing",
+        "status": "partial",
+        "why": "measuring thousands of qubits below 1 K is slow and expensive, so yield is inferred rather than measured."
+      },
+      {
+        "tech": "Mature process design kits",
+        "status": "partial",
+        "why": "published kits exist but cover a narrow set of devices and change as the physics understanding moves."
+      },
+      {
+        "tech": "Cryogenic control electronics",
+        "status": "partial",
+        "why": "wiring thousands of coaxial lines into a dilution refrigerator is impractical; multiplexed or cold electronics are needed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Multi-project wafer runs and a handful of dedicated qubit lines, including long-running superconducting fab work at national laboratories and industrial 300 mm efforts",
+        "unlocks": "university and startup teams can build qubits without owning a fab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Standardised kits with a validated library of qubits, couplers and readout resonators",
+        "unlocks": "design reuse, the way digital chip design became modular decades ago."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Statistical process control that reliably targets qubit frequency across a full wafer",
+        "unlocks": "wafers of near-identical qubits, a prerequisite for error correction at scale."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Integration of qubits with cryogenic control and readout layers on the same stack",
+        "unlocks": "systems with thousands of physical qubits and manageable wiring."
+      }
+    ]
+  }
+}

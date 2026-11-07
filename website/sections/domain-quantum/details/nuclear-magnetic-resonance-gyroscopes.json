@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Spin cell",
+        "role": "sealed chamber holding the noble-gas isotopes that do the sensing, plus a trace of alkali metal vapour to connect them to the laser light.",
+        "parts": [
+          "micromachined silicon or glass body with bonded windows",
+          "rubidium or caesium alkali vapour",
+          "noble-gas isotopes such as xenon-129, xenon-131 or helium-3",
+          "anti-relaxation wall coating or buffer gas"
+        ]
+      },
+      {
+        "name": "Optical pumping",
+        "role": "circularly polarised laser light aligns the alkali-metal electron spins, and collisions then transfer that alignment to the noble-gas nuclei.",
+        "parts": [
+          "narrow-linewidth laser diode or VCSEL",
+          "polariser and quarter-wave plate",
+          "beam-shaping optics"
+        ]
+      },
+      {
+        "name": "Magnetic bias and coil set",
+        "role": "provides the steady, highly uniform field that sets the nuclear precession frequency, plus pulses that tip the spins.",
+        "parts": [
+          "precision coil sets for bias, trim gradients and radio-frequency drive",
+          "low-noise current sources"
+        ]
+      },
+      {
+        "name": "Magnetic shielding and thermal control",
+        "role": "stops the outside magnetic field and temperature changes from corrupting the measurement.",
+        "parts": [
+          "nested mu-metal shields",
+          "oven and temperature-stabilised mounts",
+          "field-nulling coils"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "senses the precession of the noble-gas spins as a phase that race against the drive field.",
+        "parts": [
+          "probe laser with a balanced polarimeter (Faraday rotation)",
+          "or a sensitive atomic magnetometer",
+          "low-noise photodetector"
+        ]
+      },
+      {
+        "name": "Signal processing and control",
+        "role": "turns the two precession signals into an angular rate.",
+        "parts": [
+          "phase and frequency tracking",
+          "dual-isotope differencing that cancels magnetic drift",
+          "embedded processor and interface electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the spin cell",
+        "detail": "A silicon or glass body a few millimetres to a few centimetres across is patterned, filled with the isotope mixture and a small alkali-metal ampoule, then sealed by anodic bonding or glassblowing so the gas stays pure for years."
+      },
+      {
+        "title": "Treat the cell walls",
+        "detail": "The inner surface is coated or a buffer gas added so that a nucleus survives thousands of wall collisions before losing its spin, because that lifetime sets the sensor's sensitivity."
+      },
+      {
+        "title": "Build the magnetic assembly",
+        "detail": "Nested mu-metal shields are formed and annealed, then coil forms are wound and aligned so the bias field is uniform to a part in a million across the cell."
+      },
+      {
+        "title": "Integrate the optics",
+        "detail": "Laser, polariser, wave plate and photodetector are mounted around the cell and aligned so the pump beam and probe beam cross within the gas volume; the whole head sits in a temperature-stabilised oven."
+      },
+      {
+        "title": "Polarise and tune",
+        "detail": "The laser is tuned to the alkali absorption line and the gas is spin-polarised; the bias field is then adjusted so the two isotopes precess at known, widely separated frequencies."
+      },
+      {
+        "title": "Calibrate against rotation",
+        "detail": "The sealed sensor is mounted on a rate table. Rotation is applied and the isotope difference is measured, giving the scale factor and letting the electronics lock onto the precession."
+      },
+      {
+        "title": "Characterise drift",
+        "detail": "The unit is run for hours to days on a stable platform to measure bias stability, angle random walk, scale-factor linearity and sensitivity to temperature and magnetic fields."
+      },
+      {
+        "title": "Qualify and package into an inertial unit",
+        "detail": "The sensor head is shock-, vibration- and thermal-cycled, then combined with accelerometers and a stable clock to form a navigation-grade inertial measurement unit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Chip-scale alkali-vapour cells",
+        "status": "exists",
+        "why": "wafer-level cells with alkali metal inside are already made for miniature atomic clocks and magnetometers; the hard part is keeping nuclear spin alive in a tiny volume."
+      },
+      {
+        "tech": "Spin-exchange optical pumping",
+        "status": "exists",
+        "why": "the technique for transferring laser polarisation to noble-gas nuclei is routine in polarised-gas production, though it normally uses much larger cells and lasers."
+      },
+      {
+        "tech": "Narrow-linewidth, frequency-stabilised diode lasers",
+        "status": "exists",
+        "why": "the pump light must sit precisely on the alkali absorption line and stay there as temperature drifts."
+      },
+      {
+        "tech": "Precision magnetic shielding and coil drives",
+        "status": "exists",
+        "why": "residual field drift is the dominant error; shielding and low-noise currents hold it below the level that would otherwise swamp the rotation signal."
+      },
+      {
+        "tech": "Dual-isotope comagnetometry",
+        "status": "partial",
+        "why": "using two isotopes with different gyromagnetic ratios to separate rotation from magnetic drift is demonstrated but is only now being engineered into a rugged, manufacturable sensor."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory and defence-funded prototypes reporting navigation-grade bias stability in a compact head",
+        "unlocks": "confidence that the spin physics survives miniaturisation and that the error budget closes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ruggedised, qualified sensor heads that hold calibration through military shock, vibration and temperature cycling",
+        "unlocks": "first operational trials in vehicles that cannot rely on satellite navigation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multisensor inertial navigation: these gyroscopes combined with accelerometers and a compact atomic clock, drifting only slowly over days",
+        "unlocks": "long-endurance underwater and high-latitude navigation without satellite fixes."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "volume manufacturing that brings cost down to compete with ring-laser and fibre-optic gyroscopes",
+        "unlocks": "wider use in aircraft, spacecraft and survey work, wherever a long, uninterrupted attitude and heading reference is needed."
+      }
+    ]
+  }
+}

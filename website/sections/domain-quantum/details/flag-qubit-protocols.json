@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Flag qubits",
+        "role": "extra qubits that signal when a fault in the syndrome extraction circuit could cause a harmful error.",
+        "parts": [
+          "physical qubits",
+          "controlled-NOT gates to ancilla",
+          "measurement"
+        ]
+      },
+      {
+        "name": "Ancilla register",
+        "role": "qubits used to measure stabilizer operators without disturbing the logical data qubits.",
+        "parts": [
+          "ancilla qubits",
+          "state preparation",
+          "readout"
+        ]
+      },
+      {
+        "name": "Syndrome extraction circuit",
+        "role": "the sequence of gates that entangles data, ancilla and flag qubits to extract error information.",
+        "parts": [
+          "gate sequence",
+          "flag insertion points",
+          "timing and synchronization"
+        ]
+      },
+      {
+        "name": "Classical decoder",
+        "role": "interprets syndrome and flag outcomes to identify the most likely error.",
+        "parts": [
+          "decoding algorithm",
+          "flag-handling logic",
+          "real-time processing"
+        ]
+      },
+      {
+        "name": "Correction layer",
+        "role": "applies the physical operations that return the logical qubits to their intended state.",
+        "parts": [
+          "correction pulses",
+          "feedback control",
+          "verification"
+        ]
+      },
+      {
+        "name": "Logical qubit register",
+        "role": "the protected quantum information that the protocol is meant to keep alive.",
+        "parts": [
+          "data qubits",
+          "encoding",
+          "logical operations"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose a quantum error-correcting code",
+        "detail": "Select a stabilizer code (e.g., surface or color code) whose logical qubits you want to protect, defining the stabilizer generators to be measured."
+      },
+      {
+        "title": "Design flag circuits",
+        "detail": "For each stabilizer measurement, build a circuit that adds flag qubits and gate ordering so that any single fault that could propagate to a high-weight error flips at least one flag."
+      },
+      {
+        "title": "Prove fault tolerance on paper",
+        "detail": "Enumerate all fault paths of weight up to the code's distance and verify that flagged faults are either correctable or lead to a safely repeatable measurement."
+      },
+      {
+        "title": "Map to quantum hardware",
+        "detail": "Compile the abstract circuit onto a physical qubit connectivity graph, respecting native gate sets, measurement and reset capabilities."
+      },
+      {
+        "title": "Calibrate gates and measurements",
+        "detail": "Tune control pulses so that single-qubit and two-qubit gate fidelities are high enough that faults are rare, and mid-circuit measurement is reliable."
+      },
+      {
+        "title": "Run syndrome extraction cycles",
+        "detail": "Execute the flag circuits repeatedly, recording both stabilizer outcomes and flag outcomes for each cycle."
+      },
+      {
+        "title": "Decode with flag information",
+        "detail": "Feed syndromes and flags to a classical decoder that treats flagged cycles as unreliable, either correcting based on the flag pattern or discarding and repeating that cycle."
+      },
+      {
+        "title": "Apply corrections and repeat",
+        "detail": "Use the decoder output to apply physical corrections, then continue cycling to maintain the logical qubit over many error-correction rounds."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum error correction",
+        "status": "exists",
+        "why": "provides the stabilizer formalism and codes that flag protocols extend."
+      },
+      {
+        "tech": "High-fidelity two-qubit gates",
+        "status": "partial",
+        "why": "fault-tolerant thresholds require gate errors well below one percent, achieved in some small systems but not yet at scale."
+      },
+      {
+        "tech": "Mid-circuit measurement and reset",
+        "status": "partial",
+        "why": "flag and ancilla qubits must be measured and reused without disturbing data qubits."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "decisions based on flags must be fast enough to keep pace with the quantum circuit."
+      },
+      {
+        "tech": "Scalable qubit architectures",
+        "status": "partial",
+        "why": "a useful logical qubit needs many physical qubits wired and controlled together."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "theoretical flag protocols and small-scale proof-of-principle demonstrations",
+        "unlocks": "confidence that low-weight faults can be caught without full fault-tolerant overhead."
+      },
+      {
+        "stage": "Next",
+        "milestone": "integration of flag-based syndrome extraction into repeated logical-qubit experiments",
+        "unlocks": "measured logical error rates below the physical error rate for small codes."
+      },
+      {
+        "stage": "Next",
+        "milestone": "real-time flag-aware decoding on a distance-3 code",
+        "unlocks": "demonstration of a complete fault-tolerant cycle with flagged corrections."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "scaling flag protocols to distance-5 and larger codes",
+        "unlocks": "practical fault-tolerant quantum computing with many logical qubits."
+      }
+    ]
+  }
+}

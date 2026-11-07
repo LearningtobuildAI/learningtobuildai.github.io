@@ -65,6 +65,12 @@
   Promise.all([
     fetch(dom.src).then(function (r) { return r.ok ? r.json() : []; }),
     fetch(detailsSrc).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    new Promise(function(resolve, reject) {
+      if (window.SiteEvidence) return window.SiteEvidence.load().then(resolve);
+      var s=document.createElement('script'); s.src='/website/evidence-policy.js';
+      s.onload=function(){window.SiteEvidence.load().then(resolve);}; s.onerror=reject;
+      document.head.appendChild(s);
+    }),
   ]).then(function (out) {
     var items = out[0] || [];
     var details = out[1];
@@ -75,6 +81,10 @@
       host.innerHTML = '<p class="td-text">Technology not found. <a class="td-back" href="' + dom.back + '">Return to the section →</a></p>';
       return;
     }
+    t = window.SiteEvidence.apply(t, dom.src, out[2]);
+    // Generated expansions have not inherited the short summary's review.
+    ai = {};
+    details = null;
     document.title = t.name + " | The Future 24/7";
     var stage = STAGE[t.stage] || String(t.stage || "").toUpperCase();
     var bg = t.photo ? "background-image:url('" + esc(t.photo) + "')" : "background-image:linear-gradient(140deg,#0c4a6e,#38bdf8)";
@@ -181,11 +191,10 @@
       "</div>" +
 
       '<div class="td-banner">' +
-        "<strong>How to read this page.</strong> The written overview is an " +
-        "AI-generated educational summary" +
+        "<strong>Evidence status: " + (t.evidenceStatus === 'reviewed' ? 'summary source-reviewed' : 'unverified') + ".</strong> The written overview is a short summary" +
         (details && details.model ? " (" + esc(details.model) + ")" : "") +
-        ". Papers, references, costs and companies are <em>verify-yourself</em> " +
-        "links — we do not fabricate citations, prices or company lists." +
+        ". Only the specific sources below support reviewed claims. Search " +
+        "links are research aids, not evidence. Generated illustrations do not prove a product exists." +
       "</div>" +
       // Fact-check banner (2026-09-29, tools/recheck-skipped.js): ideas that
       // contradict established science stay listed under THEORY but say so.
@@ -215,7 +224,8 @@
       grp(3 + G, "Market & Industry") +
       num(9 + X, "Companies Involved") +
         (companies ? '<div class="td-companies">' + companies + "</div>" : '<p class="td-text td-pending">No companies curated for this tile yet.</p>') +
-        note("Curated names only — none are invented. Use the link to find more.") +
+        note(t.evidenceStatus === 'reviewed' ? 'Company roles supported by the sources below. Review applies to the short summary only.' : 'Company roles have not been verified; names are withheld pending source review.') +
+        linkrow((t.evidenceSources || []).map(function(s){ return {url:s.url,label:s.supports}; })) +
         linkrow([{ label: "Find suppliers & makers", url: suppliers }]) +
 
       num(10 + X, "Estimated Costs") + aiBody("costDrivers") +

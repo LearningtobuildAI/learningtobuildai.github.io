@@ -1,0 +1,156 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Ge/SiGe heterostructure",
+        "role": "confines positive charge carriers (holes) in a thin strained germanium layer, where the qubit lives.",
+        "parts": [
+          "silicon substrate wafer",
+          "graded silicon-germanium buffer",
+          "strained germanium quantum well",
+          "silicon-germanium barrier and cap"
+        ]
+      },
+      {
+        "name": "Gate stack and quantum dots",
+        "role": "metal electrodes on the surface squeeze the buried holes into small puddles holding a single particle each.",
+        "parts": [
+          "gate dielectric or Schottky barrier",
+          "confinement gates",
+          "plunger gates",
+          "reservoir ohmic contacts"
+        ]
+      },
+      {
+        "name": "Cryogenic environment",
+        "role": "keeps the device cold enough that thermal noise does not swamp the spin state, and applies a magnetic field.",
+        "parts": [
+          "dilution refrigerator (tens of millikelvin)",
+          "superconducting magnet coils",
+          "filtered, shielded wiring"
+        ]
+      },
+      {
+        "name": "Electrical control",
+        "role": "microwave and fast baseband pulses rotate and couple the spins.",
+        "parts": [
+          "arbitrary waveform generators",
+          "high-bandwidth pulse lines",
+          "digital-to-analog converters",
+          "cryogenic multiplexing electronics"
+        ]
+      },
+      {
+        "name": "Readout",
+        "role": "converts a spin state into a measurable electrical signal.",
+        "parts": [
+          "charge sensor dot",
+          "radio-frequency reflectometry tank circuit",
+          "superconducting microwave resonator for dispersive sensing",
+          "parametric amplifier"
+        ]
+      },
+      {
+        "name": "Epitaxy and fabrication line",
+        "role": "the growth and patterning tools that make the heterostructure and its nanoscale gates.",
+        "parts": [
+          "molecular beam epitaxy or chemical vapour deposition reactor",
+          "electron-beam or deep-ultraviolet lithography",
+          "metal evaporation and lift-off",
+          "isotope-enriched source material"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the heterostructure",
+        "detail": "On a silicon wafer, a graded silicon-germanium buffer is grown to relax the lattice mismatch, then a thin germanium layer is deposited under strain, capped with silicon-germanium. The strained well ends up tens of nanometres below the surface."
+      },
+      {
+        "title": "Make contact to the holes",
+        "detail": "Alignment marks and p-type ohmic contacts are patterned, so that reservoirs of holes can be supplied to the dots from the sides."
+      },
+      {
+        "title": "Deposit the gate stack",
+        "detail": "A thin dielectric is grown or deposited, then nanoscale gate electrodes are written by lithography and lifted off as a metal film — often two or more stacked gate layers to allow overlapping control."
+      },
+      {
+        "title": "Form and tune quantum dots",
+        "detail": "At cryogenic temperature, positive voltages on the gates pull a two-dimensional hole gas into the well, then pinch it off into small dots. Charge-stability measurements confirm that each dot holds exactly one hole."
+      },
+      {
+        "title": "Calibrate spin control",
+        "detail": "A microwave burst on a gate drives electric-dipole spin resonance, tilting the hole's motion so its spin flips. Rabi oscillations and gate fidelities are measured and the pulse shapes corrected."
+      },
+      {
+        "title": "Couple two qubits",
+        "detail": "Neighbouring dots are pushed together so the holes' wavefunctions overlap, giving an exchange interaction; a voltage pulse then implements a two-qubit gate."
+      },
+      {
+        "title": "Add a resonator and scale up",
+        "detail": "A superconducting microwave resonator is fabricated alongside the dot array for dispersive readout and for linking distant qubits, and the same layout is repeated across a wafer so that fabrication statistics can be measured."
+      },
+      {
+        "title": "Industrialise the process",
+        "detail": "The whole stack is transferred to a large-wafer foundry flow, with cryogenic control electronics placed near the qubits to cut down the number of wires running into the refrigerator."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Isotope-enriched germanium and silicon",
+        "status": "partial",
+        "why": "natural germanium contains a spin-carrying isotope, so the quietest material has to be grown from purified source to get long spin coherence."
+      },
+      {
+        "tech": "Low-defect epitaxy of germanium on silicon",
+        "status": "partial",
+        "why": "the two materials have a large lattice mismatch, so buffer engineering is needed to bury the dislocations far from the quantum well."
+      },
+      {
+        "tech": "Millikelvin refrigeration",
+        "status": "exists",
+        "why": "dilution refrigerators are commercially available, but wiring and cooling power limit how many qubits one machine can host."
+      },
+      {
+        "tech": "Nanoscale lithography",
+        "status": "exists",
+        "why": "dots need gate features of a few tens of nanometres with tight overlay between layers."
+      },
+      {
+        "tech": "Microwave readout and amplification",
+        "status": "exists",
+        "why": "resonators and near-quantum-limited amplifiers developed for superconducting circuits can be reused."
+      },
+      {
+        "tech": "Cryogenic control electronics",
+        "status": "partial",
+        "why": "room-temperature instruments cannot scale to large arrays; multiplexing circuits operating near the chip are still being developed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-hole and two-hole qubits in academic laboratories, with fast all-electrical single-qubit control and coherence times long enough for thousands of gate operations",
+        "unlocks": "a credible materials platform for semiconductor spin qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small arrays of several coupled dots with on-chip readout and two-qubit gate fidelities approaching the fault-tolerance threshold",
+        "unlocks": "the building blocks for a logical qubit made of many physical spins."
+      },
+      {
+        "stage": "Next",
+        "milestone": "fabrication on mature large-wafer silicon lines with cryogenic control chips",
+        "unlocks": "hundreds of qubits per chip, made with the yield and uniformity of the semiconductor industry."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "error-corrected spin-qubit processors, possibly hybridised with superconducting resonators or photonic links between chips",
+        "unlocks": "a scalable quantum computer built in a foundry rather than a laboratory."
+      }
+    ]
+  }
+}

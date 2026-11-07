@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Block encoding",
+        "role": "embeds the non-unitary input matrix into a larger unitary so its singular values appear as a diagonal block.",
+        "parts": [
+          "ancilla registers",
+          "controlled state preparation",
+          "oracle access to matrix elements"
+        ]
+      },
+      {
+        "name": "Polynomial approximation",
+        "role": "finds a polynomial that approximates the desired matrix function (e.g. inverse, exponential) to a required precision.",
+        "parts": [
+          "classical optimisation routines",
+          "Chebyshev or other basis expansions",
+          "degree and error bounds"
+        ]
+      },
+      {
+        "name": "Quantum signal processing (QSP) phase sequence",
+        "role": "the alternating single-qubit rotations that apply the polynomial to the block-encoded matrix.",
+        "parts": [
+          "phase angles",
+          "signal rotations",
+          "signal-processing rotations",
+          "ancilla qubit"
+        ]
+      },
+      {
+        "name": "Quantum circuit",
+        "role": "the concrete gate sequence that implements block encoding and the QSP phase sequence on a quantum processor.",
+        "parts": [
+          "controlled-block-encoding gates",
+          "single-qubit rotations",
+          "measurement and post-selection"
+        ]
+      },
+      {
+        "name": "Fault tolerance and error correction",
+        "role": "keeps the deep, high-precision circuit reliable enough for a useful result.",
+        "parts": [
+          "quantum error-correcting codes",
+          "magic state distillation",
+          "fault-tolerant compilation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the target function",
+        "detail": "Choose the matrix function to compute (for example, matrix inversion or Hamiltonian simulation) and the allowed error."
+      },
+      {
+        "title": "Approximate with a polynomial",
+        "detail": "Use classical numerical methods to find a polynomial that matches the target function on the relevant interval to the desired accuracy."
+      },
+      {
+        "title": "Compute QSP phase angles",
+        "detail": "Run a classical algorithm that converts the polynomial coefficients into a sequence of phase angles for the QSP circuit."
+      },
+      {
+        "title": "Build a block encoding",
+        "detail": "Construct a unitary circuit that embeds the input matrix as a block, using ancilla qubits and controlled operations."
+      },
+      {
+        "title": "Compile the QSP sequence",
+        "detail": "Translate the alternating rotations and controlled block-encoding steps into native gates for the target quantum hardware."
+      },
+      {
+        "title": "Prepare input and ancilla",
+        "detail": "Initialise the data register in the desired input state and the ancilla in a known state."
+      },
+      {
+        "title": "Run and post-select",
+        "detail": "Execute the circuit, measure the ancilla, and keep only runs where the ancilla indicates success."
+      },
+      {
+        "title": "Boost success probability",
+        "detail": "If the success probability is low, apply amplitude amplification or a related technique to increase it."
+      },
+      {
+        "title": "Validate and estimate resources",
+        "detail": "Check the output against classical simulation for small cases and estimate the qubit and gate counts needed for larger problems."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computers",
+        "status": "missing",
+        "why": "QSVT circuits for useful problems require thousands to millions of error-corrected qubits and deep gate sequences."
+      },
+      {
+        "tech": "Block encoding techniques",
+        "status": "partial",
+        "why": "Several methods (e.g. linear combinations of unitaries, sparse access) exist in theory and small demonstrations, but resource costs remain high."
+      },
+      {
+        "tech": "Quantum signal processing",
+        "status": "partial",
+        "why": "The theory is well developed and small-scale experiments on a few qubits have validated the basic principle."
+      },
+      {
+        "tech": "Classical polynomial approximation",
+        "status": "exists",
+        "why": "Finding near-optimal polynomial approximations is a solved classical problem and is essential for setting the QSP phase angles."
+      },
+      {
+        "tech": "High-fidelity quantum gates",
+        "status": "partial",
+        "why": "Current hardware error rates are too high for the deep circuits QSVT demands without error correction."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "partial",
+        "why": "Small codes have been demonstrated, but scaling to the required logical qubit counts and fidelities is still a major challenge."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "QSVT and QSP validated on 2–3 qubit systems and used to unify known quantum algorithms theoretically",
+        "unlocks": "confidence in the mathematical framework and a target for hardware development"
+      },
+      {
+        "stage": "Next",
+        "milestone": "precise resource estimates for practical applications such as linear systems and quantum chemistry",
+        "unlocks": "clear specifications for the fault-tolerant quantum computers that would run QSVT"
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant demonstrations of QSVT for small problem instances",
+        "unlocks": "proof that the full pipeline works end-to-end with error correction"
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale fault-tolerant quantum computers running QSVT for real-world problems",
+        "unlocks": "broad quantum speedups in simulation, optimisation and machine learning"
+      }
+    ]
+  }
+}

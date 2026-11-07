@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Nonlinear transmission line",
+        "role": "the amplifying medium: a long coplanar waveguide whose inductance rises with current, so it mixes microwave tones.",
+        "parts": [
+          "disordered NbTiN or TiN film, tens of nanometres thick",
+          "high-resistivity silicon or sapphire substrate",
+          "narrow centre strip and ground planes"
+        ]
+      },
+      {
+        "name": "Dispersion and phase-matching structure",
+        "role": "keeps the pump, signal and idle tones travelling at compatible speeds so gain stays broadband instead of peaking.",
+        "parts": [
+          "periodic load capacitors",
+          "or resonant phase-matching sections",
+          "tapered line sections"
+        ]
+      },
+      {
+        "name": "Pump and bias network",
+        "role": "injects the strong pump tone that supplies the energy for amplification and sets gain and saturation power.",
+        "parts": [
+          "microwave pump source",
+          "directional couplers",
+          "attenuators and filters"
+        ]
+      },
+      {
+        "name": "Cryogenic package",
+        "role": "holds the chip at millikelvin temperatures and anchors every incoming line so stray heat never reaches the device.",
+        "parts": [
+          "shielded copper or superconducting box",
+          "coaxial connectors and wire bonds",
+          "thermal straps to the mixing-chamber plate"
+        ]
+      },
+      {
+        "name": "Readout chain",
+        "role": "routes the amplified signal out without letting noise travel back into the quantum device.",
+        "parts": [
+          "cryogenic circulators and isolators",
+          "4 K high-electron-mobility transistor stage",
+          "room-temperature digitizer"
+        ]
+      },
+      {
+        "name": "Noise and gain metrology",
+        "role": "proves that added noise really is close to the quantum limit and that gain is flat across the band.",
+        "parts": [
+          "calibrated noise references",
+          "vector network analyser",
+          "qubit-based or shot-noise calibration"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Deposit the film",
+        "detail": "Sputter a thin film of niobium titanium nitride or titanium nitride onto a high-resistivity silicon or sapphire wafer. Disordered growth is deliberate: it lowers the superfluid density and raises the kinetic inductance, which is the source of the nonlinearity."
+      },
+      {
+        "title": "Pattern the waveguide",
+        "detail": "Optical or electron-beam lithography and etching define a coplanar waveguide with a narrow centre strip. Hundreds of millimetres of line are folded into a chip only a few millimetres across, because the gain grows with length."
+      },
+      {
+        "title": "Engineer the dispersion",
+        "detail": "Periodic capacitors or resonant sections are patterned along the line in the same step. They slow the pump relative to signal and idle so the four-wave-mixing process stays phase-matched over gigahertz of bandwidth."
+      },
+      {
+        "title": "Package and thermalise",
+        "detail": "The chip is mounted in a shielded box, wire-bonded to microwave connectors, and every input line is fitted with attenuators and thermal anchors so that room-temperature noise is absorbed before it reaches the device."
+      },
+      {
+        "title": "Cool to millikelvin",
+        "detail": "The package is bolted to the mixing chamber of a dilution refrigerator and cooled to roughly ten to twenty millikelvin, the regime where added noise can approach the quantum limit."
+      },
+      {
+        "title": "Characterise gain and noise",
+        "detail": "A pump tone is applied and swept in power and frequency while transmission, gain (typically around twenty decibels), bandwidth and saturation power are measured, then added noise is calibrated against a known reference."
+      },
+      {
+        "title": "Integrate into a system",
+        "detail": "The amplifier is inserted into a real readout or receiver chain behind circulators and a 4 K transistor stage, and its ability to read many resonators or qubits through one cable is demonstrated."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Disordered superconducting thin films",
+        "status": "exists",
+        "why": "niobium titanium nitride and titanium nitride give the high kinetic inductance and the current-dependent nonlinearity the whole device depends on."
+      },
+      {
+        "tech": "Dilution refrigeration",
+        "status": "exists",
+        "why": "millikelvin temperatures are needed for the added noise to fall near the quantum limit and for the films to stay superconducting with low loss."
+      },
+      {
+        "tech": "Microwave lithography for long low-loss lines",
+        "status": "exists",
+        "why": "the transmission line must be metres of path length yet fit on a chip and lose almost nothing."
+      },
+      {
+        "tech": "Cryogenic circulators and isolators",
+        "status": "exists",
+        "why": "without them, amplified noise and the pump leak back into the qubits or detectors being read out."
+      },
+      {
+        "tech": "Quantum-limited noise metrology",
+        "status": "partial",
+        "why": "measuring an added noise of a few hundred millikelvin at gigahertz frequencies is itself hard and needs careful cross-checks."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lab instruments reading out superconducting qubits and serving as the first amplifier in axion and dark-matter haloscopes",
+        "unlocks": "broadband, near-quantum-limited sensing in magnetic fields where junction-based amplifiers fail."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine replacement of Josephson-junction parametric amplifiers in multi-qubit readout chains",
+        "unlocks": "one amplifier covering several gigahertz, so many qubits or resonators share a single cable and one set of electronics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "on-chip integration of amplifier, multiplexing and cryogenic control electronics",
+        "unlocks": "scaling readout to thousands of qubits without a matching explosion in wiring and heat load."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "materials and designs that work at higher temperatures, plus use as a standard component in quantum and dark-matter instruments",
+        "unlocks": "simpler, cheaper cryogenics and wider adoption outside specialist laboratories."
+      }
+    ]
+  }
+}

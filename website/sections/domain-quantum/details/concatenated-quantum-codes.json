@@ -1,0 +1,142 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Inner code block",
+        "role": "The lowest-level quantum error-correcting code, protecting one logical qubit against physical errors.",
+        "parts": [
+          "data qubits",
+          "ancilla qubits",
+          "stabilizer measurement circuits"
+        ]
+      },
+      {
+        "name": "Outer concatenation layer",
+        "role": "Treats each qubit of an inner block as a logical qubit and encodes it again in another code block, repeating to form a hierarchy.",
+        "parts": [
+          "encoding circuits",
+          "level-2 data qubits",
+          "level-2 ancilla qubits"
+        ]
+      },
+      {
+        "name": "Syndrome extraction and decoding hierarchy",
+        "role": "Measures error syndromes at each level and passes corrected results upward so outer decoders see cleaner data.",
+        "parts": [
+          "inner decoder",
+          "outer decoder",
+          "real-time classical control and feedback"
+        ]
+      },
+      {
+        "name": "Fault-tolerant logical operations",
+        "role": "Performs gates on encoded qubits without letting a single fault spread into multiple errors within a code block.",
+        "parts": [
+          "transversal gates",
+          "magic-state distillation",
+          "code switching"
+        ]
+      },
+      {
+        "name": "Physical qubit and control infrastructure",
+        "role": "Provides the raw qubits, gates and measurements whose error rates must stay below the code's threshold.",
+        "parts": [
+          "qubit chip",
+          "control electronics",
+          "cryogenic or photonic hardware",
+          "calibration software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the inner code",
+        "detail": "Select a small stabilizer code, such as a 5-qubit or 7-qubit code, based on which physical errors dominate on the target hardware."
+      },
+      {
+        "title": "Set the concatenation depth",
+        "detail": "Decide how many levels to stack and which outer code wraps the inner one, trading physical-qubit count for a lower logical error rate."
+      },
+      {
+        "title": "Synthesize fault-tolerant circuits",
+        "detail": "Compile encoding, syndrome extraction and correction circuits so that one physical fault cannot create two errors in the same code block."
+      },
+      {
+        "title": "Build and calibrate the qubit array",
+        "detail": "Fabricate the physical qubits, tune gates and measurements, and verify that error rates sit below the code's threshold."
+      },
+      {
+        "title": "Implement the inner decoder",
+        "detail": "Run a fast decoder that keeps pace with repeated syndrome extraction at the innermost level."
+      },
+      {
+        "title": "Demonstrate level-1 break-even",
+        "detail": "Show that one encoded logical qubit lives longer than the best physical qubit on the same device."
+      },
+      {
+        "title": "Add a second level",
+        "detail": "Concatenate again and measure whether the logical error rate falls by orders of magnitude as more levels are added."
+      },
+      {
+        "title": "Add non-Clifford operations",
+        "detail": "Use magic-state distillation or code switching so the encoded qubits can run universal quantum algorithms, not just Clifford gates."
+      },
+      {
+        "title": "Scale to many logical qubits",
+        "detail": "Replicate the hierarchical blocks, connect them with fault-tolerant gates, and operate a logical processor under real-time decoding."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Physical error rates below the concatenation threshold",
+        "status": "partial",
+        "why": "Concatenated codes typically need physical error rates around 10^-4 to 10^-3 depending on the code and decoder; current two-qubit gate errors are near that range but not uniformly below it."
+      },
+      {
+        "tech": "High-fidelity measurement and reset",
+        "status": "partial",
+        "why": "Repeated syndrome extraction requires measurement and reset errors well below the gate error rate, which is still a challenge on many platforms."
+      },
+      {
+        "tech": "Fast, scalable classical decoding",
+        "status": "partial",
+        "why": "The innermost decoder must run in real time, and outer decoders must handle many blocks without becoming a bottleneck."
+      },
+      {
+        "tech": "Fault-tolerant non-Clifford gates",
+        "status": "partial",
+        "why": "Magic-state distillation has been demonstrated at small scale, but its overhead is large and it is not yet integrated into a full logical processor."
+      },
+      {
+        "tech": "Qubit connectivity and control wiring",
+        "status": "partial",
+        "why": "Concatenation needs many physical qubits per logical qubit, so crosstalk, wiring density and connectivity become limiting engineering problems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Repeated syndrome extraction and break-even demonstrations on small qubit arrays",
+        "unlocks": "Confidence that basic quantum error correction can preserve information longer than a physical qubit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "A level-1 concatenated logical qubit with lower error than the best physical qubit on the same device",
+        "unlocks": "A working building block that can be stacked into deeper concatenation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Two-level concatenation showing logical error rate falling by orders of magnitude",
+        "unlocks": "Experimental proof of exponential error suppression in a real hierarchical code."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "Fault-tolerant logical processors with enough logical qubits and non-Clifford gates for practical algorithms",
+        "unlocks": "Reliable quantum simulation of chemistry and materials, where concatenation or its descendants protect the computation."
+      }
+    ]
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Antenna array",
+        "role": "collects the radiation; the number and spacing of dishes set the resolution and sensitivity.",
+        "parts": [
+          "54 dishes of 12 m diameter plus 12 of 7 m in a compact sub-array",
+          "precision reflector panels and backing structure",
+          "alt-az mount with metrology systems"
+        ]
+      },
+      {
+        "name": "Receiver front ends",
+        "role": "amplify and down-convert faint millimetre waves with very low noise.",
+        "parts": [
+          "superconductor–insulator–superconductor (SIS) mixer junctions",
+          "cryogenic low-noise amplifiers",
+          "receiver cartridges covering bands from about 35 GHz to 950 GHz"
+        ]
+      },
+      {
+        "name": "Cryogenics",
+        "role": "holds the mixers near 4 K so their own thermal noise does not swamp the sky signal.",
+        "parts": [
+          "closed-cycle helium cryocoolers",
+          "vacuum dewars",
+          "temperature monitoring"
+        ]
+      },
+      {
+        "name": "Frequency reference and local oscillator",
+        "role": "gives every antenna the same phase and frequency, which is what makes the array act as one telescope.",
+        "parts": [
+          "hydrogen maser and atomic clocks",
+          "photonic reference distribution over fibre",
+          "phase-locked LO chains"
+        ]
+      },
+      {
+        "name": "Correlator and computing",
+        "role": "digitises the signals and multiplies every antenna pair to form visibilities.",
+        "parts": [
+          "high-speed digitisers",
+          "wideband digital correlator",
+          "GPU-based processing for wider bandwidths",
+          "data archive and pipeline software"
+        ]
+      },
+      {
+        "name": "Calibration and imaging",
+        "role": "turns raw visibilities into cubes of molecular line emission.",
+        "parts": [
+          "quasar and planet calibrators",
+          "atmospheric and bandpass calibration",
+          "interferometric imaging and spectral-line analysis software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick and build the site",
+        "detail": "The array sits at roughly 5,000 m on the Chajnantor plateau in northern Chile, where the air is thin and extremely dry — water vapour absorbs exactly the wavelengths being observed. Roads, power, fibre links and oxygen-equipped facilities must be built at that altitude."
+      },
+      {
+        "title": "Make the dishes",
+        "detail": "Each antenna's reflector is assembled from many panels on a stiff backing structure, with surface errors held to tens of micrometres so that short millimetre waves stay in focus."
+      },
+      {
+        "title": "Fabricate the receiver cartridges",
+        "detail": "Niobium SIS junctions are made in a cleanroom by depositing and patterning superconducting and insulating layers a few nanometres thick, then mounted in waveguide blocks machined to micron tolerances."
+      },
+      {
+        "title": "Cool and integrate the receivers",
+        "detail": "Each cartridge goes into a vacuum dewar cooled by a helium cryocooler, wired to low-noise amplifiers and a local-oscillator feed before being slid into the antenna cabin."
+      },
+      {
+        "title": "Distribute the reference signal",
+        "detail": "A central hydrogen maser and photonic link system delivers a phase-stable tone to every antenna, so all 66 stations stay coherent with each other."
+      },
+      {
+        "title": "Digitise and correlate",
+        "detail": "Signals are sampled at billions of samples per second, shipped over optical fibre to the correlator building, and cross-multiplied in every antenna pairing across the observing band."
+      },
+      {
+        "title": "Move antennas to change resolution",
+        "detail": "A purpose-built transporter lifts a 100-tonne antenna and carries it along the plateau tracks, so the array can be spread from a few hundred metres to 16 km to trade surface brightness sensitivity for sharpness."
+      },
+      {
+        "title": "Commission and calibrate",
+        "detail": "New bands are proven on bright quasars, planets and known molecular lines before science use, and every observation is calibrated for atmosphere, bandpass and phase."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting SIS mixers",
+        "status": "exists",
+        "why": "no ordinary amplifier is quiet enough at these frequencies; the SIS junction's near-quantum-limited noise is what makes weak molecular lines detectable."
+      },
+      {
+        "tech": "Cryogenic cooling near 4 K",
+        "status": "exists",
+        "why": "without it the receiver's own noise would exceed the astronomical signal."
+      },
+      {
+        "tech": "Coherent frequency and timing distribution",
+        "status": "exists",
+        "why": "interferometry only works if each antenna's phase can be compared with the others to a fraction of a wavelength."
+      },
+      {
+        "tech": "High-throughput digital correlators",
+        "status": "exists",
+        "why": "correlating dozens of antennas over gigahertz-wide bands is a large computing problem, not an analogue one."
+      },
+      {
+        "tech": "Very dry, high-altitude sites",
+        "status": "exists",
+        "why": "atmospheric water vapour blocks the submillimetre windows that carry the most interesting lines."
+      },
+      {
+        "tech": "Millimetre-wave interferometric imaging methods",
+        "status": "exists",
+        "why": "sparse arrays sample the sky incompletely and require deconvolution to recover an image."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine spectral-line imaging of planet-forming disks at sub-astronomical-unit scales",
+        "unlocks": "maps of snowlines, rings and organic inventories in the exact regions where planets form."
+      },
+      {
+        "stage": "Next",
+        "milestone": "full deployment of the lowest-frequency receiver band and the Wideband Sensitivity Upgrade",
+        "unlocks": "much wider instantaneous bandwidth, so many more molecular lines are captured in a single observation and surveys become far faster."
+      },
+      {
+        "stage": "Next",
+        "milestone": "joint campaigns with infrared and optical facilities, plus next-generation centimetre arrays",
+        "unlocks": "matching disk gas, dust and ice measurements to what is later seen in exoplanet atmospheres."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a continuous chemical accounting from cold interstellar cloud to disk to planet",
+        "unlocks": "a physical basis for saying which volatiles, including water, arrive on habitable worlds and where they came from."
+      }
+    ]
+  }
+}

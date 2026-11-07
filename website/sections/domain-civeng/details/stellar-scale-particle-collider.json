@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Accelerating structures",
+        "role": "add energy to the beam at stations spaced along the ring.",
+        "parts": [
+          "plasma-wakefield or superconducting radio-frequency modules",
+          "RF power sources",
+          "cryomodules"
+        ]
+      },
+      {
+        "name": "Beam optics and alignment",
+        "role": "keeps a beam only micrometres wide on a track millions of kilometres long.",
+        "parts": [
+          "superconducting quadrupole and dipole magnets",
+          "free-space laser alignment network",
+          "beam position monitors",
+          "correction coils"
+        ]
+      },
+      {
+        "name": "Beam transport and vacuum",
+        "role": "either a continuous evacuated pipe or free-space drift between stations.",
+        "parts": [
+          "distributed vacuum pumps",
+          "low-outgassing pipe sections",
+          "optical relay telescopes for free-space segments"
+        ]
+      },
+      {
+        "name": "Power and thermal control",
+        "role": "supplies terawatt-scale electricity and rejects the waste heat.",
+        "parts": [
+          "orbiting solar collector arrays",
+          "power conversion and distribution",
+          "radiators"
+        ]
+      },
+      {
+        "name": "Injector and interaction region",
+        "role": "fills the ring and focuses the two beams into collision.",
+        "parts": [
+          "particle source and pre-accelerator",
+          "final-focus magnets",
+          "detector"
+        ]
+      },
+      {
+        "name": "Beam dumps and safety",
+        "role": "absorbs the beam and guarantees no stray path can reach anything inhabited.",
+        "parts": [
+          "robust absorbers",
+          "beam-abort kickers",
+          "trajectory interlock network"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the gradient on Earth",
+        "detail": "Before anything flies, plasma-wakefield and superconducting modules must show they can add energy per metre reliably for long pulses, not just in short laboratory bursts."
+      },
+      {
+        "title": "Test beam transport at increasing range",
+        "detail": "A ground-based vacuum or free-space line, then a longer one, measures how far a focused beam can travel before it drifts or spreads beyond tolerance."
+      },
+      {
+        "title": "Build robotic assembly and servicing",
+        "detail": "Very large structures in orbit can only be made by machines, so autonomous assembly, welding, cable routing and repair must be proven on smaller platforms first."
+      },
+      {
+        "title": "Deploy a pilot arc",
+        "detail": "A short arc — a few tens of kilometres, far from a full orbit — with a handful of accelerating stations, its own solar arrays and a return path, tests alignment under sunlight, thermal cycling and gravity-gradient drift."
+      },
+      {
+        "title": "Mass-produce the ring",
+        "detail": "Accelerator modules, magnets, pumps and radiators are made in numbers never attempted, since a full ring needs orders of magnitude more units than any existing machine."
+      },
+      {
+        "title": "Close the loop and inject",
+        "detail": "The arc is extended until the two ends meet, the vacuum or optical path becomes continuous, and a low-energy beam is circulated for the first time."
+      },
+      {
+        "title": "Ramp and collide",
+        "detail": "Energy is raised step by step while the alignment system holds the orbit, then the two beams are focused into collision in the interaction region."
+      },
+      {
+        "title": "Operate and repair",
+        "detail": "Detectors record events, heat is radiated away, and robotic servicing replaces failed stations without shutting down the whole ring."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-gradient acceleration (plasma wakefield)",
+        "status": "partial",
+        "why": "gigavolt-per-metre gradients have been demonstrated in plasma over centimetres; a ring needs them sustained over metres and repeated thousands of times."
+      },
+      {
+        "tech": "Superconducting magnets and RF at industrial scale",
+        "status": "exists",
+        "why": "the technology works, but the quantity required is beyond any current supply chain."
+      },
+      {
+        "tech": "Autonomous in-space assembly and manufacturing",
+        "status": "partial",
+        "why": "robotic arms and servicing missions exist; nothing has assembled and aligned a structure hundreds of thousands of kilometres long."
+      },
+      {
+        "tech": "Terawatt-scale space power",
+        "status": "missing",
+        "why": "spacecraft solar arrays currently deliver kilowatts to megawatts, so collector area and heat rejection must grow by many orders of magnitude."
+      },
+      {
+        "tech": "Orbit-scale metrology",
+        "status": "partial",
+        "why": "laser ranging and interplanetary laser links work over millions of kilometres, but not to the sub-micrometre beam tolerances an accelerator needs."
+      },
+      {
+        "tech": "Overcoming synchrotron radiation in a ring",
+        "status": "missing",
+        "why": "in a circular machine the energy lost per turn rises with the fourth power of beam energy and falls only linearly with radius, so beyond some energy even a solar-orbit ring radiates more than it can replace — the geometry itself becomes the ceiling."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Earth-based high-gradient acceleration experiments and feasibility studies for roughly 100 km circular colliders",
+        "unlocks": "realistic figures for achievable gradient, cost per GeV and magnet production."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Free-space and evacuated beam-transport tests over hundreds of kilometres, plus robotic assembly trials of large space structures",
+        "unlocks": "confidence that a beam can be held on a very long baseline and that the structure can be built and serviced."
+      },
+      {
+        "stage": "Next",
+        "milestone": "A pilot arc: tens of kilometres of accelerator in orbit, solar powered, with a returning beam path and beam dump",
+        "unlocks": "continuous operation, alignment control and repair practice at unprecedented scale."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "A closed ring around a planetary orbit with injector, interaction region and detectors",
+        "unlocks": "collision energies limited by circumference rather than by the size of any site — while the synchrotron-radiation ceiling is finally tested in practice."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "Linear geometry or beams steered by stellar plasma and magnetic structures",
+        "unlocks": "the only known route past the ring's radiation limit — a machine whose scale is set by astrophysics, not engineering."
+      }
+    ]
+  }
+}

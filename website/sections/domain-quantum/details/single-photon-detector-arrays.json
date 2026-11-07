@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Detector pixels",
+        "role": "convert a single photon into a measurable electrical pulse.",
+        "parts": [
+          "superconducting nanowire meander (niobium nitride or tungsten silicide)",
+          "single-photon avalanche diode or silicon photomultiplier microcell",
+          "bias and quenching network"
+        ]
+      },
+      {
+        "name": "Readout multiplexing",
+        "role": "route signals from thousands of pixels to a manageable number of output lines.",
+        "parts": [
+          "cryogenic amplifiers",
+          "row-column or delay-line multiplexing",
+          "CMOS readout chip"
+        ]
+      },
+      {
+        "name": "Timing electronics",
+        "role": "record when each pixel fired, often to tens of picoseconds.",
+        "parts": [
+          "time-to-digital converters",
+          "low-jitter clock distribution",
+          "field-programmable gate array"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "keep superconducting pixels below their critical temperature and reduce dark counts.",
+        "parts": [
+          "closed-cycle cryocooler or liquid-helium stage",
+          "radiation shields",
+          "low-thermal-conductance wiring"
+        ]
+      },
+      {
+        "name": "Optical coupling",
+        "role": "deliver light efficiently to each pixel.",
+        "parts": [
+          "microlens array",
+          "fibre array or waveguide",
+          "anti-reflection coating"
+        ]
+      },
+      {
+        "name": "Control and data system",
+        "role": "acquire, timestamp and correlate millions of events per second.",
+        "parts": [
+          "data acquisition electronics",
+          "real-time correlator or GPU",
+          "event storage software"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the array",
+        "detail": "Choose pixel size, spacing, nanowire width or microcell geometry, and readout scheme for the target wavelength and count rate."
+      },
+      {
+        "title": "Fabricate the detector wafer",
+        "detail": "Deposit a thin superconducting film (for nanowire detectors) or build avalanche diodes in a silicon CMOS process."
+      },
+      {
+        "title": "Pattern the pixels",
+        "detail": "Use electron-beam or deep-ultraviolet lithography to etch meandering nanowires or define microcells and their isolation trenches."
+      },
+      {
+        "title": "Integrate the readout",
+        "detail": "Flip-chip or wire-bond the detector array to a cryogenic or CMOS multiplexing chip, forming electrical connections to every pixel."
+      },
+      {
+        "title": "Package and cool",
+        "detail": "Mount the stack on a cold stage, align optical fibres or microlenses, and cool it to operating temperature."
+      },
+      {
+        "title": "Characterise performance",
+        "detail": "Measure detection efficiency, timing jitter, dark-count rate, afterpulsing and crosstalk across the array."
+      },
+      {
+        "title": "Calibrate and scale",
+        "detail": "Map each pixel’s position and timing offset, then extend to larger arrays while keeping yield and uniformity acceptable."
+      },
+      {
+        "title": "Deploy in a system",
+        "detail": "Combine the array with lasers, optics and timing electronics for lidar, quantum communication or microscopy."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconducting nanowire single-photon detectors",
+        "status": "exists",
+        "why": "give the best timing jitter and low dark counts, but only at cryogenic temperatures."
+      },
+      {
+        "tech": "Silicon photomultipliers and SPAD arrays",
+        "status": "exists",
+        "why": "offer room-temperature single-photon detection and large pixel counts for lidar and medical imaging."
+      },
+      {
+        "tech": "Cryogenic cooling",
+        "status": "exists",
+        "why": "needed to operate superconducting pixels and to suppress dark counts in many avalanche devices."
+      },
+      {
+        "tech": "High-speed time-to-digital converters",
+        "status": "exists",
+        "why": "convert photon arrivals into picosecond timestamps for ranging and correlation."
+      },
+      {
+        "tech": "Scalable cryogenic and CMOS multiplexing",
+        "status": "partial",
+        "why": "reading thousands of pixels without adding heat or losing timing resolution remains difficult."
+      },
+      {
+        "tech": "On-chip optical coupling",
+        "status": "partial",
+        "why": "getting light into every pixel efficiently, especially in large arrays, limits system performance."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "kilopixel superconducting arrays and large silicon photomultiplier arrays in commercial instruments",
+        "unlocks": "photon-starved imaging, fluorescence lifetime microscopy and automotive lidar."
+      },
+      {
+        "stage": "Next",
+        "milestone": "megapixel-scale superconducting arrays with integrated cryogenic readout",
+        "unlocks": "high-rate quantum communication receivers and long-range single-photon lidar."
+      },
+      {
+        "stage": "Next",
+        "milestone": "photonic-integrated detector chips that combine waveguides, filters and arrays",
+        "unlocks": "compact, alignment-free quantum and sensing systems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "wafer-scale single-photon imagers with per-pixel timing",
+        "unlocks": "low-light cameras that count and time every photon across a wide field of view."
+      }
+    ]
+  }
+}

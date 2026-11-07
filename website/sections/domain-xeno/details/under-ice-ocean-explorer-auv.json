@@ -1,0 +1,160 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Pressure hull and buoyancy",
+        "role": "survives the crushing pressure of a deep ocean and keeps the vehicle neutrally buoyant.",
+        "parts": [
+          "titanium or composite pressure sphere",
+          "syntactic foam",
+          "thrusters and control fins"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "sets the range; with no cable and no sunlight, everything comes from a battery or a radioisotope source.",
+        "parts": [
+          "lithium primary or rechargeable battery pack",
+          "power conditioning",
+          "thermal management"
+        ]
+      },
+      {
+        "name": "Navigation",
+        "role": "finds the way with no GPS and no line of sight to the surface.",
+        "parts": [
+          "inertial measurement unit",
+          "Doppler velocity log",
+          "forward-looking sonar",
+          "terrain-relative navigation",
+          "pressure and altimeter sensors"
+        ]
+      },
+      {
+        "name": "Autonomy and communication",
+        "role": "plans and reacts on its own, because a radio link through ice and water is impossible.",
+        "parts": [
+          "onboard flight software",
+          "mission planner",
+          "acoustic modem",
+          "fault detection and safe-mode logic"
+        ]
+      },
+      {
+        "name": "Science payload",
+        "role": "measures the water and maps the underside of the ice.",
+        "parts": [
+          "chemical sensors (pH, redox, dissolved gases)",
+          "mass spectrometer",
+          "cameras and lights",
+          "samplers",
+          "ice-penetrating sonar"
+        ]
+      },
+      {
+        "name": "Docking and recharge station",
+        "role": "the fixed point the vehicle returns to for power, data and sample handover.",
+        "parts": [
+          "melt-probe or lander interface",
+          "inductive or wet-mate power coupling",
+          "data transfer link"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the mission",
+        "detail": "Choose the target ocean, ice thickness, required range in kilometres and the measurements that justify the trip."
+      },
+      {
+        "title": "Design the pressure hull",
+        "detail": "Size a sphere or cylinder for the target depth — tens of megapascals on Europa — and add buoyancy foam so the vehicle hovers rather than sinks."
+      },
+      {
+        "title": "Integrate power and propulsion",
+        "detail": "Fit the battery pack and thrusters, then calculate the range that energy budget allows at cruising speed."
+      },
+      {
+        "title": "Build the navigation stack",
+        "detail": "Combine inertial dead reckoning with sonar and Doppler velocity logs, and prove drift stays small over a long run."
+      },
+      {
+        "title": "Write the autonomy software",
+        "detail": "Encode the mission, contingency behaviours and safe-mode returns so the vehicle can complete a survey without being driven."
+      },
+      {
+        "title": "Test in tanks and open water",
+        "detail": "Bench tests, then lake and coastal trials, then increasingly long autonomous runs."
+      },
+      {
+        "title": "Prove it under real ice",
+        "detail": "Deploy through a hole in an ice shelf or glacier, navigate for tens of kilometres away from any beacon, sense the water and return — the Antarctic analogue campaign."
+      },
+      {
+        "title": "Add docking and sample handling",
+        "detail": "Practise returning to a fixed station, recharging and transferring samples and data automatically."
+      },
+      {
+        "title": "Harden for the target world",
+        "detail": "Qualify electronics for Jupiter's radiation, years of cruise and the extreme cold, then integrate with a cryobot or lander that delivers it through the ice."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Autonomous navigation without GPS",
+        "status": "partial",
+        "why": "under-ice vehicles must fix their position from inertial sensors and sonar alone; drift over long runs is still the key limit."
+      },
+      {
+        "tech": "High energy-density power for cold, dark environments",
+        "status": "partial",
+        "why": "range is set directly by battery capacity, since recharging depends on returning to a station."
+      },
+      {
+        "tech": "Ice-penetrating melt probes (cryobots)",
+        "status": "partial",
+        "why": "something must get the vehicle through kilometres of ice shell to reach the ocean."
+      },
+      {
+        "tech": "Through-ice acoustic communication",
+        "status": "partial",
+        "why": "radio cannot cross water or thick ice, so data and commands travel as slow acoustic packets."
+      },
+      {
+        "tech": "Planetary lander and delivery capability",
+        "status": "partial",
+        "why": "reaching an icy moon's surface with a heavy payload has been studied but not yet flown."
+      },
+      {
+        "tech": "Radiation-tolerant electronics",
+        "status": "exists",
+        "why": "electronics near Jupiter must survive the radiation environment of the inner Jovian system."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "Antarctic analogue vehicles (such as Icefin and ARTEMIS) survey beneath ice shelves and glacier grounding lines",
+        "unlocks": "the operational model: untethered under-ice range, chemical sensing and sample return."
+      },
+      {
+        "stage": "Next",
+        "milestone": "Europa Clipper (launched 2024) and ESA's JUICE characterise the ice shell, ocean and plumes",
+        "unlocks": "the data needed to choose a landing site and design the vehicle."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a cryobot plus AUV demonstrated end-to-end through a thick ice shelf or glacier",
+        "unlocks": "confidence that melting through and swimming free can work as one system."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a lander mission that melts through the shell and releases an autonomous explorer",
+        "unlocks": "direct sampling of an alien ocean — the only way to test it for habitability."
+      }
+    ]
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Superposition layer",
+        "role": "creates an equal-weight superposition across all 2^n computational basis states.",
+        "parts": [
+          "Hadamard gates",
+          "initial state preparation"
+        ]
+      },
+      {
+        "name": "Phase-encoding layer",
+        "role": "imprints the Fourier kernel as binary-weighted phases on the superposition.",
+        "parts": [
+          "controlled-phase gates with angles halving at each step",
+          "phase kickback from an ancilla register"
+        ]
+      },
+      {
+        "name": "Qubit-order correction",
+        "role": "reverses the qubit order left by the recursive decomposition.",
+        "parts": [
+          "SWAP network",
+          "or classical relabeling of measured bits"
+        ]
+      },
+      {
+        "name": "Inverse QFT",
+        "role": "the adjoint circuit used inside quantum phase estimation.",
+        "parts": [
+          "inverse phase-encoding layer",
+          "inverse Hadamard layer"
+        ]
+      },
+      {
+        "name": "Orchestration and readout",
+        "role": "compiles the circuit for a specific device, mitigates errors and extracts the result.",
+        "parts": [
+          "gate compiler and scheduler",
+          "calibration data",
+          "error mitigation or correction",
+          "measurement and classical post-processing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the task",
+        "detail": "Decide the number of qubits n and the required phase precision, and whether this is a standalone QFT or the inverse subroutine inside phase estimation."
+      },
+      {
+        "title": "Write the gate sequence",
+        "detail": "Start with Hadamard gates on all qubits, then apply controlled-phase gates whose rotation angles halve with each step, and finish with a swap network to restore qubit order. For the inverse, reverse the order and invert every gate."
+      },
+      {
+        "title": "Compile to hardware",
+        "detail": "Map logical qubits onto physical qubits, insert SWAP gates to respect the device's connectivity, and translate each operation into the native gate set."
+      },
+      {
+        "title": "Calibrate the gates",
+        "detail": "Tune the microwave or laser pulses that implement single-qubit rotations and two-qubit controlled-phase gates, and measure their fidelities and coherence times."
+      },
+      {
+        "title": "Choose an error strategy",
+        "detail": "On small devices use error mitigation such as zero-noise extrapolation; for larger instances encode the computation in an error-correcting code so that logical gates are protected."
+      },
+      {
+        "title": "Execute and read out",
+        "detail": "Run the circuit many times, measure the qubits in the computational basis, and reconstruct the Fourier-transformed amplitudes or the estimated phase from the statistics."
+      },
+      {
+        "title": "Verify and integrate",
+        "detail": "Compare results against a classical fast Fourier transform on small instances, then embed the verified circuit in a larger algorithm such as Shor's period finding or quantum phase estimation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum processors with many qubits",
+        "status": "partial",
+        "why": "the QFT needs n qubits and controlled-phase interactions between many pairs; current devices have limited qubit counts and connectivity."
+      },
+      {
+        "tech": "High-fidelity two-qubit gates",
+        "status": "partial",
+        "why": "every controlled-phase gate is a two-qubit operation, and their errors accumulate quickly as n grows."
+      },
+      {
+        "tech": "Quantum error correction",
+        "status": "missing",
+        "why": "useful large-scale QFT requires logical qubits with error rates below the fault-tolerance threshold, which has not yet been achieved at scale."
+      },
+      {
+        "tech": "Compilers and control electronics",
+        "status": "exists",
+        "why": "the circuit must be translated, scheduled and driven on real hardware."
+      },
+      {
+        "tech": "Classical simulation and verification",
+        "status": "exists",
+        "why": "small instances can be checked against a classical FFT, which is essential for debugging."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "QFT and phase estimation demonstrated on a handful of qubits on superconducting and trapped-ion devices",
+        "unlocks": "proof that the gate sequence works and can be benchmarked."
+      },
+      {
+        "stage": "Next",
+        "milestone": "QFT on tens of qubits with error mitigation, integrated into small instances of Shor's algorithm and quantum chemistry",
+        "unlocks": "solving narrow problems beyond simple demonstration."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant QFT using a small number of logical qubits",
+        "unlocks": "phase estimation precise enough for useful simulation of molecules and materials."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large-scale fault-tolerant QFT embedded in cryptographic and simulation algorithms",
+        "unlocks": "exponentially faster period finding, factoring and related algebraic tasks."
+      }
+    ]
+  }
+}

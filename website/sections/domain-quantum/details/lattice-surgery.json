@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Logical patches",
+        "role": "each logical qubit is a rectangular tile of physical qubits running the surface code, with boundaries of two alternating types.",
+        "parts": [
+          "data qubits",
+          "measure qubits",
+          "X-type and Z-type boundaries"
+        ]
+      },
+      {
+        "name": "The seam",
+        "role": "the strip of stabilisers along the touching edge of two patches, which is switched on and off during a merge and a split.",
+        "parts": [
+          "boundary stabilisers",
+          "ancilla qubits in the gap",
+          "control lines for enabling measurements"
+        ]
+      },
+      {
+        "name": "Syndrome extraction",
+        "role": "measures every stabiliser each cycle to detect errors without destroying the encoded state.",
+        "parts": [
+          "ancilla preparation",
+          "entangling gates to neighbours",
+          "ancilla readout"
+        ]
+      },
+      {
+        "name": "Classical control and decoder",
+        "role": "turns measurement bits into corrections, fast enough to keep up with the qubit cycle.",
+        "parts": [
+          "real-time control electronics",
+          "matching or tensor-network decoder",
+          "feedback path"
+        ]
+      },
+      {
+        "name": "Pauli frame",
+        "role": "a software record of the byproduct X, Z and Y operators created by merge and split outcomes, applied later rather than physically.",
+        "parts": [
+          "outcome parity register",
+          "correction tracking in the compiler"
+        ]
+      },
+      {
+        "name": "Compilation layer",
+        "role": "schedules merges, splits and patch moves into a fault-tolerant circuit.",
+        "parts": [
+          "lattice-surgery gate library",
+          "routing and layout",
+          "magic-state injection points"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fabricate the qubit array",
+        "detail": "Build a grid of physical qubits with nearest-neighbour coupling so that a patch can be laid out as a checkerboard of data and measure qubits."
+      },
+      {
+        "title": "Calibrate the surface code",
+        "detail": "Tune single-qubit gates, two-qubit gates and readout until the physical error rate sits below the surface-code threshold — currently around the 1% level per operation, with the best gates an order of magnitude better."
+      },
+      {
+        "title": "Initialise and verify patches",
+        "detail": "Prepare each logical qubit in a known state and run repeated stabiliser cycles, decoding the syndromes to confirm the patch is error-corrected."
+      },
+      {
+        "title": "Merge two patches",
+        "detail": "Stop measuring the stabilisers on the facing boundaries, then start measuring the new stabilisers that straddle the gap. The two tiles become one larger tile."
+      },
+      {
+        "title": "Measure across the merged patch",
+        "detail": "While merged, read out joint logical operators — for example the Z of both qubits at once — which is what transfers the logical information."
+      },
+      {
+        "title": "Split the patches apart",
+        "detail": "Measure the original boundary stabilisers in the complementary basis, cutting the large tile back into two separate logical qubits."
+      },
+      {
+        "title": "Track the byproducts",
+        "detail": "The parity of the merge and split outcomes tells the controller which X, Z or Y correction the logical state picked up. Record it in the Pauli frame instead of applying a pulse."
+      },
+      {
+        "title": "Decode across the seam",
+        "detail": "Run the decoder over the combined history of both patches, treating the seam measurements as part of one matching graph, so errors near the boundary are caught."
+      },
+      {
+        "title": "Compose gates",
+        "detail": "Chain merges and splits — a logical CNOT uses a few of them, and multi-qubit Paulis are read directly — building up a full Clifford gate set, then add magic states for universality."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Surface code error correction",
+        "status": "partial",
+        "why": "small experiments now show logical error rates falling as code distance grows, the effect lattice surgery depends on."
+      },
+      {
+        "tech": "High-fidelity two-qubit gates and single-shot readout",
+        "status": "partial",
+        "why": "below-threshold operation needs gate and measurement errors well under 1%, achieved on some platforms but not yet at the scale of a processor."
+      },
+      {
+        "tech": "Real-time decoding",
+        "status": "partial",
+        "why": "syndromes must be decoded within the qubit cycle, and current demonstrations mostly decode offline."
+      },
+      {
+        "tech": "Nearest-neighbour qubit layout",
+        "status": "exists",
+        "why": "lattice surgery exists precisely to fit planar hardware where distant qubits cannot interact directly."
+      },
+      {
+        "tech": "Magic state distillation",
+        "status": "partial",
+        "why": "merging gives Clifford gates only; non-Clifford gates need injected magic states, which are costly to prepare."
+      },
+      {
+        "tech": "Low-overhead logical compilation",
+        "status": "partial",
+        "why": "the number of physical qubits and cycles per logical gate must come down for algorithms to fit."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "surface-code patches operated and corrected on small grids, with logical error rates measured against code distance",
+        "unlocks": "confidence that adding qubits really does suppress errors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a fault-tolerant logical two-qubit gate between two patches, with the seam decoded live",
+        "unlocks": "the basic unit of lattice surgery proven end to end on hardware."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a compiled logical circuit combining merges, splits and magic-state injection",
+        "unlocks": "a universal, error-corrected gate set on one processor."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "tiled arrays of many patches with automated routing",
+        "unlocks": "running small quantum algorithms whose logical error rate is far below any single physical qubit."
+      }
+    ]
+  }
+}

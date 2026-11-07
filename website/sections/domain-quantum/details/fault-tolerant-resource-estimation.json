@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Algorithm specification",
+        "role": "the mathematical problem, written as something a quantum computer could run.",
+        "parts": [
+          "block encoding of the Hamiltonian or oracle",
+          "arithmetic and oracle subroutines",
+          "Clifford+T gate list"
+        ]
+      },
+      {
+        "name": "Error-correction model",
+        "role": "decides how logical qubits are protected and how they are laid out.",
+        "parts": [
+          "code family (usually the surface code)",
+          "code distance d",
+          "lattice-surgery operations",
+          "logical qubit patch geometry"
+        ]
+      },
+      {
+        "name": "Compilation and routing",
+        "role": "maps logical operations onto a two-dimensional grid of patches, cycle by cycle.",
+        "parts": [
+          "qubit placement",
+          "routing of long-range interactions",
+          "scheduling and parallelism limits"
+        ]
+      },
+      {
+        "name": "Magic state factories",
+        "role": "produces the non-Clifford resource that usually dominates the cost.",
+        "parts": [
+          "distillation or cultivation circuits",
+          "factory footprint in physical qubits",
+          "output rate per cycle"
+        ]
+      },
+      {
+        "name": "Hardware error model",
+        "role": "the assumed physical behaviour that everything else depends on.",
+        "parts": [
+          "two-qubit gate error rate",
+          "measurement error",
+          "syndrome cycle time",
+          "leakage, drift and cosmic-ray events"
+        ]
+      },
+      {
+        "name": "Cost accounting",
+        "role": "turns all of the above into the numbers people quote.",
+        "parts": [
+          "physical qubit total",
+          "wall-clock runtime",
+          "failure probability budget",
+          "sensitivity to the error rate"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the algorithmic target",
+        "detail": "State the exact problem instance and the circuit that solves it — a chemistry Hamiltonian, a factoring instance, a differential-equation solver — including the precision required."
+      },
+      {
+        "title": "Choose the code and layout",
+        "detail": "Pick an error-correcting code, almost always the surface code, and arrange the logical qubits as patches on a 2D grid with enough room for routing."
+      },
+      {
+        "title": "Set the failure budget",
+        "detail": "Decide the acceptable chance the whole run fails, then split that budget across all logical operations and cycles so no step is allowed to dominate."
+      },
+      {
+        "title": "Solve for code distance",
+        "detail": "Using the assumed physical error rate, raise the code distance until the logical error per cycle — which falls roughly exponentially in distance below threshold — meets the budget. This is the step where modest error-rate changes cause huge qubit-count changes."
+      },
+      {
+        "title": "Cost the Clifford operations",
+        "detail": "Count surface-code cycles for each logical gate and for lattice surgery, add routing and idle time, and multiply by the cycle time to get the runtime floor."
+      },
+      {
+        "title": "Cost the non-Clifford resource",
+        "detail": "Count the T gates, then size distillation or cultivation factories big enough to supply them at the pace the algorithm consumes them, and add those qubits to the footprint."
+      },
+      {
+        "title": "Total the machine",
+        "detail": "Sum data qubits, factory qubits and routing overhead; take the critical path of the schedule as runtime; report physical qubits, hours, and the assumed error model together, because the numbers are meaningless apart."
+      },
+      {
+        "title": "Test sensitivity",
+        "detail": "Re-run at several physical error rates and gate speeds to show how steeply the cost curves — the honest output is a range and a threshold, not a single number."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum error-correcting codes with proven thresholds",
+        "status": "exists",
+        "why": "resource estimates are only meaningful if logical errors are known to shrink as code distance grows."
+      },
+      {
+        "tech": "Lattice surgery and logical gate schemes",
+        "status": "exists",
+        "why": "they define the actual sequences of physical operations being counted."
+      },
+      {
+        "tech": "Magic state distillation and cultivation",
+        "status": "exists",
+        "why": "non-Clifford gates are the dominant cost line in nearly every estimate."
+      },
+      {
+        "tech": "Measured hardware error rates and cycle times",
+        "status": "partial",
+        "why": "estimates inherit the assumptions; today's devices are characterised, but the numbers drift and leakage and correlated errors are poorly bounded."
+      },
+      {
+        "tech": "Efficient block encodings for real problems",
+        "status": "partial",
+        "why": "if the encoding is inefficient, the estimate reflects the encoding rather than the hardware."
+      },
+      {
+        "tech": "Automated estimator tooling tied to compilers",
+        "status": "partial",
+        "why": "manual estimates take months and are hard to reproduce or compare."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "published estimates for chemistry and for factoring 2048-bit RSA numbers, the latter landing at roughly twenty million physical qubits running for hours",
+        "unlocks": "a shared, if pessimistic, yardstick for comparing algorithms and architectures."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hardware-aware estimates using measured error models, real device layouts, leakage and correlated-error data",
+        "unlocks": "credible milestone planning instead of headline qubit counts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "estimators embedded in compilers so algorithm designers see cost while they write code",
+        "unlocks": "algorithms redesigned for the hardware rather than translated onto it."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "estimates validated against measured logical error rates on small demonstrations",
+        "unlocks": "predictive engineering, where a paper's qubit count is a design commitment rather than a guess."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "early fault-tolerant applications where the estimate decides which problem is attempted first",
+        "unlocks": "a defensible answer to what a quantum computer is actually for."
+      }
+    ]
+  }
+}

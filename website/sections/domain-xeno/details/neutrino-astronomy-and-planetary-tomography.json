@@ -1,0 +1,167 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Detection medium",
+        "role": "the vast, transparent volume where a neutrino occasionally interacts and makes a flash of light.",
+        "parts": [
+          "deep Antarctic ice (IceCube)",
+          "Mediterranean seawater (KM3NeT)",
+          "deep lake water (Baikal)",
+          "purified water or liquid scintillator in an underground tank (Super-Kamiokande, KamLAND, Borexino)"
+        ]
+      },
+      {
+        "name": "Optical sensors",
+        "role": "catch the faint Cherenkov light and convert it to electrical pulses.",
+        "parts": [
+          "large photomultiplier tubes",
+          "glass pressure spheres",
+          "magnetic shielding",
+          "local readout electronics"
+        ]
+      },
+      {
+        "name": "Deployment infrastructure",
+        "role": "gets sensors kilometres down into ice or water and keeps them there.",
+        "parts": [
+          "hot-water drill rigs (ice)",
+          "mooring strings and anchor weights (water)",
+          "cable-laying and ROV support"
+        ]
+      },
+      {
+        "name": "Data, timing and triggering",
+        "role": "turns nanosecond photon hits into events with a direction.",
+        "parts": [
+          "digital optical modules",
+          "clock distribution and GPS timing",
+          "discriminator/trigger logic",
+          "data links to the surface or shore station"
+        ]
+      },
+      {
+        "name": "Calibration and background rejection",
+        "role": "separates rare neutrino events from the far more numerous cosmic-ray muons.",
+        "parts": [
+          "LED and laser calibration flashers",
+          "muon veto",
+          "atmospheric background models"
+        ]
+      },
+      {
+        "name": "Reconstruction and analysis",
+        "role": "fits photon arrival times to a direction and energy, then searches for sources.",
+        "parts": [
+          "track and cascade reconstructions",
+          "machine-learning classifiers",
+          "source and diffuse-flux analysis pipelines"
+        ]
+      },
+      {
+        "name": "Low-background geoneutrino detection",
+        "role": "measures antineutrinos from uranium and thorium decay inside the Earth.",
+        "parts": [
+          "inverse-beta-decay detection of positron plus neutron",
+          "ultra-pure scintillator",
+          "reactor-neutrino subtraction"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the site",
+        "detail": "Either a cubic kilometre of very clear natural ice or water, or a deep underground cavern where rock shields out cosmic rays — as in the existing neutrino detectors."
+      },
+      {
+        "title": "Drill or excavate",
+        "detail": "For ice arrays, a hot-water drill melts holes roughly 2.5 km deep; for water arrays, sensors are attached to mooring strings and lowered; for tank detectors, a cavity is excavated and lined."
+      },
+      {
+        "title": "Deploy the sensors",
+        "detail": "Photomultipliers in pressure housings are lowered on strings and frozen in place or suspended, spaced tens of metres apart to give the array its resolution."
+      },
+      {
+        "title": "Connect power and data",
+        "detail": "Each string carries cables to a surface or shore station that supplies power and streams the digitised hits."
+      },
+      {
+        "title": "Calibrate the array",
+        "detail": "Pulsed light sources at known positions are flashed to measure timing offsets, sensor efficiency and the optical properties of the medium."
+      },
+      {
+        "title": "Commission and filter",
+        "detail": "The detector runs, a fast trigger throws away most cosmic-ray muons, and surviving events are transmitted for offline analysis."
+      },
+      {
+        "title": "Reconstruct events",
+        "detail": "Software fits the pattern of photon arrival times to recover a direction and energy; a through-going muon track, for example, traces back toward its source."
+      },
+      {
+        "title": "Search for sources",
+        "detail": "Sky maps are built from many events to look for point sources, the diffuse Galactic flux, or a burst from a supernova."
+      },
+      {
+        "title": "For planetary work",
+        "detail": "A sufficiently large, low-background detector counts geoneutrinos; the count and spectrum constrain how much radiogenic heat the crust and mantle produce."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Large photomultiplier tubes and rugged pressure housings",
+        "status": "exists",
+        "why": "without cheap, reliable light sensors a kilometre-scale array is unaffordable."
+      },
+      {
+        "tech": "Deep drilling and subsea mooring technology",
+        "status": "exists",
+        "why": "sensors must survive years at kilometres of depth without maintenance."
+      },
+      {
+        "tech": "Nanosecond timing and high-bandwidth data acquisition",
+        "status": "exists",
+        "why": "direction is inferred almost entirely from the relative arrival times of photons."
+      },
+      {
+        "tech": "Cosmic-ray background rejection",
+        "status": "exists",
+        "why": "the muon rate at shallow depth is millions of times the neutrino rate."
+      },
+      {
+        "tech": "Ultra-low-background materials",
+        "status": "partial",
+        "why": "geoneutrino counting needs detectors whose own radioactivity is far below the signal."
+      },
+      {
+        "tech": "Directional antineutrino detection",
+        "status": "missing",
+        "why": "turning a geoneutrino count into an actual image of the Earth's interior requires directionality no current detector has."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "operating kilometre-scale arrays (IceCube, Baikal-GVD, KM3NeT under construction) plus underground water and scintillator detectors",
+        "unlocks": "neutrino maps of the sky and the first multi-messenger astronomy with neutrinos."
+      },
+      {
+        "stage": "Next",
+        "milestone": "planned enlargements such as IceCube-Gen2 and completion of KM3NeT",
+        "unlocks": "enough events to resolve individual sources rather than just a diffuse glow."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger low-background detectors measuring geoneutrinos from crust and mantle",
+        "unlocks": "independent constraints on how much of Earth's internal heat comes from radioactive decay."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "directional antineutrino or atmospheric-neutrino radiography of a whole planet",
+        "unlocks": "true tomography of Earth's deep interior, and eventually of other planetary bodies."
+      }
+    ]
+  }
+}

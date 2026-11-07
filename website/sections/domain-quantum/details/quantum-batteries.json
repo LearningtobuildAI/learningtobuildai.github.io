@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Absorber ensemble",
+        "role": "the storage medium — a set of identical quantum units (dye molecules, trapped atoms, or superconducting qubits) whose excited states hold the energy.",
+        "parts": [
+          "molecules or qubits with a chosen transition frequency",
+          "uniform transition energies across the ensemble"
+        ]
+      },
+      {
+        "name": "Shared electromagnetic mode",
+        "role": "a single cavity or resonator field that every absorber couples to, so they act collectively rather than independently.",
+        "parts": [
+          "optical microcavity or microwave resonator",
+          "high quality-factor mirrors or superconducting cavity walls"
+        ]
+      },
+      {
+        "name": "Coupling and tuning stage",
+        "role": "keeps all absorbers within the collective linewidth and aligned to the same field, which is what produces the superlinear (Dickie-type) charging rate.",
+        "parts": [
+          "dipole orientation control",
+          "frequency tuning (strain, field, fabrication tolerance)"
+        ]
+      },
+      {
+        "name": "Coherence protection",
+        "role": "slows dephasing so the collective effect survives long enough to charge and discharge.",
+        "parts": [
+          "cryostat (millikelvin for qubits)",
+          "magnetic and vibration shielding",
+          "ultra-stable frequency references"
+        ]
+      },
+      {
+        "name": "Extraction and output stage",
+        "role": "the missing piece: a switch or transducer that moves stored energy into a useful load without destroying the coherence that produced the fast charge.",
+        "parts": [
+          "coupling switch or outcoupler",
+          "load circuit, transducer or optical output"
+        ]
+      },
+      {
+        "name": "Control and readout",
+        "role": "measures how much energy is stored and how the charge rate scales with the number of absorbers.",
+        "parts": [
+          "quantum-state readout",
+          "timing and pump electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the platform",
+        "detail": "Choose between molecular absorbers in an optical microcavity (cheap, room temperature) or superconducting qubits in a microwave resonator (fast, controllable, but needs millikelvin cooling). Each gives up something the other has."
+      },
+      {
+        "title": "Fabricate the resonator",
+        "detail": "Mirror stacks for an optical cavity, or lithographically patterned superconducting metal on silicon for a microwave one, tuned so the mode frequency matches the absorbers."
+      },
+      {
+        "title": "Place the absorbers",
+        "detail": "Molecules are embedded in a host film or self-assembled layer; qubits are patterned directly. Spacing and dipole orientation are controlled so all units see the same field strength."
+      },
+      {
+        "title": "Couple them collectively",
+        "detail": "Trim each absorber onto resonance and verify that the charge rate grows faster than linearly with the number of units — the signature of collective charging."
+      },
+      {
+        "title": "Isolate from the environment",
+        "detail": "Cool and shield the device to push coherence times well beyond the charging time; this is where molecular systems and qubits currently diverge sharply in performance."
+      },
+      {
+        "title": "Add the charging pump",
+        "detail": "Deliver energy into the shared mode with a pulse, laser or microwave drive, timed to the collective dynamics rather than to individual absorbers."
+      },
+      {
+        "title": "Open an extraction path",
+        "detail": "Insert a controllable switch between the storage ensemble and a load. Discharging must be fast and must not scramble the state, which is the tightest known constraint on the whole idea."
+      },
+      {
+        "title": "Measure round-trip efficiency",
+        "detail": "Record energy out divided by energy in, charge rate versus absorber count, and coherence time. A useful device needs all three measured on the same apparatus."
+      },
+      {
+        "title": "Scale the ensemble",
+        "detail": "Increase the number of absorbers while preserving the superlinear scaling. Decoherence and fabrication spread grow with size, so the advantage may not survive to useful capacities."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-coherence quantum systems",
+        "status": "partial",
+        "why": "collective effects need the absorbers to stay in step; today's best qubits and molecular systems hold coherence for orders of magnitude less than a practical charge–discharge cycle would need."
+      },
+      {
+        "tech": "Strong collective (cavity) coupling at scale",
+        "status": "partial",
+        "why": "single-emitter cavity coupling is routine, but coupling many identical emitters to one mode without inhomogeneous broadening spoiling the collective rate is not solved."
+      },
+      {
+        "tech": "Coherent energy extraction and transduction",
+        "status": "missing",
+        "why": "no demonstrated method moves stored quantum energy into an electrical or mechanical load efficiently while preserving the coherence that enabled fast charging."
+      },
+      {
+        "tech": "Quantum-limited measurement and control",
+        "status": "partial",
+        "why": "measuring stored energy without disturbing it, and switching the device on demand, requires control electronics close to today's state of the art."
+      },
+      {
+        "tech": "Fabrication uniformity",
+        "status": "missing",
+        "why": "absorbers must be near-identical in frequency to within the collective linewidth across a large ensemble — a yield problem, not just a physics one."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small-scale demonstrations of superlinear charging and superabsorption in molecular and microwave-cavity systems",
+        "unlocks": "confidence that the collective effect is real and can be measured, plus theoretical limits on how much it can help."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a laboratory device that charges fast, stores a measurable amount of energy and discharges it to a load with published round-trip efficiency",
+        "unlocks": "the first honest comparison against a supercapacitor or lithium-ion cell — noting that quantum batteries offer a rate advantage, not a capacity advantage."
+      },
+      {
+        "stage": "Next",
+        "milestone": "hybrid architectures where a quantum charging stage tops up a conventional cell on a chip",
+        "unlocks": "niche uses such as ultrafast pulsed power in microelectronics, where charge speed matters more than energy density."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "large coherent ensembles with engineered extraction interfaces",
+        "unlocks": "either a genuine new storage class for short bursts of power, or a clear result that decoherence makes the advantage unattainable — both are useful outcomes."
+      },
+      {
+        "stage": "Speculative",
+        "milestone": "grid-scale deployment",
+        "unlocks": "nothing yet; quantum batteries are unlikely to compete with existing storage on cost per kilowatt-hour, since their proposed benefit is charging speed."
+      }
+    ]
+  }
+}

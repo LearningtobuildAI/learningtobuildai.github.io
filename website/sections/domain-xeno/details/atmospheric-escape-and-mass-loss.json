@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Telescope and spectrograph",
+        "role": "collects the star's light during transit and spreads it into a spectrum fine enough to resolve narrow gas lines.",
+        "parts": [
+          "space telescope with ultraviolet/optical/near-infrared spectrograph",
+          "high-resolution ground spectrograph with stable wavelength calibration",
+          "low-noise detector arrays",
+          "simultaneous reference calibration source"
+        ]
+      },
+      {
+        "name": "Transit timing and observing schedule",
+        "role": "ensures the telescope is looking during the few hours the planet crosses the star.",
+        "parts": [
+          "transit ephemeris from survey photometry",
+          "start and end timings including the planet's leading and trailing tails",
+          "out-of-transit baseline windows before and after"
+        ]
+      },
+      {
+        "name": "Stellar reference and contamination control",
+        "role": "subtracts the star's own absorption and variability, which can mimic or hide a planetary signal.",
+        "parts": [
+          "activity indicators (calcium, hydrogen-alpha lines)",
+          "photometric monitoring of starspots",
+          "nearby comparison stars",
+          "model of the stellar wind and its interaction with the planet"
+        ]
+      },
+      {
+        "name": "Data reduction and calibration pipeline",
+        "role": "turns raw detector counts into a clean, wavelength-calibrated transmission spectrum.",
+        "parts": [
+          "wavelength solution",
+          "telluric absorption correction (the Earth's atmosphere absorbs at the helium line)",
+          "instrument systematics removal",
+          "error and covariance estimation"
+        ]
+      },
+      {
+        "name": "Escape modelling and retrieval",
+        "role": "converts the measured absorption into a mass-loss rate, outflow speed and temperature.",
+        "parts": [
+          "upper-atmosphere radiative transfer",
+          "hydrodynamic escape simulations",
+          "Bayesian fitting to line profiles",
+          "population-level statistical comparison"
+        ]
+      },
+      {
+        "name": "High-energy irradiance monitoring",
+        "role": "measures the stellar X-ray and ultraviolet output that drives the escape.",
+        "parts": [
+          "X-ray observatory observations",
+          "ultraviolet spectroscopy",
+          "extreme-ultraviolet spectrum reconstruction from proxies"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a target likely to be escaping",
+        "detail": "Favour hot, low-density planets on short orbits, where the upper atmosphere is puffed up and the transit chord through the escaping gas is long."
+      },
+      {
+        "title": "Pin down the ephemeris and secure telescope time",
+        "detail": "Refine the transit timing from survey photometry, then win time on a spectrograph with the right wavelength coverage and resolution."
+      },
+      {
+        "title": "Observe in transit and out of transit",
+        "detail": "Take many short exposures through the transit plus a baseline before and after, so the star's own spectrum can be divided out."
+      },
+      {
+        "title": "Clean the Earth's atmosphere out of the data",
+        "detail": "Ground-based observations must remove the telluric helium absorption, which sits at almost the same wavelength and varies with airmass."
+      },
+      {
+        "title": "Model and subtract stellar activity",
+        "detail": "Fit the star's lines and variability using activity indicators and contemporaneous photometry, leaving the residual planetary signal."
+      },
+      {
+        "title": "Extract the line absorption",
+        "detail": "Compare in-transit and out-of-transit spectra in the line core; a deeper absorption during transit means gas is present outside the planet's solid body."
+      },
+      {
+        "title": "Convert the signal into a mass-loss rate",
+        "detail": "Fit escape models to the line profile and depth to estimate how much gas leaves per second, and at what speed."
+      },
+      {
+        "title": "Add the energy budget and interpret",
+        "detail": "Combine the mass-loss estimate with the star's X-ray and ultraviolet output to judge whether the planet is losing its atmosphere quickly enough to strip it over its lifetime."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space telescopes with ultraviolet and near-infrared spectroscopy",
+        "status": "exists",
+        "why": "only above the atmosphere can hydrogen Lyman-alpha and much of the near-infrared be observed at all."
+      },
+      {
+        "tech": "High-resolution ground spectrographs with stable calibration",
+        "status": "exists",
+        "why": "the helium line at 1083 nanometres is a narrow feature that needs fine spectral resolution and precise wavelength stability."
+      },
+      {
+        "tech": "Precise transit ephemerides from photometric surveys",
+        "status": "exists",
+        "why": "the observing window is only hours long, so the predicted transit time must be accurate."
+      },
+      {
+        "tech": "Stellar X-ray and ultraviolet monitoring",
+        "status": "partial",
+        "why": "escape is driven by high-energy starlight, but the extreme-ultraviolet part must largely be reconstructed rather than measured directly."
+      },
+      {
+        "tech": "Telluric and stellar contamination models at high precision",
+        "status": "partial",
+        "why": "the residual planetary signal is a fraction of a percent, comparable to the systematic errors that remain in the data."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "helium escape detected around dozens of transiting planets, from hot gas giants to Neptune-sized worlds, using space and ground spectrographs",
+        "unlocks": "a working tracer of atmospheric loss that can be applied to many systems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "broad surveys combining escape measurements with stellar age and activity and with planetary mass and radius",
+        "unlocks": "evidence on whether escape sculpts the observed gap between rocky and Neptune-sized planets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "escape measured for small planets around cool, low-mass stars, whose high-energy output is intense and long-lived",
+        "unlocks": "a clearer picture of whether such planets can hold onto atmospheres at all."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a large future ultraviolet-optical-infrared space telescope, such as the Habitable Worlds Observatory concept, able to resolve weak metal lines routinely",
+        "unlocks": "escape budgets for faint, small and long-period planets, not just the brightest hot ones."
+      }
+    ]
+  }
+}

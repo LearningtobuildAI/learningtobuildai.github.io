@@ -1,0 +1,145 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Qubit lattice",
+        "role": "a hexagonal (honeycomb) layout where every physical qubit sits on a vertex and couplers run along the edges.",
+        "parts": [
+          "physical qubits",
+          "tunable couplers between neighbouring qubits",
+          "boundary qubits that host logical operators"
+        ]
+      },
+      {
+        "name": "Measurement scheduler",
+        "role": "drives the repeating six-step cycle of two-qubit Pauli measurements that defines the code.",
+        "parts": [
+          "cycle pattern of ZZ, XX and YY pair measurements",
+          "pulse sequences and timing",
+          "control electronics"
+        ]
+      },
+      {
+        "name": "Syndrome pipeline",
+        "role": "converts raw measurement outcomes into detector events.",
+        "parts": [
+          "mid-circuit measurement and reset",
+          "classical comparators between successive rounds",
+          "real-time data path"
+        ]
+      },
+      {
+        "name": "Decoder",
+        "role": "tracks how the stabiliser group rotates each round and infers the most likely error.",
+        "parts": [
+          "detector graph construction",
+          "matching or automorphism-based decoder",
+          "logical correction output"
+        ]
+      },
+      {
+        "name": "Logical interface",
+        "role": "exposes encoded qubits and the operations that act on them.",
+        "parts": [
+          "logical operator bookkeeping",
+          "code deformation or lattice-surgery routines for gates"
+        ]
+      },
+      {
+        "name": "Verification stack",
+        "role": "proves the code behaves as designed before hardware exists.",
+        "parts": [
+          "circuit-level noise simulator",
+          "threshold and distance-scaling studies",
+          "benchmark suite"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Lay out the lattice",
+        "detail": "Place one qubit per vertex of a hexagonal lattice and provide couplers only between nearest neighbours, including the correct boundary shapes."
+      },
+      {
+        "title": "Choose the measurement cycle",
+        "detail": "Define the repeating sequence of weight-two Pauli measurements (for example alternating ZZ, XX and YY patterns) that returns to its starting point after six rounds."
+      },
+      {
+        "title": "Prove logical invariance",
+        "detail": "Show mathematically that the logical subspace is mapped back onto itself after each full cycle, so an encoded qubit survives even though the code space keeps changing."
+      },
+      {
+        "title": "Design the decoder",
+        "detail": "Work out how the stabiliser group rotates between rounds, build the corresponding detector graph, and find an efficient way to decode it — matching-based or automorphism-based."
+      },
+      {
+        "title": "Simulate under noise",
+        "detail": "Run the schedule through a circuit-level noise model with imperfect gates, measurements and idling, and plot logical error rate against lattice size to estimate a threshold."
+      },
+      {
+        "title": "Compile onto hardware",
+        "detail": "Map the lattice to the real connectivity of a processor, schedule the measurements within coherence limits, and confirm that mid-circuit measurement and reset work at the required fidelity."
+      },
+      {
+        "title": "Demonstrate one logical qubit",
+        "detail": "Run the cycle on a few tens of physical qubits and look for the signature of error correction: logical error rate falling as the lattice grows."
+      },
+      {
+        "title": "Scale to a logical processor",
+        "detail": "Add code deformation or lattice-surgery operations so several encoded qubits can be entangled, then repeat the whole schedule for many logical qubits."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Mid-circuit measurement and reset",
+        "status": "partial",
+        "why": "the code is measurement-only, so every round depends on fast, high-fidelity measurement and re-preparation of qubits."
+      },
+      {
+        "tech": "Low-crosstalk qubit arrays with pair connectivity",
+        "status": "partial",
+        "why": "a hexagon lattice needs clean two-qubit couplings and low idle error on all the qubits that are not being measured."
+      },
+      {
+        "tech": "Real-time classical decoding",
+        "status": "partial",
+        "why": "corrections must be computed within the cycle time as the code space rotates."
+      },
+      {
+        "tech": "Surface-code and toric-code theory",
+        "status": "exists",
+        "why": "Floquet codes are analysed with the same tools — anyon models, thresholds and distance scaling."
+      },
+      {
+        "tech": "Fabrication of many-qubit chips",
+        "status": "exists",
+        "why": "the lattice is larger than most current demonstrations, so wafer-scale or modular devices with uniform yield are needed."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Theory",
+        "milestone": "Floquet codes proposed in 2021 as measurement-only codes with weight-two checks",
+        "unlocks": "a route to error correction on hardware where entangling gates are the weakest link."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small-device experiments that run the full periodic schedule and watch the logical qubit survive many cycles",
+        "unlocks": "confidence that the rotating code space behaves as predicted under real noise."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a single logical qubit whose error rate falls as the lattice grows",
+        "unlocks": "fault-tolerant memory on hardware that does not need stabiliser-preparation circuitry."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "logical gates via code deformation and several logical qubits on one chip",
+        "unlocks": "a fault-tolerant architecture that can compete with, or complement, the surface code."
+      }
+    ]
+  }
+}

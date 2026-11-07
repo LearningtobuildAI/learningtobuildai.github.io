@@ -1,0 +1,159 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Fermionic encoding",
+        "role": "maps the electrons (or lattice sites) onto qubits while preserving antisymmetry.",
+        "parts": [
+          "orbital and active-space selection",
+          "Jordan–Wigner or Bravyi–Kitaev mapping",
+          "local/compact encodings to cut gate count"
+        ]
+      },
+      {
+        "name": "Trial-state preparation",
+        "role": "builds the approximate ground state that the Monte Carlo walk is biased towards.",
+        "parts": [
+          "Hartree–Fock or mean-field reference",
+          "short variational circuit (e.g. coupled-cluster-like)",
+          "classically pre-optimised state"
+        ]
+      },
+      {
+        "name": "Projector and imaginary-time evolution",
+        "role": "the long imaginary-time projection that kills excited-state contributions.",
+        "parts": [
+          "block encoding of the Hamiltonian",
+          "linear-combination-of-unitaries and qubitisation circuits",
+          "controlled time-evolution with normalisation"
+        ]
+      },
+      {
+        "name": "Sampling layer",
+        "role": "repeatedly measures the register in the basis needed to recover amplitudes and phases.",
+        "parts": [
+          "basis-rotation gates",
+          "measurement and shot accumulation",
+          "error mitigation (zero-noise extrapolation, readout correction)"
+        ]
+      },
+      {
+        "name": "Readout estimators",
+        "role": "turn hardware statistics into energies and correlation functions with controlled error.",
+        "parts": [
+          "amplitude estimation",
+          "phase estimation or quantum signal processing",
+          "statistical error bars and reweighting"
+        ]
+      },
+      {
+        "name": "Classical co-processor",
+        "role": "runs the conventional quantum Monte Carlo framework around the quantum samples.",
+        "parts": [
+          "Markov chain or reweighting step",
+          "estimator for total energy",
+          "validation against exact diagonalisation, DMRG and diffusion Monte Carlo"
+        ]
+      },
+      {
+        "name": "Error correction stack",
+        "role": "keeps long projector circuits coherent — required for the useful regime.",
+        "parts": [
+          "surface or other quantum error-correcting code",
+          "magic-state or gate-synthesis resources",
+          "real-time decoder"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Define the model and active space",
+        "detail": "Choose the molecule or lattice, select the orbitals that carry the strong correlation, and write the Hamiltonian in second quantisation — the qubit cost scales with the number of spin-orbitals."
+      },
+      {
+        "title": "Map to qubits",
+        "detail": "Apply a fermionic encoding so that creation and annihilation operators become qubit operations that respect antisymmetry, then compile the Hamiltonian into a weighted sum of Pauli strings."
+      },
+      {
+        "title": "Prepare the trial wavefunction",
+        "detail": "Load a mean-field state or a variationally optimised circuit; its overlap with the true ground state controls how much imaginary-time projection is still needed."
+      },
+      {
+        "title": "Compile the projector",
+        "detail": "Turn the imaginary-time (or projector) operator into block-encoded, controlled unitaries using qubitisation and linear combinations of unitaries, normalising the weights so the circuit is unitary."
+      },
+      {
+        "title": "Run the circuit and sample",
+        "detail": "Execute the trial-state preparation and projector layers thousands of times on the processor, rotating the measurement basis to extract the off-diagonal amplitudes and signs the classical method cannot estimate."
+      },
+      {
+        "title": "Feed the samples into the classical estimator",
+        "detail": "Use the measured ratios inside a classical quantum Monte Carlo loop — a Markov chain or reweighting step — so the sign problem is fixed by quantum data while the statistics stay on a classical machine."
+      },
+      {
+        "title": "Extract energies and observables",
+        "detail": "Apply amplitude or phase estimation (or accumulate the classical estimator) to get ground-state energies and correlation functions with error falling polynomially in the number of shots rather than exponentially in system size."
+      },
+      {
+        "title": "Validate on known systems",
+        "detail": "Check small molecules and Hubbard-type lattices against exact diagonalisation, density-matrix renormalisation group and classical diffusion Monte Carlo before trusting any new prediction."
+      },
+      {
+        "title": "Scale the implementation",
+        "detail": "Grow the active space while cutting circuit depth, then move from error mitigation to error-corrected logical qubits so deep projector sequences stay coherent."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Error-corrected logical qubits",
+        "status": "partial",
+        "why": "the deep, repeated projector circuits need logical error rates far below physical ones; only small logical qubits have been demonstrated."
+      },
+      {
+        "tech": "Cheap block encodings of fermionic Hamiltonians",
+        "status": "partial",
+        "why": "circuit depth and qubit count are dominated by how the Hamiltonian is encoded, not by the Monte Carlo logic itself."
+      },
+      {
+        "tech": "Controllable trial-state preparation",
+        "status": "partial",
+        "why": "the whole method depends on a preparable state with enough overlap with the true ground state."
+      },
+      {
+        "tech": "Classical quantum Monte Carlo and high-performance computing",
+        "status": "exists",
+        "why": "supplies the loop, the benchmarks and the strongly correlated test cases the quantum version must beat."
+      },
+      {
+        "tech": "Error mitigation on noisy processors",
+        "status": "exists",
+        "why": "lets near-term devices run the sampling layer usefully before fault tolerance arrives."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small hybrid demonstrations: a superconducting processor samples a trial state and a classical auxiliary-field quantum Monte Carlo run is corrected by those samples (published in 2022 for a small strongly correlated system)",
+        "unlocks": "evidence that quantum sampling can relieve the fermionic sign problem."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-mitigated hybrid runs on tens of qubits for modest molecules and Fermi-Hubbard lattices",
+        "unlocks": "benchmarks where classical quantum Monte Carlo is unreliable or only marginally affordable."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant machines with enough logical qubits for deep qubitised projectors",
+        "unlocks": "accurate energies for transition-metal complexes, where resource estimates for catalysts such as the FeMoco cluster of nitrogenase have long been the target."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "routine quantum Monte Carlo for strongly correlated materials and catalysts",
+        "unlocks": "predictive design of batteries, magnets and superconductors where classical simulation fails."
+      }
+    ]
+  }
+}

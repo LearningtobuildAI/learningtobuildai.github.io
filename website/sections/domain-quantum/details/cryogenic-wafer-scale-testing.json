@@ -1,0 +1,155 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Cryogenic probe station",
+        "role": "holds a whole wafer at low temperature and steps between dies without warming up.",
+        "parts": [
+          "cooled chuck (200–300 mm)",
+          "thermal shields and radiation baffles",
+          "vibration-isolated, vacuum-tight enclosure",
+          "nanometre-precision x-y-z stage"
+        ]
+      },
+      {
+        "name": "Cooling plant",
+        "role": "produces the cold: a few kelvin for spin-qubit work, millikelvin where superconducting qubits are involved.",
+        "parts": [
+          "pulse-tube or Gifford–McMahon cryocooler",
+          "helium compressor and gas handling",
+          "dilution unit and its still/heat exchangers",
+          "temperature sensors and PID control"
+        ]
+      },
+      {
+        "name": "Probe card and on-die contacts",
+        "role": "brings hundreds of signal lines down onto micrometre-scale pads.",
+        "parts": [
+          "high-density probe needles or membrane probes",
+          "low-thermal-conductance wiring",
+          "coplanar waveguide launches",
+          "planarity and thermal-contraction compensation"
+        ]
+      },
+      {
+        "name": "Signal chain and filtering",
+        "role": "carries microwave pulses in and faint microwave photons out without drowning them in noise.",
+        "parts": [
+          "attenuators and low-pass/band-pass filters",
+          "low-noise cryogenic amplifiers",
+          "circulators and isolators",
+          "superconducting or low-loss coax looms"
+        ]
+      },
+      {
+        "name": "Multiplexing electronics",
+        "role": "lets one cooldown measure many qubits rather than one.",
+        "parts": [
+          "cryo-CMOS multiplexer chips",
+          "frequency-division multiplexing resonators",
+          "on-chip switches and bias DACs"
+        ]
+      },
+      {
+        "name": "Automation and yield analytics",
+        "role": "turns thousands of individual measurements into wafer maps and distributions.",
+        "parts": [
+          "wafer-handling and step-and-repeat software",
+          "test sequencing and calibration engine",
+          "frequency, coherence and gate-fidelity extraction",
+          "statistical process-control database"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose and prepare the site",
+        "detail": "The prober needs a low-vibration floor slab, a stable electrical supply, helium recovery and shielding from stray radio-frequency fields, because coherence is easily destroyed by interference."
+      },
+      {
+        "title": "Install the cooling plant",
+        "detail": "A pulse-tube cryocooler with its compressor is mounted below or beside the chamber, then a dilution stage is added if millikelvin operation is required."
+      },
+      {
+        "title": "Fit and calibrate the wafer chuck",
+        "detail": "The chuck is machined flat to a few micrometres and characterised at operating temperature, because it shrinks as it cools; position encoders are corrected for that shrinkage so dies land under the probes."
+      },
+      {
+        "title": "Design the probe card",
+        "detail": "Needles or a membrane probe are laid out to match the die's pad pitch, with thin, low-thermal-conductance lines so that contact does not dump heat into the wafer."
+      },
+      {
+        "title": "Wire and filter the signal path",
+        "detail": "Coaxial looms are routed from room temperature down each cooling stage, with attenuators and filters at every stage to absorb thermal noise before it reaches the device."
+      },
+      {
+        "title": "Add multiplexing and room-temperature electronics",
+        "detail": "Cryo-CMOS multiplexers and resonators reduce the number of lines needed, while arbitrary-waveform generators, microwave sources and digitizers sit outside the cryostat."
+      },
+      {
+        "title": "Write the test program",
+        "detail": "Automated routines step across the wafer, contact each die, and run the same measurement sequence: qubit frequency, relaxation and coherence times, and randomised-benchmarking gate fidelity."
+      },
+      {
+        "title": "Validate against known-good devices",
+        "detail": "A small set of fully characterised dies is re-measured to prove the prober's numbers match a conventional dilution-refrigerator measurement, which is the reference method."
+      },
+      {
+        "title": "Close the loop to the fab",
+        "detail": "Wafer maps are fed back to lithography, deposition and annealing steps so that process drift is corrected before the next lot."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Cryocoolers and dilution refrigeration",
+        "status": "exists",
+        "why": "provide the few-kelvin to millikelvin environment the devices need."
+      },
+      {
+        "tech": "High-density cryogenic probe cards",
+        "status": "partial",
+        "why": "contacting hundreds of pads at low temperature without injecting heat or losing signal is still a hard engineering problem."
+      },
+      {
+        "tech": "Cryo-CMOS multiplexing",
+        "status": "partial",
+        "why": "without on-chip multiplexing, wiring heat and cable count grow faster than the wafer can support."
+      },
+      {
+        "tech": "Reproducible qubit fabrication on large wafers",
+        "status": "partial",
+        "why": "statistical testing is only useful if the process itself is stable enough to be characterised."
+      },
+      {
+        "tech": "Automated microwave measurement and analysis",
+        "status": "exists",
+        "why": "measuring coherence and fidelity at speed is routine in single-device labs but must be scaled and made hands-off."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "full-wafer probing of silicon spin qubits at roughly 1–2 K, where those devices can still operate",
+        "unlocks": "hundreds of devices characterised per cooldown instead of a handful, and the first genuine yield maps."
+      },
+      {
+        "stage": "Next",
+        "milestone": "millikelvin wafer-scale probing with multiplexed readout for superconducting qubits",
+        "unlocks": "statistics on frequency targeting and coherence that multi-qubit processor design depends on."
+      },
+      {
+        "stage": "Next",
+        "milestone": "cryogenic testing built into standard fab process control",
+        "unlocks": "design rules and specifications based on measured distributions rather than on a few best devices."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cryogenic wafer sort producing known-good dies",
+        "unlocks": "assembling large quantum processors from pre-tested parts, cutting the cost of packaging and wiring."
+      }
+    ]
+  }
+}

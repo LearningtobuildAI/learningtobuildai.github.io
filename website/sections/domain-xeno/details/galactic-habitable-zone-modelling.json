@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Observational input layer",
+        "role": "supplies measured stellar ages, metallicities, orbits and exoplanet occurrence rates.",
+        "parts": [
+          "Gaia astrometry and spectroscopy",
+          "exoplanet catalogues",
+          "supernova and GRB surveys"
+        ]
+      },
+      {
+        "name": "Galactic chemical evolution model",
+        "role": "tracks how heavy elements spread through the galaxy over billions of years.",
+        "parts": [
+          "star formation history",
+          "stellar yield tables",
+          "infall and outflow parameters"
+        ]
+      },
+      {
+        "name": "Hazard model",
+        "role": "estimates how often nearby supernovae and gamma-ray bursts would sterilise a planet.",
+        "parts": [
+          "supernova rate maps",
+          "GRB beaming and energy models",
+          "radiation dose thresholds"
+        ]
+      },
+      {
+        "name": "Galactic dynamics",
+        "role": "places stars and planetary systems in space and time as the galaxy evolves.",
+        "parts": [
+          "rotation curve",
+          "spiral arm perturbations",
+          "radial migration"
+        ]
+      },
+      {
+        "name": "Habitability criteria",
+        "role": "converts physical conditions into a probability that complex life could arise and persist.",
+        "parts": [
+          "metallicity threshold for rocky planets",
+          "minimum time for evolution",
+          "radiation tolerance of biospheres"
+        ]
+      },
+      {
+        "name": "Statistical inference",
+        "role": "propagates uncertainties and compares competing scenarios.",
+        "parts": [
+          "Monte Carlo sampling",
+          "Bayesian parameter estimation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Compile a stellar catalogue",
+        "detail": "Gather ages, metallicities and orbits for large samples of stars from surveys such as Gaia and ground-based spectroscopic campaigns."
+      },
+      {
+        "title": "Calibrate chemical evolution",
+        "detail": "Fit star formation history and metal yields so the model reproduces observed abundance gradients across the galaxy."
+      },
+      {
+        "title": "Map explosion rates",
+        "detail": "Use observed distributions of supernova progenitors and the cosmic star formation history to predict how often explosions occur in each region."
+      },
+      {
+        "title": "Convert explosions to radiation dose",
+        "detail": "Model how shock fronts and gamma-ray jets deposit energy into nearby planetary atmospheres and surfaces."
+      },
+      {
+        "title": "Set habitability thresholds",
+        "detail": "Define the minimum metallicity needed for rocky planets, the maximum radiation dose a biosphere can survive, and the time required for complex life to evolve."
+      },
+      {
+        "title": "Combine into spatio-temporal contours",
+        "detail": "Overlay chemical, hazard and dynamical maps at different epochs to produce habitability contours that move as the galaxy changes."
+      },
+      {
+        "title": "Run sensitivity analysis",
+        "detail": "Vary uncertain assumptions — such as GRB beaming angles or the metallicity threshold — to see which galaxies remain plausible hosts."
+      },
+      {
+        "title": "Compare with observed galaxies",
+        "detail": "Check whether the model predicts the right number and distribution of habitable planets in galaxies of different masses and types."
+      },
+      {
+        "title": "Publish a predictive framework",
+        "detail": "Turn the model into testable forecasts for future telescopes searching for biosignatures in specific galactic environments."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Exoplanet demographics",
+        "status": "exists",
+        "why": "occurrence rates of rocky planets from Kepler and TESS are needed to connect habitable zones to actual worlds."
+      },
+      {
+        "tech": "Galactic archaeology data",
+        "status": "exists",
+        "why": "Gaia and spectroscopic surveys provide the ages, chemistry and motions that anchor the model."
+      },
+      {
+        "tech": "Supernova and GRB rate measurements",
+        "status": "partial",
+        "why": "local rates are observed, but extrapolating them across cosmic time and galaxy types remains uncertain."
+      },
+      {
+        "tech": "Radiation effects on biospheres",
+        "status": "partial",
+        "why": "lab and atmospheric studies exist, but tolerance limits for unknown biospheres are poorly constrained."
+      },
+      {
+        "tech": "Large-scale astrophysical simulation",
+        "status": "exists",
+        "why": "modelling a galaxy’s chemical and dynamical evolution requires substantial computing power."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "models using simple metallicity gradients and supernova rates produce broad habitable annuli",
+        "unlocks": "a first-order picture of which parts of a galaxy could host complex life."
+      },
+      {
+        "stage": "Next",
+        "milestone": "incorporate Gaia-era ages and migration plus TESS and JWST exoplanet statistics",
+        "unlocks": "contours that evolve with the galaxy rather than being static."
+      },
+      {
+        "stage": "Next",
+        "milestone": "apply the framework to individual galaxies, including dwarfs and the Milky Way’s neighbours",
+        "unlocks": "comparisons between galactic environments and their likely biosignature yield."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "test predictions with next-generation telescopes targeting the most promising systems",
+        "unlocks": "observational checks on whether galactic habitable zones are real or merely theoretical."
+      }
+    ]
+  }
+}

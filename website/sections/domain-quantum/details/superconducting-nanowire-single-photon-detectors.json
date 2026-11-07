@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Meander detector",
+        "role": "absorbs a single photon and converts it into a measurable voltage pulse.",
+        "parts": [
+          "ultrathin superconducting film (niobium nitride or tungsten silicide)",
+          "nanoscale meander pattern",
+          "substrate (silicon or sapphire)"
+        ]
+      },
+      {
+        "name": "Cryogenic stage",
+        "role": "cools the detector well below its superconducting critical temperature.",
+        "parts": [
+          "dilution refrigerator or helium-3 sorption cooler",
+          "thermal shields",
+          "vacuum enclosure"
+        ]
+      },
+      {
+        "name": "Bias and readout",
+        "role": "supplies a current just below the critical value and amplifies the tiny pulse.",
+        "parts": [
+          "constant-current bias source",
+          "bias tee",
+          "cryogenic low-noise amplifier",
+          "room-temperature discriminator and time-to-digital converter"
+        ]
+      },
+      {
+        "name": "Optical interface",
+        "role": "couples photons from a fiber or waveguide to the nanowire.",
+        "parts": [
+          "single-mode optical fiber",
+          "fiber ferrule or lensed fiber",
+          "anti-reflection coating or optical cavity",
+          "alignment mechanism"
+        ]
+      },
+      {
+        "name": "Photonic integrated circuit (optional)",
+        "role": "for chip-scale systems, the detector is evanescently coupled to a waveguide.",
+        "parts": [
+          "silicon or silicon nitride waveguide",
+          "mode converter",
+          "on-chip routing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Deposit the superconducting film",
+        "detail": "Sputter or atomic-layer-deposit a few-nanometre-thick film of niobium nitride or amorphous tungsten silicide onto a clean substrate such as silicon with thermal oxide, or sapphire."
+      },
+      {
+        "title": "Pattern the meander",
+        "detail": "Use electron-beam lithography to define a long, narrow meander line roughly 50–150 nm wide covering a small area, then transfer the pattern by reactive-ion etching."
+      },
+      {
+        "title": "Add electrical contacts",
+        "detail": "Deposit metal pads and leads, typically gold, for wire bonding to the readout circuit."
+      },
+      {
+        "title": "Package and align the fiber",
+        "detail": "Mount the chip in a package and position a single-mode fiber so its core faces the meander, often with an anti-reflection coating or a cavity to boost absorption."
+      },
+      {
+        "title": "Mount on a cryogenic stage",
+        "detail": "Attach the package to the cold plate of a dilution refrigerator or sorption cooler and connect filtered electrical lines."
+      },
+      {
+        "title": "Characterize performance",
+        "detail": "Measure the critical current, then system detection efficiency, dark-count rate and timing jitter at telecom wavelengths."
+      },
+      {
+        "title": "Integrate with photonics (for waveguide detectors)",
+        "detail": "Fabricate waveguides and evanescent couplers on the same chip, then dice and package the photonic circuit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Superconductivity",
+        "status": "exists",
+        "why": "the detector relies on a material that loses all resistance below a critical temperature."
+      },
+      {
+        "tech": "Nanofabrication",
+        "status": "exists",
+        "why": "meander features are tens of nanometres wide, requiring electron-beam lithography and precise etching."
+      },
+      {
+        "tech": "Cryogenic refrigeration",
+        "status": "exists",
+        "why": "operation at a few kelvin needs dilution refrigerators or helium-3 sorption coolers."
+      },
+      {
+        "tech": "Low-noise cryogenic electronics",
+        "status": "exists",
+        "why": "the signal is a millivolt-scale pulse that must be amplified without adding noise."
+      },
+      {
+        "tech": "Photonic integration",
+        "status": "partial",
+        "why": "waveguide-coupled detectors are demonstrated but not yet standard in all systems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "SNSPDs are the workhorse for quantum key distribution and photonic quantum computing experiments.",
+        "unlocks": "secure communication and small-scale quantum photonic processors."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger arrays and on-chip integration with silicon photonics.",
+        "unlocks": "multi-photon experiments, quantum repeaters and compact quantum devices."
+      },
+      {
+        "stage": "Next",
+        "milestone": "higher-temperature superconductors to simplify cooling.",
+        "unlocks": "cheaper, more portable systems."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "broadband, polarization-insensitive detectors and imaging arrays.",
+        "unlocks": "astronomical observation, dark-matter searches and advanced quantum networks."
+      }
+    ]
+  }
+}

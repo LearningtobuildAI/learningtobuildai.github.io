@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Function-polynomial design",
+        "role": "converts the operation you want into a polynomial that can be applied to eigenvalues or singular values.",
+        "parts": [
+          "approximation of the target function (e.g. 1/x, sign, exponential)",
+          "parity and degree constraints keeping the polynomial bounded by 1 on [-1,1]",
+          "error analysis trading accuracy against degree"
+        ]
+      },
+      {
+        "name": "Block encoding",
+        "role": "embeds the matrix, Hamiltonian or data set inside a larger unitary that the circuit can apply.",
+        "parts": [
+          "ancilla register",
+          "state-preparation operator",
+          "select/unitary operator",
+          "subnormalisation factor"
+        ]
+      },
+      {
+        "name": "Phase-factor solver",
+        "role": "computes the angles classically from the target polynomial.",
+        "parts": [
+          "root-finding / Newton iteration",
+          "complementary Laurent polynomials",
+          "numerical precision and stability checks"
+        ]
+      },
+      {
+        "name": "Signal-processing circuit",
+        "role": "the actual sequence: one qubit rotated, interleaved with controlled applications of the encoded unitary.",
+        "parts": [
+          "signal qubit",
+          "Z-rotations by twice each phase angle",
+          "controlled block encoding",
+          "final measurement of the signal qubit"
+        ]
+      },
+      {
+        "name": "Compiler and resource estimator",
+        "role": "turns ideal rotations into a gate sequence a real machine can run.",
+        "parts": [
+          "angle synthesis into a finite fault-tolerant gate set",
+          "error budget per rotation",
+          "T-count and qubit-count estimation"
+        ]
+      },
+      {
+        "name": "Readout and post-processing",
+        "role": "extracts a usable answer from the transformed state.",
+        "parts": [
+          "measurement statistics",
+          "classical post-processing",
+          "repetition or amplitude estimation"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "State the target as a spectral transformation",
+        "detail": "Write the problem as a function to be applied to the eigenvalues of a unitary or the singular values of a matrix — for example inverting a matrix, simulating time evolution, or projecting onto a low-energy subspace."
+      },
+      {
+        "title": "Choose the approximating polynomial",
+        "detail": "Find a bounded polynomial that matches the target function to the required precision, with the correct parity so it can be realised by the rotation sequence."
+      },
+      {
+        "title": "Solve for the phase sequence",
+        "detail": "A classical program finds the angles such that the product of rotations and controlled unitary applications has the polynomial sitting in the top-left entry of the resulting matrix; this is a numerically delicate root-finding problem whose difficulty grows with polynomial degree."
+      },
+      {
+        "title": "Block-encode the input",
+        "detail": "Build the circuit that embeds the Hamiltonian or matrix using linear combinations of unitaries or qubitisation techniques, accepting a subnormalisation factor that sets the overall scale."
+      },
+      {
+        "title": "Compose the signal-processing circuit",
+        "detail": "Prepare the signal qubit, then interleave controlled applications of the encoded unitary with Z-rotations by twice each phase angle — the heart of the construction."
+      },
+      {
+        "title": "Compile for fault tolerance",
+        "detail": "Synthesise every arbitrary rotation into a discrete error-corrected gate set, tracking how the compilation error adds to the approximation error."
+      },
+      {
+        "title": "Validate on small instances",
+        "detail": "Simulate the compiled circuit classically on tiny problems where the answer is known, checking that the measured signal-qubit statistics reproduce the intended polynomial."
+      },
+      {
+        "title": "Run and post-process",
+        "detail": "Execute many repetitions on hardware, then convert measurement frequencies into the transformed value — an energy, a solution vector or a matrix function."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum hardware",
+        "status": "missing",
+        "why": "useful applications need thousands of logical qubits and millions of gates, far beyond today's machines."
+      },
+      {
+        "tech": "Quantum error correction at scale",
+        "status": "partial",
+        "why": "small codes have been run, but not long enough or large enough to sustain algorithm-length circuits."
+      },
+      {
+        "tech": "Block-encoding primitives",
+        "status": "partial",
+        "why": "linear-combination-of-unitaries and qubitisation constructions are well developed in theory and shown in small experiments."
+      },
+      {
+        "tech": "Classical polynomial approximation and root-finding",
+        "status": "exists",
+        "why": "the phase factors are computed on ordinary computers, though high-degree cases strain numerical precision."
+      },
+      {
+        "tech": "High-fidelity single-qubit control and rotation synthesis",
+        "status": "exists",
+        "why": "the sequence is built from precise rotations, so each one must be accurate and reproducible."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "the framework is fully worked out and unifies many separate quantum algorithms under one recipe",
+        "unlocks": "a single design method for Hamiltonian simulation, matrix inversion, ground-state and optimisation problems."
+      },
+      {
+        "stage": "Next",
+        "milestone": "small end-to-end runs on early error-corrected hardware for problems solvable classically",
+        "unlocks": "confidence that compiled phase sequences behave as predicted outside simulation."
+      },
+      {
+        "stage": "Next",
+        "milestone": "resource-optimised versions with drastically lower gate counts",
+        "unlocks": "fitting practical chemistry and materials problems inside realistic hardware budgets."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "fault-tolerant machines running these circuits at useful scale",
+        "unlocks": "quantum advantage on problems where classical simulation is hopeless."
+      }
+    ]
+  }
+}

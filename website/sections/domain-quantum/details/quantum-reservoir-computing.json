@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Reservoir substrate",
+        "role": "a physical quantum system whose natural, untrained dynamics provide the memory and mixing.",
+        "parts": [
+          "qubit array or photonic interferometer",
+          "fixed coupling network",
+          "control and drive lines"
+        ]
+      },
+      {
+        "name": "Input encoder",
+        "role": "injects the data stream by modulating the reservoir rather than by running gates.",
+        "parts": [
+          "Hamiltonian parameter modulation",
+          "drive amplitude and phase control",
+          "pulse or waveform generator"
+        ]
+      },
+      {
+        "name": "Evolution and control",
+        "role": "lets the system run under its own physics for a fixed, short time.",
+        "parts": [
+          "pulse sequencer",
+          "cryostat or optical bench",
+          "coherence and noise management"
+        ]
+      },
+      {
+        "name": "Measurement stage",
+        "role": "turns the reservoir's final state into classical numbers.",
+        "parts": [
+          "readout resonators or photon counters",
+          "detectors",
+          "fast digitiser"
+        ]
+      },
+      {
+        "name": "Classical readout layer",
+        "role": "the only trained part: a simple linear map from measured features to output.",
+        "parts": [
+          "feature-vector buffer",
+          "regularised linear regression (ridge)",
+          "hyperparameter search"
+        ]
+      },
+      {
+        "name": "Benchmark harness",
+        "role": "proves the reservoir is actually useful rather than just interesting.",
+        "parts": [
+          "task generators",
+          "classical baselines such as echo-state networks",
+          "memory-capacity and expressivity metrics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the task",
+        "detail": "Choose a temporal problem — forecasting, classification or chaotic-system prediction — with a clear metric and a known classical baseline."
+      },
+      {
+        "title": "Choose a substrate",
+        "detail": "Select a quantum system with rich, controllable internal dynamics: a superconducting qubit chain, a photonic interferometer with squeezed light, cold atoms or a spin ensemble."
+      },
+      {
+        "title": "Fix the dynamics",
+        "detail": "Tune couplings, detunings and drive strengths once, then freeze them. Nothing inside the reservoir is ever trained."
+      },
+      {
+        "title": "Design the input encoding",
+        "detail": "Map each time step of the data onto a physical knob — a rotation angle, field strength or drive amplitude — so successive inputs leave fading traces in the system."
+      },
+      {
+        "title": "Run the reservoir",
+        "detail": "Let the system evolve for a short, fixed interval per input; the complexity of the output features comes from the many-body dynamics, not from applied gates."
+      },
+      {
+        "title": "Measure observables",
+        "detail": "Read out short-time correlation functions or Pauli expectation values. Many repeated shots are averaged to beat down shot noise, since the reservoir is reinitialised or left running."
+      },
+      {
+        "title": "Train the readout",
+        "detail": "Collect features into vectors and fit a linear model with ridge regularisation on labelled examples. This is cheap classical optimisation — no parameter-shift gradients, no barren plateaus."
+      },
+      {
+        "title": "Validate against classical reservoirs",
+        "detail": "Test on held-out data and compare with an echo-state network of similar size. Only a win that survives this comparison counts."
+      },
+      {
+        "title": "Scale or embed",
+        "detail": "Add qubits, moves to real-time measurement and feedback, or specialise the reservoir to a niche such as forecasting a quantum device's own behaviour."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Quantum processors with controllable many-body dynamics",
+        "status": "partial",
+        "why": "small arrays of superconducting qubits and photonic circuits exist, but large, well-characterised reservoirs do not yet run reliably."
+      },
+      {
+        "tech": "Low-latency measurement and feedback electronics",
+        "status": "partial",
+        "why": "some schemes need measured outputs fed back into the reservoir within microseconds."
+      },
+      {
+        "tech": "Engineered fading memory",
+        "status": "partial",
+        "why": "the reservoir must forget old inputs gradually; too much decoherence erases the signal, too little loses the memory."
+      },
+      {
+        "tech": "Theory linking dynamics to task performance",
+        "status": "missing",
+        "why": "there is no reliable way to predict which physical reservoir will beat a classical one on a given task."
+      },
+      {
+        "tech": "Classical regularised regression libraries",
+        "status": "exists",
+        "why": "the readout training is standard, mature data science."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small laboratory demonstrations on a few qubits and photonic circuits",
+        "unlocks": "evidence that fixed quantum dynamics can supply useful features."
+      },
+      {
+        "stage": "Next",
+        "milestone": "rigorous benchmarks against classical reservoirs on temporal tasks",
+        "unlocks": "a clear picture of where, if anywhere, the quantum reservoir wins."
+      },
+      {
+        "stage": "Next",
+        "milestone": "error-aware and real-time-feedback reservoirs on mid-scale hardware",
+        "unlocks": "longer input sequences and online operation."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "narrow practical deployment, such as classifying or forecasting data from quantum devices themselves",
+        "unlocks": "a stepping stone toward broader quantum machine learning if advantage holds."
+      }
+    ]
+  }
+}

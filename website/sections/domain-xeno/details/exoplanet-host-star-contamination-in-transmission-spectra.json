@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "1 Oct 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Space-based transit photometry",
+        "role": "records the dip in starlight during transit at high cadence, catching brief bumps where the planet crosses a spot or facula.",
+        "parts": [
+          "space telescope photometer",
+          "detector and readout electronics",
+          "transit light-curve fitting software"
+        ]
+      },
+      {
+        "name": "High-resolution ground spectroscopy",
+        "role": "splits light into fine lines; a planet's lines shift in velocity during transit, whereas stellar lines do not, allowing them to be separated.",
+        "parts": [
+          "high-resolution spectrograph",
+          "wavelength calibration (laser frequency comb or gas cell)",
+          "cross-correlation analysis"
+        ]
+      },
+      {
+        "name": "Stellar activity modelling",
+        "role": "describes how spots, faculae and granulation change the star's spectrum and colour.",
+        "parts": [
+          "spot and facula models",
+          "activity indices (emission-line and colour diagnostics)",
+          "rotation and variability timeseries"
+        ]
+      },
+      {
+        "name": "Transmission spectrum reduction pipeline",
+        "role": "turns raw detector counts into a relative spectrum of the planet plus star, removing instrument systematics.",
+        "parts": [
+          "calibration and flat-fielding",
+          "systematics (detector and pointing) modelling",
+          "light-curve and spectral extraction"
+        ]
+      },
+      {
+        "name": "Joint atmospheric retrieval",
+        "role": "fits the planet atmosphere and stellar contamination in one model, so each is bounded by the other.",
+        "parts": [
+          "radiative transfer code",
+          "Bayesian sampler (nested sampling or MCMC)",
+          "prior ranges on stellar and planetary parameters"
+        ]
+      },
+      {
+        "name": "Ancillary stellar data",
+        "role": "provides the out-of-transit baseline needed to know what the unocculted star looks like.",
+        "parts": [
+          "out-of-transit spectra",
+          "catalogued temperature, gravity and rotation",
+          "companion and multiplicity checks"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the host star first",
+        "detail": "Take spectra and photometry outside transit to measure temperature, gravity, rotation period and the amplitude of its variability."
+      },
+      {
+        "title": "Observe the transit from space",
+        "detail": "Record the transit at high cadence in the infrared, looking for wavelength-dependent depth changes and spot-crossing anomalies."
+      },
+      {
+        "title": "Observe the transit from the ground",
+        "detail": "Take simultaneous high-resolution spectra, tracking the Rossiter-McLaughlin signal and the velocity shift of individual lines."
+      },
+      {
+        "title": "Fit a spot/facula model",
+        "detail": "Estimate the covering fraction and temperature contrast of active regions on the visible face, using colours and line shapes."
+      },
+      {
+        "title": "Reduce the transmission spectrum",
+        "detail": "Extract the wavelength-by-wavelength transit depth while fitting out instrument systematics."
+      },
+      {
+        "title": "Insert activity into the retrieval",
+        "detail": "Run the atmospheric retrieval with extra parameters for unocculted spots, faculae and their spectral signature."
+      },
+      {
+        "title": "Stress-test the claim",
+        "detail": "Repeat with alternative stellar models and injected false signals, checking whether a molecular detection survives."
+      },
+      {
+        "title": "Report with contamination bounds",
+        "detail": "Publish the detection together with quantified upper limits on how much of it could be stellar, and archive the data for re-analysis."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Space telescopes with stable infrared spectroscopy",
+        "status": "exists",
+        "why": "the transit signal is tiny; only a space platform avoids the water and oxygen absorption of Earth's atmosphere."
+      },
+      {
+        "tech": "High-resolution, precision-calibrated spectrographs",
+        "status": "exists",
+        "why": "separating planetary lines from stellar lines needs line-shape resolution and sub-metre-per-second stability."
+      },
+      {
+        "tech": "Stellar atmosphere models including active regions",
+        "status": "partial",
+        "why": "spot and facula spectra are less well measured than quiet-star spectra, especially for cool stars."
+      },
+      {
+        "tech": "Bayesian retrieval frameworks that accept stellar terms",
+        "status": "exists",
+        "why": "without them, contamination is either ignored or corrected by hand, which hides the uncertainty."
+      },
+      {
+        "tech": "Coordinated simultaneous observing campaigns",
+        "status": "partial",
+        "why": "space and ground telescopes are scheduled separately, so truly simultaneous coverage is hard to arrange."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine spot and activity corrections applied to published transmission spectra from HST and JWST",
+        "unlocks": "atmosphere detections that come with an explicit contamination budget rather than a bare claim."
+      },
+      {
+        "stage": "Next",
+        "milestone": "joint retrievals with wavelength-dependent stellar contamination as standard practice",
+        "unlocks": "comparable results across different teams and instruments."
+      },
+      {
+        "stage": "Next",
+        "milestone": "benchmark campaigns on deliberately active host stars",
+        "unlocks": "calibrated limits on how much contamination a given model leaves behind."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "cross-validation between transmission spectroscopy and high-resolution ground detections of the same molecules",
+        "unlocks": "biosignature candidates strong enough to survive independent re-analysis."
+      }
+    ]
+  }
+}

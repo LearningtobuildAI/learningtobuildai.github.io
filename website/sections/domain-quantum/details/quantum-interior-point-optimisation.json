@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Problem encoding layer",
+        "role": "turns linear-programming or semidefinite-programming data into a form the quantum processor can work on.",
+        "parts": [
+          "block-encodings of the constraint matrix",
+          "state-preparation circuits for the objective and right-hand-side vectors",
+          "norm and conditioning estimates"
+        ]
+      },
+      {
+        "name": "Quantum linear-system solver",
+        "role": "computes the Newton direction by inverting a linear system once per iteration.",
+        "parts": [
+          "quantum singular value transformation circuits",
+          "amplitude amplification and precision control",
+          "condition-number handling"
+        ]
+      },
+      {
+        "name": "Classical outer loop",
+        "role": "runs the barrier method that ties the quantum calls together.",
+        "parts": [
+          "barrier parameter update schedule",
+          "predictor-corrector step control",
+          "convergence and infeasibility checks"
+        ]
+      },
+      {
+        "name": "Readout and solution extraction",
+        "role": "converts quantum amplitudes back into numbers the classical loop can use.",
+        "parts": [
+          "tomography or amplitude estimation",
+          "sparse access to the direction vector",
+          "rounding to a feasible point"
+        ]
+      },
+      {
+        "name": "Quantum data memory",
+        "role": "serves matrix and vector entries to the processor in superposition.",
+        "parts": [
+          "QRAM architecture",
+          "query circuits and address registers",
+          "error-protected storage"
+        ]
+      },
+      {
+        "name": "Fault-tolerant processor",
+        "role": "executes the deep, error-corrected circuits the method needs.",
+        "parts": [
+          "logical qubits",
+          "magic-state factories",
+          "decoders and control electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Write the problem in a solver-friendly form",
+        "detail": "Express the task as a linear program (minimise a linear objective subject to linear equalities and non-negativity) or a semidefinite program. Sparsity, conditioning and dimension decide whether the quantum route is even plausible."
+      },
+      {
+        "title": "Compile the data into block-encodings",
+        "detail": "Build circuits that encode the constraint matrix, objective and right-hand side as block-encodings — sub-blocks of larger unitaries — so that quantum linear algebra can act on them."
+      },
+      {
+        "title": "Prepare a starting state",
+        "detail": "Amplitude-encode an initial point on the central path. This state preparation is usually the single largest cost in the whole algorithm."
+      },
+      {
+        "title": "Assemble the Newton system",
+        "detail": "Form the normal-equations matrix for the current iterate as a block-encoding. Solving this matrix for the Newton direction is the core quantum subroutine."
+      },
+      {
+        "title": "Run the quantum solve",
+        "detail": "Apply quantum singular value transformation (or an HHL-type inversion) with amplitude amplification to produce a state proportional to the Newton direction."
+      },
+      {
+        "title": "Extract the direction classically",
+        "detail": "Use tomography or amplitude estimation to learn enough digits of the direction to update the classical loop — precision here is where costs multiply."
+      },
+      {
+        "title": "Update and iterate",
+        "detail": "Classically reduce the barrier parameter, keep the iterate inside the feasible region, and repeat until the duality gap falls below the target tolerance."
+      },
+      {
+        "title": "Read out and verify",
+        "detail": "Sample the final state, reconstruct an approximate solution, round it to feasibility and compare the objective and runtime against a tuned classical solver."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fault-tolerant quantum computing",
+        "status": "missing",
+        "why": "the circuits are far deeper than any noisy machine can run, and the error-correction overhead is very large."
+      },
+      {
+        "tech": "Scalable quantum random-access memory",
+        "status": "missing",
+        "why": "the polynomial speedups assume reading matrix entries in superposition; only small proof-of-concept devices exist, none error-corrected."
+      },
+      {
+        "tech": "Efficient state preparation for structured matrices",
+        "status": "partial",
+        "why": "small demonstrations exist, but circuit cost grows rapidly with matrix size and required precision."
+      },
+      {
+        "tech": "Quantum linear-system algorithms (HHL, QSVT)",
+        "status": "partial",
+        "why": "run on tiny systems on real hardware, but their cost scales with the condition number and the inverse of precision."
+      },
+      {
+        "tech": "Classical interior-point methods and dequantisation analysis",
+        "status": "exists",
+        "why": "the baseline is a mature classical field, and some claimed quantum speedups disappear when equivalent data-access assumptions are given to classical algorithms."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "theory and small-scale primitives: QSVT compiled for toy linear systems on a handful of qubits",
+        "unlocks": "a clearer map of which problem classes could plausibly benefit."
+      },
+      {
+        "stage": "Next",
+        "milestone": "early fault-tolerant demonstration that block-encodes a structured matrix of useful size and performs one Newton step end-to-end",
+        "unlocks": "evidence that subroutine costs behave as the theory predicts."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a full interior-point run on a small but non-trivial linear or semidefinite program, benchmarked against a tuned classical solver",
+        "unlocks": "identification of the narrow problem class, if any, where the quantum route wins."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "demonstrated end-to-end advantage on a real logistics or finance problem that survives dequantisation critiques",
+        "unlocks": "a practical optimisation tool rather than a theoretical curiosity."
+      }
+    ]
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Starlight-suppression optics",
+        "role": "hides the host star so a planet's faint light can be separated from it.",
+        "parts": [
+          "coronagraph or starshade",
+          "deformable mirrors for wavefront control",
+          "low-scatter mirrors"
+        ]
+      },
+      {
+        "name": "Large-aperture telescope",
+        "role": "collects enough photons: a city-lights signal is extraordinarily faint.",
+        "parts": [
+          "6 m-plus segmented or monolithic primary",
+          "thermal and pointing stability",
+          "space or high-altitude siting"
+        ]
+      },
+      {
+        "name": "Photometer and detectors",
+        "role": "counts photons precisely enough to see a nightside excess.",
+        "parts": [
+          "visible and near-infrared detectors",
+          "photon-noise-limited readout",
+          "stable calibration source"
+        ]
+      },
+      {
+        "name": "Phase-curve observation mode",
+        "role": "watches a planet through its whole orbit to separate dayside from nightside.",
+        "parts": [
+          "long continuous stare",
+          "eclipse and transit timing",
+          "systematics detrending"
+        ]
+      },
+      {
+        "name": "Spectral comparison library",
+        "role": "tests whether a residual spectrum looks artificial rather than natural.",
+        "parts": [
+          "model spectra of city lighting (e.g. sodium and LED-like bands)",
+          "natural-source spectra: volcanism, lightning, aurorae, airglow",
+          "planet thermal-emission models"
+        ]
+      },
+      {
+        "name": "Analysis pipeline",
+        "role": "subtracts star, thermal emission and reflected light to leave a residual.",
+        "parts": [
+          "light-curve fitting",
+          "instrument-systematics removal",
+          "statistical significance testing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick targets where the test is cleanest",
+        "detail": "Favour nearby, temperate planets — especially tidally locked ones, whose permanent night hemisphere has no reflected starlight at all, so any visible flux must be thermal or artificial."
+      },
+      {
+        "title": "Predict the signal",
+        "detail": "Model how bright a city-covered hemisphere would be at 0.4–1.0 µm, and compare that with the planet's own thermal emission at the same wavelengths, which for a temperate planet is very small."
+      },
+      {
+        "title": "Suppress the star",
+        "detail": "Two routes: for transiting planets, use eclipse and phase-curve photometry so the star's light is subtracted rather than blocked optically; for direct imaging, use a coronagraph or a starshade to reach contrasts of roughly one part in ten billion."
+      },
+      {
+        "title": "Observe a full orbit",
+        "detail": "Stare continuously through the orbit so the changing fraction of lit hemisphere can be fitted, with the nightside measured just before and after transit."
+      },
+      {
+        "title": "Extract the nightside residual",
+        "detail": "Remove stellar flux, reflected light, thermal emission and known instrument drifts, leaving a small excess or upper limit."
+      },
+      {
+        "title": "Compare spectra, not just brightness",
+        "detail": "Artificial lighting has a distinctive spectral shape with sharp features; a smooth thermal continuum points to a hot planet or volcano instead."
+      },
+      {
+        "title": "Rule out natural sources",
+        "detail": "Check for variability, polarisation and correlation with known geology that would indicate aurorae, lightning, volcanic lava or atmospheric airglow."
+      },
+      {
+        "title": "Confirm with repeats",
+        "detail": "Repeat observations over multiple orbits and, later, use a larger telescope for spectroscopy to see whether the spectral features persist."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-contrast imaging at roughly 1e-10",
+        "status": "missing",
+        "why": "existing coronagraphs reach about 1e-6 to 1e-7 on bright stars; a terrestrial planet needs several orders of magnitude more."
+      },
+      {
+        "tech": "Ultra-stable, photon-limited photometry",
+        "status": "partial",
+        "why": "space telescopes now measure exoplanet phase curves precisely, but detecting a nightside excess is far harder."
+      },
+      {
+        "tech": "Large space telescope apertures",
+        "status": "missing",
+        "why": "a dedicated 6–8 m-class space observatory with coronagraphy has been studied but not built."
+      },
+      {
+        "tech": "Realistic lighting and nightglow spectra",
+        "status": "partial",
+        "why": "models of what a city-lit or volcanically lit hemisphere looks like are still approximate."
+      },
+      {
+        "tech": "Exoplanet thermal-emission models",
+        "status": "partial",
+        "why": "the temperature map of a planet must be known well enough to subtract its own glow."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "theoretical detectability studies and, for hot planets, precise phase-curve spectroscopy",
+        "unlocks": "proof that nightside fluxes can be measured at all, though not yet at city-light sensitivity."
+      },
+      {
+        "stage": "Next",
+        "milestone": "extremely large ground telescopes with extreme adaptive optics and coronagraphs",
+        "unlocks": "direct imaging of nearby gas giants and the brightest rocky planets."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a space telescope with a coronagraph or starshade reaching 1e-10 contrast",
+        "unlocks": "reflected-light spectra of temperate terrestrial planets, and with them a real nightside test."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a survey of the nearest terrestrial planets for nightside illumination excesses",
+        "unlocks": "either a candidate technosignature or a strong upper limit on city-scale lighting nearby."
+      }
+    ]
+  }
+}

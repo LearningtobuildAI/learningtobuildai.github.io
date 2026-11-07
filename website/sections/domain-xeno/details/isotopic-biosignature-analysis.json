@@ -1,0 +1,163 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "30 Sep 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Sample acquisition and preparation",
+        "role": "gets a solid sample into the instrument without contaminating it or losing the gases it holds.",
+        "parts": [
+          "drill or corer",
+          "crushing and sieving",
+          "sealed transfer mechanism",
+          "carrier-gas purge"
+        ]
+      },
+      {
+        "name": "Evolved-gas furnace",
+        "role": "heats the sample in a sealed oven so volatiles and combustion products come off for analysis.",
+        "parts": [
+          "resistive heater to about 1000 °C",
+          "quartz or ceramic crucible",
+          "gas-tight manifold",
+          "oxygen or inert carrier supply"
+        ]
+      },
+      {
+        "name": "Mass-analyser core",
+        "role": "separates ionised gas molecules by mass-to-charge ratio.",
+        "parts": [
+          "electron-impact ion source",
+          "magnetic sector or quadrupole",
+          "high-vacuum pumps",
+          "Faraday cup and electron-multiplier detectors"
+        ]
+      },
+      {
+        "name": "Isobaric-resolution stage",
+        "role": "resolves molecules of nearly identical mass, for example ¹³CH₄ from ¹²CH₃D, which a low-resolution analyser cannot separate.",
+        "parts": [
+          "high mass-resolution optics",
+          "peak-fitting software",
+          "interference corrections"
+        ]
+      },
+      {
+        "name": "Micro-scale ion probe",
+        "role": "maps isotope ratios within a single mineral grain instead of averaging a bulk sample.",
+        "parts": [
+          "focused primary ion or laser beam",
+          "secondary-ion extraction optics",
+          "stage with micrometre positioning"
+        ]
+      },
+      {
+        "name": "Calibration and standards system",
+        "role": "every ratio is meaningless without comparison to a known reference, so reference gases are measured alongside the sample.",
+        "parts": [
+          "reference-gas reservoir",
+          "inlet valves for sample–standard bracketing",
+          "double-spike or internal-standard tracers"
+        ]
+      },
+      {
+        "name": "Blank and contamination control",
+        "role": "the instrument must prove the signal came from the sample, not from the plumbing or the surrounding air.",
+        "parts": [
+          "heated blanks",
+          "seals and bake-out",
+          "trace-contamination monitoring"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the scientific target",
+        "detail": "Decide which isotope systems matter — carbon-13 depletion for organic matter, sulfur-34 fractionation for microbial sulfate reduction — and what precision is needed to tell biology from abiotic chemistry."
+      },
+      {
+        "title": "Design the gas path",
+        "detail": "Lay out a leak-tight manifold of valves and ovens so a sample can be heated, its gases swept, and reference gases admitted under identical conditions."
+      },
+      {
+        "title": "Build the ion source and analyser",
+        "detail": "Assemble an electron-impact source and a mass analyser with enough resolving power to separate interfering isobars; this sets the instrument's accuracy ceiling."
+      },
+      {
+        "title": "Add a vacuum system",
+        "detail": "Pumps and seals must reach high vacuum, or in a thin planetary atmosphere must pump down from ambient pressure; bake-out keeps residual water and carbon dioxide from swamping the peaks."
+      },
+      {
+        "title": "Wire in the calibration standards",
+        "detail": "Known reference gases and mineral standards are plumbed in so the instrument can bracket every measurement and correct for its own fractionation."
+      },
+      {
+        "title": "Characterise performance",
+        "detail": "Run blanks, standards and synthetic mixtures to establish accuracy, precision and detection limits before trusting any real sample."
+      },
+      {
+        "title": "Put it through a flight or field qualification",
+        "detail": "Vibration, thermal-vacuum and radiation testing, or field trials, prove the instrument survives its journey and keeps its calibration."
+      },
+      {
+        "title": "Deploy and interpret",
+        "detail": "Measure the sample, correct the raw ratios, and then interpret the numbers against abiotic processes such as thermal cracking or serpentinisation that can mimic part of the biological signal."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Stable-isotope mass spectrometry",
+        "status": "exists",
+        "why": "the measurement basis: gas-source magnetic-sector instruments set the accuracy benchmark on Earth."
+      },
+      {
+        "tech": "Micro-scale secondary-ion or laser-ablation probes",
+        "status": "exists",
+        "why": "they give micrometre-scale maps so a ratio can be tied to a specific grain rather than a bulk average."
+      },
+      {
+        "tech": "Sample acquisition on a planetary surface",
+        "status": "exists",
+        "why": "rock must be drilled, powdered and delivered to a sealed oven without introducing terrestrial carbon or sulfur."
+      },
+      {
+        "tech": "Isotopic reference materials for Mars-like minerals",
+        "status": "partial",
+        "why": "calibration needs standards matched to sulfates, carbonates and perchlorates; coverage for these matrices is still thin."
+      },
+      {
+        "tech": "Abiotic fractionation baselines",
+        "status": "partial",
+        "why": "without knowing how much fractionation non-biological chemistry produces, a biosignature cannot be claimed with confidence."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "routine Earth-laboratory isotope analysis and micrometre-scale ion-probe mapping of ancient sediments",
+        "unlocks": "isotopic evidence for early life on Earth that survives the loss of molecular fossils."
+      },
+      {
+        "stage": "Now",
+        "milestone": "in-situ evolved-gas and isotope measurements on Mars, as with the Sample Analysis at Mars instrument on the Curiosity rover",
+        "unlocks": "first-order carbon and sulfur isotope data from another planet, though with coarser precision than a terrestrial lab."
+      },
+      {
+        "stage": "Next",
+        "milestone": "returned Mars samples analysed in Earth laboratories",
+        "unlocks": "the precision and reference-standard control that no flight instrument can currently match."
+      },
+      {
+        "stage": "Next",
+        "milestone": "instruments flown to icy-moon plumes and ocean worlds",
+        "unlocks": "isotope testing of subsurface oceans where liquid water may persist for long periods."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "miniaturised, standards-integrated isotope labs on landers",
+        "unlocks": "life-detection claims that do not depend on returning a sample to Earth."
+      }
+    ]
+  }
+}

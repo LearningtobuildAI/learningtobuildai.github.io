@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Surface trap chip",
+        "role": "a microfabricated die whose segmented metal electrodes define the potential wells and the paths between them.",
+        "parts": [
+          "silicon or sapphire substrate",
+          "segmented gold electrode layer",
+          "dielectric insulation between electrode layers",
+          "through-substrate vias for backside wiring"
+        ]
+      },
+      {
+        "name": "Vacuum and cryogenic envelope",
+        "role": "isolates the ions from background gas and suppresses electrical noise from the electrode surface.",
+        "parts": [
+          "ultra-high-vacuum chamber (roughly 10⁻¹¹ mbar)",
+          "cryostat or cold finger",
+          "pumps and getters"
+        ]
+      },
+      {
+        "name": "Ion source and cooling optics",
+        "role": "introduces the atomic species and slows the ions until they are cold enough to hold in a well.",
+        "parts": [
+          "oven or laser-ablation target",
+          "photoionisation laser",
+          "Doppler cooling beams (for example 369 nm for ytterbium ions)",
+          "optical pumping for state preparation"
+        ]
+      },
+      {
+        "name": "Transport control electronics",
+        "role": "shuttling exists only as applied voltages, so the well positions are set entirely by this stack.",
+        "parts": [
+          "many-channel high-resolution digital-to-analogue converters",
+          "field-programmable gate array sequencer",
+          "calibration tables mapping voltage to well position"
+        ]
+      },
+      {
+        "name": "Gate and addressing optics",
+        "role": "applies the laser or microwave fields that perform logic on the ions in the gate zone.",
+        "parts": [
+          "narrow-linewidth Raman or quadrupole laser",
+          "acousto-optic and electro-optic modulators",
+          "beam-steering optics or integrated photonic waveguides"
+        ]
+      },
+      {
+        "name": "Readout and feedback",
+        "role": "detects which ions are bright or dark and feeds the result back while the computation is still running.",
+        "parts": [
+          "high-numerical-aperture objective",
+          "photomultiplier tube or camera",
+          "real-time decoder linked to the sequencer"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Lay out the zones",
+        "detail": "The chip is designed as a floor plan: storage, gate and measurement zones, the junction crossings that connect them, and the electrode segments that move wells along each path. Ion-to-electrode distances of tens to a few hundred micrometres set how hard the ions are to control."
+      },
+      {
+        "title": "Fabricate the trap chip",
+        "detail": "Metals are deposited and patterned by photolithography and electroplating on a silicon or sapphire wafer; dielectric layers separate wiring levels, and through-substrate vias carry connections to the back face so that no wires cross the ion path."
+      },
+      {
+        "title": "Package and wire the chip",
+        "detail": "The die is mounted in a carrier, wire-bonded to a high-density feedthrough, and every electrode is connected to its own digital-to-analogue channel. Wiring density, not the trap itself, is usually the limit on how many zones fit."
+      },
+      {
+        "title": "Evacuate and cool",
+        "detail": "The assembly is baked and pumped to ultra-high vacuum, then cooled — often to a few kelvin — which both relaxes vacuum requirements and damps the surface electric-field noise that heats ion motion. That noise grows steeply as the ion is brought closer to the electrodes."
+      },
+      {
+        "title": "Load and cool the ions",
+        "detail": "An oven or an ablating laser pulse releases atoms, a photoionisation laser strips an electron, and Doppler cooling brings the resulting ions to millikelvin temperatures, where they form ordered chains in their wells."
+      },
+      {
+        "title": "Calibrate the shuttle",
+        "detail": "Voltages are swept slowly enough for the wells to move adiabatically. Well positions and micromotion are measured, and the sequence is tuned until an ion can be carried to another zone and back without gaining enough motional energy to spoil later gates."
+      },
+      {
+        "title": "Tune the gates and mid-circuit measurement",
+        "detail": "Single-qubit rotations, two-qubit entangling gates in the gate zone and fluorescence readout in the measurement zone are each calibrated, including crosstalk between neighbouring ions. Readout results are then passed back to the sequencer so measurement can occur mid-algorithm and the measured ion reused."
+      },
+      {
+        "title": "Scale out",
+        "detail": "More zones and junction crossings are added per chip, and separate modules are linked by entangling photons so that a machine can grow past the size where ion chains become too unwieldy to control."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Surface-electrode trap microfabrication",
+        "status": "exists",
+        "why": "multi-layer traps with backside vias are routinely fabricated in academic and industrial cleanrooms."
+      },
+      {
+        "tech": "Narrow-linewidth stabilised lasers",
+        "status": "exists",
+        "why": "qubit operations need laser phase coherence maintained over the duration of a gate."
+      },
+      {
+        "tech": "Multichannel low-noise DAC electronics",
+        "status": "exists",
+        "why": "every electrode needs independent, quiet, fast voltage control; channel count is a hard scaling limit."
+      },
+      {
+        "tech": "Cryogenic ultra-high-vacuum engineering",
+        "status": "exists",
+        "why": "cold electrodes reduce anomalous heating and let traps run with less aggressive pumping."
+      },
+      {
+        "tech": "Low-heating transport through junctions",
+        "status": "partial",
+        "why": "crossings between zones are the least forgiving part of the architecture, and motional heating there still limits how many round trips are practical."
+      },
+      {
+        "tech": "Integrated photonics for ion addressing",
+        "status": "partial",
+        "why": "free-space beams do not scale to many zones; delivering light through waveguides on or beside the chip is still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "QCCD machines offered as cloud-accessible quantum computers, with ion shuttling, mid-circuit measurement and qubit reuse demonstrated and two-qubit gate fidelities above 99%",
+        "unlocks": "run and benchmark small algorithms on real hardware with all-to-all connectivity inside a module."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine use of junction crossings, so a single trap holds hundreds of ions that can be moved anywhere on the chip",
+        "unlocks": "error-corrected logical qubits whose codes exploit shuttling and mid-circuit measurement to need fewer physical qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "optical or photonic links between separate trap modules",
+        "unlocks": "machines larger than one chip can hold, without sacrificing the connectivity that makes the architecture attractive."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a fault-tolerant trapped-ion computer with a classical control stack fast enough to decode errors in real time",
+        "unlocks": "logical qubits good enough for chemistry, materials and cryptanalysis problems beyond classical simulation."
+      }
+    ]
+  }
+}

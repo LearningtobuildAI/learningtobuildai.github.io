@@ -1,0 +1,147 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Solar concentrator",
+        "role": "tracks the sun and focuses its light onto a receiver to charge the store during the lunar day.",
+        "parts": [
+          "mirror facets",
+          "two-axis tracking drives",
+          "support frame",
+          "dust-shedding covers"
+        ]
+      },
+      {
+        "name": "Thermal store",
+        "role": "holds gathered heat in processed regolith as sensible heat, hundreds of megajoules per cubic metre.",
+        "parts": [
+          "sintered regolith bricks or packed granular bed",
+          "containment vessel",
+          "high-temperature insulation and low-conductivity supports"
+        ]
+      },
+      {
+        "name": "Heat-transfer loop",
+        "role": "moves heat from receiver to store by day and from store to the engines by night.",
+        "parts": [
+          "gas blower or pump",
+          "pipework and heat exchanger",
+          "valves and flow controls"
+        ]
+      },
+      {
+        "name": "Power conversion",
+        "role": "turns stored heat into electricity on the cold, dark side of the cycle.",
+        "parts": [
+          "Stirling convertors",
+          "linear alternators",
+          "cold-side radiator panels"
+        ]
+      },
+      {
+        "name": "Habitat thermal control",
+        "role": "shares the same hot mass to keep equipment and living volumes within temperature limits.",
+        "parts": [
+          "coolant loop",
+          "radiators",
+          "insulation blankets"
+        ]
+      },
+      {
+        "name": "Controls and robotics",
+        "role": "prepares the site, monitors charge state and manages daily cycling.",
+        "parts": [
+          "temperature and flow sensors",
+          "controllers",
+          "excavator or rover for regolith handling"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick and prepare the site",
+        "detail": "A level area near the planned base is surveyed; regolith is bulldozed into berms and the ground compacted so the store and mirrors sit on stable footing."
+      },
+      {
+        "title": "Excavate and grade regolith",
+        "detail": "Robotic excavators dig raw regolith, screen out large rocks and size the grains — fine dust is troublesome, so a controlled particle range is kept."
+      },
+      {
+        "title": "Form the storage body",
+        "detail": "Sieved regolith is pressed into blocks or loaded into a containment shell, shaped so heat can be delivered and extracted efficiently."
+      },
+      {
+        "title": "Sinter the regolith",
+        "detail": "Microwave or concentrated-solar heating fuses grain surfaces at roughly 1000–1100 °C, turning loose soil into a dense, thermally conductive solid that will not slump when hot."
+      },
+      {
+        "title": "Insulate and enclose",
+        "detail": "The bed is wrapped in high-temperature insulation, with vacuum gaps and thin support struts, since in the lunar vacuum most loss is by radiation and conduction through contacts."
+      },
+      {
+        "title": "Install receiver and heat-transfer loop",
+        "detail": "Concentrated sunlight heats a working fluid in the receiver; pipework and a blower circulate that fluid through channels in the regolith bed to charge it."
+      },
+      {
+        "title": "Add engines and radiators",
+        "detail": "Stirling convertors draw heat from the store and reject waste heat to radiators sized for radiative cooling in vacuum, producing electricity through the night."
+      },
+      {
+        "title": "Commission and cycle",
+        "detail": "The system is charged, held hot across the fourteen-day night, and discharged while temperature, flow and output are logged to prove stable cycling."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Regolith excavation and handling",
+        "status": "partial",
+        "why": "robotic digging and soil transport have been tested in analogue and simulant settings, but not at the scale of a working lunar plant."
+      },
+      {
+        "tech": "Regolith sintering and melting",
+        "status": "partial",
+        "why": "microwave and solar sintering of simulants is demonstrated in laboratories; making large, crack-free, cycled blocks is the open question."
+      },
+      {
+        "tech": "High-temperature heat engines",
+        "status": "exists",
+        "why": "Stirling convertors have been built and tested for space power, so the conversion step is not the limiting factor."
+      },
+      {
+        "tech": "High-temperature insulation and containment",
+        "status": "partial",
+        "why": "materials must survive repeated swings from roughly 1000 °C to cryogenic night temperatures without cracking or sintering together."
+      },
+      {
+        "tech": "Lunar surface power system integration",
+        "status": "partial",
+        "why": "controllers, radiators and autonomous operation through a 14-day night have not yet been combined into one fielded system."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "simulant trials showing repeated charge and discharge cycles above 900 °C",
+        "unlocks": "confidence that regolith is a workable storage medium and a baseline for sizing beds."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small flight demonstrator that charges during the lunar day and powers a Stirling convertor through the night",
+        "unlocks": "real data on heat loss, dust and thermal cycling on the Moon."
+      },
+      {
+        "stage": "Next",
+        "milestone": "an integrated unit supplying night power and habitat heat for a robotic outpost",
+        "unlocks": "nights-long operation without nuclear or battery-only backup, and a template for scaling."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "regolith heat stores as one element of a lunar base energy architecture alongside solar arrays and fission surface power",
+        "unlocks": "buffering for industrial processes such as oxygen extraction and metallurgy, where steady high-temperature heat matters more than electricity."
+      }
+    ]
+  }
+}

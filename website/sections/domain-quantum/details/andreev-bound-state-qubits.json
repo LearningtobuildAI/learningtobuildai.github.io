@@ -1,0 +1,139 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "29 Sep 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Superconducting electrodes",
+        "role": "supply Cooper pairs to the weak link and set the phase difference across it.",
+        "parts": [
+          "aluminium or niobium-titanium films",
+          "superconducting loop for flux bias"
+        ]
+      },
+      {
+        "name": "Semiconductor weak link",
+        "role": "the narrow channel where Andreev bound states form; strong spin–orbit coupling and a large g-factor make its states tunable by gate and by magnetic field.",
+        "parts": [
+          "indium arsenide nanowire or quantum well",
+          "epitaxial aluminium shell with an uncoated gap"
+        ]
+      },
+      {
+        "name": "Gate electrodes",
+        "role": "electrostatically tune how many conduction channels bridge the junction and how transparent they are.",
+        "parts": [
+          "local gates",
+          "thin dielectric",
+          "gate voltage sources"
+        ]
+      },
+      {
+        "name": "Microwave control and readout",
+        "role": "drives the transition between the two qubit levels and reports the state without destroying it.",
+        "parts": [
+          "superconducting resonator",
+          "drive line",
+          "circulators and amplifiers"
+        ]
+      },
+      {
+        "name": "Cryogenic environment",
+        "role": "keeps the metal superconducting and the thermal population of the qubit levels negligible.",
+        "parts": [
+          "dilution refrigerator at about 10 millikelvin",
+          "filtering and magnetic shielding",
+          "superconducting magnet"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Grow the hybrid crystal",
+        "detail": "Indium arsenide nanowires are grown by a catalytic vapour–liquid–solid process, or an indium arsenide quantum well is grown on a lattice-matched substrate; aluminium is then deposited in the same vacuum so the metal–semiconductor interface never oxidises."
+      },
+      {
+        "title": "Form the weak link",
+        "detail": "Using shadowed evaporation or a stencil, the aluminium is interrupted along the wire to leave an uncoated semiconductor channel tens to a couple of hundred nanometres long — the junction where the Andreev levels will live."
+      },
+      {
+        "title": "Place the junction in a circuit",
+        "detail": "The junction is embedded in a superconducting loop so that magnetic flux sets the phase difference across it, and local gates are deposited on a thin dielectric to tune the channel."
+      },
+      {
+        "title": "Add the readout resonator",
+        "detail": "A low-loss superconducting microwave resonator is fabricated nearby and coupled to the junction so that its state shifts the resonator frequency, enabling dispersive readout."
+      },
+      {
+        "title": "Cool and characterise the junction",
+        "detail": "The chip goes into a dilution refrigerator at roughly 10 millikelvin with heavy filtering; the switching current is measured against gate voltage and flux to find a regime with a few highly transparent channels."
+      },
+      {
+        "title": "Spectroscopically map the levels",
+        "detail": "Microwaves are swept in frequency while phase and gate voltage are varied, revealing the discrete Andreev levels and their avoided crossings."
+      },
+      {
+        "title": "Drive coherently",
+        "detail": "A chosen pair of levels is driven to produce Rabi oscillations, and energy relaxation and dephasing times are measured."
+      },
+      {
+        "title": "Measure the noise and parity environment",
+        "detail": "Parity lifetime and sensitivity to charge offset are quantified — the whole point is that the state should ignore charge noise while remaining vulnerable to quasiparticles breaking Cooper pairs."
+      },
+      {
+        "title": "Couple two qubits",
+        "detail": "Two junctions are linked through a shared resonator or coupler to attempt a two-qubit gate, the step that turns single devices into a modality."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Epitaxial superconductor–semiconductor interfaces",
+        "status": "exists",
+        "why": "clean, oxide-free aluminium on indium arsenide is what gives the junction its high transparency and reproducible levels."
+      },
+      {
+        "tech": "Cryogenic microwave control and readout",
+        "status": "exists",
+        "why": "dilution refrigerators, low-noise amplifiers and dispersive readout techniques were developed for conventional superconducting qubits and are reused directly."
+      },
+      {
+        "tech": "Quasiparticle poisoning control",
+        "status": "partial",
+        "why": "stray quasiparticles flip the parity of the state and destroy coherence; shielding and gap engineering help but parity lifetimes are still short."
+      },
+      {
+        "tech": "Reproducible few-channel junctions",
+        "status": "partial",
+        "why": "a qubit needs a clean, well-separated pair of levels, and device-to-device variability in nanowire junctions remains a real obstacle."
+      },
+      {
+        "tech": "Multi-qubit architecture and couplers",
+        "status": "missing",
+        "why": "no entanglement between two Andreev bound state qubits has been established, so the scaling path is unproven."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "coherent single-qubit operation of Andreev level and Andreev spin qubits in individual junctions, in a handful of university laboratories",
+        "unlocks": "proof that superconductor–semiconductor hybrids can be more than a platform for exotic physics."
+      },
+      {
+        "stage": "Next",
+        "milestone": "millisecond-scale parity and coherence lifetimes with reproducible, gate-tunable junctions",
+        "unlocks": "serious comparison with conventional superconducting and spin qubits."
+      },
+      {
+        "stage": "Next",
+        "milestone": "two-qubit gates and entanglement between hybrid qubits",
+        "unlocks": "a genuine modality rather than a single-device demonstration."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "small processors or hybrid elements integrated with standard superconducting circuits",
+        "unlocks": "a realistic niche: compact, gate-tunable, charge-noise-tolerant qubits that borrow the wiring, resonators and control stack of the superconducting qubit industry."
+      }
+    ]
+  }
+}
