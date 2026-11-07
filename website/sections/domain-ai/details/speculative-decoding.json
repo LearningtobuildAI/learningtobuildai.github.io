@@ -1,0 +1,141 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Draft proposer",
+        "role": "cheaply guesses the next several tokens so the big model has something to check.",
+        "parts": [
+          "small draft model (or extra prediction heads, or a lookup of common phrases)",
+          "its own sampler and KV cache",
+          "shared tokenizer with the target"
+        ]
+      },
+      {
+        "name": "Target verifier",
+        "role": "scores every drafted token in a single parallel pass instead of one at a time.",
+        "parts": [
+          "the large model's forward pass",
+          "tree-aware attention mask",
+          "batched KV cache"
+        ]
+      },
+      {
+        "name": "Acceptance rule",
+        "role": "decides how many drafted tokens survive, in a way that leaves the output distribution unchanged.",
+        "parts": [
+          "per-token random draws",
+          "probability-ratio comparison",
+          "fallback resample from the corrected distribution"
+        ]
+      },
+      {
+        "name": "Serving engine",
+        "role": "keeps the GPU busy and manages memory across many concurrent requests.",
+        "parts": [
+          "continuous batching scheduler",
+          "block-paged KV cache",
+          "CUDA or equivalent kernels"
+        ]
+      },
+      {
+        "name": "Tuning and monitoring",
+        "role": "keeps the speed-up real rather than theoretical.",
+        "parts": [
+          "acceptance-rate telemetry",
+          "adaptive draft-length controller",
+          "latency and throughput dashboards"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick the draft source",
+        "detail": "Choose a separate small model, auxiliary prediction heads trained on the same backbone, or a non-parametric lookup of frequent continuations. The trade-off is draft quality against draft cost."
+      },
+      {
+        "title": "Align the vocabularies",
+        "detail": "Draft and target must map tokens one-to-one. Any mismatch needs a projection layer or a shared tokenizer, or the comparison is meaningless."
+      },
+      {
+        "title": "Produce the draft",
+        "detail": "The small model runs autoregressively for a fixed number of tokens — typically a handful — building its own KV cache as it goes."
+      },
+      {
+        "title": "Verify in one pass",
+        "detail": "The drafted tokens are fed to the large model together. Because attention is causal, one forward pass yields the target's probability for every position at once; a tree-shaped mask lets several candidate branches be checked together."
+      },
+      {
+        "title": "Apply the acceptance test",
+        "detail": "For each position, compare target and draft probabilities. Accept with probability equal to the ratio (capped at one), drawn from a per-token random number; on the first rejection, sample the replacement from the residual distribution and discard the rest."
+      },
+      {
+        "title": "Reuse the KV cache",
+        "detail": "Accepted tokens keep their computed keys and values so they are never recomputed; rejected ones are trimmed. Cache bookkeeping is where most implementation bugs live."
+      },
+      {
+        "title": "Fold into the scheduler",
+        "detail": "The engine must batch speculative requests with ordinary ones, allocate cache blocks for the extra tokens, and fall back to plain decoding when the batch is unfavourable."
+      },
+      {
+        "title": "Tune the draft length",
+        "detail": "Measure acceptance rate per request type and adjust how many tokens are drafted: too few wastes the opportunity, too many wastes compute on rejected tails."
+      },
+      {
+        "title": "Validate exactness",
+        "detail": "Run statistical tests comparing output distributions against plain sampling on the same prompts before trusting the speed-up in production."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Batched GPU attention kernels",
+        "status": "exists",
+        "why": "verification is only cheap if many positions are scored in one fused kernel launch."
+      },
+      {
+        "tech": "KV-cache management in inference servers",
+        "status": "exists",
+        "why": "speculation multiplies cache traffic and needs paged or otherwise flexible allocation."
+      },
+      {
+        "tech": "Small-model distillation and training",
+        "status": "exists",
+        "why": "a draft model that disagrees with the target too often gives no speed-up at all."
+      },
+      {
+        "tech": "Reproducible pseudo-random sampling",
+        "status": "exists",
+        "why": "the acceptance test must draw the same kind of random numbers as normal sampling to preserve the distribution."
+      },
+      {
+        "tech": "Tree-structured attention masking",
+        "status": "partial",
+        "why": "checking several candidate branches per step needs custom masks that not every serving stack supports."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "draft-model verification shipped inside major serving frameworks",
+        "unlocks": "cheap low-latency chat and coding assistants without retraining the big model."
+      },
+      {
+        "stage": "Next",
+        "milestone": "self-speculation using extra heads or retrieval lookups instead of a second model",
+        "unlocks": "the same speed-up with no extra model to host or keep in sync."
+      },
+      {
+        "stage": "Next",
+        "milestone": "models pretrained to predict several tokens per step",
+        "unlocks": "higher acceptance rates because the model itself is built to be verified in blocks."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "co-designed serving stacks that speculate across long context and tool calls",
+        "unlocks": "real-time agents whose latency is dominated by reasoning, not by token emission."
+      }
+    ]
+  }
+}

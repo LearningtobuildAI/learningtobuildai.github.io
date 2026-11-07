@@ -1,0 +1,135 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Constant-current source",
+        "role": "delivers a fixed 1–2 mA no matter how skin impedance drifts during a session.",
+        "parts": [
+          "battery",
+          "regulated current driver",
+          "current-limiting safety circuit",
+          "microcontroller and dose timer"
+        ]
+      },
+      {
+        "name": "Electrodes",
+        "role": "the skin interface; their area sets the current density that determines both effect and burn risk.",
+        "parts": [
+          "saline-soaked sponge or conductive pad",
+          "carbon-rubber or metal backing plate",
+          "snap connector",
+          "head strap or frame holding position"
+        ]
+      },
+      {
+        "name": "Montage and headset",
+        "role": "keeps the active and return electrodes over the intended cortical targets, usually the left and right dorsolateral prefrontal cortex for depression work.",
+        "parts": [
+          "positioning frame",
+          "adjustable straps",
+          "electrode labelling to prevent reversal"
+        ]
+      },
+      {
+        "name": "Monitoring and dose control",
+        "role": "detects bad contact before it causes a skin lesion.",
+        "parts": [
+          "impedance sensing",
+          "ramp-up and ramp-down firmware",
+          "fault abort and session logging"
+        ]
+      },
+      {
+        "name": "Companion software",
+        "role": "guides home use and records adherence.",
+        "parts": [
+          "protocol library",
+          "phone app",
+          "clinician dashboard"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Fix the dose",
+        "detail": "Choose target current, electrode area and session length, then model how the field spreads through a head from MRI-derived anatomy so the current density at the skin stays low."
+      },
+      {
+        "title": "Design the current path",
+        "detail": "A boost converter drives a controlled current through the body circuit; firmware samples the actual current many times a second and corrects it, and a hardware limit caps total charge regardless of software failure."
+      },
+      {
+        "title": "Build the electrodes",
+        "detail": "Large-area pads are made so contact is even; a dry spot concentrates current and is the usual cause of redness or a small burn. Sponges must hold enough saline for the whole session."
+      },
+      {
+        "title": "Write the safety firmware",
+        "detail": "Impedance is checked before and during stimulation; the current is ramped up and down over tens of seconds to avoid tingling and to make placebo-controlled trials possible; poor contact aborts the session."
+      },
+      {
+        "title": "Assemble and test",
+        "detail": "Skin-contact parts need biocompatibility testing, and prescription devices go through medical electrical safety and electromagnetic-compatibility testing before they can be sold as treatment."
+      },
+      {
+        "title": "Prove it in sham-controlled trials",
+        "detail": "Randomised trials compare active against convincingly shammed stimulation; effects are modest and vary between studies, so sample size and blinding quality matter more than in drug trials."
+      },
+      {
+        "title": "Clear and monitor",
+        "detail": "Prescription devices obtain regulatory clearance for a named condition; consumer headsets are sold without a medical claim, which shifts responsibility for safe use onto the buyer."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Understanding of cortical excitability and plasticity",
+        "status": "partial",
+        "why": "the mechanism — a small shift in resting membrane potential plus lasting, NMDA-dependent changes — is established in principle, but which patients respond and why is not."
+      },
+      {
+        "tech": "Head models for dose calculation",
+        "status": "partial",
+        "why": "current distribution depends heavily on individual anatomy; generic montages average over real differences."
+      },
+      {
+        "tech": "Skin-safe, stable electrodes",
+        "status": "exists",
+        "why": "saline sponges and conductive pads are cheap, but they must stay wet and in even contact for the whole session."
+      },
+      {
+        "tech": "Reliable placebo control",
+        "status": "partial",
+        "why": "blinding is hard because active stimulation produces sensations; if participants can tell, apparent effects shrink or vanish."
+      },
+      {
+        "tech": "Regulatory route for home neuromodulation",
+        "status": "partial",
+        "why": "only a small number of prescribed devices have been cleared for depression, in some jurisdictions; most headsets are sold as wellness products."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "consumer headsets sold widely and a few prescription devices cleared for depression",
+        "unlocks": "real-world data, but also unsupervised use and occasional skin injuries."
+      },
+      {
+        "stage": "Next",
+        "milestone": "personalised dosing from individual head models and better-tolerated montages",
+        "unlocks": "more consistent effects across people instead of averages that hide non-responders."
+      },
+      {
+        "stage": "Next",
+        "milestone": "larger, better-blinded trials in depression, stroke rehabilitation and motor learning",
+        "unlocks": "clear evidence of which uses deserve a clinical claim."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "supervised home treatment combined with behavioural or cognitive training",
+        "unlocks": "a low-cost add-on to therapy, if the effect sizes hold up."
+      }
+    ]
+  }
+}

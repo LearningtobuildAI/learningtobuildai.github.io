@@ -1,0 +1,157 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Tissue sectioning and preservation",
+        "role": "turns a real tissue into a thin, flat slice whose molecules stay where they were.",
+        "parts": [
+          "cryostat or microtome",
+          "fresh-frozen or formalin-fixed (FFPE) blocks",
+          "glass slides",
+          "haematoxylin-eosin staining"
+        ]
+      },
+      {
+        "name": "Spatially barcoded capture surface",
+        "role": "a slide or array on which every position carries a known DNA barcode.",
+        "parts": [
+          "oligo-dT capture probes with spatial barcodes",
+          "array spots, beads, or patterned barcode patches",
+          "fiducial markers for image alignment"
+        ]
+      },
+      {
+        "name": "Molecular capture and conversion",
+        "role": "mRNA is released from the cell, caught by the nearest barcode and copied into cDNA.",
+        "parts": [
+          "permeabilisation reagents",
+          "reverse transcriptase",
+          "in-situ hybridisation probes (imaging methods)",
+          "rolling-circle amplification"
+        ]
+      },
+      {
+        "name": "Library preparation and readout",
+        "role": "converts captured molecules into data — by sequencing or by imaging.",
+        "parts": [
+          "sequencing library kit",
+          "next-generation sequencer",
+          "fluorescence microscope with cyclic imaging"
+        ]
+      },
+      {
+        "name": "Imaging and registration",
+        "role": "pairs tissue morphology with the barcode grid.",
+        "parts": [
+          "slide scanner",
+          "image alignment software"
+        ]
+      },
+      {
+        "name": "Computational pipeline",
+        "role": "turns barcodes and pixels into a cell-type map.",
+        "parts": [
+          "barcode demultiplexing",
+          "read alignment and counting",
+          "cell segmentation or spot deconvolution",
+          "spatial clustering and neighbourhood statistics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the barcodes",
+        "detail": "A whitelist of spatial barcodes is generated and printed or synthesised onto the capture surface, each position randomised so neighbouring spots never share a code."
+      },
+      {
+        "title": "Section the tissue",
+        "detail": "The sample is snap-frozen or fixed, then cut into sections a few micrometres thick and mounted on the barcoded slide."
+      },
+      {
+        "title": "Image the section",
+        "detail": "A stained microscope image is taken first, giving the morphology and the fiducial positions needed later to align pixels with barcodes."
+      },
+      {
+        "title": "Permeabilise and capture",
+        "detail": "The membrane is gently opened so mRNA diffuses a short distance and hybridises to the capture oligos directly beneath it."
+      },
+      {
+        "title": "Reverse-transcribe and collect",
+        "detail": "The captured mRNA is copied into cDNA carrying its spatial barcode, then lifted off the slide into a tube as one pooled library."
+      },
+      {
+        "title": "Sequence",
+        "detail": "The library is sequenced; each read begins with a barcode that says which position on the slide it came from."
+      },
+      {
+        "title": "Alternative readout: image in place",
+        "detail": "Imaging-based platforms skip sequencing-by-synthesis and instead hybridise fluorescent probes in repeated cycles, reading out hundreds to thousands of genes while the tissue stays intact."
+      },
+      {
+        "title": "Align and quantify",
+        "detail": "Reads or pixel intensities are mapped back onto the tissue image, and the barcode grid is registered to the histology."
+      },
+      {
+        "title": "Analyse",
+        "detail": "Counts are normalised, spots are deconvolved into cell types or cells are segmented, and spatial patterns — domains, gradients, cell-cell contacts — are called."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Next-generation sequencing",
+        "status": "exists",
+        "why": "provides the cheap, massively parallel readout that makes whole-transcriptome spatial capture affordable."
+      },
+      {
+        "tech": "Single-cell barcoding chemistry",
+        "status": "exists",
+        "why": "the idea of tagging every molecule with a cell- or position-specific code is inherited directly from droplet single-cell RNA-seq."
+      },
+      {
+        "tech": "High-resolution fluorescence microscopy and probe chemistry",
+        "status": "exists",
+        "why": "imaging-based spatial methods depend on resolving and erasing many rounds of fluorescent signal in intact tissue."
+      },
+      {
+        "tech": "Reference transcriptome and alignment tools",
+        "status": "exists",
+        "why": "reads must be mapped to a known genome before they can be counted."
+      },
+      {
+        "tech": "Cell segmentation and deconvolution algorithms",
+        "status": "partial",
+        "why": "most capture-array spots hold several cells, so assigning signal to individual cells is still an inference."
+      },
+      {
+        "tech": "Tissue handling and permeabilisation protocols",
+        "status": "partial",
+        "why": "capture efficiency varies strongly by tissue type, and fixing chemistry that preserves both morphology and RNA is finicky."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial platforms in routine research use — array capture such as 10x Visium with spots around 55 µm wide spaced about 100 µm apart for whole transcriptomes, and imaging panels such as MERFISH, Xenium, CosMx and MERSCOPE for targeted gene sets at subcellular resolution",
+        "unlocks": "tumour microenvironments, brain atlases and developmental maps drawn at cell-type level."
+      },
+      {
+        "stage": "Next",
+        "milestone": "whole-transcriptome profiling at true single-cell resolution across a full tissue section, with reliable segmentation",
+        "unlocks": "removes the trade-off between gene breadth and spatial precision."
+      },
+      {
+        "stage": "Next",
+        "milestone": "routine multimodal spatial assays combining RNA with protein and chromatin marks on the same section",
+        "unlocks": "links cell identity, state and regulatory programme in place."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "three-dimensional reconstruction of whole organs and validated clinical use in pathology",
+        "unlocks": "spatial diagnostics and a genuine physical atlas of human tissue."
+      }
+    ]
+  }
+}

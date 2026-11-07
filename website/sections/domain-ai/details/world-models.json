@@ -1,0 +1,153 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Encoder",
+        "role": "compresses raw observations — pixels, sensor readings — into a compact latent state, throwing away detail that does not affect what happens next.",
+        "parts": [
+          "convolutional or transformer vision backbone",
+          "discrete or continuous latent bottleneck",
+          "tokeniser for action and proprioception"
+        ]
+      },
+      {
+        "name": "Dynamics model",
+        "role": "predicts the next latent state given the current one and an action — the actual simulator.",
+        "parts": [
+          "sequence model (transformer or state-space model)",
+          "action-conditioning pathway",
+          "reward and termination heads"
+        ]
+      },
+      {
+        "name": "Decoder and renderer",
+        "role": "turns latent states back into images or observations so humans and vision-based policies can use them.",
+        "parts": [
+          "generative decoder (diffusion or autoregressive)",
+          "consistency and temporal-coherence losses"
+        ]
+      },
+      {
+        "name": "Imagination rollout engine",
+        "role": "runs the dynamics model forward many steps in parallel to generate synthetic experience.",
+        "parts": [
+          "batched latent rollouts",
+          "uncertainty estimation to limit drift"
+        ]
+      },
+      {
+        "name": "Policy and planner",
+        "role": "learns or searches for actions inside the simulator rather than in the real world.",
+        "parts": [
+          "actor-critic trained on imagined trajectories",
+          "model-predictive control / tree search",
+          "value model"
+        ]
+      },
+      {
+        "name": "Data pipeline",
+        "role": "supplies the paired observation–action–outcome data the model is fitted to.",
+        "parts": [
+          "teleoperation and fleet logs",
+          "simulator and game-generated trajectories",
+          "video with inferred actions"
+        ]
+      },
+      {
+        "name": "Validation harness",
+        "role": "checks that imagined futures match reality before a policy is trusted on hardware.",
+        "parts": [
+          "held-out real rollouts",
+          "drift and calibration metrics",
+          "safety-limited real-world trials"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Collect trajectories",
+        "detail": "Record long sequences of observations, actions taken and resulting states — from teleoperated robots, vehicle fleets, game engines and video. The action labels are the scarce part; video alone is abundant but does not say what was done."
+      },
+      {
+        "title": "Train the encoder",
+        "detail": "Fit a self-supervised objective that maps each frame into a latent vector, using a reconstruction or contrastive loss so that visually different but dynamically equivalent states land close together."
+      },
+      {
+        "title": "Fit the dynamics model",
+        "detail": "Train a sequence model to predict the next latent from the current latent plus the action, on long context windows, with losses on both latent prediction and decoded pixels to stop the representation collapsing."
+      },
+      {
+        "title": "Condition on actions",
+        "detail": "Give the model an explicit action interface — joint torques, steering and throttle, key presses — so it can answer 'what happens if I do this' rather than only 'what happens next'."
+      },
+      {
+        "title": "Add reward and termination heads",
+        "detail": "Attach predictors for task reward, success and episode end, so a policy can be optimised entirely inside the model."
+      },
+      {
+        "title": "Train the policy in imagination",
+        "detail": "Roll the model forward in parallel batches, have the actor-critic learn from the imagined rewards, and regularise against the model's own uncertainty so the policy does not exploit simulation artefacts."
+      },
+      {
+        "title": "Validate and bound drift",
+        "detail": "Compare imagined and real rollouts, truncate rollouts where uncertainty grows, and measure whether imagined returns predict real returns."
+      },
+      {
+        "title": "Transfer to hardware",
+        "detail": "Deploy the policy, collect the failures, and feed the new real data back into training — an iterative loop, since world models improve fastest where they are wrong."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Self-supervised video representation learning",
+        "status": "partial",
+        "why": "compressing high-dimensional observations into stable latents is what makes long rollouts tractable."
+      },
+      {
+        "tech": "Scalable sequence models with long context",
+        "status": "exists",
+        "why": "transformers and state-space models provide the capacity to model dynamics over many steps."
+      },
+      {
+        "tech": "Action-labelled embodied datasets",
+        "status": "partial",
+        "why": "the model can only learn consequences of actions it has seen labelled; robot action data is far scarcer than video."
+      },
+      {
+        "tech": "Generative video modelling",
+        "status": "partial",
+        "why": "photorealistic next-frame prediction gives the decoder and provides a weak signal about physical regularity."
+      },
+      {
+        "tech": "Fast inference hardware",
+        "status": "exists",
+        "why": "planning inside a model means many forward passes per control step, so latency decides whether it is usable in real time."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research systems learning playable dynamics in games and driving scenes, with small policies trained purely in imagination",
+        "unlocks": "evidence that latent simulators can substitute for some real interaction."
+      },
+      {
+        "stage": "Next",
+        "milestone": "robot manipulation policies trained mostly in a learned model and fine-tuned with a small amount of real data",
+        "unlocks": "cuts the cost of teaching robots new tasks from months of physical trials to hours of compute."
+      },
+      {
+        "stage": "Next",
+        "milestone": "action-conditioned video models that stay coherent over minutes of interaction",
+        "unlocks": "usable planning horizons for navigation and long-horizon assembly."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "shared world models combining internet video with robot and vehicle experience, with calibrated uncertainty",
+        "unlocks": "agents that can rehearse a task safely before attempting it, which is the practical route to autonomy in unstructured environments."
+      }
+    ]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Textile body interface",
+        "role": "anchors the assistive force on the body and spreads it so it does not cut in or rub.",
+        "parts": [
+          "woven or knitted cuffs and waist belt",
+          "shoulder straps",
+          "load-distributing panels",
+          "adjustable buckles and sizing"
+        ]
+      },
+      {
+        "name": "Actuation",
+        "role": "generates the pull that supplements the wearer's muscles.",
+        "parts": [
+          "brushless DC motor with gearbox",
+          "cable spool",
+          "Bowden cable sheaths",
+          "pulleys and low-friction guides"
+        ]
+      },
+      {
+        "name": "Transmission and anchors",
+        "role": "routes force from the actuator to the correct joint segment.",
+        "parts": [
+          "synthetic cable (e.g. coated polymer)",
+          "sewn cable channels",
+          "attachment points at thigh, shank or back"
+        ]
+      },
+      {
+        "name": "Sensing",
+        "role": "works out where the wearer is in a movement so assistance lands at the right instant.",
+        "parts": [
+          "inertial measurement units on trunk and limb",
+          "cable tension load cell",
+          "motor encoder",
+          "optional insole pressure sensors"
+        ]
+      },
+      {
+        "name": "Control electronics",
+        "role": "runs the gait-phase or lift-onset estimator and modulates cable force.",
+        "parts": [
+          "microcontroller",
+          "motor driver",
+          "wireless link for tuning and logging"
+        ]
+      },
+      {
+        "name": "Power",
+        "role": "keeps the device running for a full shift or therapy session.",
+        "parts": [
+          "lithium-ion battery pack",
+          "charging and protection circuit",
+          "thermal management"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Characterise the task",
+        "detail": "Motion capture, muscle activity and joint-torque measurements of the target activity (walking, lifting, prolonged standing) define how much help is needed and at which phase of the cycle."
+      },
+      {
+        "title": "Set the assistance profile",
+        "detail": "Engineers decide whether to assist hip extension, hip flexion or back extension, and draw the desired force-versus-time curve the controller must track."
+      },
+      {
+        "title": "Design the textile interface",
+        "detail": "Patterns are cut and sewn, then iterated through fit trials on varied body shapes; pressure mapping checks that force is spread across large areas rather than concentrated at the cable exits."
+      },
+      {
+        "title": "Bench-test the drivetrain",
+        "detail": "Motor, spool and cable are run against a dummy load to measure delivered force, cable stretch, friction losses and acoustic noise before anyone wears it."
+      },
+      {
+        "title": "Build the sensing and control loop",
+        "detail": "Inertial data is used to classify gait phase or detect lift onset in real time; the controller then closes a force loop on the cable tension with a delay low enough to feel natural."
+      },
+      {
+        "title": "Tune on human subjects",
+        "detail": "Wearers walk or lift on instrumented treadmills and force plates; metabolic cost, muscle activity and joint load are compared with and without assistance to find when the device genuinely helps rather than just resisting."
+      },
+      {
+        "title": "Field and clinical trials",
+        "detail": "Shift-length trials with workers and supervised sessions with rehabilitation patients expose durability, donning time, comfort and fatigue problems that lab tests miss."
+      },
+      {
+        "title": "Productionise",
+        "detail": "Cut-and-sew textile lines, actuator sub-assembly, per-unit calibration and washability/durability testing turn prototypes into a manufacturable product."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Small, efficient brushless motors and gearboxes",
+        "status": "exists",
+        "why": "a wearable actuator must deliver useful torque while staying light enough not to load the wearer."
+      },
+      {
+        "tech": "Lightweight lithium-ion batteries",
+        "status": "exists",
+        "why": "shift-length operation needs high energy per kilogram on the body."
+      },
+      {
+        "tech": "Miniature inertial sensors",
+        "status": "exists",
+        "why": "gait-phase and posture detection depend on cheap, tiny IMUs."
+      },
+      {
+        "tech": "Real-time gait-phase estimation",
+        "status": "partial",
+        "why": "algorithms work well for steady walking but are less reliable across uneven ground, stairs and varied individuals."
+      },
+      {
+        "tech": "Textiles that transmit load without pressure injury",
+        "status": "partial",
+        "why": "fabric anchors slip and concentrate force; keeping them comfortable over hours is unsolved engineering."
+      },
+      {
+        "tech": "Evidence of real-world benefit",
+        "status": "partial",
+        "why": "lab studies show modest reductions in effort, but long-term injury-prevention evidence in workplaces is still thin."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "back-assist and hip-assist soft exosuits piloted in logistics, assembly and rehabilitation",
+        "unlocks": "real user feedback on comfort, donning time and duty cycle."
+      },
+      {
+        "stage": "Next",
+        "milestone": "adaptive control tuned per wearer and per task, plus multi-joint assistance",
+        "unlocks": "useful help across varied movements rather than one rehearsed gait."
+      },
+      {
+        "stage": "Next",
+        "milestone": "controlled clinical trials and regulatory clearance for rehabilitation use",
+        "unlocks": "reimbursed use in stroke and mobility therapy."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "textile-based artificial muscles replacing motor-and-cable drives",
+        "unlocks": "garment-like devices with no rigid actuator box, lower weight and silent operation."
+      }
+    ]
+  }
+}

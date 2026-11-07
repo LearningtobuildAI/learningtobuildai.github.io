@@ -1,0 +1,151 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Continuous glucose sensing",
+        "role": "measures glucose in subcutaneous fluid every few minutes and streams it wirelessly.",
+        "parts": [
+          "enzyme-based sensor filament",
+          "transmitter",
+          "adhesive patch",
+          "calibration and trend software"
+        ]
+      },
+      {
+        "name": "Insulin pump and infusion set",
+        "role": "delivers rapid-acting insulin in small, precisely timed doses.",
+        "parts": [
+          "insulin reservoir",
+          "micro-stepper or solenoid pump",
+          "cannula or patch infusion set",
+          "occlusion and reservoir sensors"
+        ]
+      },
+      {
+        "name": "Control algorithm",
+        "role": "forecasts glucose and decides how much insulin to deliver or withhold.",
+        "parts": [
+          "glucose prediction model",
+          "model-predictive or PID controller",
+          "insulin-on-board model",
+          "safety limits and suspend logic"
+        ]
+      },
+      {
+        "name": "User interface and connectivity",
+        "role": "lets the user announce meals, set temporary targets and receive alerts.",
+        "parts": [
+          "phone or handheld app",
+          "Bluetooth link",
+          "alarm system",
+          "cloud data upload"
+        ]
+      },
+      {
+        "name": "Safety and fail-safe layer",
+        "role": "prevents overdosing and handles sensor or pump failure.",
+        "parts": [
+          "predictive low-glucose suspend",
+          "maximum hourly and daily dose caps",
+          "watchdog timers",
+          "cybersecurity controls"
+        ]
+      },
+      {
+        "name": "Insulin and site management",
+        "role": "the drug and subcutaneous route on which the loop depends.",
+        "parts": [
+          "rapid-acting insulin analog",
+          "infusion-site rotation schedule",
+          "absorption-variability guidance"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Model glucose and insulin dynamics",
+        "detail": "Clinical studies quantify sensor lag of roughly 5–15 minutes, insulin action over 30–60 minutes, and how much these vary between people and within a day."
+      },
+      {
+        "title": "Write the controller",
+        "detail": "The algorithm forecasts glucose 30–60 minutes ahead, calculates a basal rate or micro-bolus, and subtracts insulin still active to avoid stacking doses."
+      },
+      {
+        "title": "Build the safety envelope",
+        "detail": "Hard limits cap total insulin, suspend delivery when glucose is predicted to fall below about 3.9 mmol/L, and flag blocked tubing or a failed sensor."
+      },
+      {
+        "title": "Integrate devices",
+        "detail": "CGM and pump communicate over a encrypted wireless link; the system must keep working or fail safe when a phone or sensor drops out."
+      },
+      {
+        "title": "Test in simulation and benchtop rigs",
+        "detail": "Virtual patient populations and mechanical test rigs exercise meals, exercise, illness and sensor dropout before any human use."
+      },
+      {
+        "title": "Run clinical trials",
+        "detail": "Outpatient and overnight studies measure time in the 3.9–10.0 mmol/L range, hypoglycaemia and user burden against standard pump therapy."
+      },
+      {
+        "title": "Clear regulation and manufacture",
+        "detail": "Software lifecycle records, sterile disposable infusion sets and traceable insulin reservoirs must meet medical-device quality systems."
+      },
+      {
+        "title": "Deploy with training and monitoring",
+        "detail": "Users learn meal bolusing and alarm handling; remote data review and software updates keep the loop safe after launch."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Wearable continuous glucose monitors",
+        "status": "exists",
+        "why": "the loop needs frequent, reliable glucose readings without fingersticks."
+      },
+      {
+        "tech": "Rapid-acting insulin analogs",
+        "status": "exists",
+        "why": "fast onset and predictable action let the controller correct high glucose quickly."
+      },
+      {
+        "tech": "Precise, connected insulin pumps",
+        "status": "exists",
+        "why": "automated control requires accurate micro-dosing and a digital command link."
+      },
+      {
+        "tech": "Embedded control software and wireless security",
+        "status": "exists",
+        "why": "the algorithm must run reliably on a battery-powered device and resist tampering."
+      },
+      {
+        "tech": "Automatic meal detection",
+        "status": "partial",
+        "why": "current commercial systems still rely on the user counting carbohydrates and announcing meals."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "commercial hybrid closed-loop systems automating basal insulin and corrections, especially overnight",
+        "unlocks": "better time in range with less fear of nocturnal lows."
+      },
+      {
+        "stage": "Next",
+        "milestone": "loops that handle unannounced meals and exercise with less user input",
+        "unlocks": "closer to a fully closed loop for everyday life."
+      },
+      {
+        "stage": "Next",
+        "milestone": "dual-hormone systems adding glucagon to counter lows",
+        "unlocks": "tighter control without increasing hypoglycaemia risk."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "implantable sensors and pumps, or cells that release insulin automatically",
+        "unlocks": "a genuinely hands-off artificial pancreas."
+      }
+    ]
+  }
+}

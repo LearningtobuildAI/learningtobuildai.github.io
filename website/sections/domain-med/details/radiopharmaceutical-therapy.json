@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Radionuclide",
+        "role": "the payload — an isotope whose decay deposits cell-killing energy over a range of a few millimetres (beta) or a few cell widths (alpha).",
+        "parts": [
+          "lutetium-177 or yttrium-90 (beta)",
+          "actinium-225 or lead-212 (alpha)",
+          "reactor or accelerator target and separation chemistry"
+        ]
+      },
+      {
+        "name": "Targeting vector",
+        "role": "finds the tumour and holds the isotope there long enough to matter.",
+        "parts": [
+          "peptide or small-molecule ligand binding a surface receptor",
+          "monoclonal antibody or fragment",
+          "linker and pharmacokinetic modifier"
+        ]
+      },
+      {
+        "name": "Chelator and conjugate",
+        "role": "grips the metal ion tightly so it does not escape into the body before decay.",
+        "parts": [
+          "bifunctional chelator such as DOTA",
+          "linker chemistry",
+          "purification and identity testing"
+        ]
+      },
+      {
+        "name": "Radiolabelling and release",
+        "role": "joins isotope to vector in a single patient or batch dose, then proves the product is safe.",
+        "parts": [
+          "automated synthesis module",
+          "hot cell with shielding",
+          "HPLC and thin-layer chromatography for radiochemical purity",
+          "sterility and endotoxin testing"
+        ]
+      },
+      {
+        "name": "Theranostic imaging and dosimetry",
+        "role": "a diagnostic twin of the drug shows where the receptor is and lets clinicians calculate absorbed dose to tumour and organs.",
+        "parts": [
+          "PET tracer with a positron-emitting analogue",
+          "PET/CT or SPECT scanner",
+          "dose-calculation software"
+        ]
+      },
+      {
+        "name": "Administration and radiation protection",
+        "role": "delivers the dose and manages the radioactive patient and waste.",
+        "parts": [
+          "shielded vial and infusion line",
+          "amino-acid co-infusion for kidney protection",
+          "contamination monitoring",
+          "decay storage for waste"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Produce the isotope",
+        "detail": "Lutetium-177 is made by neutron irradiation in a research reactor, then chemically separated from the target to very high specific activity; actinium-225 comes from thorium-229 generators or accelerator routes and is far scarcer."
+      },
+      {
+        "title": "Synthesise the vector",
+        "detail": "Peptides are built by solid-phase synthesis and purified; antibody-based vectors are grown in cells and purified by chromatography."
+      },
+      {
+        "title": "Attach the chelator",
+        "detail": "A DOTA-type cage is chemically coupled to the vector so it can hold the metal ion without blocking the receptor-binding end."
+      },
+      {
+        "title": "Radiolabel",
+        "detail": "The isotope is heated with the conjugate in a buffered solution for minutes to tens of minutes; unbound isotope is removed on a cartridge or column."
+      },
+      {
+        "title": "Quality control and release",
+        "detail": "Radiochemical purity, activity, identity, sterility and endotoxin are measured, and the batch is released against a pharmacopoeial specification within hours because the isotope decays."
+      },
+      {
+        "title": "Select the patient",
+        "detail": "A PET scan with the diagnostic twin confirms the tumour expresses the target receptor strongly enough to justify treatment, and dosimetry estimates organ limits."
+      },
+      {
+        "title": "Infuse",
+        "detail": "The dose is given intravenously, typically over minutes, with co-infusion of amino acids to protect the kidneys from reabsorbed peptide."
+      },
+      {
+        "title": "Monitor and manage",
+        "detail": "Patients are scanned and blood-counted over following weeks for tumour response and marrow toxicity; contaminated waste is held until it decays."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Bifunctional chelator chemistry",
+        "status": "exists",
+        "why": "without a cage that holds the metal ion in the bloodstream, the isotope irradiates healthy tissue instead of the tumour."
+      },
+      {
+        "tech": "Matched diagnostic imaging agents",
+        "status": "exists",
+        "why": "treatment works only in patients whose tumours actually express the receptor, so a paired imaging tracer is essential."
+      },
+      {
+        "tech": "High-specific-activity isotope supply",
+        "status": "partial",
+        "why": "reactor and generator capacity for lutetium-177 is limited, and actinium-225 supply is a hard bottleneck for alpha therapy."
+      },
+      {
+        "tech": "Automated radiosynthesis and hot-cell infrastructure",
+        "status": "exists",
+        "why": "short-lived isotopes leave no time for manual handling and demand shielded, validated production."
+      },
+      {
+        "tech": "Clinical dosimetry",
+        "status": "partial",
+        "why": "dose is often given as a fixed activity; true personalisation needs better imaging and models."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "lutetium-177 DOTATATE for neuroendocrine tumours and lutetium-177 PSMA-617 for prostate cancer in routine use",
+        "unlocks": "systemic radiation therapy as an accepted oncology modality."
+      },
+      {
+        "stage": "Next",
+        "milestone": "alpha emitters reach late-stage trials and approval",
+        "unlocks": "killing of individual residual cells and less dependence on receptor density, with less crossfire damage to healthy tissue."
+      },
+      {
+        "stage": "Next",
+        "milestone": "use earlier in the treatment pathway and in combination with other drugs",
+        "unlocks": "larger patient populations and better outcomes before tumours become resistant."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "scaled actinium-225 production and dosimetry-guided dosing",
+        "unlocks": "reliable supply and safer, personalised activity for alpha therapy."
+      }
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Power stage",
+        "role": "switches the DC link into a controlled AC waveform.",
+        "parts": [
+          "IGBT or silicon-carbide modules",
+          "DC-link capacitors",
+          "gate drivers",
+          "cooling"
+        ]
+      },
+      {
+        "name": "Output filter",
+        "role": "smooths switching ripple into a clean sine wave.",
+        "parts": [
+          "LCL filter inductors and capacitors",
+          "switchgear",
+          "protection relays"
+        ]
+      },
+      {
+        "name": "Control processor",
+        "role": "runs the grid-forming loop fast enough to react within milliseconds.",
+        "parts": [
+          "DSP or FPGA",
+          "high-resolution voltage and current sensors",
+          "real-time clock and communications"
+        ]
+      },
+      {
+        "name": "Grid-forming control law",
+        "role": "synthesises an internal voltage phasor instead of following the grid.",
+        "parts": [
+          "droop or virtual synchronous machine loop",
+          "virtual impedance",
+          "current limiter",
+          "fault ride-through logic"
+        ]
+      },
+      {
+        "name": "Energy source",
+        "role": "supplies the DC side of the inverter.",
+        "parts": [
+          "battery storage",
+          "wind or solar converter with power headroom",
+          "DC/DC converter"
+        ]
+      },
+      {
+        "name": "Plant controller",
+        "role": "coordinates many inverters so a whole farm behaves like one machine.",
+        "parts": [
+          "SCADA",
+          "setpoint and dispatch logic",
+          "protection coordination",
+          "black-start sequencing"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Choose the control law",
+        "detail": "Designers pick droop control, a virtual synchronous machine model, or virtual oscillator control, then tune virtual inertia and impedance against simulations of the target grid."
+      },
+      {
+        "title": "Size the semiconductors",
+        "detail": "Modules are chosen for continuous current plus overload margins, since an inverter can only push roughly 1.1–1.5 times rated current during a fault, far below a spinning generator's 5–6 times."
+      },
+      {
+        "title": "Build the power stack",
+        "detail": "Modules, DC-link capacitors, busbars and cooling are assembled into a cabinet with low-inductance connections."
+      },
+      {
+        "title": "Fit the filter and protection",
+        "detail": "LCL filters, contactors and relays are installed and the resonant behaviour of filter and grid is checked."
+      },
+      {
+        "title": "Write and flash the firmware",
+        "detail": "The control loop runs at tens of microseconds; current limiting, anti-islanding and ride-through logic are coded and documented."
+      },
+      {
+        "title": "Hardware-in-the-loop test",
+        "detail": "The real controller is driven against a simulated grid, including weak-grid, fault and islanding scenarios, before it ever touches a live network."
+      },
+      {
+        "title": "Type-test to grid codes",
+        "detail": "The unit is certified for fault ride-through, frequency response, harmonics and, where required, black-start capability."
+      },
+      {
+        "title": "Commission on site",
+        "detail": "Engineers verify it holds voltage and frequency stably on a weak feeder, then step it up to parallel operation with many units."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Fast power semiconductors and digital control",
+        "status": "exists",
+        "why": "the control loop must respond in milliseconds; silicon-carbide devices and FPGAs make that practical."
+      },
+      {
+        "tech": "Battery storage or renewable headroom",
+        "status": "exists",
+        "why": "a grid-forming inverter needs energy to push or absorb when it props up frequency."
+      },
+      {
+        "tech": "Grid codes specifying grid-forming behaviour",
+        "status": "partial",
+        "why": "most standards still define grid-following performance; grid-forming requirements are only now being written."
+      },
+      {
+        "tech": "Validated simulation models",
+        "status": "partial",
+        "why": "planners cannot approve thousands of units they cannot confidently model in stability studies."
+      },
+      {
+        "tech": "Weak-grid and low-inertia operating experience",
+        "status": "partial",
+        "why": "proof has so far come from islands and isolated networks, not large interconnected systems."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "grid-forming batteries in island and weak-grid systems, plus virtual-inertia modes on large storage (for example in South Australia)",
+        "unlocks": "evidence that power electronics can hold frequency without rotating machines."
+      },
+      {
+        "stage": "Next",
+        "milestone": "grid codes and certification tests that define grid-forming performance",
+        "unlocks": "procurement at scale, with planners able to rely on the behaviour."
+      },
+      {
+        "stage": "Next",
+        "milestone": "plant-level and fleet-level grid-forming, including black start from renewables",
+        "unlocks": "restoring a grid after a blackout without fossil generators."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "high-renewable grids run mostly on inverter-based resources",
+        "unlocks": "power systems that stay stable with little or no synchronous generation."
+      }
+    ]
+  }
+}

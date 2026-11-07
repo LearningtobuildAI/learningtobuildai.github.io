@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute core array",
+        "role": "hundreds of thousands of identical small processors laid out in a grid, plus a fabric that lets any core reach any other.",
+        "parts": [
+          "repeated AI/compute cores",
+          "on-die SRAM tiles",
+          "2D mesh or crossbar interconnect"
+        ]
+      },
+      {
+        "name": "Defect tolerance layer",
+        "role": "routes around manufacturing flaws so a whole wafer still works.",
+        "parts": [
+          "spare cores",
+          "harvest map stored on wafer",
+          "routing tables that isolate bad cores",
+          "clock and power gating of dead regions"
+        ]
+      },
+      {
+        "name": "Reticle-stitched interconnect",
+        "role": "joins regions printed in separate lithography exposures into one continuous fabric.",
+        "parts": [
+          "stitching seal structures",
+          "cross-field wiring",
+          "matched timing across boundaries"
+        ]
+      },
+      {
+        "name": "Power delivery",
+        "role": "feeds a very large die at low voltage and very high current without voltage droop.",
+        "parts": [
+          "dense on-wafer power grid",
+          "many-phase board regulators",
+          "thousands of power and ground connections"
+        ]
+      },
+      {
+        "name": "Cooling assembly",
+        "role": "removes heat from an entire wafer that expands when hot.",
+        "parts": [
+          "bonded cold plate with matched thermal expansion",
+          "liquid coolant loop",
+          "temperature sensors across the wafer"
+        ]
+      },
+      {
+        "name": "Package and system interface",
+        "role": "connects the wafer to memory, host and network.",
+        "parts": [
+          "wafer-scale package frame",
+          "high-density connectors",
+          "off-wafer memory and host links"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for repetition",
+        "detail": "The chip is drawn as a repeated tile of identical cores so errors can be mapped and bypassed; spares are built in from the start."
+      },
+      {
+        "title": "Print across reticle fields",
+        "detail": "A wafer is far larger than one lithography field, so the stepper exposes overlapping fields and dedicated stitch structures join the wiring where fields meet."
+      },
+      {
+        "title": "Fabricate the full wafer",
+        "detail": "Standard leading-node CMOS processing runs on a 300 mm wafer — and the wafer is kept whole instead of being diced."
+      },
+      {
+        "title": "Test every core",
+        "detail": "Probe stations map good and bad cores across the whole wafer, producing a defect map."
+      },
+      {
+        "title": "Program the routing",
+        "detail": "The defect map is burnt into on-wafer tables so the interconnect detours around faulty regions and the wafer behaves as one device."
+      },
+      {
+        "title": "Bond the cold plate",
+        "detail": "A cooling plate engineered to expand at the same rate as silicon is bonded across the full wafer so thermal stress does not crack it."
+      },
+      {
+        "title": "Assemble and power",
+        "detail": "The wafer is mounted in a package, wired to a board carrying many-phase power converters and connected to memory and the host system."
+      },
+      {
+        "title": "Validate as a system",
+        "detail": "The whole unit is tested under sustained load for performance, power and reliability — behaviour that single-die testing cannot predict."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Leading-node CMOS with fine-pitch wiring",
+        "status": "exists",
+        "why": "dense interconnect between cores is what makes wafer-scale bandwidth possible."
+      },
+      {
+        "tech": "Reticle stitching in lithography",
+        "status": "exists",
+        "why": "no single exposure field can cover a wafer; fields must be joined reliably."
+      },
+      {
+        "tech": "Redundancy and defect mapping at wafer level",
+        "status": "exists",
+        "why": "every wafer has flaws, so yield must come from routing around them rather than discarding the wafer."
+      },
+      {
+        "tech": "Matched-expansion cooling",
+        "status": "exists",
+        "why": "a hot silicon wafer several hundred millimetres wide expands enough to crack if bonded to ordinary metal."
+      },
+      {
+        "tech": "Very high-current, low-voltage power delivery",
+        "status": "exists",
+        "why": "a whole wafer draws hundreds of amps at under a volt, which demands tight power integrity."
+      },
+      {
+        "tech": "Wafer-scale test and packaging equipment",
+        "status": "partial",
+        "why": "probing and handling an undiced wafer is unusual and the tooling is specialised."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "single-wafer engines in commercial AI systems with tens of gigabytes of on-chip memory",
+        "unlocks": "very large models held on one device, avoiding inter-chip communication."
+      },
+      {
+        "stage": "Next",
+        "milestone": "closer memory integration and faster off-wafer links",
+        "unlocks": "larger models and less time waiting on external memory."
+      },
+      {
+        "stage": "Next",
+        "milestone": "multi-wafer systems joined by high-bandwidth interconnect",
+        "unlocks": "scaling beyond the size limit of one wafer."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "3D stacking and broader manufacturing base",
+        "unlocks": "lower cost and supply beyond a single specialised supplier."
+      }
+    ]
+  }
+}

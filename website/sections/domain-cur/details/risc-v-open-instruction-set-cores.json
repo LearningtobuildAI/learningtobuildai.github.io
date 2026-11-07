@@ -1,0 +1,169 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Base instruction set",
+        "role": "the mandatory integer core every RISC-V processor must implement.",
+        "parts": [
+          "RV32I / RV64I integer instructions",
+          "32 general-purpose registers",
+          "load-store memory model",
+          "privileged architecture (machine, supervisor, user modes)"
+        ]
+      },
+      {
+        "name": "Standard extensions",
+        "role": "optional blocks that turn a minimal core into a practical processor.",
+        "parts": [
+          "M — integer multiply/divide",
+          "A — atomics",
+          "F/D — single and double precision floating point",
+          "C — compressed 16-bit encodings",
+          "V — vector operations",
+          "Zi* / Z* subsets (bit manipulation, cryptography, etc.)"
+        ]
+      },
+      {
+        "name": "Microarchitecture",
+        "role": "the actual hardware design; the ISA says what, not how.",
+        "parts": [
+          "pipeline and issue logic",
+          "branch prediction",
+          "L1/L2 caches",
+          "MMU and TLB",
+          "interconnect and debug module"
+        ]
+      },
+      {
+        "name": "Custom-extension interface",
+        "role": "lets a designer bolt on accelerator instructions without breaking the standard.",
+        "parts": [
+          "reserved opcode space",
+          "custom control/status registers",
+          "co-processor and accelerator ports"
+        ]
+      },
+      {
+        "name": "Verification and compliance",
+        "role": "proves the core obeys the spec before it is committed to silicon.",
+        "parts": [
+          "architectural compliance test suites",
+          "randomised instruction generators",
+          "formal property checks",
+          "reference models / simulators"
+        ]
+      },
+      {
+        "name": "Software stack",
+        "role": "without compilers and an OS, the core cannot be used.",
+        "parts": [
+          "GCC and LLVM back ends",
+          "assembler, linker, C library",
+          "Linux kernel port and boot firmware",
+          "hardware abstraction layers for custom instructions"
+        ]
+      },
+      {
+        "name": "Physical implementation",
+        "role": "turns register-transfer code into a manufacturable chip.",
+        "parts": [
+          "synthesis to standard cells",
+          "SRAM macros",
+          "floorplan, place and route, timing closure",
+          "package and test harness"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Pick a frozen profile",
+        "detail": "Choose the base width (32- or 64-bit) and the exact set of ratified extensions. The choice is effectively permanent once software exists, so teams lock it early and version it."
+      },
+      {
+        "title": "Write or configure the core",
+        "detail": "Either license an existing core and tune its caches and pipeline depth, or write register-transfer code from scratch — the point of an open ISA is that this choice is unconstrained."
+      },
+      {
+        "title": "Add domain instructions",
+        "detail": "Accelerator operations (crypto, DSP, neural-network maths) are slotted into reserved opcode space with their own registers, so ordinary RISC-V code keeps running unmodified."
+      },
+      {
+        "title": "Verify against the standard",
+        "detail": "Run compliance suites, randomised instruction streams and formal proofs of the decoder and memory model; a subtle deviation only shows up years later as a compiler bug."
+      },
+      {
+        "title": "Prototype on an FPGA",
+        "detail": "Before committing to a mask set, the design is run on a field-programmable array at reduced clock speed, with the compiler, kernel and drivers already booting."
+      },
+      {
+        "title": "Implement physically",
+        "detail": "Synthesis, floorplan, place and route, clock-tree and power-integrity closure against the foundry's design rules, then design-rule and timing sign-off."
+      },
+      {
+        "title": "Tape out and bring up",
+        "detail": "Wafers are fabricated, packaged and tested; first-silicon boot proceeds stepwise from debug access to cache to full operating system."
+      },
+      {
+        "title": "Characterise and produce",
+        "detail": "Measure frequency, power and yield across process corners, then ship with a validated toolchain and long-term spec commitment."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Semiconductor foundries and design rules",
+        "status": "exists",
+        "why": "an ISA is only words until someone can manufacture the silicon implementing it."
+      },
+      {
+        "tech": "Electronic design automation tools",
+        "status": "exists",
+        "why": "synthesis, place and route at modern nodes are infeasible by hand."
+      },
+      {
+        "tech": "Open compiler back ends",
+        "status": "exists",
+        "why": "GCC and LLVM support means a new core gets a working C/C++ compiler almost immediately."
+      },
+      {
+        "tech": "Operating system ports",
+        "status": "exists",
+        "why": "Linux and real-time kernels already target RISC-V, so software need not be written from zero."
+      },
+      {
+        "tech": "Ratified, frozen specifications",
+        "status": "exists",
+        "why": "extensions must stop changing, or binary software and long-lived products break."
+      },
+      {
+        "tech": "Mature verification IP and tooling",
+        "status": "partial",
+        "why": "the ecosystem is younger than the incumbents'; teams still invest heavily in their own test infrastructure."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "RISC-V cores embedded as microcontrollers and as control logic inside accelerators and storage devices",
+        "unlocks": "royalty-free silicon with custom instructions and no vendor lock-in."
+      },
+      {
+        "stage": "Next",
+        "milestone": "standardised application-class profiles that run full operating systems, targeting automotive, data-centre and consumer devices",
+        "unlocks": "one binary software target spanning many vendors' chips."
+      },
+      {
+        "stage": "Next",
+        "milestone": "ratified extension families for vector and matrix maths",
+        "unlocks": "competitive machine-learning and scientific computing without proprietary add-ons."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "software ecosystem parity with established architectures",
+        "unlocks": "porting becomes routine, which is what finally makes the open ISA a genuine default."
+      }
+    ]
+  }
+}

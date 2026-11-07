@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Wing or kite",
+        "role": "the flying lifting surface that generates the power; it flies fast crosswind loops to multiply the apparent wind speed.",
+        "parts": [
+          "carbon-fibre spars and shell",
+          "control surfaces (ailerons, flaps)",
+          "bridle and load-bearing frame",
+          "onboard rotors (in 'fly-gen' designs)"
+        ]
+      },
+      {
+        "name": "Tether",
+        "role": "the structural link carrying hundreds of kilonewtons of tension while transmitting power or data.",
+        "parts": [
+          "braided high-modulus polyethylene or aramid fibres",
+          "conductive copper cores and fibre-optic line (fly-gen)",
+          "chafe protection and terminations"
+        ]
+      },
+      {
+        "name": "Ground station",
+        "role": "the winch and generator that convert tether motion into electricity and launch and recover the wing.",
+        "parts": [
+          "winch drum and gearbox",
+          "permanent-magnet motor/generator",
+          "launch and landing mast",
+          "shipping-container housing and concrete foundation"
+        ]
+      },
+      {
+        "name": "Flight control and avionics",
+        "role": "flies the wing autonomously in figure-eight patterns at tens of metres per second, seconds ahead of disturbances.",
+        "parts": [
+          "flight computer",
+          "GNSS and inertial sensors",
+          "tether load cells and winch encoders",
+          "redundant actuators"
+        ]
+      },
+      {
+        "name": "Power conversion and grid interface",
+        "role": "turns highly variable, pulsing output into compliant grid power.",
+        "parts": [
+          "inverter and DC link",
+          "transformer",
+          "buffer storage or smoothing control",
+          "protection and metering"
+        ]
+      },
+      {
+        "name": "Safety and airspace system",
+        "role": "keeps the wing inside its approved volume and brings it down safely if anything fails.",
+        "parts": [
+          "geofence and flight-termination logic",
+          "tether cutter",
+          "marking lights and radar detect-and-avoid"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Measure the wind aloft",
+        "detail": "LiDAR or tethered-balloon soundings profile wind speed and direction from 200 to 600 m, confirming a steady resource and checking aviation, radar and wildlife constraints."
+      },
+      {
+        "title": "Design and build the wing",
+        "detail": "Spars and skin are laid up in carbon fibre, kept deliberately light; aeroelastic simulation is essential because a wing stiff enough to be simple would be too heavy to fly well."
+      },
+      {
+        "title": "Make the tether",
+        "detail": "High-modulus polyethylene or aramid yarns are braided into a rope rated well above peak tension; fly-gen versions also weave in copper conductors and a data fibre."
+      },
+      {
+        "title": "Fabricate the ground station",
+        "detail": "A winch drum, gearbox and permanent-magnet machine are assembled in a container on a concrete foundation sized for peak tether pull and for the wing's landing loads."
+      },
+      {
+        "title": "Write the autopilot",
+        "detail": "A model-based controller is tuned in simulation and hardware-in-the-loop rigs to fly the crosswind pattern and handle gusts, line slack and emergency recovery."
+      },
+      {
+        "title": "Test incrementally",
+        "detail": "Static tether pulls first, then short flights within a small box, then full figure-eight power cycles at rising wind speeds, with each phase logged against predicted loads."
+      },
+      {
+        "title": "Commission the grid connection",
+        "detail": "Inverters and protection are set up to smooth the pulsing reel-out/reel-in output, and the system is run for months to expose wear in tether, drum and bearings."
+      },
+      {
+        "title": "Certify and integrate airspace",
+        "detail": "The operating volume is agreed with the aviation authority, marked and lit, and detect-and-avoid procedures are written before commercial operation."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-strength fibre tethers",
+        "status": "exists",
+        "why": "the whole concept rests on a rope strong enough to hold a wing in a gale while staying light enough not to drag it down."
+      },
+      {
+        "tech": "Lightweight composite airframes",
+        "status": "exists",
+        "why": "the wing must be stiff and strong yet light enough to fly and launch without a tower."
+      },
+      {
+        "tech": "Fast autonomous flight control",
+        "status": "partial",
+        "why": "the wing is unstable and reacts in fractions of a second; controllers have flown hours-long flights but not years of unattended operation."
+      },
+      {
+        "tech": "Proven long-duration reliability",
+        "status": "missing",
+        "why": "tethers, bearings and launch systems have not yet demonstrated multi-year service lives at sea or in remote sites."
+      },
+      {
+        "tech": "Regulation for tethered aircraft",
+        "status": "missing",
+        "why": "most aviation authorities have no settled rules for a flying generator sharing airspace with aircraft."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "small pilot systems in the tens to low hundreds of kilowatts; a US 600 kW prototype crashed in 2019 and its programme closed in 2020, and a Dutch developer ceased operations in 2022",
+        "unlocks": "hard lessons on loads, control and the cost of reliability."
+      },
+      {
+        "stage": "Next",
+        "milestone": "megawatt-class systems running autonomously for months, including through storms and launch/landing cycles",
+        "unlocks": "the data needed to insure and finance a farm."
+      },
+      {
+        "stage": "Next",
+        "milestone": "first commercial niche deployments on islands, remote industrial sites and small offshore arrays",
+        "unlocks": "a market where diesel is the alternative and grid connection is expensive."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "offshore farms of tethered wings on floating buoys or platforms",
+        "unlocks": "access to strong, steady sea winds with a fraction of the steel and concrete of fixed turbines."
+      }
+    ]
+  }
+}

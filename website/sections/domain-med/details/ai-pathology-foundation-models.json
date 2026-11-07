@@ -1,0 +1,150 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Slide scanning and image store",
+        "role": "turns glass slides into gigapixel digital images and serves them efficiently.",
+        "parts": [
+          "whole-slide scanner (20× or 40×, roughly 0.5 or 0.25 µm per pixel)",
+          "pyramidal image format and DICOM pathology support",
+          "petabyte-scale object storage"
+        ]
+      },
+      {
+        "name": "Tissue detection and patching",
+        "role": "finds tissue, discards background and artefacts, and cuts the slide into model-sized tiles.",
+        "parts": [
+          "tissue segmentation mask",
+          "tiler (commonly 256×256 pixel patches at 20×)",
+          "stain-normalisation step"
+        ]
+      },
+      {
+        "name": "Patch encoder",
+        "role": "the foundation model itself — maps each tile to a compact feature vector.",
+        "parts": [
+          "vision transformer backbone",
+          "self-supervised pretraining objective",
+          "frozen or fine-tuned weights"
+        ]
+      },
+      {
+        "name": "Slide-level aggregator",
+        "role": "combines thousands of patch vectors into one slide representation, weighting the regions that matter.",
+        "parts": [
+          "attention-based multiple-instance learning",
+          "slide embedding"
+        ]
+      },
+      {
+        "name": "Task heads",
+        "role": "small classifiers trained on labelled cohorts for specific questions.",
+        "parts": [
+          "tumour grading head",
+          "cancer detection head",
+          "molecular-status prediction head"
+        ]
+      },
+      {
+        "name": "Validation and monitoring layer",
+        "role": "proves the model works off the training site and keeps working.",
+        "parts": [
+          "external multi-site test sets",
+          "scanner and stain drift monitors",
+          "pathologist review queue"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble the slide corpus",
+        "detail": "Partner hospitals contribute consented diagnostic slides spanning organs, diseases, scanners and stain batches; diversity of sites matters more than raw volume for generalisation."
+      },
+      {
+        "title": "Scan and quality-control",
+        "detail": "Slides are digitised, focussing is checked, and blurred, folded or pen-marked regions are flagged so they never enter training."
+      },
+      {
+        "title": "Tile the slides",
+        "detail": "A tissue mask excludes blank glass; remaining tissue is cut into patches of roughly 256 pixels, about 128 µm across at 20×, with colour normalisation to reduce stain variation between labs."
+      },
+      {
+        "title": "Pretrain self-supervised",
+        "detail": "A vision transformer is trained on hundreds of millions of patches using objectives such as masked-image modelling or self-distillation — no labels, just consistency between views of the same tissue. This runs for weeks on large GPU clusters."
+      },
+      {
+        "title": "Check the embeddings",
+        "detail": "Frozen features are tested with simple linear probes on known tasks; if a linear classifier can already separate tumour grades, the representation is useful."
+      },
+      {
+        "title": "Train task heads",
+        "detail": "Pathologist-labelled cohorts, often only hundreds to thousands of slides, are used to train the attention aggregator and a lightweight classifier on top of the frozen encoder."
+      },
+      {
+        "title": "Validate externally",
+        "detail": "Performance is measured on held-out hospitals, different scanner models and different patient populations — the step where most research models fail."
+      },
+      {
+        "title": "Clear and deploy",
+        "detail": "Regulatory review as a medical device, integration into the pathology viewer, and pathologist sign-off on every report; monitoring continues for scanner changes and population drift."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Whole-slide imaging scanners",
+        "status": "exists",
+        "why": "without digitised slides there is no training data at all; adoption is uneven, with many labs still partly glass-based."
+      },
+      {
+        "tech": "Large GPU training capacity",
+        "status": "exists",
+        "why": "self-supervised pretraining of a large vision transformer requires many accelerator-hours that only well-resourced groups command."
+      },
+      {
+        "tech": "Self-supervised learning for images",
+        "status": "exists",
+        "why": "the methods that let models learn from unlabelled tiles are what make pathology foundation models possible, since labels are scarce."
+      },
+      {
+        "tech": "Large consented, diverse slide archives",
+        "status": "partial",
+        "why": "data access, consent, and cross-institution governance are the real bottleneck, not algorithms."
+      },
+      {
+        "tech": "Paired molecular and genomic ground truth",
+        "status": "partial",
+        "why": "predicting mutation status or gene expression from H&E requires cohorts where slides and sequencing exist for the same patients."
+      },
+      {
+        "tech": "Regulatory pathway for adaptive AI",
+        "status": "partial",
+        "why": "cleared tools exist for narrow tasks, but frameworks for continuously updated, multi-purpose models are still maturing."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "general-purpose pathology encoders released and benchmarked across many tasks, plus a small number of narrowly cleared detection aids",
+        "unlocks": "a shared starting point so hospitals need far fewer labelled slides per new task."
+      },
+      {
+        "stage": "Next",
+        "milestone": "prospective multi-site trials showing the models hold up across scanners and populations",
+        "unlocks": "clinical adoption beyond research and narrow niche tools."
+      },
+      {
+        "stage": "Next",
+        "milestone": "slides combined with report text and genomics in one model; H&E-based prediction of molecular status offered as a triage aid",
+        "unlocks": "genomic-grade information from a cheap routine stain, guiding which cases get sequencing."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "hospital-wide deployment with continuous drift monitoring and clear liability rules for model-assisted diagnosis",
+        "unlocks": "routine use in quality control, case triage and second-read, freeing pathologist time for difficult cases."
+      }
+    ]
+  }
+}

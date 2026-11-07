@@ -1,0 +1,146 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "partial",
+    "subsystems": [
+      {
+        "name": "Tokenizer and embedding",
+        "role": "turns text into discrete tokens and vectors the denoiser can work on.",
+        "parts": [
+          "subword tokenizer",
+          "embedding matrix",
+          "positional encoding"
+        ]
+      },
+      {
+        "name": "Denoising network",
+        "role": "a transformer with bidirectional attention that predicts clean tokens from a corrupted sequence.",
+        "parts": [
+          "transformer blocks",
+          "attention layers",
+          "output head"
+        ]
+      },
+      {
+        "name": "Noise process and objective",
+        "role": "defines how training sequences are corrupted and what the network is scored on.",
+        "parts": [
+          "masking or Gaussian noise schedule",
+          "loss weighting across noise levels",
+          "training loop"
+        ]
+      },
+      {
+        "name": "Inference sampler",
+        "role": "starts from noise or all-masked tokens and refines the whole sequence over several steps.",
+        "parts": [
+          "step schedule",
+          "confidence or remasking rule",
+          "parallel decoding logic"
+        ]
+      },
+      {
+        "name": "Conditioning and control",
+        "role": "keeps generation on-prompt and supports infilling or constraint-following.",
+        "parts": [
+          "prompt conditioning",
+          "classifier-free guidance",
+          "constraint masks"
+        ]
+      },
+      {
+        "name": "Serving stack",
+        "role": "runs many refinement steps efficiently on accelerators.",
+        "parts": [
+          "batching scheduler",
+          "memory manager",
+          "step distillation or caching"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Assemble training data",
+        "detail": "Collect and clean a large text corpus, then train or reuse a subword tokenizer."
+      },
+      {
+        "title": "Choose the diffusion formulation",
+        "detail": "Decide between discrete masked diffusion over tokens and continuous diffusion over embeddings; each changes the network, loss and sampler."
+      },
+      {
+        "title": "Train the denoiser",
+        "detail": "Corrupt sequences with the chosen noise process, feed them to a bidirectional transformer, and train it to recover the original tokens."
+      },
+      {
+        "title": "Tune the noise schedule",
+        "detail": "Adjust how much of a sequence is masked or noised at each training step and how losses are weighted, so easy and hard cases both teach the model."
+      },
+      {
+        "title": "Build the sampler",
+        "detail": "At inference, start from noise or all-masked positions and iteratively unmask or denoise; use confidence scores to decide which positions to fix first."
+      },
+      {
+        "title": "Add guidance and editing",
+        "detail": "Condition on prompts, apply guidance to strengthen instruction-following, and mask regions to support infilling and local edits."
+      },
+      {
+        "title": "Evaluate quality and speed",
+        "detail": "Measure output quality, latency, controllability and long-sequence behaviour against autoregressive baselines."
+      },
+      {
+        "title": "Optimize serving",
+        "detail": "Reduce refinement steps through distillation, cache computation where possible, and batch requests to keep latency low."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Transformer architectures and attention",
+        "status": "exists",
+        "why": "the denoiser is usually a transformer, but with bidirectional rather than causal attention."
+      },
+      {
+        "tech": "Large text corpora and pretraining pipelines",
+        "status": "exists",
+        "why": "the model still needs broad language knowledge before diffusion training can shape it."
+      },
+      {
+        "tech": "GPU and accelerator clusters",
+        "status": "exists",
+        "why": "training and multi-step sampling both need substantial parallel compute."
+      },
+      {
+        "tech": "Discrete diffusion theory and samplers",
+        "status": "partial",
+        "why": "masked diffusion works in research, but few-step high-quality sampling is still being improved."
+      },
+      {
+        "tech": "Evaluation methods for non-autoregressive text",
+        "status": "partial",
+        "why": "standard benchmarks assume left-to-right generation, so editing and parallel decoding need new tests."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "research models and early APIs showing competitive quality on some tasks",
+        "unlocks": "proof that parallel refinement can generate coherent text."
+      },
+      {
+        "stage": "Next",
+        "milestone": "distilled samplers cutting refinement to a small number of steps",
+        "unlocks": "latency advantages over autoregressive models in interactive use."
+      },
+      {
+        "stage": "Next",
+        "milestone": "reliable infilling and constrained editing",
+        "unlocks": "tools that revise documents or code in place rather than rewriting from the start."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "scaling to frontier quality with predictable training laws",
+        "unlocks": "a genuine alternative generation paradigm for products and agents."
+      }
+    ]
+  }
+}

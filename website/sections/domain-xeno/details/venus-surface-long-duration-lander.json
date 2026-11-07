@@ -1,0 +1,168 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Pressure housing",
+        "role": "holds one atmosphere inside while the Venus surface pushes in at about 92 bar, and gives sensors a window to the outside.",
+        "parts": [
+          "titanium or ceramic-composite shell",
+          "sapphire windows",
+          "high-temperature metal seals",
+          "electrical feedthroughs"
+        ]
+      },
+      {
+        "name": "High-temperature electronics",
+        "role": "computes, controls and stores data at 460 °C with no cooling loop.",
+        "parts": [
+          "silicon carbide JFETs",
+          "silicon carbide integrated circuits",
+          "ceramic and metal packages",
+          "high-temperature die attach and interconnects",
+          "non-volatile memory"
+        ]
+      },
+      {
+        "name": "Power source",
+        "role": "supplies electricity for weeks to months in an environment where solar power is negligible and batteries normally last hours.",
+        "parts": [
+          "primary batteries (thermal or high-temperature lithium)",
+          "or a radioisotope heat source with a high-temperature converter",
+          "insulation",
+          "power conditioning"
+        ]
+      },
+      {
+        "name": "Thermal design",
+        "role": "accepts that everything equilibrates to 460 °C, and manages the transient heating during descent rather than fighting the ambient.",
+        "parts": [
+          "multilayer and aerogel insulation",
+          "low-conductivity mounts",
+          "thermal mass",
+          "aeroshell heat shielding"
+        ]
+      },
+      {
+        "name": "Sensors and sampling",
+        "role": "measures atmospheric composition, surface chemistry and imagery.",
+        "parts": [
+          "gas chromatograph or mass spectrometer",
+          "Raman spectrometer",
+          "temperature and pressure sensors",
+          "sample inlet",
+          "camera behind a sapphire window"
+        ]
+      },
+      {
+        "name": "Communications",
+        "role": "sends data to an orbiter relay, since direct-to-Earth links from the surface are weak.",
+        "parts": [
+          "high-temperature transceiver",
+          "compact antenna",
+          "pointing mechanism"
+        ]
+      },
+      {
+        "name": "Entry, descent and landing",
+        "role": "delivers the lander through the atmosphere to a soft landing.",
+        "parts": [
+          "aeroshell",
+          "parachute system",
+          "crushable landing legs",
+          "descent radar or altimeter"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design for ambient, not for cooling",
+        "detail": "Every component is specified to work at 460 °C. The design deliberately avoids refrigerators, coolant loops and conventional silicon chips, which would need to be kept cool."
+      },
+      {
+        "title": "Fabricate silicon carbide circuits",
+        "detail": "Silicon carbide wafers are processed with high-temperature ion implantation and anneals, and metallisation that survives 500 °C. Wafers are probed and tested hot, not at room temperature."
+      },
+      {
+        "title": "Package and interconnect",
+        "detail": "Dies are mounted in ceramic or metal packages with high-temperature die attach and bond wires. Polymers and solder are avoided because they fail far below Venus temperatures."
+      },
+      {
+        "title": "Build the pressure housing",
+        "detail": "The shell is machined or formed, welded, and fitted with sapphire windows and metal seals. It is proof-tested to well above 92 bar before anything goes inside."
+      },
+      {
+        "title": "Assemble the power source",
+        "detail": "If battery-powered, thermal or high-temperature lithium cells are stacked and insulated. If radioisotope-powered, the heat source is encapsulated and coupled to a converter designed for a 460 °C cold sink."
+      },
+      {
+        "title": "Integrate and bake",
+        "detail": "Subsystems are assembled and run in a Venus simulation chamber at about 460 °C and 92 bar in carbon dioxide, measuring drift and lifetime over hundreds of hours."
+      },
+      {
+        "title": "Qualify for launch and cruise",
+        "detail": "Vibration, shock and thermal-vacuum testing reproduce launch and the cold cruise to Venus."
+      },
+      {
+        "title": "Land and operate",
+        "detail": "After aeroshell entry and parachute descent, the lander touches down, releases covers, deploys sensors and begins transmitting through a relay orbiter."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Silicon carbide high-temperature integrated circuits",
+        "status": "partial",
+        "why": "discrete transistors and simple circuits have been demonstrated at 500 °C in laboratories, but complex processors and memory are not yet available."
+      },
+      {
+        "tech": "High-temperature packaging and interconnects",
+        "status": "partial",
+        "why": "every join, seal and package must survive 460 °C for months without polymers or ordinary solder."
+      },
+      {
+        "tech": "Power source for months at 460 °C",
+        "status": "missing",
+        "why": "primary batteries give hours, and a radioisotope converter has a very hot cold sink, making it inefficient and unproven at Venus conditions."
+      },
+      {
+        "tech": "High-temperature chemical sensors",
+        "status": "partial",
+        "why": "spectrometers and gas sensors have been tested hot, but long-lived calibrated instruments are immature."
+      },
+      {
+        "tech": "Venus environmental test facilities",
+        "status": "exists",
+        "why": "chambers such as NASA Glenn's Venus simulation rig reproduce 460 °C and 92 bar with carbon dioxide for ground testing."
+      },
+      {
+        "tech": "Venus entry, descent and landing",
+        "status": "exists",
+        "why": "Soviet Venera landers proved parachute descent and soft landing from 1970 onward, though only for roughly two hours of surface life."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "silicon carbide devices and sensors survive extended lab tests at 460 °C",
+        "unlocks": "confidence that a lander can operate without cooling."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a small short-lived lander using silicon carbide electronics and primary batteries",
+        "unlocks": "flight proof of packaging, seals and hot electronics, lasting hours to days."
+      },
+      {
+        "stage": "Next",
+        "milestone": "a radioisotope-powered lander lasting weeks to months",
+        "unlocks": "the first genuinely long-duration Venus surface mission."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "a surface station or network with seismology and long-term chemistry",
+        "unlocks": "sustained Venus surface science rather than brief snapshots."
+      }
+    ]
+  }
+}

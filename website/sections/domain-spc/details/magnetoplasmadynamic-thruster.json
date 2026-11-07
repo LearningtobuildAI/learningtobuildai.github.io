@@ -1,0 +1,148 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "not-yet",
+    "subsystems": [
+      {
+        "name": "Thruster core",
+        "role": "the arc chamber where propellant is ionised and accelerated.",
+        "parts": [
+          "central cathode rod",
+          "coaxial anode",
+          "ceramic insulator",
+          "flared nozzle"
+        ]
+      },
+      {
+        "name": "Propellant feed",
+        "role": "delivers gas or vapour at a controlled rate.",
+        "parts": [
+          "tank",
+          "pressure regulator",
+          "flow controller",
+          "valves"
+        ]
+      },
+      {
+        "name": "Power conditioning",
+        "role": "turns spacecraft bus power into very high-current, low-voltage arcs.",
+        "parts": [
+          "high-current converter",
+          "capacitor bank for pulsed operation",
+          "switching and protection"
+        ]
+      },
+      {
+        "name": "Applied-field magnet (optional)",
+        "role": "an external coil adds magnetic field to boost thrust and efficiency.",
+        "parts": [
+          "solenoid coil",
+          "superconducting or copper winding",
+          "cryocooler if superconducting"
+        ]
+      },
+      {
+        "name": "Thermal management",
+        "role": "removes waste heat from electrodes and coils.",
+        "parts": [
+          "regenerative coolant channels",
+          "radiators",
+          "pumps"
+        ]
+      },
+      {
+        "name": "Structure and control",
+        "role": "mounts the thruster and manages operation.",
+        "parts": [
+          "gimbal and mounting frame",
+          "thrust and flow sensors",
+          "control electronics"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Design the electrode geometry",
+        "detail": "Cathode radius, anode shape and nozzle flare are chosen so the arc stays stable and the plasma accelerates without excessive erosion."
+      },
+      {
+        "title": "Fabricate the electrodes",
+        "detail": "A refractory-metal cathode (tungsten or thoriated tungsten) and a copper or refractory anode are machined and joined to cooled mounts."
+      },
+      {
+        "title": "Assemble the arc chamber",
+        "detail": "Electrodes are separated by a high-purity ceramic insulator and aligned coaxially to tight tolerances."
+      },
+      {
+        "title": "Build the vacuum test stand",
+        "detail": "A large chamber with high pumping speed, a high-current supply and a thrust stand is prepared for firing tests."
+      },
+      {
+        "title": "Fire in pulses and quasi-steady bursts",
+        "detail": "Short runs measure thrust, exhaust velocity and efficiency while limiting electrode heating."
+      },
+      {
+        "title": "Run endurance tests",
+        "detail": "Longer firings track cathode erosion, insulator contamination and changes in performance."
+      },
+      {
+        "title": "Qualify for space",
+        "detail": "Vibration, thermal-vacuum and electromagnetic-compatibility testing proves the unit survives launch and operates in vacuum."
+      },
+      {
+        "title": "Integrate with the spacecraft",
+        "detail": "The thruster is matched to the power system, propellant tank and thermal radiators, then commissioned in orbit."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "High-power spacecraft power (100 kW to megawatts)",
+        "status": "partial",
+        "why": "solar arrays and nuclear reactors at this scale have been studied but not routinely flown."
+      },
+      {
+        "tech": "Long-life electrodes under arc erosion",
+        "status": "missing",
+        "why": "cathode wear limits lifetime; no high-power MPD has run for the thousands of hours a mission needs."
+      },
+      {
+        "tech": "High-current power processing",
+        "status": "partial",
+        "why": "converters at hundreds of kilowatts with low mass are not yet standard space hardware."
+      },
+      {
+        "tech": "Large heat-rejection systems",
+        "status": "partial",
+        "why": "at high power, radiators become a major fraction of the spacecraft."
+      },
+      {
+        "tech": "Propellant storage and feed",
+        "status": "exists",
+        "why": "argon, lithium and ammonia handling is understood from other electric thrusters."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "laboratory firing at hundreds of kilowatts in pulsed or quasi-steady mode",
+        "unlocks": "data on thrust scaling and electrode wear."
+      },
+      {
+        "stage": "Next",
+        "milestone": "continuous multi-hundred-kilowatt operation with a qualified lifetime",
+        "unlocks": "a credible power-processing and thermal design for flight."
+      },
+      {
+        "stage": "Next",
+        "milestone": "in-orbit demonstration on an orbit-raising or cargo vehicle",
+        "unlocks": "confidence in arc stability and electromagnetic cleanliness."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "megawatt-class solar-electric or nuclear-electric tugs",
+        "unlocks": "fast, high-payload transport between low Earth orbit and higher orbits or the Moon."
+      }
+    ]
+  }
+}

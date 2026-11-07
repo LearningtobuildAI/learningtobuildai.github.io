@@ -1,0 +1,152 @@
+{
+  "engineering": {
+    "author": "DeepSeek (deepseek-flash)",
+    "writtenAt": "7 Nov 2026",
+    "availability": "available",
+    "subsystems": [
+      {
+        "name": "Compute dies",
+        "role": "the logic chiplets — CPU cores, GPU blocks or accelerators — built on the most advanced node available.",
+        "parts": [
+          "leading-edge silicon",
+          "local cache",
+          "die-to-die interface blocks"
+        ]
+      },
+      {
+        "name": "Support dies",
+        "role": "everything that gains nothing from the leading edge but is expensive there.",
+        "parts": [
+          "SRAM/cache dies on a mature node",
+          "analog and power-management dies",
+          "IO and SerDes dies"
+        ]
+      },
+      {
+        "name": "Memory stacks",
+        "role": "high-bandwidth DRAM placed physically beside the logic.",
+        "parts": [
+          "stacked DRAM dies",
+          "through-silicon vias",
+          "silicon interposer routing"
+        ]
+      },
+      {
+        "name": "Die-to-die interconnect",
+        "role": "moves data between chiplets cheaply enough to behave like one chip.",
+        "parts": [
+          "physical-layer circuits",
+          "link-layer protocol",
+          "sideband and test lanes"
+        ]
+      },
+      {
+        "name": "Packaging substrate",
+        "role": "mechanically holds the dies and fans their connections out to the board.",
+        "parts": [
+          "silicon interposer or embedded bridge with TSVs",
+          "organic build-up substrate",
+          "microbumps and C4 bumps",
+          "underfill and stiffener"
+        ]
+      },
+      {
+        "name": "Thermal solution",
+        "role": "removes heat from a hot, uneven, multi-die surface.",
+        "parts": [
+          "heat spreader",
+          "thermal interface materials",
+          "lid and mounting"
+        ]
+      }
+    ],
+    "buildSteps": [
+      {
+        "title": "Partition the design",
+        "detail": "Engineers split the chip into functions that belong on different nodes: transistors on the newest process, SRAM on a cheaper one, analog and IO on mature nodes. This is where most of the value is captured or lost."
+      },
+      {
+        "title": "Define the die-to-die link",
+        "detail": "Each boundary becomes a standard interface — UCIe is the industry effort here — with agreed bump pitch, bandwidth density and power per bit, so dies from different teams or vendors can talk."
+      },
+      {
+        "title": "Fabricate the dies",
+        "detail": "Each chiplet runs through its own wafer process, so a cache die may be several generations behind the compute die next to it."
+      },
+      {
+        "title": "Test before assembly",
+        "detail": "Every die is probed and burned in at operating speed while still on the wafer, so that only known-good dies enter the package — a bad die discovered later wastes the whole assembly."
+      },
+      {
+        "title": "Build the interposer",
+        "detail": "A silicon interposer is processed with fine wiring and through-silicon vias, or a small bridge die is embedded directly into the organic substrate for a cheaper, coarser connection."
+      },
+      {
+        "title": "Bond the dies",
+        "detail": "Flip-chip thermocompression bonding places each die onto microbumps whose pitch is measured in tens of microns, one die at a time, with placement accuracy of a few microns. Denser 3D stacks instead use hybrid bonding, joining copper pads directly with no solder."
+      },
+      {
+        "title": "Underfill and package",
+        "detail": "Epoxy underfill is wicked into the gaps to spread mechanical stress, then the substrate, stiffener, lid and heat spreader are attached."
+      },
+      {
+        "title": "Test the whole package",
+        "detail": "The assembled part is tested as a system — including the die-to-die links running at speed — then thermally cycled and stressed to prove the joints survive years of expansion and contraction."
+      }
+    ],
+    "prerequisites": [
+      {
+        "tech": "Advanced 2.5D packaging lines",
+        "status": "exists",
+        "why": "interposer-based packaging such as TSMC's CoWoS is in volume production, but capacity has been a genuine constraint on how many parts can ship."
+      },
+      {
+        "tech": "High-bandwidth memory",
+        "status": "exists",
+        "why": "stacked DRAM beside logic on an interposer is what made the packaging approach commercially compelling in the first place."
+      },
+      {
+        "tech": "Die-to-die interface standards",
+        "status": "partial",
+        "why": "UCIe published its first specification in 2022, but real interoperability between chiplets from different vendors is still early."
+      },
+      {
+        "tech": "Known-good-die test at full speed",
+        "status": "partial",
+        "why": "testing bare dies at operating speed before assembly is the key economic enabler and remains difficult and expensive."
+      },
+      {
+        "tech": "Hybrid bonding in volume",
+        "status": "partial",
+        "why": "direct copper-to-copper bonding at pitches under 10 µm is shipping in some products such as image sensors, but logic-on-logic volume is still ramping."
+      },
+      {
+        "tech": "Multi-die design and thermal co-design tools",
+        "status": "partial",
+        "why": "floorplanning, power delivery and thermal analysis across a package rather than a die are only partly supported by current EDA flows."
+      }
+    ],
+    "pathway": [
+      {
+        "stage": "Now",
+        "milestone": "multi-die server CPUs and accelerators in volume — AMD moved its EPYC server line to a multi-die layout in 2017 — plus GPUs surrounded by HBM",
+        "unlocks": "cheap cores and memory bandwidth that a single monolithic die could not deliver."
+      },
+      {
+        "stage": "Next",
+        "milestone": "interoperable UCIe chiplets sourced from third parties",
+        "unlocks": "a real market in reusable dies, so smaller companies can build competitive parts without a full leading-edge design."
+      },
+      {
+        "stage": "Next",
+        "milestone": "volume logic-on-logic hybrid bonding and backside power delivery",
+        "unlocks": "3D stacks with far denser connections than side-by-side chiplets, and shorter, lower-loss wiring."
+      },
+      {
+        "stage": "Longer term",
+        "milestone": "co-packaged optics and optical die-to-die links",
+        "unlocks": "breaking the reach and energy limits of copper at the package edge, enabling much larger systems in one package."
+      }
+    ]
+  }
+}
